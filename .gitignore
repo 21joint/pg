@@ -1,10 +1,6 @@
-application.zip
-/.well-known
 /application
-/cgi-bin
 /externals
 /install
 /public
 /siteminify
 /temporary
-/vendor
