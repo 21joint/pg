@@ -1,0 +1,522 @@
+.hashtag_activity_item {
+  background-color: rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 5px;
+  width: 100%;
+  margin: 5px 0px;
+}
+
+.hashtag_activity_item li {
+  float: left;
+  margin: 0 5px;
+}
+
+.activity-post-highlighter-wapper {
+    width: 100%;
+     position: absolute;
+     background: transparent;
+}
+
+
+.activity-post-highlighter {
+    background: transparent;
+    overflow: auto;
+    color: transparent;
+    padding: 0.4em;
+    display: block;
+    color: transparent;
+    border: none;
+    margin: 0;
+    min-height: 60px;
+    -webkit-appearance: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.activity-post-highlighter .hashtag {
+    display: inline-block;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 0 0 1px #7eb6d5;
+    -moz-box-shadow: 0 0 0 1px #7eb6d5;
+    box-shadow: 0 0 0 1px #7eb6d5;
+    font-weight: 400;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+}
+
+.seaocore_comments_attachment_sitereaction_sticker .seaocore_comments_attachment_photo{
+    max-width: 50%;
+}
+.compose_sticker_box_cont {
+    max-height: 300px;
+}
+
+.stickers_wapper {
+    border: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.stickers_tab_wapper {
+    border-bottom: 1px solid gray;
+    font-size: 12px;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    border-radius: 2px 2px 0 0;
+    overflow: hidden;
+}
+.stickers_tab_wapper .tab {
+    width: 41px;
+    display: inline-block;
+    height: 40px;
+    line-height: 39px;
+    outline: 0;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+}
+.stickers_tab_wapper a {
+    margin-right: 0 !important;
+}
+.stickers_tab_wapper .tab_search {
+    width: 38px;
+}
+.stickers_tab_wapper .tab {
+    width: 100%;
+}
+.stickers_tab_wapper .tab.active {
+    background-color: rgba(0, 0, 0, .1);
+}
+.stickers_tab_wapper .scroll_tabs .tab_wp {
+    display: inherit;
+    border-right: 1px solid gray;
+    width: 200px;
+    text-align: center;
+}
+/*.stickers_tab_wapper .tab i {
+    padding-top: 1px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 25px;
+    vertical-align: middle;
+    width: 25px;
+}*/
+.str_search_not_found {
+    color: #a6a6a6;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.str_search_not_found i {
+    background-image: url(../../../Sitereaction/externals/images/not-found.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 81px;
+    height: 80px;
+    display: inline-block;
+}
+.stickers_icon_wapper {
+    width: 100%;
+    display: block;
+    overflow: hidden;
+}
+.stickers_icon_wapper .scroll_content {
+    overflow: hidden;
+}
+.stickers_icon_wapper .scroll_content .sticker_icons{
+    height: 250px;
+    overflow-y: auto;
+    float: left;
+}
+
+.sticker_search_list button {
+    width: 45%;
+    display: inline-table;
+    padding: 2%;
+    margin: 1% 2%;
+    border: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: #fff !important;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    text-align: left;
+    text-shadow: none;
+    text-transform: capitalize;
+    height: 32px;
+    font-size: 12px;
+}
+
+.sticker_icons .icon {
+    border-radius: 3px;
+    line-height: 52px;
+    padding: 2px 0 4px;
+    text-align: center;
+    width: 25%;
+    float: left;
+}
+.sticker_icons .icon i {
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 64px;
+    vertical-align: middle;
+    width: 64px;
+    cursor: pointer;
+}
+
+.str_search_text {
+    position: relative;
+    padding: 10px 10px 5px 10px;
+    overflow: hidden;
+}
+
+.str_search_text .search_icon {
+    background-image: url(~/application/modules/Sitereaction/externals/images/search.png);
+    background-repeat: no-repeat;
+    background-size: 12px auto;
+    background-position: 50% center;
+    height: 16px;
+    left: 14px;
+    position: absolute;
+    width: 16px;
+    z-index: 1;
+    top: 16px;
+}
+
+.str_search_text label {
+    border: 1px solid lightgray;
+    color: #1d2129;
+    line-height: 20px;
+    vertical-align: middle;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: 100%;
+    float: left;
+    box-sizing: border-box;
+}
+.str_search_text label .ui-input-text, .ui-input-search {
+    border: 0;
+    margin: 0;
+}
+.str_search_text label input {
+    font-weight: normal;
+    background: transparent;
+    border: 0;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    width: 100%;
+    font-size: 12px;
+}
+.st_tabs_icons {
+    overflow: hidden;
+}
+.scroll_tabs {
+    display: inline-block;
+    position: relative;
+    white-space: nowrap;
+}
+
+.stickers_tab_wapper .prev {
+    border-left: 0;
+    border-right: 1px solid lightgray;
+    position: relative;
+    width: 37px;
+    float: left;
+}
+.stickers_tab_wapper .next {
+ border-left: 1px solid lightgray;
+    border-right: 0;
+    position: relative;
+    width: 37px;
+    float: right;
+}
+.stickers_tab_wapper .store {
+ border-left: 1px solid lightgrey;
+    border-right: 0;
+    width: 42px;
+    float: right;
+}
+.stickers_tab_wapper .prev, .stickers_tab_wapper .next, .store {
+    height: 40px;
+    line-height: 39px;
+    outline: 0;
+    text-align: center;
+    text-decoration: none;
+}
+.stickers_tab_wapper .prev i, .stickers_tab_wapper .next i, .stickers_tab_wapper .store i {
+    background-repeat: no-repeat;
+    background-position: 50% center;
+    display: inline-block;
+    vertical-align: middle;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+}
+
+.st_tabs_icons .inline_row {
+    display: inline-block;
+}
+
+.stickers_layer img {
+    border: 0;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+}
+
+.stickers_layer_content .stickers_search_clear {
+    background-image: url(~/application/modules/Sitereaction/externals/images/close.png);
+    background-repeat: no-repeat;
+    background-size: auto;
+    height: 16px;
+    position: absolute;
+    width: 16px;
+    z-index: 1;
+    top: 16px;
+    right: 20px;
+    background-position: 50% center;
+}
+
+.feed_item_option_reaction > a > i, .comment_item_option_reaction > a > i {
+    width: 15px;
+    height: 15px;
+    background-size: cover;
+    display: inline-block;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    margin-right: 3px;
+}
+
+.seao_icons_toolbar_wappper {
+    left: 0;
+    position: absolute;
+    top: 0;
+    z-index: 200;
+    outline: none;
+    display: none;
+}
+
+.seao_icons_toolbar_translate-y {
+    transform: translateY(88px);
+}
+
+.seao_icons_toolbar_wappper .icons-toolbar-container {
+    bottom: 0;
+    font-size: 0;
+    position: absolute;
+}
+
+.seao_icons_toolbar_wappper .icons-button-wapper {
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0px 10px;
+}
+
+.seao_icons_toolbar_wappper .icons-button-container {
+    font-size: 0;
+    padding: 2px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.seao_icons_toolbar_wappper .icons-toolbar-background {
+    background: #fff;
+    border: 0;
+    border-radius: 40px;
+    bottom: 3px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .08), 0 2px 2px rgba(0, 0, 0, .15);
+    content: '';
+    display: block;
+    left: 10px;
+    position: absolute;
+    right: 10px;
+    transition: height 200ms ease;
+    z-index: -1;
+    height: 37px;
+}
+.seao_icons_toolbar_wappper .icon-button-wapper:hover {
+    z-index: 1;
+}
+.seao_icons_toolbar_wappper .icon-button-wapper:hover .icon-wapper {
+    transform: scale(1, 1) translate(0, -6px);
+}
+.seao_icons_toolbar_wappper .icon-button-wapper:hover .caption {
+    opacity: 1;
+}
+
+.seao_icons_toolbar_wappper .icon-button-wapper {
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+    -webkit-backface-visibility: hidden;
+    cursor: pointer;
+    display: inline-block !important;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    transform: scale(1, 1) translateY(.0001px);
+    transform-origin: 50% 100%;
+    width: 40px;
+}
+
+.seao_icons_toolbar_wappper .icons-toolbar-container .icon-button-wapper:nth-child(1) {
+    -webkit-animation-duration: .7333s;
+    -webkit-animation-name: head-1-anim;
+}
+
+.seao_icons_toolbar_wappper .icons-button-container .icon-button-wapper {
+    outline: none;
+}
+
+.seao_icons_toolbar_wappper .icon-wapper {
+    transform: scale(.8, .8) translate(0, 0);
+    transition: transform 200ms ease;
+}
+
+
+.seao_icons_toolbar_wappper .caption-wapper {
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    top: -28px;
+    transform: translateX(-50%);
+}
+
+.seao_icons_toolbar_wappper .caption {
+    background-color: rgba(0, 0, 0, .75);
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    max-width: 100%;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0 8px;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    transition: opacity 50ms ease;
+    -webkit-user-select: none;
+}
+
+.seao_icons_toolbar_wappper .icon-wapper::after {
+    bottom: -5px;
+    content: '';
+    display: block;
+    left: -5px;
+    position: absolute;
+    right: -5px;
+    top: -60px;
+    z-index: 1;
+}
+
+.seao_icons_toolbar_wappper .icon {
+    background-repeat: no-repeat;
+}
+
+.seao_icons_toolbar_wappper .icon.icon {
+    display: block;
+    height: 40px;
+    line-height: 1;
+    width: 40px;
+    background-size: contain;
+    border-radius:50%;
+}
+
+.seao_icons_toolbar_attach .seao_icons_toolbar_wappper {
+    display: none;
+    top: -88px;
+    position: relative;
+}
+
+.feed_item_option_share:hover .seao_icons_toolbar_wappper {
+    display: block;
+}
+
+ /*For rightcoming likes and share links*/
+.seao_icons_toolbar_right .seao_icons_toolbar_wappper {
+    left: auto;
+    right: 19px;
+}
+ 
+.seao_icons_toolbar_right .seao_icons_toolbar_wappper .icons-toolbar-container {
+    left:auto;
+    right:0px;
+}
+
+.seao_view_likes_link_wappper i{
+    width:16px;
+    height: 16px;
+    display: inline-block;
+    background-size: cover;
+}
+
+.reaction_tabs {   
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+    position: relative;
+    margin-bottom:2px;
+}
+.reaction_tabs > li {
+    display: inline-block;
+    list-style-type: none;
+    max-width: 100%;
+    position: relative;
+    vertical-align: middle;
+    padding: 0 12px;
+}
+.reaction_tabs > li.active {
+    border-bottom: 2px solid rgb(88, 144, 255);
+}
+.reaction_tabs > li > a {
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-decoration: none;
+}
+.reaction_tabs > li i {
+    height: 16px;
+    width: 16px;
+    display: inline-block;
+    background-size: cover;
+    vertical-align: middle;
+    margin-top: -2px;
+}
+.item_member_thumb > i {
+    margin-left: -16px;
+}
+
+
+/*Sticker and Reaction compatibility*/
+.feed_item_btm a.feed_likes {display:inline-block;}
+.feed_item_btm a.feed_likes > span {display:block;}
+.feed_item_btm a.feed_likes .seao_view_likes_link_wappper {display:inline-block; vertical-align:top;}
+.feed_item_btm a.feed_likes .seao_view_likes_link_wappper + span { vertical-align:middle;}
+.feed_item_btm a.feed_likes + div {display:inline;}
+.cm-icon-reaction {
+    background: url(../../../Sitemobile/externals/images/sticker-add.png) no-repeat center;
+    height:26px;
+    width:26px;
+    float:left;
+    display:block;
+}
+.stickers_tab_wapper .tab i:before {content:"\f002"; font-family:FontAwesome; font-size:16px; vertical-align:middle; }

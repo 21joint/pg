@@ -1,0 +1,183 @@
+/* $Id: main.css 2014-10-09 00:00:00Z SocialEngineAddOns Copyright 2013-2014 BigStep Technologies Pvt. Ltd. $ */
+
+/*Luminous theme FOOTER MENU widget*/
+.layout_siteluminous_menu_footer .footerlinks {
+	padding: 23px 0px;
+	width: $theme_footer_width;
+	margin:0 auto;
+	display:table;
+	border-bottom:1px solid;
+	box-sizing:border-box;
+}
+.layout_siteluminous_menu_footer .siteluminous_footer_block {
+	display:table-cell;
+	vertical-align: top;	
+}
+.layout_siteluminous_menu_footer .siteluminous_footer_block + .siteluminous_footer_block {
+	margin-left:15px;
+}
+.layout_siteluminous_menu_footer .siteluminous_footer_block ul {
+	text-align:left;
+	padding:0 120px;
+}
+.layout_siteluminous_menu_footer .siteluminous_footer_block:first-child ul{
+    padding-left:0;
+}
+.layout_siteluminous_menu_footer .siteluminous_footer_block:last-child ul{
+    padding-right:0;
+}
+.layout_siteluminous_menu_footer .siteluminous_footer_block li.siteluminous_footer_block_head {
+	font-size:18px;
+	font-family: 'Ubuntu', sans-serif;
+    line-height:35px;
+    font-weight:700;
+}
+.layout_siteluminous_menu_footer .siteluminous_footer_block li {
+	line-height:25px;
+    color: #fff;
+}
+.layout_siteluminous_menu_footer .siteluminous_footer_block li a {
+	font-size:14px;
+    color: #fff;
+}
+.layout_siteluminous_menu_footer .siteluminous_footer_block li a:hover {
+  	color: $theme_link_color_hover;
+}
+.layout_siteluminous_menu_footer .footerlinks + .layout_core_menu_footer {
+	margin:0 auto;
+	padding:23px;
+	text-align:center;
+}
+/*Community block*/
+.layout_siteluminous_homepage_footertext {
+	padding:56px 20px;
+	width:$theme_content_width;
+	margin:0 auto;
+	margin-top:0 !important;
+	clear:both;
+}
+.communitytop {
+  	padding:80px 0;
+}
+.layout_siteluminous_homepage_footertext h3 {
+  	color:#282828!important;
+}
+.desc-text {
+	font-size: 17px;
+	color: $theme_font_color;
+	text-align: center;
+	font-family: 'Open Sans', sans-serif;
+	width:56%;
+	margin:25px auto 40px auto;
+    font-weight:400; 
+}
+.signupblock,
+[dir="rtl"] .signupblock {
+  	text-align: center;
+ }
+.signupblock a:link,
+.signupblock a:visited {
+   	color: #fff;
+}
+.signupblock a:hover {
+	opacity:.8;
+}
+/*Home page image widget work*/
+.slideblock {
+  	position: relative;
+}
+.slideblok_image img {
+  	width: 100%;
+ }
+.slideblok_image, .slideblok_image img {
+    display:inline-block;
+    height:auto;
+}
+.slideoverlay {
+	background-color: rgba(0,0,0,.4);
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index:9;
+}
+.toptext {
+	position:absolute;
+	top:25%;
+	left:0;
+	right:0;
+	z-index:10;
+	padding:0 20px;
+}
+html .toptext h1 {
+	color:#fff;
+	text-align: center;
+	font-family: 'Ubuntu', sans-serif;
+    font-weight: 300;
+	font-size:4em;
+	margin-bottom:20px;
+}
+.toptext article {
+	color:#fff;
+	text-align: center;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 400;
+	font-size:1.8em;
+}
+.btnsblock {
+	width:100%;
+	margin:0 auto;
+	margin-top:10%;
+	text-align:center;
+}
+[dir="rtl"] .btnsblock {
+  	text-align:center;
+}
+.btnsblock a {
+	color:#fff!important;
+	font-family: 'Open Sans', sans-serif;
+	font-size:18px;
+	text-transform:uppercase;
+	text-decoration:none;
+	background-color:rgba(255,255,255,.5);
+	border-radius:3px;
+	padding:13px 52px;
+	box-shadow:0 2px 3px rgba(0, 0, 0, 0.5);
+    font-weight: 300;
+}
+/*----Responsive work-----*/
+@media only screen and (max-width: 1199px) {
+	.layout_siteluminous_menu_footer .footerlinks {width: 100%;}
+    .layout_siteluminous_menu_footer .siteluminous_footer_block ul {padding:0 10% !important;}
+	.layout_siteluminous_homepage_footertext {width:100%; float:left; box-sizing:border-box;}
+	.layout_siteluminous_homepage_blocks > div {width: 100% !important; float:left !important;}
+}
+@media only screen and (max-width: 1024px) {
+	html .toptext h1 {font-size:3em;}
+	html .toptext article {font-size:1.5em;}
+}
+@media only screen and (max-width: 980px) {
+	.layout_sitemenu_menu_footer a + div, .layout_sitemenu_menu_footer a + div div.fright{text-align:center;}
+}
+@media only screen and (max-width: 768px) {
+	html .desc-text {width:100%;}
+	.btnsblock a {padding:5px 15px;}
+	html #slide-images, html #slide-images img {height:410px;}
+	html #slide-images img {height:100%;}
+	html .toptext h1 {font-size:2em;}
+	html .toptext article {font-size:1.2em;}
+	.btnsblock a {font-size:14px;}
+}
+@media only screen and (max-width: 600px) {
+    .layout_siteluminous_menu_footer .siteluminous_footer_block {display:inline-block; margin: 0 0 10px 0!important; width: 50%;}
+	html .signupblock a {padding-left:10%; padding-right:10%; font-size:15px;}
+	.layout_siteluminous_homepage_blocks > div > div {padding:15px 0!important;}
+	.layout_siteluminous_homepage_blocks > div > div {width:100%!important; float:left; margin-bottom:20px;}
+}
+@media only screen and (max-width: 480px) {
+	.layout_sitemenu_menu_footer a + div, .layout_sitemenu_menu_footer a + div div.fright {text-align:center; margin-top:10px;}
+	.layout_siteluminous_menu_footer .siteluminous_footer_block li.siteluminous_footer_block_head {font-size:16px;}
+	.layout_siteluminous_menu_footer .siteluminous_footer_block li a {font-size:13px;}
+	html .signupblock a {font-size: 15px;}
+}

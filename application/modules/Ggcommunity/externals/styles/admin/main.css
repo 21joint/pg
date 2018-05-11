@@ -1,0 +1,29 @@
+/*  Admin Panel Style */
+
+/* global styles that are use for all Ggcommunity plugin */
+.p-l-10 {
+    padding-left: 10px;
+}
+
+/* Manage Questions Page */
+body#global_page_ggcommunity-admin-manage-index div.admin_search form#filter_form {
+    display: flex;
+    justify-content: space-between;
+}
+body#global_page_ggcommunity-admin-manage-index div.admin_search form#filter_form div {
+    margin-bottom: 8px;
+}
+body#global_page_ggcommunity-admin-manage-index div#global_content {
+width: 80% !important;
+}
+body div#global_content form#multidelete_form {
+overflow-x: scroll;
+}
+body div#global_content form#option_form div#buttons-wrapper fieldset a#cancel {
+    -webkit-appearance: listitem !important;
+}
+
+/* Manage Answers/Comments Page */
+body div.admin_search form#search_form div:nth-child(2) {
+    margin-top: 15px;
+}

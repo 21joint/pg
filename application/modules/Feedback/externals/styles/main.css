@@ -1,0 +1,613 @@
+/* $Id: main.css 2010-07-08 9:40:21Z SocialEngineAddOns Copyright 2009-2010 BigStep Technologies Pvt. Ltd. $ */
+
+/* ACTION TYPE ICONS */
+.activity_icon_comment_feedback::before{
+  content:"\\f0e5";
+}
+/* ICONS */
+.icon_feedback_new::before{
+  content:"\\f0e5";
+}
+.icon_feedback_edit::before{
+  content:"\\f040";
+}
+.icon_feedback_delete::before{
+  content:"\\f056";
+}
+.item_icon_feedback::before, .icon_feedback::before{
+  content:"\\f0e6";
+}
+.icon_feedback_image_new::before{
+  content:"\\f093";
+}
+.icon_feedback_image_delete::before{
+  content:"\\f056";
+}
+.icon_images_new::before{
+  content:"\\f055";
+}
+
+/* COMMON CSS FOR ALL LISTINGS AND VIEW PAGE */
+.feedback_featured{
+	background-image: url(~/application/modules/Feedback/externals/images/featured_bg.png);
+}
+.feedback_status_box{
+	background-image: url(~/application/modules/Seaocore/externals/images/blk-bg.png);
+	border: 5px solid $theme_form_border_color;
+	padding: 12px 12px 12px 12px;
+	background-color: $theme_form_background_color;
+	clear:both;
+	margin-top:10px;
+}
+a.feedback_status{
+	-moz-border-radius: 2px;
+	-webkit-border-radius:2px;
+	color:#fff !important;
+	padding:2px 3px;
+	font-weight:bold;
+}
+/* FEEDBACK VOTE BUTTON */
+.feedbacks_list_vote_button{
+	float: left;
+	overflow: hidden;
+	margin-right: 8px;
+	width:70px;
+	text-align:center;
+}
+html[dir="rtl"] .feedbacks_list_vote_button{
+	float: right;
+	margin-left: 8px;
+	margin-right:0px;
+}
+.feedback_votes_counts{
+	font-size:11px;
+	text-align: center;
+	text-transform: lowercase;
+	padding: 7px 1px;
+	border: solid 1px #ccc;
+	-moz-border-radius: 5px;
+	-webkit-border-radius:5px;
+}
+.feedback_votes_counts p{
+	display: block;
+	margin-bottom: -4px;
+	font-size: 19px;
+}
+.feedback_vote_button{
+	clear:both;
+	text-align:center;
+}
+html[dir="rtl"] .feedback_votes_counts,
+html[dir="rtl"] .feedback_vote_button{
+	text-align:center;
+}
+.feedback_vote_button a, .feedback_vote_button a:visited{
+	+rounded;
+	margin-top:5px;
+	color: $theme_buttontabs_font_color !important;
+	background-color: $theme_buttontabs_background_color;
+	border-bottom-color: #888;
+	border-radius: 3px;
+	font-size:11px;
+	cursor: pointer;
+	display: inline-block;
+	font-weight: bold;
+	padding: 5px 10px;
+}
+.feedback_vote_button a:hover{
+	background-color: $theme_buttontabs_background_color_hover;
+	text-decoration: none;
+	color: $theme_buttontabs_font_color_hover;
+}
+/* VIEW Feedback */
+ul.feedbacks_view{
+	overflow:hidden;
+}
+ul.feedbacks_view > li{
+	border-top-width:1px;
+	padding-top: 10px;
+	margin-bottom: 10px;
+	display: inline-block;
+	width: 100%;
+}
+ul.feedbacks_view > li h3{
+	background:none;
+	padding:0 0 5px;
+	font-weight:bold;
+}
+ul.feedbacks_view .feedback_view_detail_date{
+	font-size: 8pt;
+	margin-bottom: 5px;
+	color: $theme_font_color_light;
+}
+ul.feedbacks_view .feedback_view_detail_stats{
+	margin:5px 0;
+	font-size: 11px;
+	margin-bottom: 5px;
+	font-weight:bold;
+}
+ul.feedbacks_view li .feedback_view_votes{
+	float: right;
+	overflow: hidden;
+	margin:0px 8px;
+	width:70px;
+	text-align:center;
+}
+html[dir="rtl"] ul.feedbacks_view li .feedback_view_votes{
+	float: left;
+}
+ul.feedbacks_view li .feedback_images{
+	clear:both;
+	+foreground;
+	padding:10px;
+	margin-top:10px;
+	overflow:hidden;
+}
+ul.feedbacks_view li .feedback_images h4{
+	font-size:13px;
+	margin:0;
+	padding:0 0 5px 6px;
+	border:none;
+}
+ul.feedbacks_view li .feedback_images .feedback_img{
+	float:left;
+	width:62px;
+	margin:3px 5px 3px 6px;
+	text-align:center;
+	font-weight:bold;
+}
+html[dir="rtl"] ul.feedbacks_view li .feedback_images .feedback_img{
+	float:right;
+	margin:3px 6px 3px 5px;
+}
+ul.feedbacks_view li .feedback_images .feedback_img img{
+	width:60px;
+	height:60px;
+}
+ul.feedbacks_view .feedback_view_des{
+	line-height: 1.5em;
+}
+.feedbacks_view .comments{
+	float:left;
+}
+html[dir="rtl"] .feedbacks_view .comments{
+	float:right;
+}
+.feedback_report_link{
+	float:right;
+}
+html[dir="rtl"] .feedback_report_link{
+	float:left;
+}
+/* FEEDBACK VIEW IMAGE */
+div.feedback_viewmedia{
+	margin: 25px auto 0px auto;
+	max-width: 750px;
+	min-width: 400px;
+	overflow: visible;
+}
+div.feedback_viewmedia .feedback_viewmedia_nav{
+	clear: both;
+	overflow: hidden;
+	margin-bottom: 4px;
+}
+div.feedback_viewmedia .feedback_viewmedia_nav > div{
+	float: left;
+	overflow: visible;
+}
+html[dir="rtl"] div.feedback_viewmedia .feedback_viewmedia_nav > div{
+	float:right;
+}
+div.feedback_viewmedia .feedback_viewmedia_nav > div + div{
+	float: none;
+	text-align: right;
+}
+html[dir="rtl"] div.feedback_viewmedia .feedback_viewmedia_nav > div + div{
+	text-align:left;
+	float:left;
+}
+div.feedback_viewmedia .feedback_viewmedia_nav > div + div > a + a{
+	margin-left: 20px;
+}
+html[dir="rtl"] div.feedback_viewmedia .feedback_viewmedia_nav > div + div > a + a{
+	margin-right: 20px;
+}
+div.feedback_viewmedia_info{
+	+foreground;
+	+rounded;
+	text-align: center;
+	padding: 10px;
+	border: 5px solid $theme_foreground_border_color;
+}
+html[dir="rtl"] div.feedback_viewmedia_info{
+	text-align:center;
+}
+div.feedback_viewmedia_container{
+	position: relative;
+	display: inline-block;
+}
+div.feedback_viewmedia_container a:link{
+	text-decoration: none;
+}
+
+/* MEDIA UPLOAD  */
+.feedback_form_upload #file-label, .feedback_form_upload #submit-label{
+	display:none;
+}
+
+/* FEEDBACK CREATE LIGHTBOX */
+.feedback_lightbox{
+	width:735px;
+	padding:10px 0 0 10px;
+}
+html[dir="rtl"] .feedback_lightbox{
+	padding:10px 10px 0 0;
+}
+.feedback_popup_form{
+	float:left;
+	width:425px;
+	margin-right:10px;
+}
+html[dir="rtl"] .feedback_popup_form{
+	float:right;
+	margin:0 0 0 10px;
+}
+.feedback_lightbox_messages{
+	+foreground;
+	border:none;
+	padding:10px;
+	height:390px;
+}
+.feedback_popup_form .global_form > div{
+	width:100%;
+}
+.feedback_popup_form .global_form > div > div{
+	+foreground;
+	border:none;
+	padding:10px;
+	width:100%;
+	float:left;
+}
+html[dir="rtl"] .feedback_popup_form .global_form > div > div{
+	float:right;
+}
+.feedback_popup_form .global_form > div > div > h3 + div, .feedback_popup_form .global_form > div > div > h3 + p + div{
+	margin-top:10px;
+	color:#373737;
+}
+.feedback_popup_form .global_form div.form-wrapper{
+	margin-top:1px;
+}
+.feedback_popup_form .global_form div.form-wrapper p{
+	max-width:210px;
+}
+.feedback_popup_form .global_form select{
+	min-width:90px;
+}
+.feedback_popup_form .global_form input[type="text"]{
+	width:200px;
+}
+.feedback_popup_form .global_form textarea{
+	width:200px !important;
+}
+.feedback_popup_form .global_form div.form-element{
+	width:320px;
+}
+.feedback_popup_form .global_form div.form-label{
+	clear:left;
+	float:left;
+	font-size:11px;
+	overflow:hidden;
+	text-align:left;
+	width:65px;
+}
+html[dir="rtl"] .feedback_popup_form .global_form div.form-label{
+	float:right;
+}
+.feedback_lightbox .global_form button[type="submit"]{
+	margin-top:10px;
+}
+.feedback_lightbox ul.form-errors, ul.form-notices{
+	margin-bottom:5px !important;
+}
+.feedback_lightbox ul.form-errors > li, ul.form-notices > li{
+	margin:3px 5px !important;
+}
+
+/* FEEDBACK LIST LIGHTBOX */
+.feedback_popup_right{
+	float:left;
+	width:300px;
+}
+html[dir="rtl"] feedback_popup_right{
+	float:right;
+}
+.feedback_lightbox_search{
+	margin-bottom:5px;
+  padding: 5px !important;
+}
+.feedback_lightbox_search .search_box{
+	width:190px;
+}
+.feedback_lightbox_search button{
+	padding:5px;
+	margin-top: 8px;
+}
+.lightbox_feedback_list{
+	border-bottom-width:1px;
+	padding:5px 0;
+	clear:both;
+	overflow:hidden;
+}
+.feedback_popup_right h4{
+	font-size:12px;
+}
+div.feedbacks_lightbox_info{
+	overflow:hidden;
+}
+.feedbacks_lightbox_info_title{
+	margin-bottom:5px;
+	overflow:hidden;
+}
+.feedbacks_lightbox_info_title a{
+	overflow:hidden;
+	margin-right:5px;
+}
+.feedbacks_lightbox_info_date{
+	color:#999999;
+	font-size:11px;
+}
+.feedbacks_lightbox_votes{
+	overflow: hidden;
+	margin:0 8px 0 0;
+	width:60px;
+	text-align:center;
+	float:left;
+}
+html[dir="rtl"] .feedbacks_lightbox_votes{
+	margin:0 0 0 8px;
+	float:right;
+}
+.feedback_lightbox_vote_button{
+	float:right;
+	margin:0 5px;
+	clear:none !important;
+}
+html[dir="rtl"] .feedback_lightbox_vote_button{
+	float:left;
+}
+.lightbox_more{
+	padding:7px 5px;
+	margin-top:20px;
+	font-weight:bold;
+	font-size:16px;
+	color: $theme_buttontabs_font_color !important;
+	background-color: $theme_buttontabs_background_color;
+	float:left;
+	font-family:Arial, Helvetica, sans-serif;
+	+rounded;
+	width:100%;
+	text-align:center;
+}
+.lightbox_more:hover{
+	background-color: $theme_buttontabs_background_color_hover;
+	text-decoration: none;
+	color: $theme_buttontabs_font_color_hover;
+}
+html[dir="rtl"] .lightbox_more{
+	float:right;
+}
+/* BROWSE SEARCH FILTERS */
+.feedbacks_browse_filters .browse-separator-wrapper{
+	display:none;
+}
+#filter_form.feedbacks_browse_filters{
+  padding:0;
+}
+#filter_form.feedbacks_browse_filters .feedbacks_browse_filters{
+  padding: 10px;
+}
+.feedbacks_browse_filters input[type="text"]{
+  width: 90%;
+}
+
+/*  FEEDBACK BUTTON */
+.feedback-button,
+.feedback-button-left,
+.feedback-button-right{
+	/*width: 30px;*/
+	height: 25px;
+	/*background-image: url(~/application/modules/Feedback/externals/images/feedback_button.png) !important;
+	text-indent: -9000px;*/
+	cursor:pointer;
+	position: fixed;
+	top: 45%;
+	display: block;
+	z-index: 99;
+	color: #fff !important;
+	font-size: 17px;
+	font-weight: bold;
+	-webkit-transform: rotate(-90deg); /* Safari */
+	-moz-transform: rotate(-90deg); /* Firefox */
+	-ms-transform: rotate(-90deg); /* IE */
+	-o-transform: rotate(-90deg); /* Opera */
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3); /* Internet Explorer */
+	text-transform: lowercase;
+	text-align: center;
+	padding: 4px 10px;
+}
+.feedback-button{
+	background-position: 2px 50% !important;
+	margin-right: -35px;
+  margin-top: -15px;
+	background-repeat: no-repeat !important;
+	right:0;
+  -webkit-transition: width 0.3s ease-in-out, background-color 0.3s;
+  -o-transition: width 0.3s ease-in-out, background-color 0.3s;
+  -moz-transition: width 0.3s ease-in-out, background-color 0.3s;
+  transition: width 0.3s ease-in-out, background-color 0.3s;
+}
+.feedback-button:hover{
+	/*width:33px;*/
+ /* -webkit-transition: width 0.6s ease-in-out, background-color 0.6s;
+  -o-transition: width 0.6s ease-in-out, background-color 0.6s;
+  -moz-transition: width 0.6s ease-in-out, background-color 0.6s;
+  transition: width 0.6s ease-in-out, background-color 0.6s;*/
+}
+html[dir="rtl"] .feedback-button{
+	left:0;
+	right:auto;
+}
+
+/*Css of left feedback button Text start here*/
+.feedback-button-left{
+	background-position: 6px 50% !important;
+	margin-left: -30px;
+  margin-top: -15px;
+  background-repeat: no-repeat !important;
+	left:0;
+  right:auto;
+  /*padding:0 2px;*/
+  border-radius:0 0 3px 3px;
+  -webkit-transition: width 0.3s ease-in-out, background-color 0.3s;
+  -o-transition: width 0.3s ease-in-out, background-color 0.3s;
+  -moz-transition: width 0.3s ease-in-out, background-color 0.3s;
+  transition: width 0.3s ease-in-out, background-color 0.3s;
+}
+.feedback-button-left:hover{
+	/*width:33px;*/
+	margin-top: -23px;
+  padding-top: 20px;
+	text-decoration:none;
+}
+html[dir="rtl"] .feedback-button-left{
+	right:0;
+	left:auto;
+  border-radius:0 0 3px 3px;
+}
+
+/*Css of right feedback button Text start here*/
+.feedback-button-right{
+ 	margin-right: -35px;
+  margin-top: -15px;
+  background-position: 6px 50% !important;
+	right:0;
+	left:auto;
+  border-radius:3px 3px 0 0;
+  -webkit-transition: width 0.3s ease-in-out, background-color 0.3s;
+  -o-transition: width 0.3s ease-in-out, background-color 0.3s;
+  -moz-transition: width 0.3s ease-in-out, background-color 0.3s;
+  transition: width 0.3s ease-in-out, background-color 0.3s;
+}
+.feedback-button-right:hover{
+	/*width:33px;*/
+	margin-top: -23px;
+  padding-bottom: 20px;
+	text-decoration:none;
+}
+html[dir="rtl"] .feedback-button-right{
+	left:0;
+  right:auto;
+  border-radius:3px 3px 0 0;
+}
+
+/*Css of left feedback button Image end here*/
+
+/*Css of left feedback button Text start here*/
+/*.feedback-button-left{
+	position: fixed;      
+	top: 45%; 
+	display: block;             
+	z-index: 10001;      
+	left:0;        
+	border:1px solid #000;
+	cursor:pointer;
+	padding:5px;
+	-webkit-transform: rotate(-90deg); 
+	-moz-transform: rotate(-90deg);	
+	-o-transform: rotate(-90deg);
+	-moz-transform-position: left(0);	
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+	-ms-transform:rotate(-90deg);
+	color:#FFFFFF !important;
+	font-weight:bold;
+	font-size:17px;
+	z-index: 10001;
+	letter-spacing:2px;
+	text-decoration:none;
+	width:130px;
+	text-align:center;
+	margin: -50px 0 0 -5px;
+}
+.feedback-button-left,  x:-moz-any-link{	margin: -50px 0 0 -60px; }
+@media screen and (-webkit-min-device-pixel-ratio:0){
+.feedback-button-left{
+	margin: -50px 0 0 -60px; 
+}
+}
+.feedback-button-left:hover{
+	margin: -50px 0 0 -1px; 
+	text-decoration:none;
+}
+.feedback-button-left:hover,  x:-moz-any-link{margin: -50px 0 0 -55px; }
+@media screen and (-webkit-min-device-pixel-ratio:0){
+.feedback-button-left:hover{
+	margin: -50px 0 0 -55px;  
+}
+}*/
+/*Css of left feedback button Text end here*/
+
+.layout_feedback_search_feedback, layout_feedback_recent_feedbacks, layout_feedback_similar_feedbacks, layout_feedback_owner_tags_feedbacks, layout_feedback_search_box_feedbacks {
+    margin-bottom: 15px;
+}
+/* Feedback button inside popup's*/
+#TB_window .feedback-button, 
+#smoothbox_window .feedback-button,
+#smoothbox_window .feedback-button-left {display:none;}
+
+/* ================================---------------- Responsive css ----------------====================================== */
+
+@media only screen and (max-width:920px){
+/* Feed back search box in the layout left and right container */
+.layout_right #filter_form_search_box > input, 
+.layout_left #filter_form_search_box > input{width:100% !important;}
+/* my feedbacks page */
+.layout_page_feedback_index_manage .seaocore_browse_list_options{padding-left:0;width:100%;margin-bottom:10px;}
+.layout_page_feedback_index_manage .seaocore_browse_list_options > a{display:inline-block;}
+.layout_page_feedback_index_manage .seaocore_browse_list_info{width:86%;float:right;}
+.layout_page_feedback_index_manage .feedbacks_list_vote_button{width:12%;margin-right:0;}
+/* Add pictures page */
+#global_page_feedback-image-upload #global_content, #global_page_feedback-index-delete #global_content{box-sizing: border-box;padding: 0 2%;}
+}
+
+@media only screen and (max-device-width:920px){
+/* feedback forms/Edit form */
+#feedback_create.global_form .form-element input[type="text"], #feedback_create.global_form .form-element input[type="password"], #feedback_create.global_form .form-element select, #feedback_create.global_form .form-element textarea {box-sizing: border-box;max-width: inherit !important;min-width: inherit !important;width: 100% !important;}
+#feedback_create.global_form .form-wrapper div.form-label{width:16%;padding-right:3%;}
+#feedback_create.global_form .form-wrapper div.form-element{width:80%;}		
+}
+
+@media only screen and (max-device-width:768px){
+/* Feedback forms */
+#feedback_create.global_form .form-wrapper div.form-label{width:20%;}
+#feedback_create.global_form .form-wrapper div.form-element{width:76%;}		
+}
+
+@media only screen and (max-width:600px){
+/* My feedbacks page */
+.layout_page_feedback_index_manage .seaocore_browse_list_info{width:78%;}
+.layout_page_feedback_index_manage .feedbacks_list_vote_button{width:18%;}
+/* Positioning of feedback button */
+.feedback-button { background-image: url("~/application/modules/Feedback/externals/images/mobile-feed.png") !important; background-position: center center !important;background-size: 24px auto !important;border-radius: 4px 0 0;bottom: 0;left: auto;padding: 4px 20px !important;right: 35px;text-indent: -1999px;top: auto;transform: none;-webkit-transform:none;z-index:100;}
+.feedback-button:hover{padding:4px 10px;}
+}
+
+@media only screen and (max-device-width:600px){
+/* Feedback forms */
+#feedback_create.global_form .form-wrapper div.form-label{width:100%;}
+#feedback_create.global_form .form-wrapper div.form-element{width:100%;}
+/* captcha on the post feedback form */
+div#recaptcha_area{overflow-x: auto;width: 230px !important;}
+/* Thanks popup after posting feedback */
+#global_page_feedback-index-success .global_form{margin:10px !important;}		
+}

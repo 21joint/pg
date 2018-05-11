@@ -1,0 +1,249 @@
+/*view page*/
+.sitepagemusic_playlist_info .comments {
+    margin-top: 15px;
+    width: auto;
+}
+.sitepagemusic_playlist_options{
+	display:none !important;
+}
+/*
+MUSIC PLAYER SKIN
+*/
+.music_player
+{
+  +rounded;
+  background-color: #2c2e3c;
+  margin: 10px 0px;
+  padding: 5px;
+  overflow: hidden;
+}
+.music_player_top
+{
+  overflow: hidden;
+}
+.music_player_art img
+{
+  +rounded(3px);
+  max-height: 100px;
+  border: 3px solid #3f4e61;
+  display: block;
+  margin: 0px auto;
+}
+.music_player_controls_right,
+.music_player_button_launch_wrapper,
+.music_player_button_play,
+.music_player_trackname
+{
+  display: none;
+}
+.music_player_controls_wrapper
+{
+  overflow: hidden;
+}
+.music_player_tracks
+{
+  border: 1px solid #444;
+  overflow: auto;
+}
+.music_player_tracks > li
+{
+  background-color: #3f4e61;
+}
+.music_player_tracks > li + li
+{
+  margin-top: 1px;
+}
+.music_player_tracks > li:hover
+{
+  background-color: #2b3849;
+  cursor: pointer;
+}
+.music_player_tracks > li > div
+{
+  font-size: 10pt;
+  color: #eee;
+}
+.music_player_tracks .music_player_tracks_name
+{
+  overflow: hidden;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+.music_player_tracks .music_player_tracks_name a
+{
+  text-decoration: none;
+  color: #eee;
+  outline: none;
+  display: block;
+  padding: 5px 7px;
+}
+.music_player_tracks .music_player_tracks_plays
+{
+  display: inline-block;
+  color: #bbb;
+  margin-left: 5px;
+  font-size: .9em;
+  display: none;
+}
+.music_player_tracks_add_tooltip
+{
+  display: none;
+}
+
+
+
+
+
+
+
+
+/*
+ATTACHED MUSIC LAUNCH SKIN
+This is a small version of the player. It doesn't actually play
+tracks itself, but when clicked, loads the full player and initiates
+playback of the first track. Some of its styles are inherited from
+the full music player's skin.
+*/
+.playlist_short_player
+{
+  border: none;
+  cursor: pointer;
+  padding: 6px 8px;
+}
+.playlist_short_player .music_player_top
+{
+  padding: 0px;
+}
+.playlist_short_player .music_player_button_play
+{
+  margin-right: 5px;
+}
+.playlist_short_player_title
+{
+  margin-top: 4px;
+  color: #fff;
+  font-weight: bold;
+  padding-right: 10px;
+  display: none;
+}
+.playlist_short_player_tracks
+{
+  color: #fff;
+  font-weight: bold;
+  font-size: 11pt;
+}
+
+
+
+
+
+
+/* ITEM TYPE ICONS */
+.item_icon_music::before,
+.item_icon_music_playlist::before,
+.item_icon_music_song::before,
+.activity_icon_music_playlist_new::before
+{
+   content:"\\f001";
+}
+#compose-music-activator::before,
+#compose-music-menu span::before
+{
+  content:"\\f001";
+  font-family:fontawesome;
+  margin-right:6px;
+  color: #00BCD4;
+}
+[dir="rtl"] #compose-music-activator:before,
+[dir="rtl"] #compose-music-menu span:before
+{
+   margin-right: 0px;
+   margin-left: 6px;
+}
+#compose-tray #compose-music-menu > span {
+   padding-left: 20px;
+   padding-bottom: 5px;
+}
+#compose-music-form-fancy-file::before
+{
+   content:"\\f001";
+}
+a.compose-music-link::before
+{
+   content:"\\f144";
+	 font-family: fontawesome;
+}
+a.compose-music-link-playing:before
+{
+   content: "\\f110";
+   -webkit-animation: spinning 2s infinite linear;
+   animation: spinning 2s infinite linear;
+}
+
+
+/*
+PROFILE MUSIC PLAYER
+Styles the mini-player that only shows up on the member profile page.
+*/
+.layout_music_profile_player
+{
+  margin-top: 20px;
+}
+#profile_music_player
+{
+  margin-top: 5px;
+}
+#profile_music_player h3
+{
+  display: none;
+}
+#profile_music_player .music_player_art
+{
+  display: none;
+}
+#profile_music_player .music_player_button_prev,
+#profile_music_player .music_player_button_next
+{
+  display: none;
+}
+#profile_music_player .music_player_button_play
+{
+  margin: 0px;
+}
+#profile_music_player .music_player_trackname
+{
+  font-weight: normal;
+}
+
+
+
+
+/* ICONS */
+.icon_music_new::before
+{
+  content:"\\f001";
+}
+.icon_music_edit::before
+{
+  content:"\\f040";
+}
+.icon_music_delete::before
+{
+  content:"\\f056";
+}
+.icon_music_playonprofile::before,
+.icon_music_disableonprofile::before
+{
+  content:"\\f001";
+}
+.icon_music_upload::before
+{
+  content:"\\f001";
+}
+
+
+/* hide menu items */
+.headline .tabs .navigation li > a.music_main_create
+{
+  display: none;
+}

@@ -1,0 +1,163 @@
+/* $Id: style_sitefaq_print.css 6590 2012-18-05 00:00:00Z SocialEngineAddOns Copyright 2011-2012 BigStep Technologies Pvt. Ltd. $ */
+
+*{
+ font-family:Arial, Helvetica, sans-serif;
+}
+#global_content_simple {
+    width: 100%;
+}
+
+.sitefaq_print{
+	padding:30px;
+}
+.sitefaq_print_header{
+	padding: 5px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	overflow: auto;
+	margin-bottom:10px;
+}
+.sitefaq_print_header span{
+  margin-bottom: 1px;
+	font-size:1.5em;
+	letter-spacing:normal;
+	float:left;
+	font-style:italic;
+}
+.sitefaq_print_header #printdiv{
+  float:right;
+	margin-top:5px;
+}
+.sitefaq_print_header #printdiv a::before {
+	content: "\f02f";
+}
+
+/*faq listings*/
+ul.faq_list{
+  clear: both;
+}
+ul.faq_list > li{
+  clear: both;
+  padding:10px;
+  overflow: hidden;
+}
+ul.faq_list > li + li{
+	border-top-width: 1px;
+	border-top-style: solid;
+}
+ul.faq_list .faq_list_img{
+	float:left;
+	margin-right:5px;
+}
+ul.faq_list .faq_list_info{
+  overflow: hidden;
+}
+ul.faq_list .faq_list_info_top{
+	font-weight:bold;
+	overflow:hidden;
+}
+ul.faq_list .faq_list_info_top .faq_list_title{
+	overflow:hidden;
+	font-weight:bold;
+}
+ul.faq_list .faq_list_info_top span{
+	float:right;
+	margin-right:5px;
+	margin-left:5px;
+}
+ul.faq_list .faq_list_info_top span.list_rating_star span{
+	float:left;
+	margin:2px;
+}
+ul.faq_list .faq_list_info_blurb{
+  margin-top: 5px;
+  font-size: .8em;
+}
+ul.faq_list  .sitefaq_faq_body{
+  margin-top: 5px;
+}
+ul.faq_list .faq_list_info_links{
+ 	margin:10px 0 5px 0;
+  font-size: .8em;
+}
+ul.faq_list .sitefaq_helpful_content{
+	margin:0px;
+}
+
+/*view page*/
+.sitefaq_print_view_title{
+	overflow: hidden;
+	font-size:1.5em;
+	margin-bottom:10px;
+}
+.sitefaq_print_view_des{
+	clear:both;
+}
+.sitefaq_print_view_des ol{
+	padding-left:20px;
+	list-style-type:decimal;
+}
+.sitefaq_print_view_des ul{
+	padding-left:20px;
+	list-style-type:disc;
+}
+/*
+	RATING ICONS
+	Used wherever icons are shown for rating things.
+*/
+.rating{
+  clear: both;
+  overflow: hidden;
+}
+/* small icons */
+.rating_star_generic{
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-repeat: no-repeat;
+  font-size: 1px;
+  cursor: default;
+}
+/* big icons */
+.rating_star_big_generic{
+  float: left;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  font-size: 1px;
+  cursor: pointer;
+}
+html[dir="rtl"] .rating_star_big_generic{
+  float: right;
+  background-position: right center;
+}
+.rating_star_big{
+  background-image: url(../images/star_big.png);
+}
+.rating_star_big_half{
+  background-image: url(../images/star_big_half.png);
+}
+.rating_star_big_disabled{
+  background-image: url(../images/star_big_disabled.png);
+}
+.sitefaq_rating{
+	margin-bottom:10px;
+}
+
+/*common css*/
+.sitefaq_helpful_content > div{
+	clear:both;
+	margin:10px 0;
+}
+.sitefaq_helpful_content > div{
+	background-image:url(../images/box-bg.png);
+	border:1px solid #999999;
+	padding:10px;
+}
+.sitefaq_helpful_content .sfhc-sep{
+	padding:0 5px;
+}
+.sitefaq_helpful_content .sfhc-st{
+	font-size: 0.8em;
+}

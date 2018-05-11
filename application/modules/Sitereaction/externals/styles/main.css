@@ -1,0 +1,794 @@
+/* $Id: main.css 2016-07-07 9:40:21Z SocialEngineAddOns Copyright 2015-2016 BigStep Technologies Pvt. Ltd. $ */ 
+.layout_nestedcomment_comments .feed_item_option_reaction {
+    display: inline-block;
+}
+.layout_nestedcomment_comments .seaocore_replies_options .seao_icons_toolbar_wappper {
+    position: relative !important;
+}
+.photo_lightbox_right .layout_nestedcomment_comments .seaocore_replies_options .seao_icons_toolbar_wappper {
+    left: -75px !important;
+}
+.reaction_tabs {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    font-size: 12px;
+    height: 48px;
+    line-height: 48px;
+    position: relative;
+}
+.reaction_tabs > li {
+    display: inline-block;
+    list-style-type: none;
+    max-width: 100%;
+    position: relative;
+    vertical-align: middle;
+    padding: 0 12px;
+}
+.reaction_tabs > li.active {
+    border-bottom: 2px solid rgb(88, 144, 255);
+}
+.reaction_tabs > li > a {
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-decoration: none;
+}
+.reaction_tabs > li i, .item_member_thumb > i {
+    height: 16px;
+    width: 16px;
+    display: inline-block;
+    background-size: cover;
+    vertical-align: middle;
+    margin-top: -2px;
+}
+.item_member_thumb > i {
+    margin-left: -16px;
+}
+.stickers_layer_content {
+	 background:$theme_body_background_color;
+}
+.stickers_wapper {
+    border: 0;
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .1), 0 1px 10px rgba(0, 0, 0, .35);
+    position: relative;
+    z-index: 2;
+	+foreground;
+}
+.stickers_wapper .verticalScroll, html[dir="rtl"] .stickers_wapper .verticalScroll {
+    float: none;
+}
+.stickers_wapper .verticalTrack {
+    position: absolute;
+    right: 0;
+}
+html[dir="rtl"] .stickers_wapper .verticalTrack {
+    left: 0;
+    right: auto;
+}
+.stickers_tab_wapper {
+ border-bottom: 1px solid $theme_border_dark_color;
+    font-size: 12px;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    border-radius: 2px 2px 0 0;
+    overflow: hidden;
+}
+.stickers_tab_wapper .tab {
+    width: 41px;
+    display: inline-block;
+    height: 40px;
+    line-height: 39px;
+    outline: 0;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+}
+.stickers_tab_wapper a {
+    margin-right: 0 !important;
+}
+.stickers_tab_wapper .tab_search {
+    width: 38px;
+}
+.stickers_tab_wapper .tab.active {
+    background-color: rgba(0, 0, 0, .1);
+}
+.stickers_tab_wapper .scroll_tabs .tab_wp {
+    display: table-cell;
+ border-right: 1px solid $theme_border_dark_color;
+}
+.stickers_tab_wapper .tab i {
+    padding-top: 1px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 25px;
+    vertical-align: middle;
+    width: 25px;
+}
+.stickers_tab_wapper .tab.tab_search i {
+    background-image: url(~/application/modules/Sitereaction/externals/images/search.png);
+    width: 16px;
+    height: 16px;
+}
+.str_search_not_found {
+    color: #a6a6a6;
+    text-align: center;
+    margin-top: 60px;
+}
+html[dir="rtl"] .str_search_not_found {
+    text-align: center;
+}
+.str_search_not_found i {
+    background-image: url(~/application/modules/Sitereaction/externals/images/not-found.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 81px;
+    height: 80px;
+    display: inline-block;
+}
+.stickers_icon_wapper {
+    height: 320px;
+    display: block;
+}
+.stickers_icon_wapper .scroll_content {
+    width: 100%;
+}
+.sticker_search_list button {
+    width: 45%;
+    display: inline-table;
+    padding: 2%;
+    margin: 2%;
+    border: none;
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: #fff;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    text-align: left;
+    text-shadow: none;
+    text-transform: capitalize;
+    height: 32px;
+    font-size: 12px;
+}
+[dir="rtl"] .sticker_search_list button {
+    text-align: right;
+}
+.sticker_icons .icon {
+    border-radius: 3px;
+    line-height: 52px;
+    padding: 2px 0 4px;
+    text-align: center;
+    width: 25%;
+    float: left;
+}
+.sticker_icons .icon i {
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 64px;
+    vertical-align: middle;
+    width: 64px;
+    cursor: pointer;
+}
+.sticker_icons .icon:hover {
+    background-color: rgba(0,0,0, .1);
+}
+.str_search_text {
+    position: relative;
+    padding: 10px 10px 5px 10px;
+    overflow: hidden;
+}
+.str_search_text .search_icon {
+    background-image: url(~/application/modules/Sitereaction/externals/images/search.png);
+    background-repeat: no-repeat;
+    background-size: 12px auto;
+    background-position: 50% center;
+    height: 16px;
+    left: 14px;
+    position: absolute;
+    width: 16px;
+    z-index: 1;
+    top: 16px;
+}
+html[dir="rtl"] .str_search_text .search_icon {
+    right: 14px;
+    left: auto;
+}
+.str_search_text label {
+ border: 1px solid $theme_border_medium_color;
+    color: #1d2129;
+    line-height: 20px;
+    vertical-align: middle;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: 100%;
+    float: left;
+    box-sizing: border-box;
+}
+.str_search_text label input {
+    font-weight: normal;
+    background: transparent;
+    border: 0;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    width: 100%;
+    font-size: 12px;
+}
+.st_tabs_icons {
+    overflow: hidden;
+}
+.scroll_tabs {
+    display: inline-block;
+    position: relative;
+    white-space: nowrap;
+}
+/*Tooltip topbar section*/
+.stickers_tab_wapper .prev {
+    border-left: 0;
+ border-right: 1px solid $theme_border_medium_color;
+    position: relative;
+    width: 37px;
+    float: left;
+}
+.stickers_tab_wapper .next {
+ border-left: 1px solid $theme_border_medium_color;
+    border-right: 0;
+    position: relative;
+    width: 37px;
+    float: right;
+}
+.stickers_tab_wapper .store {
+ border-left: 1px solid $theme_border_medium_color;
+    border-right: 0;
+    width: 42px;
+    float: right;
+}
+.stickers_tab_wapper .prev, .stickers_tab_wapper .next, .store {
+    height: 40px;
+    line-height: 39px;
+    outline: 0;
+    text-align: center;
+    text-decoration: none;
+}
+.stickers_tab_wapper .prev i, .stickers_tab_wapper .next i, .stickers_tab_wapper .store i {
+    background-repeat: no-repeat;
+    background-position: 50% center;
+    display: inline-block;
+    vertical-align: middle;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+}
+.stickers_tab_wapper .prev i {
+    background-image: url(~/application/modules/Sitereaction/externals/images/prev.png);
+}
+.stickers_tab_wapper .next i {
+    background-image: url(~/application/modules/Sitereaction/externals/images/next.png);
+}
+.stickers_tab_wapper .store i {
+    background-image: url(~/application/modules/Sitereaction/externals/images/add-stickers.png);
+}
+.st_tabs_icons .inline_row {
+    display: inline-block;
+}
+/*For tooltip at bottom*/
+.stickers_layer {
+    position: absolute;
+    right: 0;
+}
+[dir="rtl"] .stickers_layer {
+    left: 0;
+    right: auto;
+}
+.stickers_layer img {
+    border: 0;
+    vertical-align: middle;
+    width: 24px;
+    height: 24px;
+    margin-right: 4px;
+}
+[dir="rtl"] .stickers_layer img {
+    margin-left: 4px;
+    margin-right: 0;
+}
+.stickers_arrow {
+    background-image: url(~/application/modules/Sitereaction/externals/images/arrow-top.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top;
+    width: 16px;
+    height: 7px;
+    position: absolute;
+    right: 46px;
+    z-index: 3;
+}
+.stickers_layer_activtiy_comment .stickers_arrow {
+  right: auto;
+  left: 46px;
+}
+.stickers_layer_activtiy_comment.stickers_layer {
+  right: auto;
+  z-index: 100;
+}
+/*For tooltip on top*/
+.stickers_layer_bottom {
+    bottom: 28px;
+}
+.stickers_layer_bottom .stickers_arrow {
+    background-image: url(~/application/modules/Sitereaction/externals/images/arrow-bottom.png);
+    bottom: 0;
+}
+#nested-comment-compose-sticker-activator, #nested-comment-compose-sticker-activator span {
+    background-image: url(~/application/modules/Sitereaction/externals/images/icons/sticker-add.png);
+    background-size: contain;
+}
+.compose-menu .menu_index_1 + .stickers_layer .stickers_arrow {
+    right: 10px;
+}
+html[dir="rtl"] .compose-menu .menu_index_1 + .stickers_layer .stickers_arrow {
+    left: 10px;
+    right: auto;
+}
+.compose-menu .menu_index_2 + .stickers_layer .stickers_arrow {
+    right: 30px;
+}
+html[dir="rtl"] .compose-menu .menu_index_2 + .stickers_layer .stickers_arrow {
+    left: 30px;
+    right: auto;
+}
+.compose-menu .menu_index_3 + .stickers_layer .stickers_arrow {
+    right: 50px;
+}
+html[dir="rtl"] .compose-menu .menu_index_3 + .stickers_layer .stickers_arrow {
+    left: 43px;
+    right: auto;
+}
+.stickers_layer_content {
+    width: 286px;
+    padding: 7px 0 0 0;
+}
+.stickers_layer_content .stickers_search_clear {
+    background-image: url(~/application/modules/Sitereaction/externals/images/close.png);
+    background-repeat: no-repeat;
+    background-size: auto;
+    height: 16px;
+    position: absolute;
+    width: 16px;
+    z-index: 1;
+    top: 16px;
+    right: 20px;
+    background-position: 50% center;
+}
+html[dir="rtl"] .stickers_layer_content .stickers_search_clear {
+    left: 20px;
+    right: auto;
+}
+.seaocore_comments_attachment_sitereaction_sticker .seaocore_comments_attachment_info {
+    display: none;
+}
+.seaocore_comments_attachment_photo .item_photo_sitereaction_sticker {
+    max-width: 100%;
+    border: none;
+}
+#compose-sticker-preview-image {
+    border: none;
+}
+.compose-menu #compose-sticker-activator {
+    background-image: url(~/application/modules/Sitereaction/externals/images/icons/sticker-add.png);
+}
+.compose-menu #compose-sticker-activator:hover {
+    background-image: url(~/application/modules/Sitereaction/externals/images/icons/sticker-add-hover.png);
+}
+.seao_advcomment + form #compose-sticker-body, .seao_advcomment #compose-sticker-body {
+    border: 1px solid #ddd;
+    margin: 5px -10px 0;
+    padding: 5px;
+}
+.seao_advcomment + form #compose-activity-sticker-preview-image, .seao_advcomment #compose-activity-sticker-preview-image {
+    border: none;
+}
+.seao_advcomment form #compose-sticker-menu, .seao_advcomment + form #compose-sticker-menu {
+    position: absolute;
+    right: 0;
+    margin: 5px;
+    float: left;
+}
+#compose-sticker-menu .nestcomment_icon_cross {
+    height: 16px;
+}
+
+/*Sticker list preview*/
+.feed_item_option_reaction {
+    position: relative;
+}
+.layout_nestedcomment_comments .compose-menu .compose-activator:nth-child(n-1) + .stickers_layer .stickers_arrow {
+    right: 40px;
+}
+[dir="rtl"] .layout_nestedcomment_comments .compose-menu .compose-activator:nth-child(n-1) + .stickers_layer .stickers_arrow {
+    left: 40px;
+    right: auto;
+}
+.layout_nestedcomment_comments .compose-menu .compose-activator:nth-child(n) + .stickers_layer .stickers_arrow {
+    right: 12px;
+}
+[dir="rtl"] .layout_nestedcomment_comments .compose-menu .compose-activator:nth-child(n) + .stickers_layer .stickers_arrow {
+    left: 12px;
+    right: auto;
+}
+/*For lightbox like and stickersbox*/
+.photo_lightbox_right_content .stickers_layer {
+    right: -13px;
+}
+.photo_lightbox_right_content .seao_icons_toolbar_wappper .icon-button-wapper, 
+.photo_lightbox_right_content .seao_icons_toolbar_wappper .icon.icon {
+    width: 38px;
+    height: 38px;
+}
+.photo_lightbox_right_content .seao_icons_toolbar_wappper .icons-toolbar-background{
+     height: 38px;
+}
+.feed_attachment_sitereaction_sticker > div > div {
+    display: none;
+}
+.feed_item_option_reaction > a > i {
+    width: 14px;
+    height: 14px;
+    background-size: 14px 14px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    vertical-align: bottom;
+    margin-right: 1px;
+	background-position: center center;
+}
+/*---Sticker store---*/
+/*Collections block*/
+.add-from-store {
+    width: 650px;
+    height: 598px;
+    overflow-y: auto;
+}
+#sitereaction_store_list {
+    overflow: hidden;
+}
+.store_collection {
+    min-height: 120px;
+}
+.store_collection_thumb {
+    float: left;
+    overflow: hidden;
+    margin-right: 7px;
+}
+.store_collection_thumb img {
+    max-width: 90px;
+}
+.store_collection_info_title {
+    font-weight: bold;
+    font-size: 16px;
+}
+.store_collection_action {
+    float: right;
+}
+.store_collection_action button {
+    margin: 0px 10px 0 0;
+    padding: 5px;
+    text-align: left;
+}
+.store-top {
+    background: url(~/application/modules/Sitereaction/externals/images/banner.png) no-repeat;
+    height: 200px;
+    background-size: cover;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-position: bottom;
+    background-size: 100%;
+    background-color:$theme_body_background_color;
+    border-bottom:1px solid $theme_border_color;
+}
+.store-top h1 {
+    font-size: 30px;
+    font-weight: bold !important;
+    padding-top: 32px;
+    line-height: normal;
+    text-align: center;
+    color:$theme_headline_color;
+    background: url(~/application/modules/Sitereaction/externals/images/sticker-store-icon.png) no-repeat left 36px;
+    background-size: 33px;
+    width: 35%;
+    margin: 0 auto;
+    text-align: right;
+}
+.store-top p {
+    font-size: 14px;
+    margin: 0 auto;
+    padding-top: 8px;
+    text-align: center;
+    width: 60%;
+    color:$theme_font_color;
+}
+.store-bottom {
+    overflow: hidden;
+    padding-top: 205px;
+}
+#sitereaction_store_list .store_collection_row {
+    box-shadow: 0 0 2px rgba(0, 0, 0, .5);
+    width: 48%;
+    float: left;
+    margin: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+#sitereaction_store_list .store_collection_thumb {
+    width: 100%;
+}
+#sitereaction_store_list .store_collection_thumb img {
+    float: left;
+    border: none;
+    max-width: 31%;
+    cursor: pointer;
+    width: 31%;
+}
+#sitereaction_store_list .sitereaction_store_icon {
+    border: none;
+    width: 40px;
+    height: 40px;
+    float: right;
+    display: inherit;
+    padding: 0;
+}
+#sitereaction_store_list .store_collection_stickers {
+    width: 68%;
+    float: right;
+    clear: none;
+}
+#sitereaction_store_list .sitereaction_store_icon i {
+    background-position: 50% center;
+    width: 38px;
+    height: 38px;
+    vertical-align: top;
+}
+#sitereaction_store_list .store_collection_info {
+    float: left;
+    width: 100%;
+    margin-top: 20px;
+}
+#sitereaction_store_list .store_collection_info_title {
+    font-weight: bold!important;
+    font-size: 14px !important;
+    float: left;
+    color:$theme_font_color;
+}
+#sitereaction_store_list .store_collection_action button {
+    font-size: 13px !important;
+    margin-right: 5px;
+    padding: 2px 5px;
+    font-weight: bold !important;
+}
+/*Content block*/
+#sitereaction_store_content_block {
+    padding-top: 34px;
+}
+.sitereaction_store_popup_loader {
+    width: 32px;
+    margin: 215px auto 0;
+}
+.store_collection_stickers {
+    clear: both;
+}
+.sitereaction_store_icon {
+    border-radius: 5px;
+    display: inline-block;
+    height: 110px;
+    line-height: 52px;
+    padding: 3px;
+    text-align: center;
+    width: 110px;
+    border:1px solid $theme_border_medium_color;
+    margin: 5px 5px 5px 0;
+}
+.sitereaction_store_icon i {
+    background-size: contain;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 110px;
+    vertical-align: middle;
+    width: 110px;
+    cursor: pointer;
+}
+#sitereaction_store_content_block, #sitereaction_store_content_block .sitereaction_store_popup_top {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+#sitereaction_store_content_block .store_collection_row {
+    overflow: hidden;
+    padding: 5px;
+    border-radius: 2px;
+    margin-top: 5px;
+}
+#sitereaction_store_content_block .sitereaction_store_popup {
+    margin: 0;
+    width: 100%;
+    padding: 170px 0 43px 0;
+}
+#sitereaction_store_back_link {
+    color:$theme_headline_color;
+    font-weight: bold !important;
+    cursor: pointer;
+    background-color:$theme_list_background_color;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 35px 10px;
+    font-size: 14px !important;
+    background-image: url(~/application/modules/Sitereaction/externals/images/backlink-icon.png);
+    background-repeat: no-repeat;
+    background-position: 10px center;
+}
+#sitereaction_store_next {
+    background: url(~/application/modules/Sitereaction/externals/images/next.png) no-repeat right center;
+    padding-right: 20px;
+    margin-right: 10px;
+}
+#sitereaction_store_previous {
+    background: url(~/application/modules/Sitereaction/externals/images/prev.png) no-repeat left center;
+    padding-left: 20px;
+    margin-left: 10px;
+}
+#sitereaction_store_next a:link, #sitereaction_store_previous a:link {
+    font-weight: normal;
+    line-height: normal;
+    background: none;
+    padding: 0;
+    color: inherit !important;
+    font-size: 14px !important;
+}
+#sitereaction_store_colleaction_info {
+    width: 100%;
+    float: left;
+}
+#sitereaction_store_content_block .store_collection_thumb img {
+    max-width: 110px;
+    border: none;
+}
+#sitereaction_store_colleaction_info .store_collection_action {
+    float: left;
+}
+html[dir="rtl"] #sitereaction_store_colleaction_info .store_collection_action {
+    float: right;
+}
+#sitereaction_store_content_block .store_collection_action button {
+    font-size: 13px !important;
+    margin-top: 10px;
+    margin-right: 0;
+    padding: 2px 5px;
+    font-weight: bold !important;
+}
+#sitereaction_store_colleaction_info .store_collection_thumb {
+    margin-right: 25px;
+}
+#sitereaction_store_colleaction_info .store_collection_info {
+    overflow: hidden;
+}
+html[dir="rtl"] #sitereaction_store_colleaction_info .store_collection_info {
+    padding-right: 15px;
+}
+#sitereaction_store_content_block .store_collection_info_title {
+    font-weight: bold!important;
+    font-size: 14px !important;
+    margin-top: 4px;
+    color:$theme_font_color;
+}
+#sitereaction_store_list_loader {
+    top: 285px;
+    left: 300px;
+    position: absolute;
+}
+#sitereaction_store_content_block .sitereaction_store_popup_bottom {
+    margin: 0;
+    box-sizing: border-box;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px 0;
+    background: $theme_body_background_color
+}
+#topfix {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color:$theme_body_background_color;
+    top: 35px;
+    box-shadow: 1px 1px 2px rgba(0,0,0,.3);
+}
+.seao_smoothbox_lightbox_content_html {
+    position: relative;
+}
+.store-top button, #topfix > button {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    background: none;
+    color: #707070;
+    padding: 0;
+    border: none;
+}
+html[dir="rtl"] .store-top button, html[dir="rtl"] #topfix > button {
+    left: 15px;
+    right: auto;
+}
+.store-top button:hover, #topfix > button:hover {
+    background-color: transparent;
+    top: 10px;
+}
+#topfix > button, #topfix > button:hover{
+    top: -25px;
+}
+
+/*============================== Responsive work ============================*/
+@media only screen and (max-width: 768px) {
+/*Listing page*/
+/*.add-from-store, html .seao_smoothbox_lightbox_content {
+    width: 100% !important;
+    box-sizing: border-box;*/
+}
+
+@media only screen and (max-width: 600px) {
+/*Listing page*/
+.add-from-store, #sitereaction_store_list .store_collection_stickers, #sitereaction_store_list .sitereaction_store_icon i {
+    width: 100%;
+}
+#sitereaction_store_list .sitereaction_store_icon {
+    width: 21%;
+}
+#sitereaction_store_list .store_collection_row {
+    width: 95%;
+}
+.store-top h1 {
+    font-size: 24px;
+    text-align: center;
+    width: 100%;
+    background: none;
+}
+.store-top {
+    height: 170px;
+}
+.store-bottom {
+    padding-top: 175px;
+}
+#sitereaction_store_list .store_collection_thumb img {
+    max-width: 25%;
+    width: 25%;
+}
+#sitereaction_store_list .store_collection_stickers {
+    width: 69%;
+}
+#sitereaction_store_list .store_collection_row {
+    clear: both;
+    float: none;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    width: 92%;
+}
+/*Preview page*/
+#sitereaction_store_content_block .sitereaction_store_icon, #sitereaction_store_content_block .sitereaction_store_icon i {
+    width: 75px;
+    height: 75px;
+}
+}
+@media only screen and (max-width: 480px) {
+/*Preview page*/
+#sitereaction_store_content_block .store_collection_thumb img {
+    max-width: 60px;
+}
+}

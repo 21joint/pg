@@ -1,0 +1,71 @@
+/*==================================== RTL CSS ==================================*/
+
+[dir="rtl"] div,
+[dir="rtl"] span,
+[dir="rtl"] li {text-align:right;}
+[dir="rtl"] .navigation_dashboard_list li .menu_core_main .ui-menu-icon-wrapper {float:right; margin-left:10px;}
+[dir="rtl"] .ui-listview.collapsible-listview .ui-btn-inner .ui-icon {left:0; right:auto;}
+[dir="rtl"] .sm-ui-browse-items > img,
+[dir="rtl"] .ui-listview .ui-li-has-thumb .ui-btn > p + img,
+[dir="rtl"] .ui-listview .ui-li-has-thumb .ui-btn > img {right:5px;}
+[dir="rtl"] .ui-btn-icon-right[class*="ui-icon-"]::before {left: 0.5625em; right:auto;}
+[dir="rtl"] .ui-listview > .ui-li-has-thumb > .ui-btn,
+[dir="rtl"] .ui-listview > .ui-li-static.ui-li-has-thumb {padding-right:4em;}
+[dir="rtl"] .ui-listview > .ui-li-static,
+[dir="rtl"] .ui-listview > .ui-li-divider,
+[dir="rtl"] .ui-listview > li > a.ui-btn {text-align:right;}
+
+
+
+/*RTL New added*/
+[dir="rtl"] .feeds > li .feed_item_photo {float:right; margin-right:0; margin-left:5px;}
+
+[dir="rtl"] .feed_items_options_btn,
+[dir="rtl"] .sm-ui-topic-view .thread_options {float:left;}
+
+[dir="rtl"] .global_form h3,
+[dir="rtl"] .global_form h3 + p,
+[dir="rtl"] .global_form .form-label,
+[dir="rtl"] .global_form .form-element .description,
+[dir="rtl"] .global_form .form-element .package-description,
+[dir="rtl"] input[type=text],
+[dir="rtl"] input[type=password],
+[dir="rtl"] input[type=number],
+[dir="rtl"] input[type=email],
+[dir="rtl"] textarea,
+[dir="rtl"] .ui-btn.ui-btn-icon-left,
+[dir="rtl"] .sm-ui-lists *,
+[dir="rtl"] .ui-input-text input,
+[dir="rtl"] .ui-input-search input,
+[dir="rtl"] .form-wrapper #facebook-element.form-element,
+[dir="rtl"] p {text-align:right;}
+
+[dir="rtl"] .ui-btn.ui-btn-icon-left::before,
+[dir="rtl"] .ui-controlgroup-horizontal .ui-controlgroup-controls > .ui-btn,
+[dir="rtl"] .ui-controlgroup-horizontal .ui-controlgroup-controls li > .ui-btn,
+[dir="rtl"] .ui-controlgroup-horizontal .ui-controlgroup-controls .ui-checkbox,
+[dir="rtl"] .ui-controlgroup-horizontal .ui-controlgroup-controls .ui-radio,
+[dir="rtl"].ui-controlgroup-horizontal .ui-controlgroup-controls .ui-select,
+[dir="rtl"] .profile-price-info > .left,
+[dir="rtl"] .forum-topic-page-listing .forum-topic-listing-title,
+[dir="rtl"] .ui-listview div.forum-topic-listing-cont img,
+[dir="rtl"] .sm-ui-topic-view .author_photo {float:right;}
+
+[dir="rtl"] .ui-select span,
+[dir="rtl"] .sm-mini-menu,
+[dir="rtl"] .layout_sitemobile_sitemobile_footer,
+[dir="rtl"] .copyrighttxt,
+[dir="rtl"] .sitetitle {text-align:center;}
+
+[dir="rtl"] [class*="ui-checkbox-"]::before, [dir="rtl"] [class*="ui-radio-"]::before {margin-left:5px; margin-right:0;}
+[dir="rtl"] .ui-btn-icon-right {padding:.5em 1em .5em 3.5em;}
+/*[dir="rtl"] .navigation_dashboard_list .count-bubble {left:0; right:auto;}*/
+[dir="rtl"] .feeds .feed_item_attachments > span > div > a,
+[dir="rtl"] .sm-ui-cont-author-photo,
+[dir="rtl"] .sr_profile_photo_wrapper,
+[dir="rtl"] .sm_profile_item_photo {float:right; margin-left:10px; margin-right:0; @}
+[dir="rtl"] .seaocore_profile_cover_title {margin: 10px 110px 2px 5px;}
+[dir="rtl"] .ui-icon-calendar::before {margin-left:10px;}
+[dir="rtl"] .album-listing ul p.ui-li-aside {left:0;  border-bottom-right-radius: 5px;  border-bottom-left-radius: 0px; right:auto;}
+ 
+ 

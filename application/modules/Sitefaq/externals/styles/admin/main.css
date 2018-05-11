@@ -1,0 +1,186 @@
+/* $Id: main.css 6590 2012-18-05 00:00:00Z SocialEngineAddOns Copyright 2011-2012 BigStep Technologies Pvt. Ltd. $ */
+
+/* categories block */
+b.bold{
+	font-weight:bold;
+}
+.settings .seaocore_categories_block{
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	border-radius: 7px;
+	background-color: #E9F4FA;
+	padding: 10px;
+	float: left;
+	overflow: hidden;
+}
+.settings .seaocore_categories_block > div{
+	background: #fff;
+	border: 1px solid #d7e8f1;
+	overflow: hidden;
+	padding: 20px;
+}
+.seaocore_admin_cat {
+	margin-bottom:10px;
+}
+.seaocore_admin_cat > div > span a {
+	font-weight:bold;
+}
+.seaocore_admin_cat_wrapper {
+	padding-left: 5px;
+	margin-top:10px;
+}
+.seaocore_admin_cat_new {
+	padding-left: 20px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+.seaocore_subcat_handle {
+	vertical-align: middle;
+	margin-right: 5px;
+	cursor: move;
+}
+.seaocore_sub_cat_wrapper{
+	padding-left:20px;
+	margin-bottom:20px;
+}
+.seaocore_sub_cat_list, 
+.seaocore_third_cat_list_wrapper, 
+.seaocore_third_cat_list{
+	padding-left:20px;
+	margin-bottom:10px;
+}
+.seaocore_file_preview_wrapper{
+	position:relative;
+}
+.seaocore_file_preview{
+  display: none;
+  +rounded;
+	left:0px;
+  position: absolute;
+  padding: 10px;
+  background: #555;
+  margin-top: 5px;
+  -moz-box-shadow: 0px 0px 5px #aaa;
+  -webkit-box-shadow: 0px 0px 5px #aaa;
+	z-index:100;
+}
+.seaocore_file_preview img{
+	max-height:16px;
+	max-width:16px;
+}
+.t_normal{
+	font-weight:normal !important;
+}
+/*import faq*/
+.icon_sitefaq_import{
+	background-image:url(~/application/modules/Sitefaq/externals/images/import.png)
+}
+.icon_sitefaq_download{
+	background-image:url(~/application/modules/Sitefaq/externals/images/download.png)
+}
+.admin_faq_import{
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	border-radius: 7px;
+	background-color: #E9F4FA;
+	padding: 10px;
+	float: left;
+	overflow: hidden;
+	margin-bottom:15px;
+}
+.admin_faq_import > div{
+	background: #fff;
+	border: 1px solid #d7e8f1;
+	overflow: hidden;
+	padding: 20px;
+}
+.importlisting_elements{
+	clear:both;
+	border: 1px solid #EEEEEE;
+	overflow:hidden;
+	float:left;
+	width:500px;
+}
+.importlisting_elements span{
+	background-color: #F8F8F8;
+	clear: both;
+	float: left;
+	font-size: 13px;
+	width: 100%;
+	padding:3px;
+}
+.admin_faq_import_list{
+	list-style: decimal outside none !important;
+	padding-left: 10px;
+	margin:10px 0;
+}
+.admin_faq_import_list > li {
+	margin-left: 20px;
+	padding: 7px 12px 7px 1px;
+}
+.admin_faq_import_buttons{
+	clear:both;
+	margin-top:10px;
+	display:inline;
+}
+.sitefaq_upload_csv_popup #buttons-label{
+	display:none;
+}
+#global_page_sitefaq-admin-fields-field-create span > div{
+	padding:0px !important;
+}
+#global_page_sitefaq-admin-fields-field-create span > div > h3{
+	display:none;
+}
+/*manage faq*/
+.sead_admin_search{
+	max-width:950px !important;
+}
+.sead_admin_search .search form > div{
+	margin:0 10px 5px 0 !important;
+}
+.sitefaq_cat_select {
+	width: 180px !important;
+}
+.sead_admin_search .search form > div.cat_loader {
+	display: none;
+	margin-top: 18px !important;
+}
+#global_page_sitefaq-admin-settings-edit input[type="text"]{
+	width:350px;
+}
+#global_page_sitefaq-admin-settings-edit #buttons-label{
+	display:none;
+}
+/*Rating Star*/
+.rating_star_generic{
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-repeat: no-repeat;
+  font-size: 1px;
+  cursor: default;
+}
+.rating_star,
+.rating_star_half{
+  background-image: url(~/application/modules/Seaocore/externals/images/star.png);
+}
+.rating_star_disabled{
+  background-image: url(~/application/modules/Seaocore/externals/images/star_disabled.png);
+}
+.rating_star_half{
+  background-image: url(~/application/modules/Seaocore/externals/images/star_half.png);
+  width: 4px;
+}
+html[dir="rtl"] .rating_star_half{
+  background-image: url(~/application/modules/Seaocore/externals/images/star_half_rtl.png);
+}
+/*Questions*/
+#global_page_sitefaq-admin-fields-field-create #show-wrapper{
+	display:none;
+}
+/*Answer Box*/
+.faq_answer_popup .form-label label{
+	font-weight:bold;
+	margin-bottom:3px;
+}

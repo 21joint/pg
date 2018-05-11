@@ -1,0 +1,31 @@
+
+/*Group And Extensions Notification Icon*/
+.notification_type_liked, .notification_type_sitegroup_contentlike{
+	background-image: url(~/application/modules/Sitegroup/externals/images/like.png) !important;
+}
+.notification_type_sitegroup_manageadmin::before{
+	content: "\f0c0";
+}
+.notification_type_sitegroupevent_invite::before, .notification_type_sitegroupevent_accepted::before, .notification_type_sitegroupevent_create::before{
+	content: "\f073";
+}
+
+.notification_type_sitegroup_notificationpost::before, .notification_type_sitegroupmember_notificationpost::before, .notification_type_sitegroup_contentcomment::before, .notification_type_sitegroup_discussion_response::before, .notification_type_sitegroup_discussion_reply::before{
+	content: "\f0e5";
+}
+
+.notification_type_sitegroupnote_create::before{
+	content: "\f24a";
+}
+.notification_type_sitegroupvideo_create::before{
+	content: "\f03d";
+}
+.notification_type_sitegroupalbum_create::before{
+	content: "\f03e";
+}
+.notification_type_sitegroupoffer_create::before{
+	content: "\f02b";
+}
+.notification_type_sitegroupmusic_create::before{
+	content: "\f001";
+}

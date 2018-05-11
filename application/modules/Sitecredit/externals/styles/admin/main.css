@@ -1,0 +1,335 @@
+/* $Id: main.css 2017-03-08 9:40:21Z SocialEngineAddOns Copyright 2016-2017 BigStep Technologies Pvt. Ltd. $ */
+.incomplete
+{
+  color: #f00;
+}
+.sitecredit_table_img img
+{
+  max-width: 90px;
+}
+.sitecredit_list_highlighted
+{
+  background-color: #E9F4FA !important;
+}
+#global_content_simple
+{
+  overflow: hidden;
+}
+.link_button
+{
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  padding: .3em .5em !important;
+  font-weight: bold !important;
+  background-color: $theme_button_background_color;
+  border: 1px solid $theme_button_border_color;
+  color: $theme_button_font_color !important;
+  text-shadow: 1px 0px 0px rgba(0, 0, 0, .3);
+  background-repeat: repeat-x;
+}
+#sitecredit_year_validity-wrapper
+{
+  margin-left: 20px;
+  padding-top: 0;
+}
+#sitecredit_month_validity-wrapper
+{
+  padding-top: 0;
+}
+#sitecredit_month_validity-wrapper #sitecredit_month_validity-label
+{
+  display: none;
+}
+.search div label, .search div input
+{
+  margin-left: 0 !important;
+}
+/*Edit Popup*/
+.seaocore_edit_popup.settings .form-label
+{
+  width: 110px;
+}
+.seaocore_edit_popup.settings .form-element .description
+{
+  min-width: inherit;
+}
+.sitecredit_manage_msg
+{
+  width: 450px;
+}
+p.sitecredit_description
+{
+  font-size: 11px;
+  margin-top: 3px;
+}
+/*profilemaps map*/
+#global_page_sitecredit-admin-profilemaps-map #warning_message-label
+{
+  display: none;
+}
+.settings .form-label
+{
+  box-sizing: border-box;
+}
+.settings textarea
+{
+  min-width: 200px !important;
+  max-width: 230px !important;
+  height: 120px !important;
+  width: 200px !important;
+}
+.badge_popup
+{
+  padding: 15px;
+  box-sizing: border-box;
+}
+.badge_popup .photo img
+{
+  width: 150px;
+  border: 1px solid #ddd;
+  padding: 7px;
+}
+.badge_popup .photo
+{
+  margin-right: 25px;
+  margin-top: 10px;
+}
+.badge_popup .credit_points
+{
+  margin-top: 10px;
+}
+.badge_popup .desc
+{
+  line-height: 20px;
+  padding-top: 7px;
+}
+.badge_popup table td
+{
+  vertical-align: top;
+}
+#global_page_sitecredit-admin-user-credit-send .settings #sitecredit_point-element input[type=text]
+{
+  width: 200px;
+  padding: .4em;
+}
+/*Transaction view Popup*/
+.transaction_view_popup
+{
+  width: 420px;
+  padding: 20px;
+}
+.transaction_view_popup .close_box
+{
+  text-align: right;
+  width: 100%;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.transaction_view_popup h3
+{
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+.transaction_view_popup h3 span
+{
+  float: right;
+}
+.transaction_view_popup_details
+{
+  margin-top: 15px;
+}
+.transaction_view_popup_details table
+{
+  width: 100%;
+}
+.transaction_view_popup_details .table td, .transaction_view_popup_details .table th
+{
+  padding: 8px;
+  vertical-align: top;
+}
+.transaction_view_popup_details .table td img
+{
+  border: 2px solid #B1B1B1
+}
+.transaction_view_popup_details .table td strong
+{
+  font-weight: bold !important;
+}
+.reason_popup
+{
+  width: 300px;
+}
+.reason_popup h3
+{
+  width: 100%;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.reason_popup h3 > a
+{
+  text-align: right;
+  float: right;
+}
+.manage_table
+{
+  overflow-X: auto;
+  float: left;
+  width: 100%;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+.manage_table .table2
+{
+  border: 0px solid #ddd;
+}
+.table2
+{
+  border: 1px solid #ddd;
+}
+.table2 thead th
+{
+  background: #eee;
+}
+.table2 thead th
+{
+  border-top: 0px solid #ddd !important;
+  border-bottom: 1px solid #ddd;
+}
+.table2 thead th, .table2 tbody td
+{
+  border-top: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  padding: 5px;
+}
+.table2 tbody td:last-child
+{
+  border-right: 0;
+}
+.table2 tbody td div
+{
+  display: block !important;
+  text-align: center;
+}
+.table2 tbody td textarea
+{
+  width: 150px;
+}
+.table2 .credits_acitivity
+{
+ background: $theme_button_background_color;
+}
+.table2 .credits_acitivity td
+{
+  color: #fff;
+  text-align: left;
+  text-transform: uppercase;
+}
+.manage_activities
+{
+  margin: 10px 0;
+}
+.manage_activities .form-elements
+{
+  padding: 15px;
+  background: #fff;
+  border: 1px solid #ddd;
+  margin: 15px 0;
+  box-sizing: border-box;
+}
+.manage_activities .form-elements #member_level-wrapper, .manage_activities .form-elements #module_id-wrapper
+{
+  display: inline-block;
+  margin-right: 10px;
+}
+.search
+{
+  margin: 15px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+.admin_table
+{
+  bordeR: 1px solid #ddd;
+  width: 100%;
+}
+div.admin_table_centered
+{
+  display: block;
+}
+/*.credit_debited
+{
+  background: #f2dede !important;
+}
+.credit_credited
+{
+  background: #dff0d8 !important;
+}
+.credit_credited td, .credit_debited td
+{
+  border-bottom: 1px solid #ddd !important;
+}*/
+#credit_form table.admin_table thead tr th
+{
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  text-align: center;
+}
+#credit_form table.admin_table tbody tr td
+{
+  border-right: 1px solid #ddd;
+  text-align: center;
+}
+#badge_form table.admin_table tbody tr td
+{
+  text-align: center;
+}
+.transaction_search
+{
+  padding: 15px;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+.transaction_search div
+{
+  display: inline-block;
+  height: 50px;
+  vertical-align: top;
+  margin-bottom: 10px;
+}
+.transaction_search .credits_points input[type="text"]
+{
+  width: 100px;
+  margin-right: 10px;
+}
+input.seaocore_event_calendar, select.seaocore_event_calendar
+{
+  width: 100px !important;
+  float: left;
+  margin-right: 0;
+}
+.transaction_search #show_time, .transaction_search #credit_type
+{
+  padding: 0.4em !important;
+}
+.transaction_search #custom_time
+{
+  margin-left: 10px;
+}
+.admin_menus_items .item_label1
+{
+  display: block;
+  overflow: hidden;
+  font-weight: bold;
+  padding: 7px 10px 7px 10px;
+  font-size: .9em;
+}
+.admin_menus_items .item_label2
+{
+  display: block;
+  overflow: hidden;
+  font-weight: bold;
+  padding: 7px 10px 7px 10px;
+  font-size: .8em;
+}

@@ -1,0 +1,200 @@
+/* $Id: main.css 2017-03-08 00:00:00Z SocialEngineAddOns Copyright 2016-2017 BigStep Technologies Pvt. Ltd. $ */
+.layout_sitecredit_my_credits, .layout_sitecredit_upgrade_level, .layout_sitecredit_terms_and_conditions, .layout_sitecredit_send_to_friend, .layout_sitecredit_recent_activities, .layout_sitecredit_buy_credits, .layout_sitecredit_next_target, .layout_sitecredit_top_member, .layout_sitecredit_user_credit_information, .layout_sitecredit_badges, .layout_sitecredit_earn_credits, .layout_sitecredit_main_navigation_menu
+{
+  margin-bottom: 15px;
+  padding: 15px;
+ +foreground;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+}
+.link_button
+{
+ +rounded;
+  padding: 10px !important;
+  background-color: $theme_button_background_color;
+  border: 1px solid $theme_button_border_color;
+  color: $theme_button_font_color !important;
+ }
+.disable_button
+{
+  +rounded;
+  padding: 10px !important;
+  background-color: #ddd;
+  border: 1px solid $theme_border_medium_color;
+  color: $theme_button_font_color !important;
+  text-shadow: 1px 0px 0px rgba(0, 0, 0, .5);
+}
+.link_button a,
+.disable_button a {
+  line-height: normal;
+  font-weight: normal !important;
+}
+.link_button a::before,
+.disable_button a::before {
+  font-family: FontAwesome;
+  font-style: normal;
+  margin-right: 7px;
+}
+.link_button a::before {
+  content: "\\f1c0";
+}
+.disable_button a::before {
+  content: "\\f05e";
+}
+.indicator_arrow
+{
+  height: 40px;
+  text-align: center;
+}
+.indicator_arrow i
+{
+  font-style: normal;
+}
+.fa-arrow-down::before
+{
+  content: "\\f063";
+  font-family: FontAwesome;
+  font-size: 28px;
+  color: $theme_button_background_color;
+}
+.credit_form > div
+{
+  padding: 0 !important;
+  border: 0 !important;
+}
+#myBarblock, #myBar, #myBar2
+{
+ background-color: $theme_button_background_color;
+ color: $theme_button_font_color;
+}
+.credits_activity
+{
+ background: $theme_button_background_color;
+ color: $theme_button_font_color !important;
+ text-align: center;
+}
+.credits_activity td
+{
+ color: $theme_button_font_color !important;
+}
+.earn_search, .transaction_search
+{
+ border: 1px solid $theme_border_medium_color;
+ background: $theme_foreground_background_color;
+}
+#payment-form a
+{
+ color: $theme_link_color;
+}
+.notification_item_general.notification_type_Sitecredit_received_from_friend::before
+{
+	content:"\\f155";
+}
+.my_badge .others_badge, .sitecredit_upgrade_levels_div > div, .sitecredit_upgrade_level .level1, .sitecredit_upgrade_level .form-options-wrapper > div, .transaction_table table, .earn_credits_table table, #payment-form .payment_form_value, .sitecredit_validity_days, .sitecredit_credit_account_table table thead th, .sitecredit_credit_account_table table tbody td, .sitecredit_credit_account_table table
+{
+ border: 1px solid $theme_border_medium_color;
+}
+.transaction_table table thead th, .transaction_table table tbody td, .earn_credits_table table thead th, .earn_credits_table table tbody td
+{
+ border-right: 1px solid $theme_border_medium_color;
+ border-bottom: 1px solid $theme_border_medium_color;
+}
+.sitecredit_recent_activities ul li.sitecredit_recent_activities_list_points
+{
+ border-bottom: 1px solid $theme_border_color;
+}
+.my_badge .others_badge .badge_title, .earn_credits_table table thead th, .earn_credits_table table tbody td
+{
+ border-top: 1px solid $theme_border_medium_color;
+}
+.my_badge .first_badge .badge_title
+{
+  background: rgba(0,0,0,0.06);
+}
+.earn_credits p, .top_members_table tbody tr
+{
+ border-bottom: 1px solid $theme_border_medium_color;
+}
+.sitecredit_credit_account_table table thead, .sitecredit_validity_days, .sitecredit_current_level, .transaction_table table thead, .earn_credits_table table thead
+{
+  background: rgba(0,0,0,0.06);
+}
+.sitecredit_quicklinks a
+{
+ color: $theme_button_font_color !important;
+}
+.top_members_table tbody td .active_member_icon > span
+{
+ color: $theme_link_color;
+}
+
+/*Payment subscription form*/
+.sitecredit_form_wrapper
+{
+  clear: both;
+  margin-bottom: 10px;
+}
+.sitecredit_form_link
+{
+  font-weight: bold;
+}
+.sitecredit_form_link img
+{
+  margin-right: 5px;
+}
+.sitecredit_form
+{
+  padding: 10px;
+  border-width: 1px;
+  margin-top: 5px;
+  border: 1px solid $theme_foreground_border_color;
+}
+.sitecredit_form input[type="text"]
+{
+  margin-right: 10px;
+}
+html[dir="rtl"] .sitecredit_form input[type="text"]
+{
+  margin-right: 0;
+  margin-left: 10px;
+}
+.sitecredit_form #credit_meassge_show p
+{
+  padding: 5px 0;
+  clear: both;
+}
+.sitecredit_loding_image
+{
+  display: inline-block;
+  margin: 0 5px;
+}
+
+/*Other Plugin Intregration*/
+.credits_box .credits_box_textbox input[type="text"]
+{
+	height: 36px;
+  width: 220px;	
+}
+.credits_msg span
+{
+  font-size: 11px !important;
+}
+#credit_redeem_box .credits_msg 
+{
+  font-size: 11px !important;
+  margin-left: 215px;
+}
+#credit_redeem_box .credits_box > div
+{
+  display: inline-block;
+}
+.redeem_fee{
+  font-size: 16px;
+  font-style: italic;
+  font-weight: bold !important;
+}
+.active_member_icon_points{
+  font-weight: bold !important;
+  font-size: 15px;
+}

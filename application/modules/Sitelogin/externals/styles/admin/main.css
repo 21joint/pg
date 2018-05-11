@@ -1,0 +1,42 @@
+.layout_page_core_error_requireuser > .social-loginpopup-column-2 {
+display:none !important;
+}
+.sitelogin_social_services_wapper {
+  border: 1px solid #F5F5F5;
+}
+.sitelogin_social_services_wapper .sitelogin_social_services_statistics {
+  position: relative;
+  display: block;
+}
+.sitelogin_social_services_statistics_graph_c {
+  border-bottom: 1px solid #F5F5F5;
+  padding: 20px 100px;
+}
+.sitelogin_social_services_statistics > div {
+  padding: 10px;
+}
+.sitelogin_social_services_statistics_graph {
+  width: 100%;
+  height: 400px;
+}
+.sitelogin_social_services_statistics .total_heading {
+  font-size: 16px;
+  border-bottom: 1px solid #F5F5F5;
+  background-color: #FDFDFD;
+}
+.sitelogin_social_services_statistics ul {
+}
+.sitelogin_social_services_statistics ul li{
+  display: inline-block;
+  width: 24%;
+  padding: 5px;
+  margin: 3px;
+  border-left: 15px solid;
+  box-sizing: border-box;
+  border-bottom: 2px solid;
+}
+
+.sitelogin_social_services_statistics ul li span:last-child {
+  float: right;
+  font-weight: 700;
+}

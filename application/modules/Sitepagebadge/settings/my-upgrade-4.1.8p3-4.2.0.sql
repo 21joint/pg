@@ -1,0 +1,2 @@
+INSERT IGNORE INTO `engine4_core_menuitems` ( `name` , `module` , `label` , `plugin` , `params` , `menu` , `submenu` , `enabled` , `order` )VALUES
+ ('sitepage_main_badge', 'sitepagebadge', 'Badges', 'Sitepagebadge_Plugin_Menus::canViewBadges', '{"route":"sitepagebadge_show","action":"showbadges"}', 'sitepage_main', '', 1, '999');

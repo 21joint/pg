@@ -1,0 +1,33 @@
+/* $Id: main.css 6590 2012-18-05 00:00:00Z SocialEngineAddOns Copyright 2011-2012 BigStep Technologies Pvt. Ltd. $ */
+
+.item_icon_sitefaq_faq, .activity_icon_sitefaq_new, .item_icon_faq{
+  background-image: url(~/application/modules/Sitefaq/externals/images/faq.png);
+}
+.activity_icon_comment_sitefaq_faq{
+  background-image: url(~/application/modules/Advancedactivity/externals/images/comment.png);
+}
+.sitefaq_search > form .sitefaq_search_element_wrapper .overTxtLabel{
+	color:$theme_font_color_light;
+}
+.sitefaq_browse_category, .sitefaq_side_list, .sitefaq_faq_info{
+	+foreground;
+	+rounded;
+}
+.sitefaq_faq_info > li + li, .sitefaq_browse_category > li + li, .sitefaq_side_list > li + li{
+	border-top-color:$theme_foreground_border_color;
+}
+.sitefaq_view_title h3{
+	background-color:$theme_border_color !important;
+}
+.yn_btn{
+	border:1px solid $theme_border_dark_color;
+	background-color:$theme_border_color;
+	color:$theme_font_color !important;
+}
+.sitefaq_profile_loading_image{
+	background-image:url(~/application/modules/Seaocore/externals/images/loading.gif);
+	width:100%;
+	height:150px;
+	background-repeat:no-repeat;
+	background-position:center;
+}

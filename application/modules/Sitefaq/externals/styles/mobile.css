@@ -1,0 +1,86 @@
+/* $Id: main.css 6590 2012-18-05 00:00:00Z SocialEngineAddOns Copyright 2011-2012 BigStep Technologies Pvt. Ltd. $ */
+
+.item_icon_sitefaq_faq, .activity_icon_sitefaq_new{
+  background-image: url(~/application/modules/Sitefaq/externals/images/faq.png);
+}
+.activity_icon_comment_sitefaq_faq{
+  background-image: url(~/application/modules/Advancedactivity/externals/images/comment.png);
+}
+.sitefaq_main_create, .sitefaq_main_question{
+	display:none !important;
+}
+.sitefaq_search > form .sitefaq_search_element_wrapper .overTxtLabel{
+	color:$theme_font_color_light;
+}
+.sitefaq_side_list{
+	+foreground;
+	+rounded;
+}
+.sitefaq_side_list > li + li{
+	border-top:1px dashed $theme_foreground_border_color;
+}
+/*Search box*/
+.sitefaq_mobi_search{
+	margin-bottom:15px;
+}
+.sitefaq_mobi_search_head{
+	font-size:17px;
+	margin-bottom:5px;
+}
+/*faq category widget*/
+.sitefaq_mobi_faq_category{
+	margin-bottom:15px;
+	padding:5px;
+	overflow:hidden;
+	clear:both;
+}
+.sitefaq_mobi_faq_category{
+	clear:both;
+	overflow:hidden;
+}
+.sitefaq_mobi_faq_category_list + .sitefaq_mobi_faq_category_list{
+	margin-top:10px;
+}
+.sitefaq_mobi_category_header{
+	border-bottom-width: 1px;
+	border-bottom-style:solid;
+	clear: both;
+	font-size: 17px;
+	font-weight: bold;
+	padding:5px;
+}
+.sitefaq_mobi_category_header img{
+	float:left;
+	margin-right:5px;
+	max-height:24px;
+	max-width:24px;
+}
+.sitefaq_mobi_subcategory_list{
+	padding:5px;
+	font-weight:bold;
+}
+.sitefaq_mobi_subcategory_list img{
+	float:left;
+	margin-right:5px;
+	max-height:16px;
+	max-width:16px;
+}
+/**/
+.sitefaq_faq_body{
+	margin:5px 0 0;
+}
+.sitefaq_faq_body ol{
+	padding-left:20px;
+	list-style-type:decimal;
+}
+.sitefaq_faq_body ul{
+	padding-left:20px;
+	list-style-type:disc;
+}
+/*view page*/
+#global_page_sitefaq-index-mobi-view .comments {
+	width: auto;
+}
+.sitefaq_rating{
+	display:none;
+}

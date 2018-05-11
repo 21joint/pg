@@ -1,0 +1,2 @@
+UPDATE `engine4_activity_actiontypes` SET `body` = '{item:$subject} created a new playlist in the page {item:$object}:' WHERE `engine4_activity_actiontypes`.`type` = 'sitepagemusic_playlist_new' LIMIT 1 ;
+UPDATE `engine4_activity_actiontypes` SET `body` = '{item:$subject} created a new playlist:' WHERE `engine4_activity_actiontypes`.`type` = 'sitepagemusic_admin_new' LIMIT 1 ;

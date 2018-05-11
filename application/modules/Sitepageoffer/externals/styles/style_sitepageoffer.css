@@ -1,0 +1,119 @@
+ /* $Id: style_sitepageoffer.css 2011-05-05 9:40:21Z SocialEngineAddOns Copyright 2010-2011 BigStep Technologies Pvt. Ltd. $ */
+
+/*Create and Edit Form*/
+#global_page_sitepageoffer-index-create p.error,
+#global_page_sitepageoffer-index-edit p.error{
+	font-size:11px !important;
+  color:red;
+}
+#global_page_sitepageoffer-index-create #photo{
+	float:left;
+	margin-top:-10px;
+}
+#global_page_sitepageoffer-index-edit input:disabled{
+	background-color:#E0E0E0;
+}
+#global_page_sitepageoffer-index-create #end_time-wrapper .calendar_output_span,
+#global_page_sitepageoffer-index-edit #end_time-wrapper .calendar_output_span {
+	display:inline-block;
+	margin-right:15px;
+	min-width:60px;
+}
+#global_page_sitepageoffer-index-create #end_time-wrapper select + select, 
+#global_page_sitepageoffer-index-edit #end_time-wrapper select + select {
+	margin-left:5px;
+}
+#global_page_sitepageoffer-index-edit #global_content_simple > .clr{
+	margin:10px;
+	width:595px;
+}
+#global_page_sitepageoffer-index-edit #global_content_simple .global_form div.form-label{
+	width:90px;
+}
+#global_page_sitepageoffer-index-edit #global_content_simple .global_form div > p{
+	min-width:450px;
+}
+/*Offer Listing*/
+#global_page_sitepageoffer-index-index div.global_form > div > div > h3{
+	background:none;
+	padding:0px;
+	font-weight:bold;
+	font-size:17px;
+}
+ul.sitepageoffer_list{
+  clear: both;
+}
+ul.sitepageoffer_list > li{
+  clear: both;
+  padding: 5px 10px 15px;
+  overflow: hidden;
+}
+ul.sitepageoffer_list > li + li{
+	padding-top: 15px;
+	border-top-width:1px;
+	border-top-style:solid;
+}
+ul.sitepageoffer_list > li.sitepageoffer_show + li{
+	border-top:none;
+}
+ul.sitepageoffer_list .sitepageoffer_list_options{
+  float: right;
+  overflow: hidden;
+  padding-left: 20px;
+	width:150px;
+}
+ul.sitepageoffer_list .sitepageoffer_list_options > a{
+  clear: both;
+  display: block;
+  margin: 5px;
+  font-size: .8em;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+ul.sitepageoffer_list .sitepageoffer_list_photo{
+	float:left;
+	margin-right:10px;
+}
+ul.sitepageoffer_list .sitepageoffer_list_info{
+  overflow: hidden;
+}
+ul.sitepageoffer_list .sitepageoffer_list_info_title{
+	font-weight:bold;
+	overflow:hidden;
+	margin-bottom:5px;
+}
+ul.sitepageoffer_list .sitepageoffer_list_info_title span{
+	float: right;
+}
+ul.sitepageoffer_list .sitepageoffer_list_info_title h3{
+  margin: 0px;
+	overflow:hidden;
+}
+ul.sitepageoffer_list .sitepageoffer_list_info_date{
+  font-size:0.8em;
+}
+ul.sitepageoffer_list .sitepageoffer_list_info_blurb{
+  margin: 5px 0;
+}
+/*Offer View Page*/
+.sitepageoffer_view{
+	clear:both;
+}
+.sitepageoffer_view_stat{
+	font-size:11px;
+	margin-bottom:10px;
+}
+.sitepageoffer_view_options a{
+	margin-bottom:5px;
+}
+/*Offer preview Popup*/
+.sitepage_offer_priview_popup{
+	width:530px;
+	margin:10px 0 0 10px;
+}
+.sitepage_offer_priview_popup_head{
+	padding-bottom:10px;
+}
+.sitepage_offer_priview_popup button{
+	margin-top:10px;
+}

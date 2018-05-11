@@ -1,0 +1,15 @@
+
+.feedback_tabs ul li a{
+	font-size:12px !important;
+}
+table.feedback_admin_table thead tr th,
+table.feedback_admin_table tbody tr td {
+	padding:10px 1px !important;
+	font-size:11px !important;
+}
+#global_page_feedback-admin-fields-field-create span > div{
+	padding:0px !important;
+}
+#global_page_feedback-admin-fields-field-create span > div > h3{
+	display:none;
+}
