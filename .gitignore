@@ -5,3 +5,5 @@ application/settings/mail.php
 public/temporary
 temporary/cache
 temporary/log
+.vscode
+temporary/cache-old
