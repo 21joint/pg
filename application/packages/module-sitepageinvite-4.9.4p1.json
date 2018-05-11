@@ -1,0 +1,1130 @@
+{
+  "type": "module",
+  "name": "sitepageinvite",
+  "version": "4.9.4p1",
+  "revision": null,
+  "path": "application\/modules\/Sitepageinvite",
+  "repository": null,
+  "sku": null,
+  "date": "Mon, 04 Sep 2017 08:29:17 +0000",
+  "title": "Directory \/ Pages - Inviter Extension",
+  "description": "Directory \/ Pages - Inviter Extension",
+  "thumb": null,
+  "developer": null,
+  "authors": [
+    "<a href=\"http:\/\/www.socialengineaddons.com\" style=\"text-decoration:underline;\" target=\"_blank\">SocialEngineAddOns<\/a>"
+  ],
+  "meta": {
+    "date": "Mon, 04 Sep 2017 08:29:17 +0000",
+    "title": "Directory \/ Pages - Inviter Extension",
+    "description": "Directory \/ Pages - Inviter Extension",
+    "developer": null,
+    "authors": [
+      "<a href=\"http:\/\/www.socialengineaddons.com\" style=\"text-decoration:underline;\" target=\"_blank\">SocialEngineAddOns<\/a>"
+    ],
+    "changeLog": null
+  },
+  "actions": [
+    "install",
+    "upgrade",
+    "refresh",
+    "enable",
+    "disable"
+  ],
+  "callback": {
+    "path": "application\/modules\/Sitepageinvite\/settings\/install.php",
+    "class": "Sitepageinvite_Installer",
+    "priority": 100
+  },
+  "dependencies": null,
+  "tests": [
+    
+  ],
+  "permissions": [
+    
+  ],
+  "structure": {
+    "application\/modules\/Sitepageinvite": {
+      "type": "directory",
+      "path": "application\/modules\/Sitepageinvite",
+      "structure": [
+        {
+          "path": "Bootstrap.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 613,
+          "sha1": "d780b2d619ee684276562e91fc23a7d28f7f8f5f"
+        },
+        {
+          "path": "Plugin",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Plugin\/Menus.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1995,
+          "sha1": "709167eb78d693fb6bc05ce84d6d13d3add25cea"
+        },
+        {
+          "path": "Api",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Api\/aolapi.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3758,
+          "sha1": "fe3de1add705dc583b76b964d8379caf3735d764"
+        },
+        {
+          "path": "Api\/Core.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1186,
+          "sha1": "edec270ad6c5d7317129350aec578b74dc58ef30"
+        },
+        {
+          "path": "Api\/googleapi.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2294,
+          "sha1": "ea2ee6bda1415f00eb693b3edc4c3a11f0d30cd4"
+        },
+        {
+          "path": "Api\/LiveContactsPHP",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Api\/LiveContactsPHP\/contacts_fn.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3551,
+          "sha1": "690200356e227d6630784f332625900fc8f05b05"
+        },
+        {
+          "path": "Api\/LiveContactsPHP\/index.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 513,
+          "sha1": "56670b194f902a7f315f49082d70df3e604a5d69"
+        },
+        {
+          "path": "Api\/LiveContactsPHP\/settings.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1028,
+          "sha1": "84c3ffd7ca49ceafd89cacddb58c7d4b6e1b7755"
+        },
+        {
+          "path": "Api\/LiveContactsPHP\/delauth-handler.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1185,
+          "sha1": "ff5c67ee22996913b14962e4a6feb97852ce35a8"
+        },
+        {
+          "path": "Api\/LiveContactsPHP\/policy.html",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 44,
+          "sha1": "36aa2b62d9abeae6d16b2717fcead51ff952a633"
+        },
+        {
+          "path": "Api\/LiveContactsPHP\/windowslivelogin.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 44672,
+          "sha1": "0d61217f8b5cd180480cf5d25c10c14e8791d5ee"
+        },
+        {
+          "path": "Api\/LiveContactsPHP\/hex.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2982,
+          "sha1": "6b06a8252508a829f27fba6e603c9a9c6b86e285"
+        },
+        {
+          "path": "Api\/LiveContactsPHP\/config.xml",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 374,
+          "sha1": "0e636d0969733a3dbca1a7c6deb7c45b18604fd6"
+        },
+        {
+          "path": "Api\/yahoo",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Api\/yahoo\/LICENSE",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2386,
+          "sha1": "100c8bf16fd2110997df3fb106789a45233338ec"
+        },
+        {
+          "path": "Api\/yahoo\/oauth_helper.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6926,
+          "sha1": "dc646f719b6a2dd994fef3e13c3089829bdb818b"
+        },
+        {
+          "path": "Api\/yahoo\/README",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 781,
+          "sha1": "28a52a510c01567bee63ce4497c540cafd18e7ee"
+        },
+        {
+          "path": "Api\/yahoo\/getreqtok.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 10622,
+          "sha1": "60ab507cea872153078ae819509a2d1dcbf801bb"
+        },
+        {
+          "path": "Api\/yahoo\/postcontact.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4075,
+          "sha1": "72c299892d1289db0d26d5146d37318d2ee16d50"
+        },
+        {
+          "path": "Api\/yahoo\/CHANGELOG",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 91,
+          "sha1": "4e4ffeb4d539d1ce440af905ee6031648f4e9065"
+        },
+        {
+          "path": "Api\/yahoo\/globals.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6134,
+          "sha1": "b83d43d0daf5ca63b528a719e56ed894f3a40853"
+        },
+        {
+          "path": "Api\/yahoo\/yql.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4613,
+          "sha1": "f13edfdd51481b88eab82b65c7735787bb6b466f"
+        },
+        {
+          "path": "settings",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "settings\/install.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 7425,
+          "sha1": "a9dbfefb66a05574a4e6aff014dbe8e64e93b72b"
+        },
+        {
+          "path": "settings\/my.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 509,
+          "sha1": "d50c6a8593c6b096126983ce49a96f641d77883e"
+        },
+        {
+          "path": "settings\/my-upgrade-4.1.5-4.1.5p1.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 123,
+          "sha1": "3013d65744cadab76474203fbb0a0de853ad8870"
+        },
+        {
+          "path": "settings\/manifest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3731,
+          "sha1": "00a50e4986bd69d16c881f13a6688eda65cd11c5"
+        },
+        {
+          "path": "views",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/admin-global",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/admin-global\/readme.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1230,
+          "sha1": "e307a92e923375261ae4e7cee5b4a30d85f9e0bb"
+        },
+        {
+          "path": "views\/scripts\/admin-global\/faq.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 812,
+          "sha1": "082debbb20da0239093c83043ebf4120fac5efcd"
+        },
+        {
+          "path": "views\/scripts\/admin-global\/global.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1956,
+          "sha1": "6970a1b33e7570907eed779a6edcfadf9e719c1e"
+        },
+        {
+          "path": "views\/scripts\/admin-global\/appconfigs.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 14305,
+          "sha1": "01cd4af477d08133abc528fe2199972a48d596d2"
+        },
+        {
+          "path": "views\/scripts\/admin-global\/faq_help.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 7534,
+          "sha1": "9ed9d2d307f9aae40ef1c3054b670f069ee3a48a"
+        },
+        {
+          "path": "views\/scripts\/_formcontactimport.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 10079,
+          "sha1": "ddaa218314d5a8dc3bf6269fb7a4ebcda550d7e0"
+        },
+        {
+          "path": "views\/scripts\/index",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/index\/inviteusers.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 5703,
+          "sha1": "9679a2e27a4042427d785b4441741e544c0c969b"
+        },
+        {
+          "path": "views\/scripts\/index\/friendspageinvite.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 30838,
+          "sha1": "20657ce3eb8ecd456e22372c219ed30805768f06"
+        },
+        {
+          "path": "views\/scripts\/index\/invitepreview.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3230,
+          "sha1": "8cd0e6563299de03f3c7d11a83abe494a0a668e9"
+        },
+        {
+          "path": "views\/scripts\/index\/language.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1531,
+          "sha1": "024d44ea5f24562db484ef82562dfef188587b7b"
+        },
+        {
+          "path": "views\/scripts\/usercontacts",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/usercontacts\/getgooglecontacts.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3837,
+          "sha1": "77f33834f1c74ff7fe38bad208d0065b8fb41ec3"
+        },
+        {
+          "path": "views\/scripts\/usercontacts\/aollogin.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2577,
+          "sha1": "171beefb7b2208204de89450881410b4fe84c3e3"
+        },
+        {
+          "path": "views\/scripts\/usercontacts\/getwindowlivecontacts.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2893,
+          "sha1": "c61a44c668d3975b986119ef1e54704384e2418f"
+        },
+        {
+          "path": "views\/scripts\/usercontacts\/getaolcontacts.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3029,
+          "sha1": "7e2d75572b6e79ce764e24c2e1671a260bce8e7e"
+        },
+        {
+          "path": "views\/scripts\/usercontacts\/getyahoocontacts.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3026,
+          "sha1": "6738297117d881094915e6a02e4c1b5695090369"
+        },
+        {
+          "path": "views\/scripts\/usercontacts\/uploads.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 404,
+          "sha1": "7aaf7884d6e8d1ff5adbee05588eec2eb3e7198c"
+        },
+        {
+          "path": "views\/scripts\/usercontacts\/getcsvcontacts.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2804,
+          "sha1": "a38b74c8236a7f666c3fa0d5f9b8bf2e4d2b8a5f"
+        },
+        {
+          "path": "Form",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Form\/Admin",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Form\/Admin\/Global.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 5413,
+          "sha1": "5e8a088461dea55dc6886bbc393bb24635b60534"
+        },
+        {
+          "path": "Form\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "Form\/Aollogin.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1652,
+          "sha1": "670ef061902a51f88e967525280b8178ab3e9349"
+        },
+        {
+          "path": "Model",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Model\/DbTable",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Model\/DbTable\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "controllers",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "controllers\/AdminGlobalController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2166,
+          "sha1": "73368b359d703ebac7ec404e0d6d23a52c702c9f"
+        },
+        {
+          "path": "controllers\/license",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "controllers\/license\/README.txt",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 456,
+          "sha1": "0ae94f034c0d2d2010470a40e64e3bd5eeb5e0bd"
+        },
+        {
+          "path": "controllers\/license\/license1.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 32422,
+          "sha1": "a3d57c36473507c8402b75aabc751fd5085280ba"
+        },
+        {
+          "path": "controllers\/license\/license.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4602,
+          "sha1": "e507a6a61133f26e8601250c081664f33acef16e"
+        },
+        {
+          "path": "controllers\/license\/license.html",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 7322,
+          "sha1": "fd5046c5a35426c718ccd011e74fce329ccbe9fa"
+        },
+        {
+          "path": "controllers\/UsercontactsController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 22845,
+          "sha1": "a64be7aabdc574a5ce9a098fc1ee69eb9f934047"
+        },
+        {
+          "path": "controllers\/IndexController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 22597,
+          "sha1": "50cbd9c734b4dadf7ab3a95361e9fba97fb3639a"
+        },
+        {
+          "path": "externals",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/.htaccess",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 144,
+          "sha1": "47bb36a5f03278d4b6ea5804e494c00ccb02e8e1"
+        },
+        {
+          "path": "externals\/scripts",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/scripts\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "externals\/styles",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/styles\/main.css",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "externals\/styles\/style_sitepageinvite.css",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 5586,
+          "sha1": "825e594b75c76b54c83837ee807e0236a727553f"
+        },
+        {
+          "path": "externals\/styles\/admin",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/styles\/admin\/main.css",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2469,
+          "sha1": "b21e219ce61161a251395d4f20abbdfee3b626ba"
+        },
+        {
+          "path": "externals\/images",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/images\/twitter.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2250,
+          "sha1": "d4dcc67f34ecd09d5c8dda3dfbf11debb3e50162"
+        },
+        {
+          "path": "externals\/images\/sugg_blub.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 673,
+          "sha1": "144454563fe49539dc5b806256fb1c38363215f7"
+        },
+        {
+          "path": "externals\/images\/thunderbird.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 931,
+          "sha1": "56084584f7250786e608f25914606f20dde6f0b5"
+        },
+        {
+          "path": "externals\/images\/loading.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1333,
+          "sha1": "55cd9ccf04943ca12e781162961c9ea8cf6c8148"
+        },
+        {
+          "path": "externals\/images\/invite.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3305,
+          "sha1": "d66e7354fcfe133d9d00f86757170a1cccc733d2"
+        },
+        {
+          "path": "externals\/images\/aol16.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 861,
+          "sha1": "21f32513d103026dbf0d1c499e533078b6b0e693"
+        },
+        {
+          "path": "externals\/images\/yahoomail.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6869,
+          "sha1": "088e86431695e75bb87cbf6c488eb4bfebf4b60f"
+        },
+        {
+          "path": "externals\/images\/linkedin16.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 751,
+          "sha1": "1cf3d714856d188474cc0d227132be1cc1127539"
+        },
+        {
+          "path": "externals\/images\/outlookexpress.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1058,
+          "sha1": "a3085eaec076a6199d1c826ddfb28fcc9418ff1e"
+        },
+        {
+          "path": "externals\/images\/moor_slider.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 590,
+          "sha1": "b482365185a39904833792665584f0ac1a9a4a54"
+        },
+        {
+          "path": "externals\/images\/msnst7.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 21380,
+          "sha1": "c7d6c3b6aaac644d06ae5acc40f424b658dd26ca"
+        },
+        {
+          "path": "externals\/images\/linkedin.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6412,
+          "sha1": "20aa87de496216d3cb192237069709cbdffb58fd"
+        },
+        {
+          "path": "externals\/images\/windowslive16.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 926,
+          "sha1": "4044a912be5c652a4e5dab3cc04bd59125802b52"
+        },
+        {
+          "path": "externals\/images\/rainbow.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 794,
+          "sha1": "a8609cdf10eb28da5d18b89ea41f0493318f7992"
+        },
+        {
+          "path": "externals\/images\/windowslive.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 10730,
+          "sha1": "5dff12d45a2a5fa3faa3117d372d58abe95f1947"
+        },
+        {
+          "path": "externals\/images\/webmail.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 850,
+          "sha1": "637fb2f875c38d67f20afa6d5c62e42c5b83e9aa"
+        },
+        {
+          "path": "externals\/images\/help.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 929,
+          "sha1": "45f0c4b40364e282548da63aafdb98f75056b185"
+        },
+        {
+          "path": "externals\/images\/addressbook.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 776,
+          "sha1": "de970332c17fad162c5c0b5d2b6042c9abcdd76a"
+        },
+        {
+          "path": "externals\/images\/yahoo16.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 763,
+          "sha1": "8f96d28bfd251556180a8c3ba35b9cfdedcffb6d"
+        },
+        {
+          "path": "externals\/images\/sugg_friend.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 845,
+          "sha1": "f9a6d6514d75e8b7fcc728f2231ad38e6c46c2f1"
+        },
+        {
+          "path": "externals\/images\/facebook.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6488,
+          "sha1": "8c92cbac7a947cdbb0c4cbc6a994df571c365f14"
+        },
+        {
+          "path": "externals\/images\/aol-signin-btn.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1236,
+          "sha1": "16bb9d409495fe16aaa8f01468644fd47903c150"
+        },
+        {
+          "path": "externals\/images\/msnst5.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 16374,
+          "sha1": "82f9247ab5b3d1aa3d4ac0e8aa052f0a93572c7a"
+        },
+        {
+          "path": "externals\/images\/search.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1001,
+          "sha1": "34ddfe5efe8dea84a26f23e627763c9cb7676d9e"
+        },
+        {
+          "path": "externals\/images\/lock.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 332,
+          "sha1": "bd9e49c196a11026d89dffee901ad551a5bd0495"
+        },
+        {
+          "path": "externals\/images\/close_icon.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 216,
+          "sha1": "98ff1acf7bbba3f87f9c1e9ac1a0301951e10d87"
+        },
+        {
+          "path": "externals\/images\/user-ex.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 748,
+          "sha1": "3923ff4054aeae3cfb2923453cffb586a86ffba2"
+        },
+        {
+          "path": "externals\/images\/add.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 746,
+          "sha1": "56a6f12c36ef9e5220b070830a3d36b23450ff22"
+        },
+        {
+          "path": "externals\/images\/moor_cursor.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 80,
+          "sha1": "38210567abbe21cd74dffff4d5655fd8a420c76f"
+        },
+        {
+          "path": "externals\/images\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "externals\/images\/yahst3.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 130802,
+          "sha1": "d183a33774dbadaedca80a934c2a50575bd206a7"
+        },
+        {
+          "path": "externals\/images\/loadings.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 328,
+          "sha1": "0477e1ea1c5426b85278f8d8450dd3bb029dd092"
+        },
+        {
+          "path": "externals\/images\/sending-request.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1285,
+          "sha1": "f8466b7fa27f839cee148f9570fdf0a7cc1f0d2d"
+        },
+        {
+          "path": "externals\/images\/back.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 345,
+          "sha1": "cc0eecde5d7e957071a9d72f751384ca974631fa"
+        },
+        {
+          "path": "externals\/images\/support.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1007,
+          "sha1": "ece2e0292cbf7cadbebe97ad41be2ad1e67367e4"
+        },
+        {
+          "path": "externals\/images\/gmail.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6685,
+          "sha1": "340d21c26f210a857e9333b0ef042c758e334716"
+        },
+        {
+          "path": "externals\/images\/sitepage_sugg.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 591,
+          "sha1": "236641d7b681186922f886d8247c3f504dfa9be7"
+        },
+        {
+          "path": "externals\/images\/moor_woverlay.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 768,
+          "sha1": "db15afd9e43a0314c8239d8de610b3c0f38489c2"
+        },
+        {
+          "path": "externals\/images\/moor_boverlay.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 799,
+          "sha1": "4c3e86cf68e75b93961dba4d6fa1a9d5130a69b7"
+        },
+        {
+          "path": "externals\/images\/Thumbs.db",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 101376,
+          "sha1": "066505455fa1119e537197a3bf5ec5a6dce77514"
+        },
+        {
+          "path": "externals\/images\/palm.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2524,
+          "sha1": "5d110f63d31a62399a6f148f6ed140eba8b1e1f6"
+        },
+        {
+          "path": "externals\/images\/gmail16.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 296,
+          "sha1": "9ffe15a341403cfaeed2874de43d6aaee50ecb3a"
+        },
+        {
+          "path": "externals\/images\/aol.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 7430,
+          "sha1": "e4e8e8096201a633879b55155bc280bd1eef8da4"
+        },
+        {
+          "path": "externals\/images\/yahoo.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2830,
+          "sha1": "c5783560af0df9ff43f1320645c773a7b58b7795"
+        },
+        {
+          "path": "externals\/images\/plus.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 316,
+          "sha1": "67a1bb0f053696d71c8ddda483cd3f6df376eaf9"
+        },
+        {
+          "path": "externals\/images\/facebook16.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 502,
+          "sha1": "5424b2f315ba860fb83e722a5f244c10c9cd8132"
+        },
+        {
+          "path": "externals\/images\/admin",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/images\/admin\/success.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 537,
+          "sha1": "d0a90047653afcdac85171e6b34d599538b89773"
+        },
+        {
+          "path": "externals\/images\/admin\/help.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 660,
+          "sha1": "4b9bc15ee54fcb42643319e47dbdc1aad5822308"
+        },
+        {
+          "path": "externals\/images\/admin\/Thumbs.db",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 9728,
+          "sha1": "eb2548430432cebd21961e0e5c77f26af12e80c3"
+        },
+        {
+          "path": "externals\/images\/yahst1.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 222782,
+          "sha1": "d9d052cb0044ae20d9873b86da6497d8902b3e97"
+        },
+        {
+          "path": "externals\/images\/outlook.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 855,
+          "sha1": "84d216312c41eea28ae66b444e132a5602968f56"
+        },
+        {
+          "path": "externals\/images\/twitter16.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 658,
+          "sha1": "baa186067518dfa1f18a2afcb50af03041e40aa4"
+        },
+        {
+          "path": "externals\/images\/uploading-file.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1235,
+          "sha1": "03c5be25c150daf52c508c3569b8225f66656346"
+        }
+      ]
+    },
+    "application\/languages\/en\/sitepageinvite.csv": {
+      "type": "file",
+      "path": "application\/languages\/en\/sitepageinvite.csv",
+      "structure": {
+        "path": "sitepageinvite.csv",
+        "dir": false,
+        "file": true,
+        "perms": "0777",
+        "size": 23460,
+        "sha1": "c0cff3c950709b1bc7b8c8aabd1df6c41153a599"
+      }
+    }
+  }
+}

@@ -1,0 +1,658 @@
+{
+  "type": "module",
+  "name": "sitequicksignup",
+  "version": "4.9.4p6",
+  "revision": null,
+  "path": "application\/modules\/Sitequicksignup",
+  "repository": null,
+  "sku": null,
+  "date": "Thu, 28 Dec 2017 10:38:10 +0000",
+  "title": "Quick & Single Step Signup Plugin",
+  "description": "Quick & Single Step Signup Plugin",
+  "thumb": null,
+  "developer": null,
+  "authors": [
+    "SocialEngineAddOns"
+  ],
+  "meta": {
+    "date": "Thu, 28 Dec 2017 10:38:10 +0000",
+    "title": "Quick & Single Step Signup Plugin",
+    "description": "Quick & Single Step Signup Plugin",
+    "developer": null,
+    "authors": [
+      "SocialEngineAddOns"
+    ],
+    "changeLog": null
+  },
+  "actions": [
+    "install",
+    "upgrade",
+    "refresh",
+    "enable",
+    "disable"
+  ],
+  "callback": {
+    "path": "application\/modules\/Sitequicksignup\/settings\/install.php",
+    "class": "Sitequicksignup_Installer",
+    "priority": 100
+  },
+  "dependencies": null,
+  "tests": [
+    
+  ],
+  "permissions": [
+    
+  ],
+  "structure": {
+    "application\/modules\/Sitequicksignup": {
+      "type": "directory",
+      "path": "application\/modules\/Sitequicksignup",
+      "structure": [
+        {
+          "path": "Bootstrap.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 588,
+          "sha1": "fdc9603032bf692c533ff8c46a2379a130620743"
+        },
+        {
+          "path": "Plugin",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Plugin\/Core.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3809,
+          "sha1": "ce66e59b421a948a353136403514190c08e1db99"
+        },
+        {
+          "path": "Plugin\/Signup",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Plugin\/Signup\/Fields.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 28828,
+          "sha1": "d09fc6a43c927c96a2ee6f1c3782c800beaed915"
+        },
+        {
+          "path": "Api",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Api\/Core.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 879,
+          "sha1": "f2616e8666c31b2025f887ce206daac5d5f1dfee"
+        },
+        {
+          "path": "settings",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "settings\/install.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 720,
+          "sha1": "9117b654da8a5f4c0a6d21a049cc94b14382a79c"
+        },
+        {
+          "path": "settings\/my.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3390,
+          "sha1": "12a605b3c995031812bb774eb1f98df068da38ae"
+        },
+        {
+          "path": "settings\/seaocore_install.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3244,
+          "sha1": "7de3a5b00b508cd8db85f92c4665f80a92a14201"
+        },
+        {
+          "path": "settings\/content.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1069,
+          "sha1": "cd01afceb67258f928607ec70cb2db28c36e9d04"
+        },
+        {
+          "path": "settings\/manifest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2031,
+          "sha1": "0d920a061dfed6f619eb22457e00554b2b1d88a2"
+        },
+        {
+          "path": "views",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/helpers",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/helpers\/AdminFieldMeta.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 5494,
+          "sha1": "deb489aeb23ea4698e3666d1a56f7dc4ce640318"
+        },
+        {
+          "path": "views\/helpers\/AdminFieldOption.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2562,
+          "sha1": "cdabfa0e4519e8b91ef314d8cca5e8dace4c1c1a"
+        },
+        {
+          "path": "views\/scripts",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/_signupFields.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3357,
+          "sha1": "2b7084a985b99e346ece798a696dce24e54191f1"
+        },
+        {
+          "path": "views\/scripts\/admin-signupform",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/admin-signupform\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1619,
+          "sha1": "262c4635abdabfd9b13f6c1aa8f8ece940ed9ff3"
+        },
+        {
+          "path": "views\/scripts\/signup",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/signup\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 818,
+          "sha1": "8823fa6cd55d7acd96154893e45088fe382f3ad2"
+        },
+        {
+          "path": "views\/scripts\/signup\/form",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/signup\/form\/fields.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 868,
+          "sha1": "5b61ee393cb74decdff12195dfd5a9141dfa73b9"
+        },
+        {
+          "path": "views\/scripts\/_advanced_custom_search.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4403,
+          "sha1": "f4c53169c3ee4b386fa1e5b7d673c0722737225f"
+        },
+        {
+          "path": "views\/scripts\/admin-settings",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/faq.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 705,
+          "sha1": "2dde2a85b9eacdd222e658d0872acead65f47c02"
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3384,
+          "sha1": "c40ab04541c9b1dfe5ff640fd4573e648bb8021c"
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/form-order.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 5061,
+          "sha1": "0a93d09d6d8778249f9a8a1d25d1a41b9c0c2f35"
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/faq_help.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6812,
+          "sha1": "d8bb24c99b45cf20f834b84ea0a87bb4a68d388e"
+        },
+        {
+          "path": "views\/scripts\/FieldSearch.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3189,
+          "sha1": "87fff244eabb988dacb4a4f996c510f5317d5d22"
+        },
+        {
+          "path": "views\/scripts\/_jsAdmin.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 22641,
+          "sha1": "b1756a157f4d6ecddf3100eee0597a55a19c32d1"
+        },
+        {
+          "path": "Form",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Form\/Admin",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Form\/Admin\/Global.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 7409,
+          "sha1": "976613d7aeb69f454d0a741139b9a7a072d0e22f"
+        },
+        {
+          "path": "Form\/Admin\/Settings.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 790,
+          "sha1": "885658da4051d6256e77913af3dd5ff313eea0fd"
+        },
+        {
+          "path": "Form\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "Form\/Signup",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Form\/Signup\/Fields.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 24281,
+          "sha1": "b988bf142e40f75d07ae9e9c784af81941e4fc11"
+        },
+        {
+          "path": "Form\/Signup\/Standard.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 17023,
+          "sha1": "d137b5826e68974ac506711e1ff385a4ef4fadf6"
+        },
+        {
+          "path": "Controller",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Controller\/AdminAbstract.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 7716,
+          "sha1": "7a93cbe1a3d710dafbd5b245c7ec5c1f6a83acba"
+        },
+        {
+          "path": "widgets",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/login-or-signup-popup",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/login-or-signup-popup\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4045,
+          "sha1": "2dbd5e80ecaaaea33271713a1e6584e586af8e56"
+        },
+        {
+          "path": "widgets\/login-or-signup-popup\/Controller.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1462,
+          "sha1": "ecc16e65bb567842f670892b63c9d41d445e5098"
+        },
+        {
+          "path": "widgets\/signup",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/signup\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 447,
+          "sha1": "b13d5814c8b1a262aa8f0031fe7aa0aa94329e3b"
+        },
+        {
+          "path": "widgets\/signup\/Controller.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 769,
+          "sha1": "158a01a557b8a20168c91fbf0c0187edf9121305"
+        },
+        {
+          "path": "Model",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Model\/DbTable",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Model\/DbTable\/Signup.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 464,
+          "sha1": "abdd237f685c6b135d2c2e493298cd656adef6bd"
+        },
+        {
+          "path": "Model\/DbTable\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "Model\/DbTable\/Fieldorder.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1025,
+          "sha1": "3851452f1a13b3673cb95be0e6a087bc6a3a7741"
+        },
+        {
+          "path": "controllers",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "controllers\/AdminSignupformController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 534,
+          "sha1": "d16592a68ddad039997c8226f71fa7902e55002f"
+        },
+        {
+          "path": "controllers\/license",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "controllers\/license\/widgetSettings.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2385,
+          "sha1": "b42ab22ba38448c1b041c53b4ed9dc6a7ff3f9f4"
+        },
+        {
+          "path": "controllers\/AdminSettingsController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3819,
+          "sha1": "764f61b8e35f7e0bf2e8de1757e09225a5418273"
+        },
+        {
+          "path": "controllers\/SignupController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 7225,
+          "sha1": "69648f684b0d7b04863fb6c6f2b0fbab482efe01"
+        },
+        {
+          "path": "externals",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/.htaccess",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 147,
+          "sha1": "9f1638a8edbe1c5d28789e017fb35b2f2465f01e"
+        },
+        {
+          "path": "externals\/scripts",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/scripts\/jquery.min.js",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 63591,
+          "sha1": "c898a4734c6e57d46f26bd735a14afd57cad6845"
+        },
+        {
+          "path": "externals\/scripts\/jquery.validation.functions.js",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 970,
+          "sha1": "a384fa58015ab2260cce08cbcb4466cfea571e49"
+        },
+        {
+          "path": "externals\/scripts\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "externals\/scripts\/jquery.validate.js",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4299,
+          "sha1": "ccdaef9fafcfb15893e307bd8e9b2b7ba325b549"
+        },
+        {
+          "path": "externals\/scripts\/jquery-1.3.2.js",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 167889,
+          "sha1": "f9d103d3098fdc1bc6b0065432c0f3aba091848b"
+        },
+        {
+          "path": "externals\/styles",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/styles\/jquery.validate.css",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 669,
+          "sha1": "94720fa863ffae390110009c0c92d607e94b0ba3"
+        },
+        {
+          "path": "externals\/styles\/main.css",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4975,
+          "sha1": "10befb6d7d45078328db73d5a0f5b543891668a7"
+        },
+        {
+          "path": "externals\/images",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/images\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        }
+      ]
+    },
+    "application\/languages\/en\/sitequicksignup.csv": {
+      "type": "file",
+      "path": "application\/languages\/en\/sitequicksignup.csv",
+      "structure": {
+        "path": "sitequicksignup.csv",
+        "dir": false,
+        "file": true,
+        "perms": "0777",
+        "size": 0,
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+      }
+    }
+  }
+}

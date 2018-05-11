@@ -1,0 +1,86 @@
+{
+  "type": "external",
+  "name": "flowplayer",
+  "version": "4.10.3p1",
+  "revision": "9747",
+  "path": "externals\/flowplayer",
+  "repository": null,
+  "sku": null,
+  "date": "Thu, 05 Apr 2018 10:55:24 +0000",
+  "title": "Flow Player",
+  "description": null,
+  "thumb": null,
+  "developer": null,
+  "authors": [
+    "Webligo Developments"
+  ],
+  "meta": {
+    "date": "Thu, 05 Apr 2018 10:55:24 +0000",
+    "title": "Flow Player",
+    "description": null,
+    "developer": null,
+    "authors": [
+      "Webligo Developments"
+    ],
+    "changeLog": null
+  },
+  "actions": [
+    
+  ],
+  "callback": null,
+  "dependencies": null,
+  "tests": [
+    
+  ],
+  "permissions": [
+    
+  ],
+  "structure": {
+    "externals\/flowplayer": {
+      "type": "directory",
+      "path": "externals\/flowplayer",
+      "structure": [
+        {
+          "path": "LICENSE.txt",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 37497,
+          "sha1": "bde9b71a1e133bff47d972a9f4d1dac056200a70"
+        },
+        {
+          "path": "manifest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 385,
+          "sha1": "fbffd10e40610c39e6a395ef35dc553316df82f1"
+        },
+        {
+          "path": "flowplayer.controls-3.2.16.swf",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 38270,
+          "sha1": "411adb0dd57a612aefecd714bb4a87b47fb7cb98"
+        },
+        {
+          "path": "flowplayer-3.2.13.min.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 16279,
+          "sha1": "1e9c02aa29477c2f9bf84263cc4941df60e101f3"
+        },
+        {
+          "path": "flowplayer-3.2.18.swf",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 129772,
+          "sha1": "3268fba292f50a83ce1e1307f0091eaff99a5191"
+        }
+      ]
+    }
+  }
+}

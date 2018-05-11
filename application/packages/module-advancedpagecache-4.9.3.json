@@ -1,0 +1,665 @@
+{
+  "type": "module",
+  "name": "advancedpagecache",
+  "version": "4.9.3",
+  "revision": null,
+  "path": "application\/modules\/Advancedpagecache",
+  "repository": null,
+  "date": "Mon, 31 Jul 2017 07:17:54 +0000",
+  "title": "Page Cache Plugin - Speed up your Website",
+  "description": "Page Cache Plugin - Speed up your Website",
+  "thumb": null,
+  "developer": null,
+  "authors": [
+    "<a href=\"http:\\\\www.socialengineaddons.com\" style=\"text-decoration:underline;\" target=\"_blank\">SocialEngineAddOns<\/a>"
+  ],
+  "meta": {
+    "date": "Mon, 31 Jul 2017 07:17:54 +0000",
+    "title": "Page Cache Plugin - Speed up your Website",
+    "description": "Page Cache Plugin - Speed up your Website",
+    "developer": null,
+    "authors": [
+      "<a href=\"http:\\\\www.socialengineaddons.com\" style=\"text-decoration:underline;\" target=\"_blank\">SocialEngineAddOns<\/a>"
+    ],
+    "changeLog": null
+  },
+  "actions": [
+    "install",
+    "upgrade",
+    "refresh",
+    "enable",
+    "disable"
+  ],
+  "callback": {
+    "path": "application\/modules\/Advancedpagecache\/settings\/install.php",
+    "class": "Advancedpagecache_Installer",
+    "priority": 100
+  },
+  "dependencies": null,
+  "tests": [
+    
+  ],
+  "permissions": [
+    
+  ],
+  "structure": {
+    "application\/modules\/Advancedpagecache": {
+      "type": "directory",
+      "path": "application\/modules\/Advancedpagecache",
+      "structure": [
+        {
+          "path": "Bootstrap.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1601,
+          "sha1": "5e0fdc8db41e38b730bfb2f72600ce67646cf594"
+        },
+        {
+          "path": "Plugin",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Plugin\/PartialPageCache.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6522,
+          "sha1": "9aa98f57196e191518e2515816b1511ecdb36bd7"
+        },
+        {
+          "path": "Plugin\/Core.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2528,
+          "sha1": "29affb2120d0bb1c9d4d327d67dbfcc7c3fbed31"
+        },
+        {
+          "path": "Plugin\/Cache.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2734,
+          "sha1": "ee699eebf9b39302734fed58ce4ceddbd230ea30"
+        },
+        {
+          "path": "Plugin\/Task",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Plugin\/Task\/Clear.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2568,
+          "sha1": "7efce0b0c853f575e7488a92fa050793b503ef22"
+        },
+        {
+          "path": "Api",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Api\/Core.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1478,
+          "sha1": "07335c74b82f9e16135f4fc1e09a176c5dd88bec"
+        },
+        {
+          "path": "settings",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "settings\/install.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2191,
+          "sha1": "9862159cb4b3a6e679e50d1ca2639245010a935c"
+        },
+        {
+          "path": "settings\/my.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 249,
+          "sha1": "b9db907e7fbbda7599b494c7cd6a47a6acc8b4c2"
+        },
+        {
+          "path": "settings\/manifest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1718,
+          "sha1": "d5428491bbc84be122dc0d41369b34388b79599d"
+        },
+        {
+          "path": "views",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/admin_head.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1970,
+          "sha1": "6f01a5a5930c3b8247f08480630406a71727cb1c"
+        },
+        {
+          "path": "views\/scripts\/admin-settings",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/readme.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1301,
+          "sha1": "38bd07bff185cab8600054500ca777d919715ca8"
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/edit-root-file.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1703,
+          "sha1": "cac043263fcf82a59569c0f2c7745c9cfc6e6f2b"
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/delete-browser.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1068,
+          "sha1": "ce48bf2eba889bd76d92f44673eae9d2102e4dec"
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/faq.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 584,
+          "sha1": "7917ce3713fcfe16f6896e4b6607cc644e27ca5b"
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4924,
+          "sha1": "19e261c81aa51baae01c7855a47dad8ce35882af"
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/delete-partial.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1081,
+          "sha1": "4647a790fa181f65dd987010ae97d89e46a756f3"
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/faq_help.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6635,
+          "sha1": "0dfa266fcf4757b43327531dba62c4bb6bacaa5f"
+        },
+        {
+          "path": "views\/scripts\/admin-page-caching",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/admin-page-caching\/add-partial-url.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 454,
+          "sha1": "d692fe4a1b4a2949242b1e2f8e865c724c757174"
+        },
+        {
+          "path": "views\/scripts\/admin-page-caching\/calculate.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 845,
+          "sha1": "5a5854f5242552c07abcb53ab7f1becd0fe66c52"
+        },
+        {
+          "path": "views\/scripts\/admin-page-caching\/tester.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3862,
+          "sha1": "915d0e05580259f90ce92086a39d266784dc9596"
+        },
+        {
+          "path": "views\/scripts\/admin-page-caching\/partial-page.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2769,
+          "sha1": "3123ba53b147eb777168427446af634ba92de93b"
+        },
+        {
+          "path": "views\/scripts\/admin-page-caching\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2299,
+          "sha1": "4cb39fee72e428c1e688687ae7008cc0518f68ec"
+        },
+        {
+          "path": "views\/scripts\/admin-page-caching\/edit.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 443,
+          "sha1": "a82f4ec83931f4f8e09baae5b3b44e327409b387"
+        },
+        {
+          "path": "views\/scripts\/admin-page-caching\/add-url.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 446,
+          "sha1": "5887e330f55459c0a10443e7a050ebc6602a80f4"
+        },
+        {
+          "path": "views\/scripts\/admin-page-caching\/remove-url.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1030,
+          "sha1": "d0ef569130833896c213a3abaa35b686b4c22bad"
+        },
+        {
+          "path": "Form",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Form\/Admin",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Form\/Admin\/Showignoreurl.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1323,
+          "sha1": "b3717593a62305561cec9e03302415fb8a4a609f"
+        },
+        {
+          "path": "Form\/Admin\/Addpartialurl.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2047,
+          "sha1": "fc984bba3837bf60e75514bbb13540b08ae2182b"
+        },
+        {
+          "path": "Form\/Admin\/Addignoreurl.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1611,
+          "sha1": "03057602db1e4c544b06bd22ab56a0349328c4d0"
+        },
+        {
+          "path": "Form\/Admin\/Settings",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Form\/Admin\/Settings\/Global.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 14615,
+          "sha1": "61380365e5f78f8b1e66a569edbf1ba2d7d0fd6a"
+        },
+        {
+          "path": "Form\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "Controller",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Controller\/Dispatcher",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Controller\/Dispatcher\/Standard.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4031,
+          "sha1": "c8983fcaf58c8f8ebc25f3ad047a6904e76f4903"
+        },
+        {
+          "path": "Model",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Model\/DbTable",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Model\/DbTable\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "controllers",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "controllers\/license",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "controllers\/license\/license3.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 8073,
+          "sha1": "0e1f308c64c0cad020e5c278f83f3a3ce394a516"
+        },
+        {
+          "path": "controllers\/license\/license1.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 49027,
+          "sha1": "9085af5a3cc880905fb663520097fac22a15a2ac"
+        },
+        {
+          "path": "controllers\/license\/license2.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 14169,
+          "sha1": "158a6190303f519a7a8eecea5a6e497a8c1debe9"
+        },
+        {
+          "path": "controllers\/license\/license.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3560,
+          "sha1": "c4b59d6c22f458419f1ce7de37d44df4f3706465"
+        },
+        {
+          "path": "controllers\/license\/widgetSettings.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4494,
+          "sha1": "cbdd595f31b08bbb853c769a537d77131aecf7ed"
+        },
+        {
+          "path": "controllers\/AdminSettingsController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3461,
+          "sha1": "b532bb55087aef3f5d838d8e743c4bac18237449"
+        },
+        {
+          "path": "controllers\/AdminPageCachingController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 12871,
+          "sha1": "9bc63d39b369a1fcb78fed4cc1f0abef5a1bcded"
+        },
+        {
+          "path": "controllers\/IndexController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 992,
+          "sha1": "b6d9cda21f15efbf21b0db8ee5fbeb433f55ea6c"
+        },
+        {
+          "path": "View",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "View\/Helper",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "View\/Helper\/Content.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1124,
+          "sha1": "76c9f25f3add8ca94cfde75e838d334c98ed0cdc"
+        },
+        {
+          "path": "externals",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/.htaccess",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 147,
+          "sha1": "9f1638a8edbe1c5d28789e017fb35b2f2465f01e"
+        },
+        {
+          "path": "externals\/scripts",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/scripts\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "externals\/styles",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/styles\/main.css",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 115,
+          "sha1": "0261d5afb2aba6b08f80cd42528257c1a8e5c52c"
+        },
+        {
+          "path": "externals\/styles\/admin",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/styles\/admin\/main.css",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4698,
+          "sha1": "c1e3f42804746529e3d5685c5e3e8072789f4dec"
+        },
+        {
+          "path": "externals\/images",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/images\/loading.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 8135,
+          "sha1": "c1abd66c356528c294e302aabc31d7809db920ec"
+        },
+        {
+          "path": "externals\/images\/remove.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 875,
+          "sha1": "abcb53ae08c0e6d95088942d5fdbf28384cccfd7"
+        },
+        {
+          "path": "externals\/images\/edit.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1074,
+          "sha1": "cfb45753089adafa399066dbd2d327436a0dcbfb"
+        },
+        {
+          "path": "externals\/images\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "externals\/images\/addition.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1376,
+          "sha1": "2cb72bdfc7f3f408c47e45ca5297bd0cb58cdce8"
+        },
+        {
+          "path": "cache.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 5306,
+          "sha1": "88b595beaf189046475300aded444922c0b6c598"
+        }
+      ]
+    },
+    "application\/languages\/en\/advancedpagecache.csv": {
+      "type": "file",
+      "path": "application\/languages\/en\/advancedpagecache.csv",
+      "structure": {
+        "path": "advancedpagecache.csv",
+        "dir": false,
+        "file": true,
+        "perms": "0777",
+        "size": 0,
+        "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+      }
+    }
+  }
+}

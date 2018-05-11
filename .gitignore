@@ -3,7 +3,4 @@ application/settings/general.php
 application/settings/cache.php
 application/settings/mail.php
 application/modules
-application/packages
-application/plugins
 public/temporary
-application/libraries/Zend/Service/WindowsAzure/Diagnostics/ConfigurationDiagnosticInfrastructureLogs.php

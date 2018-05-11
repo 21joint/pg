@@ -1,0 +1,1666 @@
+{
+  "type": "module",
+  "name": "sitepageoffer",
+  "version": "4.9.4p2",
+  "revision": null,
+  "path": "application\/modules\/Sitepageoffer",
+  "repository": null,
+  "sku": null,
+  "date": "Tue, 12 Dec 2017 10:43:34 +0000",
+  "title": "Directory \/ Pages - Offers Extension",
+  "description": "Directory \/ Pages - Offers Extension",
+  "thumb": null,
+  "developer": null,
+  "authors": [
+    "<a href=\"http:\/\/www.socialengineaddons.com\" style=\"text-decoration:underline;\" target=\"_blank\">SocialEngineAddOns<\/a>"
+  ],
+  "meta": {
+    "date": "Tue, 12 Dec 2017 10:43:34 +0000",
+    "title": "Directory \/ Pages - Offers Extension",
+    "description": "Directory \/ Pages - Offers Extension",
+    "developer": null,
+    "authors": [
+      "<a href=\"http:\/\/www.socialengineaddons.com\" style=\"text-decoration:underline;\" target=\"_blank\">SocialEngineAddOns<\/a>"
+    ],
+    "changeLog": null
+  },
+  "actions": [
+    "install",
+    "upgrade",
+    "refresh",
+    "enable",
+    "disable"
+  ],
+  "callback": {
+    "path": "application\/modules\/Sitepageoffer\/settings\/install.php",
+    "class": "Sitepageoffer_Installer",
+    "priority": 100
+  },
+  "dependencies": null,
+  "tests": [
+    
+  ],
+  "permissions": [
+    
+  ],
+  "structure": {
+    "application\/modules\/Sitepageoffer": {
+      "type": "directory",
+      "path": "application\/modules\/Sitepageoffer",
+      "structure": [
+        {
+          "path": "Bootstrap.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1060,
+          "sha1": "b90475256114306cef56934d8a5fdbf02779e56b"
+        },
+        {
+          "path": "Plugin",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Plugin\/Core.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 985,
+          "sha1": "f48164c31d4ee4669e43a19dd5129093d6aa2f9a"
+        },
+        {
+          "path": "Plugin\/Sitemobile.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 8343,
+          "sha1": "9b6130a8366b69bb5dedcea2fce3c4700772efe0"
+        },
+        {
+          "path": "Plugin\/Menus.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 7210,
+          "sha1": "1e317743e552c63832989458ca8349d9f2a1a0d7"
+        },
+        {
+          "path": "Api",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Api\/Core.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 5216,
+          "sha1": "128c2313ba413bc8d94bf4ccb0b764465f77872e"
+        },
+        {
+          "path": "settings",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "settings\/my-upgrade-4.2.0-4.2.1.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 319,
+          "sha1": "ea437f379f3bdf97824488ed748e2be53881d7c8"
+        },
+        {
+          "path": "settings\/my-upgrade-4.2.7-4.2.9.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 476,
+          "sha1": "0885f0a4fb38638830820f78719beed0a735aa75"
+        },
+        {
+          "path": "settings\/my-upgrade-4.1.5p2-4.1.5p5.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3028,
+          "sha1": "3f23b64dc1ddebc10573cb177e01619b6e329b73"
+        },
+        {
+          "path": "settings\/install.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 52302,
+          "sha1": "a5130809f031dde1b2e64cf9a2a122b94d9f43a4"
+        },
+        {
+          "path": "settings\/my-upgrade-4.2.3-4.2.6.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2454,
+          "sha1": "247eabe1ea4bad017f843041957ca2d6bdd7b2d2"
+        },
+        {
+          "path": "settings\/my.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4933,
+          "sha1": "b01b64678ee7aa06db022b950017476f4a7ef689"
+        },
+        {
+          "path": "settings\/my-upgrade-4.1.5-4.1.5p1.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 122,
+          "sha1": "7f5f3be5fb63356b9057cb0f16f852c24d874f2a"
+        },
+        {
+          "path": "settings\/content_user.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 984,
+          "sha1": "a45d786554d4963302e64c85b81da7621eb10050"
+        },
+        {
+          "path": "settings\/sitemobile",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "settings\/sitemobile\/my.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2267,
+          "sha1": "c29f7fe4ba3633c0add2799b721d0f88025cc19c"
+        },
+        {
+          "path": "settings\/sitemobile\/content.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2620,
+          "sha1": "086b0a5a9f4f4a92a754dc7be9ec33dad92d9707"
+        },
+        {
+          "path": "settings\/content.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 18189,
+          "sha1": "e0a6eacecd8ed5b01173191cea212aec5fac0a42"
+        },
+        {
+          "path": "settings\/my-upgrade-4.1.7p2-4.1.7p3.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 230,
+          "sha1": "77631a8a448044ab493f2301a30a215016a66411"
+        },
+        {
+          "path": "settings\/my-upgrade-4.1.7-4.1.7p1.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "settings\/my-upgrade-4.1.8p3-4.2.0.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 721,
+          "sha1": "b8d5eeb4bef369e2e1c9deb348040f121091d113"
+        },
+        {
+          "path": "settings\/manifest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 5039,
+          "sha1": "57106c14a4970315470ff13ef021a7ca4dba5a72"
+        },
+        {
+          "path": "views",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/offerWidget.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 9912,
+          "sha1": "11e16f205bc813dab28d1adefcd9c1e9ef5cf2b7"
+        },
+        {
+          "path": "views\/scripts\/index",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/index\/resendoffer.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1683,
+          "sha1": "a7d2910a2ad53eea9ef2b261d24140addaf79d77"
+        },
+        {
+          "path": "views\/scripts\/index\/sticky.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1794,
+          "sha1": "50c273e0ef1b562221aaa5e4af66c29e0fb2de47"
+        },
+        {
+          "path": "views\/scripts\/index\/offerlist.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4553,
+          "sha1": "4b3197f42132de8cd721fa28275c5abc100f1e53"
+        },
+        {
+          "path": "views\/scripts\/index\/getoffer.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1661,
+          "sha1": "f909ca9ab29982203af927ea8fab06a4f1c3a3eb"
+        },
+        {
+          "path": "views\/scripts\/index\/delete.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2443,
+          "sha1": "9bbeb59df68a85092f68f18cbb120ff633c89efe"
+        },
+        {
+          "path": "views\/scripts\/index\/sendoffer.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1232,
+          "sha1": "b3bda0c032345414bfa09fb39cad8e8629efe8e3"
+        },
+        {
+          "path": "views\/scripts\/index\/print.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2727,
+          "sha1": "44862f3225e2798c5e91a1ce7597c018b0882fd3"
+        },
+        {
+          "path": "views\/scripts\/index\/add-offer-of-day.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2683,
+          "sha1": "81d72104e7156036a13b1e5dc5c4ec732c8de5da"
+        },
+        {
+          "path": "views\/scripts\/index\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 10345,
+          "sha1": "1387fee0d01dddb8654d110c8c10ee981316a745"
+        },
+        {
+          "path": "views\/scripts\/index\/edit.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2379,
+          "sha1": "d3071a85bf5c5d7ab93c5c119fd4e97d62cb3528"
+        },
+        {
+          "path": "views\/scripts\/index\/preview.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4318,
+          "sha1": "d9f6243104f65762300cec8b9d9354bc2b6d8af5"
+        },
+        {
+          "path": "views\/scripts\/index\/upload.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 346,
+          "sha1": "ad1590b7d83638c0bdeaba9e21b81a32fcc7005b"
+        },
+        {
+          "path": "views\/scripts\/index\/create.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6335,
+          "sha1": "a9ed261a81ba93fe13970fcb488283d68c82e5e0"
+        },
+        {
+          "path": "views\/scripts\/index\/hot-offers-carousel.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 18403,
+          "sha1": "d583f998138a0314b27cce8ff676047a75ab042d"
+        },
+        {
+          "path": "views\/scripts\/_formButtonCancel.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 714,
+          "sha1": "8e71ea0fedd4d4499959c94c1918ab29f2ceb38d"
+        },
+        {
+          "path": "views\/scripts\/pagination",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/pagination\/pagination.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1451,
+          "sha1": "423ee32cb564e861f61f156b9a2c94d800a9e24e"
+        },
+        {
+          "path": "views\/scripts\/admin-settings",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/readme.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1209,
+          "sha1": "368e1779844835ba6ceac4fef5c564ce6ee659d8"
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/delete.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1120,
+          "sha1": "f11d552d8e897487bc29f8e394c450a1e99b0a75"
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/add-offer-of-day.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4316,
+          "sha1": "2c39f52771525c9c43a848570296eab7058bcd00"
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/form.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 530,
+          "sha1": "3b71a951b2efcb058473fcbe4b99692b814aed5c"
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/faq.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 810,
+          "sha1": "3837061c64d7380678633ba16d9dbcc75339212a"
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1883,
+          "sha1": "8d7277f330f449b98baf253fdafe65fefdea229b"
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/edit-tab.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 452,
+          "sha1": "ef244ccaaceb3459dc8bb850a321f1808ec2eea3"
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/faq_help.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6920,
+          "sha1": "81d72476951269123ee90646f861186b2cc16274"
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/widget.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 5169,
+          "sha1": "00ca2e2e0b113b562592e3d6f51efe7684ad9f58"
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/manage-day-items.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 7679,
+          "sha1": "f6ab81ea8d4d04523e396e7ba20cf9481f859d30"
+        },
+        {
+          "path": "views\/scripts\/admin-manage",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/admin-manage\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 10644,
+          "sha1": "36474b72be476e1adfdef1a9a066cb64aa6faea6"
+        },
+        {
+          "path": "views\/scripts\/_set-mail.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4304,
+          "sha1": "54913dba6a02db3c63ba9697de2b4557fefce147"
+        },
+        {
+          "path": "views\/scripts\/admin-fields",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/admin-fields\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1698,
+          "sha1": "dbdf33e357286d9bfb7db346f389e0117b90cf3a"
+        },
+        {
+          "path": "views\/scripts\/admin",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/admin\/delete.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1070,
+          "sha1": "0050cdb448c4c7f34439ae58c1bdc270e9cf60fb"
+        },
+        {
+          "path": "views\/scripts\/admin\/detail.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1393,
+          "sha1": "dea8e306f5f92e0f622601abbeec4f51540d1dfb"
+        },
+        {
+          "path": "views\/sitemobile",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/sitemobile\/scripts",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/sitemobile\/scripts\/index",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/sitemobile\/scripts\/index\/resendoffer.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1585,
+          "sha1": "56c9e0164de6ac74c30f2e3f3c4b8ca21ea76008"
+        },
+        {
+          "path": "views\/sitemobile\/scripts\/index\/sticky.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1919,
+          "sha1": "ed502bd396cda6c294acd30b594fda6b781adce6"
+        },
+        {
+          "path": "views\/sitemobile\/scripts\/index\/offerlist.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4553,
+          "sha1": "4b3197f42132de8cd721fa28275c5abc100f1e53"
+        },
+        {
+          "path": "views\/sitemobile\/scripts\/index\/getoffer.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1446,
+          "sha1": "6f01465eaf9ef5ee67184d88ac10ee9414e98e4c"
+        },
+        {
+          "path": "views\/sitemobile\/scripts\/index\/delete.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2277,
+          "sha1": "66d223d2963f2067bfa4bc82c8728603fafb6aeb"
+        },
+        {
+          "path": "views\/sitemobile\/scripts\/index\/sendoffer.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1155,
+          "sha1": "deda2861e1bd7a402b9b9bb57a7d176616b10dfd"
+        },
+        {
+          "path": "views\/sitemobile\/scripts\/index\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 10200,
+          "sha1": "32de385c919ad4deec3f3f2298716ce9853d38d4"
+        },
+        {
+          "path": "views\/sitemobile\/scripts\/index\/edit.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1775,
+          "sha1": "60178b40aa485e0394b27cd9de1c7c08701421d8"
+        },
+        {
+          "path": "views\/sitemobile\/scripts\/index\/preview.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4206,
+          "sha1": "f7d071fd67176e3b82644b879830c70c908db6d3"
+        },
+        {
+          "path": "views\/sitemobile\/scripts\/index\/upload.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 346,
+          "sha1": "ad1590b7d83638c0bdeaba9e21b81a32fcc7005b"
+        },
+        {
+          "path": "views\/sitemobile\/scripts\/index\/create.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1886,
+          "sha1": "6ec9eff8af8f2fe8e262a23616c33b4bfe8a2794"
+        },
+        {
+          "path": "Form",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Form\/Search.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 13505,
+          "sha1": "807199fbe91db7f7416870e17fd72f3a4556bf01"
+        },
+        {
+          "path": "Form\/Admin",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Form\/Admin\/Manage",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Form\/Admin\/Manage\/Filter.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 847,
+          "sha1": "2458c17555b599e1151efc01c4c1dad296585fae"
+        },
+        {
+          "path": "Form\/Admin\/Global.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6475,
+          "sha1": "1a5e178270d1c8a5b02ea0ef4a1177beb73b8517"
+        },
+        {
+          "path": "Form\/Admin\/EditTab.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2182,
+          "sha1": "e9a79859b39a848cbeb5c901a8be64614ca4b2af"
+        },
+        {
+          "path": "Form\/Admin\/ItemOfDayday.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2522,
+          "sha1": "6cde29f012a13bec43795542bdd5167ce6db46f4"
+        },
+        {
+          "path": "Form\/ItemOfDayday.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2246,
+          "sha1": "73afced5e599859eeaa9ee754cdbb578b7ef86ac"
+        },
+        {
+          "path": "Form\/Edit.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 7092,
+          "sha1": "2bf044eb3aacc980165572a039c5a125e8244e9c"
+        },
+        {
+          "path": "Form\/Create.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6651,
+          "sha1": "a3e53ffa52e387f70d420001e1c9bed2a93896f4"
+        },
+        {
+          "path": "Form\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "Form\/SitemobileCreate.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 5569,
+          "sha1": "83f29968e1fa87073a9e3fc9893a9e96c322b188"
+        },
+        {
+          "path": "Form\/Custom",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Form\/Custom\/Search.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2342,
+          "sha1": "0870ee07e17041bf7c1ca2853a398544b5f06e61"
+        },
+        {
+          "path": "Form\/Custom\/Fields.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1122,
+          "sha1": "64bc237580d380374230ce7f66780472841e30bb"
+        },
+        {
+          "path": "widgets",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/offers-sitepageoffers",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/offers-sitepageoffers\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 478,
+          "sha1": "bf156c695f1c4622d6777e644795b307ab71254c"
+        },
+        {
+          "path": "widgets\/offers-sitepageoffers\/Controller.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1213,
+          "sha1": "7fd8c208571b9eec8f2430bbeed7708f50885f65"
+        },
+        {
+          "path": "widgets\/offer-content",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/offer-content\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 14670,
+          "sha1": "380e53a5146c313f25c0340b661c917517a2bd38"
+        },
+        {
+          "path": "widgets\/offer-content\/sitemobile",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/offer-content\/sitemobile\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 7797,
+          "sha1": "12e990902a09aed65529641b5beb3a1758ae460a"
+        },
+        {
+          "path": "widgets\/offer-content\/Controller.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 7033,
+          "sha1": "00bfad43c60505c27fd30a58b511516d166a5b16"
+        },
+        {
+          "path": "widgets\/sitepage-dateoffer",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/sitepage-dateoffer\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 13327,
+          "sha1": "8c5e7fb2a19e04527cab812bc1a4d6ee302acbbf"
+        },
+        {
+          "path": "widgets\/sitepage-dateoffer\/Controller.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2430,
+          "sha1": "ac9915e20204c4e79ee4f058b860acb2fdc8fc92"
+        },
+        {
+          "path": "widgets\/search-sitepageoffer",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/search-sitepageoffer\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 10698,
+          "sha1": "da055486e853868ac75f9c776250b08482e1c08a"
+        },
+        {
+          "path": "widgets\/search-sitepageoffer\/Controller.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 7527,
+          "sha1": "b1b16d4800ba3eddbf2daadbaa2a939d8fe51cc2"
+        },
+        {
+          "path": "widgets\/hot-offers-slideshow",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/hot-offers-slideshow\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 13227,
+          "sha1": "ddbc0ed1812802a98feb7529a4773df7ae61f173"
+        },
+        {
+          "path": "widgets\/hot-offers-slideshow\/Controller.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1228,
+          "sha1": "7c1942f97437b13ecc28dc143c38433b09ba2db3"
+        },
+        {
+          "path": "widgets\/offer-of-the-day",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/offer-of-the-day\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6093,
+          "sha1": "e26dbdf9bcabfceb2224b41dfe4927afba32c453"
+        },
+        {
+          "path": "widgets\/offer-of-the-day\/Controller.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 784,
+          "sha1": "4077e28ed88bbf8134803604b88ffbc45c8c3cf2"
+        },
+        {
+          "path": "widgets\/hot-offers-carousel",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/hot-offers-carousel\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 14361,
+          "sha1": "1dca328f461a8dd23c7016372b38be45c0953e2a"
+        },
+        {
+          "path": "widgets\/hot-offers-carousel\/Controller.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1808,
+          "sha1": "d0a1807568e319deab55380655942b531a870d87"
+        },
+        {
+          "path": "widgets\/sitepage-offer",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/sitepage-offer\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 9385,
+          "sha1": "26d112e77f978d737c58bec4607bfcd62605b6ae"
+        },
+        {
+          "path": "widgets\/sitepage-offer\/sitemobile",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/sitepage-offer\/sitemobile\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 7189,
+          "sha1": "a1f2d553895019249532aec3d28924e097fc1f7c"
+        },
+        {
+          "path": "widgets\/sitepage-offer\/Controller.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6837,
+          "sha1": "033810f8e57c49e4218fff91d9188449e8635189"
+        },
+        {
+          "path": "widgets\/sitepage-latestoffer",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/sitepage-latestoffer\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 629,
+          "sha1": "275cc1fd15ce57970b4f50a7be5cb2c757c6e6c2"
+        },
+        {
+          "path": "widgets\/sitepage-latestoffer\/Controller.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1399,
+          "sha1": "ba188138f47376a22257dc1e4cd872fdb129452e"
+        },
+        {
+          "path": "widgets\/sitemobile-profile-sitepageoffers",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/sitemobile-profile-sitepageoffers\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3180,
+          "sha1": "d732737e23fb6d4ca7833b52283a0d0298f88608"
+        },
+        {
+          "path": "widgets\/sitemobile-profile-sitepageoffers\/Controller.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2859,
+          "sha1": "661af86307126902a648ee92b8cca8d89af23aef"
+        },
+        {
+          "path": "widgets\/profile-sitepageoffers",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/profile-sitepageoffers\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 18227,
+          "sha1": "c9fd32914c3c778a176be57a16f96acd27e97a76"
+        },
+        {
+          "path": "widgets\/profile-sitepageoffers\/Controller.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 5800,
+          "sha1": "93e2a91d4eda5d38cdcff95726c63fa042ba2424"
+        },
+        {
+          "path": "widgets\/sitepageofferlist-link",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/sitepageofferlist-link\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 714,
+          "sha1": "0a8c8ff0a76fd6756515a00ccff65e17d4b238df"
+        },
+        {
+          "path": "widgets\/sitepageofferlist-link\/Controller.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 480,
+          "sha1": "5d82a3cac09e816888827561a634ee7bc1918fb0"
+        },
+        {
+          "path": "widgets\/topcreators-sitepageoffer",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/topcreators-sitepageoffer\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2208,
+          "sha1": "e5410571b526c563f7291a3db08b142ff5bf4a40"
+        },
+        {
+          "path": "widgets\/topcreators-sitepageoffer\/Controller.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 859,
+          "sha1": "496a6724573470e20b738a1ac1e290edb272077e"
+        },
+        {
+          "path": "widgets\/list-offers-tabs-view",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/list-offers-tabs-view\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 13820,
+          "sha1": "3de1e69a1ab58ef982c0893b9e20b2000a146703"
+        },
+        {
+          "path": "widgets\/list-offers-tabs-view\/Controller.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4823,
+          "sha1": "a0b50f089568806674ef316347f6386f05334dcd"
+        },
+        {
+          "path": "widgets\/sitepage-hotoffer",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/sitepage-hotoffer\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 477,
+          "sha1": "e7bf6d700ee81e8a54f7bcb2d2b5544cc5f93de2"
+        },
+        {
+          "path": "widgets\/sitepage-hotoffer\/Controller.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1293,
+          "sha1": "92a2826c292cabd6ca6219a0b9e843271f4535b8"
+        },
+        {
+          "path": "widgets\/sitepage-sponsoredoffer",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "widgets\/sitepage-sponsoredoffer\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6842,
+          "sha1": "281f87a58c3db4172dba42541d77de02febb67cf"
+        },
+        {
+          "path": "widgets\/sitepage-sponsoredoffer\/Controller.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1148,
+          "sha1": "849e3de72243cb513592b555bae4c89605ea638f"
+        },
+        {
+          "path": "Model",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Model\/Offer.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 15632,
+          "sha1": "1ebc84989172ef757f70d4e2bb9de0e4cd5057f7"
+        },
+        {
+          "path": "Model\/Photo.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 961,
+          "sha1": "3e94304a1e006600e21194a4cab8a95d953504f7"
+        },
+        {
+          "path": "Model\/Claim.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 512,
+          "sha1": "94904cce7637638649817e4d7a989ccc21623edd"
+        },
+        {
+          "path": "Model\/DbTable",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Model\/DbTable\/Photos.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 463,
+          "sha1": "f8337d41b3e1f69a22249f54d85fd32d69dfd6c4"
+        },
+        {
+          "path": "Model\/DbTable\/Offers.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 24681,
+          "sha1": "0b33be74abc73f291e971ce19ec31854f208dfc5"
+        },
+        {
+          "path": "Model\/DbTable\/Claims.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1156,
+          "sha1": "d7195a2dd17803b7c8f4f706862265e20ce646a4"
+        },
+        {
+          "path": "Model\/DbTable\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "Model\/DbTable\/Albums.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 463,
+          "sha1": "649ee16b62f47be2d85b42c530f66b3cf69bdba7"
+        },
+        {
+          "path": "Model\/Album.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1184,
+          "sha1": "db8287db8471f57d51131f576ce969ea5c9eac68"
+        },
+        {
+          "path": "controllers",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "controllers\/AdminManageController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3584,
+          "sha1": "bbcc45558eeea5f6cc2ddfdd03d8febe820ed3ef"
+        },
+        {
+          "path": "controllers\/license",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "controllers\/license\/README.txt",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 456,
+          "sha1": "0ae94f034c0d2d2010470a40e64e3bd5eeb5e0bd"
+        },
+        {
+          "path": "controllers\/license\/license1.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 34789,
+          "sha1": "68faf93a2b0f3e3c6945104d1d154ebcc54a8b1a"
+        },
+        {
+          "path": "controllers\/license\/license2.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6193,
+          "sha1": "f98365741052fcf1e81c3593d4b8496922d152b6"
+        },
+        {
+          "path": "controllers\/license\/license.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4258,
+          "sha1": "386b905a1bd911873aff770675d3b0433bbfbe2a"
+        },
+        {
+          "path": "controllers\/license\/license.html",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 7307,
+          "sha1": "8a6e17ed339f27d1bd4f65082bb2ae0719f0830d"
+        },
+        {
+          "path": "controllers\/license\/widgetSettings.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 20441,
+          "sha1": "27c30f80ed01d93ccc87d65a172df8dcc27bb135"
+        },
+        {
+          "path": "controllers\/license\/mobileLayoutCreation.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2608,
+          "sha1": "a1733347dd5474bbc2d6640f966e599f5a09329e"
+        },
+        {
+          "path": "controllers\/AdminFieldsController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2393,
+          "sha1": "e42309a1ada2f035bc3d6133912379263e92f5c9"
+        },
+        {
+          "path": "controllers\/AdminSettingsController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 11150,
+          "sha1": "943b983ed4a233fdedfed78e4c92fff4c814b14b"
+        },
+        {
+          "path": "controllers\/IndexController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 47935,
+          "sha1": "1b560194c664e35b5f2e26a6d8f2e47d27586263"
+        },
+        {
+          "path": "controllers\/AdminController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2102,
+          "sha1": "fd6cfa9c9ea8ff39f9856a269e0a1346a5f750b0"
+        },
+        {
+          "path": "View",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "View\/Helper",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "View\/Helper\/Pageoffermail.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 586,
+          "sha1": "cc42214d81c56ad4d9b433e7f9eb9e8c27ff7869"
+        },
+        {
+          "path": "externals",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/.htaccess",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 147,
+          "sha1": "9f1638a8edbe1c5d28789e017fb35b2f2465f01e"
+        },
+        {
+          "path": "externals\/scripts",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/scripts\/ajaxupload.js",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2748,
+          "sha1": "8b0b882a009c4bc76eed11a99f24ceb0f8dbffc5"
+        },
+        {
+          "path": "externals\/scripts\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "externals\/styles",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/styles\/style_sitepageoffer.css",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3003,
+          "sha1": "5c458de5db0fb41647bbb42183011d8aa1c60d13"
+        },
+        {
+          "path": "externals\/styles\/main.css",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1396,
+          "sha1": "986af47e2936f503660e223019f20332b7a56559"
+        },
+        {
+          "path": "externals\/images",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/images\/nophoto_offer_thumb_profile.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 9622,
+          "sha1": "fa14fe392b992632cffb5c2928c06e250459fec1"
+        },
+        {
+          "path": "externals\/images\/invite.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 772,
+          "sha1": "81b1777a7ff493dac44cd63e103f683ab9e2d078"
+        },
+        {
+          "path": "externals\/images\/offer_add.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 819,
+          "sha1": "7e2b00b2e2a1c1810b0bdce3138e4ede9719ffa8"
+        },
+        {
+          "path": "externals\/images\/sitepageoffer_approved0.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1018,
+          "sha1": "8f57c40b6a771c8695d412ca34beac2d46a7d22d"
+        },
+        {
+          "path": "externals\/images\/nophoto_offer_thumb_icon.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3125,
+          "sha1": "6099a83924ffd1cad41942bad2695370533456a4"
+        },
+        {
+          "path": "externals\/images\/offer_edit.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 779,
+          "sha1": "07fbab840a8510f669535063fa75e3846775cb24"
+        },
+        {
+          "path": "externals\/images\/featured.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 499,
+          "sha1": "bf7ffa625cb2a1a990d792bd3fb42bd6d1e85cf6"
+        },
+        {
+          "path": "externals\/images\/sitepageoffer_approved1.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1012,
+          "sha1": "5c19528232d7dca4d2eb8eb55064f6d4bdcc3e69"
+        },
+        {
+          "path": "externals\/images\/offer.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 580,
+          "sha1": "6fdded87e2c5df5550391c43097326d11881092d"
+        },
+        {
+          "path": "externals\/images\/nophoto_offer_thumb_normal.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 7550,
+          "sha1": "382ceca534f6fff878f556e8eec1e9ef60da77c2"
+        },
+        {
+          "path": "externals\/images\/mail.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2087,
+          "sha1": "ac9a042902c2f6ff24f879c54bec0c49aaedfb57"
+        },
+        {
+          "path": "externals\/images\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "externals\/images\/offer_thumb.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3125,
+          "sha1": "6099a83924ffd1cad41942bad2695370533456a4"
+        },
+        {
+          "path": "externals\/images\/loader.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 723,
+          "sha1": "a1fc210946a90dc13ee4f74c3c8f2cb7fca9bd7d"
+        },
+        {
+          "path": "externals\/images\/offer_delete.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 775,
+          "sha1": "51b4f7fdd64e15cd1486008f3ad9bf590893e805"
+        },
+        {
+          "path": "externals\/images\/unfeatured.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 567,
+          "sha1": "ad234dcdd0a9e13200acb8681e1cec70d6a8a933"
+        }
+      ]
+    },
+    "application\/languages\/en\/sitepageoffer.csv": {
+      "type": "file",
+      "path": "application\/languages\/en\/sitepageoffer.csv",
+      "structure": {
+        "path": "sitepageoffer.csv",
+        "dir": false,
+        "file": true,
+        "perms": "0777",
+        "size": 12281,
+        "sha1": "e193ef665b70a7a65e4682d21bba60818aed06d4"
+      }
+    }
+  }
+}

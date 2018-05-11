@@ -1,0 +1,229 @@
+{
+  "type": "theme",
+  "name": "clear",
+  "version": "4.8.9",
+  "revision": null,
+  "path": "application\/themes\/clear",
+  "repository": null,
+  "date": "Tue, 15 Sep 2015 13:18:52 +0000",
+  "title": "Clear Theme",
+  "description": null,
+  "thumb": "theme.jpg",
+  "developer": null,
+  "authors": [
+    "<a href=\"http:\/\/www.socialengineaddons.com\" style=\"text-decoration:underline;\" target=\"_blank\">SocialEngineAddOns<\/a>"
+  ],
+  "changeLog": null,
+  "meta": {
+    "date": "Tue, 15 Sep 2015 13:18:52 +0000",
+    "title": "Clear Theme",
+    "description": null,
+    "developer": null,
+    "authors": [
+      "<a href=\"http:\/\/www.socialengineaddons.com\" style=\"text-decoration:underline;\" target=\"_blank\">SocialEngineAddOns<\/a>"
+    ],
+    "changeLog": null
+  },
+  "actions": [
+    "install",
+    "upgrade",
+    "refresh",
+    "remove"
+  ],
+  "callback": {
+    "path": null,
+    "class": "Engine_Package_Installer_Theme",
+    "priority": 100
+  },
+  "dependencies": null,
+  "tests": [
+    
+  ],
+  "permissions": [
+    
+  ],
+  "structure": {
+    "application\/themes\/clear": {
+      "type": "directory",
+      "path": "application\/themes\/clear",
+      "structure": [
+        {
+          "path": "media-queries.css",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 15321,
+          "sha1": "c643f0e3bd233b573215b100e2ac7e8875b10471"
+        },
+        {
+          "path": "manifest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1094,
+          "sha1": "45f0277c063fb2608e9f0132ea569b1b5fba1aed"
+        },
+        {
+          "path": "images",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "images\/topbar_bg.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 17815,
+          "sha1": "917392d2baeae536fb3b71f715eb9e67b08255d4"
+        },
+        {
+          "path": "images\/bullet_hover.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 232,
+          "sha1": "20edf2f73f92f3d0575645d8b2e2d80cc25ff5ad"
+        },
+        {
+          "path": "images\/topbar_menu_bg.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 170,
+          "sha1": "565dda63d0039d02852e14ef58766797f25ee2f7"
+        },
+        {
+          "path": "images\/icon_explore.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1278,
+          "sha1": "88fb14a4f01e777056e19e1904e644f32b0b1a2a"
+        },
+        {
+          "path": "images\/bodybg.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2118,
+          "sha1": "072df425e943cc4cd5e4fbe5e63758486f1d667e"
+        },
+        {
+          "path": "images\/bullet_active.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 234,
+          "sha1": "07c391fc4acffd04842d52ad8ab91a8446d727e7"
+        },
+        {
+          "path": "images\/buttonbg.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 110,
+          "sha1": "3b9fdebc28732665c1837230250b8027e17b470d"
+        },
+        {
+          "path": "images\/bullet.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 229,
+          "sha1": "84d0fad8b57c0bb22f4a854e46782504ee3f898d"
+        },
+        {
+          "path": "theme.jpg",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 16656,
+          "sha1": "6963a900b3125d556798e5aad97b8e25e3f890aa"
+        },
+        {
+          "path": "fonts",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "fonts\/opensans-regular.ttf",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 114328,
+          "sha1": "0d6a7f1ba835c722da24361f10133c7dbe300c94"
+        },
+        {
+          "path": "fonts\/opensans-regular.svg",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1068820,
+          "sha1": "e6729c0575e7dd1a3592cf1ba1551bf30d155d69"
+        },
+        {
+          "path": "fonts\/opensans-regular.eot",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 114434,
+          "sha1": "1f76762fb54d9d3b4631c2261f4209f86f0cc038"
+        },
+        {
+          "path": "fonts\/opensans-regular.woff",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 67332,
+          "sha1": "2d9937de4731499d9110d49a5de9702e2514dc78"
+        },
+        {
+          "path": "fonts\/opensans-regular.woff2",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 50832,
+          "sha1": "c41006674cf284c2b775fb61e2b53f325c449935"
+        },
+        {
+          "path": "constants.css",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 7930,
+          "sha1": "cb83d27bbbcd26a447317fbf23bdcbb16065d86c"
+        },
+        {
+          "path": "theme.css",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 45023,
+          "sha1": "10609575f05bd73719a9d486737fa1548bf7f89c"
+        },
+        {
+          "path": "mobile.css",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 19185,
+          "sha1": "67fe70f0beba9a58deb6ce42ab6d849a4066efee"
+        },
+        {
+          "path": "fonts.css",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 707,
+          "sha1": "eec1eff63fd23bdd94a98955eb740189021984de"
+        }
+      ]
+    }
+  }
+}

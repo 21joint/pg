@@ -1,0 +1,3410 @@
+{
+  "type": "module",
+  "name": "sitebackup",
+  "version": "4.9.4",
+  "revision": null,
+  "path": "application\/modules\/Sitebackup",
+  "repository": null,
+  "sku": null,
+  "date": "Fri, 03 Nov 2017 05:02:42 +0000",
+  "title": "Website Backup and Restore",
+  "description": "Website Backup and Restore",
+  "thumb": null,
+  "developer": null,
+  "authors": [
+    "<a href=\"http:\/\/www.socialengineaddons.com\" style=\"text-decoration:underline;\" target=\"_blank\">SocialEngineAddOns<\/a>"
+  ],
+  "meta": {
+    "date": "Fri, 03 Nov 2017 05:02:42 +0000",
+    "title": "Website Backup and Restore",
+    "description": "Website Backup and Restore",
+    "developer": null,
+    "authors": [
+      "<a href=\"http:\/\/www.socialengineaddons.com\" style=\"text-decoration:underline;\" target=\"_blank\">SocialEngineAddOns<\/a>"
+    ],
+    "changeLog": null
+  },
+  "actions": [
+    "install",
+    "upgrade",
+    "refresh",
+    "enable",
+    "disable"
+  ],
+  "callback": {
+    "path": "application\/modules\/Sitebackup\/settings\/install.php",
+    "class": "Sitebackup_Installer",
+    "priority": 100
+  },
+  "dependencies": null,
+  "tests": [
+    
+  ],
+  "permissions": [
+    
+  ],
+  "structure": {
+    "application\/modules\/Sitebackup": {
+      "type": "directory",
+      "path": "application\/modules\/Sitebackup",
+      "structure": [
+        {
+          "path": "mysqli.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2332,
+          "sha1": "17c5d70cabc6fe3b5dce99afd98de3da489fc757"
+        },
+        {
+          "path": "Service",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Email.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3592,
+          "sha1": "efc62d38840e707c3c348abeb81ef963e1d46e6d"
+        },
+        {
+          "path": "Service\/Dropbox.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2344,
+          "sha1": "3f1698e7c0d9894c38151718704c6bd84e439a55"
+        },
+        {
+          "path": "Service\/Dropbox",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/promises",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/promises\/LICENSE",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1116,
+          "sha1": "901a718e9eb1fcdab6b4df7d4187f79f53acb591"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/promises\/src",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/promises\/src\/CancellationException.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 185,
+          "sha1": "6bdf8b6d5da0387fd3f365510cb82ec09b510d80"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/promises\/src\/TaskQueue.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1760,
+          "sha1": "d04b47acc785bf2b9472844d294f90f1e8ec8ce1"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/promises\/src\/RejectionException.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1113,
+          "sha1": "e54be7f9143bf1f261d783c97b69f908d9e6a0d0"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/promises\/src\/PromisorInterface.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 231,
+          "sha1": "6b8861c7208bd66913503b8db67ada728d9cc018"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/promises\/src\/Coroutine.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3632,
+          "sha1": "40829eaef915f2f504f690f41ed876fabce50c1a"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/promises\/src\/functions.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 11487,
+          "sha1": "c9bd046f1f129640ac04065a300c9e874f28dfb7"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/promises\/src\/functions_include.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 165,
+          "sha1": "565713d4514c16911fa77f85ae26d7a3c7c27c25"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/promises\/src\/PromiseInterface.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2673,
+          "sha1": "4c6e864bf712119d9ef92ea9c242f4f2139c0e63"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/promises\/src\/EachPromise.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6420,
+          "sha1": "3a7db033d19d1551ab26b8130baf95c64e7b94de"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/promises\/src\/RejectedPromise.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1958,
+          "sha1": "ef5269afac09cf2843cab7837cd8647938c65594"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/promises\/src\/AggregateException.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 348,
+          "sha1": "a7ee01c9b6859f66de10048be3086e4573f3d588"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/promises\/src\/Promise.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 7546,
+          "sha1": "a8370919ca011e8b2b87a705ebdfa11961f004a9"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/promises\/src\/FulfilledPromise.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1734,
+          "sha1": "a9fe09fec933dc9ad4373846c9c833c266540786"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/promises\/src\/TaskQueueInterface.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 432,
+          "sha1": "f0fe8c0cdf8b169e619e66474deebcb36b9c9fd0"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/promises\/CHANGELOG.md",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1130,
+          "sha1": "647a541832bdb47241ae0dcdce06ef76ba160c9f"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/promises\/Makefile",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 189,
+          "sha1": "0396ed33c5c7c3cac4d8fb6964b1d482ebc68c56"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/promises\/README.md",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 15300,
+          "sha1": "dca655c5ef06e357c4c2dc2a7d845619c1c35a21"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/promises\/composer.json",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 680,
+          "sha1": "235bb1d2858c5830a6ea716271e9e8b131b8ec3f"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/LICENSE",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1111,
+          "sha1": "00770edf29686e40da227e4006903026a685a098"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src\/AppendStream.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4852,
+          "sha1": "f6ea2038281ad2211ca9b31e8cc3898ccf855fa4"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src\/UriNormalizer.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 7813,
+          "sha1": "8c3aeebf50a2fcdcbc2e5a23922eef23b23939d8"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src\/LimitStream.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3763,
+          "sha1": "a24dcfadc6afd9a10ea8f7bede919770082e1526"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src\/InflateStream.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1657,
+          "sha1": "cd7351a35714682a1bfb7e4421dfb5ad76af2a0f"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src\/Response.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3657,
+          "sha1": "64711db8b22e5e629debebcffee52cfa73a08a0c"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src\/Request.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3001,
+          "sha1": "b41dd07065b18cea3c74160ff3f06d871e20c64d"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src\/UriResolver.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 7932,
+          "sha1": "0870f0a48364b7b292c12cabbcf334b6bd18d71c"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src\/Stream.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6027,
+          "sha1": "f9cc8cad5657725e9d97c5adc6327d16a713924b"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src\/FnStream.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3363,
+          "sha1": "65eafc437217bcbe1c7e980c9337bf976109b344"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src\/Uri.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 17777,
+          "sha1": "20ea354bfabb195db0dc08ec2461be747f4bf319"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src\/StreamDecoratorTrait.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2951,
+          "sha1": "6af60d737a7de8477b47f1c7a3a8735eea2af613"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src\/functions.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 22497,
+          "sha1": "1bd29ec92dc6be53ea6909434d6c40372896aa3a"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src\/MessageTrait.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4098,
+          "sha1": "8737a6c812389648f0c4a57be7b335c4e7bc0014"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src\/LazyOpenStream.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 830,
+          "sha1": "922b5f2815b5e9571e00a52f5ac592bd20b31a51"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src\/functions_include.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 154,
+          "sha1": "ff4d7031cd1bd0fbe461ea481402ff7da239fd73"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src\/PumpStream.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3648,
+          "sha1": "2689d51cfccb4309908a352763a457705581c537"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src\/NoSeekStream.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 403,
+          "sha1": "eb5f37b0b3ff6dc7d78dae40984ae929aab6b1e1"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src\/DroppingStream.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1008,
+          "sha1": "b6b0b0642b0fce80e68871570e22f6173b83d929"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src\/CachingStream.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3837,
+          "sha1": "a6964081fde773adc80f61a749b73bd8ce474543"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src\/StreamWrapper.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2446,
+          "sha1": "e4677743e4769392fa75009be4ebcb8ba100b047"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src\/UploadedFile.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6664,
+          "sha1": "1cfddb92a09b4b9d92acdfc058deecda72899695"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src\/BufferStream.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2762,
+          "sha1": "06fe110411d38828ad09ff8d6d0b4dbee1107e7a"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src\/MultipartStream.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4202,
+          "sha1": "f56633c1e10db7ba93c0c877b229cdeb5ad2a074"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/src\/ServerRequest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 8452,
+          "sha1": "cffe270504d106f1d2bb9f6eb7c9c799b50fba8a"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/CHANGELOG.md",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4448,
+          "sha1": "2bda59e8b375df9b613348207f5f7fdc25cc3f78"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/README.md",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 23269,
+          "sha1": "c1e5a8d07ce9fbffcc589d0d1f8afcdbbb29053a"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/psr7\/composer.json",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 879,
+          "sha1": "effe8c41b111dc3ee0d81ef074276bd86549e8af"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/LICENSE",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1116,
+          "sha1": "de22309c4dcb2c78455a809b74f944e575806cd4"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Handler",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Handler\/CurlMultiHandler.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4922,
+          "sha1": "00ed72a8418ba13d0bf511f7d3d2f7cf8350b117"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Handler\/EasyHandle.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2504,
+          "sha1": "cedca4a63ffd00a9739927718321fb82b72e2fc1"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Handler\/StreamHandler.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 15602,
+          "sha1": "22abfd2db2c2c0fb5f43af44b64973603909b427"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Handler\/CurlFactory.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 17466,
+          "sha1": "b03c4ded964a8279db9595925e0bf29328714eae"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Handler\/MockHandler.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 5125,
+          "sha1": "8eb89261afa387595ba0bdbf739095617ab9047b"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Handler\/Proxy.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1604,
+          "sha1": "880faa30c0457384614be0b69ab6154b89e183e8"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Handler\/CurlHandler.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1178,
+          "sha1": "55588a49c275f53f50f454d83b5c11ead3e0b5ed"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Handler\/CurlFactoryInterface.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 665,
+          "sha1": "d3e4f944e105f231e4869035bf7bc082c5134b35"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/ClientInterface.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2666,
+          "sha1": "9bcac2662ee6ae5c0f6919bc9b3e055036562096"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/MessageFormatter.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 5758,
+          "sha1": "1234bb4511c6622cce951e31a36286269899f8eb"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/RequestOptions.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 9599,
+          "sha1": "1c61cf5cc019acd26dc7797ab8feaef6b4ab4348"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Cookie",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Cookie\/CookieJarInterface.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2651,
+          "sha1": "195b3771b6cfeb71779607129a1bb744754e8ab9"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Cookie\/FileCookieJar.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2392,
+          "sha1": "4d5e3277cd14cc3bcbb75f2b5d65a60c38c1e3dd"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Cookie\/SetCookie.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 9265,
+          "sha1": "5bd66b598ff827e6226848d90e725ec104688a2b"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Cookie\/CookieJar.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 7971,
+          "sha1": "02aa0c646862d4bbb6417d847e526be8855cc20f"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Cookie\/SessionCookieJar.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1744,
+          "sha1": "69f9c046eb5979d57bd4a8df76479c79986897bb"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/TransferStats.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2809,
+          "sha1": "bb36294046e18f54d7bd60505305506b68457246"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/UriTemplate.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6863,
+          "sha1": "0c6d9d9bb6c65a42d2e82cdaf6bd0a98e99f96ca"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/RedirectMiddleware.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6809,
+          "sha1": "cb02e835d002262ba93e4f919f21a8e76b95b433"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/functions.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 9374,
+          "sha1": "5a85c60c2ff2c7dd4223f9936646055062c6afb8"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/PrepareBodyMiddleware.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2836,
+          "sha1": "a1b3ae345a43944e6d575509fa31479da13c5cb0"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Client.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 14166,
+          "sha1": "0f47023d0d793e7722ddb3ce833b540ec44fcfd6"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/functions_include.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 158,
+          "sha1": "cb21273d955bd55010861a9db7e44cb10ffb7e47"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/HandlerStack.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6894,
+          "sha1": "c33ceda8e38e0cabb41cfc134b2e08de8ec871db"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Middleware.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 8646,
+          "sha1": "0966dd23c3dcb7dd8353ba40768e1377f5e30df4"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Exception",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Exception\/ConnectException.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 657,
+          "sha1": "51bf050e08b1574215da502b4712afbed6688fe0"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Exception\/BadResponseException.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 720,
+          "sha1": "dc22ae61e6b7043b3da10804378deab7145c28cf"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Exception\/RequestException.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4992,
+          "sha1": "7132c00da63d5b72904d4b37a712bb7f76f624c0"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Exception\/GuzzleException.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 72,
+          "sha1": "90baf643de80cdc6af114fee3a92389e05037f6f"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Exception\/SeekException.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 554,
+          "sha1": "60ddb2928e48b0936469dd5266522ea813fe3b8a"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Exception\/ClientException.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 165,
+          "sha1": "362004fcfc3ca4eb11dc208af46448b923fd8d14"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Exception\/ServerException.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 165,
+          "sha1": "b4f44b6e1c44e153833a2196219163d77e80aec6"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Exception\/TooManyRedirectsException.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 103,
+          "sha1": "681bc0c18583445a201fee12882e0a3e2a0d7184"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Exception\/TransferException.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 123,
+          "sha1": "5be0c905dc29ba83cb50df637080afb9259dec4f"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/Pool.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4251,
+          "sha1": "656467f168dc4fac6ad3c8e73d4ee551a28961f3"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/src\/RetryMiddleware.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2839,
+          "sha1": "1b5afc4951c24c30801f00e6fbb0f99be902bed2"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/CHANGELOG.md",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 74764,
+          "sha1": "48712ae63166b9b374429dd64dde9057fed3da59"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/README.md",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3351,
+          "sha1": "93e9fb97576a08280c029d951d7eea1b5f7dfc58"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/composer.json",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 976,
+          "sha1": "fe166c943302144bde69b297a322c154686a15e5"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/guzzlehttp\/guzzle\/UPGRADING.md",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 50768,
+          "sha1": "dd791d4e073ae996744dd41fa8c5a0640ede304e"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/psr",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/psr\/http-message",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/psr\/http-message\/LICENSE",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1085,
+          "sha1": "20fe7ef5c29aef1af06117ae876eaea9939da762"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/psr\/http-message\/src",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/psr\/http-message\/src\/StreamInterface.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4471,
+          "sha1": "53089192a01a90d2277263cdb9eb7dac323238dd"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/psr\/http-message\/src\/UriInterface.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 12028,
+          "sha1": "187d7d69f1bdbe78c6f1cab9008b93bd6c1e37bd"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/psr\/http-message\/src\/MessageInterface.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6583,
+          "sha1": "54c05c990e1ec6dc008c6bbd0659e51079e976bd"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/psr\/http-message\/src\/UploadedFileInterface.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4461,
+          "sha1": "f51a5cf75737ab4406d4f5113ced3e632e293c8d"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/psr\/http-message\/src\/ResponseInterface.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2500,
+          "sha1": "1f8646568f7755be891b446e839e624f28ada17c"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/psr\/http-message\/src\/ServerRequestInterface.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 9677,
+          "sha1": "51a99086bc617799ee08de7b6fe26737bdb354e4"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/psr\/http-message\/src\/RequestInterface.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4612,
+          "sha1": "da3d5ec7483acec5794d7944bd43197246bf3fc6"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/psr\/http-message\/CHANGELOG.md",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1075,
+          "sha1": "99a68cd6c4cfc30be02bcab108fa2a98cd48b1c1"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/psr\/http-message\/README.md",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 358,
+          "sha1": "79992a55fb36938c7866fc9927401d275b7ec94e"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/psr\/http-message\/composer.json",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 543,
+          "sha1": "42e1ed5d8a74a2de9d18769aa06d27c646d4c6c2"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco\/collect",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco\/collect\/readme.md",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1839,
+          "sha1": "27875fd28caae0111e6a8ff612276aeb9d7b14a0"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco\/collect\/.gitignore",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 8,
+          "sha1": "af1025678f36d2405a785c62bd98e8a0c4f4a94d"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco\/collect\/src",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco\/collect\/src\/Illuminate",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco\/collect\/src\/Illuminate\/Contracts",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco\/collect\/src\/Illuminate\/Contracts\/Support",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco\/collect\/src\/Illuminate\/Contracts\/Support\/Jsonable.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 226,
+          "sha1": "2f08c3c689fe68a20808734e8acfff87c755e60c"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco\/collect\/src\/Illuminate\/Contracts\/Support\/Arrayable.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 171,
+          "sha1": "aa6c0e6aace7d1cf06f1c9afa207566a438adeb2"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco\/collect\/src\/Illuminate\/Support",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco\/collect\/src\/Illuminate\/Support\/helpers.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2102,
+          "sha1": "2421357377cf8dc6275f3bcba83446ee39a0e956"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco\/collect\/src\/Illuminate\/Support\/Traits",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco\/collect\/src\/Illuminate\/Support\/Traits\/Macroable.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2339,
+          "sha1": "47978934afa300068fe88789f0b9facbdcaa318d"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco\/collect\/src\/Illuminate\/Support\/Collection.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 37560,
+          "sha1": "8a98dc00026b3cdc6f95ff10f91d7908b17d137b"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco\/collect\/src\/Illuminate\/Support\/HigherOrderCollectionProxy.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1299,
+          "sha1": "d01339101082b302219e75aa2a16d73720366395"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco\/collect\/src\/Illuminate\/Support\/Arr.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 13209,
+          "sha1": "c31410e9535337cff7f148356c801684e157fedb"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco\/collect\/phpunit.xml",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 607,
+          "sha1": "8f664e7ec0793022816ed7a6c4911baa8dfc4750"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco\/collect\/composer.lock",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 44944,
+          "sha1": "cc05446a64d72ac5d7976716bdaac0d70de5cc6c"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco\/collect\/collect-logo.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 18320,
+          "sha1": "bf3579d61166ba91d3c3a09c2f429223a7c9d6fb"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco\/collect\/tests",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco\/collect\/tests\/bootstrap.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 86,
+          "sha1": "89cacd7e4766d11a3579d27085fcbd30fbe6c653"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco\/collect\/tests\/Support",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco\/collect\/tests\/Support\/SupportCollectionTest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 72278,
+          "sha1": "72700ccd31c38ac9f8c0d9a1c2943dc809ad5802"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/tightenco\/collect\/composer.json",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 599,
+          "sha1": "245dd9ce2c746164fa128c0fba4e286ec13c43a7"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/LICENSE",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1078,
+          "sha1": "1c211e4fa21f5a661fa808382eec24b18dc299ca"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/.gitignore",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 51,
+          "sha1": "8b14e3b8b00f12a657fcc2c0e72b5e60e694c5c2"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/DropboxResponse.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3271,
+          "sha1": "48d131e8e067b16ace79a514751f0330ae1e4e24"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Security",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Security\/RandomStringGeneratorTrait.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 515,
+          "sha1": "32f03a7821dec970b54649807dee7751f7b633a3"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Security\/RandomStringGeneratorFactory.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2008,
+          "sha1": "7e3f5fe562165c96dc7a97ec90ed782c5386b09f"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Security\/McryptRandomStringGenerator.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1452,
+          "sha1": "637a21c9b279e385311dbcbd9d2dbb0259cedf7f"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Security\/RandomStringGeneratorInterface.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 390,
+          "sha1": "b7b2c17341008b779c86528bbceb955c8037232b"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Security\/OpenSslRandomStringGenerator.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1802,
+          "sha1": "ee953c114c6ff7efa3e545c2d0e918f0e68b5610"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/DropboxRequest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6769,
+          "sha1": "631607777a92182de9e3787261250dfab8ab7f70"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/DropboxResponseToFile.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 719,
+          "sha1": "f63d80c4ace775313f18cbd5ba15a52d40a0523a"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/DropboxFile.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6046,
+          "sha1": "ebe3e6093cfa792b37a824398a2ec9e7216b4aef"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/DropboxApp.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1260,
+          "sha1": "29f8ea6a86e56796c09358f321739a2b1cf7dca0"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Models",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Models\/MetadataCollection.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2703,
+          "sha1": "dce3c3718c16a6316737444fc6e000aeb05c779d"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Models\/FolderMetadata.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2154,
+          "sha1": "3b0c45970d32eee0e39df2dbb3938d7fb15e8445"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Models\/SearchResults.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 885,
+          "sha1": "820394d16a763cbecd8402ad80a5dcc9257fe0af"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Models\/SearchResult.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1294,
+          "sha1": "17b06c5705080f4953b2bfa85ef7e9796819bac9"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Models\/AccessToken.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1737,
+          "sha1": "601db28c40c1cfd3616309a03bfc91499ed8eb64"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Models\/BaseModel.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1347,
+          "sha1": "7df23048d9c94222ffd161f59c9104d4aac60e84"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Models\/Thumbnail.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 75,
+          "sha1": "ab2708e78d0f00771f12f7aff7dff9de833f13bb"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Models\/PhotoMetadata.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 88,
+          "sha1": "2a18b19c63d9f519eb7dd6f4b814e96328b37287"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Models\/MediaInfo.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1597,
+          "sha1": "7be455bc8526c66b857d3032fb4368d11dc02234"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Models\/CopyReference.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1493,
+          "sha1": "d9d5ab432bf9d8d13c6909f6404695415208cff2"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Models\/FileSharingInfo.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1394,
+          "sha1": "b00fc9dd9621073ec4ffa3247b1873d5debd51bb"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Models\/MediaMetadata.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1304,
+          "sha1": "968cd7d64c77533f9182462515bf8cf3f92e472b"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Models\/FolderSharingInfo.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1464,
+          "sha1": "0aeb742cabd070d405029ae58642abdc99bdaae3"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Models\/ModelFactory.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1049,
+          "sha1": "4dfbd275d9d121f2f9b11a5c14a93f51528c28e9"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Models\/ModelCollection.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 183,
+          "sha1": "e32cf229b06fd9bb62de744ef757698adaf0d24b"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Models\/TemporaryLink.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1015,
+          "sha1": "fcc63c5521b8d6f4e323997c95503071fffa5543"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Models\/VideoMetadata.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 550,
+          "sha1": "c0839e9386d07bc3984edf4bfe813386978d2838"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Models\/Account.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3895,
+          "sha1": "d7ec536287e6116bd8678456b3494f43df0572d2"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Models\/ModelInterface.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 297,
+          "sha1": "6c5529f43ee3502324831850604c226ed5279bf5"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Models\/DeletedMetadata.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1661,
+          "sha1": "4813383b6015910f9cc9fb3e75b4325aa4644fbd"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Models\/File.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 993,
+          "sha1": "15a15e34f41abf36ccf94090a57b926d206654a4"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Models\/AccountList.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 687,
+          "sha1": "f016699eefe44b1ae19a99528fdf8446738175e7"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Models\/FileMetadata.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4815,
+          "sha1": "2b6863c7c96ad6014f57d46b67eeaed6b24102f0"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/DropboxClient.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 5644,
+          "sha1": "3672e4cf45817f71c62b5343f0a8d2bc2af2fbca"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Dropbox.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 37902,
+          "sha1": "00a95f0648e22b9797532a89bd5bccac26d6288e"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Exceptions",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Exceptions\/DropboxClientException.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 147,
+          "sha1": "8fab3f49a821923036c84df25f5274a22947a92d"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Http",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Http\/Clients",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Http\/Clients\/DropboxHttpClientInterface.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 718,
+          "sha1": "309192783da54fd8e18345448ae35c305e8e4569"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Http\/Clients\/DropboxHttpClientFactory.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1019,
+          "sha1": "04c0a4c46e7730e2794a3b366c010e8abb2ecedf"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Http\/Clients\/DropboxGuzzleHttpClient.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3006,
+          "sha1": "96c48f17b31b227e16485e73cbf11c53cf20abb4"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Http\/RequestBodyStream.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 607,
+          "sha1": "cdef7e48ff2dcc2fe42c34a02a7d1fbbe057dba8"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Http\/RequestBodyJsonEncoded.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 635,
+          "sha1": "0f52bbbc09fa629772cfb480215bf3b1d94047a5"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Http\/RequestBodyInterface.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 245,
+          "sha1": "40a631bb9a9fa02bed571d891825e1f8bab5f690"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Http\/DropboxRawResponse.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1209,
+          "sha1": "1c9b5da608f4e50d86253e1e052b42d901270b9a"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Authentication",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Authentication\/OAuth2Client.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4591,
+          "sha1": "b3f606128d999838d1a7704827af32173eb08618"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Authentication\/DropboxAuthHelper.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 5895,
+          "sha1": "3243a5b71ccbeccef8fbb0e061adcf03fe03a52b"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Store",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Store\/PersistentDataStoreInterface.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 500,
+          "sha1": "3a6cd0c39f3003f1e25c3e15a6c6f0a20d3282ef"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Store\/PersistentDataStoreFactory.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 895,
+          "sha1": "5e54e8dc8625e3c20d096b0e0873b226d2b40242"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/src\/Dropbox\/Store\/SessionPersistentDataStore.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1152,
+          "sha1": "159198ce3c21d2b42f90fb82c0db1c0888e76956"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/CONTRIBUTING.md",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2969,
+          "sha1": "9ec7db065562f7ee3bf9e9ca45b598b5eb1811ad"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/.editorconfig",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 312,
+          "sha1": "0af2dfed13cb3c8659861025879a3b4838a94011"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/.styleci.yml",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 81,
+          "sha1": "302557b957e1c678a058e03ab8def0192a3b718c"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/phpunit.xml",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 985,
+          "sha1": "7418e4451b070cf86fb8f968746aeffd8e7a12d8"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/.scrutinizer.yml",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 559,
+          "sha1": "d6198a64aed610aacace945ea4f68d0d9a8a795f"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/.travis.yml",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 473,
+          "sha1": "998f92581be8575df1e873e0faf56a680530d331"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/README.md",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1554,
+          "sha1": "b4c9be59871f213c132a861a4ff0520b87884cd0"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/tests",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/tests\/DropboxTest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 152,
+          "sha1": "b046161dc9fa46799f725d5772331957f8de51af"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/kunalvarma05\/dropbox-php-sdk\/composer.json",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 515,
+          "sha1": "5f746a6508b03022b0f6ed9c68ff430ee9b4faf0"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/composer",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/composer\/LICENSE",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 20201,
+          "sha1": "c95a1a2a67c08eaa3bab65d69c959aa69d47bc8f"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/composer\/autoload_files.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 556,
+          "sha1": "1fed896d568612db841cfd049f8a999057579123"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/composer\/autoload_real.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1656,
+          "sha1": "a5185daa7f55da7ae8bfeda6994d8d3aef24c271"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/composer\/autoload_namespaces.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 148,
+          "sha1": "a9bc69c0faa3540022ff8acd3cb9a848f3b1d012"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/composer\/autoload_classmap.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 146,
+          "sha1": "06267ec14621ee280b80ccb4f23578501f155751"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/composer\/autoload_psr4.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 594,
+          "sha1": "8cf8a64b54047a645346dcba37921204b86c3a03"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/composer\/installed.json",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 8309,
+          "sha1": "b7750eb37b8cc7792b414713c2d0dc0fd9f6c86d"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/composer\/ClassLoader.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 11099,
+          "sha1": "8baa95f8344781cdeda1bf5479f6da0648e868b7"
+        },
+        {
+          "path": "Service\/Dropbox\/vendor\/autoload.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 182,
+          "sha1": "0b8cd306afd9b6eae8e01264b2c541f80a2ca7c6"
+        },
+        {
+          "path": "Service\/Dropbox\/composer.lock",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 9077,
+          "sha1": "7ae6721604547d0cac0427a3e994d9920b6569ed"
+        },
+        {
+          "path": "Service\/Dropbox\/composer.json",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 68,
+          "sha1": "bce622127f524fac2ab0c1c351544b85345095be"
+        },
+        {
+          "path": "Service\/Google",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Google\/Service",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Google\/Service\/Container.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 24421,
+          "sha1": "81e3815004ac45d152b0ac0b2614b1d586d64ccf"
+        },
+        {
+          "path": "Service\/Google\/Service\/SQLAdmin.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 95425,
+          "sha1": "4b1c8dac9dd3cffd2a11c962faa5f016b2486d3a"
+        },
+        {
+          "path": "Service\/Google\/Service\/Datastore.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 36905,
+          "sha1": "affbd244b609526a04ca1224da88fd37a2cb77ba"
+        },
+        {
+          "path": "Service\/Google\/Service\/Oauth2.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 10808,
+          "sha1": "0cd1b9e331aec753749142d2b63807e8a0858118"
+        },
+        {
+          "path": "Service\/Google\/Service\/Reports.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 28051,
+          "sha1": "de21ed78c200a70755561a97f16f346b78192aa7"
+        },
+        {
+          "path": "Service\/Google\/Service\/Admin.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4415,
+          "sha1": "ffaee15ff043bcc8f98606153a23673fc26dbde7"
+        },
+        {
+          "path": "Service\/Google\/Service\/Exception.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2735,
+          "sha1": "f628a47c403048c8ca782df877bd12538d9ce15b"
+        },
+        {
+          "path": "Service\/Google\/Service\/Tasks.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 24935,
+          "sha1": "2613981cb68ccbd590ddb2c66c154ae8153dc676"
+        },
+        {
+          "path": "Service\/Google\/Service\/Resource.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 8163,
+          "sha1": "46dccfa870ab47bf7464845c86660cc6bbc4e88a"
+        },
+        {
+          "path": "Service\/Google\/Service\/Dns.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 25032,
+          "sha1": "2520096efce3c5b0d930b9499dd48946e0457a7b"
+        },
+        {
+          "path": "Service\/Google\/Service\/Drive.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 153218,
+          "sha1": "148fa995271b5bb5f60ed382dee811a2e0708827"
+        },
+        {
+          "path": "Service\/Google\/Service\/Taskqueue.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 19464,
+          "sha1": "90330d928ca5dd3731b8dfd8a031f85883b0df16"
+        },
+        {
+          "path": "Service\/Google\/Service\/Dataflow.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 85150,
+          "sha1": "6e5e2764314bbd063507c01d8103c7dde4f33f55"
+        },
+        {
+          "path": "Service\/Google\/Service\/Licensing.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 14476,
+          "sha1": "3fa94a9f6f3d9f828bc31d46bc6638deddb4e5ee"
+        },
+        {
+          "path": "Service\/Google\/Service\/Resourceviews.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 36531,
+          "sha1": "5cc430a287b9b37cab7118dc70a70458394df562"
+        },
+        {
+          "path": "Service\/Google\/Service\/Storage.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 101694,
+          "sha1": "963b3408c1e8fed1ecaf4a73bb889f5f526582db"
+        },
+        {
+          "path": "Service\/Google\/Service\/Logging.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 39489,
+          "sha1": "9d5ce20da5be3ca0b00151648be41b0eb7b666ff"
+        },
+        {
+          "path": "Service\/Google\/Service\/Gmail.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 63835,
+          "sha1": "e797c8ca4429e0759a5d8f45ebe4c6d2881974b7"
+        },
+        {
+          "path": "Service\/Google\/Service\/Directory.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 146434,
+          "sha1": "e930bc95fa8f6890503e5e75dddba70103508739"
+        },
+        {
+          "path": "Service\/Google\/Auth",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Google\/Auth\/AssertionCredentials.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3813,
+          "sha1": "c3f89605b5396eb9e0875399263bc50e5f6515ee"
+        },
+        {
+          "path": "Service\/Google\/Auth\/Abstract.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1275,
+          "sha1": "dd82bfaeacac7476928199c5d0c0004f81a67e48"
+        },
+        {
+          "path": "Service\/Google\/Auth\/Exception.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 759,
+          "sha1": "c83f6a38c1da871af2ed06ebd84e589b37065fba"
+        },
+        {
+          "path": "Service\/Google\/Auth\/Simple.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1989,
+          "sha1": "e39f209e262c4043b056566cf2cf1d3c6220431b"
+        },
+        {
+          "path": "Service\/Google\/Auth\/ComputeEngine.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4178,
+          "sha1": "97202b5647cd23a432edd6d3a8a145c66468523d"
+        },
+        {
+          "path": "Service\/Google\/Auth\/AppIdentity.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3482,
+          "sha1": "e037e1ccd84b832e50e1ae2631941ff1ca458887"
+        },
+        {
+          "path": "Service\/Google\/Auth\/OAuth2.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 18815,
+          "sha1": "7165558f5f98243dc765b78080b5b089d1f81e66"
+        },
+        {
+          "path": "Service\/Google\/Auth\/LoginTicket.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1929,
+          "sha1": "35c3716970dfc1bfc5bd247020c2896274d63712"
+        },
+        {
+          "path": "Service\/Google\/Logger",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Google\/Logger\/Null.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1064,
+          "sha1": "8ff29e2b306782fcffe85b4cfa91fb2d4d2e154e"
+        },
+        {
+          "path": "Service\/Google\/Logger\/Abstract.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 10073,
+          "sha1": "a20c817294ec27d063536abdbf7002b919123562"
+        },
+        {
+          "path": "Service\/Google\/Logger\/Exception.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 761,
+          "sha1": "8c43412c9f7f46cdc6a273eb1b3957af97a41bd1"
+        },
+        {
+          "path": "Service\/Google\/Logger\/Psr.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2474,
+          "sha1": "70fad446d11df437705f7f10d776ef2986c09db2"
+        },
+        {
+          "path": "Service\/Google\/Logger\/File.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3659,
+          "sha1": "d6516f2acacf1f2b9556afacb6722bed0cfd5157"
+        },
+        {
+          "path": "Service\/Google\/Task",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Google\/Task\/Exception.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 759,
+          "sha1": "96f15fc6b751366a386cbdda7c9450c0f14bd8f8"
+        },
+        {
+          "path": "Service\/Google\/Task\/Retryable.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1047,
+          "sha1": "ee10124fc2a655a69484355dfef6a83a94e5f210"
+        },
+        {
+          "path": "Service\/Google\/Task\/Runner.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6418,
+          "sha1": "d7e51442b5915b2a8e2ea22b8991d47d920463b5"
+        },
+        {
+          "path": "Service\/Google\/Cache",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Google\/Cache\/Null.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1198,
+          "sha1": "b8d7d7195b34cf061998aa368313d4719b302e5b"
+        },
+        {
+          "path": "Service\/Google\/Cache\/Apc.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2761,
+          "sha1": "2d6a0e7797c328c74503707249c995091680e0f4"
+        },
+        {
+          "path": "Service\/Google\/Cache\/Abstract.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1447,
+          "sha1": "5d08d1d39e993728bbda9c76c66fc3a4782095e9"
+        },
+        {
+          "path": "Service\/Google\/Cache\/Exception.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 760,
+          "sha1": "2e742e15e48e43211451664ef024c3e6c0ecc6fc"
+        },
+        {
+          "path": "Service\/Google\/Cache\/Memcache.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4765,
+          "sha1": "0f1a4f7583d8189b37488cc14a6b5bab7526e5b4"
+        },
+        {
+          "path": "Service\/Google\/Cache\/File.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 5603,
+          "sha1": "d32c1ff4f3bf9eabe7517a3a70c7d9cf266596a4"
+        },
+        {
+          "path": "Service\/Google\/Model.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 8145,
+          "sha1": "72149a611cef4c811a284eff763ed2940aa8f093"
+        },
+        {
+          "path": "Service\/Google\/Verifier",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Google\/Verifier\/Abstract.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 879,
+          "sha1": "35acabe30aa3f3660b44e686de9521ba31953fdf"
+        },
+        {
+          "path": "Service\/Google\/Verifier\/Pem.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2148,
+          "sha1": "e38fd62552d3fac72f768906e6e34a3ea77fc903"
+        },
+        {
+          "path": "Service\/Google\/Config.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 13883,
+          "sha1": "9b7a0a6cc2575bc96f34cc8c859218df16c7aeea"
+        },
+        {
+          "path": "Service\/Google\/Client.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 20346,
+          "sha1": "98b84e9e59f206d9c83c8d626374287863807981"
+        },
+        {
+          "path": "Service\/Google\/Service.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1265,
+          "sha1": "93fdd9c61b0307ce45d66116dd5050c78765ca24"
+        },
+        {
+          "path": "Service\/Google\/Collection.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2572,
+          "sha1": "9a53ccf336272697136a152cf2af70dee2203497"
+        },
+        {
+          "path": "Service\/Google\/Exception.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 650,
+          "sha1": "ca1f4235b2d0fca94301481820e09cf570e4fd2b"
+        },
+        {
+          "path": "Service\/Google\/Utils",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Google\/Utils\/URITemplate.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 9169,
+          "sha1": "28571dd58389149554be1652a642035dd8b0019c"
+        },
+        {
+          "path": "Service\/Google\/Http",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Google\/Http\/Batch.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4444,
+          "sha1": "7b31151e5e671dae82f2f223eb0eb404afb52682"
+        },
+        {
+          "path": "Service\/Google\/Http\/Request.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 11922,
+          "sha1": "d775d1e7ea1be98162bd5f6529668a332779ff9b"
+        },
+        {
+          "path": "Service\/Google\/Http\/REST.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 5676,
+          "sha1": "9fc9acbc7932a28ea71636b54e550a824093fd2d"
+        },
+        {
+          "path": "Service\/Google\/Http\/MediaFileUpload.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 8267,
+          "sha1": "eec77cd37b3a45ed01b72708cbbb4640063f377f"
+        },
+        {
+          "path": "Service\/Google\/Http\/CacheParser.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6198,
+          "sha1": "69117ec23c7fc50f65b4ccd059df5f48630e023e"
+        },
+        {
+          "path": "Service\/Google\/IO",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Google\/IO\/Curl.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 5277,
+          "sha1": "fd58a5627ac78489c77d72e53d4333316de2e6b0"
+        },
+        {
+          "path": "Service\/Google\/IO\/Stream.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6375,
+          "sha1": "454e81999efdb1113e9c695bc9923e5853ebddbe"
+        },
+        {
+          "path": "Service\/Google\/IO\/Abstract.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 10831,
+          "sha1": "893cdb0d5a6726986efeee7c743005762e6693dd"
+        },
+        {
+          "path": "Service\/Google\/IO\/Exception.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1817,
+          "sha1": "fb433925909d955944e33042133ec75ddb97a5a4"
+        },
+        {
+          "path": "Service\/Google\/IO\/cacerts.pem",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 134862,
+          "sha1": "433e5589520cd2f1f29dea3e077cfbc2b74fb78c"
+        },
+        {
+          "path": "Service\/Google\/Utils.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3914,
+          "sha1": "63bb07f7d94ba11a70aeac5e4df31c21399b20a4"
+        },
+        {
+          "path": "Service\/Google\/autoload.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1013,
+          "sha1": "21e41c11560c8cbb6fea8d363114c897b69a83f9"
+        },
+        {
+          "path": "Service\/Google\/Signer",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Service\/Google\/Signer\/Abstract.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 820,
+          "sha1": "376acca9ecc584534ff58aa06c64d792bb5f6efd"
+        },
+        {
+          "path": "Service\/Google\/Signer\/P12.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3135,
+          "sha1": "c4c8f36d27b26df8db6b4d271faa496ed16d7541"
+        },
+        {
+          "path": "Service\/Drive.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2780,
+          "sha1": "84469091b1a52467f762f55a9ed183c3f98f7f09"
+        },
+        {
+          "path": "Service\/FTP.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 5444,
+          "sha1": "a69fb9233633b51e496849e9d4852ddfbe1aa812"
+        },
+        {
+          "path": "Service\/S3.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2135,
+          "sha1": "7a5bda402a53d6db5c56211b8eefb9c2a85cd8de"
+        },
+        {
+          "path": "Bootstrap.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 415,
+          "sha1": "612405ca1f33dadacae2c6f6374520bab1abe829"
+        },
+        {
+          "path": "Api",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Api\/Core.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 34326,
+          "sha1": "f8fe02dc81e53530923f9a35cc9d87e6062606e5"
+        },
+        {
+          "path": "controllers",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "controllers\/AdminBackupsettingsController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 55553,
+          "sha1": "7b8a6de4b4e07725a7cfd1f89185b2f3622e178b"
+        },
+        {
+          "path": "controllers\/AdminAutobackupsettingsController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4370,
+          "sha1": "0dc470b099b2f411b86da213272b96b1c392e277"
+        },
+        {
+          "path": "controllers\/AdminCodebackupController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 11640,
+          "sha1": "35d43fe45a48ac94f0ca79f411fb60f3dd956b7a"
+        },
+        {
+          "path": "controllers\/IndexController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 173,
+          "sha1": "45ead02fbce5f6e5041ceb31082e3129420dc1d4"
+        },
+        {
+          "path": "controllers\/AdminDestinationsettingsController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 44952,
+          "sha1": "6c1672790649966a13b6a0f67369f18754e17cb4"
+        },
+        {
+          "path": "controllers\/AdminManageController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 27421,
+          "sha1": "a031f9b98bce00589dacf6e7dba2da8753822132"
+        },
+        {
+          "path": "Model",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Model\/Settings.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 445,
+          "sha1": "6890e6a1fcab9fe4c5f1c5f92035acf31b6b8d6e"
+        },
+        {
+          "path": "Model\/Destinations.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 453,
+          "sha1": "1ffe7ac08ff3c3dbe49822fddfbe9005f3ceb1fe"
+        },
+        {
+          "path": "Model\/Backuplog.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 447,
+          "sha1": "b5de5702cb63f2a36c99de3a502a0f272df8ec65"
+        },
+        {
+          "path": "Model\/Backup.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 445,
+          "sha1": "e35d21c4102205e89fa71e4c2db74edf9a734cfb"
+        },
+        {
+          "path": "Model\/DbTable",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Model\/DbTable\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "Model\/DbTable\/Settings.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 460,
+          "sha1": "57a1b117086e78396a1cdb74ba62c75e116de01e"
+        },
+        {
+          "path": "Model\/DbTable\/Destinations.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1650,
+          "sha1": "c521415d10224653c68a4d6f730ca1fcad831519"
+        },
+        {
+          "path": "Model\/DbTable\/Backuplogs.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2382,
+          "sha1": "fb432bce055d532843126af4e51e061b888fc271"
+        },
+        {
+          "path": "Model\/DbTable\/Backupauthentications.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 498,
+          "sha1": "605c11205e2281ed166d976b4f5f6c9fe3805fad"
+        },
+        {
+          "path": "Model\/DbTable\/Backups.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 460,
+          "sha1": "d1e6af1e0bf04feedc01b25bef8b98bbc09bc834"
+        },
+        {
+          "path": "Model\/Backupauthentication.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 469,
+          "sha1": "dd231a30f5aefe433c6718be1963b049a7bfa749"
+        },
+        {
+          "path": "views",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/index",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/index\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 83,
+          "sha1": "ee315c16b4fb005c263536d46d9b053ab596b8fa"
+        },
+        {
+          "path": "views\/scripts\/admin-backupsettings",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/admin-backupsettings\/create.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 28049,
+          "sha1": "75ecc3ab3c0ba2b9491b59b4cfa8d7fa91302494"
+        },
+        {
+          "path": "views\/scripts\/admin-backupsettings\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 7287,
+          "sha1": "4cc9966f3ec8c28cb4cff7cb68fc84c4f432698a"
+        },
+        {
+          "path": "views\/scripts\/admin-codebackup",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/admin-codebackup\/deleteselected.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1508,
+          "sha1": "172a8a972b6dea21d2089632b5f67dc5e498cc04"
+        },
+        {
+          "path": "views\/scripts\/admin-codebackup\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 13702,
+          "sha1": "d630aba0d0dcbd5fc014b9368d94e216627377c9"
+        },
+        {
+          "path": "views\/scripts\/admin-codebackup\/confirm-delete-code-backup.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1180,
+          "sha1": "a617c79abdacac4c24afac58e69998a7fb6eb759"
+        },
+        {
+          "path": "views\/scripts\/admin-codebackup\/delete.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1144,
+          "sha1": "8697f5b2c5065e5fbbe48391c4748c71baccd987"
+        },
+        {
+          "path": "views\/scripts\/admin-destinationsettings",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/admin-destinationsettings\/destination.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 7616,
+          "sha1": "267b1ca16c556c8ed3c77e0eff47e13bb5bbf0e5"
+        },
+        {
+          "path": "views\/scripts\/admin-destinationsettings\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 12881,
+          "sha1": "ec654fba4b18109bcb7d67651717b8506df19788"
+        },
+        {
+          "path": "views\/scripts\/admin-destinationsettings\/verify.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1702,
+          "sha1": "8d51ee8dd330d060340431305df6de9e54f5ee98"
+        },
+        {
+          "path": "views\/scripts\/admin-destinationsettings\/edit.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 6858,
+          "sha1": "1082925cc2b29e9fff276678f13bef347e0137d2"
+        },
+        {
+          "path": "views\/scripts\/admin-destinationsettings\/delete.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1442,
+          "sha1": "33361af212853efe19dbd9a8f432b235c09d16a2"
+        },
+        {
+          "path": "views\/scripts\/_formRootFilesCheckbox.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4014,
+          "sha1": "b390767f1e9aa49c97598f2f697a1f7aa04cf411"
+        },
+        {
+          "path": "views\/scripts\/admin-manage",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/admin-manage\/faq.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 17844,
+          "sha1": "d9899c1bc360ac449575fd18710eed1b71b6fbc2"
+        },
+        {
+          "path": "views\/scripts\/admin-manage\/restore.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 2337,
+          "sha1": "215a1c9c506e3bd6c35385bd0cca0af262679048"
+        },
+        {
+          "path": "views\/scripts\/admin-manage\/deleteselected.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1539,
+          "sha1": "54fe79175d1decdc7d18099cf7ae0d21c3f5b8a2"
+        },
+        {
+          "path": "views\/scripts\/admin-manage\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 15061,
+          "sha1": "a7e0ab76b510a472f05ebd331123ca6bd1dd8037"
+        },
+        {
+          "path": "views\/scripts\/admin-manage\/upload.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 637,
+          "sha1": "63a059cb581b3e98172ed2fcfec6990f635fac88"
+        },
+        {
+          "path": "views\/scripts\/admin-manage\/confirm-delete-database-backup.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1192,
+          "sha1": "df298b7c958c75c41bc431e22dd8c9e7b2a1e3e7"
+        },
+        {
+          "path": "views\/scripts\/admin-manage\/viewlog.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 13341,
+          "sha1": "b62c7df3d8f53575474e4f908709ef880c236d84"
+        },
+        {
+          "path": "views\/scripts\/admin-manage\/confirm-delete-log.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1189,
+          "sha1": "941464952cbc4a5dd4cb461d376af289e0790544"
+        },
+        {
+          "path": "views\/scripts\/admin-manage\/delete.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1152,
+          "sha1": "ecc033ebe29a0b41818287db9c98aa86465c6c29"
+        },
+        {
+          "path": "views\/scripts\/admin-manage\/destination-faq.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 11833,
+          "sha1": "3f406a6089f429d0b8f299dd515e22c3020b2932"
+        },
+        {
+          "path": "views\/scripts\/admin-autobackupsettings",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/admin-autobackupsettings\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 5228,
+          "sha1": "7dbc73d226441daf526ac34c37665291dbddee1c"
+        },
+        {
+          "path": "views\/scripts\/_formFilesCheckbox.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2949,
+          "sha1": "ac0ecff2b93b547f2f21936b3125bbb60f47f010"
+        },
+        {
+          "path": "views\/scripts\/_formmodulesfilesCheckbox.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3014,
+          "sha1": "1455e66d00efc6a0e29b6f7043963005a78662be"
+        },
+        {
+          "path": "views\/scripts\/_formButtonCancel.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 835,
+          "sha1": "9b181c0d99bb8c10a6daf41841bd6d8a817b794c"
+        },
+        {
+          "path": "views\/scripts\/_formButtonSubmit.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 952,
+          "sha1": "d337f6a499909afc10e0fc9510709ec87d39c50d"
+        },
+        {
+          "path": "views\/scripts\/_formMessageRestore.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 517,
+          "sha1": "7b1ac34079870e48648489f22ca50480b93e54ea"
+        },
+        {
+          "path": "views\/scripts\/_formCheckbox.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3255,
+          "sha1": "9c553d1a65968c4d796934e1d4ba117192b8690e"
+        },
+        {
+          "path": "externals",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/scripts",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/scripts\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "externals\/.htaccess",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 147,
+          "sha1": "9f1638a8edbe1c5d28789e017fb35b2f2465f01e"
+        },
+        {
+          "path": "externals\/images",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/images\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "externals\/images\/download.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1535,
+          "sha1": "7c9d26444beb4d3be95b8573c93549439bc1101a"
+        },
+        {
+          "path": "externals\/images\/server.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3645,
+          "sha1": "6b8ad6609619eb6d39aa781cfb74612bd950e59f"
+        },
+        {
+          "path": "externals\/images\/email.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6325,
+          "sha1": "87a66b40d2ab160331a7dee3d313ee53917b2322"
+        },
+        {
+          "path": "externals\/images\/back.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 345,
+          "sha1": "cc0eecde5d7e957071a9d72f751384ca974631fa"
+        },
+        {
+          "path": "externals\/images\/cross.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 547,
+          "sha1": "4dbacb84d044266a36ed527ffcd413c4318b5a10"
+        },
+        {
+          "path": "externals\/images\/ftp.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4644,
+          "sha1": "4d11e397190697c4692372096537418fcf91bfc5"
+        },
+        {
+          "path": "externals\/images\/help16.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 660,
+          "sha1": "4b9bc15ee54fcb42643319e47dbdc1aad5822308"
+        },
+        {
+          "path": "externals\/images\/dropbox.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6507,
+          "sha1": "51df6bcca538032ea2f372048ed01314d20eb684"
+        },
+        {
+          "path": "externals\/images\/backup-restore.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2892,
+          "sha1": "e4c8d18fe7191227c4c68042121090df3e3e0971"
+        },
+        {
+          "path": "externals\/images\/database.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4643,
+          "sha1": "c2763d6da4a31ac2f15235fc7e0405d816f3cd96"
+        },
+        {
+          "path": "externals\/images\/progress-bar.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 10819,
+          "sha1": "2974f4bf37231205a256f2648189a461e74869c0"
+        },
+        {
+          "path": "externals\/images\/blank.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 164,
+          "sha1": "f0eacf8e4c23f1650cd2f310bf7eec4deeba2448"
+        },
+        {
+          "path": "externals\/images\/computer.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 5796,
+          "sha1": "23fcc1126dc7707b33c35a5f6587d1bf6dea9597"
+        },
+        {
+          "path": "externals\/images\/add.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 733,
+          "sha1": "b6244b0027a8c9f702b311cb5b2ab8cc64f3b5f2"
+        },
+        {
+          "path": "externals\/images\/arrow-right.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3749,
+          "sha1": "ea04ad667f1711997a80382a7a110fe8f97ca316"
+        },
+        {
+          "path": "externals\/images\/backup-uploading.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2892,
+          "sha1": "e4c8d18fe7191227c4c68042121090df3e3e0971"
+        },
+        {
+          "path": "externals\/images\/sign.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3686,
+          "sha1": "aaffa8402eddbf14e019da25ed2114416bde8126"
+        },
+        {
+          "path": "externals\/images\/s3.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4281,
+          "sha1": "83838c841e3b317246af2c32d4105ba73e7b8b20"
+        },
+        {
+          "path": "externals\/images\/success.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 537,
+          "sha1": "d0a90047653afcdac85171e6b34d599538b89773"
+        },
+        {
+          "path": "externals\/images\/drive.png",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 4254,
+          "sha1": "1296a3ee5af7cd2173ba285288cb421f5a71def5"
+        },
+        {
+          "path": "externals\/styles",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/styles\/main.css",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "externals\/styles\/admin",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/styles\/admin\/main.css",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 4415,
+          "sha1": "eedf9740cd4cba5c86a36be15e0f5e012b6be81c"
+        },
+        {
+          "path": "Plugin",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Plugin\/Task",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Plugin\/Task\/Dbbackdatabasedelete.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1682,
+          "sha1": "c7447f79d9192500f2911625cd5f756d9148ba96"
+        },
+        {
+          "path": "Plugin\/Task\/Sitebackup.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 36789,
+          "sha1": "5f22001576aeaa01b4cffe70f4cb6a5969b43586"
+        },
+        {
+          "path": "Plugin\/Task\/Maintenance.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1384,
+          "sha1": "ea01cca866093f4de597b93fa11309f839350c90"
+        },
+        {
+          "path": "Plugin\/Task\/Dbbackfilesdelete.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1682,
+          "sha1": "bfaac5e6ca66aac5ab62450754ab5a5d8aaeba62"
+        },
+        {
+          "path": "settings",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "settings\/manifest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1065,
+          "sha1": "91fbd70013a1271d313984cb8a13f0cb172cee9a"
+        },
+        {
+          "path": "settings\/seaocore_install.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3244,
+          "sha1": "7de3a5b00b508cd8db85f92c4665f80a92a14201"
+        },
+        {
+          "path": "settings\/my.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 9855,
+          "sha1": "ece0d74a0ac8dea705fc7730df75c05b486f8de0"
+        },
+        {
+          "path": "settings\/install.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6226,
+          "sha1": "84cdd284cbc09bb63c707580f8773fecea642a0a"
+        },
+        {
+          "path": "Form",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Form\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "Form\/Admin",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Form\/Admin\/Logsearch.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2802,
+          "sha1": "3a8a0c07a1832273031f09fd4ee1e55f6fd36e62"
+        },
+        {
+          "path": "Form\/Admin\/Autobackupsettings.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 5110,
+          "sha1": "7e161c66f764cf6f665137e9615bd19bc909d108"
+        },
+        {
+          "path": "Form\/Admin\/Directorysettings.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6563,
+          "sha1": "be27419d2bba091fa3a88c6e7135d695be386de7"
+        },
+        {
+          "path": "Form\/Admin\/Upload.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1621,
+          "sha1": "94ff867fd30ffef17daf51a969ee07cc192dc6cd"
+        },
+        {
+          "path": "Form\/Admin\/Backupsetting.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 11192,
+          "sha1": "92aada12ead64d13b9cfb17d87360fd85c9db43a"
+        },
+        {
+          "path": "Form\/Admin\/Destination",
+          "dir": true,
+          "file": false,
+          "perms": "0777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Form\/Admin\/Destination\/Create.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 7582,
+          "sha1": "bab8cac32a5ea9fb67757be4ce55affaef94c17e"
+        },
+        {
+          "path": "Form\/Admin\/Destination\/Edit.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3177,
+          "sha1": "9c3f3ac93158612d0f909a771e14fa15ed2049e5"
+        },
+        {
+          "path": "Form\/Admin\/Restore.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2385,
+          "sha1": "5863c8bd226fbe25f8017dcd0be2bd92c83a4171"
+        }
+      ]
+    },
+    "application\/languages\/en\/sitebackup.csv": {
+      "type": "file",
+      "path": "application\/languages\/en\/sitebackup.csv",
+      "structure": {
+        "path": "sitebackup.csv",
+        "dir": false,
+        "file": true,
+        "perms": "0777",
+        "size": 33842,
+        "sha1": "afaca34cd400a1c2eb0ec11641aa5bdad229ccf4"
+      }
+    }
+  }
+}

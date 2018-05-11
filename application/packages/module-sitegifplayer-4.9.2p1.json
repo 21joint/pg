@@ -1,0 +1,466 @@
+{
+  "type": "module",
+  "name": "sitegifplayer",
+  "version": "4.9.2p1",
+  "revision": null,
+  "path": "application\/modules\/Sitegifplayer",
+  "repository": null,
+  "date": "Thu, 25 May 2017 11:48:34 +0000",
+  "title": "GIF Player",
+  "description": "GIF Player",
+  "thumb": null,
+  "developer": null,
+  "authors": [
+    "<a href=\"http:\/\/www.socialengineaddons.com\" style=\"text-decoration:underline;\" target=\"_blank\">SocialEngineAddOns<\/a>"
+  ],
+  "meta": {
+    "date": "Thu, 25 May 2017 11:48:34 +0000",
+    "title": "GIF Player",
+    "description": "GIF Player",
+    "developer": null,
+    "authors": [
+      "<a href=\"http:\/\/www.socialengineaddons.com\" style=\"text-decoration:underline;\" target=\"_blank\">SocialEngineAddOns<\/a>"
+    ],
+    "changeLog": null
+  },
+  "actions": [
+    "install",
+    "upgrade",
+    "refresh",
+    "enable",
+    "disable"
+  ],
+  "callback": {
+    "path": "application\/modules\/Sitegifplayer\/settings\/install.php",
+    "class": "Sitegifplayer_Installer",
+    "priority": 100
+  },
+  "dependencies": {
+    "module-core": {
+      "type": "module",
+      "name": "core",
+      "guid": "module-core",
+      "minVersion": "4.9.0",
+      "maxVersion": null,
+      "excludeExcept": null
+    }
+  },
+  "tests": [
+    
+  ],
+  "permissions": [
+    
+  ],
+  "structure": {
+    "application\/modules\/Sitegifplayer": {
+      "type": "directory",
+      "path": "application\/modules\/Sitegifplayer",
+      "structure": [
+        {
+          "path": "Bootstrap.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1275,
+          "sha1": "be7e3a6ccc4291a6df26aef6bb0fc724a5b05713"
+        },
+        {
+          "path": "Image.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6979,
+          "sha1": "6e7a1537b016d75089aef445a1a69a82355992e1"
+        },
+        {
+          "path": "Plugin",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Plugin\/Core.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3163,
+          "sha1": "132c33212fe19b7d9d8e56d8552df35fe8fb8acf"
+        },
+        {
+          "path": "settings",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "settings\/install.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 5505,
+          "sha1": "8c7386825b4487432bb3b7026dca2767951fa4e3"
+        },
+        {
+          "path": "settings\/my.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 184,
+          "sha1": "04aca81923ac947a3d063f498c94b520683a988e"
+        },
+        {
+          "path": "settings\/manifest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1295,
+          "sha1": "874b8efea9d1ec2576c356944c34d55d662eee0a"
+        },
+        {
+          "path": "views",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/admin-settings",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/readme.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1263,
+          "sha1": "5a2d8c68244f35b4a483b118ab44bb6dbced5c4b"
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/faq.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 710,
+          "sha1": "b1a81d648097b155f28eb2a567b4d3ff7721f665"
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/index.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 714,
+          "sha1": "5113c65a4f7457388defe82ddc309319093c646e"
+        },
+        {
+          "path": "views\/scripts\/admin-settings\/faq_help.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1530,
+          "sha1": "f3fe92f4c4d20d9ff7d64f7467b6bcdc68bd288f"
+        },
+        {
+          "path": "Form",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Form\/Admin",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Form\/Admin\/Global.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3320,
+          "sha1": "3617367f8479f13d05f1a26af71eefceb12e2e0f"
+        },
+        {
+          "path": "Form\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "Model",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Model\/DbTable",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Model\/DbTable\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "controllers",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "controllers\/license",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "controllers\/license\/license3.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 23635,
+          "sha1": "70ee5ff0179be490d447036e9621af51f19026d4"
+        },
+        {
+          "path": "controllers\/license\/license1.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 30158,
+          "sha1": "207269f67520acbe4b093b68e6aad9bb2bcd2f84"
+        },
+        {
+          "path": "controllers\/license\/license.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 3815,
+          "sha1": "35499a6c2ba6b65ebccd86f672f450f5346e7b04"
+        },
+        {
+          "path": "controllers\/license\/widgetSettings.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 633,
+          "sha1": "bb4dddbac18eb6d22c59b77eefa07e88efc9d980"
+        },
+        {
+          "path": "controllers\/AdminSettingsController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 846,
+          "sha1": "17be7c1aa42f66519ffe417edfdd18a4e695f818"
+        },
+        {
+          "path": "View",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "View\/Helper",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "View\/Helper\/ItemPhoto.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2394,
+          "sha1": "acac062cc5b104feb1a702b19e957e3e9c4a2d6c"
+        },
+        {
+          "path": "View\/Helper\/ItemBackgroundPhoto.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1352,
+          "sha1": "e94c26d6fc7b1a72cf9d96e9f6cf179e0684a420"
+        },
+        {
+          "path": "externals",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/.htaccess",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 147,
+          "sha1": "9f1638a8edbe1c5d28789e017fb35b2f2465f01e"
+        },
+        {
+          "path": "externals\/scripts",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/scripts\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "externals\/scripts\/core.js",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6402,
+          "sha1": "f652c0c26690791dea703931a2c38c75aab122a0"
+        },
+        {
+          "path": "externals\/styles",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/styles\/main.css",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1090,
+          "sha1": "aa16efa3ddbf937594d6f94bb797703bc8b73d39"
+        },
+        {
+          "path": "externals\/images",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/images\/spinner.gif",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 56379,
+          "sha1": "6f835cd682e127beaeb784017c5261af10d38e82"
+        },
+        {
+          "path": "externals\/images\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "Image",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Image\/Exception.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 408,
+          "sha1": "c6abc0958cbf7c0ee2bf386d0fdd0ed10ef71f8f"
+        },
+        {
+          "path": "Image\/Adapter",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Image\/Adapter\/Imagick.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 8880,
+          "sha1": "2ba30ee7b277210a06bfc33ea3be0723cff375bf"
+        },
+        {
+          "path": "Image\/Adapter\/Gd.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 20211,
+          "sha1": "206e7085fbff345e730230a7f3051d06022d770e"
+        },
+        {
+          "path": "Image\/Adapter\/Exception.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 423,
+          "sha1": "6c69161aa148d4ee23ccebc553a31be86f913685"
+        }
+      ]
+    },
+    "gif.php": {
+      "type": "file",
+      "path": "gif.php",
+      "structure": {
+        "path": "gif.php",
+        "dir": false,
+        "file": true,
+        "perms": "0777",
+        "size": 261,
+        "sha1": "dd65a6ee793d224d20a3ffc2509a2460b6445e4a"
+      }
+    }
+  }
+}
