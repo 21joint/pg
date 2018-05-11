@@ -1,5 +1,8 @@
 /application
-/externals
 /install
 /public
 /siteminify
+application/settings/database.php
+application/settings/general.php
+application/cache.php
+application/mail.php
