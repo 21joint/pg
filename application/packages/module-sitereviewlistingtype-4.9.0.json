@@ -1,0 +1,377 @@
+{
+  "type": "module",
+  "name": "sitereviewlistingtype",
+  "version": "4.9.0",
+  "revision": null,
+  "path": "application\/modules\/Sitereviewlistingtype",
+  "repository": null,
+  "date": "Wed, 19 Apr 2017 14:59:30 +0000",
+  "title": "Multiple Listing Types - Listing Type Creation Extension",
+  "description": "Multiple Listing Types - Listing Type Creation Extension",
+  "thumb": null,
+  "developer": null,
+  "authors": [
+    "<a href=\"http:\/\/www.socialengineaddons.com\" style=\"text-decoration:underline;\" target=\"_blank\">SocialEngineAddOns<\/a>"
+  ],
+  "meta": {
+    "date": "Wed, 19 Apr 2017 14:59:30 +0000",
+    "title": "Multiple Listing Types - Listing Type Creation Extension",
+    "description": "Multiple Listing Types - Listing Type Creation Extension",
+    "developer": null,
+    "authors": [
+      "<a href=\"http:\/\/www.socialengineaddons.com\" style=\"text-decoration:underline;\" target=\"_blank\">SocialEngineAddOns<\/a>"
+    ],
+    "changeLog": null
+  },
+  "actions": [
+    "install",
+    "upgrade",
+    "refresh",
+    "enable",
+    "disable"
+  ],
+  "callback": {
+    "path": "application\/modules\/Sitereviewlistingtype\/settings\/install.php",
+    "class": "Sitereviewlistingtype_Installer",
+    "priority": 100
+  },
+  "dependencies": null,
+  "tests": [
+    
+  ],
+  "permissions": [
+    
+  ],
+  "structure": {
+    "application\/modules\/Sitereviewlistingtype": {
+      "type": "directory",
+      "path": "application\/modules\/Sitereviewlistingtype",
+      "structure": [
+        {
+          "path": "Bootstrap.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 452,
+          "sha1": "47223db4fbfd459e4d9353e72c7c718aa3f76fce"
+        },
+        {
+          "path": "Api",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Api\/Core.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 265157,
+          "sha1": "aa680a2d9bd8b6b9f73e512faf374580c046af62"
+        },
+        {
+          "path": "Api\/CoreSM.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 211519,
+          "sha1": "6673f23b401454b308d23109bcc0247c3fb47b9a"
+        },
+        {
+          "path": "settings",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "settings\/install.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 6267,
+          "sha1": "5c6c7e1ea93c1d4139c4d8bb42641ff46f71a613"
+        },
+        {
+          "path": "settings\/my.sql",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 680,
+          "sha1": "273a7d94c228cdc6f6471c28b8c7cc053e340ce3"
+        },
+        {
+          "path": "settings\/manifest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1421,
+          "sha1": "37706aa535f37f8232c012179fcbc2b76ca5e085"
+        },
+        {
+          "path": "views",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/_formImagerainbowFeatured.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2623,
+          "sha1": "c17ebac89762ee04ddc960e57884eb547263094f"
+        },
+        {
+          "path": "views\/scripts\/admin-listingtypes",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "views\/scripts\/admin-listingtypes\/delete.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 800,
+          "sha1": "e776c9eae9923d4d7e4c53d793528cc0d7424145"
+        },
+        {
+          "path": "views\/scripts\/admin-listingtypes\/remove-default-icon.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1081,
+          "sha1": "c37beada1d51f3a3c1ad677ecb4e485e8a784555"
+        },
+        {
+          "path": "views\/scripts\/admin-listingtypes\/edit.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 5286,
+          "sha1": "4355098926ef16ff7bca420337d3cb612f770fff"
+        },
+        {
+          "path": "views\/scripts\/admin-listingtypes\/create.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 30481,
+          "sha1": "019de672b281a44f56fce63bb3f794a6b50daa96"
+        },
+        {
+          "path": "views\/scripts\/admin-listingtypes\/manage.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 9213,
+          "sha1": "e1b552e2d88462c884ba054eb3cdadd8218b701d"
+        },
+        {
+          "path": "views\/scripts\/_formImagerainbowSponsred.tpl",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 2374,
+          "sha1": "65d43fec42428297a907a1614ab6b25396befac7"
+        },
+        {
+          "path": "Form",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Form\/Admin",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Form\/Admin\/Listingtypes",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Form\/Admin\/Listingtypes\/Edit.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 814,
+          "sha1": "24bd729a704ade331f18cb46da2ab302938b7386"
+        },
+        {
+          "path": "Form\/Admin\/Listingtypes\/Create.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 25364,
+          "sha1": "9f9e28157a64259146f2baf5d38bdec00d9bd665"
+        },
+        {
+          "path": "Form\/Admin\/Listingtypes\/Mapping.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 1808,
+          "sha1": "9565b72df4b39835696a13882ed1aca067d6ad17"
+        },
+        {
+          "path": "Model",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Model\/DbTable",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "Model\/DbTable\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "controllers",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "controllers\/AdminListingtypesController.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 43543,
+          "sha1": "3fb37b65919010cae130344213998f5b73a95ac7"
+        },
+        {
+          "path": "controllers\/license",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "controllers\/license\/license3.php",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 8223,
+          "sha1": "86b73261815a7ca4f6940545d7dd3a0fe1f5df16"
+        },
+        {
+          "path": "externals",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/.htaccess",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 147,
+          "sha1": "9f1638a8edbe1c5d28789e017fb35b2f2465f01e"
+        },
+        {
+          "path": "externals\/scripts",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/scripts\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        },
+        {
+          "path": "externals\/styles",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/styles\/main.css",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 117,
+          "sha1": "d051ef4def1653af6a6db8ea4e887ccee3d962ce"
+        },
+        {
+          "path": "externals\/images",
+          "dir": true,
+          "file": false,
+          "perms": "2777",
+          "size": 4096,
+          "sha1": null
+        },
+        {
+          "path": "externals\/images\/.htempty",
+          "dir": false,
+          "file": true,
+          "perms": "0777",
+          "size": 0,
+          "sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+        }
+      ]
+    },
+    "application\/languages\/en\/sitereviewlistingtype.csv": {
+      "type": "file",
+      "path": "application\/languages\/en\/sitereviewlistingtype.csv",
+      "structure": {
+        "path": "sitereviewlistingtype.csv",
+        "dir": false,
+        "file": true,
+        "perms": "0777",
+        "size": 813,
+        "sha1": "5c9dcf43888844b30be0202a375c475344e2651b"
+      }
+    }
+  }
+}

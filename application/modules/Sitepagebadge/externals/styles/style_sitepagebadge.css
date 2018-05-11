@@ -1,0 +1,114 @@
+ /* $Id: style_sitepagebadge.css 2011-05-05 9:40:21Z SocialEngineAddOns Copyright 2010-2011 BigStep Technologies Pvt. Ltd. $ */
+/*widgets*/
+.sitepage_list_badge li{
+	text-align:center;
+}
+.sitepage_list_badge li a{
+	float:none !important;
+}
+.sitepage_list_badge li img{
+	max-width:100%;
+	margin:3px 0 5px;
+	clear:both;
+	border:none;
+}
+.sitepage_list_badge_title{
+	clear:both;
+	width:100%;
+	text-align:center;
+	display:block;
+	font-weight:bold;
+	font-size:15px;
+}
+/*all badge list*/
+#global_page_sitepagebadge-index-showbadges .global_form > div {
+	float:none !important;
+}
+#global_page_sitepagebadge-index-showbadges .global_form > div > div{
+	padding:0px !important;
+}
+.sitepage_badge_browse{
+	overflow:auto;
+}
+.sitepage_badge_browse_row{
+	clear:both;
+	margin:10px 0;
+	overflow:auto;
+}
+.sitepage_badge_browse .sitepage_badge_browse_item{
+	overflow:auto;
+	width:45%;
+	margin:0px 10px 0px;
+	text-align:center;
+}
+.sitepage_badge_browse_photo{
+	margin-right:10px;
+	float:left;
+	width:165px;
+}
+.sitepage_badge_browse_photo img{
+	max-width:165px;
+}
+.sitepage_badge_browse_detail{
+	overflow:hidden;
+}
+.sitepage_badge_browse_title{
+	font-size:17px;
+	font-weight:bold;
+	margin-bottom:5px;
+	float:left;
+}
+.sitepage_badge_browse_description{
+	clear:both;
+}
+.sitepagebadge_layout_right {
+	float: right;
+	margin-left: 5px;
+	padding: 0 0 10px 10px;
+	vertical-align: top;
+	width: 190px;
+}
+/*tooltip*/
+.sitepage_badge_show_tooltip{
+	display: none;
+	background: #222;
+	margin-top: 0px;
+	opacity: 0.9;
+	padding: 5px 15px 5px 5px;
+	position: absolute;
+	text-align: left;
+	clear:both;
+	width:160px;
+}
+.sitepage_badge_show_tooltip_wrapper:hover .sitepage_badge_show_tooltip{
+ display: block;
+ clear:both;
+}
+.sitepage_badge_show_tooltip img{
+	left: 15px;
+	top: -7px !important;
+	margin:0 !important;
+	position: absolute;
+	border:none !important;
+}
+.sitepage_badge_show_tooltip div{
+	clear:both;
+	color: #FFFFFF;
+	font-size: 0.8em;
+}
+
+/*==================================Responsive Css work for page Plugin====================================*/
+
+@media only screen and (max-width: 920px) {
+/* Badge page css */
+	.sitepage_badge_browse .sitepage_badge_browse_item{text-align:center;}
+	.sitepage_badge_browse_photo, .sitepage_badge_browse_detail{width:100%;margin: 0 0 6px 0;}
+	.sitepage_badge_browse_photo img{max-width:inherit;}
+}
+
+@media only screen and (max-width: 450px) {
+/* Badge page css */
+	.sitepage_badge_browse .sitepage_badge_browse_item{width:100%;margin: 0 0 10px 0;}
+	.sitepage_badge_browse_photo img{display:table;margin:0 auto;}
+}
+

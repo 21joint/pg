@@ -1,0 +1,70 @@
+{
+  "type": "external",
+  "name": "mdetect",
+  "version": "4.10.3p1",
+  "revision": "7593",
+  "path": "externals\/mdetect",
+  "repository": null,
+  "sku": null,
+  "date": "Thu, 05 Apr 2018 10:55:24 +0000",
+  "title": "mDetect",
+  "description": null,
+  "thumb": null,
+  "developer": null,
+  "authors": [
+    "Webligo Developments"
+  ],
+  "meta": {
+    "date": "Thu, 05 Apr 2018 10:55:24 +0000",
+    "title": "mDetect",
+    "description": null,
+    "developer": null,
+    "authors": [
+      "Webligo Developments"
+    ],
+    "changeLog": null
+  },
+  "actions": [
+    
+  ],
+  "callback": null,
+  "dependencies": null,
+  "tests": [
+    
+  ],
+  "permissions": [
+    
+  ],
+  "structure": {
+    "externals\/mdetect": {
+      "type": "directory",
+      "path": "externals\/mdetect",
+      "structure": [
+        {
+          "path": "mdetect.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 19989,
+          "sha1": "902c9cea0bc111965516f93503531458e3c7e04b"
+        },
+        {
+          "path": "manifest.php",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 371,
+          "sha1": "96c100ba55b311fc6257ec9d1d546c8a4a8d3563"
+        },
+        {
+          "path": "mdetect.min.js",
+          "dir": false,
+          "file": true,
+          "perms": "0644",
+          "size": 8398,
+          "sha1": "66b7f979d5cb442a4d4b95d99790285a4ccdcd04"
+        }
+      ]
+    }
+  }
+}

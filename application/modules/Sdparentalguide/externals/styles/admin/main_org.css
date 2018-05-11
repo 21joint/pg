@@ -1,0 +1,89 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Oct 10, 2017, 1:41:51 PM
+    Author     : Ahmad
+*/
+
+/*
+MESSAGES AUTOSUGGEST
+Used to style the autosuggest pulldown
+shown when you are entering a recipient
+on the compose message page.
+*/
+ul.message-autosuggest
+{
+  position: absolute;
+  padding: 0px;
+  width: 300px;
+  list-style: none;
+  z-index: 50;
+  border: 1px solid $theme_border_dark_color;
+  margin: 0px;
+  list-style: none;
+  cursor: pointer;
+  white-space: nowrap;
+  background: $theme_body_background_color;
+}
+ul.message-autosuggest > li
+{
+  padding: 3px;
+  overflow: hidden;
+}
+ul.message-autosuggest > li + li
+{
+  border-top-width: 1px;
+}
+ul.message-autosuggest > li img
+{
+  width: 25px;
+  height: 25px;
+  display: block;
+  float: left;
+  margin-right: 5px;
+}
+html[dir="rtl"] ul.message-autosuggest > li img
+{
+  float: right;
+  margin-right: 0px;
+  margin-left: 5px;
+}
+ul.message-autosuggest > li.autocompleter-selected
+{
+  background-color: $theme_list_background_color;
+}
+ul.message-autosuggest > li.autocompleter-choices
+{
+  font-size: .8em;
+}
+ul.message-autosuggest > li.autocompleter-choices .autocompleter-choice
+{
+  line-height: 25px;
+}
+ul.message-autosuggest > li:hover
+{
+  background-color: $theme_list_background_color_hover;
+}
+ul.message-autosuggest > li span.autocompleter-queried
+{
+  font-weight: bold;
+}
+
+.sd_user_suggest img {
+    display: none !important;
+}
+.sd_user_suggest .autocompleter-choice {
+    padding-left: 10px;
+}
+.sd_layout_left {
+    /*width: 150px;*/
+    float: left;
+    overflow: hidden;
+    margin-right: 15px;
+}
+.sd_layout_middle {
+    overflow: hidden;
+}

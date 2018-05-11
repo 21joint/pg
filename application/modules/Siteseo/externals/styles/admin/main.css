@@ -1,0 +1,138 @@
+/* GLOBAL SETTINGS SECTION*/
+#image_photo_preview-wrapper {
+	min-height: 50px;
+}
+
+/* MANAGE PAGES META TAGS SECTION*/
+img.custom_image {
+	width: 50px;
+}
+table.admin_table td {
+	position: relative;
+}
+.edit-inline-pencil-icon, .edit-inline-save-icon {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 16px;
+	padding:2px;
+	cursor: pointer;
+}
+.edit-inline-pencil-icon {
+	opacity: 0;
+}
+.inline_edit_column:hover .edit-inline-pencil-icon {
+	opacity: 1;
+}
+.inline_edit_column {
+	padding-right: 11px !important;
+}
+.search .buttons {
+	margin: 1em;
+}
+.siteseo_search {
+	float: none !important;
+}
+.siteseo_search form > div {
+	margin-left: 10px !important;
+	margin-bottom: 10px;
+}
+.siteseo_search #filter_form select {
+	padding: 0.4em;
+}
+.siteseo_search form .sm_search_button {
+	margin: 0px !important;
+}
+.siteseo_search form > div {
+	margin-left: 10px;
+}
+.siteseo_search #filter_form select {
+	padding: 0.4em;
+}
+.siteseo_admin_table tbody tr td {
+	word-break: break-word;
+}
+.siteseo_admin_results {
+	overflow: hidden;
+	clear: both;
+	display: block;
+}
+#inline-edit-textarea {
+	max-width: 300px;
+	min-height: 60px;
+	margin-right: 15px;
+}
+
+#edit-inline-div{
+	position: relative;
+}
+
+/* MANAGE CONTENT META TAGS SECTION*/
+.manage-content-meta-tags .modified {
+	background-color: #fff4ff;
+}
+table.admin_table tbody tr td {
+	position: relative;
+}
+
+/* SITEMAP SECTION*/
+.sitemap_sortable_rows {
+	cursor: pointer;
+}
+.sitemap_list {
+	height: 20px;
+	overflow: hidden;
+	min-width: 80px;
+}
+.sitemap_list_elements {
+	padding: 2px 0px;
+}
+.sitmap_list_explanded {
+	height: initial;
+}
+.status {
+	font-weight: bold;
+	font-size: 18px;
+	text-align: center;
+	line-height: 12px;
+	border: 2px solid #555;
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	box-sizing: border-box;
+}
+
+/*INDEX SITEMAP TABLE CSS*/
+table#sitemap tr:nth-child(even) {
+	background-color: #f8f8f8;
+}
+table#sitemap tr:nth-child(odd) {
+	background-color: #fff;
+}
+table#sitemap, table#sitemap th, table#sitemap td {
+	border-collapse: collapse;
+	padding: 10px;
+	text-align: left;
+}
+table#sitemap tr:last-child {
+	border-bottom: 1px solid #dfdfdf;
+}
+table#sitemap tr:first-child {
+	border-top: 1px solid #dfdfdf;
+}
+table#sitemap tr {
+	border-left: 1px solid #dfdfdf;
+	border-right: 1px solid #dfdfdf;
+}
+/* EDIT SITEMAP CONTENT SECTION - SMOOTHBOX */
+#schematype-element select {
+	display: inline-block;
+}
+#specific_schematype {
+	min-width: 100px;
+}
+
+/* ADMIN FAQS SECTION*/
+.siteseo_faq ul {
+	margin:10px 20px ;
+}

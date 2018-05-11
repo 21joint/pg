@@ -1,0 +1,1 @@
+INSERT IGNORE INTO `engine4_core_modules` (`name`, `title`, `description`, `version`, `enabled`, `type`) VALUES  ('siteandroidapp', 'Android Mobile Application', 'Siteandroidapp', '4.9.4p8', 1, 'extra') ;

@@ -1,0 +1,26 @@
+"ACTIVITY_TYPE_REACTED";"When people react on my posts."
+"{item:$subject} reacted on your {item:$object:$label}.";"{item:$subject} reacted on your {item:$object:$label}."
+
+"Post a sticker";"Post a sticker"
+"Sticker Store";"Sticker Store"
+"Add these new stickers to make your comments interesting.";"Add these new stickers to make your comments interesting."
+
+# notify_reacted
+"_EMAIL_NOTIFY_REACTED_TITLE";"React"
+"_EMAIL_NOTIFY_REACTED_DESCRIPTION";"This email is sent to the member when someone reacts the member's post."
+"_EMAIL_NOTIFY_REACTED_SUBJECT";"[sender_title] reacted on your post"
+"_EMAIL_NOTIFY_REACTED_BODY";"[header]
+
+[sender_title] has reacted one of your posts. Please click the following link to view it:
+
+http://[host][object_link]
+
+[footer]"
+
+"{item:$subject} reacted on {item:$owner}'s {item:$object:$type}.":"{item:$subject} reacted on {item:$owner}'s {item:$object:$type}."
+"_ACTIVITY_ACTIONTYPE_REACT";"When I reacted on item/post"
+"ADMIN_ACTIVITY_TYPE_REACT";"When someone react on the item/post."
+
+"%s reacted on this.";"%s reacted on this.";"%s reacted on this."
+"%s person reacted on this";"%s person reacted on this";"%s person reacted on this"
+"ACTIVITY_CATEGORY_TYPE_SITEREACTION";"Recations"

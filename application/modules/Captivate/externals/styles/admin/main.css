@@ -1,0 +1,90 @@
+/* $Id: main.css 2014-10-09 00:00:00Z SocialEngineAddOns Copyright 2013-2014 BigStep Technologies Pvt. Ltd. $ */
+
+#captivate_theme_customization-wrapper{
+    overflow:hidden!important;
+}
+#captivate_theme_customization-wrapper #captivate_theme_customization-label{
+    font-size:20px;
+    font-weight:normal!important;
+    width:100%;
+    text-align:center;
+}
+#captivate_theme_customization-element{
+    max-width:100%!important;
+    float:left;
+}
+html[dir="rtl"] #captivate_theme_customization-element {
+	float: right;	
+}
+#captivate_theme_customization-element ul.form-options-wrapper{
+    margin-top:20px;
+    text-align:center;
+}
+#captivate_theme_customization-element ul.form-options-wrapper label{
+    line-height:20px;
+    text-transform:lowercase;
+}
+#captivate_theme_customization-element input[type="radio"]{
+    display:inline-block;
+    float:none;
+    vertical-align:bottom;
+}
+#captivate_theme_customization-element ul.form-options-wrapper label{
+    display:table-caption;
+    width:100%;
+    display:block;
+    text-align:center;
+}
+#captivate_theme_customization-element ul li{
+    width:16%;
+    display:inline-block;
+    background-repeat:no-repeat;
+    background-position:top center;
+    line-height:165px;
+    margin:0 0 20px 0;
+    background-size:contain;
+}
+#captivate_theme_customization-element ul li + li{
+    margin-right:5px;
+}
+html[dir="rtl"] #captivate_theme_customization-element ul li + li{
+    margin-left: 5px;
+	margin-right: 0;
+}
+#captivate_theme_customization-element ul li:nth-child(1){
+    background-image:url(~/application/modules/Captivate/externals/images/default.png);
+}
+#captivate_theme_customization-element ul li:nth-child(2){
+    background-image:url(~/application/modules/Captivate/externals/images/blue.png);
+}
+#captivate_theme_customization-element ul li:nth-child(3){
+    background-image:url(~/application/modules/Captivate/externals/images/dark-green.png);
+}
+#captivate_theme_customization-element ul li:nth-child(4){
+    background-image:url(~/application/modules/Captivate/externals/images/dark-sky-blue.png);
+}
+#captivate_theme_customization-element ul li:nth-child(5){
+    background-image:url(~/application/modules/Captivate/externals/images/light-voilet.png);
+}
+#captivate_theme_customization-element ul li:nth-child(6){
+    background-image:url(~/application/modules/Captivate/externals/images/orange.png);
+}
+#captivate_theme_customization-element ul li:nth-child(7){
+    background-image:url(~/application/modules/Captivate/externals/images/voilet.png);
+}
+#captivate_theme_customization-element ul li:nth-child(8){
+    background-image:url(~/application/modules/Captivate/externals/images/yellow.png);
+}
+#captivate_theme_customization-element ul li:nth-child(9){
+    background-image:url(~/application/modules/Captivate/externals/images/dark-blue.png);
+}
+#captivate_theme_customization-element ul li:nth-child(10){
+    background-image:url(~/application/modules/Captivate/externals/images/dark-pink.png);
+}
+#captivate_theme_customization-element ul li:last-child{
+    background-image:url(~/application/modules/Captivate/externals/images/custom.png);
+    clear:both;
+    width:100%;
+    height:150px;
+    overflow:visible;
+}

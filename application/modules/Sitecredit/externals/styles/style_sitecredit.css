@@ -1,0 +1,645 @@
+/* $Id: style_sitecredit.css 2017-03-08 00:00:00Z SocialEngineAddOns Copyright 2016-2017 BigStep Technologies Pvt. Ltd. $ */
+/*My Credits*/
+
+.sitecredit_credit_account_table table
+{
+  margin: 20px auto;
+}
+.sitecredit_credit_account_table table thead th
+{
+  font-weight: bold !important;
+}
+.sitecredit_credit_account_table table thead th, .sitecredit_credit_account_table table tbody td
+{
+  padding: 8px;
+  text-align: center;
+}
+.credits_validity
+{
+  width: 90%;
+  margin: 0 auto 20px auto;
+}
+.credits_validity li
+{
+  display: inline-block;
+  width: 49%;
+}
+.credits_validity li #sitecredit_validity_date
+{
+  text-align: right;
+}
+html[dir="rtl"] .credits_validity li #sitecredit_validity_date
+{
+  text-align: left;
+}
+.sitecredit_validity_days
+{
+  padding: 8px;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  margin: 0 auto 20px auto;
+  width: 80%;
+  text-align: center;
+}
+/*.credit_debited
+{
+  background: #f2dede;
+}
+.credit_debited td, .credit_credited td
+{
+  color: #727272;
+}
+.credit_credited
+{
+  background: #dff0d8;
+}*/
+/*Send Credits*/
+
+.layout_sitecredit_send_to_friend .credit_form #friend_name-wrapper #friend_name-label, .layout_sitecredit_send_to_friend .credit_form #friend_id-wrapper, .layout_sitecredit_send_to_friend .credit_form #sendcredit-wrapper #sendcredit-label
+{
+  display: none;
+}
+.layout_sitecredit_send_to_friend .credit_form .form-description
+{
+  margin-bottom: 10px;
+}
+.credit_form input[type=text], .credit_form input[type=email], .credit_form input[type=password]
+{
+  width: 100% !important;
+  box-sizing: border-box;
+}
+/*Buy credits*/
+
+.layout_sitecredit_buy_credits .credit_form #payment_method-wrapper #payment_method-label
+{
+  display: none;
+}
+.layout_sitecredit_buy_credits .credit_form #offers-wrapper .form-options-wrapper li
+{
+  line-height: 22px;
+}
+.layout_sitecredit_buy_credits .credit_form #offers-wrapper #offers-element
+{
+  width: 100%;
+}
+/*Next Target*/
+.badge_progressbar
+{
+  position: relative;
+}
+#myProgressbar, #myProgress, #myProgress2
+{
+  position: relative;
+  width: 80%;
+  height: 20px;
+  background-color: #ddd;
+  border-radius: 4px;
+}
+#myProgress2
+{
+  margin-top: 20px;
+}
+#myBarblock, #myBar, #myBar2
+{
+  position: absolute;
+  width: 20%;
+  height: 100%;
+  border-radius: 4px 0 0 4px;
+}
+#current_credit_box, #showBalance_current_credit_box
+{
+  width: 80%;
+  position: relative;
+}
+.next_target_btnbox
+{
+  height: auto;
+  padding-bottom: 15px;
+  overflow: hidden;
+  text-align: center;
+}
+.next_target_btnbox input[type="text"]
+{
+  width: 100%;
+}
+.next_target_btnbox input[type="text"], .next_target_btnbox .link_button, .next_target_btnbox button
+{
+  margin-bottom: 15px;
+}
+.badge_box
+{
+  margin-bottom: 15px;
+  text-align: center;
+}
+.badge_box > div.photo
+{
+  margin-bottom: 10px;
+  width: 33%;
+}
+.badge_box > div.right_arw
+{
+  width: 20%;
+}
+.badge_box > div.right_arw img
+{
+  max-width: 100%;
+}
+.badge_box > div
+{
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 5px;
+  text-align: center;
+}
+.badge_box > div.photo img
+{
+  border-radius: 50%;
+  border: 0;
+}
+.badge_box > div.photo .badge_title
+{
+  text-align: center;
+  font-style: italic;
+  font-weight: bold !important;
+}
+.badge_box > div:last-child
+{
+  margin-right: 0;
+}
+.badge_progressbar .current_credit, .badge_progressbar .target_credit, .badge_progressbar .showBalance_current_credit, .badge_progressbar .showBalance_target_credit
+{
+  text-align: center;
+  font-weight: bold !important;
+}
+.badge_progressbar .target_credit, .badge_progressbar .showBalance_target_credit
+{
+  margin-top: -20px;
+  text-align: right;
+}
+html[dir="rtl"] .badge_progressbar .target_credit, html[dir="rtl"] .badge_progressbar .showBalance_target_credit
+{
+  text-align: left;
+}
+.badge_progressbar .current_credit, .badge_progressbar .showBalance_current_credit
+{
+  margin-top: -20px;
+  color: #fff;
+}
+.user_current_credits > div
+{
+  margin: 0 0 20px 0;
+  font-weight: bold !important;
+  font-size: 14px !important;
+}
+#showLimit_creditDiffrence
+{
+  margin-top: 10px;
+}
+/*Recent Activities*/
+.sitecredit_recent_activities ul li.sitecredit_recent_activities_list
+{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  vertical-align: top;
+  height: 100%;
+  overflow: hidden;
+}
+.sitecredit_recent_activities ul li.sitecredit_recent_activities_list:last-child
+{
+  border-bottom: 0;
+}
+.sitecredit_recent_activities ul li.sitecredit_recent_activities_list img
+{
+  margin-right: 12px;
+  float: left;
+}
+html[dir="rtl"] .sitecredit_recent_activities ul li.sitecredit_recent_activities_list img
+{
+  float: right;
+  margin-left: 12px;
+  margin-right: 0;
+}
+.sitecredit_recent_activities .sitecredit_recent_activities_credits
+{
+  margin-bottom: 10px;
+  text-align: right;
+}
+html[dir="rtl"].sitecredit_recent_activities .sitecredit_recent_activities_credits
+{
+  text-align: left;
+}
+.sitecredit_recent_activities .sitecredit_recent_activities_credits > .sitecredit_recent_activities_credits_block
+{
+  margin-right: 10px;
+  vertical-align: top;
+}
+.sitecredit_recent_activities .sitecredit_recent_activities_credits > .sitecredit_recent_activities_credits_block img
+{
+  margin-right: 5px;
+  vertical-align: bottom;
+}
+.indicator_arrow
+{
+  border: 0px !important;
+}
+/*Upgrade level*/
+#upgrade_level-element
+{
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+#admin_upgrade_level-div
+{
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.sitecredit_upgrade_level_desc
+{
+  margin-bottom: 10px;
+}
+.sitecredit_upgrade_levels_div
+{
+  margin: 15px 0;
+}
+.sitecredit_upgrade_levels_div > div, .sitecredit_upgrade_level .level1, .sitecredit_upgrade_level .form-options-wrapper > div
+{
+  width: 100%;
+  padding: 7px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+.sitecredit_upgrade_level .level1 > span
+{
+  vertical-align: middle;
+}
+.sitecredit_upgrade_level .level1 img
+{
+  margin-left: 8px;
+  vertical-align: sub;  
+}
+.sitecredit_upgrade_level .form-options-wrapper > div li p
+{
+  margin-top: 5px;
+  margin-left: 18px;
+}
+.sitecredit_upgrade_level .form-options-wrapper > div li p img
+{
+  vertical-align: middle;
+  margin-left: 8px;
+}
+.sitecredit_upgrade_levels_div > div > span
+{
+  vertical-align: middle;
+}
+.sitecredit_upgrade_levels_div > div > span > img
+{
+  vertical-align: bottom;
+  margin-left: 7px;
+}
+/*My Badge*/
+.my_badge .first_badge
+{
+  text-align: center;
+  margin-bottom: 10px;
+}
+.my_badge .first_badge img
+{
+  border-radius: 50%;
+  max-width: 100%;
+  padding: 10px;
+  border: 0;
+  width: 150px;
+  height: 150px;
+  box-sizing: border-box;
+}
+.my_badge .first_badge .badge_title
+{
+  text-align: center;
+  padding: 10px;
+  font-weight: bold !important;
+}
+.my_badge .others_badge
+{
+  text-align: center;
+  margin-bottom: 10px;
+}
+.my_badge .others_badge img
+{
+  border-radius: 50%;
+  width: 100px;
+  padding: 10px;
+  border: 0;
+}
+.my_badge .others_badge .badge_title
+{
+  text-align: center;
+  padding: 10px;
+  font-weight: bold !important;
+}
+/*Transaction Search*/
+.transaction_search
+{
+  padding: 15px;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+.transaction_search div
+{
+  display: inline-block;
+  margin-right: 8px;
+}
+html[dir="rtl"] .transaction_search div
+{
+  margin-right: 0;
+  margin-left: 8px;
+}
+.transaction_search .credits_points input[type="text"]
+{
+  width: 100px;
+  margin-right: 10px;
+}
+.transaction_table, .transaction_records
+{
+  margin-top: 15px;
+}
+.transaction_table table, .earn_credits_table table
+{
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+.transaction_table table thead a
+{
+  cursor: pointer;
+}
+.transaction_table table thead th, .transaction_table table tbody td
+{
+  padding: 8px;
+  text-align: center;
+}
+/*Earn Credits*/
+.earn_credits p
+{
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+}
+.earn_credits p:last-child
+{
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.earn_credits_table
+{
+  margin-bottom: 5px;
+}
+.earn_credits_table table thead
+{
+  font-weight: bold !important;
+}
+.earn_credits_table table thead th
+{
+  text-align: center;
+  font-weight: bold !important;
+}
+.earn_credits_table table thead th, .earn_credits_table table tbody td
+{
+  padding: 8px;
+  word-break: break-word;
+}
+.earn_credits_table table thead th:last-child, .earn_credits_table table tbody td:last-child
+{
+  border-right: 0;
+}
+.credits_activity td
+{
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold !important;
+}
+.earn_search
+{
+  padding: 10px;
+  border-radius: 4px;
+}
+.earn_search > form > div
+{
+  display: inline-block;
+  vertical-align: middle;
+}
+.earn_search #module_id-element
+{
+  margin-left: 15px;
+  margin-right: 15px;
+}
+html[dir="rtl"] .earn_search #module_id-element
+{
+  margin-left: 0;
+}
+.earn_search #module_id-label
+{
+  width: 70px;
+}
+.earn_search #module_id-label p
+{
+  font-weight: bold !important;
+}
+.earn_search #module_id-element > select
+{
+  height: 37px;
+  max-width: 230px;
+}
+.earn_credits_value
+{
+  margin: 15px 0;
+  font-weight: bold !important;
+  font-size: 16px;
+}
+
+
+/*Top Members*/
+.top_members_table table{
+  width: 100%;
+}
+.top_members_table tbody tr:last-child
+{
+  border-bottom: 0;
+}
+.top_members_table tbody td
+{
+  vertical-align: top;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.top_members_table tbody td span
+{
+  padding-right: 10px;
+  vertical-align: top;
+  display: table-cell;
+}
+.top_members_table tbody td .active_member_title
+{
+  text-transform: capitalize; 
+  margin-bottom: 5px;
+}
+.top_members_table tbody td .active_member_icon > span{
+  vertical-align: top;
+}
+.top_members_table tbody td .active_member_icon > span > img{
+  margin-top: 2px;
+}
+.transaction_view_popup_details
+{
+  margin-top: 15px;
+}
+.transaction_view_popup_details .table td
+{
+  padding: 8px;
+  vertical-align: top;
+}
+.transaction_view_popup_details .table td strong
+{
+  font-weight: bold !important;
+}
+.credit_form div.form-label
+{
+  text-align: left;
+}
+html[dir="rtl"] .credit_form div.form-label
+{
+  text-align: right;
+  padding-left: 0 !important;
+}
+.credit_form
+{
+  clear: both;
+  overflow: hidden;
+  padding: 0px;
+}
+.credit_form > div
+{
+  overflow: hidden;
+}
+.credit_form > div > div
+{
+  border: 0 solid transparent;
+  padding: 0;
+  background-color: transparent;
+  overflow: hidden;
+}
+.credit_form div.form-wrapper
+{
+  clear: both;
+  overflow: hidden;
+}
+.credit_form div.form-label
+{
+  width: 100%;
+  padding: 4px 25px 0 2px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  float: left;
+  clear: left;
+  font-size: 13px;
+}
+html[dir="rtl"] .credit_form div.form-label
+{
+  padding-right: 0;
+}
+.credit_form div.form-element
+{
+  min-width: 150px;
+  text-align: left;
+  margin-bottom: 10px;
+  overflow: hidden;
+  float: left;
+  clear: none;
+  max-width: 850px;
+  width: 100%;
+}
+html[dir="rtl"] .credit_form div.form-element
+{
+  text-align: right;
+}
+.credit_form #credit_offer-element > ul > li:first-child
+{
+  margin-bottom: 5px;
+}
+.credit_form input[type=radio]
+{
+  margin: 2px 5px 0 0 !important;
+  float: none;
+  vertical-align: middle;
+  display: inline-block;
+}
+.credit_form input[type=radio]+label
+{
+  vertical-align: middle;
+  display: inline-block;
+}
+#error-div
+{
+  margin: 6px 0;
+}
+.terms_cond_box ul, .terms_cond_box ol
+{
+  padding-left: 12px;
+}
+.terms_cond_box p
+{
+  margin-bottom: 5px;
+}
+#BuyCreditForm #payment-form h3
+{
+  font-size: 1em;
+}
+#payment-form .tip, #error-div, #error-div-Payment
+{
+  background: #f2dede;
+  padding: 5px;
+  color: #a94442;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+#payment-form .back_btn img
+{
+  margin-right: 5px;
+  vertical-align: middle;
+}
+#payment-form .back_btn
+{
+  vertical-align: middle;
+  cursor: pointer;
+}
+#payment-form .payment_form_value
+{
+  margin-top: 10px;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+@media only screen and (max-width: 1199px)
+{
+  .my_badge .first_badge img
+  {
+    max-width: 100%;
+    width: 130px;
+  }
+}
+
+@media only screen and (max-width: 480px)
+{
+  .credits_points .form-element input[type="text"]
+  {
+    margin-bottom: 8px;
+  }
+  .transaction_table
+  {
+    overflow-x: auto;
+  }
+}

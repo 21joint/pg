@@ -1,0 +1,17 @@
+.activity_icon_sitepagereview_new::before, .icon_sitepages_review::before, .activity_icon_review_sitepage::before {
+  content:"\f040";
+}
+/*Sitepage review view page*/
+#global_page_sitepagereview-index-view .layout_right, #global_page_sitepagereview-index-view .layout_left{display:none;}
+#global_page_sitepagereview-index-view .comments{width:auto;}
+ul.sitepagereviews_view h3 {
+	text-align: center;
+	margin-bottom:5px !important;
+}
+.sitepagereviews_view_stats{
+	text-align:center;
+	color:$theme_font_color_light;
+}
+.sitepagereviews_view_body{
+	text-align:center;
+}

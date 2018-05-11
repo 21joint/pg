@@ -1,0 +1,564 @@
+#Api/Core.php
+"This ";"This "
+" is not valid";" is not valid"
+"View Feedbacks";"View Feedbacks"
+"Severities";"Severities"
+"Categories";"Categories"
+"Status";"Status"
+"Block Users";"Block Users"
+"Block IP Addresses";"Block IP Addresses"
+"Statistics";"Statistics"
+"Feedback Questions";"Feedback Questions"
+"This License Key is not valid";"This License Key is not valid"
+
+#settings/content.php
+"Recent Feedbacks";"Recent Feedbacks"
+"Displays a list of recently created feedbacks.";"Displays a list of recently created feedbacks."
+"";""
+"";""
+
+
+#settings/my.sql
+"Idea";"Idea"
+"Question";"Question"
+"Problem";"Problem"
+"Praise";"Praise"
+"Feature";"Feature"
+"Trivial";"Trivial"
+"Text";"Text"
+"Tweak";"Tweak"
+"Minor";"Minor"
+"Major";"Major"
+"Crash";"Crash"
+"Block";"Block"
+"Planned";"Planned"
+"Started";"Started"
+"Completed";"Completed"
+"Declined";"Declined"
+"Response";"Response"
+"Under Review";"Under Review"
+"Global Settings";"Global Settings"
+"{item:$subject} posted a new feedback:";"{item:$subject} posted a new feedback:"
+"{item:$subject} commented on {item:$owner}'s {item:$object:feedback}:";"{item:$subject} commented on {item:$owner}'s {item:$object:feedback}:
+"{item:$subject} commented on {item:$owner}''s {item:$object:feedback}: {body:$body}";"{item:$subject} commented on {item:$owner}''s {item:$object:feedback}: {body:$body}"
+"{item:$subject} commented on {item:$owner}'s {item:$object:feedback}: {body:$body}";"{item:$subject} commented on {item:$owner}'s {item:$object:feedback}: {body:$body}"
+
+
+#controllers/indexController.php
+"You have successfully created feedback.";"You have successfully created feedback."
+"Browse Feedbacks";"Browse Feedbacks"
+"My Feedbacks";"My Feedbacks"
+
+#views/scripts/_FancyUpload.tpl
+
+"Upload complete.";"Upload complete."
+"An error occurred:";"An error occurred:"
+"To enable the embedded uploader, unblock it in your browser and refresh (see Adblock).";"To enable the embedded uploader, unblock it in your browser and refresh (see Adblock)."
+"To enable the embedded uploader, enable the blocked Flash movie (see Flashblock).";"To enable the embedded uploader, enable the blocked Flash movie (see Flashblock)."
+"A required file was not found, please be patient and we'll fix this.";"A required file was not found, please be patient and we'll fix this."
+"To enable the embedded uploader, install the latest Adobe Flash plugin.";"To enable the embedded uploader, install the latest Adobe Flash plugin."
+"File Upload";"File Upload"
+"This form is just an example fallback for the unobtrusive behaviour of FancyUpload. If this part is not changed, something must be wrong with your code.";"This form is just an example fallback for the unobtrusive behaviour of FancyUpload. If this part is not changed, something must be wrong with your code."
+"Upload a Picture:";"Upload a Picture:"
+"Click "Add Pictures" to select one or more pictures from your computer. After you have selected the pictures, they will begin to upload right away. When your upload is finished, click the button below your picture list to save them to your feedback.";"Click "Add Pictures" to select one or more pictures from your computer. After you have selected the pictures, they will begin to upload right away. When your upload is finished, click the button below your picture list to save them to your feedback."
+"Add Pictures";"Add Pictures"
+"Clear List";"Clear List"
+
+#views/scripts/_formButtonCancel.tpl
+
+"Save Changes";"Save Changes"
+"or";"or"
+
+#views/scripts/_formImagerainbow1.tpl
+
+"Customize feedback button color";"Customize feedback button color"
+"Select the color of the feedback button. (Click on the rainbow below to choose your color.)";"Select the color of the feedback button. (Click on the rainbow below to choose your color.)"
+
+#views/scripts/_formImagerainbow2.tpl
+
+"Customize feedback button hover color";"Customize feedback button hover color"
+"Select the hover color of the feedback button. (Click on the rainbow below to choose your color.)";"Select the hover color of the feedback button. (Click on the rainbow below to choose your color.)"
+
+#views/scripts/delete.tpl
+
+"Delete Feedback?";"Delete Feedback?"
+"Are you sure that you want to delete this Feedback? It will not be recoverable after being deleted.";"Are you sure that you want to delete this Feedback? It will not be recoverable after being deleted."
+"cancel";"cancel"
+
+#views/scripts/detail.tpl
+
+"Delete";"Delete"
+"Feedback Details :";"Feedback Details :"
+"Title :";"Title :"
+"Owner :";"Owner :"
+"Anonymous User";"Anonymous User"
+"Owner Email :";"Owner Email :"
+"Owner Name :";"Owner Name :"
+"Description :";"Description :"
+"Creation Date :";"Creation Date :"
+"about %s";"about %s"
+"Category :";"Category :"
+"Severity :";"Severity :"
+"Status :";"Status :"
+"Views :";"Views :"
+"Votes :";"Votes :"
+"Comments :";"Comments :"
+"Pictures :";"Pictures :"
+"IP Address :";"IP Address :"
+"Browser Detail :";"Browser Detail :"
+"Close";"Close"
+
+#views/scripts/index.tpl
+
+"Feedback Plugin";"Feedback Plugin"
+
+#views/scripts/admin-manage/blockuser.tpl
+
+"Block Users";"Block Users"
+"Here, you can block users from creating feedback, and from commenting on feedback. You may search for users to block using the form below.";"Here, you can block users from creating feedback, and from commenting on feedback. You may search for users to block using the form below."
+"%s members found";"%s members found"
+"ID";"ID"
+"Username";"Username"
+"Feedback Posting";"Feedback Posting"
+"Comment Posting";"Comment Posting"
+"Email";"Email"
+"User Level";"User Level"
+"Signup Date";"Signup Date"
+"Click to block feedback from this user";"Click to block feedback from this user"
+"Click to allow feedback from this user";"Click to allow feedback from this user"
+"Click to block comments from this user";"Click to block comments from this user"
+"Click to allow comments from this user";"Click to allow comments from this user"
+
+#views/scripts/admin-manage/index.tpl
+
+"Manage Feedback";"Manage Feedback"
+"This page lists all the feedback posted by the users. Here, you can monitor feedback, delete them, make feedback featured / un-featured and set status for feedback.";"This page lists all the feedback posted by the users. Here, you can monitor feedback, delete them, make feedback featured / un-featured and set status for feedback."
+"Are you sure you want to delete selected feedback?";"Are you sure you want to delete selected feedback?"
+" feedback found";" feedback found"
+"Featured";"Featured"
+"Owner";"Owner"
+"Private";"Private"
+"Public";"Public"
+"Creation";"Creation"
+"Extras";"Extras"
+"Options";"Options"
+"Visibility";"Visibility"
+"Make Private";"Make Private"
+"Make Public";"Make Public"
+"Anonymous";"Anonymous"
+"Un-featured";"Un-featured"
+"Featured";"Featured"
+"Remove as Featured";"Remove as Featured"
+"Make Featured";"Make Featured"
+"(Edit)";"(Edit)"
+"Add Status";"Add Status"
+"Details";"Details"
+"view |";"view |"
+"delete";"delete"
+"Delete Selected";"Delete Selected"
+
+#views/scripts/admin-manage/delete.tpl
+
+"Delete Feedback?";"Delete Feedback?"
+"Are you sure that you want to delete this Feedback? It will not be recoverable after being deleted.";"Are you sure that you want to delete this Feedback? It will not be recoverable after being deleted."
+
+#views/scripts/admin-settings/addstat.tpl
+
+"Color :";"Color :"
+"(To choose color click on rainbow)";"(To choose color click on rainbow)"
+
+#views/scripts/admin-settings/blockips.tpl
+
+" or ";" or "
+"Block IP Addresses";"Block IP Addresses"
+"Here, you can block feedback creation and commenting on feedback based on IP Addresses of users.";"Here, you can block feedback creation and commenting on feedback based on IP Addresses of users."
+"Blockip Address";"Blockip Address"
+"IP Address";"IP Address"
+"Click to block feedback from this IP Address";"Click to block feedback from this IP Address"
+"Click to allow feedback from this IP Address";"Click to allow feedback from this IP Address"
+"Click to block comments from this IP Address";"Click to block comments from this IP Address"
+"Click to allow comments from this IP Address";"Click to allow comments from this IP Address"
+"Add New IP Address";"Add New IP Address"
+
+#views/scripts/admin-settings/categories.tpl
+
+"edit";"edit"
+"Feedback Categories";"Feedback Categories"
+"If you want to allow your users to categorize their feedback, create the categories below. If you have no categories, your users will not be given the option of assigning a feedback category.";"If you want to allow your users to categorize their feedback, create the categories below. If you have no categories, your users will not be given the option of assigning a feedback category."
+"Category Name";"Category Name"
+"Number of Times Used";"Number of Times Used"
+"Add New Category";"Add New Category"
+"If you want to allow your users to categorize their feedback, create the categories below. If you have no categories, your users will not be given the option of assigning a feedback category. Below, you can set the sequence of items in the order in which they should appear to users in the create / edit / search form. To do so, drag-and-drop the items vertically and click on 'Save Order' to save the sequence.";"If you want to allow your users to categorize their feedback, create the categories below. If you have no categories, your users will not be given the option of assigning a feedback category. Below, you can set the sequence of items in the order in which they should appear to users in the create / edit / search form. To do so, drag-and-drop the items vertically and click on 'Save Order' to save the sequence."
+
+#views/scripts/admin-settings/delete.tpl
+
+"Delete This Entry?";"Delete This Entry?"
+"Are you sure that you want to delete this entry? It will not be recoverable after being deleted.";"Are you sure that you want to delete this entry? It will not be recoverable after being deleted."
+
+#views/scripts/admin-settings/editstat.tpl
+
+"Edit Status";"Edit Status"
+
+#views/scripts/admin-settings/severities.tpl
+
+"Feedback Severities";"Feedback Severities"
+"Create new severities below for the Feedback on your site.";"Create new severities below for the Feedback on your site."
+"Severity Name";"Severity Name"
+"Add New Severity";"Add New Severity"
+"Save Order";"Save Order"
+"Create new severities below for the Feedback on your site. Below, you can set the sequence of items in the order in which they should appear to users in the create / edit form. To do so, drag-and-drop the items vertically and click on 'Save Order' to save the sequence.";"Create new severities below for the Feedback on your site. Below, you can set the sequence of items in the order in which they should appear to users in the create / edit form. To do so, drag-and-drop the items vertically and click on 'Save Order' to save the sequence."
+
+#views/scripts/admin-settings/statistic.tpl
+
+"Feedback Statistics";"Feedback Statistics"
+"Below are some valuable statistics for the Feedback submitted on this site:";"Below are some valuable statistics for the Feedback submitted on this site:"
+"Total feedback";"Total feedback"
+"Total Public Feedback";"Total Public Feedback"
+"Total Private Feedback";"Total Private Feedback"
+"Total Anonymous Feedback";"Total Anonymous Feedback"
+"Total Comments";"Total Comments"
+"Total Votes";"Total Votes"
+
+#views/scripts/admin-settings/status.tpl
+
+"Create or Edit status values for the feedback.";"Create or Edit status values for the feedback."
+"Status Name";"Status Name"
+"Add New Status";"Add New Status"
+"Feedback Status";"Feedback Status"
+
+#views/scripts/image/remove.tpl
+
+"Pictures";"Pictures"
+"Delete Picture?";"Delete Picture?"
+"Are you sure that you want to delete the picture ?";"Are you sure that you want to delete the picture ?"
+
+#views/scripts/image/upload.tpl
+
+"Feedback Pictures";"Feedback Pictures"
+
+#views/scripts/image/view.tpl
+
+"%1$s's Pictures";"%1$s\'s Pictures"
+"Picture %1$s of %2$s";"Picture %1$s of %2$s"
+"Prev";"Prev"
+"Next";"Next"
+
+#views/scripts/index/browse.tpl
+
+"Feedback has been created successfully!";"Feedback has been created successfully!"
+"Feedbacks";"Feedbacks"
+"Create New Feedback";"Create New Feedback"
+"Most Voted Feedbacks";"Most Voted Feedbacks"
+" Views";" Views"
+" Comments";" Comments"
+"No, Feedback found.";"No, Feedback found."
+"Nobody has posted a feedback  with that criteria.";"Nobody has posted a feedback  with that criteria."
+"Be the first to %1$swrite%2$s one!";"Be the first to %1$swrite%2$s one!"
+"Nobody has posted a feedback yet.";"Nobody has posted a feedback yet."
+"vote";"vote"
+"Remove";"Remove"
+" Pictures";" Pictures"
+"Posted by %s about %s";"Posted by %s about %s"
+"Posted by Anonymous user about %s";"Posted by Anonymous user about %s"
+"Category:";"Category:"
+"<b>Status:</b>";"<b>Status:</b>"
+"<b>Status Comment:</b>";"<b>Status Comment:</b>"
+" Votes";" Votes"
+"votes";"votes"
+"Votes";"Votes"
+"Comments";"Comments"
+"view";"view"
+
+
+#views/scripts/index/create.tpl
+
+"You have been blocked by the site admin from creating feedback.";"You have been blocked by the site admin from creating feedback."
+"Please ";"Please "
+"login";"login"
+" to create feedback";" to create feedback"
+"Search";"Search"
+"Popular Feedback from the community";"Popular Feedback from the community"
+"Go to Feedback Forum &raquo;";"Go to Feedback Forum &raquo;"
+"Featured";"Featured"
+" to view feedback";" to view feedback"
+" to view and create feedback";" to view and create feedback"
+"Go to My Feedbacks &raquo;";"Go to My Feedbacks &raquo;"
+
+
+#views/scripts/index/delete.tpl
+
+"Feedback";"Feedback"
+"Are you sure that you want to delete the feedback titled "%1$s" ? It will not be recoverable after being deleted.";"Are you sure that you want to delete the feedback titled "%1$s" ? It will not be recoverable after being deleted."
+
+#views/scripts/index/list.tpl
+
+"View All Feedback";"View All Feedback"
+"Search Feedback";"Search Feedback"
+"Categories";"Categories"
+"All Categories";"All Categories"
+"%1$s\'s Feedbacks";"%1$s\'s Feedbacks"
+" Posted  by";" Posted  by"
+"%1$s has not posted any feedback with this criteria.";"%1$s has not posted any feedback with this criteria."
+"%1$s has not posted a feedback entry yet.";"%1$s has not posted a feedback entry yet."
+" Views";" Views"
+" Comments";" Comments"
+" Posted by";" Posted by"
+
+#views/scripts/index/manage.tpl
+
+"View Feedback";"View Feedback"
+"Edit Feedback";"Edit Feedback"
+"Delete Feedback";"Delete Feedback"
+"You do not have any feedback that match your search criteria.";"You do not have any feedback that match your search criteria."
+"You do not have any feedback.";"You do not have any feedback."
+"Get started by %1$screating%2$s a new feedback.";"Get started by %1$screating%2$s a new feedback."
+
+#views/scripts/index/success.tpl
+
+"Thank you for your Feedback";"Thank you for your Feedback"
+"Your Feedback was successfully posted. Would you like to add pictures to explain it better ?";"Your Feedback was successfully posted. Would you like to add pictures to explain it better ?"
+" continue to my feedback";" continue to my feedback"
+" go to Feedback Forum";" go to Feedback Forum"
+"Add Pictures";"Add Pictures"
+"No, thank you.";"No, thank you."
+
+#views/scripts/index/view.tpl
+
+"View All Feedbacks";"View All Feedbacks"
+"Search Feedback";"Search Feedback"
+"FEEDBACK OF SAME CATEGORY";"FEEDBACK OF SAME CATEGORY"
+"More &raquo;";"More &raquo;"
+"All Categories";"All Categories"
+"%1$s\'s Feedback";"%1$s\'s Feedback"
+" votes";" votes"
+" Participants";" Participants"
+"Feedback Images";"Feedback Images"
+"Inappropriate Content";"Inappropriate Content"
+"Posted by %s about %s,";"Posted by %s about %s,"
+"Posted by Anonymous user about %s,";"Posted by Anonymous user about %s,"
+" pictures";" pictures"
+"%s view, ";"%s view, "
+"Feedback Pictures";"Feedback Pictures"
+" My Feedbacks";" My Feedbacks"
+"Anonymous Feedback";"Anonymous Feedback"
+"Please";"Please"
+" login";" login"
+" to view comments";" to view comments"
+"%1$s\'s Tags";"%1$s\'s Tags"
+" pictures,";" pictures,"
+"Tag:";"Tag:"
+"  Comments";"  Comments"
+"%s's Tags";"%s's Tags"
+"%s Comment";"%s Comment";"%s Comments"
+"%s View";"%s View";"%s Views"
+"Vote";"Vote"
+"%s comment";"%s comment";"%s comments"
+"%s view";"%s view";"%s views"
+"%s like";"%s like";"%s likes"
+"%s vote";"%s vote";"%s votes"
+"%s picture";"%s picture";"%s pictures"
+"%s participant";"%s participant";"%s participants"
+
+
+#views/scripts/pagination/feedbackpagination.tpl
+
+"&#171; Previous";"&#171; Previous"
+"Next &#187;";"Next &#187;"
+
+#controllers/ImageController.php
+
+"Max file size limit exceeded (probably).";"Max file size limit exceeded (probably)."
+"Invalid request method";"Invalid request method"
+"No file";"No file"
+"Invalid Upload";"Invalid Upload"
+"An error occurred.";"An error occurred."
+
+#controllers/AdminFieldsController.php
+"Add Feedback Question";"Add Feedback Question"
+"Show on feedback page?";"Show on feedback page?"
+"Show on feedback page";"Show on feedback page"
+"Hide on feedback page";"Hide on feedback page"
+"Show on the search options?";"Show on the search options?"
+"Hide on the search options";"Hide on the search options"
+"Show on the search options";"Show on the search options"
+"Edit Feedback Question";"Edit Feedback Question"
+"Show on feedback page?";"Show on feedback page?"
+"Show on feedback page";"Show on feedback page"
+"Hide on feedback page";"Hide on feedback page"
+"Show on the search options?";"Hide on the search options"
+"Show on the search options";"Show on the search options"
+
+#Form/Create.php
+
+"Post a Feedback";"Post a Feedback"
+"Share with us your ideas, questions, problems and feedback.";"Share with us your ideas, questions, problems and feedback."
+"To be able to display your Feedback publicly, please <a href='%s' target='_parent'>login</a> first.";"To be able to display your Feedback publicly, please <a href='%s' target='_parent'>login</a> first."
+"Feedback Title*";"Feedback Title*"
+"Title*";"Title*"
+"Description*";"Description*"
+"Category";"Category"
+"Severity";"Severity"
+"Feedback Visibility";"Feedback Visibility"
+"Only public feedback will be visible to others.";"Only public feedback will be visible to others."
+"Email Address*";"Email Address*"
+"Email*";"Email*"
+"Full Name*";"Full Name*"
+"Post Feedback";"Post Feedback"
+"Please type the characters you see in the image.";"Please type the characters you see in the image."
+"Public";"Public"
+"Private";"Private"
+"Tags";"Tags"
+"Separate tags with commas.";"Separate tags with commas."
+
+#Form/Edit.php
+
+"Edit Feedback";"Edit Feedback"
+"Edit your Feedback below.";"Edit your Feedback below."
+"Save Change";"Save Change"
+
+#Form/Search.php
+
+"Browse By";"Browse By"
+"Most Recent";"Most Recent"
+"Most Voted";"Most Voted"
+"Most Viewed";"Most Viewed"
+"Featured";"Featured"
+"All Status";"All Status"
+
+#Form/Admin/Blockip.php
+
+"IP Address";"IP Address"
+"Add Blockip";"Add Blockip"
+"Edit setting";"Edit setting"
+"Block IP Address";"Block IP Address"
+"Block Feedback posting";"Block Feedback posting"
+"Block Comment posting";"Block Comment posting"
+
+#Form/Admin/Category.php
+
+"Category Name";"Category Name"
+"Add Category";"Add Category"
+"Edit Category";"Edit Category"
+
+#Form/Admin/Global.php
+
+"Global Settings";"Global Settings"
+"These settings affect all members in your community.";"These settings affect all members in your community."
+"License key";"License key"
+"Please enter your license key that was provided to you when you purchased this plugin. If you do not know your license key, please contact the Support Team of SocialEngineAddOns from the Support section of your Account Area.(Key Format: XXXXXX-XXXXXX-XXXXXX )";"Please enter your license key that was provided to you when you purchased this plugin. If you do not know your license key, please contact the Support Team of SocialEngineAddOns from the Support section of your Account Area.(Key Format: XXXXXX-XXXXXX-XXXXXX )"
+"Public Permissions";"Public Permissions"
+"Select whether or not you want to let the public (visitors that are not logged-in) to view the following sections of your social network. In some cases (such as Profiles, Feedback, and Albums), if you have given them the option, your users will be able to make their pages private even though you have made them publically viewable here. For more permissions settings, please visit the General Settings page.";"Select whether or not you want to let the public (visitors that are not logged-in) to view the following sections of your social network. In some cases (such as Profiles, Feedback, and Albums), if you have given them the option, your users will be able to make their pages private even though you have made them publically viewable here. For more permissions settings, please visit the General Settings page."
+"Yes, the public can view feedbacks unless they are made private.";"Yes, the public can view feedbacks unless they are made private."
+"No, the public cannot view feedbacks.";"No, the public cannot view feedbacks."
+"Select who can create feedback.";"Select who can create feedback."
+"Select who can create feedback?";"Select who can create feedback?"
+"Only logged-in users";"Only logged-in users"
+"Everyone (including non logged-in users)";"Everyone (including non logged-in users)"
+"Require users to enter validation code when creating feedback?";"Require users to enter validation code when creating feedback?"
+"Visibility for feedback created by logged in users";"Visibility for feedback created by logged in users"
+"Allow logged-in users to choose to make their Feedback Public or Private. (Feedback of non logged-in users will always be private. Public Feedback will be shown in the Feedback Forum.)";"Allow logged-in users to choose to make their Feedback Public or Private. (Feedback of non logged-in users will always be private. Public Feedback will be shown in the Feedback Forum.)"
+"Show public/private option";"Show public/private option"
+"Make all new feedback private";"Make all new feedback private"
+"Severity options";"Severity options"
+"Allow users to choose Severity for their feedback.";"Allow users to choose Severity for their feedback."
+" 	Yes";" 	Yes"
+" 	No";" 	No"
+"Picture upload options";"Picture upload options"
+"Allow users to upload / associate pictures to their feedback.";"Allow users to upload / associate pictures to their feedback."
+"Email Notification";"Email Notification"
+"Send email alerts to Admin for every new feedback creation.";"Send email alerts to Admin for every new feedback creation."
+"Report as inappropriate";"Report as inappropriate"
+"Allow logged-in users to Report feedback from public feedback as Inappropriate.";"Allow logged-in users to Report feedback from public feedback as Inappropriate."
+"Customize feedback button position";"Customize feedback button position"
+"Customize the position of the feedback button";"Customize the position of the feedback button"
+"Left side of the screen";"Left side of the screen"
+"Right side of the screen";"Right side of the screen"
+"Main Navigation Menu";"Main Navigation Menu"
+"Mini Navigation Menu";"Mini Navigation Menu"
+"Footer Menu";"Footer Menu"
+"Select the color of the feedback button. (Click on the rainbow below to choose your color.)";"Select the color of the feedback button. (Click on the rainbow below to choose your color.)"
+"Customize feedback button hover color";"Customize feedback button hover color"
+"Select the hover color of the feedback button. (Click on the rainbow below to choose your color.)";"Select the hover color of the feedback button. (Click on the rainbow below to choose your color.)"
+"Customize feedback button color";"Customize feedback button color"
+"Select the color of the feedback button. (Click on the rainbow below to choose your color.)";"Select the color of the feedback button. (Click on the rainbow below to choose your color.)"
+"Customize feedback button color on mouse over";"Customize feedback button color on mouse over"
+"Customize the color of the feedback buttons (Click on rainbow to choose second color)";"Customize the color of the feedback buttons (Click on rainbow to choose second color)"
+"Feedback Per Page";"Feedback Per Page"
+"Enter the number of feedback to be shown per page on the Feedback listing pages. (Enter a value between 1 and 999.)";"Enter the number of feedback to be shown per page on the Feedback listing pages. (Enter a value between 1 and 999.)"
+"Feedback Forum";"Feedback Forum"
+"Enable the Feedback Forum on your site (Note : If you disable the Feedback Forum on your site, the visibility of all the Feedback will become private [they will only be viewable to you, and the Feedback creator], and users will not be able to select the visibility of their Feedback during creation.)";"Enable the Feedback Forum on your site (Note : If you disable the Feedback Forum on your site, the visibility of all the Feedback will become private [they will only be viewable to you, and the Feedback creator], and users will not be able to select the visibility of their Feedback during creation.)"
+"Yes, enable Feedback Forum on the site.";"Yes, enable Feedback Forum on the site."
+"No, disable Feedback Forum on the site.";"No, disable Feedback Forum on the site."
+"Public / private feedback";"Public / private feedback"
+"Public Permissions";"Public Permissions"
+"No, visitors must sign in to view the feedbacks.";"No, visitors must sign in to view the feedbacks."
+"Feedback Tags";"Feedback Tags"
+"Allow users to mention tags for their feedback.";"Allow users to mention tags for their feedback."
+"Yes, make members complete the CAPTCHA form.";"Yes, make members complete the CAPTCHA form."
+"No, do not show a CAPTCHA form.";"No, do not show a CAPTCHA form."
+"Show Full Title Without Truncation";"Show Full Title Without Truncation"
+"Do you want to show the full feedback title without truncation on various pages like Browse Feedbacks, My Feedbacks etc..";"Do you want to show the full feedback title without truncation on various pages like Browse Feedbacks, My Feedbacks etc.."
+"Recent Feedbacks widget";"Recent Feedbacks widget"
+"How many feedbacks should be shown in the recent feedbacks widget (value cannot be empty or zero) ?";"How many feedbacks should be shown in the recent feedbacks widget (value cannot be empty or zero) ?"
+
+
+#Form/Admin/Hooks.php
+
+"Email Goodbyes";"Email Goodbyes"
+"Do you want to send a goodbye email to users deleting their user account?";"Do you want to send a goodbye email to users deleting their user account?"
+
+#Form/Admin/Severity.php
+
+"Severity Name";"Severity Name"
+"Add Severity";"Add Severity"
+"Edit Severity";"Edit Severity"
+
+#Form/Admin/Manage/Filterblockuser.php
+
+"Username";"Username"
+"Email";"Email"
+"Level";"Level"
+
+#Form/Admin/Manage/Stat.php
+
+"Save Status";"Save Status"
+
+#Form/Image/Upload.php
+
+"Add pictures to your Feedback";"Add pictures to your Feedback"
+"Choose pictures from your computer to add to this feedback. (2MB maximum)";"Choose pictures from your computer to add to this feedback. (2MB maximum)"
+"Save pictures";"Save pictures"
+
+#views/scripts/admin-fields/index.tpl
+"Create custom fields/questions for feedback, which your members will be asked to fill while creating feedback. To reorder the custom questions, click on their names and drag them up or down.";"Create custom fields/questions for feedback, which your members will be asked to fill while creating feedback. To reorder the custom questions, click on their names and drag them up or down."
+"Add Question";"Add Question"
+"Add Heading";"Add Heading"
+"Save Order";"Save Order"
+
+
+# notify_feedback_create
+"_EMAIL_NOTIFY_FEEDBACK_CREATE_TITLE";"Feedback Creation"
+"_EMAIL_NOTIFY_FEEDBACK_CREATE_DESCRIPTION";"This email is sent to the member when someone create a new feedback."
+"_EMAIL_NOTIFY_FEEDBACK_CREATE_SUBJECT";"New feedback created"
+"_EMAIL_NOTIFY_FEEDBACK_CREATE_BODY";"Hello Admin
+
+New [feedback_status] feedback '[feedback_title]' is created by [feedback_owner] on [feedback_date] to view this feedback please click on [link].
+
+Click [browse_link] to browse all feedbacks.
+
+[footer]"
+
+
+"ADMIN_ACTIVITY_TYPE_FEEDBACK_NEW";"When a new feedback is posted."
+"ADMIN_ACTIVITY_TYPE_LIKE_FEEDBACK";"When someone likes one of my feedback."
+"ADMIN_ACTIVITY_TYPE_LIKED_FEEDBACK";"When someone comments on a feedback I liked."
+"ADMIN_ACTIVITY_TYPE_COMMENTED_FEEDBACK";"When someone comments on a feedback I commented on."
+"ADMIN_ACTIVITY_TYPE_COMMENT_FEEDBACK";"When someone comments on one of my feedback."
+
+"_ACTIVITY_ACTIONTYPE_FEEDBACK_NEW";"New feedback creation"
+"_ACTIVITY_ACTIONTYPE_COMMENT_FEEDBACK";"Comments on your feedback"
+
+"ITEM_TYPE_FEEDBACK";"Feedback"
+"'s Feedback";"'s Feedback"
+"'s Feedbacks";"'s Feedbacks"
+"ACTIVITY_CATEGORY_TYPE_FEEDBACK";"Facebook Integration"

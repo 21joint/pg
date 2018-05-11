@@ -1,0 +1,9 @@
+
+.icon_contentint_manage::before{content:"\\f0f6";}
+.icon_contentint_add::before{content:"\\f055";}
+
+/* Listing Icon */
+.icon_app_intg{background-image:url(~/application/modules/Sitepageintegration/externals/images/app_intg.png);}
+.icon_app_intg_list{background-image:url(~/application/modules/Sitepageintegration/externals/images/list.png);}
+.icon_app_intg_business
+{background-image:url(~/application/modules/Sitepageintegration/externals/images/business.png);}

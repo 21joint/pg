@@ -1,0 +1,74 @@
+  /*!
+ *  Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+/* FONT PATH
+ * -------------------------- */
+ @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+ 
+ /* Theme fonts */
+@font-face {
+    font-family: 'OpenSansRegular';
+    src: url('$directorypath/fonts/OpenSansRegular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'OpenSansLight';
+    src: url('$directorypath/fonts/OpenSansLight.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'OpenSansSemibold';
+    src: url('$directorypath/fonts/OpenSansSemibold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'OpenSansBold';
+    src: url('$directorypath/fonts/OpenSansBold.ttf') format('truetype');
+}
+/* Logo and home page background video caption title's font family */
+@font-face {
+    font-family: 'impact';
+    src: url('$directorypath/fonts/impact.ttf') format('truetype');
+}
+ /* Theme fonts ends here */
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('$directorypath/fonts/fontawesome-webfont.eot');
+  src: url('$directorypath/fonts/fontawesome-webfont.eot') format('embedded-opentype'), 
+       url('$directorypath/fonts/fontawesome-webfont.woff') format('woff'), 
+       url('$directorypath/fonts/fontawesome-webfont.ttf') format('truetype'), 
+       url('$directorypath/fonts/fontawesome-webfont.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+ /* Font Awesome uses the Unicode Private Use Area (PUA) to ensure screen
+   readers do not read off random characters that represent icons */
+.fa-user:before {
+  content: "\f007";
+}
+.fa-clock-o:before {
+  content: "\f017";
+}
+.fa-share:before {
+  content: "\f064";
+}
+.fa-comment:before {
+  content: "\f075";
+}
+.fa-thumbs-up:before {
+  content: "\f164";
+}
+.fa-thumbs-down:before {
+  content: "\f165";
+}
+.fa-cog:before {
+  content: "\f013";
+}
+.fa-caret-down:before {
+  content: "\f0d7";
+}
+.fa-times:before {
+  content: "\f00d";
+}
+/*----------------------------------------------------font-awesome end------------------------------------------------------------*/
+ 
+ 
+ 

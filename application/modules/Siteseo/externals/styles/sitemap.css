@@ -1,0 +1,45 @@
+body {
+	background-color: #eee;
+	font-family: monospace;
+	margin:0px auto;
+}
+#container{
+	margin:auto;
+	width:100%;
+}
+a:link {
+	color: #0180AF;
+}
+a:hover {
+	color: #666;
+}
+h1, h4 {
+	background-color:#909090;
+	color: #fff;	
+	margin:0px;
+}
+h1 {
+	border-bottom: 1px solid #bbb;
+	padding:12px 5%;
+	text-align:center;
+}
+h4 {
+	padding:5px 1%;
+}
+th {
+	background-color:#909090;
+	color:#fff;
+	padding:4px 1%;
+	text-align: left;
+	font-weight: bold;
+}
+table tr {
+	font-size: 12px;
+	background: #fff;
+}
+tr:nth-child(odd) {
+	background: #eee;
+}
+tr td {
+	padding:8px 1%;
+}

@@ -1,0 +1,68 @@
+/* $Id: main.css 6590 2016-01-25 00:00:00Z SocialEngineAddOns Copyright 2016-2017 BigStep Technologies Pvt. Ltd. $ */
+
+.layout_sitehashtag_hashtags a {
+    display: inline-block;
+    padding: 6px;
+}
+
+/*Ajex Search widget*/
+.layout_sitehashtag_searchbox_sitestoreproduct{
+  clear:both;
+  margin-bottom:15px;
+}
+.sitehashtag_quick_search{
+  overflow:hidden;
+}
+.sitehashtag-search-box .form-elements{
+  border-radius:3px;
+  padding:0;
+  float:left;
+  background-color: $theme_body_background_color;
+  border: 1px solid $theme_border_medium_color;
+}
+.sitehashtag-search-box .form-elements input[type='text'],
+.sitehashtag-search-box .form-elements select{
+  border:none;
+  border-radius:0;
+  background-color:transparent;
+  padding:7px;
+}
+.sitehashtag-search-box .form-elements input[type='text']{
+  padding:8px;
+}
+.sitehashtag-search-box .form-wrapper{
+  float:left;
+  margin:0;
+}
+.sitehashtag-search-box .form-label{
+  display:none;
+}
+.sitehashtag-search-box #ajaxcategory_id-wrapper{
+  border-left-width:1px;
+}
+.sitehashtag-search-box #buttons-wrapper,
+.sitehashtag-search-box #submitButton-element{
+  display:inline-block;
+  margin-left:5px;
+  position:absolute;
+}
+.sitehashtag-search-box #buttons-element button,
+.sitehashtag-search-box #submitButton-element button{
+  height:32px;
+  overflow:hidden;
+  padding:0;
+  text-indent:-999px;
+  vertical-align:middle;
+  width:32px;
+}
+.sitehashtag-search-box #buttons-element button:after,
+.sitehashtag-search-box #submitButton-element button:after{
+  background-image: url(~/application/modules/Sitehashtag/externals/images/search.png);
+  background-position:center center;
+  content:"";
+  height:32px;
+  left:0;
+  position:absolute;
+  top:0;
+  width:32px;
+}

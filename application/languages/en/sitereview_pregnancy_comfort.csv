@@ -1,0 +1,478 @@
+"{item:$subject} commented on {item:$owner}'s {var:$listingtype} listing {item:$object:$title}: {body:$body}";"{item:$subject} commented on {item:$owner}'s pregnancy comfort item listing {item:$object:$title}: {body:$body}"
+"{item:$subject} replied to a comment on {item:$owner}'s {var:$listingtype} listing {item:$object:$title}: {body:$body}";"{item:$subject} replied to a comment on {item:$owner}'s pregnancy comfort item listing {item:$object:$title}: {body:$body}"
+"You can also choose the photo snapshot for the video displayed in the slideshow by using 'Video Snapshot' option.";"You can also choose the photo snapshot for the video displayed in the slideshow by using 'Video Snapshot' option."
+"posted by";"posted by"
+"Popular Tags";"Popular Tags"
+"Popular Tags (%s)";"Popular Tags (%s)"
+"Note: Users will not be able to create listings in '%s', until you have created atleast one category. Please create some categories from the Admin Panel for this listing type to enable users to create listings.";"Note: Users will not be able to create listings in '%s', until you have created atleast one category. Please create some categories from the Admin Panel for this listing type to enable users to create listings."
+"Sorry, you can not post a new listing right now. Please try again after sometime or contact us by filling the 'Contact Us' form using the 'Contact' link available in the footer of our site.";"Sorry, you can not post a new listing right now. Please try again after sometime or contact us by filling the 'Contact Us' form using the 'Contact' link available in the footer of our site."
+"There are currently no paid packages available of the site. Please upgrade your package.";"There are currently no paid packages available of the site. Please upgrade your package."
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_NEW_LISTTYPE_27";"Multiple Listing Types - When a new pregnancy comfort item is posted."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_NEW_LISTTYPE_27";"New pregnancy comfort item"
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_PHOTO_UPLOAD_LISTTYPE_27";"Multiple Listing Types - When someone uploads a photo to pregnancy comfort item."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_PHOTO_UPLOAD_LISTTYPE_27";"Uploading a photo to pregnancy comfort item"
+"ADMIN_ACTIVITY_TYPE_VIDEO_SITEREVIEW_LISTTYPE_27";"Multiple Listing Types - When someone uploads a video to pregnancy comfort item."
+"_ACTIVITY_ACTIONTYPE_VIDEO_SITEREVIEW_LISTTYPE_27";"Uploading a video to pregnancy comfort item"
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_VIDEO_NEW_LISTTYPE_27";"Multiple Listing Types - When someone uploads a video to pregnancy comfort item."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_VIDEO_NEW_LISTTYPE_27";"Uploading a video to pregnancy comfort item"
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_REVIEW_ADD_LISTTYPE_27";"Multiple Listing Types - When someone write a review on pregnancy comfort item."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_REVIEW_ADD_LISTTYPE_27";"Writing a new pregnancy comfort item review"
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_TOPIC_CREATE_LISTTYPE_27";"Multiple Listing Types - When someone creates a new pregnancy comfort item topic."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_TOPIC_CREATE_LISTTYPE_27";"Creating pregnancy comfort item discussion topic"
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_TOPIC_REPLY_LISTTYPE_27";"Multiple Listing Types - When someone replies to pregnancy comfort item topic."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_TOPIC_REPLY_LISTTYPE_27";"Replying to pregnancy comfort item discussion topic"
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_CHANGE_PHOTO_LISTTYPE_27";"Multiple Listing Types - When pregnancy comfort item Owner change their pregnancy comfort item profile photo as User."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_CHANGE_PHOTO_LISTTYPE_27";"When pregnancy comfort item Owner change their pregnancy comfort item profile photo as User"
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_WISHLIST_ADD_LISTING_LISTTYPE_27";"Multiple Listing Types - When someone adds pregnancy comfort item in wishlist."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_WISHLIST_ADD_LISTING_LISTTYPE_27";"Adding pregnancy comfort item to wishlist"
+"{item:$subject} posted a new pregnancy comfort item listing:";"{item:$subject} posted a new pregnancy comfort item listing:"
+"{item:$subject} added {var:$count} photo(s) to the pregnancy comfort item listing: {item:$object:$title} {body:$body}";"{item:$subject} added {var:$count} photo(s) to the pregnancy comfort item listing: {item:$object:$title} {body:$body}"
+"{item:$subject} posted a new discussion {item:$object:topic} in the pregnancy comfort item listing {itemParent:$object:sitereview}: {body:$body}";"{item:$subject} posted a {item:$object:topic} in the pregnancy comfort item listing {itemParent:$object:sitereview}: {body:$body}"
+"{item:$subject} replied to discussion {item:$object:topic} in the pregnancy comfort item listing {itemParent:$object:sitereview_listing}: {body:$body}";"{item:$subject} replied to discussion {item:$object:topic} in the pregnancy comfort item listing {itemParent:$object:sitereview_listing}: {body:$body}"
+"{item:$subject} changed the profile picture of the pregnancy comfort item listing {item:$object:$title}:";"{item:$subject} changed the profile picture of the pregnancy comfort item listing {item:$object:$title}:"
+"{item:$subject} added a new video in the pregnancy comfort item listing {item:$object:$title}: {body:$body}";"{item:$subject} added a new video in the pregnancy comfort item listing {item:$object:$title}: {body:$body}"
+"{item:$subject} added a new video in the pregnancy comfort item listing {item:$object}:";"{item:$subject} added a new video in the pregnancy comfort item listing {item:$object}:"
+"{item:$subject} rated and wrote a review for the pregnancy comfort item listing {item:$object}:";"{item:$subject} rated and wrote a review for the pregnancy comfort item listing {item:$object}:"
+"{item:$subject} posted a new pregnancy comfort item listing: {item:$object}.";"{item:$subject} posted a new pregnancy comfort item listing: {item:$object}."
+"Edit Pregnancy Comfort Item Location";"Edit Listing Location"
+"Edit the location of your pregnancy comfort item by clicking on 'Edit Pregnancy Comfort Item Location' below. You can accurately mark the position of your pregnancy comfort item on the map by dragging-and-dropping the marker on the map at the right position, and then clicking on Save Changes to save the position.";"Edit the location of your listing by clicking on 'Edit Listing Location' below. You can accurately mark the position of your listing on the map by dragging-and-dropping the marker on the map at the right position, and then clicking on Save Changes to save the position."
+"You have not added a location for your pregnancy comfort item. %1$sClick here%2$s to add a location for your pregnancy comfort item.";"You have not added a location for your listing. %1$sClick here%2$s to add a location for your listing."
+"Post New Pregnancy Comfort Item";"Post New Listing"
+"Compose your new pregnancy comfort item below, then click 'Submit' to publish the pregnancy comfort item.";"Compose your new listing below, then click 'Submit' to publish the listing."
+"Pregnancy Comfort Item Title";"Listing Title"
+"Who may see this pregnancy comfort item?";"Who may see this listing?"
+"Who may comment on this pregnancy comfort item?";"Who may comment on this listing?"
+"Who may upload photos for this pregnancy comfort item?";"Who may upload photos for this listing?"
+"Who may create videos for this pregnancy comfort item?";"Who may create videos for this listing?"
+"Select the networks, members of which should be able to see your pregnancy comfort item. (Press Ctrl and click to select multiple networks. You can also choose to make your pregnancy comfort item viewable to everyone.)";"Select the networks, members of which should be able to see your listing. (Press Ctrl and click to select multiple networks. You can also choose to make your listing viewable to everyone.)"
+"Show this pregnancy comfort item in search results";"Show this listing in search results"
+"Show this pregnancy comfort item on browse page and in various blocks.";"Show this pregnancy comfort item on browse page and in various blocks."
+"SEPARATE_PREGNANCY COMFORT ITEM_TAGS_WITH_COMMAS";"Separate tags with commas."
+"Your pregnancy comfort item has been successfully created. You can enhance your pregnancy comfort item from this Dashboard by creating other components.";"Your listing has been successfully created. You can enhance your listing from this Dashboard by creating other components."
+"View Pregnancy Comfort Item";"View Listing"
+"View Pregnancy Comfort Item &raquo;";"View Listing &raquo;"
+"End pregnancy comfort item on a specific date. (Please select date by clicking on the calendar icon below.)";"End listing on a specific date. (Please select date by clicking on the calendar icon below.)"
+"When should this pregnancy comfort item end?";"When should this listing end?"
+"Note: your pregnancy comfort item will be expired in %1$s %2$s after an approval or it may be changed by admin.";"Note: your listing will be expired in %1$s %2$s after an approval or it may be changed by admin."
+"All Pregnancy Comfort";"All Listings"
+"Only Open Pregnancy Comfort";"Only Open Listings"
+"Only Closed Pregnancy Comfort";"Only Closed Listings"
+"Everyone's Pregnancy Comfort";"Everyone's Listings"
+"Only My Friends' Pregnancy Comfort";"Only My Friends' Listings"
+"Pregnancy Comfort I Like";"Listings I Like"
+"Only Expired Pregnancy Comfort";"Only Expired Listings"
+"Pregnancy Comfort Having";"Listings Having"
+"Only Pregnancy Comfort With Photos";"Only Listings With Photos"
+"Only Pregnancy Comfort Item With Photos";"Only Listing With Photos"
+"Edit the overview for your pregnancy comfort item using the editor below, and then click 'Save Overview' to save changes.";"Edit the overview for your listing using the editor below, and then click 'Save Overview' to save changes."
+"DASHBOARD_PREGNANCY COMFORT ITEM_SAVE_OVERVIEW";"Save Overview"
+"DASHBOARD_PREGNANCY COMFORT ITEM_EDIT_OVERVIEW";"Edit Overview"
+"Edit Pregnancy Comfort Item Overview";"Edit Listing Overview"
+"Contact information will be displayed on your pregnancy comfort item profile.";"Contact information will be displayed on your pregnancy comfort item profile."
+"ADD_DASHBOARD_PREGNANCY COMFORT ITEM_WHERE_TO_BUY_OPTION";"Add Where to Buy Option"
+"EDIT_DASHBOARD_PREGNANCY COMFORT ITEM_WHERE_TO_BUY_OPTION";"Edit Where to Buy"
+"Add DASHBOARD_PREGNANCY COMFORT ITEM_WHERE_TO_BUY option for this pregnancy comfort item using the form below. Enter the name of the Store and other details where this pregnancy comfort item is available.";"Add Where to Buy option for this listing using the form below. Enter the name of the Store and other details where this listing is available."
+"Select the online store for your pregnancy comfort item from available stores drop-down below.";"Select the online store for your listing from available stores drop-down below."
+"Enter the URL of the Store's webpage where this pregnancy comfort item is available. (We recommend you to enter complete URL.)";"Enter the URL of the Store's webpage where this listing is available. (We recommend you to enter complete URL.)"
+"Edit Pregnancy Comfort Item Style";"Edit Listing Style"
+"Edit the CSS style of your pregnancy comfort item using the text area below, and then click 'Save Style' to save changes.";"Edit the CSS style of your listing using the text area below, and then click 'Save Style' to save changes."
+"Add your own CSS code above to give your pregnancy comfort item a more personalized look.";"Add your own CSS code above to give your listing a more personalized look."
+"Custom Advanced pregnancy comfort item Style";"Custom Advanced listing Style"
+"Meta keywords are a great way to provide search engines with information about your pregnancy comfort item so that search engines populate your pregnancy comfort item in search results. Below, you can add meta keywords for this pregnancy comfort item. (The tags entered by you for this pregnancy comfort item will also be added to the meta keywords.)";"Meta keywords are a great way to provide search engines with information about your pregnancy comfort item so that search engines populate your pregnancy comfort item in search results. Below, you can add meta keywords for this listing. (The tags entered by you for this listing will also be added to the meta keywords.)"
+"Edit Pregnancy Comfort Item Info";"Edit Pregnancy Comfort Item Info"
+"Edit the information of your pregnancy comfort item using the form below.";"Edit the information of your listing using the form below."
+"Delete Pregnancy Comfort Item?";"Delete Pregnancy Comfort Item?"
+"Are you sure that you want to delete the Pregnancy Comfort Item with the title ""%1$s"" last modified %2$s? It will not be recoverable after being deleted.";"Are you sure that you want to delete the Listing with the title ""%1$s"" last modified %2$s? It will not be recoverable after being deleted."
+"You have not added a location for your pregnancy comfort item. %s to add a location for your pregnancy comfort item.";"You have not added a location for your listing. %s to add a location for your listing."
+"(You can edit the end date to make the pregnancy comfort item live again.)";"(You can edit the end date to make the listing live again.)"
+"You do not have any pregnancy comfort item that match your search criteria.";"You do not have any listing that match your search criteria."
+"You do not have any pregnancy comfort.";"You do not have any listings."
+"Get started by %1$sposting%2$s a new pregnancy comfort item.";"Get started by %1$sposting%2$s a new listing."
+"You have already created the maximum number of pregnancy comfort allowed. If you would like to create a new pregnancy comfort item, please delete an old one first.";"You have already created the maximum number of listings allowed. If you would like to create a new listing, please delete an old one first."
+"Publish Pregnancy Comfort Item";"Publish Listing"
+"Close Pregnancy Comfort Item";"Close Listing"
+"Open Pregnancy Comfort Item";"Open Listing"
+"Delete Pregnancy Comfort Item";"Delete Listing"
+"Popular Pregnancy Comfort Item Tags";"Popular Listing Tags"
+"Browse the tags created for pregnancy comfort item by the various members.";"Browse the tags created for listing by the various members."
+"Edit Pregnancy Comfort Item Photos";"Edit Listing Photos"
+"Edit and manage the photos of your pregnancy comfort item below.";"Edit and manage the photos of your listing below."
+"An attractive photo and video Slideshow will be displayed on your Pregnancy Comfort Item Profile page. Below, you can choose the photos to be displayed in this slideshow by using the 'Show in Slideshow' option.";"An attractive photo and video Slideshow will be displayed on your Pregnancy Comfort Item Profile page. Below, you can choose the photos to be displayed in this slideshow by using the 'Show in Slideshow' option."
+"There are currently no photos in this pregnancy comfort item. %1$sClick here%2$s to add photos now!";"There are currently no photos in this listing. %1$sClick here%2$s to add photos now!"
+"Choose photos on your computer to add to this pregnancy comfort item. (2MB maximum).";"Choose photos on your computer to add to this listing. (2MB maximum)."
+"DASHBOARD_PREGNANCY COMFORT ITEM_WHERE_TO_BUY options of %s";"Where to Buy options of %s"
+"There are currently no DASHBOARD_PREGNANCY COMFORT ITEM_WHERE_TO_BUY option for this pregnancy comfort item. Click %s to add options now!";"There are currently no Where to Buy option for this listing. Click %s to add options now!"
+"Edit Pregnancy Comfort Item Videos";"Edit Listing Videos"
+"Edit and manage the videos of your pregnancy comfort item below.";"Edit and manage the videos of your listing below."
+"There are currently no videos in this pregnancy comfort item. Click %s to add videos now!";"There are currently no videos in this listing. Click %s to add videos now!"
+"An attractive photo and video Slideshow will be displayed on your Pregnancy Comfort Item Profile page. Below, you can select a video to be displayed in that slideshow by using the 'Show in Slideshow' option.";"An attractive photo and video Slideshow will be displayed on your Pregnancy Comfort Item Profile page. Below, you can select a video to be displayed in that slideshow by using the 'Show in Slideshow' option."
+"Add a new video in this pregnancy comfort item using the form below.";"Add a new video in this listing using the form below."
+"Click 'Add Photos' to select one or more photos from your computer. After you have selected the photos, they will begin to upload right away. When your upload is finished, click the button below your photo to save them to your pregnancy comfort item.";"Click 'Add Photos' to select one or more photos from your computer. After you have selected the photos, they will begin to upload right away. When your upload is finished, click the button below your photo to save them to your listing."
+"Go to the Pregnancy Comfort Item %s";"Go to the Pregnancy Comfort Item %s"
+"Please %s to update your reviews for this Pregnancy Comfort Item.";"Please %s to update your reviews for this Listing."
+"Post a New Pregnancy Comfort Item";"New Pregnancy Comfort Item"
+"You have not composed an overview for your pregnancy comfort item. Click %s to compose it from the Dashboard of your pregnancy comfort item.";"You have not composed an overview for your listing. Click %s to compose it from the Dashboard of your listing."
+"You have not added any photo in your pregnancy comfort item. %1$sClick here%2s to add your first photo.";"You have not added any photo in your listing. %1$sClick here%2s to add your first photo."
+"You have not added any video in your pregnancy comfort item. %1$sClick here%2$s to add your first video.";"You have not added any video in your listing. %1$sClick here%2$s to add your first video."
+"There are currently no videos in this pregnancy comfort item. %1$sClick here%2$s to add your first video.";"There are currently no videos in this listing. %1$sClick here%2$s to add your first video."
+"No pregnancy comfort have been posted yet.";"No listings have been posted yet."
+"BE_THE_FIRST_PREGNANCY COMFORT ITEM_TO %1$spost%2$s one!";"Be the first to %1$spost%2$s one!"
+"Nobody has posted a pregnancy comfort item with that criteria.";"Nobody has posted a listing with that criteria."
+"Be the first to pregnancy comfort item %1$spost%2$s one!";"Be the first to %1$spost%2$s one!"
+"This is the pregnancy comfort item browse page.";"This is the pregnancy comfort item browse page."
+"Create your message with the form given below. (This message will be sent to the owner of this Pregnancy Comfort Item.)";"Create your message with the form given below. (This message will be sent to the owner of this Pregnancy Comfort Item.)"
+"DASHBOARD_PREGNANCY COMFORT ITEM_WHERE_TO_BUY";"Where to Buy"
+"DASHBOARD_PREGNANCY COMFORT ITEM_OVERVIEW";"Overview"
+"Pregnancy Comfort Home";"Pregnancy Comfort Home"
+"Browse Pregnancy Comfort";"Browse Pregnancy Comfort"
+"My Pregnancy Comfort";"My Pregnancy Comfort"
+"Top Rated Pregnancy Comfort";"Top Rated Pregnancy Comfort"
+"Most Liked Pregnancy Comfort";"Most Liked Pregnancy Comfort"
+"Popular Pregnancy Comfort";"Popular Pregnancy Comfort"
+"Most Commented Pregnancy Comfort";"Most Commented Pregnancy Comfort"
+"PREGNANCY COMFORT ITEM_TAG_(Keywords)";"Tags (Keywords)"
+"Please %1$sclick here%2$s to give your review and ratings for this pregnancy comfort item.";"Please %1$sclick here%2$s to give your review and ratings for this listing."
+"Please %1$sclick here%2$s to update your reviews for this pregnancy comfort item.";"Please %1$sclick here%2$s to update your reviews for this listing."
+"Please select the wishlists in which you want to add this pregnancy comfort item.";"Please select the wishlists in which you want to add this listing."
+"You have not created any wishlist yet. Get Started by creating and adding pregnancy comfort.";"You have not created any wishlist yet. Get Started by creating and adding listings."
+"You can also add this pregnancy comfort item in a new wishlist below:";"You can also add this listing in a new wishlist below:"
+"PREGNANCY COMFORT ITEM_TAG :";"Tag :"
+"PREGNANCY COMFORT ITEM_TAGS:";"Tags:"
+"PREGNANCY COMFORT ITEM_TAGS";"Tags"
+"EXPLORE_PREGNANCY COMFORT ITEM_TAGS &raquo;";"Explore Tags &raquo;"
+"Featured Pregnancy Comfort";"Featured Pregnancy Comfort"
+"Sponsored Pregnancy Comfort";"Sponsored Pregnancy Comfort"
+"%s pregnancy comfort item found.";"%s listing found.";"%s listings found."
+"%s pregnancy comfort item";"%s listing";"%s listings"
+"%s pregnancy comfort item entry";"%s listing entry";"%s listings entries"
+"Pregnancy Comfort";"Pregnancy Comfort"
+"Pregnancy Comfort Item of the Day";"Pregnancy Comfort Item of the Day"
+"This pregnancy comfort item has been closed by the owner.";"This listing has been closed by the owner."
+"What do you like about this Pregnancy Comfort Item?";"What do you like about this Listing?"
+"What do you dislike about this Pregnancy Comfort Item?";"What do you dislike about this Listing?"
+"You may add a video to your pregnancy comfort item either by choosing from your existing videos, or by posting a new video:";"You may add a video to your listing either by choosing from your existing videos, or by posting a new video:"
+"No discussion topics have been posted in this pregnancy comfort item yet. Click %1$s to start a discussion.";"No discussion topics have been posted in this listing yet. Click %1$s to start a discussion."
+"'s Pregnancy Comfort Item";"'s Listing"
+"This message corresponds to the Pregnancy Comfort Item: ";"This message corresponds to the Listing: "
+"Your pregnancy comfort item's location has been modified successfully.";"Your listing's location has been modified successfully."
+"PREGNANCY COMFORT ITEM_STORE";"Store"
+"PREGNANCY COMFORT ITEM_STORE_URL";"Store URL"
+"Delete DASHBOARD_PREGNANCY COMFORT ITEM_WHERE_TO_BUY?";"Delete Where to Buy?"
+"Are you sure that you want to delete this DASHBOARD_PREGNANCY COMFORT ITEM_WHERE_TO_BUY? It will not be recoverable after being deleted.";"Are you sure that you want to delete this Where to Buy? It will not be recoverable after being deleted."
+"PREGNANCY COMFORT ITEM_POSTED_BY";"Posted By"
+"PREGNANCY COMFORT ITEM_POSTED_ON:";"Posted On :"
+"PREGNANCY COMFORT ITEM_POSTED_BY:";"Posted By :"
+"PREGNANCY COMFORT ITEM_posted_by";"posted by"
+"VIEW_ALL_PREGNANCY COMFORT ITEM_STORES";"View all Stores &raquo;"
+"ENTER_THE_ADDRESS_OF_PREGNANCY COMFORT ITEM_STORE";"Enter the address of the store."
+"PREGNANCY COMFORT ITEM_AT %s store";"at %s store";"at %s stores"
+"* The above cost for the %s is estimated and may slightly vary after including the taxes, manufacturer rebate, shipping cost, or any other sales / promotion on pregnancy comfort Stores.";"* The above cost for the %s is estimated and may slightly vary after including the taxes, manufacturer rebate, shipping cost, or any other sales / promotion on Stores."
+"No reviews have been written for this pregnancy comfort item yet.";"No reviews have been written for this listing yet."
+"Select the best alternatives for %s below. (Selected alternatives will be displayed in 'Best Alternatives' block on this pregnancy comfort item's profile page.)";"Select the best alternatives for %s below. (Selected alternatives will be displayed in 'Best Alternatives' block on this pregnancy comfort item's profile page.)"
+"Select the Store where this pregnancy comfort item is available.";"Select the Store where this listing is available."
+"This pregnancy comfort item has beed expired.";"This listing has beed expired."
+"Edit Where to Buy option for this pregnancy comfort item using the form below.";"Edit Where to Buy option for this listing using the form below."
+"NEW_PREGNANCY COMFORT ITEM_WHERE_TO_BUY_OPTION_HAS_BEEN_ADDED_SUCCESSFULLY";"New 'Where to Buy' option has been added successfully."
+"EDIT_PREGNANCY COMFORT ITEM_WHERE_TO_BUY_OPTION_HAS_BEEN_EDITED_SUCCESSFULLY";"'Where to Buy' option has been edited successfully."
+"DELETE_PREGNANCY COMFORT ITEM_WHERE_TO_BUY_OPTION_HAS_BEEN_DELETED_SUCCESSFULLY";"'Where to Buy' option has been deleted successfully."
+"Oops! Something went wrong and you can not add this Pregnancy Comfort Item to your wishlist. Please try again after sometime.";"Oops! Something went wrong and you can not add this Listing to your wishlist. Please try again after sometime."
+"Showing pregnancy comfort tagged with: ";"Showing listings tagged with: "
+"No pregnancy comfort item have been posted yet.";"No listing have been posted yet."
+"If this pregnancy comfort item is published, it cannot be switched back to draft mode.";"If this listing is published, it cannot be switched back to draft mode."
+"You are already subscribed to this member's pregnancy comfort.";"You are already subscribed to this member's listings."
+"Would you like to subscribe to this member's pregnancy comfort?";"Would you like to subscribe to this member's listings?"
+"You are now subscribed to this member's pregnancy comfort.";"You are now subscribed to this member's listings."
+"You are already not subscribed to this member's pregnancy comfort.";"You are already not subscribed to this member's listings."
+"Would you like to unsubscribe from this member's pregnancy comfort?";"Would you like to unsubscribe from this member's listings?"
+"You are no longer subscribed to this member's pregnancy comfort.";"You are no longer subscribed to this member's listings."
+"{item:$subject} added a new event in the pregnancy comfort item listing {item:$object}:";"{item:$subject} added a new event in the pregnancy comfort item listing {item:$object}:"
+"Who may post discussion topics for this pregnancy comfort item?";"Who may post discussion topics for this listing?"
+"Who may create event for this pregnancy comfort item?";"Who may create event for this listing?"
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_EVENT_NEW_LISTTYPE_27";"Multiple Listing Types - When someone creates a new event in pregnancy comfort item listing."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_EVENT_NEW_LISTTYPE_27";"Create event in pregnancy comfort item listing"
+"Pregnancy Comfort I Have Claimed";"Pregnancy Comfort I Have Claimed"
+"There are no pregnancy comfort to be claimed yet.";"There are no listings to be claimed yet."
+"About You and Your pregnancy comfort item: ";"About You and Your listing: "
+"You have not claimed for any pregnancy comfort yet.";"You have not claimed for any listings yet."
+"Create a Pregnancy Comfort Item";"Create a Listing"
+"Create a pregnancy comfort item using these quick, easy steps and get going.";"Create a listing using these quick, easy steps and get going."
+"1. Choose a pregnancy comfort item Package";"1. Choose a listing Package"
+"Select a package that best matches your requirements. Packages differ in terms of features available to pregnancy comfort created under them. You can change your package anytime later.";"Select a package that best matches your requirements. Packages differ in terms of features available to listings created under them. You can change your package anytime later."
+"Are you sure you want to change package for this Pregnancy Comfort Item? Once you change package, all the settings of this pregnancy comfort item will be applied according to the new package, including features available, price, etc.";"Are you sure you want to change package for this Listing? Once you change package, all the settings of this listing will be applied according to the new package, including features available, price, etc."
+"If you want to change the package for your pregnancy comfort item, please select one package from the following list of available packages.";"If you want to change the package for your listing, please select one package from the following list of available packages."
+"Note: Once you change package for your pregnancy comfort item, all the settings of the pregnancy comfort item will be applied according to the new package, including apps available, features available, price, etc.";"Note: Once you change package for your listing, all the settings of the listing will be applied according to the new package, including apps available, features available, price, etc."
+"Thank you for submitting your payment. Your payment is currently pending - your pregnancy comfort item will be activated when we are notified that the payment has completed successfully. Please return to our login pregnancy comfort item when you receive an email notifying you that the payment has completed.";"Thank you for submitting your payment. Your payment is currently pending - your listing will be activated when we are notified that the payment has completed successfully. Please return to our login listing when you receive an email notifying you that the payment has completed."
+"You have already applied for this pregnancy comfort item.";"You have already applied for this listing."
+"Back to Dashboard pregnancy comfort item";"Back to Dashboard listing"
+"Back to My pregnancy comfort";"Back to My listings"
+"Thank you! Your payment for your pregnancy comfort item has been completed successfully.";"Thank you! Your payment for your listing has been completed successfully."
+"Continue to Dashboard pregnancy comfort item";"Continue to Dashboard listing"
+"Continue to My pregnancy comfort";"Continue to My listings"
+"Your pregnancy comfort item is pending payment. You will receive an email when the
+  payment completes.";"Your listing is pending payment. You will receive an email when the
+  payment completes."
+"You have created a pregnancy comfort item that requires payment. You will be taken to a secure checkout area where you can pay for your pregnancy comfort item.";"You have created a listing that requires payment. You will be taken to a secure checkout area where you can pay for your listing."
+"Order your Pregnancy Comfort Item";"Order your Listing"
+"Your Pregnancy Comfort Item requires payment:";"Your Listing requires payment:"
+" to renew pregnancy comfort item.";" to renew listing."
+"The package for your Pregnancy Comfort Item requires payment. You have not fulfilled the payment for this Pregnancy Comfort Item.";"The package for your Listing requires payment. You have not fulfilled the payment for this Listing."
+"Your package for this Pregnancy Comfort Item has expired and needs to be renewed.";"Your package for this Listing has expired and needs to be renewed."
+"Your package for this Pregnancy Comfort Item is about to expire and needs to be renewed.";"Your package for this Listing is about to expire and needs to be renewed."
+"2. Configure your pregnancy comfort item based on the package you have chosen.";"2. Configure your listing based on the package you have chosen."
+"Below, you can file a claim for a pregnancy comfort item on this community that you believe should be owned by you. Your request will be sent to the administration.";"Below, you can file a claim for a listing on this community that you believe should be owned by you. Your request will be sent to the administration."
+"Pregnancy Comfort Item Name";"Listing Name"
+"Start typing the name of the pregnancy comfort item";"Start typing the name of the listing"
+"About You and the Pregnancy Comfort Item";"About You and the Listing"
+"Renew Pregnancy Comfort Item";"Renew Listing"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_CANCELLED_TITLE";"Pregnancy Comfort Item Listing Cancelled"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_CANCELLED_DESCRIPTION";"This is the email that gets sent to a member when their pregnancy comfort item listing is cancelled."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_CANCELLED_SUBJECT";"Your pregnancy comfort item listing: [list_title] has been cancelled."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_CANCELLED_BODY";"[header]
+
+Your pregnancy comfort item listing: [list_title_with_link] has been cancelled.
+
+To visit this pregnancy comfort item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+If your pregnancy comfort item listing required to be renewed, then you may do so from its dashboard.
+
+[footer]"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_EXPIRED_TITLE";"Pregnancy Comfort Item Listing Expired: (for free packages)"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_EXPIRED_DESCRIPTION";"This is the email that gets sent to a member when their pregnancy comfort item listing belonging to a free package expires."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_EXPIRED_SUBJECT";"Your pregnancy comfort item Listing: [list_title] has expired."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_EXPIRED_BODY";"[header]
+
+
+Your pregnancy comfort item listing: [list_title_with_link] has expired. It has reached the limit of its package.
+
+
+To visit this pregnancy comfort item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+
+[footer]"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_RENEW_TITLE";"Listing Expired: (for paid packages)"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_RENEW_DESCRIPTION";"This is the email that gets sent to a member when their listing belonging to a paid package expires."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_RENEW_SUBJECT";"Your pregnancy comfort item Listing: [list_title] has expired and needs to be renewed."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_RENEW_BODY";"[header]
+
+Your pregnancy comfort item listing: [list_title_with_link] has expired. It has reached the limit of its package. You may renew this listing from its dashboard.
+
+To visit this pregnancy comfort item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_OVERDUE_TITLE";"Pregnancy Comfort Item Listing Overdue"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_OVERDUE_DESCRIPTION";"This is the email that gets sent to a member when their pregnancy comfort item listing is overdue."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_OVERDUE_SUBJECT";"Your pregnancy comfort item listing: [list_title] is overdue."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_OVERDUE_BODY";"[header]
+
+Your pregnancy comfort item listing: [list_title_with_link] is overdue because of a failed or missed payment.
+
+To visit this pregnancy comfort item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+To renew your pregnancy comfort item listing, you may do so from its dashboard.
+
+[footer]"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_PENDING_TITLE";"Pregnancy Comfort Item Listing Activation Pending"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_PENDING_DESCRIPTION";"This is the email that gets sent to a member when their pregnancy comfort item listing activation is pending."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_PENDING_SUBJECT";"Your pregnancy comfort item listing activation is pending."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_PENDING_BODY";"[header]
+
+Thank you for creating your pregnancy comfort item listing on our social network! Your listing activation is pending, awaiting completion of the transaction. Your listing will be activated soon; we will notify you by email when it is ready.
+Thank you for your patience.
+
+[list_title]
+[list_description]
+
+[footer]"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_ACTIVE_TITLE";"Pregnancy Comfort Item Listing Activated"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_ACTIVE_DESCRIPTION";"This is the email that gets sent to a member when their pregnancy comfort item listing is activated."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_ACTIVE_SUBJECT";"Your pregnancy comfort item listing: [list_title] is now active."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_ACTIVE_BODY";"[header]
+
+Thank you for creating your pregnancy comfort item listing on [site_title]! Your listing is now active.
+
+[list_title]
+[list_description]
+
+To visit this pregnancy comfort item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_RECURRENCE_TITLE";"Pregnancy Comfort Item Listing Payment Recurrence"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_RECURRENCE_DESCRIPTION";"This is the email that gets sent to a member when they are billed for a recurring payment."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_RECURRENCE_SUBJECT";"Your payment for your pregnancy comfort item listing has been billed."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_RECURRENCE_BODY";"[header]
+
+Your payment for your pregnancy comfort item listing has been billed. You should receive an email from the
+payment gateway regarding this charge. Thank you for subscribing to our social
+network.
+
+[list_title]
+[list_description]
+
+To visit this pregnancy comfort item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_REFUNDED_TITLE";"Pregnancy Comfort Item Listing Payment Refunded"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_REFUNDED_DESCRIPTION";"This is the email that gets sent to a member when their pregnancy comfort item listing payment is refunded."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_REFUNDED_SUBJECT";"Your payment for your pregnancy comfort item listing has been refunded."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_REFUNDED_BODY";"[header]
+
+Your payment for your pregnancy comfort item listing has been refunded.
+
+[list_title]
+[list_description]
+
+[footer]"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_APPROVED_TITLE";"Listing Approved"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_APPROVED_DESCRIPTION";"This is the email that gets sent to a member when their pregnancy comfort item listing is approved."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_APPROVED_SUBJECT";"Your pregnancy comfort item listing: [list_title] has been approved."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_APPROVED_BODY";"[header]
+
+Thank you for creating your pregnancy comfort item listing on our social network! Your listing has now been approved.
+
+[list_title]
+[list_description]
+
+To visit this listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_DISAPPROVED_TITLE";"Listing Disapproved"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_DISAPPROVED_DESCRIPTION";"This is the email that gets sent to a member when their listing is disapproved."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_DISAPPROVED_SUBJECT";"Your pregnancy comfort item listing: [list_title] has been disapproved."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_DISAPPROVED_BODY";"[header]
+
+Your listing has been disapproved.
+
+[list_title]
+[list_description]
+
+To visit this pregnancy comfort item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_APPROVAL_PENDING_TITLE";"Pregnancy Comfort Item Listing Approval Pending"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_APPROVAL_PENDING_DESCRIPTION";"This is the email that gets sent to a member when their pregnancy comfort item listing is pending for approval."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_APPROVAL_PENDING_SUBJECT";"Your pregnancy comfort item listing: [list_title] is in pending state and awaiting administrative approval."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_APPROVAL_PENDING_BODY";"[header]
+
+Your pregnancy comfort item listing is in pending state and awaiting administrative approval.
+
+[list_title]
+[list_description]
+
+To visit this pregnancy comfort item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_DECLINED_TITLE";"Pregnancy Comfort Item Listing Declined"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_DECLINED_DESCRIPTION";"This is the email that gets sent to a member when their pregnancy comfort item listing is declined."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_DECLINED_SUBJECT";"Your pregnancy comfort item listing: [list_title] has been declined."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_DECLINED_BODY";"[header]
+
+Your pregnancy comfort item listing has been declined.
+
+[list_title]
+[list_description]
+
+[footer]"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_CHANGEOWNER_EMAIL_TITLE";"Pregnancy Comfort Item - Listing Owner Changed"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_CHANGEOWNER_EMAIL_DESCRIPTION";"This is the email that goes to a member when owner of their pregnancy comfort item listing has been changed."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_CHANGEOWNER_EMAIL_SUBJECT";"Owner of the pregnancy comfort item listing: [list_title] has been changed."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_CHANGEOWNER_EMAIL_BODY";"[header]
+
+The owner of the pregnancy comfort item listing: [list_title_with_link] has been changed. You are now no more the owner of this listing. All ownership rights for this listing have been transferred to the new owner.
+
+For any queries or comments, you may contact us here: [site_contact_us_link].
+
+To visit this pregnancy comfort item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_CLAIMOWNER_EMAIL_TITLE";"Pregnancy Comfort Item Listing Claimed"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_CLAIMOWNER_EMAIL_DESCRIPTION";"This mail is sent to the Site Admin when any member claims that Listing."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_CLAIMOWNER_EMAIL_SUBJECT";"This pregnancy comfort item listing: [list_title] has been claimed."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_CLAIMOWNER_EMAIL_BODY";"[header]
+
+This pregnancy comfort item listing: [list_title_with_link] has been claimed.
+
+To view this pregnancy comfort item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]
+"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_CLAIM_APPROVED_EMAIL_TITLE";"Pregnancy Comfort Item - Listing Owner Changed"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_CLAIM_APPROVED_EMAIL_DESCRIPTION";"This is the email that goes to a member when their claim for a listing has been approved."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_CLAIM_APPROVED_EMAIL_SUBJECT";"Your claim for pregnancy comfort item listing: [list_title] has been approved"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_CLAIM_APPROVED_EMAIL_BODY";"[header]
+
+Congratulations! Your claim for the pregnancy comfort item Listing: [list_title_with_link] has been approved. You are now the owner of this listing.
+
+To visit this pregnancy comfort item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_BECOMEOWNER_EMAIL_TITLE";"Pregnancy Comfort Item - Listing Ownership Given"""
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_BECOMEOWNER_EMAIL_DESCRIPTION";"This email goes to the new owner of the pregnancy comfort item listing when owner of a pregnancy comfort item listing is changed."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_BECOMEOWNER_EMAIL_SUBJECT";"You are now the owner of the pregnancy comfort item listing: [list_title]."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_BECOMEOWNER_EMAIL_BODY";"[header]
+
+You are now the owner of the pregnancy comfort item Listing: [list_title_with_link]. All ownership rights for this listing have been provided to you.
+
+For any queries or comments, you may contact us here: [site_contact_us_link].
+
+To visit this pregnancy comfort item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_CLAIM_HOLDING_EMAIL_TITLE";"Pregnancy Comfort Item Listing Claim Approval on Hold"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_CLAIM_HOLDING_EMAIL_DESCRIPTION";"This is the email that goes to a member when their claim for a pregnancy comfort item listing has been put on hold for approval."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_CLAIM_HOLDING_EMAIL_SUBJECT";"Your claim for pregnancy comfort item listing: [list_title] has been put on hold for approval"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_CLAIM_HOLDING_EMAIL_BODY";"[header]
+
+Your claim for the pregnancy comfort item Listing: [list_title_with_link] has been put on hold for approval.
+
+To visit this listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[comments]
+
+[footer]
+"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_CLAIM_DECLINED_EMAIL_TITLE";"Pregnancy Comfort Item Listing Claim Declined"""
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_CLAIM_DECLINED_EMAIL_DESCRIPTION";"This is the email that goes to a member when their claim for a pregnancy comfort item listing has been declined."
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_CLAIM_DECLINED_EMAIL_SUBJECT";"Your claim for pregnancy comfort item listing: [list_title] has been declined"
+"_EMAIL_SITEREVIEW_PREGNANCY COMFORT ITEM_CLAIM_DECLINED_EMAIL_BODY";"[header]
+
+Your claim for this pregnancy comfort item Listing: [list_title_with_link] has been declined.
+
+To visit this pregnancy comfort item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[comments]
+
+[footer]
+"
+"PREGNANCY COMFORT ITEM Creation";"Listing Creation"
+"Edit Pregnancy Comfort Item";"Edit Listing"
+"Edit Pregnancy Comfort Item Contact Details";"Edit Listing Contact Details"
+"Edit Pregnancy Comfort Item Meta Keywords";"Edit Listing Meta Keywords"
+"Edit Pregnancy Comfort Item Where to Buy";"Edit Listing Where to Buy"
+"Edit Pregnancy Comfort Item Profile Picture";"Edit Listing Profile Picture"
+"Edit Pregnancy Comfort Item 'Where to Buy'";"Edit Listing 'Where to Buy'"
+"Edit Pregnancy Comfort Item Details";"Edit Listing Details"
+"Pregnancy Comfort Item Listings";"Pregnancy Comfort Item Listings"
+"Post new pregnancy comfort item listings to this page.";"Post new pregnancy comfort item listings to this page."
+"Post / Manage Pregnancy Comfort Item Listings";"Post / Manage Pregnancy Comfort Item Listings"
+"Post New Pregnancy Comfort Item Listing";"Post New Pregnancy Comfort Item Listing"
+"Add Pregnancy Comfort Item Listings";"Add Pregnancy Comfort Item Listings"
+"Here, you can add various Pregnancy Comfort Item Listings to be associated with and displayed on your Page by using the auto-suggest below. From the auto-suggest, you can choose to add the Pregnancy Comfort Item Listings created by this Page’s Admins. Listings added by you here will display in a tab on your Page Profile.<br />Below, you can also remove listings added by you by using the link for each.";"Here, you can add various Pregnancy Comfort Item Listings to be associated with and displayed on your Page by using the auto-suggest below. From the auto-suggest, you can choose to add the Pregnancy Comfort Item Listings created by this Page’s Admins. Listings added by you here will display in a tab on your Page Profile.<br />Below, you can also remove listings added by you by using the link for each."
+"Here, you can add various Pregnancy Comfort Item Listings to be associated with and displayed on your Page by using the auto-suggest below. From the auto-suggest, you can choose to add the Pregnancy Comfort Item Listings from various Pregnancy Comfort Item Listings created on this site. Listings added by you here will display in a tab on your Page Profile.<br />Below, you can also remove listings added by you by using the link for each.";"Here, you can add various Pregnancy Comfort Item Listings to be associated with and displayed on your Page by using the auto-suggest below. From the auto-suggest, you can choose to add the Pregnancy Comfort Item Listings from various Pregnancy Comfort Item Listings created on this site. Listings added by you here will display in a tab on your Page Profile.<br />Below, you can also remove listings added by you by using the link for each."
+"Here, you can add various Pregnancy Comfort Item Listings to be associated with and displayed on your Page by using the auto-suggest below. From the auto-suggest, you can choose to add the Pregnancy Comfort Item Listings created by you. Listings added by you here will display in a tab on your Page Profile.<br />Below, you can also remove listings added by you by using the link for each.";"Here, you can add various Pregnancy Comfort Item Listings to be associated with and displayed on your Page by using the auto-suggest below. From the auto-suggest, you can choose to add the Pregnancy Comfort Item Listings created by you. Listings added by you here will display in a tab on your Page Profile.<br />Below, you can also remove listings added by you by using the link for each."
+"Create Pregnancy Comfort";"Create Pregnancy Comfort"
+"Manage Pregnancy Comfort";"Manage Pregnancy Comfort"

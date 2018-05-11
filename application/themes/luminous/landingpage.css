@@ -1,0 +1,444 @@
+@include "constants.css";
+@charset "utf-8";
+/*Layout and heading ui work for landing page*/
+#global_wrapper,
+span#global_content_simple {
+	padding-top:0 !important;
+	padding-bottom:0;
+} 
+#global_content,
+span#global_content_simple {
+	width: 100% !important;
+	padding:0;
+	margin:0 auto;
+}
+h3 {
+  	font-size: 2em;
+  	border-bottom: none!important;
+  	text-align: center!important;
+  	padding:0!important;
+  	color:$theme_color;
+  	line-height:normal;
+  	margin-bottom:15px!important;
+  	clear:both;
+}
+.layout_middle {
+   padding:0;
+   display:inline;
+}
+.layout_siteluminous_landing_page_css h3 {
+   display:none;
+}
+/*Html Blocks*/
+.layout_siteluminous_homepage_blocks {
+	width:100%;
+	float:left;
+}
+.layout_siteluminous_homepage_blocks > div {
+	width:$theme_content_width;
+	margin:0 auto;
+	margin-top:0 !important;	
+}
+.layout_siteluminous_homepage_blocks > div > div:hover {
+	background-image:url(images/hover-bg.png);
+	background-repeat:repeat;
+}
+.layout_siteluminous_homepage_blocks > div > div:hover div {
+  background-color:$theme_color!important;
+  transition: background-color .4s ease-in-out 0.2s;
+} 
+.layout_siteluminous_homepage_blocks > div > div:nth-child(1):hover div {
+  	background-image:url(images/hover-discover-events.png)!important;
+} 
+.layout_siteluminous_homepage_blocks > div > div:nth-child(2):hover div {
+  	background-image:url(images/hover-engage-icon.png)!important;
+} 
+.layout_siteluminous_homepage_blocks > div > div:nth-child(3):hover div {
+  	background-image:url(images/hover-meetpeople.png)!important;
+}
+/*Community block*/
+.signupblock a {
+  background-color: $theme_button_background_color;
+  border-bottom: 3px solid $button_border_color;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 25px;
+  padding: 13px 40px;
+  box-shadow: none;
+  font-weight: 300;
+  font-family: 'Ubuntu', sans-serif;
+  cursor:pointer;
+}
+/*top slide block*/
+.btnsblock a + a {
+  margin-left:12px; 
+  background-color:$landingpage_signupbtn;
+}
+.btnsblock a:hover {
+  background-color:#fff;
+  color:$landingpage_signinbtn!important;
+  text-shadow:none;
+}
+.btnsblock a + a:hover {
+  color:#fff!important;
+  text-shadow:none;
+  background-color:$landingpage_signinbtn;
+}
+/*Advanced Events Plugin ui work for landing page*/
+.siteevent_grid_info i {
+   display:none;
+}
+div.siteevent_grid_info div.o_hidden {
+   color:#fff;
+}
+/*Advanced Group, Pages, Sitestoreproduct, Sitestore and Business Plugin ui work for landing page*/
+.sitegroup_browse_thumb > div > a > span,
+.sitepage_browse_thumb > div > a > span,
+.sitebusiness_browse_thumb > div > a > span,
+.layout_sitereview_recently_popular_random_sitereview .sr_grid_view li span,
+.sitestoreproduct_grid_view_thumb span {
+   background-size:cover !important;
+}
+.sitegroup_browse_thumb_list,
+.sitegroup_browse_thumb > div > a,
+html .sitegroup_browse_thumb > div > a > span,
+.sitepage_browse_thumb_list,
+.sitepage_browse_thumb > div > a,
+html .sitepage_browse_thumb > div > a > span,
+.sitebusiness_browse_thumb_list,
+.sitebusiness_browse_thumb > div > a,
+html .sitebusiness_browse_thumb > div > a > span,
+.sitestore_browse_thumb .sitestore_browse_thumb_list,
+.sitestore_browse_thumb > div > a,
+html .sitestore_browse_thumb > div > a > span {
+  	height:100%;
+}
+/*Advanced Events, members, Group, Pages, Sitestoreproduct, Sitestore and Business combine Plugin ui work for landing page*/
+.layout_siteevent_events_siteevent,
+.layout_sitegroup_recently_popular_random_sitegroup,
+.layout_sitepage_recently_popular_random_sitepage,
+.layout_sitebusiness_recently_popular_random_sitebusiness {
+   width: 100%;
+   float:left;
+   background-color:$theme_layout_background_color;
+   display:table;
+   padding:30px 20px;
+   margin-bottom:0!important;
+   box-sizing:border-box;
+}
+html .layout_sitemember_recent_popular_random_members,
+html .layout_sitestore_recently_popular_random_sitestore {
+	margin-bottom:0;
+}
+.layout_sitereview_recently_popular_random_sitereview,
+.layout_sitestore_recently_popular_random_sitestore {
+	width:100%;
+	float:left;
+	padding:30px 0;
+}
+html .layout_sitereview_recently_popular_random_sitereview ul.sr_grid_view li {
+	margin-bottom:6px;
+}
+.layout_sitestoreproduct_products_sitestoreproduct_grid {
+	padding:30px 0;
+}
+.layout_siteevent_events_siteevent ul.siteevent_grid_view_sidebar,
+.layout_sitegroup_recently_popular_random_sitegroup > div,
+.layout_sitepage_recently_popular_random_sitepage > div,
+.layout_sitebusiness_recently_popular_random_sitebusiness > div,
+.layout_sitereview_listings_sitereview .sr_grid_view,
+.layout_sitereview_recently_popular_random_sitereview .sr_grid_view,
+html .sitestoreproduct_grid_view,
+.layout_sitestore_recently_popular_random_sitestore .layout_core_container_tabs,
+.layout_sitemember_recent_popular_random_members {
+   width:$theme_content_width;
+   margin:0 auto;
+   margin-top:0 !important;
+}
+html .siteevent_grid_view,
+html .sitegroup_browse_thumb,
+html .sitepage_browse_thumb,
+html .sitebusiness_browse_thumb,
+html .sitestore_browse_thumb {
+   float: left;
+   position: relative;
+   margin:0;
+   border-radius: 0;
+   border: none;
+}
+.siteevent_grid_view + .siteevent_grid_view,
+.sitegroup_browse_thumb + .sitegroup_browse_thumb,
+.sitepage_browse_thumb + .sitepage_browse_thumb,
+.sitebusiness_browse_thumb + .sitebusiness_browse_thumb,
+.sitestore_browse_thumb + .sitestore_browse_thumb {
+   margin-left:1px;
+}
+div.siteevent_grid_thumb .siteevent_grid_title,
+div.sitegroup_browse_thumb .sitegroup_browse_title,
+div.sitepage_browse_thumb .sitepage_browse_title,
+div.sitebusiness_browse_thumb .sitebusiness_browse_title,
+div.sitestore_browse_thumb .sitestore_browse_title {
+   background:none;
+   padding:10px;
+   bottom:0px;
+   -webkit-transition: bottom 0.15s;
+   transition: bottom 0.15s;
+}
+
+div.sitegroup_browse_thumb .sitegroup_browse_title{
+	background:none;
+   	padding:10px;
+   	bottom:35px;
+   -webkit-transition: bottom 0.15s;
+   	transition: bottom 0.15s;
+	z-index: 1;
+}
+
+div.siteevent_grid_thumb .siteevent_grid_title a,
+div.sitegroup_browse_thumb .sitegroup_browse_title a,
+div.sitegroup_browse_thumb .sitegroup_browse_title p,
+div.sitepage_browse_thumb .sitepage_browse_title a,
+div.sitepage_browse_thumb .sitepage_browse_title p,
+div.sitebusiness_browse_thumb .sitebusiness_browse_title a,
+div.sitebusiness_browse_thumb .sitebusiness_browse_title p,
+div.siteevent_grid_thumb .siteevent_grid_title a:hover,
+div.sitegroup_browse_thumb .sitegroup_browse_title a:hover,
+div.sitegroup_browse_thumb .sitegroup_browse_title:hover,
+div.sitepage_browse_thumb .sitepage_browse_title a:hover,
+div.sitepage_browse_thumb .sitepage_browse_title:hover,
+div.sitebusiness_browse_thumb .sitebusiness_browse_title a:hover,
+div.sitebusiness_browse_thumb .sitebusiness_browse_title:hover,
+div.sitestore_browse_thumb .sitestore_browse_title a,
+div.sitestore_browse_thumb .sitestore_browse_title a:hover {
+	color: #fff;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 22px;
+	font-weight: 400;
+	margin: 0;
+	text-shadow: 0px 0 2px rgba(0,0,0,.3);
+}
+.siteevent_grid_info,
+.sitegroup_browse_thumb_info,
+.sitepage_browse_thumb_info,
+.sitebusiness_browse_thumb_info,
+.sitestore_browse_thumb_info {
+	bottom:0;
+	position:absolute;
+	left:0;
+	right:0;
+	padding:0 10px!important;
+	-webkit-transition: height 0.15s;
+	transition: height 0.15s;
+	height:0;
+	opacity:0;
+} 
+.siteevent_grid_info a,
+div.sitegroup_browse_thumb_info .member_count,
+div.sitegroup_browse_thumb_info .seaocore_txt_light,
+div.sitepage_browse_thumb_info .member_count,
+div.sitebusiness_browse_thumb_info .member_count,
+div.sitepage_browse_thumb_info .sitepage_browse_thumb_stats,
+div.sitebusiness_browse_thumb_info .sitebusiness_browse_thumb_stats,
+div.sitestore_browse_thumb_info .seaocore_txt_light {
+	color:#fff;
+	text-shadow: 0px 0 2px rgba(0,0,0,.3);
+	padding-right:12px;
+	font-weight:normal;
+	font-size:14px!important;
+	margin-bottom:0;
+}
+.siteevent_grid_view:hover .siteevent_grid_info,
+.sitegroup_browse_thumb:hover .sitegroup_browse_thumb_info,
+.sitepage_browse_thumb:hover .sitepage_browse_thumb_info,
+.sitebusiness_browse_thumb:hover .sitebusiness_browse_thumb_info,
+.sitestore_browse_thumb:hover .sitestore_browse_thumb_info {
+	height: 30px;
+	opacity: 1;
+	-webkit-transition: opacity 0.15s ease, height 0.15s;
+	-webkit-transition-delay: 0.05s, 0s;
+	-webkit-transition: opacity 0.15s ease 0.05s, height 0.15s;
+	transition: opacity 0.15s ease 0.05s, height 0.15s;
+}
+.siteevent_grid_view:hover div.siteevent_grid_thumb .siteevent_grid_title,
+.sitegroup_browse_thumb:hover .sitegroup_browse_thumb_list .sitegroup_browse_title,
+.sitepage_browse_thumb:hover .sitepage_browse_thumb_list .sitepage_browse_title,
+.sitebusiness_browse_thumb:hover .sitebusiness_browse_thumb_list .sitebusiness_browse_title,
+.sitestore_browse_thumb:hover .sitestore_browse_thumb_list .sitestore_browse_title {
+	-webkit-transition: opacity 0.15s ease, bottom 0.15s;
+	-webkit-transition-delay: 0.05s, 0s;
+	-webkit-transition: opacity 0.15s ease 0.05s, bottom 0.15s;
+	transition: opacity 0.15s ease 0.05s, bottom 0.15s;
+	bottom:15px;
+}
+/*For store Plugin*/
+html ul.seaocore_browse_list > li:hover .seaocore_browse_list_photo img,
+html .sitestore_browse_thumb:hover .sitestore_browse_thumb_list	{
+  	opacity:1;
+ }
+/*Landing Search widget + Advanced Search widget*/
+.layout_siteluminous_landing_search form {
+  	text-align:center;
+}
+ #global_content .layout_siteadvsearch_search_box,
+ span#global_content_simple .layout_siteadvsearch_search_box {
+	width:100%;
+	position:absolute;
+	z-index:10;
+	margin-bottom:0;
+	right:0;
+	left:0;
+}
+.layout_siteluminous_landing_search {
+	width:100%;
+	position:absolute;
+	z-index:10;
+	margin-top:-90px;
+	margin-bottom:0;
+	right:0;
+	left:0;
+}
+.layout_siteluminous_landing_search .siteadvsearch_search_box_wrap {
+	float:none!important;
+	border:none!important;
+}
+.layout_siteluminous_landing_search #siteadv_menu_mini_menu {
+  	text-align:center;
+}
+.layout_siteluminous_landing_search #global_search_form {
+  	position:relative;
+}
+.layout_siteluminous_landing_search form input[type="text"] {
+	padding:11px 5px!important;
+	border-radius:3px;
+	min-width:492px;
+	max-width:492px;
+}
+.layout_siteluminous_landing_search ul.adsearch-autosuggest {
+	position:inherit;
+	margin:0 auto;
+	min-width:490px;
+}
+.layout_siteluminous_landing_search ul + button {
+	background-color:$theme_button_background_color!important;
+	width:45px!important;
+	height:40px!important;
+	margin-left:-48px!important;
+	border-radius:0px 2px 2px 0;
+	vertical-align:top!important;
+	background-image: url(images/search-icn.png)!important;
+	position:absolute;
+	top:0;
+	right:0;
+}
+[dir="rtl"] .layout_siteluminous_landing_search ul + button {
+	border-radius:2px 0px 0px 2px;
+	margin-right:-48px!important;
+	left:0;
+}
+.layout_siteluminous_landing_search button {
+	background-color:$theme_button_background_color;
+	width:45px;
+	height:42px;
+	margin-left:-48px;
+	border-radius:0px 2px 2px 0;
+	vertical-align:top;
+	background-image: url(images/search-icn.png);
+	border-bottom:none;
+	background-repeat:no-repeat;
+	background-position:50% center;
+} 
+[dir="rtl"] .layout_siteluminous_landing_search button {
+	border-radius:2px 0px 0px 2px;
+	margin-right:-48px;
+}
+html .layout_middle .layout_siteadvsearch_search_box .layout_siteadvsearch_search_wrapper {
+	border-width: 0;
+	float: none;
+}
+/*Loading image*/
+.layout_siteadvsearch_search_box [id*="main-search-loading_"] {
+	right:50px;
+	top:5px;
+}
+/*Explore button*/
+.siteevent_bottom_link,
+.sitegroup_bottom_link,
+.sitepage_bottom_link,
+.sitebusiness_bottom_link {
+	width:100%;
+	float:left;
+	text-align:center;
+	margin-top:20px;
+}
+.siteevent_bottom_link a,
+.sitegroup_bottom_link a,
+.sitepage_bottom_link a,
+.sitebusiness_bottom_link a {
+	background-color: $theme_color;
+	border-bottom: 1px solid $button_border_color;
+	border-image: none;
+	border-radius: 2px;
+	color:#fff;
+	font-size: 14px;
+	padding: 5px 20px;
+	box-shadow: none;
+	font-weight: 300;
+	border-left: none;
+	border-right: none;
+	border-top: none;
+	font-family: 'Ubuntu', sans-serif;
+	cursor:pointer;
+	display:inline-block;
+}
+.siteevent_bottom_link a:hover,
+.sitegroup_bottom_link a:hover,
+.sitepage_bottom_link a:hover,
+.sitebusiness_bottom_link a:hover {
+	opacity:.9;
+	color:#fff;
+}
+.siteevent_top_link,
+.sitegroup_top_link,
+.sitepage_top_link,
+.sitebusiness_top_link,
+html .sitestoreproduct_top_link {
+	width:$theme_content_width;
+	margin:0 auto;
+	display:block;
+	text-align:right;
+	margin-bottom:5px;
+	float:none !important;	
+}
+/*Luminous theme landing page FOOTER MENU widget*/
+.layout_siteluminous_menu_footer {
+	float:left;
+	width: 100%;
+	background-color:#2B2D2E;
+}
+/*Advanced footer menu*/
+.layout_page_footer {
+  	box-shadow:none;
+}
+/*Responsive work for Landing page*/
+@media only screen and (min-width: 1750px) {
+  .layout_siteluminous_landing_search {margin-top:-60px;}
+}
+@media only screen and (max-width: 1199px) {
+	.layout_siteevent_events_siteevent ul.siteevent_grid_view_sidebar, .layout_sitegroup_recently_popular_random_sitegroup > div, .layout_sitepage_recently_popular_random_sitepage > div, .layout_sitebusiness_recently_popular_random_sitebusiness > div, .layout_sitereview_listings_sitereview .sr_grid_view, .layout_sitereview_recently_popular_random_sitereview .sr_grid_view, .sitestoreproduct_grid_view, .layout_sitestore_recently_popular_random_sitestore .layout_core_container_tabs, .siteevent_top_link, .sitegroup_top_link, .sitepage_top_link, .sitebusiness_top_link, .sitestoreproduct_top_link, .layout_sitemember_recent_popular_random_members {width: 100% !important; float:left !important;}
+	.siteevent_grid_view, .sitegroup_browse_thumb, .sitepage_browse_thumb, .sitebusiness_browse_thumb, .sitestoreproduct_grid_view li, .sitestore_browse_thumb 									{width:32.7%!important;}
+}
+ @media only screen and (max-width: 768px) {
+	.sitestoreproduct_grid_view li {width:97% !important; margin:0;}
+	.siteevent_grid_view + .siteevent_grid_view, .sitegroup_browse_thumb + .sitegroup_browse_thumb, .sitepage_browse_thumb + .sitepage_browse_thumb, .sitebusiness_browse_thumb + .sitebusiness_browse_thumb, .sitestoreproduct_grid_view li + li	{margin-left:0;}
+	.sitestoreproduct_grid_view_thumb span {width:100% !important;}
+ }
+ @media only screen and (max-width: 603px) {
+    .siteevent_grid_view, .sitegroup_browse_thumb, .sitepage_browse_thumb, .sitebusiness_browse_thumb, .sr_grid_view li, .sitestore_browse_thumb {margin-bottom:10px; width:100%!important; margin-left:0;} 
+	.layout_siteluminous_landing_search ul.adsearch-autosuggest, .layout_siteluminous_landing_search #global_search_form input[type="text"], .layout_siteluminous_landing_search #global_search_form input[type="text"]:hover, .layout_siteluminous_landing_search form input[type="text"] {min-width:300px!important; max-width:300px; padding-top:7px !important; padding-bottom:7px !important;}
+    html .layout_siteluminous_landing_search button {height:32px !important;}
+	.layout_siteevent_events_siteevent, .layout_sitegroup_recently_popular_random_sitegroup, .layout_sitepage_recently_popular_random_sitepage, .layout_sitebusiness_recently_popular_random_sitebusiness {padding-top:15px; padding-bottom:15px;}
+    .layout_siteluminous_landing_search {margin-top:-70px;}
+ }
+
+
+ 

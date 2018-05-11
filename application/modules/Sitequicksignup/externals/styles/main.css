@@ -1,0 +1,166 @@
+.sitequicksignup_welcome_message_wrapper .sitequicksignup_welcome_options button {
+    display: inline-block;
+}
+.sitequicksignup_welcome_message_wrapper .sitequicksignup_welcome_message {
+    text-align: center;
+    margin: 0 auto 5px;
+    width: 100%;
+}
+.sitequicksignup_welcome_options {
+    width: 100%;
+    margin: 0 auto 5px;
+    text-align: center;
+}
+#sociallogin_signup_popup {
+    text-align: center;
+}
+
+/*Signup _form*/
+.social-signup-row, .social-login-row {
+    border: none;
+}
+div#sociallogin_signup_popup #signup_account_form {
+    border: none;
+}
+.layout_sitequicksignup_signup #signup_account_form .form-element {
+    width: 100%;
+}
+.layout_sitequicksignup_signup #signup_account_form .form-element input {
+    width: auto;
+    max-width: 100%;
+}
+.layout_sitequicksignup_signup #signup_account_form .form-element select {
+    width: 100%;
+}
+.layout_page_header .global_form select {
+    padding: 8px 5px;
+}
+
+/*Site_Login pop*/
+/*#sociallogin_signup_popup #signup_account_form #Sitelogin-Signuppopup-div {
+	display: none;
+}*/
+
+/*div#sociallogin_signin_popup #sociallogin_popup_div .social-login-column-1 {
+	float: left;
+}
+[dir="rtl"] div#sociallogin_signin_popup #sociallogin_popup_div .social-login-column-1 {
+	float: right;
+}*/
+div#sociallogin_signin_popup #sociallogin_popup_div {
+    padding: 15px;
+    box-sizing: border-box;
+    width: 100%;
+}
+#TB_ajaxContent div#sociallogin_signin_popup .signin_page_heading {
+    display: none;
+}
+div#sociallogin_signin_popup .signin_page_heading,
+div#sociallogin_signin_popup .signup_page_heading {
+    text-align: center;
+    box-sizing: border-box;
+    width: 100%;
+}
+div#sociallogin_signin_popup .signup_page_heading h2,
+div#sociallogin_signin_popup .signin_page_heading h2 {
+    margin: 0;
+    font-size: 18px;
+    padding: 8px 10px;
+    text-transform: uppercase;
+}
+div#sociallogin_signup_popup #socialsignup_popup_div #signup_account_form {
+    padding: 0;
+    margin-top: 0;
+}
+.sitehomepagevideo_login_form_sitelogin .social-login-row #user_form_login.global_form div.form-label {
+    display: none;
+}
+#sitehomepagevideo_showLoginForm .sociallogin_signin_popup .signin_page_heading {
+    display: none;
+}
+#sitehomepagevideo_showSignupForm .sitelogin-signuppopup-box,
+#sitehomepagevideo_showLoginForm .sitelogin-loginpopup-box {
+    padding: 0;
+    margin-top: 0;
+}
+.social-login-row-bottom, .social-login-row-top {
+    padding: 0 !important;
+}
+div#remember-element:before {
+    content: " ";
+}
+.sitehomepagevideo_login_form_sitelogin .social-login-row #user_form_login #forgot-wrapper #forgot-element {
+    text-align: left;
+}
+[dir="rtl"] .sitehomepagevideo_login_form_sitelogin .social-login-row #user_form_login #forgot-wrapper #forgot-element {
+    text-align: right;
+}
+.sitehomepagevideo_signup_form .social-login-row #user_form_login #remember-wrapper {
+    clear: none !important;
+    float: right !important;
+}
+.social-login-row-bottom, .social-login-row-top {
+    margin: 0 auto !important;
+}
+#sitehomepagevideo_showLoginForm .social-login-row #user_form_login .form-elements {
+    padding: 0;
+}
+.circle-box-height {
+    height: auto !important;
+}
+.sitehomepagevideo_videos_video_content .social-btn-text {
+    color: #fff;
+}
+.social-btn-text {
+    margin: 0 auto !important;
+}
+.sitehomepagevideo_videos_video_content div#sociallogin_signup_popup #signup_account_form .form-description {
+    color: #fff;
+}
+#sitehomepagevideo_showSignupForm #signup_account_form .form-description {
+    color: #fff;
+}
+.sitehomepagevideo_videos_video_content div#sociallogin_signup_popup #signup_account_form h3 {
+    color: #fff;
+}
+div#TB_ajaxContent #user_form_login #remember-wrapper {
+    float: none;
+}
+#user_form_default_sea_lightbox #user_form_login #remember-wrapper {
+    float: none;
+}
+#user_form_default_sea_lightbox div#sociallogin_signin_popup .signin_page_heading,
+div#sociallogin_signin_popup .signup_page_heading {
+    display: none;
+}
+.sitehomepagevideo_left form.global_form h3 {
+    display: block !important;
+    color: #fff !important;
+}
+.sitehomepagevideo_videos_video_content #signup_account_form .form-description {
+    color: #fff;
+}
+.sitequicksignup_welcome_popup_close_icon {
+	font-weight: bold !important;
+	padding: 5px;
+	box-sizing: border-box;
+	font-size: 15px !important;
+	position: absolute;
+	right: 0;
+	top: 0;
+	display: block;
+	cursor: pointer;
+}
+#user_signup_popup #sociallogin_signup_popup #signup_account_form h3 {
+	background-color: $theme_topbar_background_color;
+	padding: 25px 0;
+	color: $theme_topbar_menu_link_color;
+}
+/* Icons will not be coming in Sitehomepagevideo from's input fields and dropdown if quicksignup plugin is enabled */
+.sitehomepagevideo_left .sitequicksignup_form .form-elements .form-wrapper .form-element::before {
+	display: none;
+}
+.sitehomepagevideo_signup_form .sitehomepagevideo_left form.global_form.sitequicksignup_form input,
+.sitehomepagevideo_signup_form .sitehomepagevideo_left form.global_form.sitequicksignup_form select {
+	padding-left: 7px;
+}

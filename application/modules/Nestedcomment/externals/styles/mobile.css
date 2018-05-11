@@ -1,0 +1,185 @@
+
+/*Smile*/
+.layout_nestedcomment_comments {
+	padding-bottom:200px;
+}
+.compose-menu.inside-compose-icons + .compose-tray + seao_emoticons {
+	position: absolute;
+	float: none;
+}
+.seaocore_replies > div + form .seao_inside_smile span.adv_post_smile{
+	margin-top:-5.7%;
+}
+.seaocore_replies > div + form + ul .seao_inside_smile span.adv_post_smile{
+	margin-top:-13%;
+}
+.seaocore_replies .seaocore_replies_child .seao_inside_smile span.adv_post_smile{
+	margin-top: -8.7%;
+}
+.seaocore_replies .seao_emoticons .adv_post_smile{
+	height: 17px;
+  width: 20px;
+	top: auto;
+	bottom: 5px;
+	z-index: 50;
+}
+.layout_nestedcomment_comments .seaocore_replies .seao_emoticons .adv_post_smile, 
+.seaocore_replies .adv_post_smile:hover{
+	background-position: center -18px;
+}
+.seaocore_replies .adv_post_smile::before {content: "";}
+/* Emotions box css start here */
+	.seaocore_comment_embox{
+		background-color: #333333;
+		border: 1px solid #828282;
+		padding: 2px;
+		position: absolute;
+		right: -6px;
+		top: 25px;
+		width: 240px;
+		z-index: 99;
+	}
+	html[dir="rtl"] .seaocore_comment_embox{
+		left:-6px;
+		right:auto;
+	}
+	.seaocore_comment_embox > .seaocore_comment_embox_arrow{
+		display: block;
+		right: 8px;
+		margin-top: -15px;
+		position: absolute;
+	}
+	html[dir="rtl"] .seaocore_comment_embox > .seaocore_comment_embox_arrow{
+		left:8px;
+		right:auto;
+	}
+	.seaocore_comment_embox > .seaocore_comment_embox_title{
+		border-bottom: 1px solid #828282;
+		color: #FFFFFF;
+		float: left;
+		font-size: 11px;
+		height: 13px;
+		line-height: 13px;
+		margin:0 2px;
+		margin-bottom: 2px;
+		overflow: hidden;
+		padding: 3px 0;
+		width: 234px;
+	}
+	html[dir="rtl"] .seaocore_comment_embox > .seaocore_comment_embox_title{
+		float:right;
+	}
+	.seaocore_comment_embox > span.seaocore_comment_embox_icon{
+		margin: 2px;
+		float:left;
+		height:20px;
+		width:20px;
+	}
+	html[dir="rtl"] .seaocore_comment_embox > span.seaocore_comment_embox_icon{
+		float:right;
+	}
+	.seaocore_comment_embox > span.seaocore_comment_embox_icon:hover{
+		border: 1px solid #828282;
+		margin:1px;
+	}
+	.seaocore_comment_embox > span.seaocore_comment_embox_icon img{
+		float:left;
+	}
+	html[dir="rtl"] .seaocore_comment_embox > span.seaocore_comment_embox_icon img{
+		float:right;
+	}
+	.seaocore_comment_embox_open {
+		display:block;
+	}
+	.seaocore_comment_embox_closed {
+		display:none;
+	}
+	.emoticons_comment_active p{
+		display:none !important;
+	}
+	.emotions_use{
+		vertical-align:middle;
+	}   
+/*Nested comment in Advanced activity feed*/
+	ul.seao_reply > li{
+		+foreground;
+		border-top: 1px solid $theme_body_background_color;
+	}
+/*Add photo link in AAF*/
+	.seao_advcomment + form #nested_preview_image,
+	.seao_advcomment #nested_preview_image{
+		border: 1px solid $theme_border_medium_color;
+		margin: 5px -10px 0;
+		padding: 5px;
+	}
+	/*Album-icon in AAF*/
+	.feed_item_body a#compose-photo-form-fancy-file{
+		background-image: url(~/application/modules/Nestedcomment/externals/images/icon/photo-add.png);
+		background-position:left top;
+	}
+	.feed_item_body a#compose-photo-form-fancy-file.hover{
+		background-image: url(~/application/modules/Nestedcomment/externals/images/icon/photo-add.png);
+		background-position:left bottom;
+	}
+/*Smile in AAF*/
+	.adv_post_smile{
+		background-image: url(~/application/modules/Nestedcomment/externals/images/icon/smile-add.png);
+		background-position:top;
+	}
+	.adv-active .adv_post_smile, .adv_post_smile:hover{
+		background-image: url(~/application/modules/Nestedcomment/externals/images/icon/smile-add.png);
+		background-position:bottom;
+	}
+
+	.adv_post_compose_menu_show_tip {
+		top: -30px;
+		right:-2px;
+	}
+	html[dir="rtl"] .adv_post_compose_menu_show_tip{
+		left:-2px;
+		right:auto;
+	}
+	.adv_post_compose_menu span:hover .adv_post_compose_menu_show_tip {
+		display: block;
+	}
+
+  .seao_advcomment + form .compose-menu, .seao_advcomment form .compose-menu {
+    position: relative;
+    margin-top: 0 !important;
+    overflow: visible;
+  }
+
+  .seao_advcomment + form .compose-menu .compose-activator, .seao_advcomment form .compose-menu .compose-activator {
+    background-position: center -2px;
+    top: -22px;
+    position: absolute;
+    display: block;
+    height: 16px;
+    width: 16px;
+    background-size: contain;
+    text-indent: -9999px;
+   /* padding-left: 21px;*/
+    font-weight: bold;
+    font-size: .9em;
+    line-height: 200%;
+  }
+
+  .seao_advcomment + form .compose-menu .menu_index_1, .seao_advcomment form .compose-menu .menu_index_1 {
+    right: 0px;
+  }
+
+  .seao_advcomment + form .compose-menu .menu_index_2, .seao_advcomment form .compose-menu .menu_index_2 {
+    right: 20px;
+  }
+
+  .seao_advcomment + form .compose-menu .menu_index_3, .seao_advcomment form .compose-menu .menu_index_3 {
+    right: 50px;
+    background-position:center;
+    margin:0 !important;
+  }
+	 [dir="rtl"] .seao_advcomment + form .compose-menu .menu_index_3, [dir="rtl"] .seao_advcomment form .compose-menu .menu_index_3 {
+     left: 50px;
+     right:auto;
+     padding-right:0;
+ } 
+

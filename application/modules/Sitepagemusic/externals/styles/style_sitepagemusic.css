@@ -1,0 +1,35 @@
+/* $Id: style_sitepagemusic.css 2011-05-05 9:40:21Z SocialEngineAddOns Copyright 2010-2011 BigStep Technologies Pvt. Ltd. $ */
+
+/*View Playlist*/
+.sitepagemusic_playlist{
+  overflow: hidden;
+	border-top-width:1px;
+	padding-top:10px;
+}
+.sitepagemusic_playlist_info{
+  overflow: hidden;
+}
+.sitepagemusic_playlist_info_title h3{
+  margin-bottom: 1px;
+}
+.sitepagemusic_playlist_info .comments{
+  margin-top: 10px;
+  border-top-width: 1px;
+  padding-top: 10px;
+}
+.sitepagemusic_playlist_options{
+	clear:both;
+	margin-top:10px;
+}
+.sitepagemusic_playlist_options a{
+  font-size: .8em;
+  padding-top: 1px;
+  padding-bottom: 2px;
+}
+.sitepagemusic_playlist_info_des{
+	margin-top:5px;
+	margin-bottom:10px;
+}
+.sitepagemusic_fb_like{
+	margin:7px 0;
+}

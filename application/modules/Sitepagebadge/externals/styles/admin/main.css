@@ -1,0 +1,115 @@
+ /* $Id: main.css 2011-05-05 9:40:21Z SocialEngineAddOns Copyright 2010-2011 BigStep Technologies Pvt. Ltd. $ */
+@include "~/application/modules/Core/externals/styles/constants.css";
+
+.sitepage_admin_list_badge_popup{
+	margin:10px;
+}
+.sitepage_admin_list_badge{
+	list-style:none;
+	margin:15px 0;
+	overflow:auto;
+	max-height:300px;
+	overflow:auto;
+}
+.sitepage_admin_list_badge_popup form {
+	width:600px !important;
+}
+.sitepage_admin_list_badge li{
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius:3px;
+	text-align:center;
+	font-weight:bold;
+	float:left;
+	width:90px;
+	height:110px;
+	margin-bottom:10px;
+	padding:5px;
+	border:1px solid #FFFFFF;
+}
+.sitepage_admin_list_badge li.selected{
+	background:#E9F4FA;
+	border:1px solid #D0E2EC;
+}
+.sitepage_admin_list_badge li img{
+	max-width:50px;
+	max-height:50px;
+	border:none;
+	margin:0px auto 0px;
+}
+.sitepage_admin_list_badge li div.badge_name{
+	font-size:11px;
+	text-align:center;
+	clear:both;
+	margin:5px auto;
+}
+
+/*tooltip*/
+.sitepage_badge_show_tooltip{
+	display: none;
+	background: #222;
+	margin-top: 0px;
+	opacity: 0.9;
+	padding: 5px 15px 5px 5px;
+	position: absolute;
+	text-align: left;
+	clear:both;
+	width:250px;
+	margin-top:5px;
+}
+.sitepage_badge_show_tooltip_wrapper:hover .sitepage_badge_show_tooltip{
+ display: block;
+ clear:both;
+}
+.sitepage_badge_show_tooltip img{
+	left: 15px;
+	top: -7px;
+	position: absolute;
+}
+.sitepage_badge_show_tooltip div{
+	clear:both;
+	color: #FFFFFF;
+	font-size: 0.8em;
+}
+/*badget request detail*/
+.sitepagebadge_request_detail {
+	margin:10px;
+}
+.sitepagebadge_request_detail .settings form {
+	overflow: auto;
+	max-height:450px;
+	width:610px;
+}
+.sitepagebadge_request_detail .settings .form-wrapper {
+	padding: 7px 0;
+}
+.sitepagebadge_request_detail .settings .form-element {
+	max-width: 350px;
+}
+.sitepagebadge_request_detail .settings .form-element b{
+	font-weight:bold;
+	margin-bottom:5px;
+	float:left;
+}
+.sitepagebadge_request_detail .settings div.form-element textarea {
+	min-height: 70px;
+	min-width: 0;
+	width: 300px;
+}
+.sitepagebadge_request_detail .settings form > div {
+	padding:10px;
+}
+/*manage badges*/
+#global_page_sitepagebadge-admin-badgerequest-manage table.admin_table thead tr th,
+#global_page_sitepagebadge-admin-badgerequest-manage table.admin_table tbody tr td{
+	padding:7px 4px;
+}
+.sitepagebadge_manage_wrapper{
+	width:930px !important;
+}
+.sitepagebadge_manage_wrapper > ul{
+	max-height:none !important;
+}
+.sitepagebadge_manage_wrapper > ul .admin_file_preview_image .sitepagebadge_img_pre{
+	max-width:150px;
+}

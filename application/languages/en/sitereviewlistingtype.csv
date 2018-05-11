@@ -1,0 +1,14 @@
+"_EMAIL_SITEREVIEW_CHANGELISTINGTYPE_EMAIL_TITLE";"Multiple Listing Types - Listing Type Changed"
+"_EMAIL_SITEREVIEW_CHANGELISTINGTYPE_EMAIL_DESCRIPTION";"This is the email that goes to a listing owner when listing type of their Listing has been changed."
+"_EMAIL_SITEREVIEW_CHANGELISTINGTYPE_EMAIL_SUBJECT";"Listing type of the [listing_type] Listing: [list_title] has been changed."
+"_EMAIL_SITEREVIEW_CHANGELISTINGTYPE_EMAIL_BODY";"[header]
+
+The listing type of the [listing_type] Listing: [list_title_with_link] has been changed to [new_listing_type] listing type.
+
+For any queries or comments, you may contact us here: [site_contact_us_link].
+
+To visit this listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"ACTIVITY_CATEGORY_TYPE_SITEREVIEWLISTINGTYPE";"Listings"

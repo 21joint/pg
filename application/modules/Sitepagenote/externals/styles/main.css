@@ -1,0 +1,9 @@
+
+
+.activity_icon_sitepagenote_admin_new::before, .activity_icon_sitepagenote_new::before, .icon_sitepagenote_note::before, .item_icon_sitepagenote::before, .notification_type_sitepagenote_create::before {
+	content:"\\f24a";
+}
+
+#sitepagenote-wrapper {
+   display: none; 
+}

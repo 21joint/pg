@@ -1,0 +1,1411 @@
+#Global Search
+"ITEM_TYPE_SITEREVIEW_LISTING";"Reviews - Listings"
+"ITEM_TYPE_SITEREVIEW_ALBUM";"Reviews - Listings Albums"
+"ITEM_TYPE_SITEREVIEW_PHOTO";"Reviews - Listings Photos"
+"ITEM_TYPE_SITEREVIEW_REVIEW";"Reviews - Listings Reviews"
+"ITEM_TYPE_SITEREVIEW_TOPIC";"Reviews - Listings discussion Topic"
+"ITEM_TYPE_SITEREVIEW_POST";"Reviews - Listings discussion Post"
+"ITEM_TYPE_SITEREVIEW_VIDEO";"Reviews - Listings Videos"
+
+"_EMAIL_SITEREVIEW_EDITOR_ASSIGN_EMAIL_TITLE";"Multiple Listing Types - Member Becomes Editor"
+"_EMAIL_SITEREVIEW_EDITOR_ASSIGN_EMAIL_DESCRIPTION";This email goes to the members when they are made the editors to write editor reviews.
+"_EMAIL_SITEREVIEW_EDITOR_ASSIGN_EMAIL_SUBJECT"; You have become an editor for listings.
+"_EMAIL_SITEREVIEW_EDITOR_ASSIGN_EMAIL_BODY";"[header]
+
+Congratulations! [sender] has made you an editor for listings of [listing_type]. You can now write / edit editor reviews for them.
+
+To visit your editor page, click on the link below, or copy-paste it in your browser:
+[editor_page_url]
+
+
+[footer]"
+
+"_EMAIL_SITEREVIEW_LISTING_CREATION_EDITOR_TITLE";"Multiple Listing Types - Listing Creation Email Notification to Editors"
+"_EMAIL_SITEREVIEW_LISTING_CREATION_EDITOR_DESCRIPTION";"This email is sent to the editors when members post new listings."
+"_EMAIL_SITEREVIEW_LISTING_CREATION_EDITOR_SUBJECT";A new [listing_type] ‘[object_title]’ has been posted.
+"_EMAIL_SITEREVIEW_LISTING_CREATION_EDITOR_BODY";"[header]
+
+[object_title]
+[object_description]
+
+To visit and write editor review on this [listing_type], click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+
+
+"_EMAIL_SITEREVIEW_EDITORREVIEW_CREATION_TITLE";"Multiple Listing Types - Editor Review on Listings"
+"_EMAIL_SITEREVIEW_EDITORREVIEW_CREATION_DESCRIPTION";"This email is sent to the members when editor write reviews on Listings that the member created."
+"_EMAIL_SITEREVIEW_EDITORREVIEW_CREATION_SUBJECT";"[editor_name] has written a review on your ‘[object_parent_title]’."
+"_EMAIL_SITEREVIEW_EDITORREVIEW_CREATION_BODY";"[header]
+
+[editor] has written a review on your ‘[object_parent_with_link]’.
+
+[object_title]
+[object_description]
+
+To view this review, click on the link below, or copy-paste it in your browser:
+http://[host][object_link]
+
+[footer]"
+
+
+# Email editor
+"_EMAIL_SITEREVIEW_EDITOR_EMAIL_TITLE";"Multiple Listing Types - Member Contacts Editor Email"
+"_EMAIL_SITEREVIEW_EDITOR_EMAIL_DESCRIPTION";"This is the email that gets sent to editors when members contact them."
+"_EMAIL_SITEREVIEW_EDITOR_EMAIL_SUBJECT";"[sender] has contacted you."
+"_EMAIL_SITEREVIEW_EDITOR_EMAIL_BODY";"[header]
+
+[message]
+
+[footer]"
+
+
+#Mail Templates
+"_EMAIL_NOTIFY_SITEREVIEW_WRITE_REVIEW_TITLE";"Multiple Listing Types - User Review on Listings"
+"_EMAIL_NOTIFY_SITEREVIEW_WRITE_REVIEW_DESCRIPTION";"This email is sent to the members when people write reviews on Listings that the member created."
+"_EMAIL_NOTIFY_SITEREVIEW_WRITE_REVIEW_SUBJECT";"[sender_title] has written a review on your ‘[object_parent_title]’."
+"_EMAIL_NOTIFY_SITEREVIEW_WRITE_REVIEW_BODY";"[header]
+
+[sender_title] has written a review on your ‘[object_parent_with_link]’.
+
+[object_title]
+[object_description]
+
+To view this review, click on the link below, or copy-paste it in your browser:
+http://[host][object_link]
+
+[footer]"
+
+
+# Email notification for approved/disapproved
+"_EMAIL_SITEREVIEW_APPROVED_EMAIL_NOTIFICATION_TITLE";"Multiple Listing Types - Listing Approve Email Notification"
+"_EMAIL_SITEREVIEW_APPROVED_EMAIL_NOTIFICATION_DESCRIPTION";[subject]
+"_EMAIL_SITEREVIEW_APPROVED_EMAIL_NOTIFICATION_SUBJECT";[subject]
+"_EMAIL_SITEREVIEW_APPROVED_EMAIL_NOTIFICATION_BODY";"[header]
+
+[title]
+
+[message]
+
+Please click the following link to view it:
+
+http://[host][object_link]
+
+[footer]"
+
+
+# Email tell-a-friend
+"_EMAIL_SITEREVIEW_TELLAFRIEND_EMAIL_TITLE";"Multiple Listing Types - Listing Tell-a-Friend Email"
+"_EMAIL_SITEREVIEW_TELLAFRIEND_EMAIL_DESCRIPTION";"This is the email that gets sent to friends for tell-a-friend about listing."
+"_EMAIL_SITEREVIEW_TELLAFRIEND_EMAIL_SUBJECT";[sender] wants you to see this listing.
+"_EMAIL_SITEREVIEW_TELLAFRIEND_EMAIL_BODY";"[header]
+
+[heading]
+
+Your friend [sender] wants you to look at this listing:
+
+http://[host][object_link]
+
+[message]
+
+[footer]"
+
+
+"_EMAIL_SITEREVIEW_EMAIL_FRIEND_TITLE";"Multiple Listing Types - Review Tell-a-Friend Email"
+"_EMAIL_SITEREVIEW_EMAIL_FRIEND_DESCRIPTION";"This is the email that gets sent to friends for tell-a-friend about reviews."
+"_EMAIL_SITEREVIEW_EMAIL_FRIEND_SUBJECT";"[site_title] User Reviews: [review_title]"
+"_EMAIL_SITEREVIEW_EMAIL_FRIEND_BODY";"[header]
+
+Your friend [sender] wants you to look at this review:
+[review_title_with_link]
+
+[userComment]
+
+[footer]"
+
+# Email apply for job
+"_EMAIL_SITEREVIEW_APPLYNOW_EMAIL_TITLE";"Multiple Listing Types - Listing Apply Now Email"
+"_EMAIL_SITEREVIEW_APPLYNOW_EMAIL_DESCRIPTION";"This is the email that gets sent to listing owner."
+"_EMAIL_SITEREVIEW_APPLYNOW_EMAIL_SUBJECT";[sender] has applied for [heading]
+"_EMAIL_SITEREVIEW_APPLYNOW_EMAIL_BODY";"[header]
+
+[sender] has applied to the [listing_type] [object_link]. Please find the summary below:
+
+[contact_info]
+
+[footer]"
+
+# Email notification for write a review by non-logged in member
+"_EMAIL_SITEREVIEW_REVIEW_WRITE_TITLE";"Multiple Listing Types - Review Written by Visitor"
+"_EMAIL_SITEREVIEW_REVIEW_WRITE_DESCRIPTION";"This is the email that goes to a site admin when visitor writes a review on listing."
+"_EMAIL_SITEREVIEW_REVIEW_WRITE_SUBJECT";"Review written by visitor on ‘[listing_Name]’"
+"_EMAIL_SITEREVIEW_REVIEW_WRITE_BODY";"[header]
+
+[user_name] has written a review on ‘[listing_Name_With_link]’:
+ 
+[review_title]
+[review_description]
+
+To view this review, click on the link below, or copy-paste it in your browser:
+[review_link]
+
+[footer]"
+
+"_EMAIL_NOTIFY_SITEREVIEW_APPROVED_REVIEW_TITLE";"Multiple Listing Types - Visitor Review Approved"
+"_EMAIL_NOTIFY_SITEREVIEW_APPROVED_REVIEW_DESCRIPTION";"This is the email that gets sent to Listing Owners when visitor review is approved for their listings."
+"_EMAIL_NOTIFY_SITEREVIEW_APPROVED_REVIEW_SUBJECT";"[sender_title] has reviewed [object_parent_title]"
+"_EMAIL_NOTIFY_SITEREVIEW_APPROVED_REVIEW_BODY";"[header]
+
+[sender_title] has written a review on your [object_parent_with_link].
+
+[object_title]
+[object_description]
+
+To view this review, click on the link below, or copy-paste it in your browser:
+http://[host][object_link]
+
+[footer]"
+
+
+# Email notification for approved/disapproved
+"_EMAIL_SITEREVIEW_REVIEW_APPROVED_TITLE";"Reviews: Review Approved Email"
+"_EMAIL_SITEREVIEW_REVIEW_APPROVED_DESCRIPTION";"This email send to the Site Admin when any non-logged in user write a review on the Listing"
+"_EMAIL_SITEREVIEW_REVIEW_APPROVED_SUBJECT";"Review on your [listing_Name]"
+"_EMAIL_SITEREVIEW_REVIEW_APPROVED_BODY";"[header]
+
+[user_name] has written a review on your [listing_Name_With_link]:
+ 
+[review_title]
+[review_description]
+
+To view this review, click on the link below, or copy-paste it in your browser:
+[review_link]
+
+[footer]"
+
+"_EMAIL_SITEREVIEW_REVIEW_APPROVED_TITLE";"Multiple Listing Types - Review Approved"
+"_EMAIL_SITEREVIEW_REVIEW_APPROVED_DESCRIPTION";"This is the email that gets sent to a visitor when their review is approved."
+"_EMAIL_SITEREVIEW_REVIEW_APPROVED_SUBJECT";"Your Review: ‘[review_title]’ has been approved."
+"_EMAIL_SITEREVIEW_REVIEW_APPROVED_BODY";"[header]
+
+Your review has been approved.
+
+[review_title]
+[review_description]
+
+To visit this review, click on the link below, or copy-paste it in your browser:
+[review_link]
+
+[footer]"
+
+"_EMAIL_SITEREVIEW_REVIEW_DISAPPROVED_TITLE";"Multiple Listing Types - Review Disapproved"
+"_EMAIL_SITEREVIEW_REVIEW_DISAPPROVED_DESCRIPTION";"This is the email that gets sent to a visitors when their review is disapproved."
+"_EMAIL_SITEREVIEW_REVIEW_DISAPPROVED_SUBJECT";"Your Review: ‘[review_title]’ has been disapproved."
+"_EMAIL_SITEREVIEW_REVIEW_DISAPPROVED_BODY";"[header]
+
+Your review has been disapproved.
+
+[review_title]
+[review_description]
+
+To visit this review, click on the link below, or copy-paste it in your browser:
+[review_link]
+
+[footer]"
+
+"_EMAIL_SITEREVIEW_CHANGEOWNER_EMAIL_TITLE";"Multiple Listing Types - Listing Owner Changed"
+"_EMAIL_SITEREVIEW_CHANGEOWNER_EMAIL_DESCRIPTION";"This is the email that goes to a member when owner of their Listing has been changed."
+"_EMAIL_SITEREVIEW_CHANGEOWNER_EMAIL_SUBJECT";"Owner of the [listing_type] Listing: [list_title] has been changed."
+"_EMAIL_SITEREVIEW_CHANGEOWNER_EMAIL_BODY";"[header]
+
+The owner of the [listing_type] Listing: [list_title_with_link] has been changed. You are now no more the owner of this listing. All ownership rights for this listing have been transferred to the new owner.
+
+For any queries or comments, you may contact us here: [site_contact_us_link].
+
+To visit this listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+
+#COMMON FOR ALL LISTING TYPES
+"ADMIN_ACTIVITY_TYPE_COMMENT_SITEREVIEW_PHOTO";"Multiple Listing Types - When someone comment on listing photos."
+"_ACTIVITY_ACTIONTYPE_COMMENT_SITEREVIEW_PHOTO";"Comments on your listing photos"
+
+"ADMIN_ACTIVITY_TYPE_COMMENT_SITEREVIEW_REVIEW";"Multiple Listing Types - When someone comment on listing reviews."
+"_ACTIVITY_ACTIONTYPE_COMMENT_SITEREVIEW_VIDEO";"Comments on your listing videos"
+
+"ADMIN_ACTIVITY_TYPE_COMMENT_SITEREVIEW_VIDEO";"Multiple Listing Types - When someone comment on listing videos."
+"_ACTIVITY_ACTIONTYPE_COMMENT_SITEREVIEW_REVIEW";"Comments on your listing reviews"
+
+"ADMIN_ACTIVITY_TYPE_COMMENT_SITEREVIEW_LISTING";"Multiple Listing Types - When someone comment on listing."
+"_ACTIVITY_ACTIONTYPE_COMMENT_SITEREVIEW_LISTING";"Comments on your listing"
+
+"ADMIN_ACTIVITY_TYPE_NESTEDCOMMENT_SITEREVIEW_LISTING";"Multiple Listing Types - When someone replied on a comment on listing."
+"_ACTIVITY_ACTIONTYPE_NESTEDCOMMENT_SITEREVIEW_LISTING";"Replied to your comments  on listing"
+
+"ADMIN_ACTIVITY_TYPE_NESTEDCOMMENT_SITEREVIEW_REVIEW";"Multiple Listing Types - When someone replied on a comment on listing review."
+"_ACTIVITY_ACTIONTYPE_NESTEDCOMMENT_SITEREVIEW_REVIEW";"Replied to your comments on reviews in listing"
+
+"ADMIN_ACTIVITY_TYPE_FOLLOW_SITEREVIEW_WISHLIST";"Multiple Listing Types - When someone start following some other user's wishlist."
+"_ACTIVITY_ACTIONTYPE_FOLLOW_SITEREVIEW_WISHLIST";"Following some other user's wishlist."
+
+#Notifications
+"ACTIVITY_TYPE_SITEREVIEW_EDITORREVIEW";"When editor write a review on listing I created."
+"ACTIVITY_TYPE_SITEREVIEW_WRITE_REVIEW";"When people write a review on listing I created."
+"ACTIVITY_TYPE_SITEREVIEW_APPROVED_REVIEW";"When people (non-site members) write a review on listing I created."
+"ACTIVITY_TYPE_SITEREVIEW_APPLYNOW";"Apply Now."
+"ACTIVITY_TYPE_SITEREVIEW_DISCUSSION_REPLY";"When people reply to discussion topics that I've replied to."
+"ACTIVITY_TYPE_SITEREVIEW_DISCUSSION_RESPONSE";"When people reply to discussion topics that I create."
+"ACTIVITY_TYPE_SITEREVIEW_VIDEO_PROCESSED";"When a listing video has been processed."
+"ACTIVITY_TYPE_SITEREVIEW_VIDEO_PROCESSED_FAILED";"When a listing video has failed to be processed."
+"ACTIVITY_TYPE_FOLLOW_SITEREVIEW_WISHLIST";"When people follow wishlist I created."
+"ACTIVITY_TYPE_SITEREVIEW_WISHLIST_FOLLOWERS";"When people add entry to the wishlists I am following."
+"ACTIVITY_TYPE_SITEREVIEW_SUBSCRIBED_NEW";"When a new listing is posted by a member you have subscribed to."
+
+
+#Notifications
+"{item:$subject} has {item:$object:posted} on a {itemParent:$object::listing topic} you posted on.";"{item:$subject} has {item:$object:posted} on a {itemParent:$object::listing topic} you posted on."
+"{item:$subject} has {item:$object:posted} on a {itemParent:$object::listing topic} you created.";"{item:$subject} has {item:$object:posted} on a {itemParent:$object::listing topic} you created."
+"Your {item:$object:listing video} is ready to be viewed.";"Your {item:$object:listing video} is ready to be viewed."
+"Your {item:$object:listing video} has failed to process.";"Your {item:$object:listing video} has failed to process."
+"{item:$subject} has written a {item:$object:review} for the {itemParent:$object::listing}.";"{item:$subject} has written a {item:$object:review} for the {itemParent:$object::listing}."
+"{item:$subject} has written a {item:$object:review} for the {itemParent:$object::listing}.";"{item:$subject} has written a {item:$object:review} for the {itemParent:$object::listing}."
+"{item:$subject} has added a new {item:$object:entry} in {var:$wishlist}.";"{item:$subject} has added a new {item:$object:entry} in {var:$wishlist}."
+"{item:$subject} has approved a {item:$object:review} by {var:$anonymous_name} on your {itemParent:$object::listing}.";"{item:$subject} has approved a {item:$object:review} by {var:$anonymous_name} on your {itemParent:$object::listing}."
+"{item:$subject} added {item:$listing} to wishlist {item:$object}:";"{item:$subject} added {item:$listing} to wishlist {item:$object}:"
+
+#ACTIVITY FEEDS
+"{item:$subject} commented on {item:$owner}'s {item:$object:photo}: {body:$body}";"{item:$subject} commented on {item:$owner}'s {item:$object:photo}: {body:$body}"
+"{item:$subject} commented on {item:$owner}'s {item:$object:video}: {body:$body}";"{item:$subject} commented on {item:$owner}'s {item:$object:video}: {body:$body}"
+"{item:$subject} commented on {item:$owner}'s review {item:$object:$title}: {body:$body}";"{item:$subject} commented on {item:$owner}'s review {item:$object:$title}: {body:$body}"
+"{item:$subject} replied to a comment on {item:$owner}'s review {item:$object:$title}: {body:$body}";"{item:$subject} replied to a comment on {item:$owner}'s review {item:$object:$title}: {body:$body}"
+"{item:$subject} is following {item:$owner}'s {item:$object:wishlist}: {body:$body}";"{item:$subject} is following {item:$owner}'s {item:$object:wishlist}: {body:$body}"
+
+#Sitereview/FORM/ALBUM
+"Album Cover";"Album Cover"
+"Save Changes";"Save Changes"
+
+#Sitereview/FORM/CUSTOM
+"Search";"Search"
+
+#Sitereview/Form/Editor/Create
+"Write a Editor Review";"Write a Editor Review"
+"Give your ratings and opinion for %s below:";"Give your ratings and opinion for %s below:"
+"The Good";"The Good"
+"The Bad";"The Bad"
+"The Bottom Line";"The Bottom Line"
+"The Bottom Line:";"The Bottom Line:"
+"Conclusion";"Conclusion"
+"Reason Of Updation";"Reason Of Updation"
+"Status";"Status"
+"Published";"Published"
+"Saved As Draft";"Saved As Draft"
+
+#Sitereview/Form/Editor/Edit
+"Edit Review";"Edit Review"
+"Edit the information of your Review using the form below.";"Edit the information of your Review using the form below."
+
+#Sitereview/Form/Editor/EditorMail
+"Email Editor";"Email Editor"
+"Your Name *";"Your Name *"
+"Your Email *";"Your Email *"
+"Message";"Message"
+"You can send a personal note in the mail.";"You can send a personal note in the mail."
+"Please type the characters you see in the image.";"Please type the characters you see in the image."
+"Send Email";"Send Email"
+
+#Sitereview/Form/Photo/Delete
+"Delete Photo";"Delete Photo"
+"Are you sure you want to delete this photo?";"Are you sure you want to delete this photo?"
+
+#Sitereview/Form/Photo/Edit
+"Edit List Photo";"Edit List Photo"
+"Title";"Title"
+"Description";"Description"
+
+#Sitereview/Form/Photo/SubEdit
+"Image Description";"Image Description"
+"Show in Slideshow";"Show in Slideshow"
+
+#Sitereview/Form/Photo/Upload
+"Add New Photos";"Add New Photos"
+"Save Photos";"Save Photos"
+
+#Sitereview/Form/Post/Create
+"Reply";"Reply"
+"Body";"Body"
+"Send me notifications when other members reply to this topic.";"Send me notifications when other members reply to this topic."
+"Post Reply";"Post Reply"
+
+#Sitereview/Form/Post/Delete
+"Delete Post";"Delete Post"
+"Are you sure you want to delete this post?";"Are you sure you want to delete this post?"
+
+#Sitereview/Form/Post/Edit
+"Edit Post";"Edit Post"
+
+#Sitereview/Form/Review/Create
+"Give rating and write a review for %s below:";"Give rating and write a review for %s below:"
+"Write a Review";"Write a Review"
+"Name";"Name"
+"Email";"Email"
+"Pros";"Pros"
+"Cons";"Cons"
+"One-line summary";"One-line summary"
+"Summary";"Summary"
+"Recommended";"Recommended"
+"Would you recommend %s to a friend?";"Would you recommend %s to a friend?"
+
+#Sitereview/Form/Review/Email
+"Email this review";"Email this review"
+"Please fill the form below and then click on 'Send Email' button to send a mail to your friends to let them know about this Review.";"Please fill the form below and then click on 'Send Email' button to send a mail to your friends to let them know about this Review."
+"To *";"To *"
+"Separate multiple addresses with commas";"Separate multiple addresses with commas"
+"Thought you would be interested in this.";"Thought you would be interested in this."
+"Message *";"Message *"
+
+#Sitereview/Form/Review/Search
+"Show";"Show"
+"Reviews Written By";"Reviews Written By"
+"Editors";"Editors"
+"Users";"Users"
+"Reviews For";"Reviews For"
+"Type";"Type"
+"Browse By";"Browse By"
+"Most Recent";"Most Recent"
+"Highest Rating";"Highest Rating"
+"Lowest Rating";"Lowest Rating"
+"Most Helpful";"Most Helpful"
+"Most Reply";"Most Reply"
+"Most Viewed";"Most Viewed"
+"Star Ratings";"Star Ratings"
+"Only Reviews With Recommendation";"Only Reviews With Recommendation"
+"%1s Star";"%1s Star"
+"Everyone's Reviews";"Everyone's Reviews"
+"My Friends' Reviews";"My Friends' Reviews"
+"My Reviews";"My Reviews"
+"Featured Reviews";"Featured Reviews"
+"Everyone";"Everyone"
+
+#Sitereview/Form/Review/Update
+"Update your Review";"Update your Review"
+"You can update your review for %s below:";"You can update your review for %s below:"
+"Add your Opinion";"Add your Opinion"
+
+#Sitereview/Form/Topic/Create
+"Post Discussion Topic";"Post Discussion Topic"
+"Post New Topic";"Post New Topic"
+
+#Sitereview/Form/Topic/Delete
+"Delete Topic";"Delete Topic"
+"Are you sure you want to delete this topic?";"Are you sure you want to delete this topic?"
+
+#Sitereview/Form/Topic/Rename
+"Rename Topic";"Rename Topic"
+
+#Sitereview/Form/Video/Edit
+"Video Description";"Video Description"
+"Delete Video";"Delete Video"
+
+#Sitereview/Form/Video/Video
+"Add New Video";"Add New Video"
+"Video Title";"Video Title"
+"Tags (Keywords)";"Tags (Keywords)"
+"Separate tags with commas.";"Separate tags with commas."
+"Video Description";"Video Description"
+"Show this video in search results";"Show this video in search results"
+"Everyone";"Everyone"
+"All Registered Members";"All Registered Members"
+"Friends and Networks";"Friends and Networks"
+"Friends of Friends";"Friends of Friends"
+"Friends Only";"Friends Only"
+"Just Me";"Just Me"
+"Privacy";"Privacy"
+"Who may see this video?";"Who may see this video?"
+"Comment Privacy";"Comment Privacy"
+"Who may post comments on this video?";"Who may post comments on this video?"
+"Video Source";"Video Source"
+"YouTube";"YouTube"
+"Vimeo";"Vimeo"
+"My Computer";"My Computer"
+"Video Link (URL)";"Video Link (URL)"
+"Paste the web address of the video here.";"Paste the web address of the video here."
+"Save Video";"Save Video"
+"View Privacy";"View Privacy"
+
+#Sitereview/Form/Wishlist/Search
+"Member’s Name / Email";"Member’s Name / Email"
+"Most Items";"Most Items"
+
+#Sitereview/Form/Wishlist/Searchitems
+"Search:";"Search:"
+"Listing Type:";"Listing Type:"
+"Browse By:";"Browse By:"
+"Most Rated (Overall)";"Most Rated (Overall)"
+"Most Rated (Editor)";"Most Rated (Editor)"
+"Most Rated (Users)";"Most Rated (Users)"
+"Most Reviewed";"Most Reviewed"
+"Most Liked";"Most Liked"
+"Most Commented";"Most Commented"
+"Most Rated";"Most Rated"
+
+#Sitereview/Form/Wishlist/TellAFriend
+"Tell a Friend";"Tell a Friend"
+"Send a copy to my email address.";"Send a copy to my email address."
+
+#Sitereview/Form/Address
+"Edit Location";"Edit Location"
+"Edit your location below, then click ""Save Location"" to save your location.";"Edit your location below, then click ""Save Location"" to save your location."
+"Location";"Location"
+"Eg: Fairview Park, Berkeley, CA";"Eg: Fairview Park, Berkeley, CA"
+"Save Location";"Save Location"
+
+#Sitereview/Form/ChangePhoto
+"Edit Profile Picture";"Edit Profile Picture"
+"Current Photo";"Current Photo"
+"Choose New Photo";"Choose New Photo"
+"Or";"Or"
+"Choose From Existing Pictures";"Choose From Existing Pictures"
+"Remove Photo";"Remove Photo"
+
+#Sitereview/Form/Contactinfo
+"Contact Details";"Contact Details"
+"Phone:";"Phone:"
+"Email:";"Email:"
+"Website:";"Website:"
+"Save Details";"Save Details"
+"Admin has not choose any option to show contact detail.";"Admin has not choose any option to show contact detail."
+
+#Sitereview/Form/Editvideo
+"Edit Video";"Edit Video"
+"Edit Videos";"Edit Videos"
+
+#Sitereview/Form/Location
+"Formatted Address";"Formatted Address"
+"Latitude";"Latitude"
+"Longitude";"Longitude"
+"Street Address";"Street Address"
+"City";"City"
+"Zipcode";"Zipcode"
+"State";"State"
+"Country";"Country"
+
+#Sitereview/Form/Locationsearch
+"What";"What"
+"(Enter keywords or Listing name)";"(Enter keywords or Listing name)"
+"Where";"Where"
+"(address, city, state or country)";"(address, city, state or country)"
+"Within Kilometers";"Within Kilometers"
+"1 Kilometer";"1 Kilometer"
+"2 Kilometers";"2 Kilometers"
+"5 Kilometers";"5 Kilometers"
+"10 Kilometers";"10 Kilometers"
+"20 Kilometers";"20 Kilometers"
+"50 Kilometers";"50 Kilometers"
+"100 Kilometers";"100 Kilometers"
+"250 Kilometers";"250 Kilometers"
+"500 Kilometers";"500 Kilometers"
+"750 Kilometers";"750 Kilometers"
+"1000 Kilometers";"1000 Kilometers"
+"Within Miles";"Within Miles"
+"1 Mile";"1 Mile"
+"2 Miles";"2 Miles"
+"5 Miles";"5 Miles"
+"10 Miles";"10 Miles"
+"20 Miles";"20 Miles"
+"50 Miles";"50 Miles"
+"100 Miles";"100 Miles"
+"250 Miles";"250 Miles"
+"500 Miles";"500 Miles"
+"750 Miles";"750 Miles"
+"1000 Miles";"1000 Miles"
+"Advanced search";"Advanced search"
+"Street";"Street"
+"Alphabetic";"Alphabetic"
+"All Reviews";"All Reviews"
+"Any Reviews";"Any Reviews"
+"Editor Reviews";"Editor Reviews"
+"User Reviews";"User Reviews"
+"Only My Networks";"Only My Networks"
+
+#Sitereview/Form/Search
+"Name / Keyword";"Name / Keyword"
+"Price";"Price"
+
+#Sitereview/Form/Searchvideo
+"Video Keywords";"Video Keywords"
+"Listings";"Listings"
+
+#Sitereview/Form/TellAFriend
+#Sitereview/Form/Video
+
+#GENERAL
+"Address";"Address"
+"Contact";"Contact"
+"Add";"Add"
+
+
+#Sitereview/Form/Metainfo
+"Meta Keywords";"Meta Keywords"
+"These are the meta keywords are set %s.";"These are the meta keywords are set %s."
+"Meta Keyword";"Meta Keyword"
+
+#GENERAL
+"Save Style";"Save Style"
+
+#Sitereview/compare/compare.tpl
+"Go back to previous page";"Go back to previous page"
+"Comparison chart";"Comparison chart"
+"Editor Ratings";"Editor Ratings"
+"Overall rating";"Overall rating"
+"User Ratings";"User Ratings"
+"Information";"Information"
+"Statistics";"Statistics"
+"Views";"Views"
+"Comments";"Comments"
+"Likes";"Likes"
+"Reviews";"Reviews"
+"Scroll to Top";"Scroll to Top"
+"Remove item";"Remove item"
+"Please select some entries for the comparison.";"Please select some entries for the comparison."
+"Please select more than one entry for the comparison.";"Please select more than one entry for the comparison."
+"Compare All";"Compare All"
+"Remove All";"Remove All"
+"Compare";"Compare"
+"Show Compare Bar";"Show Compare Bar"
+"Hide Compare Bar";"Hide Compare Bar"
+"Back to Profile Page";"Back to Profile Page"
+"Editor Ratings";"Editor Ratings"
+"Users Rating";"Users Rating"
+
+#Sitereview/dashboard/header.tpl
+"Dashboard";"Dashboard"
+
+#Sitereview/editor/create.tpl
+"Add another page";"Add another page"
+
+#Sitereview/editor/home.tpl
+"Editors For:";"Editors For:"
+"%s Review";"%s Review";"%s Reviews"
+"Email %s";"Email %s"
+"View Profile &raquo;";"View Profile &raquo;"
+
+#Sitereview/editor/similar-items.tpl
+"Select Alternatives";"Select Alternatives"
+"Selected Alternatives";"Selected Alternatives"
+"Select the alternative items for 'Best Alternatives' widget placed by site admin at item profile page.";"Select the alternative items for 'Best Alternatives' widget placed by site admin at item profile page."
+"Category";"Category"
+"Selected ";"Selected "
+"No item has been added yet !";"No alternatives have been added yet!"
+"There are currently no alternatives.";"There are currently no alternatives."
+"View More";"View More"
+"Loading ...";"Loading ..."
+
+#Sitereview/editor/upload-photo.tpl
+"Upload";"Upload"
+
+#Sitereview/index/delete.tpl
+"Delete";"Delete"
+
+#Sitereview/index/editlocation.tpl
+"Location: ";"Location: "
+
+#Sitereview/index/likesitereciew.tpl
+"People Who Like This %sing";"People Who Like This %sing"
+"Friends Who Like This %sing";"Friends Who Like This %sing"
+"All";"All"
+"Friends";"Friends"
+"Close";"Close"
+
+#Sitereview/index/manage.tpl
+"Featured";"Featured"
+"New";"New"
+"SPONSORED";"SPONSORED"
+"Add Photos";"Add Photos"
+"Add Videos";"Add Videos"
+"%s comment";"%s comment";"%s comments"
+"%s view";"%s view";"%s views"
+"%s like";"%s like";"%s likes"
+"Expired";"Expired"
+"Expiry On: %s";"Expiry On: %s"
+"Ending On: %s";"Ending On: %s"
+"Not approved";"Not approved"
+"Closed";"Closed"
+
+#Sitereview/index/print.tpl
+"This %s has been closed by the poster.";"This %s has been closed by the poster."
+"Take Print";"Take Print"
+"%s Information";"%s Information"
+
+"Comments :";"Comments :"
+"Views :";"Views :"
+"Likes :";"Likes :"
+"Reviews :";"Reviews :"
+"Category :";"Category :"
+"Tag :";"Tag :"
+"Description :";"Description :"
+"Location :";"Location :"
+"Profile Information";"Profile Information"
+
+#Sitereview/index/show-application.tpl
+"Manage Applications";"Manage Applications"
+"Below you can manage all the applications submitted for your Listing. Here, you can also view messages, download and delete applications by using appropriate links below.";"Below you can manage all the applications submitted for your Listing. Here, you can also view messages, download and delete applications by using appropriate links below."
+"Applying Date";"Applying Date"
+"Sender Name";"Sender Name"
+"Sender Email";"Sender Email"
+"Creation Date";"Creation Date"
+"No member has applied for this listing yet.";"No member has applied for this listing yet."
+
+#Sitereview/index/publish.tpl
+"Your list has been published.";"Your list has been published."
+"Publish %s?";"Publish %s?"
+"Are you sure that you want to publish this %s?";"Are you sure that you want to publish this %s?"
+"Show this %s in search results";"Show this %s in search results"
+"Publish";"Publish"
+
+#Sitereview/photo/upload.tpl
+"Photos";"Photos"
+
+#Sitereview/photo/view.tpl
+"ADD TAG";"ADD TAG"
+"Type a tag or select a name from the list";"Type a tag or select a name from the list"
+"Picture %1$s of %2$s";"Picture %1$s of %2$s"
+"Edit";"Edit"
+"Share";"Share"
+"Report";"Report"
+"Download";"Download"
+"Make Profile Photo";"Make Profile Photo"
+"Add a caption";"Add a caption"
+"Go to Photo";"Go to Photo"
+"Options";"Options"
+"Tag This Photo";"Tag This Photo"
+"Rotate Left";"Rotate Left"
+"Rotate Right";"Rotate Right"
+"Flip Vertical";"Flip Vertical"
+"Flip Horizontal";"Flip Horizontal"
+"Type a tag or select a name from the list.";"Type a tag or select a name from the list."
+"Add Tag";"Add Tag"
+"Press Esc to Close";"Press Esc to Close"
+
+#Sitereview/photo/editphotos.tpl
+"You can select the video to be displayed in the Slideshow from the 'Videos' section of this Dashboard.";"You can select the video to be displayed in the Slideshow from the 'Videos' section of this Dashboard."
+"Note: ";"Note: "
+
+#Sitereview/price-info/index.tpl 
+"See It";"See It"
+#Sitereview/price-info/delete.tpl
+"Delete Price Info";"Delete Price Info"
+"This is not recoverable after being deleted.";"This is not recoverable after being deleted."
+" or ";" or "
+"cancel";"cancel"
+
+#Sitereview/review/browse.tpl
+"by";"by"
+"Editor";"Editor"
+"For";"For"
+"Pros:";"Pros:"
+"The Good:";"The Good:"
+"Cons:";"Cons:"
+"The Bad:";"The Bad:"
+"Summary:";"Summary:"
+"Was this review helpful?";"Was this review helpful?"
+"Conclusion:";"Conclusion:"
+"Thanks for your feedback!";"Thanks for your feedback!"
+"You have already submitted your feedback for this Review!";"You have already submitted your feedback for this Review!"
+"No reviews have been written yet.";"No reviews have been written yet."
+
+#Sitereview/review/_browse_search_category.tpl
+"3%s Level Category";"3%s Level Category"
+
+#Sitereview/review/delete.tpl
+"Delete Review?";"Delete Review?"
+"Are you sure that you want to delete the Review with title ""%s""? It will not be recoverable after being deleted.";"Are you sure that you want to delete the Review with title ""%s""? It will not be recoverable after being deleted."
+
+#Sitereview/topic/create.tpl
+"Discussions";"Discussions"
+
+#Sitereview/topic/index.tpl
+"Last Post";"Last Post"
+
+#Sitereview/topic/view.tpl
+"Back to Topics";"Back to Topics"
+"Post Reply";"Post Reply"
+"Watch Topic";"Watch Topic"
+"Stop Watching Topic";"Stop Watching Topic"
+"Make Sticky";"Make Sticky"
+"Remove Sticky";"Remove Sticky"
+"Open";"Open"
+"Rename";"Rename"
+"This topic has been closed.";"This topic has been closed."
+"Quote";"Quote"
+
+#Sitereview/upload/upload.tpl
+"To enable the embedded uploader, unblock it in your browser and refresh (see Adblock).";"To enable the embedded uploader, unblock it in your browser and refresh (see Adblock)."
+"To enable the embedded uploader, enable the blocked Flash movie (see Flashblock).";"To enable the embedded uploader, enable the blocked Flash movie (see Flashblock)."
+"A required file was not found, please be patient and we'll fix this.";"A required file was not found, please be patient and we'll fix this."
+"To enable the embedded uploader, install the latest Adobe Flash plugin.";"To enable the embedded uploader, install the latest Adobe Flash plugin."
+"File Upload";"File Upload"
+"This form is just an example fallback for the unobtrusive behaviour of FancyUpload. If this part is not changed, something must be wrong with your code.";"This form is just an example fallback for the unobtrusive behaviour of FancyUpload. If this part is not changed, something must be wrong with your code."
+"Upload a Video:";"Upload a Video:"
+"Click ""Add Video"" to select a video from your computer. After you have selected video, click on Post Video at the bottom to begin uploading the file. Please wait while your video is being uploaded. When your upload is finished, your video will be processed - you will be notified when it is ready to be viewed.";"Click ""Add Video"" to select a video from your computer. After you have selected video, click on Post Video at the bottom to begin uploading the file. Please wait while your video is being uploaded. When your upload is finished, your video will be processed - you will be notified when it is ready to be viewed."
+"Add Video";"Add Video"
+"Post Video";"Post Video"
+
+#Sitereview/video/browse.tpl
+"Review Videos";"Review Videos"
+"Videos using the tag";"Videos using the tag"
+"By";"By"
+"%1$s view";"%1$s view";"%1$s views"
+"Nobody has posted a video with that criteria.";"Nobody has posted a video with that criteria."
+"Nobody has created a video yet.";"Nobody has created a video yet."
+#Sitereview/video/create.tpl
+"Videos";"Videos"
+"Checking URL...";"Checking URL..."
+"We could not find a video there - please check the URL and try again. If you are sure that the URL is valid, please click %s to continue.";"We could not find a video there - please check the URL and try again. If you are sure that the URL is valid, please click %s to continue."
+
+#Sitereview/video/delete.tpl
+"Delete %s Video?";"Delete %s Video ?"
+"Are you sure that you want to delete the video titled "%1$s" last modified %2$s? It will not be recoverable after being deleted.";"Are you sure that you want to delete the video titled "%1$s" last modified %2$s? It will not be recoverable after being deleted."
+"or";"or"
+
+#Sitereview/video/embed.tpl
+"Embedding of videos has been disabled.";"Embedding of videos has been disabled."
+"Embedding of videos has been disabled for this video.";"Embedding of videos has been disabled for this video."
+"The video you are looking for does not exist or has not been processed yet.";"The video you are looking for does not exist or has not been processed yet."
+
+#Sitereview/video/external.tpl
+"%s rating";"%s rating";"%s ratings"
+"Posted by %1$s on %2$s";"Posted by %1$s on %2$s"
+"Filed in";"Filed in"
+"click to rate";"click to rate"
+
+#Sitereview/video/index.tpl
+"%s Videos";"%s Videos"
+
+"Choose from your existing videos";"Choose from your existing videos"
+"Search your video";"Search your video"
+"Post New Video";"Post New Video"
+"Upload New video";"Upload New video"
+"Choose your Video";"Choose your Video"
+"Enter Title";"Enter Title"
+"Search and select from your videos using this auto-suggest field.";"Search and select from your videos using this auto-suggest field."
+"Continue &raquo;";"Continue &raquo;"
+"You have already uploaded the maximum number of videos allowed.";"You have already uploaded the maximum number of videos allowed."
+"If you would like to upload a new video, please %1$s an old one first.";"If you would like to upload a new video, please %1$s an old one first."
+
+#Sitereview/video/delete.tpl
+"Delete Video?";"Delete Video?"
+"Are you sure that you want to delete this video? It will not be recoverable after being deleted.";"Are you sure that you want to delete this video? It will not be recoverable after being deleted."
+#Sitereview/wishlist/add.tpl
+"You have removed this entry from the wishlists:";"You have removed this entry from the wishlists:"
+
+"Add New Videos";"Add New Videos"
+"Show in Slideshow";"Show in Slideshow"
+"You can choose the snapshot for selected video from 'Photos' section of this Dashboard.";"You can choose the snapshot for selected video from 'Photos' section of this Dashboard."
+
+#Sitereview/_compareButton.tpl
+"Compare";"Compare"
+
+#Sitereview/_composeSiterviewVideo.tpl
+"Add Video";"Add Video"
+"Select File";"Select File"
+"Attach";"Attach"
+"Loading...";"Loading..."
+"Choose Source";"Choose Source"
+"My Computer";"My Computer"
+"To upload a video from your computer, please use our <a href="%1$s">full uploader</a>.";"To upload a video from your computer, please use our <a href="%1$s">full uploader</a>."
+
+#Sitereview/_DashboardNavigation.tpl
+"Edit Info";"Edit Info"
+"Profile Picture";"Profile Picture"
+"Contact Details";"Contact Details"
+"Location";"Location"
+"Photos";"Photos"
+"Videos";"Videos"
+"Meta Keywords";"Meta Keywords"
+"Edit Style";"Edit Style"
+
+#Sitereview/_FancyUpload.tpl
+"Upload complete.";"Upload complete."
+"An error occurred:";"An error occurred:"
+"Clear List";"Clear List"
+"Upload a Photo:";"Upload a Photo:"
+
+#Sitereview/_formCreateReview.tpl
+"Thank you for submitting your review %s!";"Thank you for submitting your review %s!"
+"The site administrator will act on your review and you will receive an email correspondingly.";"The site administrator will act on your review and you will receive an email correspondingly."
+"Thank you for submitting an update to your review %s!";"Thank you for submitting an update to your review %s!"
+"Go to your Review";"Go to your Review"
+"Thank You, %s!";"Thank You, %s!"
+"Your Review on %s has been successfully submitted.";"Your Review on %s has been successfully submitted."
+"Your Review on %s has been successfully updated.";"Your Review on %s has been successfully updated."
+
+#Sitereview/_formEditImage.tpl
+"Edit Thumbnail";"Edit Thumbnail"
+"Apply Changes";"Apply Changes"
+
+#Sitereview/_formImagerainbowFeatured.tpl
+"Featured Label Color";"Featured Label Color"
+"Select the color of the ""FEATURED"" labels. (Click on the rainbow below to choose your color.)";"Select the color of the ""FEATURED"" labels. (Click on the rainbow below to choose your color.)"
+
+#Sitereview/_formImagerainbowSponsored.tpl
+"Sponsored Label Color";"Sponsored Label Color"
+"Select the color of the ""SPONSORED"" labels. (Click on the rainbow below to choose your color.)";"Select the color of the ""SPONSORED"" labels. (Click on the rainbow below to choose your color.)"
+
+#Sitereview/_formReplyReview.tpl
+"Comment on this review";"Comment on this review"
+"<b>Comment on this review</b>";"<b>Comment on this review</b>"
+"Read comment (%s)";"Read comment (%s)";"Read comments (%s)"
+"Read comment";"Read comment"
+"Thanks for your feedback!";"Thanks for your feedback!"
+"You have already submitted the feedback for this review!";"You have already submitted the feedback for this review!"
+"Email Review";"Email Review"
+"Delete Review";"Delete Review"
+"Report Review";"Report Review"
+"Share Review";"Share Review"
+
+#Sitereview/navigation_views.tpl
+"More +";"More +"
+
+#Sitereview/_showReview.tpl
+"1 Editor Review";"1 Editor Review"
+"1 Editor Review and %s User Review";"1 Editor Review and %s User Review";"1 Editor Review and %s User Reviews"
+"%s User review";"%s User review";"%s User reviews"
+"%s review";"%s review";"%s reviews"
+"Subcategory";"Subcategory"
+
+#widgets/browse-listings-sitereview/index.tpl
+"Map View";"Map View"
+"Grid View";"Grid View"
+"List View";"List View"
+"on ";"on "
+"Overall rating:";"Overall rating:"
+"Users Rating";"Users Rating"
+"Out of %s review";"Out of %s review";"Out of %s reviews"
+"%s and %1s";"%s and %1s"
+
+"No price available.";"No price available."
+"Stop Bounce";"Stop Bounce"
+
+#widgets/browselocation-sitereview/index.tpl
+"Large Map";"Large Map"
+"Small Map";"Small Map"
+"Price: ";"Price: "
+"Location: ";"Location: "
+"Get Directions";"Get Directions"
+"Not approved";"Not approved"
+
+#widgets/browse-reviews-sitereview/index.tpl
+"Browse %s";"Browse %s"
+
+
+#widgets/categories-home/index.tpl
+"All Categories";"All Categories"
+"More";"More"
+"Fewer";"Fewer"
+
+#widgets/discussion-sitereview/index.tpl
+"View all %s Topics";"View all %s Topics"
+"reply";"reply";"replies"
+
+#widgets/editor-photo-sitereview/index.tpl
+"View full profile";"View full profile"
+"View all Editors";"View all Editors"
+"View all Editors &raquo;";"View all Editors &raquo;"
+#widgets/editor-profile-info/index.tpl
+"Occupation:";"Occupation:"
+
+#widgets/editor-profile-reviews-sitereview/index.tpl
+"View Editor Profile";"View Editor Profile"
+"For";"For"
+"on";"on"
+"No Editor Review has been written yet.";"No Editor Review has been written yet."
+"Previous";"Previous"
+"Next";"Next"
+
+#widgets/editor-profile-statistics/index.tpl
+"Total %s editor review.";"Total %s editor review.";"Total %s editor reviews."
+"Total %s user review.";"Total %s user review.";"Total %s user reviews."
+"Total %s comment.";"Total %s comment.";"Total %s comments."
+"Reviews in %s category.";"Reviews in %s categories.";"Reviews in %s categories."
+"Rating Breakdown";"Rating Breakdown"
+"%s star:";"%s star:";"%s stars:"
+
+#widgets/editor-replies-sitereview/index.tpl
+"Replied On";"Replied On"
+"Commented On";"Commented On"
+
+#widgets/editor-reviews-sitereview/index.tpl
+"%s user review";"%s user review"
+"%s to %1s";"%s to %1s"
+"Update On ";"Update On "
+"Conclusion: ";"Conclusion: "
+"&#171; Previous";"&#171; Previous"
+"Next &#187;";"Next &#187;"
+
+#widgets/editors-home-statistics-sitereview/index.tpl
+"<span>%s</span> <div>Editor Review</div>";"<span>%s</span> <div>Editor Reviews</div>";"<span>%s</span> <div>Editor Reviews</div>"
+"<span>%s</span> <div>Editor</div>";"<span>%s</span> <div>Editors</div>";"<span>%s</span> <div>Editors</div>"
+" <div>Editors In %s</div>";" <div>Editors In %s</div>"
+
+#widgets/editors-sitereview/index.tpl
+"Meet all editors &raquo;";"Meet all editors &raquo;"
+
+#widgets/information-sitereview/index.tpl
+"Category:";"Category:"
+"Last updated %s";"Last updated %s"
+"Total views";"Total views"
+
+#widgets/list-information-profile/index.tpl
+
+"Change Picture";"Change Picture"
+"Click on above image to view full picture";"Click on above image to view full picture"
+"Click on above images to view full picture";"Click on above images to view full picture"
+"Unlike";"Unlike"
+"Like";"Like"
+"Phone";"Phone"
+"E-mail";"E-mail"
+"Email Me";"Email Me"
+"Website";"Website"
+"Visit Website";"Visit Website"
+
+#widgets/listing-like/index.tpl
+"%s Person Likes This";"%s Person Likes This";"%s People Like This"
+"See all";"See all"
+
+#widgets/list-profile-breadcrumb/index.tpl
+"Home";"Home"
+
+#widgets/location-sitereview/index.tpl
+"Locations on %s";"Locations on %s"
+"Location Information";"Location Information"
+"Location:";"Location:"
+"Formatted Address:";"Formatted Address:"
+"Street Address:";"Street Address:"
+"City:";"City:"
+"Zipcode:";"Zipcode:"
+"State:";"State:"
+"Country:";"Country:"
+
+#widgets/overall-ratings/index.tpl
+"Based on %s review";"Based on %s review";"Based on %s reviews"
+"Based on %s user review";"Based on %s user review";"Based on %s user reviews"
+"%s contributed to this review on %1s.";"%s contributed to this review on %1s."
+"Average Rating";"Average Rating"
+"Recommendations";"Recommendations"
+"Recommended by %s users";"Recommended by %s users"
+"Editor Rating";"Editor Rating"
+"Editor's Rating";"Editor's Rating"
+"Rating Parameter";"Rating Parameter"
+"User Rating";"User Rating"
+"Review";"Review"
+"Average User Rating";"Average User Rating"
+"Review Date:";"Review Date:"
+
+#widgets/overview-sitereview/index.tpl
+"Edit %s";"Edit %s"
+
+#widgets/ownerreviews-sitereview/index.tpl
+"%s's Reviews";"%s's Reviews"
+"%s helpful";"%s helpful"
+
+#widgets/photos-sitereview/index.tpl
+"Edit Photos";"Edit Photos"
+
+#widgets/pinboard-listings-sitereview/index.tpl
+"in %s";"in %s"
+"Comment";"Comment"
+
+#widgets/price-info-sitereview/index.tpl
+"Price %s";"Price %s"
+"%1$sAdd More%2$s";"%1$sAdd More%2$s"
+
+#widgets/profile-review-sitereview/index.tpl
+"Total %s Review.";"Total %s Reviews.";"Total %s Reviews."
+"Update Review";"Update Review"
+"This review has been written by a visitor of your site and is not visible to the users of your site. Please %s to take an appropriate action on this review.";"This review has been written by a visitor of your site and is not visible to the users of your site. Please %s to take an appropriate action on this review."
+"click over here";"click over here"
+"Comments on review have been disabled, as this review was written by a visitor of your site.";"Comments on review have been disabled, as this review was written by a visitor of your site."
+
+#widgets/reviews-statistics/index.tpl
+"%s Out of %1s reviews have recommendations.";"%s Out of %1s reviews have recommendations."
+
+#widgets/show-also-liked/index.tpl
+"in ";"in "
+
+#widgets/slideshow-list-photo/index.tpl
+"View Video &raquo;";"View Video &raquo;"
+"View Photo &raquo;";"View Photo &raquo;"
+"Close[X]";"Close[X]"
+
+#widgets/slideshow-sitereview/index.tpl
+"View %s &raquo;";"View %s &raquo;"
+"More &raquo;";"More &raquo;"
+
+#widgets/specification-sitereview/index.tpl
+"There no any information.";"There no any information."
+
+#widgets/tagcloud-sitereview/index.tpl
+"Read complete review";"Read complete review"
+
+#widgets/video-sitereview/index.tpl
+"Thanks for rating!";"Thanks for rating!"
+"Filed in";"Filed in"
+"Embed";"Embed"
+
+#widgets/wishlist-profile-quicklinks/index.tpl
+"Message Owner";"Message Owner"
+
+#widgets/applynow-button/index.tpl
+"Apply Now";"Apply Now"
+
+#Sitereview/widgets/write-sitereview/index.tpl
+"Write something about ";"Write something about "
+
+#Sitereview/Sitereview/list_carousel.tpl
+"Sponsored";"Sponsored"
+"Recent";"Recent"
+
+#Sitereview/Plugin/Menus.php
+"Write an Editor Review";"Write an Editor Review"
+"Edit an Editor Review";"Edit an Editor Review"
+"Open this %s";"Open this %s"
+"Close this %s";"Close this %s"
+
+#Sitereview/controllers/IndexController.php
+"Your changes have been saved.";"Your changes have been saved."
+"Please complete Category field - it is required.";"Please complete Category field - it is required."
+"Please enter correct email address of the receiver(s).";"Please enter correct email address of the receiver(s)."
+"Successfully Liked.";"Successfully Liked."
+"Successfully Unliked.";"Successfully Unliked."
+"Successfully Published !";"Successfully Published !"
+"Please choose the different listing title as listing with same title already exists.";"Please choose the different listing title as listing with same title already exists."
+
+#Sitereview/controllers/DashboardController.php
+"Please enter a valid email address.";"Please enter a valid email address."
+"Your changes have been saved successfully.";"Your changes have been saved successfully."
+"The uploaded file is not supported or is corrupt.";"The uploaded file is not supported or is corrupt."
+"Please choose Overall Rating field - it is required.";"Please choose Overall Rating field - it is required."
+"Max file size limit exceeded (probably).";"Max file size limit exceeded (probably)."
+"Invalid request method";"Invalid request method"
+"Invalid Upload";"Invalid Upload"
+"An error occurred.";"An error occurred."
+"Have a question or comments for %s? Ask from below and our editor will get back to you.";"Have a question or comments for %s? Ask from below and our editor will get back to you."
+"Invalid sender email address value";"Invalid sender email address value"
+"Your message to your friend has been sent successfully.";"Your message to your friend has been sent successfully."
+"Subject is required field !";"Subject is required field !"
+"Your message has been sent successfully.";"Your message has been sent successfully."
+"Search Members";"Search Members"
+"No results were found.";"No results were found."
+
+#Sitereview/controllers/EditorController.php
+"Submit your queries, questions or comments for our editors here. Our Editors will get back to you soon.";"Submit your queries, questions or comments for our editors here. Our Editors will get back to you soon."
+
+#Sitereview/Controllers/widgetSettings.php
+"Specs";"Specs"
+"Map";"Map"
+"Top Reviewers";"Top Reviewers"
+"Most Reviews";"Most Reviews"
+"Most Popular";"Most Popular"
+"Popular Locations";"Popular Locations"
+"Categories";"Categories"
+"Locations";"Locations"
+"Browse Reviews";"Browse Reviews"
+"Editors";"Editors"
+"Most Recent Reviews";"Most Recent Reviews"
+"Most Viewed Reviews";"Most Viewed Reviews"
+"Review Editors";"Review Editors"
+
+"FEATURED";"FEATURED"
+"Review Listings";"Review Listings"
+"Reviews As Editor";"Reviews As Editor"
+"Reviews As User";"Reviews As User"
+"User Ratings: %s";"User Ratings: %s"
+"Editor Rating: %s";"Editor Rating: %s"
+"Overall Ratings: %s";"Overall Ratings: %s"
+"About Editor";"About Editor"
+"Replies";"Replies"
+"Social Share";"Social Share"
+"Listing of the Day";"Listing of the Day"
+"Featured Listings";"Featured Listings"
+"Listings Carousel";"Listings Carousel"
+"Add Similar Items";"Add Similar Items"
+"Print";"Print"
+"Edit Details";"Edit Details"
+"Sub-Category";"Sub-Category"
+"Save";"Save"
+"Overall Rating";"Overall Rating"
+"Page";"Page"
+"Submit";"Submit"
+"Like This";"Like This"
+"Unlike This";"Unlike This"
+"Quick Specifications";"Quick Specifications"
+"About review editor";"About review editor"
+"Share and Report";"Share and Report"
+"Tags:";"Tags"
+"Post Comment";"Post Comment"
+"Full Specifications";"Full Specifications"
+"No end date.";"No end date."
+"Main Photo";"Main Photo"
+"Company Logo";"Company Logo"
+"Price (%s)";"Price (%s)"
+"Photo Privacy";"Photo Privacy"
+"Video Privacy";"Video Privacy"
+"Camera1";"Camera1"
+"Video Snapshot";"Video Snapshot"
+"Separate meta tags with commas.";"Separate meta tags with commas."
+"Maximum Entries";"Maximum Entries"
+"You have successfully delete this video.";"You have successfully delete this video."
+"My Rating";"My Rating"
+"Ratings Breakdown";"Ratings Breakdown"
+"Show:";"Show:"
+"Full reviews";"Full reviews"
+"Pros Only";"Pros Only"
+"Cons Only";"Cons Only"
+"Best Alternatives";"Best Alternatives"
+"Create";"Create"
+"%s review found.";"%s review found.";"%s reviews found."
+"Updated On %s";"Updated On %s"
+"written by";"written by"
+"You can edit the editor review for %s below:";"You can edit the editor review for %s below:"
+"SEREPLY";"reply"
+"Users Rating: %s";"Users Rating: %s"
+"Editor's Rating: %s";"Editor's Rating: %s"
+"Overall Rating: %s";"Overall Rating: %s"
+"Ratings";"Ratings"
+"* Please complete this field - it is required.";"* Please complete this field - it is required."
+"* Please enter valid email address.";"* Please enter valid email address."
+"* Please enter at least 10 characters (you entered %s characters).";"* Please enter at least 10 characters (you entered %s characters)."
+"* Please be sure that you've entered the same characters you see in the image.";"* Please be sure that you've entered the same characters you see in the image."
+"Share this by re-posting it with your own message.";"Share this by re-posting it with your own message."
+"Do you want to report this?";"Do you want to report this?"
+"Recently Viewed by You";"Recently Viewed by You"
+"Permalink";"Permalink"
+"Similar Editors";"Similar Editors"
+"Tell a friend";"Tell a friend"
+
+"Your Review has been deleted successfully.";"Your Review has been deleted successfully."
+"Quick Links";"Quick Links"
+"Sponsored Categories";"Sponsored Categories"
+"Reviews Statistics";"Reviews Statistics"
+"Total %s review.";"Total %s review.";"Total %s reviews."
+"Related Listings";"Related Listings"
+
+#Sitereview/wishlist/delete.tpl
+"Delete Wishlist?";"Delete Wishlist?"
+"Are you sure that you want to delete this Wishlist? It will not be recoverable after being deleted.";"Are you sure that you want to delete this Wishlist? It will not be recoverable after being deleted."
+
+#Sitereview/wishlist/print.tpl
+"Wishlist";"Wishlist"
+"Created by %s %s";"Created by %s %s"
+"Total Items: %s";"Total Items: %s"
+
+#Sitereview/wishlist/profile.tpl
+"This wishlist has been made private by the owner.";"This wishlist has been made private by the owner."
+
+#Sitereview/wishlist/remove.tpl
+"Remove this entry from this Wishlist?";"Remove this entry from this Wishlist?"
+"Are you sure that you want to remove this entry from this Wishlist? It will not be recoverable after being deleted.";"Are you sure that you want to remove this entry from this Wishlist? It will not be recoverable after being deleted."
+"Remove";"Remove"
+"Wishlist";"Wishlist"
+"Your wishlist has been created successfully.";"Your wishlist has been created successfully."
+"Your wishlist has been deleted successfully.";"Your wishlist has been deleted successfully."
+"Your wishlist has been edited successfully.";"Your wishlist has been edited successfully."
+
+#widgets/wishlist-browse/index.tpl
+"Nobody has created a wishlist with that criteria. Be the first to %1$screate%2$s one!";"Nobody has created a wishlist with that criteria. Be the first to %1$screate%2$s one!"
+"Nobody has created a wishlist yet. Be the first to %1$screate%2$s one!";"Nobody has created a wishlist yet. Be the first to %1$screate%2$s one!"
+"%s wishlist found.";"%s wishlist found.";"%s wishlists found."
+
+#widgets/wishlist-browse-quicklinks/index.tpl
+"Create New Wishlist";"Create New Wishlist"
+"My Wishlists";"My Wishlists"
+"By %s";"By %s"
+"Add to Wishlist";"Add to Wishlist"
+#widgets/wishlist-profile-items/index.tpl
+"Delete Wishlist";"Delete Wishlist"
+"Remove from this Wishlist";"Remove from this Wishlist"
+"There are currently no entries in this wishlist.";"There are currently no entries in this wishlist."
+#Sitereview/controllers/WishlistController.php
+"Create your message with the form given below. (This message will be sent to the owner of this Wishlist.)";"Create your message with the form given below. (This message will be sent to the owner of this Wishlist.)"
+"Wishlists";"Wishlists"
+"Wishlists Having Most Items";"Wishlists Having Most Items"
+"Add To Wishlists";"Add To Wishlists"
+"Created %s by %s";"Created %s by %s"
+"Total Entries: %s";"Total Entries: %s"
+"View all Wishlists &raquo;";"View all Wishlists &raquo;"
+#Sitereview/Form/Wishlist/Add
+"Add To Wishlist";"Add To Wishlist"
+"Wishlist Name";"Wishlist Name"
+"Who may see this wishlist?";"Who may see this wishlist?"
+
+#Sitereview/Form/Wishlist/Create
+"Add New Wishlist";"Add New Wishlist"
+"Wishlist Note";"Wishlist Note"
+
+#Sitereview/Form/Wishlist/Edit
+"Edit Wishlist";"Edit Wishlist"
+"Edit your wishlist over here and then click on ""Save Changes"" to save it.";"Edit your wishlist over here and then click on ""Save Changes"" to save it."
+"Please fill the form below and then click on 'Tell a Friend' button to let your friends know about this Wishlist.";"Please fill the form below and then click on 'Tell a Friend' button to let your friends know about this Wishlist."
+"You have added this entry to the wishlists:";"You have added this entry to the wishlists:"
+"3%s Level Category:";"3%s Level Category:"
+
+#widgets/recently-popular-random-sitereview/index.tpl
+"No listings have been posted yet.";"No listings have been posted yet."
+"This Editor has not posted any comments yet!";"This Editor has not posted any comments yet!"
+
+"Add Best Alternatives";"Add Best Alternatives"
+"Editor Review";"Editor Review"
+"%s User Review";"%s User Review";"%s User Reviews"
+"This entry has been removed successfully from this wishlist!";"This entry has been removed successfully from this wishlist!"
+"Please enter the wishlist title otherwise remove the wishlist note.";"Please enter the wishlist title otherwise remove the wishlist note."
+"You have successfully deleted this video.";"You have successfully deleted this video."
+"Email to the editor has been sent successfully.";"Email to the editor has been sent successfully."
+
+"Designation:";"Designation:"
+"%s follower";"%s follower";"%s followers"
+"Click to see Followers";"Click to see Followers"
+"%s entry";"%s entry";"%s entries"
+"Follow";"Follow"
+"Unfollow";"Unfollow"
+"Following Wishlist";"Following Wishlist"
+"Un-follow Wishlist";"Un-follow Wishlist"
+"Follow Wishlist";"Follow Wishlist"
+"Pinboard View";"Pinboard View"
+"Make Cover Photo";"Make Cover Photo"
+"%s Discussion";"%s Discussion";"%s Discussions"
+"%s Reply";"%s Reply";"%s Replies"
+
+#widgets/browse-reviews-sitereview/index.tpl
+"Nobody has posted a review with that criteria. Be the first to %1$spost%2$s one!";"Nobody has posted a %3$s with that criteria. Be the first to %1$spost%2$s one!"
+"No %s have been posted yet.";"No %s have been posted yet."
+
+#Sitereview/wishlist/browse.tpl
+"Nobody has created a wishlist yet. Be the first to %s one!";"Nobody has created a wishlist yet. Be the first to %s one!"
+"See item counts";"See item counts"
+"(Owner)";"(Owner)"
+"Click to hide 3rd level category";"Click to hide 3rd level category"
+"Subscribe";"Subscribe"
+"Unsubscribe";"Unsubscribe"
+"Lowest Price";"Lowest Price"
+"Unsubscribe?";"Unsubscribe?"
+"Subscribe?";"Subscribe?"
+"Total <b>%s</b> Review";"Total <b>%s</b> Review";"Total <b>%s</b> Reviews"
+"Review of the Day":"Review of the Day"
+
+"Time Left: %d days, %d hours, %d minutes":"Time Left: %d days, %d hours, %d minutes"
+"Expiring Soon":"Expiring Soon"
+"Note: You are the Super Admin of this site, that is why only you can view this message.";"Note: You are the Super Admin of this site, that is why only you can view this message."
+"Delete Claim Request";"Delete Claim Request"
+"Claim Date:":"Claim Date:"
+"Last Action Taken: ";"Last Action Taken: "
+"Name Specified: ";"Name Specified: "
+"Contact Number Specified: ";"Contact Number Specified: "
+"Email Specified: ";"Email Specified: "
+"Your Comments: ";"Your Comments: "
+"Admin Comment: ";"Admin Comment: "
+"Terms of claiming a Listing";"Terms of claiming a Listing"
+"Thank you for your cooperation.";"Thank you for your cooperation."
+"Package Details";"Package Details"
+"There are no packages yet.";"There are no packages yet."
+"Price";"Price"
+"Billing Cycle";"Billing Cycle"
+"Rich Overview";"Rich Overview"
+"User Review";"User Review"
+"Change Package?";"Change Package?"
+"Make Payment";"Make Payment"
+"Current Package: ";"Current Package: "
+"Other available Packages";"Other available Packages"
+"There are no other packages yet.";"There are no other packages yet."
+"Change Package";"Change Package"
+"Payment Pending";"Payment Pending"
+"Payment Successful";"Payment Successful"
+"Payment Failed";"Payment Failed"
+"Our payment processor has notified us that your payment could not be completed successfully. We suggest that you try again with another credit card or funding source.";"Our payment processor has notified us that your payment could not be completed successfully. We suggest that you try again with another credit card or funding source."
+"Available Packages";"Available Packages"
+"Please pay a one-time fee to continue:";"Please pay a one-time fee to continue:"
+"Processing Payment";"Processing Payment"
+"Processing Request. Please wait .....";"Processing Request. Please wait ....."
+"There are currently no enabled payment gateways. Please contact the site admin to get this issue resolved.";"There are currently no enabled payment gateways. Please contact the site admin to get this issue resolved."
+"Show Profile Fields.";"Show Profile Fields."
+"Hide Profile Fields.";"Hide Profile Fields."
+"No Profile Fields.";"No Profile Fields."
+"Packages";"Packages"
+"Package: ";"Package: "
+"Not made";"Not made"
+"Status: ";"Status: "
+"Approved ";"Approved "
+"Never Expires";"Never Expires"
+"Expiration Date: ";"Expiration Date: "
+"This entry has been removed successfully from your favourites.";"This entry has been removed successfully from your favourites."
+"Remove from Favourites ?";"Remove from Favourites ?"
+"Remove from Favourites";"Remove from Favourites"
+"Are you sure that you want to remove this entry from your favourites? It will not be recoverable after being deleted.";"Are you sure that you want to remove this entry from your favourites? It will not be recoverable after being deleted."
+"Favourite";"Favourite"
+"Favourites";"Favourites"
+"Add to Favourites";"Add to Favourites"
+"This entry has been added successfully to your %s.";"This entry has been added successfully to your %s."
+"My Favourites";"My Favourites"
+"This page lists all the entries added by you as favourites.";"This page lists all the entries added by you as favourites."
+"favourites";"favourites"
+"You have not added any entry in your favourites.";"You have not added any entry in your favourites."
+
+"LISTING_TERMS_CLAIM_1";"By clicking the "Send" button, you hereby assert that you are either the owner, manager, employee or associate of the listing, service or interest and have the express authority to own and/or manage the group on this site."
+"LISTING_TERMS_CLAIM_2";"The website admin reserves the right to revoke or transfer ownership of this listing for any reason including, but not limited to, inaccurate ownership identification, misrepresentation of listing information and abusive spamming activity."
+
+"_EMAIL_SITEREVIEW_BECOMEOWNER_EMAIL_TITLE";"Multiple Listing Types - Listing Ownership Given"
+"_EMAIL_SITEREVIEW_BECOMEOWNER_EMAIL_DESCRIPTION";"This email goes to the new owner of the Listing when owner of a Listing is changed."
+"_EMAIL_SITEREVIEW_BECOMEOWNER_EMAIL_SUBJECT";"You are now the owner of the [listing_type] Listing: [list_title]."
+"_EMAIL_SITEREVIEW_BECOMEOWNER_EMAIL_BODY";"[header]
+
+You are now the owner of the [listing_type] Listing: [list_title_with_link]. All ownership rights for this listing have been provided to you.
+
+For any queries or comments, you may contact us here: [site_contact_us_link].
+
+To visit this listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+
+"Multiple Listing Types Plugin Core (Reviews & Ratings Plugin)";"Multiple Listing Types Plugin Core (Reviews & Ratings Plugin)"
+"Multiple Listing Types - Listing Type Creation Extension";"Multiple Listing Types - Listing Type Creation Extension"
+
+"_ACTIVITY_ACTIONTYPE_LIKE_SITEREVIEW_REVIEW";"When I liked the listing review"
+"_ACTIVITY_ACTIONTYPE_LIKE_SITEREVIEW_WISHLIST";"When I liked the listing wishlist"
+"Add / Manage Products";"Add / Manage Products"
+"Add / Manage Pages";"Add / Manage Pages"
+"Add / Manage Businesses";"Add / Manage Businesses"
+"Add / Manage Groups";"Add / Manage Groups"
+"Add / Manage Documents";"Add / Manage Documents"
+
+"%s year";"%s year";"%s years"
+"%s month";"%s month";"%s months"
+"%s day";"%s day";"%s days"
+
+"_EMAIL_SITEREVIEW_PROPERTY_EXPIRED_TITLE";"Property Listing Expired: (for free packages)"
+"_EMAIL_SITEREVIEW_PROPERTY_EXPIRED_DESCRIPTION";"This is the email that gets sent to a member when their property listing belonging to a free package expires."
+"_EMAIL_SITEREVIEW_PROPERTY_EXPIRED_SUBJECT";"Your property Listing: [list_title] has expired."
+"_EMAIL_SITEREVIEW_PROPERTY_EXPIRED_BODY";"[header]
+
+
+Your property listing: [list_title_with_link] has expired. It has reached the limit of its package.
+
+
+To visit this property listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+
+[footer]"
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_EVENT_NEW_LISTTYPE_10";"Create event in sports listing"
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_EVENT_NEW_LISTTYPE_11";"Create event in blog listing"
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_EVENT_NEW_LISTTYPE_14";"Create event in classified listing"
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_EVENT_NEW_LISTTYPE_15";"Create event in entertainment listing"
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_EVENT_NEW_LISTTYPE_2";"Create event in tourism listing"
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_EVENT_NEW_LISTTYPE_6";"Create event in fashion listing"
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_EVENT_NEW_LISTTYPE_7";"Create event in electronics listing"
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_NEW_MODULE_LISTTYPE_14";"Created a new listing."
+"ACTIVITY_TYPE_SITEREVIEW_VIDEO_PROCESSED_FAILED";"When a listing video has failed to be processed."
+"ACTIVITY_TYPE_SITEREVIEW_VIDEO_PROCESSED_FAILE";"When a listing video has failed to be processed."
+"ACTIVITY_CATEGORY_TYPE_SITEREVIEW";"Listings"
+

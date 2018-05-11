@@ -1,0 +1,17 @@
+"*Please complete this field - it is required.";"*Please complete this field - it is required."
+"Question";"Question"
+"Answer";"Answer"
+"Your form can not be saved. Please contact Site Administrator for this issue.";"Your form can not be saved. Please contact Site Administrator for this issue."
+"Your form contained errors and could not be submitted. Please check them.";"Your form contained errors and could not be submitted. Please check them."
+"Thank you, your form has been submitted.";"Thank you, your form has been submitted."
+"ITEM_TYPE_SITESTATICPAGE_PAGE";"Static Pages"
+"_EMAIL_SITESTATICPAGE_PROFILEQUESTIONS_EMAIL_TITLE";"Page Form Email"
+"_EMAIL_SITESTATICPAGE_PROFILEQUESTIONS_EMAIL_DESCRIPTION";"This is the email that gets sent to Page Admins when visitors to their Page fill and submit the Form on their Page."
+"_EMAIL_SITESTATICPAGE_PROFILEQUESTIONS_EMAIL_SUBJECT";"[[form_label]] A response has been received for this form."
+"_EMAIL_SITESTATICPAGE_PROFILEQUESTIONS_EMAIL_BODY";"[header]
+
+[content]:
+
+[message]
+
+[footer]"
