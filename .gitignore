@@ -1,0 +1,6 @@
+/application
+application/settings/database.php
+application/settings/general.php
+application/cache.php
+application/mail.php
+/public/temporary

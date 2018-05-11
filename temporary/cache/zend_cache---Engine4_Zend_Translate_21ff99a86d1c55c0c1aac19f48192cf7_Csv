@@ -1,0 +1,11 @@
+a:1:{s:2:"en";a:19:{s:61:"_EMAIL_SITEPAGEADMINCONTACT_CONTACTS_EMAIL_NOTIFICATION_TITLE";s:38:"Contact Page
+Owners Email Notification";s:67:"_EMAIL_SITEPAGEADMINCONTACT_CONTACTS_EMAIL_NOTIFICATION_DESCRIPTION";s:90:"This
+email is sent to Page Admins when Site Admin contact them through emails or
+messages.";s:63:"_EMAIL_SITEPAGEADMINCONTACT_CONTACTS_EMAIL_NOTIFICATION_SUBJECT";s:9:"[subject]";s:60:"_EMAIL_SITEPAGEADMINCONTACT_CONTACTS_EMAIL_NOTIFICATION_BODY";s:66:"
+[template_header]
+[header]
+
+[message]
+
+[footer]
+[template_footer]";s:6:"Status";s:6:"Status";s:130:"Hold down the CTRL key to select or de-select specific Page Status for which Admins of corresponding Pages need to be sent emails.";s:130:"Hold down the CTRL key to select or de-select specific Page Status for which Admins of corresponding Pages need to be sent emails.";s:9:"All Pages";s:9:"All Pages";s:11:"Draft Pages";s:11:"Draft Pages";s:15:"Published Pages";s:15:"Published Pages";s:10:"Open Pages";s:10:"Open Pages";s:12:"Closed Pages";s:12:"Closed Pages";s:14:"Featured Pages";s:14:"Featured Pages";s:15:"Sponsored Pages";s:15:"Sponsored Pages";s:14:"Approved Pages";s:14:"Approved Pages";s:18:"Dis-approved Pages";s:18:"Dis-approved Pages";s:13:"Running Pages";s:13:"Running Pages";s:13:"Expired Pages";s:13:"Expired Pages";s:132:"Hold down the CTRL key to select or de-select specific Page Status for which Admins of corresponding Pages need to be sent messages.";s:132:"Hold down the CTRL key to select or de-select specific Page Status for which Admins of corresponding Pages need to be sent messages.";s:43:"ACTIVITY_CATEGORY_TYPE_SITEPAGEADMINCONTACT";s:5:"Pages";}}
