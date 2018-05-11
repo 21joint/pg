@@ -1,0 +1,5 @@
+theme_color: #3FC8F4 ;
+button_border_color:#3da7ca;
+landingpage_signinbtn:#ff5f3f;
+landingpage_signupbtn: rgba(255,95,63,.5);
+@include "~/public/seaocore_themes/luminousThemeConstants.css";

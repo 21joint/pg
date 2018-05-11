@@ -1,6 +1,14 @@
-/application
 application/settings/database.php
 application/settings/general.php
 application/cache.php
 application/mail.php
-/public/temporary
+application/languages
+applicaiton/libraries
+application/modules
+application/packages
+application/plugins
+application/settings
+applicaiton/themes
+application/widgets
+public/temporary
+application/libraries/Zend/Service/WindowsAzure/Diagnostics/ConfigurationDiagnosticInfrastructureLogs.php

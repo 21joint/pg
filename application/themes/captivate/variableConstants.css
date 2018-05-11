@@ -1,0 +1,8 @@
+theme_color: #44bbff ;
+button_border_color:#44bbff;
+landingpage_signinbtn:#44bbff;
+landingpage_signupbtn: #44bbff;
+theme_background_color:#f1f1f1;
+theme_containers_background_color:#fff;
+navigation_background_color: #e1e1e1;
+@include "~/public/seaocore_themes/captivateThemeConstants.css";

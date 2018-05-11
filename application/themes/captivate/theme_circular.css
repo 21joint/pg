@@ -1,0 +1,22 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Global member photos and icons */
+img.thumb_icon,.suggestion_list .item_photo img
+{
+width: 48px;
+height: 48px;
+border-radius:50% !important;
+}
+/* For Info tooltip */
+.info_tip_content .tip_main_photo a, .info_tip_content .tip_main_photo i{
+border-radius:50% !important;
+}
+/* Member profile photo */
+.layout_siteusercoverphoto_user_cover_photo .seaocore_profile_main_photo,
+.sitevideo_slide_thumbs span.inactive,
+.seaocore_profile_main_photo .item_photo, .seaocore_profile_main_photo,
+.layout_sitevideo_channel_subscribers .thumbs_photo, .layout_user_home_photo > div > a > img{
+border-radius: 50%;
+}
+
