@@ -1,0 +1,476 @@
+"{item:$subject} commented on {item:$owner}'s {var:$listingtype} listing {item:$object:$title}: {body:$body}";"{item:$subject} commented on {item:$owner}'s tech listing {item:$object:$title}: {body:$body}"
+"{item:$subject} replied to a comment on {item:$owner}'s {var:$listingtype} listing {item:$object:$title}: {body:$body}";"{item:$subject} replied to a comment on {item:$owner}'s tech listing {item:$object:$title}: {body:$body}"
+"You can also choose the photo snapshot for the video displayed in the slideshow by using 'Video Snapshot' option.";"You can also choose the photo snapshot for the video displayed in the slideshow by using 'Video Snapshot' option."
+"posted by";"posted by"
+"Popular Tags";"Popular Tags"
+"Popular Tags (%s)";"Popular Tags (%s)"
+"Note: Users will not be able to create listings in '%s', until you have created atleast one category. Please create some categories from the Admin Panel for this listing type to enable users to create listings.";"Note: Users will not be able to create listings in '%s', until you have created atleast one category. Please create some categories from the Admin Panel for this listing type to enable users to create listings."
+"Sorry, you can not post a new listing right now. Please try again after sometime or contact us by filling the 'Contact Us' form using the 'Contact' link available in the footer of our site.";"Sorry, you can not post a new listing right now. Please try again after sometime or contact us by filling the 'Contact Us' form using the 'Contact' link available in the footer of our site."
+"There are currently no paid packages available of the site. Please upgrade your package.";"There are currently no paid packages available of the site. Please upgrade your package."
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_NEW_LISTTYPE_20";"Multiple Listing Types - When a new tech is posted."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_NEW_LISTTYPE_20";"New tech"
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_PHOTO_UPLOAD_LISTTYPE_20";"Multiple Listing Types - When someone uploads a photo to tech."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_PHOTO_UPLOAD_LISTTYPE_20";"Uploading a photo to tech"
+"ADMIN_ACTIVITY_TYPE_VIDEO_SITEREVIEW_LISTTYPE_20";"Multiple Listing Types - When someone uploads a video to tech."
+"_ACTIVITY_ACTIONTYPE_VIDEO_SITEREVIEW_LISTTYPE_20";"Uploading a video to tech"
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_VIDEO_NEW_LISTTYPE_20";"Multiple Listing Types - When someone uploads a video to tech."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_VIDEO_NEW_LISTTYPE_20";"Uploading a video to tech"
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_REVIEW_ADD_LISTTYPE_20";"Multiple Listing Types - When someone write a review on tech."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_REVIEW_ADD_LISTTYPE_20";"Writing a new tech review"
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_TOPIC_CREATE_LISTTYPE_20";"Multiple Listing Types - When someone creates a new tech topic."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_TOPIC_CREATE_LISTTYPE_20";"Creating tech discussion topic"
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_TOPIC_REPLY_LISTTYPE_20";"Multiple Listing Types - When someone replies to tech topic."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_TOPIC_REPLY_LISTTYPE_20";"Replying to tech discussion topic"
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_CHANGE_PHOTO_LISTTYPE_20";"Multiple Listing Types - When tech Owner change their tech profile photo as User."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_CHANGE_PHOTO_LISTTYPE_20";"When tech Owner change their tech profile photo as User"
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_WISHLIST_ADD_LISTING_LISTTYPE_20";"Multiple Listing Types - When someone adds tech in wishlist."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_WISHLIST_ADD_LISTING_LISTTYPE_20";"Adding tech to wishlist"
+"{item:$subject} posted a new tech listing:";"{item:$subject} posted a new tech listing:"
+"{item:$subject} added {var:$count} photo(s) to the tech listing: {item:$object:$title} {body:$body}";"{item:$subject} added {var:$count} photo(s) to the tech listing: {item:$object:$title} {body:$body}"
+"{item:$subject} posted a new discussion {item:$object:topic} in the tech listing {itemParent:$object:sitereview}: {body:$body}";"{item:$subject} posted a {item:$object:topic} in the tech listing {itemParent:$object:sitereview}: {body:$body}"
+"{item:$subject} replied to discussion {item:$object:topic} in the tech listing {itemParent:$object:sitereview_listing}: {body:$body}";"{item:$subject} replied to discussion {item:$object:topic} in the tech listing {itemParent:$object:sitereview_listing}: {body:$body}"
+"{item:$subject} changed the profile picture of the tech listing {item:$object:$title}:";"{item:$subject} changed the profile picture of the tech listing {item:$object:$title}:"
+"{item:$subject} added a new video in the tech listing {item:$object:$title}: {body:$body}";"{item:$subject} added a new video in the tech listing {item:$object:$title}: {body:$body}"
+"{item:$subject} added a new video in the tech listing {item:$object}:";"{item:$subject} added a new video in the tech listing {item:$object}:"
+"{item:$subject} rated and wrote a review for the tech listing {item:$object}:";"{item:$subject} rated and wrote a review for the tech listing {item:$object}:"
+"{item:$subject} posted a new tech listing: {item:$object}.";"{item:$subject} posted a new tech listing: {item:$object}."
+"Edit Tech Location";"Edit Listing Location"
+"Edit the location of your tech by clicking on 'Edit Tech Location' below. You can accurately mark the position of your tech on the map by dragging-and-dropping the marker on the map at the right position, and then clicking on Save Changes to save the position.";"Edit the location of your listing by clicking on 'Edit Listing Location' below. You can accurately mark the position of your listing on the map by dragging-and-dropping the marker on the map at the right position, and then clicking on Save Changes to save the position."
+"You have not added a location for your tech. %1$sClick here%2$s to add a location for your tech.";"You have not added a location for your listing. %1$sClick here%2$s to add a location for your listing."
+"Post New Tech";"Post New Listing"
+"Compose your new tech below, then click 'Submit' to publish the tech.";"Compose your new listing below, then click 'Submit' to publish the listing."
+"Tech Title";"Listing Title"
+"Who may see this tech?";"Who may see this listing?"
+"Who may comment on this tech?";"Who may comment on this listing?"
+"Who may upload photos for this tech?";"Who may upload photos for this listing?"
+"Who may create videos for this tech?";"Who may create videos for this listing?"
+"Select the networks, members of which should be able to see your tech. (Press Ctrl and click to select multiple networks. You can also choose to make your tech viewable to everyone.)";"Select the networks, members of which should be able to see your listing. (Press Ctrl and click to select multiple networks. You can also choose to make your listing viewable to everyone.)"
+"Show this tech in search results";"Show this listing in search results"
+"Show this tech on browse page and in various blocks.";"Show this tech on browse page and in various blocks."
+"SEPARATE_TECH_TAGS_WITH_COMMAS";"Separate tags with commas."
+"Your tech has been successfully created. You can enhance your tech from this Dashboard by creating other components.";"Your listing has been successfully created. You can enhance your listing from this Dashboard by creating other components."
+"View Tech";"View Listing"
+"View Tech &raquo;";"View Listing &raquo;"
+"End tech on a specific date. (Please select date by clicking on the calendar icon below.)";"End listing on a specific date. (Please select date by clicking on the calendar icon below.)"
+"When should this tech end?";"When should this listing end?"
+"Note: your tech will be expired in %1$s %2$s after an approval or it may be changed by admin.";"Note: your listing will be expired in %1$s %2$s after an approval or it may be changed by admin."
+"All Tech";"All Listings"
+"Only Open Tech";"Only Open Listings"
+"Only Closed Tech";"Only Closed Listings"
+"Everyone's Tech";"Everyone's Listings"
+"Only My Friends' Tech";"Only My Friends' Listings"
+"Tech I Like";"Listings I Like"
+"Only Expired Tech";"Only Expired Listings"
+"Tech Having";"Listings Having"
+"Only Tech With Photos";"Only Listing With Photos"
+"Edit the overview for your tech using the editor below, and then click 'Save Overview' to save changes.";"Edit the overview for your listing using the editor below, and then click 'Save Overview' to save changes."
+"DASHBOARD_TECH_SAVE_OVERVIEW";"Save Overview"
+"DASHBOARD_TECH_EDIT_OVERVIEW";"Edit Overview"
+"Edit Tech Overview";"Edit Listing Overview"
+"Contact information will be displayed on your tech profile.";"Contact information will be displayed on your tech profile."
+"ADD_DASHBOARD_TECH_WHERE_TO_BUY_OPTION";"Add Where to Buy Option"
+"EDIT_DASHBOARD_TECH_WHERE_TO_BUY_OPTION";"Edit Where to Buy"
+"Add DASHBOARD_TECH_WHERE_TO_BUY option for this tech using the form below. Enter the name of the Store and other details where this tech is available.";"Add Where to Buy option for this listing using the form below. Enter the name of the Store and other details where this listing is available."
+"Select the online store for your tech from available stores drop-down below.";"Select the online store for your listing from available stores drop-down below."
+"Enter the URL of the Store's webpage where this tech is available. (We recommend you to enter complete URL.)";"Enter the URL of the Store's webpage where this listing is available. (We recommend you to enter complete URL.)"
+"Edit Tech Style";"Edit Listing Style"
+"Edit the CSS style of your tech using the text area below, and then click 'Save Style' to save changes.";"Edit the CSS style of your listing using the text area below, and then click 'Save Style' to save changes."
+"Add your own CSS code above to give your tech a more personalized look.";"Add your own CSS code above to give your listing a more personalized look."
+"Custom Advanced tech Style";"Custom Advanced listing Style"
+"Meta keywords are a great way to provide search engines with information about your tech so that search engines populate your tech in search results. Below, you can add meta keywords for this tech. (The tags entered by you for this tech will also be added to the meta keywords.)";"Meta keywords are a great way to provide search engines with information about your tech so that search engines populate your tech in search results. Below, you can add meta keywords for this listing. (The tags entered by you for this listing will also be added to the meta keywords.)"
+"Edit Tech Info";"Edit Tech Info"
+"Edit the information of your tech using the form below.";"Edit the information of your listing using the form below."
+"Delete Tech?";"Delete Tech?"
+"Are you sure that you want to delete the Tech with the title ""%1$s"" last modified %2$s? It will not be recoverable after being deleted.";"Are you sure that you want to delete the Listing with the title ""%1$s"" last modified %2$s? It will not be recoverable after being deleted."
+"You have not added a location for your tech. %s to add a location for your tech.";"You have not added a location for your listing. %s to add a location for your listing."
+"(You can edit the end date to make the tech live again.)";"(You can edit the end date to make the listing live again.)"
+"You do not have any tech that match your search criteria.";"You do not have any listing that match your search criteria."
+"You do not have any tech.";"You do not have any listings."
+"Get started by %1$sposting%2$s a new tech.";"Get started by %1$sposting%2$s a new listing."
+"You have already created the maximum number of tech allowed. If you would like to create a new tech, please delete an old one first.";"You have already created the maximum number of listings allowed. If you would like to create a new listing, please delete an old one first."
+"Publish Tech";"Publish Listing"
+"Close Tech";"Close Listing"
+"Open Tech";"Open Listing"
+"Delete Tech";"Delete Listing"
+"Popular Tech Tags";"Popular Listing Tags"
+"Browse the tags created for tech by the various members.";"Browse the tags created for listing by the various members."
+"Edit Tech Photos";"Edit Listing Photos"
+"Edit and manage the photos of your tech below.";"Edit and manage the photos of your listing below."
+"An attractive photo and video Slideshow will be displayed on your Tech Profile page. Below, you can choose the photos to be displayed in this slideshow by using the 'Show in Slideshow' option.";"An attractive photo and video Slideshow will be displayed on your Tech Profile page. Below, you can choose the photos to be displayed in this slideshow by using the 'Show in Slideshow' option."
+"There are currently no photos in this tech. %1$sClick here%2$s to add photos now!";"There are currently no photos in this listing. %1$sClick here%2$s to add photos now!"
+"Choose photos on your computer to add to this tech. (2MB maximum).";"Choose photos on your computer to add to this listing. (2MB maximum)."
+"DASHBOARD_TECH_WHERE_TO_BUY options of %s";"Where to Buy options of %s"
+"There are currently no DASHBOARD_TECH_WHERE_TO_BUY option for this tech. Click %s to add options now!";"There are currently no Where to Buy option for this listing. Click %s to add options now!"
+"Edit Tech Videos";"Edit Listing Videos"
+"Edit and manage the videos of your tech below.";"Edit and manage the videos of your listing below."
+"There are currently no videos in this tech. Click %s to add videos now!";"There are currently no videos in this listing. Click %s to add videos now!"
+"An attractive photo and video Slideshow will be displayed on your Tech Profile page. Below, you can select a video to be displayed in that slideshow by using the 'Show in Slideshow' option.";"An attractive photo and video Slideshow will be displayed on your Tech Profile page. Below, you can select a video to be displayed in that slideshow by using the 'Show in Slideshow' option."
+"Add a new video in this tech using the form below.";"Add a new video in this listing using the form below."
+"Click 'Add Photos' to select one or more photos from your computer. After you have selected the photos, they will begin to upload right away. When your upload is finished, click the button below your photo to save them to your tech.";"Click 'Add Photos' to select one or more photos from your computer. After you have selected the photos, they will begin to upload right away. When your upload is finished, click the button below your photo to save them to your listing."
+"Go to the Tech %s";"Go to the Tech %s"
+"Please %s to update your reviews for this Tech.";"Please %s to update your reviews for this Listing."
+"Post a New Tech";"New Tech"
+"You have not composed an overview for your tech. Click %s to compose it from the Dashboard of your tech.";"You have not composed an overview for your listing. Click %s to compose it from the Dashboard of your listing."
+"You have not added any photo in your tech. %1$sClick here%2s to add your first photo.";"You have not added any photo in your listing. %1$sClick here%2s to add your first photo."
+"You have not added any video in your tech. %1$sClick here%2$s to add your first video.";"You have not added any video in your listing. %1$sClick here%2$s to add your first video."
+"There are currently no videos in this tech. %1$sClick here%2$s to add your first video.";"There are currently no videos in this listing. %1$sClick here%2$s to add your first video."
+"No tech have been posted yet.";"No listing have been posted yet."
+"BE_THE_FIRST_TECH_TO %1$spost%2$s one!";"Be the first to %1$spost%2$s one!"
+"Nobody has posted a tech with that criteria.";"Nobody has posted a listing with that criteria."
+"Be the first to tech %1$spost%2$s one!";"Be the first to %1$spost%2$s one!"
+"This is the tech browse page.";"This is the tech browse page."
+"Create your message with the form given below. (This message will be sent to the owner of this Tech.)";"Create your message with the form given below. (This message will be sent to the owner of this Tech.)"
+"DASHBOARD_TECH_WHERE_TO_BUY";"Where to Buy"
+"DASHBOARD_TECH_OVERVIEW";"Overview"
+"Tech Home";"Tech Home"
+"Browse Tech";"Browse Tech"
+"My Tech";"My Tech"
+"Top Rated Tech";"Top Rated Tech"
+"Most Liked Tech";"Most Liked Tech"
+"Popular Tech";"Popular Tech"
+"Most Commented Tech";"Most Commented Tech"
+"TECH_TAG_(Keywords)";"Tags (Keywords)"
+"Please %1$sclick here%2$s to give your review and ratings for this tech.";"Please %1$sclick here%2$s to give your review and ratings for this listing."
+"Please %1$sclick here%2$s to update your reviews for this tech.";"Please %1$sclick here%2$s to update your reviews for this listing."
+"Please select the wishlists in which you want to add this tech.";"Please select the wishlists in which you want to add this listing."
+"You have not created any wishlist yet. Get Started by creating and adding tech.";"You have not created any wishlist yet. Get Started by creating and adding listings."
+"You can also add this tech in a new wishlist below:";"You can also add this listing in a new wishlist below:"
+"TECH_TAG :";"Tag :"
+"TECH_TAGS:";"Tags:"
+"TECH_TAGS";"Tags"
+"EXPLORE_TECH_TAGS &raquo;";"Explore Tags &raquo;"
+"Featured Tech";"Featured Tech"
+"Sponsored Tech";"Sponsored Tech"
+"%s tech found.";"%s listing found.";"%s listings found."
+"%s tech";"%s listing";"%s listings"
+"%s tech entry";"%s listing entry";"%s listings entries"
+"Tech";"Tech"
+"Tech of the Day";"Tech of the Day"
+"This tech has been closed by the owner.";"This listing has been closed by the owner."
+"What do you like about this Tech?";"What do you like about this Listing?"
+"What do you dislike about this Tech?";"What do you dislike about this Listing?"
+"You may add a video to your tech either by choosing from your existing videos, or by posting a new video:";"You may add a video to your listing either by choosing from your existing videos, or by posting a new video:"
+"No discussion topics have been posted in this tech yet. Click %1$s to start a discussion.";"No discussion topics have been posted in this listing yet. Click %1$s to start a discussion."
+"'s Tech";"'s Listing"
+"This message corresponds to the Tech: ";"This message corresponds to the Listing: "
+"Your tech's location has been modified successfully.";"Your listing's location has been modified successfully."
+"TECH_STORE";"Store"
+"TECH_STORE_URL";"Store URL"
+"Delete DASHBOARD_TECH_WHERE_TO_BUY?";"Delete Where to Buy?"
+"Are you sure that you want to delete this DASHBOARD_TECH_WHERE_TO_BUY? It will not be recoverable after being deleted.";"Are you sure that you want to delete this Where to Buy? It will not be recoverable after being deleted."
+"TECH_POSTED_BY";"Posted By"
+"TECH_POSTED_ON:";"Posted On :"
+"TECH_POSTED_BY:";"Posted By :"
+"TECH_posted_by";"posted by"
+"VIEW_ALL_TECH_STORES";"View all Stores &raquo;"
+"ENTER_THE_ADDRESS_OF_TECH_STORE";"Enter the address of the store."
+"TECH_AT %s store";"at %s store";"at %s stores"
+"* The above cost for the %s is estimated and may slightly vary after including the taxes, manufacturer rebate, shipping cost, or any other sales / promotion on tech Stores.";"* The above cost for the %s is estimated and may slightly vary after including the taxes, manufacturer rebate, shipping cost, or any other sales / promotion on Stores."
+"No reviews have been written for this tech yet.";"No reviews have been written for this listing yet."
+"Select the best alternatives for %s below. (Selected alternatives will be displayed in 'Best Alternatives' block on this tech's profile page.)";"Select the best alternatives for %s below. (Selected alternatives will be displayed in 'Best Alternatives' block on this tech's profile page.)"
+"Select the Store where this tech is available.";"Select the Store where this listing is available."
+"This tech has beed expired.";"This listing has beed expired."
+"Edit Where to Buy option for this tech using the form below.";"Edit Where to Buy option for this listing using the form below."
+"NEW_TECH_WHERE_TO_BUY_OPTION_HAS_BEEN_ADDED_SUCCESSFULLY";"New 'Where to Buy' option has been added successfully."
+"EDIT_TECH_WHERE_TO_BUY_OPTION_HAS_BEEN_EDITED_SUCCESSFULLY";"'Where to Buy' option has been edited successfully."
+"DELETE_TECH_WHERE_TO_BUY_OPTION_HAS_BEEN_DELETED_SUCCESSFULLY";"'Where to Buy' option has been deleted successfully."
+"Oops! Something went wrong and you can not add this Tech to your wishlist. Please try again after sometime.";"Oops! Something went wrong and you can not add this Listing to your wishlist. Please try again after sometime."
+"Showing tech tagged with: ";"Showing listings tagged with: "
+"If this tech is published, it cannot be switched back to draft mode.";"If this listing is published, it cannot be switched back to draft mode."
+"You are already subscribed to this member's tech.";"You are already subscribed to this member's listings."
+"Would you like to subscribe to this member's tech?";"Would you like to subscribe to this member's listings?"
+"You are now subscribed to this member's tech.";"You are now subscribed to this member's listings."
+"You are already not subscribed to this member's tech.";"You are already not subscribed to this member's listings."
+"Would you like to unsubscribe from this member's tech?";"Would you like to unsubscribe from this member's listings?"
+"You are no longer subscribed to this member's tech.";"You are no longer subscribed to this member's listings."
+"{item:$subject} added a new event in the tech listing {item:$object}:";"{item:$subject} added a new event in the tech listing {item:$object}:"
+"Who may post discussion topics for this tech?";"Who may post discussion topics for this listing?"
+"Who may create event for this tech?";"Who may create event for this listing?"
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_EVENT_NEW_LISTTYPE_20";"Multiple Listing Types - When someone creates a new event in tech listing."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_EVENT_NEW_LISTTYPE_20";"Create event in tech listing"
+"Tech I Have Claimed";"Tech I Have Claimed"
+"There are no tech to be claimed yet.";"There are no listings to be claimed yet."
+"About You and Your tech: ";"About You and Your listing: "
+"You have not claimed for any tech yet.";"You have not claimed for any listings yet."
+"Create a Tech";"Create a Listing"
+"Create a tech using these quick, easy steps and get going.";"Create a listing using these quick, easy steps and get going."
+"1. Choose a tech Package";"1. Choose a listing Package"
+"Select a package that best matches your requirements. Packages differ in terms of features available to tech created under them. You can change your package anytime later.";"Select a package that best matches your requirements. Packages differ in terms of features available to listings created under them. You can change your package anytime later."
+"Are you sure you want to change package for this Tech? Once you change package, all the settings of this tech will be applied according to the new package, including features available, price, etc.";"Are you sure you want to change package for this Listing? Once you change package, all the settings of this listing will be applied according to the new package, including features available, price, etc."
+"If you want to change the package for your tech, please select one package from the following list of available packages.";"If you want to change the package for your listing, please select one package from the following list of available packages."
+"Note: Once you change package for your tech, all the settings of the tech will be applied according to the new package, including apps available, features available, price, etc.";"Note: Once you change package for your listing, all the settings of the listing will be applied according to the new package, including apps available, features available, price, etc."
+"Thank you for submitting your payment. Your payment is currently pending - your tech will be activated when we are notified that the payment has completed successfully. Please return to our login tech when you receive an email notifying you that the payment has completed.";"Thank you for submitting your payment. Your payment is currently pending - your listing will be activated when we are notified that the payment has completed successfully. Please return to our login listing when you receive an email notifying you that the payment has completed."
+"You have already applied for this tech.";"You have already applied for this listing."
+"Back to Dashboard tech";"Back to Dashboard listing"
+"Back to My tech";"Back to My listings"
+"Thank you! Your payment for your tech has been completed successfully.";"Thank you! Your payment for your listing has been completed successfully."
+"Continue to Dashboard tech";"Continue to Dashboard listing"
+"Continue to My tech";"Continue to My listings"
+"Your tech is pending payment. You will receive an email when the
+  payment completes.";"Your listing is pending payment. You will receive an email when the
+  payment completes."
+"You have created a tech that requires payment. You will be taken to a secure checkout area where you can pay for your tech.";"You have created a listing that requires payment. You will be taken to a secure checkout area where you can pay for your listing."
+"Order your Tech";"Order your Listing"
+"Your Tech requires payment:";"Your Listing requires payment:"
+" to renew tech.";" to renew listing."
+"The package for your Tech requires payment. You have not fulfilled the payment for this Tech.";"The package for your Listing requires payment. You have not fulfilled the payment for this Listing."
+"Your package for this Tech has expired and needs to be renewed.";"Your package for this Listing has expired and needs to be renewed."
+"Your package for this Tech is about to expire and needs to be renewed.";"Your package for this Listing is about to expire and needs to be renewed."
+"2. Configure your tech based on the package you have chosen.";"2. Configure your listing based on the package you have chosen."
+"Below, you can file a claim for a tech on this community that you believe should be owned by you. Your request will be sent to the administration.";"Below, you can file a claim for a listing on this community that you believe should be owned by you. Your request will be sent to the administration."
+"Tech Name";"Listing Name"
+"Start typing the name of the tech";"Start typing the name of the listing"
+"About You and the Tech";"About You and the Listing"
+"Renew Tech";"Renew Listing"
+"_EMAIL_SITEREVIEW_TECH_CANCELLED_TITLE";"Tech Listing Cancelled"
+"_EMAIL_SITEREVIEW_TECH_CANCELLED_DESCRIPTION";"This is the email that gets sent to a member when their tech listing is cancelled."
+"_EMAIL_SITEREVIEW_TECH_CANCELLED_SUBJECT";"Your tech listing: [list_title] has been cancelled."
+"_EMAIL_SITEREVIEW_TECH_CANCELLED_BODY";"[header]
+
+Your tech listing: [list_title_with_link] has been cancelled.
+
+To visit this tech listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+If your tech listing required to be renewed, then you may do so from its dashboard.
+
+[footer]"
+"_EMAIL_SITEREVIEW_TECH_EXPIRED_TITLE";"Tech Listing Expired: (for free packages)"
+"_EMAIL_SITEREVIEW_TECH_EXPIRED_DESCRIPTION";"This is the email that gets sent to a member when their tech listing belonging to a free package expires."
+"_EMAIL_SITEREVIEW_TECH_EXPIRED_SUBJECT";"Your tech Listing: [list_title] has expired."
+"_EMAIL_SITEREVIEW_TECH_EXPIRED_BODY";"[header]
+
+
+Your tech listing: [list_title_with_link] has expired. It has reached the limit of its package.
+
+
+To visit this tech listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+
+[footer]"
+"_EMAIL_SITEREVIEW_TECH_RENEW_TITLE";"Listing Expired: (for paid packages)"
+"_EMAIL_SITEREVIEW_TECH_RENEW_DESCRIPTION";"This is the email that gets sent to a member when their listing belonging to a paid package expires."
+"_EMAIL_SITEREVIEW_TECH_RENEW_SUBJECT";"Your tech Listing: [list_title] has expired and needs to be renewed."
+"_EMAIL_SITEREVIEW_TECH_RENEW_BODY";"[header]
+
+Your tech listing: [list_title_with_link] has expired. It has reached the limit of its package. You may renew this listing from its dashboard.
+
+To visit this tech listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_TECH_OVERDUE_TITLE";"Tech Listing Overdue"
+"_EMAIL_SITEREVIEW_TECH_OVERDUE_DESCRIPTION";"This is the email that gets sent to a member when their tech listing is overdue."
+"_EMAIL_SITEREVIEW_TECH_OVERDUE_SUBJECT";"Your tech listing: [list_title] is overdue."
+"_EMAIL_SITEREVIEW_TECH_OVERDUE_BODY";"[header]
+
+Your tech listing: [list_title_with_link] is overdue because of a failed or missed payment.
+
+To visit this tech listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+To renew your tech listing, you may do so from its dashboard.
+
+[footer]"
+"_EMAIL_SITEREVIEW_TECH_PENDING_TITLE";"Tech Listing Activation Pending"
+"_EMAIL_SITEREVIEW_TECH_PENDING_DESCRIPTION";"This is the email that gets sent to a member when their tech listing activation is pending."
+"_EMAIL_SITEREVIEW_TECH_PENDING_SUBJECT";"Your tech listing activation is pending."
+"_EMAIL_SITEREVIEW_TECH_PENDING_BODY";"[header]
+
+Thank you for creating your tech listing on our social network! Your listing activation is pending, awaiting completion of the transaction. Your listing will be activated soon; we will notify you by email when it is ready.
+Thank you for your patience.
+
+[list_title]
+[list_description]
+
+[footer]"
+"_EMAIL_SITEREVIEW_TECH_ACTIVE_TITLE";"Tech Listing Activated"
+"_EMAIL_SITEREVIEW_TECH_ACTIVE_DESCRIPTION";"This is the email that gets sent to a member when their tech listing is activated."
+"_EMAIL_SITEREVIEW_TECH_ACTIVE_SUBJECT";"Your tech listing: [list_title] is now active."
+"_EMAIL_SITEREVIEW_TECH_ACTIVE_BODY";"[header]
+
+Thank you for creating your tech listing on [site_title]! Your listing is now active.
+
+[list_title]
+[list_description]
+
+To visit this tech listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_TECH_RECURRENCE_TITLE";"Tech Listing Payment Recurrence"
+"_EMAIL_SITEREVIEW_TECH_RECURRENCE_DESCRIPTION";"This is the email that gets sent to a member when they are billed for a recurring payment."
+"_EMAIL_SITEREVIEW_TECH_RECURRENCE_SUBJECT";"Your payment for your tech listing has been billed."
+"_EMAIL_SITEREVIEW_TECH_RECURRENCE_BODY";"[header]
+
+Your payment for your tech listing has been billed. You should receive an email from the
+payment gateway regarding this charge. Thank you for subscribing to our social
+network.
+
+[list_title]
+[list_description]
+
+To visit this tech listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_TECH_REFUNDED_TITLE";"Tech Listing Payment Refunded"
+"_EMAIL_SITEREVIEW_TECH_REFUNDED_DESCRIPTION";"This is the email that gets sent to a member when their tech listing payment is refunded."
+"_EMAIL_SITEREVIEW_TECH_REFUNDED_SUBJECT";"Your payment for your tech listing has been refunded."
+"_EMAIL_SITEREVIEW_TECH_REFUNDED_BODY";"[header]
+
+Your payment for your tech listing has been refunded.
+
+[list_title]
+[list_description]
+
+[footer]"
+"_EMAIL_SITEREVIEW_TECH_APPROVED_TITLE";"Listing Approved"
+"_EMAIL_SITEREVIEW_TECH_APPROVED_DESCRIPTION";"This is the email that gets sent to a member when their tech listing is approved."
+"_EMAIL_SITEREVIEW_TECH_APPROVED_SUBJECT";"Your tech listing: [list_title] has been approved."
+"_EMAIL_SITEREVIEW_TECH_APPROVED_BODY";"[header]
+
+Thank you for creating your tech listing on our social network! Your listing has now been approved.
+
+[list_title]
+[list_description]
+
+To visit this listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_TECH_DISAPPROVED_TITLE";"Listing Disapproved"
+"_EMAIL_SITEREVIEW_TECH_DISAPPROVED_DESCRIPTION";"This is the email that gets sent to a member when their listing is disapproved."
+"_EMAIL_SITEREVIEW_TECH_DISAPPROVED_SUBJECT";"Your tech listing: [list_title] has been disapproved."
+"_EMAIL_SITEREVIEW_TECH_DISAPPROVED_BODY";"[header]
+
+Your listing has been disapproved.
+
+[list_title]
+[list_description]
+
+To visit this tech listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_TECH_APPROVAL_PENDING_TITLE";"Tech Listing Approval Pending"
+"_EMAIL_SITEREVIEW_TECH_APPROVAL_PENDING_DESCRIPTION";"This is the email that gets sent to a member when their tech listing is pending for approval."
+"_EMAIL_SITEREVIEW_TECH_APPROVAL_PENDING_SUBJECT";"Your tech listing: [list_title] is in pending state and awaiting administrative approval."
+"_EMAIL_SITEREVIEW_TECH_APPROVAL_PENDING_BODY";"[header]
+
+Your tech listing is in pending state and awaiting administrative approval.
+
+[list_title]
+[list_description]
+
+To visit this tech listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_TECH_DECLINED_TITLE";"Tech Listing Declined"
+"_EMAIL_SITEREVIEW_TECH_DECLINED_DESCRIPTION";"This is the email that gets sent to a member when their tech listing is declined."
+"_EMAIL_SITEREVIEW_TECH_DECLINED_SUBJECT";"Your tech listing: [list_title] has been declined."
+"_EMAIL_SITEREVIEW_TECH_DECLINED_BODY";"[header]
+
+Your tech listing has been declined.
+
+[list_title]
+[list_description]
+
+[footer]"
+"_EMAIL_SITEREVIEW_TECH_CHANGEOWNER_EMAIL_TITLE";"Tech - Listing Owner Changed"
+"_EMAIL_SITEREVIEW_TECH_CHANGEOWNER_EMAIL_DESCRIPTION";"This is the email that goes to a member when owner of their tech listing has been changed."
+"_EMAIL_SITEREVIEW_TECH_CHANGEOWNER_EMAIL_SUBJECT";"Owner of the tech listing: [list_title] has been changed."
+"_EMAIL_SITEREVIEW_TECH_CHANGEOWNER_EMAIL_BODY";"[header]
+
+The owner of the tech listing: [list_title_with_link] has been changed. You are now no more the owner of this listing. All ownership rights for this listing have been transferred to the new owner.
+
+For any queries or comments, you may contact us here: [site_contact_us_link].
+
+To visit this tech listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_TECH_CLAIMOWNER_EMAIL_TITLE";"Tech Listing Claimed"
+"_EMAIL_SITEREVIEW_TECH_CLAIMOWNER_EMAIL_DESCRIPTION";"This mail is sent to the Site Admin when any member claims that Listing."
+"_EMAIL_SITEREVIEW_TECH_CLAIMOWNER_EMAIL_SUBJECT";"This tech listing: [list_title] has been claimed."
+"_EMAIL_SITEREVIEW_TECH_CLAIMOWNER_EMAIL_BODY";"[header]
+
+This tech listing: [list_title_with_link] has been claimed.
+
+To view this tech listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]
+"
+"_EMAIL_SITEREVIEW_TECH_CLAIM_APPROVED_EMAIL_TITLE";"Tech - Listing Owner Changed"
+"_EMAIL_SITEREVIEW_TECH_CLAIM_APPROVED_EMAIL_DESCRIPTION";"This is the email that goes to a member when their claim for a listing has been approved."
+"_EMAIL_SITEREVIEW_TECH_CLAIM_APPROVED_EMAIL_SUBJECT";"Your claim for tech listing: [list_title] has been approved"
+"_EMAIL_SITEREVIEW_TECH_CLAIM_APPROVED_EMAIL_BODY";"[header]
+
+Congratulations! Your claim for the tech Listing: [list_title_with_link] has been approved. You are now the owner of this listing.
+
+To visit this tech listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_TECH_BECOMEOWNER_EMAIL_TITLE";"Tech - Listing Ownership Given"""
+"_EMAIL_SITEREVIEW_TECH_BECOMEOWNER_EMAIL_DESCRIPTION";"This email goes to the new owner of the tech listing when owner of a tech listing is changed."
+"_EMAIL_SITEREVIEW_TECH_BECOMEOWNER_EMAIL_SUBJECT";"You are now the owner of the tech listing: [list_title]."
+"_EMAIL_SITEREVIEW_TECH_BECOMEOWNER_EMAIL_BODY";"[header]
+
+You are now the owner of the tech Listing: [list_title_with_link]. All ownership rights for this listing have been provided to you.
+
+For any queries or comments, you may contact us here: [site_contact_us_link].
+
+To visit this tech listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_TECH_CLAIM_HOLDING_EMAIL_TITLE";"Tech Listing Claim Approval on Hold"
+"_EMAIL_SITEREVIEW_TECH_CLAIM_HOLDING_EMAIL_DESCRIPTION";"This is the email that goes to a member when their claim for a tech listing has been put on hold for approval."
+"_EMAIL_SITEREVIEW_TECH_CLAIM_HOLDING_EMAIL_SUBJECT";"Your claim for tech listing: [list_title] has been put on hold for approval"
+"_EMAIL_SITEREVIEW_TECH_CLAIM_HOLDING_EMAIL_BODY";"[header]
+
+Your claim for the tech Listing: [list_title_with_link] has been put on hold for approval.
+
+To visit this listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[comments]
+
+[footer]
+"
+"_EMAIL_SITEREVIEW_TECH_CLAIM_DECLINED_EMAIL_TITLE";"Tech Listing Claim Declined"""
+"_EMAIL_SITEREVIEW_TECH_CLAIM_DECLINED_EMAIL_DESCRIPTION";"This is the email that goes to a member when their claim for a tech listing has been declined."
+"_EMAIL_SITEREVIEW_TECH_CLAIM_DECLINED_EMAIL_SUBJECT";"Your claim for tech listing: [list_title] has been declined"
+"_EMAIL_SITEREVIEW_TECH_CLAIM_DECLINED_EMAIL_BODY";"[header]
+
+Your claim for this tech Listing: [list_title_with_link] has been declined.
+
+To visit this tech listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[comments]
+
+[footer]
+"
+"TECH Creation";"Listing Creation"
+"Edit Tech";"Edit Listing"
+"Edit Tech Contact Details";"Edit Listing Contact Details"
+"Edit Tech Meta Keywords";"Edit Listing Meta Keywords"
+"Edit Tech Where to Buy";"Edit Listing Where to Buy"
+"Edit Tech Profile Picture";"Edit Listing Profile Picture"
+"Edit Tech 'Where to Buy'";"Edit Listing 'Where to Buy'"
+"Edit Tech Details";"Edit Listing Details"
+"Tech Listings";"Tech Listings"
+"Post new tech listings to this page.";"Post new tech listings to this page."
+"Post / Manage Tech Listings";"Post / Manage Tech Listings"
+"Post New Tech Listing";"Post New Tech Listing"
+"Add Tech Listings";"Add Tech Listings"
+"Here, you can add various Tech Listings to be associated with and displayed on your Page by using the auto-suggest below. From the auto-suggest, you can choose to add the Tech Listings created by this Page’s Admins. Listings added by you here will display in a tab on your Page Profile.<br />Below, you can also remove listings added by you by using the link for each.";"Here, you can add various Tech Listings to be associated with and displayed on your Page by using the auto-suggest below. From the auto-suggest, you can choose to add the Tech Listings created by this Page’s Admins. Listings added by you here will display in a tab on your Page Profile.<br />Below, you can also remove listings added by you by using the link for each."
+"Here, you can add various Tech Listings to be associated with and displayed on your Page by using the auto-suggest below. From the auto-suggest, you can choose to add the Tech Listings from various Tech Listings created on this site. Listings added by you here will display in a tab on your Page Profile.<br />Below, you can also remove listings added by you by using the link for each.";"Here, you can add various Tech Listings to be associated with and displayed on your Page by using the auto-suggest below. From the auto-suggest, you can choose to add the Tech Listings from various Tech Listings created on this site. Listings added by you here will display in a tab on your Page Profile.<br />Below, you can also remove listings added by you by using the link for each."
+"Here, you can add various Tech Listings to be associated with and displayed on your Page by using the auto-suggest below. From the auto-suggest, you can choose to add the Tech Listings created by you. Listings added by you here will display in a tab on your Page Profile.<br />Below, you can also remove listings added by you by using the link for each.";"Here, you can add various Tech Listings to be associated with and displayed on your Page by using the auto-suggest below. From the auto-suggest, you can choose to add the Tech Listings created by you. Listings added by you here will display in a tab on your Page Profile.<br />Below, you can also remove listings added by you by using the link for each."
+"Create Tech";"Create Tech"
+"Manage Tech";"Manage Tech"

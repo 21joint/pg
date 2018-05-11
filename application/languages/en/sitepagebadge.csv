@@ -1,0 +1,150 @@
+"Status updated successfully.";"Status updated successfully."
+"Comments by the administrator:";"Comments by the administrator:"
+"Filled value can not be zero !";"Filled value can not be zero !"
+"Create New Badge";"Create New Badge"
+"Create a new Badge by filling the details below.";"Create a new Badge by filling the details below."
+"Image";"Image"
+"Image width should not be more than 165px.";"Image width should not be more than 165px."
+"Click <a target=""_blank"" href=""%s"" class=""smoothbox"">here</a> to view the previous badge.";"Click <a target=""_blank"" href=""%s"" class=""smoothbox"">here</a> to view the previous badge."
+"Previous Badge";"Previous Badge"
+"Image width should not exceed from 165px.";"Image width should not exceed from 165px."
+"Edit Badge Entry";"Edit Badge Entry"
+"Edit your Badge over here and then click on ""Save Changes"" to save it.";"Edit your Badge over here and then click on ""Save Changes"" to save it."
+"Do you want to enable badge for default package in the Pages Plugin which is created during the Page Plugin installation. (If enabled, badges will be enabled for the pages created in the default package.)";"Do you want to enable badge for default package in the Pages Plugin which is created during the Page Plugin installation. (If enabled, badges will be enabled for the pages created in the default package.)"
+"Enable badges for default Package";"Enable badges for default Package"
+
+"Details On Badge";"Details On Badge"
+"Select the details you want to show on Badges.";"Select the details you want to show on Badges."
+"Both Badge Title and Image";"Both Badge Title and Image"
+"Only Badge Image";"Only Badge Image"
+"Only Badge Title";"Only Badge Title"
+"Badge in Search";"Badge in Search"
+"Count";"Count"
+"Page Profile Badge";"Page Profile Badge"
+"Displays the badge, which has been assigned to a Page, on it\'s profile.";"Displays the badge, which has been assigned to a Page, on it\'s profile."
+"Page Badge";"Page Badge"
+"Displays the badge assigned to your Page.";"Displays the badge assigned to your Page."
+"Page Badges";"Page Badges"
+"Manage Badges";"Manage Badges"
+"Directory/Pages - Badges";"Directory/Pages - Badges"
+"Manage Badge Requests";"Manage Badge Requests"
+"Delete Badge Request ?";"Delete Badge Request ?"
+"Are you sure that you want to delete this badge request? It will not be recoverable after being deleted.";"Are you sure that you want to delete this badge request? It will not be recoverable after being deleted."
+"Delete";"Delete"
+"Are you sure that you want to delete the selected badge requests?";"Are you sure that you want to delete the selected badge requests?"
+"%s badge request found.";"%s badge request found.";"%s badge requests found."
+"Email";"Email"
+"Contact No.";"Contact No."
+"Requested Date";"Requested Date"
+"change badge";"change badge"
+"take action";"take action"
+"assign badge";"assign badge"
+"No badge requests are found.";"No badge requests are found."
+"Below are the details of the badge request that was approved.";"Below are the details of the badge request that was approved."
+"Below are the details of the badge request that was declined.";"Below are the details of the badge request that was declined."
+"Take an Action";"Take an Action"
+"Please take an appropriate action on badge request for this page:";"Please take an appropriate action on badge request for this page:"
+"Once you save this form, an email will be send to the requester.";"Once you save this form, an email will be send to the requester."
+"Badge:";"Badge:"
+"Member Id:";"Member Id:"
+"Requester Name:";"Requester Name:"
+"Email:";"Email:"
+"Requested Date:";"Requested Date:"
+"Last Action Taken:";"Last Action Taken:"
+"Declined";"Declined"
+"Take an action on this request by choosing a status below. An email to the badge requester will be sent accordingly.";"Take an action on this request by choosing a status below. An email to the badge requester will be sent accordingly."
+"or";"or"
+"The admin of this Page has sent a request for Badge assignment. This request has been put by you in PENDING status. You can assign a badge to this Page only after declining or approving that request.";"The admin of this Page has sent a request for Badge assignment. This request has been put by you in PENDING status. You can assign a badge to this Page only after declining or approving that request."
+"The admin of this Page has sent a request for Badge assignment. This request has been put by you in HOLD status. You can assign a badge to this Page only after declining or approving that request.";"The admin of this Page has sent a request for Badge assignment. This request has been put by you in HOLD status. You can assign a badge to this Page only after declining or approving that request."
+"Assign a Badge";"Assign a Badge"
+"Assign / Remove a Badge";"Assign / Remove a Badge"
+"Assign a badge to this Page by selecting its radio button.";"Assign a badge to this Page by selecting its radio button."
+"Assign a badge to this Page by selecting its radio button. Below, you can also remove the badge which is already assigend to this Page by selecting the radio button corresponding to the last item titled as 'Remove Badge' and then click on 'Assign/Remove Badge' button to save it.";"Assign a badge to this Page by selecting its radio button. Below, you can also remove the badge which is already assigend to this Page by selecting the radio button corresponding to the last item titled as 'Remove Badge' and then click on 'Assign/Remove Badge' button to save it."
+"Assign Badge";"Assign Badge"
+"Assign/Remove Badge";"Assign/Remove Badge"
+"one.";"one."
+"Remove Badge";"Remove Badge"
+"Please select this radion button to remove badge from this Page.";"Please select this radion button to remove badge from this Page."
+"Delete Badge?";"Delete Badge?"
+"Are you sure that you want to delete this badge entry? It will not be recoverable after being deleted.";"Are you sure that you want to delete this badge entry? It will not be recoverable after being deleted."
+"Back to Manage Badges";"Back to Manage Badges"
+"You have not created any badges yet. Get started by ";"You have not created any badges yet. Get started by "
+"Are you sure you want to delete selected badegs?";"Are you sure you want to delete selected badegs?"
+"Add New Badge";"Add New Badge"
+"%s badge found.";"%s badge found.";"%s badges found."
+"View Page";"View Page"
+"Badges are showcased on your Page Profile and enhance the identity of your Page. The final badge assignment for your Page is done by the administrator of My Community. Below, you can request a badge for your Page. Your request will then go to the administrator.";"Badges are showcased on your Page Profile and enhance the identity of your Page. The final badge assignment for your Page is done by the administrator of My Community. Below, you can request a badge for your Page. Your request will then go to the administrator."
+"Currently assigned Badge for your Page";"Currently assigned Badge for your Page"
+"Request a different Badge";"Request a different Badge"
+"No badges have been added by admin yet.";"No badges have been added by admin yet."
+"Your request for badge is awaiting admin approval. Current status is: PENDING. You will receive an email when the administrator takes an action on your request.";"Your request for badge is awaiting admin approval. Current status is: PENDING. You will receive an email when the administrator takes an action on your request."
+"Your request for badge is awaiting admin approval. Current status is: HOLD. You will receive an email when the administrator takes an action on your request.";"Your request for badge is awaiting admin approval. Current status is: HOLD. You will receive an email when the administrator takes an action on your request."
+"Request a Badge";"Request a Badge"
+"Badges are showcased on your Page Profile and enhance the identity of your Page. The final badge assignment for your Page is done by the administrator of %s. Below, you can request a badge for your Page. Your request will then go to the administrator.";"Badges are showcased on your Page Profile and enhance the identity of your Page. The final badge assignment for your Page is done by the administrator of %s. Below, you can request a badge for your Page. Your request will then go to the administrator."
+"Your Contact Number";"Your Contact Number"
+"Please complete this field - it is required.";"Please complete this field - it is required."
+"You can not request for the badge which is already assigned to your page.";"You can not request for the badge which is already assigned to your page."
+"Your previous badge request is in PENDING status, so you can not send your next request.";"Your previous badge request is in PENDING status, so you can not send your next request."
+"Your previous badge request is in HOLD status, so you can not send your next request.";"Your previous badge request is in HOLD status, so you can not send your next request."
+"We might need to contact you for confirmation.";"We might need to contact you for confirmation."
+"Select Badge";"Select Badge"
+"Send Request";"Send Request"
+"Your Page badge has been removed successfully.";"Your Page badge has been removed successfully."
+"Remove Badge?";"Remove Badge?"
+"Are you sure that you want to remove badge from this page?";"Are you sure that you want to remove badge from this page?"
+"Below is the list of badges available on this site. Page owners can send request for badges to get them assigned to their pages for advertising, publicity and branding purposes. Clicking on a badge below will redirect you to the list of pages which have been asssigned that badge.";"Below is the list of badges available on this site. Page owners can send request for badges to get them assigned to their pages for advertising, publicity and branding purposes. Clicking on a badge below will redirect you to the list of pages which have been asssigned that badge."
+"No Badges has been added by admin at yet.";"No Badges has been added by admin at yet."
+"_EMAIL_SITEPAGE_BADGEREQUEST_APPROVED_EMAIL_TITLE";"Page Badge Request Approved"
+"_EMAIL_SITEPAGE_BADGEREQUEST_APPROVED_EMAIL_DESCRIPTION";"This is the email that goes to a Page Admin when their request for a badge for their page is approved."
+"_EMAIL_SITEPAGE_BADGEREQUEST_APPROVED_EMAIL_SUBJECT";"Your badge request for the page '[page_title]' has been approved."
+"_EMAIL_SITEPAGE_BADGEREQUEST_APPROVED_EMAIL_BODY";"[header]
+
+[badge_image]
+
+You had sent a request to the [site_title] administrator for the above badge for the page: [page_title_with_link].
+Your request for this badge has been approved.
+
+[admin_comment]
+
+To visit this page, click on the link below, or copy-paste it in your browser:
+[page_view_url]
+
+[footer]
+"
+"_EMAIL_SITEPAGE_BADGEREQUEST_DECLINED_EMAIL_TITLE";"Page Badge Request Declined"
+"_EMAIL_SITEPAGE_BADGEREQUEST_DECLINED_EMAIL_DESCRIPTION";"This is the email that goes to a Page Admin when their request for a badge for their page is declined."
+"_EMAIL_SITEPAGE_BADGEREQUEST_DECLINED_EMAIL_SUBJECT";"Your badge request for the page '[page_title]' has been declined."
+"_EMAIL_SITEPAGE_BADGEREQUEST_DECLINED_EMAIL_BODY";"[header]
+
+[badge_image]
+
+You had sent a request to the [site_title] administrator for the above badge for the page: [page_title_with_link].
+Your request for this badge has been declined.
+
+[admin_comment]
+
+To visit this page, click on the link below, or copy-paste it in your browser:
+[page_view_url]
+
+[footer]
+"
+"_EMAIL_SITEPAGE_BADGEREQUEST_HOLDING_EMAIL_TITLE";"Page Badge Request Approval on Hold"
+"_EMAIL_SITEPAGE_BADGEREQUEST_HOLDING_EMAIL_DESCRIPTION";"This is the email that goes to a Page Admin when their request for a badge for their page is put on hold."
+"_EMAIL_SITEPAGE_BADGEREQUEST_HOLDING_EMAIL_SUBJECT";"Your badge request for the page '[page_title]' has been put on hold."
+"_EMAIL_SITEPAGE_BADGEREQUEST_HOLDING_EMAIL_BODY";"[header]
+
+[badge_image]
+
+You had sent a request to the [site_title] administrator for the above badge for the page: [page_title_with_link].
+Your request for this badge has been put on hold.
+
+[admin_comment]
+
+To visit this page, click on the link below, or copy-paste it in your browser:
+[page_view_url]
+
+[footer]
+"
+"ACTIVITY_CATEGORY_TYPE_SITEPAGEBADGE";"Pages"
+#Sitemobile
+

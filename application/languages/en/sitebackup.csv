@@ -1,0 +1,354 @@
+# Admin : Auto Backup Settings Page:
+"Backup and Restore Plugin";"Backup and Restore Plugin"
+"Backup Settings";"Backup Settings"
+"Here, you can configure the settings for automatic backup of your site's database and files. You can also configure settings for the number of backup files to be kept on your server.";"Here, you can configure the settings for automatic backup of your site's database and files. You can also configure settings for the number of backup files to be kept on your server."
+"License Key";"License Key"
+"Please enter your license key that was provided to you when you purchased this plugin. If you do not know your license key, please contact the Support Team of SocialEngineAddOns from the Support section of your Account Area.(Key Format: XXXXXX-XXXXXX-XXXXXX )";"Please enter your license key that was provided to you when you purchased this plugin. If you do not know your license key, please contact the Support Team of SocialEngineAddOns from the Support section of your Account Area.(Key Format: XXXXXX-XXXXXX-XXXXXX )"
+"Automatic Delete";"Automatic Delete"
+"Please choose options you want to automatic delete backup files.";"Please choose options you want to automatic delete backup files."
+"Specify the maximum number of database backup files to be kept in your server's backup directory before deleting old files. (The recent backups will be kept, and the older ones will be deleted. This prevents unnecessary space utilization on your server. The minimum value for this is 1.)";"Specify the maximum number of database backup files to be kept in your server's backup directory before deleting old files. (The recent backups will be kept, and the older ones will be deleted. This prevents unnecessary space utilization on your server. The minimum value for this is 1.)"
+"Automatically Delete Database Backups";"Automatically Delete Database Backups"
+"Do you want database backup files to be automatically deleted from the backup directory on your server ? (Choosing yes will allow you to specify the maximum number of database backups that should be saved on your server. The recent backups will be kept, and the older ones will be deleted. This prevents unnecessary space utilization on your server.)";"Do you want database backup files to be automatically deleted from the backup directory on your server ? (Choosing yes will allow you to specify the maximum number of database backups that should be saved on your server. The recent backups will be kept, and the older ones will be deleted. This prevents unnecessary space utilization on your server.)"
+"Automatically Delete Site's Files' Backup's";"Automatically Delete Site's Files' Backups"
+"Do you want your site's file backups to be automatically deleted from the backup directory on your server ? (Choosing yes will allow you to specify the maximum number of file backups that should be saved on your server. The recent backups will be kept, and the older ones will be deleted. This prevents unnecessary space utilization on your server.)";"Do you want your site's file backups to be automatically deleted from the backup directory on your server ? (Choosing yes will allow you to specify the maximum number of file backups that should be saved on your server. The recent backups will be kept, and the older ones will be deleted. This prevents unnecessary space utilization on your server.)"
+"Maximum File Backups saved on Server";"Maximum File Backups saved on Server"
+"Specify the maximum number of site's file backups to be kept in your server's backup directory before deleting old files. (The recent backups will be kept, and the older ones will be deleted. This prevents unnecessary space utilization on your server. The minimum value for this is 1.)";"Specify the maximum number of site's file backups to be kept in your server's backup directory before deleting old files. (The recent backups will be kept, and the older ones will be deleted. This prevents unnecessary space utilization on your server. The minimum value for this is 1.)"
+"Automatic Backup";"Automatic Backup"
+"Do you want Automatic Backup to be activated on your site ? (If yes, then you will be able to choose more settings below. Note that automatic backup is dependent on the activity on your site. If your site is dormant, with no activity, then the backup for your site will not occur till there is activity on it.)";"Do you want Automatic Backup to be activated on your site ? (If yes, then you will be able to choose more settings below. Note that automatic backup is dependent on the activity on your site. If your site is dormant, with no activity, then the backup for your site will not occur till there is activity on it.)"
+"Automatic Backup Type";"Automatic Backup Type"
+"Backup both database, and site's files.";"Backup both database, and site's files."
+"Backup only the database.";"Backup only the database."
+"Automatic Backup Filename Prefix";"Automatic Backup Filename Prefix"
+"Specify the prefix for the name of the automatic backup file. (The prefix specified by you will be appended by the backup timestamp.)";"Specify the prefix for the name of the automatic backup file. (The prefix specified by you will be appended by the backup timestamp.)"
+"Destination for Automatic Database Backups";"Destination for Automatic Database Backups"
+"Select a destination for the automatic database backups of your site. (You may create a new destination from Destinations section.)";"Select a destination for the automatic database backups of your site. (You may create a new destination from Destinations section.)"
+"Destination for Automatic File Backups";"Destination for Automatic File Backups"
+"Select a destination for the automatic file backups of your site. (You may create a new destination from Destinations section.)";"Select a destination for the automatic file backups of your site. (You may create a new destination from Destinations section.)"
+"Time Interval between Backups";"Time Interval between Backups"
+"Select the time intervals between successive backups. A new backup process will start after this time interval from the previous backup.";"Select the time intervals between successive backups. A new backup process will start after this time interval from the previous backup."
+"Email Notification on completion of Automatic Backups";"Email Notification on completion of Automatic Backups"
+"Do you want email notifications to be sent to you for the completion of automatic backups ?";"Do you want email notifications to be sent to you for the completion of automatic backups ?"
+"Email(s) for Notifications";"Email(s) for Notifications"
+"Specify the email(s) for receiving automatic backup notifications. (Separate multiple emails by commas.)";"Specify the email(s) for receiving automatic backup notifications. (Separate multiple emails by commas.)"
+"Submit";"Submit"
+"Maximum Database Backups saved on Server";"Maximum Database Backups saved on Server"
+"Backup files of database to keep";"Backup files of database to keep"
+"Enter the number of backup files of database to keep before deleting old files. (Other files in the backup directory will get deleted. The minimum value for this is 1.)";"Enter the number of backup files of database to keep before deleting old files. (Other files in the backup directory will get deleted. The minimum value for this is 1.)"
+"Automatic Delete Database Files from your server directory";"Automatic Delete Database Files from your server directory"
+"Please choose options you want to automatic delete backup of database files from your server directory.";"Please choose options you want to automatic delete backup of database files from your server directory."
+"Automatic Delete Files from your server directory";"Automatic Delete Files from your server directory"
+"Please choose options you want to automatic delete backup files from your server directory.";"Please choose options you want to automatic delete backup files from your server directory."
+"Backup files of database to keep in your server directory";"Backup files of database to keep in your server directory"
+"Enter the number of backup files to keep before deleting old files from your server directory. (Other files in the backup directory will get deleted. The minimum value for this is 1.)";"Enter the number of backup files to keep before deleting old files from your server directory. (Other files in the backup directory will get deleted. The minimum value for this is 1.)"
+"Yes";"Yes"
+"No";"No"
+"Hours";"Hours"
+"Day";"Day"
+"Days";"Days"
+"Week";"Week"
+"Month";"Month"
+"Months";"Months"
+"Year";"Year"
+"If you want to include the all backup files of backup server directory into the new generated backup file then select this option.";"If you want to include the all backup files of backup server directory into the new generated backup file then select this option."
+"Include server backup directory in case of automatic backup";"Include server backup directory in case of automatic backup"
+"Please enter minimum value 1 for deleting the old database files.";"Please enter minimum value 1 for deleting the old database files."
+"Please enter minimum value 1 for deleting the old files.";"Please enter minimum value 1 for deleting the old files."
+
+
+#Admin Take backup Page
+"Take Backup";"Take Backup"
+"Take a backup of your site's database and files after filling the form below.";"Take a backup of your site's database and files after filling the form below."
+"Select the type of backup that you want to take of your site.";"Select the type of backup that you want to take of your site."
+"Name of Backup File";"Name of Backup File"
+"Backup Filename Prefix";"Backup Filename Prefix"
+"Specify the prefix for the name of the backup file. (The prefix specified by you will be appended by the backup timestamp.)";"Specify the prefix for the name of the backup file. (The prefix specified by you will be appended by the backup timestamp.)"
+"Activate Maintenance Mode";"Activate Maintenance Mode"
+"Do you want the site to be in Maintenance Mode during the backup ? (Putting the site in Maintenance Mode will prevent site visitors from accessing your website. You can customize the maintenance mode page by manually editing the file "/application/maintenance.html". The site will be taken back online once backup is complete.)";"Do you want the site to be in Maintenance Mode during the backup ? (Putting the site in Maintenance Mode will prevent site visitors from accessing your website. You can customize the maintenance mode page by manually editing the file "/application/maintenance.html". The site will be taken back online once backup is complete.)"
+"Yes, take the site offline (Activate Maintenance Mode).";"Yes, take the site offline (Activate Maintenance Mode)."
+"No, keep the site online.";"No, keep the site online."
+"Lock Tables during Database Backup";"Lock Tables during Database Backup"
+"Do you want to lock your site's database tables during the backup? (Note: Locking your site's database tables during backup can help in keeping data consistency, but it will also make your site unresponsive during the backup process.)";"Do you want to lock your site's database tables during the backup? (Note: Locking your site's database tables during backup can help in keeping data consistency, but it will also make your site unresponsive during the backup process.)"
+"Destination for Files Backup";"Destination for Files Backup"
+"Destination for Database Backup";"Destination for Database Backup"
+"Select a destination for the file backups of your site. (You may create a new destination from Destinations section.)";"Select a destination for the file backups of your site. (You may create a new destination from Destinations section.)"
+"Select a destination for the database backups of your site. (You may create a new destination from Destinations section.)";"Select a destination for the database backups of your site. (You may create a new destination from Destinations section.)"
+"Database Tables to Backup";"Database Tables to Backup"
+"Select the database tables that you want to be backed-up. (Note: We recommend you to select all the tables. Excluding some tables may lead to data inconsistency. You should exclude tables only when you are sure of what you are doing.)";"Select the database tables that you want to be backed-up. (Note: We recommend you to select all the tables. Excluding some tables may lead to data inconsistency. You should exclude tables only when you are sure of what you are doing.)"
+"Select all tables.";"Select all tables."
+"Exclude some tables.";"Exclude some tables."
+"Save these settings for future use.";"Save these settings for future use."
+"Save these settings";"Save these settings"
+"Backup Now!";"Backup Now!"
+"Backup in Progress";"Backup in Progress"
+"Please do not close this page or navigate to another page till you see a backup completion or error message.";"Please do not close this page or navigate to another page till you see a backup completion or error message."
+"Initializing backup process.";"Initializing backup process."
+"Preparing the archive.";"Preparing the archive."
+"Backing up database tables.";"Backing up database tables."
+"Backing up files.";"Backing up files."
+"Backing up database and files.";"Backing up database and files."
+"Finishing backup process.";"Finishing backup process."
+"Backup Completed Successfully";"Backup Completed Successfully"
+"Congratulations! Your database has been successfully backed up.";"Congratulations! Your database has been successfully backed up."
+"Congratulations! Your files have been successfully backed up.";"Congratulations! Your files have been successfully backed up."
+"Congratulations! Your database and files have been successfully backed up.";"Congratulations! Your database and files have been successfully backed up."
+"100% backup complete!";"100% backup complete!"
+"Files backup information";"Files backup information"
+"File size";"File size"
+"Download backup file";"Download backup file"
+"If you want to include the all backup files of backup server directory into the new generated backup file then select this option.";"If you want to include the all backup files of backup server directory into the new generated backup file then select this option."
+"Include server backup directory";"Include server backup directory"
+"Unable to configure this setting due to the file /application/settings/general.php not having the correct permissions.Please CHMOD (change the permissions of) that file to 666, then try again.";"Unable to configure this setting due to the file /application/settings/general.php not having the correct permissions.Please CHMOD (change the permissions of) that file to 666, then try again."
+"Backup";"Backup"
+"Congratulations! Your backup directory is PASSWORD PROTECTED.\n\nBackups provide insurance for your site. In the event that something on your site goes wrong, you can restore your site's content with the most recent backup file.\n\n **********   Backup and Restore Plugin by SocialEngineAddOns (http://www.socialengineaddons.com)   **********";"Congratulations! Your backup directory is PASSWORD PROTECTED.\n\nBackups provide insurance for your site. In the event that something on your site goes wrong, you can restore your site's content with the most recent backup file.\n\n **********   Backup and Restore Plugin by SocialEngineAddOns (http://www.socialengineaddons.com)   **********"
+"Please choose atleast one table to take database backup.";"Please choose atleast one table to take database backup."
+"The backup file could not be emailed as attachment because its size is greater than 20 MB. Please choose a different destination for your backup.";"The backup file could not be emailed as attachment because its size is greater than 20 MB. Please choose a different destination for your backup."
+"Backup Type";"Backup Type"
+"Select the type of backup you want of your site.";"Select the type of backup you want of your site."
+"Backup both database and files.";"Backup both database and files."
+"Backup database only.";"Backup database only."
+"Backup files only.";"Backup files only."
+"application/x-gzip";"application/x-gzip"
+"Site Admin";"Site Admin"
+"From: ";"From: "
+"Email has been sent successfully.";"Email has been sent successfully."
+"There was an error in sending your email. Please try again later.";"There was an error in sending your email. Please try again later."
+"FTP Error: Could not connect to FTP server.";"FTP Error: Could not connect to FTP server."
+"FTP Error: Could not login as user FTP_USER on the FTP server.";"FTP Error: Could not login as user FTP_USER on the FTP server."FTP Error: Could not find the backup file on your site\'s server.";"FTP Error: Could not find the backup file on your site\'s server."
+"Connecting to the database.";"Connecting to the database."
+"File size";"File size"
+"Time Taken";"Time Taken"
+"Backup file generated";"Backup file generated"
+"Database backup information";"Database backup information"
+"View Files Backup History";"View Files Backup History"
+"View Database Backup History";"View Database Backup History"
+
+
+
+
+
+#Admin : Destination Page
+"Create a new Backup Destination";"Create a new Backup Destination"
+"Create your new backup destination by filling the form below.";"Create your new backup destination by filling the form below."
+"Destination Mode";"Destination Mode"
+"Destination Type";"Destination Type"
+"Destination Name *";"Destination Name *"
+"Email *";"Email *"
+"Specify the email address to which the database backup files should be sent as attachment to. The database backups can be sent as email attachment only if their filesize is less than or equal to 20 MB. Also, please ensure that the email server and email account can handle large file attachments.";"Specify the email address to which the database backup files should be sent as attachment to. The database backups can be sent as email attachment only if their filesize is less than or equal to 20 MB. Also, please ensure that the email server and email account can handle large file attachments."
+"Host *";"Host *"
+"Port Number *";"Port Number *"
+"Path *";"Path *"
+"Directory path on your FTP server.";"Directory path on your FTP server."
+"Backup Directory *";"Backup Directory *"
+"If this directory does not already exist on the FTP server at the above path, then it will be created. Please ensure that this location has enough space for storing backups.";"If this directory does not already exist on the FTP server at the above path, then it will be created. Please ensure that this location has enough space for storing backups."
+"Username *";"Username *"
+"Please ensure that this user has write permission for the above backup directory.";"Please ensure that this user has write permission for the above backup directory."
+"Password";"Password"
+"Database Name *";"Database Name *"
+"Create";"Create"
+
+"Server Directory";"Server Directory"
+"Database Backup Destinations";"Database Backup Destinations"
+"Destinations are the locations where your backup files are saved.";"Destinations are the locations where your backup files are saved."
+"Backup Directory on your Server";"Backup Directory on your Server"
+"This backup directory will be used for both database and file backups on your server. Please ensure that this location has enough space to store your backups. Below, you can also enable password protection for this backup directory.";"This backup directory will be used for both database and file backups on your server. Please ensure that this location has enough space to store your backups. Below, you can also enable password protection for this backup directory."
+"Current Backup Directory Path";"Current Backup Directory Path"
+"Edit Backup Directory Name";"Edit Backup Directory Name"
+"You can rename the backup directory on your server below. (This name must be alphanumeric, and must contain both alphabets and numbers.)";"You can rename the backup directory on your server below. (This name must be alphanumeric, and must contain both alphabets and numbers.)"
+"Enable Password Protection";"Enable Password Protection"
+"Do you want to enable directory level password protection for the backup directory ?";"Do you want to enable directory level password protection for the backup directory ?"
+"Yes, enable password protection on the backup directory.";"Yes, enable password protection on the backup directory."
+"No, do not enable password protection on the backup directory.";"No, do not enable password protection on the backup directory."
+"Username";"Username"
+"Password";"Password"
+"Save";"Save"
+"Please enter both character and number in Backup Directory Name.";"Please enter both character and number in Backup Directory Name."
+"Username * Please complete this field - it is required.";"Username * Please complete this field - it is required."
+"Password * Please complete this field - it is required.";"Password * Please complete this field - it is required."
+"Please complete all the required field.";"Please complete all the required field."
+"Please donot enter special characters and space.";"Please donot enter special characters and space."
+"Your changes has been successfully saved.";"Your changes has been successfully saved."
+"Destinations are the locations where you can save your database backups. There are 3 types of locations : Email, FTP Server and MySQL Database. FTP Server, Email and MySQL Database destinations can be used for saving database backups.";"Destinations are the locations where you can save your database backups. There are 3 types of locations : Email, FTP Server and MySQL Database. FTP Server, Email and MySQL Database destinations can be used for saving database backups."
+"Create a Destination";"Create a Destination"
+"Destination Name";"Destination Name"
+"Method";"Method"
+"Location";"Location"
+"Options";"Options"
+"Destinations";"Destinations"
+"Name";"Name"
+"Type";"Type"
+"MySQL Database";"MySQL Database"
+"Email";"Email"
+"FTP Directory";"FTP Directory"
+"Edit a Backup Destination";"Edit a Backup Destination"
+"If you are using this destination in the Automatic Backup, then changing it will affect your automatic backup also. Please check your backup settings after making this change.";"If you are using this destination in the Automatic Backup, then changing it will affect your automatic backup also. Please check your backup settings after making this change."
+"Note: You are using this destination in the Automatic Backup. If this destination is deleted, your automatic backup will become off. You should then re-configure your backup settings for automatic backup and use available backup destinations.";"Note: You are using this destination in the Automatic Backup. If this destination is deleted, your automatic backup will become off. You should then re-configure your backup settings for automatic backup and use available backup destinations."
+"Specify the name of the database. This database must exist, and will not be created.";"Specify the name of the database. This database must exist, and will not be created."
+"Enter the username which has write access to the database.";"Enter the username which has write access to the database."
+"Back to Destinations Listing";"Back to Destinations Listing"
+"Destination Name *  Please complete this field - it is required.";"Destination Name *  Please complete this field - it is required."
+"Email *  Please complete this field - it is required.";"Email *  Please complete this field - it is required."
+"Email * Please enter correct email id.";"Email * Please enter correct email id."
+"Host *  Please complete this field - it is required.";"Host *  Please complete this field - it is required."
+"Port number *  Please complete this field - it is required.";"Port number *  Please complete this field - it is required."
+"Port number *  Please enter numeric value.";"Port number *  Please enter numeric value."
+"Path *  Please complete this field - it is required.";"Path *  Please complete this field - it is required."
+"User *  Please complete this field - it is required.";"User *  Please complete this field - it is required."
+"FTP Connection could not be established. Please enter correct FTP Host and Port number.";"FTP Connection could not be established. Please enter correct FTP Host and Port number."
+"FTP login failed. Please enter correct username and password combination.";"FTP login failed. Please enter correct username and password combination."
+"Host *  Please complete this field - it is required.";"Host *  Please complete this field - it is required."
+"Database Name *  Please complete this field - it is required.";"Database Name *  Please complete this field - it is required."
+"The database name is not valid.";"The database name is not valid."
+"User *  Please complete this field - it is required.";"User *  Please complete this field - it is required."
+"If you are using this destination in the Automatic database  Backup, then it effect your automatic backup also. After deleting this, please check your backup settings and make sure that you are using correct database backup destination.";"If you are using this destination in the Automatic database  Backup, then it effect your automatic backup also. After deleting this, please check your backup settings and make sure that you are using correct database backup destination."
+"Save Changes";"Save Changes"
+"Delete Destination ?";"Delete Destination ?"
+"Delete Backup Destination ?";"Delete Backup Destination ?"
+"Are you sure that you want to delete this destination? It will not be recoverable after being deleted.";"Are you sure that you want to delete this destination? It will not be recoverable after being deleted."
+"Note: If you are using this destination in the Automatic Backup, then after deleting it, the automatic backup will not work. So, after deleting this, please check your automatic backup settings and make sure that you are using a correct and available backup destination.";"Note: If you are using this destination in the Automatic Backup, then after deleting it, the automatic backup will not work. So, after deleting this, please check your automatic backup settings and make sure that you are using a correct and available backup destination."
+"Delete";"Delete"
+"cancel";"cancel"
+
+
+#Admin Database Restore page:
+"Restore Database";"Restore Database"
+"Here, you can restore the database of your site from one of the database backup files created using this SocialEngineAddOns Backup and Restore Plugin. This restore will not work with database backups taken from other tools.";"Here, you can restore the database of your site from one of the database backup files created using this SocialEngineAddOns Backup and Restore Plugin. This restore will not work with database backups taken from other tools."
+"Please test your database backup on a non-production server before restoring from it.";"Please test your database backup on a non-production server before restoring from it."
+"Upload a Backup File";"Upload a Backup File"
+
+#Admin restore Page
+"Restore from Backup";"Restore from Backup"
+"Are you sure you want to restore the site database from the backup file:$filename.Note: Restoring from backup will delete some or all of your site's data. This cannot be undone.";"Are you sure you want to restore the site database from the backup file:$filename.Note: Restoring from backup will delete some or all of your site's data. This cannot be undone."
+"Restore";"Restore"
+" or ";" or "
+"100% completed in %s sec.";"100% completed in %s sec."
+"Your Database backup is successfully restored.!";Your Database backup is successfully restored.!
+"Restoring";"Restoring"
+
+#Admin - Manage Page
+"Id";"Id"
+"Filename";"Filename"
+"Date";"Date"
+"Method";"Method"
+"Destination Name";"Destination Name"
+"Destination";"Destination"
+"Type";"Type"
+"Age";"Age"
+"Status";"Status"
+"Filesize";"Filesize"
+"Options";"Options"
+"Failed";"Failed"
+"Success";"Success"
+"Manual";"Manual"
+"Automatic";"Automatic"
+"Database Backup History";"Database Backup History"
+"This page lists all the database backups taken for this site. You can use this page to download the backup files to your computer, restore site database from the backup files, and delete the backup files. Before restoring your database from a backup file, please test it on a non-production server.";"This page lists all the database backups taken for this site. You can use this page to download the backup files to your computer, restore site database from the backup files, and delete the backup files. Before restoring your database from a backup file, please test it on a non-production server."
+"No database backups could be found.";"No database backups could be found."
+"download";"download"
+"restore";"restore"
+"Delete Selected";"Delete Selected"
+"File type or extension forbidden.";"File type or extension forbidden."
+"Path is not writeable. Please CHMOD 0777 the temporary directory.";"Path is not writeable. Please CHMOD 0777 the temporary directory."
+"Unable to move file to upload directory.";"Unable to move file to upload directory."
+"Insert error: Couldn't insert row";"Insert error: Couldn't insert row"
+"Delete Database Backup ?";"Delete Database Backup ?"
+"Are you sure that you want to delete this database backup? It will not be recoverable after being deleted.";"Are you sure that you want to delete this database backup? It will not be recoverable after being deleted."
+"No database backups could be found.";"No database backups could be found."
+
+
+
+#Admin code history page
+"Files Backup History";"Files Backup History"
+"This page lists all the files backups taken on this site. You can use this page to download the backup files to your computer and delete the backup files.";"This page lists all the files backups taken on this site. You can use this page to download the backup files to your computer and delete the backup files."
+"Database Restore";"Database Restore"
+"FAQ";"FAQ"
+"This License Key is not valid";"This License Key is not valid"
+"Your settings have  been successfully saved.";"Your settings have  been successfully saved."
+
+#Admin Backup Logs
+"Backup Logs"; "Backup Logs"
+"Backup logs enable you to concisely see all the backups taken for your site. You can see the status of the various backups and other parameters like filesize, destination, etc. You can filter the logs based on the backup type and mode, and old logs can also be deleted."; 
+"Backup logs enable you to concisely see all the backups taken for your site. You can see the status of the various backups and other parameters like filesize, destination, etc. You can filter the logs based on the backup type and mode, and old logs can also be deleted."
+"Database";"Database"
+"File";"File"
+"Manual";"Manual"
+"Automatic";"Automatic"
+"View Log";"View Log"
+"Empty Log";"Empty Log"
+"Backup Type";"Backup Type"
+"Mode";"Mode"
+"Destination";"Destination"
+"Method";"Method"
+"Size";"Size"
+"Start";"Start"
+"Finish";"Finish"
+"Status";"Status"
+"N.A.";"N.A."
+"No log entries could be found";"No log entries could be found"
+
+
+
+
+
+
+
+# Database Backup Email Notification
+"_EMAIL_DATABASE_BACKUP_EMAIL_NOTIFICATION_TITLE";"Database Backup Email Notification"
+"_EMAIL_DATABASE_BACKUP_EMAIL_NOTIFICATION_DESCRIPTION";[subject]
+"_EMAIL_DATABASE_BACKUP_EMAIL_NOTIFICATION_SUBJECT";[subject]
+"_EMAIL_DATABASE_BACKUP_EMAIL_NOTIFICATION_BODY";"[header]
+
+[message] 
+
+Backup Status: [status] 
+Completion Time: [completion_time] 
+Backup Destination: [destination_name] 
+Backup Size: [backup_filesize] 
+Backup File: [backup_filename]
+
+
+[footer]"
+
+"_EMAIL_DATABASE_AND_FILES_BACKUP_EMAIL_NOTIFICATION_TITLE";"Database and Files Backup Email Notification"
+"_EMAIL_DATABASE_AND_FILES_BACKUP_EMAIL_NOTIFICATION_DESCRIPTION";[subject]
+"_EMAIL_DATABASE_AND_FILES_BACKUP_EMAIL_NOTIFICATION_SUBJECT";[subject]
+"_EMAIL_DATABASE_AND_FILES_BACKUP_EMAIL_NOTIFICATION_BODY";"[header]
+
+[message] 
+
+Backup Status: [status] 
+Completion Time: [completion_time] 
+Backup Destination: [destination_name] 
+Backup Size: [backup_filesize] 
+Backup File: [backup_filename]
+
+
+[message2] 
+
+Backup Status: [status]
+Completion Time: [completion_time2] 
+Backup Destination: [destination_name2] 
+Backup Size: [backup_filesize2] 
+Backup File: [backup_filename2]
+
+
+[footer]"
+
+"_EMAIL_BACKUP_FAILURE_EMAIL_NOTIFICATION_TITLE";"Backup Failure Email Notification"
+"_EMAIL_BACKUP_FAILURE_EMAIL_NOTIFICATION_DESCRIPTION";[subject]
+"_EMAIL_BACKUP_FAILURE_EMAIL_NOTIFICATION_SUBJECT";[subject]
+"_EMAIL_BACKUP_FAILURE_EMAIL_NOTIFICATION_BODY";"[header]
+
+[message]
+
+[backup_type]
+
+[reason]
+
+[moremessage]
+
+
+[footer]"
+"File Directories to Backup in ROOT_DIR/public/";"File Directories to Backup in ROOT_DIR/public/"
+"Select the file directories in "ROOT_DIR/public/" directory that you want to be backed-up. (Note : The "ROOT_DIR/public/" directory contains user uploaded files of your site like photos, music, etc in respective sub-directories. Thus, these sub-directories can be very large in size. You may thus consider not to back-up heavy directories.)";"Select the file directories in "ROOT_DIR/public/" directory that you want to be backed-up. (Note : The "ROOT_DIR/public/" directory contains user uploaded files of your site like photos, music, etc in respective sub-directories. Thus, these sub-directories can be very large in size. You may thus consider not to back-up heavy directories.)"
+"Select all directories.";"Select all directories."
+"Exclude some directories.";"Exclude some directories."

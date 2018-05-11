@@ -1,0 +1,157 @@
+# credits_purchased_by_member
+"_EMAIL_CREDITS_PURCHASED_BY_MEMBER_TITLE";"Credits Purchased by a Member"
+"_EMAIL_CREDITS_PURCHASED_BY_MEMBER_DESCRIPTION";"This is a email sent to all users who purchased credits from site."
+"_EMAIL_CREDITS_PURCHASED_BY_MEMBER_SUBJECT";"Your Credits Purchase Confirmation."
+"_EMAIL_CREDITS_PURCHASED_BY_MEMBER_BODY";"
+
+Hi [recipient_title],
+
+Your purchase for [credits] credits has been successful. 
+
+Selected Offer:[offer]
+
+Previous Credit Balance: [previous_credit]
+Current Credit Balance: [current_credit]
+
+
+[order_invoice]
+
+Best,
+[site_title]"
+
+# credits_sent_to_friend
+"_EMAIL_CREDITS_SENT_TO_FRIEND_TITLE";"Credit Sent to a Friend"
+"_EMAIL_CREDITS_SENT_TO_FRIEND_DESCRIPTION";"This is a email sent to all users who received credits from their friends"
+"_EMAIL_CREDITS_SENT_TO_FRIEND_SUBJECT";"Credit sent by [sender_title]."
+"_EMAIL_CREDITS_SENT_TO_FRIEND_BODY";"
+
+Hi [recipient_title],
+
+[sender_title] has send you [credits] credits.
+
+[message]
+
+Best,
+[site_title]"
+
+# credits_sent_to_users
+"_EMAIL_CREDITS_SENT_TO_USERS_TITLE";"Bonus Sent to a Member"
+"_EMAIL_CREDITS_SENT_TO_USERS_DESCRIPTION";"This is a email sent to all users who recieved credits from admin."
+"_EMAIL_CREDITS_SENT_TO_USERS_SUBJECT";" Bonus sent by [site_title]."
+"_EMAIL_CREDITS_SENT_TO_USERS_BODY";"
+Hi [recipient_title],
+
+Admin of [site_title] has send you [credits] credits as bonus.
+
+[message]
+
+Best,
+[site_title]
+"
+"Credit Type";"Credit Type"
+"Time Interval";"Time Interval"
+"Search";"Search"
+"Id";"Id"
+"Credit Values";"Credit Values"
+"Date";"Date"
+"Addition";"Addition"
+"Deduction";"Deduction"
+"View More";"View More"
+"How do you want to buy credits?";"How do you want to buy credits?"
+"Using Offers";"Using Offers"
+"Direct";"Direct"
+"There are currently no offers to display.";"There are currently no offers to display."
+"Choose payment method";"Choose payment method"
+"* Payment Gateway is not enabled.";"* Payment Gateway is not enabled."
+"Buy credits";"Buy credits"
+"* Credit count is required";"* Credit count is required"
+"* Please enter valid credit values";"* Please enter valid credit values"
+"* Select a Payment method to proceed";"* Select a Payment method to proceed"
+"* set Credit value in Admin Panel";"* set Credit value in Admin Panel"
+"Total Credits : %s";"Total Credits : %s"
+"You have not earned any Credit yet.";"You have not earned any Credit yet."
+"Your credits validity will expire in %s Days.";"Your credits validity will expire in %s Days."
+"%s record found";"%s record found";"%s records found"
+"You can earn %s credits per referral.";"You can earn %s credits per referral."
+"Congratulation! You have achieved the highest badge.";"Congratulation! You have achieved the highest badge."
+"Copy Link";"Copy Link"
+"No activity performed yet.";"No activity performed yet."
+"As you are Super Admin so you cannot upgrade your member level to any other member level.";"As you are Super Admin so you cannot upgrade your member level to any other member level."
+"Upgrade Level";"Upgrade Level"
+"No member level available as you are already at highest member level.";"No member level available as you are already at highest member level."
+"Upgrade request sent for %s level.";"Upgrade request sent for %s level."
+"You are already on highest level you can't upgrade any further.";"You are already on highest level you can't upgrade any further."
+"Upgrade request sent for %s level.";"Upgrade request sent for %s level."
+"You can earn %s credits in a day.";"You can earn %s credits in a day."
+"Activities";"Activities"
+"All Activities";"All Activities"
+"You can earn according to these credit values .";"You can earn according to these credit values ."
+"Activity Type";"Activity Type"
+"First Activity";"First Activity"
+"Next Activities";"Next Activities"
+"Max/Per Day";"Max/Per Day"
+"%s transaction found";"%s transaction found";"%s transactions found"
+"INVOICE";"INVOICE"
+"Name";"Name"
+"Order Id:";"Order Id:"
+"Status";"Status"
+"Placed on";"Placed on"
+"Payment Method";"Payment Method"
+"Order";"Order"
+"Grand Total";"Grand Total"
+"Credits value";"Credits value"
+"We suggest that you please try again with another payment method after clicking on "Buy Credits" from my credits page.";"We suggest that you please try again with another payment method after clicking on "Buy Credits" from my credits page."
+"There was an error processing your transaction for the %s: %s.";"There was an error processing your transaction for the %s: %s."
+"Payment Failed";"Payment Failed"
+"Payment Pending";"Payment Pending"
+"Go to My Credits";"Go to My Credits"
+"Thanks for purchasing Credits! These credits will be added in your credit balance.";"Thanks for purchasing Credits! These credits will be added in your credit balance."
+"credits can be used only for admin driven stores";"credits can be used only for admin driven stores"
+"No valid percentage is set for checkout limit. Please contact site admin.";"No valid percentage is set for checkout limit. Please contact site admin."
+"No valid credit points are set for credit value. Please contact site admin.";"No valid credit points are set for credit value. Please contact site admin."
+"Sorry you cant use credit point on this order.";"Sorry you cant use credit point on this order."
+"Please buy at least one ticket to use credit points.";"Please buy at least one ticket to use credit points."
+"credits are not allowed to use for event checkout.";"credits are not allowed to use for event checkout."
+"To avail this discount you must to purchase atleast one ticket.";"To avail this discount you must to purchase atleast one ticket."
+"Type";"Type"
+"Earned by performing Activity";"Earned by performing Activity"
+"Amount Debited";"Amount Debited"
+"Amount Credited";"Amount Credited"
+"Previous Level";"Previous Level"
+"Upgraded To";"Upgraded To"
+"Credits used in event ticket purchase";"Credits used in event ticket purchase"
+"Credits Redeemed";"Credits Redeemed"
+"Orders";"Orders"
+"Member Level Upgraded";"Member Level Upgraded"
+"Amount";"Amount"
+"Purchased Credits";"Purchased Credits"
+"Payment Gateway";"Payment Gateway"
+"Sent To";"Sent To"
+"Received From";"Received From"
+"Received From Friend";"Received From Friend"
+"Deletion of activity";"Deletion of activity"
+"Deleted By";"Deleted By"
+"Bonus";"Bonus"
+"Sent By";"Sent By"
+"Reason";"Reason"
+"By Referral Signups";"By Referral Signups"
+"User Sign Up with Your link";"User Sign Up with Your link"
+"Credits redeemed to purchase store products";"Credits redeemed to purchase store products"
+"Credits redeemed to purchase event tickets";"Credits redeemed to purchase event tickets"
+"By Performing Activities";"By Performing Activities"
+"Upgraded Member Level";"Upgraded Member Level"
+"Received From Friends";"Received From Friends"
+"On Activity Deletion";"On Activity Deletion"
+"Credits redeemed to purchase event tickets";"Credits redeemed to purchase event tickets"
+"Credits redeemed for subscription";"Credits redeemed for subscription"
+"ACTIVITY_TYPE_SITECREDIT_BONUS";"When admin send credits as bonus to me"
+"ACTIVITY_TYPE_SITECREDIT_RECEIVED_FROM_FRIEND";"When someone send credits to me"
+"Please enter valid credit points.";"Please enter valid credit points."
+"Sorry !! You don't have credits to redeem.";"Sorry !! You don't have credits to redeem."
+"Sorry !! You can't redeem credits here.";"Sorry !! You can't redeem credits here."
+"Please select a valid Plan.";"Please select a valid Plan."
+"Please select a valid package.";"Please select a valid package."
+"Free Package. You can't redeem credits here.";"Free Package. You can't redeem credits here."
+"ACTIVITY_CATEGORY_TYPE_SITECREDIT";"Credits, Reward Points and Virtual Currency"
+"Minimum amount for this type of transaction is %s";"Minimum amount for this type of transaction is %s"
+

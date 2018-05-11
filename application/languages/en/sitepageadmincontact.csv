@@ -1,0 +1,31 @@
+"_EMAIL_SITEPAGEADMINCONTACT_CONTACTS_EMAIL_NOTIFICATION_TITLE";"Contact Page
+Owners Email Notification"
+"_EMAIL_SITEPAGEADMINCONTACT_CONTACTS_EMAIL_NOTIFICATION_DESCRIPTION";"This
+email is sent to Page Admins when Site Admin contact them through emails or
+messages."
+"_EMAIL_SITEPAGEADMINCONTACT_CONTACTS_EMAIL_NOTIFICATION_SUBJECT";"[subject]"
+"_EMAIL_SITEPAGEADMINCONTACT_CONTACTS_EMAIL_NOTIFICATION_BODY";"
+[template_header]
+[header]
+
+[message]
+
+[footer]
+[template_footer]"
+
+
+"Status";"Status"
+"Hold down the CTRL key to select or de-select specific Page Status for which Admins of corresponding Pages need to be sent emails.";"Hold down the CTRL key to select or de-select specific Page Status for which Admins of corresponding Pages need to be sent emails."
+"All Pages";"All Pages"
+"Draft Pages";"Draft Pages"
+"Published Pages";"Published Pages"
+"Open Pages";"Open Pages"
+"Closed Pages";"Closed Pages"
+"Featured Pages";"Featured Pages"
+"Sponsored Pages";"Sponsored Pages"
+"Approved Pages";"Approved Pages"
+"Dis-approved Pages";"Dis-approved Pages"
+"Running Pages";"Running Pages"
+"Expired Pages";"Expired Pages"
+"Hold down the CTRL key to select or de-select specific Page Status for which Admins of corresponding Pages need to be sent messages.";"Hold down the CTRL key to select or de-select specific Page Status for which Admins of corresponding Pages need to be sent messages."
+"ACTIVITY_CATEGORY_TYPE_SITEPAGEADMINCONTACT";"Pages"

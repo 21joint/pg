@@ -1,0 +1,478 @@
+"{item:$subject} commented on {item:$owner}'s {var:$listingtype} listing {item:$object:$title}: {body:$body}";"{item:$subject} commented on {item:$owner}'s the baby guy item listing {item:$object:$title}: {body:$body}"
+"{item:$subject} replied to a comment on {item:$owner}'s {var:$listingtype} listing {item:$object:$title}: {body:$body}";"{item:$subject} replied to a comment on {item:$owner}'s the baby guy item listing {item:$object:$title}: {body:$body}"
+"You can also choose the photo snapshot for the video displayed in the slideshow by using 'Video Snapshot' option.";"You can also choose the photo snapshot for the video displayed in the slideshow by using 'Video Snapshot' option."
+"posted by";"posted by"
+"Popular Tags";"Popular Tags"
+"Popular Tags (%s)";"Popular Tags (%s)"
+"Note: Users will not be able to create listings in '%s', until you have created atleast one category. Please create some categories from the Admin Panel for this listing type to enable users to create listings.";"Note: Users will not be able to create listings in '%s', until you have created atleast one category. Please create some categories from the Admin Panel for this listing type to enable users to create listings."
+"Sorry, you can not post a new listing right now. Please try again after sometime or contact us by filling the 'Contact Us' form using the 'Contact' link available in the footer of our site.";"Sorry, you can not post a new listing right now. Please try again after sometime or contact us by filling the 'Contact Us' form using the 'Contact' link available in the footer of our site."
+"There are currently no paid packages available of the site. Please upgrade your package.";"There are currently no paid packages available of the site. Please upgrade your package."
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_NEW_LISTTYPE_19";"Multiple Listing Types - When a new the baby guy item is posted."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_NEW_LISTTYPE_19";"New the baby guy item"
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_PHOTO_UPLOAD_LISTTYPE_19";"Multiple Listing Types - When someone uploads a photo to the baby guy item."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_PHOTO_UPLOAD_LISTTYPE_19";"Uploading a photo to the baby guy item"
+"ADMIN_ACTIVITY_TYPE_VIDEO_SITEREVIEW_LISTTYPE_19";"Multiple Listing Types - When someone uploads a video to the baby guy item."
+"_ACTIVITY_ACTIONTYPE_VIDEO_SITEREVIEW_LISTTYPE_19";"Uploading a video to the baby guy item"
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_VIDEO_NEW_LISTTYPE_19";"Multiple Listing Types - When someone uploads a video to the baby guy item."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_VIDEO_NEW_LISTTYPE_19";"Uploading a video to the baby guy item"
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_REVIEW_ADD_LISTTYPE_19";"Multiple Listing Types - When someone write a review on the baby guy item."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_REVIEW_ADD_LISTTYPE_19";"Writing a new the baby guy item review"
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_TOPIC_CREATE_LISTTYPE_19";"Multiple Listing Types - When someone creates a new the baby guy item topic."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_TOPIC_CREATE_LISTTYPE_19";"Creating the baby guy item discussion topic"
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_TOPIC_REPLY_LISTTYPE_19";"Multiple Listing Types - When someone replies to the baby guy item topic."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_TOPIC_REPLY_LISTTYPE_19";"Replying to the baby guy item discussion topic"
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_CHANGE_PHOTO_LISTTYPE_19";"Multiple Listing Types - When the baby guy item Owner change their the baby guy item profile photo as User."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_CHANGE_PHOTO_LISTTYPE_19";"When the baby guy item Owner change their the baby guy item profile photo as User"
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_WISHLIST_ADD_LISTING_LISTTYPE_19";"Multiple Listing Types - When someone adds the baby guy item in wishlist."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_WISHLIST_ADD_LISTING_LISTTYPE_19";"Adding the baby guy item to wishlist"
+"{item:$subject} posted a new the baby guy item listing:";"{item:$subject} posted a new the baby guy item listing:"
+"{item:$subject} added {var:$count} photo(s) to the the baby guy item listing: {item:$object:$title} {body:$body}";"{item:$subject} added {var:$count} photo(s) to the the baby guy item listing: {item:$object:$title} {body:$body}"
+"{item:$subject} posted a new discussion {item:$object:topic} in the the baby guy item listing {itemParent:$object:sitereview}: {body:$body}";"{item:$subject} posted a {item:$object:topic} in the the baby guy item listing {itemParent:$object:sitereview}: {body:$body}"
+"{item:$subject} replied to discussion {item:$object:topic} in the the baby guy item listing {itemParent:$object:sitereview_listing}: {body:$body}";"{item:$subject} replied to discussion {item:$object:topic} in the the baby guy item listing {itemParent:$object:sitereview_listing}: {body:$body}"
+"{item:$subject} changed the profile picture of the the baby guy item listing {item:$object:$title}:";"{item:$subject} changed the profile picture of the the baby guy item listing {item:$object:$title}:"
+"{item:$subject} added a new video in the the baby guy item listing {item:$object:$title}: {body:$body}";"{item:$subject} added a new video in the the baby guy item listing {item:$object:$title}: {body:$body}"
+"{item:$subject} added a new video in the the baby guy item listing {item:$object}:";"{item:$subject} added a new video in the the baby guy item listing {item:$object}:"
+"{item:$subject} rated and wrote a review for the the baby guy item listing {item:$object}:";"{item:$subject} rated and wrote a review for the the baby guy item listing {item:$object}:"
+"{item:$subject} posted a new the baby guy item listing: {item:$object}.";"{item:$subject} posted a new the baby guy item listing: {item:$object}."
+"Edit The Baby Guy Item Location";"Edit Listing Location"
+"Edit the location of your the baby guy item by clicking on 'Edit The Baby Guy Item Location' below. You can accurately mark the position of your the baby guy item on the map by dragging-and-dropping the marker on the map at the right position, and then clicking on Save Changes to save the position.";"Edit the location of your listing by clicking on 'Edit Listing Location' below. You can accurately mark the position of your listing on the map by dragging-and-dropping the marker on the map at the right position, and then clicking on Save Changes to save the position."
+"You have not added a location for your the baby guy item. %1$sClick here%2$s to add a location for your the baby guy item.";"You have not added a location for your listing. %1$sClick here%2$s to add a location for your listing."
+"Post New The Baby Guy Item";"Post New Listing"
+"Compose your new the baby guy item below, then click 'Submit' to publish the the baby guy item.";"Compose your new listing below, then click 'Submit' to publish the listing."
+"The Baby Guy Item Title";"Listing Title"
+"Who may see this the baby guy item?";"Who may see this listing?"
+"Who may comment on this the baby guy item?";"Who may comment on this listing?"
+"Who may upload photos for this the baby guy item?";"Who may upload photos for this listing?"
+"Who may create videos for this the baby guy item?";"Who may create videos for this listing?"
+"Select the networks, members of which should be able to see your the baby guy item. (Press Ctrl and click to select multiple networks. You can also choose to make your the baby guy item viewable to everyone.)";"Select the networks, members of which should be able to see your listing. (Press Ctrl and click to select multiple networks. You can also choose to make your listing viewable to everyone.)"
+"Show this the baby guy item in search results";"Show this listing in search results"
+"Show this the baby guy item on browse page and in various blocks.";"Show this the baby guy item on browse page and in various blocks."
+"SEPARATE_THE BABY GUY ITEM_TAGS_WITH_COMMAS";"Separate tags with commas."
+"Your the baby guy item has been successfully created. You can enhance your the baby guy item from this Dashboard by creating other components.";"Your listing has been successfully created. You can enhance your listing from this Dashboard by creating other components."
+"View The Baby Guy Item";"View Listing"
+"View The Baby Guy Item &raquo;";"View Listing &raquo;"
+"End the baby guy item on a specific date. (Please select date by clicking on the calendar icon below.)";"End listing on a specific date. (Please select date by clicking on the calendar icon below.)"
+"When should this the baby guy item end?";"When should this listing end?"
+"Note: your the baby guy item will be expired in %1$s %2$s after an approval or it may be changed by admin.";"Note: your listing will be expired in %1$s %2$s after an approval or it may be changed by admin."
+"All The Baby Guy";"All Listings"
+"Only Open The Baby Guy";"Only Open Listings"
+"Only Closed The Baby Guy";"Only Closed Listings"
+"Everyone's The Baby Guy";"Everyone's Listings"
+"Only My Friends' The Baby Guy";"Only My Friends' Listings"
+"The Baby Guy I Like";"Listings I Like"
+"Only Expired The Baby Guy";"Only Expired Listings"
+"The Baby Guy Having";"Listings Having"
+"Only The Baby Guy With Photos";"Only Listings With Photos"
+"Only The Baby Guy Item With Photos";"Only Listing With Photos"
+"Edit the overview for your the baby guy item using the editor below, and then click 'Save Overview' to save changes.";"Edit the overview for your listing using the editor below, and then click 'Save Overview' to save changes."
+"DASHBOARD_THE BABY GUY ITEM_SAVE_OVERVIEW";"Save Overview"
+"DASHBOARD_THE BABY GUY ITEM_EDIT_OVERVIEW";"Edit Overview"
+"Edit The Baby Guy Item Overview";"Edit Listing Overview"
+"Contact information will be displayed on your the baby guy item profile.";"Contact information will be displayed on your the baby guy item profile."
+"ADD_DASHBOARD_THE BABY GUY ITEM_WHERE_TO_BUY_OPTION";"Add Where to Buy Option"
+"EDIT_DASHBOARD_THE BABY GUY ITEM_WHERE_TO_BUY_OPTION";"Edit Where to Buy"
+"Add DASHBOARD_THE BABY GUY ITEM_WHERE_TO_BUY option for this the baby guy item using the form below. Enter the name of the Store and other details where this the baby guy item is available.";"Add Where to Buy option for this listing using the form below. Enter the name of the Store and other details where this listing is available."
+"Select the online store for your the baby guy item from available stores drop-down below.";"Select the online store for your listing from available stores drop-down below."
+"Enter the URL of the Store's webpage where this the baby guy item is available. (We recommend you to enter complete URL.)";"Enter the URL of the Store's webpage where this listing is available. (We recommend you to enter complete URL.)"
+"Edit The Baby Guy Item Style";"Edit Listing Style"
+"Edit the CSS style of your the baby guy item using the text area below, and then click 'Save Style' to save changes.";"Edit the CSS style of your listing using the text area below, and then click 'Save Style' to save changes."
+"Add your own CSS code above to give your the baby guy item a more personalized look.";"Add your own CSS code above to give your listing a more personalized look."
+"Custom Advanced the baby guy item Style";"Custom Advanced listing Style"
+"Meta keywords are a great way to provide search engines with information about your the baby guy item so that search engines populate your the baby guy item in search results. Below, you can add meta keywords for this the baby guy item. (The tags entered by you for this the baby guy item will also be added to the meta keywords.)";"Meta keywords are a great way to provide search engines with information about your the baby guy item so that search engines populate your the baby guy item in search results. Below, you can add meta keywords for this listing. (The tags entered by you for this listing will also be added to the meta keywords.)"
+"Edit The Baby Guy Item Info";"Edit The Baby Guy Item Info"
+"Edit the information of your the baby guy item using the form below.";"Edit the information of your listing using the form below."
+"Delete The Baby Guy Item?";"Delete The Baby Guy Item?"
+"Are you sure that you want to delete the The Baby Guy Item with the title ""%1$s"" last modified %2$s? It will not be recoverable after being deleted.";"Are you sure that you want to delete the Listing with the title ""%1$s"" last modified %2$s? It will not be recoverable after being deleted."
+"You have not added a location for your the baby guy item. %s to add a location for your the baby guy item.";"You have not added a location for your listing. %s to add a location for your listing."
+"(You can edit the end date to make the the baby guy item live again.)";"(You can edit the end date to make the listing live again.)"
+"You do not have any the baby guy item that match your search criteria.";"You do not have any listing that match your search criteria."
+"You do not have any the baby guy.";"You do not have any listings."
+"Get started by %1$sposting%2$s a new the baby guy item.";"Get started by %1$sposting%2$s a new listing."
+"You have already created the maximum number of the baby guy allowed. If you would like to create a new the baby guy item, please delete an old one first.";"You have already created the maximum number of listings allowed. If you would like to create a new listing, please delete an old one first."
+"Publish The Baby Guy Item";"Publish Listing"
+"Close The Baby Guy Item";"Close Listing"
+"Open The Baby Guy Item";"Open Listing"
+"Delete The Baby Guy Item";"Delete Listing"
+"Popular The Baby Guy Item Tags";"Popular Listing Tags"
+"Browse the tags created for the baby guy item by the various members.";"Browse the tags created for listing by the various members."
+"Edit The Baby Guy Item Photos";"Edit Listing Photos"
+"Edit and manage the photos of your the baby guy item below.";"Edit and manage the photos of your listing below."
+"An attractive photo and video Slideshow will be displayed on your The Baby Guy Item Profile page. Below, you can choose the photos to be displayed in this slideshow by using the 'Show in Slideshow' option.";"An attractive photo and video Slideshow will be displayed on your The Baby Guy Item Profile page. Below, you can choose the photos to be displayed in this slideshow by using the 'Show in Slideshow' option."
+"There are currently no photos in this the baby guy item. %1$sClick here%2$s to add photos now!";"There are currently no photos in this listing. %1$sClick here%2$s to add photos now!"
+"Choose photos on your computer to add to this the baby guy item. (2MB maximum).";"Choose photos on your computer to add to this listing. (2MB maximum)."
+"DASHBOARD_THE BABY GUY ITEM_WHERE_TO_BUY options of %s";"Where to Buy options of %s"
+"There are currently no DASHBOARD_THE BABY GUY ITEM_WHERE_TO_BUY option for this the baby guy item. Click %s to add options now!";"There are currently no Where to Buy option for this listing. Click %s to add options now!"
+"Edit The Baby Guy Item Videos";"Edit Listing Videos"
+"Edit and manage the videos of your the baby guy item below.";"Edit and manage the videos of your listing below."
+"There are currently no videos in this the baby guy item. Click %s to add videos now!";"There are currently no videos in this listing. Click %s to add videos now!"
+"An attractive photo and video Slideshow will be displayed on your The Baby Guy Item Profile page. Below, you can select a video to be displayed in that slideshow by using the 'Show in Slideshow' option.";"An attractive photo and video Slideshow will be displayed on your The Baby Guy Item Profile page. Below, you can select a video to be displayed in that slideshow by using the 'Show in Slideshow' option."
+"Add a new video in this the baby guy item using the form below.";"Add a new video in this listing using the form below."
+"Click 'Add Photos' to select one or more photos from your computer. After you have selected the photos, they will begin to upload right away. When your upload is finished, click the button below your photo to save them to your the baby guy item.";"Click 'Add Photos' to select one or more photos from your computer. After you have selected the photos, they will begin to upload right away. When your upload is finished, click the button below your photo to save them to your listing."
+"Go to the The Baby Guy Item %s";"Go to the The Baby Guy Item %s"
+"Please %s to update your reviews for this The Baby Guy Item.";"Please %s to update your reviews for this Listing."
+"Post a New The Baby Guy Item";"New The Baby Guy Item"
+"You have not composed an overview for your the baby guy item. Click %s to compose it from the Dashboard of your the baby guy item.";"You have not composed an overview for your listing. Click %s to compose it from the Dashboard of your listing."
+"You have not added any photo in your the baby guy item. %1$sClick here%2s to add your first photo.";"You have not added any photo in your listing. %1$sClick here%2s to add your first photo."
+"You have not added any video in your the baby guy item. %1$sClick here%2$s to add your first video.";"You have not added any video in your listing. %1$sClick here%2$s to add your first video."
+"There are currently no videos in this the baby guy item. %1$sClick here%2$s to add your first video.";"There are currently no videos in this listing. %1$sClick here%2$s to add your first video."
+"No the baby guy have been posted yet.";"No listings have been posted yet."
+"BE_THE_FIRST_THE BABY GUY ITEM_TO %1$spost%2$s one!";"Be the first to %1$spost%2$s one!"
+"Nobody has posted a the baby guy item with that criteria.";"Nobody has posted a listing with that criteria."
+"Be the first to the baby guy item %1$spost%2$s one!";"Be the first to %1$spost%2$s one!"
+"This is the the baby guy item browse page.";"This is the the baby guy item browse page."
+"Create your message with the form given below. (This message will be sent to the owner of this The Baby Guy Item.)";"Create your message with the form given below. (This message will be sent to the owner of this The Baby Guy Item.)"
+"DASHBOARD_THE BABY GUY ITEM_WHERE_TO_BUY";"Where to Buy"
+"DASHBOARD_THE BABY GUY ITEM_OVERVIEW";"Overview"
+"The Baby Guy Home";"The Baby Guy Home"
+"Browse The Baby Guy";"Browse The Baby Guy"
+"My The Baby Guy";"My The Baby Guy"
+"Top Rated The Baby Guy";"Top Rated The Baby Guy"
+"Most Liked The Baby Guy";"Most Liked The Baby Guy"
+"Popular The Baby Guy";"Popular The Baby Guy"
+"Most Commented The Baby Guy";"Most Commented The Baby Guy"
+"THE BABY GUY ITEM_TAG_(Keywords)";"Tags (Keywords)"
+"Please %1$sclick here%2$s to give your review and ratings for this the baby guy item.";"Please %1$sclick here%2$s to give your review and ratings for this listing."
+"Please %1$sclick here%2$s to update your reviews for this the baby guy item.";"Please %1$sclick here%2$s to update your reviews for this listing."
+"Please select the wishlists in which you want to add this the baby guy item.";"Please select the wishlists in which you want to add this listing."
+"You have not created any wishlist yet. Get Started by creating and adding the baby guy.";"You have not created any wishlist yet. Get Started by creating and adding listings."
+"You can also add this the baby guy item in a new wishlist below:";"You can also add this listing in a new wishlist below:"
+"THE BABY GUY ITEM_TAG :";"Tag :"
+"THE BABY GUY ITEM_TAGS:";"Tags:"
+"THE BABY GUY ITEM_TAGS";"Tags"
+"EXPLORE_THE BABY GUY ITEM_TAGS &raquo;";"Explore Tags &raquo;"
+"Featured The Baby Guy";"Featured The Baby Guy"
+"Sponsored The Baby Guy";"Sponsored The Baby Guy"
+"%s the baby guy item found.";"%s listing found.";"%s listings found."
+"%s the baby guy item";"%s listing";"%s listings"
+"%s the baby guy item entry";"%s listing entry";"%s listings entries"
+"The Baby Guy";"The Baby Guy"
+"The Baby Guy Item of the Day";"The Baby Guy Item of the Day"
+"This the baby guy item has been closed by the owner.";"This listing has been closed by the owner."
+"What do you like about this The Baby Guy Item?";"What do you like about this Listing?"
+"What do you dislike about this The Baby Guy Item?";"What do you dislike about this Listing?"
+"You may add a video to your the baby guy item either by choosing from your existing videos, or by posting a new video:";"You may add a video to your listing either by choosing from your existing videos, or by posting a new video:"
+"No discussion topics have been posted in this the baby guy item yet. Click %1$s to start a discussion.";"No discussion topics have been posted in this listing yet. Click %1$s to start a discussion."
+"'s The Baby Guy Item";"'s Listing"
+"This message corresponds to the The Baby Guy Item: ";"This message corresponds to the Listing: "
+"Your the baby guy item's location has been modified successfully.";"Your listing's location has been modified successfully."
+"THE BABY GUY ITEM_STORE";"Store"
+"THE BABY GUY ITEM_STORE_URL";"Store URL"
+"Delete DASHBOARD_THE BABY GUY ITEM_WHERE_TO_BUY?";"Delete Where to Buy?"
+"Are you sure that you want to delete this DASHBOARD_THE BABY GUY ITEM_WHERE_TO_BUY? It will not be recoverable after being deleted.";"Are you sure that you want to delete this Where to Buy? It will not be recoverable after being deleted."
+"THE BABY GUY ITEM_POSTED_BY";"Posted By"
+"THE BABY GUY ITEM_POSTED_ON:";"Posted On :"
+"THE BABY GUY ITEM_POSTED_BY:";"Posted By :"
+"THE BABY GUY ITEM_posted_by";"posted by"
+"VIEW_ALL_THE BABY GUY ITEM_STORES";"View all Stores &raquo;"
+"ENTER_THE_ADDRESS_OF_THE BABY GUY ITEM_STORE";"Enter the address of the store."
+"THE BABY GUY ITEM_AT %s store";"at %s store";"at %s stores"
+"* The above cost for the %s is estimated and may slightly vary after including the taxes, manufacturer rebate, shipping cost, or any other sales / promotion on the baby guy Stores.";"* The above cost for the %s is estimated and may slightly vary after including the taxes, manufacturer rebate, shipping cost, or any other sales / promotion on Stores."
+"No reviews have been written for this the baby guy item yet.";"No reviews have been written for this listing yet."
+"Select the best alternatives for %s below. (Selected alternatives will be displayed in 'Best Alternatives' block on this the baby guy item's profile page.)";"Select the best alternatives for %s below. (Selected alternatives will be displayed in 'Best Alternatives' block on this the baby guy item's profile page.)"
+"Select the Store where this the baby guy item is available.";"Select the Store where this listing is available."
+"This the baby guy item has beed expired.";"This listing has beed expired."
+"Edit Where to Buy option for this the baby guy item using the form below.";"Edit Where to Buy option for this listing using the form below."
+"NEW_THE BABY GUY ITEM_WHERE_TO_BUY_OPTION_HAS_BEEN_ADDED_SUCCESSFULLY";"New 'Where to Buy' option has been added successfully."
+"EDIT_THE BABY GUY ITEM_WHERE_TO_BUY_OPTION_HAS_BEEN_EDITED_SUCCESSFULLY";"'Where to Buy' option has been edited successfully."
+"DELETE_THE BABY GUY ITEM_WHERE_TO_BUY_OPTION_HAS_BEEN_DELETED_SUCCESSFULLY";"'Where to Buy' option has been deleted successfully."
+"Oops! Something went wrong and you can not add this The Baby Guy Item to your wishlist. Please try again after sometime.";"Oops! Something went wrong and you can not add this Listing to your wishlist. Please try again after sometime."
+"Showing the baby guy tagged with: ";"Showing listings tagged with: "
+"No the baby guy item have been posted yet.";"No listing have been posted yet."
+"If this the baby guy item is published, it cannot be switched back to draft mode.";"If this listing is published, it cannot be switched back to draft mode."
+"You are already subscribed to this member's the baby guy.";"You are already subscribed to this member's listings."
+"Would you like to subscribe to this member's the baby guy?";"Would you like to subscribe to this member's listings?"
+"You are now subscribed to this member's the baby guy.";"You are now subscribed to this member's listings."
+"You are already not subscribed to this member's the baby guy.";"You are already not subscribed to this member's listings."
+"Would you like to unsubscribe from this member's the baby guy?";"Would you like to unsubscribe from this member's listings?"
+"You are no longer subscribed to this member's the baby guy.";"You are no longer subscribed to this member's listings."
+"{item:$subject} added a new event in the the baby guy item listing {item:$object}:";"{item:$subject} added a new event in the the baby guy item listing {item:$object}:"
+"Who may post discussion topics for this the baby guy item?";"Who may post discussion topics for this listing?"
+"Who may create event for this the baby guy item?";"Who may create event for this listing?"
+"ADMIN_ACTIVITY_TYPE_SITEREVIEW_EVENT_NEW_LISTTYPE_19";"Multiple Listing Types - When someone creates a new event in the baby guy item listing."
+"_ACTIVITY_ACTIONTYPE_SITEREVIEW_EVENT_NEW_LISTTYPE_19";"Create event in the baby guy item listing"
+"The Baby Guy I Have Claimed";"The Baby Guy I Have Claimed"
+"There are no the baby guy to be claimed yet.";"There are no listings to be claimed yet."
+"About You and Your the baby guy item: ";"About You and Your listing: "
+"You have not claimed for any the baby guy yet.";"You have not claimed for any listings yet."
+"Create a The Baby Guy Item";"Create a Listing"
+"Create a the baby guy item using these quick, easy steps and get going.";"Create a listing using these quick, easy steps and get going."
+"1. Choose a the baby guy item Package";"1. Choose a listing Package"
+"Select a package that best matches your requirements. Packages differ in terms of features available to the baby guy created under them. You can change your package anytime later.";"Select a package that best matches your requirements. Packages differ in terms of features available to listings created under them. You can change your package anytime later."
+"Are you sure you want to change package for this The Baby Guy Item? Once you change package, all the settings of this the baby guy item will be applied according to the new package, including features available, price, etc.";"Are you sure you want to change package for this Listing? Once you change package, all the settings of this listing will be applied according to the new package, including features available, price, etc."
+"If you want to change the package for your the baby guy item, please select one package from the following list of available packages.";"If you want to change the package for your listing, please select one package from the following list of available packages."
+"Note: Once you change package for your the baby guy item, all the settings of the the baby guy item will be applied according to the new package, including apps available, features available, price, etc.";"Note: Once you change package for your listing, all the settings of the listing will be applied according to the new package, including apps available, features available, price, etc."
+"Thank you for submitting your payment. Your payment is currently pending - your the baby guy item will be activated when we are notified that the payment has completed successfully. Please return to our login the baby guy item when you receive an email notifying you that the payment has completed.";"Thank you for submitting your payment. Your payment is currently pending - your listing will be activated when we are notified that the payment has completed successfully. Please return to our login listing when you receive an email notifying you that the payment has completed."
+"You have already applied for this the baby guy item.";"You have already applied for this listing."
+"Back to Dashboard the baby guy item";"Back to Dashboard listing"
+"Back to My the baby guy";"Back to My listings"
+"Thank you! Your payment for your the baby guy item has been completed successfully.";"Thank you! Your payment for your listing has been completed successfully."
+"Continue to Dashboard the baby guy item";"Continue to Dashboard listing"
+"Continue to My the baby guy";"Continue to My listings"
+"Your the baby guy item is pending payment. You will receive an email when the
+  payment completes.";"Your listing is pending payment. You will receive an email when the
+  payment completes."
+"You have created a the baby guy item that requires payment. You will be taken to a secure checkout area where you can pay for your the baby guy item.";"You have created a listing that requires payment. You will be taken to a secure checkout area where you can pay for your listing."
+"Order your The Baby Guy Item";"Order your Listing"
+"Your The Baby Guy Item requires payment:";"Your Listing requires payment:"
+" to renew the baby guy item.";" to renew listing."
+"The package for your The Baby Guy Item requires payment. You have not fulfilled the payment for this The Baby Guy Item.";"The package for your Listing requires payment. You have not fulfilled the payment for this Listing."
+"Your package for this The Baby Guy Item has expired and needs to be renewed.";"Your package for this Listing has expired and needs to be renewed."
+"Your package for this The Baby Guy Item is about to expire and needs to be renewed.";"Your package for this Listing is about to expire and needs to be renewed."
+"2. Configure your the baby guy item based on the package you have chosen.";"2. Configure your listing based on the package you have chosen."
+"Below, you can file a claim for a the baby guy item on this community that you believe should be owned by you. Your request will be sent to the administration.";"Below, you can file a claim for a listing on this community that you believe should be owned by you. Your request will be sent to the administration."
+"The Baby Guy Item Name";"Listing Name"
+"Start typing the name of the the baby guy item";"Start typing the name of the listing"
+"About You and the The Baby Guy Item";"About You and the Listing"
+"Renew The Baby Guy Item";"Renew Listing"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_CANCELLED_TITLE";"The Baby Guy Item Listing Cancelled"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_CANCELLED_DESCRIPTION";"This is the email that gets sent to a member when their the baby guy item listing is cancelled."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_CANCELLED_SUBJECT";"Your the baby guy item listing: [list_title] has been cancelled."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_CANCELLED_BODY";"[header]
+
+Your the baby guy item listing: [list_title_with_link] has been cancelled.
+
+To visit this the baby guy item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+If your the baby guy item listing required to be renewed, then you may do so from its dashboard.
+
+[footer]"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_EXPIRED_TITLE";"The Baby Guy Item Listing Expired: (for free packages)"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_EXPIRED_DESCRIPTION";"This is the email that gets sent to a member when their the baby guy item listing belonging to a free package expires."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_EXPIRED_SUBJECT";"Your the baby guy item Listing: [list_title] has expired."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_EXPIRED_BODY";"[header]
+
+
+Your the baby guy item listing: [list_title_with_link] has expired. It has reached the limit of its package.
+
+
+To visit this the baby guy item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+
+[footer]"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_RENEW_TITLE";"Listing Expired: (for paid packages)"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_RENEW_DESCRIPTION";"This is the email that gets sent to a member when their listing belonging to a paid package expires."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_RENEW_SUBJECT";"Your the baby guy item Listing: [list_title] has expired and needs to be renewed."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_RENEW_BODY";"[header]
+
+Your the baby guy item listing: [list_title_with_link] has expired. It has reached the limit of its package. You may renew this listing from its dashboard.
+
+To visit this the baby guy item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_OVERDUE_TITLE";"The Baby Guy Item Listing Overdue"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_OVERDUE_DESCRIPTION";"This is the email that gets sent to a member when their the baby guy item listing is overdue."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_OVERDUE_SUBJECT";"Your the baby guy item listing: [list_title] is overdue."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_OVERDUE_BODY";"[header]
+
+Your the baby guy item listing: [list_title_with_link] is overdue because of a failed or missed payment.
+
+To visit this the baby guy item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+To renew your the baby guy item listing, you may do so from its dashboard.
+
+[footer]"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_PENDING_TITLE";"The Baby Guy Item Listing Activation Pending"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_PENDING_DESCRIPTION";"This is the email that gets sent to a member when their the baby guy item listing activation is pending."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_PENDING_SUBJECT";"Your the baby guy item listing activation is pending."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_PENDING_BODY";"[header]
+
+Thank you for creating your the baby guy item listing on our social network! Your listing activation is pending, awaiting completion of the transaction. Your listing will be activated soon; we will notify you by email when it is ready.
+Thank you for your patience.
+
+[list_title]
+[list_description]
+
+[footer]"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_ACTIVE_TITLE";"The Baby Guy Item Listing Activated"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_ACTIVE_DESCRIPTION";"This is the email that gets sent to a member when their the baby guy item listing is activated."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_ACTIVE_SUBJECT";"Your the baby guy item listing: [list_title] is now active."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_ACTIVE_BODY";"[header]
+
+Thank you for creating your the baby guy item listing on [site_title]! Your listing is now active.
+
+[list_title]
+[list_description]
+
+To visit this the baby guy item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_RECURRENCE_TITLE";"The Baby Guy Item Listing Payment Recurrence"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_RECURRENCE_DESCRIPTION";"This is the email that gets sent to a member when they are billed for a recurring payment."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_RECURRENCE_SUBJECT";"Your payment for your the baby guy item listing has been billed."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_RECURRENCE_BODY";"[header]
+
+Your payment for your the baby guy item listing has been billed. You should receive an email from the
+payment gateway regarding this charge. Thank you for subscribing to our social
+network.
+
+[list_title]
+[list_description]
+
+To visit this the baby guy item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_REFUNDED_TITLE";"The Baby Guy Item Listing Payment Refunded"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_REFUNDED_DESCRIPTION";"This is the email that gets sent to a member when their the baby guy item listing payment is refunded."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_REFUNDED_SUBJECT";"Your payment for your the baby guy item listing has been refunded."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_REFUNDED_BODY";"[header]
+
+Your payment for your the baby guy item listing has been refunded.
+
+[list_title]
+[list_description]
+
+[footer]"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_APPROVED_TITLE";"Listing Approved"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_APPROVED_DESCRIPTION";"This is the email that gets sent to a member when their the baby guy item listing is approved."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_APPROVED_SUBJECT";"Your the baby guy item listing: [list_title] has been approved."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_APPROVED_BODY";"[header]
+
+Thank you for creating your the baby guy item listing on our social network! Your listing has now been approved.
+
+[list_title]
+[list_description]
+
+To visit this listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_DISAPPROVED_TITLE";"Listing Disapproved"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_DISAPPROVED_DESCRIPTION";"This is the email that gets sent to a member when their listing is disapproved."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_DISAPPROVED_SUBJECT";"Your the baby guy item listing: [list_title] has been disapproved."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_DISAPPROVED_BODY";"[header]
+
+Your listing has been disapproved.
+
+[list_title]
+[list_description]
+
+To visit this the baby guy item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_APPROVAL_PENDING_TITLE";"The Baby Guy Item Listing Approval Pending"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_APPROVAL_PENDING_DESCRIPTION";"This is the email that gets sent to a member when their the baby guy item listing is pending for approval."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_APPROVAL_PENDING_SUBJECT";"Your the baby guy item listing: [list_title] is in pending state and awaiting administrative approval."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_APPROVAL_PENDING_BODY";"[header]
+
+Your the baby guy item listing is in pending state and awaiting administrative approval.
+
+[list_title]
+[list_description]
+
+To visit this the baby guy item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_DECLINED_TITLE";"The Baby Guy Item Listing Declined"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_DECLINED_DESCRIPTION";"This is the email that gets sent to a member when their the baby guy item listing is declined."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_DECLINED_SUBJECT";"Your the baby guy item listing: [list_title] has been declined."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_DECLINED_BODY";"[header]
+
+Your the baby guy item listing has been declined.
+
+[list_title]
+[list_description]
+
+[footer]"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_CHANGEOWNER_EMAIL_TITLE";"The Baby Guy Item - Listing Owner Changed"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_CHANGEOWNER_EMAIL_DESCRIPTION";"This is the email that goes to a member when owner of their the baby guy item listing has been changed."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_CHANGEOWNER_EMAIL_SUBJECT";"Owner of the the baby guy item listing: [list_title] has been changed."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_CHANGEOWNER_EMAIL_BODY";"[header]
+
+The owner of the the baby guy item listing: [list_title_with_link] has been changed. You are now no more the owner of this listing. All ownership rights for this listing have been transferred to the new owner.
+
+For any queries or comments, you may contact us here: [site_contact_us_link].
+
+To visit this the baby guy item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_CLAIMOWNER_EMAIL_TITLE";"The Baby Guy Item Listing Claimed"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_CLAIMOWNER_EMAIL_DESCRIPTION";"This mail is sent to the Site Admin when any member claims that Listing."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_CLAIMOWNER_EMAIL_SUBJECT";"This the baby guy item listing: [list_title] has been claimed."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_CLAIMOWNER_EMAIL_BODY";"[header]
+
+This the baby guy item listing: [list_title_with_link] has been claimed.
+
+To view this the baby guy item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]
+"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_CLAIM_APPROVED_EMAIL_TITLE";"The Baby Guy Item - Listing Owner Changed"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_CLAIM_APPROVED_EMAIL_DESCRIPTION";"This is the email that goes to a member when their claim for a listing has been approved."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_CLAIM_APPROVED_EMAIL_SUBJECT";"Your claim for the baby guy item listing: [list_title] has been approved"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_CLAIM_APPROVED_EMAIL_BODY";"[header]
+
+Congratulations! Your claim for the the baby guy item Listing: [list_title_with_link] has been approved. You are now the owner of this listing.
+
+To visit this the baby guy item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_BECOMEOWNER_EMAIL_TITLE";"The Baby Guy Item - Listing Ownership Given"""
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_BECOMEOWNER_EMAIL_DESCRIPTION";"This email goes to the new owner of the the baby guy item listing when owner of a the baby guy item listing is changed."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_BECOMEOWNER_EMAIL_SUBJECT";"You are now the owner of the the baby guy item listing: [list_title]."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_BECOMEOWNER_EMAIL_BODY";"[header]
+
+You are now the owner of the the baby guy item Listing: [list_title_with_link]. All ownership rights for this listing have been provided to you.
+
+For any queries or comments, you may contact us here: [site_contact_us_link].
+
+To visit this the baby guy item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_CLAIM_HOLDING_EMAIL_TITLE";"The Baby Guy Item Listing Claim Approval on Hold"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_CLAIM_HOLDING_EMAIL_DESCRIPTION";"This is the email that goes to a member when their claim for a the baby guy item listing has been put on hold for approval."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_CLAIM_HOLDING_EMAIL_SUBJECT";"Your claim for the baby guy item listing: [list_title] has been put on hold for approval"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_CLAIM_HOLDING_EMAIL_BODY";"[header]
+
+Your claim for the the baby guy item Listing: [list_title_with_link] has been put on hold for approval.
+
+To visit this listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[comments]
+
+[footer]
+"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_CLAIM_DECLINED_EMAIL_TITLE";"The Baby Guy Item Listing Claim Declined"""
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_CLAIM_DECLINED_EMAIL_DESCRIPTION";"This is the email that goes to a member when their claim for a the baby guy item listing has been declined."
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_CLAIM_DECLINED_EMAIL_SUBJECT";"Your claim for the baby guy item listing: [list_title] has been declined"
+"_EMAIL_SITEREVIEW_THE BABY GUY ITEM_CLAIM_DECLINED_EMAIL_BODY";"[header]
+
+Your claim for this the baby guy item Listing: [list_title_with_link] has been declined.
+
+To visit this the baby guy item listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[comments]
+
+[footer]
+"
+"THE BABY GUY ITEM Creation";"Listing Creation"
+"Edit The Baby Guy Item";"Edit Listing"
+"Edit The Baby Guy Item Contact Details";"Edit Listing Contact Details"
+"Edit The Baby Guy Item Meta Keywords";"Edit Listing Meta Keywords"
+"Edit The Baby Guy Item Where to Buy";"Edit Listing Where to Buy"
+"Edit The Baby Guy Item Profile Picture";"Edit Listing Profile Picture"
+"Edit The Baby Guy Item 'Where to Buy'";"Edit Listing 'Where to Buy'"
+"Edit The Baby Guy Item Details";"Edit Listing Details"
+"The Baby Guy Item Listings";"The Baby Guy Item Listings"
+"Post new the baby guy item listings to this page.";"Post new the baby guy item listings to this page."
+"Post / Manage The Baby Guy Item Listings";"Post / Manage The Baby Guy Item Listings"
+"Post New The Baby Guy Item Listing";"Post New The Baby Guy Item Listing"
+"Add The Baby Guy Item Listings";"Add The Baby Guy Item Listings"
+"Here, you can add various The Baby Guy Item Listings to be associated with and displayed on your Page by using the auto-suggest below. From the auto-suggest, you can choose to add the The Baby Guy Item Listings created by this Page’s Admins. Listings added by you here will display in a tab on your Page Profile.<br />Below, you can also remove listings added by you by using the link for each.";"Here, you can add various The Baby Guy Item Listings to be associated with and displayed on your Page by using the auto-suggest below. From the auto-suggest, you can choose to add the The Baby Guy Item Listings created by this Page’s Admins. Listings added by you here will display in a tab on your Page Profile.<br />Below, you can also remove listings added by you by using the link for each."
+"Here, you can add various The Baby Guy Item Listings to be associated with and displayed on your Page by using the auto-suggest below. From the auto-suggest, you can choose to add the The Baby Guy Item Listings from various The Baby Guy Item Listings created on this site. Listings added by you here will display in a tab on your Page Profile.<br />Below, you can also remove listings added by you by using the link for each.";"Here, you can add various The Baby Guy Item Listings to be associated with and displayed on your Page by using the auto-suggest below. From the auto-suggest, you can choose to add the The Baby Guy Item Listings from various The Baby Guy Item Listings created on this site. Listings added by you here will display in a tab on your Page Profile.<br />Below, you can also remove listings added by you by using the link for each."
+"Here, you can add various The Baby Guy Item Listings to be associated with and displayed on your Page by using the auto-suggest below. From the auto-suggest, you can choose to add the The Baby Guy Item Listings created by you. Listings added by you here will display in a tab on your Page Profile.<br />Below, you can also remove listings added by you by using the link for each.";"Here, you can add various The Baby Guy Item Listings to be associated with and displayed on your Page by using the auto-suggest below. From the auto-suggest, you can choose to add the The Baby Guy Item Listings created by you. Listings added by you here will display in a tab on your Page Profile.<br />Below, you can also remove listings added by you by using the link for each."
+"Create The Baby Guy";"Create The Baby Guy"
+"Manage The Baby Guy";"Manage The Baby Guy"
