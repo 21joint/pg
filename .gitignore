@@ -5,7 +5,5 @@ application/settings/mail.php
 application/modules
 application/packages
 application/plugins
-application/settings
-application/widgets
 public/temporary
 application/libraries/Zend/Service/WindowsAzure/Diagnostics/ConfigurationDiagnosticInfrastructureLogs.php
