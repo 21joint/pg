@@ -1,0 +1,10 @@
+a:1:{s:2:"en";a:5:{s:47:"_EMAIL_SITEREVIEW_CHANGELISTINGTYPE_EMAIL_TITLE";s:45:"Multiple Listing Types - Listing Type Changed";s:53:"_EMAIL_SITEREVIEW_CHANGELISTINGTYPE_EMAIL_DESCRIPTION";s:99:"This is the email that goes to a listing owner when listing type of their Listing has been changed.";s:49:"_EMAIL_SITEREVIEW_CHANGELISTINGTYPE_EMAIL_SUBJECT";s:74:"Listing type of the [listing_type] Listing: [list_title] has been changed.";s:46:"_EMAIL_SITEREVIEW_CHANGELISTINGTYPE_EMAIL_BODY";s:319:"[header]
+
+The listing type of the [listing_type] Listing: [list_title_with_link] has been changed to [new_listing_type] listing type.
+
+For any queries or comments, you may contact us here: [site_contact_us_link].
+
+To visit this listing, click on the link below, or copy-paste it in your browser:
+[object_link]
+
+[footer]";s:44:"ACTIVITY_CATEGORY_TYPE_SITEREVIEWLISTINGTYPE";s:8:"Listings";}}
