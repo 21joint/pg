@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>parental.guidanceguide.com</ShortName>
+  <LongName>parental.guidanceguide.com Search Suggestions</LongName>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Image height="16" width="16" type="image/vnd.microsoft.icon"/>
+  <Url type="text/html" rel="results" method="GET" template="https://parental.guidanceguide.com/search">
+    <Param name="query" value="{searchTerms}"/>
+    <Param name="otracker" value="{start}"/>
+  </Url>
+  <Url type="application/x-suggestions+json" rel="results" method="GET" template="https://parental.guidanceguide.com/s">
+    <Param name="query" value="{searchTerms}"/>
+    <Param name="from" value="{openSearch}"/>
+  </Url>
+</OpenSearchDescription>
