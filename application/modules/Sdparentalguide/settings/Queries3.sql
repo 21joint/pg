@@ -12,13 +12,13 @@ INSERT INTO `engine4_core_tasks` (`title`, `module`, `plugin`, `timeout`, `proce
 ('User Credibility Maintenance',	'Sdparentalguide',	'Sdparentalguide_Plugin_Task_Credibility',	300,	1,	0,	0,	0,	0,	0,	0,	0,	0,	0);
 
 ALTER TABLE `engine4_users`
-ADD `gg_credibility` int NULL DEFAULT '0';
+ADD `gg_contribution` int NULL DEFAULT '0';
 
 ALTER TABLE `engine4_users`
 ADD `gg_activities` int(11) NULL DEFAULT '0';
 
 ALTER TABLE `engine4_users`
-ADD `gg_credibility_updated` tinyint NULL DEFAULT '0';
+ADD `gg_contribution_updated` tinyint NULL DEFAULT '0';
 
 ALTER TABLE `engine4_gg_topics`
 ADD `custom` tinyint NULL DEFAULT '1';

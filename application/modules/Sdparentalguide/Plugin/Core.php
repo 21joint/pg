@@ -147,9 +147,9 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                 $userCredits = $row->credit;
                 $userActivities = $row->activities;
             }
-            $user->gg_credibility = $userCredits;
+            $user->gg_contribution = $userCredits;
             $user->gg_activities = $userActivities;
-            $user->gg_credibility_updated = 1;
+            $user->gg_contribution_updated = 1;
             $user->save();
             
         } catch (Exception $ex) {
