@@ -10,7 +10,7 @@
 class Sdparentalguide_Model_DbTable_AssignedBadges extends Engine_Db_Table
 {
     protected $_rowClass = "Sdparentalguide_Model_AssignedBadge";
-    protected $_name = 'gg_assigned_badges';
+    protected $_name = 'gg_user_badges';
 
 } 
 

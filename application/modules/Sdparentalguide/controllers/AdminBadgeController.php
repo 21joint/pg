@@ -222,6 +222,7 @@ class Sdparentalguide_AdminBadgeController extends Core_Controller_Action_Admin
       $values = $formFilter->getValues();
     }
     $values['assigned'] = $this->getParam("assigned");
+    $values['profile_display'] = $this->getParam("profile_display");
     $table = Engine_Api::_()->getDbtable('users', 'user');
     $tableName = $table->info("name");    
     $valuesTable = Engine_Api::_()->fields()->getTable('user', 'values');
@@ -252,9 +253,12 @@ class Sdparentalguide_AdminBadgeController extends Core_Controller_Action_Admin
     if( !empty($values['level_id']) ) {
         $select->where($tableName.'.level_id = ?',$values['level_id']);
     }
-    $select->joinLeft("$assignedTableName","($assignedTableName.user_id = $tableName.user_id AND $assignedTableName.badge_id = $badge_id) OR $assignedTableName.user_id IS NULL",array("badge_id","active"));
+    $select->joinLeft("$assignedTableName","($assignedTableName.user_id = $tableName.user_id AND $assignedTableName.badge_id = $badge_id) OR $assignedTableName.user_id IS NULL",array("badge_id","active","profile_display"));
     if(isset($values['assigned']) && ($values['assigned'] == 0 || $values['assigned'] == 1)){
         $select->where("$assignedTableName.active = ?",(int)$values['assigned']);
+    }
+    if(isset($values['profile_display']) && ($values['profile_display'] == 0 || $values['profile_display'] == 1)){
+        $select->where("$assignedTableName.profile_display = ?",(int)$values['profile_display']);
     }
     $select->group("$tableName.user_id");
     
@@ -287,7 +291,7 @@ class Sdparentalguide_AdminBadgeController extends Core_Controller_Action_Admin
         $assignedTableName = $assignedTable->info("name");
         
         $selectAssigned = $table->select()->setIntegrityCheck(false)->from($tableName)
-                ->joinLeft($assignedTableName,"$assignedTableName.badge_id = $tableName.badge_id",array("$assignedTableName.active as assigned_active"))
+                ->joinLeft($assignedTableName,"$assignedTableName.badge_id = $tableName.badge_id",array("$assignedTableName.active as assigned_active","$assignedTableName.profile_display"))
                 ->where("$assignedTableName.user_id = ?",$user->getIdentity());
         
         $this->view->assignedBadges = $assignedBadges = $table->fetchAll($selectAssigned); 
@@ -305,7 +309,7 @@ class Sdparentalguide_AdminBadgeController extends Core_Controller_Action_Admin
         }
 
         if(!empty($values['listingtype_id'])){
-            $select->where("listingtype_id = ?",$values['listingtype_id']);
+//            $select->where("listingtype_id = ?",$values['listingtype_id']);
         }
         if(!empty($values['topic_id'])){
             $select->where("topic_id = ?",$values['topic_id']);
@@ -317,6 +321,9 @@ class Sdparentalguide_AdminBadgeController extends Core_Controller_Action_Admin
 
         if(isset($values['active']) && ($values['active'] == 0 || $values['active'] == 1)){
             $select->where("active = ?",(int)$values['active']);
+        }
+        if(isset($values['profile_display']) && ($values['profile_display'] == 0 || $values['profile_display'] == 1)){
+            $select->where("$assignedTableName.profile_display = ?",(int)$values['profile_display']);
         }
         if(count($assignedBadgesIds) > 0){
             $select->where("badge_id NOT IN (?)",$assignedBadgesIds);
@@ -346,6 +353,28 @@ class Sdparentalguide_AdminBadgeController extends Core_Controller_Action_Admin
             'user_id' => $user_id,
             'badge_id' => $badge->getIdentity(),
             'owner_id' => $viewer->getIdentity(),
+        ));
+        $row->save();
+        
+        $this->view->status = true;        
+    }
+    public function displayQuickAction(){
+        $this->_helper->requireSubject('sdparentalguide_badge');
+        $badge = Engine_Api::_()->core()->getSubject();
+        $user_id = $this->getParam("user_id");
+        if(empty($user_id)){
+            $this->view->status = false;
+            return;
+        }
+        $viewer = Engine_Api::_()->user()->getViewer();
+        $assignedTable = Engine_Api::_()->getDbtable('assignedBadges', 'sdparentalguide');
+        $row = $assignedTable->createRow();
+        $row->setFromArray(array(
+            'user_id' => $user_id,
+            'badge_id' => $badge->getIdentity(),
+            'owner_id' => $viewer->getIdentity(),
+            'active' => 0,
+            'profile_display' => 1
         ));
         $row->save();
         
@@ -393,6 +422,22 @@ class Sdparentalguide_AdminBadgeController extends Core_Controller_Action_Admin
         }
         $assignedTable = Engine_Api::_()->getDbtable('assignedBadges', 'sdparentalguide');
         $assignedTable->update(array('active' => $status),$where);
+        
+        $this->view->status = true;        
+    }
+    public function displayStatusAction(){
+        $this->_helper->requireSubject('sdparentalguide_badge');
+        $badge = Engine_Api::_()->core()->getSubject();
+        $user_id = $this->getParam("user_id");
+        $status = (int)$this->getParam("status");
+        $where = array(
+            'badge_id = ?' => $badge->getIdentity()
+        );
+        if(!empty($user_id)){
+            $where['user_id = ?'] = $user_id;
+        }
+        $assignedTable = Engine_Api::_()->getDbtable('assignedBadges', 'sdparentalguide');
+        $assignedTable->update(array('profile_display' => $status),$where);
         
         $this->view->status = true;        
     }
@@ -444,6 +489,37 @@ class Sdparentalguide_AdminBadgeController extends Core_Controller_Action_Admin
         foreach($user_ids as $user_id){
              $assignedTable->update(array('active' => $status),array('user_id = ?' => $user_id,'badge_id = ?' => $badge_id));
         }
+        
+        $this->view->status = true;        
+    }
+    
+    public function displayBulkAction(){
+        $this->_helper->requireSubject('sdparentalguide_badge');
+        $badge = Engine_Api::_()->core()->getSubject();
+        $viewer = Engine_Api::_()->user()->getViewer();
+        $badge_id = $badge->getIdentity();
+        $display = $this->getParam("display");
+        $user_ids = $this->getParam("user_ids");
+        if(empty($user_ids)){
+            $this->view->status = false;
+            return;
+        }
+        
+        $assignedTable = Engine_Api::_()->getDbtable('assignedBadges', 'sdparentalguide');
+        foreach($user_ids as $user_id){
+            $row = $assignedTable->fetchRow($assignedTable->select()->where('badge_id = ?',$badge_id)->where('user_id = ?',$user_id));
+            if(empty($row)){
+                $row = $assignedTable->createRow();
+                $row->owner_id = $viewer->getIdentity();
+            }            
+            $row->setFromArray(array(
+                'user_id' => $user_id,
+                'badge_id' => $badge->getIdentity(),
+                'profile_display' => (int)$display
+            ));
+            $row->save();
+        }
+        
         
         $this->view->status = true;        
     }

@@ -96,6 +96,11 @@ function startSearch(){
           data.assigned = $("assigned_checkbox").getElement("input[type=radio]:checked").get("value");
       }
   }catch(e){ console.log(e); }
+  try{
+      if($("profile_display_checkbox").getElement("input[type=radio]:checked") && $("profile_display_checkbox").getElement("input[type=radio]:checked").get("value").length > 0){
+          data.profile_display = $("profile_display_checkbox").getElement("input[type=radio]:checked").get("value");
+      }
+  }catch(e){ console.log(e); }
   data.format = 'html';
   var url = '<?php echo $this->url() ?>';
   window.searchRequest = new Request.HTML({
@@ -308,6 +313,49 @@ function revokeAssigned(element){
   });
   req.send();  
 }
+function switchProfileDisplay(element,display){
+  var multimodify_form = $('multimodify_form');
+  var inputs = multimodify_form.getElements("tbody input[type=checkbox]:checked");
+  var ids = [];
+  inputs.each(function(input){
+      ids.push(input.get("data-id"));
+  });
+  if(ids.length <= 0){
+      return;
+  }
+  var loader = en4.core.loader.clone();
+  loader.addClass("sd_loader");
+  
+  var url = '<?php echo $this->url(array('action' => 'display-bulk')) ?>';
+  var req = new Request.JSON({
+      url: url,
+      data: {
+          user_ids: ids,
+          badge_id: '<?php echo $this->badge->getIdentity(); ?>',
+          display: display,
+          format: 'json'
+      },
+      onRequest: function(){
+          loader.inject($(element),"after");
+      },
+      onSuccess: function(responseJSON){
+          loader.destroy();
+          inputs.each(function(input){
+              var tr = input.getParent("tr");
+              var radio = tr.getElement("input.sd_radio_display");                            
+              radio.set("checked",display);
+              var radio = tr.getElement("input.sd_radio_assigned");
+              if(!radio.checked){
+                  radio.checked = display;
+              }
+              var checkbox = tr.getElement("input.sd_select_checkbox");
+              checkbox.set("checked",null);
+              $("select-all").set("checked",null);
+          });
+      }
+  });
+  req.send();  
+}
 </script>
 
 <?php $badge = $this->badge; ?>
@@ -321,6 +369,13 @@ function revokeAssigned(element){
             </div>
             <div class="sd_assign_selected">
                 <a href='javascript:void(0);'><button onclick="unmarkAssigned(this);"><?php echo $this->translate("Un-Assign Badge"); ?></button></a>
+            </div>
+            
+            <div class="sd_profile_display_selected">
+                <a href='javascript:void(0);'><button onclick="switchProfileDisplay(this,1);"><?php echo $this->translate("Display of Profile"); ?></button></a>
+            </div>
+            <div class="sd_profile_display_selected">
+                <a href='javascript:void(0);'><button onclick="switchProfileDisplay(this,0);"><?php echo $this->translate("Remove from Profile"); ?></button></a>
             </div>
         </div>
         <div class="sd_badge_photo">
@@ -344,6 +399,11 @@ function revokeAssigned(element){
             <input type="radio" name="active" id="active-1" value="1" onchange="startSearch();"><label for="active-1"><?php echo $this->translate("Active"); ?></label><br>
             <input type="radio" name="active" id="active-0" value="0" onchange="startSearch();"><label for="active-0"><?php echo $this->translate("Inactive"); ?></label>
         </div>
+        <div class='sd_assign_filter' id="profile_display_checkbox">
+            <input type="radio" name="profile_display" id="profile_display-" value="" onchange="startSearch();"><label for="profile_display-"><?php echo $this->translate("All"); ?></label><br>
+            <input type="radio" name="profile_display" id="profile_display-1" value="1" onchange="startSearch();"><label for="profile_display-1"><?php echo $this->translate("Displayed on Profile"); ?></label><br>
+            <input type="radio" name="profile_display" id="profile_display-0" value="0" onchange="startSearch();"><label for="profile_display-0"><?php echo $this->translate("Not Displayed on Profile"); ?></label>
+        </div>
     </div>
     <?php echo $this->formFilter->render($this) ?>
 </div>
@@ -362,9 +422,10 @@ function revokeAssigned(element){
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("User Name") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("First Name") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Last Name") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Level") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Level") ?></th>        
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Assigned") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Revoke") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Displayed") ?></th>
       </tr>
     </thead>
     <tbody>
@@ -394,6 +455,9 @@ function revokeAssigned(element){
             <td class='admin_table_centered'>
                 <input type="radio" class="sd_radio_revoked" disabled <?php echo ( $item->active === 0 ? $this->translate('checked=checked') : '' ); ?>>
             </td>
+            <td class="admin_table_centered nowrap">
+                <input type="radio" class="sd_radio_display" disabled <?php echo ( $item->profile_display ? $this->translate('checked=checked') : '' ); ?>>  
+            </td>
           </tr>
         <?php endforeach; ?>
       <?php endif; ?>
@@ -421,3 +485,11 @@ function revokeAssigned(element){
   </div>
 </div>
 </div>
+<style type='text/css'>
+div .sd_badge_actions_wrap .sd_badge_actions {
+    margin-right: 25px;    
+}    
+div .sd_badge_actions_wrap .sd_assign_filter {
+    min-width: 80px;
+}
+</style>

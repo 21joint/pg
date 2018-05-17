@@ -186,7 +186,9 @@ en4.core.runonce.add(function(){
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Badge Name") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Image") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Topic Name") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Level") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Type") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Active") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Displayed") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Action") ?></th>
       </tr>
     </thead>
@@ -205,9 +207,15 @@ en4.core.runonce.add(function(){
                 <?php endif; ?>
             </td>
             <td class="admin_table_centered nowrap">
-               <?php if(($level = $item->getLevel())): ?>
-                    <?php echo $this->translate($level); ?>
+               <?php if(($badgeType = $item->getBadgeType())): ?>
+                    <?php echo $this->translate($badgeType); ?>
                 <?php endif; ?>
+            </td>
+            <td class="admin_table_centered nowrap">
+                <input type="radio" disabled <?php echo ( $item->active ? $this->translate('checked=checked') : '' ); ?>>  
+            </td>
+            <td class="admin_table_centered nowrap">
+                <input type="radio" disabled <?php echo ( $item->profile_display ? $this->translate('checked=checked') : '' ); ?>>  
             </td>
             <td class='admin_table_centered'>
                 <a href='<?php echo $this->url(array('controller' => 'badge', 'action' => 'assign','badge_id' => $item->getIdentity()));?>'>

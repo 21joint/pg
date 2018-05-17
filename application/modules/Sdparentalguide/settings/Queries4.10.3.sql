@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 /**
- * Author:  Ahmad Raza
+ * Author:  Stars Developer
  * Created: May 16, 2018
  */
 
@@ -33,3 +33,20 @@ ADD `gg_following_count` int NOT NULL DEFAULT '0' AFTER `gg_followers_count`;
 
 ALTER TABLE `engine4_users`
 CHANGE `gg_expert` `gg_expert_count` int NOT NULL DEFAULT '0' AFTER `gg_mvp`;
+
+
+ALTER TABLE `engine4_gg_assigned_badges`
+RENAME TO `engine4_gg_user_badges`;
+
+ALTER TABLE `engine4_gg_user_badges`
+ADD `profile_display` tinyint NULL DEFAULT '1';
+
+ALTER TABLE `engine4_gg_badges`
+ADD `profile_display` tinyint NULL DEFAULT '0',
+ADD `type` varchar(32) NULL AFTER `profile_display`;
+
+ALTER TABLE `engine4_gg_badges`
+ADD `description` longtext COLLATE 'utf8_unicode_ci' NOT NULL AFTER `name`;
+
+ALTER TABLE `engine4_gg_badges`
+DROP `listingtype_id`;

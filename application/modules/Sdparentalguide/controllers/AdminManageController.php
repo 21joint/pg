@@ -243,7 +243,10 @@ class Sdparentalguide_AdminManageController extends Core_Controller_Action_Admin
     
     if(isset($values['active']) && ($values['active'] == 0 || $values['active'] == 1)){
         $select->where("active = ?",(int)$values['active']);
-    }    
+    }  
+    if(isset($values['profile_display']) && ($values['profile_display'] == 0 || $values['profile_display'] == 1)){
+        $select->where("profile_display = ?",(int)$values['profile_display']);
+    }
     $select->order("badge_id DESC");
     $valuesCopy = array_filter($values);
       

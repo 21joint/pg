@@ -25,6 +25,13 @@ class Sdparentalguide_Model_Badge extends Core_Model_Item_Abstract
       }
       return null;
   }
+  public function getBadgeType(){
+      $defaultTypes = Engine_Api::_()->sdparentalguide()->getBadgeTypes();
+      if(isset($defaultTypes[$this->type])){
+          return $defaultTypes[$this->type];
+      }
+      return null;
+  }
   public function setPhoto($photo)
   {
     if( $photo instanceof Zend_Form_Element_File ) {
