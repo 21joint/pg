@@ -3,5 +3,7 @@ application/settings/general.php
 application/settings/cache.php
 application/settings/mail.php
 public/temporary
-temporary
-/nbproject/private/
+temporary/cache
+temporary/log
+.vscode
+temporary/cache-old
