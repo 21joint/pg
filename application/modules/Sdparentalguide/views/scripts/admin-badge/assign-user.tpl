@@ -105,7 +105,7 @@
                     </a>
                 <?php else: ?>
                     <a href='javascript:void(0);' onclick="updateAssignStatus(this,'<?php echo $item->getIdentity(); ?>','<?php echo $this->user->getIdentity(); ?>','1');">
-                        <?php echo $this->translate("Active") ?>
+                        <?php echo $this->translate("Activate") ?>
                     </a>
                 <?php endif; ?>
                 <?php if($item->profile_display): ?>
@@ -265,7 +265,7 @@ function displayBadge(element,badgeId,userId){
           options.empty();
           var anchor = new Element("a",{
               href: 'javascript:void(0);',
-              html: "<?php echo $this->translate('Active'); ?>",
+              html: "<?php echo $this->translate('Activate'); ?>",
               onclick: "updateAssignStatus(this,'"+badgeId+"','"+userId+"','1');"
           });
           anchor.inject(options,"bottom");
@@ -358,7 +358,7 @@ function updateAssignStatus(element,badgeId,userId,status){
           if(status == '0'){
             anchor = new Element("a",{
                 href: 'javascript:void(0);',
-                html: "<?php echo $this->translate('Active'); ?>",
+                html: "<?php echo $this->translate('Activate'); ?>",
                 onclick: "updateAssignStatus(this,'"+badgeId+"','"+userId+"','1');"
             });
           }

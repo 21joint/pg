@@ -30,8 +30,8 @@ class Sdparentalguide_Form_Admin_Badge_Create extends Engine_Form
         
         $this->addElement("Text",'topic',array(
             'label' => 'Topic Name',
-            'allowEmpty' => false,
-            'required' => true
+//            'allowEmpty' => false,
+//            'required' => true
         ));
         
         $this->addElement("Textarea",'description',array(

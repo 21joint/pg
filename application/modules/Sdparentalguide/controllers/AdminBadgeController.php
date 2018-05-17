@@ -353,6 +353,8 @@ class Sdparentalguide_AdminBadgeController extends Core_Controller_Action_Admin
             'user_id' => $user_id,
             'badge_id' => $badge->getIdentity(),
             'owner_id' => $viewer->getIdentity(),
+            'active' => 1,
+            'profile_display' => 1
         ));
         $row->save();
         
@@ -401,7 +403,8 @@ class Sdparentalguide_AdminBadgeController extends Core_Controller_Action_Admin
             $row->setFromArray(array(
                 'user_id' => $user_id,
                 'badge_id' => $badge->getIdentity(),
-                'active' => 1
+                'active' => 1,
+                'profile_display' => 1
             ));
             $row->save();
         }

@@ -99,6 +99,7 @@ function searchBadges(){
           var responsePagination = div.getElement(".admin_results");
           responsePagination.inject(pagination[0],"after");
           pagination.destroy();
+          Smoothbox.bind(responseData);
         }
     });
     window.searchRequest.send();

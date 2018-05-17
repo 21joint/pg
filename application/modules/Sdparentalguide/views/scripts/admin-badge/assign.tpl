@@ -388,7 +388,7 @@ function switchProfileDisplay(element,display){
                 <a href='javascript:void(0);'><button onclick="activateAssigned(this);"><?php echo $this->translate("Activate"); ?></button></a>
             </div>
             <div class="sd_revoke_selected">
-                <a href='javascript:void(0);'><button onclick="revokeAssigned(this);"><?php echo $this->translate("Revoke"); ?></button></a>
+                <a href='javascript:void(0);'><button onclick="revokeAssigned(this);"><?php echo $this->translate("Inactive"); ?></button></a>
             </div>
             <div class="sd_start_search">
                 <a href='javascript:void(0);'><button onclick="startSearch();"><?php echo $this->translate("Search"); ?></button></a>
@@ -424,7 +424,7 @@ function switchProfileDisplay(element,display){
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Last Name") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Level") ?></th>        
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Assigned") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Revoke") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Inactive") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Displayed") ?></th>
       </tr>
     </thead>
