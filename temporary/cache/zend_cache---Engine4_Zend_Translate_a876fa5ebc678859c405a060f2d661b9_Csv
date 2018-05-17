@@ -1,7 +1,0 @@
-a:1:{s:2:"en";a:11:{s:45:"*Please complete this field - it is required.";s:45:"*Please complete this field - it is required.";s:8:"Question";s:8:"Question";s:6:"Answer";s:6:"Answer";s:77:"Your form can not be saved. Please contact Site Administrator for this issue.";s:77:"Your form can not be saved. Please contact Site Administrator for this issue.";s:73:"Your form contained errors and could not be submitted. Please check them.";s:73:"Your form contained errors and could not be submitted. Please check them.";s:40:"Thank you, your form has been submitted.";s:40:"Thank you, your form has been submitted.";s:29:"ITEM_TYPE_SITESTATICPAGE_PAGE";s:12:"Static Pages";s:50:"_EMAIL_SITESTATICPAGE_PROFILEQUESTIONS_EMAIL_TITLE";s:15:"Page Form Email";s:56:"_EMAIL_SITESTATICPAGE_PROFILEQUESTIONS_EMAIL_DESCRIPTION";s:115:"This is the email that gets sent to Page Admins when visitors to their Page fill and submit the Form on their Page.";s:52:"_EMAIL_SITESTATICPAGE_PROFILEQUESTIONS_EMAIL_SUBJECT";s:58:"[[form_label]] A response has been received for this form.";s:49:"_EMAIL_SITESTATICPAGE_PROFILEQUESTIONS_EMAIL_BODY";s:41:"[header]
-
-[content]:
-
-[message]
-
-[footer]";}}

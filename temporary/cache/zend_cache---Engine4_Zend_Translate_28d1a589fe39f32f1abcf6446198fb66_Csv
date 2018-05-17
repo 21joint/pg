@@ -1,7 +1,0 @@
-a:1:{s:2:"en";a:14:{s:21:"ACTIVITY_TYPE_REACTED";s:30:"When people react on my posts.";s:54:"{item:$subject} reacted on your {item:$object:$label}.";s:54:"{item:$subject} reacted on your {item:$object:$label}.";s:14:"Post a sticker";s:14:"Post a sticker";s:13:"Sticker Store";s:13:"Sticker Store";s:57:"Add these new stickers to make your comments interesting.";s:57:"Add these new stickers to make your comments interesting.";s:27:"_EMAIL_NOTIFY_REACTED_TITLE";s:5:"React";s:33:"_EMAIL_NOTIFY_REACTED_DESCRIPTION";s:71:"This email is sent to the member when someone reacts the member's post.";s:29:"_EMAIL_NOTIFY_REACTED_SUBJECT";s:35:"[sender_title] reacted on your post";s:26:"_EMAIL_NOTIFY_REACTED_BODY";s:137:"[header]
-
-[sender_title] has reacted one of your posts. Please click the following link to view it:
-
-http://[host][object_link]
-
-[footer]";s:26:"_ACTIVITY_ACTIONTYPE_REACT";s:27:"When I reacted on item/post";s:25:"ADMIN_ACTIVITY_TYPE_REACT";s:36:"When someone react on the item/post.";s:19:"%s reacted on this.";a:2:{i:0;s:19:"%s reacted on this.";i:1;s:19:"%s reacted on this.";}s:25:"%s person reacted on this";a:2:{i:0;s:25:"%s person reacted on this";i:1;s:25:"%s person reacted on this";}s:35:"ACTIVITY_CATEGORY_TYPE_SITEREACTION";s:9:"Recations";}}
