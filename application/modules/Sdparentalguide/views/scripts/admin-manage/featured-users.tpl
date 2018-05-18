@@ -467,7 +467,6 @@ function removeMvp(element){
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Level") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Featured") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("MVP") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Expert") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Options") ?></th>
       </tr>
     </thead>
@@ -497,9 +496,6 @@ function removeMvp(element){
             </td>
             <td class='admin_table_centered'>
                 <input type="radio" disabled class='radio_mvp' <?php echo ( $item->gg_mvp ? $this->translate('checked=checked') : '' ); ?>>              
-            </td>
-            <td class='admin_table_centered'>
-                <input type="radio" disabled <?php echo ( $item->gg_expert ? $this->translate('checked=checked') : '' ); ?>>              
             </td>
             <td>
                 <a class='smoothbox' href='<?php echo $this->url(array('module' => 'user','controller' => 'manage','action' => 'edit', 'id' => $item->user_id),'admin_default',true);?>'>

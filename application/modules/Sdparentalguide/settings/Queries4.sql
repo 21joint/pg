@@ -10,16 +10,16 @@
 
 
 ALTER TABLE `engine4_users`
-DROP `gg_credibility`,
+DROP `gg_contribution`,
 DROP `gg_activities`,
-DROP `gg_credibility_updated`;
+DROP `gg_contribution_updated`;
 
 
 ALTER TABLE `engine4_users`
-ADD `gg_credibility` int NULL DEFAULT '0';
+ADD `gg_contribution` int NULL DEFAULT '0';
 
 ALTER TABLE `engine4_users`
 ADD `gg_activities` int(11) NULL DEFAULT '0';
 
 ALTER TABLE `engine4_users`
-ADD `gg_credibility_updated` tinyint NULL DEFAULT '0';
+ADD `gg_contribution_updated` tinyint NULL DEFAULT '0';

@@ -126,6 +126,14 @@ class Sdparentalguide_Api_Core extends Core_Api_Abstract{
         );
     }
     
+    public function getBadgeTypes(){
+        return array(
+            '1' => 'Special',
+            '2' => 'Expert',
+            '3' => 'Contribution',
+        );
+    }
+    
     public function getListingPhotos(Sitereview_Model_Listing $listing){
         $album = $listing->getSingletonAlbum();        
         $photosPaginator = $album->getCollectiblesPaginator();

@@ -6,4 +6,8 @@ public/temporary
 temporary/cache
 temporary/log
 .vscode
+<<<<<<< HEAD
 temporary/cache-old
+=======
+temporary/cache-old
+>>>>>>> dev-sd
