@@ -75,7 +75,7 @@
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Badge Name") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Image") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Topic Name") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Level") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Type") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Action") ?></th>
       </tr>
     </thead>
@@ -94,18 +94,27 @@
                 <?php endif; ?>
             </td>
             <td class="admin_table_centered nowrap">
-               <?php if(($level = $item->getLevel())): ?>
-                    <?php echo $this->translate($level); ?>
+               <?php if(($badgeType = $item->getBadgeType())): ?>
+                    <?php echo $this->translate($badgeType); ?>
                 <?php endif; ?>
             </td>
             <td class='admin_table_centered table_options'>
                 <?php if($item->assigned_active): ?>
                     <a href='javascript:void(0);' onclick="updateAssignStatus(this,'<?php echo $item->getIdentity(); ?>','<?php echo $this->user->getIdentity(); ?>','0');">
-                        <?php echo $this->translate("Revoke") ?>
+                        <?php echo $this->translate("Inactive") ?>
                     </a>
                 <?php else: ?>
                     <a href='javascript:void(0);' onclick="updateAssignStatus(this,'<?php echo $item->getIdentity(); ?>','<?php echo $this->user->getIdentity(); ?>','1');">
-                        <?php echo $this->translate("Reinstate") ?>
+                        <?php echo $this->translate("Activate") ?>
+                    </a>
+                <?php endif; ?>
+                <?php if($item->profile_display): ?>
+                    <a href='javascript:void(0);' onclick="updateDisplayStatus(this,'<?php echo $item->getIdentity(); ?>','<?php echo $this->user->getIdentity(); ?>','0');">
+                        &nbsp;&nbsp;<?php echo $this->translate("Hide") ?>
+                    </a>
+                <?php else: ?>
+                    <a href='javascript:void(0);' onclick="updateDisplayStatus(this,'<?php echo $item->getIdentity(); ?>','<?php echo $this->user->getIdentity(); ?>','1');">
+                        &nbsp;&nbsp;<?php echo $this->translate("Display") ?>
                     </a>
                 <?php endif; ?>
                 <a href='javascript:void(0);' onclick="deleteAssignedBadge(this,'<?php echo $item->getIdentity(); ?>','<?php echo $this->user->getIdentity(); ?>');">
@@ -206,8 +215,64 @@ function assignBadge(element,badgeId,userId){
           options.empty();
           var anchor = new Element("a",{
               href: 'javascript:void(0);',
-              html: "<?php echo $this->translate('Revoke'); ?>",
+              html: "<?php echo $this->translate('Inactive'); ?>",
               onclick: "updateAssignStatus(this,'"+badgeId+"','"+userId+"','0');"
+          });
+          anchor.inject(options,"bottom");
+          var anchor = new Element("a",{
+              href: 'javascript:void(0);',
+              html: "&nbsp;&nbsp;<?php echo $this->translate('Hide'); ?>",
+              onclick: "updateDisplayStatus(this,'"+badgeId+"','"+userId+"','0');"
+          });
+          anchor.inject(options,"bottom");
+          var anchor = new Element("a",{
+              href: 'javascript:void(0);',
+              html: "&nbsp;&nbsp;<?php echo $this->translate('Delete'); ?>",
+              onclick: "deleteAssignedBadge(this,'"+badgeId+"','"+userId+"');"
+          });
+          anchor.inject(options,"bottom");
+          var tableBody = $$(".admin_table_form.assigned_badges tbody");
+          row.inject(tableBody[0],"bottom");
+          Smoothbox.bind(row);
+        }
+    });
+    req.send();
+}
+function displayBadge(element,badgeId,userId){
+    var url = en4.core.baseUrl+"admin/sdparentalguide/badge/display-quick/user_id/"+userId+"/badge_id/"+badgeId;
+    var loader = en4.core.loader.clone();
+    loader.addClass("sd_loader");
+    $(element).setStyle("display","none");
+    var req = new Request.JSON({
+        url: url,
+        data: {
+            format: 'json'
+        },
+        onRequest: function(){
+            loader.inject($(element),"after");
+        },
+        onCancel: function(){
+            loader.destroy();
+        },
+        onSuccess: function(responseJSON){
+          loader.destroy();
+          if(!responseJSON.status){
+              return;
+          }
+          var row = $(element).getParent("tr").clone();
+          $(element).getParent("tr").destroy();
+          var options = row.getElement(".table_options");
+          options.empty();
+          var anchor = new Element("a",{
+              href: 'javascript:void(0);',
+              html: "<?php echo $this->translate('Activate'); ?>",
+              onclick: "updateAssignStatus(this,'"+badgeId+"','"+userId+"','1');"
+          });
+          anchor.inject(options,"bottom");
+          var anchor = new Element("a",{
+              href: 'javascript:void(0);',
+              html: "&nbsp;&nbsp;<?php echo $this->translate('Hide'); ?>",
+              onclick: "updateDisplayStatus(this,'"+badgeId+"','"+userId+"','0');"
           });
           anchor.inject(options,"bottom");
           var anchor = new Element("a",{
@@ -287,13 +352,56 @@ function updateAssignStatus(element,badgeId,userId,status){
           var options = row.getElement(".table_options");
           var anchor = new Element("a",{
                 href: 'javascript:void(0);',
-                html: "<?php echo $this->translate('Revoke'); ?>",
+                html: "<?php echo $this->translate('Inactive'); ?>",
                 onclick: "updateAssignStatus(this,'"+badgeId+"','"+userId+"','0');"
           });
           if(status == '0'){
             anchor = new Element("a",{
                 href: 'javascript:void(0);',
-                html: "<?php echo $this->translate('Reinstate'); ?>",
+                html: "<?php echo $this->translate('Activate'); ?>",
+                onclick: "updateAssignStatus(this,'"+badgeId+"','"+userId+"','1');"
+            });
+          }
+          anchor.inject($(element),"after");
+          $(element).destroy();
+          Smoothbox.bind(row);
+        }
+    });
+    req.send();
+}
+function updateDisplayStatus(element,badgeId,userId,status){
+    var url = en4.core.baseUrl+"admin/sdparentalguide/badge/display-status/user_id/"+userId+"/badge_id/"+badgeId;
+    var loader = en4.core.loader.clone();
+    loader.addClass("sd_loader");
+    $(element).setStyle("display","none");
+    var req = new Request.JSON({
+        url: url,
+        data: {
+            format: 'json',
+            status: status
+        },
+        onRequest: function(){
+            loader.inject($(element),"after");
+        },
+        onCancel: function(){
+            loader.destroy();
+        },
+        onSuccess: function(responseJSON){
+          loader.destroy();
+          if(!responseJSON.status){
+              return;
+          }
+          var row = $(element).getParent("tr");
+          var options = row.getElement(".table_options");
+          var anchor = new Element("a",{
+                href: 'javascript:void(0);',
+                html: "&nbsp;&nbsp;<?php echo $this->translate('Hide'); ?>",
+                onclick: "updateAssignStatus(this,'"+badgeId+"','"+userId+"','0');"
+          });
+          if(status == '0'){
+            anchor = new Element("a",{
+                href: 'javascript:void(0);',
+                html: "&nbsp;&nbsp;<?php echo $this->translate('Display'); ?>",
                 onclick: "updateAssignStatus(this,'"+badgeId+"','"+userId+"','1');"
             });
           }
@@ -389,7 +497,7 @@ en4.core.runonce.add(function(){
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Badge Name") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Image") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Topic Name") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Level") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Type") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Action") ?></th>
       </tr>
     </thead>
@@ -408,13 +516,16 @@ en4.core.runonce.add(function(){
                 <?php endif; ?>
             </td>
             <td class="admin_table_centered nowrap">
-               <?php if(($level = $item->getLevel())): ?>
-                    <?php echo $this->translate($level); ?>
+               <?php if(($badgeType = $item->getBadgeType())): ?>
+                    <?php echo $this->translate($badgeType); ?>
                 <?php endif; ?>
             </td>
             <td class='admin_table_centered table_options'>
                 <a href='javascript:void(0);' onclick="assignBadge(this,'<?php echo $item->getIdentity(); ?>','<?php echo $this->user->getIdentity(); ?>');">
                     <?php echo $this->translate("Assign") ?>
+                </a>
+                <a href='javascript:void(0);' onclick="displayBadge(this,'<?php echo $item->getIdentity(); ?>','<?php echo $this->user->getIdentity(); ?>','1');">
+                    &nbsp;&nbsp;<?php echo $this->translate("Display") ?>
                 </a>
             </td>            
           </tr>

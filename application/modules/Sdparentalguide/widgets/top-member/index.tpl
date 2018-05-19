@@ -151,11 +151,11 @@ $this->headLink()
                <span class="active_member_icon_points"> <?php echo $user->gg_activities; ?></span>
                <?php else : ?>
                <span><?php echo "<img src =".$this->layout()->staticBaseUrl.'application/modules/Sitecredit/externals/images/icons/credit.png'." />"; ?> </span>
-               <span class="active_member_icon_points"><?php echo $user->gg_credibility; ?></span>
+               <span class="active_member_icon_points"><?php echo $user->gg_contribution; ?></span>
              </div>
              <?php endif; ?>
             </div>
-            <?php $badge = $api->getUserBadge($user->gg_credibility); ?>
+            <?php $badge = $api->getUserBadge($user->gg_contribution); ?>
             <div class="sd_user_badge">
                 <?php if(!empty($badge)): ?>            
                     <?php echo $this->htmlLink(array('route' => 'credit_general', 'module' => 'sitecredit', 'controller' => 'index', 'action' => 'view-detail', 'id' => 

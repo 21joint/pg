@@ -26,7 +26,7 @@ class Sdparentalguide_Widget_TopMemberController extends Engine_Content_Widget_A
         if($param['basedon'] == 'activities'){
             $select->order("gg_activities DESC");
         }else{
-            $select->order("gg_credibility DESC");
+            $select->order("gg_contribution DESC");
         }
         $this->view->paginator= $paginator = Zend_Paginator::factory($select);
         if ($paginator->getTotalItemCount() <= 0) {

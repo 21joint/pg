@@ -31,8 +31,8 @@ ADD `gg_guid` varchar(128) NULL AFTER `gg_user_lastmodified`,
 ADD `gg_ip_lastmodified` varbinary(16) NULL AFTER `gg_guid`;
 
 
-DROP TABLE IF EXISTS `engine4_gg_assigned_badges`;
-CREATE TABLE `engine4_gg_assigned_badges` (
+DROP TABLE IF EXISTS `engine4_gg_user_badges`;
+CREATE TABLE `engine4_gg_user_badges` (
   `user_id` int(11) NOT NULL,
   `badge_id` int(11) NOT NULL,
   `active` tinyint(4) NOT NULL DEFAULT '1',
@@ -63,8 +63,8 @@ CREATE TABLE `engine4_gg_badges` (
   PRIMARY KEY (`badge_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-ALTER TABLE `engine4_gg_assigned_badges`
+ALTER TABLE `engine4_gg_user_badges`
 ADD `assignedbadge_id` int NOT NULL AUTO_INCREMENT UNIQUE FIRST;
-ALTER TABLE `engine4_gg_assigned_badges` DROP PRIMARY KEY, ADD PRIMARY KEY( `assignedbadge_id`);
-ALTER TABLE `engine4_gg_assigned_badges` ADD `owner_id` int NULL DEFAULT '0';
+ALTER TABLE `engine4_gg_user_badges` DROP PRIMARY KEY, ADD PRIMARY KEY( `assignedbadge_id`);
+ALTER TABLE `engine4_gg_user_badges` ADD `owner_id` int NULL DEFAULT '0';
 ALTER TABLE `engine4_gg_badges` ADD `owner_id` int NULL DEFAULT '0';

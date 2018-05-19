@@ -57,17 +57,30 @@ class Sdparentalguide_Form_Admin_Badge_FilterBadges extends Engine_Form
       ->addDecorator('HtmlTag', array('tag' => 'div','class' => 'topic_suggest'))
       ;
     
-    $levelOptions = Engine_Api::_()->sdparentalguide()->getBadgeLevels();
-    $levelOptions[''] = 'All';
-    ksort($levelOptions);
-    $level = new Zend_Form_Element_Select('level');
-    $level
-      ->setLabel('Level')
+//    $levelOptions = Engine_Api::_()->sdparentalguide()->getBadgeLevels();
+//    $levelOptions[''] = 'All';
+//    ksort($levelOptions);
+//    $level = new Zend_Form_Element_Select('level');
+//    $level
+//      ->setLabel('Level')
+//      ->clearDecorators()
+//      ->addDecorator('ViewHelper')
+//      ->addDecorator('Label', array('tag' => null, 'placement' => 'PREPEND'))
+//      ->addDecorator('HtmlTag', array('tag' => 'div'))
+//      ->setMultiOptions($levelOptions)->setAttrib("onchange","searchBadges();");
+    
+    
+    $badgeTypeOptions = Engine_Api::_()->sdparentalguide()->getBadgeTypes();
+    $badgeTypeOptions[''] = 'All';
+    ksort($badgeTypeOptions);
+    $badgeType = new Zend_Form_Element_Select('type');
+    $badgeType
+      ->setLabel('Badge Type')
       ->clearDecorators()
       ->addDecorator('ViewHelper')
       ->addDecorator('Label', array('tag' => null, 'placement' => 'PREPEND'))
       ->addDecorator('HtmlTag', array('tag' => 'div'))
-      ->setMultiOptions($levelOptions)->setAttrib("onchange","searchBadges();");
+      ->setMultiOptions($badgeTypeOptions)->setAttrib("onchange","searchBadges();");
     
     $active = new Zend_Form_Element_Radio('active');
     $active
@@ -79,6 +92,18 @@ class Sdparentalguide_Form_Admin_Badge_FilterBadges extends Engine_Form
           '-11' => 'All',
           '1' => 'Active',
           '0' => 'Inactive'
+      ))->setAttrib("onchange","searchBadges();");
+    
+    $profile_display = new Zend_Form_Element_Radio('profile_display');
+    $profile_display
+      ->clearDecorators()
+      ->addDecorator('ViewHelper')
+      ->addDecorator('Label', array('tag' => null, 'placement' => 'PREPEND'))
+      ->addDecorator('HtmlTag', array('tag' => 'div'))
+      ->setMultiOptions(array(
+          '-11' => 'All',
+          '1' => 'Display on Profile',
+          '0' => 'Not Displayed on Profile'
       ))->setAttrib("onchange","searchBadges();");
 
     $this->addElement('Hidden', 'order', array(
@@ -98,8 +123,10 @@ class Sdparentalguide_Form_Admin_Badge_FilterBadges extends Engine_Form
       $name,
 //      $listingtype_id,
       $topic,
-      $level,
+      $badgeType,
+//      $level,
       $active,
+      $profile_display
     ));
 
     // Set default action without URL-specified params
