@@ -30,22 +30,44 @@ class Sdparentalguide_Form_Admin_Badge_Create extends Engine_Form
         
         $this->addElement("Text",'topic',array(
             'label' => 'Topic Name',
+//            'allowEmpty' => false,
+//            'required' => true
+        ));
+        
+        $this->addElement("Textarea",'description',array(
+            'label' => 'Description',
             'allowEmpty' => false,
             'required' => true
         ));
         
-        $this->addElement("Select",'level',array(
-            'label' => 'Level',
+        $this->addElement("Select",'type',array(
+            'label' => 'Badge Type',
             'required' => true,
             'allowEmpty' => false,
-            'multiOptions' => Engine_Api::_()->sdparentalguide()->getBadgeLevels()
+            'multiOptions' => Engine_Api::_()->sdparentalguide()->getBadgeTypes()
         ));
+        
+//        $this->addElement("Select",'level',array(
+//            'label' => 'Level',
+//            'required' => true,
+//            'allowEmpty' => false,
+//            'multiOptions' => Engine_Api::_()->sdparentalguide()->getBadgeLevels()
+//        ));
         
         $this->addElement("Radio",'active',array(
             'label' => 'Status',
             'multiOptions' => array(
                 '1' => 'Active',
                 '0' => 'Inactive'
+            ),
+            'value' => 1
+        ));
+        
+        $this->addElement("Radio",'profile_display',array(
+            'label' => 'Displayed On Profile',
+            'multiOptions' => array(
+                '1' => 'Yes',
+                '0' => 'No'
             ),
             'value' => 1
         ));

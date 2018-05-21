@@ -1,6 +1,0 @@
-2018-05-10T16:55:24+00:00 DEBUG (7): [Zend] jared@jdxdigdev.com <- robot@guidanceguide.com
-2018-05-10T16:55:24+00:00 DEBUG (7): [System] (core_verification) jared@jdxdigdev.com <- robot@guidanceguide.com
-2018-05-10T17:32:53+00:00 DEBUG (7): [Zend] jared@jdxdigdev.com <- robot@guidanceguide.com
-2018-05-10T17:32:53+00:00 DEBUG (7): [System] (core_verification) jared@jdxdigdev.com <- robot@guidanceguide.com
-2018-05-10T17:32:54+00:00 DEBUG (7): [Zend] greg@guidanceguide.com <- robot@guidanceguide.com
-2018-05-10T17:32:54+00:00 DEBUG (7): [System] (notify_admin_user_signup) greg@guidanceguide.com <- robot@guidanceguide.com

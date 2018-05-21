@@ -12,10 +12,10 @@ class Sdparentalguide_Plugin_Task_Credibility extends Core_Plugin_Task_Abstract
         $usersTable = Engine_Api::_()->getDbTable("users","user");
         $select = $usersTable->select()
                 ->from($usersTable->info("name"))
-                ->where("gg_credibility_updated = ?",0)->limit(50);
+                ->where("gg_contribution_updated = ?",0)->limit(50);
         $users = $usersTable->fetchAll($select);
         if(count($users) <= 0){
-            $usersTable->update(array('gg_credibility_updated' => 0),array('gg_credibility_updated = ?' => 1));
+            $usersTable->update(array('gg_contribution_updated' => 0),array('gg_contribution_updated = ?' => 1));
             return;
         }
         
@@ -28,9 +28,9 @@ class Sdparentalguide_Plugin_Task_Credibility extends Core_Plugin_Task_Abstract
                 $userCredits = $row->credit;
                 $userActivities = $row->activities;
             }
-            $user->gg_credibility = $userCredits;
+            $user->gg_contribution = $userCredits;
             $user->gg_activities = $userActivities;
-            $user->gg_credibility_updated = 1;
+            $user->gg_contribution_updated = 1;
             $user->save();
         }
     }
