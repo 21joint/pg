@@ -606,4 +606,11 @@ return array(
         'type' => 'widget',
         'name' => 'sdparentalguide.listing-rating',
     ),
+    array(
+        'title' => $view->translate('Footer Menu'),
+        'description' => $view->translate('Displaying latest footer menu for ParentalGuide'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.footer',
+    ),
 ) ?>

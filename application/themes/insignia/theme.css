@@ -228,30 +228,6 @@ html[dir="rtl"] .layout_right
 {
   width: $theme_topbar_width;
 }
-/* Footer */
-.layout_page_footer
-{
-  clear: both;
-  text-align: center;
-  overflow: hidden;
-  margin-top: 30px;
-  +foreground;
-}
-.layout_page_footer .layout_main
-{
-  +rounded; 
-  text-align: left;
-  overflow: hidden;
-  padding: 10px;
-  width: 90%;
-  margin: 0 auto;
-}
-div.layout_core_menu_footer
-{
-  color: $theme_font_color_light;
-  margin-top: 0;
-  font-size: 95%;
-}
 
 /*
 MAIN MENU WIDGET
