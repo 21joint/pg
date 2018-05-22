@@ -2,7 +2,32 @@
 
 // FOOTER
 footer.extfox-footer {
-    div.holder {
-        
+    div.top-holder {
+        .social-holder {
+            ul {
+                li {
+                    border-radius: 50%;
+                    background: #93A4A6;
+                    &:hover {
+                        background: $warning;
+                        a {
+                            svg {
+                                color: $dark;
+                            }
+                        }
+                    }
+                    a {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 2rem;
+                        height: 2rem;
+                        svg {
+                            color: $white;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
