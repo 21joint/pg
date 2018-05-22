@@ -132,7 +132,7 @@
                     <div class="col-md-5 col-sm-12 d-flex text-left small text-muted font-weight-light">
                         <?php echo $this->translate('Copyright &copy 2018'); ?>
                     </div>
-                    <div class="col-md-6 col-sm-12 text-right d-flex">
+                    <div class="col-md-6 col-sm-12 text-right d-flex justify-content-start justify-content-sm-end">
                         <ul class="list-inline small text-muted font-weight-light">
                             <li class="list-inline-item">
                                 <a href="<?php echo $this->baseUrl(). '/help/privacy' ?>">
