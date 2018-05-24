@@ -33,7 +33,7 @@
                                 </a>
                             </li>
                             <li  class="mb-2">
-                                <a class="font-weight-light" href="<?php echo $this->baseUrl(). '/help/contact' ?>">
+                                <a class="font-weight-light" href="http://www.guidanceguide.com/contact.php">
                                     <?php echo $this->translate('Contact Us');?>
                                 </a>
                             </li>

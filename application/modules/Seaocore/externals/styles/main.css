@@ -1880,14 +1880,14 @@ div.seaocore_replies_comment_likes_tip{
 /*Replies Widget css ends here*/
 /*scroll to top button start here*/
 .seaocore_up_button {
-    background-color:#E5E5E5;
-    border:1px solid #D6D6D6;
+    background: #fff;
+    border: none;
     border-radius:5px;
     bottom:50px;
     display:block;
     float:left;
     opacity:0.5;
-    filter:alpha(opacity=50);
+    filter:alpha(opacity=90);
     outline:medium none;
     padding:3px;
     position:fixed;
@@ -1913,11 +1913,12 @@ div.seaocore_replies_comment_likes_tip{
     filter:alpha(opacity=0);
 }
 .seaocore_up_button span{
-    background:url(~/application/modules/Seaocore/externals/images/arrow-top.png) no-repeat scroll center center #7F7F7F;
-    border:1px solid #4F4F4F;
-    border-radius:5px;
+    background:url(~/application/themes/guidanceguide/assets/images/arrow_up.svg) no-repeat scroll center center #fff;
+    background-size: 35%;
+    border-radius: 50%;
     float:left;
-    padding:20px;
+    padding: 23px;
+    box-shadow: 0 7px 15px rgba(0, 0, 0, .10);
 }
 /*scroll to top button end here*/
 

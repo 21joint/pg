@@ -3897,6 +3897,53 @@ mark,
   .blockquote-footer::before {
     content: "\2014 \00A0"; }
 
+.seaocore_up_button .seaocore_up_button {
+  background: #fff;
+  border: none; }
+  .seaocore_up_button .seaocore_up_button span {
+    border-radius: 50%; }
+
+header.extfox-header .container .row div.search input {
+  border-radius: 50px;
+  border: 2px solid #F5F5F5;
+  font-size: 13px; }
+  header.extfox-header .container .row div.search input::placeholder {
+    color: #B9CFD1;
+    font-size: 13px; }
+header.extfox-header .container .row div.mini-menu ul li.notifications i {
+  font-size: 22px;
+  cursor: pointer; }
+header.extfox-header .container .row div.mini-menu ul li.notifications .tip-notifications {
+  display: flex;
+  position: absolute;
+  right: 20px;
+  top: -1px;
+  cursor: pointer; }
+  header.extfox-header .container .row div.mini-menu ul li.notifications .tip-notifications span {
+    background-color: #5CC7CE;
+    border-radius: 2px;
+    font-weight: bold;
+    color: #fff;
+    background-clip: padding-box;
+    display: inline-block;
+    text-align: center;
+    height: 22px;
+    min-width: 19px; }
+header.extfox-header .container .row div.mini-menu ul li.notifications span.updates_pulldown_active div.pulldown_contents_wrapper {
+  right: 0;
+  padding: 0;
+  box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  margin-top: 34px; }
+  header.extfox-header .container .row div.mini-menu ul li.notifications span.updates_pulldown_active div.pulldown_contents_wrapper .mark-all {
+    background: #F7FCFC; }
+  header.extfox-header .container .row div.mini-menu ul li.notifications span.updates_pulldown_active div.pulldown_contents_wrapper ul li {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+    border-top: 1px solid #F5F5F5; }
+    header.extfox-header .container .row div.mini-menu ul li.notifications span.updates_pulldown_active div.pulldown_contents_wrapper ul li.notifications_unread {
+      background: #F7FCFC; }
+
 footer.extfox-footer div.top-holder .social-holder ul li {
   border-radius: 50%;
   background: #93A4A6; }

@@ -1,5 +1,92 @@
 @import "node_modules/bootstrap/scss/guidanceguide";
 
+// CORE
+.seaocore_up_button {
+    .seaocore_up_button {
+        background: $white;
+        border: none;
+        span {
+            border-radius: 50%;
+        }
+    }
+}
+
+// HEADER
+header.extfox-header {
+    .container {
+        .row {
+
+            div.search {
+                input {
+                    border-radius: 50px;
+                    border: 2px solid #F5F5F5;
+                    font-size: 13px;
+                    &::placeholder {
+                        color: #B9CFD1;
+                        font-size: 13px;
+                    }
+                }
+            } // end of search
+
+            div.mini-menu {
+                ul {
+                    li {
+                        &.notifications {
+                            i {
+                                font-size: 22px;
+                                cursor: pointer;
+                            }
+                            .tip-notifications {
+                                display: flex;
+                                position: absolute;
+                                right: 20px;
+                                top: -1px;
+                                cursor: pointer;
+                                span {
+                                    background-color: $primary;
+                                    border-radius: 2px;
+                                    font-weight: bold;
+                                    color: $white;
+                                    background-clip: padding-box;
+                                    display: inline-block;
+                                    text-align: center;
+                                    height: 22px;
+                                    min-width: 19px;
+                                }
+                            }
+                            
+                            span.updates_pulldown_active {
+                                div.pulldown_contents_wrapper {
+                                    right: 0;
+                                    // need
+                                    padding: 0;
+                                    box-shadow: 0px 20px 30px rgba(0, 0, 0, .05);
+                                    border-radius: 10px;
+                                    margin-top: 34px;
+                                    .mark-all {
+                                        background: #F7FCFC;
+                                    }
+                                    ul {
+                                        li {
+                                            padding-top: 1rem !important;
+                                            padding-bottom: 1rem !important;
+                                            border-top: 1px solid #F5F5F5;
+                                            &.notifications_unread {
+                                                background: #F7FCFC;
+                                            }
+                                        }
+                                    }
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            } // end of mini-menu
+        }
+    }
+}
+
 // FOOTER
 footer.extfox-footer {
     div.top-holder {
