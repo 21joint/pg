@@ -3960,4 +3960,8 @@ footer.extfox-footer div.top-holder .social-holder ul li {
     footer.extfox-footer div.top-holder .social-holder ul li a svg {
       color: #fff; }
 
+@media only screen and (max-width: 768px) {
+  header.extfox-header .container .row .mini-menu {
+    padding-top: 1rem !important; } }
+
 /*# sourceMappingURL=root.css.map */
