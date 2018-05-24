@@ -32,6 +32,7 @@
     ),
     'files' => array(
       'application/languages/en/sdparentalguide.csv',
+      'application/libraries/Zend/Db/Table/Row/Abstract.php',
     ),
   ),
   'hooks' => array(
