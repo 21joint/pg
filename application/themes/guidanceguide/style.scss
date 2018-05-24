@@ -118,3 +118,18 @@ footer.extfox-footer {
         }
     }
 }
+
+// Mobile
+@media only screen and (max-width: 768px) {
+ 
+    // HEADER
+    header.extfox-header {
+        .container {
+            .row {
+                .mini-menu {
+                    padding-top: 1rem !important;
+                }
+            }
+        }
+    }
+}
