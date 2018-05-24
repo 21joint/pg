@@ -14,12 +14,11 @@ $showOptions = array(
         'value' => 'activities',
     )
 );
-$count=array(
-        'text',
-    'count',
+$count = array(
+    'text', 'count',
     array(
-        'label' => 'Number of top active members to be shown (Note: Maximum 10 will be shown).',
-         'value' => '',
+    'label' => 'Number of top active members to be shown (Note: Maximum 10 will be shown).',
+        'value' => '',
     ));
 
 
@@ -606,4 +605,20 @@ return array(
         'type' => 'widget',
         'name' => 'sdparentalguide.listing-rating',
     ),
+    array(
+        'title' => $view->translate('Footer Menu'),
+        'description' => $view->translate('Displaying latest footer menu for ParentalGuide'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.footer',
+    ),
+
+    array(
+        'title' => $view->translate('Header Menu'),
+        'description' => $view->translate('Displaying header menu for ParentalGuide'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.footer',
+    ),
+
 ) ?>
