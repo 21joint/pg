@@ -52,6 +52,10 @@
             'resource' => 'Sdparentalguide_Plugin_Core',
         ),
         array(
+            'event' => 'onItemUpdateBefore',
+            'resource' => 'Sdparentalguide_Plugin_Core',
+        ),
+        array(
             'event' => 'onRenderLayoutAdmin',
             'resource' => 'Sdparentalguide_Plugin_Core',
         ),
@@ -73,6 +77,7 @@
       'sdparentalguide_badge',
       'sdparentalguide_assigned_badge',
       'sdparentalguide_topic',
+      'sdparentalguide_task',
       'sdparentalguide_preference',
       'sdparentalguide_listing_topic',
       'sdparentalguide_search_term',

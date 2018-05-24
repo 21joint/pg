@@ -118,7 +118,7 @@ class Sdparentalguide_Api_Core extends Core_Api_Abstract{
     }
     public function getBadgeLevels(){
         return array(
-            '1' => 'Expert',
+//            '1' => 'Expert',
             '2' => 'Platinum',
             '3' => 'Gold',
             '4' => 'Silver',

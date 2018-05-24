@@ -17,6 +17,7 @@ class Sdparentalguide_AdminManageController extends Core_Controller_Action_Admin
       $settingFile = APPLICATION_PATH . '/application/settings/cache.php';
       $defaultFilePath = APPLICATION_PATH . '/temporary/cache';
       $this->view->form = $form = new Sdparentalguide_Form_Admin_Manage_Global();
+      return;
 
       if( file_exists($settingFile) ) {
         $currentCache = include $settingFile;
@@ -534,5 +535,40 @@ class Sdparentalguide_AdminManageController extends Core_Controller_Action_Admin
       $table = Engine_Api::_()->getDbtable('users', 'user');
       $table->update(array('gg_mvp' => (int)$mvp),array('user_id IN(?)' => $user_ids));
       $this->view->status = true;
+  }
+  
+  public function jobsAction(){
+      $this->view->navigation = $navigation = Engine_Api::_()->getApi('menus', 'core')
+                ->getNavigation('sdparentalguide_admin_main', array(), 'sdparentalguide_admin_main_jobs');
+      
+      $tasksTable = Engine_Api::_()->getDbTable("tasks","sdparentalguide");
+      if($this->getRequest()->isPost()){
+          
+          $taskId = $this->getParam("task_id");
+          $page = $this->getParam("page",1);
+          $task = Engine_Api::_()->getItem("sdparentalguide_task",$taskId);
+          if(empty($task)){
+              $this->view->status = false;
+              return;
+          }
+          if($page == 1){
+              $task->log(sprintf($this->view->translate("Batch Job Starting: %s"),$task->getTitle()));
+          }
+          $paginator = $task->run($page);
+          $this->view->nextPage = 0;
+          if($paginator->count() > $paginator->getCurrentPageNumber()){
+              $this->view->nextPage = ($page+1);
+          }else{
+              $task->log(sprintf($this->view->translate("Batch Job Finished: %s"),$task->getTitle()));
+          }
+          $this->view->totalPages = $paginator->count();
+          $this->view->status = true;
+          
+      }else{       
+        $this->view->tasks = $tasksTable->fetchAll($tasksTable->select());
+      }
+      
+      
+      
   }
 }
