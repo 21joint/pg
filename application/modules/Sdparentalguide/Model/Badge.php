@@ -135,8 +135,88 @@ class Sdparentalguide_Model_Badge extends Core_Model_Item_Abstract
 
     return $this;
   }
+  
+  public function updateUserCounts($user){
+      if(!is_object($user)){
+          $user = Engine_Api::_()->user()->getUser($user);
+      }
+      if(!$user->getIdentity()){
+          return;
+      }
+      
+    if($this->type == 2){
+        switch($this->level){
+            case 2:
+                $user->gg_expert_platinum_count++;
+                break;
+            case 3:
+                $user->gg_expert_gold_count++;
+                break;
+            case 4:
+                $user->gg_expert_silver_count++;
+                break;
+            case 5:
+                $user->gg_expert_bronze_count++;
+                break;
+        }
+    }
+    
+    switch($this->level){
+        case 2:
+            $user->gg_platinum_count++;
+            break;
+        case 3:
+            $user->gg_gold_count++;
+            break;
+        case 4:
+            $user->gg_silver_count++;
+            break;
+        case 5:
+            $user->gg_bronze_count++;
+            break;
+    }
+    $user->save();
+  }
+  
+  public function remvoeUserCounts($user){
+      if(!is_object($user)){
+          $user = Engine_Api::_()->user()->getUser($user);
+      }
+      if(!$user->getIdentity()){
+          return;
+      }
+      
+    if($this->type == 2){
+        switch($this->level){
+            case 2:
+                $user->gg_expert_platinum_count--;
+                break;
+            case 3:
+                $user->gg_expert_gold_count--;
+                break;
+            case 4:
+                $user->gg_expert_silver_count--;
+                break;
+            case 5:
+                $user->gg_expert_bronze_count--;
+                break;
+        }
+    }
+    
+    switch($this->level){
+        case 2:
+            $user->gg_platinum_count--;
+            break;
+        case 3:
+            $user->gg_gold_count--;
+            break;
+        case 4:
+            $user->gg_silver_count--;
+            break;
+        case 5:
+            $user->gg_bronze_count--;
+            break;
+    }
+    $user->save();
+  }
 } 
-
-
-
-

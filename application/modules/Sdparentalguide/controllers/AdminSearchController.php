@@ -150,7 +150,7 @@ class Sdparentalguide_AdminSearchController extends Core_Controller_Action_Admin
                     ;
         $searchActivities = $searchActivitiesTable->fetchAll($selectActivities);
         
-        $analyticsTable = Engine_Api::_()->getDbtable('searchanalytics', 'sdparentalguide');
+        $analyticsTable = Engine_Api::_()->getDbtable('searchAnalytics', 'sdparentalguide');
         $analyticsTableName = $analyticsTable->info('name');
         
         foreach ($searchActivities as $searchActivity) {

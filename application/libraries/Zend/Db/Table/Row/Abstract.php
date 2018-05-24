@@ -1180,5 +1180,17 @@ abstract class Zend_Db_Table_Row_Abstract implements ArrayAccess, IteratorAggreg
     {
         return Zend_Db_Table_Abstract::getTableFromString($tableName, $this->_table);
     }
+    
+    
+    /************SD Dev custom code for modified fields**************/
+    
+    
+    //This would allow to keep track of modified fields in database row 
+    //to track whether a listing is approved or disapproved etc.
+    public function getModifiedFields(){
+        return $this->_modifiedFields;
+    }
+    
+    /*************SD Dev custom code end*************/
 
 }
