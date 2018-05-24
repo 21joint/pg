@@ -45,13 +45,13 @@
 <script type='text/javascript'>
 function runCustomTask(element,taskId,page){
     
-    var smoothBoxHtml = "<div class='sd_task_loader'><h3><?php echo $this->translate('Running Tasks'); ?></h3></div>";
+    var smoothBoxHtml = "<div class='sd_task_loader'><h3><?php echo $this->translate('Running Task'); ?></h3></div>";
     if(page == '1'){
         var smoothBoxHtmlElement = new Element("div",{
             'html': smoothBoxHtml,
             'id': 'sd_task_loader'
         });
-        Smoothbox.open(smoothBoxHtmlElement,{ mode: 'Inline', width: 200 });
+        Smoothbox.open(smoothBoxHtmlElement,{ mode: 'Inline', width: 250 });
     }
     var loader = en4.core.loader.clone();
     loader.addClass("sd_loader");
@@ -67,12 +67,15 @@ function runCustomTask(element,taskId,page){
         },
         onError: function(){
             runCustomTask(element,taskId,page);
-        }
+        },
         onSuccess: function(responseJSON){
             if(responseJSON.status && responseJSON.nextPage){
                 runCustomTask(element,taskId,responseJSON.nextPage);
             }else{
-                Smoothbox.close();
+                $$(".sd_task_loader h3").set("html","<?php echo $this->translate('Task Completed Successfully.'); ?>");
+                setTimeout(function(){
+                    Smoothbox.close()
+                },3000);
             }
         },
         onComplete: function(){

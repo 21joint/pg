@@ -306,6 +306,11 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             $request->setModuleName("sdparentalguide");
         }
         
+        if($moduleName == "siteusercoverphoto" && $controllerName == "friends"){
+            $request->setControllerName("friendsPhoto");
+            $request->setModuleName("sdparentalguide");
+        }
+        
         $searchText = $request->getParam("query");
         if(!empty($searchText) && $moduleName == "core" && $controllerName == "search" && $actionName == "index"){
             Engine_Api::_()->getDbTable('search', 'sdparentalguide')->logSearch($searchText);

@@ -17,8 +17,8 @@ class Sdparentalguide_Plugin_Task_Reviews extends Sdparentalguide_Plugin_Task_Ab
         $listingTable = Engine_Api::_()->getDbtable("listings","sitereview");
         $select = $listingTable->select()->from($listingTable->info("name"),array("*",new Zend_Db_Expr("COUNT(listing_id) as gg_reviews_count")))
                 ->where('approved = ?',1)
-                ->group("owner_id");
-        
+                ->group("owner_id");        
+                
         $paginator = Zend_Paginator::factory($select);
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage($this->_task->per_page);
