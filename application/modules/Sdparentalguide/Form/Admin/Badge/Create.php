@@ -36,8 +36,8 @@ class Sdparentalguide_Form_Admin_Badge_Create extends Engine_Form
         
         $this->addElement("Textarea",'description',array(
             'label' => 'Description',
-            'allowEmpty' => false,
-            'required' => true
+//            'allowEmpty' => false,
+//            'required' => true
         ));
         
         $this->addElement("Select",'type',array(
@@ -47,12 +47,12 @@ class Sdparentalguide_Form_Admin_Badge_Create extends Engine_Form
             'multiOptions' => Engine_Api::_()->sdparentalguide()->getBadgeTypes()
         ));
         
-//        $this->addElement("Select",'level',array(
-//            'label' => 'Level',
-//            'required' => true,
-//            'allowEmpty' => false,
-//            'multiOptions' => Engine_Api::_()->sdparentalguide()->getBadgeLevels()
-//        ));
+        $this->addElement("Select",'level',array(
+            'label' => 'Level',
+            'required' => true,
+            'allowEmpty' => false,
+            'multiOptions' => Engine_Api::_()->sdparentalguide()->getBadgeLevels()
+        ));
         
         $this->addElement("Radio",'active',array(
             'label' => 'Status',

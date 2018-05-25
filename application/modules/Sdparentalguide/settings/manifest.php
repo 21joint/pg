@@ -3,7 +3,7 @@
   array (
     'type' => 'module',
     'name' => 'sdparentalguide',
-    'version' => '4.10.3',
+    'version' => '4.10.3p1',
     'path' => 'application/modules/Sdparentalguide',
     'title' => 'SD - Guidance Guide Settings',
     'description' => 'Guidance Guide Settings Custom Module',
@@ -32,6 +32,7 @@
     ),
     'files' => array(
       'application/languages/en/sdparentalguide.csv',
+      'application/libraries/Zend/Db/Table/Row/Abstract.php',
     ),
   ),
   'hooks' => array(
@@ -49,6 +50,10 @@
         ),
         array(
             'event' => 'onItemUpdateAfter',
+            'resource' => 'Sdparentalguide_Plugin_Core',
+        ),
+        array(
+            'event' => 'onItemUpdateBefore',
             'resource' => 'Sdparentalguide_Plugin_Core',
         ),
         array(
@@ -73,6 +78,7 @@
       'sdparentalguide_badge',
       'sdparentalguide_assigned_badge',
       'sdparentalguide_topic',
+      'sdparentalguide_task',
       'sdparentalguide_preference',
       'sdparentalguide_listing_topic',
       'sdparentalguide_search_term',
