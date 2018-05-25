@@ -73,6 +73,7 @@ function runCustomTask(element,taskId,page){
                 runCustomTask(element,taskId,responseJSON.nextPage);
             }else{
                 $$(".sd_task_loader h3").set("html","<?php echo $this->translate('Task Completed Successfully.'); ?>");
+                loader.destroy();
                 setTimeout(function(){
                     Smoothbox.close()
                 },3000);
