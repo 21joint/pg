@@ -11,7 +11,7 @@ class Sdparentalguide_Plugin_Task_Questions extends Sdparentalguide_Plugin_Task_
     public function execute($page = 1) {
         $usersTable = Engine_Api::_()->getDbtable("users","user");
         if($page == 1){
-            $usersTable->update(array('gg_questions_count' => 0));
+            $usersTable->update(array('gg_questions_count' => 0),array());
         }
         
         $questionsTable = Engine_Api::_()->getDbtable("questions","ggcommunity");

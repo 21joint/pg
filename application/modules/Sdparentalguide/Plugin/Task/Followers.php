@@ -11,8 +11,8 @@ class Sdparentalguide_Plugin_Task_Followers extends Sdparentalguide_Plugin_Task_
     public function execute($page = 1) {
         $usersTable = Engine_Api::_()->getDbtable("users","user");
         if($page == 1){
-            $usersTable->update(array('gg_followers_count' => 0));
-            $usersTable->update(array('gg_following_count' => 0));
+            $usersTable->update(array('gg_followers_count' => 0),array());
+            $usersTable->update(array('gg_following_count' => 0),array());
         }
         
         $membershipTable = Engine_Api::_()->getDbtable("membership","user");
