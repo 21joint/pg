@@ -76,6 +76,7 @@
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Image") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Topic Name") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Type") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Level") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Action") ?></th>
       </tr>
     </thead>
@@ -96,6 +97,11 @@
             <td class="admin_table_centered nowrap">
                <?php if(($badgeType = $item->getBadgeType())): ?>
                     <?php echo $this->translate($badgeType); ?>
+                <?php endif; ?>
+            </td>
+            <td class="admin_table_centered nowrap">
+               <?php if(($level = $item->getLevel())): ?>
+                    <?php echo $this->translate($level); ?>
                 <?php endif; ?>
             </td>
             <td class='admin_table_centered table_options'>
@@ -498,6 +504,7 @@ en4.core.runonce.add(function(){
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Image") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Topic Name") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Type") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Level") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Action") ?></th>
       </tr>
     </thead>
@@ -518,6 +525,11 @@ en4.core.runonce.add(function(){
             <td class="admin_table_centered nowrap">
                <?php if(($badgeType = $item->getBadgeType())): ?>
                     <?php echo $this->translate($badgeType); ?>
+                <?php endif; ?>
+            </td>
+            <td class="admin_table_centered nowrap">
+               <?php if(($level = $item->getLevel())): ?>
+                    <?php echo $this->translate($level); ?>
                 <?php endif; ?>
             </td>
             <td class='admin_table_centered table_options'>

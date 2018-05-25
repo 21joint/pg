@@ -1,1 +1,1 @@
-INSERT IGNORE INTO `engine4_core_modules` (`name`, `title`, `description`, `version`, `enabled`, `type`) VALUES  ('sdparentalguide', 'Guidance Guide Settings', 'Guidance Guide Settings', '4.10.3', 1, 'extra') ;
+INSERT IGNORE INTO `engine4_core_modules` (`name`, `title`, `description`, `version`, `enabled`, `type`) VALUES  ('sdparentalguide', 'Guidance Guide Settings', 'Guidance Guide Settings', '4.10.3p1', 1, 'extra') ;

@@ -123,6 +123,17 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                 $this->mapListingTopics($payload);
             }
             
+            if( $payload instanceof Sitereview_Model_Listing && $payload->approved) {
+                $viewer->gg_reviews_count++;
+                $viewer->save();
+            }
+            
+            
+            if( $payload instanceof Ggcommunity_Model_Question && $payload->approved && !$payload->draft) {
+                $viewer->gg_questions_count++;
+                $viewer->save();
+            }
+            
         } catch (Exception $ex) {
             //Silent
 //            throw $ex;
@@ -192,6 +203,69 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
         }
         Zend_Registry::set("Auditing_Saved",1);
     }
+    public function onItemUpdateBefore($event){
+        try{
+            $payload = $event->getPayload();
+            $viewer = Engine_Api::_()->user()->getViewer();
+            $auditingSaved = Zend_Registry::isRegistered("Auditing_Saved");
+            if(!empty($auditingSaved)){
+                return;
+            }
+            //This will fix max level error by saving data mannually.
+            if($this->isAllowedAuditing($payload)) {
+                $params = $this->getAuditingParams($payload);
+                $params['gg_user_lastmodified'] = $viewer->getIdentity();
+                $params['gg_dt_lastmodified'] = date("Y-m-d H:i:s");
+                $table = $payload->getTable();
+                $info = $table->info("primary");
+                if(empty($info) || !is_array($info)){
+                    return;
+                }
+                $where = array();
+                foreach($info as $primaryKey){
+                    if(!isset($payload->$primaryKey)){
+                        continue;
+                    }
+                    
+                    $where["$primaryKey = ?"] = $payload->$primaryKey;
+                }
+                if(!empty($where)){
+                    $table->update($params,$where);
+                }
+                Zend_Registry::set("Auditing_Saved",1);
+            }
+            
+            $modifiedFields = $payload->getModifiedFields();
+                        
+            if( $payload instanceof Sitereview_Model_Listing && $payload->approved && isset($modifiedFields['approved'])) {
+                $payload->getOwner()->gg_reviews_count++;
+                $payload->getOwner()->save();
+            }
+            
+            if( $payload instanceof Sitereview_Model_Listing && !$payload->approved && isset($modifiedFields['approved'])) {
+                $payload->getOwner()->gg_reviews_count--;
+                $payload->getOwner()->save();
+            }
+            
+            if( $payload instanceof Ggcommunity_Model_Question && (isset($modifiedFields['approved']) || isset($modifiedFields['draft']))) {
+                if($payload->approved && !$payload->draft){
+                    $payloadUser = Engine_Api::_()->user()->getUser($payload->user_id);
+                    $payloadUser->gg_questions_count++;
+                    $payloadUser->save();
+                }
+            }            
+            if( $payload instanceof Ggcommunity_Model_Question && (isset($modifiedFields['approved']) || isset($modifiedFields['draft']))) {
+                if((!$payload->approved || $payload->draft)){
+                    $payloadUser = Engine_Api::_()->user()->getUser($payload->user_id);
+                    $payloadUser->gg_questions_count--;
+                    $payloadUser->save();
+                }
+            }
+        } catch (Exception $ex) {
+            //Silent
+        }
+        Zend_Registry::set("Auditing_Saved",1);
+    }
     public function updateAuditing($listing){
         $db = Engine_Db_Table::getDefaultAdapter();
         $ipObj = new Engine_IP();
@@ -224,6 +298,16 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
         
         if($moduleName == "sitereview" && $controllerName == "index" && ($actionName == "create" || $actionName == "edit")){
             $request->setControllerName("listing");
+            $request->setModuleName("sdparentalguide");
+        }
+        
+        
+        if($moduleName == "user" && $controllerName == "friends"){
+            $request->setModuleName("sdparentalguide");
+        }
+        
+        if($moduleName == "siteusercoverphoto" && $controllerName == "friends"){
+            $request->setControllerName("friendsPhoto");
             $request->setModuleName("sdparentalguide");
         }
         
@@ -265,14 +349,27 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
   }
   
   public function onItemDeleteBefore($event){
-      $item = $event->getPayload();
-      if($item instanceof Sdparentalguide_Model_Badge){
-          $assignedTable = Engine_Api::_()->getDbtable('assignedBadges', 'sdparentalguide');
-          $assignedTable->delete(array('badge_id = ?' => $item->getIdentity()));
-      }
-      if($item instanceof User_Model_User){
-          $assignedTable = Engine_Api::_()->getDbtable('assignedBadges', 'sdparentalguide');
-          $assignedTable->delete(array('user_id = ?' => $item->getIdentity()));
+      $item = $event->getPayload();      
+      try{
+          if($item instanceof Sdparentalguide_Model_Badge){
+                $assignedTable = Engine_Api::_()->getDbtable('assignedBadges', 'sdparentalguide');
+                $assignedTable->delete(array('badge_id = ?' => $item->getIdentity()));
+          }
+          if($item instanceof User_Model_User){
+                $assignedTable = Engine_Api::_()->getDbtable('assignedBadges', 'sdparentalguide');
+                $assignedTable->delete(array('user_id = ?' => $item->getIdentity()));
+          }
+          if( $item instanceof Ggcommunity_Model_Question && $item->approved && !$item->draft) {
+                $item->getOwner()->gg_questions_count--;
+                $item->getOwner()->save();
+          }
+          
+          if( $item instanceof Sitereview_Model_Listing && $item->approved) {
+                $item->getOwner()->gg_reviews_count--;
+                $item->getOwner()->save();
+          }
+      } catch (Exception $ex) {
+          //Silent
       }
   }
   public function onRenderLayoutAdmin($event,$simple = false){
