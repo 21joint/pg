@@ -5,3 +5,7 @@ DELETE FROM `engine4_core_content` WHERE `engine4_core_content`.`content_id` = 1
 /* Update */
 UPDATE `engine4_core_content` SET `name` = 'sdparentalguide.header' WHERE `engine4_core_content`.`content_id` = 110;
 UPDATE `engine4_core_content` SET `params` = '[\"\"]' WHERE `engine4_core_content`.`content_id` = 110;
+
+/* footer */
+UPDATE `engine4_core_content` SET `name` = 'sdparentalguide.footer' WHERE `engine4_core_content`.`content_id` = 210;
+UPDATE `engine4_core_content` SET `params` = '[\"\"]' WHERE `engine4_core_content`.`content_id` = 210;

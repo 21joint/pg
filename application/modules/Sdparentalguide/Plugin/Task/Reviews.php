@@ -11,7 +11,7 @@ class Sdparentalguide_Plugin_Task_Reviews extends Sdparentalguide_Plugin_Task_Ab
     public function execute($page = 1) {
         $usersTable = Engine_Api::_()->getDbtable("users","user");
         if($page == 1){
-            $usersTable->update(array('gg_reviews_count' => 0));
+            $usersTable->update(array('gg_reviews_count' => 0),array());
         }
         
         $listingTable = Engine_Api::_()->getDbtable("listings","sitereview");

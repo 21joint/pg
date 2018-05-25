@@ -11,7 +11,7 @@ class Sdparentalguide_Plugin_Task_Badges extends Sdparentalguide_Plugin_Task_Abs
     public function execute($page = 1) {
         $usersTable = Engine_Api::_()->getDbtable("users","user");
         if($page == 1){
-            $usersTable->update(array('gg_questions_count' => 0));
+            $usersTable->update(array('gg_questions_count' => 0),array());
         }
         
         $table = Engine_Api::_()->getDbtable('badges', 'sdparentalguide');
