@@ -9,9 +9,36 @@
 class Sdparentalguide_Plugin_Task_Contribution extends Sdparentalguide_Plugin_Task_Abstract
 {
     public function execute($page = 1) {
-        $paginator = Zend_Paginator::factory(array());
+        $usersTable = Engine_Api::_()->getDbtable("users","user");
+        if($page == 1){
+            $usersTable->update(array('gg_contribution' => 0),array());
+        }
+        
+        $select = $usersTable->select()
+                ->from($usersTable->info("name"));
+        
+        $paginator = Zend_Paginator::factory($select);
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage($this->_task->per_page);
+        if($paginator->count() < $paginator->getCurrentPageNumber()){
+            return $paginator;
+        }
+        
+        $creditsTable = Engine_Api::_()->getDbtable('credits','sdparentalguide');
+        foreach($paginator as $user){
+            $row = $creditsTable->getUserActivityCount($user);
+            $userCredits = 0;
+            $userActivities = 0;
+            if(!empty($row)){
+                $userCredits = $row->credit;
+                $userActivities = $row->activities;
+            }
+            $user->gg_contribution = $userCredits;
+            $user->gg_activities = $userActivities;
+//            $user->gg_contribution_updated = 1;
+            $user->save();
+        }
+        
         return $paginator;
     }
 }
