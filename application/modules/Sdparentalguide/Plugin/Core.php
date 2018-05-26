@@ -134,6 +134,20 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                 $viewer->save();
             }
             
+            if( $payload instanceof Sitecredit_Model_Credit) {
+                $creditsTable = Engine_Api::_()->getDbtable('credits','sdparentalguide');
+                $row = $creditsTable->getUserActivityCount($viewer);
+                $userCredits = 0;
+                $userActivities = 0;
+                if(!empty($row)){
+                    $userCredits = $row->credit;
+                    $userActivities = $row->activities;
+                }
+                $viewer->gg_contribution = $userCredits;
+                $viewer->gg_activities = $userActivities;
+                $viewer->save();
+            }
+            
         } catch (Exception $ex) {
             //Silent
 //            throw $ex;
@@ -261,6 +275,23 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                     $payloadUser->save();
                 }
             }
+            
+            
+            $contributionLevelSaved = Zend_Registry::isRegistered("ContributionLevel_Saved");
+            if( $payload instanceof User_Model_User && empty($contributionLevelSaved) && isset($modifiedFields['gg_contribution'])) {
+                $api = Engine_Api::_()->sdparentalguide();
+                $badge = $api->getUserBadge($payload->gg_contribution);
+                if(!empty($badge)){
+                    $payload->gg_contribution_level = $badge->gg_contribution_level;
+                    if(!$payload->isAdminOnly() && $badge->gg_level_id > 0){
+                        $payload->level_id = $badge->gg_level_id;
+                    }            
+                    $payload->save();
+                    Zend_Registry::set("ContributionLevel_Saved",1);
+                }
+                
+            }
+            
         } catch (Exception $ex) {
             //Silent
         }

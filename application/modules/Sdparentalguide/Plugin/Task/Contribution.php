@@ -35,7 +35,6 @@ class Sdparentalguide_Plugin_Task_Contribution extends Sdparentalguide_Plugin_Ta
             }
             $user->gg_contribution = $userCredits;
             $user->gg_activities = $userActivities;
-//            $user->gg_contribution_updated = 1;
             $user->save();
         }
         
