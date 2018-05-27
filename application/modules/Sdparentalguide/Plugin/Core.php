@@ -196,21 +196,20 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                 $params['gg_dt_lastmodified'] = date("Y-m-d H:i:s");
                 $table = $payload->getTable();
                 $info = $table->info("primary");
-                if(empty($info) || !is_array($info)){
-                    return;
-                }
-                $where = array();
-                foreach($info as $primaryKey){
-                    if(!isset($payload->$primaryKey)){
-                        continue;
+                if(!empty($info) && is_array($info)){
+                    $where = array();
+                    foreach($info as $primaryKey){
+                        if(!isset($payload->$primaryKey)){
+                            continue;
+                        }
+
+                        $where["$primaryKey = ?"] = $payload->$primaryKey;
                     }
-                    
-                    $where["$primaryKey = ?"] = $payload->$primaryKey;
-                }
-                if(!empty($where)){
-                    $table->update($params,$where);
-                }
-                Zend_Registry::set("Auditing_Saved",1);
+                    if(!empty($where)){
+                        $table->update($params,$where);
+                    }
+                    Zend_Registry::set("Auditing_Saved",1);
+                }                
             }
         } catch (Exception $ex) {
             //Silent
@@ -232,21 +231,21 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                 $params['gg_dt_lastmodified'] = date("Y-m-d H:i:s");
                 $table = $payload->getTable();
                 $info = $table->info("primary");
-                if(empty($info) || !is_array($info)){
-                    return;
-                }
-                $where = array();
-                foreach($info as $primaryKey){
-                    if(!isset($payload->$primaryKey)){
-                        continue;
+                if(!empty($info) && is_array($info)){
+                    $where = array();
+                    foreach($info as $primaryKey){
+                        if(!isset($payload->$primaryKey)){
+                            continue;
+                        }
+
+                        $where["$primaryKey = ?"] = $payload->$primaryKey;
                     }
-                    
-                    $where["$primaryKey = ?"] = $payload->$primaryKey;
+                    if(!empty($where)){
+                        $table->update($params,$where);
+                    }
+                    Zend_Registry::set("Auditing_Saved",1);
                 }
-                if(!empty($where)){
-                    $table->update($params,$where);
-                }
-                Zend_Registry::set("Auditing_Saved",1);
+                
             }
             
             $modifiedFields = $payload->getModifiedFields();
