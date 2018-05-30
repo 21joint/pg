@@ -1486,22 +1486,31 @@ Used for the modal popup smoothbox.
 #TB_window a:focus {
 	color: #666666;
 }
+
 #TB_overlay {
 	position: absolute;
 	z-index: 100;
 	top: 0px;
 	left: 0px;
-	background-color: #000;
+  background-color: #000;
+  opacity: 0.6;
 }
+
 #TB_window {
- +rounded(8px);
+ +rounded(10px);
 	position: absolute;
 	z-index: 102;
 	text-align: left;
-	background: #eee;
-	color: #000;
-	border: 8px solid #444;
+	background: #FFFFFF;
+	color: #fff;
+  border: none;
+  width:530px!important;
+  box-shadow:0px 8px 55px rgba(0, 0, 0, 0.16)!important;
 }
+
+
+
+
 #TB_caption {
 	height: 25px;
 	padding: 7px 30px 10px 25px;
@@ -1523,19 +1532,20 @@ Used for the modal popup smoothbox.
 	padding: 7px 0 5px 10px;
 	margin-bottom: 1px;
 }
-#TB_title {
-	background-color: #e9f4fa;
-	height: 33px;
-	border-bottom: 1px solid #d7e8f1;
-}
+
 /* hide the title bar by default */
 #TB_title {
-	display: none;
+  position: absolute;
+  right: 0;
+  top:0;
 }
 #TB_title * {
 	font-weight: bold;
-	font-size: 13pt;
-	letter-spacing: -1px;
+  font-size: 13pt;
+  letter-spacing: -1px;
+  position: relative;
+  top: 1px;
+  right: 2px;
 }
 #TB_ajaxContent {
 	clear: both;
@@ -1565,8 +1575,77 @@ Used for the modal popup smoothbox.
 #TB_iframeContent {
 	clear: both;
 	border: none;
-	margin-bottom: -1px;
-	margin-top: 1px;
+  width: 100%!important;
+}
+
+/* For All Smoothbox */
+#smoothbox_window .global_form_popup h3 {
+  font-size: 20px!important;
+  color: #333D40;
+  padding-left: 10px;
+  font-family: 'Nunito', sans-serif;
+  padding-top: 10px;
+  padding-bottom: 1.5rem;
+}
+#smoothbox_window .global_form_popup p {
+  font-size: 18px!important;
+  color:#333D40;
+  padding-left: 10px;
+  font-family: 'Nunito', sans-serif;
+  padding-bottom: 2rem;
+}
+#smoothbox_window body {
+  background:none!important;
+  display: block;
+  overflow-y: hidden;
+}
+#smoothbox_window #global_content_simple {
+  width: 100%;
+}
+#smoothbox_window form{
+  padding: 0px;
+  width: 100%;
+}
+#smoothbox_window .global_form_popup .form-wrapper {
+  padding:0px 0.7rem 1rem!important;
+}
+#smoothbox_window form > div,#smoothbox_window form > div > div{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#smoothbox_window .global_form_popup .form-elements #buttons-wrapper {
+  margin-top:10px;
+  padding: 0px!important;
+}
+#smoothbox_window .global_form_popup #buttons-wrapper  #fieldset-buttons {
+  display: inline-block;
+  width: 100%;
+  text-indent: -999em;
+}
+#smoothbox_window .global_form_popup #buttons-wrapper  #fieldset-buttons button{
+  float: right;
+  width: 50%;
+  margin-right: 0px!important;
+  background-color:#5CC7CE;
+  color:#FFFFFF;
+  font-size: 18px;
+  height: 100%;
+  text-transform: capitalize;
+  border-radius: 0px!important;
+}
+#smoothbox_window .global_form_popup #buttons-wrapper  #fieldset-buttons a {
+  float: left;
+  width: 50%;
+  background-color:#F5F5F5;
+  color:#93A4A6;
+  font-size: 18px;
+  height: 100%;
+  padding: .5em .0.5em;
+  text-transform: capitalize;
+  text-align: center;
+  text-indent: 0;
 }
 /* IE6 */
 * html #TB_iframeContent {

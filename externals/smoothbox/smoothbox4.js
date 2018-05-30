@@ -362,7 +362,7 @@ Smoothbox.Modal = new Class({
       id : 'TB_title',
       href : 'javascript:void(0);',
       title : 'close',
-      html : 'close',
+      html : '<svg style="height:21px;width:12px;" xmlns="http://www.w3.org/2000/svg" viewBox="-8603 1924.68 11.641 11.641"><defs><style>.a{fill:#2B1D19;}</style></defs><path class="a" d="M11.641-12.148,6.992-7.5l4.648,4.648L10.469-1.68,5.82-6.328,1.172-1.68,0-2.852,4.648-7.5,0-12.148,1.172-13.32,5.82-8.672l4.648-4.648Z" transform="translate(-8603 1938)"/></svg>',
       events : {
         click : function() {
           bind.close();
