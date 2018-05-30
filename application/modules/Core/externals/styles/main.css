@@ -1541,7 +1541,7 @@ Used for the modal popup smoothbox.
   font-size: 13pt;
   letter-spacing: -1px;
   position: relative;
-  top: 1px;
+  top: 2px;
   right: 2px;
 }
 #TB_ajaxContent {
@@ -1639,7 +1639,7 @@ Used for the modal popup smoothbox.
   color:#93A4A6;
   font-size: 18px;
   height: 100%;
-  padding: .5em .0.5em;
+  padding: .5em 0;
   text-transform: capitalize;
   text-align: center;
   text-indent: 0;
