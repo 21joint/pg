@@ -11,11 +11,11 @@ class Sdparentalguide_Plugin_Task_Reviews extends Sdparentalguide_Plugin_Task_Ab
     public function execute($page = 1) {
         $usersTable = Engine_Api::_()->getDbtable("users","user");
         if($page == 1){
-            $usersTable->update(array('gg_reviews_count' => 0),array());
+            $usersTable->update(array('gg_review_count' => 0),array());
         }
         
         $listingTable = Engine_Api::_()->getDbtable("listings","sitereview");
-        $select = $listingTable->select()->from($listingTable->info("name"),array("*",new Zend_Db_Expr("COUNT(listing_id) as gg_reviews_count")))
+        $select = $listingTable->select()->from($listingTable->info("name"),array("*",new Zend_Db_Expr("COUNT(listing_id) as gg_review_count")))
                 ->where('approved = ?',1)
                 ->group("owner_id");        
                 
@@ -27,7 +27,7 @@ class Sdparentalguide_Plugin_Task_Reviews extends Sdparentalguide_Plugin_Task_Ab
         }
         
         foreach($paginator as $listing){
-            $usersTable->update(array('gg_reviews_count' => $listing->gg_reviews_count),array('user_id = ?' => $listing->owner_id));
+            $usersTable->update(array('gg_review_count' => $listing->gg_review_count),array('user_id = ?' => $listing->owner_id));
         }
         
         return $paginator;
