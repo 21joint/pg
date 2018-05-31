@@ -247,75 +247,7 @@ class Sdparentalguide_AdminTopicsController extends Core_Controller_Action_Admin
       }
       return $categoryOptions;
   }
-  
-  public function syncAction(){
-      $page = $this->getParam("page");
-      if(empty($page)){
-          Engine_Api::_()->sdparentalguide()->synchronizeTopics();
-          $page = 1;
-      }
       
-      $this->view->paginator = $paginator = Engine_Api::_()->sdparentalguide()->synchronizeListings($page);
-      $status = false;
-      if($paginator->count() > $page){
-          $status = true;
-      }
-      $this->view->nextPage = ($paginator->getCurrentPageNumber()+1);
-      $this->view->continue = $status;
-      header_remove('Set-Cookie');
-  }
-  public function synctagsAction(){
-      Engine_Api::_()->sdparentalguide()->synchronizeTags();
-      header_remove('Set-Cookie');
-      $tagsTable = Engine_Api::_()->getDbtable('tags','core');
-      $tags = $tagsTable->fetchAll($tagsTable->select()->where('topic_id = ?',0)->where("text <> ?","#")->limit(1));
-      if(count($tags) > 0){
-          $this->view->continue = true;
-          return;
-      }
-      $htagsTable = Engine_Api::_()->getDbtable('tags','sitehashtag');
-      $htags = $htagsTable->fetchAll($htagsTable->select()->where('topic_id = ?',0)->limit(1));
-      
-      if(count($htags) > 0){
-          $this->view->continue = true;
-          return;
-      }
-      $this->view->continue = false;
-      $this->view->status = true;
-      
-  }
-  
-  public function listingsAction(){
-      $this->_helper->requireSubject('sdparentalguide_topic');
-      $this->view->topic = $topic = Engine_Api::_()->core()->getSubject();
-      $page = $this->_getParam('page', 1);
-      $table = Engine_Api::_()->getDbtable('listings', 'sitereview');
-      $tableName = $listingTableName = $table->info("name");    
-      $mListingTable = Engine_Api::_()->getDbtable('listingTopics', 'sdparentalguide');
-      $mListingTableName = $mListingTable->info("name");
-      $select = $table->select()->setIntegrityCheck(false)->from($tableName)
-              ->joinLeft($mListingTableName,"$mListingTableName.listing_id = $tableName.listing_id",array())
-              ->where("$mListingTableName.topic_id = ?",$topic->getIdentity());
-      
-      $this->view->paginator = $paginator = Zend_Paginator::factory($select);
-      $this->view->paginator = $paginator->setCurrentPageNumber( $page );
-      $paginator->setItemCountPerPage(15);
-  }
-  public function hashtagsAction(){        
-        $this->_helper->requireSubject('sdparentalguide_topic');
-        $this->view->topic = $topic = Engine_Api::_()->core()->getSubject();
-        $topic_id = $topic->getIdentity();
-        $page = $this->_getParam('page', 1);
-        
-        $table = Engine_Api::_()->getDbtable('tags', 'sitehashtag');        
-        $sql = "SELECT text,topic_id FROM engine4_sitehashtag_tags WHERE topic_id = $topic_id UNION ALL SELECT text,topic_id FROM engine4_core_tags WHERE topic_id = $topic_id";
-        $db = Zend_Db_Table::getDefaultAdapter();
-        $tags = $db->fetchAll($sql);
-        $this->view->paginator = $paginator = Zend_Paginator::factory($tags);
-        $this->view->paginator = $paginator->setCurrentPageNumber( $page );
-        $paginator->setItemCountPerPage(15);
-  }
-  
   public function bulkBadgesAction(){
         $status = (int)$this->getParam("status");
         $topicIds = $this->getParam("topic_ids");     
@@ -369,5 +301,20 @@ class Sdparentalguide_AdminTopicsController extends Core_Controller_Action_Admin
             $data = Zend_Json::encode($data);
             $this->getResponse()->setBody($data);
         }
+    }
+    
+    public function multiModifyAction(){
+        $topic_ids = $this->getParam("topic_ids");
+        if(empty($topic_ids)){
+            return $this->_helper->redirector->gotoRoute(array('action' => 'index'));
+        }
+        foreach($topic_ids as $topic_id){
+            $topic = Engine_Api::_()->getItem("sdparentalguide_topic",$topic_id);
+            if(empty($topic)){
+                continue;
+            }
+            $topic->delete();
+        }
+        return $this->_helper->redirector->gotoRoute(array('action' => 'index'));
     }
 }

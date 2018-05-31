@@ -80,7 +80,6 @@
       'sdparentalguide_topic',
       'sdparentalguide_task',
       'sdparentalguide_preference',
-      'sdparentalguide_listing_topic',
       'sdparentalguide_search_term',
       'sdparentalguide_search_terms_alias',
       'sdparentalguide_listing_rating',

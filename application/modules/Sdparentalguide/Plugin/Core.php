@@ -43,8 +43,6 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             if($auditingSaved && Zend_Registry::get("Auditing_Created") > 20){
                 return;
             }
-                        
-            $this->addHashtagListingMapping($payload);
             
         } catch (Exception $ex) {
             //Silent
@@ -83,23 +81,7 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                     }
                 }
             }
-            
-            if( $payload instanceof Sitehashtag_Model_Tag ) {
-                $this->addHashtagTopic($payload);
-            }
-            
-            if( $payload instanceof Core_Model_Tag ) {
-                $this->addHashtagTopic($payload);
-            }
-            
-            if( $payload instanceof Core_Model_TagMap ) {
-                $this->addListingMapping($payload);
-            }
-            
-            if( $payload instanceof Sitehashtag_Model_Tagmap ) {
-                $this->addHashtagListingMapping($payload);
-            }
-            
+                        
         } catch (Exception $ex) {
             //Silent
 //            throw $ex;
@@ -118,9 +100,6 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             //This will fix max level error
             if($auditingSaved && Zend_Registry::get("Auditing_Created") > 20){
                 return;
-            }
-            if( $payload instanceof Sitereview_Model_Listing ) {
-                $this->mapListingTopics($payload);
             }
             
             if( $payload instanceof Sitereview_Model_Listing && $payload->approved) {
@@ -414,23 +393,6 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
   public function onRenderLayoutAdminSimple($event){
       $this->onRenderLayoutAdmin($event, true);
   }
-    public function addHashtagTopic($payload){
-        $table = Engine_Api::_()->getDbtable('topics', 'sdparentalguide');
-        try {
-            $name = str_replace("#","",$payload['text']);
-            if($table->checkTopic($name)){
-                return;
-            }
-            
-            $topic = $table->createTagTopic($name);            
-            $payload->topic_id = $topic->topic_id;
-//            $payload->save();
-            
-        } catch( Exception $e ) {
-          //Silent
-//          throw $e;
-        }
-    }
     
     public function onRenderLayoutDefault($event, $mode = null){
         $view = $event->getPayload();
@@ -467,59 +429,6 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                 }                
             }
         }        
-    }
-    
-    public function addListingMapping($payload){
-        if($payload->resource_type != "sitereview_listing" || $payload->tag_type != "core_tag"){
-            return;
-        }        
-        $coreTag = Engine_Api::_()->getItem("core_tag",$payload->tag_id);
-        if(empty($coreTag)){
-            return;
-        }
-        $table = Engine_Api::_()->getDbTable("listingTopics","sdparentalguide");
-        $table->addListingTopic($coreTag->topic_id,$payload->resource_id);
-    }
-    
-    public function addHashtagListingMapping($payload){
-        if(!isset($payload->action_id) || empty($payload->action_id) || empty($payload->body) || $payload->object_type != "sitereview_listing"){
-            return;
-        }
-        if($payload->type != "comment_sitereview_listing"){
-            return;
-        }
-        
-        $tabMapTable = Engine_Api::_()->getDbtable('tagmaps', 'sitehashtag');
-        $tagMap = $tabMapTable->fetchRow($tabMapTable->select()->where('action_id = ?',$payload->action_id));
-        if(empty($tagMap)){
-            return;
-        }
-        $table = Engine_Api::_()->getDbTable("listingTopics","sdparentalguide");
-        $hashTag = Engine_Api::_()->getItem("sitehashtag_tag",$tagMap->tag_id);
-        if(empty($hashTag)){
-            return;
-        }
-        $table->addListingTopic($hashTag->topic_id,$payload->object_id);
-    }
-    
-    public function mapListingTopics($payload){
-        $table = Engine_Api::_()->getDbtable('topics', 'sdparentalguide');
-        $select = $table->select()->where('listingtype_id = ?',$payload->listingtype_id);
-        if(!empty($payload->category_id)){
-            $select->where("category_id = ?",$payload->category_id);
-        }
-        if(!empty($payload->subcategory_id)){
-            $select->where("subcategory_id = ?",$payload->subcategory_id);
-        }
-        $topics = $table->fetchAll($select);
-        if(count($topics) <= 0){
-            return;
-        }
-        $listingTopicTable = Engine_Api::_()->getDbTable("listingTopics","sdparentalguide");
-        foreach($topics as $topic){
-            $listingTopicTable->addListingTopic($topic->topic_id,$payload->getIdentity());
-            $topic->listing_count++;
-            $topic->save();
-        }
-    }
+    }    
+
 }
