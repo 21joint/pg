@@ -36,8 +36,29 @@
       </div>
       <div class="holder container">
         <div class="row">
-          <div class="col-12">
+          <div class="col-6 p-0">
             <div class="profile_cover_head_section" id="user_main_photo"></div>
+          </div>
+          <div class="col-6 p-0 d-flex justify-content-end user-options">
+
+            <?php if(!$this->user->isSelf($this->viewer())): ?>
+            <div class="item pr-2" id="user-friendship-cover">
+              <?php echo $this->userFriendship($this->user) ?>
+            </div>
+            <?php else: ?>
+            <div class="item pr-2" id="user-friendship-cover">
+              <a class="btn btn-success text-white px-5 py-2" href="<?php echo $this->url(array('controller' => 'edit','action' => 'profile'),'user_extended'); ?>">
+                <?php echo $this->translate('Make Public');?>
+              </a>
+            </div>
+            <?php endif; ?>
+            <?php if($this->user->isSelf($this->viewer())): ?>
+            <div class="item">
+              <a class="btn btn-success text-white px-5 py-2" href="<?php echo $this->url(array('controller' => 'edit','action' => 'profile'),'user_extended'); ?>">
+                <?php echo $this->translate('Edit Profile');?>
+              </a>
+            </div>
+            <?php endif; ?>
           </div>
         </div>
       </div>

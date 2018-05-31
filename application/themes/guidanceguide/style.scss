@@ -15,8 +15,123 @@
     Components & Pages designed for GuidanceGuide
     * HEADER
     * FOOTER
-    * USER PROFILE
+    * USER PROFILE + Shared Everywhere
+
+    * Widgets
+        *   Contributed Points
+        *   Badges Earned
+        *   Badges Slide
+        *   Following
 */
+
+
+// Widgets
+.extfox-widgets {
+    .row {
+        > .left-side, > .right-side {
+            > div.widget {
+                border-radius: 10px;
+            }
+        }
+        // Contributed Points
+        .contribution {
+            h5 {
+                font-size: 2rem;
+            }
+        }
+
+        // Badges Earned
+        .badges-earned {
+            .holder {
+                .bottom {
+                    .col-sm {
+                        background-repeat: no-repeat;
+                        background-position: 50% 50%;
+                        &.bronze {
+                            background-image: url('../images/badges/Bronze.svg');
+                        }
+                        &.silver {
+                            background-image: url('../images/badges/Silver.svg');
+                        }
+                        &.gold {
+                            background-image: url('../images/badges/Gold.svg');
+                        }
+                        &.platinium {
+                            background-image: url('../images/badges/Platinum.svg');
+                        }
+                        .badge-holder {
+                            min-height: 60px;
+                            min-width: 60px;
+                            font-size: 1em;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Badges Slider
+        .badges-slide {
+            div.slider {
+                .swiper-container {
+                    width: 100%;
+                    height: 100%;
+                    .swiper-slide {
+                        text-align: center;
+                        font-size: 18px;
+                        background: #fff;
+                        /* Center slide text vertically */
+                        display: -webkit-box;
+                        display: -ms-flexbox;
+                        display: -webkit-flex;
+                        display: flex;
+                        -webkit-box-pack: center;
+                        -ms-flex-pack: center;
+                        -webkit-justify-content: center;
+                        justify-content: center;
+                        -webkit-box-align: center;
+                        -ms-flex-align: center;
+                        -webkit-align-items: center;
+                        align-items: center;
+                        margin-bottom: 2rem;
+                        a {
+                            img {
+                                width: 100%;
+                                max-width: 200px;
+                            }
+                        }
+                    }
+                    .swiper-pagination {
+                        .swiper-pagination-bullet {
+                            &.swiper-pagination-bullet-active {
+                                background: $primary; 
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Following
+        .following {
+            .bottom {
+                .item-holder {
+                    border: 1px solid rgba(245, 245, 245, 1);
+                    border-radius: 10px;
+                    a {
+                        &.profile-img {
+                            img {
+                                border-radius: 50%;
+                                max-width: 70px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+
 
 // HEADER
 header.extfox-header {
@@ -140,37 +255,64 @@ body#global_page_user-profile-index {
                 
                 > .layout_middle {
 
-                    // profile photo
-                    .profile_cover_head_section {
+                    .layout_user_cover_photo {
 
-                        .profile_main_photo_wrapper {
-                            margin-bottom: 0;
-                            .profile_main_photo {
-                                background: none;
-                                border-radius: 50%;
-                                border: 5px solid $white;
-                                padding: 0;
-                                bottom: -2em;
-                                z-index: 1;
+                        // cover photo and options
+                        .profile_cover_photo_wrapper {
+                            .profile_cover_photo_empty {
+                                background: linear-gradient(to left, #5bc8ce, #5bc6cc);
                             }
-                            .profile_cover_options {
-                                .edit-button {
-                                    z-index: 2;
-                                    top: -60px;
+                        }
+
+                        // profile photo
+                        .holder {
+
+                            .profile_cover_head_section {
+
+                                .profile_main_photo_wrapper {
+                                    .profile_main_photo {
+                                        background: none;
+                                        border-radius: 50%;
+                                        border: 5px solid $white;
+                                        padding: 0;
+                                        bottom: -2em;
+                                        z-index: 1;
+                                    }
+                                    .profile_cover_options {
+                                        .edit-button {
+                                            z-index: 2;
+                                            top: -60px;
+                                        }
+                                    }
+                                }
+                                
+                                .cover_photo_profile_options {
+                                    min-height: auto;
+                                    bottom: 2.2em;
+                                    margin-left: 15em;
+                                    h2 {
+                                        font-size: 2.2rem;
+                                    }
                                 }
                             }
+
+                            .user-options {
+                                bottom: 50px;
+                                .item {
+                                    a {
+                                        border-radius: 121px;
+                                        &:before {
+                                            display: none;
+                                        }
+                                    }
+                                }
+                            }
+
                         }
                         
-                        .cover_photo_profile_options {
-                            min-height: auto;
-                            padding-bottom: .2em;
-                            margin-left: 15em;
-                            h2 {
-                                font-size: 2.2rem;
-                            }
-                        }
+
                     }
-                    
+                                        
                 }
 
                 + {
@@ -181,8 +323,9 @@ body#global_page_user-profile-index {
                         .profile_cover_photo_tabs {
                             .tabs_alt {
                                 box-shadow: none;
+                                margin-top: 0;
                                 ul {
-                                    padding-left: 25.5em;
+                                    padding-left: 24.5em;
                                     li {
                                         a {
                                             text-transform: none;
