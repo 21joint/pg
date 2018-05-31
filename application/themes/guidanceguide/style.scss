@@ -16,7 +16,6 @@
     * HEADER
     * FOOTER
     * USER PROFILE + Shared Everywhere
-
     * Widgets
         *   Contributed Points
         *   Badges Earned
@@ -324,6 +323,7 @@ body#global_page_user-profile-index {
                             .tabs_alt {
                                 box-shadow: none;
                                 margin-top: 0;
+                                min-height: 40px;
                                 ul {
                                     padding-left: 24.5em;
                                     li {
@@ -419,6 +419,96 @@ body#global_page_user-profile-index {
         }
 
       }
+    }
+
+    /*
+    * USER PROFILE + Shared Everywhere
+    * Widgets
+        *   Contributed Points
+        *   Badges Earned
+        *   Badges Slide
+        *   Following
+    */
+    body#global_page_user-profile-index {
+        #global_wrapper {
+            #global_content {
+                padding: 0;
+                .layout_top {
+                    + .layout_main {
+
+                        // profile tabs
+                        .profile_cover_photo_tabs {
+                            margin-top: 40px;
+                            .tabs_alt {
+                                border-radius: 0;
+                                ul {
+                                    padding-left: 0;
+                                    li {
+                                        a {
+                                            text-transform: none;
+                                            color: #333D40;
+                                            font-weight: 400;
+                                            font-size: .9em;
+                                            padding: 1.2rem;
+                                            border: none;
+                                        }
+                                    }
+                                }
+                            }
+                            .generic_layout_container {
+                                h3 {
+                                    left: 15px;
+                                    &:before {
+                                        display: none;
+                                    }
+                                }
+                            }
+                            .container {
+                                padding: 0;
+                                margin: 0;
+                                width: 93%;
+                            }
+                        } // profile tabs
+                        
+                    }
+                    > .layout_middle {
+                        .cover_photo_profile_options {
+                            margin-left: 13em !important;
+                            h2 {
+                                font-size: 2rem !important;
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+        #global_footer {
+            .layout_page_footer {
+                .layout_main {
+                    padding: 0 !important;
+                    margin: 0 !important;
+                    width: 100% !important;
+                }
+            }
+        }
+    }
+
+    .extfox-widgets {
+        .row {
+
+            > .right-side {
+                margin-top: 1.5rem;
+            }
+
+            .contribution {
+                .col-sm {
+                    &.border-right, &.border-left {
+                        border: none !important;
+                    }
+                }
+            }
+        }
     }
 
     // ELSE...

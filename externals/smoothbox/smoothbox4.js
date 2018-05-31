@@ -493,7 +493,7 @@ Smoothbox.Modal = new Class({
     }
     else
     {
-      this.overlay.setStyle('opacity', 0.6);
+      this.overlay.setStyle('opacity', 0.8);
       this.overlay.setStyle('visibility', 'visible');
     }
   },

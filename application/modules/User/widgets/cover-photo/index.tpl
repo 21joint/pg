@@ -36,10 +36,10 @@
       </div>
       <div class="holder container">
         <div class="row">
-          <div class="col-6 p-0">
+          <div class="col-12 col-sm-6 p-0">
             <div class="profile_cover_head_section" id="user_main_photo"></div>
           </div>
-          <div class="col-6 p-0 d-flex justify-content-end user-options">
+          <div class="col-6 p-0 d-sm-flex d-none justify-content-end user-options">
 
             <?php if(!$this->user->isSelf($this->viewer())): ?>
             <div class="item pr-2" id="user-friendship-cover">

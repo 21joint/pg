@@ -21,7 +21,7 @@
                     </div>
 
                     <div class="bottom row pt-4">
-                        <div class="col-sm text-center border-right">
+                        <div class="col-sm col-3 text-center border-right">
                             <h5 class="text-primary font-weight-bold"> 
                                 15
                             </h5>
@@ -29,7 +29,7 @@
                                 Reviews
                             </p>
                         </div>
-                        <div class="col-sm text-center">
+                        <div class="col-sm col-3 text-center">
                             <h5 class="text-primary font-weight-bold"> 
                                 5
                             </h5>
@@ -37,7 +37,7 @@
                                 Guides
                             </p>
                         </div>
-                        <div class="col-sm text-center border-left">
+                        <div class="col-sm col-3 text-center border-left">
                             <h5 class="text-primary font-weight-bold"> 
                                 3
                             </h5>
@@ -159,9 +159,9 @@
 
         </div> <!-- left side -->
 
-        <div class="col right-side">
+        <div class="col-sm-7 col-12 right-side">
                 
-            <div class="latest-review col-12 bg-white mb-4 widget">
+            <div class="latest-review bg-white mb-4 widget">
                 <div class="holder p-4">
                     
                     <div class="d-flex justify-content-between border-bottom pb-3">
@@ -182,7 +182,7 @@
                 </div>
             </div> <!-- end of latest-review -->
 
-            <div class="latest-guides col-12 bg-white mb-4 widget">
+            <div class="latest-guides bg-white mb-4 widget">
                 <div class="holder p-4">
                     
                     <div class="d-flex justify-content-between border-bottom pb-3">
@@ -203,7 +203,7 @@
                 </div>
             </div> <!-- end of latest-guides -->
 
-            <div class="latest-strugles col-12 bg-white widget">
+            <div class="latest-strugles bg-white widget">
                 <div class="holder p-4">
                     
                     <div class="d-flex justify-content-between border-bottom pb-3">

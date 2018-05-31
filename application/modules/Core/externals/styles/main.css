@@ -1497,14 +1497,13 @@ Used for the modal popup smoothbox.
 }
 
 #TB_window {
- +rounded(10px);
 	position: absolute;
 	z-index: 102;
 	text-align: left;
 	color: #fff;
   border: none;
-  width:530px!important;
   box-shadow:0px 8px 55px rgba(0, 0, 0, 0.16)!important;
+  background: #fff;
 }
 
 #TB_caption {
@@ -1571,7 +1570,6 @@ Used for the modal popup smoothbox.
 #TB_iframeContent {
 	clear: both;
 	border: none;
-  width: 100%!important;
 }
 
 /* For All Smoothbox */
