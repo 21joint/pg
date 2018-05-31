@@ -34,7 +34,13 @@
     <div class="profile_cover_wrapper">
       <div class="profile_cover_photo_wrapper" id="user_cover_photo">
       </div>
-      <div class="profile_cover_head_section" id="user_main_photo"></div>
+      <div class="holder container">
+        <div class="row">
+          <div class="col-12">
+            <div class="profile_cover_head_section" id="user_main_photo"></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="clr"></div>

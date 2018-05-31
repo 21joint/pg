@@ -2214,10 +2214,7 @@ ul.requests_widget
 /*
 Popup
 */
-#TB_window
-{
-  border-color: $theme_popup_border_color;
-}
+
 #user_form_login.global_form_box #remember-wrapper label
 {
   margin-top: 0;

@@ -14,7 +14,7 @@
 <?php 
   $siteTitle = '';
 	$bodyContent = '';
-  $headerContent = '';
+  	$headerContent = '';
 	$siteUrl = $this->siteUrl;
 	$site_title = $this->site_title;
 	if(!empty($this->img_path)) {
@@ -82,4 +82,5 @@
 <?php endif;?>
 
 <?php $html = $bodyContent.$this->bodyHtmlTemplate;?>
-<?php	echo $bodyHtmlTemplate = '<table border="0" cellpadding="10" cellspacing="0"><tbody><tr><td bgcolor="' .$this->body_outerbgcol .'"><table border="0" cellpadding="0" cellspacing="0" align="center" style="width:100%;"><tbody>'.$headerContent.'<tr><td colspan="0" bgcolor="' .$this->body_innerbgcol. '" style="font-family:Arial, Helvetica, sans-serif;border-bottom:' .$this->footer_bottomwidth. 'px solid ' .$this->footer_bottomcol. ';border-left:' .$this->lr_bottomwidth. 'px solid ' .$this->lr_bordercolor. ';border-right:' .$this->lr_bottomwidth. 'px solid ' .$this->lr_bordercolor. ';border-top:' .$this->header_bottomwidth. 'px solid ' .$this->header_bottomcolor. ';font-size:12px;padding:10px;" valign="top">'.$html.'</td></tr><tr><td height="5px"></td></tr><tr><td style="background-color:' . $this->signature_bgcol . ';font-size:12px;padding:8px 15px;">' .$this->textofFooter .'</td></tr></tbody></table></td></tr></tbody></table>';?>
+<?php	echo $bodyHtmlTemplate = '
+<table border="0" cellpadding="10" cellspacing="0"><tbody><tr><td bgcolor="' .$this->body_outerbgcol .'"><table border="0" cellpadding="0" cellspacing="0" align="center" style="width:100%;"><tbody>'.$headerContent.'<tr><td colspan="0" bgcolor="' .$this->body_innerbgcol. '" style="font-family:Arial, Helvetica, sans-serif;border-bottom:' .$this->footer_bottomwidth. 'px solid ' .$this->footer_bottomcol. ';border-left:' .$this->lr_bottomwidth. 'px solid ' .$this->lr_bordercolor. ';border-right:' .$this->lr_bottomwidth. 'px solid ' .$this->lr_bordercolor. ';border-top:' .$this->header_bottomwidth. 'px solid ' .$this->header_bottomcolor. ';font-size:12px;padding:10px;" valign="top">'.$html.'</td></tr><tr><td height="5px"></td></tr><tr><td style="background-color:' . $this->signature_bgcol . ';font-size:12px;padding:8px 15px;">' .$this->textofFooter .'</td></tr></tbody></table></td></tr></tbody></table>';?>
