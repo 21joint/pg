@@ -32,6 +32,8 @@ class Sdparentalguide_Widget_AssignedBadgesSliderController extends Engine_Conte
             ->joinLeft($assignedTableName,"$assignedTableName.badge_id = $tableName.badge_id",array("$assignedTableName.active as assigned_active"))
             ->where("$assignedTableName.active = ?",1)
             ->where("$tableName.active = ?",1)
+            ->where("$assignedTableName.profile_display = ?",1)
+            ->where("$tableName.profile_display = ?",1)
             ->where("$assignedTableName.user_id = ?",$subject->getIdentity());
 
     $this->view->assignedBadges = $assignedBadges = $table->fetchAll($selectAssigned); 

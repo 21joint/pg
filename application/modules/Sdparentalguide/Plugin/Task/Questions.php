@@ -11,11 +11,11 @@ class Sdparentalguide_Plugin_Task_Questions extends Sdparentalguide_Plugin_Task_
     public function execute($page = 1) {
         $usersTable = Engine_Api::_()->getDbtable("users","user");
         if($page == 1){
-            $usersTable->update(array('gg_questions_count' => 0),array());
+            $usersTable->update(array('gg_question_count' => 0),array());
         }
         
         $questionsTable = Engine_Api::_()->getDbtable("questions","ggcommunity");
-        $select = $questionsTable->select()->from($questionsTable->info("name"),array("*",new Zend_Db_Expr("COUNT(question_id) as gg_questions_count")))
+        $select = $questionsTable->select()->from($questionsTable->info("name"),array("*",new Zend_Db_Expr("COUNT(question_id) as gg_question_count")))
                 ->where('approved = ?',1)->where("draft = ?",0)->group("user_id");
         
         $paginator = Zend_Paginator::factory($select);
@@ -26,7 +26,7 @@ class Sdparentalguide_Plugin_Task_Questions extends Sdparentalguide_Plugin_Task_
         }
                 
         foreach($paginator as $question){
-            $usersTable->update(array('gg_questions_count' => $question->gg_questions_count),array('user_id = ?' => $question->user_id));
+            $usersTable->update(array('gg_question_count' => $question->gg_question_count),array('user_id = ?' => $question->user_id));
         }
         
         return $paginator;

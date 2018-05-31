@@ -103,13 +103,13 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             }
             
             if( $payload instanceof Sitereview_Model_Listing && $payload->approved) {
-                $viewer->gg_reviews_count++;
+                $viewer->gg_review_count++;
                 $viewer->save();
             }
             
             
             if( $payload instanceof Ggcommunity_Model_Question && $payload->approved && !$payload->draft) {
-                $viewer->gg_questions_count++;
+                $viewer->gg_question_count++;
                 $viewer->save();
             }
             
@@ -230,26 +230,26 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             $modifiedFields = $payload->getModifiedFields();
                         
             if( $payload instanceof Sitereview_Model_Listing && $payload->approved && isset($modifiedFields['approved'])) {
-                $payload->getOwner()->gg_reviews_count++;
+                $payload->getOwner()->gg_review_count++;
                 $payload->getOwner()->save();
             }
             
             if( $payload instanceof Sitereview_Model_Listing && !$payload->approved && isset($modifiedFields['approved'])) {
-                $payload->getOwner()->gg_reviews_count--;
+                $payload->getOwner()->gg_review_count--;
                 $payload->getOwner()->save();
             }
             
             if( $payload instanceof Ggcommunity_Model_Question && (isset($modifiedFields['approved']) || isset($modifiedFields['draft']))) {
                 if($payload->approved && !$payload->draft){
                     $payloadUser = Engine_Api::_()->user()->getUser($payload->user_id);
-                    $payloadUser->gg_questions_count++;
+                    $payloadUser->gg_question_count++;
                     $payloadUser->save();
                 }
             }            
             if( $payload instanceof Ggcommunity_Model_Question && (isset($modifiedFields['approved']) || isset($modifiedFields['draft']))) {
                 if((!$payload->approved || $payload->draft)){
                     $payloadUser = Engine_Api::_()->user()->getUser($payload->user_id);
-                    $payloadUser->gg_questions_count--;
+                    $payloadUser->gg_question_count--;
                     $payloadUser->save();
                 }
             }
@@ -369,12 +369,12 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                 $assignedTable->delete(array('user_id = ?' => $item->getIdentity()));
           }
           if( $item instanceof Ggcommunity_Model_Question && $item->approved && !$item->draft) {
-                $item->getOwner()->gg_questions_count--;
+                $item->getOwner()->gg_question_count--;
                 $item->getOwner()->save();
           }
           
           if( $item instanceof Sitereview_Model_Listing && $item->approved) {
-                $item->getOwner()->gg_reviews_count--;
+                $item->getOwner()->gg_review_count--;
                 $item->getOwner()->save();
           }
       } catch (Exception $ex) {

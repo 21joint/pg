@@ -325,6 +325,12 @@ function deleteAssignedBadge(element,badgeId,userId){
               onclick: "assignBadge(this,'"+badgeId+"','"+userId+"');"
           });
           anchor.inject(options,"bottom");
+          anchor = new Element("a",{
+                href: 'javascript:void(0);',
+                html: "&nbsp;&nbsp;<?php echo $this->translate('Display'); ?>",
+                onclick: "displayBadge(this,'"+badgeId+"','"+userId+"','1');"
+          });
+          anchor.inject(options,"bottom");
           var tableBody = $$(".admin_table_form.all_badges tbody");
           row.inject(tableBody[0],"bottom");
           Smoothbox.bind(row);
@@ -408,7 +414,7 @@ function updateDisplayStatus(element,badgeId,userId,status){
             anchor = new Element("a",{
                 href: 'javascript:void(0);',
                 html: "&nbsp;&nbsp;<?php echo $this->translate('Display'); ?>",
-                onclick: "updateAssignStatus(this,'"+badgeId+"','"+userId+"','1');"
+                onclick: "updateDisplayStatus(this,'"+badgeId+"','"+userId+"','1');"
             });
           }
           anchor.inject($(element),"after");

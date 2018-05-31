@@ -9,7 +9,7 @@
  */
 
 UPDATE `engine4_core_menuitems` SET
-`params` = '{\"route\":\"admin_default\",\"module\":\"sdparentalguide\",\"controller\":\"search\",\"action\":\"activity\"}',
+`params` = '{\"route\":\"admin_default\",\"module\":\"sdparentalguide\",\"controller\":\"search\",\"action\":\"activity\"}'
 WHERE `name` = 'sdparentalguide_admin_main_search';
 
 INSERT INTO `engine4_gg_tasks` (`title`, `module`, `plugin`, `per_page`, `enabled`) VALUES
@@ -25,3 +25,12 @@ ADD `name_plural` varchar(128) COLLATE 'utf8_general_ci' NULL AFTER `name`;
 
 UPDATE engine4_gg_topics SET name_plural = name;
 DROP TABLE `engine4_gg_listing_topics`;
+
+
+
+ALTER TABLE `engine4_users`
+DROP `gg_questions_count`;
+ALTER TABLE `engine4_users`
+DROP `gg_reviews_count`;
+ALTER TABLE `engine4_users`
+DROP `gg_expert_count`;
