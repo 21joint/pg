@@ -99,7 +99,7 @@ class Sdparentalguide_Form_Admin_Badge_FilterBadges extends Engine_Form
       ->clearDecorators()
       ->addDecorator('ViewHelper')
       ->addDecorator('Label', array('tag' => null, 'placement' => 'PREPEND'))
-      ->addDecorator('HtmlTag', array('tag' => 'div'))
+      ->addDecorator('HtmlTag', array('tag' => 'div','class' => 'sd_profile_display'))
       ->setMultiOptions(array(
           '-11' => 'All',
           '1' => 'Display on Profile',
