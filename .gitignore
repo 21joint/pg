@@ -2,8 +2,11 @@ application/settings/database.php
 application/settings/general.php
 application/settings/cache.php
 application/settings/mail.php
+application/themes/guidanceguide/.sass-cache
 public/temporary
 temporary/cache
 temporary/log
 .vscode
 temporary/cache-old
+temporary/scaffold
+temporary/session
