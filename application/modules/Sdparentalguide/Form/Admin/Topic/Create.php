@@ -13,8 +13,15 @@ class Sdparentalguide_Form_Admin_Topic_Create extends Engine_Form
         $this->setAttrib("class","global_form_popup");
         
         $this->addElement("Text",'name',array(
-            'label' => 'Topic Name',
-            'placeholder' => 'Topic Name',
+            'label' => 'Topic Name (Singular)',
+            'placeholder' => 'Topic Name (Singular)',
+            'allowEmpty' => false,
+            'required' => true
+        ));
+        
+        $this->addElement("Text",'name_plural',array(
+            'label' => 'Topic Name (Plural)',
+            'placeholder' => 'Topic Name (Plural)',
             'allowEmpty' => false,
             'required' => true
         ));
@@ -40,30 +47,28 @@ class Sdparentalguide_Form_Admin_Topic_Create extends Engine_Form
         )
     ));
         
-        $listingtypes = Engine_Api::_()->getDbTable("listingtypes","sitereview")->getListingTypesArray();
-        $listingtypes['0'] = 'All';
-        ksort($listingtypes);
-        $this->addElement("Select",'listingtype_id',array(
-            'label' => 'Listing Type',
-//            'required' => true,
-//            'allowEmpty' => false,
-            'multiOptions' => $listingtypes,
-            'onchange' => 'loadCategories(this);'
+        $this->addElement("Radio","approved",array(
+            'label' => 'Status',
+            'allowEmpty' => false,
+            'required' => true,
+            'multiOptions' => array(
+                '1' => 'Active',
+                '0' => 'Inactive'
+            ),
+            'value' => 1
         ));
         
-        $this->addElement("Select",'category_id',array(
-            'label' => 'Listing Type Category',
-//            'required' => true,
-//            'allowEmpty' => false,
-            'onchange' => 'loadSubCategories(this);'
+        $this->addElement("Radio","badges",array(
+            'label' => 'Badges',
+            'allowEmpty' => false,
+            'required' => true,
+            'multiOptions' => array(
+                '1' => 'Allow Badges',
+                '0' => 'No Badges'
+            ),
+            'value' => 1
         ));
-        $this->category_id->setRegisterInArrayValidator(false);
         
-        
-        $this->addElement("Select",'subcategory_id',array(
-            'label' => 'Listing Type Subcategory',
-        ));
-        $this->subcategory_id->setRegisterInArrayValidator(false);
         
         $this->addElement('Button', 'save', array(
             'label' => 'Save',

@@ -278,6 +278,7 @@ class Sdparentalguide_AdminBadgeController extends Core_Controller_Action_Admin
                     ->getNavigation('sdparentalguide_admin_main_badges', array(), 'sdparentalguide_admin_badge_users');  
 
         $this->view->formFilter = $formFilter = new Sdparentalguide_Form_Admin_Badge_FilterBadges();
+        $formFilter->removeElement("profile_display");
         $page = $this->_getParam('page', 1);
         $values = array();
         if( $formFilter->isValid($this->_getAllParams()) ) {
@@ -317,6 +318,10 @@ class Sdparentalguide_AdminBadgeController extends Core_Controller_Action_Admin
 
         if(!empty($values['level'])){
             $select->where("level = ?",$values['level']);
+        }
+        
+        if(!empty($values['type'])){
+            $select->where("type = ?",$values['type']);
         }
 
         if(isset($values['active']) && ($values['active'] == 0 || $values['active'] == 1)){

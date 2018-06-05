@@ -1,11 +1,52 @@
-INSERT INTO `engine4_core_content` (`content_id`, `page_id`, `type`, `name`, `parent_content_id`, `order`, `params`, `attribs`) VALUES
-(500, 5, 'container', 'main', NULL, 2, '[\"\"]', NULL),
-(511, 5, 'container', 'middle', 500, 6, '[\"\"]', NULL),
-(531, 5, 'widget', 'core.container-tabs', 511, 7, '{\"max\":5}', NULL),
-(3261, 5, 'container', 'top', NULL, 1, '[\"\"]', NULL),
-(3262, 5, 'container', 'middle', 3261, 6, '[\"\"]', NULL),
-(3842, 5, 'widget', 'siteusercoverphoto.user-cover-photo', 3262, 4, '{\"title\":\"\",\"titleCount\":\"\",\"showContent\":[\"mainPhoto\",\"title\",\"updateInfoButton\",\"settingsButton\",\"optionsButton\",\"friendShipButton\",\"composeMessageButton\"],\"profile_like_button\":\"1\",\"columnHeight\":\"500\",\"editFontColor\":\"0\",\"nomobile\":\"0\",\"name\":\"siteusercoverphoto.user-cover-photo\"}', NULL),
-(3843, 5, 'widget', 'seaocore.scroll-top', 511, 10, '[\"[]\"]', NULL),
-(8093, 5, 'widget', 'user.cover-photo', 3262, 3, '[\"[]\"]', NULL),
-(8150, 5, 'widget', 'sdparentalguide.profile-landing', 531, 8, '{\"title\":\"Overview\",\"name\":\"sdparentalguide.profile-landing\"}', NULL),
-(8151, 5, 'widget', 'user.profile-fields', 531, 9, '{\"title\":\"Info\"}', NULL);
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+/**
+ * Author:  Stars Developer
+ * Created: May 16, 2018
+ */
+
+
+
+ALTER TABLE `engine4_users`
+CHANGE `gg_credibility` `gg_contribution` int(11) NULL DEFAULT '0' AFTER `gg_ip_lastmodified`,
+CHANGE `gg_credibility_updated` `gg_contribution_updated` tinyint(4) NULL DEFAULT '0' AFTER `gg_activities`;
+
+
+ALTER TABLE `engine4_users`
+ADD `gg_contribution_level` int NOT NULL DEFAULT '0',
+ADD `gg_review_count` int NOT NULL DEFAULT '0' AFTER `gg_contribution_level`,
+ADD `gg_question_count` int NOT NULL DEFAULT '0' AFTER `gg_review_count`,
+ADD `gg_guide_count` int NOT NULL DEFAULT '0' AFTER `gg_question_count`,
+ADD `gg_bronze_count` int NOT NULL DEFAULT '0' AFTER `gg_guide_count`,
+ADD `gg_silver_count` int NOT NULL DEFAULT '0' AFTER `gg_bronze_count`,
+ADD `gg_gold_count` int NOT NULL DEFAULT '0' AFTER `gg_silver_count`,
+ADD `gg_platinum_count` int NOT NULL DEFAULT '0' AFTER `gg_gold_count`,
+ADD `gg_expert_bronze_count` int NOT NULL DEFAULT '0' AFTER `gg_platinum_count`,
+ADD `gg_expert_silver_count` int NOT NULL DEFAULT '0' AFTER `gg_expert_bronze_count`,
+ADD `gg_expert_gold_count` int NOT NULL DEFAULT '0' AFTER `gg_expert_silver_count`,
+ADD `gg_expert_platinum_count` int NOT NULL DEFAULT '0' AFTER `gg_expert_gold_count`,
+ADD `gg_followers_count` int NOT NULL DEFAULT '0' AFTER `gg_expert_platinum_count`,
+ADD `gg_following_count` int NOT NULL DEFAULT '0' AFTER `gg_followers_count`;
+
+ALTER TABLE `engine4_users`
+CHANGE `gg_expert` `gg_expert_count` int NOT NULL DEFAULT '0' AFTER `gg_mvp`;
+
+
+ALTER TABLE `engine4_gg_assigned_badges`
+RENAME TO `engine4_gg_user_badges`;
+
+ALTER TABLE `engine4_gg_user_badges`
+ADD `profile_display` tinyint NULL DEFAULT '1';
+
+ALTER TABLE `engine4_gg_badges`
+ADD `profile_display` tinyint NULL DEFAULT '0',
+ADD `type` varchar(32) NULL AFTER `profile_display`;
+
+ALTER TABLE `engine4_gg_badges`
+ADD `description` longtext COLLATE 'utf8_unicode_ci' NOT NULL AFTER `name`;
+
+ALTER TABLE `engine4_gg_badges`
+DROP `listingtype_id`;

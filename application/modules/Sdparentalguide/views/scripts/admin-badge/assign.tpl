@@ -415,17 +415,18 @@ function switchProfileDisplay(element,display){
   <table class='admin_table'>
     <thead>
       <tr>
-        <th style='width: 100px;' class='admin_table_centered'>
+        <th style='width: 2%;' class='admin_table_centered'>
             <input onclick="selectAll()" type='checkbox' class='checkbox' id="select-all" style="display:none;">
             <label for="select-all" class='admin_table_centered'><?php echo $this->translate("Select"); ?></label>
         </th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("User Name") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("First Name") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Last Name") ?></th>
+        <th style='width: 8%;' class='admin_table_centered'><?php echo $this->translate("User Name") ?></th>
+        <th style='width: 15%;' class='admin_table_centered'><?php echo $this->translate("First Name") ?></th>
+        <th style='width: 15%;' class='admin_table_centered'><?php echo $this->translate("Last Name") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Level") ?></th>        
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Assigned") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Inactive") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Displayed") ?></th>
+        <th style='width: 8%;' class='admin_table_centered'><?php echo $this->translate("Assigned") ?></th>
+        <th style='width: 8%;' class='admin_table_centered'><?php echo $this->translate("Inactive") ?></th>
+        <th style='width: 8%;' class='admin_table_centered'><?php echo $this->translate("Display (User)") ?></th>
+        <th style='width: 8%;' class='admin_table_centered'><?php echo $this->translate("Display (All)") ?></th>
       </tr>
     </thead>
     <tbody>
@@ -447,7 +448,7 @@ function switchProfileDisplay(element,display){
               <?php echo $api->getFieldValue($item,4); ?>
             </td>
             <td class="admin_table_centered nowrap">
-              <?php echo Engine_Api::_()->getItem("authorization_level",$user->level_id)->getTitle(); ?>
+              <?php echo $this->string()->truncate(Engine_Api::_()->getItem("authorization_level",$user->level_id)->getTitle(),15); ?>
             </td>
             <td class='admin_table_centered'>
                 <input type="radio" class="sd_radio_assigned" disabled <?php echo ( $item->badge_id ? $this->translate('checked=checked') : '' ); ?>>
@@ -457,6 +458,9 @@ function switchProfileDisplay(element,display){
             </td>
             <td class="admin_table_centered nowrap">
                 <input type="radio" class="sd_radio_display" disabled <?php echo ( $item->profile_display ? $this->translate('checked=checked') : '' ); ?>>  
+            </td>
+            <td class="admin_table_centered nowrap">
+                <input type="radio" class="sd_radio_display" disabled <?php echo ( $this->badge->profile_display ? $this->translate('checked=checked') : '' ); ?>>  
             </td>
           </tr>
         <?php endforeach; ?>
