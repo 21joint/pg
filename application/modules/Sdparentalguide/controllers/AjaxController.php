@@ -38,7 +38,7 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
 
         // setup privacy for public
         $searchPrivacy = $subject->search;
-        ($searchPrivacy == 1) ? $subject->search = 0 : $subject->search = 0;
+        ($searchPrivacy == 1) ? $subject->search = 0 : $subject->search = 1;
 
         $subject->save();
 

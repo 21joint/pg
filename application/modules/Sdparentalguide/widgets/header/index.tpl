@@ -36,6 +36,7 @@
                         </a>
                     </li> <!-- end of search -->
 
+                    <?php if($this->viewer->getIdentity() > 0): ?>
                     <li class="line-inline-item pr-4 position-relative notifications">
                         <a href="javascript:void(0)" class="core_mini_update updates_toogle">
                             <i class="fa fa-bell-o h4" id="close_icon"> </i>
@@ -74,7 +75,7 @@
                         <?php echo $this->htmlLink( $this->viewer->getHref(),$this->itemPhoto($this->viewer, 'thumb.icon') ); ?>
                     </li> <!-- profile -->
 
-                    <?php if($this->viewer->getIdentity() > 0): ?>
+                   
                     <li class="list-inline-item name d-none d-sm-block position-relative">
                         <?php echo $this->htmlLink($this->viewer->getHref(), substr($this->viewer->getTitle(), 0, strrpos($this->viewer->getTitle(), ' ')), array('class' => 'font-weight-bold')); ?>
 
@@ -142,6 +143,14 @@
                         </div>
 
                     </li> <!-- name -->
+
+                    <?php else: ?>
+                    <li class="list-inline-item">
+                      <?php echo $this->htmlLink($this->url(array('action' => 'login'), 'user_login'), $this->translate('Sign In'), array('class' => 'btn btn-outline-light text-uppercase')); ?>
+                    </li>
+                    <li class="list-inline-item">
+                      <?php echo $this->htmlLink($this->url(array('action' => 'index'), 'user_signup'), $this->translate('Sign Up'), array('class' => 'btn btn-outline-light text-uppercase')); ?>
+                    </li>
                     <?php endif; ?>
 
                 </ul>

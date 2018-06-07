@@ -25,7 +25,7 @@ class User_Form_Settings_Password extends Engine_Form
     $this->setTitle('Change Password')
       ->setAction(Zend_Controller_Front::getInstance()->getRouter()->assemble(array()))
       ->setAttrib('id', 'extfox-settings')
-      ;
+    ;
 
     // Init old password
     $this->addElement('Password', 'oldPassword', array(

@@ -4136,6 +4136,65 @@ body#global_page_user-profile-index {
               font-weight: 400;
               font-size: .9em;
               padding: 1.2rem; }
+        body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .layout_core_container_tabs:not(.profile_cover_photo_tabs) {
+          width: 100%;
+          max-width: 1140px;
+          background: #fff;
+          margin: 4rem auto;
+          border-radius: 10px;
+          display: none; }
+          body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .layout_core_container_tabs:not(.profile_cover_photo_tabs) > .tabs_alt {
+            margin: 0; }
+            body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .layout_core_container_tabs:not(.profile_cover_photo_tabs) > .tabs_alt ul {
+              border-top: none;
+              border-left: none;
+              border-right: none;
+              border-bottom: 1px solid #F5F5F5;
+              padding: 0 2rem; }
+              body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .layout_core_container_tabs:not(.profile_cover_photo_tabs) > .tabs_alt ul li.active a {
+                border-bottom: 2px solid #5CC7CE; }
+              body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .layout_core_container_tabs:not(.profile_cover_photo_tabs) > .tabs_alt ul li a {
+                border: none;
+                color: #333D40 !important;
+                padding: 1.5rem 2rem;
+                display: block; }
+          body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .layout_core_container_tabs:not(.profile_cover_photo_tabs) > .generic_layout_container {
+            background: #fff;
+            padding-top: 2rem;
+            padding-bottom: 2rem; }
+            body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .layout_core_container_tabs:not(.profile_cover_photo_tabs) > .generic_layout_container > h3 {
+              border: none; }
+
+#extfox-settings#delete button {
+  background-color: #E15A5A !important; }
+#extfox-settings h3 {
+  font-size: 20px;
+  color: #333D40;
+  border-bottom: 1px solid #F5F5F5; }
+#extfox-settings .form-wrapper {
+  padding-left: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; }
+  #extfox-settings .form-wrapper .form-label {
+    text-align: left;
+    font-size: 12px;
+    font-weight: 700;
+    color: #333D40; }
+  #extfox-settings .form-wrapper .form-element input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0px !important;
+    width: 100%; }
+    #extfox-settings .form-wrapper .form-element input::-webkit-input-placeholder {
+      color: #B9CFD1 !important; }
+  #extfox-settings .form-wrapper button {
+    color: #fff;
+    background-color: #5CC7CE;
+    text-transform: uppercase;
+    border-radius: 25px;
+    padding: 0.8rem 1.9rem; }
 
 @media only screen and (max-width: 768px) {
   header.extfox-header .list-inline-item.search {

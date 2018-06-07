@@ -631,4 +631,26 @@ return array(
         ),
     ),
 
+    array(
+        'title' => $view->translate('AJAX Profile Password'),
+        'description' => $view->translate('Edit Password in AJAX Mode'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-password',
+        'defaultParams' => array(
+            'title' => 'Password',
+        ),
+    ),
+
+    array(
+        'title' => $view->translate('AJAX Delete Profile'),
+        'description' => $view->translate('Delete Profile in AJAX Mode'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-delete',
+        'defaultParams' => array(
+            'title' => 'Delete Account',
+        ),
+    ),
+
 ) ?>

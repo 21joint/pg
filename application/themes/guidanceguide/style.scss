@@ -463,6 +463,49 @@ body#global_page_user-profile-index {
                                 }
                             }
                         } // profile tabs
+
+                        // Edit Profile
+                        .layout_core_container_tabs:not(.profile_cover_photo_tabs) {
+                            width: 100%;
+                            max-width: 1140px;
+                            background: $white;
+                            margin: 4rem auto;
+                            border-radius: 10px;
+                            display: none;
+                            // tabs
+                            > .tabs_alt {
+                                margin: 0;
+                                ul {
+                                    border-top: none;
+                                    border-left: none;
+                                    border-right: none;
+                                    border-bottom: 1px solid #F5F5F5;
+                                    padding: 0 2rem;
+                                    li {
+                                        &.active {
+                                            a {
+                                                border-bottom: 2px solid $primary;   
+                                            }
+                                        }
+                                        a {
+                                            border: none;
+                                            color: $dark !important;
+                                            padding: 1.5rem 2rem;
+                                            display: block;
+                                        }
+                                    }
+                                }
+                            }
+                            // content
+                            > .generic_layout_container {
+                                background: #fff;
+                                padding-top: 2rem;
+                                padding-bottom: 2rem;
+                                > h3 {
+                                    border: none;
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -470,51 +513,51 @@ body#global_page_user-profile-index {
     }
     
 }
+
+// FORGOT PASSWORD
 #extfox-settings {
+
+    &#delete {
+        button {
+            background-color: $danger !important;
+        }
+    }
     h3 {
-        font-size:20px;
+        font-size: 20px;
         color:#333D40;
-        margin-top:32px;
-        // nunito
+        border-bottom: 1px solid #F5F5F5;
     }
     .form-wrapper {
-        padding-left: 40px;
+        padding-left: 4rem;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         .form-label {
             text-align: left;
             font-size: 12px;
-            // OpenSans 
             font-weight: 700;
             color:#333D40;
         }
         .form-element {
             input {
-                border-top:none;
+                border-top: none;
                 border-left: none;
                 border-right: none;
                 border-radius: 0px!important;
                 width: 100%;
-                &::-webkit-input-placeholder  {
+                &::-webkit-input-placeholder {
                     color:#B9CFD1!important;
                 }
             }
-
-            
-        
         }
         button {
             color:$white;
-            background-color:#5CC7CE;
+            background-color: $primary;
             text-transform: uppercase;
             border-radius: 25px;
             padding: 0.8rem 1.9rem;
         }
-
     }
-
-
 }
 
 
