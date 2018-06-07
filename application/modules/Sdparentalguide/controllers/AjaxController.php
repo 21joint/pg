@@ -15,7 +15,6 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
                 if( !Engine_Api::_()->core()->hasSubject() ) {
                     Engine_Api::_()->core()->setSubject($item);
                 }
-                //$this->_helper->requireAuth()->setAuthParams($item, $viewer, 'comment');
             }
         }
         $this->_helper->requireUser();
@@ -26,22 +25,25 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
         $viewer = Engine_Api::_()->user()->getViewer();
         $subject = Engine_Api::_()->core()->getSubject();
 
+        if( !$this->getRequest()->isPost() ) {
+            $this->view->status = false;
+            $this->view->error = Zend_Registry::get('Zend_Translate')->_("Invalid request method");;
+            return;
+        }
+
         if(!$subject->isSelf($viewer)) return;
 
         $type = $this->_getParam('type', null);
         $user_id = $this->_getParam('id', null);
 
         // setup privacy for public
-        if($type == 'add') {
-            $subject->search = 1;
-        } else {
-            $subject->search = 0;
-        }
+        $searchPrivacy = $subject->search;
+        ($searchPrivacy == 1) ? $subject->search = 0 : $subject->search = 0;
+
         $subject->save();
 
         $this->view->status = true;
         $this->view->message = Zend_Registry::get('Zend_Translate')->_('User have been saved.');
-
 
     }
 

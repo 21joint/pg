@@ -1,5 +1,5 @@
 function hoverBoxImage() {
-  
+
   $$('.item_photo_user').each( function (element) {
 
       element.getParent().getParent().classList.add('d-inline-block')
@@ -48,3 +48,29 @@ window.addEvent('load', function () {
 
 var tab_content_id_extfox = 0;
 
+
+// AJAX ACTIONS
+en4.gg = {
+
+  ggAjax : function(type, subject_id, action, el) {
+
+      (new Request.JSON({
+          url : en4.core.baseUrl + 'gg/ajax/' + action,
+          data : {
+              format : 'json',
+              type : type,
+              id : subject_id,
+          },
+          onComplete: function(resp) {
+              
+            if(resp.status == false) en4.core.showError('Something went wrong. Please try again.');
+            let content = el.textContent.replace(/\s/g, "");
+            
+            (content == 'MakePublic') ? el.textContent = 'Make Private' : el.textContent = 'Make Public';
+
+          }
+      })).send();
+
+  },
+  
+}

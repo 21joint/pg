@@ -63,7 +63,7 @@
                 <?php echo $this->translate('Upload Photo'); ?>
               </a>
             </li>
-            <?php if (Engine_Api::_()->getDbtable('modules', 'core')->isModuleEnabled('album')):?>
+            <?php if (!Engine_Api::_()->getDbtable('modules', 'core')->isModuleEnabled('album')):?>
               <li>
                 <?php echo $this->htmlLink(
                   $this->url(array(

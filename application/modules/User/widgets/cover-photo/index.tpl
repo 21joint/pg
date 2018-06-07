@@ -47,7 +47,7 @@
             </div>
             <?php else: ?>
             <div class="item pr-2" id="user-friendship-cover">
-              <a class="btn btn-success text-white px-5 py-2" href="<?php echo $this->url(array('controller' => 'edit','action' => 'profile'),'user_extended'); ?>">
+              <a class="btn btn-success text-white px-5 py-2" href="javascript:void(0);" onclick="en4.gg.ggAjax('user', <?php echo $this->user->getIdentity(); ?>, 'user-privacy', this)">
                 <?php echo $this->translate('Make Public');?>
               </a>
             </div>
