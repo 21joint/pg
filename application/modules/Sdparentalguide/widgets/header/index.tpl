@@ -193,7 +193,7 @@
               <?php if($this->viewer->getIdentity() > 0): ?>
                 <?php if($this->viewer->isAdmin()): ?>
                 <li class="list-inline-item d-sm-none d-block">
-                  <a href="<?php echo $this->baseUrl(); ?>/community/home">
+                  <a href="<?php echo $this->baseUrl(); ?>/admin">
                     <?php echo $this->translate('Admin'); ?>
                   </a>
                 </li>

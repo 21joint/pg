@@ -119,5 +119,19 @@
           'action' => '(edit|index|add|delete)',
         ),
     ),
+
+    'sdparentalguide_extended' => array(
+        'route' => 'gg/:controller/:action/*',
+        'defaults' => array(
+          'module' => 'sdparentalguide',
+          'controller' => 'ajax',
+          'action' => 'index',
+        ),
+        'reqs' => array(
+          'controller' => '\D+',
+          'action' => '\D+',
+        )
+    ),
+
   )
 ); ?>
