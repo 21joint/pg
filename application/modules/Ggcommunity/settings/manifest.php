@@ -98,7 +98,7 @@
 
     // List Struggles
     'listing_struggles' => array(
-      'route' => 'ggcommunity/home',
+      'route' => 'struggles/home',
       'defaults' => array(
         'module' => 'ggcommunity',
         'controller' => 'question-index',

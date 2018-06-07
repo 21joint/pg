@@ -3903,21 +3903,64 @@ mark,
   .seaocore_up_button .seaocore_up_button span {
     border-radius: 50%; }
 
+.item-photo-guidance .statistic {
+  right: -.5rem;
+  bottom: .1rem;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  border: 2px solid #fff; }
+
 /*
     Components & Pages designed for GuidanceGuide
     * HEADER
     * FOOTER
     * USER PROFILE + Shared Everywhere
     * Widgets
+        *   Box Hover
         *   Contributed Points
         *   Badges Earned
         *   Badges Slide
         *   Following
 */
+.extfox-widgets.active .row .box-hover-member {
+  display: block; }
 .extfox-widgets .row > .left-side > div.widget, .extfox-widgets .row > .right-side > div.widget {
   border-radius: 10px; }
 .extfox-widgets .row .contribution h5 {
   font-size: 2rem; }
+.extfox-widgets .row .box-hover-member {
+  z-index: 99;
+  min-width: 360px;
+  left: 0;
+  top: 3.3rem;
+  box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  display: none; }
+  .extfox-widgets .row .box-hover-member .header .close {
+    right: 0; }
+    .extfox-widgets .row .box-hover-member .header .close svg path {
+      fill: #b9cfd1; }
+  .extfox-widgets .row .box-hover-member .header .photo-image img {
+    max-width: 55px;
+    border-radius: 50%;
+    object-fit: cover; }
+  .extfox-widgets .row .box-hover-member .header .right-side i {
+    font-size: 8px; }
+  .extfox-widgets .row .box-hover-member .badges-earned .col-sm {
+    max-width: 50px;
+    padding: 0;
+    text-align: center;
+    background-position: 50% 20% !important; }
+    .extfox-widgets .row .box-hover-member .badges-earned .col-sm:not(:last-child) {
+      margin-right: 1rem; }
+    .extfox-widgets .row .box-hover-member .badges-earned .col-sm .badge-holder {
+      min-width: 40px !important; }
+    .extfox-widgets .row .box-hover-member .badges-earned .col-sm .text-muted {
+      color: #93a4a6 !important; }
+  .extfox-widgets .row .box-hover-member .footer .col-sm:hover {
+    background: rgba(0, 0, 0, 0.02); }
 .extfox-widgets .row .badges-earned .holder .bottom .col-sm {
   background-repeat: no-repeat;
   background-position: 50% 50%; }
@@ -4008,6 +4051,15 @@ header.extfox-header .container .row div.mini-menu ul li.notifications span.upda
     border-top: 1px solid #F5F5F5; }
     header.extfox-header .container .row div.mini-menu ul li.notifications span.updates_pulldown_active div.pulldown_contents_wrapper ul li.notifications_unread {
       background: #F7FCFC; }
+header.extfox-header .bottom-menu .container ul li a {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #fff;
+  display: inline-block; }
+header.extfox-header .bottom-menu .container ul li:not(:last-child) {
+  margin-right: 3rem; }
+header.extfox-header .bottom-menu .container ul li:hover a {
+  border-bottom: 2px solid #5CC7CE; }
 
 footer.extfox-footer div.top-holder .social-holder ul li {
   border-radius: 50%;
@@ -4145,15 +4197,24 @@ body#global_page_user-profile-index {
         width: 93%; }
     body#global_page_user-profile-index #global_wrapper #global_content .layout_top > .layout_middle .cover_photo_profile_options {
       margin-left: 13em !important; }
-      body#global_page_user-profile-index #global_wrapper #global_content .layout_top > .layout_middle .cover_photo_profile_options h2 {
-        font-size: 2rem !important; }
+      body#global_page_user-profile-index #global_wrapper #global_content .layout_top > .layout_middle .cover_photo_profile_options .profile_status {
+        width: 90%; }
+        body#global_page_user-profile-index #global_wrapper #global_content .layout_top > .layout_middle .cover_photo_profile_options .profile_status h2 {
+          font-size: 2rem !important; }
   body#global_page_user-profile-index #global_footer .layout_page_footer .layout_main {
     padding: 0 !important;
     margin: 0 !important;
     width: 100% !important; }
 
+  .extfox-widgets.active {
+    position: absolute;
+    right: 1rem;
+    top: 3rem; }
   .extfox-widgets .row > .right-side {
     margin-top: 1.5rem; }
+  .extfox-widgets .row .box-hover-member {
+    left: 0;
+    position: unset !important; }
   .extfox-widgets .row .contribution .col-sm.border-right, .extfox-widgets .row .contribution .col-sm.border-left {
     border: none !important; } }
 

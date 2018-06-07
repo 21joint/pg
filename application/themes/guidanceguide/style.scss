@@ -10,6 +10,17 @@
         }
     }
 }
+.item-photo-guidance {
+    .statistic {
+        right: -.5rem;
+        bottom: .1rem;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+        border: 2px solid #fff;
+    }
+}
 
 /*
     Components & Pages designed for GuidanceGuide
@@ -17,6 +28,7 @@
     * FOOTER
     * USER PROFILE + Shared Everywhere
     * Widgets
+        *   Box Hover
         *   Contributed Points
         *   Badges Earned
         *   Badges Slide
@@ -26,6 +38,15 @@
 
 // Widgets
 .extfox-widgets {
+
+    &.active {
+        .row {
+            .box-hover-member {
+                display: block;
+            }
+        }
+    }
+
     .row {
         > .left-side, > .right-side {
             > div.widget {
@@ -36,6 +57,61 @@
         .contribution {
             h5 {
                 font-size: 2rem;
+            }
+        }
+
+        // Box Hover
+        .box-hover-member {
+            z-index: 99;
+            min-width: 360px;
+            left: 0;
+            top: 3.3rem;
+            box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            display: none;
+            .header {
+                .close {
+                    right: 0;
+                    svg path {
+                        fill: #b9cfd1;
+                    }
+                }
+                .photo-image {
+                    img {
+                        max-width: 55px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
+                }
+                .right-side {
+                    i {
+                        font-size: 8px;
+                    }
+                }
+            }
+            .badges-earned {
+                .col-sm {
+                    max-width: 50px;
+                    padding: 0;
+                    text-align: center;
+                    background-position: 50% 20% !important;
+                    &:not(:last-child) {
+                        margin-right: 1rem;
+                    }
+                    .badge-holder {
+                        min-width: 40px !important;
+                    }
+                    .text-muted {
+                        color: rgba(147, 164, 166, 1) !important;
+                    }
+                }
+            }
+            .footer {
+                .col-sm {
+                    &:hover {
+                        background: rgba(0, 0, 0, 0.02);
+                    }
+                }
             }
         }
 
@@ -206,6 +282,30 @@ header.extfox-header {
                     }
                 }
             } // end of mini-menu
+        }
+    }
+
+    // bottom menu
+    .bottom-menu {
+        .container {
+            ul {
+                li {
+                    a {
+                        padding-top: 1rem;
+                        padding-bottom: 1rem;
+                        border-bottom: 2px solid $white;
+                        display: inline-block;
+                    }
+                    &:not(:last-child) {
+                        margin-right: 3rem;
+                    }
+                    &:hover {
+                        a {
+                            border-bottom: 2px solid $primary;
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -474,8 +574,11 @@ body#global_page_user-profile-index {
                     > .layout_middle {
                         .cover_photo_profile_options {
                             margin-left: 13em !important;
-                            h2 {
-                                font-size: 2rem !important;
+                            .profile_status {
+                                width: 90%;
+                                h2 {
+                                    font-size: 2rem !important;
+                                }
                             }
                         }
                     }
@@ -495,10 +598,22 @@ body#global_page_user-profile-index {
     }
 
     .extfox-widgets {
+
+        &.active {
+            position: absolute;
+            right: 1rem;
+            top: 3rem;
+        }
+
         .row {
 
             > .right-side {
                 margin-top: 1.5rem;
+            }
+
+            .box-hover-member {
+                left: 0;
+                position: unset !important;
             }
 
             .contribution {
