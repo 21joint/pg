@@ -4051,6 +4051,21 @@ header.extfox-header .container .row div.mini-menu ul li.notifications span.upda
     border-top: 1px solid #F5F5F5; }
     header.extfox-header .container .row div.mini-menu ul li.notifications span.updates_pulldown_active div.pulldown_contents_wrapper ul li.notifications_unread {
       background: #F7FCFC; }
+header.extfox-header .container .row div.mini-menu ul li.name .item-profile-dropdown {
+  background: #fff;
+  z-index: 9;
+  right: 0;
+  min-width: 200px;
+  top: 3.4rem;
+  box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.05);
+  display: none; }
+  header.extfox-header .container .row div.mini-menu ul li.name .item-profile-dropdown.active {
+    display: block; }
+  header.extfox-header .container .row div.mini-menu ul li.name .item-profile-dropdown ul div.items-profile-info {
+    background: #F7FCFC;
+    border-radius: 10px 10px 0 0; }
+    header.extfox-header .container .row div.mini-menu ul li.name .item-profile-dropdown ul div.items-profile-info h4 {
+      border: none; }
 header.extfox-header .bottom-menu .container ul li a {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -4128,7 +4143,44 @@ body#global_page_user-profile-index {
     margin-right: 0px; }
   header.extfox-header .container {
     padding: 0px !important; }
-    header.extfox-header .container .mini-menu ul li.list-inline-item.profile-img a img {
+    header.extfox-header .container .hamburger-menu {
+      display: block;
+      margin-top: -.5rem;
+      transition: all 150ms linear; }
+      header.extfox-header .container .hamburger-menu:not(.acitve):hover .bar, header.extfox-header .container .hamburger-menu:not(.acitve).hover .bar {
+        width: 31px; }
+      header.extfox-header .container .hamburger-menu:not(.active):hover .bar:before, header.extfox-header .container .hamburger-menu:not(.active).hover .bar:before {
+        width: 17px; }
+      header.extfox-header .container .hamburger-menu:not(.active):hover .bar:after, header.extfox-header .container .hamburger-menu:not(.active).hover .bar:after {
+        width: 20px; }
+      header.extfox-header .container .hamburger-menu .bar {
+        position: relative;
+        transform: translateY(7px);
+        background: #333D40;
+        transition: all 0ms 100ms, width 150ms linear;
+        display: block;
+        height: 3px;
+        width: 27px; }
+        header.extfox-header .container .hamburger-menu .bar:before {
+          content: "";
+          position: absolute;
+          right: 0;
+          bottom: 7px;
+          background: #333D40;
+          transition: bottom 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1), width 150ms linear, background 150ms linear;
+          width: 27px;
+          height: 3px; }
+        header.extfox-header .container .hamburger-menu .bar:after {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 7px;
+          background: #333D40;
+          transition: bottom 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1), width 150ms linear;
+          transition: top 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1), width 150ms linear, background 150ms linear;
+          width: 27px;
+          height: 3px; }
+    header.extfox-header .container .mini-menu ul li.profile-img a img {
       height: 32px !important;
       width: 32px !important;
       object-fit: contain !important; }
@@ -4163,6 +4215,34 @@ body#global_page_user-profile-index {
         top: 1.8rem;
         color: #333D40 !important;
         cursor: pointer; }
+  header.extfox-header .parental-mobile-menu-holder {
+    border: none !important;
+    display: block !important;
+    position: relative;
+    z-index: 9;
+    transition: transform 0.5s cubic-bezier(0.86, 0, 0.07, 1);
+    transform: translateX(-90%); }
+    header.extfox-header .parental-mobile-menu-holder.active {
+      transform: translateX(0%); }
+    header.extfox-header .parental-mobile-menu-holder .container {
+      position: absolute;
+      width: 80%;
+      height: 100vh;
+      background: #fff;
+      z-index: 9;
+      box-shadow: 20px 0px 40px rgba(0, 0, 0, 0.16); }
+      header.extfox-header .parental-mobile-menu-holder .container .row {
+        margin: 0; }
+        header.extfox-header .parental-mobile-menu-holder .container .row ul li {
+          width: 100%;
+          margin-right: 0 !important;
+          border-bottom: 1px solid whitesmoke; }
+          header.extfox-header .parental-mobile-menu-holder .container .row ul li:hover a {
+            border: none !important; }
+          header.extfox-header .parental-mobile-menu-holder .container .row ul li a {
+            display: block;
+            font-weight: bold;
+            padding-left: 2rem; }
 
   /*
   * USER PROFILE + Shared Everywhere

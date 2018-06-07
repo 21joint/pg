@@ -279,6 +279,31 @@ header.extfox-header {
                                 
                             }
                         }
+
+                        &.name {
+                            .item-profile-dropdown {
+                                background: $white;
+                                z-index: 9;
+                                right: 0;
+                                min-width: 200px;
+                                top: 3.4rem;
+                                box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.05);
+                                display: none;
+                                &.active {
+                                    display: block;
+                                }
+                                ul {
+                                    div.items-profile-info {
+                                        background: #F7FCFC;
+                                        border-radius: 10px 10px 0 0;
+                                        h4 {
+                                            border: none;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
                     }
                 }
             } // end of mini-menu
@@ -459,36 +484,85 @@ body#global_page_user-profile-index {
       .container {
         padding: 0px !important;
 
-        // mini menu
-        .mini-menu  {
-          ul {
-              li.list-inline-item.profile-img {
-                a {
-                  img {
-                    height: 32px!important;
-                    width: 32px!important;
-                    object-fit: contain!important;
-                  }
+        .hamburger-menu {
+            display: block;
+            margin-top: -.5rem;
+            transition: all 150ms linear;
+        
+            &:not(.acitve):hover .bar, &:not(.acitve).hover .bar {
+                width: 31px;
+            }
+            &:not(.active):hover .bar:before, &:not(.active).hover .bar:before {
+                width: 17px;
+            }
+            &:not(.active):hover .bar:after, &:not(.active).hover .bar:after {
+                width: 20px;
+            }
+
+            .bar {
+                    position: relative;
+                    transform: translateY(7px);
+                    background:  $gray-800;
+                    transition: all 0ms 100ms, width 150ms linear;
+                    display: block;
+                    height: 3px;
+                    width: 27px;
+                    &:before {
+                    content: "";
+                    position: absolute;
+                    right: 0;
+                    bottom: 7px;
+                    background: $gray-800;
+                    transition: bottom 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1),transform 300ms cubic-bezier(0.23, 1, 0.32, 1),width 150ms linear,background 150ms linear;
+                    width: 27px;
+                    height: 3px;
                 }
-              }
-              li.notifications {
-                .tip-notifications {
-                  right: 24px !important;
-                  top: -6px !important;
-                  span{
-                    height: 19px!important;
-                    min-width: 17px!important;
-                  }
-                } 
-               a {
-                 padding-top: 0px!important;
-                  i {
-                    font-size: 18px;
-                  }
-               }
-               
+                &:after {
+                    content: "";
+                    position: absolute;
+                    right: 0;
+                    top: 7px;
+                    background: $gray-800;
+                    transition: bottom 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1),transform 300ms cubic-bezier(0.23, 1, 0.32, 1),width 150ms linear;
+                    transition: top 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1),transform 300ms cubic-bezier(0.23, 1, 0.32, 1),width 150ms linear,background 150ms linear;
+                    width: 27px;
+                    height: 3px;
+                }
+            }
+        }
+
+        // mini menu
+        .mini-menu {
+          ul {
+            li {
+                &.profile-img {
+                    a {
+                        img {
+                          height: 32px!important;
+                          width: 32px!important;
+                          object-fit: contain!important;
+                        }
+                    }
+                }
+                &.notifications {
+                    .tip-notifications {
+                        right: 24px !important;
+                        top: -6px !important;
+                        span {
+                            height: 19px!important;
+                            min-width: 17px!important;
+                        }
+                    }
+                    a {
+                        padding-top: 0px!important;
+                        i {
+                            font-size: 18px;
+                        }
+                    }
+                }
             }
           }
+
         }
         
         // search
@@ -519,6 +593,48 @@ body#global_page_user-profile-index {
         }
 
       }
+
+      // mobile menu
+      .parental-mobile-menu-holder {
+        border: none !important;
+        display: block !important;
+        position: relative;
+        z-index: 9;
+        transition: transform .5s cubic-bezier(0.86, 0, 0.07, 1);
+        transform: translateX(-90%);
+        &.active {
+            transform: translateX(0%);
+        }
+        .container {
+            position: absolute;
+            width: 80%;
+            height: 100vh;
+            background: #fff;
+            z-index: 9;
+            box-shadow: 20px 0px 40px rgba(0, 0, 0, 0.16);
+            .row {
+                margin: 0;
+                ul {
+                    li {
+                        width: 100%;
+                        margin-right: 0 !important;
+                        border-bottom: 1px solid rgba(245, 245, 245, 1);
+                        &:hover {
+                            a {
+                                border: none !important;
+                            }
+                        }
+                        a {
+                            display: block;
+                            font-weight: bold;
+                            padding-left: 2rem;
+                        }
+                    }
+                }
+            }
+        }
+      }
+      
     }
 
     /*
