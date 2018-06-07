@@ -822,6 +822,8 @@ div.draft_main_holder ul li:before {
     background-color:#fff;  
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    margin:0 auto 20px;
+
 }
 .layout_ggcommunity_search_struggle .search_widget .logo_holder {
     text-align: center;
@@ -1170,8 +1172,10 @@ div.draft_main_holder ul li:before {
     font-size:12px;
     color:#93A4A6;
 }
+.layout_ggcommunity_top_theorist .member_left_side .item-photo-guidance  {
+    margin-right: 15px;
+}
 .layout_ggcommunity_top_theorist a.struggle_owner_image {
-    margin-right:15px;
     position: relative;
 }
 .layout_ggcommunity_top_theorist .member_right_side {
