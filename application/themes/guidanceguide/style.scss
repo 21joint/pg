@@ -470,6 +470,53 @@ body#global_page_user-profile-index {
     }
     
 }
+#extfox-settings {
+    h3 {
+        font-size:20px;
+        color:#333D40;
+        margin-top:32px;
+        // nunito
+    }
+    .form-wrapper {
+        padding-left: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        .form-label {
+            text-align: left;
+            font-size: 12px;
+            // OpenSans 
+            font-weight: 700;
+            color:#333D40;
+        }
+        .form-element {
+            input {
+                border-top:none;
+                border-left: none;
+                border-right: none;
+                border-radius: 0px!important;
+                width: 100%;
+                &::-webkit-input-placeholder  {
+                    color:#B9CFD1!important;
+                }
+            }
+
+            
+        
+        }
+        button {
+            color:$white;
+            background-color:#5CC7CE;
+            text-transform: uppercase;
+            border-radius: 25px;
+            padding: 0.8rem 1.9rem;
+        }
+
+    }
+
+
+}
+
 
 
 // Mobile
@@ -744,3 +791,4 @@ body#global_page_user-profile-index {
 
     // ELSE...
 }
+
