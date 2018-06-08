@@ -33,6 +33,9 @@
         *   Badges Earned
         *   Badges Slide
         *   Following
+        *   Struggles Profile
+    * Core
+        *   ExtfoxForm Settings
 */
 
 
@@ -514,7 +517,27 @@ body#global_page_user-profile-index {
     
 }
 
-// FORGOT PASSWORD
+// Struggles Profile
+.layout_sdparentalguide_ajax_struggles {
+    li{
+        
+        &.struggle_holder  {
+            border-bottom: 1px solid #F5F5F5;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            svg {
+                width: 13px!important;
+                color:$primary;
+                margin-right: 5px;
+            }
+        }
+    }
+}
+
+//  ExtfoxForm Settings
 #extfox-settings {
 
     &#delete {
@@ -559,6 +582,15 @@ body#global_page_user-profile-index {
         }
     }
 }
+
+// Pagination with narrow
+.pagination-holder-narrow {
+    a {
+        color:$primary;
+    }
+}
+
+
 
 
 
@@ -734,6 +766,9 @@ body#global_page_user-profile-index {
         *   Badges Earned
         *   Badges Slide
         *   Following
+        *   Struggles Profile
+    * Core
+        *   ExtfoxForm Settings
     */
     body#global_page_user-profile-index {
         #global_wrapper {
@@ -832,6 +867,59 @@ body#global_page_user-profile-index {
         }
     }
 
-    // ELSE...
+
+    // Struggles Profile
+    .layout_sdparentalguide_ajax_struggles {
+        li{
+            .struggle-box_right-mobile {
+                ul {
+                    li {
+                        svg {
+                            width: 12px!important;
+                        }
+                    }
+
+                    &.left-side {
+                        li{
+                            span.count.votes.counter.count_close {
+                                color:#B9CFD1!important;
+                            }
+                        }
+    
+                        li.count_close.count_info  {
+                            color:#B9CFD1!important;
+                            div {
+                                color:#B9CFD1!important;
+                            }
+                        }
+                        li.svg-icons-one,li.svg-icons-two {
+                            div.first-icon {
+                                display: none;
+                            }
+    
+                        }  
+                        li.count_info.primary {
+                            div.holder-counter-number{
+                                color:$primary;
+                            }
+                        }
+                       
+                    }
+                }
+            }
+        }
+    }
+    // ExtfoxForm Settings
+    #extfox-settings{
+
+        .form-wrapper {
+            padding-left: 0!important;
+            h3 {
+                padding-left: 10px;
+            }
+        }
+       
+    }
+
 }
 
