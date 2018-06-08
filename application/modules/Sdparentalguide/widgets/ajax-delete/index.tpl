@@ -10,7 +10,7 @@
 
 <?php if($this->showContent): ?>
 <div class="container">
-    <div class="row mx-3">
+    <div class="row mx-lg-3 mx-xl-3 mx-sm-0">
         <?php echo $this->form->render($this); ?>
     </div>
 </div>

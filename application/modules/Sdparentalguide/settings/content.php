@@ -653,4 +653,29 @@ return array(
         ),
     ),
 
+    array(
+        'title' => $view->translate('AJAX My Struggles'),
+        'description' => $view->translate('My Struggles in AJAX Mode'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-struggles',
+        'defaultParams' => array(
+            'title' => 'My Struggles',
+            'titleCount' => true,
+        ),
+    ),
+
+    array(
+        'title' => $view->translate('AJAX My Theories'),
+        'description' => $view->translate('My Theories in AJAX Mode'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-theories',
+        'defaultParams' => array(
+            'title' => 'My Theories',
+            'titleCount' => true,
+        ),
+    ),
+
+
 ) ?>
