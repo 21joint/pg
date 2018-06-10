@@ -242,6 +242,10 @@ class Sdparentalguide_AdminManageController extends Core_Controller_Action_Admin
         $select->where("level = ?",$values['level']);
     }
     
+    if(!empty($values['type'])){
+        $select->where("type = ?",$values['type']);
+    }
+    
     if(isset($values['active']) && ($values['active'] == 0 || $values['active'] == 1)){
         $select->where("active = ?",(int)$values['active']);
     }  
