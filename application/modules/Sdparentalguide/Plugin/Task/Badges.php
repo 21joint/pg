@@ -8,9 +8,13 @@
 
 class Sdparentalguide_Plugin_Task_Badges extends Sdparentalguide_Plugin_Task_Abstract
 {
-    public function execute($page = 1) {
+    public function execute($page = 1,$job_user = null) {
         $usersTable = Engine_Api::_()->getDbtable("users","user");
         if($page == 1){
+            $where = array();
+            if(!empty($job_user)){
+                $where['user_id = ?'] = $job_user;
+            }
             $usersTable->update(array(
                 'gg_expert_platinum_count' => 0,
                 'gg_expert_gold_count' => 0,
@@ -20,7 +24,7 @@ class Sdparentalguide_Plugin_Task_Badges extends Sdparentalguide_Plugin_Task_Abs
                 'gg_gold_count' => 0,
                 'gg_silver_count' => 0,
                 'gg_bronze_count' => 0
-            ),array());
+            ),$where);
         }
         
         $table = Engine_Api::_()->getDbtable('badges', 'sdparentalguide');
@@ -33,6 +37,9 @@ class Sdparentalguide_Plugin_Task_Badges extends Sdparentalguide_Plugin_Task_Abs
                 ->joinLeft($assignedTableName,"$assignedTableName.badge_id = $tableName.badge_id",array("$assignedTableName.active as assigned_active",new Zend_Db_Expr("$assignedTableName.user_id as assigned_user")))
                 ->where("$assignedTableName.active = ?",1)
                 ->where("$tableName.active = ?",1);
+        if(!empty($job_user)){
+            $select->where("$assignedTableName.user_id = ?",$job_user);
+        }
         
         $paginator = Zend_Paginator::factory($select);
         $paginator->setCurrentPageNumber($page);
