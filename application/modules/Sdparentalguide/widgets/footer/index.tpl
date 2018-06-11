@@ -125,7 +125,7 @@
 
     </div> <!-- end of holder -->
 
-    <div class="bg-white pt-5 border-top border-gray holder">
+    <div class="bg-white py-5 border-top border-gray holder">
         <div class="container">
             
             <div class="bottom-holder row">

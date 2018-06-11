@@ -152,9 +152,6 @@ a.buttonlink:before {opacity: .9;}
     text-align:left !important;
 }
 /*Ajex Popup*/
-#TB_window{
-    background-color:$theme_body_background_color !important;
-}
 #TB_ajaxContent{
     padding:10px !important;
 }

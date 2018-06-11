@@ -612,13 +612,23 @@ return array(
         'type' => 'widget',
         'name' => 'sdparentalguide.footer',
     ),
-
     array(
         'title' => $view->translate('Header Menu'),
         'description' => $view->translate('Displaying header menu for ParentalGuide'),
         'category' => 'Guidance Guide Custom Features',
         'type' => 'widget',
         'name' => 'sdparentalguide.footer',
+    ),
+
+    array(
+        'title' => $view->translate('Profile Landing'),
+        'description' => $view->translate('Displaying widget for Reviews, Contribution Points, Following and Latest Guides'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.profile-landing',
+        'defaultParams' => array(
+            'title' => 'Overview',
+        ),
     ),
 
 ) ?>

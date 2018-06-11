@@ -292,8 +292,9 @@ Smoothbox.Modal = new Class({
     });
     this.loading.inject(document.body);
 
-    var loadingImg = new Element('img', {
-      src : 'externals/smoothbox/loading.gif' // @todo Move to CSS
+    var loadingImg = new Element('div', {
+      'class': 'extfox-loading',
+      'html': '<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-ball2"><g ng-attr-transform="translate(0,{{config.dy}})" transform="translate(0,-7.5)"><circle cx="50" ng-attr-cy="{{config.cy}}" r="6.25293" ng-attr-fill="{{config.c1}}" cy="41" fill="#5CC7CE" transform="rotate(282 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform><animate attributeName="r" calcMode="spline" values="0;15;0" keyTimes="0;0.5;1" dur="1" keySplines="0.2 0 0.8 1;0.2 0 0.8 1" begin="0s" repeatCount="indefinite"></animate></circle><circle cx="50" ng-attr-cy="{{config.cy}}" r="8.74707" ng-attr-fill="{{config.c2}}" cy="41" fill="#8AE693" transform="rotate(462 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="180 50 50;540 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform><animate attributeName="r" calcMode="spline" values="15;0;15" keyTimes="0;0.5;1" dur="1" keySplines="0.2 0 0.8 1;0.2 0 0.8 1" begin="0s" repeatCount="indefinite"></animate></circle></g></svg>'
     });
     loadingImg.inject(this.loading);
   },
@@ -362,7 +363,7 @@ Smoothbox.Modal = new Class({
       id : 'TB_title',
       href : 'javascript:void(0);',
       title : 'close',
-      html : 'close',
+      html : '<svg style="height:21px;width:12px;" xmlns="http://www.w3.org/2000/svg" viewBox="-8603 1924.68 11.641 11.641"><defs><style>.a{fill:#2B1D19;}</style></defs><path class="a" d="M11.641-12.148,6.992-7.5l4.648,4.648L10.469-1.68,5.82-6.328,1.172-1.68,0-2.852,4.648-7.5,0-12.148,1.172-13.32,5.82-8.672l4.648-4.648Z" transform="translate(-8603 1938)"/></svg>',
       events : {
         click : function() {
           bind.close();
@@ -492,7 +493,7 @@ Smoothbox.Modal = new Class({
     }
     else
     {
-      this.overlay.setStyle('opacity', 0.6);
+      this.overlay.setStyle('opacity', 0.8);
       this.overlay.setStyle('visibility', 'visible');
     }
   },

@@ -3903,6 +3903,71 @@ mark,
   .seaocore_up_button .seaocore_up_button span {
     border-radius: 50%; }
 
+/*
+    Components & Pages designed for GuidanceGuide
+    * HEADER
+    * FOOTER
+    * USER PROFILE + Shared Everywhere
+    * Widgets
+        *   Contributed Points
+        *   Badges Earned
+        *   Badges Slide
+        *   Following
+*/
+.extfox-widgets .row > .left-side > div.widget, .extfox-widgets .row > .right-side > div.widget {
+  border-radius: 10px; }
+.extfox-widgets .row .contribution h5 {
+  font-size: 2rem; }
+.extfox-widgets .row .badges-earned .holder .bottom .col-sm {
+  background-repeat: no-repeat;
+  background-position: 50% 50%; }
+  .extfox-widgets .row .badges-earned .holder .bottom .col-sm.bronze {
+    background-image: url("../images/badges/Bronze.svg"); }
+  .extfox-widgets .row .badges-earned .holder .bottom .col-sm.silver {
+    background-image: url("../images/badges/Silver.svg"); }
+  .extfox-widgets .row .badges-earned .holder .bottom .col-sm.gold {
+    background-image: url("../images/badges/Gold.svg"); }
+  .extfox-widgets .row .badges-earned .holder .bottom .col-sm.platinium {
+    background-image: url("../images/badges/Platinum.svg"); }
+  .extfox-widgets .row .badges-earned .holder .bottom .col-sm .badge-holder {
+    min-height: 60px;
+    min-width: 60px;
+    font-size: 1em; }
+.extfox-widgets .row .badges-slide div.slider .swiper-container {
+  width: 100%;
+  height: 100%; }
+  .extfox-widgets .row .badges-slide div.slider .swiper-container .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    margin-bottom: 2rem; }
+    .extfox-widgets .row .badges-slide div.slider .swiper-container .swiper-slide a img {
+      width: 100%;
+      max-width: 200px; }
+  .extfox-widgets .row .badges-slide div.slider .swiper-container .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+    background: #5CC7CE; }
+.extfox-widgets .row .following .bottom .item-holder {
+  border: 1px solid whitesmoke;
+  border-radius: 10px; }
+  .extfox-widgets .row .following .bottom .item-holder a.profile-img img {
+    border-radius: 50%;
+    max-width: 70px; }
+
+header.extfox-header .container .list-inline-item.search {
+  display: none; }
 header.extfox-header .container .row div.search input {
   border-radius: 50px;
   border: 2px solid #F5F5F5;
@@ -3960,8 +4025,136 @@ footer.extfox-footer div.top-holder .social-holder ul li {
     footer.extfox-footer div.top-holder .social-holder ul li a svg {
       color: #fff; }
 
+body#global_page_user-profile-index {
+  background: #F7FCFC; }
+  body#global_page_user-profile-index #global_wrapper {
+    padding-top: 0; }
+    body#global_page_user-profile-index #global_wrapper #global_content {
+      width: 100%; }
+      body#global_page_user-profile-index #global_wrapper #global_content .layout_top > .layout_middle .layout_user_cover_photo .profile_cover_photo_wrapper .profile_cover_photo_empty {
+        background: linear-gradient(to left, #5bc8ce, #5bc6cc); }
+      body#global_page_user-profile-index #global_wrapper #global_content .layout_top > .layout_middle .layout_user_cover_photo .holder .profile_cover_head_section .profile_main_photo_wrapper .profile_main_photo {
+        background: none;
+        border-radius: 50%;
+        border: 5px solid #fff;
+        padding: 0;
+        bottom: -2em;
+        z-index: 1; }
+      body#global_page_user-profile-index #global_wrapper #global_content .layout_top > .layout_middle .layout_user_cover_photo .holder .profile_cover_head_section .profile_main_photo_wrapper .profile_cover_options .edit-button {
+        z-index: 2;
+        top: -60px; }
+      body#global_page_user-profile-index #global_wrapper #global_content .layout_top > .layout_middle .layout_user_cover_photo .holder .profile_cover_head_section .cover_photo_profile_options {
+        min-height: auto;
+        bottom: 2.2em;
+        margin-left: 15em; }
+        body#global_page_user-profile-index #global_wrapper #global_content .layout_top > .layout_middle .layout_user_cover_photo .holder .profile_cover_head_section .cover_photo_profile_options h2 {
+          font-size: 2.2rem; }
+      body#global_page_user-profile-index #global_wrapper #global_content .layout_top > .layout_middle .layout_user_cover_photo .holder .user-options {
+        bottom: 50px; }
+        body#global_page_user-profile-index #global_wrapper #global_content .layout_top > .layout_middle .layout_user_cover_photo .holder .user-options .item a {
+          border-radius: 121px; }
+          body#global_page_user-profile-index #global_wrapper #global_content .layout_top > .layout_middle .layout_user_cover_photo .holder .user-options .item a:before {
+            display: none; }
+      body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main {
+        padding: 0; }
+        body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .profile_cover_photo_tabs .tabs_alt {
+          box-shadow: none;
+          margin-top: 0;
+          min-height: 40px; }
+          body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .profile_cover_photo_tabs .tabs_alt ul {
+            padding-left: 24.5em; }
+            body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .profile_cover_photo_tabs .tabs_alt ul li a {
+              text-transform: none;
+              color: #333D40;
+              font-weight: 400;
+              font-size: .9em;
+              padding: 1.2rem; }
+
 @media only screen and (max-width: 768px) {
-  header.extfox-header .container .row .mini-menu {
-    padding-top: 1rem !important; } }
+  header.extfox-header .list-inline-item.search {
+    display: block !important;
+    margin-right: 0px; }
+  header.extfox-header .container {
+    padding: 0px !important; }
+    header.extfox-header .container .mini-menu ul li.list-inline-item.profile-img a img {
+      height: 32px !important;
+      width: 32px !important;
+      object-fit: contain !important; }
+    header.extfox-header .container .mini-menu ul li.notifications .tip-notifications {
+      right: 24px !important;
+      top: -6px !important; }
+      header.extfox-header .container .mini-menu ul li.notifications .tip-notifications span {
+        height: 19px !important;
+        min-width: 17px !important; }
+    header.extfox-header .container .mini-menu ul li.notifications a {
+      padding-top: 0px !important; }
+      header.extfox-header .container .mini-menu ul li.notifications a i {
+        font-size: 18px; }
+    header.extfox-header .container .search-bar {
+      z-index: 1;
+      transition: .2s ease transform;
+      transform: translateY(-5rem); }
+      header.extfox-header .container .search-bar.active {
+        transform: translateY(1px);
+        display: inline-block !important;
+        max-width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0; }
+      header.extfox-header .container .search-bar input {
+        background: #F5F5F5 !important;
+        padding-top: 1.8rem !important;
+        padding-bottom: 1.8rem !important;
+        border-radius: 0 !important; }
+      header.extfox-header .container .search-bar i {
+        right: 1rem;
+        top: 1.8rem;
+        color: #333D40 !important;
+        cursor: pointer; }
+
+  /*
+  * USER PROFILE + Shared Everywhere
+  * Widgets
+      *   Contributed Points
+      *   Badges Earned
+      *   Badges Slide
+      *   Following
+  */
+  body#global_page_user-profile-index #global_wrapper #global_content {
+    padding: 0; }
+    body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .profile_cover_photo_tabs {
+      margin-top: 40px; }
+      body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .profile_cover_photo_tabs .tabs_alt {
+        border-radius: 0; }
+        body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .profile_cover_photo_tabs .tabs_alt ul {
+          padding-left: 0; }
+          body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .profile_cover_photo_tabs .tabs_alt ul li a {
+            text-transform: none;
+            color: #333D40;
+            font-weight: 400;
+            font-size: .9em;
+            padding: 1.2rem;
+            border: none; }
+      body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .profile_cover_photo_tabs .generic_layout_container h3 {
+        left: 15px; }
+        body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .profile_cover_photo_tabs .generic_layout_container h3:before {
+          display: none; }
+      body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .profile_cover_photo_tabs .container {
+        padding: 0;
+        margin: 0;
+        width: 93%; }
+    body#global_page_user-profile-index #global_wrapper #global_content .layout_top > .layout_middle .cover_photo_profile_options {
+      margin-left: 13em !important; }
+      body#global_page_user-profile-index #global_wrapper #global_content .layout_top > .layout_middle .cover_photo_profile_options h2 {
+        font-size: 2rem !important; }
+  body#global_page_user-profile-index #global_footer .layout_page_footer .layout_main {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important; }
+
+  .extfox-widgets .row > .right-side {
+    margin-top: 1.5rem; }
+  .extfox-widgets .row .contribution .col-sm.border-right, .extfox-widgets .row .contribution .col-sm.border-left {
+    border: none !important; } }
 
 /*# sourceMappingURL=root.css.map */
