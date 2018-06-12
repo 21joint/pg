@@ -10,3 +10,6 @@ temporary/log
 temporary/cache-old
 temporary/scaffold
 temporary/session
+temporary
+temporary/scaffold/
+temporary/package/
