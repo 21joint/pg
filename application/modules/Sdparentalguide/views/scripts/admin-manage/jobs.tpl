@@ -136,7 +136,6 @@ en4.core.runonce.add(function(){
           }            
         },
         onCommand: function(e){
-            console.log(e);
             if(!e){
                 return;
             }
