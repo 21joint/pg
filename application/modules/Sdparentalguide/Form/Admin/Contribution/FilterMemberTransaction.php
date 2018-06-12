@@ -67,7 +67,7 @@ class Sdparentalguide_Form_Admin_Contribution_FilterMemberTransaction extends En
         
         $topic = new Zend_Form_Element_Text('topic');
         $topic
-          ->setLabel('Topic')
+          ->setLabel('Custom_Topic')
           ->clearDecorators()
           ->addDecorator('ViewHelper')
           ->addDecorator('Label', array('tag' => null, 'placement' => 'PREPEND'))

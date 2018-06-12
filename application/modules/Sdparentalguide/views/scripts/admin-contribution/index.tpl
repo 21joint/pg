@@ -201,7 +201,7 @@ $this->headScript()
           <th width="5%" rowspan="2"  align="center" class="<?php echo $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('type', 'ASC');"><?php echo $this->translate("Credit Type") ?></a></th>  
           
           <?php $class = ( $this->order == 'topic' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-          <th width="5%" rowspan="2"  align="center" class="<?php echo $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('topic', 'ASC');"><?php echo $this->translate("Topics") ?></a></th> 
+          <th width="5%" rowspan="2"  align="center" class="<?php echo $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('topic', 'ASC');"><?php echo $this->translate("Custom_Topic") ?></a></th> 
           
           <?php $class = ( $this->order == 'credit_point' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
           <th width="5%" colspan="2"  align="center" class="<?php echo $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('credit_point', 'ASC');"><?php echo $this->translate("Credit Values") ?></a></th> 
@@ -253,7 +253,9 @@ $this->headScript()
                     echo $item->type;?></td>
 
           <td align="center">
-
+              <?php if(($topic = Engine_Api::_()->getItem('sdparentalguide_topic', $item->gg_topic_id))): ?>
+                <?php echo $topic->getTitle(); ?>
+              <?php endif; ?>
           </td>
             <?php if($item->credit_point >0 ) : ?>
               <td align="center"><?php echo $item->credit_point ?></td>

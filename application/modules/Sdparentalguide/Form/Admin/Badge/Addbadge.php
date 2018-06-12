@@ -35,11 +35,14 @@ class Sdparentalguide_Form_Admin_Badge_Addbadge extends Engine_Form {
         ),
       ));
     
-    $this->addElement("Select",'gg_contribution_level',array(
+    $this->addElement("Text",'gg_contribution_level',array(
         'label' => 'Credibility Level',
         'required' => true,
         'allowEmpty' => false,
-        'multiOptions' => Engine_Api::_()->sdparentalguide()->getBadgeLevels()
+        'validators' => array(
+            array('NotEmpty', true),
+            array('Int', true),
+        ),
     ));
     
     $levelOptions = array('' => '');

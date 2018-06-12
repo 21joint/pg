@@ -129,16 +129,13 @@
 
       <?php 
       $k=0;
-      $badgeLevels = Engine_Api::_()->sdparentalguide()->getBadgeLevels();
       foreach ($this->paginator as $item): ?>
       <tr>
         <td><?php echo $item->badge_id ?></td>
         <td><?php echo $item->title ?></td>
         <td><?php echo $item->credit_count ?></td>
         <td>
-            <?php if(isset($badgeLevels[$item->gg_contribution_level])): ?>
-                <?php echo $badgeLevels[$item->gg_contribution_level]; ?>
-            <?php endif; ?>
+            <?php echo $item->gg_contribution_level; ?>
         </td>
         <td>
            <?php if(($level = Engine_Api::_()->getItem('authorization_level', $item->gg_level_id))): ?>
