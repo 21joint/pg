@@ -22,11 +22,26 @@
     }
 }
 
+// Classes
+.grib-grab-two {
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(140px, auto);
+}
+.border-grey-light {
+    border:2px solid #F5F5F5;
+}
+.border-bottom-grey-light {
+    border-bottom:2px solid #F5F5F5;
+}
+
 /*
     Components & Pages designed for GuidanceGuide
     * HEADER
     * FOOTER
     * USER PROFILE + Shared Everywhere
+    * Classes
     * Widgets
         *   Box Hover
         *   Contributed Points
@@ -34,6 +49,7 @@
         *   Badges Slide
         *   Following
         *   Struggles Profile
+        *   Badges Proile
     * Core
         *   ExtfoxForm Settings
 */
@@ -537,6 +553,37 @@ body#global_page_user-profile-index {
     }
 }
 
+// Badges Proile
+.layout_sdparentalguide_ajax_badges {
+    background-color: #F6FCFC!important;
+    padding-top: 1rem!important;
+    .holder-my-badges {
+        h4,h5 {
+           font-size: 18px;
+           color:#3E4A4D;
+           font-weight: 700;
+        }
+        h6 {
+            font-size: 16px;
+            color:#333D40;
+        }
+        p {
+            font-size:14px;
+            color:#333D40;
+        }
+        h5.hide-title {
+            color:#93A4A6;
+        }
+        p.hide-description {
+            color:#B9CFD1;
+        }
+        
+    }
+}
+
+
+
+
 //  ExtfoxForm Settings
 #extfox-settings {
 
@@ -767,6 +814,7 @@ body#global_page_user-profile-index {
         *   Badges Slide
         *   Following
         *   Struggles Profile
+        *   Badges Proile
     * Core
         *   ExtfoxForm Settings
     */
@@ -919,6 +967,17 @@ body#global_page_user-profile-index {
             }
         }
        
+    }
+    // Badges Proile
+    .layout_sdparentalguide_ajax_badges {
+       
+        .holder-special-badges,.contributor-badges-holder {
+            padding: 15px 10px!important;
+        }
+    }
+    // Classes
+    .grib-grab-two {
+        grid-template-columns: repeat(1, 1fr);
     }
 
 }

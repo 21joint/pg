@@ -677,5 +677,17 @@ return array(
         ),
     ),
 
+    array(
+        'title' => $view->translate('AJAX My Badges'),
+        'description' => $view->translate('AJAX My Badges'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-badges',
+        'defaultParams' => array(
+            'title' => 'My Badges',
+            'titleCount' => true,
+        ),
+    ),
+
 
 ) ?>
