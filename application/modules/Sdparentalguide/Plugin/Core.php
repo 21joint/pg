@@ -71,6 +71,7 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             
             if( $payload instanceof Sitecredit_Model_Credit ) {
                 $this->updateUserCredits($payload);
+                $this->updateTransactionTopic($payload);
             }
             
             if( $payload instanceof Sitereview_Model_Listing ) {
@@ -431,4 +432,21 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
         }        
     }    
 
+    public function updateTransactionTopic($payload){
+        if($payload->resource_type != "sitereview_listing"){
+            return;
+        }
+        
+        $listing = Engine_Api::_()->getItem($payload->resource_type,$payload->resource_id);
+        if(empty($listing)){
+            return;
+        }
+        $listingType = $listing->getListingType();
+        if(empty($listingType)){
+            return;
+        }
+        
+        $payload->gg_topic_id = $listingType->gg_topic_id;
+//        $payload->save();
+    }
 }

@@ -83,7 +83,7 @@
           <?php $class = ( $this->order == 'level_id' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
           <th class="<?php echo $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('level_id', 'ASC');"><?php echo $this->translate("Member Level") ?></a></th>
           <?php $class = ( $this->order == 'topic' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-          <th class="<?php echo $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('topic', 'ASC');"><?php echo $this->translate("Topics") ?></a></th>
+          <th class="<?php echo $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('topic', 'ASC');"><?php echo $this->translate("Custom_Topic") ?></a></th>
           <?php $class = ( $this->order == 'credit' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
           <th class="<?php echo $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('credit', 'ASC');"><?php echo $this->translate("Credit Values") ?></a></th>                                          
         </tr> 

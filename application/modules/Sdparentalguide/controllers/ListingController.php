@@ -312,7 +312,7 @@ class Sdparentalguide_ListingController extends Core_Controller_Action_Standard
                     }
                 }
             }
-            $values['gg_author_product_rating'] = $values['owner_rating'];
+            $values['gg_author_product_rating'] = (int)$values['owner_rating'];
             $sitereview = $table->createRow();
             $sitereview->setFromArray($values);
 
