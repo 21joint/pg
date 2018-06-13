@@ -1,0 +1,10 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/www/html/tst-pg/parentalguidance
+hooks:
+  AfterInstall:
+    - location: scripts/restart_apache.sh
+      timeout: 60
+      runas: root
