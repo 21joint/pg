@@ -79,6 +79,42 @@ en4.gg = {
       })).send();
 
   },
+
+  ggAjaxForm: function(form, action) {
+    
+    var errorElement = form.getParent().getElement('#errorForm');
+    var successElement = form.getParent().getElement('#successForm');
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        var formValues = new Object();
+        for(var i = 0; i < form.elements.length; i++) {
+            formValues['' + form.elements[i].name + ''] = form.elements[i].value;
+        }
+
+        // make ajax request to form URL
+        (new Request.JSON({
+            url : en4.core.baseUrl + 'gg/ajax/' + action,
+            data : {
+                format : 'json',
+                values: formValues,
+            },
+            onComplete: function(resp) {
+                if(resp.status == false) {
+                    errorElement.textContent = resp.message;
+                    successElement.textContent = '';
+                }
+                if(resp.status == true) {
+                    successElement.textContent = resp.message;
+                    errorElement.textContent = '';
+                }
+            }
+        })).send();
+
+    });
+
+  }
   
 }
 

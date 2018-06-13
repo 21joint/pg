@@ -8,6 +8,7 @@ class Sdparentalguide_Widget_AjaxDeleteController extends Engine_Content_Widget_
   public function indexAction() {
 
     $feedType = $this->_getParam('type', null);
+    $content_id = $this->view->identity;
 
     // Don't render this if not authorized
     $this->view->viewer = $viewer = Engine_Api::_()->user()->getViewer();
@@ -46,6 +47,7 @@ class Sdparentalguide_Widget_AjaxDeleteController extends Engine_Content_Widget_
       }
 
       $this->view->form = $form = new User_Form_Settings_Delete();
+      $form->setAttrib('class', 'global_form ajax-form-' . $content_id);
 
       // render content
       $this->view->showContent = true;  
