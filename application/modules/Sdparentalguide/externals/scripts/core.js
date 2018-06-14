@@ -261,18 +261,3 @@ window.addEvent('load', function () {
 
 });
 
-en4.gg.ajaxResetPassword = {
-
-    ggAjaxReset : function(newArray) {
-        
-       
-        
-
-        (new Request.JSON({
-           
-           
-        })).send();
-  
-    },
-    
-  }

@@ -722,5 +722,16 @@ return array(
         ),
     ),
 
+    array(
+        'title' => $view->translate('AJAX My Info'),
+        'description' => $view->translate('AJAX My Info'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-info',
+        'defaultParams' => array(
+            'title' => 'My Info',
+        ),
+    ),
+
 
 ) ?>
