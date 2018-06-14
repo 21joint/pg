@@ -55,6 +55,7 @@
         *   Struggles Profile
         *   Badges Proile
         *   Notification Profile
+        *   My Info Profile
     * Core
         *   ExtfoxForm Settings
         *   CheckBox 
@@ -584,6 +585,17 @@ body#global_page_user-profile-index {
         p.hide-description {
             color:#B9CFD1;
         }
+        // opacity Image
+        .contributor-badges-holder {
+            .bottom-holder {
+                div {
+                    &:nth-child(n+2) img{
+                        opacity: 0.4;
+                    }
+                }
+                
+            }
+        }
         
     }
 }
@@ -657,10 +669,17 @@ body#global_page_user-profile-index {
         .form-wrapper {
             padding-bottom: 1.5rem;
         } 
+       
+        .form-wrapper {
+            .form-element {
+                max-width: 70%;
+            }
+        } 
+       
 
     }
 }
-
+// My Info Profile
 .layout_sdparentalguide_ajax_info {
     .wrapper {
         display: grid;
@@ -1270,16 +1289,51 @@ body#global_page_user-profile-index {
             h3 {
                 padding-left: 10px;
             }
+            .form-element {
+                max-width: 100% !important;
+            }
+        }
+        input[type=checkbox] + label {
+            display: block!important;
+        }
+        input[type=checkbox] {
+            float: none!important;
         }
        
     }
     // Badges Proile
     .layout_sdparentalguide_ajax_badges {
-       
-        .holder-special-badges,.contributor-badges-holder {
-            padding: 15px 10px!important;
+        .container{
+            width: 100%!important;
+            .holder-special-badges,.contributor-badges-holder {
+                padding: 15px 10px!important;
+            }
         }
     }
-
+    // My Info Profile
+    .layout_sdparentalguide_ajax_info  {
+        .container{
+            width: 100%!important;
+            .wrapper {
+                display: flex;
+                flex-direction: column-reverse;
+                .right-side  {
+                    margin: 1rem 0;
+                }
+                .left-side {
+                    .profile_fields {
+                        ul {
+                            padding: 0px!important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .layout_sdparentalguide_ajax_password {
+        .container {
+            width: 95%!important;
+        }
+    }
 }
 
