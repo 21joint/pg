@@ -52,16 +52,17 @@ class Sdparentalguide_Widget_AjaxPrivacyController extends Engine_Content_Widget
         $this->view->form = $form = new User_Form_Settings_Privacy(array(
             'item' => $subject,
         ));
+        $form->setAttrib('class', 'global_form ajax-form-' . $content_id);
 
-        if( Engine_Api::_()->authorization()->isAllowed('user', $user, 'block') ) {
-            foreach ($user->getBlockedUsers() as $blocked_user_id) {
+        if( Engine_Api::_()->authorization()->isAllowed('user', $subject, 'block') ) {
+            foreach ($subject->getBlockedUsers() as $blocked_user_id) {
               $this->view->blockedUsers[] = Engine_Api::_()->user()->getUser($blocked_user_id);
             }
         } else {
             $form->removeElement('blockList');
         }
 
-        if( !Engine_Api::_()->getDbtable('permissions', 'authorization')->isAllowed($user, $user, 'search') ) {
+        if( !Engine_Api::_()->getDbtable('permissions', 'authorization')->isAllowed($subject, $subject, 'search') ) {
             $form->removeElement('search');
         }
 
@@ -74,7 +75,7 @@ class Sdparentalguide_Widget_AjaxPrivacyController extends Engine_Content_Widget
         }
 
         // Populate form
-        $form->populate($user->toArray());
+        $form->populate($subject->toArray());
 
         // Set up activity options
         $defaultPublishTypes = array('post', 'signup', 'status');
@@ -92,7 +93,7 @@ class Sdparentalguide_Widget_AjaxPrivacyController extends Engine_Content_Widget
         }
 
         $form->publishTypes->setMultiOptions($actionTypes);
-        $actionTypesEnabled = Engine_Api::_()->getDbtable('actionSettings', 'activity')->getEnabledActions($user);
+        $actionTypesEnabled = Engine_Api::_()->getDbtable('actionSettings', 'activity')->getEnabledActions($subject);
             $form->publishTypes->setValue($actionTypesEnabled);
         }
 

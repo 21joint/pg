@@ -348,6 +348,41 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
 
     }
 
+    public function privacyAction() {
+
+        $this->_helper->ViewRenderer->setNoRender(true);
+
+        $viewer = Engine_Api::_()->user()->getViewer();
+
+        if( !$this->getRequest()->isPost() ) {
+            $this->view->status = false;
+            $this->view->error = Zend_Registry::get('Zend_Translate')->_("Invalid request method");;
+            return;
+        }
+
+        $request = Zend_Controller_Front::getInstance()->getRequest();
+
+        // setup values
+        $values = $request->getParam('values', null);
+        /* foreach($values as $key => $value) {
+            $form->getElement($key)->setValue($value);
+        } */
+
+        foreach($values as $key => $value) {
+            
+            if($value['key'] == 'publishTypes[]') {
+                print_r($value['key']);
+            }
+
+        }
+        exit;
+        
+        echo "<pre>";
+        print_r($values);
+
+
+    }
+
     
 
 }

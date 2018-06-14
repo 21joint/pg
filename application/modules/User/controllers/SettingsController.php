@@ -319,6 +319,10 @@ class User_SettingsController extends Core_Controller_Action_User
       return;
     }
 
+    echo "<pre>";
+    print_r( $form->getValues() ); 
+    exit;
+
     $form->save();
     $values = $form->getValues();
     $values['view_privacy'] =  $values['privacy'];

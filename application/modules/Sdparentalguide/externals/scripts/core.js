@@ -87,11 +87,19 @@ en4.gg = {
     
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-        
-        var formValues = new Object();
-        for(var i = 0; i < form.elements.length; i++) {
-            formValues['' + form.elements[i].name + ''] = form.elements[i].value;
+
+        if(action == 'privacy') {
+            var formValues = [];
+            for(var i = 0; i < form.elements.length; i++) {
+                formValues.push({key: form.elements[i].name, value: form.elements[i].value});
+            }
+        } else {
+            var formValues = new Object();
+            for(var i = 0; i < form.elements.length; i++) {
+                formValues['' + form.elements[i].name + ''] = form.elements[i].value;
+            }
         }
+        
 
         // make ajax request to form URL
         (new Request.JSON({

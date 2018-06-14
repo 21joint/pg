@@ -676,6 +676,17 @@ return array(
     ),
 
     array(
+        'title' => $view->translate('AJAX Update Privacy'),
+        'description' => $view->translate('Update Privacy in AJAX Mode'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-privacy',
+        'defaultParams' => array(
+            'title' => 'Privacy',
+        ),
+    ),
+
+    array(
         'title' => $view->translate('AJAX My Struggles'),
         'description' => $view->translate('My Struggles in AJAX Mode'),
         'category' => 'Guidance Guide Custom Features',
