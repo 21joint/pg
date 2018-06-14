@@ -654,6 +654,28 @@ return array(
     ),
 
     array(
+        'title' => $view->translate('AJAX Update Profile'),
+        'description' => $view->translate('Update Profile in AJAX Mode'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-profile',
+        'defaultParams' => array(
+            'title' => 'Personal Info',
+        ),
+    ),
+
+    array(
+        'title' => $view->translate('AJAX Update Notifications'),
+        'description' => $view->translate('Update Notifications in AJAX Mode'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-notifications',
+        'defaultParams' => array(
+            'title' => 'Notifications',
+        ),
+    ),
+
+    array(
         'title' => $view->translate('AJAX My Struggles'),
         'description' => $view->translate('My Struggles in AJAX Mode'),
         'category' => 'Guidance Guide Custom Features',

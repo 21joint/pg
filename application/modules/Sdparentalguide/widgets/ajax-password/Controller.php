@@ -8,10 +8,11 @@ class Sdparentalguide_Widget_AjaxPasswordController extends Engine_Content_Widge
   public function indexAction() {
 
     $feedType = $this->_getParam('type', null);
+    $content_id = $this->view->identity;
 
     // Don't render this if not authorized
     $this->view->viewer = $viewer = Engine_Api::_()->user()->getViewer();
-    if( !Engine_Api::_()->core()->hasSubject()  || $viewer->getIdentity() < 1 ) {
+    if( !Engine_Api::_()->core()->hasSubject() || $viewer->getIdentity() < 1 ) {
       return $this->setNoRender();
     }
 
@@ -46,6 +47,8 @@ class Sdparentalguide_Widget_AjaxPasswordController extends Engine_Content_Widge
       }
 
       $this->view->form = $form = new User_Form_Settings_Password();
+      $form->setAttrib('class', 'global_form ajax-form-' . $content_id);
+
       $form->populate($subject->toArray());
 
       

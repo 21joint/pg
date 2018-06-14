@@ -1,8 +1,8 @@
 <?php if($this->loaded_by_ajax):?>
     <script type="text/javascript">
         var passwordParams = {
-            requestParams :{"title":"<?php echo $this->translate('Password'); ?>", "titleCount":""},
-            responseContainer : $$('.layout_sdparentalguide_ajax_password')
+            requestParams :{"title":"<?php echo $this->translate('Notifications'); ?>", "titleCount":""},
+            responseContainer : $$('.layout_sdparentalguide_ajax_notifications')
         }
         en4.gg.ajaxTab.attachEvent('<?php echo $this->identity ?>', passwordParams);
 </script>
@@ -20,7 +20,7 @@
 <script>
 en4.core.runonce.add(function() {
     var form = document.getElementsByClassName('ajax-form-' + <?php echo $this->identity; ?>)[0];
-    en4.gg.ggAjaxForm(form, 'password');
+    en4.gg.ggAjaxForm(form, 'notifications');
 });
 </script>
 <?php endif; ?>

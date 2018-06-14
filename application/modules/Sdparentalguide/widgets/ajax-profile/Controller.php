@@ -3,7 +3,7 @@
  * EXTFOX
  *
  */
-class Sdparentalguide_Widget_AjaxDeleteController extends Engine_Content_Widget_Abstract {
+class Sdparentalguide_Widget_AjaxProfileController extends Engine_Content_Widget_Abstract {
 
   public function indexAction() {
 
@@ -12,7 +12,7 @@ class Sdparentalguide_Widget_AjaxDeleteController extends Engine_Content_Widget_
 
     // Don't render this if not authorized
     $this->view->viewer = $viewer = Engine_Api::_()->user()->getViewer();
-    if( !Engine_Api::_()->core()->hasSubject()  || $viewer->getIdentity() < 1 ) {
+    if( !Engine_Api::_()->core()->hasSubject() || $viewer->getIdentity() < 1 ) {
       return $this->setNoRender();
     }
 
@@ -46,8 +46,33 @@ class Sdparentalguide_Widget_AjaxDeleteController extends Engine_Content_Widget_
         }
       }
 
-      $this->view->form = $form = new User_Form_Settings_Delete();
+      // General form w/o profile type
+      $aliasedFields = $subject->fields()->getFieldsObjectsByAlias();
+      $this->view->topLevelId = $topLevelId = 0;
+      $this->view->topLevelValue = $topLevelValue = null;
+      if (isset($aliasedFields['profile_type'])) {
+          $aliasedFieldValue = $aliasedFields['profile_type']->getValue($subject);
+          $topLevelId = $aliasedFields['profile_type']->field_id;
+          $topLevelValue = (is_object($aliasedFieldValue) ? $aliasedFieldValue->value : null);
+          if (!$topLevelId || !$topLevelValue) {
+              $topLevelId = null;
+              $topLevelValue = null;
+          }
+          $this->view->topLevelId = $topLevelId;
+          $this->view->topLevelValue = $topLevelValue;
+      }
+
+      // Get form
+      $form = $this->view->form = new Fields_Form_Standard(array(
+        'item' => Engine_Api::_()->core()->getSubject(),
+        'topLevelId' => $topLevelId,
+        'topLevelValue' => $topLevelValue,
+        'hasPrivacy' => true,
+        'privacyValues' => $this->getRequest()->getParam('privacy'),
+      ));
       $form->setAttrib('class', 'global_form ajax-form-' . $content_id);
+
+      $form->populate($subject->toArray());
 
       // render content
       $this->view->showContent = true;  
