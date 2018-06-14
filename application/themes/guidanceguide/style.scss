@@ -857,6 +857,11 @@ body#global_page_user-profile-index {
 // Mobile
 @media only screen and (max-width: 768px) {
 
+    // Classes
+    .grib-grab-two {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
     // HEADER
     header.extfox-header {
       .list-inline-item.search{
@@ -1187,10 +1192,6 @@ body#global_page_user-profile-index {
         .holder-special-badges,.contributor-badges-holder {
             padding: 15px 10px!important;
         }
-    }
-    // Classes
-    .grib-grab-two {
-        grid-template-columns: repeat(1, 1fr);
     }
 
 }
