@@ -807,7 +807,6 @@ body#global_page_user-profile-index {
         }
     }
 
-
     // CheckBox 
     input[type=checkbox] {
         z-index: 1;
@@ -868,73 +867,67 @@ body#global_page_user-profile-index {
     }
 
     // Radio Button
-    input[type=radio]
-    {
-    border: none!important;
-    padding: 0px!important;
-    margin: 2px 5px 0px 0px!important;
-    width: auto!important;
-    display: block!important;
-    float: left!important;
+    input[type=radio]{
+        border: none!important;
+        padding: 0px!important;
+        margin: 2px 5px 0px 0px!important;
+        width: auto!important;
+        display: block!important;
+        float: left!important;
     }
-    html[dir="rtl"] input[type=radio]
-    {
-    margin: 2px 0px 0px 5px!important;
-    float: right!important;
+    html[dir="rtl"] input[type=radio]{
+        margin: 2px 0px 0px 5px!important;
+        float: right!important;
     }
 
-    input[type=radio] + label
-    {
-    display: block!important;
-    cursor: pointer!important;
+    input[type=radio] + label{
+        display: block!important;
+        cursor: pointer!important;
     } 
     input[type="radio"] {
-    display: none!important;
+        display: none!important;
     }
     input[type="radio"] + label{
-    position: relative!important;
-    display: inline-block!important;
-    padding-left: 1.5em!important;
-    margin-right: 2em!important;
-    cursor: pointer!important;
-    line-height: 1em!important;
-    -webkit-transition: all 0.3s ease-in-out!important;
-    transition: all 0.3s ease-in-out!important;
-    
+        position: relative!important;
+        display: inline-block!important;
+        padding-left: 1.5em!important;
+        margin-right: 2em!important;
+        cursor: pointer!important;
+        line-height: 1em!important;
+        -webkit-transition: all 0.3s ease-in-out!important;
+        transition: all 0.3s ease-in-out!important;
     }
     input[type="radio"] + label:before,
     input[type="radio"] + label:after{
-    content: ''!important;
-    position: absolute!important;
-    top: 0!important;
-    left: 0!important;
-    width: 1em!important;
-    height: 1em!important;
-    text-align: center!important;
-    color: white!important;
-    font-family: Times!important;
-    border-radius: 50%!important;
-    -webkit-transition: all .3s ease!important;
-    transition: all .3s ease!important;
+        content: ''!important;
+        position: absolute!important;
+        top: 0!important;
+        left: 0!important;
+        width: 1em!important;
+        height: 1em!important;
+        text-align: center!important;
+        color: white!important;
+        font-family: Times!important;
+        border-radius: 50%!important;
+        -webkit-transition: all .3s ease!important;
+        transition: all .3s ease!important;
     }
     input[type="radio"] + label:before {
-    -webkit-transition: all .3s ease!important;
-    transition: all .3s ease!important;
-    box-shadow: inset 0 0 0 0.2em white, inset 0 0 0 1em white!important;
-    border: 1px solid #ebebeb!important;
+        -webkit-transition: all .3s ease!important;
+        transition: all .3s ease!important;
+        box-shadow: inset 0 0 0 0.2em white, inset 0 0 0 1em white!important;
+        border: 1px solid #ebebeb!important;
     }
     input[type="radio"] + label:hover:before {
-    -webkit-transition: all .3s ease!important;
-    transition: all .3s ease!important;
-    box-shadow: inset 0 0 0 0.3em white, inset 0 0 0 1em #c6c6c6!important;
+        -webkit-transition: all .3s ease!important;
+        transition: all .3s ease!important;
+        box-shadow: inset 0 0 0 0.3em white, inset 0 0 0 1em #c6c6c6!important;
     }
     input[type="radio"]:checked + label:before {
-    -webkit-transition: all .3s ease!important;
-    transition: all .3s ease!important;
-    box-shadow: inset 0 0 0 0.2em white, inset 0 0 0 1em #5CC7CE!important;
+        -webkit-transition: all .3s ease!important;
+        transition: all .3s ease!important;
+        box-shadow: inset 0 0 0 0.2em white, inset 0 0 0 1em #5CC7CE!important;
     }
-
-
 }
 
 
