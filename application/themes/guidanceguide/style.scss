@@ -786,7 +786,93 @@ body#global_page_user-profile-index {
     }
 }
 
+.layout_sdparentalguide_ajax_info {
+    .wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+        grid-auto-rows: minmax(100px, auto);
+        .left-side {
+            grid-column: 1 / 3;    
+            .profile_fields {
+                h4 {
+                    border:none!important;
+                    padding: 0!important;
+                    margin:0!important;
+                    span {
+                        border-bottom: 1px solid #e2e4e6!important;
+                       
+                    }
+                }
+                ul {
+                    padding-left: 40px;
+                    li {
+                        & > span {
+                            color:#333D40;
+                            font-size:16px;
+                            font-weight: 700;
 
+                            & + span {
+                                color:#333D40;
+                                font-size: 16px;
+                                font-weight: 400;
+                            }
+                        }     
+                    }
+                    li {
+                        margin-bottom: 20px!important;
+                    }
+                }
+            }
+        }
+        .right-side { 
+            h4 {
+                font-size: 18px;
+                color:#333D40;
+                font-weight: 700;
+            }
+            grid-column:  3/4;  
+            ul {
+                li {
+                    .female-side {
+                        border-radius: 50%;
+                        background-color:#E186C0;
+                        width: 60px;
+                        height: 60px;
+                    }
+                    .male-side {
+                        border-radius: 50%;
+                        background-color:#86B3E1;
+                        width: 60px;
+                        height: 60px;
+                    }
+                    .teenge-side {
+                        border-radius: 50%;
+                        background-color:#5CC7CE;
+                        width: 60px;
+                        height: 60px;
+                    }
+                    .right-side {
+                        p.name {
+                            color:#333D40;
+                            font-size:16px;
+                            font-weight: 700;
+                            span{
+                                color:#93A4A6;
+                            }
+                        }
+                        p.gender {
+                            color:#B9CFD1;
+                            font-size:14px;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
+      }
+      
+}
 
 //  ExtfoxForm Settings
 #extfox-settings {
