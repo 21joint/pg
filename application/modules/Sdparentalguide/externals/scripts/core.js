@@ -61,6 +61,7 @@ en4.gg = {
 
   ggAjax : function(type, subject_id, action, el) {
 
+    console.log(action);
       (new Request.JSON({
           url : en4.core.baseUrl + 'gg/ajax/' + action,
           data : {
@@ -253,12 +254,33 @@ en4.gg.ajaxTab = {
   }
 }
 
+
+
+
 window.addEvent('load', function () {
-  $$('.tabs_parent').each(function (element) {
-      element.getElements('ul > li').each(function (el) {
-          if (el.hasClass('active')) {
-              el.click();
-          }
-      });
-  });
+
+    $$('.tabs_parent').each(function (element) {
+        element.getElements('ul > li').each(function (el) {
+            if (el.hasClass('active')) {
+                el.click();
+            }
+        });
+    });
+
 });
+
+en4.gg.ajaxResetPassword = {
+
+    ggAjaxReset : function(newArray) {
+        
+       
+        
+
+        (new Request.JSON({
+           
+           
+        })).send();
+  
+    },
+    
+  }

@@ -367,7 +367,7 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
         /* foreach($values as $key => $value) {
             $form->getElement($key)->setValue($value);
         } */
-
+        
         foreach($values as $key => $value) {
             
             if($value['key'] == 'publishTypes[]') {

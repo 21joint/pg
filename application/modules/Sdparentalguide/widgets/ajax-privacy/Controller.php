@@ -47,7 +47,7 @@ class Sdparentalguide_Widget_AjaxPrivacyController extends Engine_Content_Widget
         }
       
         $settings = Engine_Api::_()->getApi('settings', 'core');
-        $auth = Engine_Api::_()->authorization()->context;
+        //$auth = Engine_Api::_()->authorization()->context;
 
         $this->view->form = $form = new User_Form_Settings_Privacy(array(
             'item' => $subject,

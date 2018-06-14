@@ -722,5 +722,16 @@ return array(
         ),
     ),
 
+    array(
+        'title' => $view->translate('AJAX Privacy'),
+        'description' => $view->translate('AJAX Privacy'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-privacy',
+        'defaultParams' => array(
+            'title' => 'Privacy',
+        ),
+    ),
+
 
 ) ?>
