@@ -89,6 +89,7 @@ class Sdparentalguide_Widget_AjaxNotificationsController extends Engine_Content_
             'description' => 'Which of the these do you want to receive email alerts about?',
         ));
         $form->setAttrib('class', 'global_form ajax-form-' . $content_id);
+        $form->setAttrib('id','extfox-settings');
 
         foreach( $notificationTypesAssoc as $elementName => $info ) {
             $form->addElement('MultiCheckbox', $elementName, array(
