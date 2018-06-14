@@ -53,6 +53,7 @@ class Sdparentalguide_Widget_AjaxPrivacyController extends Engine_Content_Widget
             'item' => $subject,
         ));
         $form->setAttrib('class', 'global_form ajax-form-' . $content_id);
+        $form->setAttrib('id', 'extfox-settings');
 
         if( Engine_Api::_()->authorization()->isAllowed('user', $subject, 'block') ) {
             foreach ($subject->getBlockedUsers() as $blocked_user_id) {
