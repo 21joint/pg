@@ -105,8 +105,12 @@
                                 </li>
                             </ul>
                         </div> <!--End of struggle right box-->
+                        
 
                     </li> <!-- End of struggle holder-->
+
+                    
+
 
                 <?php endforeach;?>
             </ul>

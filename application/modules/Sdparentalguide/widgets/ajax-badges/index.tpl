@@ -17,17 +17,17 @@
 
 
 <?php if($this->showContent): ?>
-    <div class="badges_main_holder">
-        <div class="main_box">
-            
-                      
+    <div class="container mb-4">
+        <div class="badges_main_holder">
+            <div class="main_box">
+                        
                 <?php echo $this->partial('ajax/badges/_badges.tpl', 'sdparentalguide', array(
                     'item' => $item,
                 )); ?>
-                
-           
-            
+                    
+            </div>
         </div>
     </div>
-
 <?php endif; ?>
+
+
