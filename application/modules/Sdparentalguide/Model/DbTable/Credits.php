@@ -75,6 +75,22 @@ class Sdparentalguide_Model_DbTable_Credits extends Sitecredit_Model_DbTable_Cre
         $row = $this->fetchRow($select);
         return $row;
     }
+    
+    public function getFieldValue($user_id, $field_id){
+      $fieldValuesTable = Engine_Api::_()->fields()->getTable('user', 'values');
+      $select = $fieldValuesTable->select()->where('item_id = ?', $user_id)->where('field_id = ?', $field_id);
+      $fieldValue = $fieldValuesTable->fetchRow($select);
+      if(empty($fieldValue)){
+          return null;
+      }
+      return $fieldValue->value;
+    }
+  
+    public function getUserLevel($level_id){
+      $levelsTable = Engine_Api::_()->getDbTable('levels', 'authorization');
+      $levelsObj = $levelsTable->select()->where('level_id = ?', $level_id);
+      return $userLevel = $levelsTable->fetchRow($levelsObj);
+    }
 } 
 
 

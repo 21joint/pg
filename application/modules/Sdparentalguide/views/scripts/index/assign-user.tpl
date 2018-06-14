@@ -94,6 +94,7 @@
             <td class='admin_table_centered admin_table_bold'>
               <?php echo $item->getTitle(); ?>
             </td>
+            <td class='admin_table_centered admin_table_user'><?php echo $this->itemPhoto($item,'thumb.icon',$item->getTitle()); ?></td>
             <td class="admin_table_centered nowrap">
                <?php if(($badgeType = $item->getBadgeType())): ?>
                     <?php echo $this->translate($badgeType); ?>
@@ -103,8 +104,7 @@
                <?php if(($level = $item->getLevel())): ?>
                     <?php echo $this->translate($level); ?>
                 <?php endif; ?>
-            </td>
-            <td class='admin_table_centered admin_table_user'><?php echo $this->itemPhoto($item,'thumb.icon',$item->getTitle()); ?></td>
+            </td>            
             <td class='admin_table_centered admin_table_email'>
                 <?php if(($topic = $item->getTopic())): ?>
                     <?php echo $topic->getTitle(); ?>
@@ -335,6 +335,18 @@ en4.core.runonce.add(function(){
             this.addChoiceEvents(choice).inject(this.choices);
             choice.store('autocompleteChoice', token);
           }            
+        },
+        onCommand: function(e){
+            if(!e){
+                return;
+            }
+            if(e.control || e.shift || e.alt || e.meta){
+                return;
+            }
+            if(e.key == 'enter' || e.key == 'tab' || e.key == 'capslock'){
+                return;
+            }
+            $("topic_id").value = '';
         },
         onPush : function(){
           

@@ -3,7 +3,7 @@
   array (
     'type' => 'module',
     'name' => 'sdparentalguide',
-    'version' => '4.10.3p3',
+    'version' => '4.10.3p5',
     'path' => 'application/modules/Sdparentalguide',
     'title' => 'SD - Guidance Guide Settings',
     'description' => 'Guidance Guide Settings Custom Module',
