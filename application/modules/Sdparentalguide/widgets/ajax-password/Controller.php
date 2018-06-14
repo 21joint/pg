@@ -49,69 +49,6 @@ class Sdparentalguide_Widget_AjaxPasswordController extends Engine_Content_Widge
       $this->view->form = $form = new User_Form_Settings_Password();
       $form->setAttrib('class', 'global_form ajax-form-' . $content_id);
 
-      $form->populate($subject->toArray());
-
-      
-
-      if( !$this->getRequest()->isPost() ){
-        return;
-      }
-     
-
-      // if( !$form->isValid($this->getRequest()->getPost()) ) {
-      //   return;
-      // }
-    
-      // // Check conf
-      // if( $form->getValue('passwordConfirm') !== $form->getValue('password') ) {
-      //   $form->getElement('passwordConfirm')->addError(Zend_Registry::get('Zend_Translate')->_('Passwords did not match'));
-      //   return;
-      // }
-      
-      
-      // Process form
-      $userTable = Engine_Api::_()->getItemTable('user');
-      $db = $userTable->getAdapter();
-  
-      // Check old password
-      $salt = Engine_Api::_()->getApi('settings', 'core')->getSetting('core.secret', 'staticSalt');
-      $select = $userTable->select()
-        ->from($userTable, new Zend_Db_Expr('TRUE'))
-        ->where('user_id = ?', $subject->getIdentity())
-        ->where('password = ?', new Zend_Db_Expr(sprintf('MD5(CONCAT(%s, %s, salt))', $db->quote($salt), $db->quote($form->getValue('oldPassword')))))
-        ->limit(1)
-        ;
-      $valid = $select
-        ->query()
-        ->fetchColumn()
-        ;
-  
-      // if( !$valid ) {
-      //   $form->getElement('oldPassword')->addError(Zend_Registry::get('Zend_Translate')->_('Old password did not match'));
-      //   return;
-      // }
-      
-
-
-      
-      
-      // Save
-      $db->beginTransaction();
-  
-      try {
-  
-        $subject->setFromArray($form->getValues());
-        $subject->save();
-        
-        $db->commit();
-      } catch( Exception $e ) {
-        $db->rollBack();
-        throw $e;
-      }
-  
-      $form->addNotice(Zend_Registry::get('Zend_Translate')->_('Settings were successfully saved.'));
-    
-
       // render content
       $this->view->showContent = true;  
 

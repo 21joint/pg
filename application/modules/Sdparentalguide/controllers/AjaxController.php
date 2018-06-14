@@ -311,36 +311,17 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
 
         // setup values
         $values = $request->getParam('values', null);
+        $publishTypes = array();
 
         foreach($values as $key => $value) {
-            $element = $form->getElement($key);
-            if($element) {
-                $element->setValue($value);
+            if($value['value'] === 'true') {
+                array_push($publishTypes, $value['name']);
             }
         }
 
-        // if form is valid
-        if( !$form->isValid( $values ) ) {
-            $this->view->status = false;
-            $this->view->message = Zend_Registry::get('Zend_Translate')->_('Something went wrong.');
-            return;
-        }
-
-        // Process
-        $values = array();
-        foreach( $form->getValues() as $key => $value ) {
-            if( !is_array($value) ) continue;
-            foreach( $value as $skey => $svalue ) {
-                if( !isset($notificationTypesAssoc[$key]['types'][$svalue]) ) {
-                    continue;
-                }
-                $values[] = $svalue;
-            }
-        }
-        
         // Set notification setting
         Engine_Api::_()->getDbtable('notificationSettings', 'activity')
-            ->setEnabledNotifications($viewer, $values);
+        ->setEnabledNotifications($viewer, $publishTypes);
 
         $this->view->status = true;
         $this->view->message = Zend_Registry::get('Zend_Translate')->_('Profile have been updated.');
@@ -351,8 +332,8 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
     public function privacyAction() {
 
         $this->_helper->ViewRenderer->setNoRender(true);
-
         $viewer = Engine_Api::_()->user()->getViewer();
+        $request = Zend_Controller_Front::getInstance()->getRequest();
 
         if( !$this->getRequest()->isPost() ) {
             $this->view->status = false;
@@ -360,26 +341,74 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
             return;
         }
 
-        $request = Zend_Controller_Front::getInstance()->getRequest();
-
         // setup values
         $values = $request->getParam('values', null);
-        /* foreach($values as $key => $value) {
-            $form->getElement($key)->setValue($value);
-        } */
-        
+        $publishTypes = array(
+            'publishTypes' => array()
+        );
+
         foreach($values as $key => $value) {
-            
-            if($value['key'] == 'publishTypes[]') {
-                print_r($value['key']);
+            if($value['key'] == 'publishTypes[]' && $value['value'] === 'true') {
+                array_push($publishTypes['publishTypes'], $value['name']);
+            } else if( $value['key'] != 'publishTypes[]') {
+                if($value['key'] == 'search')
+                    $publishTypes[$value['key']] = $value['value'] == 'true' ? '1' : '0';
+                else
+                    $publishTypes[$value['key']] = $value['name'];
             }
-
         }
-        exit;
-        
-        echo "<pre>";
-        print_r($values);
 
+        $settings = Engine_Api::_()->getApi('settings', 'core');
+        $auth = Engine_Api::_()->authorization()->context;
+
+        $this->view->form = $form = new User_Form_Settings_Privacy(array(
+            'item' => $viewer,
+        ));
+
+        // Populate form
+        $form->populate( $viewer->toArray() );
+
+        // Set up activity options
+        $defaultPublishTypes = array('post', 'signup', 'status');
+        if( $form->getElement('publishTypes') ) {
+            $actionTypes = Engine_Api::_()->getDbtable('actionTypes', 'activity')->getEnabledActionTypesAssoc();
+        foreach( $defaultPublishTypes as $key ) {
+            unset($actionTypes[$key]);
+        }
+
+        foreach( array_keys($actionTypes) as $key ) {
+            if( substr($key, 0, 5) == 'post_' ) {
+                $defaultPublishTypes[] = $key;
+                unset($actionTypes[$key]);
+            }
+        }
+
+        $form->publishTypes->setMultiOptions($actionTypes);
+        $actionTypesEnabled = Engine_Api::_()->getDbtable('actionSettings', 'activity')                    ->getEnabledActions($viewer);
+            $form->publishTypes->setValue($actionTypesEnabled);
+        }
+
+        foreach($publishTypes as $key => $value) {
+            if( $key != 'publishTypes[]' && $element = $form->getElement($key) )
+                $element->setValue($value);
+        }
+        
+        $form->save();
+
+        $values = $form->getValues();
+        $viewer->search = $values['search'];
+        $viewer->save();
+
+
+        // Update notification settings
+        if( $form->getElement('publishTypes') ) {
+            $publishTypes = array_merge($form->publishTypes->getValue(), $defaultPublishTypes);
+            Engine_Api::_()->getDbtable('actionSettings', 'activity')->setEnabledActions($viewer, (array) $publishTypes);
+        }
+        
+        $this->view->status = true;
+        $this->view->message = Zend_Registry::get('Zend_Translate')->_('Profile have been updated.');
+        
 
     }
 

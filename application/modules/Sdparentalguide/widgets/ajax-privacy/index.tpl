@@ -34,17 +34,6 @@
 en4.core.runonce.add(function() {
     var form = document.getElementsByClassName('ajax-form-' + <?php echo $this->identity; ?>)[0];
     en4.gg.ggAjaxForm(form, 'privacy');
-    //console.log(form.elements);
-
-    var formValues = [];
-    for(var i = 0; i < form.elements.length; i++) {
-        //console.log(form.elements[i], form.elements[i].name);
-        formValues.push({key: form.elements[i].name, value: form.elements[i].value});
-    }
-
-    console.log(formValues);
-
-
 });
 </script>
 <?php endif; ?>

@@ -88,11 +88,17 @@ en4.gg = {
     
     form.addEventListener('submit', function(e) {
         e.preventDefault();
-
-        if(action == 'privacy') {
+        
+        // make specific checks for privacy
+        if(action == 'privacy' || action == 'notifications') {
             var formValues = [];
             for(var i = 0; i < form.elements.length; i++) {
-                formValues.push({key: form.elements[i].name, value: form.elements[i].value});
+                if( form.elements[i].type == 'radio' || form.elements[i].type == 'checkbox' ) {
+                    if(form.elements[i].type == 'checkbox')
+                        formValues.push({key: form.elements[i].name, name: form.elements[i].value, value: form.elements[i].checked});
+                    else if (form.elements[i].checked === true)
+                        formValues.push({key: form.elements[i].name, name: form.elements[i].value, value: form.elements[i].checked});
+                }
             }
         } else {
             var formValues = new Object();
@@ -100,7 +106,6 @@ en4.gg = {
                 formValues['' + form.elements[i].name + ''] = form.elements[i].value;
             }
         }
-        
 
         // make ajax request to form URL
         (new Request.JSON({
