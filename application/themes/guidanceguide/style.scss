@@ -770,9 +770,39 @@ body#global_page_user-profile-index {
                 }
             }
         }
-      }
-      
+    }  
 }
+.layout_sdparentalguide_ajax_theories {
+    .holder-my-theories {
+        .bottom-holder {
+            .title-holder{
+                h4.left-side{
+                    width: 60%!important;    
+                }
+                h4.right-side{
+                    width: 40%!important;    
+                }
+            }
+            .left-side {
+                width: 60%;
+                ul.topic_holder {
+                    li.struggle_holder{
+                        border-bottom: 1px solid #e2e4e6!important;
+                    }
+                }
+            }
+            .right-side {
+                width: 40%;
+                ul.topic_holder {
+                    li.struggle_holder{
+                        border-bottom: 1px solid transparent!important;
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 //  ExtfoxForm Settings
 #extfox-settings {
@@ -1333,6 +1363,42 @@ body#global_page_user-profile-index {
     .layout_sdparentalguide_ajax_password {
         .container {
             width: 95%!important;
+        }
+    }
+
+    .layout_sdparentalguide_ajax_theories {
+        .container{
+            width: 100%!important;
+            .holder-my-theories {
+                .bottom-holder {
+                    .title-holder {
+                        margin: 0 1rem !important;
+                         h4.left-side {
+                            width: 100% !important;
+                        }
+                    }
+                    ul.topic_holder{
+                        flex-wrap: wrap!important;
+                        li.struggle_holder {
+                            width: 100%;
+                            margin:0 1rem!important;
+                            .struggle_box_left {
+                                .struggle_info {
+                                    margin:0!important;
+                                }
+                            }
+                            .struggle_right-side {
+                                width: 100%;
+                                .struggle_info {
+                                    li{
+                                       margin:0!important; 
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

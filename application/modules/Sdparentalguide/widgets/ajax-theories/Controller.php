@@ -40,8 +40,23 @@ class Sdparentalguide_Widget_AjaxTheoriesController extends Engine_Content_Widge
           }
         }
   
+        $fieldsTable = Engine_Api::_()->getDbtable('questions', 'ggcommunity');
+        $fName =  $fieldsTable->info('name');
+
+        $table = Engine_Api::_()->getDbtable('answers', 'ggcommunity');
+        $hName = $table->info('name');
+
         
-        // Query
+        $select = $table->select()
+            ->setIntegrityCheck(false)
+            ->from($hName)
+            ->joinLeft($fName, "$fName.question_id = $hName.parent_id")
+            ->where($hName.'.user_id = ?', $viewer->getIdentity())
+            ;
+
+        
+
+      
 
   
         // render content
