@@ -578,10 +578,22 @@ class Sdparentalguide_AdminManageController extends Core_Controller_Action_Admin
   
   public function suggestUserAction(){
     $table = Engine_Api::_()->getDbTable('users', 'user');
+    $tableName = $table->info("name");
+    $valuesTable = Engine_Api::_()->fields()->getTable('user', 'values');
+    $valuesTableName = $valuesTable->info("name");
     $select = $table->select();
     $type = $this->getParam("type","displayname");
     if( null !== ($text = $this->getParam('search', $this->getParam('value'))) ) {
-      $select->where("displayname LIKE ? ", '%'. $text .'%');
+        $select->setIntegrityCheck(false)
+                ->from($tableName)
+                ->joinLeft($valuesTableName,"$valuesTableName.item_id = $tableName.user_id",array());
+        if($type == 'first_name'){
+            $select->where("$valuesTableName.field_id = ?",3)
+                    ->where("$valuesTableName.value LIKE ? ", '%'. $text .'%');
+        }else{
+            $select->where("$valuesTableName.field_id = ?",4)
+                    ->where("$valuesTableName.value LIKE ? ", '%'. $text .'%');
+        }
     }
     if( null !== ($text = $this->getParam('username')) ) {
       $select->where("username LIKE ?", '%'. $text .'%');
