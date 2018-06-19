@@ -581,31 +581,43 @@ class Sdparentalguide_AdminManageController extends Core_Controller_Action_Admin
     $select = $table->select();
     $type = $this->getParam("type","displayname");
     if( null !== ($text = $this->getParam('search', $this->getParam('value'))) ) {
-      $select->where("username LIKE ? OR email LIKE ? OR displayname LIKE ? ", '%'. $text .'%');
+      $select->where("displayname LIKE ? ", '%'. $text .'%');
+    }
+    if( null !== ($text = $this->getParam('username')) ) {
+      $select->where("username LIKE ?", '%'. $text .'%');
+    }
+    if( null !== ($text = $this->getParam('email')) ) {
+      $select->where("email LIKE ?", '%'. $text .'%');
     }
     $select->limit(20);
     $users = $table->fetchAll($select);
     $data = array();
     if(count($users) > 0){
       foreach($users as $user){
-          $label = $user->displayname;
-          $displaynameArray = explode(" ",$label);
+          $label = $user->username;
+          $displaynameArray = explode(" ",$user->displayname);
           if($type == 'email'){
               $label = $user->email;
           }
+          $firstName = isset($displaynameArray[0])?$displaynameArray[0]:$user->displayname;
           if($type == 'first_name'){
-              $label = isset($displaynameArray[0])?$displaynameArray[0]:$label;
+              $label = $firstName;
           }
+          $lastName = isset($displaynameArray[1])?$displaynameArray[1]:'';
           if($type == 'last_name'){
-              $label = isset($displaynameArray[1])?$displaynameArray[1]:$label;
+              $label = $lastName;
           }
           $data[] = array(
             'type'  => 'user',
             'id'    => $user->getIdentity(),
             'guid'  => $user->getGuid(),
             'label' => $label,
-            'photo' => $this->view->itemPhoto($user, 'thumb.icon'),
+            'photo' => "",
             'url'   => $user->getHref(),
+            'first_name' => $firstName,
+            'last_name' => $lastName,
+            'email' => $user->email,
+            'username' => $user->username
           );
       }
     }
@@ -617,5 +629,24 @@ class Sdparentalguide_AdminManageController extends Core_Controller_Action_Admin
       $data = Zend_Json::encode($data);
       $this->getResponse()->setBody($data);
     }
+  }
+  
+  public function userDetailAction(){
+      $user = Engine_Api::_()->user()->getUser($this->getParam("user_id"));
+      if(!$user->getIdentity()){
+          $this->view->status = false;
+          return;
+      }
+      
+      $api = Engine_Api::_()->sdparentalguide();
+      $userData = $user->toArray();
+      $userData['first_name'] = $api->getFieldValue($user,3);
+      $userData['last_name'] = $api->getFieldValue($user,4);
+      $userData['href'] = $user->getHref();
+      unset($userData['creation_ip']);
+      unset($userData['lastlogin_ip']);
+      unset($userData['gg_ip_lastmodified']);
+      $this->view->data = $userData;
+      $this->view->status = true;
   }
 }

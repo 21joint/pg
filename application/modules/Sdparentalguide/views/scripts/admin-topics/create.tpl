@@ -96,4 +96,38 @@ function loadCategories(element){
   });
   req.send();
 }
+function previewIcon(element){
+    var files = element.files;
+    var parent = $(element).getParent();
+    if(files.length <= 0){
+        return;
+    }
+    
+    var reader = new FileReader();
+    reader.onload = function(){
+        var dataURL = reader.result;
+        if(parent.getElement(".icon_preview")){
+            parent.getElement(".icon_preview").destroy();
+        }
+        var div = new Element("div",{
+            'class': 'icon_preview',
+        });
+        var img = new Element("img",{
+            'src': dataURL
+        });
+        img.inject(div,"bottom");
+        div.inject(parent,"bottom");
+        window.parent.Smoothbox.instance.doAutoResize();
+    };
+    reader.readAsDataURL(files[0]);
+    
+}
 </script>
+<style type="text/css">
+.icon_preview {
+    margin-top: 10px;
+}
+.icon_preview img {
+    max-width: 150px;
+}    
+</style>

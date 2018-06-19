@@ -121,6 +121,8 @@ function searchTopics(){
         </th>
         <th style='width: 50%;' class='admin_table_centered'><?php echo $this->translate("Topic Name"); ?></th>
         <th style='width: 10%;' class='admin_table_centered'><?php echo $this->translate("Allow Badges"); ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Featured") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Icon") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Action") ?></th>
       </tr>
     </thead>
@@ -135,6 +137,14 @@ function searchTopics(){
             </td>
             <td class='admin_table_centered'>
                 <input type="radio" class="sd_radio_badges" disabled <?php echo ( $item->badges ? 'checked=checked' : '' ); ?>>
+            </td>
+            <td class='admin_table_centered'>
+                <input type="radio" class="sd_radio_featured" disabled <?php echo ( $item->featured ? 'checked=checked' : '' ); ?>>
+            </td>
+            <td class='admin_table_centered'>
+                <?php if($item->photo_id): ?>
+                    <img src='<?php echo $item->getPhotoUrl("thumb.icon"); ?>' alt='<?php echo $item->getTitle(); ?>'/>
+                <?php endif; ?>
             </td>
             <td class='admin_table_centered'>
                 <a class='smoothbox' href='<?php echo $this->url(array( 'action' => 'edit','topic_id' => $item->getIdentity()));?>'>

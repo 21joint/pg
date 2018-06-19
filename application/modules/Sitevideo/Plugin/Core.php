@@ -253,9 +253,22 @@ class Sitevideo_Plugin_Core extends Zend_Controller_Plugin_Abstract {
         $view->headLink()
                 ->appendStylesheet($view->layout()->staticBaseUrl . 'externals/fancyupload/fancyupload.css');
 
-        $apiKey = Engine_Api::_()->seaocore()->getGoogleMapApiKey();
-        if ($apiKey)
-            $view->headScript()->appendFile("https://maps.googleapis.com/maps/api/js?libraries=places&sensor=true&key=$apiKey");
+        
+        
+        /**********************MJ code commented due to api errors in console*********************/
+        
+        
+        
+//        $apiKey = Engine_Api::_()->seaocore()->getGoogleMapApiKey();
+//        if ($apiKey)
+//            $view->headScript()->appendFile("https://maps.googleapis.com/maps/api/js?libraries=places&sensor=true&key=$apiKey");
+        
+        
+        /***********************Custom code end*************************/
+        
+        
+        
+        
     }
 
     public function onUserSignupAfter($video) {
