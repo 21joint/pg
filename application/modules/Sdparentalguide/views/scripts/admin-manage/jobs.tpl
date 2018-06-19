@@ -435,9 +435,9 @@ function loadUserData(toID){
             }
             var tr = new Element("tr",{
                 html: "<td class='admin_table_centered admin_table_user'><a href='"+responseJSON.data.href+"' target='_blank'>"+responseJSON.data.username+"</a></td>"+
-                        "<td class='admin_table_centered admin_table_user'>"+responseJSON.data.email+"</td>"+
                         "<td class='admin_table_centered admin_table_user'>"+responseJSON.data.first_name+"</td>"+
-                        "<td class='admin_table_centered admin_table_user'>"+responseJSON.data.last_name+"</td>"+"<td></td>"
+                        "<td class='admin_table_centered admin_table_user'>"+responseJSON.data.last_name+"</td>"+
+                        "<td class='admin_table_centered admin_table_user'>"+responseJSON.data.email+"</td>"+"<td></td>"
             });
             tr.inject(tbody,"bottom");
         }
