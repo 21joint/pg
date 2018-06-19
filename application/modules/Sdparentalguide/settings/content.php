@@ -631,4 +631,118 @@ return array(
         ),
     ),
 
+    array(
+        'title' => $view->translate('AJAX Profile Password'),
+        'description' => $view->translate('Edit Password in AJAX Mode'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-password',
+        'defaultParams' => array(
+            'title' => 'Password',
+        ),
+    ),
+
+    array(
+        'title' => $view->translate('AJAX Delete Profile'),
+        'description' => $view->translate('Delete Profile in AJAX Mode'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-delete',
+        'defaultParams' => array(
+            'title' => 'Delete Account',
+        ),
+    ),
+
+    array(
+        'title' => $view->translate('AJAX Update Profile'),
+        'description' => $view->translate('Update Profile in AJAX Mode'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-profile',
+        'defaultParams' => array(
+            'title' => 'Personal Info',
+        ),
+    ),
+
+    array(
+        'title' => $view->translate('AJAX Update Notifications'),
+        'description' => $view->translate('Update Notifications in AJAX Mode'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-notifications',
+        'defaultParams' => array(
+            'title' => 'Notifications',
+        ),
+    ),
+
+    array(
+        'title' => $view->translate('AJAX Update Privacy'),
+        'description' => $view->translate('Update Privacy in AJAX Mode'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-privacy',
+        'defaultParams' => array(
+            'title' => 'Privacy',
+        ),
+    ),
+
+    array(
+        'title' => $view->translate('AJAX My Struggles'),
+        'description' => $view->translate('My Struggles in AJAX Mode'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-struggles',
+        'defaultParams' => array(
+            'title' => 'My Struggles',
+            'titleCount' => true,
+        ),
+    ),
+
+    array(
+        'title' => $view->translate('AJAX My Theories'),
+        'description' => $view->translate('My Theories in AJAX Mode'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-theories',
+        'defaultParams' => array(
+            'title' => 'My Theories',
+            'titleCount' => true,
+        ),
+    ),
+
+    array(
+        'title' => $view->translate('AJAX My Badges'),
+        'description' => $view->translate('AJAX My Badges'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-badges',
+        'defaultParams' => array(
+            'title' => 'My Badges',
+            'titleCount' => true,
+        ),
+    ),
+
+    array(
+        'title' => $view->translate('AJAX Privacy'),
+        'description' => $view->translate('AJAX Privacy'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-privacy',
+        'defaultParams' => array(
+            'title' => 'Privacy',
+        ),
+    ),
+
+    array(
+        'title' => $view->translate('AJAX My Info'),
+        'description' => $view->translate('AJAX My Info'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-info',
+        'defaultParams' => array(
+            'title' => 'My Info',
+        ),
+    ),
+
+
 ) ?>

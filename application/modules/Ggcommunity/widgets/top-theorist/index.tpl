@@ -15,12 +15,7 @@
                             <div class="counter-number large-1 medium-1 small-1">
                                 <?php echo $x++;?>
                             </div>
-                            <a href="<?php echo $item->getOwner()->getHref();?>" class="struggle_owner_image">
-                                <?php echo $this->itemPhoto($item->getOwner(), 'thumb.icon', array('class'=> 'owner_thumb')) ?>
-                                <div class="owner_level">
-                                    <?php echo $item->getOwner()->level_id;?>
-                                </div>
-                            </a>
+                            <?php echo $this->htmlLink($item->getOwner()->getHref(), $this->itemPhoto($item->getOwner(), 'thumb.icon')); ?>
                             <a href="<?php echo $item->getOwner()->getHref();?>" class="struggle_owner_name">
                                 <?php echo $item->getOwner()->getTitle();?> 
                             </a>

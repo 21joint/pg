@@ -286,7 +286,6 @@
 	.sitemenu_main_menu > li > a.level-top{display:flex;}
 	.layout_page_header .layout_main .sitestore_quick_search{display:none !important;}
 	/*Footer Menu*/
-	.layout_page_footer .layout_main{width:97% !important;}
 	.layout_sitemenu_menu_footer{text-align:center;}
 	.layout_sitemenu_menu_footer a + div, .layout_sitemenu_menu_footer a + div div.fright{float:none !important;}
 	.layout_page_footer .sitestoreproduct-search-box .form-elements, .layout_page_header .sitestoreproduct-search-box .form-elements{float:none;

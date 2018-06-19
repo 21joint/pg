@@ -2512,8 +2512,6 @@ ul.profile_options_pulldown > li:hover a,
      width: 100%;
      box-sizing: border-box;
    }
-   div.layout_page_header .layout_main,
-   div.layout_page_footer .layout_main,
    div#global_content
    {
      padding-left: 20px;

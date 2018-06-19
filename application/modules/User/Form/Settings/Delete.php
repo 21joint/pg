@@ -26,7 +26,8 @@ class User_Form_Settings_Delete extends Engine_Form
         'you\'ve uploaded in the past will be permanently deleted. You will be '.
         'immediately signed out and will no longer be able to sign in with this account.')
       ->setAction(Zend_Controller_Front::getInstance()->getRouter()->assemble(array()))
-      ;
+      ->setAttrib('id', 'extfox-settings delete')
+    ;
 
     // Element: token
     $this->addElement('Hash', 'token');
@@ -36,26 +37,18 @@ class User_Form_Settings_Delete extends Engine_Form
       'label' => 'Yes, Delete My Account',
       'type' => 'submit',
       'ignore' => true,
+      'class' => 'btn btn-danger',
       //'style' => 'color:#D12F19;',
       'decorators' => array(
         'ViewHelper',
       ),
     ));
 
-    // Element: cancel
-    $this->addElement('Cancel', 'cancel', array(
-      'label' => 'cancel',
-      'link' => true,
-      'prependText' => ' or ',
-      'decorators' => array(
-        'ViewHelper',
-      ),
-    ));
+
     
     // DisplayGroup: buttons
     $this->addDisplayGroup(array(
       'execute',
-      'cancel',
     ), 'buttons');
     
     return $this;

@@ -10,6 +10,9 @@ class Sdparentalguide_Bootstrap extends Engine_Application_Bootstrap_Abstract
         $headLink = new Zend_View_Helper_HeadLink();
         $baseUrl = Zend_Registry::get('StaticBaseUrl');
 
+        $headScript = new Zend_View_Helper_HeadScript();
+        $headScript->appendFile($baseUrl . 'application/modules/Sdparentalguide/externals/scripts/core.js');
+
         $headLink->appendStylesheet($baseUrl
         .'application/themes/guidanceguide/assets/css/root.css');
 

@@ -78,7 +78,7 @@
                         </div>
                     </div>
                 </div>
-            </div> <!-- end of badges-earned --> 
+            </div> <!-- end of badges-earned -->
 
             <div class="badges-slide mb-4 bg-white widget">
                 <div class="holder p-4">

@@ -64,9 +64,6 @@
                             <div class="struggle_left_side">
                                 <a href="<?php echo $item->getOwner()->getHref();?>" class="struggle_owner_image">
                                     <?php echo $this->itemPhoto($item->getOwner(), 'thumb.icon', array('class'=> 'owner_thumb')) ?>
-                                    <div class="owner_level">
-                                        <?php echo $item->getOwner()->level_id;?>
-                                    </div>
                                 </a>
                             </div>
 
@@ -108,8 +105,12 @@
                                 </li>
                             </ul>
                         </div> <!--End of struggle right box-->
+                        
 
                     </li> <!-- End of struggle holder-->
+
+                    
+
 
                 <?php endforeach;?>
             </ul>
