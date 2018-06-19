@@ -69,6 +69,35 @@ class Sdparentalguide_Form_Admin_Topic_Create extends Engine_Form
             'value' => 1
         ));
         
+        $this->addElement("Radio","featured",array(
+            'label' => 'Featured',
+            'allowEmpty' => false,
+            'required' => true,
+            'multiOptions' => array(
+                '1' => 'Yes',
+                '0' => 'No'
+            ),
+            'value' => 1
+        ));
+        
+        $this->addElement("File",'photo',array(
+            'label' => 'Icon',
+//            'description' => 'Uploaded image must be square.',
+            'required' => true,
+            'allowEmpty' => false,
+            'onchange' => 'previewIcon(this);',
+            'destination' => APPLICATION_PATH.'/public/temporary/',
+            'validators' => array(
+                array('Count', false, 1),
+                array('Extension', false, 'jpg,png,gif,jpeg'),
+            ),
+        ));
+        $this->photo->getDecorator('Description')->setOptions(array('placement' => 'APPEND'));
+        
+//        $dimentionValidator = new Engine_Validate_Callback(array($this, 'checkDimentions'), $this->photo);
+//        $dimentionValidator->setMessage("Please upload square image.");
+//        $this->photo->addValidator($dimentionValidator);
+        
         
         $this->addElement('Button', 'save', array(
             'label' => 'Save',

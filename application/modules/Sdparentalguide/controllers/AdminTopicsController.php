@@ -56,6 +56,10 @@ class Sdparentalguide_AdminTopicsController extends Core_Controller_Action_Admin
             $select->where('badges = ? ', (int)$values['badges']);
         }
         
+        if (isset($values['featured']) && $values['featured'] == 1) {
+            $select->where('featured = ? ', (int)$values['featured']);
+        }
+        
         if (!empty($values['subcategory_id'])) {
             $select->where('subcategory_id = ? ', $values['subcategory_id']);
         }
@@ -104,6 +108,10 @@ class Sdparentalguide_AdminTopicsController extends Core_Controller_Action_Admin
             $topic->setFromArray($values);
             $topic->save();
             
+            if(!empty($values['photo'])){
+                $topic->setPhoto($form->photo);
+            }
+            
             $db->commit();
             
             $this->_forward('success', 'utility', 'core', array(
@@ -121,6 +129,8 @@ class Sdparentalguide_AdminTopicsController extends Core_Controller_Action_Admin
         $topic = Engine_Api::_()->core()->getSubject();
         $this->view->form = $form = new Sdparentalguide_Form_Admin_Topic_Create();
         $form->setTitle("Edit Topic");
+        $form->photo->setRequired(false);
+        $form->photo->setAllowEmpty(true);
         $form->populate($topic->toArray());
         if(!empty($topic->listingtype_id)){
             $categoryOptions = $this->getCategories($topic->listingtype_id);
@@ -149,6 +159,10 @@ class Sdparentalguide_AdminTopicsController extends Core_Controller_Action_Admin
             $topic->setFromArray($values);
             $topic->save();
             $db->commit();
+            
+            if(!empty($values['photo'])){
+                $topic->setPhoto($form->photo);
+            }
             
             $this->_forward('success', 'utility', 'core', array(
                 'smoothboxClose' => 1000,

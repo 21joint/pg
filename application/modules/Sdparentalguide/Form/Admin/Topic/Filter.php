@@ -59,6 +59,17 @@ class Sdparentalguide_Form_Admin_Topic_Filter extends Engine_Form
           '1' => 'Badges',
       ))->setAttrib("onchange","searchTopics();");
     
+    $featured = new Zend_Form_Element_Radio('featured');
+    $featured
+      ->clearDecorators()
+      ->addDecorator('ViewHelper')
+      ->addDecorator('Label', array('tag' => null, 'placement' => 'PREPEND'))
+      ->addDecorator('HtmlTag', array('tag' => 'div','class' => 'badges'))
+      ->setMultiOptions(array(
+          '-1111' => 'All',
+          '1' => 'Featured',
+      ))->setAttrib("onchange","searchTopics();");
+    
 
     $this->addElement('Hidden', 'order', array(
       'order' => 10001,
@@ -72,6 +83,7 @@ class Sdparentalguide_Form_Admin_Topic_Filter extends Engine_Form
     $this->addElements(array(
       $active,
       $badges,
+      $featured,
     ));
     
     

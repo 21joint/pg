@@ -132,6 +132,17 @@
           'action' => '\D+',
         )
     ),
+    'sdparentalguide_api' => array(
+        'route' => 'gg/rest/:action/*',
+        'defaults' => array(
+          'module' => 'sdparentalguide',
+          'controller' => 'api',
+          'action' => 'index',
+        ),
+        'reqs' => array(
+          'action' => '\D+',
+        )
+    ),
 
   )
 ); ?>
