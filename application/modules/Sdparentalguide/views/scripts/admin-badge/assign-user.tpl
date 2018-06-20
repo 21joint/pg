@@ -408,7 +408,7 @@ function updateDisplayStatus(element,badgeId,userId,status){
           var anchor = new Element("a",{
                 href: 'javascript:void(0);',
                 html: "&nbsp;&nbsp;<?php echo $this->translate('Hide'); ?>",
-                onclick: "updateAssignStatus(this,'"+badgeId+"','"+userId+"','0');"
+                onclick: "updateDisplayStatus(this,'"+badgeId+"','"+userId+"','0');"
           });
           if(status == '0'){
             anchor = new Element("a",{
