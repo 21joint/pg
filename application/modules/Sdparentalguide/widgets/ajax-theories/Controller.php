@@ -48,14 +48,20 @@ class Sdparentalguide_Widget_AjaxTheoriesController extends Engine_Content_Widge
 
         
         $select = $table->select()
-            ->setIntegrityCheck(false)
-            ->from($hName)
-            ->joinLeft($fName, "$fName.question_id = $hName.parent_id")
-            ->where($hName.'.user_id = ?', $viewer->getIdentity())
-            ;
-
+          ->setIntegrityCheck(false)
+          ->from($hName)
+          ->joinInner($fName, "$fName.question_id = $hName.parent_id")
+          ->where($hName.'.user_id = ?', $subject->getIdentity())
+          ;
+        
+      
         
 
+        $this->view->paginator = $paginator = Zend_Paginator::factory($select);
+
+        // Set item count per page and current page number
+        $paginator->setItemCountPerPage($this->_getParam('itemCountPerPage', 2));
+        $paginator->setCurrentPageNumber($this->_getParam('page', 1));
       
 
   
