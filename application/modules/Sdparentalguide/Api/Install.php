@@ -154,4 +154,47 @@ class Sdparentalguide_Api_Install extends Core_Api_Abstract{
             ->fetchColumn();
         return $containerId;
     }
+    
+    public function addLeaderboardPage(){
+        $db = Engine_Db_Table::getDefaultAdapter();
+        $customPageId = $this->getPageByName("sdparentalguide_index_leaderboard");
+        if(!empty($customPageId)){
+            return;
+        }
+        
+        $db->insert('engine4_core_pages', array(
+            'name' => 'sdparentalguide_index_leaderboard',
+            'displayname' => 'Sdparentalguide - Community Leaderboard',
+            'title' => 'Community Leaderboard',
+            'description' => 'This page allow users to search for questions and answers.',
+            'custom' => 1,
+        ));
+        $page_id = $db->lastInsertId();
+        
+        $db->insert('engine4_core_content', array(
+            'type' => 'container',
+            'name' => 'main',
+            'page_id' => $page_id,
+            'order' => 2,
+        ));
+        $main_id = $db->lastInsertId();
+
+        $db->insert('engine4_core_content', array(
+            'type' => 'container',
+            'name' => 'middle',
+            'page_id' => $page_id,
+            'parent_content_id' => $main_id,
+            'order' => 1,
+        ));
+        $main_middle_id = $db->lastInsertId();
+        
+        $db->insert('engine4_core_content', array(
+            'type' => 'widget',
+            'name' => 'sdparentalguide.community-leaderboard',
+            'page_id' => $page_id,
+            'parent_content_id' => $main_middle_id,
+            'order' => 1,
+        ));
+        
+    }
 }

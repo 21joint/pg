@@ -491,4 +491,9 @@ class Sdparentalguide_IndexController extends Core_Controller_Action_Standard
         }
         return $this->_helper->json($data);
     }
+    
+    public function leaderboardAction(){
+        Engine_Api::_()->getApi("install","sdparentalguide")->addLeaderboardPage();
+        $this->_helper->content->setEnabled();
+    }
 }

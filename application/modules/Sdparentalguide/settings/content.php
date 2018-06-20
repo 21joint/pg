@@ -743,6 +743,67 @@ return array(
             'title' => 'My Info',
         ),
     ),
+    
+    array(
+        'title' => $view->translate('PG Community Leaderboard'),
+        'description' => $view->translate('PG Community Leaderboard'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.community-leaderboard',
+        'defaultParams' => array(
+            'title' => 'Community Leaderboard',
+        ),
+    ),
+    array(
+        'title' => $view->translate('PG Home Page Featured Reviews'),
+        'description' => $view->translate('PG Home Page Featured Reviews'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.featured-reviews',
+        'defaultParams' => array(
+            'title' => 'Featured Reviews',
+        ),
+    ),
+    array(
+        'title' => $view->translate('PG Home Page Latest Reviews'),
+        'description' => $view->translate('PG Home Page Latest Reviews'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.latest-reviews',
+        'defaultParams' => array(
+            'title' => 'Latest Reviews',
+        ),
+    ),
+    array(
+        'title' => $view->translate('PG Home Page Users'),
+        'description' => $view->translate('PG Home Page Users'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.home-users',
+        'defaultParams' => array(
+            'title' => 'Users',
+        ),
+    ),    
+    array(
+        'title' => $view->translate('PG Home Page Featured Struggles'),
+        'description' => $view->translate('PG Home Page Featured Struggles'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.featured-struggles',
+        'defaultParams' => array(
+            'title' => 'Featured Struggles',
+        ),
+    ),
+    array(
+        'title' => $view->translate('PG Home Page Featured Guides'),
+        'description' => $view->translate('PG Home Page Featured Guides'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.featured-guides',
+        'defaultParams' => array(
+            'title' => 'Featured Guides',
+        ),
+    ),
 
 
 ) ?>
