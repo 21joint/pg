@@ -34,7 +34,6 @@
                         </div>
                         
                         <?php foreach($this->paginator as $item):?>
-                    
                             <?php echo $this->partial('ajax/theories/_theories.tpl', 'sdparentalguide', array(
                                 'item' => $item,
                                 'subject' => $this->subject,
