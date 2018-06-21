@@ -754,6 +754,8 @@ return array(
             'title' => 'Community Leaderboard',
         ),
     ),
+    
+    //PG Home
     array(
         'title' => $view->translate('PG Home Page Featured Reviews'),
         'description' => $view->translate('PG Home Page Featured Reviews'),
@@ -804,6 +806,106 @@ return array(
             'title' => 'Featured Guides',
         ),
     ),
+    
+    //PG Reviews
+    array(
+        'title' => $view->translate('PG Reviews Home Page'),
+        'description' => $view->translate('PG Reviews Home Page'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.reviews-home',
+        'defaultParams' => array(
+            'title' => 'Reviews Home',
+        ),
+    ),
+    array(
+        'title' => $view->translate('PG Reviews Create Page'),
+        'description' => $view->translate('PG Reviews Create Page'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.reviews-create',
+        'defaultParams' => array(
+            'title' => 'Create Reviews',
+        ),
+    ),
+    array(
+        'title' => $view->translate('PG Reviews View Page'),
+        'description' => $view->translate('PG Reviews View Page'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.reviews-view',
+        'defaultParams' => array(
+            'title' => 'View Review',
+        ),
+    ),
+    
+    //PG Guides
+    array(
+        'title' => $view->translate('PG Guides Home Page'),
+        'description' => $view->translate('PG Guides Home Page'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.guides-home',
+        'defaultParams' => array(
+            'title' => 'Guides Home',
+        ),
+    ),
+    array(
+        'title' => $view->translate('PG Guides Create Page'),
+        'description' => $view->translate('PG Guides Create Page'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.guides-create',
+        'defaultParams' => array(
+            'title' => 'Create Guides',
+        ),
+    ),
+    array(
+        'title' => $view->translate('PG Guides View Page'),
+        'description' => $view->translate('PG Guides View Page'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.guides-view',
+        'defaultParams' => array(
+            'title' => 'View Guide',
+        ),
+    ),
 
+    //PG Community
+    array(
+        'title' => $view->translate('PG Community Home Page'),
+        'description' => $view->translate('PG Community Home Page'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.community-home',
+        'defaultParams' => array(
+            'title' => 'Community Home',
+        ),
+    ),
+    
+    //PG Search
+    array(
+        'title' => $view->translate('PG Search Page'),
+        'description' => $view->translate('PG Search Page'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.search',
+        'defaultParams' => array(
+            'title' => 'Search',
+        ),
+    ),
+    
+    //PG Topics
+    array(
+        'title' => $view->translate('PG Topics Home Page'),
+        'description' => $view->translate('PG Topics Home Page'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.topics-home',
+        'defaultParams' => array(
+            'title' => 'Topics Home',
+        ),
+    ),
+    
 
 ) ?>
