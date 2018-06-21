@@ -2,7 +2,11 @@
     $this->headScript()->appendFile($this->layout()->staticBaseUrl . 'application/modules/Ggcommunity/externals/scripts/swiper.min.js');
     $this->headLink()->appendStylesheet($this->layout()->staticBaseUrl
         . 'application/modules/Ggcommunity/externals/styles/swiper.min.css');
+
+    $struggles= Engine_Api::_()->getItemTable('ggcommunity_question')->getQuestionsPaginator($this->subject->user_id);
 ?>
+
+
 
 <div class="container extfox-widgets">
     <div class="row my-4">
@@ -13,7 +17,7 @@
                 <div class="holder p-4">
                     <div class="top border-bottom border-gray pb-3">
                         <h5 class="text-primary font-weight-bold">
-                            35900
+                            <?php echo $this->subject->gg_contribution; ?> 
                         </h5>
                         <p class="desc text-dark">
                             Contribution points
@@ -23,7 +27,7 @@
                     <div class="bottom row pt-4">
                         <div class="col-sm col-3 text-center border-right">
                             <h5 class="text-primary font-weight-bold"> 
-                                15
+                                <?php echo $this->subject->gg_reviews_count;?>
                             </h5>
                             <p class="desc text-dark">
                                 Reviews
@@ -39,7 +43,7 @@
                         </div>
                         <div class="col-sm col-3 text-center border-left">
                             <h5 class="text-primary font-weight-bold"> 
-                                3
+                                <?php echo count($struggles); ?>
                             </h5>
                             <p class="desc text-dark">
                                 Struggles
@@ -58,22 +62,22 @@
                     <div class="bottom row pt-4">
                         <div class="col-sm col-2 bronze">
                             <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
-                                0
+                                <?php echo $this->subject->gg_bronze_count; ?>
                             </div>
                         </div>
                         <div class="col-sm col-2 silver">
                             <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
-                                0
+                                <?php echo $this->subject->gg_silver_count; ?>
                             </div>
                         </div>
                         <div class="col-sm col-2 gold">
                             <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
-                                0
+                                <?php echo $this->subject->gg_gold_count; ?>
                             </div>
                         </div>
                         <div class="col-sm col-2 platinium">
                             <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
-                                0
+                                <?php echo $this->subject->gg_platinum_count; ?>
                             </div>
                         </div>
                     </div>

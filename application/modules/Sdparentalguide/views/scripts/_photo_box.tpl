@@ -51,25 +51,26 @@
                         <div class="bottom row d-flex justify-content-center m-0">
                             <div class="col-sm bronze">
                                 <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
-                                    <?php echo $subject->gg_platinum_count; ?>
+                                    <?php echo $subject->gg_bronze_count; ?>
                                 </div>
                                 <span class="text-muted small">Platinium</span>
                             </div>
                             <div class="col-sm silver">
                                 <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
-                                    <?php echo $subject->gg_gold_count; ?>
+                                    <?php echo $subject->gg_silver_count; ?>     
                                 </div>
                                 <span class="text-muted small">Gold</span>
                             </div>
                             <div class="col-sm gold">
                                 <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
-                                    <?php echo $subject->gg_bronze_count; ?>
+                                    
+                                    <?php echo $subject->gg_gold_count; ?>
                                 </div>
                                 <span class="text-muted small">Silver</span>
                             </div>
                             <div class="col-sm platinium">
                                 <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
-                                    <?php echo $subject->gg_bronze_count; ?>
+                                    <?php echo $subject->gg_platinum_count; ?>
                                 </div>
                                 <span class="text-muted small">Bronze</span>
                             </div>
