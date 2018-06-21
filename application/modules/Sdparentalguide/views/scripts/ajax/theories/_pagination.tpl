@@ -15,7 +15,7 @@
                     
                 </a>
             </div>
-            <div id="ssdparentalguide_pagination_theories_next" class="paginator_next">
+            <div id="sdparentalguide_pagination_theories_next" class="paginator_next">
                 <a class="d-flex  align-items-center fs-18" href="javascript:void(0);" onclick="filterAjaxTheoriesContent( {'page': <?php echo $this->paginator->getCurrentPageNumber() + 1 ?>} )">
                     <?php echo $this->translate('Next'); ?>
                     <svg class="pl-2" style="height:16px;width:40px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 16"><path fill="currentColor" d="M60,0,58.6,1.4,64.2,7H0V9H64.2l-5.6,5.6L60,16l8-8Z"/></svg>
