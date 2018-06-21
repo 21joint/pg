@@ -98,7 +98,7 @@
             display: none;
             .header {
                 .close {
-                    right: 0;
+                    right: 15px;
                     svg path {
                         fill: #b9cfd1;
                     }
@@ -361,6 +361,7 @@ header.extfox-header {
         }
     }
 }
+
 
 // FOOTER
 footer.extfox-footer {
