@@ -81,37 +81,37 @@
                 
                 <div class="col-12 p-0 d-flex">
                     <div class="mr-1 mt-2 p-0 text-center d-flex align-items-center small month-select">
-                        <a href="javascript:void(0)" onclick="selectChildGender(1, this)" class="d-block px-3 py-4 w-100">
+                        <a href="javascript:void(0)" onclick="selectMonth(1, this)" class="d-block px-3 py-4 w-100">
                             <?php echo $this->translate('January'); ?>
                         </a>
                     </div>
                     
                     <div class="mr-1 mt-2 p-0 text-center d-flex align-items-center small month-select">
-                        <a href="javascript:void(0)" onclick="selectChildGender(2, this)" class="d-block px-3 py-4 w-100">
+                        <a href="javascript:void(0)" onclick="selectMonth(2, this)" class="d-block px-3 py-4 w-100">
                             <?php echo $this->translate('February'); ?>
                         </a>
                     </div>
 
                     <div class="mr-1 mt-2 p-0 text-center d-flex align-items-center small month-select">
-                        <a href="javascript:void(0)" onclick="selectChildGender(3, this)" class="d-block px-3 py-4 w-100">
+                        <a href="javascript:void(0)" onclick="selectMonth(3, this)" class="d-block px-3 py-4 w-100">
                             <?php echo $this->translate('March'); ?>
                         </a>
                     </div>
 
                     <div class="mr-1 mt-2 p-0 text-center d-flex align-items-center small month-select">
-                        <a href="javascript:void(0)" onclick="selectChildGender(4, this)" class="d-block px-3 py-4 w-100">
+                        <a href="javascript:void(0)" onclick="selectMonth(4, this)" class="d-block px-3 py-4 w-100">
                             <?php echo $this->translate('April'); ?>
                         </a>
                     </div>
 
                     <div class="mr-1 mt-2 p-0 text-center d-flex align-items-center small month-select">
-                        <a href="javascript:void(0)" onclick="selectChildGender(5, this)" class="d-block px-3 py-4 w-100">
+                        <a href="javascript:void(0)" onclick="selectMonth(5, this)" class="d-block px-3 py-4 w-100">
                             <?php echo $this->translate('May'); ?>
                         </a>
                     </div>
 
                     <div class="mr-1 mt-2 p-0 text-center d-flex align-items-center small month-select">
-                        <a href="javascript:void(0)" onclick="selectChildGender(6, this)" class="d-block px-3 py-4 w-100">
+                        <a href="javascript:void(0)" onclick="selectMonth(6, this)" class="d-block px-3 py-4 w-100">
                             <?php echo $this->translate('June'); ?>
                         </a>
                     </div>
@@ -119,37 +119,37 @@
                 
                 <div class="col-12 p-0 d-flex">
                     <div class="mr-1 mt-2 p-0 text-center d-flex align-items-center small month-select">
-                        <a href="javascript:void(0)" onclick="selectChildGender(7, this)" class="d-block px-3 py-4 w-100">
+                        <a href="javascript:void(0)" onclick="selectMonth(7, this)" class="d-block px-3 py-4 w-100">
                             <?php echo $this->translate('July'); ?>
                         </a>
                     </div>
                     
                     <div class="mr-1 mt-2 p-0 text-center d-flex align-items-center small month-select">
-                        <a href="javascript:void(0)" onclick="selectChildGender(8, this)" class="d-block px-3 py-4 w-100">
+                        <a href="javascript:void(0)" onclick="selectMonth(8, this)" class="d-block px-3 py-4 w-100">
                             <?php echo $this->translate('August'); ?>
                         </a>
                     </div>
 
                     <div class="mr-1 mt-2 p-0 text-center d-flex align-items-center small month-select">
-                        <a href="javascript:void(0)" onclick="selectChildGender(9, this)" class="d-block px-3 py-4 w-100">
+                        <a href="javascript:void(0)" onclick="selectMonth(9, this)" class="d-block px-3 py-4 w-100">
                             <?php echo $this->translate('September'); ?>
                         </a>
                     </div>
 
                     <div class="mr-1 mt-2 p-0 text-center d-flex align-items-center small month-select">
-                        <a href="javascript:void(0)" onclick="selectChildGender(10, this)" class="d-block px-3 py-4 w-100">
+                        <a href="javascript:void(0)" onclick="selectMonth(10, this)" class="d-block px-3 py-4 w-100">
                             <?php echo $this->translate('October'); ?>
                         </a>
                     </div>
 
                     <div class="mr-1 mt-2 p-0 text-center d-flex align-items-center small month-select">
-                        <a href="javascript:void(0)" onclick="selectChildGender(11, this)" class="d-block px-3 py-4 w-100">
+                        <a href="javascript:void(0)" onclick="selectMonth(11, this)" class="d-block px-3 py-4 w-100">
                             <?php echo $this->translate('November'); ?>
                         </a>
                     </div>
 
                     <div class="mr-1 mt-2 p-0 text-center d-flex align-items-center small month-select">
-                        <a href="javascript:void(0)" onclick="selectChildGender(12, this)" class="d-block px-3 py-4 w-100">
+                        <a href="javascript:void(0)" onclick="selectMonth(12, this)" class="d-block px-3 py-4 w-100">
                             <?php echo $this->translate('December'); ?>
                         </a>
                     </div>
@@ -161,7 +161,7 @@
 
             <div class="col-12 d-flex years p-0 d-none" id="year-range">
                 <div class="col-2 mr-1 p-0 text-center d-flex align-items-center small not-to-answer add-gender-items">
-                    <a href="javascript:void(0)" onclick="selectChildGender(3, this)" class="d-block p-2">
+                    <a href="javascript:void(0)" onclick="selectMonth(3, this)" class="d-block p-2">
                         <?php echo $this->translate('January'); ?>
                     </a>
                 </div>
@@ -169,7 +169,7 @@
 
             <div class="col-12 d-flex year p-0 d-none" id="year">
                 <div class="col-2 mr-1 p-0 text-center d-flex align-items-center small not-to-answer add-gender-items">
-                    <a href="javascript:void(0)" onclick="selectChildGender(3, this)" class="d-block p-2">
+                    <a href="javascript:void(0)" onclick="selectMonth(3, this)" class="d-block p-2">
                         <?php echo $this->translate('January'); ?>
                     </a>
                 </div>
@@ -222,6 +222,10 @@ function selectChildGender(type, e) {
         addGenderItems[i].classList.remove('selected');
     }
     e.getParent().classList.add('selected');
+}
+
+function selectMonth(type, e) {
+    console.log(type);
 }
 
 </script>
