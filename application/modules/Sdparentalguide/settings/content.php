@@ -617,7 +617,7 @@ return array(
         'description' => $view->translate('Displaying header menu for ParentalGuide'),
         'category' => 'Guidance Guide Custom Features',
         'type' => 'widget',
-        'name' => 'sdparentalguide.footer',
+        'name' => 'sdparentalguide.header',
     ),
 
     array(
