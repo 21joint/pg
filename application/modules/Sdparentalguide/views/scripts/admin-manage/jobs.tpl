@@ -32,6 +32,26 @@
   </div>
 <?php endif; ?>
 <?php echo $this->formFilterJobs->render($this) ?>
+<div class="admin_table_form" style="clear:both;display:none;">
+<form id='multimodify_form' method="post" action="<?php echo $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
+  <table class='admin_table'>
+    <thead>
+      <tr>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("User Name") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("First Name") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Last Name") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Email") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Options") ?></th>
+      </tr>
+    </thead>
+    <tbody>
+      
+    </tbody>
+  </table>
+  <br />
+</form>
+</div>
+
 <div class='clear'>
     <div class='search'>
         <form>
@@ -107,9 +127,10 @@ en4.core.runonce.add(function(){
     var loader = en4.core.loader.clone();
     loader.addClass("sd_loader");
     
-    var autoCompleter = new Autocompleter.Request.JSON('displayname', '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'suggest-user'), 'admin_default', true) ?>', {
+    var autoCompleter = new Autocompleter.Request.JSON('displayname', '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'suggest-user','format' => 'json'), 'admin_default', true) ?>', {
         'minLength': 3,
         'delay' : 250,
+        'postVar': 'username',
         'selectMode': 'pick',
         'autocompleteType': 'message',
         'multiple': false,
@@ -146,6 +167,7 @@ en4.core.runonce.add(function(){
                 return;
             }
             $("job_user").value = '';
+            $$(".admin_table_form").setStyle("display","none");
         },
         onPush : function(){
           
@@ -170,11 +192,14 @@ en4.core.runonce.add(function(){
         $("displayname").value = name;
         $("displayname").blur();
         $("job_user").value = toID;
+        loadUserData(toID);
+        $$(".admin_table_form").setStyle("display","block");
     };
     
-    var autoCompleterEmail = new Autocompleter.Request.JSON('email', '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'suggest-user','type' => 'email'), 'admin_default', true) ?>', {
+    var autoCompleterEmail = new Autocompleter.Request.JSON('email', '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'suggest-user','type' => 'email','format' => 'json'), 'admin_default', true) ?>', {
         'minLength': 3,
         'delay' : 250,
+        'postVar': 'email',
         'selectMode': 'pick',
         'autocompleteType': 'message',
         'multiple': false,
@@ -201,7 +226,6 @@ en4.core.runonce.add(function(){
           }            
         },
         onCommand: function(e){
-            console.log(e);
             if(!e){
                 return;
             }
@@ -212,6 +236,7 @@ en4.core.runonce.add(function(){
                 return;
             }
             $("job_user").value = '';
+            $$(".admin_table_form").setStyle("display","none");
         },
         onPush : function(){
           
@@ -236,9 +261,11 @@ en4.core.runonce.add(function(){
         $("email").value = name;
         $("email").blur();
         $("job_user").value = toID;
+        loadUserData(toID);
+        $$(".admin_table_form").setStyle("display","block");
     };
     
-    var autoCompleterFirstName = new Autocompleter.Request.JSON('first_name', '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'suggest-user','type' => 'first_name'), 'admin_default', true) ?>', {
+    var autoCompleterFirstName = new Autocompleter.Request.JSON('first_name', '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'suggest-user','type' => 'first_name','format' => 'json'), 'admin_default', true) ?>', {
         'minLength': 3,
         'delay' : 250,
         'selectMode': 'pick',
@@ -267,7 +294,6 @@ en4.core.runonce.add(function(){
           }            
         },
         onCommand: function(e){
-            console.log(e);
             if(!e){
                 return;
             }
@@ -278,6 +304,7 @@ en4.core.runonce.add(function(){
                 return;
             }
             $("job_user").value = '';
+            $$(".admin_table_form").setStyle("display","none");
         },
         onPush : function(){
           
@@ -302,9 +329,11 @@ en4.core.runonce.add(function(){
         $("first_name").value = name;
         $("first_name").blur();
         $("job_user").value = toID;
+        loadUserData(toID);
+        $$(".admin_table_form").setStyle("display","block");
     };
     
-    var autoCompleterLastName = new Autocompleter.Request.JSON('last_name', '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'suggest-user','type' => 'last_name'), 'admin_default', true) ?>', {
+    var autoCompleterLastName = new Autocompleter.Request.JSON('last_name', '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'suggest-user','type' => 'last_name','format' => 'json'), 'admin_default', true) ?>', {
         'minLength': 3,
         'delay' : 250,
         'selectMode': 'pick',
@@ -333,7 +362,6 @@ en4.core.runonce.add(function(){
           }            
         },
         onCommand: function(e){
-            console.log(e);
             if(!e){
                 return;
             }
@@ -344,6 +372,7 @@ en4.core.runonce.add(function(){
                 return;
             }
             $("job_user").value = '';
+            $$(".admin_table_form").setStyle("display","none");
         },
         onPush : function(){
           
@@ -368,8 +397,53 @@ en4.core.runonce.add(function(){
         $("last_name").value = name;
         $("last_name").blur();
         $("job_user").value = toID;
+        $$(".admin_table_form").setStyle("display","block");
+        loadUserData(toID);
     };
 });
+function clearJobSearch(){
+    $("job_user").value = '';
+    $("email").value = "";
+    $("first_name").value = "";
+    $("displayname").value = "";
+    $("last_name").value = "";
+    $$(".admin_table_form").setStyle("display","none");
+}
+function loadUserData(toID){
+    var tbody = $("multimodify_form").getElement("tbody");
+    tbody.empty();
+    var loader = en4.core.loader.clone();
+    loader.addClass("sd_loader");
+    var req = new Request.JSON({
+        url: "<?php echo $this->url(array('action' => 'user-detail','format' => 'json')); ?>",
+        data: {
+            user_id: toID
+        },
+        onRequest: function(){
+            loader.inject(tbody,"bottom");
+        },
+        onError: function(){
+            loader.destroy();
+        },
+        onCancel: function(){
+            loader.destroy();
+        },
+        onSuccess: function(responseJSON){
+            loader.destroy();
+            if(!responseJSON.status){
+                return;
+            }
+            var tr = new Element("tr",{
+                html: "<td class='admin_table_centered admin_table_user'><a href='"+responseJSON.data.href+"' target='_blank'>"+responseJSON.data.username+"</a></td>"+
+                        "<td class='admin_table_centered admin_table_user'>"+responseJSON.data.first_name+"</td>"+
+                        "<td class='admin_table_centered admin_table_user'>"+responseJSON.data.last_name+"</td>"+
+                        "<td class='admin_table_centered admin_table_user'>"+responseJSON.data.email+"</td>"+"<td></td>"
+            });
+            tr.inject(tbody,"bottom");
+        }
+    });
+    req.send();
+}
 </script>
 
 <style type="text/css">
@@ -389,5 +463,8 @@ en4.core.runonce.add(function(){
 }
 .sd_jobs_list button:disabled {
     cursor: no-drop;    
+}
+.sd_clear_filter {
+    margin-top: 15px;
 }
 </style>
