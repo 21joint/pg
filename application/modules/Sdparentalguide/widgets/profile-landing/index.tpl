@@ -136,7 +136,7 @@
                             <p class="desc title text-dark">
                                 Following
                                 <span class="total text-primary">
-                                    15
+                                <?php echo $this->subject->gg_following_count;?>
                                 </span>
                             </p>
                         </div>
