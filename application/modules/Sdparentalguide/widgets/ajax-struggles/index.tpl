@@ -21,8 +21,7 @@
         <div class="main_box px-lg-5 pb-3 px-md-5  px-sm-1 ">
             <ul class="topic_holder ">
                 <?php if($this->paginator->getTotalItemCount() <= 0): ?>
-
-
+                    <?php echo $this->translate('No struggles to show...'); ?>
                 <?php else: ?>
                     <?php foreach($this->paginator as $item):?>
                         <?php echo $this->partial('ajax/struggles/_struggles.tpl', 'sdparentalguide', array(

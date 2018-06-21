@@ -4320,17 +4320,30 @@ body#global_page_user-profile-index {
       font-size: 14px;
       font-weight: 600; }
 
+.layout_sdparentalguide_ajax_theories .holder-my-theories .bottom-holder .title-holder h4.left-side {
+  width: 60% !important; }
+.layout_sdparentalguide_ajax_theories .holder-my-theories .bottom-holder .title-holder h4.right-side {
+  width: 40% !important; }
+.layout_sdparentalguide_ajax_theories .holder-my-theories .bottom-holder .left-side {
+  width: 60%; }
+  .layout_sdparentalguide_ajax_theories .holder-my-theories .bottom-holder .left-side ul.topic_holder li.struggle_holder {
+    border-bottom: 1px solid #e2e4e6 !important; }
+.layout_sdparentalguide_ajax_theories .holder-my-theories .bottom-holder .right-side {
+  width: 40%; }
+  .layout_sdparentalguide_ajax_theories .holder-my-theories .bottom-holder .right-side ul.topic_holder li.struggle_holder {
+    border-bottom: 1px solid transparent !important; }
+
 #extfox-settings#delete button {
   background-color: #E15A5A !important; }
-#extfox-settings h3 {
+#extfox-settings h3, #extfox-settings div.form-wrapper-heading span {
   font-size: 20px;
   color: #333D40;
   border-bottom: 1px solid #F5F5F5;
   font-weight: bold; }
 #extfox-settings p {
-  color: #333D40 !important;
-  font-size: 16px !important;
-  font-weight: 400 !important; }
+  color: #333D40;
+  font-size: 16px;
+  font-weight: 400; }
 #extfox-settings .form-wrapper {
   padding-left: 4rem;
   display: flex;
@@ -4349,6 +4362,48 @@ body#global_page_user-profile-index {
     width: 100%; }
     #extfox-settings .form-wrapper .form-element input[type="password"]::-webkit-input-placeholder, #extfox-settings .form-wrapper .form-element input[type="text"]::-webkit-input-placeholder {
       color: #B9CFD1 !important; }
+  #extfox-settings .form-wrapper .form-element #family-information {
+    color: red; }
+    #extfox-settings .form-wrapper .form-element #family-information .family-item-holder > div {
+      border-radius: 50%;
+      width: 50px;
+      height: 50px; }
+      #extfox-settings .form-wrapper .form-element #family-information .family-item-holder > div.female {
+        background-color: #E186C0; }
+    #extfox-settings .form-wrapper .form-element #family-information .family-item p {
+      font-size: 80% !important; }
+    #extfox-settings .form-wrapper .form-element #family-information .row.add-another-child {
+      border-top: 4px solid #f7fcfc;
+      border-bottom: 4px solid #f7fcfc; }
+    #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form {
+      display: none; }
+      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form.active {
+        display: flex; }
+      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .close-form a {
+        background-color: #B9CFD1;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        transition: 0.2s ease-in background-color; }
+        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .close-form a:hover {
+          background-color: #E186C0; }
+      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div {
+        border-radius: 10px;
+        border: 2px solid #F5F5F5;
+        cursor: pointer; }
+        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div:hover a, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.selected a {
+          color: #fff !important; }
+        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div:hover svg path:nth-child(2), #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.selected svg path:nth-child(2) {
+          fill: #fff; }
+        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.male:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.male.selected {
+          background: #86B3E1;
+          border-color: #86B3E1; }
+        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.female:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.female.selected {
+          background: #E186C0;
+          border-color: #E186C0; }
+        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.not-to-answer:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.not-to-answer.selected {
+          background: #8AE693;
+          border-color: #8AE693; }
   #extfox-settings .form-wrapper button {
     color: #fff;
     background-color: #5CC7CE;
@@ -4669,6 +4724,26 @@ body#global_page_user-profile-index {
         padding: 0px !important; }
 
   .layout_sdparentalguide_ajax_password .container {
-    width: 95% !important; } }
+    width: 95% !important; }
+
+  .layout_sdparentalguide_ajax_theories .container {
+    width: 100% !important; }
+    .layout_sdparentalguide_ajax_theories .container .holder-my-theories .bottom-holder .title-holder {
+      margin: 0 1rem !important; }
+      .layout_sdparentalguide_ajax_theories .container .holder-my-theories .bottom-holder .title-holder h4.left-side {
+        width: 100% !important; }
+    .layout_sdparentalguide_ajax_theories .container .holder-my-theories .bottom-holder ul.topic_holder {
+      flex-wrap: wrap !important; }
+      .layout_sdparentalguide_ajax_theories .container .holder-my-theories .bottom-holder ul.topic_holder li.struggle_holder {
+        width: 100%;
+        margin: 0 1rem !important; }
+        .layout_sdparentalguide_ajax_theories .container .holder-my-theories .bottom-holder ul.topic_holder li.struggle_holder .struggle_box_left .struggle_info {
+          margin: 0 !important; }
+        .layout_sdparentalguide_ajax_theories .container .holder-my-theories .bottom-holder ul.topic_holder li.struggle_holder .struggle_right-side {
+          width: 100%; }
+          .layout_sdparentalguide_ajax_theories .container .holder-my-theories .bottom-holder ul.topic_holder li.struggle_holder .struggle_right-side .struggle_info li {
+            margin: 0 !important; }
+    .layout_sdparentalguide_ajax_theories .container .holder-my-theories .struggle-box_right-mobile .count_info.svg-icons-one .first-icon {
+      display: none; } }
 
 /*# sourceMappingURL=root.css.map */
