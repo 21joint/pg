@@ -890,6 +890,7 @@ body#global_page_user-profile-index {
                             }
                         }
 
+                        // add gender
                         .add-gender {
                             > div {
                                 border-radius: 10px;
@@ -922,6 +923,25 @@ body#global_page_user-profile-index {
                                     &:hover, &.selected {
                                         background: #8AE693;
                                         border-color: #8AE693;
+                                    }
+                                }
+                            }
+                        }
+
+                        // add birthday
+                        .add-birthday {
+                            .months {
+                                .month-select {
+                                    border-radius: 10px;
+                                    border: 2px solid #F5F5F5;
+                                    cursor: pointer;
+                                    min-width: 92px;
+                                    &:hover, .active {
+                                        border-color: #8AE693;
+                                        background: #8AE693;
+                                        a {
+                                            color: $white;
+                                        }
                                     }
                                 }
                             }

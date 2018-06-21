@@ -3960,7 +3960,7 @@ mark,
   border-radius: 10px;
   display: none; }
   .extfox-widgets .row .box-hover-member .header .close {
-    right: 0; }
+    right: 15px; }
     .extfox-widgets .row .box-hover-member .header .close svg path {
       fill: #b9cfd1; }
   .extfox-widgets .row .box-hover-member .header .photo-image img {
@@ -4404,6 +4404,16 @@ body#global_page_user-profile-index {
         #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.not-to-answer:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.not-to-answer.selected {
           background: #8AE693;
           border-color: #8AE693; }
+      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .months .month-select {
+        border-radius: 10px;
+        border: 2px solid #F5F5F5;
+        cursor: pointer;
+        min-width: 92px; }
+        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .months .month-select:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .months .month-select .active {
+          border-color: #8AE693;
+          background: #8AE693; }
+          #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .months .month-select:hover a, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .months .month-select .active a {
+            color: #fff; }
   #extfox-settings .form-wrapper button {
     color: #fff;
     background-color: #5CC7CE;

@@ -4,7 +4,7 @@
     </span>
 </div>
 
-<div class="container" id="family-information">
+<div class="container p-0" id="family-information">
     <div class="row d-flex align-items-center my-4 mx-0">
         
         <div class="col-2 p-0 family-item-holder">
@@ -77,15 +77,89 @@
 
         <div class="col-12 d-flex add-birthday p-0 mb-4" id="add-birthday">
             
-            <div class="col-12 d-flex select-month p-0" id="months">
-                <div class="col-2 mr-1 p-0 text-center d-flex align-items-center small not-to-answer add-gender-items">
-                    <a href="javascript:void(0)" onclick="selectChildGender(3, this)" class="d-block p-2">
-                        <?php echo $this->translate('January'); ?>
-                    </a>
+            <div class="col-12 months p-0" id="months">
+                
+                <div class="col-12 p-0 d-flex">
+                    <div class="mr-1 mt-2 p-0 text-center d-flex align-items-center small month-select">
+                        <a href="javascript:void(0)" onclick="selectChildGender(1, this)" class="d-block px-3 py-4 w-100">
+                            <?php echo $this->translate('January'); ?>
+                        </a>
+                    </div>
+                    
+                    <div class="mr-1 mt-2 p-0 text-center d-flex align-items-center small month-select">
+                        <a href="javascript:void(0)" onclick="selectChildGender(2, this)" class="d-block px-3 py-4 w-100">
+                            <?php echo $this->translate('February'); ?>
+                        </a>
+                    </div>
+
+                    <div class="mr-1 mt-2 p-0 text-center d-flex align-items-center small month-select">
+                        <a href="javascript:void(0)" onclick="selectChildGender(3, this)" class="d-block px-3 py-4 w-100">
+                            <?php echo $this->translate('March'); ?>
+                        </a>
+                    </div>
+
+                    <div class="mr-1 mt-2 p-0 text-center d-flex align-items-center small month-select">
+                        <a href="javascript:void(0)" onclick="selectChildGender(4, this)" class="d-block px-3 py-4 w-100">
+                            <?php echo $this->translate('April'); ?>
+                        </a>
+                    </div>
+
+                    <div class="mr-1 mt-2 p-0 text-center d-flex align-items-center small month-select">
+                        <a href="javascript:void(0)" onclick="selectChildGender(5, this)" class="d-block px-3 py-4 w-100">
+                            <?php echo $this->translate('May'); ?>
+                        </a>
+                    </div>
+
+                    <div class="mr-1 mt-2 p-0 text-center d-flex align-items-center small month-select">
+                        <a href="javascript:void(0)" onclick="selectChildGender(6, this)" class="d-block px-3 py-4 w-100">
+                            <?php echo $this->translate('June'); ?>
+                        </a>
+                    </div>
                 </div>
+                
+                <div class="col-12 p-0 d-flex">
+                    <div class="mr-1 mt-2 p-0 text-center d-flex align-items-center small month-select">
+                        <a href="javascript:void(0)" onclick="selectChildGender(7, this)" class="d-block px-3 py-4 w-100">
+                            <?php echo $this->translate('July'); ?>
+                        </a>
+                    </div>
+                    
+                    <div class="mr-1 mt-2 p-0 text-center d-flex align-items-center small month-select">
+                        <a href="javascript:void(0)" onclick="selectChildGender(8, this)" class="d-block px-3 py-4 w-100">
+                            <?php echo $this->translate('August'); ?>
+                        </a>
+                    </div>
+
+                    <div class="mr-1 mt-2 p-0 text-center d-flex align-items-center small month-select">
+                        <a href="javascript:void(0)" onclick="selectChildGender(9, this)" class="d-block px-3 py-4 w-100">
+                            <?php echo $this->translate('September'); ?>
+                        </a>
+                    </div>
+
+                    <div class="mr-1 mt-2 p-0 text-center d-flex align-items-center small month-select">
+                        <a href="javascript:void(0)" onclick="selectChildGender(10, this)" class="d-block px-3 py-4 w-100">
+                            <?php echo $this->translate('October'); ?>
+                        </a>
+                    </div>
+
+                    <div class="mr-1 mt-2 p-0 text-center d-flex align-items-center small month-select">
+                        <a href="javascript:void(0)" onclick="selectChildGender(11, this)" class="d-block px-3 py-4 w-100">
+                            <?php echo $this->translate('November'); ?>
+                        </a>
+                    </div>
+
+                    <div class="mr-1 mt-2 p-0 text-center d-flex align-items-center small month-select">
+                        <a href="javascript:void(0)" onclick="selectChildGender(12, this)" class="d-block px-3 py-4 w-100">
+                            <?php echo $this->translate('December'); ?>
+                        </a>
+                    </div>
+                </div>
+                
+                
+
             </div> <!-- months -->
 
-            <div class="col-12 d-flex select-month p-0 d-none" id="year-range">
+            <div class="col-12 d-flex years p-0 d-none" id="year-range">
                 <div class="col-2 mr-1 p-0 text-center d-flex align-items-center small not-to-answer add-gender-items">
                     <a href="javascript:void(0)" onclick="selectChildGender(3, this)" class="d-block p-2">
                         <?php echo $this->translate('January'); ?>
@@ -93,7 +167,7 @@
                 </div>
             </div> <!-- year-range -->
 
-            <div class="col-12 d-flex select-month p-0 d-none" id="year">
+            <div class="col-12 d-flex year p-0 d-none" id="year">
                 <div class="col-2 mr-1 p-0 text-center d-flex align-items-center small not-to-answer add-gender-items">
                     <a href="javascript:void(0)" onclick="selectChildGender(3, this)" class="d-block p-2">
                         <?php echo $this->translate('January'); ?>
