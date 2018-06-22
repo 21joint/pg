@@ -601,7 +601,49 @@ body#global_page_user-profile-index {
         
     }
 }
+.layout_sdparentalguide_ajax_profile{
+    #extfox-settings{
+        // top title
+        div.form-wrapper-heading {
+            span {
+                padding: 10px 0px!important;
+            }
+        }
+        .form-wrapper {
+            .form-element {
+                margin-bottom: 0px!important;
+            }
+            .form-label {
+                width: 100%!important;
+                label {
+                    color:#333D40;
+                    font-size: 16px;
+                }
+            }
+            input[type=checkbox] + label {
+                left: -15px;
+            }
+            margin-bottom: 1.3rem !important;
+        }
+        [id="1_1_21-wrapper"], [id="1_1_22-wrapper"],[id="1_1_23-wrapper"]{
+            .form-label{
+                display: none!important;
+            }
+        }
 
+        [id="1_1_13-wrapper"]{
+            ul.form-options-wrapper {
+                li {
+                    input[type=checkbox] + label {
+                        margin-bottom: 1.3rem !important;
+                    }
+                    
+                }
+            }
+        }
+       
+    }
+}
 // Notification Profile
 .layout_sdparentalguide_ajax_notifications {
     #extfox-settings {
