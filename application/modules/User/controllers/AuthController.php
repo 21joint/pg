@@ -496,6 +496,14 @@ class User_AuthController extends Core_Controller_Action_Standard
     // Make form
     $this->view->form = $form = new User_Form_Auth_Forgot();
 
+   
+    // For Input Email
+    $form->getElement('email')->setAttrib('class', 'border-top-0 border-right-0 border-left-0 rounded-0 w-100 mt-3');
+
+    // For Button
+    $form->getElement('submit')->setAttrib('class', 'btn btn-success text-white py-2 px-4 text-uppercase mr-2');
+    $form->getElement('cancel')->setAttrib('class', 'btn btn-outline-dark text-dark py-2 px-4 text-uppercase ml-2');
+
     // Check request
     if( !$this->getRequest()->isPost() ) {
       return;
@@ -606,6 +614,8 @@ class User_AuthController extends Core_Controller_Action_Standard
     
     // Make form
     $this->view->form = $form = new User_Form_Auth_Reset();
+
+
     $form->setAction($this->_helper->url->url(array()));
 
     // Check request
