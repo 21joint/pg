@@ -28,7 +28,7 @@
                 <div class="holder-my-theories">
 
                     <div class="bottom-holder">
-                        <div class="title-holder d-flex">
+                        <div class="title-holder d-flex mb-4">
                             <h4 class="py-4 w-100 m-0 left-side"><?php echo $this->translate('Struggle');?></h4>
                             <h4 class="py-4 w-100 m-0 right-side d-none d-sm-block"><?php echo $this->translate('Theory');?></h4>
                         </div>

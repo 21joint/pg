@@ -56,6 +56,7 @@
         *   Badges Proile
         *   Notification Profile
         *   My Info Profile
+        *   My Theories
     * Core
         *   ExtfoxForm Settings
         *   CheckBox 
@@ -773,6 +774,7 @@ body#global_page_user-profile-index {
         }
     }  
 }
+// My Theories
 .layout_sdparentalguide_ajax_theories {
     .holder-my-theories {
         .bottom-holder {
@@ -798,10 +800,41 @@ body#global_page_user-profile-index {
                     li.struggle_holder{
                         border-bottom: 1px solid transparent!important;
                     }
+                   
+                }
+                
+            }
+            li.struggle_holder{
+                border-bottom: 1px solid transparent!important;
+                .struggle_info {
+                    .bottom-holder-comments {
+                        .vote,.comment {
+                            svg {
+                                color:#5CC7CE!important;
+                                fill: #5CC7CE!important;
+                            }
+                        }
+                    }
                 }
             }
+        
+            li.struggle_holder.chosen_theory {
+                background-color:#C1EEC5!important;
+                .struggle_info {
+                    .bottom-holder-comments {
+                        .vote,.comment {
+                            svg {
+                                color:#333D40!important;
+                                fill: #333D40!important;
+                            }
+                        }
+                    }
+                }
+            }
+
         }
     }
+    
 }
 
 
@@ -1273,6 +1306,8 @@ body#global_page_user-profile-index {
         *   Following
         *   Struggles Profile
         *   Badges Proile
+        *   Password
+        *   My Theories
     * Core
         *   ExtfoxForm Settings
     */
@@ -1464,12 +1499,14 @@ body#global_page_user-profile-index {
             }
         }
     }
+    // Password
     .layout_sdparentalguide_ajax_password {
         .container {
             width: 95%!important;
         }
     }
 
+    // My Theories
     .layout_sdparentalguide_ajax_theories {
         .container{
             width: 100%!important;

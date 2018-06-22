@@ -20,7 +20,7 @@
 
             <div class="struggle_right-side w-sm-100 m-0">
                 <a href="<?php echo $question->getHref();?>" class="struggle_title">
-                <?php echo $question->body;?></a>
+                <?php echo $question->getTitle();?></a>
                 <ul class="struggle_info d-flex">
                     <li class="struggle_time_created pr-2">
                         <?php echo 'asked '. Engine_Api::_()->ggcommunity()->time_elapsed_string($question->creation_date);?>
@@ -102,7 +102,7 @@
     
     <!-- Answer side -->
     <!-- left side -->
-    <li class="struggle_holder right-side d-block d-sm-flex px-lg-4 py-3 mb-0 px-sm-0">
+    <li class="struggle_holder right-side d-block d-sm-flex px-xl-4 py-xl-3 px-lg-4 py-lg-3 px-1 py-3 mr-4 mb-0 <?php echo (($question->accepted_answer==1) ? 'chosen_theory' : '');?>">
         <div class="struggle_box_left w-100">
             <div class="struggle_left_side">
                 <a href="<?php echo $item->getOwner()->getHref();?>" class="struggle_owner_image">
@@ -112,17 +112,20 @@
 
             <div class="struggle_right-side">
                 <ul class="struggle_info d-flex">
-                    <li class="struggle_time_created">
+                    <li class="struggle_time_created  ">
+                       
                         <div class="top-holder">
-                            <a class="struggle_title" href="javascript:void(0);"><?php echo $item->body;?></a>
+                            <a class="struggle_title" href="javascript:void(0);">
+                                <?php echo  mb_strimwidth($item->body,0,30,'...'); ?>
+                            </a>
                         </div>
-                        <div class="bottom-holder-comments d-flex align-items-center">
+                        <div class="bottom-holder-comments d-flex align-items-center ">
                             <div class="vote d-flex align-items-center mr-3">
-                                <svg style="width:13px;padding-right:5px" aria-hidden="true" data-prefix="fas" data-icon="arrow-circle-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#5CC7CE" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm143.6 28.9l72.4-75.5V392c0 13.3 10.7 24 24 24h16c13.3 0 24-10.7 24-24V209.4l72.4 75.5c9.3 9.7 24.8 9.9 34.3.4l10.9-11c9.4-9.4 9.4-24.6 0-33.9L273 107.7c-9.4-9.4-24.6-9.4-33.9 0L106.3 240.4c-9.4 9.4-9.4 24.6 0 33.9l10.9 11c9.6 9.5 25.1 9.3 34.4-.4z" class=""></path></svg>
+                                <svg style="width:13px;padding-right:5px" aria-hidden="true" data-prefix="fas" data-icon="arrow-circle-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm143.6 28.9l72.4-75.5V392c0 13.3 10.7 24 24 24h16c13.3 0 24-10.7 24-24V209.4l72.4 75.5c9.3 9.7 24.8 9.9 34.3.4l10.9-11c9.4-9.4 9.4-24.6 0-33.9L273 107.7c-9.4-9.4-24.6-9.4-33.9 0L106.3 240.4c-9.4 9.4-9.4 24.6 0 33.9l10.9 11c9.6 9.5 25.1 9.3 34.4-.4z" class=""></path></svg>
                                 <?php echo $item->up_vote_count;?>
                             </div>
                             <div class="comment d-flex align-items-center">
-                                <svg style="width:13px;padding-right:5px" aria-hidden="true" data-prefix="fas" data-icon="comments" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="#5CC7CE" d="M416 192c0-88.4-93.1-160-208-160S0 103.6 0 192c0 34.3 14.1 65.9 38 92-13.4 30.2-35.5 54.2-35.8 54.5-2.2 2.3-2.8 5.7-1.5 8.7S4.8 352 8 352c36.6 0 66.9-12.3 88.7-25 32.2 15.7 70.3 25 111.3 25 114.9 0 208-71.6 208-160zm122 220c23.9-26 38-57.7 38-92 0-66.9-53.5-124.2-129.3-148.1.9 6.6 1.3 13.3 1.3 20.1 0 105.9-107.7 192-240 192-10.8 0-21.3-.8-31.7-1.9C207.8 439.6 281.8 480 368 480c41 0 79.1-9.2 111.3-25 21.8 12.7 52.1 25 88.7 25 3.2 0 6.1-1.9 7.3-4.8 1.3-2.9.7-6.3-1.5-8.7-.3-.3-22.4-24.2-35.8-54.5z"></path></svg>
+                                <svg style="width:13px;padding-right:5px" aria-hidden="true" data-prefix="fas" data-icon="comments" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M416 192c0-88.4-93.1-160-208-160S0 103.6 0 192c0 34.3 14.1 65.9 38 92-13.4 30.2-35.5 54.2-35.8 54.5-2.2 2.3-2.8 5.7-1.5 8.7S4.8 352 8 352c36.6 0 66.9-12.3 88.7-25 32.2 15.7 70.3 25 111.3 25 114.9 0 208-71.6 208-160zm122 220c23.9-26 38-57.7 38-92 0-66.9-53.5-124.2-129.3-148.1.9 6.6 1.3 13.3 1.3 20.1 0 105.9-107.7 192-240 192-10.8 0-21.3-.8-31.7-1.9C207.8 439.6 281.8 480 368 480c41 0 79.1-9.2 111.3-25 21.8 12.7 52.1 25 88.7 25 3.2 0 6.1-1.9 7.3-4.8 1.3-2.9.7-6.3-1.5-8.7-.3-.3-22.4-24.2-35.8-54.5z"></path></svg>
                                 <?php echo $item->comment_count; ?>
                             </div>
                         </div>
