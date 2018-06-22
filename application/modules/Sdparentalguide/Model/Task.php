@@ -13,14 +13,14 @@ class Sdparentalguide_Model_Task extends Core_Model_Item_Abstract
     protected $_log;
 
 
-  public function run($page = 1){
+  public function run($page = 1,$job_user = null){
         
         try{
             $class = $this->plugin;
             Engine_Loader::loadClass($class);
             $plugin = new $class($this);
             $plugin->setLog($this->getLog());
-            $paginator = $plugin->execute($page);
+            $paginator = $plugin->execute($page,$job_user);
         } catch (Exception $ex) {
             $paginator = Zend_Paginator::factory(array());
             $paginator->setCurrentPageNumber($page);

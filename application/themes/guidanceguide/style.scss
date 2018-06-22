@@ -813,16 +813,16 @@ body#global_page_user-profile-index {
             background-color: $danger !important;
         }
     }
-    h3 {
+    h3, div.form-wrapper-heading span {
         font-size: 20px;
         color:#333D40;
         border-bottom: 1px solid #F5F5F5;
         font-weight: bold;
     }
     p {
-        color:#333D40!important;
-        font-size: 16px!important;
-        font-weight: 400!important;
+        color:#333D40;
+        font-size: 16px;
+        font-weight: 400;
     }
     .form-wrapper {
         padding-left: 4rem;
@@ -844,6 +844,109 @@ body#global_page_user-profile-index {
                 width: 100%;
                 &::-webkit-input-placeholder {
                     color:#B9CFD1!important;
+                }
+            }
+            #family-information {
+                color: red;
+                .family-item-holder {
+                    > div {
+                        border-radius: 50%;
+                        width: 50px;
+                        height: 50px;
+                        &.female {
+                            background-color: #E186C0;
+                        }
+                    }
+                }
+                .family-item {
+                    p {
+                        font-size: 80% !important;
+                    }
+                }
+                .row {
+                    
+                    &.add-another-child {
+                        border-top: 4px solid #f7fcfc;
+                        border-bottom: 4px solid #f7fcfc;
+                    }
+                    // add child form
+                    &.add-child-form {
+                        
+                        display: none;
+                        &.active {
+                            display: flex;
+                        }
+                        // close button
+                        .close-form {
+                            a {
+                                background-color: #B9CFD1;
+                                border-radius: 50%;
+                                width: 25px;
+                                height: 25px;
+                                transition: 0.2s ease-in background-color;
+                                &:hover {
+                                    background-color: #E186C0;
+                                }
+                            }
+                        }
+
+                        // add gender
+                        .add-gender {
+                            > div {
+                                border-radius: 10px;
+                                border: 2px solid #F5F5F5;
+                                cursor: pointer;
+
+                                &:hover, &.selected {
+                                    a {
+                                        color: $white !important;
+                                    }
+                                    svg {
+                                        path:nth-child(2) {
+                                            fill: $white;
+                                        }
+                                    }
+                                }
+                                &.male {
+                                    &:hover, &.selected {
+                                        background: #86B3E1;
+                                        border-color: #86B3E1; 
+                                    }
+                                }
+                                &.female {
+                                    &:hover, &.selected {
+                                        background: #E186C0;
+                                        border-color: #E186C0;
+                                    }
+                                }
+                                &.not-to-answer {
+                                    &:hover, &.selected {
+                                        background: #8AE693;
+                                        border-color: #8AE693;
+                                    }
+                                }
+                            }
+                        }
+
+                        // add birthday
+                        .add-birthday {
+                            .months {
+                                .month-select {
+                                    border-radius: 10px;
+                                    border: 2px solid #F5F5F5;
+                                    cursor: pointer;
+                                    min-width: 92px;
+                                    &:hover, .active {
+                                        border-color: #8AE693;
+                                        background: #8AE693;
+                                        a {
+                                            color: $white;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

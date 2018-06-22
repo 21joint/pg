@@ -72,7 +72,7 @@ class Sdparentalguide_Widget_AjaxProfileController extends Engine_Content_Widget
       ));
       $form
         ->setAttrib('class', 'global_form ajax-form-' . $content_id)
-        //->setAttrib('id', 'extfox-settings')
+        ->setAttrib('id', 'extfox-settings')
       ;
 
 

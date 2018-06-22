@@ -82,7 +82,7 @@
                     <div class="col-sm text-center border-right py-3">
                         Reviews 
                         <span class="text-primary font-weight-bold">
-                            <?php echo $subject->gg_reviews_count;?>
+                            <?php echo $subject->gg_review_count;?>
                         </span>
                     </div>
 

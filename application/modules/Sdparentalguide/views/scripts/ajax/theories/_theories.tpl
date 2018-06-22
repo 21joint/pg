@@ -7,7 +7,10 @@
     <!-- right side -->
     <?php $question = Engine_Api::_()->getItem('ggcommunity_question', $item->parent_id); ?>
     <!-- Question side -->
-    <li class="struggle_holder left-side d-block d-sm-flex px-xl-4 py-xl-3 px-lg-4 py-lg-3 px-1 py-3 mr-4  mb-0">
+    
+    <li class="struggle_holder left-side d-block d-sm-flex px-xl-4 py-xl-3 px-lg-4 py-lg-3 px-1 py-3 mr-4 mb-0">
+
+        <?php if($question): ?>
         <div class="struggle_box_left">
             <div class="struggle_left_side d-none d-sm-block">
                 <a href="<?php $question->getOwner()->getHref();?>" class="struggle_owner_image">
@@ -26,14 +29,10 @@
                     <li class="struggle_owner_name pr-2">
                         <?php echo $question->getOwner(); ?>
                     </li>
-                    <li class="pr-2">᛫</li>
-
-                    <li class="list-inline edit-list-item pr-4">
-                        Mealtime
-                    </li>
                 </ul>
             </div>
-        </div> 
+        </div>
+        <?php endif; ?>
 
         <div class="struggle_box_right col-xl-3 col-lg-3 col-5 d-none d-sm-block">
             <ul class="struggle_count_info <?php echo ($question->open==1 ? 'primary' : 'count_close_closed');?>">

@@ -27,7 +27,7 @@ class Core_View_Helper_ItemPhoto extends Engine_View_Helper_HtmlImage
   public function itemPhoto($item, $type = 'thumb.profile', $alt = "", $attribs = array())
   {
   
-    echo Zend_Registry::get('Zend_View')->itemPhotoGuidance($item);
+    echo $itemPhotoGuidance = Zend_Registry::get('Zend_View')->itemPhotoGuidance($item);
     return $this->setAttributes($item, $type, $attribs)->htmlImage($this->_url, $alt, $this->_attribs);
 
   }
@@ -40,33 +40,10 @@ class Core_View_Helper_ItemPhoto extends Engine_View_Helper_HtmlImage
 
     // Get url
     $src = $item->getPhotoUrl($type);
-
-    
     $safeName = ( $type ? str_replace('.', '_', $type) : 'main' );
-    
     $attribs['class'] = ( isset($attribs['class']) ? $attribs['class'] . ' ' : '' );
-    
     $attribs['class'] .= $this->_classPrefix . $safeName . ' ';
     $attribs['class'] .= $this->_classPrefix . 'item_photo_' . $item->getType() . ' ';
-
-    
-    if($item->gg_expert_platinum_count > 0){
-      $class = 'platinum_border';
-    }
-    elseif($item->gg_expert_gold_count > 0){
-      $class ='gold_border';
-    }
-    elseif($item->gg_expert_silver_count > 0){
-      $class = 'silver_border';
-    } 
-    elseif($item->gg_expert_bronze_count > 0){
-      $class = 'bronze_border';
-    }else {
-      $class = '';
-    } 
-
-
-    $attribs['class'] .= $class;
 
     // Default image
     if( !$src ) {
