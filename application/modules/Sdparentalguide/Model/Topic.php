@@ -37,6 +37,8 @@ class Sdparentalguide_Model_Topic extends Core_Model_Item_Abstract
       
       return $table->fetchAll($select);
   }
+
+  
 } 
 
 
