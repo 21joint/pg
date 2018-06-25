@@ -501,6 +501,15 @@ Currency
       'category' => 'specific',
       'helper' => 'fieldCurrency',
       'adminFormClass' => 'Fields_Form_Admin_Field_Currency',
-    )
+    ),
+
+    // family field
+    'family' => array(
+      'base' => 'text',
+      'label' => 'Family - GuidanceGuide',
+      'category' => 'specific',
+      'helper' => 'fieldSoundcloud',
+    ),
+
   ),
 ) ?>

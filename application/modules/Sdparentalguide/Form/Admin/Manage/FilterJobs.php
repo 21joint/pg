@@ -66,6 +66,16 @@ class Sdparentalguide_Form_Admin_Manage_FilterJobs extends Engine_Form
       $lastName,
     ));
     
+    $clear = new Zend_Form_Element_Button('clear');
+    $clear
+      ->setLabel('Clear')
+      ->clearDecorators()
+      ->addDecorator('ViewHelper')
+//      ->addDecorator('Label', array('tag' => null, 'placement' => 'PREPEND'))
+      ->addDecorator('HtmlTag', array('tag' => 'div','class' => 'sd_clear_filter'))
+      ->setAttrib("onclick","clearJobSearch(this);");
+    
+    $this->addElement($clear);
     $this->addElement("Hidden","job_user",array(
         'label' => "Search User",
         'order' => 3939

@@ -40,8 +40,21 @@ class Sdparentalguide_Widget_AjaxTheoriesController extends Engine_Content_Widge
           }
         }
   
-        
-        // Query
+        $table = Engine_Api::_()->getDbtable('answers', 'ggcommunity');
+
+        $select = $table->select()
+          ->where('user_id = ?',$subject->getIdentity() )
+          ->group('parent_id')
+          ->order('parent_id DESC')
+        ;
+
+    
+        $this->view->paginator = $paginator = Zend_Paginator::factory($select);
+
+        // Set item count per page and current page number
+        $paginator->setItemCountPerPage($this->_getParam('itemCountPerPage', 2));
+        $paginator->setCurrentPageNumber($this->_getParam('page', 1));
+      
 
   
         // render content

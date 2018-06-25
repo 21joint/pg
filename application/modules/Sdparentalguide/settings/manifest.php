@@ -86,6 +86,20 @@
       'sdparentalguide_search_analytic',
   ),
   'routes' => array(
+    //Extended Route
+    'sdparentalguide_extended' => array(
+        'route' => 'gg/:controller/:action/*',
+        'defaults' => array(
+          'module' => 'sdparentalguide',
+          'controller' => 'ajax',
+          'action' => 'index',
+        ),
+        'reqs' => array(
+          'controller' => '\D+',
+          'action' => '\D+',
+        )
+    ),
+    //General Route
     'sdparentalguide_general' => array(
         'route' => 'gg/:action/*',
         'defaults' => array(
@@ -95,6 +109,78 @@
         ),
         'reqs' => array(
           'action' => '(index|listings|suggest-username|suggest-displayname|suggest-category|get-subcategories|get-categories|categories|assignbadges|assign-user|assign-quick|assign-bulk|assign-status|suggest-topic)',
+        ),
+    ),
+    //PG Reviews
+    'sdparentalguide_reviews' => array(
+        'route' => 'reviews/:action/*',
+        'defaults' => array(
+          'module' => 'sdparentalguide',
+          'controller' => 'reviews',
+          'action' => 'home',
+        ),
+        'reqs' => array(
+          'action' => '(home|create|view)',
+        ),
+    ),
+    //PG Guides
+    'sdparentalguide_guides' => array(
+        'route' => 'guides/:action/*',
+        'defaults' => array(
+          'module' => 'sdparentalguide',
+          'controller' => 'guides',
+          'action' => 'home',
+        ),
+        'reqs' => array(
+          'action' => '(home|create|view)',
+        ),
+    ),
+    //PG Community
+    'sdparentalguide_community' => array(
+        'route' => 'community/:action/*',
+        'defaults' => array(
+          'module' => 'sdparentalguide',
+          'controller' => 'community',
+          'action' => 'home',
+        ),
+        'reqs' => array(
+          'action' => '(home|leaderboard)',
+        ),
+    ),
+    //PG Search
+    'sdparentalguide_search' => array(
+        'route' => 'search/*',
+        'defaults' => array(
+          'module' => 'sdparentalguide',
+          'controller' => 'search',
+          'action' => 'index',
+        ),
+        'reqs' => array(
+          'action' => '(index)',
+        ),
+    ),
+    //PG Core Search
+    'sdparentalguide_core_search' => array(
+        'route' => 'core-search/*',
+        'defaults' => array(
+          'module' => 'core',
+          'controller' => 'search',
+          'action' => 'index',
+        ),
+        'reqs' => array(
+          'action' => '(index)',
+        ),
+    ),
+    //PG Topics
+    'sdparentalguide_topics' => array(
+        'route' => 'topics/:action/*',
+        'defaults' => array(
+          'module' => 'sdparentalguide',
+          'controller' => 'topics',
+          'action' => 'home',
+        ),
+        'reqs' => array(
+          'action' => '(home)',
         ),
     ),
     'sdparentalguide_preferences' => array(
@@ -120,15 +206,15 @@
         ),
     ),
 
-    'sdparentalguide_extended' => array(
-        'route' => 'gg/:controller/:action/*',
+    
+    'sdparentalguide_api' => array(
+        'route' => 'gg/rest/:action/*',
         'defaults' => array(
           'module' => 'sdparentalguide',
-          'controller' => 'ajax',
+          'controller' => 'api',
           'action' => 'index',
         ),
         'reqs' => array(
-          'controller' => '\D+',
           'action' => '\D+',
         )
     ),

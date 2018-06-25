@@ -7,7 +7,6 @@ class Sdparentalguide_Widget_AjaxStrugglesController extends Engine_Content_Widg
 
   public function indexAction() { 
 
-   
     $feedType = $this->_getParam('type', null);
 
     // Don't render this if not authorized
@@ -43,6 +42,7 @@ class Sdparentalguide_Widget_AjaxStrugglesController extends Engine_Content_Widg
   
         $this->view->paginator = $paginator = Engine_Api::_()->getItemTable('ggcommunity_question')->getQuestionsPaginator($subject);
 
+  
         $paginator->setItemCountPerPage($this->_getParam('itemCountPerPage', 1));
         $paginator->setCurrentPageNumber($this->_getParam('page', 1));
   

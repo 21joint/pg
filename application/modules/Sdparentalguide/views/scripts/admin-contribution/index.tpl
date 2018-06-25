@@ -201,7 +201,7 @@ $this->headScript()
           <th width="5%" rowspan="2"  align="center" class="<?php echo $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('type', 'ASC');"><?php echo $this->translate("Credit Type") ?></a></th>  
           
           <?php $class = ( $this->order == 'topic' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-          <th width="5%" rowspan="2"  align="center" class="<?php echo $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('topic', 'ASC');"><?php echo $this->translate("Custom_Topic") ?></a></th> 
+          <th width="5%" rowspan="2"  align="center" class="<?php echo $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('gg_topic_id', 'ASC');"><?php echo $this->translate("Custom_Topic") ?></a></th> 
           
           <?php $class = ( $this->order == 'credit_point' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
           <th width="5%" colspan="2"  align="center" class="<?php echo $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('credit_point', 'ASC');"><?php echo $this->translate("Credit Values") ?></a></th> 

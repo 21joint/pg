@@ -11,6 +11,7 @@
  */
 ?>
 
+
 <?php 
   $siteTitle = '';
 	$bodyContent = '';
@@ -81,6 +82,78 @@
 	<?php $headerContent .= '<tr><td style="background-color:' .$this->header_bgcol. ';padding:' .$this->header_outpadding. 'px;vertical-align:middle;text-align:center"> ' .$siteTitle. '</td></tr>' ;?>
 <?php endif;?>
 
+
+
+
+
+
 <?php $html = $bodyContent.$this->bodyHtmlTemplate;?>
-<?php	echo $bodyHtmlTemplate = '
-<table border="0" cellpadding="10" cellspacing="0"><tbody><tr><td bgcolor="' .$this->body_outerbgcol .'"><table border="0" cellpadding="0" cellspacing="0" align="center" style="width:100%;"><tbody>'.$headerContent.'<tr><td colspan="0" bgcolor="' .$this->body_innerbgcol. '" style="font-family:Arial, Helvetica, sans-serif;border-bottom:' .$this->footer_bottomwidth. 'px solid ' .$this->footer_bottomcol. ';border-left:' .$this->lr_bottomwidth. 'px solid ' .$this->lr_bordercolor. ';border-right:' .$this->lr_bottomwidth. 'px solid ' .$this->lr_bordercolor. ';border-top:' .$this->header_bottomwidth. 'px solid ' .$this->header_bottomcolor. ';font-size:12px;padding:10px;" valign="top">'.$html.'</td></tr><tr><td height="5px"></td></tr><tr><td style="background-color:' . $this->signature_bgcol . ';font-size:12px;padding:8px 15px;">' .$this->textofFooter .'</td></tr></tbody></table></td></tr></tbody></table>';?>
+
+
+<?php echo $bodyHtmlTemplate = '
+
+	<section class="email" style="display: flex;align-items: center;justify-content: center;margin-top: 4rem;margin-bottom: 4rem;">
+        <div class="container" style=" width: 39%;">
+            <div class="header" style=" padding-left: 3rem;padding-top: 1.5rem;padding-bottom:0.3rem;background-color: #F5F5F5;display: flex;align-items: center;justify-content: flex-start;">
+				<div class="image-holder">
+                    <a href="#">
+                        <img src="https://i.imgur.com/rG8vDO3.png"/>
+                    </a>
+                </div>
+            </div> <!--end of header -->
+                
+            <div class="main" style="padding: 3rem;background-color: #F5F5F5;margin-bottom: 1rem;">
+
+                <div class="row-one" style="margin-bottom: 6rem;">
+                    <div class="text-holder">
+					    ' .$html. '
+                    </div>
+                </div>
+            </div> <!-- end of main -->
+
+            <div class="footer" style="color: #93A4A6;">
+
+				<div class="footer-upper">
+	 				<div style="font-size: 14px!important;
+					 color: #93A4A6!important;">
+					'.$this->textofFooter .'
+					</div>
+                </div>
+
+                <div class="footer-bottom" style="margin-top: 1rem;display: flex;justify-content: space-between;">
+
+                    <div class="left-side" style="width: 78%;">
+                        <h5 style="font-weight: normal;color: #93A4A6;">Copyright ©2018</h5>
+                    </div>
+                    <div class="right-side" style="width: 22%;">
+                        <ul class="social-icons" style="padding:0;list-style: none;display: flex;
+						justify-content: space-between; align-items: center;">
+							<li>
+								<a style="width:30px;height:30px;display:block;" href="https://www.facebook.com/officialguidanceguide/">
+									<img style="width:100%;height:100%;" src="https://i.imgur.com/UYOEgCO.png"/>
+								</a>
+							</li>
+							<li>
+								<a style="width:30px;height:30px;display:block;"  href="https://twitter.com/guidanceguide?lang=en">
+									<img style="width:100%;height:100%;" src="https://i.imgur.com/ha5uXHO.png"/>
+								</a>
+							</li>
+							<li>
+								<a style="width:30px;height:30px;display:block;" href="https://instagram.com/@guidanceguide">
+									<img style="width:100%;height:100%;" src="https://i.imgur.com/IakWFWW.png"/>
+								</a>
+							</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div> 
+        </div> 
+	</section> 
+';?>
+
+
+
+
+

@@ -148,6 +148,8 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
             return;
         }
 
+        return;
+
         // Process
         $db = Engine_Api::_()->getDbtable('users', 'user')->getAdapter();
         $db->beginTransaction();
