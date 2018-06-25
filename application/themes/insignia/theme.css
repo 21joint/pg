@@ -812,16 +812,13 @@ html[dir="rtl"] .global_form > div
 {
   font-weight: 600;
   border-bottom: 1px solid $theme_foreground_border_color_light;
-  height: 1em;
-  margin-bottom: 15px;
+  margin-bottom: 3rem;
 }
 .global_form div.form-wrapper-heading > span
 {
   display: block;
-  position: absolute;
   overflow: hidden;
   padding: 4px 6px 4px 0px;
-  background: $theme_form_background_color;
 }
 html[dir="rtl"] .global_form div.form-wrapper-heading > span
 {

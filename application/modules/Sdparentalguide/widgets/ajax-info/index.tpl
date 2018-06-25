@@ -36,7 +36,7 @@
                 echo $this->fieldValueLoop($this->subject(), $this->fieldStructure)
             ?>
         </div>
-        <div class="right-side bg-white  py-3 px-4">
+        <div class="right-side bg-white py-3 px-4">
            <div class="title-holder">
                <h4 class="pb-3"><?php echo $this->translate('Tell us about your kids');?></h4>
            </div>
@@ -44,7 +44,7 @@
                <!-- female -->
                <li class="d-flex py-3 align-items-center">
                    <div class="left-side col-xl-2 col-lg-2 col-2 pl-0 pr-0 mr-4">
-                        <div class="female-side d-flex  align-items-center justify-content-center">
+                        <div class="female-side d-flex align-items-center justify-content-center">
                             <svg id="1d586a36-69c9-43a9-b3c9-6e87bc4008b6" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>gender_female</title><path d="M0,0H24V24H0Z" fill="none"/><path d="M18.7,8.25a6.7,6.7,0,0,1-5.25,6.56v2.44h1.69a.56.56,0,0,1,.56.56v1.88a.56.56,0,0,1-.56.56H13.45v1.68a.56.56,0,0,1-.56.56H11a.56.56,0,0,1-.56-.56V20.25H8.76a.56.56,0,0,1-.56-.56V17.81a.56.56,0,0,1,.56-.56h1.69V14.81A6.7,6.7,0,0,1,5.2,8.25a6.52,6.52,0,0,1,.91-3.37A6.88,6.88,0,0,1,8.58,2.41a6.69,6.69,0,0,1,6.75,0,6.88,6.88,0,0,1,2.46,2.46A6.51,6.51,0,0,1,18.7,8.25Zm-10.5,0A3.61,3.61,0,0,0,9.3,10.9a3.74,3.74,0,0,0,5.3,0,3.61,3.61,0,0,0,1.1-2.65A3.61,3.61,0,0,0,14.6,5.6a3.74,3.74,0,0,0-5.3,0A3.61,3.61,0,0,0,8.2,8.25Z" fill="#fff"/></svg>
                         </div>
                    </div>

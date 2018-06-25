@@ -17,11 +17,17 @@
 
 
 <?php if($this->showContent): ?>
-    <div class="browse_main_holder">
-        <div class="main_box px-lg-5 pb-3 px-md-5  px-sm-1 ">
+<div class="container mb-4 pl-0 pr-0">
+    <div class="browse_main_holder bg-white">
+        <div class="main_box px-lg-5 pb-3 px-md-5  px-sm-1 py-5">
             <ul class="topic_holder ">
                 <?php if($this->paginator->getTotalItemCount() <= 0): ?>
 
+                    <div class="tip py-5">
+                        <span style="margin-bottom:0">
+                            <?php echo $this->translate("No stuggles") ?>
+                        </span>
+                    </div>
 
                 <?php else: ?>
                     <?php foreach($this->paginator as $item):?>
@@ -38,5 +44,5 @@
 
         </div>
     </div>
-
+</div>
 <?php endif; ?>
