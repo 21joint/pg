@@ -16,6 +16,8 @@
 <head>
   <base href="<?php echo rtrim($this->serverUrl($this->baseUrl()), '/'). '/' ?>" />
   <link href="./application/themes/guidanceguide/assets/css/root.css" media="screen" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700|Open+Sans:300,400,600,700">
   <?php // ALLOW HOOKS INTO META ?>
   <?php echo $this->hooks('onRenderLayoutDefaultSimple', $this) ?>

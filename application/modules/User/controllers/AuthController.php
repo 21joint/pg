@@ -30,12 +30,20 @@ class User_AuthController extends Core_Controller_Action_Standard
       return;
     }
 
+   
+
     // Make form
     $this->view->form = $form = new User_Form_Login();
     $form->setAction($this->view->url(array('return_url' => null), 'user_login'));
     $form->populate(array(
       'return_url' => $this->_getParam('return_url'),
     ));
+
+
+    
+    // // For Button
+    $form->getElement('submit')->setAttrib('class', 'btn btn-success text-white py-2 px-0 text-uppercase w-100');
+   
 
     // Render
     $disableContent = $this->_getParam('disableContent', 0);
@@ -44,6 +52,8 @@ class User_AuthController extends Core_Controller_Action_Standard
         ->setEnabled()
         ;
     }
+
+    
     
     // Not a post
     if( !$this->getRequest()->isPost() ) {
@@ -497,12 +507,12 @@ class User_AuthController extends Core_Controller_Action_Standard
     $this->view->form = $form = new User_Form_Auth_Forgot();
 
    
-    // For Input Email
-    $form->getElement('email')->setAttrib('class', 'border-top-0 border-right-0 border-left-0 rounded-0 w-100 mt-3');
+    
 
+    
     // For Button
-    $form->getElement('submit')->setAttrib('class', 'btn btn-success text-white py-2 px-4 text-uppercase mr-2');
-    $form->getElement('cancel')->setAttrib('class', 'btn btn-outline-dark text-dark py-2 px-4 text-uppercase ml-2');
+    $form->getElement('submit')->setAttrib('class', 'btn btn-success text-white py-2  text-uppercase mr-2');
+    $form->getElement('cancel')->setAttrib('class', 'btn btn-outline-dark  py-2 text-uppercase ml-2');
 
     // Check request
     if( !$this->getRequest()->isPost() ) {
@@ -580,6 +590,8 @@ class User_AuthController extends Core_Controller_Action_Standard
       return $this->_helper->redirector->gotoRoute(array('action' => 'home'), 'user_general', true);
     }
 
+    $this->_helper->layout->setLayout('default-auth');
+
     // Check for empty params
     $user_id = $this->_getParam('uid');
     $code = $this->_getParam('code');
@@ -614,6 +626,11 @@ class User_AuthController extends Core_Controller_Action_Standard
     
     // Make form
     $this->view->form = $form = new User_Form_Auth_Reset();
+
+    // For Button
+    $form->getElement('submit')->setAttrib('class', 'btn btn-success text-white py-2  text-uppercase mr-2');
+    $form->getElement('cancel')->setAttrib('class', 'btn btn-outline-dark  py-2 text-uppercase ml-2');
+
 
 
     $form->setAction($this->_helper->url->url(array()));

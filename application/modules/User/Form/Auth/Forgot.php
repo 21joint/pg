@@ -22,8 +22,9 @@ class User_Form_Auth_Forgot extends Engine_Form
   {
     $this
       ->setTitle('Lost Password')
-      ->setDescription('USER_FORM_AUTH_FORGOT_DESCRIPTION')
+      ->setDescription('Find your Parental Guidance account')
       ->setAttrib('id', 'user_form_auth_forgot')
+      ->setAttrib('class', 'extfox-auth w-100')
       ;
 
     // init email

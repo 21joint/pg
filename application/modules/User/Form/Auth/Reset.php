@@ -21,7 +21,9 @@ class User_Form_Auth_Reset extends Engine_Form
   public function init()
   {
     $this
-      ->setTitle('Reset password?');
+      ->setTitle('Reset password?')
+      ->setDescription('reset your password')
+      ->setAttrib('class', 'extfox-auth w-100');
 
     // init password
     $this->addElement('Password', 'password', array(

@@ -10,16 +10,35 @@
  * @author     John
  */
 ?>
-<?php if( empty($this->reset) ): ?>
 
-  <?php echo $this->form->render($this) ?>
 
-<?php else: ?>
+<div class="holder-form holder-forgot d-flex w-100 h-100">
 
-  <div class="tip">
-    <span>
-      <?php echo $this->translate("Your password has been reset. Click %s to sign-in.", $this->htmlLink(array('route' => 'user_login'), $this->translate('here'))) ?>
-    </span>
+<!-- place for partial  -->
+<div class="left-side col-xl-6 col-lg-6 pl-0 pr-0">
+    <?php echo $this->partial('login_partial/_left-side.tpl', 'sdparentalguide'); ?>
+</div>
+
+<!-- form  and tip message-->
+<div class="right-side col-xl-6 col-lg-6">
+
+  <div class="col-xl-6 col-lg-6 mx-auto h-100 w-100 d-flex align-items-center ">
+    <?php if( empty($this->reset) ): ?>
+
+      <?php echo $this->form->render($this) ?>
+
+      <?php else: ?>
+
+      <div class="tip">
+        <span>
+          <?php echo $this->translate("Your password has been reset. Click %s to sign-in.", $this->htmlLink(array('route' => 'user_login'), $this->translate('here'))) ?>
+        </span>
+      </div>
+
+    <?php endif; ?>
   </div>
 
-<?php endif; ?>
+</div>
+
+</div>
+

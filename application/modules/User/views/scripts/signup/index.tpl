@@ -11,9 +11,7 @@
  */
 ?>
 
-<h2>
-  <?php echo ( $this->title ? $this->translate($this->title) : '' ) ?>
-</h2>
+
 
 <script type="text/javascript">
   function skipForm() {
@@ -25,6 +23,23 @@
   }
 </script>
 
-<?php echo $this->partial($this->script[0], $this->script[1], array(
-  'form' => $this->form
-)) ?>
+
+<div class="holder-form holder-forgot d-flex w-100 h-100">
+
+<!-- place for partial  -->
+<div class="left-side col-xl-6 col-lg-6 pl-0 pr-0">
+    <?php echo $this->partial('login_partial/_left-side.tpl', 'sdparentalguide'); ?>
+</div>
+
+<!-- form  and tip message-->
+<div class="right-side col-xl-6 col-lg-6">
+
+  <div class="col-xl-6 col-lg-6 mx-auto h-100 w-100 d-flex align-items-center ">
+    <?php echo $this->partial($this->script[0], $this->script[1], array(
+      'form' => $this->form
+    )) ?>
+  </div>
+
+</div>
+
+</div>
