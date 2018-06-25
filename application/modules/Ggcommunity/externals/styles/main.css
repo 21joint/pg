@@ -1194,6 +1194,13 @@ div.draft_main_holder ul li:before {
 .browse_main_holder .primary{
     color: #5CC7CE;
 }
+.browse_main_holder .open_accepted_answer {
+    background-color: #5CC7CE;
+    color: #FFF!important;
+    padding: 1px 20px;
+    border: 1px solid #5CC7CE;
+    border-radius: 21px;
+}
 .browse_main_holder .closed_accepted_answer {
     background-color: #B9CFD1;
     color: #FFF!important;
@@ -1864,8 +1871,11 @@ ul.paginationControl > li.selected,ul.paginationControl > li a:hover,ul.paginati
         color: grey!important;
         font-size: 13px!important;
     }
-    /* final answered and unanswered questions */
-    
+    .browse_main_holder .open_accepted_answer{
+        background-color: #fff;
+        padding: 0px;
+        border: none;
+    }
     #global_page_ggcommunity-question-profile-view div#global_content,#global_page_ggcommunity-question-index-create .layout_main .layout_middle {
         width: 100%;
         padding: 0px;
