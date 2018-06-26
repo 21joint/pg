@@ -27,7 +27,7 @@ function loadLeaderboardResults(){
     loader.addClass("sd_loader");
     
     var request = new Request.JSON({
-        url: "<?php echo $this->url(array('action' => 'ranking-service'),'sdparentalguide_api',true); ?>",
+        url: "<?php echo $this->url(array(),'pgservicelayer_apiranking',true); ?>",
         data: requestData,
         onRequest: function(){ loader.inject($("sd-response"),"after"); }, //When request is sent.
         onError: function(){ loader.destroy(); }, //When request throws an error.
