@@ -33,7 +33,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
             else if($method == 'post'){
                 $this->postAction();
             }
-            else if($method == 'put'){
+            else if($method == 'put' || $method == 'patch'){
                 $this->putAction();
             }
             else if($method == 'delete'){
@@ -274,12 +274,87 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
             
             $db->commit();
             
-            $responseApi = Engine_Api::_()->getApi("response","pgservicelayer");
-            $response = $responseApi->getReviewData($sitereview);
-            $this->respondWithSuccess($response);
+            $listing_id = $sitereview->getIdentity();
         } catch (Exception $ex) {
             $db->rollBack();
+            $this->respondWithServerError($ex);
         }
+        
+        $tableOtherinfo = Engine_Api::_()->getDbTable('otherinfo', 'sitereview');
+        $db->beginTransaction();
+        try {
+            $row = $tableOtherinfo->getOtherinfo($listing_id);
+            $overview = '';
+            if (isset($values['longDescription'])) {
+                $overview = $values['longDescription'];
+            }
+            if (empty($row))
+                Engine_Api::_()->getDbTable('otherinfo', 'sitereview')->insert(array(
+                    'listing_id' => $listing_id,
+                    'overview' => $overview
+                )); //COMMIT
+            $db->commit();
+        } catch (Exception $e) {
+            $db->rollBack();
+            $this->respondWithServerError($e);
+        }
+
+        if (!empty($listing_id)) {
+            $sitereview->setLocation();
+        }
+        
+        $db->beginTransaction();
+        try {
+
+            if (Engine_Api::_()->getDbtable('modules', 'core')->isModuleEnabled('sitereviewpaidlisting'))
+                $sitereview_pending = $sitereview->pending;
+            else
+                $sitereview_pending = 0;
+
+            if ($sitereview->draft == 0 && $sitereview->search && time() >= strtotime($sitereview->creation_date) && empty($sitereview_pending) && $sitereview->approved) {
+                $action = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($viewer, $sitereview, 'sitereview_new_listtype_' . $listingtype_id);
+                
+                if ($action != null) {
+                    Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($action, $sitereview);
+                }
+            }
+
+            $users = Engine_Api::_()->getDbtable('editors', 'sitereview')->getAllEditors($listingtype_id, 0, 1);
+
+            foreach ($users as $user_ids) {
+
+                $subjectOwner = Engine_Api::_()->getItem('user', $user_ids->user_id);
+
+                if (!($subjectOwner instanceof User_Model_User)) {
+                    continue;
+                }
+
+                $host = $_SERVER['HTTP_HOST'];
+                $newVar = _ENGINE_SSL ? 'https://' : 'http://';
+                $object_link = $newVar . $host . $sitereview->getHref();
+
+                Engine_Api::_()->getApi('mail', 'core')->sendSystem($subjectOwner->email, 'SITEREVIEW_LISTING_CREATION_EDITOR', array(
+                    'listing_type' => strtolower($listingType->title_singular),
+                    'object_link' => $object_link,
+                    'object_title' => $sitereview->getTitle(),
+                    'object_description' => $sitereview->getDescription(),
+                    'queue' => true
+                ));
+            }
+
+            //SEND NOTIFICATIONS FOR SUBSCRIBERS
+            if ($listingType->subscription)
+                Engine_Api::_()->getDbtable('subscriptions', 'sitereview')->sendNotifications($sitereview);
+
+            $db->commit();
+        } catch (Exception $e) {
+            $db->rollBack();
+            $this->respondWithServerError($e);
+        }
+        
+        $responseApi = Engine_Api::_()->getApi("response","pgservicelayer");
+        $response = $responseApi->getReviewData($sitereview);
+        $this->respondWithSuccess($response);
         
     }
     public function putAction(){
@@ -297,18 +372,19 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         }
         
         $id = $this->getParam("id");
-        $sitereview = Engine_Api::_()->getItem("sitereview_listing",$listingtype_id);
+        $sitereview = Engine_Api::_()->getItem("sitereview_listing",$id);
         
         $form = Engine_Api::_()->getApi("forms","pgservicelayer")->getReviewForm();
         $validators = Engine_Api::_()->getApi("validators","pgservicelayer")->getReviewValidators();
-        $values = $data = $_REQUEST;
-
+        $values = $data = $this->getAllParams();
+        
         foreach ($form as $element) {
-            if (isset($_REQUEST[$element['name']])){
-                $values[$element['name']] = $_REQUEST[$element['name']];
+            if (isset($data[$element['name']])){
+                $values[$element['name']] = $data[$element['name']];
             }
         }
         $values['validators'] = $validators;
+        
         $validationMessage = $this->isValid($values);
         if (!empty($validationMessage) && @is_array($validationMessage)) {
             $this->respondWithValidationError('validation_fail', $validationMessage);
@@ -485,14 +561,28 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
             }
             
             $db->commit();
-            
-            $responseApi = Engine_Api::_()->getApi("response","pgservicelayer");
-            $response = $responseApi->getReviewData($sitereview);
-            $this->respondWithSuccess($response);
+            $listing_id = $sitereview->getIdentity();            
         } catch (Exception $ex) {
             $db->rollBack();
+            $this->respondWithServerError($ex);
         }
         
+        $sitereview->setLocation();
+        $db->beginTransaction();
+        try {
+            $actionTable = Engine_Api::_()->getDbtable('actions', 'activity');
+            foreach ($actionTable->getActionsByObject($sitereview) as $action) {
+                $actionTable->resetActivityBindings($action);
+            }
+            $db->commit();
+        } catch (Exception $e) {
+            $db->rollBack();
+            $this->respondWithServerError($ex);
+        }
+        
+        $responseApi = Engine_Api::_()->getApi("response","pgservicelayer");
+        $response = $responseApi->getReviewData($sitereview);
+        $this->respondWithSuccess($response);
     }
     public function deleteAction(){
         $viewer = Engine_Api::_()->user()->getViewer();
@@ -510,7 +600,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         foreach($sitereviews as $sitereview){
             $canDelete = Engine_Api::_()->authorization()->getPermission($level_id, 'sitereview_listing', "delete_listtype_".$sitereview->listingtype_id);
             if (!$canDelete) {
-//                $this->respondWithError('unauthorized');
+                $this->respondWithError('unauthorized');
             }
             $sitereview->gg_deleted = 1;
             $sitereview->save();

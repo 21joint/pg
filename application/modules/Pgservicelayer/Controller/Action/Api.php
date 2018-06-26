@@ -102,6 +102,17 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
                 Engine_Api::_()->user()->setViewer($user);
             }            
         }
+        $method = strtolower($this->getRequest()->getMethod());
+        if($method == 'put' || $method == 'delete' || $method == 'patch'){
+            $params = array();
+            parse_str(file_get_contents("php://input"),$params);
+            if(!empty($params) && is_array($params)){
+                foreach($params as $key => $param){
+                    $this->setParam($key, $param);
+                    $_REQUEST[$key] = $param;
+                }
+            }
+        }
     }
     
     public function dispatch($action) {
