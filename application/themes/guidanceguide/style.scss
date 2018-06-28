@@ -587,15 +587,26 @@ body#global_page_user-profile-index {
         p.hide-description {
             color:#B9CFD1;
         }
+        .thumbnail-photo {
+            img {
+                width: 100%;
+                display: block;
+            }
+        }
+
         // opacity Image
         .contributor-badges-holder {
-            .bottom-holder {
-                div {
-                    &:nth-child(n+2) img{
+            .badge-image {
+                &.inactive {
+                    img {
                         opacity: 0.4;
                     }
                 }
-                
+                img {
+                    border: none;
+                    max-height: 80px;
+                    min-height: 80px;
+                }
             }
         }
         

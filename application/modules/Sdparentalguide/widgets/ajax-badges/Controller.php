@@ -39,13 +39,51 @@ class Sdparentalguide_Widget_AjaxBadgesController extends Engine_Content_Widget_
             return;
           }
         }
-  
-    
-  
+
+        $table = Engine_Api::_()->getDbTable('badges', 'sdparentalguide');
+        $bName = $table->info('name');
+
+        $uTable = Engine_Api::_()->getDbtable('assignedBadges', 'sdparentalguide');
+        $uName = $uTable->info('name');
+
+        $topicTable = Engine_Api::_()->getDbTable('topics', 'sdparentalguide');
+        $tName = $topicTable->info('name');
+
+        // select special badges
+        $selectSpecialBadges = $table->select()
+          ->setIntegrityCheck(false)
+          ->from($table)
+          ->joinLeft( $uName, "$bName.badge_id = $uName.badge_id" )
+          ->where( $uName.'.owner_id = ?', $subject->getIdentity() )
+          ->where( $uName.'.profile_display = ?', 1 )
+          ->where( $bName.'.type = ?', 1 )
+          ->where( $bName.'.active = ?', 1 )
+          ->where( $bName.'.profile_display = ?', 1 )
+          ->order( $uName.'.gg_dt_created DESC' )
+        ;
+
+        $this->view->specialBadges = $specialBadges = Zend_Paginator::factory($selectSpecialBadges);
+        $specialBadges->setItemCountPerPage($this->_getParam('itemCountPerPage', 4));
+        $specialBadges->setCurrentPageNumber($this->_getParam('page', 1));
+
+
+         // select special badges
+        $selectContributorBadges = $table->select()
+          ->setIntegrityCheck(false)
+          ->from($table)
+          ->joinRight( $tName, "$bName.topic_id = $tName.topic_id")
+          ->where( $bName . '.type = ?', 2)
+          ->order( $tName . '.name ASC' )
+        ;
+
+        $this->view->contributorBadges = $contributorBadges = Zend_Paginator::factory($selectContributorBadges);
+        $contributorBadges->setItemCountPerPage($this->_getParam('itemCountPerPage', 50));
+        $contributorBadges->setCurrentPageNumber($this->_getParam('page', 1));
+      
         // render content
         $this->view->showContent = true;  
   
-    }   else {
+    }  else {
 
         $this->view->showContent = true;
     }
