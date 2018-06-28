@@ -27,6 +27,7 @@ class User_Form_Settings_Delete extends Engine_Form
         'immediately signed out and will no longer be able to sign in with this account.')
       ->setAction(Zend_Controller_Front::getInstance()->getRouter()->assemble(array()))
       ->setAttrib('id', 'extfox-settings delete')
+      ->setAttrib('class', 'extfox-settings delete')
     ;
 
     // Element: token
