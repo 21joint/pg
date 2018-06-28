@@ -13,7 +13,7 @@ class Sdparentalguide_Form_Signup_Interests extends Engine_Form
         $this->setTitle("Tell Us About Your Interests");
         $this->setDescription($translate->translate("Sdparentalguide_Form_Signup_Interests_Description"));
         $this->setAttrib("id","SignupForm");
-        $this->setAttrib("class","global_form sd-signup-interests");
+        $this->setAttrib("class","global_form sd-signup-interests extfox-auth w-100");
         
         $this->addElement("MultiCheckbox","categories",array(
             'label' => 'Categories',
@@ -48,20 +48,12 @@ class Sdparentalguide_Form_Signup_Interests extends Engine_Form
         $this->addElement('Hidden', 'skip', array(
             'order' => 4444
         ));
-        
-        $this->addElement("Button","continue",array(
-            'label' => "Continue",
-            'type' => "submit",
-            'ignore' => true,
-            'decorators' => array(
-                'ViewHelper',
-            ),
-        ));
+       
         
         // Element: skip
         $this->addElement('Cancel', 'skip-link', array(
-          'label' => 'skip',
-          'prependText' => ' or ',
+          'label' => 'Skip',
+          'class' => 'btn btn-outline-dark  py-2 text-uppercase  text-uppercase',
           'link' => true,
           'href' => 'javascript:void(0);',
           'onclick' => 'skipForm(); return false;',
@@ -69,6 +61,18 @@ class Sdparentalguide_Form_Signup_Interests extends Engine_Form
             'ViewHelper',
           ),
         ));
+
+         
+        $this->addElement("Button","continue",array(
+            'label' => "Continue",
+            'class' => 'btn btn-success text-white py-2  text-uppercase  text-uppercase',
+            'type' => "submit",
+            'ignore' => true,
+            'decorators' => array(
+                'ViewHelper',
+            ),
+        ));
+        
 
         // DisplayGroup: buttons
         $this->addDisplayGroup(array('continue', 'skip-link'), 'buttons', array(

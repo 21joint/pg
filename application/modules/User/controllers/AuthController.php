@@ -30,7 +30,7 @@ class User_AuthController extends Core_Controller_Action_Standard
       return;
     }
 
-   
+
 
     // Make form
     $this->view->form = $form = new User_Form_Login();
