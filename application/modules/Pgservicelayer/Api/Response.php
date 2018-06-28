@@ -99,6 +99,8 @@ class Pgservicelayer_Api_Response extends Sdparentalguide_Api_Core {
         $contentImages = $this->getContentImage($sitereview);
         $listingRating = Engine_Api::_()->getDbTable("listingRatings","sdparentalguide")->getAvgListingRating($sitereview);
         $listingtype_id = $sitereview->listingtype_id;
+        $contentImages = $this->getContentImage($sitereview);
+        $contentImages['photoID'] = (string)$sitereview->photo_id;
         $sitereviewArray = array(
             'reviewID' => (string)$sitereview->getIdentity(),
             'title' => $sitereview->getTitle(),
@@ -113,7 +115,7 @@ class Pgservicelayer_Api_Response extends Sdparentalguide_Api_Core {
             'status' => (string)$this->getListingStatus($sitereview),
             'author' => $this->getUserData($user),
             'authorRating' => $sitereview->gg_author_product_rating,
-            'coverPhoto' => $sitereviewArray,
+            'coverPhoto' => $contentImages,
             'reviewCategorization' => $this->getListingCategorization($sitereview),
             'reviewTopic' => $this->getListingTopic($sitereview),
             'privacySettings' => array(),
