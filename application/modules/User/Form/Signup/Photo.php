@@ -27,7 +27,9 @@ class User_Form_Signup_Photo extends Engine_Form
 
     $this
       ->setAttrib('enctype', 'multipart/form-data')
-      ->setAttrib('id', 'SignupForm');
+      ->setAttrib('id', 'SignupForm')
+      ->setAttrib('class', 'extfox-auth third-step w-100');
+
 
     $this->addElement('Image', 'current', array(
       'label' => 'Current Photo',
@@ -66,14 +68,15 @@ class User_Form_Signup_Photo extends Engine_Form
     
     // Element: done
     if( $settings->getSetting('user.signup.photo', 0) == 0 ) {
-    $this->addElement('Button', 'done', array(
-      'label' => 'Save Photo',
-      'type' => 'submit',
-      'onclick' => 'javascript:finishForm();',
-      'decorators' => array(
-        'ViewHelper',
-      ),
-    ));
+      $this->addElement('Button', 'done', array(
+        'label' => 'Save Photo',
+        'class' => 'photo-submit btn btn-success text-white py-2  text-uppercase mr-2',
+        'type' => 'submit',
+        'onclick' => 'javascript:finishForm();',
+        'decorators' => array(
+          'ViewHelper',
+        ),
+      ));
     }
 
     // Element: skip  
@@ -81,6 +84,7 @@ class User_Form_Signup_Photo extends Engine_Form
       $this->addElement('Cancel', 'skip-link', array(
         'label' => 'skip',
         'prependText' => ' or ',
+        'class' => 'btn btn-outline-dark  py-2 text-uppercase ml-2',
         'link' => true,
         'href' => 'javascript:void(0);',
         'onclick' => 'skipForm(); return false;',

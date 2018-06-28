@@ -313,6 +313,7 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
 
         // setup values
         $values = $request->getParam('values', null);
+       
         $publishTypes = array();
 
         foreach($values as $key => $value) {
@@ -414,6 +415,56 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
 
     }
 
+    public function preferenceAction(){
+
+        
+        $this->_helper->ViewRenderer->setNoRender(true);
+
+        $viewer = Engine_Api::_()->user()->getViewer();
     
+        if( !$this->getRequest()->isPost() ) {
+            $this->view->status = false;
+            $this->view->error = Zend_Registry::get('Zend_Translate')->_("Invalid request method");;
+            return;
+        }
+        
+        $request = Zend_Controller_Front::getInstance()->getRequest();
+        $form = new Sdparentalguide_Form_Signup_Interests();
+
+        $values = $request->getParam('values', null);
+
+        $publishTypes = array(
+            'categories' => array()
+        );
+        
+        $i = 0;
+        foreach($values as $key => $value) {
+            $publishTypes['categories'][$i] = $value['name'];
+            $i++;
+        }
+
+
+        
+        $db = Engine_Db_Table::getDefaultAdapter();
+        $db->beginTransaction();
+
+        try{
+
+           
+        
+          
+
+        }catch (Exception $ex) {
+            $db->rollBack();
+            throw $ex;
+        }
+
+
+        
+
+
+
+        
+    }
 
 }

@@ -8,7 +8,7 @@
   <!-- form  and tip message-->
   <div class="right-side col-xl-6 col-lg-6">
 
-    <div class="col-xl-6 col-lg-6 mx-auto h-100 w-100 d-flex align-items-center ">
+    <div class="col-xl-6 col-lg-6 mx-auto h-100 w-100 d-flex align-items-center px-0">
       <?php if( empty($this->sent) ): ?>
 
 

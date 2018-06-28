@@ -57,10 +57,17 @@
         *   Notification Profile
         *   My Info Profile
         *   My Theories
+        
+
     * Core
+        *   Lost Password
+        *   Login Page
+        *   SignUp Page
         *   ExtfoxForm Settings
         *   CheckBox 
         *   RadioButton
+        
+        
 */
 
 
@@ -892,6 +899,451 @@ body#global_page_user-profile-index {
     
 }
 
+// Profile User Preference
+.layout_sdparentalguide_ajax_preferences {
+    h3 {
+        font-size: 20px!important;
+        color:#333D40!important;
+        width: 88%!important;
+        padding:4rem 0 1rem 0!important;
+    }
+    p {
+        max-width: 88%!important;
+        width: 88%!important;
+        font-size: 16px;
+        padding-bottom: 0!important;
+        padding:0 0 1rem!important;
+    }
+    .sd_signup_interests {
+        max-width: 100%;
+        li {
+            width: 100%!important;
+        }
+    }
+    .sd_listing_categories {
+        grid-template-columns: repeat(auto-fill, minmax(34%, 1fr))!important;
+    }
+    input[type=checkbox] + label:after {
+        top: 28px!important;
+    }
+    input[type=checkbox] {
+        top: 28px !important;
+        left: 35px !important;
+    }
+    #show_all-wrapper {
+        width: 91%!important;
+    }
+    #buttons-wrapper {
+        #fieldset-buttons{
+            a{
+                display:none!important;
+            }
+        } 
+    } 
+}
+
+// Lost Password
+#global_page_user-auth-forgot,#global_page_user-auth-reset {
+    #buttons-element {
+        button{
+            width: 45.7% !important;
+        }  
+        a{
+            width: 45.7%;
+        }
+    }
+}
+
+// Login Page
+#global_page_user-auth-login {
+    #user_form_login {
+        #fieldset-buttons {
+            padding:0px;
+            margin: 0px;
+            .form-label{
+                display: none;
+            }
+            #submit-wrapper {
+                width: 48%;
+                float: left;
+                margin:0px;
+                #submit-element{
+                    float: right;
+                    width: 100%;
+                }
+            }
+            #cancel-wrapper {
+                float: right;
+                width: 48%;
+                margin:0px;
+            }
+        }
+        #fieldset-buttonsfileds {
+            padding: 0px;
+            .form-wrapper{
+                margin-bottom: 0px;
+            }
+            #remember-wrapper,#forgot-wrapper {
+                #remember-label,#forgot-label {
+                    display: none;
+                }
+            }
+            #remember-wrapper{
+                display: inline-block;
+                float: left; 
+            }
+            #forgot-wrapper {
+                display: inline-block;
+                float: right; 
+                #forgot-element {
+                    p {
+                        a{
+                            color:#93A4A6;
+                            font-size: 14px;
+                            font-weight: 400;
+                            font-family: 'Open Sans', sans-serif; 
+                        }
+                        margin: 0px;
+                    }
+                }
+            }
+        }
+        #fieldset-facebookbutton{
+            #twitter-wrapper {
+                #twitter-label {
+                    display: none;
+                }
+                width: 48%;
+                float: right;
+                margin-left: 5px;
+                margin-bottom: 0px;
+
+            }
+            #facebook-wrapper {
+                #facebook-label {
+                    display: none;
+                }
+                width: 48%;
+                float: left;
+                margin-right: 5px;
+                margin-bottom: 0px;
+            }
+        }
+    }
+    #facebook-element {
+        a {
+           &:hover {
+               background-color:#3C5A99;
+               color:#fff;
+               border-color:#3C5A99;
+           } 
+        }
+    }
+    #twitter-element {
+        a {
+            &:hover {
+                background-color:#1DA1F2;
+                color:#fff;
+                border-color:#1DA1F2;
+            }
+        }
+    }
+}
+
+// SignUp Page
+#global_page_user-signup-index {
+    .right-side {
+        div {
+            width: 100%;
+        }
+    }
+    form {
+        overflow-y: scroll;
+        max-height: 900px;
+        overflow-x: none;
+        &::-webkit-scrollbar {
+            display: none;
+           }
+        h3 {
+            padding-bottom: 20px;
+            margin-top: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            li {
+                position: relative;
+                margin-bottom: 10px;
+                input[type=checkbox] {
+                    position: absolute;
+                    top: 3px;
+                    left: 2px;
+                    width: 14px;
+                }
+            }
+
+        }
+        [id='1_1_5'],[id='1_1_16']{
+            width: 40%;
+        }
+        [id='1_1_6-element']{
+            display: flex;
+            justify-content: space-between;
+            width: 45%;
+        }
+       
+        button {
+            display: inline-block;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            user-select: none;
+            border: 1px solid transparent;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            background-color: #8AE693;
+            border-color: #8AE693;
+            color:#fff;
+            padding: 0.5rem 0!important;
+            width: 100%;
+            text-transform: uppercase;
+        }
+        #terms-element {
+            label {
+                a {
+                    padding-left: 10px;
+                }
+            }
+        }
+    }
+    div.form-wrapper-heading{
+        span {
+            color:#5CC7CE;
+            font-size:16px;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            padding-bottom: 20px;
+            border-bottom:2px solid #F5F5F5;
+            margin-bottom: 20px;
+            display: block;
+        }     
+    }
+    form.third-step {
+      #current-wrapper,#Filedata-wrapper {
+          padding-left: 0px;
+          #current-label {
+              margin-bottom: 10px;
+          }
+      }  
+      #Filedata-element {
+          input {
+              border-bottom: none;
+          }
+      }
+      button,a{
+          width: 44%;
+      }
+    }
+   
+}
+
+// Preference Holder 
+form.preference-holder {
+
+    max-height: 100%!important;
+    overflow-y: visible!important;
+    
+    input[type=checkbox] {
+        z-index: 1;
+        opacity: 0;
+        cursor: pointer;
+        position: absolute;
+        top: 30px !important;
+        left: 18px !important;
+        margin:0!important;
+        width: 14px;
+    }
+    input[type=checkbox]:checked + label:after {
+        opacity: 1;
+    }
+    input[type=checkbox]:checked:hover + label:after {
+        opacity: 1;
+    }
+    input[type=checkbox]:hover + label:after {
+        opacity: 0.3;
+    }
+    input[type=checkbox] + label {
+        position: relative;
+        float: left;
+        left: 0;
+        width: auto;
+        cursor: pointer;
+        display: flex!important;
+        align-items: center;
+        color:#333D40;
+        font-size: 14px;
+        font-weight:600;
+        font-family: 'Nunito', sans-serif;
+        border:1px solid #F5F5F5;
+        width:100%;
+        padding: 1.5rem 0;
+    }
+    input[type=checkbox] + label:before {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background: #fff;
+        content: '';
+        border-radius: 2px;
+        border: 1px solid #B9CFD1!important;
+        margin: 0px 15px;
+    }
+    input[type=checkbox] + label:after {
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        display: block;
+        position: absolute;
+        left: 17px;
+        top: 30px;
+        width: 11px;
+        height: 5px;
+        opacity: 0;
+        text-align: center!important;
+        background: transparent;
+        border-left: 2px solid #8AE693!important;
+        border-bottom: 2px solid #8AE693!important;
+        content: '';
+    }
+    input[type="checkbox"]:checked ~ label {
+        border:1px solid #8AE693;
+    }
+
+    h3 {
+        color:#5CC7CE;
+        font-size: 40px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 700;
+        padding:4rem 3rem  0rem;
+        margin-top:0px!important;
+        
+        width: 60%;
+        margin:0 auto!important;
+    }
+    p {
+        font-size: 16px;
+        margin-top: 0px;
+        padding:0 3rem 4rem;
+        width: 60%;
+        margin:0 auto!important;
+    }
+    .holder-image {
+        background-image: url('../images/baby_bag.jpg');
+        height: 265px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 15px;
+        .holder-category-title {
+            top:0;
+            left: 60px;
+            width: 200px!important;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            text-align: center;
+            span{
+                font-family: 'Nunito', sans-serif;
+                font-size: 18px;
+                font-weight: bold;
+            }
+            
+        }
+        .holder-select-all {
+            bottom: 0;
+            right: 60px;
+            width: 170px!important;
+            a {
+                height: 100%;
+                width: 100%;
+                cursor: pointer;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+            }
+        }
+    }
+
+    .sd_listing_categories{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
+        grid-column-gap: 15px;
+        grid-row-gap:15px;
+    } 
+    // Bottom
+    #show_all-wrapper {
+        width: 70%;
+        padding: 0!important;
+        margin: 0 auto;
+        #show_all-element {
+            float: left;
+            position: relative;
+            width: 30%;
+            margin: 0 auto;
+            input[type=checkbox] {
+                top: 28px!important;
+                left: 17px!important;
+            }
+            input[type=checkbox] + label:after {
+                left: 17px!important;
+                top:29px;
+            }
+            label {
+                border:none;
+            }
+        }
+        
+    }
+    #buttons-wrapper {
+        width: 68%;
+        margin:0 auto;
+        #fieldset-buttons {
+            margin-bottom: 2rem;
+            float: right;
+            width: 32%;
+            button {
+                width: 45%;
+                margin-right: 20px;
+            }
+            a {
+                width: 45%;
+            }
+        }
+
+    }
+    
+}
+
+// Partial for auth pages
+.left-side-partial{
+    .image-holder {
+        background-image: url('../images/mother_and_baby.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        .background-holder {
+            opacity: 0.9;
+            background-color:$primary;
+            .border-holder {
+                border: 10px solid $white;
+                height: 88%;
+            }
+        }
+       
+    }
+}
+
 
 //  ExtfoxForm Settings
 #extfox-settings {
@@ -1102,8 +1554,8 @@ body#global_page_user-profile-index {
         opacity: 0;
         text-align: center!important;
         background: transparent;
-        border-left: 2px solid #5CC7CE!important;
-        border-bottom: 2px solid #5CC7CE!important;
+        border-left: 2px solid $primary!important;
+        border-bottom: 2px solid $primary!important;
         content: '';
     }
 
@@ -1195,13 +1647,14 @@ body#global_page_user-profile-index {
             
             margin-bottom:20px;
             .form-element {
-                
+                p{
+                    padding: 0px!important;
+                }
                 position: relative;
                 input {
                     border:0;
                     width: 100%;
                     padding: 0.8rem 0rem;
-                    margin-top: 0.5rem;
                     border-bottom:2px solid #F5F5F5;
                     &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
                         color:#333D40;
@@ -1212,7 +1665,7 @@ body#global_page_user-profile-index {
                         border-left: none;
                         border-right: none;
                         border-top: none;
-                        border-bottom: 2px solid #5CC7CE; 
+                        border-bottom: 2px solid $primary; 
                         outline: none;
                     }
                     &:-webkit-autofill {
@@ -1279,8 +1732,8 @@ body#global_page_user-profile-index {
                     opacity: 0;
                     text-align: center!important;
                     background: transparent;
-                    border-left: 2px solid #5CC7CE!important;
-                    border-bottom: 2px solid #5CC7CE!important;
+                    border-left: 2px solid $primary!important;
+                    border-bottom: 2px solid $primary!important;
                     content: '';
                 }
                             // Radio Button
@@ -1357,6 +1810,7 @@ body#global_page_user-profile-index {
                 border-bottom:2px solid #F5F5F5;
                 background-color:#fff;
                 color:#93A4A6;
+                padding: 0.5rem 0;
                 &:focus{
                    border:0;
                    border-bottom:2px solid #F5F5F5;
@@ -1386,147 +1840,6 @@ body#global_page_user-profile-index {
     
 }
 
-// Lost Password
-#global_page_user-auth-forgot,#global_page_user-auth-reset {
-    #buttons-element {
-        button{
-            width: 45.7% !important;
-        }  
-        a{
-            width: 45.7%;
-        }
-    }
-}
-
-// Login Page
-#global_page_user-auth-login {
-    #user_form_login {
-        #fieldset-buttons {
-            padding:0px;
-            margin: 0px;
-            .form-label{
-                display: none;
-            }
-            #submit-wrapper {
-                width: 48%;
-                float: left;
-                margin:0px;
-                #submit-element{
-                    float: right;
-                    width: 100%;
-                }
-            }
-            #cancel-wrapper {
-                float: right;
-                width: 48%;
-                margin:0px;
-            }
-        }
-        #fieldset-buttonsfileds {
-            padding: 0px;
-            .form-wrapper{
-                margin-bottom: 0px;
-            }
-            #remember-wrapper,#forgot-wrapper {
-                #remember-label,#forgot-label {
-                    display: none;
-                }
-            }
-            #remember-wrapper{
-                display: inline-block;
-                float: left; 
-                #remember-element {
-                    label {
-                        top:-18px;
-                    }
-                }
-            }
-            #forgot-wrapper {
-                display: inline-block;
-                float: right; 
-                #forgot-element {
-                    p {
-                        a{
-                            color:#93A4A6;
-                            font-size: 14px;
-                            font-weight: 400;
-                            font-family: 'Open Sans', sans-serif; 
-                        }
-                        margin: 0px;
-                    }
-                }
-            }
-        }
-        #fieldset-facebookbutton{
-            #twitter-wrapper {
-                #twitter-label {
-                    display: none;
-                }
-                width: 48%;
-                float: right;
-                margin-left: 5px;
-                margin-bottom: 0px;
-
-            }
-            #facebook-wrapper {
-                #facebook-label {
-                    display: none;
-                }
-                width: 48%;
-                float: left;
-                margin-right: 5px;
-                margin-bottom: 0px;
-            }
-        }
-    }
-    #facebook-element {
-        a {
-           &:hover {
-               background-color:#3C5A99;
-               color:#fff;
-               border-color:#3C5A99;
-           } 
-        }
-    }
-    #twitter-element {
-        a {
-            &:hover {
-                background-color:#1DA1F2;
-                color:#fff;
-                border-color:#1DA1F2;
-            }
-        }
-    }
-}
-
-#global_page_user-signup-index {
-    form {
-        ul {
-            list-style-type: none;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            li {
-                position: relative;
-                input[type=checkbox] {
-                    position: absolute;
-                    top: 3px;
-                    left: 2px;
-                    width: 14px;
-                }
-            }
-
-        }
-    }
-    div.form-wrapper-heading{
-        span {
-            color:#5CC7CE;
-            font-size:16px;
-            font-family: 'Nunito', sans-serif;
-            font-weight: 700;
-        }     
-    }
-}
 
 
 // Pagination with narrow
@@ -1536,25 +1849,9 @@ body#global_page_user-profile-index {
     }
 }
 
-// Partial for auth pages
-.left-side-partial{
-    .image-holder {
-        background-image: url('../images/mother_and_baby.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        .background-holder {
-            opacity: 0.9;
-            background-color:#5CC7CE;
-            .border-holder {
-                border: 10px solid #fff;
-                height: 88%;
-            }
-        }
-       
-    }
-}
 
 
+// For auth page
 .full-height-auth #global_wrapper_extfox,.full-height-auth #global_wrapper_extfox #global_content_extfox,.layout_page_user_auth_forgot,.full-height-auth .layout_core_content,.full-height-auth .layout_main,.full-height-auth .layout_middle,.full-height-auth .layout_core_content,.layout_page_user_auth_login,.layout_page_user_signup_index,.layout_page_user_auth_reset,.layout_page_core_error_requireuser,.full-height-auth.layout_main {
     height: 100%;
 } 
@@ -1746,6 +2043,9 @@ body#global_page_user-profile-index {
         *   My Theories
     * Core
         *   ExtfoxForm Settings
+        *   Auth Page and Forogot Page
+        *   Login Page
+        *   SignUp Page
     */
     body#global_page_user-profile-index {
         #global_wrapper {
@@ -1942,6 +2242,19 @@ body#global_page_user-profile-index {
         }
     }
 
+    .layout_sdparentalguide_ajax_preferences {
+        .sd_signup_interests {
+            max-width: 100%;
+            padding-left: 0;
+        }
+        .sd_listing_categories {
+            grid-template-columns: repeat(auto-fill, minmax(70%, 1fr)) !important;
+        }
+        .holder-listing-categories {
+            padding: 0px!important;
+        }
+
+    } 
     // My Theories
     .layout_sdparentalguide_ajax_theories {
         .container{
@@ -1989,13 +2302,14 @@ body#global_page_user-profile-index {
         h3 {
             text-align: center;
             font-family: 'Nunito', sans-serif!important;
-
+            font-size: 26px!important;
         }
         p {
             text-align: center;
         }
     }
 
+    // Auth Page and Forogot Page
     #global_page_user-auth-forgot,#global_page_user-auth-reset{
         #buttons-element,#buttons-element {
             button {
@@ -2006,10 +2320,79 @@ body#global_page_user-profile-index {
             }
         }
     } 
+    // Login Page
     #global_page_user-auth-login {
         #user_form_login {
             h3 {
                 margin-top:100px;
+            }
+        }
+    }
+    // SignUp Page
+    #global_page_user-signup-index {
+        .form-wrapper{
+            padding-left: 0px!important;
+        }
+        form {
+            max-height: 550px;
+
+            p.hint {
+                #profile_address{
+                    #profile_address_text {
+                        word-wrap: break-word;
+                        width: 90%;
+                        margin:0 auto;
+                    
+                        display: block;
+                    }
+                }
+            }
+            
+           
+        }
+    }
+
+    // Preference Holder 
+    .preference-holder {
+        form {
+            h3,p {
+                width: 90%;
+                margin-top: 30px!important;
+                padding: 0px!important;
+            }
+            input[type=checkbox] {
+                left: 34px !important;
+            }
+            .holder-image {
+                .holder-category-title {
+                    left: 30px;
+                }
+                .holder-select-all {
+                    right:30px;
+                }
+            } 
+
+            .sd_listing_categories{
+              
+                grid-template-columns: repeat(auto-fill, minmax(52%, 1fr));
+              
+            } 
+
+        }
+        #show_all-wrapper {
+            width: 100%!important;
+            #show_all-element {
+                width: 100%!important;
+            }
+        }
+        #buttons-wrapper {
+            width: 100%!important;
+            #fieldset-buttons {
+                width: 90%!important;
+                float: none!important;
+                button,a {
+                    width: 45%;
+                }
             }
         }
     }
