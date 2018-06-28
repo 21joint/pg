@@ -609,90 +609,41 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
     }
     
     public function categoriesAction(){
+        $listingTypeTable = Engine_Api::_()->getDbTable('listingtypes', 'sitereview');
+        $listingTypeTableName = $listingTypeTable->info('name');
+        $select = $listingTypeTable->select()->from($listingTypeTableName, array('title_plural','title_singular', 'listingtype_id'))
+                ->where('visible = ?',1)->order("order ASC")->order("listingtype_id ASC");
+        $listingTypes = $listingTypeTable->fetchAll($select);
+        
         $table = Engine_Api::_()->getDbTable("categories","sitereview");
-        $categories = $table->getCategoriesList(0,0);
-        $response['ResultCount'] = count($categories);
+        
+        $response['ResultCount'] = count($listingTypes);
         $response['Results'] = array();
-        foreach($categories as $category){
-            $listingType = Engine_Api::_()->getItem('sitereview_listingtype', $category->listingtype_id);
-            $categoryArray = array(
-                'type' => $listingType->getTitle(),
-                'typeID' => (string)$listingType->getIdentity(),
-                'category' => $category->getTitle(),
-                'categoryID' => (string)$category->getIdentity(),
-                'subCategory' => '',
-                'subCategoryID' => ''
-            );
-            $response['Results'][] = $categoryArray;
-            $subcategories = $table->getCategoriesList($listingType->getIdentity(),$category->getIdentity());
-            foreach($subcategories as $subcategory){
+        foreach($listingTypes as $listingType){
+            $categories = $table->getCategoriesList($listingType->getIdentity(),0);
+            $categoriesArray = array();
+            foreach($categories as $category){
                 $categoryArray = array(
-                    'type' => $listingType->getTitle(),
-                    'typeID' => (string)$listingType->getIdentity(),
                     'category' => $category->getTitle(),
                     'categoryID' => (string)$category->getIdentity(),
-                    'subCategory' => '',
-                    'subCategoryID' => ''
                 );
-                $categoryArray['subCategory'] = $subcategory->getTitle();
-                $categoryArray['subCategoryID'] = (string)$subcategory->getIdentity();
-                $response['Results'][] = $categoryArray;
+                $subcategories = $table->getCategoriesList($listingType->getIdentity(),$category->getIdentity());
+                $subcategoriesArray = array();
+                foreach($subcategories as $subcategory){
+                    $subcategoryArray = array(
+                        'category' => $subcategory->getTitle(),
+                        'categoryID' => (string)$subcategory->getIdentity(),
+                    );
+                    $subcategoriesArray[] = $subcategoryArray;
+                }
+                $categoryArray['subcategories'] = $subcategoriesArray;
+                $categoriesArray[] = $categoryArray;
             }
-        }
-        $this->respondWithSuccess($response);
-    }
-    
-    public function rankingAction(){
-        $contributionRangeType = $this->getParam("contributionRangeType","Overall");
-        $orderBy = $this->getParam("orderBy","contributionPoints");
-        
-        $usersTable = Engine_Api::_()->getDbTable("users","user");
-        $select = $usersTable->select()
-            ->where("search = ?", 1)
-            ->where("enabled = ?", 1)
-            ;
-        
-        //Contribution Range
-        if(strtolower($contributionRangeType) == "week" || strtolower($contributionRangeType) == "month"){
-//            $creditsTable = Engine_Api::_()->getDbtable('credits','sitecredit');
-//            $creditsTableName = $creditsTable->info("name");
-            
-        }
-        //Sort data
-        //Possible values "contributionPoints", "questionCount", "reviewCount", "followers"
-        if($orderBy == 'contributionPoints'){
-            $select->order("gg_contribution DESC");
-        }elseif($orderBy == 'reviewCount'){
-            $select->order("gg_review_count DESC");
-        }elseif($orderBy == 'questionCount'){
-            $select->order("gg_question_count DESC");
-        }elseif($orderBy == 'followers'){
-            $select->order("gg_followers_count DESC");
-        }
-        
-        $paginator = Zend_Paginator::factory($select);
-        $paginator->setItemCountPerPage($this->getParam("limit",10));
-        $paginator->setCurrentPageNumber($this->getParam("page",1));
-        
-        $response = array(
-            'contributionRangeType' => $contributionRangeType,
-            'orderBy' => $orderBy,
-            'contributions' => array(),
-        );
-        $api = Engine_Api::_()->sdparentalguide();
-        foreach($paginator as $user){
-            $temp = array(
-                'contributorID' => $user->getIdentity(),
-                'contributionPoints' => $user->gg_contribution,
-                'reviewCount' => $user->gg_review_count,
-                'questionCount' => $user->gg_question_count,
-                'answerCount' => 0, //Don't have answers count in users table for now.
-                'followers' => $user->gg_followers_count,
-                'title' => $user->getTitle(),
+            $response['Results'][] = array(
+                'type' => $listingType->getTitle(),
+                'typeID' => (string)$listingType->getIdentity(),
+                'categories' => $categoriesArray
             );
-            $contentImages = $api->getContentImage($user);
-            $temp = array_merge($temp,$contentImages);
-            $response['contributions'][] = $temp;
         }
         $this->respondWithSuccess($response);
     }
