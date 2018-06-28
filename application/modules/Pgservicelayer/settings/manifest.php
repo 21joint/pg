@@ -75,8 +75,21 @@ return array (
         'route' => $apiVersion.'/ranking/*',
         'defaults' => array(
           'module' => 'pgservicelayer',
-          'controller' => 'reviews',
+          'controller' => 'user',
           'action' => 'ranking',
+          'format' => 'json'
+        ),
+        'reqs' => array(
+          'action' => '\D+',
+        )
+    ),
+    'pgservicelayer_apimembers' => array(
+        'route' => $apiVersion.'/members/*',
+        'defaults' => array(
+          'module' => 'pgservicelayer',
+          'controller' => 'user',
+          'action' => 'index',
+          'format' => 'json'
         ),
         'reqs' => array(
           'action' => '\D+',

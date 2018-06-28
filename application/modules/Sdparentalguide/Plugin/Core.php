@@ -329,6 +329,22 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
         if(!empty($searchText) && $moduleName == "siteadvsearch" && $controllerName == "index" && $actionName == "index"){
             Engine_Api::_()->getDbTable('search', 'sdparentalguide')->logSearch($searchText);
         }
+        
+        $router = Zend_Controller_Front::getInstance()->getRouter();
+        $currentRoute = $router->getCurrentRoute();
+        if(!empty($currentRoute)){
+            $matchedPath = $currentRoute->getMatchedPath();
+            if($matchedPath == 'members/home'){
+                $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('redirector');
+                return $redirector->gotoRoute(array(), "sdparentalguide_user_home", true);
+            }
+            
+            $viewer = Engine_Api::_()->user()->getViewer();
+            if($matchedPath == 'profile' && $viewer->getIdentity()){
+                $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('redirector');
+                return $redirector->gotoRoute(array('id' => $viewer->getIdentity()), "user_profile", true);
+            }
+        }
     }
     public function getPageByName($name){
         $db = Engine_Db_Table::getDefaultAdapter();

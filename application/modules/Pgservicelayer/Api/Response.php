@@ -98,6 +98,7 @@ class Pgservicelayer_Api_Response extends Sdparentalguide_Api_Core {
         $user = $sitereview->getOwner();
         $contentImages = $this->getContentImage($sitereview);
         $listingRating = Engine_Api::_()->getDbTable("listingRatings","sdparentalguide")->getAvgListingRating($sitereview);
+        $listingtype_id = $sitereview->listingtype_id;
         $sitereviewArray = array(
             'reviewID' => (string)$sitereview->getIdentity(),
             'title' => $sitereview->getTitle(),
@@ -115,15 +116,36 @@ class Pgservicelayer_Api_Response extends Sdparentalguide_Api_Core {
             'coverPhoto' => $sitereviewArray,
             'reviewCategorization' => $this->getListingCategorization($sitereview),
             'reviewTopic' => $this->getListingTopic($sitereview),
-            'privacySettings' => $sitereview->approved,
+            'privacySettings' => array(),
             'reviewPhotos' => $this->getListingPhotos($sitereview),
             'averageReviewRating' => sprintf("%.1f",$listingRating['review_rating']),
             'averageProductRating' => sprintf("%.1f",$listingRating['product_rating']),            
         );
-        $isAllowedView = $sitereview->authorization()->isAllowed($viewer, 'view');
-        $sitereviewArray['privacySettings'] = array(
-            'canViewReview' => $isAllowedView?1:0
-        );
+        
+        $auth = Engine_Api::_()->authorization()->context;
+        $roles = array('owner', 'owner_member', 'owner_member_member', 'owner_network', 'registered', 'everyone');
+        foreach ($roles as $role) {
+            if (1 == $auth->isAllowed($sitereview, $role, "view_listtype_$listingtype_id")) {
+                $sitereviewArray['privacySettings']['authView'] = $role;
+            }
+            if (1 == $auth->isAllowed($sitereview, $role, "comment_listtype_$listingtype_id")) {
+                $sitereviewArray['privacySettings']['authComment'] = $role;
+            }
+        }
+        
+        $roles_photo = array('owner', 'owner_member', 'owner_member_member', 'owner_network', 'registered');
+        foreach ($roles_photo as $role) {
+            if (1 == $auth->isAllowed($sitereview, $role, "topic_listtype_$listingtype_id")) {
+                $sitereviewArray['privacySettings']['authTopic'] = $role;
+            }
+            if (1 == $auth->isAllowed($sitereview, $role, "photo_listtype_$listingtype_id")) {
+                $sitereviewArray['privacySettings']['authPhoto'] = $role;
+            }
+            if (1 == $auth->isAllowed($sitereview, $role, "video_listtype_$listingtype_id")) {
+                $sitereviewArray['privacySettings']['authVideo'] = $role;
+            }
+        }
+        
         
         return $sitereviewArray;
     }

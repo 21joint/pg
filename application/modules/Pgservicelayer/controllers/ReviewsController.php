@@ -52,7 +52,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         $params = array();
         $customFieldValues = array();
         $page = $this->getParam("page",1);
-        $limit = $this->getParam("limit",10);
+        $limit = $this->getParam("limit",50);
         $params['type'] = 'browse';
         $listingTable = Engine_Api::_()->getDbTable('listings', 'sitereview');
         $listingTableName = $listingTable->info("name");
