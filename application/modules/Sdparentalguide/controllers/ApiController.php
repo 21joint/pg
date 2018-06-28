@@ -1,4 +1,11 @@
 <?php
+/**
+ * SocialEngine
+ *
+ * @category   Application_Extensions
+ * @package    Sdparentalguide
+ * @author     Stars Developer
+ */
 
 class Sdparentalguide_ApiController extends Sdparentalguide_Controller_Action_Api
 {
@@ -66,60 +73,6 @@ class Sdparentalguide_ApiController extends Sdparentalguide_Controller_Action_Ap
             $response[] = $itemArray;
         }
         $this->respondWithSuccess($response);
-    }
+    }    
     
-    public function rankingServiceAction(){
-        $contributionRangeType = $this->getParam("contributionRangeType","Overall");
-        $orderBy = $this->getParam("orderBy","contributionPoints");
-        
-        $usersTable = Engine_Api::_()->getDbTable("users","user");
-        $select = $usersTable->select()
-            ->where("search = ?", 1)
-            ->where("enabled = ?", 1)
-            ;
-        
-        //Contribution Range
-        if(strtolower($contributionRangeType) == "week" || strtolower($contributionRangeType) == "month"){
-//            $creditsTable = Engine_Api::_()->getDbtable('credits','sitecredit');
-//            $creditsTableName = $creditsTable->info("name");
-            
-        }
-        //Sort data
-        //Possible values "contributionPoints", "questionCount", "reviewCount", "followers"
-        if($orderBy == 'contributionPoints'){
-            $select->order("gg_contribution DESC");
-        }elseif($orderBy == 'reviewCount'){
-            $select->order("gg_review_count DESC");
-        }elseif($orderBy == 'questionCount'){
-            $select->order("gg_question_count DESC");
-        }elseif($orderBy == 'followers'){
-            $select->order("gg_followers_count DESC");
-        }
-        
-        $paginator = Zend_Paginator::factory($select);
-        $paginator->setItemCountPerPage($this->getParam("limit",10));
-        $paginator->setCurrentPageNumber($this->getParam("page",1));
-        
-        $response = array(
-            'contributionRangeType' => $contributionRangeType,
-            'orderBy' => $orderBy,
-            'contributions' => array(),
-        );
-        $api = Engine_Api::_()->sdparentalguide();
-        foreach($paginator as $user){
-            $temp = array(
-                'contributorID' => $user->getIdentity(),
-                'contributionPoints' => $user->gg_contribution,
-                'reviewCount' => $user->gg_review_count,
-                'questionCount' => $user->gg_question_count,
-                'answerCount' => 0, //Don't have answers count in users table for now.
-                'followers' => $user->gg_followers_count,
-                'title' => $user->getTitle(),
-            );
-            $contentImages = $api->getContentImage($user);
-            $temp = array_merge($temp,$contentImages);
-            $response['contributions'][] = $temp;
-        }
-        $this->respondWithSuccess($response);
-    }
 }
