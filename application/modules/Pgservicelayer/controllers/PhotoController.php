@@ -7,7 +7,7 @@
  * @author     Stars Developer
  */
 
-class Pgservicelayer_PhotosController extends Pgservicelayer_Controller_Action_Api
+class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Api
 {
     public function init(){
         $timezone = Engine_Api::_()->getApi('settings', 'core')->core_locale_timezone;
@@ -56,7 +56,7 @@ class Pgservicelayer_PhotosController extends Pgservicelayer_Controller_Action_A
         $viewer = Engine_Api::_()->user()->getViewer();
         $viewer_id = $viewer->getIdentity();
         if (!$viewer->getIdentity()) {
-//            $this->respondWithError('unauthorized');
+            $this->respondWithError('unauthorized');
         }
         if(empty($_FILES['Filedata']['tmp_name'])){
             $this->respondWithValidationError('parameter_missing',$this->translate("Photo missing in Filedata."));
@@ -71,18 +71,20 @@ class Pgservicelayer_PhotosController extends Pgservicelayer_Controller_Action_A
                 $this->respondWithError('file_not_uploaded');
             }
             $db->commit();
+            
+            $responseApi = Engine_Api::_()->getApi("response","pgservicelayer");
+            $contentImages = $responseApi->getContentImage($photo);
+            $photoArray = array(
+                'photoID' => (string)$photo->getIdentity(),
+                'photoURL' => ''
+            );
+            $photoArray = array_merge($photoArray,$contentImages);
+            $this->respondWithSuccess($photoArray);
         } catch (Exception $ex) {
             $db->rollBack();
             $this->respondWithServerError($ex);
         }
-        $responseApi = Engine_Api::_()->getApi("response","pgservicelayer");
-        $contentImages = $responseApi->getContentImage($photo);
-        $photoArray = array(
-            'photoID' => (string)$photo->getIdentity(),
-            'photoURL' => ''
-        );
-        $photoArray = array_merge($photoArray,$contentImages);
-        $this->respondWithSuccess($photoArray);
+        
     }
     public function putAction(){
         
