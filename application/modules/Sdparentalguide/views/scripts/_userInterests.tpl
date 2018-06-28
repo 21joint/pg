@@ -40,7 +40,7 @@
         </div>
 
         
-        <div class="holder-listing-categories col-xl-11 col-lg-11 col-12 mx-auto ">
+        <div class="holder-listing-categories col-xl-11 col-lg-11 col-11 mx-auto ">
             <div  class="sd_listing_categories">
 
                 <?php foreach($categories as $category): ?>
@@ -100,19 +100,24 @@ window.addEvent("resize",function(){
     }, 500);
 });
 function markListingCategories(element){
+    
     var parent = $(element).getParent("li");
+    
+
     var checkboxes = parent.getElements("input[type=checkbox]");
+    console.log(parent);
+    console.log(checkboxes);
     
     if(checkboxes.length <= 0){
         return;
     }
     if(parent.hasClass("checked_all")){
         checkboxes.set("checked",null);
-        //checkboxes.parentElement.parentElement.style.border = 'none';
+       
        
     }else{
         checkboxes.set("checked",true);  
-        //checkboxes.parentElement.parentElement.style.border = '1px solid red';
+        
     }
     parent.toggleClass("checked_all");
 }
@@ -120,7 +125,7 @@ function markListingCategories(element){
 
 var right = document.getElementsByClassName("right-side")[0];
 right.classList.remove('col-xl-6', 'col-lg-6');
-right.classList.add('col-xl-12', 'col-lg-12','col-12','preference-holder','px-0',);
+right.classList.add('col-xl-12', 'col-lg-12','col-12','px-0',);
 right.firstElementChild.classList.add('col-xl-12', 'col-lg-12');
 right.firstElementChild.classList.remove('col-xl-7','col-lg-7');
 

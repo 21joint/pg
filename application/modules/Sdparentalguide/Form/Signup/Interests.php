@@ -13,7 +13,7 @@ class Sdparentalguide_Form_Signup_Interests extends Engine_Form
         $this->setTitle("Tell Us About Your Interests");
         $this->setDescription($translate->translate("Sdparentalguide_Form_Signup_Interests_Description"));
         $this->setAttrib("id","SignupForm");
-        $this->setAttrib("class","global_form sd-signup-interests extfox-auth w-100");
+        $this->setAttrib("class","global_form sd-signup-interests extfox-auth w-100 preference-holder");
         
         $this->addElement("MultiCheckbox","categories",array(
             'label' => 'Categories',

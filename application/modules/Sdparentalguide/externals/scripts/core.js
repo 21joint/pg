@@ -82,6 +82,7 @@ en4.gg = {
   },
 
   ggAjaxForm: function(form, action) {
+    console.log( action);
     
     var errorElement = form.getParent().getElement('#errorForm');
     var successElement = form.getParent().getElement('#successForm');
@@ -90,7 +91,8 @@ en4.gg = {
         e.preventDefault();
         
         // make specific checks for privacy
-        if(action == 'privacy' || action == 'notifications') {
+        if(action == 'privacy' || action == 'notifications' || action == 'preference') {
+            
             var formValues = [];
             for(var i = 0; i < form.elements.length; i++) {
                 if( form.elements[i].type == 'radio' || form.elements[i].type == 'checkbox' ) {

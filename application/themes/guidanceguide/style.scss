@@ -888,6 +888,49 @@ body#global_page_user-profile-index {
     
 }
 
+// Profile User Preference
+.layout_sdparentalguide_ajax_preferences {
+    h3 {
+        font-size: 20px!important;
+        color:#333D40!important;
+        width: 88%!important;
+        padding:4rem 0 1rem 0!important;
+    }
+    p {
+        max-width: 88%!important;
+        width: 88%!important;
+        font-size: 16px;
+        padding-bottom: 0!important;
+        padding:0 0 1rem!important;
+    }
+    .sd_signup_interests {
+        max-width: 100%;
+        li {
+            width: 100%!important;
+        }
+    }
+    .sd_listing_categories {
+        grid-template-columns: repeat(auto-fill, minmax(34%, 1fr))!important;
+    }
+    input[type=checkbox] + label:after {
+        top: 28px!important;
+    }
+    input[type=checkbox] {
+        top: 28px !important;
+        left: 35px !important;
+    }
+    #show_all-wrapper {
+        width: 91%!important;
+    }
+    #buttons-wrapper {
+        #fieldset-buttons{
+            a{
+                display:none!important;
+            }
+        } 
+    } 
+}
+
 // Lost Password
 #global_page_user-auth-forgot,#global_page_user-auth-reset {
     #buttons-element {
@@ -1098,7 +1141,11 @@ body#global_page_user-profile-index {
 }
 
 // Preference Holder 
-.preference-holder {
+form.preference-holder {
+
+    max-height: 100%!important;
+    overflow-y: visible!important;
+    
     input[type=checkbox] {
         z-index: 1;
         opacity: 0;
@@ -1130,7 +1177,7 @@ body#global_page_user-profile-index {
         font-size: 14px;
         font-weight:600;
         font-family: 'Nunito', sans-serif;
-        border:2px solid #F5F5F5;
+        border:1px solid #F5F5F5;
         width:100%;
         padding: 1.5rem 0;
     }
@@ -1163,33 +1210,26 @@ body#global_page_user-profile-index {
         content: '';
     }
     input[type="checkbox"]:checked ~ label {
-        border:2px solid #8AE693;
+        border:1px solid #8AE693;
     }
 
-    form {
-        max-height: 100%!important;
-        overflow-y: scroll!important;
-        &::-webkit-scrollbar {
-            display: block!important;
-        }
-        h3 {
-            color:#5CC7CE;
-            font-size: 40px;
-            font-family: 'Nunito', sans-serif;
-            font-weight: 700;
-            padding:4rem 3rem  0rem!important;
-            margin-top:0px!important;
-            
-            width: 60%;
-            margin:0 auto;
-        }
-        p {
-            font-size: 16px;
-            margin-top: 0px;
-            padding:0 3rem 4rem!important;
-            width: 60%;
-            margin:0 auto;
-        }
+    h3 {
+        color:#5CC7CE;
+        font-size: 40px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 700;
+        padding:4rem 3rem  0rem;
+        margin-top:0px!important;
+        
+        width: 60%;
+        margin:0 auto!important;
+    }
+    p {
+        font-size: 16px;
+        margin-top: 0px;
+        padding:0 3rem 4rem;
+        width: 60%;
+        margin:0 auto!important;
     }
     .holder-image {
         background-image: url('../images/baby_bag.jpg');
@@ -1233,7 +1273,7 @@ body#global_page_user-profile-index {
     } 
     // Bottom
     #show_all-wrapper {
-        width: 70% !important;
+        width: 70%;
         padding: 0!important;
         margin: 0 auto;
         #show_all-element {
@@ -1256,18 +1296,18 @@ body#global_page_user-profile-index {
         
     }
     #buttons-wrapper {
-        width: 84% !important;
+        width: 68%;
         margin:0 auto;
         #fieldset-buttons {
             margin-bottom: 2rem;
             float: right;
-            width: 27%;
+            width: 32%;
             button {
-                width: 30%;
+                width: 45%;
                 margin-right: 20px;
             }
             a {
-                width: 30%;
+                width: 45%;
             }
         }
 
@@ -2191,6 +2231,19 @@ body#global_page_user-profile-index {
         }
     }
 
+    .layout_sdparentalguide_ajax_preferences {
+        .sd_signup_interests {
+            max-width: 100%;
+            padding-left: 0;
+        }
+        .sd_listing_categories {
+            grid-template-columns: repeat(auto-fill, minmax(70%, 1fr)) !important;
+        }
+        .holder-listing-categories {
+            padding: 0px!important;
+        }
+
+    } 
     // My Theories
     .layout_sdparentalguide_ajax_theories {
         .container{
