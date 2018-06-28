@@ -59,10 +59,10 @@ return array (
         )
     ),
     'pgservicelayer_apiphotos' => array(
-        'route' => $apiVersion.'/photos/:action/*',
+        'route' => $apiVersion.'/photo/:action/*',
         'defaults' => array(
           'module' => 'pgservicelayer',
-          'controller' => 'photos',
+          'controller' => 'photo',
           'action' => 'index',
           'format' => 'json'
         ),
