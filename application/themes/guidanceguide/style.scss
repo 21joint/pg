@@ -1169,6 +1169,9 @@ body#global_page_user-profile-index {
     form {
         max-height: 100%!important;
         overflow-y: scroll!important;
+        &::-webkit-scrollbar {
+            display: block!important;
+        }
         h3 {
             color:#5CC7CE;
             font-size: 40px;
@@ -1224,7 +1227,7 @@ body#global_page_user-profile-index {
 
     .sd_listing_categories{
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
         grid-column-gap: 15px;
         grid-row-gap:15px;
     } 
@@ -2303,6 +2306,12 @@ body#global_page_user-profile-index {
                 .holder-select-all {
                     right:30px;
                 }
+            } 
+
+            .sd_listing_categories{
+              
+                grid-template-columns: repeat(auto-fill, minmax(52%, 1fr));
+              
             } 
 
         }
