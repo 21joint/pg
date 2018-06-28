@@ -82,14 +82,15 @@ en4.ggcommunity.answer = {
                 body_create : body,
             },
             onComplete: function(responseHTML) {
-                
                 // empty body from tinymce
-                var body_editor = document.getElementById('create-answer-form').getElementById('body');
+                var body_editor = document.querySelector('#body_create');
+                // var body_editor = document.getElementById('create-answer-form').getElementById('body');
                 var mce_editor = document.getElementById('create-answer-form').getElementsByClassName('mce-tinymce mce-container mce-panel');
+
                 if(mce_editor.length > 0) {
                     var body = tinymce.get('body_create').setContent('');
                 } else {
-                    var body = body_editor.innerHTML;
+                    var body = body_editor.value;
                 }
                 
                 var all = $$('div.answer_holder_box');
