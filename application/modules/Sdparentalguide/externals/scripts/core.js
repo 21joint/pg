@@ -61,7 +61,6 @@ en4.gg = {
 
   ggAjax : function(type, subject_id, action, el) {
 
-    console.log(action);
       (new Request.JSON({
           url : en4.core.baseUrl + 'gg/ajax/' + action,
           data : {
@@ -82,7 +81,6 @@ en4.gg = {
   },
 
   ggAjaxForm: function(form, action) {
-    console.log( action);
     
     var errorElement = form.getParent().getElement('#errorForm');
     var successElement = form.getParent().getElement('#successForm');

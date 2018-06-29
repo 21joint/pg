@@ -1197,6 +1197,7 @@ form.preference-holder {
         border:1px solid #F5F5F5;
         width:100%;
         padding: 1.5rem 0;
+        margin:0;
     }
     input[type=checkbox] + label:before {
         display: inline-block;
@@ -2428,32 +2429,30 @@ form.preference-holder {
     }
 
     // Preference Holder 
-    .preference-holder {
-        form {
-            h3,p {
-                width: 90%;
-                margin-top: 30px!important;
-                padding: 0px!important;
-            }
-            input[type=checkbox] {
-                left: 34px !important;
-            }
-            .holder-image {
-                .holder-category-title {
-                    left: 30px;
-                }
-                .holder-select-all {
-                    right:30px;
-                }
-            } 
-
-            .sd_listing_categories{
-              
-                grid-template-columns: repeat(auto-fill, minmax(52%, 1fr));
-              
-            } 
-
+    
+    form.preference-holder {
+        h3,p {
+            width: 90%;
+            margin-top: 30px!important;
+            padding: 0px!important;
         }
+        input[type=checkbox] {
+            left: 34px !important;
+        }
+        .holder-image {
+            .holder-category-title {
+                left: 30px;
+            }
+            .holder-select-all {
+                right:30px;
+            }
+        } 
+
+        .sd_listing_categories{
+            
+            grid-template-columns: repeat(auto-fill, minmax(52%, 1fr));
+            
+        } 
         #show_all-wrapper {
             width: 100%!important;
             #show_all-element {
@@ -2470,8 +2469,9 @@ form.preference-holder {
                 }
             }
         }
-    }
 
+    }
+        
     // Close Button 
     .close-btn-x{
         right: 10px;

@@ -117,7 +117,7 @@ function markListingCategories(element){
 }
 
 
-var right = document.getElementsByClassName("right-side")[0];
+let right = document.getElementsByClassName("right-side")[0];
 right.classList.remove('col-xl-6', 'col-lg-6');
 right.classList.add('col-xl-12', 'col-lg-12','col-12','px-0',);
 right.firstElementChild.classList.add('col-xl-12', 'col-lg-12');
