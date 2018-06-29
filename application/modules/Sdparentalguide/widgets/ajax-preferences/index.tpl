@@ -9,7 +9,8 @@
 <?php endif; ?>
 
 <?php if($this->showContent): ?>
-
+    <div class="text d-block text-danger p-2 w-100" id="errorForm"></div>
+    <div class="text d-block text-success p-2 w-100" id="successForm"></div>
     <?php echo $this->form; ?>
 
 <script>    
