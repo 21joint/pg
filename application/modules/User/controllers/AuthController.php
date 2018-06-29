@@ -42,7 +42,9 @@ class User_AuthController extends Core_Controller_Action_Standard
 
     
     // // For Button
-    $form->getElement('submit')->setAttrib('class', 'btn btn-success text-white py-2 px-0 text-uppercase w-100');
+    $form->getElement('submit')->setAttrib('class', 'btn btn-outline-success text-uppercase py-2 w-100 px-0');
+
+    $form->getElement('cancel')->setAttrib('class', 'btn btn-outline-success text-uppercase py-2 w-100 px-0');
    
 
     // Render
@@ -506,13 +508,10 @@ class User_AuthController extends Core_Controller_Action_Standard
     // Make form
     $this->view->form = $form = new User_Form_Auth_Forgot();
 
-   
-    
-
-    
+  
     // For Button
-    $form->getElement('submit')->setAttrib('class', 'btn btn-success text-white py-2  text-uppercase mr-2');
-    $form->getElement('cancel')->setAttrib('class', 'btn btn-outline-dark  py-2 text-uppercase ml-2');
+    $form->getElement('submit')->setAttrib('class', 'btn btn-success text-white py-2  text-uppercase w-50 mt-5');
+    
 
     // Check request
     if( !$this->getRequest()->isPost() ) {
@@ -628,8 +627,8 @@ class User_AuthController extends Core_Controller_Action_Standard
     $this->view->form = $form = new User_Form_Auth_Reset();
 
     // For Button
-    $form->getElement('submit')->setAttrib('class', 'btn btn-success text-white py-2  text-uppercase mr-2');
-    $form->getElement('cancel')->setAttrib('class', 'btn btn-outline-dark  py-2 text-uppercase ml-2');
+    $form->getElement('submit')->setAttrib('class', 'btn btn-success text-white py-2  text-uppercase w-50');
+    
 
 
 

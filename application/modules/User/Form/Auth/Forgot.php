@@ -21,8 +21,10 @@ class User_Form_Auth_Forgot extends Engine_Form
   public function init()
   {
     $this
-      ->setTitle('Lost Password')
-      ->setDescription('Find your Parental Guidance account')
+      ->setTitle('Find your Parental Guidance account')
+      ->setDescription('If you cannot login because you have forgotten your password, please enter your email address in the field below.
+
+      ')
       ->setAttrib('id', 'user_form_auth_forgot')
       ->setAttrib('class', 'extfox-auth w-100')
       ;
@@ -49,24 +51,24 @@ class User_Form_Auth_Forgot extends Engine_Form
       ),
     ));
 
-    $this->addElement('Cancel', 'cancel', array(
-      'label' => 'cancel',
-      'link' => true,
-      'prependText' => Zend_Registry::get('Zend_Translate')->_(' or '),
-      'href' => Zend_Controller_Front::getInstance()->getRouter()->assemble(array(), 'default', true),
-      'decorators' => array(
-        'ViewHelper',
-      ),
-    ));
+    // $this->addElement('Cancel', 'cancel', array(
+    //   'label' => 'cancel',
+    //   'link' => true,
+    //   'prependText' => Zend_Registry::get('Zend_Translate')->_(' or '),
+    //   'href' => Zend_Controller_Front::getInstance()->getRouter()->assemble(array(), 'default', true),
+    //   'decorators' => array(
+    //     'ViewHelper',
+    //   ),
+    // ));
     
-    $this->addDisplayGroup(array(
-      'submit',
-      'cancel'
-    ), 'buttons', array(
-      'decorators' => array(
-        'FormElements',
-        'DivDivDivWrapper',
-      ),
-    ));
+    // $this->addDisplayGroup(array(
+    //   'submit',
+    //   'cancel'
+    // ), 'buttons', array(
+    //   'decorators' => array(
+    //     'FormElements',
+    //     'DivDivDivWrapper',
+    //   ),
+    // ));
   }
 }
