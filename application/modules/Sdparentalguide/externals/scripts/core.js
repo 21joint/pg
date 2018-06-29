@@ -114,7 +114,7 @@ en4.gg = {
                 format : 'json',
                 values: formValues,
             },
-            onComplete: function(resp) {
+            onComplete: function(resp) { 
                 if(resp.status == false) {
                     errorElement.textContent = resp.message;
                     successElement.textContent = '';
@@ -122,6 +122,9 @@ en4.gg = {
                 if(resp.status == true) {
                     successElement.textContent = resp.message;
                     errorElement.textContent = '';
+                    if(action == 'delete'){
+                        window.location.href = en4.core.staticBaseUrl;
+                    }
                 }
             }
         })).send();
