@@ -25,9 +25,10 @@ function loadLeaderboardResults(){
     
     var loader = en4.core.loader.clone();
     loader.addClass("sd_loader");
+    var url = en4.core.baseUrl+"v1/ranking";
     
     var request = new Request.JSON({
-        url: "<?php echo $this->url(array('action' => 'ranking-service'),'sdparentalguide_api',true); ?>",
+        url: url,
         data: requestData,
         onRequest: function(){ loader.inject($("sd-response"),"after"); }, //When request is sent.
         onError: function(){ loader.destroy(); }, //When request throws an error.
