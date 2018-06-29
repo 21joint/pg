@@ -42,7 +42,7 @@ class Sdparentalguide_Widget_AjaxStrugglesController extends Engine_Content_Widg
 
         $page = $this->_getParam('page', 1);
         $limit = Engine_Api::_()->getApi('settings', 'core')->getSetting('ggcommunity.question.page');
-
+        
 
         $questionTable = Engine_Api::_()->getDbtable('questions', 'ggcommunity');
 

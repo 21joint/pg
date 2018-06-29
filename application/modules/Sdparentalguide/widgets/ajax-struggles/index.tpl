@@ -31,6 +31,7 @@
 
                 <?php else: ?>
                     <?php foreach($this->paginator as $item):?>
+
                         <?php echo $this->partial('ajax/struggles/_struggles.tpl', 'sdparentalguide', array(
                             'item' => $item,
                         )); ?>

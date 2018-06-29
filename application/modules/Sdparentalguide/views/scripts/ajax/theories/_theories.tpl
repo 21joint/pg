@@ -102,7 +102,7 @@
     
     <!-- Answer side -->
     <!-- left side -->
-    <li class="struggle_holder right-side d-block d-sm-flex px-xl-4 py-xl-3 px-lg-4 py-lg-3 px-1 py-3 mr-4 mb-0 <?php echo (($question->accepted_answer==1) ? 'chosen_theory' : '');?>">
+    <li class="struggle_holder right-side d-block d-sm-flex px-xl-4 py-xl-3 px-lg-4 py-lg-3 px-1 py-3 mr-4 mb-0 <?php echo (($item->accepted ==1) ? 'chosen_theory' : '');?>">
         <div class="struggle_box_left w-100">
             <div class="struggle_left_side">
                 <a href="<?php echo $item->getOwner()->getHref();?>" class="struggle_owner_image">
@@ -115,9 +115,10 @@
                     <li class="struggle_time_created  ">
                        
                         <div class="top-holder">
-                            <a class="struggle_title" href="javascript:void(0);">
+                            <a class="struggle_title" href="<?php echo $question->getHref();?>">
                                 <?php echo  mb_strimwidth($item->body,0,30,'...'); ?>
                             </a>
+                           
                         </div>
                         <div class="bottom-holder-comments d-flex align-items-center ">
                             <div class="vote d-flex align-items-center mr-3">
