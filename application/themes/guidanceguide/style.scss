@@ -920,6 +920,8 @@ body#global_page_user-profile-index {
     }
     .sd_signup_interests {
         max-width: 100%;
+        padding: 0!important;
+        margin:0;
         li {
             width: 100%!important;
         }
@@ -1194,7 +1196,7 @@ form.preference-holder {
         font-size: 14px;
         font-weight:600;
         font-family: 'Nunito', sans-serif;
-        border:1px solid #F5F5F5;
+        border:2px solid #F5F5F5;
         width:100%;
         padding: 1.5rem 0;
         margin:0;
@@ -1228,7 +1230,7 @@ form.preference-holder {
         content: '';
     }
     input[type="checkbox"]:checked ~ label {
-        border:1px solid #8AE693;
+        border:2px solid #8AE693;
     }
 
     h3 {
