@@ -6,6 +6,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // const CopyWebpackPlugin = require("copy-webpack-plugin");
+const Modules = require('./conf').modules;
 
 const IS_DEV = (process.env.NODE_ENV === 'dev');
 
@@ -15,11 +16,11 @@ const IS_DEV = (process.env.NODE_ENV === 'dev');
 
 module.exports = {
     entry: {
-        parentalguidance: './application/modules/Sdparentalguide/index.js'
+        parental: './application/modules/Sdparentalguide/index.js'
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'scripts/[name].[hash].js',
+        filename: '[path][name].js',
         publicPath: '/'
     },
     module: {
@@ -65,7 +66,6 @@ module.exports = {
                         {
                             loader: 'sass-loader',
                             options: {
-                                publicPath: '/',
                                 sourceMap: IS_DEV,
                                 data: "$prefix: " + require('./conf').prefix + ";"
                             }
@@ -84,10 +84,10 @@ module.exports = {
                             limit: 1024,
                             name(file) {
                                 if (file.indexOf('fonts') > -1) {
-                                    return 'fonts/[name].[ext]';
+                                    return '/fonts/[name].[ext]';
                                 }
                                 else {
-                                    return 'images/[name].[ext]';
+                                    return '/images/[name].[ext]';
                                 }
                             },
                             fallback: 'file-loader',

@@ -1,4 +1,4 @@
-$green: #8AE693;
+$fa-font-path: '/fonts';
 //
 //// Variables
 ////
@@ -22,6 +22,7 @@ $green: #8AE693;
 //$gray-800: #343a40 !default;
 //$gray-900: #212529 !default;
 //$black:    #000 !default;
+
 //
 //$grays: () !default;
 //$grays: map-merge((
@@ -36,14 +37,14 @@ $green: #8AE693;
 //        "900": $gray-900
 //), $grays);
 //
-//$blue:    #007bff !default;
+$blue: #5CC7CE;
 //$indigo:  #6610f2 !default;
 //$purple:  #6f42c1 !default;
 //$pink:    #e83e8c !default;
 //$red:     #dc3545 !default;
 //$orange:  #fd7e14 !default;
 //$yellow:  #ffc107 !default;
-//$green:   #28a745 !default;
+$green: #8AE693;
 //$teal:    #20c997 !default;
 //$cyan:    #17a2b8 !default;
 //
@@ -70,7 +71,7 @@ $green: #8AE693;
 //$info:          $cyan !default;
 //$warning:       $yellow !default;
 //$danger:        $red !default;
-//$light:         $gray-100 !default;
+$light: #F7FCFC;
 //$dark:          $gray-800 !default;
 //
 //$theme-colors: () !default;
@@ -144,7 +145,7 @@ $green: #8AE693;
 //// Settings for the `<body>` element.
 //
 //$body-bg:                   $white !default;
-//$body-color:                $gray-900 !default;
+$body-color: #333D40;
 //
 //// Links
 ////
@@ -183,12 +184,12 @@ $green: #8AE693;
 ////
 //// Define the maximum width of `.container` for different screen sizes.
 //
-//$container-max-widths: (
-//        sm: 540px,
-//        md: 720px,
-//        lg: 960px,
-//        xl: 1140px
-//) !default;
+$container-max-widths: (
+        sm: 540px,
+        md: 720px,
+        lg: 960px,
+        xl: 1250px
+);
 //
 //@include _assert-ascending($container-max-widths, "$container-max-widths");
 //
@@ -210,8 +211,8 @@ $green: #8AE693;
 //$border-width:                1px !default;
 //$border-color:                $gray-300 !default;
 //
-$border-radius:               50px;
-$border-radius-lg:            50px;
+//$border-radius: 50px;
+//$border-radius-lg: 50px;
 //$border-radius-sm:            .2rem !default;
 //
 //$box-shadow-sm:               0 .125rem .25rem rgba($black, .075) !default;
@@ -233,9 +234,9 @@ $border-radius-lg:            50px;
 //// Font, line-height, and color for body text, headings, and more.
 //
 //// stylelint-disable value-keyword-case
-//$font-family-sans-serif:      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 //$font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
-//$font-family-base:            $font-family-sans-serif !default;
+$font-family-base: "Nunito", #{$font-family-sans-serif};
 //// stylelint-enable value-keyword-case
 //
 //$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
@@ -244,7 +245,7 @@ $border-radius-lg:            50px;
 //
 //$font-weight-light:           300 !default;
 //$font-weight-normal:          400 !default;
-//$font-weight-bold:            700 !default;
+$font-weight-bold: 700;
 //
 //$font-weight-base:            $font-weight-normal !default;
 //$line-height-base:            1.5 !default;
@@ -332,8 +333,8 @@ $border-radius-lg:            50px;
 ////
 //// Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
 //
-//$input-btn-padding-y:         .375rem !default;
-//$input-btn-padding-x:         .75rem !default;
+$input-btn-padding-y:         .5rem;
+$input-btn-padding-x: 1.5rem;
 //$input-btn-line-height:       $line-height-base !default;
 //
 //$input-btn-focus-width:       .2rem !default;
@@ -344,11 +345,11 @@ $border-radius-lg:            50px;
 //$input-btn-padding-x-sm:      .5rem !default;
 //$input-btn-line-height-sm:    $line-height-sm !default;
 //
-//$input-btn-padding-y-lg:      .5rem !default;
-//$input-btn-padding-x-lg:      1rem !default;
+$input-btn-padding-y-lg:      .75rem;
+$input-btn-padding-x-lg:      2.5rem;
 //$input-btn-line-height-lg:    $line-height-lg !default;
 //
-//$input-btn-border-width:      $border-width !default;
+$input-btn-border-width: 2px;
 //
 //
 //// Buttons
@@ -369,7 +370,7 @@ $border-radius-lg:            50px;
 //
 //$btn-border-width:            $input-btn-border-width !default;
 //
-//$btn-font-weight:             $font-weight-normal !default;
+$btn-font-weight: $font-weight-bold !default;
 //$btn-box-shadow:              inset 0 1px 0 rgba($white, .15), 0 1px 1px rgba($black, .075) !default;
 //$btn-focus-width:             $input-btn-focus-width !default;
 //$btn-focus-box-shadow:        $input-btn-focus-box-shadow !default;
@@ -381,11 +382,11 @@ $border-radius-lg:            50px;
 //$btn-block-spacing-y:         .5rem !default;
 //
 //// Allows for customizing button radius independently from global border radius
-//$btn-border-radius:           $border-radius !default;
-//$btn-border-radius-lg:        $border-radius-lg !default;
+$btn-border-radius:           50px;
+$btn-border-radius-lg:        100px;
 //$btn-border-radius-sm:        $border-radius-sm !default;
 //
-//$btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+$btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 //
 //
 //// Forms
@@ -408,12 +409,12 @@ $border-radius-lg:            50px;
 //$input-disabled-bg:                     $gray-200 !default;
 //
 //$input-color:                           $gray-700 !default;
-//$input-border-color:                    $gray-400 !default;
+$input-border-color: #F5F5F5;
 //$input-border-width:                    $input-btn-border-width !default;
 //$input-box-shadow:                      inset 0 1px 1px rgba($black, .075) !default;
 //
-//$input-border-radius:                   $border-radius !default;
-//$input-border-radius-lg:                $border-radius-lg !default;
+$input-border-radius: 50px;
+$input-border-radius-lg:                100px;
 //$input-border-radius-sm:                $border-radius-sm !default;
 //
 //$input-focus-bg:                        $input-bg !default;
@@ -422,7 +423,7 @@ $border-radius-lg:            50px;
 //$input-focus-width:                     $input-btn-focus-width !default;
 //$input-focus-box-shadow:                $input-btn-focus-box-shadow !default;
 //
-//$input-placeholder-color:               $gray-600 !default;
+$input-placeholder-color: #93A4A6;
 //$input-plaintext-color:                 $body-color !default;
 //
 //$input-height-border:                   $input-border-width * 2 !default;
@@ -689,8 +690,8 @@ $border-radius-lg:            50px;
 //
 //// Cards
 //
-//$card-spacer-y:                     .75rem !default;
-//$card-spacer-x:                     1.25rem !default;
+$card-spacer-y: .5rem;
+$card-spacer-x: 1rem;
 //$card-border-width:                 $border-width !default;
 //$card-border-radius:                $border-radius !default;
 //$card-border-color:                 rgba($black, .125) !default;

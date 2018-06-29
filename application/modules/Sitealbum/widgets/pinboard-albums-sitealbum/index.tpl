@@ -86,7 +86,7 @@ $this->headScript()
     endif;
     ?>
     <div class="seaocore_list_wrapper" style="width:<?php echo $this->params['itemWidth'] ?>px;">
-      <div class="seaocore_board_list b_medium" style="width:<?php echo $this->params['itemWidth'] - 18 ?>px;">
+      <div class="\ b_medium" style="width:<?php echo $this->params['itemWidth'] - 18 ?>px;">
         <div>
           <div class="seaocore_board_list_thumb">
             <a href="<?php echo $sitealbum->getHref() ?>" class="seaocore_thumb">

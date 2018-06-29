@@ -170,7 +170,7 @@
             }).send('format=json&environment_mode='+mode);
         }
         //]]>
-    </script>
+    </script>=
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 <body id="global_page_<?php echo $identity ?>">

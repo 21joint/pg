@@ -1,8 +1,12 @@
-@import "~bootstrap/scss/bootstrap";
+@import "./colors";
+@import "./variables";
+@import "../../../node_modules/bootstrap/scss/bootstrap";
+@import "../../../node_modules/@fortawesome/fontawesome-free/scss/fa-regular";
+@import "./helpers";
 @import "./header";
+@import "./common";
+@import "./widgets/card";
 @import "./footer";
-
-@import "./widgets/reviews-home";
 
 // CORE
 .seaocore_up_button {
@@ -64,6 +68,7 @@
         *   CheckBox
         *   RadioButton
 */
+
 // Widgets
 .extfox-widgets {
 
@@ -151,16 +156,16 @@
             background-repeat: no-repeat;
             background-position: 50% 50%;
             &.bronze {
-              background-image: url('../images/badges/Bronze.svg');
+              background-image: url('/images/Bronze.svg');
             }
             &.silver {
-              background-image: url('../images/badges/Silver.svg');
+              background-image: url('/images/Silver.svg');
             }
             &.gold {
-              background-image: url('../images/badges/Gold.svg');
+              background-image: url('/images/Gold.svg');
             }
             &.platinium {
-              background-image: url('../images/badges/Platinum.svg');
+              background-image: url('/images/Platinum.svg');
             }
             .badge-holder {
               min-height: 60px;
@@ -938,168 +943,6 @@ body#global_page_user-profile-index {
     grid-template-columns: repeat(1, 1fr);
   }
 
-  // HEADER
-  header.extfox-header {
-    .list-inline-item.search {
-      display: block !important;
-      margin-right: 0px;
-    }
-    .container {
-      padding: 0px !important;
-
-      .hamburger-menu {
-        display: block;
-        margin-top: -.5rem;
-        transition: all 150ms linear;
-
-        &:not(.acitve):hover .bar, &:not(.acitve).hover .bar {
-          width: 31px;
-        }
-        &:not(.active):hover .bar:before, &:not(.active).hover .bar:before {
-          width: 17px;
-        }
-        &:not(.active):hover .bar:after, &:not(.active).hover .bar:after {
-          width: 20px;
-        }
-
-        .bar {
-          position: relative;
-          transform: translateY(7px);
-          background: $gray-800;
-          transition: all 0ms 100ms, width 150ms linear;
-          display: block;
-          height: 3px;
-          width: 27px;
-          &:before {
-            content: "";
-            position: absolute;
-            right: 0;
-            bottom: 7px;
-            background: $gray-800;
-            transition: bottom 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1), width 150ms linear, background 150ms linear;
-            width: 27px;
-            height: 3px;
-          }
-          &:after {
-            content: "";
-            position: absolute;
-            right: 0;
-            top: 7px;
-            background: $gray-800;
-            transition: bottom 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1), width 150ms linear;
-            transition: top 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1), width 150ms linear, background 150ms linear;
-            width: 27px;
-            height: 3px;
-          }
-        }
-      }
-
-      // mini menu
-      .mini-menu {
-        ul {
-          li {
-            &.profile-img {
-              a {
-                img {
-                  height: 32px !important;
-                  width: 32px !important;
-                  object-fit: contain !important;
-                }
-              }
-            }
-            &.notifications {
-              .tip-notifications {
-                right: 24px !important;
-                top: -6px !important;
-                span {
-                  height: 19px !important;
-                  min-width: 17px !important;
-                }
-              }
-              a {
-                padding-top: 0px !important;
-                i {
-                  font-size: 18px;
-                }
-              }
-            }
-          }
-        }
-
-      }
-
-      // search
-      .search-bar {
-        z-index: 1;
-        transition: .2s ease transform;
-        transform: translateY(-5rem);
-        &.active {
-          transform: translateY(1px);
-          display: inline-block !important;
-          max-width: 100%;
-          position: absolute;
-          left: 0;
-          top: 0;
-        }
-        input {
-          background: #F5F5F5 !important;
-          padding-top: 1.8rem !important;
-          padding-bottom: 1.8rem !important;
-          border-radius: 0 !important;
-        }
-        i {
-          right: 1rem;
-          top: 1.8rem;
-          color: #333D40 !important;
-          cursor: pointer;
-        }
-      }
-
-    }
-
-    // mobile menu
-    .parental-mobile-menu-holder {
-      border: none !important;
-      display: block !important;
-      position: relative;
-      z-index: 9;
-      transition: transform .5s cubic-bezier(0.86, 0, 0.07, 1);
-      transform: translateX(-90%);
-      &.active {
-        transform: translateX(0%);
-      }
-      .container {
-        position: absolute;
-        width: 80%;
-        height: 100vh;
-        background: #fff;
-        z-index: 9;
-        box-shadow: 20px 0px 40px rgba(0, 0, 0, 0.16);
-        .row {
-          margin: 0;
-          ul {
-            li {
-              width: 100%;
-              margin-right: 0 !important;
-              border-bottom: 1px solid rgba(245, 245, 245, 1);
-              &:hover {
-                a {
-                  border: none !important;
-                }
-              }
-              a {
-                display: block;
-                font-weight: bold;
-                padding-left: 2rem;
-              }
-            }
-          }
-        }
-      }
-    }
-
-  }
-
   /*
   * USER PROFILE + Shared Everywhere
   * Widgets
@@ -1209,6 +1052,7 @@ body#global_page_user-profile-index {
       }
     }
   }
+
   // Struggles Profile
   .layout_sdparentalguide_ajax_struggles {
     li {
@@ -1304,6 +1148,7 @@ body#global_page_user-profile-index {
       width: 95% !important;
     }
   }
+
   .layout_sdparentalguide_ajax_theories {
     .container {
       width: 100% !important;

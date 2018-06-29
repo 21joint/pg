@@ -1,0 +1,82 @@
+.card-review {
+  margin: 15px 5px;
+  .fa, .far {
+    color: #B9CFD1;
+  }
+  .card-footer {
+    .list-inline-item:not(:last-child) {
+      margin-right: 0.366rem;
+    }
+  }
+}
+
+.card-img--wrapper {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.card-stars {
+  position: absolute;
+  bottom: -1px;
+  left: 20px;
+  z-index: 100;
+  padding: .625rem 1.25rem;
+  background-color: #ffffff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  img,svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+  }
+  .list-inline-item:not(:last-child) {
+    margin-right: 0.366rem;
+  }
+}
+
+.card-title {
+  font-size: 25px;
+  line-height: 34px;
+  min-height: 77px;
+}
+
+.card-text {
+  font-size: 14px;
+  font-family: "Open Sans", #{$font-family-base};
+  line-height: 19px;
+  min-height: calc(19px * 4) + 20px;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  -ms-word-break: break-all;
+  word-break: break-all;
+
+}
+
+.card-author--thumbnail {
+  margin-right: 16px;
+  .card-author--rank {
+    font-size: 9px;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    bottom: 0;
+    right: 0;
+    box-shadow: 0 0 0 2px #ffffff;
+  }
+}
+
+.card-author--title {
+  font-size: 14px;
+}
+
+.card-footer {
+  .list-inline-item {
+    font-size: 0.875rem;
+  }
+  .fa, .far {
+    margin-right: 4px;
+  }
+}

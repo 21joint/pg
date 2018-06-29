@@ -22,7 +22,7 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             case 'Sdparentalguide_Model_Statistic':
             case 'Sdparentalguide_Model_Search':
             case 'Sdparentalguide_Model_ListingTopic':
-            case 'Sdparentalguide_Model_SearchTerm':    
+            case 'Sdparentalguide_Model_SearchTerm':
             case 'Sdparentalguide_Model_SearchTermsAlias':
             case 'Sdparentalguide_Model_ListingRating':
             case 'Sdparentalguide_Model_SearchAnalytic':
@@ -43,7 +43,7 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             if($auditingSaved && Zend_Registry::get("Auditing_Created") > 20){
                 return;
             }
-            
+
         } catch (Exception $ex) {
             //Silent
 //            throw $ex;
@@ -68,12 +68,12 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                 $payload->gg_user_created = $viewer->getIdentity();
                 $payload->gg_dt_created = date("Y-m-d H:i:s");
             }
-            
+
             if( $payload instanceof Sitecredit_Model_Credit ) {
                 $this->updateUserCredits($payload);
                 $this->updateTransactionTopic($payload);
             }
-            
+
             if( $payload instanceof Sitereview_Model_Listing ) {
                 $owner = $payload->getOwner();
                 if(!empty($owner)){
@@ -82,7 +82,7 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                     }
                 }
             }
-                        
+
         } catch (Exception $ex) {
             //Silent
 //            throw $ex;
@@ -102,18 +102,18 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             if($auditingSaved && Zend_Registry::get("Auditing_Created") > 20){
                 return;
             }
-            
+
             if( $payload instanceof Sitereview_Model_Listing && $payload->approved) {
                 $viewer->gg_review_count++;
                 $viewer->save();
             }
-            
-            
+
+
             if( $payload instanceof Ggcommunity_Model_Question && $payload->approved && !$payload->draft) {
                 $viewer->gg_question_count++;
                 $viewer->save();
             }
-            
+
             if( $payload instanceof Sitecredit_Model_Credit) {
                 $creditsTable = Engine_Api::_()->getDbtable('credits','sdparentalguide');
                 $row = $creditsTable->getUserActivityCount($viewer);
@@ -127,7 +127,7 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                 $viewer->gg_activities = $userActivities;
                 $viewer->save();
             }
-            
+
         } catch (Exception $ex) {
             //Silent
 //            throw $ex;
@@ -156,7 +156,7 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             $user->gg_activities = $userActivities;
             $user->gg_contribution_updated = 1;
             $user->save();
-            
+
         } catch (Exception $ex) {
             //Silent
         }
@@ -189,7 +189,7 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                         $table->update($params,$where);
                     }
                     Zend_Registry::set("Auditing_Saved",1);
-                }                
+                }
             }
         } catch (Exception $ex) {
             //Silent
@@ -225,28 +225,28 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                     }
                     Zend_Registry::set("Auditing_Saved",1);
                 }
-                
+
             }
-            
+
             $modifiedFields = $payload->getModifiedFields();
-                        
+
             if( $payload instanceof Sitereview_Model_Listing && $payload->approved && isset($modifiedFields['approved'])) {
                 $payload->getOwner()->gg_review_count++;
                 $payload->getOwner()->save();
             }
-            
+
             if( $payload instanceof Sitereview_Model_Listing && !$payload->approved && isset($modifiedFields['approved'])) {
                 $payload->getOwner()->gg_review_count--;
                 $payload->getOwner()->save();
             }
-            
+
             if( $payload instanceof Ggcommunity_Model_Question && (isset($modifiedFields['approved']) || isset($modifiedFields['draft']))) {
                 if($payload->approved && !$payload->draft){
                     $payloadUser = Engine_Api::_()->user()->getUser($payload->user_id);
                     $payloadUser->gg_question_count++;
                     $payloadUser->save();
                 }
-            }            
+            }
             if( $payload instanceof Ggcommunity_Model_Question && (isset($modifiedFields['approved']) || isset($modifiedFields['draft']))) {
                 if((!$payload->approved || $payload->draft)){
                     $payloadUser = Engine_Api::_()->user()->getUser($payload->user_id);
@@ -254,8 +254,8 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                     $payloadUser->save();
                 }
             }
-            
-            
+
+
             $contributionLevelSaved = Zend_Registry::isRegistered("ContributionLevel_Saved");
             if( $payload instanceof User_Model_User && empty($contributionLevelSaved) && isset($modifiedFields['gg_contribution'])) {
                 $api = Engine_Api::_()->sdparentalguide();
@@ -264,13 +264,13 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                     $payload->gg_contribution_level = $badge->gg_contribution_level;
                     if(!$payload->isAdminOnly() && $badge->gg_level_id > 0){
                         $payload->level_id = $badge->gg_level_id;
-                    }            
+                    }
                     $payload->save();
                     Zend_Registry::set("ContributionLevel_Saved",1);
                 }
-                
+
             }
-            
+
         } catch (Exception $ex) {
             //Silent
         }
@@ -301,31 +301,31 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             $this->_creditManagePage();
             $request->setModuleName("sdparentalguide");
         }
-        
+
         if($moduleName == "sitereview" && $controllerName == "index" && $actionName == "home"){
 //            $this->replaceListingHomeWidgets();
         }
-        
+
         if($moduleName == "sitereview" && $controllerName == "index" && ($actionName == "create" || $actionName == "edit")){
             $request->setControllerName("listing");
             $request->setModuleName("sdparentalguide");
         }
-        
-        
+
+
         if($moduleName == "user" && $controllerName == "friends"){
             $request->setModuleName("sdparentalguide");
         }
-        
+
         if($moduleName == "siteusercoverphoto" && $controllerName == "friends"){
             $request->setControllerName("friendsPhoto");
             $request->setModuleName("sdparentalguide");
         }
-        
+
         $searchText = $request->getParam("query");
         if(!empty($searchText) && $moduleName == "core" && $controllerName == "search" && $actionName == "index"){
             Engine_Api::_()->getDbTable('search', 'sdparentalguide')->logSearch($searchText);
         }
-        
+
         if(!empty($searchText) && $moduleName == "siteadvsearch" && $controllerName == "index" && $actionName == "index"){
             Engine_Api::_()->getDbTable('search', 'sdparentalguide')->logSearch($searchText);
         }
@@ -355,11 +355,11 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
         } catch (Exception $ex) {
             $db->rollBack();
         }
-        
+
   }
-  
+
   public function onItemDeleteBefore($event){
-      $item = $event->getPayload();      
+      $item = $event->getPayload();
       try{
           if($item instanceof Sdparentalguide_Model_Badge){
                 $assignedTable = Engine_Api::_()->getDbtable('assignedBadges', 'sdparentalguide');
@@ -373,7 +373,7 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                 $item->getOwner()->gg_question_count--;
                 $item->getOwner()->save();
           }
-          
+
           if( $item instanceof Sitereview_Model_Listing && $item->approved) {
                 $item->getOwner()->gg_review_count--;
                 $item->getOwner()->save();
@@ -388,18 +388,17 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
           return;
        }
        $cssBaseUrl = APPLICATION_ENV == 'development' ? rtrim($view->baseUrl(), '/') . '/' : $view->layout()->staticBaseUrl;
-       $view->headLink()
-            ->prependStylesheet($cssBaseUrl . 'externals/font-awesome/css/font-awesome.min.css');
+       $view->headLink()->prependStylesheet($cssBaseUrl . 'externals/font-awesome/css/font-awesome.min.css');
   }
   public function onRenderLayoutAdminSimple($event){
       $this->onRenderLayoutAdmin($event, true);
   }
-    
+
     public function onRenderLayoutDefault($event, $mode = null){
         $view = $event->getPayload();
         Engine_Api::_()->getDbTable("statistics","sdparentalguide")->logStatistics($view);
     }
-    
+
     public function replaceListingHomeWidgets(){
         $listingTypesArray = Engine_Api::_()->sdparentalguide()->getListingTypesArray();
         if(count($listingTypesArray) <= 0){
@@ -427,16 +426,16 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                 if($content->name == "sitereview.pinboard-listings-sitereview"){
                     $content->name = "sdparentalguide.pinboard-listings-sitereview";
                     $content->save();
-                }                
+                }
             }
-        }        
-    }    
+        }
+    }
 
     public function updateTransactionTopic($payload){
         if($payload->resource_type != "sitereview_listing"){
             return;
         }
-        
+
         $listing = Engine_Api::_()->getItem($payload->resource_type,$payload->resource_id);
         if(empty($listing)){
             return;
@@ -445,7 +444,7 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
         if(empty($listingType)){
             return;
         }
-        
+
         $payload->gg_topic_id = $listingType->gg_topic_id;
 //        $payload->save();
     }

@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/guidanceguide/parentalguidance#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.1.0",
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
     "bootstrap": "^4.1.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",

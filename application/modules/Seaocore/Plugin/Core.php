@@ -53,7 +53,7 @@ class Seaocore_Plugin_Core extends Zend_Controller_Plugin_Abstract {
     public function onRenderLayoutDefault($event) {
         $view = Zend_Registry::isRegistered('Zend_View') ? Zend_Registry::get('Zend_View') : null;
 
-        $view->headLink()->appendStylesheet($view->layout()->staticBaseUrl . 'externals/font-awesome/css/font-awesome.min.css');
+//        $view->headLink()->appendStylesheet($view->layout()->staticBaseUrl . 'externals/font-awesome/css/font-awesome.min.css');
 
         if (Engine_Api::_()->getDbtable('modules', 'core')->isModuleEnabled('sitemenu'))
             $view->headLink()->appendStylesheet($view->layout()->staticBaseUrl

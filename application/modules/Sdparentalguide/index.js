@@ -1,1 +1,1 @@
-import './assets/scss/index.scss';
+import '../../themes/guidanceguide/styles.scss';
