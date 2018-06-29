@@ -66,13 +66,13 @@ class Sdparentalguide_Widget_AjaxBadgesController extends Engine_Content_Widget_
         $specialBadges->setItemCountPerPage($this->_getParam('itemCountPerPage', 4));
         $specialBadges->setCurrentPageNumber($this->_getParam('page', 1));
 
-
-         // select special badges
+        // select special badges
         $selectContributorBadges = $table->select()
           ->setIntegrityCheck(false)
           ->from($table)
-          ->joinRight( $tName, "$bName.topic_id = $tName.topic_id")
+          ->joinLeft( $tName, "$bName.topic_id = $tName.topic_id")
           ->where( $bName . '.type = ?', 2)
+          ->group($tName . '.name')
           ->order( $tName . '.name ASC' )
         ;
 

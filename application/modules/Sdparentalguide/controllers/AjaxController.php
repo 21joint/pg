@@ -433,36 +433,56 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
 
         $values = $request->getParam('values', null);
 
-        $publishTypes = array(
-            'categories' => array()
-        );
+        $publishTypes = array();
         
         $i = 0;
         foreach($values as $key => $value) {
             $publishTypes['categories'][$i] = $value['name'];
             $i++;
         }
-
-
         
         $db = Engine_Db_Table::getDefaultAdapter();
         $db->beginTransaction();
 
-        try{
+        try {
+            
+            $prefTable = Engine_Api::_()->getDbTable("preferences","sdparentalguide");
+            $catTable = Engine_Api::_()->getDbTable("categories","sitereview");
 
-           
-        
-          
+            $categories = $publishTypes['categories'];
+            $categories = $catTable->fetchAll($catTable->select()->where('category_id IN (?)',$categories));
+            if(count($categories) <= 0){
+                return;
+            }
+
+            $prefTable->delete(array(
+                'user_id = ?' => $viewer->getIdentity(),
+                'category_id NOT IN(?)' => $categories
+            ));
+            foreach($categories as $category){
+                $prefParams = array(
+                    'user_id' => $viewer->getIdentity(),
+                    'listingtype_id' => $category->listingtype_id,
+                    'category_id' => $category->category_id
+                );
+                $prefRow = $prefTable->fetchRow($prefTable->select()->where('user_id = ?',$viewer->getIdentity())
+                        ->where("listingtype_id = ?",$category->listingtype_id)->where("category_id = ?",$category->category_id));
+                if(empty($prefRow)){
+                    $prefRow = $prefTable->createRow();
+                }                
+                $prefRow->setFromArray($prefParams);
+                $prefRow->save();        
+            }
+
+            $this->view->status = true;
+            $this->view->message = Zend_Registry::get('Zend_Translate')->_('Profile have been updated.');
+            
+            $db->commit();
 
         }catch (Exception $ex) {
             $db->rollBack();
             throw $ex;
         }
-
-
-        
-
-
 
         
     }

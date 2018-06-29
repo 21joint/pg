@@ -14,11 +14,9 @@
 ?>
 
 <style type="text/css">
-
-.left-side {
+#global_page_user-signup-index .left-side {
     display: none !important;
 }
-
 </style>
 
 <?php if(count($this->listingTypes) > 0): ?>

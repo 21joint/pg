@@ -604,6 +604,11 @@ body#global_page_user-profile-index {
         // opacity Image
         .contributor-badges-holder {
             .badge-image {
+                &:hover {
+                    img {
+                        opacity: 1 !important;
+                    }
+                }
                 &.inactive {
                     img {
                         opacity: 0.4;
