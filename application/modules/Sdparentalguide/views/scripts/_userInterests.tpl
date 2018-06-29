@@ -102,12 +102,8 @@ window.addEvent("resize",function(){
 function markListingCategories(element){
     
     var parent = $(element).getParent("li");
-    
-
     var checkboxes = parent.getElements("input[type=checkbox]");
-    console.log(parent);
-    console.log(checkboxes);
-    
+   
     if(checkboxes.length <= 0){
         return;
     }
