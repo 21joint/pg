@@ -23,7 +23,7 @@
             <ul class="topic_holder ">
                 <?php if($this->paginator->getTotalItemCount() <= 0): ?>
 
-                    <div class="tip py-5">
+                    <div class="tip-message py-5">
                         <span style="margin-bottom:0">
                             <?php echo $this->translate("No stuggles") ?>
                         </span>

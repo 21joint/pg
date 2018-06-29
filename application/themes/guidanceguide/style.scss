@@ -1342,13 +1342,39 @@ form.preference-holder {
             background-color:$primary;
             .border-holder {
                 border: 10px solid $white;
-                height: 88%;
+                height: 86.5%;
             }
         }
        
     }
 }
 
+// Close Button 
+.close-btn-x{
+    right: 45px;
+    top: 15px;
+    color:#B9CFD1;
+}
+.tip-message {
+    width: 50%;
+    span{
+        background-color: #EBFEFF;
+        font-size: 14px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 700;
+        padding: 1rem;
+        border-radius: 25px;
+        display: flex;
+        align-items: center;
+        &:before{
+            content: '\f0eb';
+            font-family: fontawesome;
+            margin-right: 10px;
+            font-size: 23px;
+        }
+    }
+    
+}
 
 //  ExtfoxForm Settings
 #extfox-settings {
