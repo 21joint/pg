@@ -9,7 +9,6 @@
 @import "./widgets/pagination";
 @import "./footer";
 
-
 // CORE
 .seaocore_up_button {
   .seaocore_up_button {
@@ -24,13 +23,19 @@
 .item-photo-guidance {
   .statistic {
     right: -.5rem;
-    bottom: .1rem;
+    bottom: 0;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    font-size: 12px;
+    width: 16px;
+    height: 16px;
+    font-size: 11px;
     box-shadow: 0 0 0 2px #ffffff;
     font-weight: 700;
+    @include media-breakpoint-up(sm) {
+      bottom: .1rem;
+      width: 20px;
+      height: 20px;
+      font-size: 10px;
+    }
   }
 }
 

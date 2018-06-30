@@ -1,13 +1,13 @@
 <header class="parental-header">
-  <div class="parental-header--top border-bottom py-3">
+  <div class="parental-header--top position-relative border-bottom py-3">
     <div class="container">
       <div class="row align-items-center m-0">
-        <div class="col-6 col-sm-4 p-0 logo d-flex align-items-center">
-          <a href="javascript:void(0);" class="hamburger-menu d-none d-md-block px-3">
-                  <span onclick="displayMenu()" class="hamburger-menu" aria-hidden="true">
-                      <span class="bar"></span>
-                  </span>
-            <svg height="40px" id="bc3286c2-b7fb-4350-9d0e-0eaf2ab71cf9" data-name="Layer 1"
+        <div class="col-auto px-0"><span onclick="displayMenu()" class="hamburger-menu" aria-hidden="true">
+                <span class="bar"></span>
+            </span></div>
+        <div class="col p-0 logo d-flex align-items-center">
+          <a href="javascript:void(0);" class="d-md-block px-3 w-100">
+            <svg class="w-100 align-middle" id="bc3286c2-b7fb-4350-9d0e-0eaf2ab71cf9" data-name="Layer 1"
                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480.81 171.45">
               <path d="M897.82,523.2h-8.69V479.79h17.38a17,17,0,0,1,4.6.62,17.29,17.29,0,0,1,4.13,1.76,17.63,17.63,0,0,1,3.51,2.72,17.46,17.46,0,0,1,4.48,7.67,17.35,17.35,0,0,1-.74,11.34,17.43,17.43,0,0,1-9.25,9.25,16.85,16.85,0,0,1-6.74,1.36h-8.69Zm0-34.72v17.38h8.69a8.37,8.37,0,0,0,3.36-.68,8.71,8.71,0,0,0,4.62-4.63,8.7,8.7,0,0,0,0-6.75,8.71,8.71,0,0,0-4.62-4.63,8.37,8.37,0,0,0-3.36-.68Z"
                     transform="translate(-720 -453.29)" fill="#5cc7ce"/>
@@ -52,7 +52,7 @@
           </a>
         </div> <!-- end of logo -->
 
-        <div class="col-6 col-sm-4 p-0 search d-none d-sm-block search-bar" id="search-bar">
+        <div class="col-12 d-sm-none search search-bar" id="search-bar">
 
           <form action="<?php echo $this->url(array('controller' => 'search'), 'default', true) ?>"
                 method="get">
@@ -67,29 +67,43 @@
 
         </div> <!-- search -->
 
-        <div class="col-6 col-sm-4 p-0 mini-menu" id="core_menu_mini_menu_extfox">
+        <div class="col-auto ml-auto col-sm-4 p-0 mini-menu" id="core_menu_mini_menu_extfox">
 
           <ul class="list-inline profile-items w-100 d-flex justify-content-sm-end justify-content-center align-items-center my-0">
 
-            <li class="list-inline-item align-middle search pr-3 d-sm-none d-block">
-              <a href="javascript:void(0)" id="search-icon">
-                <svg height="21px" fill="#7f8d96" xmlns="http://www.w3.org/2000/svg"
-                     viewBox="0 0 24.055 24">
-                  <path d="M25.773,22.074a10.066,10.066,0,1,0-7.918,3.836,10.149,10.149,0,0,0,6.219-2.164L30.129,29.8l1.726-1.726Zm-7.918,1.452a7.616,7.616,0,1,1,7.616-7.616A7.635,7.635,0,0,1,17.855,23.526Z"
-                        transform="translate(-7.8 -5.8)"/>
+            <li class="list-inline-item m-0 align-middle search d-sm-none">
+              <a class="d-flex align-items-center p-2"
+                 role="button"
+                 id="search-icon">
+                <svg height="22px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21">
+                  <defs>
+                    <style>.search-cls-1 {
+                        fill: #333d40;
+                      }</style>
+                  </defs>
+                  <g id="search" transform="translate(-247 -21)">
+                    <path id="search-2"
+                          data-name="search"
+                          class="search-cls-1"
+                          d="M20.855,19.231l-4.979-4.979a.487.487,0,0,0-.349-.144h-.541a8.529,8.529,0,1,0-.878.878v.541a.5.5,0,0,0,.144.349l4.979,4.979a.493.493,0,0,0,.7,0l.927-.927A.493.493,0,0,0,20.855,19.231ZM8.531,15.093a6.562,6.562,0,1,1,6.562-6.562A6.56,6.56,0,0,1,8.531,15.093Z"
+                          transform="translate(247 21)"/>
+                  </g>
                 </svg>
               </a>
             </li> <!-- end of search -->
 
               <?php if ($this->viewer->getIdentity() > 0): ?>
-                <li class="list-inline-item align-middle mr-2 p-2 notifications">
+                <li class="list-inline-item align-middle mr-2 p-2 notifications dropdown">
                   <a role="button"
+                     data-toggle="dropdown"
+                     aria-haspopup="true"
+                     data-boundary="window"
                      class="d-flex align-items-center position-relative core_mini_update updates_toogle">
                     <i class="fa fa-bell-o"
-                       id="close_icon"></i><span class="bg-primary text-white font-weight-bold position-absolute d-flex align-items-center justify-content-center"><?php echo $this->notificationCount; ?></span>
+                       id="close_icon"></i><span class="notifications-count bg-primary text-white font-weight-bold position-absolute d-flex align-items-center justify-content-center"><?php echo $this->notificationCount; ?></span>
                   </a>
-                  <div style="display: none;" class="updates_pulldown" id="core_mini_updates_pulldown">
-                    <div class="pulldown_contents_wrapper">
+                  <div class="updates_pulldown" id="core_mini_updates_pulldown">
+                    <div class="dropdown-menu dropdown-menu-right pulldown_contents_wrapper">
                       <div class="mark-all text-right px-3 py-2 d-flex align-items-center justify-content-end">
                           <?php echo $this->htmlLink('javascript:void(0);', $this->translate('Mark All Read'), array('id' => 'notifications_markread_link', 'class' => 'font-weight-light small')) ?>
                       </div>
@@ -97,7 +111,7 @@
                         <ul class="notifications_menu" id="notifications_menu">
                           <li class="notifications_loading d-flex justify-content-center align-items-center font-weight-light small py-4"
                               id="notifications_loading">
-                            <i class="fa fa-spin fa-spinner" style='margin-right: 5px;'></i>
+                            <i class="fa fa-spin fa-spinner" style="margin-right: 5px;"></i>
                               <?php echo $this->translate("Loading ...") ?>
                           </li>
                         </ul>
@@ -110,7 +124,7 @@
                     </div>
                   </div>
                 </li> <!-- notifications -->
-                <li class="list-inline-item align-middle profile-img pr-2">
+                <li class="list-inline-item align-middle profile-img">
                     <?php
 
                     $color = null;
@@ -125,20 +139,19 @@
                     } else {
                         $color = '#fff';
                     }
-
-
                     ?>
-                    <?php echo $this->htmlLink($this->viewer->getHref(), $this->itemPhoto($this->viewer, 'thumb.icon')); ?>
+                    <?= $this->htmlLink($this->viewer->getHref(), $this->itemPhoto($this->viewer, 'thumb.icon')); ?>
                 </li> <!-- profile -->
                 <li class="list-inline-item align-middle name d-none d-sm-inline-block position-relative dropdown">
-                    <?php echo $this->htmlLink($this->viewer->getHref(), substr($this->viewer->getTitle(), 0, strrpos($this->viewer->getTitle(), ' ')), array('class' => 'font-weight-bold align-middle')); ?>
+                    <?= $this->htmlLink($this->viewer->getHref(), substr($this->viewer->getTitle(), 0, strrpos($this->viewer->getTitle(), ' ')), array('class' => 'font-weight-bold align-middle')); ?>
                   <a role="button"
                      data-toggle="dropdown"
                      aria-haspopup="true"
                      class="align-middle p-2 fa fa-caret-down"
                      aria-expanded="false">
                   </a>
-                  <div class="dropdown-menu dropdown-menu-right shadow p-0 border-0 dropdown-menu--profile" style="overflow: hidden">
+                  <div class="dropdown-menu dropdown-menu-right shadow p-0 border-0 dropdown-menu--profile"
+                       style="overflow: hidden">
                     <ul>
                       <li>
                         <div class="dropdown-item bg-light p-3">
@@ -246,7 +259,7 @@
   </div> <!-- border-bottom -->
 </header>
 
-<script type='text/javascript'>
+<script type="text/javascript">
     var notificationUpdater;
 
     en4.core.runonce.add(function () {
@@ -368,15 +381,6 @@
         } else {
             mobileHolder.classList.remove('active');
             document.getElementsByTagName("body")[0].style = 'overflow-x: hidden';
-        }
-    }
-
-    function showProfileDropdown() {
-        let dropdownHolder = document.getElementById('profile-dropdown-menu');
-        if (dropdownHolder.classList.contains('active') == false) {
-            dropdownHolder.classList.add('active');
-        } else {
-            dropdownHolder.classList.remove('active');
         }
     }
 

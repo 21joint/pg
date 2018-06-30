@@ -10,9 +10,7 @@
 
 <div class="container extfox-widgets">
     <div class="row my-4">
-
         <div class="col-sm-4 col-12 left-side">
-            
             <div class="contribution bg-white mb-4 widget">
                 <div class="holder p-4">
                     <div class="top border-bottom border-gray pb-3">

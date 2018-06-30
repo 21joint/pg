@@ -2,12 +2,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 a, button {
   @include transition($transition-base);
 }
+
 a[role=button] {
   cursor: pointer;
 }
+
 .page-section {
   padding: 40px 0;
 }
@@ -38,4 +41,11 @@ a[role=button] {
 .content-box--title {
   font-size: 1.25rem;
   font-weight: $font-weight-bold;
+}
+
+img.thumb_icon, .suggestion_list .item_photo img {
+  @include media-breakpoint-down(sm) {
+    width: 32px !important;
+    height: 32px !important;
+  }
 }
