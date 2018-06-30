@@ -1,6 +1,5 @@
 <?php 
 
-$apiVersion = "v1";
 return array (
   'package' => 
   array (
@@ -33,68 +32,5 @@ return array (
     ),
   ),
     
-  'routes' => array(
-    'pgservicelayer_apireviews' => array(
-        'route' => $apiVersion.'/reviews/:action/*',
-        'defaults' => array(
-          'module' => 'pgservicelayer',
-          'controller' => 'reviews',
-          'action' => 'index',
-          'format' => 'json'
-        ),
-        'reqs' => array(
-          'action' => '\D+',
-        )
-    ),
-    'pgservicelayer_sitereview_categories' => array(
-        'route' => $apiVersion.'/categorization/*',
-        'defaults' => array(
-          'module' => 'pgservicelayer',
-          'controller' => 'reviews',
-          'action' => 'categories',
-          'format' => 'json'
-        ),
-        'reqs' => array(
-          'action' => 'categories',
-        )
-    ),
-    'pgservicelayer_apiphotos' => array(
-        'route' => $apiVersion.'/photo/:action/*',
-        'defaults' => array(
-          'module' => 'pgservicelayer',
-          'controller' => 'photo',
-          'action' => 'index',
-          'format' => 'json'
-        ),
-        'reqs' => array(
-          'action' => '\D+',
-        )
-    ),
-      
-    'pgservicelayer_apiranking' => array(
-        'route' => $apiVersion.'/ranking/*',
-        'defaults' => array(
-          'module' => 'pgservicelayer',
-          'controller' => 'user',
-          'action' => 'ranking',
-          'format' => 'json'
-        ),
-        'reqs' => array(
-          'action' => '\D+',
-        )
-    ),
-    'pgservicelayer_apimembers' => array(
-        'route' => $apiVersion.'/members/*',
-        'defaults' => array(
-          'module' => 'pgservicelayer',
-          'controller' => 'user',
-          'action' => 'index',
-          'format' => 'json'
-        ),
-        'reqs' => array(
-          'action' => '\D+',
-        )
-    ),
-    
-  ),
+  'routes' => array(),
 ); ?>

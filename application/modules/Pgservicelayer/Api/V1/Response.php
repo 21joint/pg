@@ -1,12 +1,13 @@
 <?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * SocialEngine
+ *
+ * @category   Application_Extensions
+ * @package    Pgservicelayer
+ * @author     Stars Developer
  */
 
-class Pgservicelayer_Api_Response extends Sdparentalguide_Api_Core {
+class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
     public function getListingOverview(Sitereview_Model_Listing $sitereview){
         $tableOtherinfo = Engine_Api::_()->getDbTable('otherinfo', 'sitereview');
         $overview = $tableOtherinfo->getColumnValue($sitereview->getIdentity(), 'overview');
