@@ -178,4 +178,28 @@ class Pgservicelayer_Model_DbTable_Files extends Storage_Model_DbTable_Files
     @unlink($normalLargePath);
     return $iMain;
   }
+  public function uploadImage($inputStream){
+      $image = imagecreatefromstring($inputStream);
+      $info = getimagesizefromstring($inputStream);
+      if(!is_resource($image) || empty($info)){
+          return null;
+      }
+      $randomImageName = rand(1000000, 9999999);;
+      $imageLib = Engine_Image::factory();
+      $type = $imageLib->image_type_to_extension($info[2],false);
+      $type = strtolower($type);
+      $file = APPLICATION_PATH . DIRECTORY_SEPARATOR . 'temporary'.DIRECTORY_SEPARATOR.$randomImageName.".".$type;
+      $width = $info[0];
+      $height = $info[1];
+      $function = 'image' . $type;
+      $quality = null;
+      if( $function == 'imagejpeg' && null !== $quality ) {
+        $result = $function($image, $file, $quality);
+      } elseif( $function == 'imagepng' && null !== $quality ) {
+        $result = $function($image, $file, round(abs(($quality - 100) / 11.111111)));
+      } else {
+        $result = $function($image, $file);
+      }
+      return $file;
+  }
 }
