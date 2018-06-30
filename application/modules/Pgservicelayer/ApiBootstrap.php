@@ -103,6 +103,7 @@ class Pgservicelayer_ApiBootstrap {
         $this->_initFrontController();
         $this->_initRouter();
         $this->_initTranslate();
+        $this->_initSession();
     }
 
     public function run(Zend_Controller_Request_Http $request = null) {
@@ -651,5 +652,58 @@ class Pgservicelayer_ApiBootstrap {
             include APPLICATION_PATH . '/application/modules/Sitegateway/controllers/license/license.php';
         if (is_file(APPLICATION_PATH . '/application/modules/Siteeventticket/controllers/license/license.php'))
             include APPLICATION_PATH . '/application/modules/Siteeventticket/controllers/license/license.php';
+    }
+    
+    protected function _initSession()
+    {
+        // Get session configuration
+        $file = APPLICATION_PATH . '/application/settings/session.php';
+        $config = array();
+        if (file_exists($file)) {
+            $config = include $file;
+        }
+
+        // Get default session configuration
+        if (empty($config)) {
+            $config = array(
+                'options' => array(
+                    'save_path' => 'session',
+                    'use_only_cookies' => true,
+                    'remember_me_seconds' => 864000,
+                    'gc_maxlifetime' => 86400,
+                    'cookie_httponly' => false,
+                ),
+                'saveHandler' => array(
+                    'class' => 'Core_Model_DbTable_Session',
+                    'params' => array(
+                        'lifetime' => 86400,
+                    ),
+                ),
+            );
+        }
+
+        // Remove httponly unless forced in config
+        if (!isset($config['options']['cookie_httponly'])) {
+            $config['options']['cookie_httponly'] = false;
+        }
+
+        // Set session options
+        Zend_Session::setOptions($config['options']);
+
+        $saveHandler = $config['saveHandler']['class'];
+        Zend_Session::setSaveHandler(new $saveHandler($config['saveHandler']['params']));
+
+        // Session hack for fancy upload
+        //if( !isset($_COOKIE[session_name()]) )
+        //{
+        $sessionName = Zend_Session::getOptions('name');
+        if (isset($_POST[$sessionName])) {
+            Zend_Session::setId($_POST[$sessionName]);
+        } elseif (isset($_POST['PHPSESSID'])) {
+            Zend_Session::setId($_POST['PHPSESSID']);
+        }
+        //}
+
+        //Zend_Session::start();
     }
 }

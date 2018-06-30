@@ -63,17 +63,9 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         return $categoryArray;
     }
     public function getListingTopic(Sitereview_Model_Listing $sitereview){
-        $topicArray = array(
-            'topicID' => '',
-            'topicName' => ''
-        );
         $listingType = $sitereview->getListingType();
         $topic = Engine_Api::_()->getItem("sdparentalguide_topic",$listingType->gg_topic_id);
-        if(empty($topic)){
-            return $topicArray;
-        }
-        $topicArray['topicID'] = $topic->getIdentity();
-        $topicArray['topicName'] = $topic->getTitle();
+        return $this->getTopicData($topic);
     }
     public function getListingPhotos(\Sitereview_Model_Listing $listing) {
         $listingPhotos = parent::getListingPhotos($listing);
@@ -183,5 +175,20 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             'expert' => (bool)$expert,
         );
         return $userArray;
+    }
+    
+    public function getTopicData($topic){
+        $topicArray = array(
+            'topicID' => '',
+            'topicName' => '',
+            'coverPhoto' => '',
+        );
+        if(empty($topic)){
+            return $topicArray;
+        }
+        $topicArray['topicID'] = $topic->getIdentity();
+        $topicArray['topicName'] = $topic->getTitle();
+        $topicArray['coverPhoto'] = $this->getContentImage($topic);
+        return $topicArray;
     }
 }
