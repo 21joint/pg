@@ -16,7 +16,23 @@ if (version_compare(phpversion(), '5.2.11', '<')) {
 define('_ENGINE_R_BASE', dirname($_SERVER['SCRIPT_NAME']));
 define('_ENGINE_R_FILE', $_SERVER['SCRIPT_NAME']);
 define('_ENGINE_R_REL', 'application');
-define('_ENGINE_R_TARG', 'index.php');
+//define('_ENGINE_R_TARG', 'index.php');
+
+
+////////////////////////////////////////////////////////
+//customization for rest api - Musharraf Jamil - 2018-06-30
+//original code starts here
+//define('_ENGINE_R_TARG', 'index.php');
+//original code ends here
+//modified code begins here
+$getRequestUriPG = htmlspecialchars($_SERVER['REQUEST_URI']);
+if(isset($getRequestUriPG) && !empty($getRequestUriPG) && strstr($getRequestUriPG, "api/v")){
+    define('_ENGINE_R_TARG', 'pgapi.php');
+}else {
+    define('_ENGINE_R_TARG', 'index.php');
+}
+//modifified code ends here
+//end of customization
 
 // Main
 include dirname(__FILE__)

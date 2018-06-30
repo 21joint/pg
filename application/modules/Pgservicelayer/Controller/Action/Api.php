@@ -9,6 +9,7 @@
 
 abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_Action_Standard
 {
+    protected $_inputStream = null;
     public function init(){
         $timezone = Engine_Api::_()->getApi('settings', 'core')->core_locale_timezone;
         $viewer   = Engine_Api::_()->user()->getViewer();
@@ -23,6 +24,12 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
         Engine_Api::_()->getApi('Core', 'siteapi')->setView();
         Engine_Api::_()->getApi('Core', 'siteapi')->setTranslate();
         Engine_Api::_()->getApi('Core', 'siteapi')->setLocal();        
+    }
+    public function getInputStream(){
+        if($this->_inputStream == null){
+            $this->_inputStream = file_get_contents("php://input");
+        }
+        return $this->_inputStream;
     }
     public function isApiRequest(){
         $request = Zend_Controller_Front::getInstance()->getRequest();
@@ -103,9 +110,12 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
             }            
         }
         $method = strtolower($this->getRequest()->getMethod());
-        if($method == 'put' || $method == 'delete' || $method == 'patch'){
-            $params = array();
-            parse_str(file_get_contents("php://input"),$params);
+        if($method == 'put' || $method == 'delete' || $method == 'patch' || $method == 'post'){
+            $inputStream = $this->getInputStream();
+            $params = (array)@json_decode($inputStream);
+            if(empty($params)){
+                parse_str($inputStream,$params);
+            }
             if(!empty($params) && is_array($params)){
                 foreach($params as $key => $param){
                     $this->setParam($key, $param);

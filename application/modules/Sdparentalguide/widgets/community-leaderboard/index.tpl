@@ -25,10 +25,11 @@ function loadLeaderboardResults(){
     
     var loader = en4.core.loader.clone();
     loader.addClass("sd_loader");
-    var url = en4.core.baseUrl+"v1/ranking";
+    var url = en4.core.baseUrl+"api/v1/ranking";
     
     var request = new Request.JSON({
         url: url,
+        method: 'get',
         data: requestData,
         onRequest: function(){ loader.inject($("sd-response"),"after"); }, //When request is sent.
         onError: function(){ loader.destroy(); }, //When request throws an error.

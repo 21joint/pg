@@ -48,7 +48,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
     }
     public function getAction(){
         $id = $this->getParam("id");   
-        $responseApi = Engine_Api::_()->getApi("response","pgservicelayer");
+        $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         $params = array();
         $customFieldValues = array();
         $page = $this->getParam("page",1);
@@ -57,9 +57,9 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         $listingTable = Engine_Api::_()->getDbTable('listings', 'sitereview');
         $listingTableName = $listingTable->info("name");
         $select = $listingTable->getSitereviewsSelect($params, $customFieldValues);
-        if(is_string($id)){
+        if(is_string($id) && !empty($id)){
             $select->where("$listingTableName.listing_id = ?",$id);
-        }else if(is_array($id)){
+        }else if(is_array($id) && !empty ($id)){
             $select->where("$listingTableName.listing_id IN (?)",$id);
         }
         $select->where("$listingTableName.gg_deleted = ?",0);
@@ -87,8 +87,8 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
             $this->respondWithError('unauthorized');
         }
         
-        $form = Engine_Api::_()->getApi("forms","pgservicelayer")->getReviewForm();
-        $validators = Engine_Api::_()->getApi("validators","pgservicelayer")->getReviewValidators();
+        $form = Engine_Api::_()->getApi("V1_Forms","pgservicelayer")->getReviewForm();
+        $validators = Engine_Api::_()->getApi("V1_Validators","pgservicelayer")->getReviewValidators();
         $values = $data = $_REQUEST;
 
         foreach ($form as $element) {
@@ -352,8 +352,10 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
             $this->respondWithServerError($e);
         }
         
-        $responseApi = Engine_Api::_()->getApi("response","pgservicelayer");
-        $response = $responseApi->getReviewData($sitereview);
+        $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
+        $sitereviewData = $responseApi->getReviewData($sitereview);
+        $response['ResultCount'] = 1;
+        $response['Results'] = array($sitereviewData);
         $this->respondWithSuccess($response);
         
     }
@@ -374,8 +376,8 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         $id = $this->getParam("id");
         $sitereview = Engine_Api::_()->getItem("sitereview_listing",$id);
         
-        $form = Engine_Api::_()->getApi("forms","pgservicelayer")->getReviewForm();
-        $validators = Engine_Api::_()->getApi("validators","pgservicelayer")->getReviewValidators();
+        $form = Engine_Api::_()->getApi("V1_Forms","pgservicelayer")->getReviewForm();
+        $validators = Engine_Api::_()->getApi("V1_Validators","pgservicelayer")->getReviewValidators();
         $values = $data = $this->getAllParams();
         
         foreach ($form as $element) {
@@ -580,8 +582,10 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
             $this->respondWithServerError($ex);
         }
         
-        $responseApi = Engine_Api::_()->getApi("response","pgservicelayer");
-        $response = $responseApi->getReviewData($sitereview);
+        $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
+        $sitereviewData = $responseApi->getReviewData($sitereview);
+        $response['ResultCount'] = 1;
+        $response['Results'] = array($sitereviewData);
         $this->respondWithSuccess($response);
     }
     public function deleteAction(){
@@ -590,7 +594,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         $level_id = !empty($viewer_id) ? $viewer->level_id : Engine_Api::_()->getDbtable('levels', 'authorization')->fetchRow(array('type = ?' => "public"))->level_id;
         $id = $this->getParam("id");
         $idsArray = (array)$id;
-        if(is_string($id)){
+        if(is_string($id) && !empty($id)){
             $idsArray = array($id);
         }
         $sitereviews = Engine_Api::_()->getItemMulti("sitereview_listing",$idsArray);
