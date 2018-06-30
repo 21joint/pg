@@ -21,15 +21,24 @@
   .card-actions {
     position: absolute;
     background-color: rgba(92, 199, 206, .9);
-    top: 0;
+    top: -46px;
     left: 0;
     right: 0;
     z-index: 100;
+    transition: 0.15s top ease-in-out;
     a {
       height: 45px;
+      @include hover-focus-active() {
+        background-color: darken($blue, 10%);
+      }
     }
     .fa, .far {
       color: inherit;
+    }
+  }
+  &:hover {
+    .card-actions {
+      top: 0;
     }
   }
 }

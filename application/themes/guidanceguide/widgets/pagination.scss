@@ -1,0 +1,32 @@
+.pagination {
+  font-family: 'Open Sans', #{$font-family-base};
+  li {
+    & + li {
+      margin-left: 10px;
+    }
+    &:first-child {
+      margin-right: 10px;
+    }
+    &:last-child {
+      margin-left: 20px;
+    }
+    &.pagination-nav {
+      a.page-link {
+        font-size: 22px;
+        color: $blue;
+      }
+    }
+  }
+}
+a.page-link {
+  color: $text-asphalt;
+  border-radius: 5px;
+  width: 29px;
+  height: 29px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include hover-focus-active() {
+    background-color: transparent;
+  }
+}
