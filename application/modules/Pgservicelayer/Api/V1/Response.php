@@ -177,7 +177,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         return $userArray;
     }
     
-    public function getTopicData(Sdparentalguide_Model_Topic $topic){
+    public function getTopicData($topic){
         $topicArray = array(
             'topicID' => '',
             'topicName' => ''
