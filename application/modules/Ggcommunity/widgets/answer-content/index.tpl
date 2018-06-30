@@ -507,23 +507,23 @@
                
                 form.addEventListener("submit", function(e) {
 
-                    e.preventDefault();  
-                    
-                    var body_editor = document.getElementById('create-answer-form').getElementById('body');
-                    var mce_editor = document.getElementById('create-answer-form').getElementsByClassName('mce-tinymce mce-container mce-panel');
+                    e.preventDefault();
 
+                    var body_editor = document.querySelector("#body_create");
+                    // var body_editor = document.getElementById('create-answer-form').getElementById('body');
+                    var mce_editor = document.getElementById('create-answer-form').getElementsByClassName('mce-tinymce mce-container mce-panel');
                     if(mce_editor.length > 0) {
                         // var body = ((( (tinymce.get('body').getContent()).replace(/(&nbsp;)*/g, "")).replace(/(<p>)*/g, "")).replace(/<(\/)?p[^>]*>/g, ""));
-                        //var body = tinymce.get('body').getContent();
                         var body = tinymce.get('body_create').getContent();
                     } else {
                         // var body = ((( (body_editor.value).replace(/(&nbsp;)*/g, "")).replace(/(<p>)*/g, "")).replace(/<(\/)?p[^>]*>/g, ""));  
                         var body = body_editor.value;
-                    }
+                        // empty input field
+                        body_editor.value = '';
+                    } 
 
                     if(!body) return;
                     en4.ggcommunity.answer.create(<?php echo $this->subject->getIdentity() ?>, body, last_answer_id);
-
                 });
 
                 
