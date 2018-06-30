@@ -52,7 +52,7 @@
           </a>
         </div> <!-- end of logo -->
 
-        <div id="search-bar" class="col-6 col-sm-4 p-0 search d-none d-sm-block search-bar">
+        <div class="col-6 col-sm-4 p-0 search d-none d-sm-block search-bar" id="search-bar">
 
           <form action="<?php echo $this->url(array('controller' => 'search'), 'default', true) ?>"
                 method="get">
@@ -71,7 +71,7 @@
 
           <ul class="list-inline profile-items w-100 d-flex justify-content-sm-end justify-content-center align-items-center my-0">
 
-            <li class="list-inline-item search pr-3 d-sm-none d-block">
+            <li class="list-inline-item align-middle search pr-3 d-sm-none d-block">
               <a href="javascript:void(0)" id="search-icon">
                 <svg height="21px" fill="#7f8d96" xmlns="http://www.w3.org/2000/svg"
                      viewBox="0 0 24.055 24">
@@ -82,38 +82,35 @@
             </li> <!-- end of search -->
 
               <?php if ($this->viewer->getIdentity() > 0): ?>
-                <li class="line-inline-item pr-4 position-relative notifications">
-                  <a href="javascript:void(0)" class="core_mini_update updates_toogle">
-                    <i class="fa fa-bell-o" id="close_icon"></i>
-                    <span class="tip-notifications position-absolute"><span><?php echo $this->notificationCount; ?></span></span>
+                <li class="list-inline-item align-middle mr-2 p-2 notifications">
+                  <a role="button"
+                     class="d-flex align-items-center position-relative core_mini_update updates_toogle">
+                    <i class="fa fa-bell-o"
+                       id="close_icon"></i><span class="bg-primary text-white font-weight-bold position-absolute d-flex align-items-center justify-content-center"><?php echo $this->notificationCount; ?></span>
                   </a>
-                  <span style="display: none;" class="updates_pulldown" id="core_mini_updates_pulldown">
-                            <div class="pulldown_contents_wrapper">
-
-                                <div class="mark-all text-right px-3 py-2 d-flex align-items-center justify-content-end">
-                                    <?php echo $this->htmlLink('javascript:void(0);', $this->translate('Mark All Read'), array('id' => 'notifications_markread_link', 'class' => 'font-weight-light small')) ?>
-                                </div>
-                                <div class="pulldown_contents">
-                                    <ul class="notifications_menu" id="notifications_menu">
-                                        <li class="notifications_loading d-flex justify-content-center align-items-center font-weight-light small py-4"
-                                            id="notifications_loading">
-                                        <i class="fa fa-spin fa-spinner" style='margin-right: 5px;'></i>
-                                            <?php echo $this->translate("Loading ...") ?>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="pulldown_options bg-primary text-center py-2 my-0">
-                                    <?php echo $this->htmlLink(array('route' => 'default', 'module' => 'activity', 'controller' => 'notifications'),
-                                        $this->translate('View All Notifications'),
-                                        array('id' => 'notifications_viewall_link', 'class' => 'text-white font-weight-bold')) ?>
-                                </div>
-                            </div>
-                        </span>
-
+                  <div style="display: none;" class="updates_pulldown" id="core_mini_updates_pulldown">
+                    <div class="pulldown_contents_wrapper">
+                      <div class="mark-all text-right px-3 py-2 d-flex align-items-center justify-content-end">
+                          <?php echo $this->htmlLink('javascript:void(0);', $this->translate('Mark All Read'), array('id' => 'notifications_markread_link', 'class' => 'font-weight-light small')) ?>
+                      </div>
+                      <div class="pulldown_contents">
+                        <ul class="notifications_menu" id="notifications_menu">
+                          <li class="notifications_loading d-flex justify-content-center align-items-center font-weight-light small py-4"
+                              id="notifications_loading">
+                            <i class="fa fa-spin fa-spinner" style='margin-right: 5px;'></i>
+                              <?php echo $this->translate("Loading ...") ?>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="pulldown_options bg-primary text-center py-2 my-0">
+                          <?php echo $this->htmlLink(array('route' => 'default', 'module' => 'activity', 'controller' => 'notifications'),
+                              $this->translate('View All Notifications'),
+                              array('id' => 'notifications_viewall_link', 'class' => 'text-white font-weight-bold')) ?>
+                      </div>
+                    </div>
+                  </div>
                 </li> <!-- notifications -->
-
-                <li class="list-inline-item profile-img pr-3">
-
+                <li class="list-inline-item align-middle profile-img pr-2">
                     <?php
 
                     $color = null;
@@ -131,93 +128,73 @@
 
 
                     ?>
-
-
                     <?php echo $this->htmlLink($this->viewer->getHref(), $this->itemPhoto($this->viewer, 'thumb.icon')); ?>
-
-
                 </li> <!-- profile -->
-
-
-                <li class="list-inline-item name d-none d-sm-block position-relative">
-                    <?php echo $this->htmlLink($this->viewer->getHref(), substr($this->viewer->getTitle(), 0, strrpos($this->viewer->getTitle(), ' ')), array('class' => 'font-weight-bold')); ?>
-
-                  <a href="javascript:void(0)" class="pl-1">
-                    <svg height="10px" width="10px" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M.39,0A.35.35,0,0,0,0,.24.36.36,0,0,0,.11.66L2.63,3.18a.38.38,0,0,0,.55,0L5.7.66A.36.36,0,0,0,5.78.24.35.35,0,0,0,5.43,0Z"
-                            transform="translate(0 0)" fill="#5cc7ce"/>
-                    </svg>
+                <li class="list-inline-item align-middle name d-none d-sm-inline-block position-relative dropdown">
+                    <?php echo $this->htmlLink($this->viewer->getHref(), substr($this->viewer->getTitle(), 0, strrpos($this->viewer->getTitle(), ' ')), array('class' => 'font-weight-bold align-middle')); ?>
+                  <a role="button"
+                     data-toggle="dropdown"
+                     aria-haspopup="true"
+                     class="align-middle p-2 fa fa-caret-down"
+                     aria-expanded="false">
                   </a>
-
-                  <div class="dropdown-menu item-profile-dropdown" id="profile-dropdown-menu">
+                  <div class="dropdown-menu dropdown-menu-right shadow p-0 border-0 dropdown-menu--profile" style="overflow: hidden">
                     <ul>
                       <li>
-                        <h4 class="text-dark m-0 p-0">
-                            <?php echo $this->viewer->getTitle(); ?>
-                        </h4>
-                        <p class="desc text-muted small">
-                            <?php echo $this->viewer->email; ?>
-                        </p>
+                        <div class="dropdown-item bg-light p-3">
+                          <h6 class="text-dark m-0 p-0"><b><?php echo $this->viewer->getTitle(); ?></b></h6>
+                          <p class="desc text-muted small m-0">
+                              <?php echo $this->viewer->email; ?>
+                          </p>
+                        </div>
                       </li>
-                      <li class="list-inline py-3">
-                        <a href="<?php echo $this->url(array('controller' => 'settings', 'action' => 'general'), 'user_extended'); ?>">
+                      <li>
+                        <a class="dropdown-item"
+                           href="<?php echo $this->url(array('controller' => 'settings', 'action' => 'general'), 'user_extended'); ?>">
                           <div class="d-flex align-items-center justify-content-start">
-                            <div class="pr-2">
-                              <i class="fa fa-cog" aria-hidden="true"></i>
-                            </div>
-                            <div class="text-dark"> Profile Settings</div>
+                            <i class="fa fa-cog mr-3" aria-hidden="true"></i>
+                            <b>Profile Settings</b>
                           </div>
                         </a>
                       </li>
-                      <li class="list-inline pb-3">
-                        <a href="#">
+                      <li>
+                        <a class="dropdown-item" href="#">
                           <div class="d-flex align-items-center justify-content-start">
-                            <div class="pr-2">
-                              <i class="fa fa-filter" aria-hidden="true"></i>
-                            </div>
-                            <div class="text-dark"> User Preferences</div>
+                            <i class="fa fa-filter mr-3" aria-hidden="true"></i>
+                            <b>User Preferences</b>
                           </div>
                         </a>
                       </li>
-                      <li class="list-inline pb-3 border-bottom">
-                        <a href="<?php echo $this->baseUrl(); ?>/admin">
+                      <li>
+                        <a class="dropdown-item" href="<?php echo $this->baseUrl(); ?>/admin">
                           <div class="d-flex align-items-center justify-content-start">
-                            <div class="pr-2">
-                              <i class="fa fa-database" aria-hidden="true"></i>
-                            </div>
-                            <div class="text-dark"> Admin</div>
+                            <i class="fa fa-database mr-3" aria-hidden="true"></i>
+                            <b>Admin</b>
                           </div>
                         </a>
                       </li>
-                      <li class="list-inline py-4">
-                        <a href="<?php echo $this->baseUrl(); ?>/logout">
+                      <li>
+                        <a class="dropdown-item border-top py-3" href="<?php echo $this->baseUrl(); ?>/logout">
                           <div class="d-flex align-items-center justify-content-start">
-                            <div class="pr-2">
-                              <i class="fa fa-sign-out" aria-hidden="true"></i>
-                            </div>
-                            <div class="text-dark"> Sign Out</div>
+                            <i class="fa fa-sign-out mr-3" aria-hidden="true"></i>
+                            <b>Sign Out</b>
                           </div>
                         </a>
                       </li>
-
                     </ul>
                   </div>
-
                 </li> <!-- name -->
-
               <?php else: ?>
-                <li class="list-inline-item">
+                <li class="list-inline-item align-middle">
                     <?php echo $this->htmlLink($this->url(array('action' => 'login'), 'user_login'), $this->translate('Sign In'), array('class' => 'btn btn-outline-light text-uppercase')); ?>
                 </li>
-                <li class="list-inline-item">
+                <li class="list-inline-item align-middle">
                     <?php echo $this->htmlLink($this->url(array('action' => 'index'), 'user_signup'), $this->translate('Sign Up'), array('class' => 'btn btn-outline-light text-uppercase')); ?>
                 </li>
               <?php endif; ?>
 
           </ul>
-
         </div> <!-- mini-menu -->
-
       </div>
     </div>
   </div> <!-- top-menu -->

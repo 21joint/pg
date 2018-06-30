@@ -1,31 +1,56 @@
 // FOOTER
-footer.extfox-footer {
-  div.top-holder {
-    .social-holder {
-      ul {
-        li {
-          border-radius: 50%;
-          background: #93A4A6;
-          &:hover {
-            background: $warning;
-            a {
-              svg {
-                color: $dark;
-              }
-            }
-          }
-          a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 2rem;
-            height: 2rem;
-            svg {
-              color: $white;
-            }
-          }
-        }
+.parental-footer {
+  font-family: "Open Sans", #{$font-family-base};
+  li {
+    ul {
+      padding-left: 20px;
+      margin-top: 20px;
+      a {
+        color: $text-asphalt;
+      }
+    }
+    &:not(.list-inline-item) {
+      & + li {
+        margin-top: 20px;
       }
     }
   }
+  a {
+    @include hover-focus-active() {
+      text-decoration: none;
+      color: #000000;
+    }
+  }
+}
+
+.parental-footer--social {
+  a {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    transition: .12s background-color ease-in-out;
+    background-color: #93A4A6;
+    svg {
+      width: 0.825rem;
+      height: 0.825rem;
+    }
+    path {
+      fill: $white;
+      transition: .12s fill ease-in-out;
+    }
+    @include hover-focus-active() {
+      background-color: $warning;
+      path {
+        fill: $dark;
+      }
+    }
+  }
+}
+
+.parental-footer--top {
+  padding: 70px 0;
+}
+
+.parental-footer--bottom {
+  padding: 20px 0;
 }

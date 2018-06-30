@@ -3,10 +3,11 @@
 @import "../../../node_modules/bootstrap/scss/bootstrap";
 @import "../../../node_modules/@fortawesome/fontawesome-free/scss/fa-regular";
 @import "./helpers";
-@import "./header";
 @import "./common";
+@import "./header";
 @import "./widgets/card";
 @import "./footer";
+
 
 // CORE
 .seaocore_up_button {
@@ -27,7 +28,8 @@
     width: 20px;
     height: 20px;
     font-size: 12px;
-    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px #ffffff;
+    font-weight: 700;
   }
 }
 
@@ -156,16 +158,16 @@
             background-repeat: no-repeat;
             background-position: 50% 50%;
             &.bronze {
-              background-image: url('/images/Bronze.svg');
+              background-image: url('./assets/images/badges/Bronze.svg');
             }
             &.silver {
-              background-image: url('/images/Silver.svg');
+              background-image: url('./assets/images/badges/Silver.svg');
             }
             &.gold {
-              background-image: url('/images/Gold.svg');
+              background-image: url('./assets/images/badges/Gold.svg');
             }
             &.platinium {
-              background-image: url('/images/Platinum.svg');
+              background-image: url('./assets/images/badges/Platinum.svg');
             }
             .badge-holder {
               min-height: 60px;

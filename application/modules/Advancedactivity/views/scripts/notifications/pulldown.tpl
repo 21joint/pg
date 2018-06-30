@@ -11,11 +11,11 @@
 */
 ?>
 <?php foreach( $this->notifications as $notification ): ?>
-	<li <?php if( !$notification->read ): ?>class="notifications_unread clr"<?php endif; ?> value="<?php echo $notification->getIdentity();?>" style="overflow: hidden;">
+	<li <?php if( !$notification->read ): ?>class="bg-light clr"<?php endif; ?> value="<?php echo $notification->getIdentity();?>" style="overflow: hidden;">
 	<span class="notification_item_general aaf_update_pulldown">
 		<?php $item = $notification->getSubject() ?>
       <?php if($item):?>
-	  <?php echo $this->htmlLink($item->getHref(), $this->itemPhoto($item, 'thumb.icon', $item->getTitle())) ?>
+	  <b></b><?php echo $this->htmlLink($item->getHref(), $this->itemPhoto($item, 'thumb.icon', $item->getTitle())) ?>
 	  <?php endif; ?>
 	  <span class="aaf_update_pulldown_content">
 	    <span class="aaf_update_pulldown_content_title fleft"><?php echo $notification->__toString() ?></span>

@@ -1,11 +1,35 @@
 .card-review {
   margin: 15px 5px;
+  border-color: rgb(245, 245, 245);
+  border-radius: 10px;
+  overflow: hidden;
+  .card-header {
+    position: relative;
+  }
+  .card-body {
+    padding: 1rem 1.25rem;
+  }
   .fa, .far {
     color: #B9CFD1;
   }
   .card-footer {
+    border-color: rgb(245, 245, 245);
     .list-inline-item:not(:last-child) {
       margin-right: 0.366rem;
+    }
+  }
+  .card-actions {
+    position: absolute;
+    background-color: rgba(92, 199, 206, .9);
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    a {
+      height: 45px;
+    }
+    .fa, .far {
+      color: inherit;
     }
   }
 }
@@ -26,7 +50,7 @@
   background-color: #ffffff;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  img,svg {
+  img, svg {
     width: 22px;
     height: 22px;
     display: block;
@@ -46,7 +70,7 @@
   font-size: 14px;
   font-family: "Open Sans", #{$font-family-base};
   line-height: 19px;
-  min-height: calc(19px * 4) + 20px;
+  //min-height: calc((19px * 4) + 20px);
   overflow: hidden;
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;

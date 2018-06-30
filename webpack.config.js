@@ -20,7 +20,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[path][name].js',
+        filename: 'scripts/[name].js',
         publicPath: '/'
     },
     module: {
@@ -84,15 +84,14 @@ module.exports = {
                             limit: 1024,
                             name(file) {
                                 if (file.indexOf('fonts') > -1) {
-                                    return '/fonts/[name].[ext]';
+                                    return 'fonts/[name].[ext]';
                                 }
                                 else {
-                                    return '/images/[name].[ext]';
+                                    return 'images/[name].[ext]';
                                 }
                             },
                             fallback: 'file-loader',
-                            outputPath: './',
-                            publicPath: args.git ? '/' + Pkg.name + '/' : '/'
+                            outputPath: './'
                         }
                     }
                 ]

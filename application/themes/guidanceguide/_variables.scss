@@ -37,14 +37,14 @@ $fa-font-path: '/fonts';
 //        "900": $gray-900
 //), $grays);
 //
-$blue: #5CC7CE;
+//$blue: #5CC7CE;
 //$indigo:  #6610f2 !default;
 //$purple:  #6f42c1 !default;
 //$pink:    #e83e8c !default;
 //$red:     #dc3545 !default;
 //$orange:  #fd7e14 !default;
 //$yellow:  #ffc107 !default;
-$green: #8AE693;
+//$green: #8AE693;
 //$teal:    #20c997 !default;
 //$cyan:    #17a2b8 !default;
 //
@@ -209,7 +209,7 @@ $container-max-widths: (
 //$line-height-sm:              1.5 !default;
 //
 //$border-width:                1px !default;
-//$border-color:                $gray-300 !default;
+$border-color:                rgba(245,245,245,1);
 //
 //$border-radius: 50px;
 //$border-radius-lg: 50px;
@@ -284,7 +284,7 @@ $font-weight-bold: 700;
 //$blockquote-small-color:      $gray-600 !default;
 //$blockquote-font-size:        ($font-size-base * 1.25) !default;
 //
-//$hr-border-color:             rgba($black, .1) !default;
+$hr-border-color:             rgba(245,245,245,1);
 //$hr-border-width:             $border-width !default;
 //
 //$mark-padding:                .2em !default;
@@ -565,7 +565,7 @@ $input-placeholder-color: #93A4A6;
 //$dropdown-spacer:                   .125rem !default;
 //$dropdown-bg:                       $white !default;
 //$dropdown-border-color:             rgba($black, .15) !default;
-//$dropdown-border-radius:            $border-radius !default;
+$dropdown-border-radius:            .625rem;
 //$dropdown-border-width:             $border-width !default;
 //$dropdown-divider-bg:               $gray-200 !default;
 //$dropdown-box-shadow:               0 .5rem 1rem rgba($black, .175) !default;
