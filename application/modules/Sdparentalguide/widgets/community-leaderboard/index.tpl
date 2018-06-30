@@ -9,25 +9,31 @@
 
 ?>
 
-<div id="leaderboard_wrapper">
-    <div id="leaderboard">
-        <div class="leaderboard_title d-flex justify-content-between align-items-centar">
-            <h3>Leaderboard</h3>
-            <ul class="d-flex align">
-                <li class="leaderboard_nav">Overall</li>
-                <li class="leaderboard_nav">Week</li>
-                <li class="leaderboard_nav">Month</li>
-            </ul>
-        </div>
-        <div class="leaderboard_main">
-            
-        </div> 
-        <div class="leaderboard_content">
-            
-        </div>  
-        <div id="sd-response"class="container d-flex justify-content-center"></div>
+
+<div id="leaderboard">
+    <div class="leaderboard_title d-flex justify-content-between align-items-center">
+        <h3>Leaderboard</h3>
+        <ul class="d-flex align">
+            <li class="leaderboard_nav">Overall</li>
+            <li class="leaderboard_nav">Week</li>
+            <li class="leaderboard_nav">Month</li>
+        </ul>
+    </div>
+    <div class="leaderboard_main d-flex justify-content-between">
+        <div>Rank</div>
+        <div>Leader</div>
+        <div>Points</div>
+        <div>Reviews</div>
+        <div>Answers</div>
+        <div>Questions</div>
+        <div>Followers</div>
+    </div> 
+    <div class="leaderboard_content">
+        
     </div>  
-</div>
+    <div id="sd-response"class="container d-flex justify-content-center"></div>
+</div>  
+
 
 <script type='text/javascript'>
 //Dom ready
@@ -35,8 +41,9 @@ en4.core.runonce.add(function(){
     loadLeaderboardResults();
 });
 
-
-document.querySelectorAll('.leaderboard_nav').forEach(function(nav , i) {
+// For each Range Nav item on click ajax call is added 
+// With an argument (Overall, Week, Month) corresponding to Name of the Nav item
+document.querySelectorAll('.leaderboard_nav').forEach(function(nav) {
     nav.addEventListener('click', function() {
         loadLeaderboardResults(this.innerText);       
     });
@@ -71,18 +78,28 @@ function loadLeaderboardResults(att = "Overall") {
                 var html = "";
                 var results = responseJSON.body.Results;
                 for(var i = 0; i < results.length; i++) {
-                    html += `<div class="leaderboard_item d-flex">
-                                <div>
+                    html += `<div class="leaderboard_item d-flex justify-content-between">
+                                <div class="d-flex justify-content-center align-items-center">
                                     ${i+1}
                                 </div>
-                                <div>
+                                <div class="d-flex align-items-center leader">
                                     <img src="${results[i].avatarPhoto.photoURLIcon}"/>
-                                </div>
-                                <div>
                                     <h4>${results[i].displayName}</h4>
                                 </div>
-                                <div>
+                                <div class="d-flex align-items-center justify-content-center">
                                     ${results[i].contribution}
+                                </div>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    ${results[i].reviewCount}
+                                </div>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    ${results[i].answerCount}
+                                </div>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    ${results[i].questionCount}
+                                </div>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    ${results[i].followersCount}
                                 </div>
                             </div>`;
                 }
