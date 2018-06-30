@@ -15,7 +15,6 @@ $routes['pgservicelayer'] = array(
           'module' => 'pgservicelayer',
           'controller' => 'reviews',
           'action' => 'index',
-          'format' => 'json',
           'version' => 'v1'
         ),
         'reqs' => array(
@@ -28,7 +27,6 @@ $routes['pgservicelayer'] = array(
           'module' => 'pgservicelayer',
           'controller' => 'reviews',
           'action' => 'categories',
-          'format' => 'json',
           'version' => 'v1'
         ),
         'reqs' => array(
@@ -41,7 +39,6 @@ $routes['pgservicelayer'] = array(
           'module' => 'pgservicelayer',
           'controller' => 'photo',
           'action' => 'index',
-          'format' => 'json',
           'version' => 'v1'
         ),
         'reqs' => array(
@@ -55,7 +52,6 @@ $routes['pgservicelayer'] = array(
           'module' => 'pgservicelayer',
           'controller' => 'user',
           'action' => 'ranking',
-          'format' => 'json',
           'version' => 'v1'
         ),
         'reqs' => array(
@@ -68,13 +64,36 @@ $routes['pgservicelayer'] = array(
           'module' => 'pgservicelayer',
           'controller' => 'user',
           'action' => 'index',
-          'format' => 'json',
           'version' => 'v1'
         ),
         'reqs' => array(
           'action' => '\D+',
         )
-    ),    
+    ),
+    'pgservicelayer_apicomment' => array(
+        'route' => 'api/:version/comments/*',
+        'defaults' => array(
+          'module' => 'pgservicelayer',
+          'controller' => 'comments',
+          'action' => 'index',
+          'version' => 'v1'
+        ),
+        'reqs' => array(
+          'action' => '\D+',
+        )
+    ),
+    'pgservicelayer_apitopic' => array(
+        'route' => 'api/:version/topic/*',
+        'defaults' => array(
+          'module' => 'pgservicelayer',
+          'controller' => 'topic',
+          'action' => 'index',
+          'version' => 'v1'
+        ),
+        'reqs' => array(
+          'action' => '\D+',
+        )
+    ),
 );
 
 return $routes;

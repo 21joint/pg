@@ -43,13 +43,38 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
                 $this->respondWithError('invalid_method');
             }
         } catch (Exception $ex) {
-            echo $ex->getMessage();exit;
             $this->respondWithServerError($ex);
         }
     }
     public function getAction(){
-        $response['ResultCount'] = 0;
+        $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
+        $id = $this->getParam("id");   
+        $page = $this->getParam("page",1);
+        $limit = $this->getParam("limit",50);
+        $table = Engine_Api::_()->getDbTable('files', 'pgservicelayer');
+        $tableName = $table->info("name");
+        $select = $table->select()->where('parent_file_id IS NULL');
+        if(is_string($id) && !empty($id)){
+            $select->where("$tableName.file_id = ?",$id);
+        }else if(is_array($id) && !empty ($id)){
+            $select->where("$tableName.file_id IN (?)",$id);
+        }
+        $select->where("$tableName.gg_deleted = ?",0);
+        
+        $paginator = Zend_Paginator::factory($select);
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage($limit);
+        $response['ResultCount'] = $paginator->getTotalItemCount();
         $response['Results'] = array();
+        foreach($paginator as $photo){
+            $contentImages = $responseApi->getContentImage($photo);
+            $photoArray = array(
+                'photoID' => (string)$photo->getIdentity(),
+                'photoURL' => ''
+            );
+            $photoArray = array_merge($photoArray,$contentImages);
+            $response['Results'][] = $photoArray;
+        }
         $this->respondWithSuccess($response);
     }
     public function postAction(){
