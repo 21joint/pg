@@ -75,6 +75,7 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
         $this->validateRequestMethod("GET");
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         $usersTable = Engine_Api::_()->getDbTable("users","user");
+        $usersTableName = $usersTable->info("name");
         $select = $usersTable->select()
             ->where("search = ?", 1)
             ->where("enabled = ?", 1)
@@ -89,10 +90,10 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
             $select->where("gg_expert_bronze_count > ? OR gg_expert_silver_count > ? OR gg_expert_gold_count > ? OR gg_expert_platinum_count > ?",0);
         }
         $id = $this->getParam("id");
-        if(is_string($id)){
-            $select->where("user_id = ?",$id);
-        }else if(is_array($id)){
-            $select->where("user_id IN (?)",$id);
+        if(is_string($id) && !empty($id)){
+            $select->where("$usersTableName.user_id = ?",$id);
+        }else if(is_array($id) && !empty ($id)){
+            $select->where("$usersTableName.user_id IN (?)",$id);
         }
         
         $paginator = Zend_Paginator::factory($select);
