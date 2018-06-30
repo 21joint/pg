@@ -180,13 +180,15 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
     public function getTopicData($topic){
         $topicArray = array(
             'topicID' => '',
-            'topicName' => ''
+            'topicName' => '',
+            'coverPhoto' => '',
         );
         if(empty($topic)){
             return $topicArray;
         }
         $topicArray['topicID'] = $topic->getIdentity();
         $topicArray['topicName'] = $topic->getTitle();
+        $topicArray['coverPhoto'] = $this->getContentImage($topic);
         return $topicArray;
     }
 }
