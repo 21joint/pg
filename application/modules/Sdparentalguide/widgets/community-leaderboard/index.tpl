@@ -22,11 +22,11 @@
     <div class="leaderboard_main d-flex justify-content-between">
         <div class="d-flex justify-content-center">Rank</div>
         <div>Leader</div>
-        <div class="d-flex justify-content-center">Points<span class="d-md-none text-danger arrow">x</span></div>
-        <div class="d-none d-md-flex justify-content-center">Reviews</div>
-        <div class="d-none d-md-flex justify-content-center">Answers</div>
-        <div class="d-none d-md-flex justify-content-center">Questions</div>
-        <div class="d-none d-md-flex justify-content-center">Followers</div>
+        <div class="order_by" data-order="contributionPoints">Points</div>
+        <div class="order_by" data-order="reviewCount">Reviews</div>
+        <div>Answers</div>
+        <div class="order_by" data-order="questionCount">Questions</div>
+        <div class="order_by" data-order="followers">Followers</div>
     </div>
     <div id="sd-response"class="container d-flex justify-content-center"></div>
     <div class="leaderboard_content">
@@ -41,20 +41,35 @@ en4.core.runonce.add(function(){
     loadLeaderboardResults();
 });
 
+
 // For each Range Nav item on click ajax call is added 
 // With an argument (Overall, Week, Month) corresponding to Name of the Nav item
+var timeFrame;
 document.querySelectorAll('.leaderboard_nav').forEach(function(nav) {
     nav.addEventListener('click', function() {
-        loadLeaderboardResults(this.innerText);       
+        timeFrame = this.innerText;
+        // Using null and leaving out the previous sorting results
+        // Better to always start from contributionPoints on any timeFrame
+        loadLeaderboardResults(timeFrame, null);       
+    });
+});
+
+// Orders by each category which is clicked on using ajax
+// Currently available arguments (contributionPoints, questionCount, reviewCount, followers)
+var orderBy;
+document.querySelectorAll('.order_by').forEach(function(order) {
+    order.addEventListener('click', function() {
+        orderBy = this.getAttribute('data-order');
+        loadLeaderboardResults(timeFrame, orderBy);   
     });
 });
 
 
-function loadLeaderboardResults(att = "Overall") {
+function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints") {
     //Request data can be linked to form inputs
     var requestData = {};
-    requestData.contributionRangeType = att; //Possible values "Overall", "Week", "Month"
-    requestData.orderBy = 'contributionPoints'; //Possible values "contributionPoints", "questionCount", "reviewCount", "followers"
+    requestData.contributionRangeType = tm; //Possible values "Overall", "Week", "Month"
+    requestData.orderBy = ord; //Possible values "contributionPoints", "questionCount", "reviewCount", "followers"
     requestData.limit = 10;
     requestData.page = 1;
 
