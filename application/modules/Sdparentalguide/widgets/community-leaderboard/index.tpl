@@ -20,18 +20,18 @@
         </ul>
     </div>
     <div class="leaderboard_main d-flex justify-content-between">
-        <div>Rank</div>
+        <div class="d-flex justify-content-center">Rank</div>
         <div>Leader</div>
-        <div>Points</div>
-        <div>Reviews</div>
-        <div>Answers</div>
-        <div>Questions</div>
-        <div>Followers</div>
-    </div> 
+        <div class="d-flex justify-content-center">Points<span class="d-md-none text-danger arrow">x</span></div>
+        <div class="d-none d-md-flex justify-content-center">Reviews</div>
+        <div class="d-none d-md-flex justify-content-center">Answers</div>
+        <div class="d-none d-md-flex justify-content-center">Questions</div>
+        <div class="d-none d-md-flex justify-content-center">Followers</div>
+    </div>
+    <div id="sd-response"class="container d-flex justify-content-center"></div>
     <div class="leaderboard_content">
         
     </div>  
-    <div id="sd-response"class="container d-flex justify-content-center"></div>
 </div>  
 
 
@@ -90,21 +90,23 @@ function loadLeaderboardResults(att = "Overall") {
                                     <svg style="margin: 3px 5px 0px 0px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px" viewBox="0 0 42.03 39.91"><defs><linearGradient id="a" x1="26.26" y1="12.68" x2="40.67" y2="12.68" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#51b2b6"></stop><stop offset="1" stop-color="#5bc6cd"></stop></linearGradient><linearGradient id="b" y1="17.32" x2="17.39" y2="17.32" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5bc6cd"></stop><stop offset="1" stop-color="#51b2b6"></stop></linearGradient></defs><title>star_pg</title><path d="M40.23,8.55,32.7,18.46l-6.44-8.6L38.77,7C40.61,6.57,41.14,7.31,40.23,8.55Z" fill="url(#a)"></path><path d="M17.39,12,.93,16.13c-1,.24-1.28,1.35-.32,1.79l16.06,4.7Z" fill="url(#b)"></path><path d="M15.31,38.4,17.42,1c0-1.06,1.1-1.31,1.76-.45L41.59,28.45c.83,1,.6,2.71-1.71,1.81L26.36,25.09l-8.44,14A1.36,1.36,0,0,1,15.31,38.4Z" fill="#5bc6cd"></path></svg>
                                     ${results[i].contribution}
                                 </div>
-                                <div class="d-flex align-items-center justify-content-center">
+                                <div class="d-none d-md-flex align-items-center justify-content-center">
                                     ${results[i].reviewCount}
                                 </div>
-                                <div class="d-flex align-items-center justify-content-center">
+                                <div class="d-none d-md-flex align-items-center justify-content-center">
                                     ${results[i].answerCount}
                                 </div>
-                                <div class="d-flex align-items-center justify-content-center">
+                                <div class="d-none d-md-flex align-items-center justify-content-center">
                                     ${results[i].questionCount}
                                 </div>
-                                <div class="d-flex align-items-center justify-content-center">
+                                <div class="d-none d-md-flex align-items-center justify-content-center">
                                     ${results[i].followersCount}
                                 </div>
                             </div>`;
                 }
                 leaderboardContent.innerHTML = html;
+                // Adding the toggle functionality on arrows next to items on small screens
+                
             }else{
                 leaderboardContent.innerHTML = responseJSON.message;
             }

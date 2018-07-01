@@ -13,20 +13,21 @@
 }
 /* General Main and Wrapper styling end */
 
-#leaderboard .leaderboard_title{
+.leaderboard_title{
+  padding: 0px 20px;
   border-bottom: 1px solid #f5f5f5;
 }
-#leaderboard .leaderboard_title h3{
+.leaderboard_title h3{
   color: #333D40;
   font-family: 'Nunito', sans-serif;
   font-weight: 600;
-  margin-left: 50px;
-  margin-bottom: 0;
+  margin-left: 12px;
+  margin-bottom: 0!important;
 }
-#leaderboard .leaderboard_title ul{
-  margin-right: 40px;
+.leaderboard_title ul{
+    margin-right: 12px;
 }
-#leaderboard .leaderboard_title ul li{
+.leaderboard_title ul li{
   font-family: 'Nunito', sans-serif;
   font-weight: 600;
   padding: 6px 30px 6px 30px;
@@ -36,7 +37,7 @@
   border-top-left-radius: 6px;
   transition: 0.4s;
 }
-#leaderboard .leaderboard_title ul li:hover{
+.leaderboard_title ul li:hover{
   border: 1px solid #f5f5f5;
   border-bottom: 0;
   cursor: pointer;
@@ -53,7 +54,6 @@
   border: 1px solid red;
 }*/
 .leaderboard_main div:first-child{
-  text-align: center;
   flex: 1;
 }
 .leaderboard_main div:nth-child(n+3){
@@ -417,5 +417,45 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
     .layout_sdparentalguide_assigned_badges .seaocore_photo_strips div.thumb_photo{
         float: none;
         display: inline-block;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .leaderboard_main div:nth-child(2){
+      flex: 6;
+    }
+    .leaderboard_item div:nth-child(2){
+      flex: 6;
+    }
+}
+
+@media screen and (max-width: 576px){
+    .leaderboard_title h3{
+      margin: 0!important;
+    }
+    .leaderboard_title ul{
+      margin: 0;
+    }
+    .leaderboard_title ul li{
+      padding: 6px 24px;
+    }
+}
+
+@media screen and (max-width: 486px){
+    .leaderboard_title h3{
+        font-size: 14px;
+    }
+    .leaderboard_title ul li{
+      padding: 8px 12px;
+      font-size: 12px;
+    }
+    .leaderboard_item div{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 368px){
+    .leaderboard_title ul li{
+      padding: 8px 8px;
     }
 }
