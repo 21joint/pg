@@ -47,7 +47,11 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         }
     }
     public function getAction(){
-        $id = $this->getParam("id");   
+        $viewer = Engine_Api::_()->user()->getViewer();
+        if(!$viewer->getIdentity() && $this->isApiRequest()){
+            $this->respondWithError('unauthorized');
+        }
+        $id = $this->getParam("reviewID");   
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         $params = array();
         $customFieldValues = array();
@@ -373,7 +377,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
             $this->respondWithError('unauthorized');
         }
         
-        $id = $this->getParam("id");
+        $id = $this->getParam("reviewID");
         $sitereview = Engine_Api::_()->getItem("sitereview_listing",$id);
         
         $form = Engine_Api::_()->getApi("V1_Forms","pgservicelayer")->getReviewForm();
@@ -592,7 +596,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         $viewer = Engine_Api::_()->user()->getViewer();
         $viewer_id = $viewer->getIdentity();
         $level_id = !empty($viewer_id) ? $viewer->level_id : Engine_Api::_()->getDbtable('levels', 'authorization')->fetchRow(array('type = ?' => "public"))->level_id;
-        $id = $this->getParam("id");
+        $id = $this->getParam("reviewID");
         $idsArray = (array)$id;
         if(is_string($id) && !empty($id)){
             $idsArray = array($id);

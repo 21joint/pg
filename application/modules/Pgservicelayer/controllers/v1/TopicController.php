@@ -48,7 +48,12 @@ class Pgservicelayer_TopicController extends Pgservicelayer_Controller_Action_Ap
     }
     
     public function getAction(){
-        $id = $this->getParam("id");   
+        $viewer = Engine_Api::_()->user()->getViewer();
+        if(!$viewer->getIdentity() && $this->isApiRequest()){
+            $this->respondWithError('unauthorized');
+        }
+        $id = $this->getParam("topicID");
+        $search = $this->getParam("topicName");
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         $page = $this->getParam("page",1);
         $limit = $this->getParam("limit",50);
@@ -61,6 +66,9 @@ class Pgservicelayer_TopicController extends Pgservicelayer_Controller_Action_Ap
             $select->where("$tableName.topic_id = ?",$id);
         }else if(is_array($id) && !empty ($id)){
             $select->where("$tableName.topic_id IN (?)",$id);
+        }
+        if(!empty($search)){
+            $select->where("name LIKE ?","%".$search."%");
         }
         $select->where("$tableName.gg_deleted = ?",0);
         $paginator = Zend_Paginator::factory($select);
