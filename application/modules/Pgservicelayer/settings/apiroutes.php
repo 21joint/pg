@@ -10,7 +10,7 @@ $routes = array();
 
 $routes['pgservicelayer'] = array(
     'pgservicelayer_apireviews' => array(
-        'route' => 'api/:version/reviews/:action/*',
+        'route' => 'api/:version/review/:action/*',
         'defaults' => array(
           'module' => 'pgservicelayer',
           'controller' => 'reviews',
@@ -71,7 +71,7 @@ $routes['pgservicelayer'] = array(
         )
     ),
     'pgservicelayer_apicomment' => array(
-        'route' => 'api/:version/comments/*',
+        'route' => 'api/:version/comment/*',
         'defaults' => array(
           'module' => 'pgservicelayer',
           'controller' => 'comments',

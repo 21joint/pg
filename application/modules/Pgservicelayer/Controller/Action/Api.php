@@ -116,9 +116,11 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
             if(empty($params)){
                 parse_str($inputStream,$params);
             }
+            $request = Zend_Controller_Front::getInstance()->getRequest();
             if(!empty($params) && is_array($params)){
                 foreach($params as $key => $param){
                     $this->setParam($key, $param);
+                    $request->setParam($key,$param);
                     $_REQUEST[$key] = $param;
                 }
             }

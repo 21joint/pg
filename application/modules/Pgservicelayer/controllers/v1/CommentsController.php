@@ -69,6 +69,10 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
     }
     
     public function getAction(){
+        $viewer = Engine_Api::_()->user()->getViewer();
+        if(!$viewer->getIdentity() && $this->isApiRequest()){
+            $this->respondWithError('unauthorized');
+        }
         $subject = null;
         if(Engine_Api::_()->core()->hasSubject()){
             $subject = Engine_Api::_()->core()->getSubject();
@@ -77,7 +81,6 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
                 !$subject->getIdentity() ||
                 (!method_exists($subject, 'comments') && !method_exists($subject, 'likes')))
             $this->respondWithError('no_record');
-        $viewer = Engine_Api::_()->user()->getViewer();
         $canComment = $subject->authorization()->isAllowed($viewer, 'comment');
         $canDelete = $subject->authorization()->isAllowed($viewer, 'edit');
         if (!$canComment && !$canDelete)
@@ -194,7 +197,7 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
 
         $body = $this->getParam('body');
         $body = $filter->filter($body);
-        $comment_id = $this->getParam('id');
+        $comment_id = $this->getParam('commentID');
         if(empty($comment_id)){
             $this->respondWithError('no_record');
         }
@@ -245,7 +248,7 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
         if (!$canComment && !$canDelete)
             $this->respondWithError('unauthorized');
         
-        $id = $this->getParam("id");
+        $id = $this->getParam("commentID");
         $idsArray = (array)$id;
         if(is_string($id) && !empty($id)){
             $idsArray = array($id);
