@@ -23,7 +23,7 @@ function loadLeaderboardResults(){
     
     var loader = en4.core.loader.clone();
     loader.addClass("sd_loader");
-    var url = en4.core.baseUrl+"api/v1/reviews";
+    var url = en4.core.baseUrl+"api/v1/review";
     
     var request = new Request.JSON({
         url: url,
