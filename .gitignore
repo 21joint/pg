@@ -17,3 +17,4 @@ temporary/session
 node_modules/
 bower_components/
 .DS_Store
+.idea
