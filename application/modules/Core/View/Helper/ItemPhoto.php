@@ -26,7 +26,6 @@ class Core_View_Helper_ItemPhoto extends Engine_View_Helper_HtmlImage
 
   public function itemPhoto($item, $type = 'thumb.profile', $alt = "", $attribs = array())
   {
-  
     echo $itemPhotoGuidance = Zend_Registry::get('Zend_View')->itemPhotoGuidance($item);
     return $this->setAttributes($item, $type, $attribs)->htmlImage($this->_url, $alt, $this->_attribs);
 

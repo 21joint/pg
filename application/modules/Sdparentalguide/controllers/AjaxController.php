@@ -479,7 +479,7 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
             
             $db->commit();
 
-        }catch (Exception $ex) {
+        } catch (Exception $ex) {
             $db->rollBack();
             throw $ex;
         }

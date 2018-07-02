@@ -69,6 +69,7 @@
                                     ->order( 'name ASC' )
                                     ->limit(5)
                                 ;
+                                echo $select;
                                 $badges = $table->fetchAll($select);
                             ?>
 
