@@ -74,7 +74,7 @@
 
                             <li class="border-grey-light py-3">
                                 <!-- title and descriptiotn -->
-                                <div class="top-holder border-bottom-grey-light px-4">
+                                <div class="top-holder border-bottom-grey-light px-4 px-sm-1">
                                     <div class="title-holder pb-3">
                                         <h6>
                                             <?php echo $topic->getTitle(); ?>
@@ -98,11 +98,11 @@
                                                 $uBadge = $userTable->fetchRow($select);
                                             ?>
                                             <?php if(count($uBadge) > 0): ?>
-                                                <div class="badge-image col-xl-2 col-lg-2 pl-0 <?php echo ($uBadge->active == 1) ? 'active' : 'inactive'; ?> ">
+                                                <div class="badge-image col-xl-2 col-lg-2 col-2 pl-0 <?php echo ($uBadge->active == 1) ? 'active' : 'inactive'; ?> ">
                                                     <?php echo $this->itemPhoto($badge, 'thumb.normal'); ?>
                                                 </div>
                                             <?php else: ?>
-                                                <div class="badge-image col-xl-2 col-lg-2 pl-0 inactive">
+                                                <div class="badge-image col-xl-2 col-lg-2 col-2 pl-0 inactive">
                                                     <?php echo $this->itemPhoto($badge, 'thumb.normal'); ?>
                                                 </div>
                                             <?php endif; ?>

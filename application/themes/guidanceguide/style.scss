@@ -589,6 +589,17 @@ body#global_page_user-profile-index {
     background-color: #F6FCFC!important;
     padding-top: 1rem!important;
     .holder-my-badges {
+       
+        ul {
+            grid-auto-rows: minmax(130px, auto);
+            li {
+                .left-side {
+                    height: 90px;
+                    
+                }
+            }
+        }
+       
         h4,h5 {
            font-size: 18px;
            color:#3E4A4D;
@@ -612,6 +623,8 @@ body#global_page_user-profile-index {
             img {
                 width: 100%;
                 display: block;
+                height: 100%;
+                object-fit: cover;
             }
         }
 
@@ -632,6 +645,9 @@ body#global_page_user-profile-index {
                     border: none;
                     max-height: 80px;
                     min-height: 80px;
+                    max-width: 80px;
+                    min-width: 80px;
+                    object-fit: cover;
                 }
             }
         }
@@ -1937,6 +1953,7 @@ form.preference-holder {
     height: 100%;
 }
 
+// Border Gear
 #core_menu_mini_menu_extfox {
     ul {
         li.profile-img {
@@ -2309,6 +2326,7 @@ form.preference-holder {
             .holder-special-badges,.contributor-badges-holder {
                 padding: 15px 10px!important;
             }
+            
         }
     }
     // My Info Profile

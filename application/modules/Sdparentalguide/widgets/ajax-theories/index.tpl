@@ -17,7 +17,7 @@
 <?php if($this->showContent): ?>
     <div class="container mb-4 pl-0 pr-0">
         <div class="browse_main_holder bg-white pb-4">
-            <div class="main_box px-lg-5 pb-3 px-md-5  px-sm-1 ">
+            <div class="main_box px-lg-5 pb-3 px-md-5  px-sm-1 py-5">
                 <?php if($this->paginator->getTotalItemCount() <= 0): ?>
                 <div class="tip-message  py-5">
                     <span style="margin-bottom:0">
