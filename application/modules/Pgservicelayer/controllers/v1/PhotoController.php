@@ -139,17 +139,26 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
         if (empty($storageFiles)) {
             $this->respondWithError('no_record');
         }
-        foreach($storageFiles as $storageFile){
-            if ($storageFile->user_id != $viewer_id) {
-                $this->respondWithError('unauthorized');
+        $table = Engine_Api::_()->getDbTable('files', 'pgservicelayer');
+        $db = $table->getDefaultAdapter();
+        $db->beginTransaction();
+        try{
+            foreach($storageFiles as $storageFile){
+                if ($storageFile->user_id != $viewer_id) {
+                    $this->respondWithError('unauthorized');
+                }
+                $storageFile->gg_deleted = 1;
+                $storageFile->save();
+                $children = $storageFile->getChildren();
+                foreach($children as $child){
+                    $child->gg_deleted = 1;
+                    $child->save();
+                }
             }
-            $storageFile->gg_deleted = 1;
-            $storageFile->save();
-            $children = $storageFile->getChildren();
-            foreach($children as $child){
-                $child->gg_deleted = 1;
-                $child->save();
-            }
+            $db->commit();
+        } catch (Exception $ex) {
+            $db->rollBack();
+            $this->respondWithServerError($ex);
         }
         $this->successResponseNoContent('no_content');
     }

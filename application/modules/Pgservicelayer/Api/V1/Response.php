@@ -181,14 +181,32 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $topicArray = array(
             'topicID' => '',
             'topicName' => '',
-            'coverPhoto' => '',
+            'avatarPhoto' => '',
         );
         if(empty($topic)){
             return $topicArray;
         }
         $topicArray['topicID'] = $topic->getIdentity();
         $topicArray['topicName'] = $topic->getTitle();
-        $topicArray['coverPhoto'] = $this->getContentImage($topic);
+        $topicArray['avatarPhoto'] = $this->getContentImage($topic);
         return $topicArray;
+    }
+    
+    public function getCommentData(Core_Model_Item_Abstract $comment){
+        $viewer = Engine_Api::_()->user()->getViewer();
+        $view = Zend_Registry::get("Zend_View");
+        $commentInfo = array();
+        $poster = Engine_Api::_()->getItem($comment->poster_type, $comment->poster_id);
+        $commentInfo["commentID"] = $comment->comment_id;        
+        $commentInfo["body"] = $comment->body;
+        $commentInfo["comment_date"] = $view->locale()->toDateTime($comment->creation_date,array('format' => 'YYYY-MM-d HH:MM:ss'));
+        $commentInfo["likesCount"] = $comment->likes()->getLikeCount();
+        $commentInfo["canDelete"] = false;
+        if ($poster->isSelf($viewer)) {
+            $commentInfo["canDelete"] = true;
+        }
+        $commentInfo['isLiked'] = (bool)$comment->likes()->isLike($viewer);
+        $commentInfo["author"] = $this->getUserData($poster);
+        return $commentInfo;
     }
 }
