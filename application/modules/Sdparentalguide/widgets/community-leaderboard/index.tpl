@@ -21,16 +21,24 @@
     </div>
     <div class="leaderboard_main d-flex justify-content-between">
         <div class="d-flex justify-content-center">Rank</div>
-        <div>Leader</div>
-        <div class="order_by" data-order="contributionPoints">Points</div>
-        <div class="order_by" data-order="reviewCount">Reviews</div>
-        <div>Answers</div>
-        <div class="order_by" data-order="questionCount">Questions</div>
-        <div class="order_by" data-order="followers">Followers</div>
+        <div class="d-flex">Leader</div>
+        <!-- Categories Start -->
+        <div id="points" class="order_by d-flex justify-content-center align-items-center" data-order="contributionPoints">Points</div>
+        <div id="reviews" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="reviewCount">Reviews</div>
+        <div class="d-none d-md-flex justify-content-center align-items-center">Answers<!-- Sort By Answer not supported yet by the service layer --></div>
+        <div id="questions" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="questionCount">Questions</div>
+        <div id="followers" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="followers">Followers</div>
+        <!-- Categories End -->
+        <div class="d-flex d-md-none justify-content-center align-items-center">
+            <button id="order_btn" class="btn-primary">x</button>
+        </div>
+        <!-- Toggle Button End -->
     </div>
-    <div id="sd-response"class="container d-flex justify-content-center"></div>
+    <div id="sd-response"class="container d-flex justify-content-center">
+        <!-- Loader goes here -->
+    </div>
     <div class="leaderboard_content">
-        
+        <!-- Content of ajax call goes here -->
     </div>  
 </div>  
 
@@ -40,6 +48,26 @@
 en4.core.runonce.add(function(){
     loadLeaderboardResults();
 });
+
+
+// var currentCategory = 0;
+// var categoryValue;
+// document.getElementById('order_btn').addEventListener('click', function(){
+//     if(currentCategory == 0){
+//         categoryValue = document.getElementById('followers').getAttribute('data-order');
+
+//         document.getElementById('points').addClass('d-none').removeClass('d-flex');
+//         document.querySelectorAll('.points').forEach(function(points){
+//             points.addClass('d-none').removeClass('d-flex');
+//         });
+//         document.getElementById('followers').addClass('d-flex').removeClass('d-none');
+//         document.querySelectorAll('.followers').forEach(function(followers){
+//             followers.addClass('d-flex').removeClass('d-none');
+//         });
+        
+//         loadLeaderboardResults(timeFrame, categoryValue);
+//     }
+// });
 
 
 // For each Range Nav item on click ajax call is added 
@@ -101,7 +129,7 @@ function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints") {
                                     <img src="${results[i].avatarPhoto.photoURLIcon}"/>
                                     <h4>${results[i].displayName}</h4>
                                 </div>
-                                <div class="d-flex align-items-center justify-content-center">
+                                <div class="points d-flex align-items-center justify-content-center">
                                     <svg style="margin: 3px 5px 0px 0px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px" viewBox="0 0 42.03 39.91"><defs><linearGradient id="a" x1="26.26" y1="12.68" x2="40.67" y2="12.68" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#51b2b6"></stop><stop offset="1" stop-color="#5bc6cd"></stop></linearGradient><linearGradient id="b" y1="17.32" x2="17.39" y2="17.32" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5bc6cd"></stop><stop offset="1" stop-color="#51b2b6"></stop></linearGradient></defs><title>star_pg</title><path d="M40.23,8.55,32.7,18.46l-6.44-8.6L38.77,7C40.61,6.57,41.14,7.31,40.23,8.55Z" fill="url(#a)"></path><path d="M17.39,12,.93,16.13c-1,.24-1.28,1.35-.32,1.79l16.06,4.7Z" fill="url(#b)"></path><path d="M15.31,38.4,17.42,1c0-1.06,1.1-1.31,1.76-.45L41.59,28.45c.83,1,.6,2.71-1.71,1.81L26.36,25.09l-8.44,14A1.36,1.36,0,0,1,15.31,38.4Z" fill="#5bc6cd"></path></svg>
                                     ${results[i].contribution}
                                 </div>
@@ -114,7 +142,7 @@ function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints") {
                                 <div class="d-none d-md-flex align-items-center justify-content-center">
                                     ${results[i].questionCount}
                                 </div>
-                                <div class="d-none d-md-flex align-items-center justify-content-center">
+                                <div class="followers d-none d-md-flex align-items-center justify-content-center">
                                     ${results[i].followersCount}
                                 </div>
                             </div>`;

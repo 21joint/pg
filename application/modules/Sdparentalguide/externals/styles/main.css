@@ -65,7 +65,10 @@
   flex: 7;
 }
 .leaderboard_main div:nth-child(5){
-    cursor: auto;
+  cursor: auto;
+}
+.order_by:hover{
+  color: #5bc6cd;
 }
 /* Leaderboard Main styling end */
 
@@ -428,6 +431,9 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
 @media screen and (max-width: 768px){
     .leaderboard_main div:nth-child(2){
       flex: 6;
+    }
+    .leaderboard_main div:nth-child(n+3){
+      flex: 1;
     }
     .leaderboard_item div:nth-child(2){
       flex: 6;
