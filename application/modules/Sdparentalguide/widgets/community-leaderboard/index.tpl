@@ -110,7 +110,7 @@ function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints", disp
 
     var loader = en4.core.loader.clone();
     loader.addClass("sd_loader mt-5");
-    var url = en4.core.baseUrl+"v1/ranking";
+    var url = en4.core.baseUrl+"api/v1/ranking";
 
     var request = new Request.JSON({
         url: url,
@@ -134,7 +134,7 @@ function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints", disp
                                     ${i+1}
                                 </div>
                                 <div class="d-flex align-items-center leader">
-                                    <img src="${results[i].avatarPhoto.photoURLIcon}"/>
+                                    <img src="${results[i].avatarPhoto.photoURL}"/>
                                     <h4>${results[i].displayName}</h4>
                                 </div>
                                 <div class="points d-flex align-items-center justify-content-center">
@@ -202,6 +202,7 @@ function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints", disp
                         reviews.addClass('d-flex').removeClass('d-none');
                     });
                 }
+                console.log(responseJSON);
             }else{
                 leaderboardContent.innerHTML = responseJSON.message;
             }
