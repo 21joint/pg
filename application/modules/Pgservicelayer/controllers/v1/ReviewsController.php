@@ -47,7 +47,11 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         }
     }
     public function getAction(){
-        $id = $this->getParam("id");   
+        $viewer = Engine_Api::_()->user()->getViewer();
+        if(!$viewer->getIdentity() && $this->isApiRequest()){
+            $this->respondWithError('unauthorized');
+        }
+        $id = $this->getParam("reviewID");   
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         $params = array();
         $customFieldValues = array();
@@ -373,7 +377,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
             $this->respondWithError('unauthorized');
         }
         
-        $id = $this->getParam("id");
+        $id = $this->getParam("reviewID");
         $sitereview = Engine_Api::_()->getItem("sitereview_listing",$id);
         
         $form = Engine_Api::_()->getApi("V1_Forms","pgservicelayer")->getReviewForm();
@@ -592,7 +596,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         $viewer = Engine_Api::_()->user()->getViewer();
         $viewer_id = $viewer->getIdentity();
         $level_id = !empty($viewer_id) ? $viewer->level_id : Engine_Api::_()->getDbtable('levels', 'authorization')->fetchRow(array('type = ?' => "public"))->level_id;
-        $id = $this->getParam("id");
+        $id = $this->getParam("reviewID");
         $idsArray = (array)$id;
         if(is_string($id) && !empty($id)){
             $idsArray = array($id);
@@ -601,13 +605,22 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         if (empty($sitereviews)) {
             $this->respondWithError('no_record');
         }
-        foreach($sitereviews as $sitereview){
-            $canDelete = Engine_Api::_()->authorization()->getPermission($level_id, 'sitereview_listing', "delete_listtype_".$sitereview->listingtype_id);
-            if (!$canDelete) {
-                $this->respondWithError('unauthorized');
+        $table = Engine_Api::_()->getItemTable('sitereview_listing');
+        $db = $table->getAdapter();
+        $db->beginTransaction();
+        try {
+            foreach($sitereviews as $sitereview){
+                $canDelete = Engine_Api::_()->authorization()->getPermission($level_id, 'sitereview_listing', "delete_listtype_".$sitereview->listingtype_id);
+                if (!$canDelete) {
+                    $this->respondWithError('unauthorized');
+                }
+                $sitereview->gg_deleted = 1;
+                $sitereview->save();
             }
-            $sitereview->gg_deleted = 1;
-            $sitereview->save();
+            $db->commit();
+        } catch (Exception $e) {
+            $db->rollBack();
+            $this->respondWithServerError($ex);
         }
         $this->successResponseNoContent('no_content');
     }

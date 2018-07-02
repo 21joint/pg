@@ -47,10 +47,15 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
         }
     }
     public function getAction(){
+        $viewer = Engine_Api::_()->user()->getViewer();
+        if(!$viewer->getIdentity() && $this->isApiRequest()){
+            $this->respondWithError('unauthorized');
+        }
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
-        $id = $this->getParam("id");   
+        $id = $this->getParam("photoID");   
         $page = $this->getParam("page",1);
         $limit = $this->getParam("limit",50);
+        $avatarPhoto = ucfirst($this->getParam("avatarPhoto","icon"));
         $table = Engine_Api::_()->getDbTable('files', 'pgservicelayer');
         $tableName = $table->info("name");
         $select = $table->select()->where('parent_file_id IS NULL');
@@ -67,12 +72,12 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
         $response['ResultCount'] = $paginator->getTotalItemCount();
         $response['Results'] = array();
         foreach($paginator as $photo){
-            $contentImages = $responseApi->getContentImage($photo);
+            $photos = $responseApi->getContentImage($photo);
             $photoArray = array(
                 'photoID' => (string)$photo->getIdentity(),
                 'photoURL' => ''
             );
-            $photoArray = array_merge($photoArray,$contentImages);
+            $photoArray['photoURL'] = isset($photos['photoURL'.$avatarPhoto])?$photos['photoURL'.$avatarPhoto]:$photos['photoURLIcon'];
             $response['Results'][] = $photoArray;
         }
         $this->respondWithSuccess($response);
@@ -87,6 +92,7 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
         if(empty($_FILES['Filedata']['tmp_name']) && $image === false){
             $this->respondWithValidationError('parameter_missing',$this->translate("Photo missing in Filedata."));
         }
+        $avatarPhoto = ucfirst($this->getParam("avatarPhoto","icon"));
         $table = Engine_Api::_()->getDbTable('files', 'pgservicelayer');
         $db = $table->getDefaultAdapter();
         $db->beginTransaction();
@@ -110,12 +116,12 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
             $db->commit();
             
             $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
-            $contentImages = $responseApi->getContentImage($photo);
+            $photos = $responseApi->getContentImage($photo);
             $photoArray = array(
                 'photoID' => (string)$photo->getIdentity(),
                 'photoURL' => ''
             );
-            $photoArray = array_merge($photoArray,$contentImages);
+            $photoArray['photoURL'] = isset($photos['photoURL'.$avatarPhoto])?$photos['photoURL'.$avatarPhoto]:$photos['photoURLIcon'];
             $this->respondWithSuccess($photoArray);
         } catch (Exception $ex) {
             $db->rollBack();
@@ -130,7 +136,7 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
         $viewer = Engine_Api::_()->user()->getViewer();
         $viewer_id = $viewer->getIdentity();
         $level_id = !empty($viewer_id) ? $viewer->level_id : Engine_Api::_()->getDbtable('levels', 'authorization')->fetchRow(array('type = ?' => "public"))->level_id;
-        $id = $this->getParam("id");
+        $id = $this->getParam("photoID");
         $idsArray = (array)$id;
         if(is_string($id) && !empty($id)){
             $idsArray = array($id);
@@ -139,17 +145,26 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
         if (empty($storageFiles)) {
             $this->respondWithError('no_record');
         }
-        foreach($storageFiles as $storageFile){
-            if ($storageFile->user_id != $viewer_id) {
-                $this->respondWithError('unauthorized');
+        $table = Engine_Api::_()->getDbTable('files', 'pgservicelayer');
+        $db = $table->getDefaultAdapter();
+        $db->beginTransaction();
+        try{
+            foreach($storageFiles as $storageFile){
+                if ($storageFile->user_id != $viewer_id) {
+                    $this->respondWithError('unauthorized');
+                }
+                $storageFile->gg_deleted = 1;
+                $storageFile->save();
+                $children = $storageFile->getChildren();
+                foreach($children as $child){
+                    $child->gg_deleted = 1;
+                    $child->save();
+                }
             }
-            $storageFile->gg_deleted = 1;
-            $storageFile->save();
-            $children = $storageFile->getChildren();
-            foreach($children as $child){
-                $child->gg_deleted = 1;
-                $child->save();
-            }
+            $db->commit();
+        } catch (Exception $ex) {
+            $db->rollBack();
+            $this->respondWithServerError($ex);
         }
         $this->successResponseNoContent('no_content');
     }

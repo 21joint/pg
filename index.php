@@ -29,10 +29,26 @@ $getRequestUriPG = htmlspecialchars($_SERVER['REQUEST_URI']);
 if(isset($getRequestUriPG) && !empty($getRequestUriPG) && strstr($getRequestUriPG, "api/v")){
     define('_ENGINE_R_TARG', 'pgapi.php');
 }else {
-    define('_ENGINE_R_TARG', 'index.php');
+//    define('_ENGINE_R_TARG', 'index.php');
 }
 //modifified code ends here
 //end of customization
+
+////////////////////////////////////////////////////////
+//customization for rest api - Greg Cook - 20170718
+//original code starts here
+//define('_ENGINE_R_TARG', 'index.php');
+//original code ends here
+//modified code begins here
+$getRequestUri = htmlspecialchars($_SERVER['REQUEST_URI']);
+if(isset($getRequestUri) && !empty($getRequestUri) && strstr($getRequestUri, "api/rest")){
+	define('_ENGINE_R_TARG', 'siteapi.php');
+}else if(!defined("_ENGINE_R_TARG")) {
+	define('_ENGINE_R_TARG', 'index.php');
+}
+//modifified code ends here
+//end of customization
+
 
 // Main
 include dirname(__FILE__)
