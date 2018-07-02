@@ -30,7 +30,7 @@
         <div id="followers" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="followers">Followers</div>
         <!-- Categories End -->
         <div class="d-flex d-md-none justify-content-center align-items-center">
-            <button id="order_btn" class="btn-primary">x</button>
+            <button id="order_btn" class="btn-primary">></button>
         </div>
         <!-- Toggle Button End -->
     </div>
@@ -49,25 +49,29 @@ en4.core.runonce.add(function(){
     loadLeaderboardResults();
 });
 
-
-// var currentCategory = 0;
-// var categoryValue;
-// document.getElementById('order_btn').addEventListener('click', function(){
-//     if(currentCategory == 0){
-//         categoryValue = document.getElementById('followers').getAttribute('data-order');
-
-//         document.getElementById('points').addClass('d-none').removeClass('d-flex');
-//         document.querySelectorAll('.points').forEach(function(points){
-//             points.addClass('d-none').removeClass('d-flex');
-//         });
-//         document.getElementById('followers').addClass('d-flex').removeClass('d-none');
-//         document.querySelectorAll('.followers').forEach(function(followers){
-//             followers.addClass('d-flex').removeClass('d-none');
-//         });
-        
-//         loadLeaderboardResults(timeFrame, categoryValue);
-//     }
-// });
+// Toggle Categories on Mobile Start
+var currentCategory = 0;
+var categoryValue;
+document.getElementById('order_btn').addEventListener('click', function(){
+    if(currentCategory == 0){
+        categoryValue = document.getElementById('followers').getAttribute('data-order');
+        currentCategory = 1;
+        loadLeaderboardResults(timeFrame, categoryValue, currentCategory); 
+    }else if(currentCategory == 1){
+        categoryValue = document.getElementById('questions').getAttribute('data-order');
+        currentCategory = 2;
+        loadLeaderboardResults(timeFrame, categoryValue, currentCategory);
+    }else if(currentCategory == 2){
+        categoryValue = document.getElementById('reviews').getAttribute('data-order');
+        currentCategory = 3;
+        loadLeaderboardResults(timeFrame, categoryValue, currentCategory);
+    }else{
+        categoryValue = document.getElementById('points').getAttribute('data-order');
+        currentCategory = 0;
+        loadLeaderboardResults(timeFrame, categoryValue, currentCategory);
+    }
+});
+// Toggle Categories on Mobile End
 
 
 // For each Range Nav item on click ajax call is added 
@@ -78,22 +82,25 @@ document.querySelectorAll('.leaderboard_nav').forEach(function(nav) {
         timeFrame = this.innerText;
         // Using null and leaving out the previous sorting results
         // Better to always start from contributionPoints on any timeFrame
-        loadLeaderboardResults(timeFrame, null);       
+        loadLeaderboardResults(timeFrame, categoryValue, currentCategory);       
     });
 });
 
 // Orders by each category which is clicked on using ajax
 // Currently available arguments (contributionPoints, questionCount, reviewCount, followers)
-var orderBy;
-document.querySelectorAll('.order_by').forEach(function(order) {
-    order.addEventListener('click', function() {
-        orderBy = this.getAttribute('data-order');
-        loadLeaderboardResults(timeFrame, orderBy);   
+var checkSize = window.innerWidth;
+if(checkSize > 768){
+    var orderBy;
+    document.querySelectorAll('.order_by').forEach(function(order) {
+        order.addEventListener('click', function() {
+            orderBy = this.getAttribute('data-order');
+            loadLeaderboardResults(timeFrame, orderBy, currentCategory);   
+        });
     });
-});
+}
 
 
-function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints") {
+function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints", disp = 0) {
     //Request data can be linked to form inputs
     var requestData = {};
     requestData.contributionRangeType = tm; //Possible values "Overall", "Week", "Month"
@@ -133,13 +140,13 @@ function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints") {
                                     <svg style="margin: 3px 5px 0px 0px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px" viewBox="0 0 42.03 39.91"><defs><linearGradient id="a" x1="26.26" y1="12.68" x2="40.67" y2="12.68" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#51b2b6"></stop><stop offset="1" stop-color="#5bc6cd"></stop></linearGradient><linearGradient id="b" y1="17.32" x2="17.39" y2="17.32" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5bc6cd"></stop><stop offset="1" stop-color="#51b2b6"></stop></linearGradient></defs><title>star_pg</title><path d="M40.23,8.55,32.7,18.46l-6.44-8.6L38.77,7C40.61,6.57,41.14,7.31,40.23,8.55Z" fill="url(#a)"></path><path d="M17.39,12,.93,16.13c-1,.24-1.28,1.35-.32,1.79l16.06,4.7Z" fill="url(#b)"></path><path d="M15.31,38.4,17.42,1c0-1.06,1.1-1.31,1.76-.45L41.59,28.45c.83,1,.6,2.71-1.71,1.81L26.36,25.09l-8.44,14A1.36,1.36,0,0,1,15.31,38.4Z" fill="#5bc6cd"></path></svg>
                                     ${results[i].contribution}
                                 </div>
-                                <div class="d-none d-md-flex align-items-center justify-content-center">
+                                <div class="reviews d-none d-md-flex align-items-center justify-content-center">
                                     ${results[i].reviewCount}
                                 </div>
                                 <div class="d-none d-md-flex align-items-center justify-content-center">
                                     ${results[i].answerCount}
                                 </div>
-                                <div class="d-none d-md-flex align-items-center justify-content-center">
+                                <div class="questions d-none d-md-flex align-items-center justify-content-center">
                                     ${results[i].questionCount}
                                 </div>
                                 <div class="followers d-none d-md-flex align-items-center justify-content-center">
@@ -148,8 +155,52 @@ function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints") {
                             </div>`;
                 }
                 leaderboardContent.innerHTML = html;
-                // Adding the toggle functionality on arrows next to items on small screens
-                
+                // Adding and Removing Categories in which the items are ordered
+                if(disp == 0){
+                    document.getElementById('reviews').addClass('d-none').removeClass('d-flex');
+                    document.querySelectorAll('.reviews').forEach(function(reviews){
+                        reviews.addClass('d-none').removeClass('d-flex');
+                    });
+                    document.getElementById('points').addClass('d-flex').removeClass('d-none');
+                    document.querySelectorAll('.points').forEach(function(points){
+                        points.addClass('d-flex').removeClass('d-none');
+                    }); 
+                }else if(disp == 1){
+                    document.getElementById('points').addClass('d-none').removeClass('d-flex');
+                    document.querySelectorAll('.points').forEach(function(points){
+                        points.addClass('d-none').removeClass('d-flex');
+                    });
+                    document.getElementById('followers').addClass('d-flex').removeClass('d-none');
+                    document.querySelectorAll('.followers').forEach(function(followers){
+                        followers.addClass('d-flex').removeClass('d-none');
+                    }); 
+                }else if(disp == 2){
+                    document.getElementById('followers').addClass('d-none').removeClass('d-flex');
+                    document.querySelectorAll('.followers').forEach(function(followers){
+                        followers.addClass('d-none').removeClass('d-flex');
+                    });
+                    document.getElementById('points').addClass('d-none').removeClass('d-flex');
+                    document.querySelectorAll('.points').forEach(function(points){
+                        points.addClass('d-none').removeClass('d-flex');
+                    });
+                    document.getElementById('questions').addClass('d-flex').removeClass('d-none');
+                    document.querySelectorAll('.questions').forEach(function(questions){
+                        questions.addClass('d-flex').removeClass('d-none');
+                    }); 
+                }else if(disp == 3){
+                    document.getElementById('questions').addClass('d-none').removeClass('d-flex');
+                    document.querySelectorAll('.questions').forEach(function(questions){
+                        followers.addClass('d-none').removeClass('d-flex');
+                    });
+                    document.getElementById('points').addClass('d-none').removeClass('d-flex');
+                    document.querySelectorAll('.points').forEach(function(points){
+                        points.addClass('d-none').removeClass('d-flex');
+                    });
+                    document.getElementById('reviews').addClass('d-flex').removeClass('d-none');
+                    document.querySelectorAll('.reviews').forEach(function(reviews){
+                        reviews.addClass('d-flex').removeClass('d-none');
+                    });
+                }
             }else{
                 leaderboardContent.innerHTML = responseJSON.message;
             }
