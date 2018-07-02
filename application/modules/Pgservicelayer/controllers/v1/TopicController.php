@@ -7,7 +7,7 @@
  * @author     Stars Developer
  */
 
-class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Api
+class Pgservicelayer_TopicController extends Pgservicelayer_Controller_Action_Api
 {
     public function init(){
         $timezone = Engine_Api::_()->getApi('settings', 'core')->core_locale_timezone;
@@ -22,7 +22,7 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
         Zend_Registry::set('timezone', $timezone);
         Engine_Api::_()->getApi('Core', 'siteapi')->setView();
         Engine_Api::_()->getApi('Core', 'siteapi')->setTranslate();
-        Engine_Api::_()->getApi('Core', 'siteapi')->setLocal();
+        Engine_Api::_()->getApi('Core', 'siteapi')->setLocal();        
     }
     public function indexAction(){
         try{
@@ -33,7 +33,7 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
             else if($method == 'post'){
                 $this->postAction();
             }
-            else if($method == 'put'){
+            else if($method == 'put' || $method == 'patch'){
                 $this->putAction();
             }
             else if($method == 'delete'){
@@ -43,52 +43,53 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
                 $this->respondWithError('invalid_method');
             }
         } catch (Exception $ex) {
-            echo $ex->getMessage();exit;
             $this->respondWithServerError($ex);
         }
     }
+    
     public function getAction(){
-        $response['ResultCount'] = 0;
-        $response['Results'] = array();
-        $this->respondWithSuccess($response);
-    }
-    public function postAction(){
         $viewer = Engine_Api::_()->user()->getViewer();
-        $viewer_id = $viewer->getIdentity();
-        if (!$viewer->getIdentity()) {
+        if(!$viewer->getIdentity() && $this->isApiRequest()){
             $this->respondWithError('unauthorized');
         }
-        if(empty($_FILES['Filedata']['tmp_name'])){
-            $this->respondWithValidationError('parameter_missing',$this->translate("Photo missing in Filedata."));
+        $id = $this->getParam("topicID");
+        $search = $this->getParam("topicName");
+        $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
+        $page = $this->getParam("page",1);
+        $limit = $this->getParam("limit",50);
+        $table = Engine_Api::_()->getDbtable('topics', 'sdparentalguide');
+        $tableName = $table->info("name");
+        $select = $table->select();
+        $select->order("topic_id DESC");
+        $select->where('approved = ? ', 1);
+        if(is_string($id) && !empty($id)){
+            $select->where("$tableName.topic_id = ?",$id);
+        }else if(is_array($id) && !empty ($id)){
+            $select->where("$tableName.topic_id IN (?)",$id);
         }
-        $table = Engine_Api::_()->getDbTable('files', 'pgservicelayer');
-        $db = $table->getDefaultAdapter();
-        $db->beginTransaction();
-        try{
-            $photo = $table->setPhoto($_FILES['Filedata']);
-            if(empty($photo)){
-                $db->rollBack();
-                $this->respondWithError('file_not_uploaded');
-            }
-            $db->commit();
-            
-            $responseApi = Engine_Api::_()->getApi("response","pgservicelayer");
-            $contentImages = $responseApi->getContentImage($photo);
-            $photoArray = array(
-                'photoID' => (string)$photo->getIdentity(),
-                'photoURL' => ''
-            );
-            $photoArray = array_merge($photoArray,$contentImages);
-            $this->respondWithSuccess($photoArray);
-        } catch (Exception $ex) {
-            $db->rollBack();
-            $this->respondWithServerError($ex);
+        if(!empty($search)){
+            $select->where("name LIKE ?","%".$search."%");
         }
+        $select->where("$tableName.gg_deleted = ?",0);
+        $paginator = Zend_Paginator::factory($select);
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage($limit);
+        $response['ResultCount'] = $paginator->getTotalItemCount();
+        $response['Results'] = array();
+        foreach($paginator as $topic){
+            $response['Results'][] = $responseApi->getTopicData($topic);
+        }
+        $this->respondWithSuccess($response);
+    }
+    
+    public function postAction(){
         
     }
+    
     public function putAction(){
         
     }
+    
     public function deleteAction(){
         
     }

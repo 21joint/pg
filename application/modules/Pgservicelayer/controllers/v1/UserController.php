@@ -26,6 +26,10 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
     }
     
     public function rankingAction(){
+        $viewer = Engine_Api::_()->user()->getViewer();
+        if(!$viewer->getIdentity() && $this->isApiRequest()){
+            $this->respondWithError('unauthorized');
+        }
         $contributionRangeType = $this->getParam("contributionRangeType","Overall");
         $orderBy = $this->getParam("orderBy","contributionPoints");
         
@@ -63,7 +67,7 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
             'Results' => array(),
         );
         $api = Engine_Api::_()->sdparentalguide();
-        $responseApi = Engine_Api::_()->getApi("response","pgservicelayer");
+        $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         $response['ResultCount'] = $paginator->getTotalItemCount();
         foreach($paginator as $user){
             $response['Results'][] = $responseApi->getUserData($user);
@@ -72,13 +76,17 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
     }
     
     public function indexAction(){
+        $viewer = Engine_Api::_()->user()->getViewer();
+        if(!$viewer->getIdentity() && $this->isApiRequest()){
+            $this->respondWithError('unauthorized');
+        }
         $this->validateRequestMethod("GET");
-        $responseApi = Engine_Api::_()->getApi("response","pgservicelayer");
-        
+        $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         $usersTable = Engine_Api::_()->getDbTable("users","user");
+        $usersTableName = $usersTable->info("name");
         $select = $usersTable->select()
-            ->where("search = ?", 1)
-            ->where("enabled = ?", 1)
+//            ->where("search = ?", 1)
+//            ->where("enabled = ?", 1)
             ->order("user_id DESC")
             ;
         $mvp = $this->getParam("mvp");
@@ -88,6 +96,12 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
         $expert = $this->getParam("expert");
         if(!empty($expert)){
             $select->where("gg_expert_bronze_count > ? OR gg_expert_silver_count > ? OR gg_expert_gold_count > ? OR gg_expert_platinum_count > ?",0);
+        }
+        $id = $this->getParam("memberID");
+        if(is_string($id) && !empty($id)){
+            $select->where("$usersTableName.user_id = ?",$id);
+        }else if(is_array($id) && !empty ($id)){
+            $select->where("$usersTableName.user_id IN (?)",$id);
         }
         
         $paginator = Zend_Paginator::factory($select);

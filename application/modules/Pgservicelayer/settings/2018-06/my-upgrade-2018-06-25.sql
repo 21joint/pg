@@ -10,3 +10,9 @@
 
 ALTER TABLE `engine4_sitereview_listings`
 ADD `gg_deleted` tinyint NOT NULL DEFAULT '0';
+
+ALTER TABLE `engine4_gg_topics`
+ADD `gg_deleted` tinyint NOT NULL DEFAULT '0';
+
+ALTER TABLE `engine4_core_comments`
+ADD `gg_deleted` tinyint NOT NULL DEFAULT '0';

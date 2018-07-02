@@ -114,6 +114,7 @@ function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints", disp
 
     var request = new Request.JSON({
         url: url,
+        method: 'get',
         data: requestData,
         onRequest: function(){ loader.inject($("sd-response")); }, //When request is sent.
         onError: function(){ loader.destroy(); }, //When request throws an error.

@@ -1,12 +1,14 @@
 <?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * SocialEngine
+ *
+ * @category   Application_Extensions
+ * @package    Pgservicelayer
+ * @author     Stars Developer
  */
 
-class Pgservicelayer_Api_Forms extends Sitereview_Api_Siteapi_Core
+
+class Pgservicelayer_Api_V1_Forms extends Sitereview_Api_Siteapi_Core
 {
     private function translate($message = '') {
         return Engine_Api::_()->getApi('Core', 'siteapi')->translate($message);
