@@ -73,28 +73,6 @@
 
                     <li class="list-inline-item profile-img pr-3">
 
-                        <?php  
-
-                            $color = null;
-                            if($this->viewer->gg_expert_platinum_count > 0){
-                                $color = '#ACBED5';
-                            }
-                            elseif($this->viewer->gg_expert_gold_count > 0){
-                                $color ='#D9BB66';
-                            }
-                            elseif($this->viewer->gg_expert_silver_count > 0){
-                                $color = '#B8B8B8';
-                            } 
-                            elseif($this->viewer->gg_expert_bronze_count > 0){
-                                $color = '#D7947C';
-                            }else {
-                              $color = '#fff';
-                            }
-
-
-                        ?>
-                                
-
                         <?php echo $this->htmlLink( $this->viewer->getHref(),$this->itemPhoto($this->viewer, 'thumb.icon')); ?>
 
 

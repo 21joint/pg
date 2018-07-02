@@ -19,8 +19,24 @@
         height: 20px;
         font-size: 12px;
         border: 2px solid #fff;
+        &.bronze{
+            background: linear-gradient(to bottom right, #E5B8A8, #D7947C);
+        }
+        &.silver{
+            background: linear-gradient(to bottom right, #DBDADA, #B8B8B8);
+        }
+        &.gold {
+            background: linear-gradient(to bottom right, #F1D37F,#D9BB66);
+        }
+        &.platinum{
+            background: linear-gradient(to bottom right, #EFF1F8,#ACBED5);
+        }
     }
 }
+
+
+
+
 
 // Classes
 .grib-grab-two {
@@ -35,7 +51,6 @@
 .border-bottom-grey-light {
     border-bottom:2px solid #F5F5F5;
 }
-
 
 
 
@@ -1920,6 +1935,24 @@ form.preference-holder {
 } 
 .height-vh {
     height: 100%;
+}
+
+#core_menu_mini_menu_extfox {
+    ul {
+        li.profile-img {
+            a {
+                img {
+                    border-style: solid;
+                    border-width: 6px 6px 6px 6px;
+                    -moz-border-image: url('../images/border.png') 20 20 20 20 round;
+                    -webkit-border-image: url('../images/border.png') 20 20 20 20 round;
+                    -o-border-image: url('../images/border.png') 20 20 20 20 round;
+                    border-image: url(../images/border.png) 20 20 20 20 fill;
+                }
+              
+            }
+        }
+    }
 }
 
 
