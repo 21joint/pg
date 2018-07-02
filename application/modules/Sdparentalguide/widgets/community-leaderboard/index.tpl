@@ -202,7 +202,6 @@ function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints", disp
                         reviews.addClass('d-flex').removeClass('d-none');
                     });
                 }
-                console.log(responseJSON);
             }else{
                 leaderboardContent.innerHTML = responseJSON.message;
             }
