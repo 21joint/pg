@@ -132,7 +132,6 @@ class User_Form_Login extends Engine_Form_Email
     
     $this->addElement('Cancel', 'cancel', array(
       'label' => 'Sign Up',
-      'class' => 'btn btn-outline-success text-uppercase py-2 w-100 px-0',
       'link' => true,
       'href' => Zend_Controller_Front::getInstance()->getRouter()->assemble(array('controller' => 'signup', 'action' => 'index'), 'user_signup', true),
     ));
@@ -142,8 +141,7 @@ class User_Form_Login extends Engine_Form_Email
       'cancel'
     ), 'buttons',array ('class' => 'mb-5'));
 
-    
-    
+
     // Init facebook login link
     if( 'none' != $settings->getSetting('core_facebook_enable', 'none')
         && $settings->core_facebook_secret ) {

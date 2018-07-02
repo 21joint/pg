@@ -19,8 +19,24 @@
         height: 20px;
         font-size: 12px;
         border: 2px solid #fff;
+        &.bronze{
+            background: linear-gradient(to bottom right, #E5B8A8, #D7947C);
+        }
+        &.silver{
+            background: linear-gradient(to bottom right, #DBDADA, #B8B8B8);
+        }
+        &.gold {
+            background: linear-gradient(to bottom right, #F1D37F,#D9BB66);
+        }
+        &.platinum{
+            background: linear-gradient(to bottom right, #EFF1F8,#ACBED5);
+        }
     }
 }
+
+
+
+
 
 // Classes
 .grib-grab-two {
@@ -35,7 +51,6 @@
 .border-bottom-grey-light {
     border-bottom:2px solid #F5F5F5;
 }
-
 
 
 
@@ -60,7 +75,6 @@
         
 
     * Core
-        *   Lost Password
         *   Login Page
         *   SignUp Page
         *   ExtfoxForm Settings
@@ -921,6 +935,8 @@ body#global_page_user-profile-index {
     }
     .sd_signup_interests {
         max-width: 100%;
+        padding: 0!important;
+        margin:0;
         li {
             width: 100%!important;
         }
@@ -947,17 +963,7 @@ body#global_page_user-profile-index {
     } 
 }
 
-// Lost Password
-#global_page_user-auth-forgot,#global_page_user-auth-reset {
-    #buttons-element {
-        button{
-            width: 45.7% !important;
-        }  
-        a{
-            width: 45.7%;
-        }
-    }
-}
+
 
 // Login Page
 #global_page_user-auth-login {
@@ -975,12 +981,22 @@ body#global_page_user-profile-index {
                 #submit-element{
                     float: right;
                     width: 100%;
+                    button{
+                        &:hover,&:active{
+                            color:#fff;
+                        }
+                    }
                 }
             }
             #cancel-wrapper {
                 float: right;
                 width: 48%;
                 margin:0px;
+                a {
+                    &:hover,&:active{
+                        color:#fff;
+                    }
+                }
             }
         }
         #fieldset-buttonsfileds {
@@ -1022,6 +1038,7 @@ body#global_page_user-profile-index {
                 float: right;
                 margin-left: 5px;
                 margin-bottom: 0px;
+                
 
             }
             #facebook-wrapper {
@@ -1032,12 +1049,13 @@ body#global_page_user-profile-index {
                 float: left;
                 margin-right: 5px;
                 margin-bottom: 0px;
+
             }
         }
     }
     #facebook-element {
         a {
-           &:hover {
+           &:hover,&:active {
                background-color:#3C5A99;
                color:#fff;
                border-color:#3C5A99;
@@ -1046,7 +1064,7 @@ body#global_page_user-profile-index {
     }
     #twitter-element {
         a {
-            &:hover {
+            &:hover,&:active {
                 background-color:#1DA1F2;
                 color:#fff;
                 border-color:#1DA1F2;
@@ -1196,6 +1214,7 @@ form.preference-holder {
         border:1px solid #F5F5F5;
         width:100%;
         padding: 1.5rem 0;
+        margin:0;
     }
     input[type=checkbox] + label:before {
         display: inline-block;
@@ -1342,13 +1361,40 @@ form.preference-holder {
             background-color:$primary;
             .border-holder {
                 border: 10px solid $white;
-                height: 88%;
+                height: 86.5%;
+                width: 86.5%;
             }
         }
        
     }
 }
 
+// Close Button 
+.close-btn-x{
+    right: 45px;
+    top: 15px;
+    color:#B9CFD1;
+}
+.tip-message {
+    width: 50%;
+    span{
+        background-color: #EBFEFF;
+        font-size: 14px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 700;
+        padding: 1rem;
+        border-radius: 25px;
+        display: flex;
+        align-items: center;
+        &:before{
+            content: '\f0eb';
+            font-family: fontawesome;
+            margin-right: 10px;
+            font-size: 23px;
+        }
+    }
+    
+}
 
 //  ExtfoxForm Settings
 #extfox-settings {
@@ -1628,6 +1674,33 @@ form.preference-holder {
     }
 }
 .extfox-auth {
+    // tip message
+    ul.form-errors{
+        padding: 0;
+        margin:0 0 1.5rem;
+        li {
+            padding: 0.8rem 2.5rem;
+            background-color: #EBFEFF;
+            list-style-type: none;
+            border-radius: 50px;
+            margin-bottom: 0.5rem;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: 'Nunito', sans-serif;
+            ul.errors{
+                padding-left: 0px;
+                list-style-type: none;
+                font-size: 12px;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 600;
+                li {
+                    padding: 0;
+                    margin-bottom: 0!important;
+                }
+            }
+        }
+    }
+
     h3 {
         color:#333D40;
         font-size: 32px;
@@ -1862,6 +1935,24 @@ form.preference-holder {
 } 
 .height-vh {
     height: 100%;
+}
+
+#core_menu_mini_menu_extfox {
+    ul {
+        li.profile-img {
+            a {
+                img {
+                    border-style: solid;
+                    border-width: 6px 6px 6px 6px;
+                    -moz-border-image: url('../images/border.png') 20 20 20 20 round;
+                    -webkit-border-image: url('../images/border.png') 20 20 20 20 round;
+                    -o-border-image: url('../images/border.png') 20 20 20 20 round;
+                    border-image: url(../images/border.png) 20 20 20 20 fill;
+                }
+              
+            }
+        }
+    }
 }
 
 
@@ -2316,14 +2407,11 @@ form.preference-holder {
 
     // Auth Page and Forogot Page
     #global_page_user-auth-forgot,#global_page_user-auth-reset{
-        #buttons-element,#buttons-element {
-            button {
-                width: 55% !important;
-            }
-            a {
-                width: 31%;
-            }
-        }
+        
+        button {
+            width: 100% !important;
+        }  
+        
     } 
     // Login Page
     #global_page_user-auth-login {
@@ -2331,7 +2419,25 @@ form.preference-holder {
             h3 {
                 margin-top:100px;
             }
+            #facebookbutton-wrapper{
+                #twitter-wrapper {
+                    a{
+                        background-color: #1DA1F2;
+                        color: #fff;
+                        border-color: #1DA1F2;
+                    }
+                }
+                #facebook-element {
+                    a {
+                        background-color: #3C5A99;
+                        color: #fff;
+                        border-color: #3C5A99;
+                    }
+                }
+
+            }
         }
+        
     }
     // SignUp Page
     #global_page_user-signup-index {
@@ -2358,32 +2464,30 @@ form.preference-holder {
     }
 
     // Preference Holder 
-    .preference-holder {
-        form {
-            h3,p {
-                width: 90%;
-                margin-top: 30px!important;
-                padding: 0px!important;
-            }
-            input[type=checkbox] {
-                left: 34px !important;
-            }
-            .holder-image {
-                .holder-category-title {
-                    left: 30px;
-                }
-                .holder-select-all {
-                    right:30px;
-                }
-            } 
-
-            .sd_listing_categories{
-              
-                grid-template-columns: repeat(auto-fill, minmax(52%, 1fr));
-              
-            } 
-
+    
+    form.preference-holder {
+        h3,p {
+            width: 90%;
+            margin-top: 30px!important;
+            padding: 0px!important;
         }
+        input[type=checkbox] {
+            left: 34px !important;
+        }
+        .holder-image {
+            .holder-category-title {
+                left: 30px;
+            }
+            .holder-select-all {
+                right:30px;
+            }
+        } 
+
+        .sd_listing_categories{
+            
+            grid-template-columns: repeat(auto-fill, minmax(52%, 1fr));
+            
+        } 
         #show_all-wrapper {
             width: 100%!important;
             #show_all-element {
@@ -2399,6 +2503,17 @@ form.preference-holder {
                     width: 45%;
                 }
             }
+        }
+
+    }
+        
+    // Close Button 
+    .close-btn-x{
+        right: 10px;
+        top: 5px;
+        color: #B9CFD1;
+        svg {
+            width: 15px;
         }
     }
 }

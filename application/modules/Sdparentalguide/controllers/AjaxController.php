@@ -147,9 +147,7 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
             $this->view->message = Zend_Registry::get('Zend_Translate')->_('Super Admins can\'t be deleted.');
             return;
         }
-
-        return;
-
+        
         // Process
         $db = Engine_Api::_()->getDbtable('users', 'user')->getAdapter();
         $db->beginTransaction();
@@ -168,8 +166,6 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
 
         // Unset viewer, remove auth, clear session
         Engine_Api::_()->user()->setViewer(null);
-        Zend_Auth::getInstance()->getStorage()->clear();
-        Zend_Session::destroy();
 
     }
 

@@ -3911,6 +3911,14 @@ mark,
   height: 20px;
   font-size: 12px;
   border: 2px solid #fff; }
+  .item-photo-guidance .statistic.bronze {
+    background: linear-gradient(to bottom right, #E5B8A8, #D7947C); }
+  .item-photo-guidance .statistic.silver {
+    background: linear-gradient(to bottom right, #DBDADA, #B8B8B8); }
+  .item-photo-guidance .statistic.gold {
+    background: linear-gradient(to bottom right, #F1D37F, #D9BB66); }
+  .item-photo-guidance .statistic.platinum {
+    background: linear-gradient(to bottom right, #EFF1F8, #ACBED5); }
 
 .grib-grab-two {
   display: grid;
@@ -3944,7 +3952,6 @@ mark,
         
 
     * Core
-        *   Lost Password
         *   Login Page
         *   SignUp Page
         *   ExtfoxForm Settings
@@ -4390,7 +4397,9 @@ body#global_page_user-profile-index {
   padding-bottom: 0 !important;
   padding: 0 0 1rem !important; }
 .layout_sdparentalguide_ajax_preferences .sd_signup_interests {
-  max-width: 100%; }
+  max-width: 100%;
+  padding: 0 !important;
+  margin: 0; }
   .layout_sdparentalguide_ajax_preferences .sd_signup_interests li {
     width: 100% !important; }
 .layout_sdparentalguide_ajax_preferences .sd_listing_categories {
@@ -4405,11 +4414,6 @@ body#global_page_user-profile-index {
 .layout_sdparentalguide_ajax_preferences #buttons-wrapper #fieldset-buttons a {
   display: none !important; }
 
-#global_page_user-auth-forgot #buttons-element button, #global_page_user-auth-reset #buttons-element button {
-  width: 45.7% !important; }
-#global_page_user-auth-forgot #buttons-element a, #global_page_user-auth-reset #buttons-element a {
-  width: 45.7%; }
-
 #global_page_user-auth-login #user_form_login #fieldset-buttons {
   padding: 0px;
   margin: 0px; }
@@ -4422,10 +4426,14 @@ body#global_page_user-profile-index {
     #global_page_user-auth-login #user_form_login #fieldset-buttons #submit-wrapper #submit-element {
       float: right;
       width: 100%; }
+      #global_page_user-auth-login #user_form_login #fieldset-buttons #submit-wrapper #submit-element button:hover, #global_page_user-auth-login #user_form_login #fieldset-buttons #submit-wrapper #submit-element button:active {
+        color: #fff; }
   #global_page_user-auth-login #user_form_login #fieldset-buttons #cancel-wrapper {
     float: right;
     width: 48%;
     margin: 0px; }
+    #global_page_user-auth-login #user_form_login #fieldset-buttons #cancel-wrapper a:hover, #global_page_user-auth-login #user_form_login #fieldset-buttons #cancel-wrapper a:active {
+      color: #fff; }
 #global_page_user-auth-login #user_form_login #fieldset-buttonsfileds {
   padding: 0px; }
   #global_page_user-auth-login #user_form_login #fieldset-buttonsfileds .form-wrapper {
@@ -4459,11 +4467,11 @@ body#global_page_user-profile-index {
   margin-bottom: 0px; }
   #global_page_user-auth-login #user_form_login #fieldset-facebookbutton #facebook-wrapper #facebook-label {
     display: none; }
-#global_page_user-auth-login #facebook-element a:hover {
+#global_page_user-auth-login #facebook-element a:hover, #global_page_user-auth-login #facebook-element a:active {
   background-color: #3C5A99;
   color: #fff;
   border-color: #3C5A99; }
-#global_page_user-auth-login #twitter-element a:hover {
+#global_page_user-auth-login #twitter-element a:hover, #global_page_user-auth-login #twitter-element a:active {
   background-color: #1DA1F2;
   color: #fff;
   border-color: #1DA1F2; }
@@ -4567,7 +4575,8 @@ form.preference-holder {
     font-family: 'Nunito', sans-serif;
     border: 1px solid #F5F5F5;
     width: 100%;
-    padding: 1.5rem 0; }
+    padding: 1.5rem 0;
+    margin: 0; }
   form.preference-holder input[type=checkbox] + label:before {
     display: inline-block;
     width: 16px;
@@ -4682,7 +4691,30 @@ form.preference-holder {
     background-color: #5CC7CE; }
     .left-side-partial .image-holder .background-holder .border-holder {
       border: 10px solid #fff;
-      height: 88%; }
+      height: 86.5%;
+      width: 86.5%; }
+
+.close-btn-x {
+  right: 45px;
+  top: 15px;
+  color: #B9CFD1; }
+
+.tip-message {
+  width: 50%; }
+  .tip-message span {
+    background-color: #EBFEFF;
+    font-size: 14px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    padding: 1rem;
+    border-radius: 25px;
+    display: flex;
+    align-items: center; }
+    .tip-message span:before {
+      content: '\f0eb';
+      font-family: fontawesome;
+      margin-right: 10px;
+      font-size: 23px; }
 
 #extfox-settings#delete button {
   background-color: #E15A5A !important; }
@@ -4874,6 +4906,27 @@ form.preference-holder {
   transition: all 0.3s ease !important;
   box-shadow: inset 0 0 0 0.2em white, inset 0 0 0 1em #5CC7CE !important; }
 
+.extfox-auth ul.form-errors {
+  padding: 0;
+  margin: 0 0 1.5rem; }
+  .extfox-auth ul.form-errors li {
+    padding: 0.8rem 2.5rem;
+    background-color: #EBFEFF;
+    list-style-type: none;
+    border-radius: 50px;
+    margin-bottom: 0.5rem;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif; }
+    .extfox-auth ul.form-errors li ul.errors {
+      padding-left: 0px;
+      list-style-type: none;
+      font-size: 12px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 600; }
+      .extfox-auth ul.form-errors li ul.errors li {
+        padding: 0;
+        margin-bottom: 0 !important; }
 .extfox-auth h3 {
   color: #333D40;
   font-size: 32px;
@@ -5056,6 +5109,14 @@ form.preference-holder {
 
 .height-vh {
   height: 100%; }
+
+#core_menu_mini_menu_extfox ul li.profile-img a img {
+  border-style: solid;
+  border-width: 6px 6px 6px 6px;
+  -moz-border-image: url("../images/border.png") 20 20 20 20 round;
+  -webkit-border-image: url("../images/border.png") 20 20 20 20 round;
+  -o-border-image: url("../images/border.png") 20 20 20 20 round;
+  border-image: url(../images/border.png) 20 20 20 20 fill; }
 
 @media only screen and (max-width: 768px) {
   .grib-grab-two {
@@ -5307,13 +5368,19 @@ form.preference-holder {
   .extfox-auth p {
     text-align: center; }
 
-  #global_page_user-auth-forgot #buttons-element button, #global_page_user-auth-forgot #buttons-element button, #global_page_user-auth-reset #buttons-element button, #global_page_user-auth-reset #buttons-element button {
-    width: 55% !important; }
-  #global_page_user-auth-forgot #buttons-element a, #global_page_user-auth-forgot #buttons-element a, #global_page_user-auth-reset #buttons-element a, #global_page_user-auth-reset #buttons-element a {
-    width: 31%; }
+  #global_page_user-auth-forgot button, #global_page_user-auth-reset button {
+    width: 100% !important; }
 
   #global_page_user-auth-login #user_form_login h3 {
     margin-top: 100px; }
+  #global_page_user-auth-login #user_form_login #facebookbutton-wrapper #twitter-wrapper a {
+    background-color: #1DA1F2;
+    color: #fff;
+    border-color: #1DA1F2; }
+  #global_page_user-auth-login #user_form_login #facebookbutton-wrapper #facebook-element a {
+    background-color: #3C5A99;
+    color: #fff;
+    border-color: #3C5A99; }
 
   #global_page_user-signup-index .form-wrapper {
     padding-left: 0px !important; }
@@ -5325,28 +5392,35 @@ form.preference-holder {
       margin: 0 auto;
       display: block; }
 
-  .preference-holder form h3, .preference-holder form p {
+  form.preference-holder h3, form.preference-holder p {
     width: 90%;
     margin-top: 30px !important;
     padding: 0px !important; }
-  .preference-holder form input[type=checkbox] {
+  form.preference-holder input[type=checkbox] {
     left: 34px !important; }
-  .preference-holder form .holder-image .holder-category-title {
+  form.preference-holder .holder-image .holder-category-title {
     left: 30px; }
-  .preference-holder form .holder-image .holder-select-all {
+  form.preference-holder .holder-image .holder-select-all {
     right: 30px; }
-  .preference-holder form .sd_listing_categories {
+  form.preference-holder .sd_listing_categories {
     grid-template-columns: repeat(auto-fill, minmax(52%, 1fr)); }
-  .preference-holder #show_all-wrapper {
+  form.preference-holder #show_all-wrapper {
     width: 100% !important; }
-    .preference-holder #show_all-wrapper #show_all-element {
+    form.preference-holder #show_all-wrapper #show_all-element {
       width: 100% !important; }
-  .preference-holder #buttons-wrapper {
+  form.preference-holder #buttons-wrapper {
     width: 100% !important; }
-    .preference-holder #buttons-wrapper #fieldset-buttons {
+    form.preference-holder #buttons-wrapper #fieldset-buttons {
       width: 90% !important;
       float: none !important; }
-      .preference-holder #buttons-wrapper #fieldset-buttons button, .preference-holder #buttons-wrapper #fieldset-buttons a {
-        width: 45%; } }
+      form.preference-holder #buttons-wrapper #fieldset-buttons button, form.preference-holder #buttons-wrapper #fieldset-buttons a {
+        width: 45%; }
+
+  .close-btn-x {
+    right: 10px;
+    top: 5px;
+    color: #B9CFD1; }
+    .close-btn-x svg {
+      width: 15px; } }
 
 /*# sourceMappingURL=root.css.map */

@@ -19,7 +19,7 @@
         <div class="browse_main_holder bg-white pb-4">
             <div class="main_box px-lg-5 pb-3 px-md-5  px-sm-1 ">
                 <?php if($this->paginator->getTotalItemCount() <= 0): ?>
-                <div class="tip py-5">
+                <div class="tip-message  py-5">
                     <span style="margin-bottom:0">
                         <?php echo $this->translate("No Theories") ?>
                     </span>

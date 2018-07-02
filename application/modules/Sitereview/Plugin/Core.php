@@ -102,8 +102,11 @@ class Sitereview_Plugin_Core extends Zend_Controller_Plugin_Abstract {
       $results = $likesTable->fetchAll($likesTableSelect);
       foreach ($results as $user) {
         $resource = Engine_Api::_()->getItem('sitereview_listing', $user->resource_id);
-        $resource->like_count--;
-        $resource->save();
+        if(count($resource) > 0) {
+          $resource->like_count--;
+          $resource->save();
+        }
+          
       }
 
       //COMMENT COUNT DECREASE FORM LISTING TABLE.
@@ -112,16 +115,20 @@ class Sitereview_Plugin_Core extends Zend_Controller_Plugin_Abstract {
       $results = $commentsTable->fetchAll($commentsTableSelect);
       foreach ($results as $user) {
         $resource = Engine_Api::_()->getItem('sitereview_listing', $user->resource_id);
-        $resource->comment_count--;
-        $resource->save();
+        if(count($resource) > 0) {
+          $resource->comment_count--;
+          $resource->save();
+        }
       }
 
       $commentsTableSelect = $commentsTable->select()->where('poster_id = ?', $payload->getIdentity())->Where('resource_type = ?', 'sitereview_review');
       $results = $commentsTable->fetchAll($commentsTableSelect);
       foreach ($results as $user) {
         $resource = Engine_Api::_()->getItem('sitereview_review', $user->resource_id);
-        $resource->comment_count--;
-        $resource->save();
+        if(count($resource) > 0) {
+          $resource->comment_count--;
+          $resource->save();
+        }
       }
 
       //LIKE COUNT DREASE FORM LISTING TABLE.
@@ -130,8 +137,10 @@ class Sitereview_Plugin_Core extends Zend_Controller_Plugin_Abstract {
       $results = $likesTable->fetchAll($likesTableSelect);
       foreach ($results as $user) {
         $resource = Engine_Api::_()->getItem('sitereview_review', $user->resource_id);
-        $resource->like_count--;
-        $resource->save();
+        if(count($resource) > 0) {
+          $resource->like_count--;
+          $resource->save();
+        }
       }
 
       //GET EDITOR TABLE

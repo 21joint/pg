@@ -13,10 +13,17 @@
     <div class="text d-block text-success p-2 w-100" id="successForm"></div>
     <?php echo $this->form; ?>
 
-    <script>
-        en4.core.runonce.add(function() {
-            var form = document.getElementsByClassName('ajax-form-' + <?php echo $this->identity; ?>)[0];
-            en4.gg.ggAjaxForm(form, 'preference');
-        });
-    </script>
+<script>    
+en4.core.runonce.add(function() {
+    var form = document.getElementsByClassName('ajax-form-' + <?php echo $this->identity; ?>)[0];
+    en4.gg.ggAjaxForm(form, 'preference');
+});
+
+function showAllCategories(element){
+    var value = $(element).checked;
+    $$(".sd_listing_category").set("checked",value);
+}  
+
+</script>
+
 <?php endif; ?>
