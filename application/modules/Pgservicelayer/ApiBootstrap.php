@@ -133,9 +133,8 @@ class Pgservicelayer_ApiBootstrap {
             $response = $front->dispatch($request, $response);
             $response->sendResponse();
         } catch (Exception $e) {
-            echo $e->getMessage();exit;
             $response->setHttpResponseCode(self::HTTP_INTERNAL_ERROR)
-                    ->setBody('Service temporary unavailable')
+                    ->setBody('Service temporary unavailable\n '.$e->getMessage()." \n ".$e->getTraceAsString())
                     ->sendResponse();
         }
     }

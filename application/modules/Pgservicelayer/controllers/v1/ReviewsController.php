@@ -601,13 +601,22 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         if (empty($sitereviews)) {
             $this->respondWithError('no_record');
         }
-        foreach($sitereviews as $sitereview){
-            $canDelete = Engine_Api::_()->authorization()->getPermission($level_id, 'sitereview_listing', "delete_listtype_".$sitereview->listingtype_id);
-            if (!$canDelete) {
-                $this->respondWithError('unauthorized');
+        $table = Engine_Api::_()->getItemTable('sitereview_listing');
+        $db = $table->getAdapter();
+        $db->beginTransaction();
+        try {
+            foreach($sitereviews as $sitereview){
+                $canDelete = Engine_Api::_()->authorization()->getPermission($level_id, 'sitereview_listing', "delete_listtype_".$sitereview->listingtype_id);
+                if (!$canDelete) {
+                    $this->respondWithError('unauthorized');
+                }
+                $sitereview->gg_deleted = 1;
+                $sitereview->save();
             }
-            $sitereview->gg_deleted = 1;
-            $sitereview->save();
+            $db->commit();
+        } catch (Exception $e) {
+            $db->rollBack();
+            $this->respondWithServerError($ex);
         }
         $this->successResponseNoContent('no_content');
     }
