@@ -34,6 +34,7 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
         $orderBy = $this->getParam("orderBy","contributionPoints");
         
         $usersTable = Engine_Api::_()->getDbTable("users","user");
+        $usersTableName = $usersTable->info("name");
         $select = $usersTable->select()
             ->where("search = ?", 1)
             ->where("enabled = ?", 1)
@@ -43,6 +44,12 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
         if(strtolower($contributionRangeType) == "week" || strtolower($contributionRangeType) == "month"){
 //            $creditsTable = Engine_Api::_()->getDbtable('credits','sitecredit');
 //            $creditsTableName = $creditsTable->info("name");
+//            $select->joinLeft($creditsTableName,"$creditsTableName.user_id = $usersTableName.user_id",array())
+//                    ->group("$usersTableName.user_id");
+//            $maxDate = date("Y-m-d H:i:s",strtotime("+1 months"));
+//            if(strtolower($contributionRangeType) == "week"){
+//                $maxDate = date("Y-m-d H:i:s",strtotime("+1 week"));
+//            }
             
         }
         //Sort data
