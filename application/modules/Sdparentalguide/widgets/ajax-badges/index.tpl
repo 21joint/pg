@@ -92,7 +92,7 @@
                                             <?php 
                                                 $userTable = Engine_Api::_()->getDbtable('assignedBadges', 'sdparentalguide');
                                                 $select = $userTable->select()
-                                                    ->where('user_id = ?', $this->subject->getIdentity(0))
+                                                    ->limit('user_id = ?', $this->subject->getIdentity(0))
                                                     ->where('badge_id = ?', $badge->getIdentity())
                                                 ;
                                                 $uBadge = $userTable->fetchRow($select);

@@ -33,8 +33,7 @@
         }
     }
 }
-
-
+   
 
 
 
@@ -1367,6 +1366,19 @@ form.preference-holder {
     
 }
 
+
+// Border Gear
+img.item_photo_user {
+    border-style: solid!important;
+    border-width: 5px 6px 5px 6px!important;
+    -moz-border-image: url('../images/border.png') 20 20 20 20 round!important;
+    -webkit-border-image: url('../images/border.png') 20 20 20 20 round!important;
+    -o-border-image: url('../images/border.png') 20 20 20 20 round!important;
+    border-image: url(../images/border.png) 20 20 20 20 fill!important;
+}
+   
+
+
 // Partial for auth pages
 .left-side-partial{
     .image-holder {
@@ -1531,6 +1543,20 @@ form.preference-holder {
                                     &:hover, &.selected {
                                         background: #8AE693;
                                         border-color: #8AE693;
+                                    }
+                                }
+                                
+                            }
+                            .age {
+                                font-size: 14px;
+                                font-family: 'Nunito', sans-serif;
+                                font-weight: 600;
+                                color:#333D40;
+                                &:hover,&.selected-age {
+                                    background-color: #5CC7CE!important;
+                                    color:$white!important;
+                                    a {
+                                        color:$white;
                                     }
                                 }
                             }
@@ -1954,24 +1980,8 @@ form.preference-holder {
     height: 100%;
 }
 
-// Border Gear
-#core_menu_mini_menu_extfox {
-    ul {
-        li.profile-img {
-            a {
-                img {
-                    border-style: solid;
-                    border-width: 6px 6px 6px 6px;
-                    -moz-border-image: url('../images/border.png') 20 20 20 20 round;
-                    -webkit-border-image: url('../images/border.png') 20 20 20 20 round;
-                    -o-border-image: url('../images/border.png') 20 20 20 20 round;
-                    border-image: url(../images/border.png) 20 20 20 20 fill;
-                }
-              
-            }
-        }
-    }
-}
+        
+            
 
 
 // Mobile

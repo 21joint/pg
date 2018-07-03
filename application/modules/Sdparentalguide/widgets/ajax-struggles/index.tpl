@@ -25,7 +25,7 @@
 
                     <div class="tip-message py-5">
                         <span style="margin-bottom:0">
-                            <?php echo $this->translate("No stuggles") ?>
+                            <?php echo $this->translate("No Stuggles") ?>
                         </span>
                     </div>
 
