@@ -27,7 +27,7 @@
     <?php if(count($categories) <= 0){ continue; } ?>
    
     <li class="mt-1 py-4">
-        <div class="holder-image position-relative mb-3 col-xl-11 col-11 mx-auto col-lg-11 px-0">
+        <div class="holder-image position-relative mb-3 col-xl-11 col-11 mx-auto col-lg-11 px-0" style="background-image: url('<?php echo $listingType->getPhotoUrl(); ?>');">
             <div class="holder-category-title bg-primary d-flex position-absolute align-items-center justify-content-center py-3 text-white">
                 <span><?php echo $listingType->getTitle(); ?></span>
             </div>
@@ -60,43 +60,7 @@
 
 
 <script type="text/javascript">
-en4.core.runonce.add(function(){
-    var e = $$(".sd_signup_interests");
-    e.pinBoardSeaoMasonry({
-        singleMode: true, 
-        itemSelector: '.sd-interest-list'
-    });
-    setTimeout(function() {
-        var e = $$(".sd_signup_interests");
-        e.pinBoardSeaoMasonry({
-            singleMode: true, 
-            itemSelector: '.sd-interest-list'
-        });
-    }, 200);
-    setTimeout(function() {
-        var e = $$(".sd_signup_interests");
-        e.pinBoardSeaoMasonry({
-            singleMode: true, 
-            itemSelector: '.sd-interest-list'
-        });
-    }, 500);
-    setTimeout(function() {
-        var e = $$(".sd_signup_interests");
-        e.pinBoardSeaoMasonry({
-            singleMode: true, 
-            itemSelector: '.sd-interest-list'
-        });
-    }, 1000);
-});
-window.addEvent("resize",function(){
-    setTimeout(function() {
-        var e = $$(".sd_signup_interests");
-        e.pinBoardSeaoMasonry({
-            singleMode: true, 
-            itemSelector: '.sd-interest-list'
-        });
-    }, 500);
-});
+
 function markListingCategories(element){
     
     var parent = $(element).getParent("li");
@@ -107,23 +71,16 @@ function markListingCategories(element){
     }
     if(parent.hasClass("checked_all")){
         checkboxes.set("checked",null);
-       
-       
-    }else{
+    } else{
         checkboxes.set("checked",true);  
-        
     }
     parent.toggleClass("checked_all");
 }
 
-
-let right = document.getElementsByClassName("right-side")[0];
-right.classList.remove('col-xl-6', 'col-lg-6');
-right.classList.add('col-xl-12', 'col-lg-12','col-12','px-0',);
-right.firstElementChild.classList.add('col-xl-12', 'col-lg-12');
-right.firstElementChild.classList.remove('col-xl-7','col-lg-7');
-
-
-
+var rightSidePreferences = document.getElementsByClassName("right-side")[0];
+rightSidePreferences.classList.remove('col-xl-6', 'col-lg-6');
+rightSidePreferences.classList.add('col-xl-12', 'col-lg-12','col-12','px-0',);
+rightSidePreferences.firstElementChild.classList.add('col-xl-12', 'col-lg-12');
+rightSidePreferences.firstElementChild.classList.remove('col-xl-7','col-lg-7');
 
 </script>
