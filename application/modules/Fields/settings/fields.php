@@ -511,5 +511,31 @@ Currency
       'helper' => 'fieldSoundcloud',
     ),
 
+    // Gender 
+    'sex' => array(
+      'base' => 'text',
+      'label' => 'Gender - GuidanceGuide',
+      'category' => 'specific',
+      'helper' => 'fieldSpotify',
+    ),
+
+    'day_of_birth' => array(
+      'base' => 'text',
+      'label' => 'Birthday - GuidanceGuide',
+      'category' => 'specific',
+      'helper' => 'fieldDayOfBirth',
+    ),
+
+
+    'age_range' => array(
+      'base' => 'text',
+      'label' => 'Age Range - GuidanceGuide',
+      'category' => 'specific',
+      'helper' => 'fieldAgeRange',
+    ),
+
+
+   
+
   ),
 ) ?>
