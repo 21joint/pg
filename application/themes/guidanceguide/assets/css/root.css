@@ -4214,6 +4214,10 @@ body#global_page_user-profile-index {
 .layout_sdparentalguide_ajax_badges {
   background-color: #F6FCFC !important;
   padding-top: 1rem !important; }
+  .layout_sdparentalguide_ajax_badges .holder-my-badges ul {
+    grid-auto-rows: minmax(130px, auto); }
+    .layout_sdparentalguide_ajax_badges .holder-my-badges ul li .left-side {
+      height: 90px; }
   .layout_sdparentalguide_ajax_badges .holder-my-badges h4, .layout_sdparentalguide_ajax_badges .holder-my-badges h5 {
     font-size: 18px;
     color: #3E4A4D;
@@ -4230,7 +4234,9 @@ body#global_page_user-profile-index {
     color: #B9CFD1; }
   .layout_sdparentalguide_ajax_badges .holder-my-badges .thumbnail-photo img {
     width: 100%;
-    display: block; }
+    display: block;
+    height: 100%;
+    object-fit: cover; }
   .layout_sdparentalguide_ajax_badges .holder-my-badges .contributor-badges-holder .badge-image:hover img {
     opacity: 1 !important; }
   .layout_sdparentalguide_ajax_badges .holder-my-badges .contributor-badges-holder .badge-image.inactive img {
@@ -4238,7 +4244,10 @@ body#global_page_user-profile-index {
   .layout_sdparentalguide_ajax_badges .holder-my-badges .contributor-badges-holder .badge-image img {
     border: none;
     max-height: 80px;
-    min-height: 80px; }
+    min-height: 80px;
+    max-width: 80px;
+    min-width: 80px;
+    object-fit: cover; }
 
 .layout_sdparentalguide_ajax_profile #extfox-settings div.form-wrapper-heading span {
   padding: 10px 0px !important; }
@@ -4621,7 +4630,6 @@ form.preference-holder {
     width: 60%;
     margin: 0 auto !important; }
   form.preference-holder .holder-image {
-    background-image: url("../images/baby_bag.jpg");
     height: 265px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -5319,6 +5327,11 @@ form.preference-holder {
     width: 100% !important; }
     .layout_sdparentalguide_ajax_badges .container .holder-special-badges, .layout_sdparentalguide_ajax_badges .container .contributor-badges-holder {
       padding: 15px 10px !important; }
+    .layout_sdparentalguide_ajax_badges .container ul li .bottom-holder {
+      flex-wrap: wrap; }
+      .layout_sdparentalguide_ajax_badges .container ul li .bottom-holder .badge-image {
+        padding: 0;
+        text-align: center; }
 
   .layout_sdparentalguide_ajax_info .container {
     width: 100% !important; }
@@ -5336,10 +5349,10 @@ form.preference-holder {
   .layout_sdparentalguide_ajax_preferences .sd_signup_interests {
     max-width: 100%;
     padding-left: 0; }
-  .layout_sdparentalguide_ajax_preferences .sd_listing_categories {
-    grid-template-columns: repeat(auto-fill, minmax(70%, 1fr)) !important; }
   .layout_sdparentalguide_ajax_preferences .holder-listing-categories {
     padding: 0px !important; }
+    .layout_sdparentalguide_ajax_preferences .holder-listing-categories .sd_listing_categories {
+      grid-template-columns: repeat(auto-fill, minmax(70%, 1fr)) !important; }
 
   .layout_sdparentalguide_ajax_theories .container {
     width: 100% !important; }
@@ -5396,8 +5409,6 @@ form.preference-holder {
     width: 90%;
     margin-top: 30px !important;
     padding: 0px !important; }
-  form.preference-holder input[type=checkbox] {
-    left: 34px !important; }
   form.preference-holder .holder-image .holder-category-title {
     left: 30px; }
   form.preference-holder .holder-image .holder-select-all {

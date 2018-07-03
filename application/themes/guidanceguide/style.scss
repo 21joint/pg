@@ -1272,7 +1272,6 @@ form.preference-holder {
         font-weight: 700;
         padding:4rem 3rem  0rem;
         margin-top:0px!important;
-        
         width: 60%;
         margin:0 auto!important;
     }
@@ -1284,19 +1283,18 @@ form.preference-holder {
         margin:0 auto!important;
     }
     .holder-image {
-        background-image: url('../images/baby_bag.jpg');
         height: 265px;
         background-size: cover;
         background-repeat: no-repeat;
         border-radius: 15px;
         .holder-category-title {
-            top:0;
+            top: 0;
             left: 60px;
             width: 200px!important;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
             text-align: center;
-            span{
+            span {
                 font-family: 'Nunito', sans-serif;
                 font-size: 18px;
                 font-weight: bold;
@@ -1306,7 +1304,7 @@ form.preference-holder {
         .holder-select-all {
             bottom: 0;
             right: 60px;
-            width: 170px!important;
+            width: 170px !important;
             a {
                 height: 100%;
                 width: 100%;
@@ -2514,9 +2512,7 @@ form.preference-holder {
         } 
 
         .sd_listing_categories{
-            
             grid-template-columns: repeat(auto-fill, minmax(52%, 1fr));
-            
         } 
         #show_all-wrapper {
             width: 100%!important;

@@ -48,7 +48,7 @@ class Sdparentalguide_Widget_AjaxPreferencesController extends Engine_Content_Wi
     
           $this->view->form = $form = new Sdparentalguide_Form_Signup_Interests;
           $form->setAttrib('class', 'preference-holder global_form ajax-form-' . $content_id);
-          //$form->getElement("continue")->setLabel("Save Changes");
+          $form->getElement("continue")->setLabel("Save");
           
           // render content
           $this->view->showContent = true;  

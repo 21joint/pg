@@ -47,10 +47,7 @@ function showEditContent() {
     tabs[1].style = 'display: block;';
    }
    
-
-   
 }
-
 
 window.addEvent('load', function () {
   hoverBoxImage();

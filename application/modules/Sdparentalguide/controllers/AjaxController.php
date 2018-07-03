@@ -413,14 +413,13 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
 
     public function preferenceAction(){
 
-        
         $this->_helper->ViewRenderer->setNoRender(true);
 
         $viewer = Engine_Api::_()->user()->getViewer();
     
         if( !$this->getRequest()->isPost() ) {
             $this->view->status = false;
-            $this->view->error = Zend_Registry::get('Zend_Translate')->_("Invalid request method");;
+            $this->view->error = Zend_Registry::get('Zend_Translate')->_("Invalid request method");
             return;
         }
         
@@ -429,12 +428,16 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
 
         $values = $request->getParam('values', null);
 
-        $publishTypes = array();
-        
-        $i = 0;
+        // setup values
+        $values = $request->getParam('values', null);
+        $publishTypes = array(
+            'categories' => array()
+        );
+
         foreach($values as $key => $value) {
-            $publishTypes['categories'][$i] = $value['name'];
-            $i++;
+            if($value['key'] == 'categories[]' && $value['value'] === 'true') {
+                array_push($publishTypes['categories'], $value['name']);
+            }
         }
         
         $db = Engine_Db_Table::getDefaultAdapter();
@@ -446,8 +449,16 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
             $catTable = Engine_Api::_()->getDbTable("categories","sitereview");
 
             $categories = $publishTypes['categories'];
+            if(count($categories) <= 0){
+                $this->view->status = false;
+                $this->view->error = Zend_Registry::get('Zend_Translate')->_("Nothing have been selected.");
+                return;
+            }
+
             $categories = $catTable->fetchAll($catTable->select()->where('category_id IN (?)',$categories));
             if(count($categories) <= 0){
+                $this->view->status = false;
+                $this->view->error = Zend_Registry::get('Zend_Translate')->_("Invalid request method");
                 return;
             }
 
