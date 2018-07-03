@@ -98,11 +98,11 @@
                                                 $uBadge = $userTable->fetchRow($select);
                                             ?>
                                             <?php if(count($uBadge) > 0): ?>
-                                                <div class="badge-image col-xl-2 col-lg-2 col-2 pl-0 <?php echo ($uBadge->active == 1) ? 'active' : 'inactive'; ?> ">
+                                                <div class="badge-image col-xl-2 col-lg-2 col-6 pl-lg-0 <?php echo ($uBadge->active == 1) ? 'active' : 'inactive'; ?> ">
                                                     <?php echo $this->itemPhoto($badge, 'thumb.normal'); ?>
                                                 </div>
                                             <?php else: ?>
-                                                <div class="badge-image col-xl-2 col-lg-2 col-2 pl-0 inactive">
+                                                <div class="badge-image col-xl-2 col-lg-2 col-6 pl-lg-0 inactive">
                                                     <?php echo $this->itemPhoto($badge, 'thumb.normal'); ?>
                                                 </div>
                                             <?php endif; ?>

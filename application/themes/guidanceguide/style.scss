@@ -597,6 +597,7 @@ body#global_page_user-profile-index {
                     height: 90px;
                     
                 }
+                
             }
         }
        
@@ -2326,6 +2327,18 @@ form.preference-holder {
             .holder-special-badges,.contributor-badges-holder {
                 padding: 15px 10px!important;
             }
+
+            ul{
+                li {
+                    .bottom-holder {
+                        flex-wrap: wrap;
+                        .badge-image {
+                            padding: 0;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
             
         }
     }
@@ -2524,7 +2537,7 @@ form.preference-holder {
         }
 
     }
-        
+    
     // Close Button 
     .close-btn-x{
         right: 10px;
