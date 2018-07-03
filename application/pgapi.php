@@ -48,7 +48,7 @@ define('DEFAULT_APP_MODULES', implode(",", $enableModules));
 defined('APPLICATION_NAME') || define('APPLICATION_NAME', 'Siteapi');
 defined('_ENGINE_ADMIN_NEUTER') || define('_ENGINE_ADMIN_NEUTER', false);
 defined('_ENGINE_NO_AUTH') || define('_ENGINE_NO_AUTH', false);
-defined('_ENGINE_SSL') || define('_ENGINE_SSL', (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == 'on'));
+defined('_ENGINE_SSL') || define('_ENGINE_SSL', ((isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') || (isset($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == 'on')));
 
 $androidVersion = !empty($_REQUEST['_ANDROID_VERSION']) ? $_REQUEST['_ANDROID_VERSION'] : '1.6.1.1';
 define('_ANDROID_VERSION', $androidVersion);
