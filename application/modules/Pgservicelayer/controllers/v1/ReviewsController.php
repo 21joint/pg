@@ -58,7 +58,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         $page = $this->getParam("page",1);
         $limit = $this->getParam("limit",50);
         $params['type'] = 'browse';
-        $params['user_id'] = $this->getParam("authorID");
+        $params['user_id'] = $this->getParam("authorID",$this->getParam("author"));
         $params['listingtype_id'] = $this->getParam("typeID",-1);
         $params['category_id'] = $this->getParam("categoryID");
         $params['subcategory_id'] = $this->getParam("subCategoryID");
@@ -77,8 +77,51 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
             $select->joinLeft($listingTypeTableName,"$listingTypeTableName.listingtype_id = $listingTableName.listingtype_id",array());
             $select->where("$listingTypeTableName.gg_topic_id = ?",(int)$topicID);
         }
+        
+        $status = $this->getParam("status","1");
+        if($status != ''){
+            if($status == 1){
+                $select->where("$listingTableName.draft = ?",0);
+                $select->where("$listingTableName.approved = ?",1);
+            }else{
+                $select->where("$listingTableName.draft = ?",(!(int)$status));
+            }            
+        }
+        
+        $authorRating = $this->getParam("authorRating","-1");
+        if($authorRating != -1){
+            if(strstr($authorRating,">")){
+                $authorRating = str_replace(">","",$authorRating);
+                $select->where("$listingTableName.gg_author_product_rating > ?",(int)$authorRating);
+            }else{
+                $select->where("$listingTableName.gg_author_product_rating = ?",(int)$authorRating);
+            }            
+        }
+        
+        $featured = $this->getParam("featured","-1");
+        if($featured != -1){
+            $select->where("$listingTypeTableName.featured = ?",(int)$featured);
+        }
                 
         $select->where("$listingTableName.gg_deleted = ?",0);
+        $select->reset("order");
+        $orderByDirection = $this->getParam("orderByDirection","descending");
+        $orderBy = $this->getParam("orderBy","createdDateTime");
+        $orderByDirection = ($orderByDirection == "descending")?"DESC":"ASC";
+        if($orderBy == "createdDateTime"){
+            $select->order("creation_date $orderByDirection");
+        }else if($orderBy == "publishedDateTime"){
+            $select->order("approved_date $orderByDirection");
+        }else if($orderBy == "likesCount"){
+            $select->order("like_count $orderByDirection");
+        }else if($orderBy == "commentsCount"){
+            $select->order("comment_count $orderByDirection");
+        }else if($orderBy == "lastModifiedDateTime"){
+            $select->order("modified_date $orderByDirection");
+        }else{
+            $select->order("creation_date $orderByDirection");
+        }
+        
         $paginator = Zend_Paginator::factory($select);
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage($limit);

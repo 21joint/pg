@@ -75,7 +75,10 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
     }
     public function sendResponse() {
         ob_clean();
-        header("Content-Type: applicatin/json");
+        $accept = $this->getRequest()->getHeader("Accept");
+        if(empty($accept) || strstr(strtolower($accept), "application/json")){
+            header("Content-Type: application/json");
+        }        
         $front = Zend_Controller_Front::getInstance();
         $request = $front->getRequest();
         $moduleName = $request->getModuleName();
@@ -106,7 +109,7 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
     
     public function preDispatch() {
         if($this->isApiRequest()){
-            header("Content-Type: applicatin/json");
+            header("Content-Type: application/json");
             $user_id = Engine_Api::_()->getApi('oauth', 'pgservicelayer')->validateOauthToken();
             $user = Engine_Api::_()->user()->getUser($user_id);
             $viewer = Engine_Api::_()->user()->getViewer();

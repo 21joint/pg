@@ -154,6 +154,7 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
         $filter->addFilter(new Engine_Filter_Censor());
         $filter->addFilter(new Engine_Filter_HtmlSpecialChars());
 
+        $body = $this->getParam('body');
         $body = $filter->filter($body);
 
         $db = $subject->comments()->getCommentTable()->getAdapter();
