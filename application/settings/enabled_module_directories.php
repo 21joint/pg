@@ -48,6 +48,5 @@
   46 => 'Sitevideo',
   47 => 'Storage',
   48 => 'User',
-  49 => 'Video',
->>>>>>> 58699dc446fb7845a44ec03e6ebb94127e578958
+  49 => 'Video'
 ); ?>

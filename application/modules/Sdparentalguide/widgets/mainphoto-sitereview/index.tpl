@@ -17,7 +17,7 @@
                     <?php echo $this->translate('FEATURED');?>
 		</div>
 	<?php endif; ?>
-	<div class='sr_profile_cover_photo <?php if ($this->can_edit && ($photo_type == 'listing')):?>sr_photo_edit_wrapper<?php endif;?>'>
+	<div class='sr_profile_cover_photo loool <?php if ($this->can_edit && ($photo_type == 'listing')):?>sr_photo_edit_wrapper<?php endif;?>'>
 		<?php if (!empty($this->can_edit) && ($photo_type == 'listing')) : ?>
 			<a class='sr_photo_edit' href="<?php echo $this->url(array('action' => 'change-photo', 'listing_id' => $this->sitereview->listing_id), "sitereview_dashboard_listtype_$this->listingtype_id", true) ?>">
 				<i class="sr_icon"></i>

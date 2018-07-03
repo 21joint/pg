@@ -38,17 +38,19 @@ ul
 {
   list-style-type: none;
 }
-a:link,
-a:visited
-{
-  color: $theme_link_color;
-  text-decoration: $theme_link_decoration;
-}
-a:hover
-{
-  color: $theme_link_color_hover;
-  text-decoration: $theme_link_decoration_hover;
-}
+
+//
+//a:link,
+//a:visited
+//{
+//  color: $theme_link_color;
+//  text-decoration: $theme_link_decoration;
+//}
+//a:hover
+//{
+//  color: $theme_link_color_hover;
+//  text-decoration: $theme_link_decoration_hover;
+//}
 
 *[dir="rtl"] {
   direction: rtl;

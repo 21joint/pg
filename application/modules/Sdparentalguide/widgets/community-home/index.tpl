@@ -21,22 +21,18 @@
     var requestData = {};
     requestData.mvp = null; //Possible values 1 or 0
     requestData.expert = null; //Possible values 1 or 0
-    requestData.limit = 10;
-    requestData.page = 1;
+    // requestData.limit = 10;
+    // requestData.page = 1;
 
     var loader = en4.core.loader.clone();
     loader.addClass('sd_loader');
-    var url = (en4.core.environment == 'development' ? 'http://cors.io/?' + 'https://int-pg.guidanceguide.com' : 'https://int-pg.guidanceguide.com') + ("/api/v1/member");
+    var url = 'http://localhost:8888/api/v1/member';
 
     var request = new Request.JSON({
       url: url,
+      contentType: 'application/json',
       method: 'GET',
       data: requestData,
-      headers: {
-        'Access-Control-Allow-Origin' : '*',
-        'Access-Control-Allow-Methods': 'DELETE, HEAD, GET, OPTIONS, POST, PUT',
-        'Access-Control-Allow-Headers': 'Content-Type, Content-Range, Content-Disposition, Content-Description'
-      },
       onRequest: function () {
         loader.inject($("sd-response"), "after");
       }, //When request is sent.
