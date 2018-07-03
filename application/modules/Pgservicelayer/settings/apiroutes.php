@@ -82,11 +82,47 @@ $routes['pgservicelayer'] = array(
           'action' => '\D+',
         )
     ),
+    'pgservicelayer_apilike' => array(
+        'route' => 'api/:version/like/*',
+        'defaults' => array(
+          'module' => 'pgservicelayer',
+          'controller' => 'likes',
+          'action' => 'index',
+          'version' => 'v1'
+        ),
+        'reqs' => array(
+          'action' => '\D+',
+        )
+    ),
     'pgservicelayer_apitopic' => array(
         'route' => 'api/:version/topic/*',
         'defaults' => array(
           'module' => 'pgservicelayer',
           'controller' => 'topic',
+          'action' => 'index',
+          'version' => 'v1'
+        ),
+        'reqs' => array(
+          'action' => '\D+',
+        )
+    ),
+    'pgservicelayer_apiquestion' => array(
+        'route' => 'api/:version/question/*',
+        'defaults' => array(
+          'module' => 'pgservicelayer',
+          'controller' => 'question',
+          'action' => 'index',
+          'version' => 'v1'
+        ),
+        'reqs' => array(
+          'action' => '\D+',
+        )
+    ),
+    'pgservicelayer_apianswer' => array(
+        'route' => 'api/:version/answer/*',
+        'defaults' => array(
+          'module' => 'pgservicelayer',
+          'controller' => 'answer',
           'action' => 'index',
           'version' => 'v1'
         ),
