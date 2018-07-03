@@ -43,7 +43,7 @@
 
                 <?php foreach($categories as $category): ?>
                     <?php if(empty($category->getTitle())){ continue; } ?>
-                    <div class="holder">
+                    <div class="holder position-relative">
                         <input type="checkbox"  name="categories[]" <?php if(in_array($category->category_id,$this->savedCategories)){ echo 'checked=checked'; } ?> class="sd_listing_category" value="<?php echo $category->category_id; ?>" id="category-<?php echo $category->category_id; ?>"/>
                         <label class="label-check" for="category-<?php echo $category->category_id; ?>">
                             <?php echo $category->getTitle(); ?>
