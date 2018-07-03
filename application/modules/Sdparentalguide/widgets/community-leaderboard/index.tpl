@@ -10,7 +10,7 @@
 ?>
 
 
-<div id="leaderboard">
+<div class="leaderboard">
     <div class="leaderboard_title d-flex justify-content-between align-items-center">
         <h3>Leaderboard</h3>
         <ul class="d-flex align">
@@ -34,7 +34,7 @@
         </div>
         <!-- Toggle Button End -->
     </div>
-    <div id="sd-response"class="container d-flex justify-content-center">
+    <div id="sd-response" class="container d-flex justify-content-center">
         <!-- Loader goes here -->
     </div>
     <div class="leaderboard_content">
@@ -109,7 +109,7 @@ function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints", disp
     requestData.page = 1;
 
     var loader = en4.core.loader.clone();
-    loader.addClass("sd_loader mt-5");
+    loader.addClass("sd_loader my-5");
     var url = en4.core.baseUrl+"api/v1/ranking";
 
     var request = new Request.JSON({
