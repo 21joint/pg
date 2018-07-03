@@ -8,6 +8,13 @@
  */
 
 class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
+    public function getFormatedDateTime($datetime){
+        if(empty($datetime)){
+            return "";
+        }
+        $view = Zend_Registry::get("Zend_View");
+        return $view->locale()->toDateTime($datetime,array('format' => 'YYYY-MM-d HH:MM:ss'));
+    }
     public function getListingOverview(Sitereview_Model_Listing $sitereview){
         $tableOtherinfo = Engine_Api::_()->getDbTable('otherinfo', 'sitereview');
         $overview = $tableOtherinfo->getColumnValue($sitereview->getIdentity(), 'overview');
@@ -105,10 +112,10 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             'longDescription' => $this->getListingOverview($sitereview),
             'likesCount' => $sitereview->likes()->getLikeCount(),
             'commentsCount' => $sitereview->comments()->getCommentCount(),
-            'publishedDateTime' => $view->locale()->toDateTime($sitereview->approved_date,array('format' => 'YYYY-MM-d HH:MM:ss')),
+            'publishedDateTime' => $this->getFormatedDateTime($sitereview->approved_date),
             'featured' => $sitereview->featured,
             'approved' => $sitereview->approved,
-            'createdDateTime' => $view->locale()->toDateTime($sitereview->creation_date,array('format' => 'YYYY-MM-d HH:MM:ss')),
+            'createdDateTime' => $this->getFormatedDateTime($sitereview->creation_date),
             'status' => (string)$this->getListingStatus($sitereview),
             'author' => $this->getUserData($user),
             'authorRating' => $sitereview->gg_author_product_rating,
@@ -206,13 +213,21 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
     
     public function getCommentData(Core_Model_Item_Abstract $comment){
         $viewer = Engine_Api::_()->user()->getViewer();
-        $view = Zend_Registry::get("Zend_View");
+        $resource = $comment->getResource();
+        $childCommentsSelect = $resource->comments()->getCommentSelect();
+        $childCommentsSelect->where('parent_comment_id =?', $comment->getIdentity());        
         $commentInfo = array();
         $poster = Engine_Api::_()->getItem($comment->poster_type, $comment->poster_id);
-        $commentInfo["commentID"] = $comment->comment_id;        
+        $commentInfo["commentID"] = $comment->comment_id;
+        $commentInfo['contentType'] = $comment->resource_type;
+        $commentInfo['contentID'] = $comment->resource_id;
+        $commentInfo['commentsCount'] = Zend_Paginator::factory($childCommentsSelect)->getTotalItemCount();;
         $commentInfo["body"] = $comment->body;
-        $commentInfo["comment_date"] = $view->locale()->toDateTime($comment->creation_date,array('format' => 'YYYY-MM-d HH:MM:ss'));
-        $commentInfo["likesCount"] = $comment->likes()->getLikeCount();
+        $commentInfo["createdDateTime"] = $this->getFormatedDateTime($comment->creation_date);
+        $commentInfo["likesCount"] = $comment->likes()->getLikeCount();        
+        $commentInfo['dislikesCount'] = 0;
+        $commentInfo['totalLikesCount'] = $commentInfo["likesCount"];
+        $commentInfo["lastModifiedDateTime"] = $this->getFormatedDateTime($comment->creation_date);
         $commentInfo["canDelete"] = false;
         if ($poster->isSelf($viewer)) {
             $commentInfo["canDelete"] = true;
@@ -220,5 +235,57 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $commentInfo['isLiked'] = (bool)$comment->likes()->isLike($viewer);
         $commentInfo["author"] = $this->getUserData($poster);
         return $commentInfo;
+    }
+    
+    public function getQuestionData(Ggcommunity_Model_Question $question){
+        $view = Zend_Registry::get("Zend_View");
+        $questionArray = array();
+        $questionArray['questionID'] = (string)$question->question_id;
+        $questionArray['title'] = (string)$question->title;
+        $questionArray['body'] = (string)$question->body;
+        $request = Zend_Controller_Front::getInstance()->getRequest();
+        $avatarPhoto = ucfirst($request->getParam("avatarPhoto","icon"));
+        $questionPhotos = $this->getContentImage($question);
+        $contentImages['photoID'] = (string)$question->photo_id;
+        $contentImages['photoURL'] = isset($questionPhotos['photoURL'.$avatarPhoto])?$questionPhotos['photoURL'.$avatarPhoto]:$questionPhotos['photoURLIcon'];        
+        $questionArray['coverPhoto'] = $contentImages;
+        $questionArray["closedDateTime"] = $this->getFormatedDateTime($question->date_closed);
+        $questionArray['approved'] = (bool)$question->approved;
+        $questionArray['featured'] = (bool)$question->featured;
+        $questionArray['viewCount'] = $question->view_count;
+        $questionArray['commentsCount'] = $question->comment_count;
+        $questionArray['answerCount'] = $question->answer_count;
+        $questionArray['answerChosen'] = (bool)$question->accepted_answer;
+        $questionArray['upVoteCount'] = $question->up_vote_count;
+        $questionArray['downVoteCount'] = $question->down_vote_count;
+        $questionArray['totalVoteCount'] = $question->up_vote_count - $question->down_vote_count;
+        $questionArray['approvedDateTime'] = $this->getFormatedDateTime($question->approved_date);
+        $questionArray['status'] = ($question->draft == 0)?$view->translate("Published"):$view->translate("Draft");
+        $questionArray['questionTopic'] = array();
+        $questionArray['createdDateTime'] = $this->getFormatedDateTime($question->creation_date);
+        $questionArray['publishedDateTime'] = $this->getFormatedDateTime($question->approved_date);
+        $questionArray['lastModifiedDateTime'] = $this->getFormatedDateTime($question->modified_date);
+        $questionArray['author'] = $this->getUserData($question->getOwner());
+        return $questionArray;
+    }
+    
+    public function getAnswerData(Ggcommunity_Model_Answer $answer,$question = null){
+        if(empty($question)){
+            $question = Engine_Api::_()->getItem("ggcommunity_question",$answer->parent_id);
+        }
+        $answerArray = array();
+        $answerArray['answerID'] = (string)$answer->answer_id;
+        $answerArray['question'] = $this->getQuestionData($question);
+        $answerArray['approved'] = (bool)$answer->approved;
+        $answerArray['viewCount'] = 0;
+        $answerArray['commentsCount'] = $answer->comment_count;
+        $answerArray['answerChosen'] = (bool)$answer->accepted;
+        $answerArray['upVoteCount'] = $answer->up_vote_count;
+        $answerArray['downVoteCount'] = $answer->down_vote_count;
+        $answerArray['totalVoteCount'] = $answer->up_vote_count - $answer->down_vote_count;
+        $answerArray['createdDateTime'] = $this->getFormatedDateTime($answer->creation_date);
+        $answerArray['lastModifiedDateTime'] = $this->getFormatedDateTime($answer->modified_date);
+        $answerArray['author'] = $this->getUserData($answer->getOwner());
+        return $answerArray;
     }
 }

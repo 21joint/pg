@@ -94,7 +94,12 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
         if (!function_exists('json_encode') || empty($data))
             $data = Zend_Json::encode($this->view);
 
-        $this->getResponse()->setBody($data);
+        $body = $this->getResponse()->getBody();
+        if(!empty($body) && (empty($data) || $data == "{}")){
+            $this->getResponse()->setBody($body);
+        }else{
+            $this->getResponse()->setBody($data);
+        }        
         $this->getResponse()->sendResponse();
         exit;
     }
@@ -200,8 +205,9 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
     public function respondWithServerError($exception){
         $this->getResponse()
                 ->setHttpResponseCode(500)
-                ->setBody('Service temporary unavailable')
-                ->sendResponse();
+                ->setBody('Service temporary unavailable '.$exception->getMessage()." ".$exception->getTraceAsString())
+                ;
+        $this->sendResponse();
     }
     public function getHost() {
         return _ENGINE_SSL ? 'https://' . $_SERVER['HTTP_HOST'] : 'http://' . $_SERVER['HTTP_HOST'];

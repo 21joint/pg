@@ -88,6 +88,17 @@
   border-radius: 50%;
   margin-right: 16px;
 }
+.leader .cont_level{
+  top: 25px;
+  left: 28px;
+  font-size: 11px;
+  font-weight: bold;
+  border: 2px solid #e4fafa;
+  border-radius: 50%;
+  padding: 2px 6px;
+  background-color: #5cc7ce;
+  color: white;
+}
 /* -> For testing .leaderboard_item div{
   border: 1px solid red;
 }*/

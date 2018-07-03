@@ -7,7 +7,7 @@
  * @author     Stars Developer
  */
 
-class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action_Api
+class Pgservicelayer_LikesController extends Pgservicelayer_Controller_Action_Api
 {
     public function init(){
         $timezone = Engine_Api::_()->getApi('settings', 'core')->core_locale_timezone;
@@ -91,45 +91,36 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
         
         $page = $this->getParam("page",1);
         $limit = $this->getParam("limit",10);
-        $isLike = Engine_Api::_()->getDbTable("likes", "core")->isLike($subject, $viewer);
-        if (null !== $page) {
-            $commentSelect = $subject->comments()->getCommentSelect();
-            $commentSelect->order('comment_id ' . $this->getRequestParam('order', 'ASC'));
-            $commentSelect->where("gg_deleted = ?",0);
-            $comments = Zend_Paginator::factory($commentSelect);
-            $comments->setCurrentPageNumber($page);
-            $comments->setItemCountPerPage($limit);
-        } else {
-            // If not has a page, show the
-            $commentSelect = $subject->comments()->getCommentSelect();
-            $commentSelect->order('comment_id DESC');
-            $commentSelect->where("gg_deleted = ?",0);
-            $comments = Zend_Paginator::factory($commentSelect);
-            $comments->setCurrentPageNumber(1);
-            $comments->setItemCountPerPage(4);
+        $comment_id = $this->getRequestParam('commentID');
+        if(!empty($comment_id)){
+            $commentedItem = $subject->comments()->getComment($comment_id);
+            if(!empty($commentedItem)){
+                $isLike = Engine_Api::_()->getDbTable("likes", "core")->isLike($commentedItem, $viewer);
+                $likes = $commentedItem->likes()->getLikePaginator();
+                $usersObject = $commentedItem->likes()->getAllLikesUsers();
+            }else{
+                $isLike = Engine_Api::_()->getDbTable("likes", "core")->isLike($subject, $viewer);
+                $likes = $subject->likes()->getLikePaginator();
+                $usersObject = $subject->likes()->getAllLikesUsers();
+            }            
+        }else{
+            $isLike = Engine_Api::_()->getDbTable("likes", "core")->isLike($subject, $viewer);
+            $likes = $subject->likes()->getLikePaginator();
+            $usersObject = $subject->likes()->getAllLikesUsers();
         }
         
-        $response['ResultCount'] = $comments->getTotalItemCount();
+        $likes->setCurrentPageNumber($page);
+        $likes->setItemCountPerPage($limit);
+        
+        $response['ResultCount'] = $likes->getTotalItemCount();
         $response['Results'] = array();
         $response['isLike'] = !empty($isLike) ? 1 : 0;
         $response['canComment'] = $canComment;
         $response['canDelete'] = $canDelete;
-        $comments = $comments->getIterator();
-        if ($page > 1) {
-            $i = 0;
-            $l = count($comments) - 1;
-            $d = 1;
-            $e = $l + 1;
-        } else {
-            $i = count($comments) - 1;
-            $l = count($comments);
-            $d = -1;
-            $e = -1;
-        }
-        $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
-        for (; $i != $e; $i += $d) {
-            $comment = $comments[$i];
-            $response['Results'][] = $responseApi->getCommentData($comment);
+        
+        $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");        
+        foreach($usersObject as $user){
+            $response['Results'][] = $responseApi->getUserData($user);
         }
         $this->respondWithSuccess($response);
     }
@@ -154,7 +145,6 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
         $filter->addFilter(new Engine_Filter_Censor());
         $filter->addFilter(new Engine_Filter_HtmlSpecialChars());
 
-        $body = $this->getParam('body');
         $body = $filter->filter($body);
 
         $db = $subject->comments()->getCommentTable()->getAdapter();

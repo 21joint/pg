@@ -39,8 +39,8 @@
     </div>
     <div class="leaderboard_content">
         <!-- Content of ajax call goes here -->
-    </div>  
-</div>  
+    </div> 
+</div>
 
 
 <script type='text/javascript'>
@@ -133,8 +133,9 @@ function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints", disp
                                 <div class="d-flex justify-content-center align-items-center">
                                     ${i+1}
                                 </div>
-                                <div class="d-flex align-items-center leader">
+                                <div class="d-flex align-items-center leader position-relative">
                                     <img src="${results[i].avatarPhoto.photoURL}"/>
+                                    <span class="cont_level position-absolute">${results[i].contributionLevel}</span>
                                     <h4>${results[i].displayName}</h4>
                                 </div>
                                 <div class="points d-flex align-items-center justify-content-center">
