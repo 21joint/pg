@@ -39,8 +39,8 @@
     </div>
     <div class="leaderboard_content">
         <!-- Content of ajax call goes here -->
-    </div>  
-</div>  
+    </div> 
+</div>
 
 
 <script type='text/javascript'>
