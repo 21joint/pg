@@ -48,6 +48,7 @@
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
+  max-height: 300px;
 }
 
 .card-stars {
@@ -73,6 +74,8 @@
   font-size: 25px;
   line-height: 34px;
   min-height: 77px;
+  color: inherit !important;
+  text-decoration: none;
 }
 
 .card-text {

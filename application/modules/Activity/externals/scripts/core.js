@@ -352,7 +352,7 @@
                 if (!$('updates_toggle')) {
                     return;
                 }
-                $('updates_toggle').getElement('.tip-notifications').getElement('span').set('html', responseJSON.notificationCount);
+                $('updates_toggle').getElement('span').set('html', responseJSON.notificationCount);
             } else {
                 this.options.delay = Math.min(this.options.maxDelay, this.options.delayFactor * this.options.delay);
             }

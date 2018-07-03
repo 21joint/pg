@@ -1,13 +1,13 @@
 <header class="parental-header">
   <div class="parental-header--top position-relative border-bottom py-3">
-    <div class="container">
+    <div class="container-fluid">
       <div class="row align-items-center m-0">
-        <div class="col-auto px-0"><span onclick="displayMenu()" class="hamburger-menu" aria-hidden="true">
+        <div class="col-auto px-0 d-sm-none"><span onclick="displayMenu()" class="hamburger-menu" aria-hidden="true">
                 <span class="bar"></span>
             </span></div>
-        <div class="col p-0 logo d-flex align-items-center">
-          <a href="javascript:void(0);" class="d-md-block px-3 w-100">
-            <svg class="w-100 align-middle" id="bc3286c2-b7fb-4350-9d0e-0eaf2ab71cf9" data-name="Layer 1"
+        <div class="col-auto col-sm-4 logo d-flex align-items-center">
+          <a href="<?php echo $this->baseUrl(); ?>" class="d-md-block w-100">
+            <svg style="height: 40px" class="align-middle" id="bc3286c2-b7fb-4350-9d0e-0eaf2ab71cf9" data-name="Layer 1"
                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480.81 171.45">
               <path d="M897.82,523.2h-8.69V479.79h17.38a17,17,0,0,1,4.6.62,17.29,17.29,0,0,1,4.13,1.76,17.63,17.63,0,0,1,3.51,2.72,17.46,17.46,0,0,1,4.48,7.67,17.35,17.35,0,0,1-.74,11.34,17.43,17.43,0,0,1-9.25,9.25,16.85,16.85,0,0,1-6.74,1.36h-8.69Zm0-34.72v17.38h8.69a8.37,8.37,0,0,0,3.36-.68,8.71,8.71,0,0,0,4.62-4.63,8.7,8.7,0,0,0,0-6.75,8.71,8.71,0,0,0-4.62-4.63,8.37,8.37,0,0,0-3.36-.68Z"
                     transform="translate(-720 -453.29)" fill="#5cc7ce"/>
@@ -51,8 +51,7 @@
             </svg>
           </a>
         </div> <!-- end of logo -->
-
-        <div class="col-12 d-sm-none search search-bar" id="search-bar">
+        <div class="col-12 search search-bar" id="search-bar">
 
           <form action="<?php echo $this->url(array('controller' => 'search'), 'default', true) ?>"
                 method="get">
@@ -75,20 +74,7 @@
               <a class="d-flex align-items-center p-2"
                  role="button"
                  id="search-icon">
-                <svg height="22px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21">
-                  <defs>
-                    <style>.search-cls-1 {
-                        fill: #333d40;
-                      }</style>
-                  </defs>
-                  <g id="search" transform="translate(-247 -21)">
-                    <path id="search-2"
-                          data-name="search"
-                          class="search-cls-1"
-                          d="M20.855,19.231l-4.979-4.979a.487.487,0,0,0-.349-.144h-.541a8.529,8.529,0,1,0-.878.878v.541a.5.5,0,0,0,.144.349l4.979,4.979a.493.493,0,0,0,.7,0l.927-.927A.493.493,0,0,0,20.855,19.231ZM8.531,15.093a6.562,6.562,0,1,1,6.562-6.562A6.56,6.56,0,0,1,8.531,15.093Z"
-                          transform="translate(247 21)"/>
-                  </g>
-                </svg>
+                <svg height="22px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21"><defs><style>.search-cls-1 {fill: #333d40;}</style></defs><g id="search" transform="translate(-247 -21)"><path id="search-2" data-name="search" class="search-cls-1" d="M20.855,19.231l-4.979-4.979a.487.487,0,0,0-.349-.144h-.541a8.529,8.529,0,1,0-.878.878v.541a.5.5,0,0,0,.144.349l4.979,4.979a.493.493,0,0,0,.7,0l.927-.927A.493.493,0,0,0,20.855,19.231ZM8.531,15.093a6.562,6.562,0,1,1,6.562-6.562A6.56,6.56,0,0,1,8.531,15.093Z" transform="translate(247 21)"/></g></svg>
               </a>
             </li> <!-- end of search -->
 
@@ -103,8 +89,8 @@
                        id="close_icon"></i><span class="notifications-count bg-primary text-white font-weight-bold position-absolute d-flex align-items-center justify-content-center"><?php echo $this->notificationCount; ?></span>
                   </a>
                   <div class="updates_pulldown" id="core_mini_updates_pulldown">
-                    <div class="dropdown-menu dropdown-menu-right pulldown_contents_wrapper">
-                      <div class="mark-all text-right px-3 py-2 d-flex align-items-center justify-content-end">
+                    <div class="dropdown-menu dropdown-menu-right pulldown_contents_wrapper py-0">
+                      <div class="bg-primary text-right px-3 py-2 d-flex align-items-center justify-content-end mark-all">
                           <?php echo $this->htmlLink('javascript:void(0);', $this->translate('Mark All Read'), array('id' => 'notifications_markread_link', 'class' => 'font-weight-light small')) ?>
                       </div>
                       <div class="pulldown_contents">
@@ -152,7 +138,7 @@
                   </a>
                   <div class="dropdown-menu dropdown-menu-right shadow p-0 border-0 dropdown-menu--profile"
                        style="overflow: hidden">
-                    <ul>
+                    <ul class="list-unstyled">
                       <li>
                         <div class="dropdown-item bg-light p-3">
                           <h6 class="text-dark m-0 p-0"><b><?php echo $this->viewer->getTitle(); ?></b></h6>

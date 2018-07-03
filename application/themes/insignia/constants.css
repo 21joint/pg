@@ -22,7 +22,7 @@ DEFAULT STYLES FOR THIS THEME
   theme_topbar_logo_width: auto;
   theme_topbar_menu_width:100%;
   theme_footer_width: 100%;
-  theme_content_width: 90%;
+  theme_content_width: 100%;
   theme_content_columns_left_width: 250px;
   theme_content_columns_right_width: 250px;
   theme_body_background_color: #fff;
@@ -94,7 +94,7 @@ DEFAULT STYLES FOR THIS THEME
   */
   theme_input_background_color: #fff;
   theme_input_font_color: #5f727f;
-  theme_input_border_colors: #d7d8da;
+  theme_input_border_colors: #F5F5F5;
   theme_button_background_color: #1BC1D6;
   theme_button_background_color_hover: #1BC1D6;
   theme_button_background_color_active: #1BC1D6;

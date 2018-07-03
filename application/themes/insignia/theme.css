@@ -49,10 +49,7 @@ a:hover
   color: $theme_link_color_hover;
   text-decoration: $theme_link_decoration_hover;
 }
-*
-{
-  font-family: 'Open Sans', sans-serif;
-}
+
 *[dir="rtl"] {
   direction: rtl;
   unicode-bidi: embed;
@@ -690,15 +687,13 @@ input[type=password],
 input.text,
 textarea
 {
-  +rounded(2px);
+  +rounded(50px);
   background-color: $theme_input_background_color;
   color: $theme_input_font_color;
-  border-width: 1px;
+  border-width: 2px;
   border-color: $theme_input_border_colors;
-  padding: 6px 8px;
-  font-size: 90%!impotant;
+  padding: 0.75rem 2.5rem;
   resize: none;
-  box-sizing: border-box;
 }
 input[type=checkbox],
 input[type=radio]

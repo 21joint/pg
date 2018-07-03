@@ -49,9 +49,9 @@
         font-size: 22px;
       }
       > span {
-        right: -3px;
+        right: 3px;
         font-size: 10px;
-        top: -3px;
+        top: 3px;
         line-height: 1;
         min-width: 14px;
         height: 14px;
@@ -166,8 +166,4 @@
     padding-bottom: 10px;
     font-size: 14px;
   }
-}
-
-.pulldown_contents_wrapper {
-  max-width: 300px;
 }

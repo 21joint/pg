@@ -151,7 +151,7 @@ $body-color: #333D40;
 ////
 //// Style anchor elements.
 //
-//$link-color:                theme-color("primary") !default;
+$link-color: #333D40;
 //$link-decoration:           none !default;
 //$link-hover-color:          darken($link-color, 15%) !default;
 //$link-hover-decoration:     underline !default;
@@ -209,7 +209,7 @@ $container-max-widths: (
 //$line-height-sm:              1.5 !default;
 //
 //$border-width:                1px !default;
-$border-color:                rgba(245,245,245,1);
+$border-color: rgba(245, 245, 245, 1);
 //
 //$border-radius: 50px;
 //$border-radius-lg: 50px;
@@ -284,7 +284,7 @@ $font-weight-bold: 700;
 //$blockquote-small-color:      $gray-600 !default;
 //$blockquote-font-size:        ($font-size-base * 1.25) !default;
 //
-$hr-border-color:             rgba(245,245,245,1);
+$hr-border-color: rgba(245, 245, 245, 1);
 //$hr-border-width:             $border-width !default;
 //
 //$mark-padding:                .2em !default;
@@ -333,7 +333,7 @@ $hr-border-color:             rgba(245,245,245,1);
 ////
 //// Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
 //
-$input-btn-padding-y:         .5rem;
+$input-btn-padding-y: .5rem;
 $input-btn-padding-x: 1.5rem;
 //$input-btn-line-height:       $line-height-base !default;
 //
@@ -345,8 +345,8 @@ $input-btn-padding-x: 1.5rem;
 //$input-btn-padding-x-sm:      .5rem !default;
 //$input-btn-line-height-sm:    $line-height-sm !default;
 //
-$input-btn-padding-y-lg:      .75rem;
-$input-btn-padding-x-lg:      2.5rem;
+$input-btn-padding-y-lg: .75rem;
+$input-btn-padding-x-lg: 2.5rem;
 //$input-btn-line-height-lg:    $line-height-lg !default;
 //
 $input-btn-border-width: 2px;
@@ -382,11 +382,11 @@ $btn-font-weight: $font-weight-bold !default;
 //$btn-block-spacing-y:         .5rem !default;
 //
 //// Allows for customizing button radius independently from global border radius
-$btn-border-radius:           50px;
-$btn-border-radius-lg:        100px;
+$btn-border-radius: 50px;
+$btn-border-radius-lg: 100px;
 //$btn-border-radius-sm:        $border-radius-sm !default;
 //
-$btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+$btn-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 //
 //
 //// Forms
@@ -414,7 +414,7 @@ $input-border-color: #F5F5F5;
 //$input-box-shadow:                      inset 0 1px 1px rgba($black, .075) !default;
 //
 $input-border-radius: 50px;
-$input-border-radius-lg:                100px;
+$input-border-radius-lg: 100px;
 //$input-border-radius-sm:                $border-radius-sm !default;
 //
 //$input-focus-bg:                        $input-bg !default;
@@ -565,7 +565,7 @@ $input-placeholder-color: #93A4A6;
 //$dropdown-spacer:                   .125rem !default;
 //$dropdown-bg:                       $white !default;
 //$dropdown-border-color:             rgba($black, .15) !default;
-$dropdown-border-radius:            .625rem;
+$dropdown-border-radius: .625rem;
 //$dropdown-border-width:             $border-width !default;
 //$dropdown-divider-bg:               $gray-200 !default;
 //$dropdown-box-shadow:               0 .5rem 1rem rgba($black, .175) !default;
@@ -653,8 +653,8 @@ $dropdown-border-radius:            .625rem;
 //
 //// Pagination
 //
-$pagination-padding-y:              0;
-$pagination-padding-x:              0;
+$pagination-padding-y: 0;
+$pagination-padding-x: 0;
 //$pagination-padding-y-sm:           .25rem !default;
 //$pagination-padding-x-sm:           .5rem !default;
 //$pagination-padding-y-lg:           .75rem !default;
@@ -663,7 +663,7 @@ $pagination-padding-x:              0;
 //
 //$pagination-color:                  $link-color !default;
 //$pagination-bg:                     $white !default;
-$pagination-border-width:           0;
+$pagination-border-width: 0;
 //$pagination-border-color:           $gray-300 !default;
 //
 //$pagination-focus-box-shadow:       $input-btn-focus-box-shadow !default;
