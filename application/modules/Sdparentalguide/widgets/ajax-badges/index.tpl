@@ -74,7 +74,7 @@
 
                             <li class="border-grey-light py-3">
                                 <!-- title and descriptiotn -->
-                                <div class="top-holder border-bottom-grey-light px-4 px-sm-1">
+                                <div class="top-holder border-bottom-grey-light px-4 ">
                                     <div class="title-holder pb-3">
                                         <h6>
                                             <?php echo $topic->getTitle(); ?>
