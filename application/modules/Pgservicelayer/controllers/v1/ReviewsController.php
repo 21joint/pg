@@ -58,14 +58,26 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         $page = $this->getParam("page",1);
         $limit = $this->getParam("limit",50);
         $params['type'] = 'browse';
+        $params['user_id'] = $this->getParam("authorID");
+        $params['listingtype_id'] = $this->getParam("typeID",-1);
+        $params['category_id'] = $this->getParam("categoryID");
+        $params['subcategory_id'] = $this->getParam("subCategoryID");
         $listingTable = Engine_Api::_()->getDbTable('listings', 'sitereview');
         $listingTableName = $listingTable->info("name");
+        $listingTypeTable = Engine_Api::_()->getDbtable('locations', 'sitereview');
+        $listingTypeTableName = $listingTypeTable->info('name');
         $select = $listingTable->getSitereviewsSelect($params, $customFieldValues);
         if(is_string($id) && !empty($id)){
             $select->where("$listingTableName.listing_id = ?",$id);
         }else if(is_array($id) && !empty ($id)){
             $select->where("$listingTableName.listing_id IN (?)",$id);
         }
+        $topicID = $this->getParam("topicID","-1");
+        if($topicID != -1){
+            $select->joinLeft($listingTypeTableName,"$listingTypeTableName.listingtype_id = $listingTableName.listingtype_id",array());
+            $select->where("$listingTypeTableName.gg_topic_id = ?",(int)$topicID);
+        }
+                
         $select->where("$listingTableName.gg_deleted = ?",0);
         $paginator = Zend_Paginator::factory($select);
         $paginator->setCurrentPageNumber($page);
