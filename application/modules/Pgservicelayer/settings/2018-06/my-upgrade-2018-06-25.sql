@@ -16,3 +16,6 @@ ADD `gg_deleted` tinyint NOT NULL DEFAULT '0';
 
 ALTER TABLE `engine4_core_comments`
 ADD `gg_deleted` tinyint NOT NULL DEFAULT '0';
+
+ALTER TABLE `engine4_ggcommunity_questions`
+ADD `gg_deleted` tinyint NOT NULL DEFAULT '0';
