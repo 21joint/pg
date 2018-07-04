@@ -158,7 +158,7 @@
 
 var lastItem = <?php echo $last_item; ?>;
 
-en4.core.runonce.add(function(){
+en4.core.runonce.add(function() {
     let familyHolder = document.getElementById('family-information');
     let familyWrapper = familyHolder.getParent();
 

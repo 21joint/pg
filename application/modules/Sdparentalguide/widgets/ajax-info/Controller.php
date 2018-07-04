@@ -52,9 +52,14 @@ class Sdparentalguide_Widget_AjaxInfoController extends Engine_Content_Widget_Ab
 
           // Values
           $this->view->fieldStructure = $fieldStructure = Engine_Api::_()->fields()->getFieldsStructurePartial($subject);
-          if( count($fieldStructure) <= 1 ) { // @todo figure out right logic
-            return $this->setNoRender();
-          }
+
+          $table = Engine_Api::_()->getDbtable('familyMembers', 'sdparentalguide');
+          $select = $table->select()
+            ->where('owner_id = ?', $subject->user_id);
+          ;
+          
+          $this->view->paginator = $paginator = Zend_Paginator::factory($select);
+          $this->view->paginator->setItemCountPerPage(5);
     
           // render content
           $this->view->showContent = true;  
