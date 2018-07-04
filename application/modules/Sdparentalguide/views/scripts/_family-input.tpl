@@ -28,8 +28,8 @@
             
             <div class="col-2 p-0 family-item-holder">
                 <?php if(!$item->gender || $item->gender == 3): ?>
-                <div class="unknown d-flex align-items-center justify-content-center">
-                    <?php echo $this->translate('Unknown'); ?>
+                <div class="unknown d-flex align-items-center justify-content-center text-white">
+                    <?php echo $this->translate('X'); ?>
                 </div>
                 <?php elseif($item->gender == 1): ?>
                 <div class="male d-flex align-items-center justify-content-center">
@@ -323,7 +323,7 @@ function setupFamilyMember() {
         genderType = '<?php echo $this->translate("Female"); ?>';
     }
 
-    editMember = '<div class="col-4 p-0 actions d-flex justify-content-end"><a href="javascript:void(0)" onclick="editFamily(this)" class="btn btn-light small p-3 mr-1">Edit</a><a href="javascript:void(0)" onclick="removeFamily(this)" class="btn btn-light small p-3">Delete</a></div>';
+    editMember = '<div class="col-4 p-0 actions d-flex justify-content-end"><a href="javascript:void(0)" onclick="editFamily(this)" class="btn btn-light small p-3 mr-1">Edit</a><a href="javascript:void(0)" onclick="removeFamily(this)" class="btn btn-danger text-white small p-3">Delete</a></div>';
 
     let item = new Element('div', {
         'class': 'row d-flex align-items-center my-4 mx-0',
