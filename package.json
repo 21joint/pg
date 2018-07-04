@@ -7,7 +7,7 @@
     "levon@21joint.com"
   ],
   "config": {
-    "API_PROXY": "https://theaters.bandwango.com"
+    "API_PROXY": "https://int-pg.guidanceguide.com"
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=dev webpack-dev-server --progress --mode development --config webpack.config.dev.js",

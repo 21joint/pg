@@ -109,6 +109,24 @@
   }
   .nav-link {
     font-size: $font-size-sm;
+    padding: 0.657rem 1rem;
+    position: relative;
+    overflow: hidden;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      height: 3px;
+      background-color: $primary;
+      left: 0;
+      right: 0;
+      transition: 0.33s bottom ease-in;
+    }
+    &:hover {
+      &:after {
+        bottom: 0;
+      }
+    }
   }
   .hamburger-menu {
     display: block;
@@ -153,6 +171,9 @@
     &:not(.active):hover .bar:after, &:not(.active).hover .bar:after {
       width: 20px;
     }
+  }
+  .mini-menu {
+
   }
 }
 

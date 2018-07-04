@@ -4,7 +4,7 @@
     <div class="container">
       <div class="top-holder row">
 
-        <div class="section-one col-md-3 d-flex justify-content-md-start justify-content-center mb-4 mb-md-0">
+        <div class="section-one col-12 col-md-3 d-flex justify-content-md-start justify-content-center mb-4 mb-md-0">
 
           <a href="<?php echo $this->baseUrl(); ?>">
             <svg width="110px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216.315 60">
@@ -46,8 +46,7 @@
                 <path class="a"
                       d="M215.607,29.471a7.71,7.71,0,0,1-.622,3.085,7.912,7.912,0,0,1-1.7,2.51,8.053,8.053,0,0,1-2.519,1.691,7.911,7.911,0,0,1-10.37-4.2,7.707,7.707,0,0,1-.622-3.084V17.59h3.946V29.471a3.815,3.815,0,0,0,.311,1.53,3.961,3.961,0,0,0,7.294,0,3.815,3.815,0,0,0,.311-1.53V17.59h3.96Z"
                       transform="translate(-104.45 -8.093)"/>
-                <path class="a" d="M247.4,37.389h-3.96V17.61h3.96Z"
-                      transform="translate(-127.55 -8.104)"/>
+                <path class="a" d="M247.4,37.389h-3.96V17.61h3.96Z" transform="translate(-127.55 -8.104)"/>
                 <path class="a"
                       d="M278.256,27.495a9.757,9.757,0,0,1-1.352,4.987,10.187,10.187,0,0,1-1.545,2,9.819,9.819,0,0,1-6.993,2.906H262.4V17.61h5.962a9.743,9.743,0,0,1,2.628.353,9.842,9.842,0,0,1,4.365,2.552A10.194,10.194,0,0,1,276.9,22.5a9.756,9.756,0,0,1,1.352,4.987Zm-3.96,0a5.779,5.779,0,0,0-.471-2.3,5.962,5.962,0,0,0-1.271-1.884,6.038,6.038,0,0,0-1.865-1.276,5.755,5.755,0,0,0-2.312-.471H266.4V33.428h1.973a5.82,5.82,0,0,0,2.312-.471,5.906,5.906,0,0,0,3.16-3.16A5.825,5.825,0,0,0,274.3,27.495Z"
                       transform="translate(-137.582 -8.104)"/>
@@ -69,8 +68,7 @@
                 <path class="b"
                       d="M215.607,87.277a7.71,7.71,0,0,1-.622,3.085,7.912,7.912,0,0,1-1.7,2.51,8.053,8.053,0,0,1-2.519,1.691,7.911,7.911,0,0,1-10.37-4.2,7.707,7.707,0,0,1-.622-3.085V75.4h3.946V87.277a3.815,3.815,0,0,0,.311,1.53,3.961,3.961,0,0,0,7.294,0,3.815,3.815,0,0,0,.311-1.53V75.4h3.96Z"
                       transform="translate(-104.45 -38.68)"/>
-                <path class="b" d="M247.4,95.189h-3.96V75.41h3.96Z"
-                      transform="translate(-127.55 -38.685)"/>
+                <path class="b" d="M247.4,95.189h-3.96V75.41h3.96Z" transform="translate(-127.55 -38.685)"/>
                 <path class="b"
                       d="M278.256,85.3a9.757,9.757,0,0,1-1.356,4.992,10.184,10.184,0,0,1-1.545,2,9.819,9.819,0,0,1-6.993,2.906H262.4V75.42h5.962a9.743,9.743,0,0,1,2.628.353,9.842,9.842,0,0,1,4.365,2.552,10.193,10.193,0,0,1,1.545,2,9.756,9.756,0,0,1,1.352,4.987Zm-3.96,0a5.779,5.779,0,0,0-.471-2.3,5.962,5.962,0,0,0-1.271-1.884,6.037,6.037,0,0,0-1.884-1.276,5.755,5.755,0,0,0-2.312-.471h-1.973V91.233h1.973a5.821,5.821,0,0,0,2.312-.471,5.905,5.905,0,0,0,3.16-3.16A5.826,5.826,0,0,0,274.3,85.3Z"
                       transform="translate(-137.582 -38.69)"/>
@@ -92,7 +90,7 @@
 
         </div> <!-- end of section-one -->
 
-        <div class="section-two col-sm-11 col-md-3 mb-4 mb-md-0">
+        <div class="section-two col-6 col-md-3 mb-4 mb-md-0">
 
           <div class="title-holder mb-4">
             <h6 class="text-uppercase border-white font-weight-bold m-0 p-0">
@@ -123,8 +121,7 @@
 
         </div> <!-- end of section-two -->
 
-
-        <div class="section-three col-md-3 mb-4 mb-md-0">
+        <div class="section-three col-6 col-md-3 mb-4 mb-md-0">
 
           <div class="title-holder mb-4">
             <h6 class="text-uppercase border-white font-weight-bold m-0 p-0">
@@ -164,15 +161,15 @@
         <div class="section-four col-md-3">
 
           <div class="title-holder mb-3">
-            <h6 class="text-uppercase border-white font-weight-bold m-0 p-0">
+            <h6 class="text-uppercase border-white font-weight-bold m-0 p-0 d-none d-sm-block">
                 <?php echo $this->translate('Connect with Us'); ?>
             </h6>
           </div>
 
-          <div class="parental-footer--social m-0">
+          <div class="parental-footer--social">
 
-            <ul class="list-inline">
-              <li class="list-inline-item">
+            <ul class="list-inline text-center text-md-left m-0">
+              <li class="list-inline-item align-middle">
                 <a class="d-flex align-items-center justify-content-center" href="javascript:void(0);">
                   <svg aria-hidden="true" data-prefix="fab"
                        data-icon="instagram" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -183,8 +180,7 @@
                   </svg>
                 </a>
               </li> <!-- instagram -->
-
-              <li class="list-inline-item">
+              <li class="list-inline-item align-middle">
                 <a class="d-flex align-items-center justify-content-center" href="javascript:void(0);">
                   <svg aria-hidden="true" data-prefix="fab"
                        data-icon="facebook-f" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -195,8 +191,7 @@
                   </svg>
                 </a>
               </li> <!-- facebook -->
-
-              <li class="list-inline-item">
+              <li class="list-inline-item align-middle">
                 <a class="d-flex align-items-center justify-content-center" href="javascript:void(0);">
                   <svg aria-hidden="true" data-prefix="fab" data-icon="twitter"
                        role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -206,8 +201,7 @@
                   </svg>
                 </a>
               </li> <!-- twiiter -->
-
-              <li class="list-inline-item">
+              <li class="list-inline-item align-middle">
                 <a class="d-flex align-items-center justify-content-center" href="javascript:void(0);">
                   <svg aria-hidden="true" data-prefix="fab" data-icon="pinterest-p"
                        role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
@@ -217,7 +211,6 @@
                   </svg>
                 </a>
               </li><!-- pinterest -->
-
             </ul>
           </div>
 
@@ -230,18 +223,18 @@
   <div class="bg-white border-top parental-footer--bottom">
     <div class="container">
 
-      <div class="bottom-holder row">
-        <div class="col-md-5 d-flex text-left small text-muted font-weight-light">
+      <div class="bottom-holder row justify-content-between">
+        <div class="col-auto d-flex text-left small text-muted font-weight-light">
             <?php echo $this->translate('Copyright &copy 2018'); ?>
         </div>
-        <div class="col-md-6 text-right d-flex justify-content-start justify-content-sm-end">
+        <div class="col-auto text-right d-flex justify-content-start justify-content-sm-end">
           <ul class="list-inline small text-muted font-weight-light m-0">
-            <li class="list-inline-item">
+            <li class="list-inline-item align-middle">
               <a href="<?php echo $this->baseUrl() . '/help/privacy' ?>">
                   <?php echo $this->translate('Privacy Policy'); ?>
               </a>
             </li>
-            <li class="list-inline-item">
+            <li class="list-inline-item align-middle">
               <a href="<?php echo $this->baseUrl() . '/help/terms' ?>">
                   <?php echo $this->translate('Terms Of Use'); ?>
               </a>

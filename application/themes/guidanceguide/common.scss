@@ -2,17 +2,18 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 #global_wrapper, #global_content {
   padding: 0 !important;
 }
+
 .container-fluid {
-  min-width: 1250px;
+  max-width: 1250px;
 }
 
 a, button {
   @include transition($transition-base);
 }
-
 
 a[role=button] {
   cursor: pointer;
@@ -23,26 +24,60 @@ a[role=button] {
 }
 
 .page-hero {
-  padding: 120px 0 60px;
+  padding: 40px 0;
+  @include media-breakpoint-up(sm) {
+    padding: 120px 0 60px;
+  }
   .form-control, .btn {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
+    height: 50px;
+  }
+  .btn {
+    width: 50px;
+    font-size: 16px;
+    @include media-breakpoint-up(sm) {
+      width: auto;
+    }
+  }
+  .form-control {
+    @include media-breakpoint-up(sm) {
+      font-size: 0.9375rem;
+    }
   }
 }
 
 .page-hero--title {
-  font-size: 60px;
+  font-size: 28px;
   font-weight: 700;
   font-family: "Open Sans", #{$font-family-sans-serif};
+  @include media-breakpoint-up(sm) {
+    font-size: 45px;
+  }
+  @include media-breakpoint-up(md) {
+    font-size: 60px;
+  }
 }
 
 .page-hero--caption {
-  font-size: 18px;
+  font-size: 12px;
   font-weight: 600;
+  @include media-breakpoint-up(sm) {
+    font-size: 14px;
+  }
+  @include media-breakpoint-up(sm) {
+    font-size: 16px;
+  }
 }
 
 .content-box {
   border-radius: 10px;
-  padding: 15px;
+  padding: 15px 0;
+  min-height: 576px;
+  @include media-breakpoint-up(md) {
+    background-color: #fff;
+    padding: 15px;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  }
 }
 
 .content-box--title {

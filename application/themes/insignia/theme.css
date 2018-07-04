@@ -195,7 +195,7 @@ html[dir="rtl"] .layout_right
 }
 #global_wrapper
 {
-  text-align: center;
+  //text-align: center;
   padding-top: 20px;
 }
 #global_content

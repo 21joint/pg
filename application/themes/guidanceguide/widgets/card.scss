@@ -1,46 +1,82 @@
+.cards-grid {
+  > div:nth-child(2n) {
+    .card-review {
+      //margin-left: 5px;
+      //margin-right: 10px;
+    }
+  }
+  > div:nth-child(2n-1) {
+    .card-review {
+      //margin-right: 5px;
+      //margin-left: 10px;
+    }
+  }
+}
+
 .card-review {
-  margin: 15px 5px;
   border-color: rgb(245, 245, 245);
   border-radius: 10px;
   overflow: hidden;
-  .card-header {
-    position: relative;
-  }
-  .card-body {
-    padding: 1rem 1.25rem;
-  }
   .fa, .far {
     color: #B9CFD1;
-  }
-  .card-footer {
-    border-color: rgb(245, 245, 245);
-    .list-inline-item:not(:last-child) {
-      margin-right: 0.366rem;
-    }
-  }
-  .card-actions {
-    position: absolute;
-    background-color: rgba(92, 199, 206, .9);
-    top: -46px;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    transition: 0.15s top ease-in-out;
-    a {
-      height: 45px;
-      @include hover-focus-active() {
-        background-color: darken($blue, 10%);
-      }
-    }
-    .fa, .far {
-      color: inherit;
-    }
   }
   &:hover {
     .card-actions {
       top: 0;
     }
   }
+  @include media-breakpoint-up(sm) {
+    margin: 15px 0;
+  }
+}
+
+.card-actions {
+  position: absolute;
+  background-color: rgba(92, 199, 206, .9);
+  top: -46px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  transition: 0.15s top ease-in-out;
+  a {
+    height: 35px;
+    line-height: 1;
+    @include hover-focus-active() {
+      background-color: darken($blue, 10%);
+    }
+    @include media-breakpoint-up(md) {
+      height: 45px;
+    }
+  }
+  .fa, .far {
+    color: inherit;
+  }
+}
+
+.card-header {
+  position: relative;
+}
+
+.card-body {
+  padding: 0.5rem .675rem;
+  @include media-breakpoint-up(md) {
+    padding: 1rem 1.25rem;
+  }
+}
+
+.card-footer {
+  border-color: rgb(245, 245, 245);
+  padding: 0.5rem .875rem;
+  .list-inline-item {
+    font-size: 0.875rem;
+  }
+  .list-inline-item:not(:last-child) {
+    margin-right: 0.366rem;
+  }
+  .fa, .far {
+    margin-right: 4px;
+  }
+
 }
 
 .card-img--wrapper {
@@ -48,41 +84,75 @@
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-  max-height: 300px;
+  padding-bottom: 80%;
 }
 
 .card-stars {
   position: absolute;
   bottom: -1px;
-  left: 20px;
   z-index: 100;
-  padding: .625rem 1.25rem;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 0 0.75rem;
   background-color: #ffffff;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+  white-space: nowrap;
   img, svg {
-    width: 22px;
-    height: 22px;
+    width: 11px;
+    height: 11px;
     display: block;
+    @include media-breakpoint-up(md) {
+      width: 22px;
+      height: 22px;
+    }
   }
   .list-inline-item:not(:last-child) {
-    margin-right: 0.366rem;
+    margin-right: 0.1rem;
+  }
+  @include media-breakpoint-up(sm) {
+    padding: .625rem .9rem;
+    .list-inline-item:not(:last-child) {
+      margin-right: 0.2rem;
+    }
+  }
+  @include media-breakpoint-up(md) {
+    left: 20px;
+    transform: translate(0, 0);
+    .list-inline-item:not(:last-child) {
+      margin-right: 0.366rem;
+    }
+  }
+
+}
+
+.card-subtitle {
+  font-size: 11px;
+  text-decoration: none;
+  @include media-breakpoint-up(sm) {
+    font-size: 13px;
   }
 }
 
 .card-title {
-  font-size: 25px;
-  line-height: 34px;
-  min-height: 77px;
+  font-size: 14px;
+  line-height: 19px;
   color: inherit !important;
   text-decoration: none;
+  @include media-breakpoint-up(sm) {
+    font-size: 20px;
+  }
+  @include media-breakpoint-up(md) {
+    font-size: 25px;
+    line-height: 34px;
+    min-height: 77px;
+  }
 }
 
 .card-text {
   font-size: 14px;
   font-family: "Open Sans", #{$font-family-base};
   line-height: 19px;
-  //min-height: calc((19px * 4) + 20px);
   overflow: hidden;
   -ms-text-overflow: ellipsis;
   text-overflow: ellipsis;
@@ -105,14 +175,23 @@
 }
 
 .card-author--title {
-  font-size: 14px;
+  font-size: 12px;
+  @include media-breakpoint-up(sm) {
+    font-size: 14px;
+  }
 }
 
-.card-footer {
-  .list-inline-item {
-    font-size: 0.875rem;
+.card-date {
+  font-size: 10px;
+  font-family: 'Open Sans', #{$font-family-base};
+  @include media-breakpoint-up(sm) {
+    font-size: 12px;
   }
-  .fa, .far {
-    margin-right: 4px;
-  }
+}
+
+.btn-card--details {
+  width: 30px;
+  height: 30px;
+  padding: 0px;
+  line-height: 1;
 }

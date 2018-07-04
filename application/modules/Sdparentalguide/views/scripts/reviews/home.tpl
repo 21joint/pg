@@ -7,5 +7,3 @@
  * @author     Stars Developer
  */
 ?>
-
-Index Skelton

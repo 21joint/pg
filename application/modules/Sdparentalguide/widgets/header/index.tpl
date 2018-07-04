@@ -70,8 +70,8 @@
 
           <ul class="list-inline profile-items w-100 d-flex justify-content-sm-end justify-content-center align-items-center my-0">
 
-            <li class="list-inline-item m-0 align-middle search d-sm-none">
-              <a class="d-flex align-items-center p-2"
+            <li class="list-inline-item align-middle search d-sm-none mr-2">
+              <a class="d-flex align-items-center p-1 p-sm-2"
                  role="button"
                  id="search-icon">
                 <svg height="22px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 21">
@@ -92,12 +92,12 @@
             </li> <!-- end of search -->
 
               <?php if ($this->viewer->getIdentity() > 0): ?>
-                <li class="list-inline-item align-middle mr-2 p-2 notifications dropdown">
+                <li class="list-inline-item align-middle mr-2 notifications dropdown">
                   <a role="button"
                      data-toggle="dropdown"
                      aria-haspopup="true"
                      data-boundary="window"
-                     class="d-flex align-items-center position-relative core_mini_update updates_toogle">
+                     class="d-flex align-items-center position-relative core_mini_update updates_toogle p-1 p-sm-2">
                     <i class="fa fa-bell-o"
                        id="close_icon"></i><span class="notifications-count bg-primary text-white font-weight-bold position-absolute d-flex align-items-center justify-content-center"><?php echo $this->notificationCount; ?></span>
                   </a>
@@ -123,7 +123,7 @@
                     </div>
                   </div>
                 </li> <!-- notifications -->
-                <li class="list-inline-item align-middle profile-img">
+                <li class="list-inline-item align-middle profile-img mr-0">
                     <?php
 
                     $color = null;
@@ -141,7 +141,7 @@
                     ?>
                     <?= $this->htmlLink($this->viewer->getHref(), $this->itemPhoto($this->viewer, 'thumb.icon')); ?>
                 </li> <!-- profile -->
-                <li class="list-inline-item align-middle name d-none d-sm-inline-block position-relative dropdown">
+                <li class="list-inline-item align-middle name d-none d-sm-inline-block dropdown">
                     <?= $this->htmlLink($this->viewer->getHref(), substr($this->viewer->getTitle(), 0, strrpos($this->viewer->getTitle(), ' ')), array('class' => 'font-weight-bold align-middle')); ?>
                   <a role="button"
                      data-toggle="dropdown"
@@ -216,35 +216,35 @@
       <div class="row align-items-center justify-content-center">
         <div class="col-auto">
           <ul class="list-inline my-0">
-            <li class="list-inline-item">
+            <li class="list-inline-item align-middle">
               <a class="nav-link" href="<?php echo $this->baseUrl(); ?>">
                 <b><?php echo $this->translate('Home'); ?></b>
               </a>
             </li>
-            <li class="list-inline-item">
+            <li class="list-inline-item align-middle">
               <a class="nav-link" href="<?php echo $this->baseUrl(); ?>/reviews/home">
                 <b><?php echo $this->translate('Reviews'); ?></b>
               </a>
             </li>
-            <li class="list-inline-item">
+            <li class="list-inline-item align-middle">
               <a class="nav-link" href="<?php echo $this->url(array(), 'listing_struggles', true); ?>">
                 <b><?php echo $this->translate('Struggles & Theories'); ?></b>
               </a>
             </li>
-            <li class="list-inline-item">
+            <li class="list-inline-item align-middle">
               <a class="nav-link" href="<?php echo $this->baseUrl(); ?>/community/home">
                 <b><?php echo $this->translate('Our Community'); ?></b>
               </a>
             </li>
               <?php if ($this->viewer->getIdentity() > 0): ?>
                   <?php if ($this->viewer->isAdmin()): ?>
-                  <li class="list-inline-item d-sm-none d-block">
+                  <li class="list-inline-item align-middle d-sm-none d-inline-block">
                     <a href="<?php echo $this->baseUrl(); ?>/admin">
                         <?php echo $this->translate('Admin'); ?>
                     </a>
                   </li>
                   <?php endif; ?>
-                <li class="list-inline-item d-sm-none d-block">
+                <li class="list-inline-item align-middle d-sm-none d-inline-block">
                   <a href="<?php echo $this->baseUrl(); ?>/logout">
                       <?php echo $this->translate('Log Out'); ?>
                   </a>
