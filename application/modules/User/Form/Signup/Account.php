@@ -34,6 +34,7 @@ class User_Form_Signup_Account extends Engine_Form_Email
     // Init form
     $this->setTitle('Create Account');
     $this->setAttrib('id', 'signup_account_form');
+    $this->setAttrib('class', 'extfox-auth w-100 h-100');
 
     // Element: name (trap)
     $this->addElement('Text', 'name', array(
@@ -76,12 +77,12 @@ class User_Form_Signup_Account extends Engine_Form_Email
       $emailElement->setValue($inviteSession->invite_email);
     }
 
-    //if( $settings->getSetting('user.signup.verifyemail', 0) > 0 && $settings->getSetting('user.signup.checkemail', 0) == 1 ) {
-    //  $this->email->addValidator('Identical', true, array($inviteSession->invite_email));
-    //  $this->email->getValidator('Identical')->setMessage('Your email address must match the address that was invited.', 'notSame');
-    //}
+    if( $settings->getSetting('user.signup.verifyemail', 0) > 0 && $settings->getSetting('user.signup.checkemail', 0) == 1 ) {
+     $this->email->addValidator('Identical', true, array($inviteSession->invite_email));
+     $this->email->getValidator('Identical')->setMessage('Your email address must match the address that was invited.', 'notSame');
+    }
     
-    // Element: code
+    //Element: code
     if( $settings->getSetting('user.signup.inviteonly') > 0 ) {
       $codeValidator = new Engine_Validate_Callback(array($this, 'checkInviteCode'), $emailElement);
       $codeValidator->setMessage("This invite code is invalid or does not match the selected email address");
@@ -193,46 +194,46 @@ class User_Form_Signup_Account extends Engine_Form_Email
     }
 
     // Element: timezone
-    $this->addElement('Select', 'timezone', array(
-      'label' => 'Timezone',
-      'value' => $settings->getSetting('core.locale.timezone'),
-      'multiOptions' => array(
-        'US/Pacific' => '(UTC-8) Pacific Time (US & Canada)',
-        'US/Mountain' => '(UTC-7) Mountain Time (US & Canada)',
-        'US/Central' => '(UTC-6) Central Time (US & Canada)',
-        'US/Eastern' => '(UTC-5) Eastern Time (US & Canada)',
-        'America/Halifax' => '(UTC-4)  Atlantic Time (Canada)',
-        'America/Anchorage' => '(UTC-9)  Alaska (US & Canada)',
-        'Pacific/Honolulu' => '(UTC-10) Hawaii (US)',
-        'Pacific/Samoa' => '(UTC-11) Midway Island, Samoa',
-        'Etc/GMT-12' => '(UTC-12) Eniwetok, Kwajalein',
-        'Canada/Newfoundland' => '(UTC-3:30) Canada/Newfoundland',
-        'America/Buenos_Aires' => '(UTC-3) Brasilia, Buenos Aires, Georgetown',
-        'Atlantic/South_Georgia' => '(UTC-2) Mid-Atlantic',
-        'Atlantic/Azores' => '(UTC-1) Azores, Cape Verde Is.',
-        'Europe/London' => 'Greenwich Mean Time (Lisbon, London)',
-        'Europe/Berlin' => '(UTC+1) Amsterdam, Berlin, Paris, Rome, Madrid',
-        'Europe/Athens' => '(UTC+2) Athens, Helsinki, Istanbul, Cairo, E. Europe',
-        'Europe/Moscow' => '(UTC+3) Baghdad, Kuwait, Nairobi, Moscow',
-        'Iran' => '(UTC+3:30) Tehran',
-        'Asia/Dubai' => '(UTC+4) Abu Dhabi, Kazan, Muscat',
-        'Asia/Kabul' => '(UTC+4:30) Kabul',
-        'Asia/Yekaterinburg' => '(UTC+5) Islamabad, Karachi, Tashkent',
-        'Asia/Calcutta' => '(UTC+5:30) Bombay, Calcutta, New Delhi',
-        'Asia/Katmandu' => '(UTC+5:45) Nepal',
-        'Asia/Omsk' => '(UTC+6) Almaty, Dhaka',
-        'Indian/Cocos' => '(UTC+6:30) Cocos Islands, Yangon',
-        'Asia/Krasnoyarsk' => '(UTC+7) Bangkok, Jakarta, Hanoi',
-        'Asia/Hong_Kong' => '(UTC+8) Beijing, Hong Kong, Singapore, Taipei',
-        'Asia/Tokyo' => '(UTC+9) Tokyo, Osaka, Sapporto, Seoul, Yakutsk',
-        'Australia/Adelaide' => '(UTC+9:30) Adelaide, Darwin',
-        'Australia/Sydney' => '(UTC+10) Brisbane, Melbourne, Sydney, Guam',
-        'Asia/Magadan' => '(UTC+11) Magadan, Solomon Is., New Caledonia',
-        'Pacific/Auckland' => '(UTC+12) Fiji, Kamchatka, Marshall Is., Wellington',
-      ),
-      'tabindex' => $tabIndex++,
-    ));
-    $this->timezone->getDecorator('Description')->setOptions(array('placement' => 'APPEND'));
+    // $this->addElement('Select', 'timezone', array(
+    //   'label' => 'Timezone',
+    //   'value' => $settings->getSetting('core.locale.timezone'),
+    //   'multiOptions' => array(
+    //     'US/Pacific' => '(UTC-8) Pacific Time (US & Canada)',
+    //     'US/Mountain' => '(UTC-7) Mountain Time (US & Canada)',
+    //     'US/Central' => '(UTC-6) Central Time (US & Canada)',
+    //     'US/Eastern' => '(UTC-5) Eastern Time (US & Canada)',
+    //     'America/Halifax' => '(UTC-4)  Atlantic Time (Canada)',
+    //     'America/Anchorage' => '(UTC-9)  Alaska (US & Canada)',
+    //     'Pacific/Honolulu' => '(UTC-10) Hawaii (US)',
+    //     'Pacific/Samoa' => '(UTC-11) Midway Island, Samoa',
+    //     'Etc/GMT-12' => '(UTC-12) Eniwetok, Kwajalein',
+    //     'Canada/Newfoundland' => '(UTC-3:30) Canada/Newfoundland',
+    //     'America/Buenos_Aires' => '(UTC-3) Brasilia, Buenos Aires, Georgetown',
+    //     'Atlantic/South_Georgia' => '(UTC-2) Mid-Atlantic',
+    //     'Atlantic/Azores' => '(UTC-1) Azores, Cape Verde Is.',
+    //     'Europe/London' => 'Greenwich Mean Time (Lisbon, London)',
+    //     'Europe/Berlin' => '(UTC+1) Amsterdam, Berlin, Paris, Rome, Madrid',
+    //     'Europe/Athens' => '(UTC+2) Athens, Helsinki, Istanbul, Cairo, E. Europe',
+    //     'Europe/Moscow' => '(UTC+3) Baghdad, Kuwait, Nairobi, Moscow',
+    //     'Iran' => '(UTC+3:30) Tehran',
+    //     'Asia/Dubai' => '(UTC+4) Abu Dhabi, Kazan, Muscat',
+    //     'Asia/Kabul' => '(UTC+4:30) Kabul',
+    //     'Asia/Yekaterinburg' => '(UTC+5) Islamabad, Karachi, Tashkent',
+    //     'Asia/Calcutta' => '(UTC+5:30) Bombay, Calcutta, New Delhi',
+    //     'Asia/Katmandu' => '(UTC+5:45) Nepal',
+    //     'Asia/Omsk' => '(UTC+6) Almaty, Dhaka',
+    //     'Indian/Cocos' => '(UTC+6:30) Cocos Islands, Yangon',
+    //     'Asia/Krasnoyarsk' => '(UTC+7) Bangkok, Jakarta, Hanoi',
+    //     'Asia/Hong_Kong' => '(UTC+8) Beijing, Hong Kong, Singapore, Taipei',
+    //     'Asia/Tokyo' => '(UTC+9) Tokyo, Osaka, Sapporto, Seoul, Yakutsk',
+    //     'Australia/Adelaide' => '(UTC+9:30) Adelaide, Darwin',
+    //     'Australia/Sydney' => '(UTC+10) Brisbane, Melbourne, Sydney, Guam',
+    //     'Asia/Magadan' => '(UTC+11) Magadan, Solomon Is., New Caledonia',
+    //     'Pacific/Auckland' => '(UTC+12) Fiji, Kamchatka, Marshall Is., Wellington',
+    //   ),
+    //   'tabindex' => $tabIndex++,
+    // ));
+    // $this->timezone->getDecorator('Description')->setOptions(array('placement' => 'APPEND'));
 
     // Element: language
 
@@ -293,7 +294,7 @@ class User_Form_Signup_Account extends Engine_Form_Email
     
     if( $settings->getSetting('user.signup.terms', 1) == 1 ) {
       // Element: terms
-      $description = Zend_Registry::get('Zend_Translate')->_('I have read and agree to the <a target="_blank" href="%s/help/terms">terms of service</a>.');
+      $description = Zend_Registry::get('Zend_Translate')->_('I have read and agree to the <a target="_blank" href="%s/help/terms"> terms of service </a>.');
       $description = sprintf($description, Zend_Controller_Front::getInstance()->getBaseUrl());
 
       $this->addElement('Checkbox', 'terms', array(
@@ -321,6 +322,7 @@ class User_Form_Signup_Account extends Engine_Form_Email
     $this->addElement('Button', 'submit', array(
       'label' => 'Continue',
       'type' => 'submit',
+      'class' => 'btn btn-success text-white py-2 px-0 text-uppercase w-100',
       'ignore' => true,
       'tabindex' => $tabIndex++,
     ));

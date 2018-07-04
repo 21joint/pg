@@ -111,7 +111,7 @@ if ($siteloginSignupPopUp) {
     
 ?>
 <?php $layoutPos = array(1=> 'left', 2 => 'right', 3 => 'top', 4 => 'bottom')?>
-<div id="<?php echo $siteloginSignupPopUp ? 'sociallogin_signup_popup' : 'sociallogin_signup_page' ?>">
+<div id="<?php echo $siteloginSignupPopUp ? 'sociallogin_signup_popup' : 'sociallogin_signup_page w-100 h-100' ?>">
 <div class="social-signup-layout-<?php echo $layoutPos[$position] ?>">
 
 <?php if( $isEnableSocialAccount && $enable ): ?>

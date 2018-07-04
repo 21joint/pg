@@ -42,13 +42,15 @@ class User_Form_Login extends Engine_Form_Email
     // Used to redirect users to the correct page after login with Facebook
     $_SESSION['redirectURL'] = Zend_Controller_Front::getInstance()->getRequest()->getRequestUri();
 
-    $description = Zend_Registry::get('Zend_Translate')->_("If you already have an account, please enter your details below. If you don't have one yet, please <a href='%s'>sign up</a> first.");
+    $description = Zend_Registry::get('Zend_Translate')->_("Join Parental Guidance today.");
     $description= sprintf($description, Zend_Controller_Front::getInstance()->getRouter()->assemble(array(), 'user_signup', true));
 
+   
     // Init form
-    $this->setTitle('Member Sign In');
+    $this->setTitle('Share Your Struggle. Provide Your Theories. Gain Advice.');
     $this->setDescription($description);
     $this->setAttrib('id', 'user_form_login');
+    $this->setAttrib('class', 'extfox-auth');
     $this->loadDefaultDecorators();
     $this->getDecorator('Description')->setOption('escape', false);
 
@@ -86,6 +88,28 @@ class User_Form_Login extends Engine_Form_Email
       ),
     ));
 
+    $content = Zend_Registry::get('Zend_Translate')->_("<p><a href='%s'>Forgot Password?</a></p>");
+    $content= sprintf($content, Zend_Controller_Front::getInstance()->getRouter()->assemble(array('module' => 'user', 'controller' => 'auth', 'action' => 'forgot'), 'default', true));
+
+
+    // Init forgot password link
+    $this->addElement('Dummy', 'forgot', array(
+      'content' => $content,
+    ));
+
+     // Init remember me
+    $this->addElement('Checkbox', 'remember', array(
+      'label' => 'Remember Me',
+      'tabindex' => $tabindex++,
+    ));
+
+    $this->addDisplayGroup(array(
+      'forgot',
+      'remember'
+    ), 'buttons-fileds',array('class' => 'border-0 mb-4'));
+
+
+
     $this->addElement('Hidden', 'return_url', array(
 
     ));
@@ -106,25 +130,17 @@ class User_Form_Login extends Engine_Form_Email
       'tabindex' => $tabindex++,
     ));
     
-    // Init remember me
-    $this->addElement('Checkbox', 'remember', array(
-      'label' => 'Remember Me',
-      'tabindex' => $tabindex++,
+    $this->addElement('Cancel', 'cancel', array(
+      'label' => 'Sign Up',
+      'link' => true,
+      'href' => Zend_Controller_Front::getInstance()->getRouter()->assemble(array('controller' => 'signup', 'action' => 'index'), 'user_signup', true),
     ));
 
     $this->addDisplayGroup(array(
       'submit',
-      'remember'
-    ), 'buttons');
+      'cancel'
+    ), 'buttons',array ('class' => 'mb-5'));
 
-    $content = Zend_Registry::get('Zend_Translate')->_("<span><a href='%s'>Forgot Password?</a></span>");
-    $content= sprintf($content, Zend_Controller_Front::getInstance()->getRouter()->assemble(array('module' => 'user', 'controller' => 'auth', 'action' => 'forgot'), 'default', true));
-
-
-    // Init forgot password link
-    $this->addElement('Dummy', 'forgot', array(
-      'content' => $content,
-    ));
 
     // Init facebook login link
     if( 'none' != $settings->getSetting('core_facebook_enable', 'none')
@@ -135,12 +151,12 @@ class User_Form_Login extends Engine_Form_Email
     }
 
     // Init twitter login link
-    if( 'none' != $settings->getSetting('core_twitter_enable', 'none')
-        && $settings->core_twitter_secret ) {
+    //if( 'none' != $settings->getSetting('core_twitter_enable', 'none')
+        //&& $settings->core_twitter_secret ) {
       $this->addElement('Dummy', 'twitter', array(
         'content' => User_Model_DbTable_Twitter::loginButton(),
       ));
-    }
+   // }
     
     // Init janrain login link
     if( 'none' != $settings->getSetting('core_janrain_enable', 'none')
@@ -150,6 +166,11 @@ class User_Form_Login extends Engine_Form_Email
         'content' => User_Model_DbTable_Janrain::loginButton($mode),
       ));
     }
+
+    $this->addDisplayGroup(array(
+      'twitter',
+      'facebook'
+    ), 'facebook-button',array('class' => ' border-0 p-0 m-0'));
 
     // Set default action
     $this->setAction(Zend_Controller_Front::getInstance()->getRouter()->assemble(array(), 'user_login'));
