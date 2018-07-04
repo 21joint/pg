@@ -1,5 +1,5 @@
 <div class="container p-0" id="family-information"> 
-    <div class="row add-child-form add-another-child d-block mx-0 border-0">
+    <div class="row add-child-form d-block mx-0 border-0">
         <div class="col-12 d-flex add-gender p-0 mb-4" id="add-gender"> 
             <div class="col-2 mr-1 p-0 text-center male small add-gender-items <?php if($this->subject()->gg_gender == 1): ?> selected<?php endif; ?>">
                 <a href="javascript:void(0)" onclick="selectGender(1, this)" class="d-block p-2">
@@ -22,7 +22,8 @@
                     <?php echo $this->translate('Prefer Not to Answer'); ?>
                 </a>
             </div>
-            <input type="hidden" name="profile_gender" id="profile_gender" value=""/>
+            <input type="hidden" name="profile_gender" id="profile_gender" value="<?php echo $this->subject()->gg_gender; ?>"/>
+            <input type="hidden" name="<?php echo $this->name; ?>" id="<?php echo $this->name; ?>" class="field_container" value="<?php echo $this->subject()->gg_gender; ?>">
         </div>
     </div> <!-- end of add-gender -->
 </div>
@@ -30,11 +31,13 @@
 <script>
 function selectGender(type, e) {
     
-    let genderField = document.getElementById('profile_gender').value = type;
     let addGenderItems = document.getElementsByClassName('add-gender-items');
     for(var i = 0; i < addGenderItems.length; i++) {
         addGenderItems[i].classList.remove('selected');
     }
     e.getParent().classList.add('selected');
+
+    document.getElementById('profile_gender').value = type;
+    document.getElementById('<?php echo $this->name; ?>').value = type;
 }
 </script>

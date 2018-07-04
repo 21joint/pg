@@ -691,9 +691,9 @@ body#global_page_user-profile-index {
                 }
             }
         }
-       
     }
 }
+
 // Notification Profile
 .layout_sdparentalguide_ajax_notifications {
     #extfox-settings {
@@ -2338,6 +2338,11 @@ img.item_photo_user {
             .form-element {
                 max-width: 100% !important;
             }
+            .form-element {
+                &.family-wrapper {
+                    min-width: 100% !important;
+                }
+            }
         }
         input[type=checkbox] + label {
             display: block!important;
@@ -2347,6 +2352,46 @@ img.item_photo_user {
         }
        
     }
+
+    // Ajax Edit Profile Form
+    .layout_sdparentalguide_ajax_profile {
+        #extfox-settings {
+            .form-wrapper {
+                input[type=checkbox] {
+                    display: none;
+                    + label {
+                        left: 0;
+                        display: flex !important;
+                        align-items: center;
+                    }
+                }
+                .form-options-wrapper {
+                    display: block;
+                    float: left;
+                    li {
+                        width: 100%;
+                    }
+                }
+                #family-information {
+                    .btn-danger {
+                        visibility: visible !important;
+                    }
+                }
+                #add-birthday {
+                    .col-12.d-flex, .col-12.years-range, .col-12.years, .col-12.final-date {
+                        display: grid !important;
+                        grid-template-columns: repeat(3, 1fr);
+                        grid-gap: 10px;
+                        grid-auto-rows: minmax(60px, auto);
+                        &.d-none {
+                            display: none !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     // Badges Proile
     .layout_sdparentalguide_ajax_badges {
         .container{

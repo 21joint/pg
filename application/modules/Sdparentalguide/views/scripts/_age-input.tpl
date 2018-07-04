@@ -3,7 +3,7 @@
 <div class="container p-0" id="family-information"> 
     
     <div class="row add-child-form add-age-range d-block mx-0 pb-4 border-0">
-        <div class="add-gender age-range p-0 mb-4" id="add-gender"> 
+        <div class="add-gender age-range p-0 mb-4" id="add-gender">
             <div class="text-center age small add-gender-items px-2">
                 <a href="javascript:void(0)" onclick="selectAge('18', this)" class="d-block w-100 py-4">
                     <?php echo $this->translate('Under 18'); ?>
@@ -40,6 +40,7 @@
                 </a>
             </div>
             <input type="hidden" name="profile_age_range" id="profile_age_range" value=""/>
+            <input type="hidden" name="<?php echo $this->name; ?>" id="<?php echo $this->name; ?>" class="field_container">
         </div>
     </div> <!-- end of add-gender -->
 </div>
@@ -47,13 +48,31 @@
 <script>
 
 function selectAge(type, e) {
+
+    document.getElementById('profile_age_range').value = type;
+    document.getElementById('<?php echo $this->name; ?>').value = type;
+
     let addAgeRangeItems = document.getElementsByClassName('add-gender-items');
-    let ageRangeField = document.getElementById('profile_age_range').value = type;
     for(var i = 0; i < addAgeRangeItems.length; i++) {
         addAgeRangeItems[i].classList.remove('selected-age');
     }
     e.getParent().classList.add('selected-age');
-    console.log(ageRangeField);
 }
+
+en4.core.runonce.add(function() {
+    let addAgeRangeItems = document.getElementsByClassName('add-gender-items age');
+    let currentAge = '<?php echo $this->subject()->gg_age_range; ?>';
+    for(var i = 0; i < addAgeRangeItems.length; i++) {
+
+        let age = addAgeRangeItems[i].getElement('a').innerText;
+        if(age == '65+') { age = '65'; } else if (age == 'Under 18') { age = '18'; }
+
+        if(age == currentAge) {
+            addAgeRangeItems[i].classList.add('selected-age');
+            document.getElementById('profile_age_range').value = age;
+            document.getElementById('<?php echo $this->name; ?>').value = age;
+        }
+    }
+});
 
 </script>

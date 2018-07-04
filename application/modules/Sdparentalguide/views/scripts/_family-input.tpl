@@ -4,7 +4,7 @@
     </span>
 </div>
 
-<div class="container p-0" id="family-information">
+<div class="container p-0 col-12 col-sm-10" id="family-information">
     
     <?php 
 
@@ -161,8 +161,9 @@ var lastItem = <?php echo $last_item; ?>;
 en4.core.runonce.add(function() {
     let familyHolder = document.getElementById('family-information');
     let familyWrapper = familyHolder.getParent();
-
+    
     // add style modifications
+    familyWrapper.classList.add('family-wrapper');
     familyWrapper.style.minWidth = '600px';
     familyWrapper.style.width = '600px';
     familyWrapper.getParent().style.padding = '0';

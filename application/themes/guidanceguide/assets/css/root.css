@@ -5339,10 +5339,33 @@ img.item_photo_user {
       padding-left: 10px; }
     #extfox-settings .form-wrapper .form-element {
       max-width: 100% !important; }
+    #extfox-settings .form-wrapper .form-element.family-wrapper {
+      min-width: 100% !important; }
   #extfox-settings input[type=checkbox] + label {
     display: block !important; }
   #extfox-settings input[type=checkbox] {
     float: none !important; }
+
+  .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper input[type=checkbox] {
+    display: none; }
+    .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper input[type=checkbox] + label {
+      left: 0;
+      display: flex !important;
+      align-items: center; }
+  .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper .form-options-wrapper {
+    display: block;
+    float: left; }
+    .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper .form-options-wrapper li {
+      width: 100%; }
+  .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #family-information .btn-danger {
+    visibility: visible !important; }
+  .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday .col-12.d-flex, .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday .col-12.years-range, .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday .col-12.years, .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday .col-12.final-date {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(60px, auto); }
+    .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday .col-12.d-flex.d-none, .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday .col-12.years-range.d-none, .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday .col-12.years.d-none, .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday .col-12.final-date.d-none {
+      display: none !important; }
 
   .layout_sdparentalguide_ajax_badges .container {
     width: 100% !important; }
