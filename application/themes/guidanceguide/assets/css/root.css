@@ -4690,6 +4690,14 @@ form.preference-holder {
       form.preference-holder #buttons-wrapper #fieldset-buttons a {
         width: 45%; }
 
+img.item_photo_user {
+  border-style: solid !important;
+  border-width: 5px 6px 5px 6px !important;
+  -moz-border-image: url("../images/border.png") 20 20 20 20 round !important;
+  -webkit-border-image: url("../images/border.png") 20 20 20 20 round !important;
+  -o-border-image: url("../images/border.png") 20 20 20 20 round !important;
+  border-image: url(../images/border.png) 20 20 20 20 fill !important; }
+
 .left-side-partial .image-holder {
   background-image: url("../images/mother_and_baby.jpg");
   background-size: cover;
@@ -4795,6 +4803,16 @@ form.preference-holder {
         #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.not-to-answer:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.not-to-answer.selected {
           background: #8AE693;
           border-color: #8AE693; }
+      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender .age {
+        font-size: 14px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 600;
+        color: #333D40; }
+        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender .age:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender .age.selected-age {
+          background-color: #5CC7CE !important;
+          color: #fff !important; }
+          #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender .age:hover a, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender .age.selected-age a {
+            color: #fff; }
       #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .months .month-select {
         border-radius: 10px;
         border: 2px solid #F5F5F5;
@@ -5117,14 +5135,6 @@ form.preference-holder {
 
 .height-vh {
   height: 100%; }
-
-#core_menu_mini_menu_extfox ul li.profile-img a img {
-  border-style: solid;
-  border-width: 6px 6px 6px 6px;
-  -moz-border-image: url("../images/border.png") 20 20 20 20 round;
-  -webkit-border-image: url("../images/border.png") 20 20 20 20 round;
-  -o-border-image: url("../images/border.png") 20 20 20 20 round;
-  border-image: url(../images/border.png) 20 20 20 20 fill; }
 
 @media only screen and (max-width: 768px) {
   .grib-grab-two {
