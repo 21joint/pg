@@ -30,8 +30,6 @@
 </div>
 
 <script>
-
-
 function selectChildGender(type, e) {
     let addGenderItems = document.getElementsByClassName('add-gender-items');
     for(var i = 0; i < addGenderItems.length; i++) {
@@ -39,6 +37,4 @@ function selectChildGender(type, e) {
     }
     e.getParent().classList.add('selected');
 }
-
-
 </script>

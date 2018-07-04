@@ -4261,7 +4261,7 @@ body#global_page_user-profile-index {
       color: #333D40;
       font-size: 16px; }
   .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper input[type=checkbox] + label {
-    left: -15px; }
+    left: -10px; }
 .layout_sdparentalguide_ajax_profile #extfox-settings [id="1_1_21-wrapper"] .form-label, .layout_sdparentalguide_ajax_profile #extfox-settings [id="1_1_22-wrapper"] .form-label, .layout_sdparentalguide_ajax_profile #extfox-settings [id="1_1_23-wrapper"] .form-label {
   display: none !important; }
 .layout_sdparentalguide_ajax_profile #extfox-settings [id="1_1_13-wrapper"] ul.form-options-wrapper li input[type=checkbox] + label {
@@ -4690,6 +4690,14 @@ form.preference-holder {
       form.preference-holder #buttons-wrapper #fieldset-buttons a {
         width: 45%; }
 
+img.item_photo_user {
+  border-style: solid !important;
+  border-width: 5px 6px 5px 6px !important;
+  -moz-border-image: url("../images/border.png") 20 20 20 20 round !important;
+  -webkit-border-image: url("../images/border.png") 20 20 20 20 round !important;
+  -o-border-image: url("../images/border.png") 20 20 20 20 round !important;
+  border-image: url(../images/border.png) 20 20 20 20 fill !important; }
+
 .left-side-partial .image-holder {
   background-image: url("../images/mother_and_baby.jpg");
   background-size: cover;
@@ -4753,58 +4761,70 @@ form.preference-holder {
     width: 100%; }
     #extfox-settings .form-wrapper .form-element input[type="password"]::-webkit-input-placeholder, #extfox-settings .form-wrapper .form-element input[type="text"]::-webkit-input-placeholder {
       color: #B9CFD1 !important; }
-  #extfox-settings .form-wrapper .form-element #family-information {
-    color: red; }
-    #extfox-settings .form-wrapper .form-element #family-information .family-item-holder > div {
+  #extfox-settings .form-wrapper .form-element #family-information .family-item-holder > div {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px; }
+    #extfox-settings .form-wrapper .form-element #family-information .family-item-holder > div.male {
+      background-color: #86B3E1; }
+    #extfox-settings .form-wrapper .form-element #family-information .family-item-holder > div.female {
+      background-color: #E186C0; }
+    #extfox-settings .form-wrapper .form-element #family-information .family-item-holder > div.unknown {
+      background-color: #8AE693; }
+  #extfox-settings .form-wrapper .form-element #family-information .family-item p {
+    font-size: 80% !important; }
+  #extfox-settings .form-wrapper .form-element #family-information .row.add-another-child {
+    border-top: 4px solid #f7fcfc;
+    border-bottom: 4px solid #f7fcfc; }
+  #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form {
+    display: none; }
+    #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form.active {
+      display: flex; }
+    #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .close-form a {
+      background-color: #B9CFD1;
       border-radius: 50%;
-      width: 50px;
-      height: 50px; }
-      #extfox-settings .form-wrapper .form-element #family-information .family-item-holder > div.female {
+      width: 25px;
+      height: 25px;
+      transition: 0.2s ease-in background-color; }
+      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .close-form a:hover {
         background-color: #E186C0; }
-    #extfox-settings .form-wrapper .form-element #family-information .family-item p {
-      font-size: 80% !important; }
-    #extfox-settings .form-wrapper .form-element #family-information .row.add-another-child {
-      border-top: 4px solid #f7fcfc;
-      border-bottom: 4px solid #f7fcfc; }
-    #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form {
-      display: none; }
-      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form.active {
-        display: flex; }
-      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .close-form a {
-        background-color: #B9CFD1;
-        border-radius: 50%;
-        width: 25px;
-        height: 25px;
-        transition: 0.2s ease-in background-color; }
-        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .close-form a:hover {
-          background-color: #E186C0; }
-      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div {
-        border-radius: 10px;
-        border: 2px solid #F5F5F5;
-        cursor: pointer; }
-        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div:hover a, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.selected a {
-          color: #fff !important; }
-        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div:hover svg path:nth-child(2), #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.selected svg path:nth-child(2) {
-          fill: #fff; }
-        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.male:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.male.selected {
-          background: #86B3E1;
-          border-color: #86B3E1; }
-        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.female:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.female.selected {
-          background: #E186C0;
-          border-color: #E186C0; }
-        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.not-to-answer:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.not-to-answer.selected {
-          background: #8AE693;
-          border-color: #8AE693; }
-      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .months .month-select {
-        border-radius: 10px;
-        border: 2px solid #F5F5F5;
-        cursor: pointer;
-        min-width: 92px; }
-        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .months .month-select:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .months .month-select .active {
-          border-color: #8AE693;
-          background: #8AE693; }
-          #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .months .month-select:hover a, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .months .month-select .active a {
-            color: #fff; }
+    #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div {
+      border-radius: 10px;
+      border: 2px solid #F5F5F5;
+      cursor: pointer; }
+      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div:hover a, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.selected a {
+        color: #fff !important; }
+      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div:hover svg path:nth-child(2), #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.selected svg path:nth-child(2) {
+        fill: #fff; }
+      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.male:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.male.selected {
+        background: #86B3E1;
+        border-color: #86B3E1; }
+      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.female:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.female.selected {
+        background: #E186C0;
+        border-color: #E186C0; }
+      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.not-to-answer:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.not-to-answer.selected {
+        background: #8AE693;
+        border-color: #8AE693; }
+    #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender .age {
+      font-size: 14px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 600;
+      color: #333D40; }
+      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender .age:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender .age.selected-age {
+        background-color: #5CC7CE !important;
+        color: #fff !important; }
+        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender .age:hover a, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender .age.selected-age a {
+          color: #fff; }
+    #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .selector-holder .selector-item {
+      border-radius: 10px;
+      border: 2px solid #F5F5F5;
+      cursor: pointer;
+      min-width: 92px; }
+      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .selector-holder .selector-item:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .selector-holder .selector-item .active {
+        border-color: #8AE693;
+        background: #8AE693; }
+        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .selector-holder .selector-item:hover a, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .selector-holder .selector-item .active a {
+          color: #fff; }
   #extfox-settings .form-wrapper button {
     color: #fff;
     background-color: #5CC7CE;
@@ -4883,7 +4903,7 @@ form.preference-holder {
   padding-left: 1.5em !important;
   margin-right: 2em !important;
   cursor: pointer !important;
-  line-height: 1em !important;
+  line-height: 1.3em !important;
   -webkit-transition: all 0.3s ease-in-out !important;
   transition: all 0.3s ease-in-out !important; }
 #extfox-settings input[type="radio"] + label:before,
@@ -5117,14 +5137,6 @@ form.preference-holder {
 
 .height-vh {
   height: 100%; }
-
-#core_menu_mini_menu_extfox ul li.profile-img a img {
-  border-style: solid;
-  border-width: 6px 6px 6px 6px;
-  -moz-border-image: url("../images/border.png") 20 20 20 20 round;
-  -webkit-border-image: url("../images/border.png") 20 20 20 20 round;
-  -o-border-image: url("../images/border.png") 20 20 20 20 round;
-  border-image: url(../images/border.png) 20 20 20 20 fill; }
 
 @media only screen and (max-width: 768px) {
   .grib-grab-two {
