@@ -13,19 +13,19 @@
 <div class="leaderboard">
     <div class="leaderboard_title d-flex justify-content-between align-items-center">
         <h3>Leaderboard</h3>
-        <ul class="d-flex align">
+        <!-- <ul class="d-flex align">
             <li class="leaderboard_nav">Overall</li>
             <li class="leaderboard_nav">Week</li>
             <li class="leaderboard_nav">Month</li>
-        </ul>
+        </ul> --><!-- Add back in when the service is provided -->
     </div>
     <div class="leaderboard_main d-flex justify-content-between">
         <div class="d-flex justify-content-center">Rank</div>
         <div class="d-flex">Leader</div>
         <!-- Categories Start -->
-        <div id="points" class="order_by d-flex justify-content-center align-items-center" data-order="contributionPoints">Points</div>
+        <div id="points" class="order_by d-flex justify-content-center align-items-center" data-order="contributionPoints">Contribution</div>
         <div id="reviews" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="reviewCount">Reviews</div>
-        <div class="d-none d-md-flex justify-content-center align-items-center">Answers<!-- Sort By Answer not supported yet by the service layer --></div>
+        <!-- <div class="d-none d-md-flex justify-content-center align-items-center">Answers --><!-- Sort By Answer not supported yet by the service layer --><!-- </div> -->
         <div id="questions" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="questionCount">Questions</div>
         <div id="followers" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="followers">Followers</div>
         <!-- Categories End -->
@@ -39,7 +39,10 @@
     </div>
     <div class="leaderboard_content">
         <!-- Content of ajax call goes here -->
-    </div> 
+    </div>
+    <div class="leaderboard_pagination">
+        
+    </div>
 </div>
 
 
@@ -105,8 +108,8 @@ function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints", disp
     var requestData = {};
     requestData.contributionRangeType = tm; //Possible values "Overall", "Week", "Month"
     requestData.orderBy = ord; //Possible values "contributionPoints", "questionCount", "reviewCount", "followers"
-    requestData.limit = 10;
-    requestData.page = 1;
+    requestData.limit = 10;//Display limit for users
+    requestData.page = 1;//Place for pagination
 
     var loader = en4.core.loader.clone();
     loader.addClass("sd_loader my-5");
@@ -129,32 +132,33 @@ function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints", disp
                 var html = "";
                 var results = responseJSON.body.Results;
                 for(var i = 0; i < results.length; i++) {
-                    html += `<div class="leaderboard_item d-flex justify-content-between">
-                                <div class="d-flex justify-content-center align-items-center">
-                                    ${i+1}
-                                </div>
-                                <div class="d-flex align-items-center leader position-relative">
-                                    <img src="${results[i].avatarPhoto.photoURL}"/>
-                                    <span class="cont_level position-absolute">${results[i].contributionLevel}</span>
-                                    <h4>${results[i].displayName}</h4>
-                                </div>
-                                <div class="points d-flex align-items-center justify-content-center">
-                                    <svg style="margin: 3px 5px 0px 0px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px" viewBox="0 0 42.03 39.91"><defs><linearGradient id="a" x1="26.26" y1="12.68" x2="40.67" y2="12.68" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#51b2b6"></stop><stop offset="1" stop-color="#5bc6cd"></stop></linearGradient><linearGradient id="b" y1="17.32" x2="17.39" y2="17.32" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5bc6cd"></stop><stop offset="1" stop-color="#51b2b6"></stop></linearGradient></defs><title>star_pg</title><path d="M40.23,8.55,32.7,18.46l-6.44-8.6L38.77,7C40.61,6.57,41.14,7.31,40.23,8.55Z" fill="url(#a)"></path><path d="M17.39,12,.93,16.13c-1,.24-1.28,1.35-.32,1.79l16.06,4.7Z" fill="url(#b)"></path><path d="M15.31,38.4,17.42,1c0-1.06,1.1-1.31,1.76-.45L41.59,28.45c.83,1,.6,2.71-1.71,1.81L26.36,25.09l-8.44,14A1.36,1.36,0,0,1,15.31,38.4Z" fill="#5bc6cd"></path></svg>
-                                    ${results[i].contribution}
-                                </div>
-                                <div class="reviews d-none d-md-flex align-items-center justify-content-center">
-                                    ${results[i].reviewCount}
-                                </div>
-                                <div class="d-none d-md-flex align-items-center justify-content-center">
-                                    ${results[i].answerCount}
-                                </div>
-                                <div class="questions d-none d-md-flex align-items-center justify-content-center">
-                                    ${results[i].questionCount}
-                                </div>
-                                <div class="followers d-none d-md-flex align-items-center justify-content-center">
-                                    ${results[i].followersCount}
-                                </div>
-                            </div>`;
+                    html += '<div class="leaderboard_item d-flex justify-content-between">'+
+                                '<div class="d-flex justify-content-center align-items-center">'+
+                                    (i+1)+
+                                '</div>'+
+                                '<div class="d-flex align-items-center leader position-relative">'+
+                                    '<img src="'+results[i].avatarPhoto.photoURL+'"/>'+
+                                    '<span class="cont_level position-absolute">'+
+                                        results[i].contributionLevel+'</span>'+
+                                    '<h4>'+results[i].displayName+'</h4>'+
+                                '</div>'+
+                                '<div class="points d-flex align-items-center justify-content-center">'+
+                                    '<svg style="margin: 3px 5px 0px 0px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px" viewBox="0 0 42.03 39.91"><defs><linearGradient id="a" x1="26.26" y1="12.68" x2="40.67" y2="12.68" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#51b2b6"></stop><stop offset="1" stop-color="#5bc6cd"></stop></linearGradient><linearGradient id="b" y1="17.32" x2="17.39" y2="17.32" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5bc6cd"></stop><stop offset="1" stop-color="#51b2b6"></stop></linearGradient></defs><title>star_pg</title><path d="M40.23,8.55,32.7,18.46l-6.44-8.6L38.77,7C40.61,6.57,41.14,7.31,40.23,8.55Z" fill="url(#a)"></path><path d="M17.39,12,.93,16.13c-1,.24-1.28,1.35-.32,1.79l16.06,4.7Z" fill="url(#b)"></path><path d="M15.31,38.4,17.42,1c0-1.06,1.1-1.31,1.76-.45L41.59,28.45c.83,1,.6,2.71-1.71,1.81L26.36,25.09l-8.44,14A1.36,1.36,0,0,1,15.31,38.4Z" fill="#5bc6cd"></path></svg>'+
+                                    results[i].contribution+
+                                '</div>'+
+                                '<div class="reviews d-none d-md-flex align-items-center justify-content-center">'+
+                                    results[i].reviewCount+
+                                '</div>'+
+                                '<!-- <div class="d-none d-md-flex align-items-center justify-content-center">'+
+                                    results[i].answerCount+
+                                '</div> -->'+
+                                '<div class="questions d-none d-md-flex align-items-center justify-content-center">'+
+                                    results[i].questionCount+
+                                '</div>'+
+                                '<div class="followers d-none d-md-flex align-items-center justify-content-center">'+
+                                    results[i].followersCount+
+                                '</div>'+
+                            '</div>';
                 }
                 leaderboardContent.innerHTML = html;
                 // Adding and Removing Categories in which the items are ordered
