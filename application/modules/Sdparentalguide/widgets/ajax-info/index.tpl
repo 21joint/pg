@@ -14,27 +14,7 @@
 <div class="container mb-4 pl-0 pr-0">
     <div class="wrapper  pl-0 pr-0">
         <div class="left-side bg-white p-xl-4 p-2 p-lg-4 mr-1">
-            <?php $viewer = Engine_Api::_()->user()->getViewer();
-                $subject = Engine_Api::_()->core()->getSubject('user');
-                if (empty($this->fieldValueLoop($this->subject(), $this->fieldStructure)) &&
-                    $subject->getOwner()->isSelf($viewer)) {
-                    $href = Zend_Registry::get('Zend_View')->url(array(
-                    'controller' => 'edit',
-                    'action' => 'profile'
-                    ),'user_extended',true);
-                    echo '
-                    <div class="tip">
-                        <span>
-                        '. $this->translate(sprintf("Fill your profile details %1shere%2s.",
-                            "<a href='$href'>",
-                            "</a>"
-                            )) .'
-                        </span>
-                    </div>';
-                    return;
-                }
-                echo $this->fieldValueLoop($this->subject(), $this->fieldStructure)
-            ?>
+            <?php echo $this->fieldValueLoop($this->subject, $this->fieldStructure) ?>
         </div>
         <div class="right-side bg-white py-3 px-4">
            <div class="title-holder">
@@ -57,7 +37,6 @@
                                 <?php else: ?>
                                     <svg id="52bdd332-89b3-411f-86a0-72961d843f36" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0,0H24V24H0Z" transform="translate(0 0)" fill="none"/><path d="M12,0A12,12,0,1,0,24,12,12,12,0,0,0,12,0Zm0,21.6A9.6,9.6,0,1,1,21.6,12,9.6,9.6,0,0,1,12,21.6Zm4.2-10.8A1.8,1.8,0,1,0,14.4,9a1.8,1.8,0,0,0,1.8,1.8Zm-8.4,0A1.8,1.8,0,1,0,6,9a1.8,1.8,0,0,0,1.8,1.8ZM12,18.6a6.6,6.6,0,0,0,6.13-4.2H5.87A6.6,6.6,0,0,0,12,18.6Z" transform="translate(0 0)" fill="#fff"/></svg>
                                 <?php endif; ?>
-                                
                             </div>
                     </div>
                     <div class="right-side">
