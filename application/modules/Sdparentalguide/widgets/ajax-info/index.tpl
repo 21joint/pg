@@ -22,6 +22,13 @@
            </div>
            <ul>
                 
+                <?php if($this->paginator->getTotalItemCount() < 1): ?>
+                <div class="tip-message py-2 w-100">
+                    <span class="mb-0">
+                        <?php echo $this->translate('No family members added yet.'); ?>
+                    </span>
+                </div>
+                <?php else: ?>
                 <?php foreach($this->paginator as $item):?>
                 <!-- female -->
                 <li class="d-flex py-3 align-items-center">
@@ -57,6 +64,7 @@
                     </div>
                 </li>
                 <?php endforeach;?>
+                <?php endif; ?>
 
            </ul>
         </div>
