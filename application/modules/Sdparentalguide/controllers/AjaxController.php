@@ -226,14 +226,12 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
             }
         }
 
-
+        $table = Engine_Api::_()->getDbtable('familyMembers', 'sdparentalguide');
+        $table->delete(array(
+            'owner_id = ?' => $viewer->getIdentity()
+        ));
+        
         if(count($family) > 0) {
-
-            $table = Engine_Api::_()->getDbtable('familyMembers', 'sdparentalguide');
-            $table->delete(array(
-                'owner_id = ?' => $viewer->getIdentity()
-            ));
-
             foreach($family as $item){
                 $prefParams = array(
                     'owner_id' => $viewer->getIdentity(),

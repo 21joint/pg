@@ -1460,6 +1460,15 @@ img.item_photo_user {
                 }
             }
             #family-information {
+                > .row {
+                    &:hover {
+                        .actions {
+                            .btn-danger {
+                                visibility: visible;
+                            }
+                        }
+                    }
+                } 
                 .family-item-holder {
                     > div {
                         border-radius: 50%;
@@ -1479,6 +1488,11 @@ img.item_photo_user {
                 .family-item {
                     p {
                         font-size: 80% !important;
+                    }
+                }
+                .actions {
+                    .btn-danger {
+                        visibility: hidden;
                     }
                 }
                 .row {

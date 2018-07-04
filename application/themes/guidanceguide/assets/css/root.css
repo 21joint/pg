@@ -4761,6 +4761,8 @@ img.item_photo_user {
     width: 100%; }
     #extfox-settings .form-wrapper .form-element input[type="password"]::-webkit-input-placeholder, #extfox-settings .form-wrapper .form-element input[type="text"]::-webkit-input-placeholder {
       color: #B9CFD1 !important; }
+  #extfox-settings .form-wrapper .form-element #family-information > .row:hover .actions .btn-danger {
+    visibility: visible; }
   #extfox-settings .form-wrapper .form-element #family-information .family-item-holder > div {
     border-radius: 50%;
     width: 50px;
@@ -4773,6 +4775,8 @@ img.item_photo_user {
       background-color: #8AE693; }
   #extfox-settings .form-wrapper .form-element #family-information .family-item p {
     font-size: 80% !important; }
+  #extfox-settings .form-wrapper .form-element #family-information .actions .btn-danger {
+    visibility: hidden; }
   #extfox-settings .form-wrapper .form-element #family-information .row.add-another-child {
     border-top: 4px solid #f7fcfc;
     border-bottom: 4px solid #f7fcfc; }
