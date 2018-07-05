@@ -12,25 +12,7 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
     public function init(){
         parent::init();
         
-        $resourceType = $this->getParam("resourceType");
-        $resourceId = $this->getParam("resourceID");
-        if(empty($resourceType) || empty($resourceId)){
-            $this->respondWithError('no_record');
-        }
-        
-        if(!Engine_Api::_()->hasItemType($resourceType)){
-            $this->respondWithError('no_record');
-        }
-        
-        $subject = Engine_Api::_()->getItem($resourceType,$resourceId);
-        if(empty($subject) || !$subject->getIdentity()){
-            $this->respondWithError('no_record');
-        }
-        
-        if(!Engine_Api::_()->core()->hasSubject()){
-            Engine_Api::_()->core()->setSubject($subject);
-        }
-        
+        $this->requireSubject();
     }
     
     public function indexAction(){
