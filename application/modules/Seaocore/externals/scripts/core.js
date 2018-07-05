@@ -411,6 +411,31 @@ function addfriend(el, user_id) {
   });
 }
 
+function removefriend(el, user_id) {
+
+  en4.core.request.send(new Request.HTML({
+    method: 'post',
+    'url': en4.core.baseUrl + 'seaocore/feed/removefriendrequest',
+    'data': {
+      format: 'html',
+      'resource_id': user_id
+              //'action_id' : action_id,
+    },
+    onSuccess: function(responseTree, responseElements, responseHTML, responseJavaScript) {
+      var parent = el.getParent('div');
+      var nextSibling = el.nextSibling;
+      el.destroy();
+      parent.insertBefore(new Element('span', {
+        'html': responseHTML
+      }), nextSibling);
+
+    }
+  }), {
+    'force': true
+  });
+}
+
+
 
 
 en4.seaocore.nestedcomments = {

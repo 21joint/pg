@@ -530,7 +530,18 @@ class Seaocore_FeedController extends Core_Controller_Action_Standard {
     //GET THE FRIEND ID.
     $this->view->friend_id = $friend_id = (int) $this->_getParam('resource_id');
     if (!empty($friend_id)) {
+      
+      $this->view->user = Engine_Api::_()->user()->getUser($friend_id);
       $this->addAction($friend_id);
+    }
+  }
+
+  public function removefriendrequestAction() {
+    //GET THE FRIEND ID.
+    $this->view->friend_id = $friend_id = (int) $this->_getParam('resource_id');
+    if (!empty($friend_id)) {
+      $this->view->user = Engine_Api::_()->user()->getUser($friend_id);
+      $this->removeAction($friend_id);
     }
   }
 
@@ -628,6 +639,70 @@ class Seaocore_FeedController extends Core_Controller_Action_Standard {
       $this->view->status = false;
       $this->view->exception = $e->__toString();
     }
+  }
+
+  public function removeAction($id) {
+
+    if (!$this->_helper->requireUser()->isValid())
+      return;
+
+    // Disable Layout.
+    //$this->_helper->layout->disableLayout(true);
+    // Get id of friend to add
+    $user_id = $id;
+    if (null == $user_id) {
+      $this->view->status = false;
+      $this->view->error = Zend_Registry::get('Zend_Translate')->_('No member specified.');
+      return;
+    }
+
+    //GET THE VIEWER.
+    $viewer = Engine_Api::_()->user()->getViewer();
+    $user = Engine_Api::_()->user()->getUser($user_id);
+
+    // CHECK THEAT USER IS NOT TRYING TO BE FRIEND 'SELF'.
+    if ($viewer->isSelf($user)) {
+      return;
+    }
+
+
+    // PROCESS
+    $db = Engine_Api::_()->getDbtable('membership', 'user')->getAdapter();
+    $db->beginTransaction();
+
+    try {
+
+      $user->membership()->removeMember($viewer);
+
+      // Remove from lists?
+      // @todo make sure this works with one-way friendships
+      $user->lists()->removeFriendFromLists($viewer);
+      $viewer->lists()->removeFriendFromLists($user);
+
+      // Set the requests as handled
+      $notification = Engine_Api::_()->getDbtable('notifications', 'activity')
+        ->getNotificationBySubjectAndType($user, $viewer, 'friend_request');
+      if( $notification ) {
+        $notification->mitigated = true;
+        $notification->read = 1;
+        $notification->save();
+      }
+      $notification = Engine_Api::_()->getDbtable('notifications', 'activity')
+          ->getNotificationBySubjectAndType($viewer, $user, 'friend_follow_request');
+      if( $notification ) {
+        $notification->mitigated = true;
+        $notification->read = 1;
+        $notification->save();
+      }
+      
+      $this->view->status = true;
+      $db->commit();
+    } catch (Exception $e) {
+      $db->rollBack();
+      $this->view->status = false;
+      $this->view->exception = $e->__toString();
+    }
+
   }
 
   //TO SHOW INFORMATION OF CONTENT.

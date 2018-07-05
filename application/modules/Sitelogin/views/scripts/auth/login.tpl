@@ -85,167 +85,180 @@ if(empty($this->inwidget)){
 }
 ?>
 <?php $layoutPos = array(1=> 'left', 2 => 'right', 3 => 'top', 4 => 'bottom')?>
-<div id="sociallogin_signin_popup" class="<?php echo empty($this->inwidget)  ? '' : 'sociallogin_signin_popup' ?>">
-<div class="social-signin-layout-<?php echo $layoutPos[$position] ?>">
-<?php if(!empty($isEnableSocialAccount) && $enable): ?>
-    <div class="signin_page_heading"><h2><?php echo $this->form->getTitle(); ?></h2></div>
-    <?php if(empty($this->inwidget)): ?>
-    <?php if($position==1) : ?>
-    <!-- left -->
-    <div class="social-login-row social-login-row-left" id="sociallogin_popup_div">
-      <div class="social-login-column-3">
-        <h3>Sign In With a Social Network</h3>
-        <?php echo $this->partial('_layout'.$layout.'.tpl', 'sitelogin',$data); ?>
-      </div>
-        <div class="social-login-column-2"></div>
-      <div class="social-login-column-1">
-        <?php  echo $this->form->render($this);?>
-      </div>
-    </div>
-    <?php elseif($position==2) : ?>
-    <!-- Right -->
-    <div class="social-login-row social-login-row-right" id="sociallogin_popup_div">
-      <div class="social-login-column-1">
-        <?php echo $this->form->render($this) ?>
-      </div>
-        <div class="social-login-column-2"></div>
-      <div class="social-login-column-3">
-        <h3>Sign In With a Social Network</h3>
-        <?php echo $this->partial('_layout'.$layout.'.tpl', 'sitelogin',$data); ?>
-      </div>
-    </div>
-    <?php elseif($position==4) : ?>
-    <!-- Bottom-->
-    <div class="social-login-row social-login-row-bottom" id="sociallogin_popup_div">
-      <div class="social-login-column-1">
-        <?php echo $this->form->render($this) ?>
-      </div>
-        <div class="social-login-column-2"></div>
-      <div class="social-login-column-3">
-        <h3>Sign in with a social network</h3>
-        <?php echo $this->partial('_layout'.$layout.'.tpl', 'sitelogin',$data); ?>
-      </div>
-    </div>
-    <?php elseif($position==3) : ?>
-    <!-- Top -->
-    <div class="social-login-row social-login-row-top" id="sociallogin_popup_div">
-      <div class="social-login-column-3">
-        <h3>Sign In With a Social Network</h3>
-        <?php echo $this->partial('_layout'.$layout.'.tpl', 'sitelogin',$data); ?>
-      </div>
-        <div class="social-login-column-2"></div>
-      <div class="social-login-column-1">
-        <?php echo $this->form->render($this) ?>
-      </div>
-    </div>
-    <?php endif; ?>
 
-    <?php else : ?>
-    <?php if($position==2) :?> 
-    <div class="social-login-row social-login-row-bottom" id="sociallogin_popup_div">
-      <?php echo $this->form->render($this) ?>
-
-      <div id="Sitelogin-loginpopup-div" class="sitelogin-loginpopup-box" style="display:none;"> 
-       <div class="social-loginpopup-column-2">
-      <span>or</span>
-      </div>   
-      <?php echo $this->partial('_layout'.$layout.'.tpl', 'sitelogin',$data); ?>
-      </div>
+<div class="holder-form holder-forgot d-flex w-100 h-100">
+    <!-- place for partial  -->
+    <div class="left-side col-xl-6 col-lg-6 pl-0 pr-0 d-none d-sm-block">
+        <?php echo $this->partial('login_partial/_left-side.tpl', 'sdparentalguide'); ?>
     </div>
-    <script type="text/javascript">
-      if(document.getElementById("sitemenu_signupform_sociallinks")) {
-          document.getElementById("sitemenu_signupform_sociallinks").style.display="none";
-      }
-      if(document.getElementById("sitehomepagevideo_fb_twi_share_links")) {
-          document.getElementById("sitehomepagevideo_fb_twi_share_links").style.display="none";
-      }
-      
-      if (document.getElementById("user_form_login")){
-        var parentDiv = document.querySelectorAll("[id='user_form_login']");
-        var i, el;
-        if (parentDiv.length > 0) {
-          for (i = 0; i < parentDiv.length; i++) {
-            var el=document.getElementById("Sitelogin-loginpopup-div").cloneNode(true);
-                el.id="Sitelogin-loginpopup-div-"+i;
-                el.style.display="block";
-            
-            if(parentDiv[i].getElement('#facebook-wrapper'))
-                parentDiv[i].getElement('#facebook-wrapper').style.display="none";
-            
-            if(parentDiv[i].getElement('#twitter-wrapper'))
-                parentDiv[i].getElement('#twitter-wrapper').style.display="none";
+   <!-- form  and tip message-->
+    <div class="right-side col-xl-6 col-lg-6 ">
+        <div id="sociallogin_signin_popup" class="<?php echo empty($this->inwidget)  ? '' : 'sociallogin_signin_popup' ?> h-100">
+        <div class="social-signin-layout-<?php echo $layoutPos[$position] ?> h-100">
+        <?php if(!empty($isEnableSocialAccount) && $enable): ?>
+            <div class="signin_page_heading"><h2><?php echo $this->form->getTitle(); ?></h2></div>
+            <?php if(empty($this->inwidget)): ?>
+            <?php if($position==1) : ?>
+            <!-- left -->
+            <div class="social-login-row social-login-row-left" id="sociallogin_popup_div">
+            <div class="social-login-column-3">
+                <h3>Sign In With a Social Network</h3>
+                <?php echo $this->partial('_layout'.$layout.'.tpl', 'sitelogin',$data); ?>
+            </div>
+                <div class="social-login-column-2"></div>
+            <div class="social-login-column-1">
+                <?php  echo $this->form->render($this);?>
+            </div>
+            </div>
+            <?php elseif($position==2) : ?>
+            <!-- Right -->
+            <div class="social-login-row social-login-row-right" id="sociallogin_popup_div">
+            <div class="social-login-column-1">
+                <?php echo $this->form->render($this) ?>
+            </div>
+                <div class="social-login-column-2"></div>
+            <div class="social-login-column-3">
+                <h3>Sign In With a Social Network</h3>
+                <?php echo $this->partial('_layout'.$layout.'.tpl', 'sitelogin',$data); ?>
+            </div>
+            </div>
+            <?php elseif($position==4) : ?>
+            <!-- Bottom-->
+            <div class="social-login-row social-login-row-bottom" id="sociallogin_popup_div">
+            <div class="social-login-column-1">
+                <?php echo $this->form->render($this) ?>
+            </div>
+                <div class="social-login-column-2"></div>
+            <div class="social-login-column-3">
+                <h3>Sign in with a social network</h3>
+                <?php echo $this->partial('_layout'.$layout.'.tpl', 'sitelogin',$data); ?>
+            </div>
+            </div>
+            <?php elseif($position==3) : ?>
+            <!-- Top -->
+            <div class="social-login-row social-login-row-top" id="sociallogin_popup_div">
+            <div class="social-login-column-3">
+                <h3>Sign In With a Social Network</h3>
+                <?php echo $this->partial('_layout'.$layout.'.tpl', 'sitelogin',$data); ?>
+            </div>
+                <div class="social-login-column-2"></div>
+            <div class="social-login-column-1">
+                <?php echo $this->form->render($this) ?>
+            </div>
+            </div>
+            <?php endif; ?>
 
+            <?php else : ?>
+            <?php if($position==2) :?> 
+            <div class="social-login-row social-login-row-bottom" id="sociallogin_popup_div">
+            <?php echo $this->form->render($this) ?>
+
+            <div id="Sitelogin-loginpopup-div" class="sitelogin-loginpopup-box" style="display:none;"> 
+            <div class="social-loginpopup-column-2">
+            <span>or</span>
+            </div>   
+            <?php echo $this->partial('_layout'.$layout.'.tpl', 'sitelogin',$data); ?>
+            </div>
+            </div>
+            <script type="text/javascript">
+            if(document.getElementById("sitemenu_signupform_sociallinks")) {
+                document.getElementById("sitemenu_signupform_sociallinks").style.display="none";
+            }
+            if(document.getElementById("sitehomepagevideo_fb_twi_share_links")) {
+                document.getElementById("sitehomepagevideo_fb_twi_share_links").style.display="none";
+            }
             
-            if(parentDiv[i].getElement('div div h3'))
-             {   if(!document.getElementById("Sitelogin-loginpopup-div-"+i))
-                 el.inject(parentDiv[i].getElement('div div'),'after');
-   
-             }     
-          }
-        }
-      }           
-    </script>
-     <style type="text/css">
-        .sitehomepagevideo_signup_form .sitehomepagevideo_left .sitehomepagevideo_signup_instead_btn {
-          top: -135px !important;
-          right: 18px !important;
-        }
-        .sitemenu_signup_instead_btn {
-          display: none;
-        }
-    </style>
-    <?php elseif($position==1): ?>
-    <div class="social-login-row social-login-row-top" id="sociallogin_popup_div">
-       <div id="Sitelogin-loginpopup-div" class="sitelogin-loginpopup-box" style="display:none;">  
-        <?php echo $this->partial('_layout'.$layout.'.tpl', 'sitelogin',$data); ?>
-        <div class="social-loginpopup-column-2">
-        <span>or</span>
+            if (document.getElementById("user_form_login")){
+                var parentDiv = document.querySelectorAll("[id='user_form_login']");
+                var i, el;
+                if (parentDiv.length > 0) {
+                for (i = 0; i < parentDiv.length; i++) {
+                    var el=document.getElementById("Sitelogin-loginpopup-div").cloneNode(true);
+                        el.id="Sitelogin-loginpopup-div-"+i;
+                        el.style.display="block";
+                    
+                    if(parentDiv[i].getElement('#facebook-wrapper'))
+                        parentDiv[i].getElement('#facebook-wrapper').style.display="none";
+                    
+                    if(parentDiv[i].getElement('#twitter-wrapper'))
+                        parentDiv[i].getElement('#twitter-wrapper').style.display="none";
+
+                    
+                    if(parentDiv[i].getElement('div div h3'))
+                    {   if(!document.getElementById("Sitelogin-loginpopup-div-"+i))
+                        el.inject(parentDiv[i].getElement('div div'),'after');
+        
+                    }     
+                }
+                }
+            }           
+            </script>
+            <style type="text/css">
+                .sitehomepagevideo_signup_form .sitehomepagevideo_left .sitehomepagevideo_signup_instead_btn {
+                top: -135px !important;
+                right: 18px !important;
+                }
+                .sitemenu_signup_instead_btn {
+                display: none;
+                }
+            </style>
+            <?php elseif($position==1): ?>
+            <div class="social-login-row social-login-row-top" id="sociallogin_popup_div">
+            <div id="Sitelogin-loginpopup-div" class="sitelogin-loginpopup-box" style="display:none;">  
+                <?php echo $this->partial('_layout'.$layout.'.tpl', 'sitelogin',$data); ?>
+                <div class="social-loginpopup-column-2">
+                <span>or</span>
+                </div>
+            </div>
+                <?php echo $this->form->render($this) ?>
+            </div>
+            <script type="text/javascript">
+            if(document.getElementById("sitemenu_signupform_sociallinks")) {
+                document.getElementById("sitemenu_signupform_sociallinks").style.display="none";
+            }
+            if(document.getElementById("sitehomepagevideo_fb_twi_share_links")) {
+                document.getElementById("sitehomepagevideo_fb_twi_share_links").style.display="none";
+            }
+            if (document.getElementById("user_form_login")){
+                var parentDiv = document.querySelectorAll("[id='user_form_login']");
+                var i, el;
+                if (parentDiv.length > 0) {
+                for (i = 0; i < parentDiv.length; i++) {
+                    var el=document.getElementById("Sitelogin-loginpopup-div").cloneNode(true);
+                        el.id="Sitelogin-loginpopup-div-"+i;
+                        el.style.display="block";
+                    
+                    if(parentDiv[i].getElement('#facebook-wrapper'))
+                        parentDiv[i].getElement('#facebook-wrapper').style.display="none";
+                    
+                    if(parentDiv[i].getElement('#twitter-wrapper'))
+                        parentDiv[i].getElement('#twitter-wrapper').style.display="none";
+                    if(parentDiv[i].getElement('div div h3'))
+                    {   if(!document.getElementById("Sitelogin-loginpopup-div-"+i))
+                        el.inject(parentDiv[i].getElement('div div h3'),'after');
+                    
+                    }            
+                }
+                }
+            }           
+            </script>
+            <style type="text/css">
+            .sitemenu_signup_instead_btn {
+                display: none;
+            }
+            </style>
+            <?php endif; ?>
+            <?php endif; ?>
+        <?php else : ?>    
+
+            <div class="col-xl-6 col-lg-6 mx-auto h-100 w-100 d-flex align-items-center pl-0">
+                <?php echo $this->form->render($this) ?>
+            </div>
+
+        <?php endif; ?>
         </div>
-       </div>
-        <?php echo $this->form->render($this) ?>
     </div>
-    <script type="text/javascript">
-      if(document.getElementById("sitemenu_signupform_sociallinks")) {
-          document.getElementById("sitemenu_signupform_sociallinks").style.display="none";
-      }
-      if(document.getElementById("sitehomepagevideo_fb_twi_share_links")) {
-          document.getElementById("sitehomepagevideo_fb_twi_share_links").style.display="none";
-      }
-      if (document.getElementById("user_form_login")){
-        var parentDiv = document.querySelectorAll("[id='user_form_login']");
-        var i, el;
-        if (parentDiv.length > 0) {
-          for (i = 0; i < parentDiv.length; i++) {
-            var el=document.getElementById("Sitelogin-loginpopup-div").cloneNode(true);
-                el.id="Sitelogin-loginpopup-div-"+i;
-                el.style.display="block";
-            
-            if(parentDiv[i].getElement('#facebook-wrapper'))
-                parentDiv[i].getElement('#facebook-wrapper').style.display="none";
-            
-            if(parentDiv[i].getElement('#twitter-wrapper'))
-                parentDiv[i].getElement('#twitter-wrapper').style.display="none";
-             if(parentDiv[i].getElement('div div h3'))
-             {   if(!document.getElementById("Sitelogin-loginpopup-div-"+i))
-                 el.inject(parentDiv[i].getElement('div div h3'),'after');
-            
-             }            
-          }
-        }
-      }           
-    </script>
-    <style type="text/css">
-      .sitemenu_signup_instead_btn {
-          display: none;
-      }
-    </style>
-    <?php endif; ?>
-    <?php endif; ?>
-<?php else : ?>    
-    <?php echo $this->form->render($this) ?>
-<?php endif; ?>
 </div>
 </div>
-
 
    

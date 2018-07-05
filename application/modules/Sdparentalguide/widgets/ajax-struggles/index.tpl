@@ -23,14 +23,15 @@
             <ul class="topic_holder ">
                 <?php if($this->paginator->getTotalItemCount() <= 0): ?>
 
-                    <div class="tip py-5">
+                    <div class="tip-message py-5">
                         <span style="margin-bottom:0">
-                            <?php echo $this->translate("No stuggles") ?>
+                            <?php echo $this->translate("No Stuggles") ?>
                         </span>
                     </div>
 
                 <?php else: ?>
                     <?php foreach($this->paginator as $item):?>
+
                         <?php echo $this->partial('ajax/struggles/_struggles.tpl', 'sdparentalguide', array(
                             'item' => $item,
                         )); ?>
