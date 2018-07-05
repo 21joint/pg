@@ -37,7 +37,7 @@
 
 // Classes
 .grib-grab-two {
-    display:grid;
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
     grid-auto-rows: minmax(140px, auto);
@@ -691,9 +691,9 @@ body#global_page_user-profile-index {
                 }
             }
         }
-       
     }
 }
+
 // Notification Profile
 .layout_sdparentalguide_ajax_notifications {
     #extfox-settings {
@@ -977,100 +977,98 @@ body#global_page_user-profile-index {
 
 
 // Login Page
-
-    #user_form_login {
-        #fieldset-buttons {
-            padding:0px;
-            margin: 0px;
-            .form-label{
-                display: none;
-            }
-            #submit-wrapper {
-                width: 48%;
-                float: left;
-                margin:0px;
-                #submit-element{
-                    float: right;
-                    width: 100%;
-                    button{
-                        &:hover,&:active{
-                            color:#fff;
-                        }
-                    }
-                }
-            }
-            #cancel-wrapper {
+form#user_form_login {
+    #fieldset-buttons {
+        padding:0px;
+        margin: 0px;
+        .form-label{
+            display: none;
+        }
+        #submit-wrapper {
+            width: 48%;
+            float: left;
+            margin:0px;
+            #submit-element{
                 float: right;
-                width: 48%;
-                margin:0px;
-                a {
+                width: 100%;
+                button{
                     &:hover,&:active{
                         color:#fff;
                     }
                 }
             }
         }
-        #fieldset-buttonsfileds {
-            padding: 0px;
-            .form-wrapper{
-                margin-bottom: 0px;
-            }
-            #remember-wrapper,#forgot-wrapper {
-                #remember-label,#forgot-label {
-                    display: none;
-                }
-            }
-            #remember-wrapper{
-                display: inline-block;
-                float: left; 
-            }
-            #forgot-wrapper {
-                display: inline-block;
-                float: right; 
-                #forgot-element {
-                    p {
-                        a{
-                            color:#93A4A6;
-                            font-size: 14px;
-                            font-weight: 400;
-                            font-family: 'Open Sans', sans-serif; 
-                        }
-                        margin: 0px;
-                    }
+        #cancel-wrapper {
+            float: right;
+            width: 48%;
+            margin:0px;
+            a {
+                &:hover,&:active{
+                    color:#fff;
                 }
             }
         }
-        #fieldset-facebookbutton{
-            #twitter-wrapper {
-                #twitter-label {
-                    display: none;
-                }
-                width: 48%;
-                float: right;
-                margin-left: 5px;
-                margin-bottom: 0px;
-                
-
+    }
+    #fieldset-buttonsfileds {
+        padding: 0px;
+        .form-wrapper{
+            margin-bottom: 0px;
+        }
+        #remember-wrapper,#forgot-wrapper {
+            #remember-label,#forgot-label {
+                display: none;
             }
-            #facebook-wrapper {
-                #facebook-label {
-                    display: none;
+        }
+        #remember-wrapper{
+            display: inline-block;
+            float: left; 
+        }
+        #forgot-wrapper {
+            display: inline-block;
+            float: right; 
+            #forgot-element {
+                p {
+                    a{
+                        color:#93A4A6;
+                        font-size: 14px;
+                        font-weight: 400;
+                        font-family: 'Open Sans', sans-serif; 
+                    }
+                    margin: 0px;
                 }
-                width: 48%;
-                float: left;
-                margin-right: 5px;
-                margin-bottom: 0px;
-
             }
+        }
+    }
+    #fieldset-facebookbutton{
+        #twitter-wrapper {
+            #twitter-label {
+                display: none;
+            }
+            width: 48%;
+            float: right;
+            margin-left: 5px;
+            margin-bottom: 0px;
+            
+
+        }
+        #facebook-wrapper {
+            #facebook-label {
+                display: none;
+            }
+            width: 48%;
+            float: left;
+            margin-right: 5px;
+            margin-bottom: 0px;
+
         }
     }
     #facebook-element {
         a {
-           &:hover,&:active {
-               background-color:#3C5A99;
-               color:#fff;
-               border-color:#3C5A99;
-           } 
+            &:hover,&:active {
+                background-color:#3C5A99;
+                color:#fff;
+                border-color:#3C5A99;
+            } 
         }
     }
     #twitter-element {
@@ -1182,7 +1180,6 @@ body#global_page_user-profile-index {
           width: 44%;
       }
     }
-   
 }
 
 // Preference Holder 
@@ -1520,6 +1517,14 @@ img.item_photo_user {
                                     background-color: #E186C0;
                                 }
                             }
+                        }
+
+                        // age-range
+                        .age-range {
+                            display: grid;
+                            grid-template-columns: repeat(4, 1fr);
+                            grid-gap: 10px;
+                            grid-auto-rows: minmax(60px, auto);
                         }
 
                         // add gender
@@ -2333,6 +2338,11 @@ img.item_photo_user {
             .form-element {
                 max-width: 100% !important;
             }
+            .form-element {
+                &.family-wrapper {
+                    min-width: 100% !important;
+                }
+            }
         }
         input[type=checkbox] + label {
             display: block!important;
@@ -2342,6 +2352,46 @@ img.item_photo_user {
         }
        
     }
+
+    // Ajax Edit Profile Form
+    .layout_sdparentalguide_ajax_profile {
+        #extfox-settings {
+            .form-wrapper {
+                input[type=checkbox] {
+                    display: none;
+                    + label {
+                        left: 0;
+                        display: flex !important;
+                        align-items: center;
+                    }
+                }
+                .form-options-wrapper {
+                    display: block;
+                    float: left;
+                    li {
+                        width: 100%;
+                    }
+                }
+                #family-information {
+                    .btn-danger {
+                        visibility: visible !important;
+                    }
+                }
+                #add-birthday {
+                    .col-12.d-flex, .col-12.years-range, .col-12.years, .col-12.final-date {
+                        display: grid !important;
+                        grid-template-columns: repeat(3, 1fr);
+                        grid-gap: 10px;
+                        grid-auto-rows: minmax(60px, auto);
+                        &.d-none {
+                            display: none !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     // Badges Proile
     .layout_sdparentalguide_ajax_badges {
         .container{
@@ -2461,38 +2511,33 @@ img.item_photo_user {
 
     // Auth Page and Forogot Page
     #global_page_user-auth-forgot,#global_page_user-auth-reset{
-        
         button {
             width: 100% !important;
-        }  
-        
-    } 
+        }
+    }
     // Login Page
-    
-        #user_form_login {
-            h3 {
-                margin-top:100px;
+    form#user_form_login {
+        h3 {
+            margin-top:100px;
+        }
+        #facebookbutton-wrapper{
+            #twitter-wrapper {
+                a{
+                    background-color: #1DA1F2;
+                    color: #fff;
+                    border-color: #1DA1F2;
+                }
             }
-            #facebookbutton-wrapper{
-                #twitter-wrapper {
-                    a{
-                        background-color: #1DA1F2;
-                        color: #fff;
-                        border-color: #1DA1F2;
-                    }
+            #facebook-element {
+                a {
+                    background-color: #3C5A99;
+                    color: #fff;
+                    border-color: #3C5A99;
                 }
-                #facebook-element {
-                    a {
-                        background-color: #3C5A99;
-                        color: #fff;
-                        border-color: #3C5A99;
-                    }
-                }
-
             }
         }
+    }
         
-
     // SignUp Page
     #global_page_user-signup-index {
         .form-wrapper{

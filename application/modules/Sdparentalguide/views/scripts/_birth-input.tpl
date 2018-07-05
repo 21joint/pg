@@ -21,10 +21,4 @@
 </div>
 
 <script>
-
-    function selectChildGender(e) {
-
-        
-    }
-
 </script>
