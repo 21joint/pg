@@ -47,7 +47,7 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
         }
         $page = $this->getParam("page",1);
         $limit = $this->getParam("limit",50);
-        $avatarPhoto = ucfirst($this->getParam("avatarPhoto","icon"));
+        $avatarPhoto = ucfirst($this->getParam("photoType",""));
         $table = Engine_Api::_()->getDbTable('files', 'pgservicelayer');
         $tableName = $table->info("name");
         $select = $table->select()->where('parent_file_id IS NULL');
@@ -69,7 +69,7 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
                 'photoID' => (string)$photo->getIdentity(),
                 'photoURL' => ''
             );
-            $photoArray['photoURL'] = isset($photos['photoURL'.$avatarPhoto])?$photos['photoURL'.$avatarPhoto]:$photos['photoURLIcon'];
+            $photoArray = array_merge($photoArray,$photos);
             $response['Results'][] = $photoArray;
         }
         $this->respondWithSuccess($response);
@@ -84,7 +84,7 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
         if(empty($_FILES['Filedata']['tmp_name']) && $image === false){
             $this->respondWithValidationError('parameter_missing',$this->translate("Photo missing in Filedata."));
         }
-        $avatarPhoto = ucfirst($this->getParam("avatarPhoto","icon"));
+        $avatarPhoto = ucfirst($this->getParam("photoType",""));
         $table = Engine_Api::_()->getDbTable('files', 'pgservicelayer');
         $db = $table->getDefaultAdapter();
         $db->beginTransaction();
@@ -113,7 +113,7 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
                 'photoID' => (string)$photo->getIdentity(),
                 'photoURL' => ''
             );
-            $photoArray['photoURL'] = isset($photos['photoURL'.$avatarPhoto])?$photos['photoURL'.$avatarPhoto]:$photos['photoURLIcon'];
+            $photoArray = array_merge($photoArray,$photos);
             $this->respondWithSuccess($photoArray);
         } catch (Exception $ex) {
             $db->rollBack();
@@ -147,7 +147,7 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
                 }
                 $storageFile->gg_deleted = 1;
                 $storageFile->save();
-                $children = $storageFile->getChildren();
+                $children = $storageFile->getChildren('all');
                 foreach($children as $child){
                     $child->gg_deleted = 1;
                     $child->save();
