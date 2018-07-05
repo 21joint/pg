@@ -600,7 +600,7 @@ class Sdparentalguide_Api_Core extends Core_Api_Abstract{
     
 
 
-    public function getDateTime($datefromtable) {
+    public function getDate($datefromtable) {
 
         $datetime1 = new DateTime($datefromtable);
         $datetime2 = new DateTime(date('Y/m/d'));
@@ -614,9 +614,7 @@ class Sdparentalguide_Api_Core extends Core_Api_Abstract{
         }else {
             $months = $interval->m;
         }
-        
-        $mouthss = $months . ' Months';
-
+               
         if(( $months >= 0) && ( $months <= 1)){
             $baby = 'NewBorn';   
         }elseif(( $months >= 1) && ( $months <= 11)){
@@ -627,16 +625,41 @@ class Sdparentalguide_Api_Core extends Core_Api_Abstract{
             $baby = 'Preschool';
         }elseif( $months >= 48 &&  $months <= 121 ){
             $baby = 'School-Age';
-        }elseif( $months > 112){
+        }elseif( $months >= 112 && $mouths <= 221){
             $baby = 'Teen';
+        }elseif( $mouths > 222){
+            $baby = 'Adult';
         }else {
             $baby = '';
         }
+        
+        
+       
+        $age = $months / 12;
+       
+        echo '<span class="font-weight-bold mr-2">' .$baby .'</span>';
 
-        $users = array();
+        if($age < 1){
+            if($months == 1) {
+                echo "$months month ago.";
+            }else{
+                echo "$months months ago.";
+            }
+        }else{
+            $age = ceil($age);
+            if($years == 1){
+                echo "$age year ago.";
+            }else{
 
-        array_push($users,['baby' => $baby, 'mouth' => $mouthss ]);
-
-        return $users;
+                if(($years >= 12 && $years <= 18)){
+                    echo '12 +';
+                }elseif($years >= 18){
+                    echo '18 +';
+                }else {
+                    echo "$age years ago.";
+                }
+            }
+        }
+      
     }
 }
