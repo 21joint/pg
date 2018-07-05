@@ -2010,624 +2010,621 @@ img.item_photo_user {
 // Mobile
 @media only screen and (max-width: 768px) {
 
-        // Classes
-        .grib-grab-two {
-            grid-template-columns: repeat(1, 1fr);
+    // Classes
+    .grib-grab-two {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    // HEADER
+    header.extfox-header {
+
+        .list-inline-item.search{
+            display:block!important;
+            margin-right: 0px;
         }
+        .container {
+            padding: 0px !important;
 
-        // HEADER
-        header.extfox-header {
-
-            .list-inline-item.search{
-                display:block!important;
-                margin-right: 0px;
-            }
-            .container {
-                padding: 0px !important;
-
-                .hamburger-menu {
-                    display: block;
-                    margin-top: -.5rem;
-                    transition: all 150ms linear;
-                
-                    &:not(.acitve):hover .bar, &:not(.acitve).hover .bar {
-                        width: 31px;
-                    }
-                    &:not(.active):hover .bar:before, &:not(.active).hover .bar:before {
-                        width: 17px;
-                    }
-                    &:not(.active):hover .bar:after, &:not(.active).hover .bar:after {
-                        width: 20px;
-                    }
-
-                    .bar {
-                            position: relative;
-                            transform: translateY(7px);
-                            background:  $gray-800;
-                            transition: all 0ms 100ms, width 150ms linear;
-                            display: block;
-                            height: 3px;
-                            width: 27px;
-                            &:before {
-                            content: "";
-                            position: absolute;
-                            right: 0;
-                            bottom: 7px;
-                            background: $gray-800;
-                            transition: bottom 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1),transform 300ms cubic-bezier(0.23, 1, 0.32, 1),width 150ms linear,background 150ms linear;
-                            width: 27px;
-                            height: 3px;
-                        }
-                        &:after {
-                            content: "";
-                            position: absolute;
-                            right: 0;
-                            top: 7px;
-                            background: $gray-800;
-                            transition: bottom 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1),transform 300ms cubic-bezier(0.23, 1, 0.32, 1),width 150ms linear;
-                            transition: top 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1),transform 300ms cubic-bezier(0.23, 1, 0.32, 1),width 150ms linear,background 150ms linear;
-                            width: 27px;
-                            height: 3px;
-                        }
-                    }
+            .hamburger-menu {
+                display: block;
+                margin-top: -.5rem;
+                transition: all 150ms linear;
+            
+                &:not(.acitve):hover .bar, &:not(.acitve).hover .bar {
+                    width: 31px;
+                }
+                &:not(.active):hover .bar:before, &:not(.active).hover .bar:before {
+                    width: 17px;
+                }
+                &:not(.active):hover .bar:after, &:not(.active).hover .bar:after {
+                    width: 20px;
                 }
 
-                // mini menu
-                .mini-menu {
-                    ul {
-                        li {
-                            &.profile-img {
-                                a {
-                                    img {
-                                    height: 32px!important;
-                                    width: 32px!important;
-                                    object-fit: contain!important;
-                                    }
-                                }
-                            }
-                            &.notifications {
-                                .tip-notifications {
-                                    right: 24px !important;
-                                    top: -6px !important;
-                                    span {
-                                        height: 19px!important;
-                                        min-width: 17px!important;
-                                    }
-                                }
-                                a {
-                                    padding-top: 0px!important;
-                                    i {
-                                        font-size: 18px;
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                }
-                
-                    // search
-                .search-bar {
-                    z-index: 1;
-                    transition: .2s ease transform;
-                    transform: translateY(-5rem);
-                    &.active {
-                        transform: translateY(1px);
-                        display: inline-block !important;
-                        max-width: 100%;
+                .bar {
+                        position: relative;
+                        transform: translateY(7px);
+                        background:  $gray-800;
+                        transition: all 0ms 100ms, width 150ms linear;
+                        display: block;
+                        height: 3px;
+                        width: 27px;
+                        &:before {
+                        content: "";
                         position: absolute;
-                        left: 0;
-                        top: 0;
+                        right: 0;
+                        bottom: 7px;
+                        background: $gray-800;
+                        transition: bottom 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1),transform 300ms cubic-bezier(0.23, 1, 0.32, 1),width 150ms linear,background 150ms linear;
+                        width: 27px;
+                        height: 3px;
                     }
-                    input {
-                        background: #F5F5F5!important;
-                        padding-top: 1.8rem !important;
-                        padding-bottom: 1.8rem !important;
-                        border-radius: 0 !important;
-                    }
-                    i {
-                        right: 1rem;
-                        top: 1.8rem;
-                        color:#333D40 !important;
-                        cursor: pointer;
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        right: 0;
+                        top: 7px;
+                        background: $gray-800;
+                        transition: bottom 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1),transform 300ms cubic-bezier(0.23, 1, 0.32, 1),width 150ms linear;
+                        transition: top 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1),transform 300ms cubic-bezier(0.23, 1, 0.32, 1),width 150ms linear,background 150ms linear;
+                        width: 27px;
+                        height: 3px;
                     }
                 }
-
             }
 
-                // mobile menu
-            .parental-mobile-menu-holder {
-                border: none !important;
-                display: block !important;
-                position: relative;
-                z-index: 9;
-                transition: transform .5s cubic-bezier(0.86, 0, 0.07, 1);
-                transform: translateX(-90%);
-                &.active {
-                    transform: translateX(0%);
-                }
-                .container {
-                    position: absolute;
-                    width: 80%;
-                    height: 100vh;
-                    background: #fff;
-                    z-index: 9;
-                    box-shadow: 20px 0px 40px rgba(0, 0, 0, 0.16);
-                    .row {
-                        margin: 0;
-                        ul {
-                            li {
-                                width: 100%;
-                                margin-right: 0 !important;
-                                border-bottom: 1px solid rgba(245, 245, 245, 1);
-                                &:hover {
-                                    a {
-                                        border: none !important;
-                                    }
+            // mini menu
+            .mini-menu {
+                ul {
+                    li {
+                        &.profile-img {
+                            a {
+                                img {
+                                height: 32px!important;
+                                width: 32px!important;
+                                object-fit: contain!important;
                                 }
-                                a {
-                                    display: block;
-                                    font-weight: bold;
-                                    padding-left: 2rem;
+                            }
+                        }
+                        &.notifications {
+                            .tip-notifications {
+                                right: 24px !important;
+                                top: -6px !important;
+                                span {
+                                    height: 19px!important;
+                                    min-width: 17px!important;
+                                }
+                            }
+                            a {
+                                padding-top: 0px!important;
+                                i {
+                                    font-size: 18px;
                                 }
                             }
                         }
                     }
                 }
+
             }
             
-        }
-
-        /*
-        * USER PROFILE + Shared Everywhere
-        * Widgets
-            *   Contributed Points
-            *   Badges Earned
-            *   Badges Slide
-            *   Following
-            *   Struggles Profile
-            *   Badges Proile
-            *   Password
-            *   My Theories
-        * Core
-            *   ExtfoxForm Settings
-            *   Auth Page and Forogot Page
-            *   Login Page
-            *   SignUp Page
-        */
-        body#global_page_user-profile-index {
-            #global_wrapper {
-                #global_content {
-                    padding: 0;
-                    .layout_top {
-                        + .layout_main {
-
-                            // profile tabs
-                            .profile_cover_photo_tabs {
-                                margin-top: 40px;
-                                .tabs_alt {
-                                    border-radius: 0;
-                                    ul {
-                                        padding-left: 0;
-                                        li {
-                                            a {
-                                                text-transform: none;
-                                                color: #333D40;
-                                                font-weight: 400;
-                                                font-size: .9em;
-                                                padding: 1.2rem;
-                                                border: none;
-                                            }
-                                        }
-                                    }
-                                }
-                                .generic_layout_container {
-                                    h3 {
-                                        left: 15px;
-                                        &:before {
-                                            display: none;
-                                        }
-                                    }
-                                }
-                                .container {
-                                    padding: 0;
-                                    margin: 0;
-                                    width: 93%;
-                                }
-                            } // profile tabs
-                            
-                        }
-                        > .layout_middle {
-                            .cover_photo_profile_options {
-                                margin-left: 13em !important;
-                                .profile_status {
-                                    width: 90%;
-                                    h2 {
-                                        font-size: 2rem !important;
-                                    }
-                                }
-                            }
-                        }
-                        
-                    }
-                }
-            }
-            #global_footer {
-                .layout_page_footer {
-                    .layout_main {
-                        padding: 0 !important;
-                        margin: 0 !important;
-                        width: 100% !important;
-                    }
-                }
-            }
-        }
-
-        .extfox-widgets {
-
-            &.active {
-                position: absolute;
-                right: 1rem;
-                top: 3rem;
-            }
-
-            .row {
-
-                > .right-side {
-                    margin-top: 1.5rem;
-                }
-
-                .box-hover-member {
+                // search
+            .search-bar {
+                z-index: 1;
+                transition: .2s ease transform;
+                transform: translateY(-5rem);
+                &.active {
+                    transform: translateY(1px);
+                    display: inline-block !important;
+                    max-width: 100%;
+                    position: absolute;
                     left: 0;
-                    position: unset !important;
+                    top: 0;
                 }
-
-                .contribution {
-                    .col-sm {
-                        &.border-right, &.border-left {
-                            border: none !important;
-                        }
-                    }
+                input {
+                    background: #F5F5F5!important;
+                    padding-top: 1.8rem !important;
+                    padding-bottom: 1.8rem !important;
+                    border-radius: 0 !important;
+                }
+                i {
+                    right: 1rem;
+                    top: 1.8rem;
+                    color:#333D40 !important;
+                    cursor: pointer;
                 }
             }
+
         }
 
-
-        // Struggles Profile
-        .layout_sdparentalguide_ajax_struggles {
-            li{
-                .struggle-box_right-mobile {
+            // mobile menu
+        .parental-mobile-menu-holder {
+            border: none !important;
+            display: block !important;
+            position: relative;
+            z-index: 9;
+            transition: transform .5s cubic-bezier(0.86, 0, 0.07, 1);
+            transform: translateX(-90%);
+            &.active {
+                transform: translateX(0%);
+            }
+            .container {
+                position: absolute;
+                width: 80%;
+                height: 100vh;
+                background: #fff;
+                z-index: 9;
+                box-shadow: 20px 0px 40px rgba(0, 0, 0, 0.16);
+                .row {
+                    margin: 0;
                     ul {
-                        li {
-                            svg {
-                                width: 12px!important;
-                            }
-                        }
-
-                        &.left-side {
-                            li{
-                                span.count.votes.counter.count_close {
-                                    color:#B9CFD1!important;
-                                }
-                            }
-        
-                            li.count_close.count_info  {
-                                color:#B9CFD1!important;
-                                div {
-                                    color:#B9CFD1!important;
-                                }
-                            }
-                            li.svg-icons-one,li.svg-icons-two {
-                                div.first-icon {
-                                    display: none;
-                                }
-                            }  
-                            li.count_info.primary {
-                                div.holder-counter-number{
-                                    color:$primary;
-                                }
-                            }
-                        
-                        }
-                    }
-                }
-            }
-        }
-        // ExtfoxForm Settings
-        #extfox-settings{
-
-            .form-wrapper {
-                padding-left: 0!important;
-                h3 {
-                    padding-left: 10px;
-                }
-                .form-element {
-                    max-width: 100% !important;
-                }
-                .form-element {
-                    &.family-wrapper {
-                        min-width: 100% !important;
-                    }
-                }
-                
-            }
-            input[type=checkbox] + label {
-                display: block!important;
-            }
-            input[type=checkbox] {
-                float: none!important;
-            }
-             // age-range
-             .age-range {
-                grid-template-columns: repeat(3, 1fr)!important;
-            }
-           
-        
-        }
-
-        // Ajax Edit Profile Form
-        .layout_sdparentalguide_ajax_profile {
-            #extfox-settings {
-                .form-wrapper {
-                    input[type=checkbox] {
-                        display: none;
-                        + label {
-                            left: 0;
-                            display: flex !important;
-                            align-items: center;
-                        }
-                    }
-                    .form-options-wrapper {
-                        display: block;
-                        float: left;
                         li {
                             width: 100%;
-                        }
-                    }
-                    #family-information {
-                        .btn-danger {
-                            visibility: visible !important;
-                        }
-                    }
-                    #add-birthday {
-                        .col-12.d-flex, .col-12.years-range, .col-12.years, .col-12.final-date {
-                            display: grid !important;
-                            grid-template-columns: repeat(1, 1fr);
-                            grid-gap: 10px;
-                            grid-auto-rows: minmax(60px, auto);
-                            &.d-none {
-                                display: none !important;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        // Badges Proile
-        .layout_sdparentalguide_ajax_badges {
-            .container{
-                width: 100%!important;
-                .holder-special-badges,.contributor-badges-holder {
-                    padding: 15px 10px!important;
-                }
-
-                ul{
-                    li {
-                        .bottom-holder {
-                            flex-wrap: wrap;
-                            .badge-image {
-                                padding: 0;
-                                text-align: center;
-                            }
-                        }
-                    }
-                }
-                
-            }
-        }
-        // My Info Profile
-        .layout_sdparentalguide_ajax_info  {
-            .container{
-                width: 100%!important;
-                .wrapper {
-                    display: flex;
-                    flex-direction: column-reverse;
-                    .right-side  {
-                        margin: 1rem 0;
-                    }
-                    .left-side {
-                        .profile_fields {
-                            ul {
-                                padding: 0px!important;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        // Password
-        .layout_sdparentalguide_ajax_password {
-            .container {
-                width: 95%!important;
-            }
-        }
-
-        .layout_sdparentalguide_ajax_preferences {
-            .sd_signup_interests {
-                max-width: 100%;
-                padding-left: 0;
-            }
-            
-            .holder-listing-categories {
-                padding: 0px!important;
-                .sd_listing_categories {
-                    grid-template-columns: repeat(auto-fill, minmax(70%, 1fr)) !important;
-                }
-            }
-
-        } 
-        // My Theories
-        .layout_sdparentalguide_ajax_theories {
-            .container{
-                width: 100%!important;
-                .holder-my-theories {
-                    .bottom-holder {
-                        .title-holder {
-                            margin: 0 1rem !important;
-                            h4.left-side {
-                                width: 100% !important;
-                            }
-                        }
-                        ul.topic_holder{
-                            flex-wrap: wrap!important;
-                            li.struggle_holder {
-                                width: 100%;
-                                margin:0 1rem!important;
-                                .struggle_box_left {
-                                    .struggle_info {
-                                        margin:0!important;
-                                    }
+                            margin-right: 0 !important;
+                            border-bottom: 1px solid rgba(245, 245, 245, 1);
+                            &:hover {
+                                a {
+                                    border: none !important;
                                 }
-                                .struggle_right-side {
-                                    width: 100%;
-                                    .struggle_info {
-                                        li{
-                                        margin:0!important; 
+                            }
+                            a {
+                                display: block;
+                                font-weight: bold;
+                                padding-left: 2rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+
+    /*
+    * USER PROFILE + Shared Everywhere
+    * Widgets
+        *   Contributed Points
+        *   Badges Earned
+        *   Badges Slide
+        *   Following
+        *   Struggles Profile
+        *   Badges Proile
+        *   Password
+        *   My Theories
+    * Core
+        *   ExtfoxForm Settings
+        *   Auth Page and Forogot Page
+        *   Login Page
+        *   SignUp Page
+    */
+    body#global_page_user-profile-index {
+        #global_wrapper {
+            #global_content {
+                padding: 0;
+                .layout_top {
+                    + .layout_main {
+
+                        // profile tabs
+                        .profile_cover_photo_tabs {
+                            margin-top: 40px;
+                            .tabs_alt {
+                                border-radius: 0;
+                                ul {
+                                    padding-left: 0;
+                                    li {
+                                        a {
+                                            text-transform: none;
+                                            color: #333D40;
+                                            font-weight: 400;
+                                            font-size: .9em;
+                                            padding: 1.2rem;
+                                            border: none;
                                         }
                                     }
                                 }
                             }
-                        }
+                            .generic_layout_container {
+                                h3 {
+                                    left: 15px;
+                                    &:before {
+                                        display: none;
+                                    }
+                                }
+                            }
+                            .container {
+                                padding: 0;
+                                margin: 0;
+                                width: 93%;
+                            }
+                        } // profile tabs
+                        
                     }
-                    .struggle-box_right-mobile {
-                        .count_info.svg-icons-one {
-                            .first-icon {
-                                display: none;
+                    > .layout_middle {
+                        .cover_photo_profile_options {
+                            margin-left: 13em !important;
+                            .profile_status {
+                                width: 90%;
+                                h2 {
+                                    font-size: 2rem !important;
+                                }
                             }
                         }
                     }
+                    
                 }
             }
         }
-        .extfox-auth {
-            h3 {
-                text-align: center;
-                font-family: 'Nunito', sans-serif!important;
-                font-size: 26px!important;
-            }
-            p {
-                text-align: center;
-            }
-        }
-
-        // Auth Page and Forogot Page
-        #global_page_user-auth-forgot,#global_page_user-auth-reset{
-            button {
-                width: 100% !important;
-            }
-        }
-        // Login Page
-        form#user_form_login {
-            h3 {
-                margin-top:100px;
-            }
-            #facebookbutton-wrapper{
-                #twitter-wrapper {
-                    a{
-                        background-color: #1DA1F2;
-                        color: #fff;
-                        border-color: #1DA1F2;
-                    }
+        #global_footer {
+            .layout_page_footer {
+                .layout_main {
+                    padding: 0 !important;
+                    margin: 0 !important;
+                    width: 100% !important;
                 }
-                #facebook-element {
-                    a {
-                        background-color: #3C5A99;
-                        color: #fff;
-                        border-color: #3C5A99;
-                    }
-                }
-            }
-        }
-        
-
-    
-        // SignUp Page
-        #global_page_user-signup-index {
-            .form-wrapper{
-                padding-left: 0px!important;
-            }
-            form {
-                max-height: 550px;
-
-                p.hint {
-                    #profile_address{
-                        #profile_address_text {
-                            word-wrap: break-word;
-                            width: 90%;
-                            margin:0 auto;
-                        
-                            display: block;
-                        }
-                    }
-                }
-                
-            }
-        }
-
-    // Preference Holder 
-    
-        form.preference-holder {
-            h3,p {
-                width: 90%;
-                margin-top: 30px!important;
-                padding: 0px!important;
-            }
-        
-            .holder-image {
-                .holder-category-title {
-                    left: 30px;
-                }
-                .holder-select-all {
-                    right:30px;
-                }
-            } 
-
-            .sd_listing_categories{
-                grid-template-columns: repeat(auto-fill, minmax(52%, 1fr));
-            } 
-            #show_all-wrapper {
-                width: 100%!important;
-                #show_all-element {
-                    width: 100%!important;
-                }
-            }
-            #buttons-wrapper {
-                width: 100%!important;
-                #fieldset-buttons {
-                    width: 90%!important;
-                    float: none!important;
-                    button,a {
-                        width: 45%;
-                    }
-                }
-            }
-
-        }
-    
-
-        // Close Button 
-        .close-btn-x{
-            right: 10px;
-            top: 5px;
-            color: #B9CFD1;
-            svg {
-                width: 15px;
             }
         }
     }
-<<<<<<< HEAD
+
+    .extfox-widgets {
+
+        &.active {
+            position: absolute;
+            right: 1rem;
+            top: 3rem;
+        }
+
+        .row {
+
+            > .right-side {
+                margin-top: 1.5rem;
+            }
+
+            .box-hover-member {
+                left: 0;
+                position: unset !important;
+            }
+
+            .contribution {
+                .col-sm {
+                    &.border-right, &.border-left {
+                        border: none !important;
+                    }
+                }
+            }
+        }
+    }
+
+
+    // Struggles Profile
+    .layout_sdparentalguide_ajax_struggles {
+        li{
+            .struggle-box_right-mobile {
+                ul {
+                    li {
+                        svg {
+                            width: 12px!important;
+                        }
+                    }
+
+                    &.left-side {
+                        li{
+                            span.count.votes.counter.count_close {
+                                color:#B9CFD1!important;
+                            }
+                        }
+    
+                        li.count_close.count_info  {
+                            color:#B9CFD1!important;
+                            div {
+                                color:#B9CFD1!important;
+                            }
+                        }
+                        li.svg-icons-one,li.svg-icons-two {
+                            div.first-icon {
+                                display: none;
+                            }
+                        }  
+                        li.count_info.primary {
+                            div.holder-counter-number{
+                                color:$primary;
+                            }
+                        }
+                    
+                    }
+                }
+            }
+        }
+    }
+    // ExtfoxForm Settings
+    #extfox-settings{
+
+        .form-wrapper {
+            padding-left: 0!important;
+            h3 {
+                padding-left: 10px;
+            }
+            .form-element {
+                max-width: 100% !important;
+            }
+            .form-element {
+                &.family-wrapper {
+                    min-width: 100% !important;
+                }
+            }
+            
+        }
+        input[type=checkbox] + label {
+            display: block!important;
+        }
+        input[type=checkbox] {
+            float: none!important;
+        }
+            // age-range
+            .age-range {
+            grid-template-columns: repeat(3, 1fr)!important;
+        }
+        
+    
+    }
+
+    // Ajax Edit Profile Form
+    .layout_sdparentalguide_ajax_profile {
+        #extfox-settings {
+            .form-wrapper {
+                input[type=checkbox] {
+                    display: none;
+                    + label {
+                        left: 0;
+                        display: flex !important;
+                        align-items: center;
+                    }
+                }
+                .form-options-wrapper {
+                    display: block;
+                    float: left;
+                    li {
+                        width: 100%;
+                    }
+                }
+                #family-information {
+                    .btn-danger {
+                        visibility: visible !important;
+                    }
+                }
+                #add-birthday {
+                    .col-12.d-flex, .col-12.years-range, .col-12.years, .col-12.final-date {
+                        display: grid !important;
+                        grid-template-columns: repeat(1, 1fr);
+                        grid-gap: 10px;
+                        grid-auto-rows: minmax(60px, auto);
+                        &.d-none {
+                            display: none !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Badges Proile
+    .layout_sdparentalguide_ajax_badges {
+        .container{
+            width: 100%!important;
+            .holder-special-badges,.contributor-badges-holder {
+                padding: 15px 10px!important;
+            }
+
+            ul{
+                li {
+                    .bottom-holder {
+                        flex-wrap: wrap;
+                        .badge-image {
+                            padding: 0;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+    // My Info Profile
+    .layout_sdparentalguide_ajax_info  {
+        .container{
+            width: 100%!important;
+            .wrapper {
+                display: flex;
+                flex-direction: column-reverse;
+                .right-side  {
+                    margin: 1rem 0;
+                }
+                .left-side {
+                    .profile_fields {
+                        ul {
+                            padding: 0px!important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    // Password
+    .layout_sdparentalguide_ajax_password {
+        .container {
+            width: 95%!important;
+        }
+    }
+
+    .layout_sdparentalguide_ajax_preferences {
+        .sd_signup_interests {
+            max-width: 100%;
+            padding-left: 0;
+        }
+        
+        .holder-listing-categories {
+            padding: 0px!important;
+            .sd_listing_categories {
+                grid-template-columns: repeat(auto-fill, minmax(70%, 1fr)) !important;
+            }
+        }
+
+    } 
+    // My Theories
+    .layout_sdparentalguide_ajax_theories {
+        .container{
+            width: 100%!important;
+            .holder-my-theories {
+                .bottom-holder {
+                    .title-holder {
+                        margin: 0 1rem !important;
+                        h4.left-side {
+                            width: 100% !important;
+                        }
+                    }
+                    ul.topic_holder{
+                        flex-wrap: wrap!important;
+                        li.struggle_holder {
+                            width: 100%;
+                            margin:0 1rem!important;
+                            .struggle_box_left {
+                                .struggle_info {
+                                    margin:0!important;
+                                }
+                            }
+                            .struggle_right-side {
+                                width: 100%;
+                                .struggle_info {
+                                    li{
+                                    margin:0!important; 
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .struggle-box_right-mobile {
+                    .count_info.svg-icons-one {
+                        .first-icon {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .extfox-auth {
+        h3 {
+            text-align: center;
+            font-family: 'Nunito', sans-serif!important;
+            font-size: 26px!important;
+        }
+        p {
+            text-align: center;
+        }
+    }
+
+    // Auth Page and Forogot Page
+    #global_page_user-auth-forgot,#global_page_user-auth-reset{
+        button {
+            width: 100% !important;
+        }
+    }
+    // Login Page
+    form#user_form_login {
+        h3 {
+            margin-top:100px;
+        }
+        #facebookbutton-wrapper{
+            #twitter-wrapper {
+                a{
+                    background-color: #1DA1F2;
+                    color: #fff;
+                    border-color: #1DA1F2;
+                }
+            }
+            #facebook-element {
+                a {
+                    background-color: #3C5A99;
+                    color: #fff;
+                    border-color: #3C5A99;
+                }
+            }
+        }
+    }
+        
+
+    
+    // SignUp Page
+    #global_page_user-signup-index {
+        .form-wrapper{
+            padding-left: 0px!important;
+        }
+        form {
+            max-height: 550px;
+
+            p.hint {
+                #profile_address{
+                    #profile_address_text {
+                        word-wrap: break-word;
+                        width: 90%;
+                        margin:0 auto;
+                    
+                        display: block;
+                    }
+                }
+            }
+            
+        }
+    }
+
+    // Preference Holder 
+    form.preference-holder {
+        h3,p {
+            width: 90%;
+            margin-top: 30px!important;
+            padding: 0px!important;
+        }
+    
+        .holder-image {
+            .holder-category-title {
+                left: 30px;
+            }
+            .holder-select-all {
+                right:30px;
+            }
+        } 
+
+        .sd_listing_categories{
+            grid-template-columns: repeat(auto-fill, minmax(52%, 1fr));
+        } 
+        #show_all-wrapper {
+            width: 100%!important;
+            #show_all-element {
+                width: 100%!important;
+            }
+        }
+        #buttons-wrapper {
+            width: 100%!important;
+            #fieldset-buttons {
+                width: 90%!important;
+                float: none!important;
+                button,a {
+                    width: 45%;
+                }
+            }
+        }
+
+    }
+
+
+    // Close Button 
+    .close-btn-x{
+        right: 10px;
+        top: 5px;
+        color: #B9CFD1;
+        svg {
+            width: 15px;
+        }
+    }
     
 }
-=======
->>>>>>> fee5c81b9ba61779940d631a9d42fff7b1c3ea2a
+    
+
