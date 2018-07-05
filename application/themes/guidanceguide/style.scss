@@ -1,5 +1,48 @@
 @import "node_modules/bootstrap/scss/guidanceguide";
 
+// MAINTENANCE PAGE
+.body-maintenance {
+    .row-maintenance {
+        color: $color-dark-grey;
+        height: 100vh;
+        .pic-one {
+            p {
+                font-family: 'Nunito', sans-serif;
+            }
+            .image-holder img {
+                height: 70px;
+            }
+            nav {
+                form .form-control {
+                    border-radius: 30px;
+                }
+                form button {
+                    border-radius: 30px;
+                }
+                .form-inline {
+                    input {
+                        width: 357px;
+                        background-color: $color-soft-grey;
+                        border: 2px solid $color-soft-grey;
+                    }
+                    ::-webkit-input-placeholder {
+                        color: $color-description;
+                        padding-left: 1rem;
+                    }
+                }
+            }
+        } // pic-one
+
+        .pic-two {
+            height: 100%;
+            .image-holder img {
+                height: 738px;
+            }
+        }
+
+    }
+}
+
 // CORE
 .seaocore_up_button {
     .seaocore_up_button {
