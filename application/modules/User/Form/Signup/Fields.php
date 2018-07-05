@@ -24,6 +24,7 @@ class User_Form_Signup_Fields extends Fields_Form_Standard
   {
     // Init form
     $this->setTitle('Profile Information');
+    $this->setAttrib('class', 'extfox-auth w-100');
 
     $this
       ->setIsCreation(true)

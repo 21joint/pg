@@ -40,6 +40,7 @@ class User_SignupController extends Core_Controller_Action_Standard
     }
     
     $formSequenceHelper = $this->_helper->formSequence;
+    
     foreach( Engine_Api::_()->getDbtable('signup', 'user')->fetchAll() as $row ) {
       if( $row->enable == 1 ) {
         $class = $row->class;

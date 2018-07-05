@@ -25,7 +25,7 @@
                     <div class="bottom row pt-4">
                         <div class="col-sm col-3 text-center border-right">
                             <h5 class="text-primary font-weight-bold"> 
-                                <?php echo $this->subject->gg_reviews_count;?>
+                                <?php echo $this->subject->gg_review_count;?>
                             </h5>
                             <p class="desc text-dark">
                                 Reviews

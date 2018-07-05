@@ -120,7 +120,7 @@
       background-color: $primary;
       left: 0;
       right: 0;
-      transition: 0.33s bottom ease-in;
+      transition: 0.1s bottom ease-in-out;
     }
     &:hover {
       &:after {
