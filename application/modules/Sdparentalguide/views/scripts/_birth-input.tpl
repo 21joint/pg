@@ -23,7 +23,4 @@
         let birthday = document.getElementById('birthday_date');
         console.log(birthday);
     });
-
-    
-
 </script>
