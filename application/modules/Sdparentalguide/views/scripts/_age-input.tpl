@@ -69,8 +69,8 @@ en4.core.runonce.add(function() {
 
         if(age == currentAge) {
             addAgeRangeItems[i].classList.add('selected-age');
-            document.getElementById('profile_age_range').value = age;
-            document.getElementById('<?php echo $this->name; ?>').value = age;
+            document.getElementById('profile_age_range').value = type;
+            document.getElementById('<?php echo $this->name; ?>').value = type;
         }
     }
 });
