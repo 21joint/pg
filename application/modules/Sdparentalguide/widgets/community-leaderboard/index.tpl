@@ -30,7 +30,7 @@
         <div id="followers" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="followers">Followers</div>
         <!-- Categories End -->
         <div class="d-flex d-md-none justify-content-center align-items-center">
-            <button id="order_btn" class="btn-primary">></button>
+            <button id="order_btn" class="btn-primary rounded-circle">></button>
         </div>
         <!-- Toggle Button End -->
     </div>
@@ -131,25 +131,21 @@ var pageNum = 1;
 document.getElementById('leaderboard_previous').addEventListener('click', function(){
     if(pageNum >= 2){
         pageNum--;
-        console.log(pageNum);
         document.getElementById('leaderboard_previous').addClass('btn-primary').removeClass('btn-secondary');
         document.getElementById('leaderboard_next').addClass('btn-primary').removeClass('btn-secondary');
         loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
     }else{
         document.getElementById('leaderboard_previous').addClass('btn-secondary');
-        // loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
     }
 });
 document.getElementById('leaderboard_next').addEventListener('click', function(){
     if(pageNum <= 9){
         pageNum++;
-        console.log(pageNum);
         document.getElementById('leaderboard_next').addClass('btn-primary').removeClass('btn-secondary');
         document.getElementById('leaderboard_previous').addClass('btn-primary').removeClass('btn-secondary');
         loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
     }else{
         document.getElementById('leaderboard_next').addClass('btn-secondary');
-        // loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
     }
 });
 // Pagination Number Change End

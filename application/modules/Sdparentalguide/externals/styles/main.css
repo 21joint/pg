@@ -456,7 +456,6 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
 @media screen and (max-width: 768px){
     #order_btn{
       font-size: 12px;
-      border-radius: 50%;
       color: #fff;
       font-weight: bold;
       background-color: #5bc6cd;
