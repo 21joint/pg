@@ -11,10 +11,6 @@
  */
 ?>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> e9c07fcabfb8166ecc1b1657d6eabf42271448ab
 <div class="holder-form holder-forgot d-flex w-100 h-100">
 
   <!-- place for partial  -->
@@ -31,25 +27,13 @@
     </a>
     
     <div class="col-xl-6 col-lg-6 mx-auto h-100 w-100 d-flex align-items-center px-0">
-<<<<<<< HEAD
-
-=======
->>>>>>> e9c07fcabfb8166ecc1b1657d6eabf42271448ab
       <?php if( $this->form ): ?>
           <?php  echo $this->form->render($this); ?>
       <?php  else: ?>
         <?php  echo $this->translate('Please sign in to continue.'); ?>
-<<<<<<< HEAD
-        
-      <?php endif; ?>
-    </div>
-  </div>
-  
-=======
       <?php endif; ?>
     </div>
     
   </div>
 
->>>>>>> e9c07fcabfb8166ecc1b1657d6eabf42271448ab
 </div>
