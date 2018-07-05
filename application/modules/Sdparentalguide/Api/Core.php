@@ -606,7 +606,6 @@ class Sdparentalguide_Api_Core extends Core_Api_Abstract{
         $datetime2 = new DateTime(date('Y/m/d'));
         $interval = $datetime1->diff($datetime2);
        
-
         $years = $interval->y;
 
         if($years>0) {
@@ -633,7 +632,7 @@ class Sdparentalguide_Api_Core extends Core_Api_Abstract{
             $baby = '';
         }
         
-        
+
        
         $age = $months / 12;
        
@@ -650,7 +649,6 @@ class Sdparentalguide_Api_Core extends Core_Api_Abstract{
             if($years == 1){
                 echo "$age year ago.";
             }else{
-
                 if(($years >= 12 && $years <= 18)){
                     echo '12 +';
                 }elseif($years >= 18){

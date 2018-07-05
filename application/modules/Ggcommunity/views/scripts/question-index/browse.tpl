@@ -74,7 +74,6 @@
                                 <ul class="struggle_info">
                                     <li class="struggle_time_created">
                                         <?php echo 'asked '. Engine_Api::_()->ggcommunity()->time_elapsed_string($item->creation_date);?>
-                                        <?php print_r($item->creation_date); ?>
                                     </li>
                                     <li>᛫</li>
                                     <li class="struggle_owner_name">
