@@ -47,6 +47,12 @@
                         </ul>
 
                     </div> <!-- holder-special -->
+                    <?php else: ?>
+                    <div class="tip-message py-2 w-100">
+                        <span class="mb-0">
+                            <?php echo $this->translate('No special badges to your profile yet..'); ?>
+                        </span>
+                    </div>
                     <?php endif; ?>
 
                     <?php if($this->contributorBadges->getTotalItemCount() > 0): ?>
@@ -117,6 +123,12 @@
                         </ul>
 
                     </div> <!-- end of contributor badges -->
+                    <?php else: ?>
+                    <div class="tip-message py-2 w-100">
+                        <span class="mb-0">
+                            <?php echo $this->translate('No Contributor badges to your profile yet..'); ?>
+                        </span>
+                    </div>
                     <?php endif; ?>
                     
                 </div>
