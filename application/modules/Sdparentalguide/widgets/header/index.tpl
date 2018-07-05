@@ -7,7 +7,7 @@
             
             <div class="col-6 col-sm-4 p-0 logo d-flex align-items-center">
                 
-                <a href="javascript:void(0);" class="hamburger-menu px-3 d-sm-none d-block">
+                <a href="javascript:void(0);" class="hamburger-menu px-3 d-md-none d-block">
                   <span onclick="displayMenu()" class="hamburger-menu" aria-hidden="true">
                       <span class="bar"></span>
                   </span>

@@ -1194,6 +1194,13 @@ div.draft_main_holder ul li:before {
 .browse_main_holder .primary{
     color: #5CC7CE;
 }
+.browse_main_holder .open_accepted_answer {
+    background-color: #5CC7CE;
+    color: #FFF!important;
+    padding: 1px 20px;
+    border: 1px solid #5CC7CE;
+    border-radius: 21px;
+}
 .browse_main_holder .closed_accepted_answer {
     background-color: #B9CFD1;
     color: #FFF!important;
@@ -1211,14 +1218,6 @@ div.draft_main_holder ul li:before {
 .browse_main_holder .title_close {
     color: #CFCFCF!important;
 }
-.browse_main_holder .open_accepted_answer {
-    background-color: #5CC7CE;
-    color: #FFF!important;
-    padding: 1px 20px;
-    border: 1px solid #5CC7CE;
-    border-radius: 21px;
-}
-
 
 /* Browse Search Page */
 .layout_page_ggcommunity_question-index_browse .browse_top_holder,.layout_page_ggcommunity_question-index_browse  .browse_main_holder,
@@ -1862,6 +1861,21 @@ ul.paginationControl > li.selected,ul.paginationControl > li a:hover,ul.paginati
     color:#fff;
 }
 @media (max-width: 1024px){
+    /* make svgs visible under this line */
+    .browse_main_holder .struggle_box_right .struggle_count_info li.count_info p.count_title {
+        margin-top: 0px!important;
+        display: none!important;
+    }
+    /* add styling for number displays under this line */
+    .browse_main_holder .struggle_box_right .struggle_count_info .count {
+        color: grey!important;
+        font-size: 13px!important;
+    }
+    .browse_main_holder .open_accepted_answer{
+        background-color: #fff;
+        padding: 0px;
+        border: none;
+    }
     #global_page_ggcommunity-question-profile-view div#global_content,#global_page_ggcommunity-question-index-create .layout_main .layout_middle {
         width: 100%;
         padding: 0px;
@@ -1948,6 +1962,7 @@ ul.paginationControl > li.selected,ul.paginationControl > li a:hover,ul.paginati
         font-size: 8px;
         line-height: 1.4;
     }
+
 }
 @media (max-width: 480px){
     /* Profile Questions */

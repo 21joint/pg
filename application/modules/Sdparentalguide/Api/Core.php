@@ -333,7 +333,23 @@ class Sdparentalguide_Api_Core extends Core_Api_Abstract{
             if (!strstr($images[$tempKey . '_icon'], 'http'))
                 $images[$tempKey . '_icon'] = $getParentHost . DIRECTORY_SEPARATOR . $baseParentUrl . $images[$tempKey . '_icon'];
         }
-
+        if(!empty($images['image'])){
+            $images['photoURL'] = $images['image'];
+            unset($images['image']);
+        }
+        if(!empty($images['image_normal'])){
+            $images['photoURLNormal'] = $images['image_normal'];
+            unset($images['image_normal']);
+        }
+        if(!empty($images['image_profile'])){
+            $images['photoURLProfile'] = $images['image_profile'];
+            unset($images['image_profile']);
+        }
+        if(!empty($images['image_icon'])){
+            $images['photoURLIcon'] = $images['image_icon'];
+            unset($images['image_icon']);
+        }
+        unset($images['content_url']);
         return $images;
     }
 

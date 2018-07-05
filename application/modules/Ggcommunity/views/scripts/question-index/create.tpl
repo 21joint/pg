@@ -18,12 +18,12 @@
       'postVar' : 'text',
       'customChoices' : true,
       'minLength': 1,
-      'maxChoices': 1,
+      'maxChoices': 10,// Max value of displayed items in suggested list
       'selectMode': 'pick',
       'autocompleteType': 'tag',
       'className': 'tag-autosuggest',
       'filterSubset' : true,
-      'multiple' : true,
+      'multiple' : false,// Only one topic choice
       'injectChoice': function(token){
         var choice = new Element('li', {'class': 'autocompleter-choices', 'value':token.label, 'id':token.id});
         new Element('div', {'html': this.markQueryValue(token.label),'class': 'autocompleter-choice'}).inject(choice);

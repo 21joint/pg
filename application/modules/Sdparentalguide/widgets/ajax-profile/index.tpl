@@ -9,7 +9,7 @@
 <?php endif; ?>
 
 <?php if($this->showContent): ?>
-<div class="container">
+<div class="container p-0">
     <div class="row mx-lg-3 mx-xl-3 mx-sm-0">
 
         <div class="text d-block text-danger p-2 w-100" id="errorForm"></div>

@@ -99,6 +99,64 @@
           'action' => '\D+',
         )
     ),
+    //Routes Sprint 7
+    //PG assign badges  
+    'sdparentalguide_badges_assign' => array(
+        'route' => 'badges/assign/*',
+        'defaults' => array(
+          'module' => 'sdparentalguide',
+          'controller' => 'index',
+          'action' => 'assignbadges',
+        ),
+    ),
+    // PG assign badger to user  
+    'sdparentalguide_badger_assignuser' => array(
+        'route' => 'badges/assignbadges/user/*',
+        'defaults' => array(
+          'module' => 'sdparentalguide',
+          'controller' => 'index',
+          'action' => 'assign-user',
+        ),
+    ),
+    //PG reviews listings or grade
+    'sdparentalguide_reviews_grade' => array(
+        'route' => 'reviews/grade/*',
+        'defaults' => array(
+          'module' => 'sdparentalguide',
+          'controller' => 'index',
+          'action' => 'listings',
+        ),
+    ),
+    //PG Core Search
+    'sdparentalguide_core_search' => array(
+        'route' => 'se-search/*',
+        'defaults' => array(
+          'module' => 'core',
+          'controller' => 'search',
+          'action' => 'index',
+        ),
+        'reqs' => array(
+          'action' => '(index)',
+        ),
+    ),  
+    //PG Home 
+    'sdparentalguide_user_home' => array(
+        'route' => 'home/*',
+        'defaults' => array(
+          'module' => 'user',
+          'controller' => 'index',
+          'action' => 'home',
+        ),
+    ),
+    //PG Default Profile 
+    'sdparentalguide_default_profile' => array(
+        'route' => 'profile/*',
+        'defaults' => array(
+          'module' => 'user',
+          'controller' => 'profile',
+          'action' => 'index',
+        ),
+    ), 
     //General Route
     'sdparentalguide_general' => array(
         'route' => 'gg/:action/*',
@@ -108,7 +166,7 @@
           'action' => 'index',
         ),
         'reqs' => array(
-          'action' => '(index|listings|suggest-username|suggest-displayname|suggest-category|get-subcategories|get-categories|categories|assignbadges|assign-user|assign-quick|assign-bulk|assign-status|suggest-topic)',
+          'action' => '(index|listings|suggest-username|suggest-displayname|suggest-category|get-subcategories|get-categories|categories|assign-quick|assign-bulk|assign-status|suggest-topic)',
         ),
     ),
     //PG Reviews
@@ -161,7 +219,7 @@
     ),
     //PG Core Search
     'sdparentalguide_core_search' => array(
-        'route' => 'core-search/*',
+        'route' => 'se-search/*',
         'defaults' => array(
           'module' => 'core',
           'controller' => 'search',
@@ -204,19 +262,6 @@
         'reqs' => array(
           'action' => '(edit|index|add|delete)',
         ),
-    ),
-
-    
-    'sdparentalguide_api' => array(
-        'route' => 'gg/rest/:action/*',
-        'defaults' => array(
-          'module' => 'sdparentalguide',
-          'controller' => 'api',
-          'action' => 'index',
-        ),
-        'reqs' => array(
-          'action' => '\D+',
-        )
     ),
 
   )
