@@ -35,8 +35,6 @@
 }
    
 
-
-
 // Classes
 .grib-grab-two {
     display:grid;
@@ -50,9 +48,6 @@
 .border-bottom-grey-light {
     border-bottom:2px solid #F5F5F5;
 }
-
-
-
 
 /*
     Components & Pages designed for GuidanceGuide
@@ -676,7 +671,7 @@ body#global_page_user-profile-index {
                 }
             }
             input[type=checkbox] + label {
-                left: -15px;
+                left: -10px;
             }
             margin-bottom: 1.3rem !important;
         }
@@ -1465,20 +1460,39 @@ img.item_photo_user {
                 }
             }
             #family-information {
-                color: red;
+                > .row {
+                    &:hover {
+                        .actions {
+                            .btn-danger {
+                                visibility: visible;
+                            }
+                        }
+                    }
+                } 
                 .family-item-holder {
                     > div {
                         border-radius: 50%;
                         width: 50px;
                         height: 50px;
+                        &.male {
+                            background-color: #86B3E1;
+                        }
                         &.female {
                             background-color: #E186C0;
+                        }
+                        &.unknown {
+                            background-color: #8AE693;
                         }
                     }
                 }
                 .family-item {
                     p {
                         font-size: 80% !important;
+                    }
+                }
+                .actions {
+                    .btn-danger {
+                        visibility: hidden;
                     }
                 }
                 .row {
@@ -1562,8 +1576,8 @@ img.item_photo_user {
 
                         // add birthday
                         .add-birthday {
-                            .months {
-                                .month-select {
+                            .selector-holder {
+                                .selector-item {
                                     border-radius: 10px;
                                     border: 2px solid #F5F5F5;
                                     cursor: pointer;
@@ -1678,7 +1692,7 @@ img.item_photo_user {
         padding-left: 1.5em!important;
         margin-right: 2em!important;
         cursor: pointer!important;
-        line-height: 1em!important;
+        line-height: 1.3em !important;
         -webkit-transition: all 0.3s ease-in-out!important;
         transition: all 0.3s ease-in-out!important;
     }

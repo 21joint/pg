@@ -208,16 +208,52 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
             'privacyValues' => $this->getRequest()->getParam('privacy'),
         ));
 
+        // setup to prevent syntax error
+        $family = array();
+
         // setup values
         $values = $request->getParam('values', null);
         foreach($values as $key => $value) {
+            
             if($key != 'submit') {
                 $element = $form->getElement($key);
                 if($element) {
                     $element->setValue($value);
                 }
             }
+            
+            if (strpos($key, 'family') !== false) {
+                $i = preg_replace('/[^0-9]/', '', $key);
+                $family[$i][] = $value;
+            }
+            
+            if($key == 'profile_gender') {
+                $viewer->gg_gender = $value;
+                $viewer->save();
+            }
+
         }
+
+        $table = Engine_Api::_()->getDbtable('familyMembers', 'sdparentalguide');
+        $table->delete(array(
+            'owner_id = ?' => $viewer->getIdentity()
+        ));
+
+        // family
+        if(count($family) > 0) {
+            foreach($family as $item){
+                $prefParams = array(
+                    'owner_id' => $viewer->getIdentity(),
+                    'gender' => $item[0],
+                    'dob' => $item[1] . '-01'
+                );
+                $prefRow = $table->createRow();   
+                $prefRow->setFromArray($prefParams);
+                $prefRow->save();
+            }
+
+        }
+
 
         if ( $form->isValid($values) ) {
             
@@ -478,7 +514,7 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
                     $prefRow = $prefTable->createRow();
                 }                
                 $prefRow->setFromArray($prefParams);
-                $prefRow->save();        
+                $prefRow->save();
             }
 
             $this->view->status = true;
