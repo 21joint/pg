@@ -4,7 +4,7 @@
     </span>
 </div>
 
-<div class="container p-0" id="family-information">
+<div class="container p-0 col-12 col-sm-12" id="family-information">
     
     <?php 
 
@@ -24,12 +24,12 @@
 
     <?php if(count($families) > 0): ?>
     <?php foreach($families as $item): ?>
-        <div class="row d-flex align-items-center my-4 mx-0">
+        <div class="row d-flex align-items-center my-4 mx-0" id="<?php echo $item->getIdentity(); ?>">
             
             <div class="col-2 p-0 family-item-holder">
                 <?php if(!$item->gender || $item->gender == 3): ?>
-                <div class="unknown d-flex align-items-center justify-content-center">
-                    <?php echo $this->translate('Unknown'); ?>
+                <div class="unknown d-flex align-items-center justify-content-center text-white">
+                    <?php echo $this->translate('X'); ?>
                 </div>
                 <?php elseif($item->gender == 1): ?>
                 <div class="male d-flex align-items-center justify-content-center">
@@ -42,7 +42,7 @@
                 <?php endif; ?>
             </div>
 
-            <div class="col-8 family-item p-0">
+            <div class="col-6 family-item p-0">
                 <span class="text-muted"> 
                     <?php echo date($item->dob); ?>
                 </span>
@@ -57,9 +57,12 @@
                 </p>
             </div>
 
-            <div class="col-2 p-0">
-                <a href="javascript:void(0)" class="btn btn-light small p-3">
+            <div class="col-4 p-0 actions d-flex justify-content-end">
+                <a href="javascript:void(0)" onclick="editFamily(this)" class="btn btn-light small p-3 mr-1">
                     <?php echo $this->translate('Edit'); ?>
+                </a>
+                <a href="javascript:void(0)" onclick="removeFamily(this)" class="btn btn-danger text-white small p-3">
+                    <?php echo $this->translate('Delete'); ?>
                 </a>
             </div>
 
@@ -86,24 +89,24 @@
         </div>
         
         <div class="col-12 d-flex add-gender p-0 mb-4" id="add-gender">
-            <div class="col-2 mr-1 p-0 text-center male small add-gender-items">
-                <a href="javascript:void(0)" onclick="selectChildGender(1, this)" class="d-block p-2">
+            <div class="col-3 col-xl-2 col-lg-2 mr-1 p-0 text-center male small add-gender-items add-gender-items-family">
+                <a href="javascript:void(0)" onclick="selectChildGender(1)" class="d-block p-2">
                     <div class="svg-holder w-100 text-center">
                         <svg id="male" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0,0H24V24H0Z" fill="none"/><path d="M20.44,3a.56.56,0,0,1,.56.56v3.7a.51.51,0,0,1-.35.52.47.47,0,0,1-.59-.14l-.8-.75-3.8,3.75a6.65,6.65,0,0,1,1,3.61,6.51,6.51,0,0,1-.91,3.38,6.88,6.88,0,0,1-2.46,2.46,6.69,6.69,0,0,1-6.75,0,6.88,6.88,0,0,1-2.46-2.46,6.69,6.69,0,0,1,0-6.75A6.88,6.88,0,0,1,6.38,8.41,6.51,6.51,0,0,1,9.75,7.5a6.65,6.65,0,0,1,3.61,1l3.75-3.8-.8-.8a.5.5,0,0,1-.09-.59A.51.51,0,0,1,16.73,3ZM9.75,18a3.76,3.76,0,0,0,3.75-3.75A3.76,3.76,0,0,0,9.75,10.5,3.76,3.76,0,0,0,6,14.25,3.76,3.76,0,0,0,9.75,18Z" fill="#333D40"/></svg>
                     </div>
                     <?php echo $this->translate('Male'); ?>
                 </a>
             </div>
-            <div class="col-2 mr-1 p-0 p-0 text-center female small add-gender-items">
-                <a href="javascript:void(0)" onclick="selectChildGender(2, this)" class="d-block p-2">
+            <div class="col-3 col-xl-2 col-lg-2 mr-1 p-0 p-0 text-center female small add-gender-items add-gender-items-family">
+                <a href="javascript:void(0)" onclick="selectChildGender(2)" class="d-block p-2">
                     <div class="svg-holder w-100 text-center">
                         <svg id="female" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0,0H24V24H0Z" fill="none"/><path d="M18.7,8.25a6.7,6.7,0,0,1-5.25,6.56v2.44h1.69a.56.56,0,0,1,.56.56v1.88a.56.56,0,0,1-.56.56H13.45v1.68a.56.56,0,0,1-.56.56H11a.56.56,0,0,1-.56-.56V20.25H8.76a.56.56,0,0,1-.56-.56V17.81a.56.56,0,0,1,.56-.56h1.69V14.81A6.7,6.7,0,0,1,5.2,8.25a6.52,6.52,0,0,1,.91-3.37A6.88,6.88,0,0,1,8.58,2.41a6.69,6.69,0,0,1,6.75,0,6.88,6.88,0,0,1,2.46,2.46A6.51,6.51,0,0,1,18.7,8.25Zm-10.5,0A3.61,3.61,0,0,0,9.3,10.9a3.74,3.74,0,0,0,5.3,0,3.61,3.61,0,0,0,1.1-2.65A3.61,3.61,0,0,0,14.6,5.6a3.74,3.74,0,0,0-5.3,0A3.61,3.61,0,0,0,8.2,8.25Z" fill="#333D40"/></svg>
                     </div>
                     <?php echo $this->translate('Female'); ?>
                 </a>
             </div>
-            <div class="col-2 mr-1 p-0 text-center d-flex align-items-center small not-to-answer add-gender-items">
-                <a href="javascript:void(0)" onclick="selectChildGender(3, this)" class="d-block p-2">
+            <div class="col-3 col-xl-2 col-lg-2 mr-1 p-0 text-center d-flex align-items-center small not-to-answer add-gender-items add-gender-items-family">
+                <a href="javascript:void(0)" onclick="selectChildGender(3)" class="d-block p-2">
                     <?php echo $this->translate('Prefer Not to Answer'); ?>
                 </a>
             </div>
@@ -155,11 +158,12 @@
 
 var lastItem = <?php echo $last_item; ?>;
 
-en4.core.runonce.add(function(){
+en4.core.runonce.add(function() {
     let familyHolder = document.getElementById('family-information');
     let familyWrapper = familyHolder.getParent();
-
+    
     // add style modifications
+    familyWrapper.classList.add('family-wrapper');
     familyWrapper.style.minWidth = '600px';
     familyWrapper.style.width = '600px';
     familyWrapper.getParent().style.padding = '0';
@@ -169,6 +173,22 @@ en4.core.runonce.add(function(){
     familyWrapper.getParent().getChildren()[0].remove();
 
 });
+
+function editFamily(el) {
+
+    let memberHolder = el.getParent('div.row');
+    let memberID = memberHolder.getAttribute('id');
+    let gender = memberHolder.getElement('input').getAttribute('value');
+
+    localStorage.setItem('update', memberID);
+
+    selectChildGender(gender);
+    addChild(0);
+}
+
+function removeFamily(el) {
+    el.getParent('div.row').remove();
+}
 
 function addChild(type) {
     
@@ -181,6 +201,8 @@ function addChild(type) {
 
         const monthsBirthday = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         let monthsHolder = document.getElementById('months').getChildren();
+        monthsHolder[0].empty();
+        monthsHolder[1].empty();
 
         for(var i = 0; i < monthsBirthday.length; i++) {
             new Element('div', {
@@ -191,12 +213,14 @@ function addChild(type) {
     }
 }
 
-function selectChildGender(type, e) {
-    let addGenderItems = document.getElementsByClassName('add-gender-items');
+function selectChildGender(type) {
+    let addGenderItems = document.getElementsByClassName('add-gender-items-family');
     for(var i = 0; i < addGenderItems.length; i++) {
         addGenderItems[i].classList.remove('selected');
+        if(type == i) {
+            addGenderItems[i - 1].classList.add('selected');
+        }
     }
-    e.getParent().classList.add('selected');
     setupFieldValue('gender', type);
 }
 
@@ -286,6 +310,7 @@ function setupFamilyMember() {
     var genderType;
     var gender = localStorage.getItem('gender');
     var birthdayDate = localStorage.getItem('final-year') + '-' + localStorage.getItem('month');
+    var editMember;
 
     lastItem = lastItem + 1;
 
@@ -302,11 +327,19 @@ function setupFamilyMember() {
         genderType = '<?php echo $this->translate("Female"); ?>';
     }
 
+    editMember = '<div class="col-4 p-0 actions d-flex justify-content-end"><a href="javascript:void(0)" onclick="editFamily(this)" class="btn btn-light small p-3 mr-1">Edit</a><a href="javascript:void(0)" onclick="removeFamily(this)" class="btn btn-danger text-white small p-3">Delete</a></div>';
+
     let item = new Element('div', {
         'class': 'row d-flex align-items-center my-4 mx-0',
-        'html': '<div class="col-2 p-0 family-item-holder">'+genderImage+'</div><div class="col-8 family-item p-0"> <span class="text-muted"> '+birthdayDate+' </span><p class="desc text-muted small">'+genderType+'</p>'+htmlInputFields+'</div>'
+        'html': '<div class="col-2 p-0 family-item-holder">'+genderImage+'</div><div class="col-6 family-item p-0"> <span class="text-muted"> '+birthdayDate+' </span><p class="desc text-muted small">'+genderType+'</p>'+htmlInputFields+'</div>' + editMember
     });
 
+    let updateItem = document.getElementById(localStorage.getItem('update'));
+    if(updateItem) {
+        updateItem.remove();
+        localStorage.removeItem('update')
+    }
+        
     familyHolder.insertBefore(item, familyHolder.childNodes[0]);
 
     // close

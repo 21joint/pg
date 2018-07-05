@@ -71,7 +71,7 @@ class Sdparentalguide_Widget_AjaxProfileController extends Engine_Content_Widget
         'privacyValues' => $this->getRequest()->getParam('privacy'),
       ));
       $form
-        ->setAttrib('class', 'global_form ajax-form-' . $content_id)
+        ->setAttrib('class', 'w-100 global_form ajax-form-' . $content_id)
         ->setAttrib('id', 'extfox-settings')
       ;
 

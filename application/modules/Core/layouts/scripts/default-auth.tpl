@@ -16,7 +16,6 @@
 <head>
   <base href="<?php echo rtrim($this->serverUrl($this->baseUrl()), '/'). '/' ?>" />
   <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700|Open+Sans:300,400,600" rel="stylesheet">
-  <link href="./application/themes/guidanceguide/assets/css/root.css" media="screen" rel="stylesheet" type="text/css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   
@@ -26,6 +25,9 @@
 
   <?php // TITLE/META ?>
   <?php
+    $this->headLink()
+    ->appendStylesheet($baseUrl . 'application/themes/guidanceguide/assets/css/root.css');
+
     $counter = (int) $this->layout()->counter;
     $staticBaseUrl = $this->layout()->staticBaseUrl;
     $headIncludes = $this->layout()->headIncludes;

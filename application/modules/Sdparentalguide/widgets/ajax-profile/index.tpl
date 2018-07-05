@@ -39,6 +39,8 @@ window.addEvent('domready', function() {
 en4.core.runonce.add(function() {
     var form = document.getElementsByClassName('ajax-form-' + <?php echo $this->identity; ?>)[0];
     en4.gg.ggAjaxForm(form, 'edit-profile');
+    form.style.width = '80%';
+    form.style.margin = '0 auto';
 });
 </script>
 <?php endif; ?>
