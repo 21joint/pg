@@ -23,7 +23,24 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
         Zend_Registry::set('timezone', $timezone);
         Engine_Api::_()->getApi('Core', 'siteapi')->setView();
         Engine_Api::_()->getApi('Core', 'siteapi')->setTranslate();
-        Engine_Api::_()->getApi('Core', 'siteapi')->setLocal();        
+        Engine_Api::_()->getApi('Core', 'siteapi')->setLocal();
+        
+        $method = strtolower($this->getRequest()->getMethod());
+        if($method == 'put' || $method == 'delete' || $method == 'patch' || $method == 'post'){
+            $inputStream = $this->getInputStream();
+            $params = (array)@json_decode($inputStream);
+            if(empty($params)){
+                parse_str($inputStream,$params);
+            }
+            $request = Zend_Controller_Front::getInstance()->getRequest();
+            if(!empty($params) && is_array($params)){
+                foreach($params as $key => $param){
+                    $this->setParam($key, $param);
+                    $request->setParam($key,$param);
+                    $_REQUEST[$key] = $param;
+                }
+            }
+        }
     }
     public function getInputStream(){
         if($this->_inputStream == null){
@@ -76,7 +93,7 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
     public function sendResponse() {
         ob_clean();
         $accept = $this->getRequest()->getHeader("Accept");
-        if(empty($accept) || strstr(strtolower($accept), "application/json")){
+        if(empty($accept) || strstr(strtolower($accept), "json") || $this->isApiRequest()){
             header("Content-Type: application/json");
         }        
         $front = Zend_Controller_Front::getInstance();
@@ -116,23 +133,7 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
             if(!$viewer->getIdentity() && $user->getIdentity()){
                 Engine_Api::_()->user()->setViewer($user);
             }            
-        }
-        $method = strtolower($this->getRequest()->getMethod());
-        if($method == 'put' || $method == 'delete' || $method == 'patch' || $method == 'post'){
-            $inputStream = $this->getInputStream();
-            $params = (array)@json_decode($inputStream);
-            if(empty($params)){
-                parse_str($inputStream,$params);
-            }
-            $request = Zend_Controller_Front::getInstance()->getRequest();
-            if(!empty($params) && is_array($params)){
-                foreach($params as $key => $param){
-                    $this->setParam($key, $param);
-                    $request->setParam($key,$param);
-                    $_REQUEST[$key] = $param;
-                }
-            }
-        }
+        }        
     }
     
     public function dispatch($action) {
@@ -206,10 +207,13 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
         $this->sendResponse();
     }
     public function respondWithServerError($exception){
-        $this->getResponse()
-                ->setHttpResponseCode(500)
-                ->setBody('Service temporary unavailable '.$exception->getMessage()." ".$exception->getTraceAsString())
-                ;
+        $this->view->status_code = 500;
+        $this->view->status = "Error";
+        $this->view->error = true;
+        $this->view->error_code = 500;
+        $this->view->message = "Service temporary unavailable";
+        $this->view->exceptionMessage = $exception->getMessage();
+        $this->view->stackTrace = $exception->getTraceAsString();
         $this->sendResponse();
     }
     public function getHost() {
@@ -229,5 +233,26 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
         }
 
         return $getPhotoHost;
+    }
+    
+    public function requireSubject(){
+        $resourceType = $this->getParam("resourceType");
+        $resourceId = $this->getParam("resourceID");
+        if(empty($resourceType) || empty($resourceId)){
+            $this->respondWithError('no_record');
+        }
+        
+        if(!Engine_Api::_()->hasItemType($resourceType)){
+            $this->respondWithError('no_record');
+        }
+        
+        $subject = Engine_Api::_()->getItem($resourceType,$resourceId);
+        if(empty($subject) || !$subject->getIdentity()){
+            $this->respondWithError('no_record');
+        }
+        
+        if(!Engine_Api::_()->core()->hasSubject()){
+            Engine_Api::_()->core()->setSubject($subject);
+        }
     }
 }

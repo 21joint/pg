@@ -81,7 +81,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         }
         $listingPhotosArray = array();
         $request = Zend_Controller_Front::getInstance()->getRequest();
-        $avatarPhoto = ucfirst($request->getParam("avatarPhoto","icon"));
+        $avatarPhoto = ucfirst($request->getParam("photoType",""));
         foreach($listingPhotos as $photo){
             $photos = $this->getContentImage($photo);
             $photoArray = array(
@@ -99,17 +99,19 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $viewer = Engine_Api::_()->user()->getViewer();
         $user = $sitereview->getOwner();
         $request = Zend_Controller_Front::getInstance()->getRequest();
-        $avatarPhoto = ucfirst($request->getParam("avatarPhoto","icon"));
+        $avatarPhoto = ucfirst($request->getParam("photoType",""));
         $listingRating = Engine_Api::_()->getDbTable("listingRatings","sdparentalguide")->getAvgListingRating($sitereview);
         $listingtype_id = $sitereview->listingtype_id;
         $sitereviewPhtos = $this->getContentImage($sitereview);
         $contentImages['photoID'] = (string)$sitereview->photo_id;
         $contentImages['photoURL'] = isset($sitereviewPhtos['photoURL'.$avatarPhoto])?$sitereviewPhtos['photoURL'.$avatarPhoto]:$sitereviewPhtos['photoURLIcon'];
+        $tmpBody = strip_tags($sitereview->body);
+        $shortDesc = ( Engine_String::strlen($tmpBody) > 255 ? Engine_String::substr($tmpBody, 0, 255) . '...' : $tmpBody );
         $sitereviewArray = array(
             'reviewID' => (string)$sitereview->getIdentity(),
             'title' => $sitereview->getTitle(),
-            'summaryDescription' => $sitereview->getDescription(),
-            'longDescription' => strip_tags($sitereview->body),
+            'shortDescription' => $shortDesc,
+            'longDescription' => $tmpBody,
             'likesCount' => $sitereview->likes()->getLikeCount(),
             'commentsCount' => $sitereview->comments()->getCommentCount(),
             'publishedDateTime' => $this->getFormatedDateTime($sitereview->approved_date),
@@ -126,7 +128,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             'privacySettings' => array(),
             'reviewPhotos' => $this->getListingPhotos($sitereview),
             'averageReviewRating' => sprintf("%.1f",$listingRating['review_rating']),
-            'averageProductRating' => sprintf("%.1f",$listingRating['product_rating']),            
+            'averageProductRating' => sprintf("%.1f",$listingRating['product_rating']),
         );
         
         $auth = Engine_Api::_()->authorization()->context;
@@ -158,7 +160,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
     }
     public function getUserData(User_Model_User $user){
         $request = Zend_Controller_Front::getInstance()->getRequest();
-        $avatarPhoto = ucfirst($request->getParam("avatarPhoto","icon"));
+        $avatarPhoto = ucfirst($request->getParam("photoType",""));
         $userPhotos = $this->getContentImage($user);
         $contentImages['photoID'] = (string)$user->photo_id;
         $contentImages['photoURL'] = isset($userPhotos['photoURL'.$avatarPhoto])?$userPhotos['photoURL'.$avatarPhoto]:$userPhotos['photoURLIcon'];
@@ -196,7 +198,8 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $topicArray = array(
             'topicID' => '',
             'topicName' => '',
-            'avatarPhoto' => array(),
+            'topicPhoto' => array(),
+            'featured' => false
         );
         if(empty($topic)){
             return $topicArray;
@@ -204,11 +207,12 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $topicArray['topicID'] = $topic->getIdentity();
         $topicArray['topicName'] = $topic->getTitle();
         $request = Zend_Controller_Front::getInstance()->getRequest();
-        $avatarPhoto = ucfirst($request->getParam("avatarPhoto","icon"));
+        $avatarPhoto = ucfirst($request->getParam("photoType",""));
         $topicPhotos = $this->getContentImage($topic);
         $contentImages['photoURL'] = isset($topicPhotos['photoURL'.$avatarPhoto])?$topicPhotos['photoURL'.$avatarPhoto]:$topicPhotos['photoURLIcon'];
         $contentImages['photoID'] = (string)$topic->photo_id;
-        $topicArray['avatarPhoto'] = $contentImages;
+        $topicArray['topicPhoto'] = $contentImages;
+        $topicArray['featured'] = $topic->featured;
         return $topicArray;
     }
     
@@ -245,7 +249,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $questionArray['title'] = (string)$question->title;
         $questionArray['body'] = (string)$question->body;
         $request = Zend_Controller_Front::getInstance()->getRequest();
-        $avatarPhoto = ucfirst($request->getParam("avatarPhoto","icon"));
+        $avatarPhoto = ucfirst($request->getParam("photoType",""));
         $questionPhotos = $this->getContentImage($question);
         $contentImages['photoID'] = (string)$question->photo_id;
         $contentImages['photoURL'] = isset($questionPhotos['photoURL'.$avatarPhoto])?$questionPhotos['photoURL'.$avatarPhoto]:$questionPhotos['photoURLIcon'];        
