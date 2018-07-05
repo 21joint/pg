@@ -4508,12 +4508,14 @@ form#user_form_login #twitter-element a:hover, form#user_form_login #twitter-ele
   color: #fff;
   border-color: #1DA1F2; }
 
-#global_page_user-signup-index .right-side div {
+#global_page_user-signup-index .right-side > div {
   width: 100%; }
 #global_page_user-signup-index form {
   overflow-y: scroll;
   max-height: 900px;
   overflow-x: none; }
+  #global_page_user-signup-index form.family-form div.form-wrapper-heading {
+    font-size: 16px; }
   #global_page_user-signup-index form::-webkit-scrollbar {
     display: none; }
   #global_page_user-signup-index form h3 {
