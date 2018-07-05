@@ -76,6 +76,7 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
         if(!$viewer->getIdentity() && $this->isApiRequest()){
             $this->respondWithError('unauthorized');
         }
+        $this->validateParams(array('mvp','expert','memberID','page','limit'));
         $this->validateRequestMethod("GET");
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         $usersTable = Engine_Api::_()->getDbTable("users","user");

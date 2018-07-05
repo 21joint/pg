@@ -89,7 +89,7 @@ class Pgservicelayer_Model_DbTable_Files extends Storage_Model_DbTable_Files
     $path = APPLICATION_PATH . DIRECTORY_SEPARATOR . 'temporary';
     $viewer = Engine_Api::_()->user()->getViewer();
     $params = array(
-        'parent_type' => "",
+        'parent_type' => "user",
         'parent_id' => (int)$viewer->getIdentity(),
         'user_id' => (int)$viewer->getIdentity(),
         'name' => $fileName,

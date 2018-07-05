@@ -39,8 +39,12 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
         if(!$viewer->getIdentity() && $this->isApiRequest()){
             $this->respondWithError('unauthorized');
         }
+        $this->validateParams(array('photoID','page','limit'));
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         $id = $this->getParam("photoID",'-1');
+        if(empty($id)){
+            $id = "-1";
+        }
         $page = $this->getParam("page",1);
         $limit = $this->getParam("limit",50);
         $avatarPhoto = ucfirst($this->getParam("avatarPhoto","icon"));

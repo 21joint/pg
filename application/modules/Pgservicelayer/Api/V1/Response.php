@@ -106,7 +106,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $contentImages['photoID'] = (string)$sitereview->photo_id;
         $contentImages['photoURL'] = isset($sitereviewPhtos['photoURL'.$avatarPhoto])?$sitereviewPhtos['photoURL'.$avatarPhoto]:$sitereviewPhtos['photoURLIcon'];
         $tmpBody = strip_tags($sitereview->body);
-        $shortDesc = ( Engine_String::strlen($tmpBody) > 255 ? Engine_String::substr($tmpBody, 0, 255) . '...' : $tmpBody );
+        $shortDesc = ( Engine_String::strlen($tmpBody) > 100 ? Engine_String::substr($tmpBody, 0, 100) . '...' : $tmpBody );
         $sitereviewArray = array(
             'reviewID' => (string)$sitereview->getIdentity(),
             'title' => $sitereview->getTitle(),
@@ -160,7 +160,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
     }
     public function getUserData(User_Model_User $user){
         $request = Zend_Controller_Front::getInstance()->getRequest();
-        $avatarPhoto = ucfirst($request->getParam("photoType",""));
+        $avatarPhoto = ucfirst($request->getParam("photoType","icon"));
         $userPhotos = $this->getContentImage($user);
         $contentImages['photoID'] = (string)$user->photo_id;
         $contentImages['photoURL'] = isset($userPhotos['photoURL'.$avatarPhoto])?$userPhotos['photoURL'.$avatarPhoto]:$userPhotos['photoURLIcon'];
@@ -207,7 +207,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $topicArray['topicID'] = $topic->getIdentity();
         $topicArray['topicName'] = $topic->getTitle();
         $request = Zend_Controller_Front::getInstance()->getRequest();
-        $avatarPhoto = ucfirst($request->getParam("photoType",""));
+        $avatarPhoto = ucfirst($request->getParam("photoType","icon"));
         $topicPhotos = $this->getContentImage($topic);
         $contentImages['photoURL'] = isset($topicPhotos['photoURL'.$avatarPhoto])?$topicPhotos['photoURL'.$avatarPhoto]:$topicPhotos['photoURLIcon'];
         $contentImages['photoID'] = (string)$topic->photo_id;
@@ -249,7 +249,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $questionArray['title'] = (string)$question->title;
         $questionArray['body'] = (string)$question->body;
         $request = Zend_Controller_Front::getInstance()->getRequest();
-        $avatarPhoto = ucfirst($request->getParam("photoType",""));
+        $avatarPhoto = ucfirst($request->getParam("photoType","normal"));
         $questionPhotos = $this->getContentImage($question);
         $contentImages['photoID'] = (string)$question->photo_id;
         $contentImages['photoURL'] = isset($questionPhotos['photoURL'.$avatarPhoto])?$questionPhotos['photoURL'.$avatarPhoto]:$questionPhotos['photoURLIcon'];        
