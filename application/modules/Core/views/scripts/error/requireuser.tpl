@@ -33,7 +33,6 @@
         <?php  echo $this->translate('Please sign in to continue.'); ?>
       <?php endif; ?>
     </div>
-    
+  
   </div>
-
-</div>
+    

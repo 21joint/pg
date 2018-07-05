@@ -1080,7 +1080,7 @@ form#user_form_login {
             }
         }
     }
-
+}
 
 // SignUp Page
 #global_page_user-signup-index {
@@ -1423,11 +1423,18 @@ img.item_photo_user {
             background-color: $danger !important;
         }
     }
-    h3, div.form-wrapper-heading span {
+    h3, div.form-wrapper-heading  {
         font-size: 20px;
         color:#333D40;
         border-bottom: 1px solid #F5F5F5;
         font-weight: 700;
+        height: auto;
+        span {
+            display: flex!important;
+            position: unset!important;
+            
+        }
+        
     }
     p {
         color:#333D40;
@@ -1435,7 +1442,6 @@ img.item_photo_user {
         font-weight: 400;
     }
     .form-wrapper {
-        padding-left: 4rem;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -1522,7 +1528,7 @@ img.item_photo_user {
                         // age-range
                         .age-range {
                             display: grid;
-                            grid-template-columns: repeat(4, 1fr);
+                            grid-template-columns: repeat(5, 1fr);
                             grid-gap: 10px;
                             grid-auto-rows: minmax(60px, auto);
                         }
@@ -2343,6 +2349,7 @@ img.item_photo_user {
                         min-width: 100% !important;
                     }
                 }
+                
             }
             input[type=checkbox] + label {
                 display: block!important;
@@ -2350,6 +2357,11 @@ img.item_photo_user {
             input[type=checkbox] {
                 float: none!important;
             }
+             // age-range
+             .age-range {
+                grid-template-columns: repeat(3, 1fr)!important;
+            }
+           
         
         }
 
@@ -2380,7 +2392,7 @@ img.item_photo_user {
                     #add-birthday {
                         .col-12.d-flex, .col-12.years-range, .col-12.years, .col-12.final-date {
                             display: grid !important;
-                            grid-template-columns: repeat(3, 1fr);
+                            grid-template-columns: repeat(1, 1fr);
                             grid-gap: 10px;
                             grid-auto-rows: minmax(60px, auto);
                             &.d-none {
@@ -2614,4 +2626,3 @@ img.item_photo_user {
             }
         }
     }
-}

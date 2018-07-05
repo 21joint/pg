@@ -22,7 +22,6 @@ class Sdparentalguide_Api_Core extends Core_Api_Abstract{
         } else {
             $months = $interval->m;
         }
-
         
         $total_months = $months;
 
@@ -598,66 +597,4 @@ class Sdparentalguide_Api_Core extends Core_Api_Abstract{
             return $imageUrl;
     }   
     
-
-
-    public function getDate($datefromtable) {
-
-        $datetime1 = new DateTime($datefromtable);
-        $datetime2 = new DateTime(date('Y/m/d'));
-        $interval = $datetime1->diff($datetime2);
-       
-        $years = $interval->y;
-
-        if($years>0) {
-            $months = $interval->m + ($interval->y*12);
-        }else {
-            $months = $interval->m;
-        }
-               
-        if(( $months >= 0) && ( $months <= 1)){
-            $baby = 'NewBorn';   
-        }elseif(( $months >= 1) && ( $months <= 11)){
-            $baby = 'Baby';
-        }elseif(( $months >= 12) && ( $months <= 23)){
-            $baby = 'Toddler';
-        }elseif( $months >= 24 &&  $months <= 47 ){
-            $baby = 'Preschool';
-        }elseif( $months >= 48 &&  $months <= 121 ){
-            $baby = 'School-Age';
-        }elseif( $months >= 112 && $mouths <= 221){
-            $baby = 'Teen';
-        }elseif( $mouths > 222){
-            $baby = 'Adult';
-        }else {
-            $baby = '';
-        }
-        
-
-       
-        $age = $months / 12;
-       
-        echo '<span class="font-weight-bold mr-2">' .$baby .'</span>';
-
-        if($age < 1){
-            if($months == 1) {
-                echo "$months month ago.";
-            }else{
-                echo "$months months ago.";
-            }
-        }else{
-            $age = ceil($age);
-            if($years == 1){
-                echo "$age year ago.";
-            }else{
-                if(($years >= 12 && $years <= 18)){
-                    echo '12 +';
-                }elseif($years >= 18){
-                    echo '18 +';
-                }else {
-                    echo "$age years ago.";
-                }
-            }
-        }
-      
-    }
 }
