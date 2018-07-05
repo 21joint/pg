@@ -147,9 +147,7 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
             $this->view->message = Zend_Registry::get('Zend_Translate')->_('Super Admins can\'t be deleted.');
             return;
         }
-
-        return;
-
+        
         // Process
         $db = Engine_Api::_()->getDbtable('users', 'user')->getAdapter();
         $db->beginTransaction();
@@ -168,8 +166,6 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
 
         // Unset viewer, remove auth, clear session
         Engine_Api::_()->user()->setViewer(null);
-        Zend_Auth::getInstance()->getStorage()->clear();
-        Zend_Session::destroy();
 
     }
 
@@ -212,16 +208,58 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
             'privacyValues' => $this->getRequest()->getParam('privacy'),
         ));
 
+        // setup to prevent syntax error
+        $family = array();
+
         // setup values
         $values = $request->getParam('values', null);
         foreach($values as $key => $value) {
+            
             if($key != 'submit') {
                 $element = $form->getElement($key);
                 if($element) {
                     $element->setValue($value);
                 }
             }
+            
+            if (strpos($key, 'family') !== false) {
+                $i = preg_replace('/[^0-9]/', '', $key);
+                $family[$i][] = $value;
+            }
+            
+            if($key == 'profile_gender') {
+                $viewer->gg_gender = $value;
+                $viewer->save();
+            }
+
+            if($key == 'profile_age_range') {
+                $viewer->gg_age_range = $value;
+                $viewer->gg_age_range_set = date('Y-m-d H:i:s');
+                $viewer->save();
+            }
+
         }
+
+        $table = Engine_Api::_()->getDbtable('familyMembers', 'sdparentalguide');
+        $table->delete(array(
+            'owner_id = ?' => $viewer->getIdentity()
+        ));
+
+        // family
+        if(count($family) > 0) {
+            foreach($family as $item){
+                $prefParams = array(
+                    'owner_id' => $viewer->getIdentity(),
+                    'gender' => $item[0],
+                    'dob' => $item[1] . '-01'
+                );
+                $prefRow = $table->createRow();   
+                $prefRow->setFromArray($prefParams);
+                $prefRow->save();
+            }
+
+        }
+
 
         if ( $form->isValid($values) ) {
             
@@ -313,6 +351,7 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
 
         // setup values
         $values = $request->getParam('values', null);
+       
         $publishTypes = array();
 
         foreach($values as $key => $value) {
@@ -414,6 +453,87 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
 
     }
 
+    public function preferenceAction(){
+
+        $this->_helper->ViewRenderer->setNoRender(true);
+
+        $viewer = Engine_Api::_()->user()->getViewer();
     
+        if( !$this->getRequest()->isPost() ) {
+            $this->view->status = false;
+            $this->view->error = Zend_Registry::get('Zend_Translate')->_("Invalid request method");
+            return;
+        }
+        
+        $request = Zend_Controller_Front::getInstance()->getRequest();
+        $form = new Sdparentalguide_Form_Signup_Interests();
+
+        $values = $request->getParam('values', null);
+
+        // setup values
+        $values = $request->getParam('values', null);
+        $publishTypes = array(
+            'categories' => array()
+        );
+
+        foreach($values as $key => $value) {
+            if($value['key'] == 'categories[]' && $value['value'] === 'true') {
+                array_push($publishTypes['categories'], $value['name']);
+            }
+        }
+        
+        $db = Engine_Db_Table::getDefaultAdapter();
+        $db->beginTransaction();
+
+        try {
+            
+            $prefTable = Engine_Api::_()->getDbTable("preferences","sdparentalguide");
+            $catTable = Engine_Api::_()->getDbTable("categories","sitereview");
+
+            $categories = $publishTypes['categories'];
+            if(count($categories) <= 0){
+                $this->view->status = false;
+                $this->view->error = Zend_Registry::get('Zend_Translate')->_("Nothing have been selected.");
+                return;
+            }
+
+            $categories = $catTable->fetchAll($catTable->select()->where('category_id IN (?)',$categories));
+            if(count($categories) <= 0){
+                $this->view->status = false;
+                $this->view->error = Zend_Registry::get('Zend_Translate')->_("Invalid request method");
+                return;
+            }
+
+            $prefTable->delete(array(
+                'user_id = ?' => $viewer->getIdentity(),
+                'category_id NOT IN(?)' => $categories
+            ));
+            foreach($categories as $category){
+                $prefParams = array(
+                    'user_id' => $viewer->getIdentity(),
+                    'listingtype_id' => $category->listingtype_id,
+                    'category_id' => $category->category_id
+                );
+                $prefRow = $prefTable->fetchRow($prefTable->select()->where('user_id = ?',$viewer->getIdentity())
+                        ->where("listingtype_id = ?",$category->listingtype_id)->where("category_id = ?",$category->category_id));
+                if(empty($prefRow)){
+                    $prefRow = $prefTable->createRow();
+                }                
+                $prefRow->setFromArray($prefParams);
+                $prefRow->save();
+            }
+
+            $this->view->status = true;
+            $this->view->message = Zend_Registry::get('Zend_Translate')->_('Profile have been updated.');
+            
+            $db->commit();
+
+        } catch (Exception $ex) {
+            $db->rollBack();
+            throw $ex;
+        }
+
+        
+    }
 
 }

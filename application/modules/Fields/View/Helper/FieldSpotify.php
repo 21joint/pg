@@ -19,17 +19,9 @@
  */
 class Fields_View_Helper_FieldSpotify extends Fields_View_Helper_FieldAbstract
 {
-  public function fieldSpotify($subject, $field, $value)
+  public function fieldSpotify()
   {
-   $regex = '/^((http(s|):\/\/|)(www\.|)|)open\.spotify\.com\/user\//i';
-    
-    $username = preg_replace($regex, '', trim($value->value));
-    $spotUrl = 'https://open.spotify.com/user/' .  $username;
-    
-    return $this->view->htmlLink($spotUrl, $value->value, array(
-      'target' => '_blank',
-      'ref' => 'nofollow',
-    ));
+   
     
   }
 }

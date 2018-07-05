@@ -743,6 +743,17 @@ return array(
             'title' => 'My Info',
         ),
     ),
+
+    array(
+        'title' => $view->translate('AJAX User Preferences'),
+        'description' => $view->translate('AJAX User Preferences'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-preferences',
+        'defaultParams' => array(
+            'title' => 'User Preferences',
+        ),
+    ),
     
     array(
         'title' => $view->translate('PG Community Leaderboard'),

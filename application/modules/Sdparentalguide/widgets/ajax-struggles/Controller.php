@@ -39,13 +39,23 @@ class Sdparentalguide_Widget_AjaxStrugglesController extends Engine_Content_Widg
             return;
           }
         }
-  
-        $this->view->paginator = $paginator = Engine_Api::_()->getItemTable('ggcommunity_question')->getQuestionsPaginator($subject);
 
+        $page = $this->_getParam('page', 1);
+        $limit = Engine_Api::_()->getApi('settings', 'core')->getSetting('ggcommunity.question.page');
+        
+
+        $questionTable = Engine_Api::_()->getDbtable('questions', 'ggcommunity');
+
+        $select = $questionTable->select()
+          ->where('user_id = ?', $subject->user_id);
+        ;
+
+        $this->view->paginator = $paginator = Zend_Paginator::factory($select);
+        
+        $this->view->paginator->setItemCountPerPage($limit);
+        $this->view->paginator->setCurrentPageNumber($page);
   
-        $paginator->setItemCountPerPage($this->_getParam('itemCountPerPage', 1));
-        $paginator->setCurrentPageNumber($this->_getParam('page', 1));
-  
+      
         // render content
         $this->view->showContent = true;  
   
