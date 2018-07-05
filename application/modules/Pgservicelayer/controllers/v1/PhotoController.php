@@ -10,19 +10,7 @@
 class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Api
 {
     public function init(){
-        $timezone = Engine_Api::_()->getApi('settings', 'core')->core_locale_timezone;
-        $viewer   = Engine_Api::_()->user()->getViewer();
-        $defaultLocale = $defaultLanguage = Engine_Api::_()->getApi('settings', 'core')->getSetting('core.locale.locale', 'en_US');
-        $defaultLocaleObj = new Zend_Locale($defaultLocale);
-        Zend_Registry::set('LocaleDefault', $defaultLocaleObj);
-
-        if ($viewer->getIdentity()) {
-            $timezone = $viewer->timezone;
-        }
-        Zend_Registry::set('timezone', $timezone);
-        Engine_Api::_()->getApi('Core', 'siteapi')->setView();
-        Engine_Api::_()->getApi('Core', 'siteapi')->setTranslate();
-        Engine_Api::_()->getApi('Core', 'siteapi')->setLocal();
+        parent::init();
     }
     public function indexAction(){
         try{
@@ -51,11 +39,15 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
         if(!$viewer->getIdentity() && $this->isApiRequest()){
             $this->respondWithError('unauthorized');
         }
+        $this->validateParams(array('photoID','page','limit'));
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
-        $id = $this->getParam("photoID");   
+        $id = $this->getParam("photoID",'-1');
+        if(empty($id)){
+            $id = "-1";
+        }
         $page = $this->getParam("page",1);
         $limit = $this->getParam("limit",50);
-        $avatarPhoto = ucfirst($this->getParam("avatarPhoto","icon"));
+        $avatarPhoto = ucfirst($this->getParam("photoType",""));
         $table = Engine_Api::_()->getDbTable('files', 'pgservicelayer');
         $tableName = $table->info("name");
         $select = $table->select()->where('parent_file_id IS NULL');
@@ -77,7 +69,7 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
                 'photoID' => (string)$photo->getIdentity(),
                 'photoURL' => ''
             );
-            $photoArray['photoURL'] = isset($photos['photoURL'.$avatarPhoto])?$photos['photoURL'.$avatarPhoto]:$photos['photoURLIcon'];
+            $photoArray = array_merge($photoArray,$photos);
             $response['Results'][] = $photoArray;
         }
         $this->respondWithSuccess($response);
@@ -92,7 +84,7 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
         if(empty($_FILES['Filedata']['tmp_name']) && $image === false){
             $this->respondWithValidationError('parameter_missing',$this->translate("Photo missing in Filedata."));
         }
-        $avatarPhoto = ucfirst($this->getParam("avatarPhoto","icon"));
+        $avatarPhoto = ucfirst($this->getParam("photoType",""));
         $table = Engine_Api::_()->getDbTable('files', 'pgservicelayer');
         $db = $table->getDefaultAdapter();
         $db->beginTransaction();
@@ -121,7 +113,7 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
                 'photoID' => (string)$photo->getIdentity(),
                 'photoURL' => ''
             );
-            $photoArray['photoURL'] = isset($photos['photoURL'.$avatarPhoto])?$photos['photoURL'.$avatarPhoto]:$photos['photoURLIcon'];
+            $photoArray = array_merge($photoArray,$photos);
             $this->respondWithSuccess($photoArray);
         } catch (Exception $ex) {
             $db->rollBack();
@@ -155,7 +147,7 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
                 }
                 $storageFile->gg_deleted = 1;
                 $storageFile->save();
-                $children = $storageFile->getChildren();
+                $children = $storageFile->getChildren('all');
                 foreach($children as $child){
                     $child->gg_deleted = 1;
                     $child->save();

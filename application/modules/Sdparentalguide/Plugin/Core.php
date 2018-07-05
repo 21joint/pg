@@ -354,6 +354,16 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                 $request->setControllerName("error");
                 $request->setActionName("notfound");
             }
+            
+            if($matchedPath == 'reviews'){
+                $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('redirector');
+                return $redirector->gotoUrl("reviews/home",array('prependBase' => true));
+            }
+            
+            if($matchedPath == 'community'){
+                $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('redirector');
+                return $redirector->gotoUrl("community/home",array('prependBase' => true));
+            }
         }
     }
     public function getPageByName($name){

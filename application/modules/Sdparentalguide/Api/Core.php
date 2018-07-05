@@ -6,6 +6,55 @@
  * and open the template in the editor.
  */
 class Sdparentalguide_Api_Core extends Core_Api_Abstract{
+
+    public function getDateTime($datefromtable) {
+
+        $view = Zend_Registry::get("Zend_View");
+        
+        $datetime1 = new DateTime($datefromtable);
+        $datetime2 = new DateTime(date('Y/m/d'));
+        $interval = $datetime1->diff($datetime2);
+       
+        $years = $interval->y;
+
+        if( $years > 0 ) {
+            $months = $interval->m + ($interval->y*12);
+        } else {
+            $months = $interval->m;
+        }
+        
+        $total_months = $months;
+
+        if($total_months > 12) {
+            $total_months = floor($total_months/12);
+            $total_months = $view->translate(array('%s Year', '%s Years', $total_months), $total_months);
+        } else {
+            $total_months = $view->translate(array('%s Month', '%s Months', $months), $months);
+        }
+
+        if( ($months >= 0) && ( $months <= 1) ){
+            $baby = $view->translate('NewBorn');
+        } elseif( ($months >= 1) && ($months <= 11) ){
+            $baby = $view->translate('Baby');
+        } elseif( ($months >= 12) && ( $months <= 23) ){
+            $baby = $view->translate('Toddler');
+        } elseif( $months >= 24 &&  $months <= 47 ){
+            $baby = $view->translate('Preschool');
+        } elseif( $months >= 48 && $months <= 121 ){
+            $baby = $view->translate('School-Age');
+        } elseif( $months > 112) {
+            $baby = $view->translate('Teen');
+        } else {
+            $baby = '';
+        }
+
+        $users = array();
+        $users['baby'] = $baby;
+        $users['duration'] = $total_months;
+
+        return $users;
+    }
+
     public function getUserCredits($user = null){
         if(empty($user)){
             $user = Engine_Api::_()->user()->getViewer();
@@ -562,5 +611,6 @@ class Sdparentalguide_Api_Core extends Core_Api_Abstract{
 
         if (!empty($imageUrl))
             return $imageUrl;
-    }    
+    }   
+    
 }

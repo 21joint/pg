@@ -65,11 +65,8 @@
 .leaderboard_main div:nth-child(2){
   flex: 7;
 }
-.leaderboard_main div:nth-child(5){
-  cursor: auto;
-}
-.order_by:hover{
-  color: #5bc6cd;
+.active_category, .order_by:hover{
+  color: #5bc6cd!important;
 }
 /* Leaderboard Main styling end */
 
@@ -459,7 +456,6 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
 @media screen and (max-width: 768px){
     #order_btn{
       font-size: 12px;
-      border-radius: 50%;
       color: #fff;
       font-weight: bold;
       background-color: #5bc6cd;

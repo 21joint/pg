@@ -7,7 +7,7 @@
  * @author     Stars Developer
  */
 
-class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
+class Pgservicelayer_Api_V2_Response extends Sdparentalguide_Api_Core {
     public function getFormatedDateTime($datetime){
         if(empty($datetime)){
             return "";
@@ -118,7 +118,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             'featured' => $sitereview->featured,
             'approved' => $sitereview->approved,
             'createdDateTime' => $this->getFormatedDateTime($sitereview->creation_date),
-            'lastModifiedDateTime' => $this->getFormatedDateTime($sitereview->modified_date),
+            'lastModifiedDateTime' => $this->getFormatedDateTime($sitereview->gg_dt_lastmodified),
             'status' => (string)$this->getListingStatus($sitereview),
             'author' => $this->getUserData($user),
             'authorRating' => $sitereview->gg_author_product_rating,

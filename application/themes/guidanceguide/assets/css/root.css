@@ -3897,6 +3897,29 @@ mark,
   .blockquote-footer::before {
     content: "\2014 \00A0"; }
 
+.body-maintenance .row-maintenance {
+  color: #333D40;
+  height: 100vh; }
+  .body-maintenance .row-maintenance .pic-one p {
+    font-family: 'Nunito', sans-serif; }
+  .body-maintenance .row-maintenance .pic-one .image-holder img {
+    height: 70px; }
+  .body-maintenance .row-maintenance .pic-one nav form .form-control {
+    border-radius: 30px; }
+  .body-maintenance .row-maintenance .pic-one nav form button {
+    border-radius: 30px; }
+  .body-maintenance .row-maintenance .pic-one nav .form-inline input {
+    width: 357px;
+    background-color: #F5F5F5;
+    border: 2px solid #F5F5F5; }
+  .body-maintenance .row-maintenance .pic-one nav .form-inline ::-webkit-input-placeholder {
+    color: #93A4A6;
+    padding-left: 1rem; }
+  .body-maintenance .row-maintenance .pic-two {
+    height: 100%; }
+    .body-maintenance .row-maintenance .pic-two .image-holder img {
+      height: 738px; }
+
 .seaocore_up_button .seaocore_up_button {
   background: #fff;
   border: none; }
@@ -4423,64 +4446,64 @@ body#global_page_user-profile-index {
 .layout_sdparentalguide_ajax_preferences #buttons-wrapper #fieldset-buttons a {
   display: none !important; }
 
-#global_page_user-auth-login #user_form_login #fieldset-buttons {
+form#user_form_login #fieldset-buttons {
   padding: 0px;
   margin: 0px; }
-  #global_page_user-auth-login #user_form_login #fieldset-buttons .form-label {
+  form#user_form_login #fieldset-buttons .form-label {
     display: none; }
-  #global_page_user-auth-login #user_form_login #fieldset-buttons #submit-wrapper {
+  form#user_form_login #fieldset-buttons #submit-wrapper {
     width: 48%;
     float: left;
     margin: 0px; }
-    #global_page_user-auth-login #user_form_login #fieldset-buttons #submit-wrapper #submit-element {
+    form#user_form_login #fieldset-buttons #submit-wrapper #submit-element {
       float: right;
       width: 100%; }
-      #global_page_user-auth-login #user_form_login #fieldset-buttons #submit-wrapper #submit-element button:hover, #global_page_user-auth-login #user_form_login #fieldset-buttons #submit-wrapper #submit-element button:active {
+      form#user_form_login #fieldset-buttons #submit-wrapper #submit-element button:hover, form#user_form_login #fieldset-buttons #submit-wrapper #submit-element button:active {
         color: #fff; }
-  #global_page_user-auth-login #user_form_login #fieldset-buttons #cancel-wrapper {
+  form#user_form_login #fieldset-buttons #cancel-wrapper {
     float: right;
     width: 48%;
     margin: 0px; }
-    #global_page_user-auth-login #user_form_login #fieldset-buttons #cancel-wrapper a:hover, #global_page_user-auth-login #user_form_login #fieldset-buttons #cancel-wrapper a:active {
+    form#user_form_login #fieldset-buttons #cancel-wrapper a:hover, form#user_form_login #fieldset-buttons #cancel-wrapper a:active {
       color: #fff; }
-#global_page_user-auth-login #user_form_login #fieldset-buttonsfileds {
+form#user_form_login #fieldset-buttonsfileds {
   padding: 0px; }
-  #global_page_user-auth-login #user_form_login #fieldset-buttonsfileds .form-wrapper {
+  form#user_form_login #fieldset-buttonsfileds .form-wrapper {
     margin-bottom: 0px; }
-  #global_page_user-auth-login #user_form_login #fieldset-buttonsfileds #remember-wrapper #remember-label, #global_page_user-auth-login #user_form_login #fieldset-buttonsfileds #remember-wrapper #forgot-label, #global_page_user-auth-login #user_form_login #fieldset-buttonsfileds #forgot-wrapper #remember-label, #global_page_user-auth-login #user_form_login #fieldset-buttonsfileds #forgot-wrapper #forgot-label {
+  form#user_form_login #fieldset-buttonsfileds #remember-wrapper #remember-label, form#user_form_login #fieldset-buttonsfileds #remember-wrapper #forgot-label, form#user_form_login #fieldset-buttonsfileds #forgot-wrapper #remember-label, form#user_form_login #fieldset-buttonsfileds #forgot-wrapper #forgot-label {
     display: none; }
-  #global_page_user-auth-login #user_form_login #fieldset-buttonsfileds #remember-wrapper {
+  form#user_form_login #fieldset-buttonsfileds #remember-wrapper {
     display: inline-block;
     float: left; }
-  #global_page_user-auth-login #user_form_login #fieldset-buttonsfileds #forgot-wrapper {
+  form#user_form_login #fieldset-buttonsfileds #forgot-wrapper {
     display: inline-block;
     float: right; }
-    #global_page_user-auth-login #user_form_login #fieldset-buttonsfileds #forgot-wrapper #forgot-element p {
+    form#user_form_login #fieldset-buttonsfileds #forgot-wrapper #forgot-element p {
       margin: 0px; }
-      #global_page_user-auth-login #user_form_login #fieldset-buttonsfileds #forgot-wrapper #forgot-element p a {
+      form#user_form_login #fieldset-buttonsfileds #forgot-wrapper #forgot-element p a {
         color: #93A4A6;
         font-size: 14px;
         font-weight: 400;
         font-family: 'Open Sans', sans-serif; }
-#global_page_user-auth-login #user_form_login #fieldset-facebookbutton #twitter-wrapper {
+form#user_form_login #fieldset-facebookbutton #twitter-wrapper {
   width: 48%;
   float: right;
   margin-left: 5px;
   margin-bottom: 0px; }
-  #global_page_user-auth-login #user_form_login #fieldset-facebookbutton #twitter-wrapper #twitter-label {
+  form#user_form_login #fieldset-facebookbutton #twitter-wrapper #twitter-label {
     display: none; }
-#global_page_user-auth-login #user_form_login #fieldset-facebookbutton #facebook-wrapper {
+form#user_form_login #fieldset-facebookbutton #facebook-wrapper {
   width: 48%;
   float: left;
   margin-right: 5px;
   margin-bottom: 0px; }
-  #global_page_user-auth-login #user_form_login #fieldset-facebookbutton #facebook-wrapper #facebook-label {
+  form#user_form_login #fieldset-facebookbutton #facebook-wrapper #facebook-label {
     display: none; }
-#global_page_user-auth-login #facebook-element a:hover, #global_page_user-auth-login #facebook-element a:active {
+form#user_form_login #facebook-element a:hover, form#user_form_login #facebook-element a:active {
   background-color: #3C5A99;
   color: #fff;
   border-color: #3C5A99; }
-#global_page_user-auth-login #twitter-element a:hover, #global_page_user-auth-login #twitter-element a:active {
+form#user_form_login #twitter-element a:hover, form#user_form_login #twitter-element a:active {
   background-color: #1DA1F2;
   color: #fff;
   border-color: #1DA1F2; }
@@ -4734,17 +4757,20 @@ img.item_photo_user {
 
 #extfox-settings#delete button {
   background-color: #E15A5A !important; }
-#extfox-settings h3, #extfox-settings div.form-wrapper-heading span {
+#extfox-settings h3, #extfox-settings div.form-wrapper-heading {
   font-size: 20px;
   color: #333D40;
   border-bottom: 1px solid #F5F5F5;
-  font-weight: 700; }
+  font-weight: 700;
+  height: auto; }
+  #extfox-settings h3 span, #extfox-settings div.form-wrapper-heading span {
+    display: flex !important;
+    position: unset !important; }
 #extfox-settings p {
   color: #333D40;
   font-size: 16px;
   font-weight: 400; }
 #extfox-settings .form-wrapper {
-  padding-left: 4rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start; }
@@ -4761,6 +4787,8 @@ img.item_photo_user {
     width: 100%; }
     #extfox-settings .form-wrapper .form-element input[type="password"]::-webkit-input-placeholder, #extfox-settings .form-wrapper .form-element input[type="text"]::-webkit-input-placeholder {
       color: #B9CFD1 !important; }
+  #extfox-settings .form-wrapper .form-element #family-information > .row:hover .actions .btn-danger {
+    visibility: visible; }
   #extfox-settings .form-wrapper .form-element #family-information .family-item-holder > div {
     border-radius: 50%;
     width: 50px;
@@ -4773,6 +4801,8 @@ img.item_photo_user {
       background-color: #8AE693; }
   #extfox-settings .form-wrapper .form-element #family-information .family-item p {
     font-size: 80% !important; }
+  #extfox-settings .form-wrapper .form-element #family-information .actions .btn-danger {
+    visibility: hidden; }
   #extfox-settings .form-wrapper .form-element #family-information .row.add-another-child {
     border-top: 4px solid #f7fcfc;
     border-bottom: 4px solid #f7fcfc; }
@@ -4788,6 +4818,11 @@ img.item_photo_user {
       transition: 0.2s ease-in background-color; }
       #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .close-form a:hover {
         background-color: #E186C0; }
+    #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .age-range {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-gap: 10px;
+      grid-auto-rows: minmax(60px, auto); }
     #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div {
       border-radius: 10px;
       border: 2px solid #F5F5F5;
@@ -5330,10 +5365,35 @@ img.item_photo_user {
       padding-left: 10px; }
     #extfox-settings .form-wrapper .form-element {
       max-width: 100% !important; }
+    #extfox-settings .form-wrapper .form-element.family-wrapper {
+      min-width: 100% !important; }
   #extfox-settings input[type=checkbox] + label {
     display: block !important; }
   #extfox-settings input[type=checkbox] {
     float: none !important; }
+  #extfox-settings .age-range {
+    grid-template-columns: repeat(3, 1fr) !important; }
+
+  .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper input[type=checkbox] {
+    display: none; }
+    .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper input[type=checkbox] + label {
+      left: 0;
+      display: flex !important;
+      align-items: center; }
+  .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper .form-options-wrapper {
+    display: block;
+    float: left; }
+    .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper .form-options-wrapper li {
+      width: 100%; }
+  .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #family-information .btn-danger {
+    visibility: visible !important; }
+  .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday .col-12.d-flex, .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday .col-12.years-range, .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday .col-12.years, .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday .col-12.final-date {
+    display: grid !important;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(60px, auto); }
+    .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday .col-12.d-flex.d-none, .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday .col-12.years-range.d-none, .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday .col-12.years.d-none, .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday .col-12.final-date.d-none {
+      display: none !important; }
 
   .layout_sdparentalguide_ajax_badges .container {
     width: 100% !important; }
@@ -5396,13 +5456,13 @@ img.item_photo_user {
   #global_page_user-auth-forgot button, #global_page_user-auth-reset button {
     width: 100% !important; }
 
-  #global_page_user-auth-login #user_form_login h3 {
+  form#user_form_login h3 {
     margin-top: 100px; }
-  #global_page_user-auth-login #user_form_login #facebookbutton-wrapper #twitter-wrapper a {
+  form#user_form_login #facebookbutton-wrapper #twitter-wrapper a {
     background-color: #1DA1F2;
     color: #fff;
     border-color: #1DA1F2; }
-  #global_page_user-auth-login #user_form_login #facebookbutton-wrapper #facebook-element a {
+  form#user_form_login #facebookbutton-wrapper #facebook-element a {
     background-color: #3C5A99;
     color: #fff;
     border-color: #3C5A99; }

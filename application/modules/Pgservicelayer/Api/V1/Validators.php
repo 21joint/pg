@@ -25,11 +25,11 @@ class Pgservicelayer_Api_V1_Validators extends Core_Api_Abstract
             'required' => true,
             'allowEmpty' => false,
         );
-        $formValidators['summaryDescription'] = array(
+        $formValidators['longDescription'] = array(
             'required' => true,
             'allowEmpty' => false,
         );
-        $formValidators['ownerRating'] = array(
+        $formValidators['authorRating'] = array(
             'required' => true,
             'allowEmpty' => false,
         );
