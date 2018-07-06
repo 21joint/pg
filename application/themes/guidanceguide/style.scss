@@ -598,7 +598,17 @@ body#global_page_user-profile-index {
             }
         }
     }
-    
+    .badges-earned {
+        div.bottom {
+            div {
+                div.col-sm {
+                    .badge-holder {
+                        min-width: 100%;
+                    }
+                }
+            }
+        }
+    }
 }
 
 // Struggles Profile

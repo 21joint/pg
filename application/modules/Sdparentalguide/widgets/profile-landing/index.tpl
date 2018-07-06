@@ -60,25 +60,38 @@
                         <?php echo $this->translate('Badges Earned'); ?>
                     </p>
                     <div class="bottom row pt-4">
-                        <div class="col-sm col-2 bronze">
-                            <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
-                                <?php echo $this->subject->gg_bronze_count; ?>
+                        <div class="col-2 text-center">
+                            <div class="col-sm px-0 bronze text-center">
+                                <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
+                                    <?php echo $this->subject->gg_bronze_count; ?>
+                                </div>
+                            
                             </div>
+                            <span class="text-muted small text-center w-100">Bronze</span>
                         </div>
-                        <div class="col-sm col-2 silver">
-                            <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
-                                <?php echo $this->subject->gg_silver_count; ?>
+                        <div class="col-2 text-center">
+                            <div class="col-sm px-0 silver text-center">
+                                <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
+                                    <?php echo $this->subject->gg_silver_count; ?>
+                                </div>
                             </div>
+                            <span class="text-muted small  w-100">Silver</span>
                         </div>
-                        <div class="col-sm col-2 gold">
-                            <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
-                                <?php echo $this->subject->gg_gold_count; ?>
+                        <div class="col-2 text-center">
+                            <div class="col-sm px-0 gold ">
+                                <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
+                                    <?php echo $this->subject->gg_gold_count; ?>
+                                </div>
                             </div>
+                            <span class="text-muted small text-center w-100">Gold</span>
                         </div>
-                        <div class="col-sm col-2 platinium">
-                            <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
-                                <?php echo $this->subject->gg_platinum_count; ?>
+                        <div class="col-2 text-center">
+                            <div class="col-sm px-0 platinium">
+                                <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
+                                    <?php echo $this->subject->gg_platinum_count; ?>
+                                </div>
                             </div>
+                            <span class="text-muted small text-center w-100">Platinium</span>
                         </div>
                     </div>
                 </div>
@@ -102,23 +115,16 @@
                     <div class="contributor slider pt-4">
 
                         <!-- Swiper -->
+                        <!-- Swiper -->
                         <div class="swiper-container">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
+                                <?php foreach($this->specialBadges as $special):?>
+                                <div class="swiper-slide mb-0">
                                     <a href="javascript:void(0)">
-                                        <img src="./application/themes/guidanceguide/assets/images/contributors/9199c86bf4fc5644401b314adf5dc845.png" alt="Image Contributor" />
+                                        <?php echo $this->itemPhoto($special, 'thumb.normal'); ?>
                                     </a>
                                 </div>
-                                <div class="swiper-slide">
-                                    <a href="javascript:void(0)">
-                                        <img src="./application/themes/guidanceguide/assets/images/contributors/98b7d9e5a550b81396ab634f7b7b97da.png" alt="Image Contributor" />
-                                    </a>
-                                </div>
-                                <div class="swiper-slide">
-                                    <a href="javascript:void(0)">
-                                        <img src="./application/themes/guidanceguide/assets/images/contributors/CarSeatContributor_Bronze.png" alt="Image Contributor" />
-                                    </a>
-                                </div>
+                                <?php endforeach; ?>
                             </div>
                             <!-- Add Arrows -->
                             <div class="swiper-button-next"></div>
@@ -254,5 +260,20 @@
         let buttonFriendLink = buttonFriend.getElement('a');
         buttonFriendLink.removeClass('buttonlink');
         buttonFriendLink.addClass('btn btn-success px-5 py-2 text-white');
+
+        <?php if($this->profileSettings):?>
+            var tabs = document.getElementsByClassName('tabs_alt'); 
+            let liElements = tabs[1].getChildren('ul').getChildren()[0];
+            for(var i = 0; i < liElements.length; i++) {
+                let getParam = '<?php echo $this->profileSettings; ?>';
+                let textContent = liElements[i].getChildren()[0].textContent;
+            
+                if( ((textContent == 'Personal Info') && ( getParam === 'general' )) || ((textContent == 'User Preferences') && ( getParam === 'preference' )) ){      
+                    showEditContent();
+                    liElements[i].getChildren()[0].click();
+                }
+            }
+        <?php endif; ?>
     });
+
 </script>
