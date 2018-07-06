@@ -1128,14 +1128,22 @@ form#user_form_login {
 // SignUp Page
 #global_page_user-signup-index {
     .right-side {
-        div {
+        > div {
             width: 100%;
         }
     }
     form {
+        
         overflow-y: scroll;
         max-height: 900px;
         overflow-x: none;
+
+        &.family-form {
+            div.form-wrapper-heading {
+                font-size: 16px;
+            }
+        }
+
         &::-webkit-scrollbar {
             display: none;
            }
@@ -1195,7 +1203,7 @@ form#user_form_login {
             }
         }
     }
-    div.form-wrapper-heading{
+    div.form-wrapper-heading {
         span {
             color:#5CC7CE;
             font-size:16px;
@@ -1222,7 +1230,7 @@ form#user_form_login {
       button,a{
           width: 44%;
       }
-    }
+    }    
 }
 
 // Preference Holder 
@@ -1462,7 +1470,6 @@ form.preference-holder {
 
 //  ExtfoxForm Settings
 #extfox-settings {
-
     &#delete {
         button {
             background-color: $danger !important;
@@ -1479,7 +1486,6 @@ form.preference-holder {
             position: unset!important;
             
         }
-        
     }
     p {
         color:#333D40;
