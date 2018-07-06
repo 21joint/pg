@@ -1402,12 +1402,14 @@ form.preference-holder {
 
 // Border Gear
 .border-gear {
-    border-style: solid!important;
-    border-width: 5px 6px 5px 6px!important;
-    -moz-border-image: url('../images/border.png') 20 20 20 20 round!important;
-    -webkit-border-image: url('../images/border.png') 20 20 20 20 round!important;
-    -o-border-image: url('../images/border.png') 20 20 20 20 round!important;
-    border-image: url(../images/border.png) 20 20 20 20 fill!important;
+    ~ img {
+        border-style: solid!important;
+        border-width: 5px 6px 5px 6px!important;
+        -moz-border-image: url('../images/border.png') 20 20 20 20 round!important;
+        -webkit-border-image: url('../images/border.png') 20 20 20 20 round!important;
+        -o-border-image: url('../images/border.png') 20 20 20 20 round!important;
+        border-image: url(../images/border.png) 20 20 20 20 fill!important;
+    }
 }
    
 
