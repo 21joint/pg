@@ -14,17 +14,35 @@
     <h5>You can trust our community of real parents</h5>
     <a href="#" id="readmore" class="btn-large btn-success text-white text-capitalize font-weight-bold mt-5 mb-4 px-5 py-3">Read More</a>
 </div>
+<div class="leaderboard_main d-flex justify-content-between">
+    <div class="d-flex justify-content-center">Rank</div>
+    <div class="d-flex">Leader</div>
+    <div id="points" class="order_by contribution_home d-flex justify-content-center align-items-center" data-order="contributionPoints">Contribution</div>
+</div>
 <div class="leaderboard">
-    <div class="leaderboard_main d-flex justify-content-between">
-        <div class="d-flex justify-content-center">Rank</div>
-        <div class="d-flex">Leader</div>
-        <div id="points" class="order_by contribution_home d-flex justify-content-center align-items-center" data-order="contributionPoints">Contribution</div>
-    </div>
     <div id="sd-response" class="container d-flex justify-content-center align-items-center">
         <!-- Loader goes here -->
     </div>
     <div class="leaderboard_content">
         <!-- Content of ajax call goes here -->
+    </div>
+    <div class="leaderboard_pagination d-flex justify-content-center align-items-center mt-5">
+        <!-- Content Pagination -->
+        <button id="leaderboard_previous" class="text-white rounded-circle"><</button>
+        <span id="leaderboard_pageNum" class="mx-5">
+            <!-- Displays the current page of Leaderboard Results -->
+        </span>
+        <button id="leaderboard_next" class="text-white rounded-circle">></button>
+    </div>
+</div>
+<div class="container-fluid d-flex justify-content-around align-items-center">
+    <div class="row">
+        <div class="col-lg-6">
+            
+        </div>
+        <div class="col-lg-6">
+            
+        </div>
     </div>
 </div>
 
@@ -35,13 +53,40 @@
 en4.core.runonce.add(function(){
     loadLeaderboardResults();
 });
-function loadLeaderboardResults(){
+
+
+// Pagionation Number Change Start
+var pageNum = 1;
+document.getElementById('leaderboard_previous').addEventListener('click', function(){
+    if(pageNum >= 2){
+        pageNum--;
+        document.getElementById('leaderboard_previous').addClass('btn-primary').removeClass('btn-secondary');
+        document.getElementById('leaderboard_next').addClass('btn-primary').removeClass('btn-secondary');
+        loadLeaderboardResults(pageNum);
+    }else{
+        document.getElementById('leaderboard_previous').addClass('btn-secondary');
+    }
+});
+document.getElementById('leaderboard_next').addEventListener('click', function(){
+    if(pageNum <= 2){
+        pageNum++;
+        document.getElementById('leaderboard_next').addClass('btn-primary').removeClass('btn-secondary');
+        document.getElementById('leaderboard_previous').addClass('btn-primary').removeClass('btn-secondary');
+        loadLeaderboardResults(pageNum);
+    }else{
+        document.getElementById('leaderboard_next').addClass('btn-secondary');
+    }
+});
+// Pagination Number Change End
+
+// Leaderboard Results Ajax Function
+function loadLeaderboardResults(page = 1){
     //Request data can be linked to form inputs
     var requestData = {};
     requestData.mvp = null; //Possible values 1 or 0
     requestData.expert = null; //Possible values 1 or 0
-    requestData.limit = 20;
-    requestData.page = 3;
+    requestData.limit = 20; // Limit to 20 People per Page
+    requestData.page = page;// Limit to 3 Pages
     
     var loader = en4.core.loader.clone();
     loader.addClass("sd_loader my-5");
@@ -66,7 +111,7 @@ function loadLeaderboardResults(){
                 for(var i = 0; i < results.length; i++){
                     html += '<div class="leaderboard_item d-flex justify-content-between">'+
                                 '<div class="d-flex justify-content-center align-items-center">'+
-                                    (i+1)+
+                                    ((page-1)*20+(i+1))+
                                 '</div>'+
                                 '<div class="d-flex align-items-center leader position-relative">'+
                                     '<img src="'+results[i].avatarPhoto.photoURL+'"/>'+
@@ -80,7 +125,9 @@ function loadLeaderboardResults(){
                                 '</div>'+
                             '</div>';
                 }
-                leaderboardContent.innerHTML = html;                          
+                leaderboardContent.innerHTML = html;
+                // Showing current page in Pagination Section
+                document.getElementById('leaderboard_pageNum').innerText = page;                          
             }else{
                 leaderboardContent.innerHTML = responseJSON.message;
             }
