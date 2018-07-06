@@ -20,7 +20,7 @@
                             <?php echo $this->subject->gg_contribution; ?> 
                         </h5>
                         <p class="desc text-dark">
-                            Contribution points
+                            <?php echo $this->translate('Contribution points'); ?>
                         </p>
                     </div>
 
@@ -30,7 +30,7 @@
                                 <?php echo $this->subject->gg_review_count;?>
                             </h5>
                             <p class="desc text-dark">
-                                Reviews
+                                <?php echo $this->translate('Reviews'); ?>
                             </p>
                         </div>
                         <div class="col-sm col-3 text-center">
@@ -38,7 +38,7 @@
                                 5
                             </h5>
                             <p class="desc text-dark">
-                                Guides
+                                <?php echo $this->translate('Guides'); ?>
                             </p>
                         </div>
                         <div class="col-sm col-3 text-center border-left">
@@ -46,7 +46,7 @@
                                 <?php echo count($struggles); ?>
                             </h5>
                             <p class="desc text-dark">
-                                Struggles
+                                <?php echo $this->translate('Struggles'); ?>
                             </p>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
             <div class="badges-earned bg-white mb-4 widget">
                 <div class="holder p-4">
                     <p class="desc title text-dark border-bottom pb-3">
-                        Badges Earned
+                        <?php echo $this->translate('Badges Earned'); ?>
                     </p>
                     <div class="bottom row pt-4">
                         <div class="col-sm col-2 bronze">
@@ -89,11 +89,13 @@
                     <div class="d-flex justify-content-between border-bottom pb-3">
                         <div class="holder text-left">
                             <p class="desc title text-dark">
-                                Badges Earned
+                                <?php echo $this->translate('Badges Earned'); ?>
                             </p>
                         </div>
                         <div class="holder text-right">
-                            <a href="javascript:void(0)" class="text-primary"> view all </a>
+                            <a href="javascript:void(0)" class="text-primary">
+                                <?php echo $this->translate('view all'); ?>
+                            </a>
                         </div>
                     </div>
 
