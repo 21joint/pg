@@ -137,41 +137,45 @@
                 </div>
             </div> <!-- end of badges slide -->
             <?php endif;?>
-            
-
-            <?php if($this->showFriends):?>
-            <div class="following bg-white widget">
-                <div class="holder p-4">
-                    <div class="d-flex justify-content-between border-bottom pb-3">
-                        <div class="holder text-left">
-                            <p class="desc title text-dark">
-                                Following
-                                <span class="total text-primary">
-                                <?php echo $this->subject->gg_following_count;?>
-                                </span>
-                            </p>
-                        </div>
-                        <div class="holder text-right">
-                            <a href="javascript:void(0)" class="text-primary"> view all </a>
-                        </div>
-                    </div>
-
-                    <div class="row m-0 pt-4 bottom followers">
-
-                        <?php for($i = 0; $i < 4; $i++): ?>
-                        <div class="col-sm-6 mb-1 p-0">
-                            <div class="item-holder text-center py-3 m-2">
-                                <?php echo $this->htmlLink($this->viewer->getHref(), $this->itemPhoto($this->viewer, 'thumb.normal'), array('class' => 'profile-img')); ?>
-                                <p class="title font-weight-bold pt-1">
-                                    <?php echo $this->htmlLink($this->viewer->getHref(), $this->viewer); ?>
+    
+            <?php if($this->showFriend):?>
+                
+                <div class="following bg-white widget">
+                    <div class="holder p-4">
+                        <div class="d-flex justify-content-between border-bottom pb-3">
+                            <div class="holder text-left">
+                                <p class="desc title text-dark">
+                                    <?php echo $this->translate('Following');?>
+                                    <span class="total text-primary">
+                                    <?php echo $this->friends->getTotalItemCount(); ?>
+                                    </span>
                                 </p>
                             </div>
+                            <div class="holder text-right">
+                                <a href="javascript:void(0)" class="text-primary"> view all </a>
+                            </div>
                         </div>
-                        <?php endfor; ?>
+
+                        <div class="row m-0 pt-4 bottom followers">
+
+                            <?php foreach( $this->friends as $membership ):
+                            if( !isset($this->friendUsers[$membership->resource_id]) ) continue;
+                            $member = $this->friendUsers[$membership->resource_id];
+                            ?>
+                            <div class="col-sm-6 mb-1 py-3 item-holder" id="user_friend_<?php echo $member->getIdentity() ?>">
+                                <div class=" text-center">
+                                    <?php echo $this->htmlLink($member->getHref(), $this->itemPhoto($member, 'thumb.icon'), array('class' => 'profile_friends_icon')) ?>
+                                
+                                </div>
+                                <?php echo $this->htmlLink($member->getHref(), $member->getTitle(),array('class' => 'text-center w-100 d-block font-weight-bold')) ?>
+                            </div>
+                            <?php endforeach;?>
+                        </div>
                     </div>
-                </div>
-            </div> <!-- end of  following -->
-            <?php endif; ?>
+                </div> <!-- end of  following -->
+                
+            <?php endif;?>
+          
         </div> <!-- left side -->
 
         <div class="col-sm-7 col-12 right-side">

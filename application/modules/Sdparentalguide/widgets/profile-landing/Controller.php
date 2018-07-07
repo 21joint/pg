@@ -23,29 +23,32 @@ class Sdparentalguide_Widget_ProfileLandingController extends Engine_Content_Wid
 
 
     // following start function
+    
     $showFriend = true;
-
+    
     // Don't render this if friendships are disabled
     if( !Engine_Api::_()->getApi('settings', 'core')->user_friends_eligible ) {
-      return $this->setNoRender();
-      $showFriend = false;
+        $showFriend = false;
     }
-
+        
     // Multiple friend mode
     $select = $subject->membership()->getMembersOfSelect();
     $this->view->friends = $friends = $friendsPaginator = Zend_Paginator::factory($select);
 
-    // Set item count per page and current page number
-    $friendsPaginator->setItemCountPerPage($this->_getParam('itemCountPerPage', 5));
-    $friendsPaginator->setCurrentPageNumber($this->_getParam('page', 1));
+    if($friendsPaginator->getTotalItemCount() <= 0){
+      $showFriend = false;
+    }
 
+    // Set item count per page and current page number
+    $friendsPaginator->setItemCountPerPage(4);
+  
     // Get stuff
     $ids = array();
     foreach( $friends as $friend ) {
       $ids[] = $friend->resource_id;
     }
     $this->view->friendIds = $ids;
-
+  
     // Get the items
     $friendUsers = array();
     foreach( Engine_Api::_()->getItemTable('user')->find($ids) as $friendUser ) {
@@ -81,16 +84,12 @@ class Sdparentalguide_Widget_ProfileLandingController extends Engine_Content_Wid
       $this->view->listItems = $listItems;
       $this->view->listsByUser = $listsByUser;
     }
-    
-    // Do not render if nothing to show
-    if( $friendsPaginator->getTotalItemCount() <= 0 ) {
-      $showFriend = false;
-    }
 
-
-    $this->view->showFriends = $showfirend;
+    $this->view->showFriend = $showFriend;
+   
     // following end function
 
+    
     $this->view->profileSettings = $tab = Zend_Controller_Front::getInstance()->getRequest()->getParam('type', null);
 
 
@@ -117,10 +116,6 @@ class Sdparentalguide_Widget_ProfileLandingController extends Engine_Content_Wid
 
     $specialBadges->setItemCountPerPage(4);
     $specialBadges->setCurrentPageNumber(1);
-
-
-
-
 
 
   }

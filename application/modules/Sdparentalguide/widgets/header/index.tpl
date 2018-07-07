@@ -117,6 +117,7 @@
                                   </div>
                                 </a>
                               </li>
+                              <?php if($this->viewer->isAdmin()):?>
                               <li class="list-inline pb-3 border-bottom">
                                 <a href="<?php echo $this->baseUrl() ;?>/admin">
                                   <div class="d-flex align-items-center justify-content-start">
@@ -127,6 +128,7 @@
                                   </div>
                                 </a>
                               </li>
+                              <?php endif; ?>
                             </div>
 
                             <div class="items mx-4">
