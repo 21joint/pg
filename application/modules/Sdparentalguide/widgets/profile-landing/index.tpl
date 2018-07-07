@@ -96,7 +96,7 @@
                     </div>
                 </div>
             </div> <!-- end of badges-earned -->
-
+            <?php if($this->specialBadges->getTotalItemCount() >= 1):?>
             <div class="badges-slide mb-4 bg-white widget">
                 <div class="holder p-4">
                     <div class="d-flex justify-content-between border-bottom pb-3">
@@ -106,7 +106,7 @@
                             </p>
                         </div>
                         <div class="holder text-right">
-                            <a href="javascript:void(0)" class="text-primary">
+                            <a href="javascript:void(0)"  class="badges-ern text-primary">
                                 <?php echo $this->translate('view all'); ?>
                             </a>
                         </div>
@@ -136,7 +136,10 @@
                     </div>
                 </div>
             </div> <!-- end of badges slide -->
+            <?php endif;?>
+            
 
+            <?php if($this->showFriends):?>
             <div class="following bg-white widget">
                 <div class="holder p-4">
                     <div class="d-flex justify-content-between border-bottom pb-3">
@@ -168,7 +171,7 @@
                     </div>
                 </div>
             </div> <!-- end of  following -->
-
+            <?php endif; ?>
         </div> <!-- left side -->
 
         <div class="col-sm-7 col-12 right-side">
@@ -274,6 +277,17 @@
                 }
             }
         <?php endif; ?>
+            
+    });
+
+    $$('.badges-ern').addEvent('click',function(event){
+       $$('.tabs_alt ').each(function(elements){
+            elements.getElements('ul > li').each(function(el){
+                if(el.classList[1] === 'tab_layout_sdparentalguide_ajax_badges'){
+                    el.getChildren()[0].click(); 
+                }
+            });
+       });
     });
 
 </script>

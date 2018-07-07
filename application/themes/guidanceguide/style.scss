@@ -609,6 +609,16 @@ body#global_page_user-profile-index {
             }
         }
     }
+    .badges-slide  {
+        .contributor {
+            .swiper-container {
+                .swiper-slide {
+                    height: 282px!important;
+                }
+            }
+        }
+    }
+
 }
 
 // Struggles Profile

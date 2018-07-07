@@ -21,6 +21,76 @@ class Sdparentalguide_Widget_ProfileLandingController extends Engine_Content_Wid
       return $this->setNoRender();
     }
 
+
+    // following start function
+    $showFriend = true;
+
+    // Don't render this if friendships are disabled
+    if( !Engine_Api::_()->getApi('settings', 'core')->user_friends_eligible ) {
+      return $this->setNoRender();
+      $showFriend = false;
+    }
+
+    // Multiple friend mode
+    $select = $subject->membership()->getMembersOfSelect();
+    $this->view->friends = $friends = $friendsPaginator = Zend_Paginator::factory($select);
+
+    // Set item count per page and current page number
+    $friendsPaginator->setItemCountPerPage($this->_getParam('itemCountPerPage', 5));
+    $friendsPaginator->setCurrentPageNumber($this->_getParam('page', 1));
+
+    // Get stuff
+    $ids = array();
+    foreach( $friends as $friend ) {
+      $ids[] = $friend->resource_id;
+    }
+    $this->view->friendIds = $ids;
+
+    // Get the items
+    $friendUsers = array();
+    foreach( Engine_Api::_()->getItemTable('user')->find($ids) as $friendUser ) {
+      $friendUsers[$friendUser->getIdentity()] = $friendUser;
+    }
+    $this->view->friendUsers = $friendUsers;
+
+    if( $viewer->isSelf($subject) ) {
+      // Get lists
+      $listTable = Engine_Api::_()->getItemTable('user_list');
+      $this->view->lists = $lists = $listTable->fetchAll($listTable->select()->where('owner_id = ?', $viewer->getIdentity()));
+
+      $listIds = array();
+      foreach( $lists as $list ) {
+        $listIds[] = $list->list_id;
+      }
+
+      // Build lists by user
+      $listItems = array();
+      $listsByUser = array();
+      if( !empty($listIds) ) {
+        $listItemTable = Engine_Api::_()->getItemTable('user_list_item');
+        $listItemSelect = $listItemTable->select()
+          ->where('list_id IN(?)', $listIds)
+          ->where('child_id IN(?)', $ids);
+        $listItems = $listItemTable->fetchAll($listItemSelect);
+        foreach( $listItems as $listItem ) {
+          //$list = $lists->getRowMatching('list_id', $listItem->list_id);
+          //$listsByUser[$listItem->child_id][] = $list;
+          $listsByUser[$listItem->child_id][] = $listItem->list_id;
+        }
+      }
+      $this->view->listItems = $listItems;
+      $this->view->listsByUser = $listsByUser;
+    }
+    
+    // Do not render if nothing to show
+    if( $friendsPaginator->getTotalItemCount() <= 0 ) {
+      $showFriend = false;
+    }
+
+
+    $this->view->showFriends = $showfirend;
+    // following end function
+
     $this->view->profileSettings = $tab = Zend_Controller_Front::getInstance()->getRequest()->getParam('type', null);
 
 
@@ -47,6 +117,11 @@ class Sdparentalguide_Widget_ProfileLandingController extends Engine_Content_Wid
 
     $specialBadges->setItemCountPerPage(4);
     $specialBadges->setCurrentPageNumber(1);
+
+
+
+
+
 
   }
 
