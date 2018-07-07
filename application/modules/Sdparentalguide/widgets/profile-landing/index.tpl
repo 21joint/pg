@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="bottom row pt-4">
-                        <div class="col-sm col-3 text-center border-right">
+                        <div class="col-sm col-5 col-xl-3 col-lg-3  text-center border-right">
                             <h5 class="text-primary font-weight-bold"> 
                                 <?php echo $this->subject->gg_review_count;?>
                             </h5>
@@ -33,17 +33,17 @@
                                 <?php echo $this->translate('Reviews'); ?>
                             </p>
                         </div>
-                        <div class="col-sm col-3 text-center">
+                        <!-- <div class="col-sm col-3 text-center">
                             <h5 class="text-primary font-weight-bold"> 
                                 5
                             </h5>
                             <p class="desc text-dark">
                                 <?php echo $this->translate('Guides'); ?>
                             </p>
-                        </div>
-                        <div class="col-sm col-3 text-center border-left">
+                        </div> -->
+                        <div class="col-sm col-5 col-xl-3 col-lg-3 text-center border-left">
                             <h5 class="text-primary font-weight-bold"> 
-                                <?php echo count($struggles); ?>
+                                <?php echo $this->subject->member_count; ?>
                             </h5>
                             <p class="desc text-dark">
                                 <?php echo $this->translate('Struggles'); ?>
@@ -195,7 +195,7 @@
                     </div>
 
                     <div class="bottom small text-muted pt-4">
-                        more to come..
+                        Coming Soon..
                     </div>
 
                 </div>
@@ -216,7 +216,7 @@
                     </div>
 
                     <div class="bottom small text-muted pt-4">
-                        more to come..
+                        Coming Soon..
                     </div>
 
                 </div>
@@ -237,7 +237,7 @@
                     </div>
 
                     <div class="bottom small text-muted pt-4">
-                        more to come..
+                        Coming Soon..
                     </div>
 
                 </div>

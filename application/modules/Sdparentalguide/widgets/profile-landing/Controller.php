@@ -40,7 +40,7 @@ class Sdparentalguide_Widget_ProfileLandingController extends Engine_Content_Wid
     }
 
     // Set item count per page and current page number
-    $friendsPaginator->setItemCountPerPage(4);
+    $friendsPaginator->setItemCountPerPage(8);
   
     // Get stuff
     $ids = array();
