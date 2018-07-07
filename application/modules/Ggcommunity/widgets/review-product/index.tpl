@@ -1,15 +1,15 @@
-<!-- Commenting Out If needed in the future <div class="review_product_widget">
-    <div class="widget_holder"> -->
+<div class="review_product_widget">
+    <div class="widget_holder">
         <!-- holder image -->
-        <!--<div class="review_top_box" style="background-size:cover; width:100%;height:170px; border-top-left-radius: 10px;
+        <div class="review_top_box" style="background-size:cover; width:100%;height:170px; border-top-left-radius: 10px;
     border-top-right-radius: 10px;  background-image: url(<?php echo $this->baseUrl(). '/' . $this->image;?>);">
-        </div>--> <!-- Box with background image from product-->
+        </div> <!-- Box with background image from product-->
         <!-- title holder -->
-        <!--<div class="review_main_box">
+        <div class="review_main_box">
             <p class="review_content"><?php echo $this->title; ?></p>
-        </div>--> <!-- Box with man content text-->
+        </div> <!-- Box with man content text-->
 
-        <!--<div class="review_bottom_box">
+        <div class="review_bottom_box">
             <div class="review_owner_info">
                 <a href="<?php echo $this->viewer->getHref();?>" class="struggle_owner_image">
                     <?php echo $this->itemPhoto($this->viewer, 'thumb.icon', array('class'=> 'owner_thumb')) ?>
@@ -23,7 +23,7 @@
                 </a>
             </div>
 
-        </div>--> <!--Bottom box with owner info and link for view more reviews-->
+        </div> <!--Bottom box with owner info and link for view more reviews-->
 
-    <!--</div>
-</div>-->
+    </div>
+</div>
