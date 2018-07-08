@@ -454,6 +454,7 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
 }
 
 @media screen and (max-width: 768px){
+    /* Community Leaderboard Page Start */
     #order_btn{
       font-size: 12px;
       color: #fff;
@@ -473,9 +474,20 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
       flex: 2!important;
       /* Fix for using community leaderboard */
     }
+    /* Community Leaderboard Page End */
+    /* Community Home Page Start */
+    .leaderboard h1{
+      font-size: 50px;
+    }
+    .leaderboard h5{
+      font-size: 14px;
+      color: #5cc7ce;
+    }
+    /* Community Home Page End */
 }
 
 @media screen and (max-width: 576px){
+    /* Community Leaderboard Page Start */
     .leaderboard_title h3{
       margin: 0!important;
     }
@@ -485,9 +497,20 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
     .leaderboard_title ul li{
       padding: 6px 24px;
     }
+    /* Community Leaderboard Page End */
+    /* Community Home Page Start */
+    .leaderboard h1{
+      font-size: 42px;
+    }
+    .leaderboard h5{
+      font-size: 12px;
+      color: #5cc7ce;
+    }
+    /* Community Home Page End */
 }
 
 @media screen and (max-width: 486px){
+    /* Community Leaderboard Page Start */
     .leaderboard_title h3{
         font-size: 14px;
     }
@@ -498,6 +521,16 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
     .leaderboard_item div{
         font-size: 12px;
     }
+    /* Community Leaderboard Page End */
+    /* Community Home Page Start */
+    .leaderboard h1{
+      font-size: 32px;
+    }
+    .leaderboard h5{
+      font-size: 12px;
+      color: #5cc7ce;
+    }
+    /* Community Home Page End */
 }
 
 @media screen and (max-width: 368px){

@@ -1304,9 +1304,12 @@ div.draft_main_holder ul li:before {
     font-family: 'Open Sans', sans-serif;
 }
 .layout_page_ggcommunity_question-index_browse .border,.layout_page_ggcommunity_question-index_browse .tab a:hover {
-    border-bottom:2px solid #5CC7CE;
-    padding-bottom: 15px;
-    color:#5CC7CE;
+    border-bottom:2px solid #5CC7CE!important;
+    padding-bottom: 15px!important;
+    color:#5CC7CE!important;
+    border-top: 0!important;
+    border-left: 0!important;
+    border-right: 0!important;
 }
 .browse_main_holder .struggle_box_right .struggle_count_info li {
     text-align: center;
@@ -1871,10 +1874,20 @@ ul.paginationControl > li.selected,ul.paginationControl > li a:hover,ul.paginati
         color: grey!important;
         font-size: 13px!important;
     }
+    /* removes styling from accepted answer under this line open -> answer*/
     .browse_main_holder .open_accepted_answer{
         background-color: #fff;
         padding: 0px;
         border: none;
+    }
+    /* removes styling from accepted answer under this line open -> answer*/
+    .browse_main_holder .closed_accepted_answer{
+        background-color: #fff!important;
+        padding: 0px!important;
+        border: none!important;
+    }
+    .browse_main_holder .struggle_box_right ul.struggle_count_info li span.count.answers.counter.count_close.closed_accepted_answer, .browse_main_holder .struggle_box_right ul.struggle_count_info li span.count.answers.counter.count_close.closed_accepted_answer{
+        color: #B9CFD1!important;
     }
     #global_page_ggcommunity-question-profile-view div#global_content,#global_page_ggcommunity-question-index-create .layout_main .layout_middle {
         width: 100%;

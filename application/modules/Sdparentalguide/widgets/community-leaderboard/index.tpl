@@ -208,6 +208,7 @@ function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints", disp
                             '</div>';
                 }
                 leaderboardContent.innerHTML = html;
+                // Showing current page in pagination section
                 document.getElementById('leaderboard_pageNum').innerText = page;
                 // Adding and Removing Categories in which the items are ordered
                 // Displaying Categories on Mobile
