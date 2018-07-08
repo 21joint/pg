@@ -72,56 +72,56 @@
         <div class="faq_item mt-4 pb-4">
             <div class="faq_title d-flex justify-content-between align-items-center">
                 <h4>Can anybody post reviews, earn badges and gain credibility score?</h4>
-                <button class="d-block faq_toggle">X</button>   
+                <button class="d-block faq_toggle">+</button>   
             </div>
             <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
         </div>
         <div class="faq_item mt-4 pb-4">
             <div class="faq_title d-flex justify-content-between align-items-center">
                 <h4>What are the official hashtags for Guidance Guide and Parental Guidance?</h4>
-                <button class="d-block faq_toggle">X</button>   
+                <button class="d-block faq_toggle">+</button>   
             </div>
             <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
         </div>
         <div class="faq_item mt-4 pb-4">
             <div class="faq_title d-flex justify-content-between align-items-center">
                 <h4>What if I don't have enough product to write a review and try to earn a badge?</h4>
-                <button class="d-block faq_toggle">X</button>   
+                <button class="d-block faq_toggle">+</button>   
             </div>
             <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
         </div>
         <div class="faq_item mt-4 pb-4">
             <div class="faq_title d-flex justify-content-between align-items-center">
                 <h4>Can Contributors contact brands?</h4>
-                <button class="d-block faq_toggle">X</button>   
+                <button class="d-block faq_toggle">+</button>   
             </div>
             <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
         </div>
         <div class="faq_item mt-4 pb-4">
             <div class="faq_title d-flex justify-content-between align-items-center">
                 <h4>I want to review a product, but it technically fits into multiple categories. Where should I put it?</h4>
-                <button class="d-block faq_toggle">X</button>   
+                <button class="d-block faq_toggle">+</button>   
             </div>
             <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
         </div>
         <div class="faq_item mt-4 pb-4">
             <div class="faq_title d-flex justify-content-between align-items-center">
                 <h4>I am getting a ton of notifications that I don't want. Where do I find the notification settings?</h4>
-                <button class="d-block faq_toggle">X</button>   
+                <button class="d-block faq_toggle">+</button>   
             </div>
             <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
         </div>
         <div class="faq_item mt-4 pb-4">
             <div class="faq_title d-flex justify-content-between align-items-center">
                 <h4>What browser is preffered for the best website functionality?</h4>
-                <button class="d-block faq_toggle">X</button>   
+                <button class="d-block faq_toggle">+</button>   
             </div>
             <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
         </div>
         <div class="faq_item mt-4 pb-4">
             <div class="faq_title d-flex justify-content-between align-items-center">
                 <h4>I am having trouble receiving emails from Guidance Guide.</h4>
-                <button class="d-block faq_toggle">X</button>   
+                <button class="d-block faq_toggle">+</button>   
             </div>
             <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
         </div>
