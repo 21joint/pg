@@ -28,8 +28,8 @@ class Sdparentalguide_Model_DbTable_ListingRatings extends Engine_Db_Table
             );
         }
         return array(
-            'review_rating' => round(($rating->total_review_rating/$rating->ratings_count),1),
-            'product_rating' => round(($rating->total_product_rating/$rating->ratings_count),1)
+            'review_rating' => $rating->ratings_count?(round(($rating->total_review_rating/$rating->ratings_count),1)):0,
+            'product_rating' => $rating->total_product_rating?(round(($rating->total_product_rating/$rating->ratings_count),1)):0
         );
     }
 } 

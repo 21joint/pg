@@ -244,8 +244,9 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
     }
     
     public function requireSubject(){
-        $resourceType = $this->getParam("resourceType");
-        $resourceId = $this->getParam("resourceID");
+        $resourceType = $this->getParam("contentType");
+        $resourceId = $this->getParam("contentID");
+        $resourceType = Engine_Api::_()->sdparentalguide()->mapPGGResourceTypes($resourceType);
         if(empty($resourceType) || empty($resourceId)){
             $this->respondWithError('no_record');
         }

@@ -89,4 +89,33 @@ class Pgservicelayer_Api_V1_Forms extends Sitereview_Api_Siteapi_Core
         );
         return $form;
     }
+    
+    public function getQuestionForm(){
+        $form = array();
+        $form[] = array(
+            'type' => 'Text',
+            'name' => 'title',
+            'label' => $this->translate('Title'),
+            'hasValidator' => 'true'
+        );
+        $form[] = array(
+            'type' => 'Text',
+            'name' => 'topicID',
+            'label' => $this->translate('Topic'),
+            'hasValidator' => 'true'
+        );
+        $form[] = array(
+            'type' => 'Textarea',
+            'name' => 'body',
+            'label' => $this->translate('Description'),
+            'hasValidator' => 'true'
+        );
+        $form[] = array(
+            'type' => 'Text',
+            'name' => 'photoID',
+            'label' => $this->translate('Cover Photo'),
+//            'hasValidator' => 'true'
+        );        
+        return $form;
+    }
 }

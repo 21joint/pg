@@ -123,8 +123,9 @@ class Pgservicelayer_MembershipController extends Pgservicelayer_Controller_Acti
     public function followSeaoCore($resource,$viewer){
         $followTable = Engine_Api::_()->getDbTable('follows', 'seaocore');
         $follow_name = $followTable->info('name');
-        $resource_type = $this->getParam("resourceType");
-        $resource_id = $this->getParam("resourceID");
+        $resource_type = $this->getParam("contentType");
+        $resource_type = Engine_Api::_()->sdparentalguide()->mapPGGResourceTypes($resource_type);
+        $resource_id = $this->getParam("contentID");
         $viewer_id = $viewer->getIdentity();
         if ($resource_type == 'sitepage_page') {
             $manageAdminsIds = Engine_Api::_()->getDbtable('manageadmins', 'sitepage')->getManageAdmin($resource_id, $viewer_id);

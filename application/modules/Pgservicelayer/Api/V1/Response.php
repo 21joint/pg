@@ -244,6 +244,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
     
     public function getQuestionData(Ggcommunity_Model_Question $question){
         $view = Zend_Registry::get("Zend_View");
+        $topic = Engine_Api::_()->getItem("sdparentalguide_topic",$question->topic_id);
         $questionArray = array();
         $questionArray['questionID'] = (string)$question->question_id;
         $questionArray['title'] = (string)$question->title;
@@ -266,7 +267,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $questionArray['totalVoteCount'] = $question->up_vote_count - $question->down_vote_count;
         $questionArray['approvedDateTime'] = $this->getFormatedDateTime($question->approved_date);
         $questionArray['status'] = ($question->draft == 0)?$view->translate("Published"):$view->translate("Draft");
-        $questionArray['questionTopic'] = array();
+        $questionArray['questionTopic'] = $this->getTopicData($topic);
         $questionArray['createdDateTime'] = $this->getFormatedDateTime($question->creation_date);
         $questionArray['publishedDateTime'] = $this->getFormatedDateTime($question->approved_date);
         $questionArray['lastModifiedDateTime'] = $this->getFormatedDateTime($question->modified_date);
@@ -283,6 +284,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $answerArray['question'] = $this->getQuestionData($question);
         $answerArray['approved'] = (bool)$answer->approved;
         $answerArray['viewCount'] = 0;
+        $answerArray['body'] = strip_tags($answer->body);
         $answerArray['commentsCount'] = $answer->comment_count;
         $answerArray['answerChosen'] = (bool)$answer->accepted;
         $answerArray['upVoteCount'] = $answer->up_vote_count;

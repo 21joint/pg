@@ -459,31 +459,32 @@ class Pgservicelayer_ApiBootstrap {
                     $data[$apiModName]['items'] = $temp['items'];
                 }
 
-                if (isset($temp['routes']) && (is_array($this->_notIncludeRoute) && !in_array($apiModName, $this->_notIncludeRoute))) {
-                    // Edit the SocialEngine default routes.
-                    if (($apiModName == 'sitereview') && isset($temp['routes']) && (is_array($this->_notIncludeRoute) && !in_array($apiModName, $this->_notIncludeRoute))) {
-                        foreach ($temp['routes'] as $key => $value) {
-                            if (isset($value['route']) && !empty($value['route']) && in_array($value['route'], $this->_notIncludeListingRoute))
-                                $temp['routes'][$key]['route'] = 'se' . @ltrim($value['route'], "/");
-                        }
-                    }
-                    // Edit the SocialEngine default routes.
-                    if (($apiModName == 'siteevent') && isset($temp['routes']) && (is_array($this->_notIncludeRoute) && !in_array($apiModName, $this->_notIncludeRoute))) {
-                        foreach ($temp['routes'] as $key => $value) {
-                            if (isset($value['route']) && !empty($value['route']) && in_array($value['route'], $this->_notIncludeListingRoute))
-                                $temp['routes'][$key]['route'] = 'se' . @ltrim($value['route'], "/");
-                        }
-                    }
-                    
-                    if (($apiModName == 'sitegroup') && isset($temp['routes']) && (is_array($this->_notIncludeRoute) && !in_array($apiModName, $this->_notIncludeRoute))) {
-                        foreach ($temp['routes'] as $key => $value) {
-                            if (isset($value['route']) && !empty($value['route']) && in_array($value['route'], $this->_notIncludeListingRoute))
-                                $temp['routes'][$key]['route'] = 'se' . @ltrim($value['route'], "/");
-                        }
-                    }
-
-                    $data[$apiModName]['routes'] = $temp['routes'];
-                }
+                //Remove extra routes for now.
+//                if (isset($temp['routes']) && (is_array($this->_notIncludeRoute) && !in_array($apiModName, $this->_notIncludeRoute))) {
+//                    // Edit the SocialEngine default routes.
+//                    if (($apiModName == 'sitereview') && isset($temp['routes']) && (is_array($this->_notIncludeRoute) && !in_array($apiModName, $this->_notIncludeRoute))) {
+//                        foreach ($temp['routes'] as $key => $value) {
+//                            if (isset($value['route']) && !empty($value['route']) && in_array($value['route'], $this->_notIncludeListingRoute))
+//                                $temp['routes'][$key]['route'] = 'se' . @ltrim($value['route'], "/");
+//                        }
+//                    }
+//                    // Edit the SocialEngine default routes.
+//                    if (($apiModName == 'siteevent') && isset($temp['routes']) && (is_array($this->_notIncludeRoute) && !in_array($apiModName, $this->_notIncludeRoute))) {
+//                        foreach ($temp['routes'] as $key => $value) {
+//                            if (isset($value['route']) && !empty($value['route']) && in_array($value['route'], $this->_notIncludeListingRoute))
+//                                $temp['routes'][$key]['route'] = 'se' . @ltrim($value['route'], "/");
+//                        }
+//                    }
+//                    
+//                    if (($apiModName == 'sitegroup') && isset($temp['routes']) && (is_array($this->_notIncludeRoute) && !in_array($apiModName, $this->_notIncludeRoute))) {
+//                        foreach ($temp['routes'] as $key => $value) {
+//                            if (isset($value['route']) && !empty($value['route']) && in_array($value['route'], $this->_notIncludeListingRoute))
+//                                $temp['routes'][$key]['route'] = 'se' . @ltrim($value['route'], "/");
+//                        }
+//                    }
+//
+//                    $data[$apiModName]['routes'] = $temp['routes'];
+//                }
             }
             if (!empty($apiRoutes[$apiModName])) {
                 $routes = $apiRoutes[$apiModName];
@@ -624,33 +625,33 @@ class Pgservicelayer_ApiBootstrap {
         if (is_file(APPLICATION_PATH . '/application/modules/Sitereview/controllers/license/license.php'))
             include APPLICATION_PATH . '/application/modules/Sitereview/controllers/license/license.php';
 
-        if (is_file(APPLICATION_PATH . '/application/modules/Siteevent/controllers/license/license.php'))
-            include APPLICATION_PATH . '/application/modules/Siteevent/controllers/license/license.php';
-
-        if (is_file(APPLICATION_PATH . '/application/modules/Siteeventticket/controllers/license/license.php'))
-            include APPLICATION_PATH . '/application/modules/Siteeventticket/controllers/license/license.php';
-
-        if (is_file(APPLICATION_PATH . '/application/modules/Sitepage/controllers/license/license.php'))
-            include APPLICATION_PATH . '/application/modules/Sitepage/controllers/license/license.php';
-
-        if (is_file(APPLICATION_PATH . '/application/modules/Sitestore/controllers/license/license.php'))
-            include APPLICATION_PATH . '/application/modules/Sitestore/controllers/license/license.php';
-
-        if (is_file(APPLICATION_PATH . '/application/modules/Sitegroup/controllers/license/license.php'))
-            include APPLICATION_PATH . '/application/modules/Sitegroup/controllers/license/license.php';
-
-        if (is_file(APPLICATION_PATH . '/application/modules/Sitehashtag/controllers/license/license.php'))
-            include APPLICATION_PATH . '/application/modules/Sitehashtag/controllers/license/license.php';
-
-        if (is_file(APPLICATION_PATH . '/application/modules/Sitereaction/controllers/license/license.php'))
-            include APPLICATION_PATH . '/application/modules/Sitereaction/controllers/license/license.php';
-
-        if (is_file(APPLICATION_PATH . '/application/modules/Nestedcomment/controllers/license/license.php'))
-            include APPLICATION_PATH . '/application/modules/Nestedcomment/controllers/license/license.php';
-        if (is_file(APPLICATION_PATH . '/application/modules/Sitegateway/controllers/license/license.php'))
-            include APPLICATION_PATH . '/application/modules/Sitegateway/controllers/license/license.php';
-        if (is_file(APPLICATION_PATH . '/application/modules/Siteeventticket/controllers/license/license.php'))
-            include APPLICATION_PATH . '/application/modules/Siteeventticket/controllers/license/license.php';
+//        if (is_file(APPLICATION_PATH . '/application/modules/Siteevent/controllers/license/license.php'))
+//            include APPLICATION_PATH . '/application/modules/Siteevent/controllers/license/license.php';
+//
+//        if (is_file(APPLICATION_PATH . '/application/modules/Siteeventticket/controllers/license/license.php'))
+//            include APPLICATION_PATH . '/application/modules/Siteeventticket/controllers/license/license.php';
+//
+//        if (is_file(APPLICATION_PATH . '/application/modules/Sitepage/controllers/license/license.php'))
+//            include APPLICATION_PATH . '/application/modules/Sitepage/controllers/license/license.php';
+//
+//        if (is_file(APPLICATION_PATH . '/application/modules/Sitestore/controllers/license/license.php'))
+//            include APPLICATION_PATH . '/application/modules/Sitestore/controllers/license/license.php';
+//
+//        if (is_file(APPLICATION_PATH . '/application/modules/Sitegroup/controllers/license/license.php'))
+//            include APPLICATION_PATH . '/application/modules/Sitegroup/controllers/license/license.php';
+//
+//        if (is_file(APPLICATION_PATH . '/application/modules/Sitehashtag/controllers/license/license.php'))
+//            include APPLICATION_PATH . '/application/modules/Sitehashtag/controllers/license/license.php';
+//
+//        if (is_file(APPLICATION_PATH . '/application/modules/Sitereaction/controllers/license/license.php'))
+//            include APPLICATION_PATH . '/application/modules/Sitereaction/controllers/license/license.php';
+//
+//        if (is_file(APPLICATION_PATH . '/application/modules/Nestedcomment/controllers/license/license.php'))
+//            include APPLICATION_PATH . '/application/modules/Nestedcomment/controllers/license/license.php';
+//        if (is_file(APPLICATION_PATH . '/application/modules/Sitegateway/controllers/license/license.php'))
+//            include APPLICATION_PATH . '/application/modules/Sitegateway/controllers/license/license.php';
+//        if (is_file(APPLICATION_PATH . '/application/modules/Siteeventticket/controllers/license/license.php'))
+//            include APPLICATION_PATH . '/application/modules/Siteeventticket/controllers/license/license.php';
     }
     
     protected function _initSession()
