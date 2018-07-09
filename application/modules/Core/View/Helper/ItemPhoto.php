@@ -50,8 +50,7 @@ class Core_View_Helper_ItemPhoto extends Engine_View_Helper_HtmlImage
     $attribs['class'] .= $itemPhotoBadgeColor['class'];
     $attribs['count'] .= $itemPhotoBadgeColor['count'];
     $attribs['gear'] .= $itemPhotoBadgeColor['gear'];
-
-    // Default image
+     // Default image
     if( !$src ) {
       $src = $this->getNoPhoto($item, $safeName);
       $attribs['class']  .=  $this->_classPrefix . ' item_nophoto ';

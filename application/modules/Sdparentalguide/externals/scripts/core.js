@@ -2,19 +2,29 @@ function hoverBoxImage() {
 
   $$('.item_photo_user').each( function (element) {
 
-      element.getParent().getParent().classList.add('d-inline-block')
+      element.getParent().getParent().classList.add('d-inline-block');
+      element.getParent().getParent().setAttribute('id','btn-menu');
+      
       let elementHover = element.getParent().getParent().getParent().getElement('.extfox-widgets');
       let closeElement = elementHover.getElement('.close a');
-
+      let profileMenu = document.getElementById("profile-dropdown-menu");
+      let profileNotification = document.getElementById('core_mini_updates_pulldown');
       element.getParent().removeEvents('click').addEvent('click', function(e) {
         e.stop();
 
         hideHoverBoxes();
         
         if( elementHover.classList.contains('active') ) {
+
           elementHover.classList.remove('active');
+         
         } else {
-          elementHover.classList.add('active');
+            profileMenu.classList.remove('active');
+            elementHover.classList.add('active');
+            if(profileNotification.classList[0] === 'updates_pulldown_active'){
+                profileNotification.classList.add('updates_pulldown');
+                profileNotification.classList.remove('updates_pulldown_active');
+            }
         }
 
         // get close buttons
