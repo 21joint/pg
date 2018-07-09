@@ -2177,6 +2177,14 @@ form.preference-holder {
                                     font-size: 18px;
                                 }
                             }
+                            span {
+                                &.updates_pulldown_active {
+                                    .pulldown_contents_wrapper {
+                                        right: -3rem !important;
+                                        width: 300px !important;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
