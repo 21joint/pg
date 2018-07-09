@@ -71,19 +71,18 @@
 
                     </li> <!-- notifications -->
 
-                    <li class="list-inline-item profile-img pr-3">
+                    <li id="pop-up" class="list-inline-item profile-img pr-3">
 
                         <?php echo $this->htmlLink( $this->viewer->getHref(),$this->itemPhoto($this->viewer, 'thumb.icon')); ?>
 
 
                     </li> <!-- profile -->
-
                    
                     <li class="list-inline-item name d-none d-sm-block position-relative">
                         <?php echo $this->htmlLink($this->viewer->getHref(), substr($this->viewer->getTitle(), 0, strrpos($this->viewer->getTitle(), ' ')), array('class' => 'font-weight-bold')); ?>
 
-                        <a href="javascript:void(0)" onclick="showProfileDropdown()" class="pl-1">
-                          <svg height="10px" width="10px" id="f4ac1fec-dd15-475b-ba00-2616991e8a99" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="5.82" height="3.3" viewBox="0 0 5.82 3.3"><path d="M.39,0A.35.35,0,0,0,0,.24.36.36,0,0,0,.11.66L2.63,3.18a.38.38,0,0,0,.55,0L5.7.66A.36.36,0,0,0,5.78.24.35.35,0,0,0,5.43,0Z" transform="translate(0 0)" fill="#5cc7ce"/></svg>
+                        <a href="javascript:void(0)" onclick="showProfileDropdown(this)" class="pl-1">
+                          <svg id="btn-drop" height="10px" width="10px" id="f4ac1fec-dd15-475b-ba00-2616991e8a99" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="5.82" height="3.3" viewBox="0 0 5.82 3.3"><path d="M.39,0A.35.35,0,0,0,0,.24.36.36,0,0,0,.11.66L2.63,3.18a.38.38,0,0,0,.55,0L5.7.66A.36.36,0,0,0,5.78.24.35.35,0,0,0,5.43,0Z" transform="translate(0 0)" fill="#5cc7ce"/></svg>
                         </a>
 
                         <div class="item-profile-dropdown position-absolute" id="profile-dropdown-menu">
@@ -233,9 +232,9 @@
 <script type='text/javascript'>
   var notificationUpdater;
 
-  en4.core.runonce.add(function(){
-   
-
+  en4.core.runonce.add(function(e){
+    
+    
     if($('notifications_markread_link')){
       $('notifications_markread_link').addEvent('click', function() {
         //$('notifications_markread').setStyle('display', 'none');
@@ -254,6 +253,9 @@
 
   });
 
+ 
+  
+ 
   //var updateElement = $('core_menu_mini_menu').getElement('.core_mini_update');
   var updateElement = $('core_menu_mini_menu_extfox').getElement('.core_mini_update');
 
@@ -266,6 +268,7 @@
       if( element.className=='updates_pulldown' ) {
         element.className= 'updates_pulldown_active';
         showNotifications();
+        profileMenu.classList.remove('active');
       } else {
         element.className='updates_pulldown';
       }
@@ -341,7 +344,7 @@
       showDropdownItem(search_holder);
   });
 
-  // take element and check if you want to display active or inactive
+  //take element and check if you want to display active or inactive
   function showDropdownItem(element) {
       let isActive = element.classList.value.search('active');
       ((isActive < 1) ? element.className += ' active' : element.classList.remove('active'));
@@ -358,14 +361,78 @@
     }
   }
 
-  function showProfileDropdown() {
+  function showProfileDropdown(e) {
     let dropdownHolder = document.getElementById('profile-dropdown-menu');
+    let btnDropDown = document.getElementById('btn-drop');
+    
     if(dropdownHolder.classList.contains('active') == false) {
-      dropdownHolder.classList.add('active');
+   
+        dropdownHolder.classList.add('active');
+
     } else {
+      
       dropdownHolder.classList.remove('active');
+      
     }
   }
+
+
+  window.onload = function(){
+
+   
+    // dropdown
+    let profileMenu = document.getElementById("profile-dropdown-menu");
+    var profileBadge = document.getElementById("extfox-widgets");
+   
+    // buttons
+    var profileMenuBtn = document.getElementById('btn-drop');
+    var profileNotificationBtn = document.getElementById('updates_toggle');
+  
+    
+    document.onclick = function(e){
+      var profileNotification = document.getElementById('core_mini_updates_pulldown');
+      
+      // For Profile Menu
+      if(e.target.id !== 'btn-drop'){
+        profileMenu.classList.remove('active');
+      }
+      
+      // For Badges
+      if(e.target.id !== 'box-hover-member')  {
+        profileBadge.classList.remove('active');
+      }
+      
+      // For Notification
+      if(e.target.id !== 'close_icon') {
+        if(profileNotification.classList[0] === 'updates_pulldown_active'){
+          profileNotification.classList.add('updates_pulldown');
+          profileNotification.classList.remove('updates_pulldown_active');
+        }
+      }
+      
+      
+      // DropDown Profile Menu
+      if(e.target === profileMenuBtn ){
+        profileBadge.classList.remove('active');
+
+        if(profileNotification.classList[0] === 'updates_pulldown_active'){
+
+            profileNotification.classList.add('updates_pulldown');
+            profileNotification.classList.remove('updates_pulldown_active');
+        }
+      }
+
+      // DropDown Notification Menu
+      if(e.target === profileNotificationBtn){
+          profileBadge.classList.remove('active');
+          profileMenu.classList.remove('active');
+      }
+      
+      
+    };
+
+  };
+   
 
   
 </script>
