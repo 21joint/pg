@@ -150,7 +150,7 @@ class Pgservicelayer_Controller_Front extends Zend_Controller_Front {
                 /**
                  * Notify plugins of dispatch startup
                  */
-                //$this->_plugins->preDispatch($this->_request);
+                $this->_plugins->preDispatch($this->_request);
 
                 /**
                  * Skip requested action if preDispatch() has reset it

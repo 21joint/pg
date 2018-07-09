@@ -142,6 +142,30 @@ $routes['pgservicelayer'] = array(
           'action' => '\D+',
         )
     ),
+    'pgservicelayer_apisearch' => array(
+        'route' => 'api/:version/search/*',
+        'defaults' => array(
+          'module' => 'pgservicelayer',
+          'controller' => 'search',
+          'action' => 'index',
+          'version' => 'v1'
+        ),
+        'reqs' => array(
+          'action' => '\D+',
+        )
+    ),
+    'pgservicelayer_apireaction' => array(
+        'route' => 'api/:version/reaction/*',
+        'defaults' => array(
+          'module' => 'pgservicelayer',
+          'controller' => 'reaction',
+          'action' => 'index',
+          'version' => 'v1'
+        ),
+        'reqs' => array(
+          'action' => '\D+',
+        )
+    ),
 );
 
 return $routes;

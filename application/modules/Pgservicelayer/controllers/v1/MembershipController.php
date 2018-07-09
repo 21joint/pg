@@ -10,25 +10,36 @@
 class Pgservicelayer_MembershipController extends Pgservicelayer_Controller_Action_Api
 {
     public function init(){
-        $timezone = Engine_Api::_()->getApi('settings', 'core')->core_locale_timezone;
-        $viewer   = Engine_Api::_()->user()->getViewer();
-        $defaultLocale = $defaultLanguage = Engine_Api::_()->getApi('settings', 'core')->getSetting('core.locale.locale', 'en_US');
-        $defaultLocaleObj = new Zend_Locale($defaultLocale);
-        Zend_Registry::set('LocaleDefault', $defaultLocaleObj);
-
-        if ($viewer->getIdentity()) {
-            $timezone = $viewer->timezone;
-        }
-        Zend_Registry::set('timezone', $timezone);
-        Engine_Api::_()->getApi('Core', 'siteapi')->setView();
-        Engine_Api::_()->getApi('Core', 'siteapi')->setTranslate();
-        Engine_Api::_()->getApi('Core', 'siteapi')->setLocal();
+        parent::init();
         
         $this->requireSubject();
     }
-        
+    
     public function indexAction(){
-        $this->validateRequestMethod("POST");
+        try{
+            $method = strtolower($this->getRequest()->getMethod());
+            if($method == 'get'){
+                $this->getAction();
+            }
+            else if($method == 'post'){
+                $this->postAction();
+            }
+            else if($method == 'put' || $method == 'patch'){
+                $this->respondWithError('invalid_method');
+            }
+            else if($method == 'delete'){
+                $this->deleteAction();
+            }
+            else{
+                $this->respondWithError('invalid_method');
+            }
+        } catch (Exception $ex) {
+            $this->respondWithServerError($ex);
+        }
+    }
+    
+    public function getAction(){
+        $this->validateRequestMethod("GET");
         $viewer = Engine_Api::_()->user()->getViewer();
         if(!$viewer->getIdentity() && $this->isApiRequest()){
             $this->respondWithError('unauthorized');
@@ -41,19 +52,71 @@ class Pgservicelayer_MembershipController extends Pgservicelayer_Controller_Acti
                 !$subject->getIdentity()){
             $this->respondWithError('no_record');
         }
-        if(!method_exists($subject, 'membership')){
-            $this->respondWithError('friendship_disabled');
+        $page = $this->getParam("page",1);
+        $limit = $this->getParam("limit",10);
+        if($subject->getType() == "user"){
+            $table = $subject->membership()->getReceiver();
+            $tableName = $table->info("name");
+            $select = $subject->membership()->getMembersSelect();
+            $select->from($tableName,array("*",new Zend_Db_Expr("IF(gg_guid IS NULL,CONCAT(resource_id,'_user','-',user_id,'_user'),gg_guid) as gg_guid")));
+        }else{
+            $table = Engine_Api::_()->getDbtable('follows', 'seaocore');
+            $select = $table->select()
+                    ->where("resource_type = ?",$subject->getType())
+                    ->where("resource_id = ?",$subject->getIdentity());
+        }
+        $select->where("gg_deleted = ?",0);
+        
+        $followerID = $this->getParam("followerID");
+        if(!empty($followerID) && $subject->getType() == "user"){
+            $select->where("user_id = ?",$followerID);
+        }
+        if(!empty($followerID) && $subject->getType() != "user"){
+            $select->where("poster_id = ?",$followerID);
+        }
+        
+        $orderByDirection = $this->getParam("orderByDirection","descending");
+        $orderBy = $this->getParam("orderBy","createdDateTime");
+        $orderByDirection = ($orderByDirection == "descending")?"DESC":"ASC";
+        if($orderBy == "createdDateTime"){
+            $select->order("creation_date $orderByDirection");
+        }else if($subject->getType() == "user"){
+            $select->order("gg_guid $orderByDirection");
+        }else{
+            $select->order("follow_id $orderByDirection");
+        }
+        
+        $paginator = Zend_Paginator::factory($select);
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage($limit);
+        
+        $response['ResultCount'] = $paginator->getTotalItemCount();
+        $response['Results'] = array();
+        $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
+        foreach($paginator as $row){
+            $response['Results'][] = $responseApi->getFollowData($subject,$row);
+        }
+        $this->respondWithSuccess($response);
+    }
+        
+    public function postAction(){
+        $viewer = Engine_Api::_()->user()->getViewer();
+        if(!$viewer->getIdentity() && $this->isApiRequest()){
+            $this->respondWithError('unauthorized');
+        }
+        $subject = null;
+        if(Engine_Api::_()->core()->hasSubject()){
+            $subject = Engine_Api::_()->core()->getSubject();
+        }
+        if (!($subject instanceof Core_Model_Item_Abstract) ||
+                !$subject->getIdentity()){
+            $this->respondWithError('no_record');
         }
         
         $db = Engine_Api::_()->getDbtable('membership', 'user')->getAdapter();
         $db->beginTransaction();
 
         try {
-            $proxyObject = Engine_Api::_()->getDbtable('membership', 'user')->membership($subject);
-            $proxyObject
-                ->addMember($viewer)
-                ->setUserApproved($viewer);
-            
             // Follow
             if($subject->getType() == "user"){
                 $this->followUser($subject,$viewer);
@@ -72,6 +135,12 @@ class Pgservicelayer_MembershipController extends Pgservicelayer_Controller_Acti
         $user->membership()
             ->addMember($viewer)
             ->setUserApproved($viewer);
+        $row = $user->membership()->getRow($viewer);
+        if(!empty($row)){
+            $row->gg_guid = $user->getGuid()."-".$viewer->getGuid();
+            $row->creation_date = date("Y-m-d H:i:s");
+            $row->save();
+        }
         if( !$viewer->membership()->isUserApprovalRequired() && !$viewer->membership()->isReciprocal() ) {
         // if one way friendship and verification not required
 
@@ -85,6 +154,12 @@ class Pgservicelayer_MembershipController extends Pgservicelayer_Controller_Acti
 
         $message = Zend_Registry::get('Zend_Translate')->_("You are now following this member.");
         
+        $user->gg_followers_count++;
+        $user->save();
+        
+        $viewer->gg_following_count++;
+        $viewer->save();
+
       } else if( !$viewer->membership()->isUserApprovalRequired() && $viewer->membership()->isReciprocal() ){
         // if two way friendship and verification not required
 
@@ -97,7 +172,7 @@ class Pgservicelayer_MembershipController extends Pgservicelayer_Controller_Acti
         // Add notification
         Engine_Api::_()->getDbtable('notifications', 'activity')
             ->addNotification($user, $viewer, $user, 'friend_accepted');
-        
+
         $message = Zend_Registry::get('Zend_Translate')->_("You are now friends with this member.");
 
       } else if( !$user->membership()->isReciprocal() ) {
@@ -106,16 +181,16 @@ class Pgservicelayer_MembershipController extends Pgservicelayer_Controller_Acti
         // Add notification
         Engine_Api::_()->getDbtable('notifications', 'activity')
             ->addNotification($user, $viewer, $user, 'friend_follow_request');
-        
+
         $message = Zend_Registry::get('Zend_Translate')->_("Your friend request has been sent.");
-        
+
       } else if( $user->membership()->isReciprocal() ) {
         // if two way friendship and verification required
 
         // Add notification
         Engine_Api::_()->getDbtable('notifications', 'activity')
             ->addNotification($user, $viewer, $user, 'friend_request');
-        
+
         $message = Zend_Registry::get('Zend_Translate')->_("Your friend request has been sent.");
       }
     }
@@ -139,7 +214,7 @@ class Pgservicelayer_MembershipController extends Pgservicelayer_Controller_Acti
             $manageAdminsIds = Engine_Api::_()->getDbtable('manageadmins', 'sitegroup')->getManageAdmin($resource_id, $viewer_id);
         }
         
-        $follow_id_temp = $resource->follows()->isFollow($viewer);
+        $follow_id_temp = $followTable->isFollow($resource,$viewer);
         if (empty($follow_id_temp)) {
             $follow_id = $followTable->addFollow($resource, $viewer);
             if($viewer_id != $resource->getOwner()->getIdentity()) {
@@ -245,5 +320,69 @@ class Pgservicelayer_MembershipController extends Pgservicelayer_Controller_Acti
                 }	
             }
         }
+    }
+    
+    public function deleteAction(){
+        $viewer = Engine_Api::_()->user()->getViewer();
+        if(!$viewer->getIdentity() && $this->isApiRequest()){
+            $this->respondWithError('unauthorized');
+        }
+        $subject = null;
+        if(Engine_Api::_()->core()->hasSubject()){
+            $subject = Engine_Api::_()->core()->getSubject();
+        }
+        if (!($subject instanceof Core_Model_Item_Abstract) ||
+                !$subject->getIdentity()){
+            $this->respondWithError('no_record');
+        }
+        
+        $db = Engine_Api::_()->getDbtable('membership', 'user')->getAdapter();
+        $db->beginTransaction();
+
+        try {
+            // Follow
+            if($subject->getType() == "user"){
+                $this->removeUserFollow($subject,$viewer);
+            }else{
+                $this->followSeaoCore($subject,$viewer);
+            }
+            $db->commit();
+            $this->successResponseNoContent('no_content');
+        }catch(Exception $e){
+            $db->rollBack();
+            $this->respondWithServerError($e);
+        }
+    }
+    
+    public function removeUserFollow($user,$viewer){
+        if(!$user->membership()->isMember($viewer)){
+            return;
+        }
+        $user->membership()->removeMember($viewer);
+        
+        $user->lists()->removeFriendFromLists($viewer);
+        $viewer->lists()->removeFriendFromLists($user);
+
+        // Set the requests as handled
+        $notification = Engine_Api::_()->getDbtable('notifications', 'activity')
+          ->getNotificationBySubjectAndType($user, $viewer, 'friend_request');
+        if( $notification ) {
+          $notification->mitigated = true;
+          $notification->read = 1;
+          $notification->save();
+        }
+        $notification = Engine_Api::_()->getDbtable('notifications', 'activity')
+            ->getNotificationBySubjectAndType($viewer, $user, 'friend_follow_request');
+        if( $notification ) {
+          $notification->mitigated = true;
+          $notification->read = 1;
+          $notification->save();
+        }
+        
+        $user->gg_followers_count--;
+        $user->save();
+        
+        $viewer->gg_following_count--;
+        $viewer->save();
     }
 }

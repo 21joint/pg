@@ -638,5 +638,32 @@ class Sdparentalguide_Api_Core extends Core_Api_Abstract{
                 break;
         }
         return $mappedResourceType;
-    }    
+    }
+    
+    public function mapSEResourceTypes($resourceType){
+        $mappedResourceType = $resourceType;
+        switch(strtolower($resourceType)){
+            case "sitereview_listing":
+                $mappedResourceType = "Review";
+                break;
+            case "ggcommunity_question":
+                $mappedResourceType = "Question";
+                break;
+            case "ggcommunity_answer":
+                $mappedResourceType = "answer";
+                break;
+            case "core_comment":
+                $mappedResourceType = "Comment";
+                break;
+            case "user":
+                $mappedResourceType = "Member";
+                break;
+            case "sdparentalguide_topic":
+                $mappedResourceType = "Topic";
+                break;
+            default:
+                break;
+        }
+        return $mappedResourceType;
+    }
 }

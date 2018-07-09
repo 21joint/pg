@@ -129,7 +129,8 @@ class Pgservicelayer_ApiBootstrap {
 
             $front->setRequest($request);
             $front->registerPlugin(new Sdparentalguide_Plugin_Core);
-
+            $front->registerPlugin(new Pgservicelayer_Plugin_Loader());
+            
             $response = $front->dispatch($request, $response);
             $response->sendResponse();
         } catch (Exception $e) {
@@ -459,32 +460,31 @@ class Pgservicelayer_ApiBootstrap {
                     $data[$apiModName]['items'] = $temp['items'];
                 }
 
-                //Remove extra routes for now.
-//                if (isset($temp['routes']) && (is_array($this->_notIncludeRoute) && !in_array($apiModName, $this->_notIncludeRoute))) {
-//                    // Edit the SocialEngine default routes.
-//                    if (($apiModName == 'sitereview') && isset($temp['routes']) && (is_array($this->_notIncludeRoute) && !in_array($apiModName, $this->_notIncludeRoute))) {
-//                        foreach ($temp['routes'] as $key => $value) {
-//                            if (isset($value['route']) && !empty($value['route']) && in_array($value['route'], $this->_notIncludeListingRoute))
-//                                $temp['routes'][$key]['route'] = 'se' . @ltrim($value['route'], "/");
-//                        }
-//                    }
-//                    // Edit the SocialEngine default routes.
-//                    if (($apiModName == 'siteevent') && isset($temp['routes']) && (is_array($this->_notIncludeRoute) && !in_array($apiModName, $this->_notIncludeRoute))) {
-//                        foreach ($temp['routes'] as $key => $value) {
-//                            if (isset($value['route']) && !empty($value['route']) && in_array($value['route'], $this->_notIncludeListingRoute))
-//                                $temp['routes'][$key]['route'] = 'se' . @ltrim($value['route'], "/");
-//                        }
-//                    }
-//                    
-//                    if (($apiModName == 'sitegroup') && isset($temp['routes']) && (is_array($this->_notIncludeRoute) && !in_array($apiModName, $this->_notIncludeRoute))) {
-//                        foreach ($temp['routes'] as $key => $value) {
-//                            if (isset($value['route']) && !empty($value['route']) && in_array($value['route'], $this->_notIncludeListingRoute))
-//                                $temp['routes'][$key]['route'] = 'se' . @ltrim($value['route'], "/");
-//                        }
-//                    }
-//
-//                    $data[$apiModName]['routes'] = $temp['routes'];
-//                }
+                if (isset($temp['routes']) && (is_array($this->_notIncludeRoute) && !in_array($apiModName, $this->_notIncludeRoute))) {
+                    // Edit the SocialEngine default routes.
+                    if (($apiModName == 'sitereview') && isset($temp['routes']) && (is_array($this->_notIncludeRoute) && !in_array($apiModName, $this->_notIncludeRoute))) {
+                        foreach ($temp['routes'] as $key => $value) {
+                            if (isset($value['route']) && !empty($value['route']) && in_array($value['route'], $this->_notIncludeListingRoute))
+                                $temp['routes'][$key]['route'] = 'se' . @ltrim($value['route'], "/");
+                        }
+                    }
+                    // Edit the SocialEngine default routes.
+                    if (($apiModName == 'siteevent') && isset($temp['routes']) && (is_array($this->_notIncludeRoute) && !in_array($apiModName, $this->_notIncludeRoute))) {
+                        foreach ($temp['routes'] as $key => $value) {
+                            if (isset($value['route']) && !empty($value['route']) && in_array($value['route'], $this->_notIncludeListingRoute))
+                                $temp['routes'][$key]['route'] = 'se' . @ltrim($value['route'], "/");
+                        }
+                    }
+                    
+                    if (($apiModName == 'sitegroup') && isset($temp['routes']) && (is_array($this->_notIncludeRoute) && !in_array($apiModName, $this->_notIncludeRoute))) {
+                        foreach ($temp['routes'] as $key => $value) {
+                            if (isset($value['route']) && !empty($value['route']) && in_array($value['route'], $this->_notIncludeListingRoute))
+                                $temp['routes'][$key]['route'] = 'se' . @ltrim($value['route'], "/");
+                        }
+                    }
+
+                    $data[$apiModName]['routes'] = $temp['routes'];
+                }
             }
             if (!empty($apiRoutes[$apiModName])) {
                 $routes = $apiRoutes[$apiModName];

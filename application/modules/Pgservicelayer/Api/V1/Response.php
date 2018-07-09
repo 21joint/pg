@@ -248,7 +248,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $questionArray = array();
         $questionArray['questionID'] = (string)$question->question_id;
         $questionArray['title'] = (string)$question->title;
-        $questionArray['body'] = (string)$question->body;
+        $questionArray['body'] = (string)strip_tags($question->body);
         $request = Zend_Controller_Front::getInstance()->getRequest();
         $avatarPhoto = ucfirst($request->getParam("photoType","normal"));
         $questionPhotos = $this->getContentImage($question);
@@ -294,5 +294,63 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $answerArray['lastModifiedDateTime'] = $this->getFormatedDateTime($answer->modified_date);
         $answerArray['author'] = $this->getUserData($answer->getOwner());
         return $answerArray;
+    }
+    
+    public function getSearchItemData($item){
+        $itemObject = Engine_Api::_()->getItem($item->type,$item->id);
+        if(empty($itemObject) || !$itemObject->getIdentity()){
+            return;
+        }
+        $itemArray = array();
+        switch($item->type){
+            case 'sitereview_listing':
+                $itemArray = $this->getReviewData($itemObject);
+                break;
+            case 'user':
+                $itemArray = $this->getUserData($itemObject);
+                break;
+            case 'sdparentalguide_topic':
+                $itemArray = $this->getTopicData($itemObject);
+                break;
+            case 'ggcommunity_question':
+                $itemArray = $this->getQuestionData($itemObject);
+                break;
+            case 'ggcommunity_answer':
+                $itemArray = $this->getAnswerData($itemObject);
+                break;
+            default:
+                break;
+        }
+        $searchArray = array(
+            'searchRank' => "1",
+            'contentType' => Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($item->type),
+            'contentObject' => $itemArray
+        );
+        return $searchArray;
+    }
+    
+    public function getFollowData($subject,$row){        
+        if($subject->getType() == "user"){
+            $resource_id = $row->user_id;
+        }else{
+            $resource_id = $row->poster_id;
+        }
+        $followId = '';
+        if(isset($row->gg_guid) && !empty($row->gg_guid)){
+            $followId = $row->gg_guid;
+        }
+        if(isset($row->follow_id)){
+            $followId = $row->follow_id;
+        }
+        $follower = Engine_Api::_()->getItem("user",$resource_id);
+        $rowData = array(
+            'followID' => (string)$followId,
+            'contentType' => Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($subject->getType()),
+            'contentID' => $subject->getIdentity(),
+            'followerID' => $resource_id,
+            'createdDateTime' => $this->getFormatedDateTime($row->creation_date),
+            'author' => $this->getUserData($follower)
+        );
+        return $rowData;
     }
 }

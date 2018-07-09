@@ -118,7 +118,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         $response['ResultCount'] = $paginator->getTotalItemCount();        
         $response['Results'] = array();
         foreach($paginator as $sitereview){
-            $response['contentType'] = $sitereview->getType();
+            $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($sitereview->getType());
             $response['Results'][] = $responseApi->getReviewData($sitereview);
         }
         $this->respondWithSuccess($response);
@@ -408,7 +408,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         $sitereviewData = $responseApi->getReviewData($sitereview);
         $response['ResultCount'] = 1;
-        $response['contentType'] = $sitereview->getType();
+        $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($sitereview->getType());
         $response['Results'] = array($sitereviewData);
         $this->respondWithSuccess($response);
         
@@ -645,7 +645,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         $sitereviewData = $responseApi->getReviewData($sitereview);
         $response['ResultCount'] = 1;
-        $response['contentType'] = $sitereview->getType();
+        $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($sitereview->getType());
         $response['Results'] = array($sitereviewData);
         $this->respondWithSuccess($response);
     }

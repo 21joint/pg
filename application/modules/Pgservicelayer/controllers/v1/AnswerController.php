@@ -180,7 +180,7 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
             $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
             $response['ResultCount'] = 1;
             $response['Results'] = array();
-            $response['contentType'] = $answer->getType();
+            $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($answer->getType());
             $response['Results'][] = $responseApi->getAnswerData($answer);
             $this->respondWithSuccess($response);
 
@@ -248,7 +248,7 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
             $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
             $response['ResultCount'] = 1;
             $response['Results'] = array();
-            $response['contentType'] = $answer->getType();
+            $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($answer->getType());
             $response['Results'][] = $responseApi->getAnswerData($answer);
             $this->respondWithSuccess($response);
 

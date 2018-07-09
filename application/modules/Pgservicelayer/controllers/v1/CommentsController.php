@@ -96,7 +96,7 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
         $response['canDelete'] = $canDelete;
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         foreach($comments as $comment){
-            $response['contentType'] = $comment->getType();
+            $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($comment->getType());
             $response['Results'][] = $responseApi->getCommentData($comment);
         }
         $this->respondWithSuccess($response);
@@ -135,7 +135,7 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
                 $db->commit();
                 $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
                 $response['ResultCount'] = 1;
-                $response['contentType'] = $comment->getType();
+                $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($comment->getType());
                 $response['Results'] = array();
                 $response['Results'][] = $responseApi->getCommentData($comment);
                 $this->respondWithSuccess($response);
@@ -194,7 +194,7 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
                 $db->commit();
                 $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
                 $response['ResultCount'] = 1;
-                $response['contentType'] = $comment->getType();
+                $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($comment->getType());
                 $response['Results'] = array();
                 $response['Results'][] = $responseApi->getCommentData($comment);
                 $this->respondWithSuccess($response);

@@ -125,7 +125,7 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
         $response['ResultCount'] = $paginator->getTotalItemCount();
         $response['Results'] = array();
         foreach($paginator as $question){
-            $response['contentType'] = $question->getType();
+            $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($question->getType());
             $response['Results'][] = $responseApi->getQuestionData($question);
         }
         $this->respondWithSuccess($response);
@@ -207,7 +207,7 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
             $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
             $response['ResultCount'] = 1;
             $response['Results'] = array();
-            $response['contentType'] = $question->getType();
+            $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($question->getType());
             $response['Results'][] = $responseApi->getQuestionData($question);
             $this->respondWithSuccess($response);
         } catch (Exception $ex) {
@@ -272,7 +272,7 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
             $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
             $response['ResultCount'] = 1;
             $response['Results'] = array();
-            $response['contentType'] = $question->getType();
+            $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($question->getType());
             $response['Results'][] = $responseApi->getQuestionData($question);
             $this->respondWithSuccess($response);
         } catch (Exception $ex) {
