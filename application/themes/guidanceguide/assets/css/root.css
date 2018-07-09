@@ -4223,6 +4223,10 @@ body#global_page_user-profile-index {
             padding-bottom: 2rem; }
             body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .layout_core_container_tabs:not(.profile_cover_photo_tabs) > .generic_layout_container > h3 {
               border: none; }
+  body#global_page_user-profile-index .badges-earned div.bottom div div.col-sm .badge-holder {
+    min-width: 100%; }
+  body#global_page_user-profile-index .badges-slide .contributor .swiper-container .swiper-slide {
+    height: 282px !important; }
 
 .layout_sdparentalguide_ajax_struggles li.struggle_holder {
   border-bottom: 1px solid #F5F5F5; }
@@ -4715,7 +4719,7 @@ form.preference-holder {
       form.preference-holder #buttons-wrapper #fieldset-buttons a {
         width: 45%; }
 
-.border-gear {
+.border-gear ~ img {
   border-style: solid !important;
   border-width: 5px 6px 5px 6px !important;
   -moz-border-image: url("../images/border.png") 20 20 20 20 round !important;
