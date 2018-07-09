@@ -2143,6 +2143,12 @@ form.preference-holder {
                 }
             }
 
+            .logo {
+                svg {
+                    height: 30px !important;
+                }
+            }
+
             // mini menu
             .mini-menu {
                 ul {
@@ -2582,6 +2588,15 @@ form.preference-holder {
         }
     }
     .extfox-auth {
+
+        input[type='text'],
+        input[type='number'],
+        textarea {
+            font-size: 16px !important;
+            border-radius: 0;
+            -webkit-appearance: none;
+        }
+
         h3 {
             text-align: center;
             font-family: 'Nunito', sans-serif!important;

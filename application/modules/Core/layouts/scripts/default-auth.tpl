@@ -16,19 +16,10 @@
 <head>
   <base href="<?php echo rtrim($this->serverUrl($this->baseUrl()), '/'). '/' ?>" />
   <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700|Open+Sans:300,400,600" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, 
-minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-  
-  <?php // ALLOW HOOKS INTO META ?>
-  <?php echo $this->hooks('onRenderLayoutDefaultSimple', $this) ?>
-
 
   <?php // TITLE/META ?>
   <?php
-    $this->headLink()
-    ->appendStylesheet($baseUrl . 'application/themes/guidanceguide/assets/css/root.css');
-
+  
     $counter = (int) $this->layout()->counter;
     $staticBaseUrl = $this->layout()->staticBaseUrl;
     $headIncludes = $this->layout()->headIncludes;
@@ -70,7 +61,7 @@ minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     $this->headMeta()->appendName('description', trim($description));
     $this->headMeta()->appendName('keywords', trim($keywords));
-    $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0');
+    $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
 
     //Adding open graph meta tag for video thumbnail
     if( $this->subject() && $this->subject()->getPhotoUrl() ) {
