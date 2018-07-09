@@ -4,11 +4,10 @@
  *
  */
 class Sdparentalguide_Widget_AjaxInfoController extends Engine_Content_Widget_Abstract {
-
     public function indexAction() {
-
         $feedType = $this->_getParam('type', null);
         $content_id = $this->view->identity;
+        
     
         // Don't render this if not authorized
         $this->view->viewer = $viewer = Engine_Api::_()->user()->getViewer();
@@ -49,7 +48,6 @@ class Sdparentalguide_Widget_AjaxInfoController extends Engine_Content_Widget_Ab
           // Load fields view helpers
           $view = $this->view;
           $view->addHelperPath(APPLICATION_PATH . '/application/modules/Fields/View/Helper', 'Fields_View_Helper');
-
           // Values
           $this->view->fieldStructure = $fieldStructure = Engine_Api::_()->fields()->getFieldsStructurePartial($subject);
           $table = Engine_Api::_()->getDbtable('familyMembers', 'sdparentalguide');
@@ -69,5 +67,4 @@ class Sdparentalguide_Widget_AjaxInfoController extends Engine_Content_Widget_Ab
         }
     
     }
-
 }

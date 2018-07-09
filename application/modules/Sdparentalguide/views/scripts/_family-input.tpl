@@ -342,6 +342,8 @@ function setupFamilyMember() {
         
     familyHolder.insertBefore(item, familyHolder.childNodes[0]);
 
+    displayFamilySelector('month');
+    
     // close
     addChild(1);
 
