@@ -5241,6 +5241,9 @@ form.preference-holder {
       padding-top: 0px !important; }
       header.extfox-header .container .mini-menu ul li.notifications a i {
         font-size: 18px; }
+    header.extfox-header .container .mini-menu ul li.notifications span.updates_pulldown_active .pulldown_contents_wrapper {
+      right: -3rem !important;
+      width: 300px !important; }
     header.extfox-header .container .search-bar {
       z-index: 1;
       transition: .2s ease transform;
