@@ -14,49 +14,51 @@
         <div class="badges_main_holder">
             <div class="main_box">
                 <div class="holder-my-badges">
-                    
-                    <?php if($this->specialBadges->getTotalItemCount() > 0): ?>
+
                     <div class="holder-special-badges pt-lg-3 pb-lg-4 px-lg-5 bg-white mb-4">
+                        <?php if($this->specialBadges->getTotalItemCount() > 0): ?>
+                        
 
-                        <!-- title holder -->
-                        <div class="title-holder mb-4">
-                            <h4 class="pb-4"><?php echo $this->translate('Special Badges');?></h4>
+                            <!-- title holder -->
+                            <div class="title-holder mb-4">
+                                <h4 class="pb-4"><?php echo $this->translate('Special Badges');?></h4>
+                            </div>
+
+                            <!-- win badges -->
+                            <ul class="grib-grab-two">
+                            <?php foreach($this->specialBadges as $special):?>
+                                <li class="d-flex align-items-center border-grey-light">
+                                    
+                                    <div class="left-side col-xl-2 col-lg-2 col-3 thumbnail-photo">
+                                        <?php echo $this->itemPhoto($special, 'thumb.normal'); ?>
+                                    </div>
+                                    <div class="right-side">
+                                        <div class="title-holder">
+                                            <h5>
+                                                <?php echo $special->name; ?>
+                                            </h5>
+                                        </div>
+                                        <div class="description-holder">
+                                            <p><?php echo $special->description; ?></p>
+                                        </div>
+                                    </div>
+                                    
+                                </li>
+                            <?php endforeach; ?>
+                            </ul>
+                        <?php else: ?>
+                        <div class="tip-message py-2 w-100">
+                            <span class="mb-0">
+                                <?php echo $this->translate('No special badges to your profile yet..'); ?>
+                            </span>
                         </div>
-
-                        <!-- win badges -->
-                        <ul class="grib-grab-two">
-                        <?php foreach($this->specialBadges as $special):?>
-                            <li class="d-flex align-items-center border-grey-light">
-                                
-                                <div class="left-side col-xl-2 col-lg-2 col-3 thumbnail-photo">
-                                    <?php echo $this->itemPhoto($special, 'thumb.normal'); ?>
-                                </div>
-                                <div class="right-side">
-                                    <div class="title-holder">
-                                        <h5>
-                                            <?php echo $special->name; ?>
-                                        </h5>
-                                    </div>
-                                    <div class="description-holder">
-                                        <p><?php echo $special->description; ?></p>
-                                    </div>
-                                </div>
-                                
-                            </li>
-                        <?php endforeach; ?>
-                        </ul>
-
+                        <?php endif; ?>
                     </div> <!-- holder-special -->
-                    <?php else: ?>
-                    <div class="tip-message py-2 w-100">
-                        <span class="mb-0">
-                            <?php echo $this->translate('No special badges to your profile yet..'); ?>
-                        </span>
-                    </div>
-                    <?php endif; ?>
 
-                    <?php if($this->contributorBadges->getTotalItemCount() > 0): ?>
+                    <!-- contributor badges -->
                     <div class="contributor-badges-holder pt-3 pb-4 px-5 bg-white mb-4">
+                        <?php if($this->contributorBadges->getTotalItemCount() > 0): ?>
+                   
                         <!-- title holder -->
                         <div class="title-holder mb-4">
                             <h4 class="pb-4">
@@ -122,15 +124,15 @@
 
                         </ul>
 
-                    </div> <!-- end of contributor badges -->
-                    <?php else: ?>
-                    <div class="tip-message py-2 w-100">
-                        <span class="mb-0">
-                            <?php echo $this->translate('No Contributor badges to your profile yet..'); ?>
-                        </span>
-                    </div>
-                    <?php endif; ?>
                     
+                        <?php else: ?>
+                        <div class="tip-message py-2 w-100">
+                            <span class="mb-0">
+                                <?php echo $this->translate('No Contributor badges to your profile yet..'); ?>
+                            </span>
+                        </div>
+                        <?php endif; ?>
+                    </div> <!-- end of contributor badges -->
                 </div>
             </div>
         </div>

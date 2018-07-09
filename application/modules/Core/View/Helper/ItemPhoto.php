@@ -49,12 +49,12 @@ class Core_View_Helper_ItemPhoto extends Engine_View_Helper_HtmlImage
     $attribs['class'] .= $this->_classPrefix . 'item_photo_' . $item->getType() . ' ';
     $attribs['class'] .= $itemPhotoBadgeColor['class'];
     $attribs['count'] .= $itemPhotoBadgeColor['count'];
-    $attribs['class'] .= $itemPhotoBadgeColor['gear'];
+    $attribs['gear'] .= $itemPhotoBadgeColor['gear'];
 
     // Default image
     if( !$src ) {
       $src = $this->getNoPhoto($item, $safeName);
-      $attribs['class'] .= $this->_classPrefix . 'item_nophoto ';
+      $attribs['class']  .=  $this->_classPrefix . ' item_nophoto ';
     }
     $this->_url = $src;
     $this->_attribs = $attribs;

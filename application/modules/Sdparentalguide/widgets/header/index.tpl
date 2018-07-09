@@ -98,7 +98,7 @@
                             </div>
                             <div class="items mx-4">
                               <li class="list-inline py-3">
-                                <a href="<?php echo $this->url(array('controller' => 'settings', 'action' => 'general'), 'user_extended');?>">
+                                <a href="<?php echo $this->url(array('id' => $this->viewer()->getIdentity(), 'type' => 'general' ), 'user_profile', true) ?>">
                                   <div class="d-flex align-items-center justify-content-start">
                                     <div class="pr-2"> 
                                       <i class="fa fa-cog" aria-hidden="true"></i> 
@@ -108,7 +108,7 @@
                                 </a>
                               </li>
                               <li class="list-inline pb-3">
-                                <a href="#">
+                                <a href="<?php echo $this->url(array('id' => $this->viewer()->getIdentity(), 'type' => 'preference' ), 'user_profile', true) ?>">
                                   <div class="d-flex align-items-center justify-content-start">
                                     <div class="pr-2"> 
                                       <i class="fa fa-filter" aria-hidden="true"></i>
@@ -117,6 +117,7 @@
                                   </div>
                                 </a>
                               </li>
+                              <?php if($this->viewer->isAdmin()):?>
                               <li class="list-inline pb-3 border-bottom">
                                 <a href="<?php echo $this->baseUrl() ;?>/admin">
                                   <div class="d-flex align-items-center justify-content-start">
@@ -127,6 +128,7 @@
                                   </div>
                                 </a>
                               </li>
+                              <?php endif; ?>
                             </div>
 
                             <div class="items mx-4">
@@ -227,11 +229,13 @@
 
 </header>
 
-
+  
 <script type='text/javascript'>
   var notificationUpdater;
 
   en4.core.runonce.add(function(){
+   
+
     if($('notifications_markread_link')){
       $('notifications_markread_link').addEvent('click', function() {
         //$('notifications_markread').setStyle('display', 'none');
@@ -363,4 +367,5 @@
     }
   }
 
+  
 </script>
