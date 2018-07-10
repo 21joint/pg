@@ -40,21 +40,25 @@ class Core_View_Helper_ItemPhoto extends Engine_View_Helper_HtmlImage
 
     $itemPhotoBadgeColor = Zend_Registry::get('Zend_View')->ItemPhotoBadgeColor($item);
 
+   
     // Get url
     $src = $item->getPhotoUrl($type);
     $safeName = ( $type ? str_replace('.', '_', $type) : 'main' );
     $attribs['class'] = ( isset($attribs['class']) ? $attribs['class'] . ' ' : '' );
     $attribs['class'] .= $this->_classPrefix . $safeName . ' ';
     $attribs['class'] .= $this->_classPrefix . 'item_photo_' . $item->getType() . ' ';
-    $attribs['class'] .= $itemPhotoBadgeColor;
-
-    // Default image
+    $attribs['class'] .= $itemPhotoBadgeColor['class'];
+    $attribs['count'] .= $itemPhotoBadgeColor['count'];
+    $attribs['gear'] .= $itemPhotoBadgeColor['gear'];
+     // Default image
     if( !$src ) {
       $src = $this->getNoPhoto($item, $safeName);
-      $attribs['class'] .= $this->_classPrefix . 'item_nophoto ';
+      $attribs['class']  .=  $this->_classPrefix . ' item_nophoto ';
     }
     $this->_url = $src;
     $this->_attribs = $attribs;
+    
+
     return $this;
   }
 

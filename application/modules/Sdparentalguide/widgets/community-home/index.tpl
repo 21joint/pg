@@ -13,27 +13,156 @@
   <h1 class="mt-5 text-uppercase">Our Community</h1>
   <h5>You can trust our community of real parents</h5>
   <a href="#"
+     target=""
      id="readmore"
      class="btn-large btn-success text-white text-capitalize font-weight-bold mt-5 mb-4 px-5 py-3">Read More</a>
 </div>
-<div class="leaderboard">
-  <div class="leaderboard_main d-flex justify-content-between">
-    <div class="d-flex justify-content-center">Rank</div>
-    <div class="d-flex">Leader</div>
-    <div id="points"
-         class="order_by contribution_home d-flex justify-content-center align-items-center"
-         data-order="contributionPoints">Contribution
-    </div>
+<div class="leaderboard_main d-flex justify-content-between">
+  <div class="d-flex justify-content-center">Rank</div>
+  <div class="d-flex">Leader</div>
+  <div id="points"
+       class="order_by contribution_home d-flex justify-content-center align-items-center"
+       data-order="contributionPoints">Contribution
   </div>
+</div>
+<div class="leaderboard">
   <div id="sd-response" class="container d-flex justify-content-center align-items-center">
     <!-- Loader goes here -->
   </div>
   <div class="leaderboard_content">
     <!-- Content of ajax call goes here -->
   </div>
+  <div class="leaderboard_pagination d-flex justify-content-center align-items-center mt-5">
+    <!-- Content Pagination -->
+    <button id="leaderboard_previous" class="text-white rounded-circle"><</button>
+    <span id="leaderboard_pageNum" class="mx-5">
+            <!-- Displays the current page of Leaderboard Results -->
+        </span>
+    <button id="leaderboard_next" class="text-white rounded-circle">></button>
+  </div>
+</div>
+<div class="find_expert_main container-fluid py-5 mt-5">
+  <div class="row d-flex align-items-center">
+    <div class="find_expert_badges col-lg position-relative d-flex justify-content-around align-items-center">
+      <img class="front_image"
+           src="<?php echo $this->baseUrl(); ?>/application/modules/Sdparentalguide/externals/images/mvp_badge.png"/>
+      <img class="back_image"
+           src="<?php echo $this->baseUrl(); ?>/application/modules/Sdparentalguide/externals/images/badge_baby.png"/>
+      <img class="back_image"
+           src="<?php echo $this->baseUrl(); ?>/application/modules/Sdparentalguide/externals/images/badge_baby.png"/>
+    </div>
+    <div class="find_expert_text col-lg">
+      <h2>Find an expert. Become an expert.</h2>
+      <h3 class="text-capitalize">How to become a contributor to parental guidance</h3>
+      <p>Showcase your experience and expertise, while collecting fancy badges and earning credibility points! Email us
+        at <a href="#" class="text-primary">xxxxxxxxxxx</a> to apply!</p>
+      <h3 class="text-capitalize">How to earn credibility</h3>
+      <p>Earn credibility by engaging in various activites on the site: Creating Reviews, Writing Stories, Commenting on
+        threads. The more you engage, the faster you earn.</p>
+      <h3 class="text-capitalize">How to earn badges</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <h3 class="text-capitalize">Want to become an MVP?</h3>
+      <p>Our MVP program is based on overall excellence! We choose our top notch, engaged and community driven parents
+        to join our MVP program on quarterly basis. You do NOT have to have certain number of badges.</p>
+    </div>
+  </div>
+</div>
+<div class="credibility_info_main my-5">
+  <div class="row">
+    <div class="credibility_info_text col-lg">
+      <h2 class="text-uppercase">Credibility info</h2>
+      <p class="mt-5">Do not delete the activities which you have performed to earn credibility. If you delete those
+        activities, you will loose the credit earned.</p>
+      <p class="mt-5">Credibility is NOT the same as Contribution Badges. You will earn badges for delivering quality
+        content in a specific area. Credibility is what helps you to earn recognition across the site. For example, you
+        maybe a Gold Member Contributor for Car Seats, but only attained a level 2 Credibility because you are not an
+        active user of the site.</p>
+      <p class="mt-5">As you engage across the site, your credibility will go up. You will earn "Credibility Level"
+        badges once you cross a certain credibility ranking. This way everyone can see who is the most active and
+        engaged member on the site!</p>
+    </div>
+    <div class="col-lg"><!-- Keeping up space --></div>
+  </div>
+</div>
+<div class="faq_main my-5 py-5 d-flex flex-column align-items-center justify-content-center ">
+  <h2 class="w-100 text-center">FAQ's</h2>
+  <div class="faq_content w-100">
+    <div class="faq_item mt-4 pb-4">
+      <div class="faq_title d-flex justify-content-between align-items-center">
+        <h4>Can anybody post reviews, earn badges and gain credibility score?</h4>
+        <button class="d-block faq_toggle">+</button>
+      </div>
+      <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque
+        lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies.
+        Curabitur venenatis moleint nisi id viverra.</p>
+    </div>
+    <div class="faq_item mt-4 pb-4">
+      <div class="faq_title d-flex justify-content-between align-items-center">
+        <h4>What are the official hashtags for Guidance Guide and Parental Guidance?</h4>
+        <button class="d-block faq_toggle">+</button>
+      </div>
+      <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque
+        lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies.
+        Curabitur venenatis moleint nisi id viverra.</p>
+    </div>
+    <div class="faq_item mt-4 pb-4">
+      <div class="faq_title d-flex justify-content-between align-items-center">
+        <h4>What if I don't have enough product to write a review and try to earn a badge?</h4>
+        <button class="d-block faq_toggle">+</button>
+      </div>
+      <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque
+        lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies.
+        Curabitur venenatis moleint nisi id viverra.</p>
+    </div>
+    <div class="faq_item mt-4 pb-4">
+      <div class="faq_title d-flex justify-content-between align-items-center">
+        <h4>Can Contributors contact brands?</h4>
+        <button class="d-block faq_toggle">+</button>
+      </div>
+      <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque
+        lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies.
+        Curabitur venenatis moleint nisi id viverra.</p>
+    </div>
+    <div class="faq_item mt-4 pb-4">
+      <div class="faq_title d-flex justify-content-between align-items-center">
+        <h4>I want to review a product, but it technically fits into multiple categories. Where should I put it?</h4>
+        <button class="d-block faq_toggle">+</button>
+      </div>
+      <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque
+        lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies.
+        Curabitur venenatis moleint nisi id viverra.</p>
+    </div>
+    <div class="faq_item mt-4 pb-4">
+      <div class="faq_title d-flex justify-content-between align-items-center">
+        <h4>I am getting a ton of notifications that I don't want. Where do I find the notification settings?</h4>
+        <button class="d-block faq_toggle">+</button>
+      </div>
+      <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque
+        lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies.
+        Curabitur venenatis moleint nisi id viverra.</p>
+    </div>
+    <div class="faq_item mt-4 pb-4">
+      <div class="faq_title d-flex justify-content-between align-items-center">
+        <h4>What browser is preffered for the best website functionality?</h4>
+        <button class="d-block faq_toggle">+</button>
+      </div>
+      <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque
+        lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies.
+        Curabitur venenatis moleint nisi id viverra.</p>
+    </div>
+    <div class="faq_item mt-4 pb-4">
+      <div class="faq_title d-flex justify-content-between align-items-center">
+        <h4>I am having trouble receiving emails from Guidance Guide.</h4>
+        <button class="d-block faq_toggle">+</button>
+      </div>
+      <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque
+        lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies.
+        Curabitur venenatis moleint nisi id viverra.</p>
+    </div>
+  </div>
 </div>
 
-<!-- Add the loader in place -->
 
 <script type='text/javascript'>
   //Dom ready
@@ -41,13 +170,45 @@
     loadLeaderboardResults();
   });
 
-  function loadLeaderboardResults() {
+  // FAQ on click display question and transform plus to close
+  document.querySelector(".faq_toggle").addEventListener('click', function () {
+    document.querySelector(".faq_text").toggleClass("d-none");
+    document.querySelector(".faq_title").toggleClass("mb-3");
+    document.querySelector(".faq_toggle").toggleClass("faq_transform");
+  });
+
+  // Pagionation Number Change Start
+  var pageNum = 1;
+  document.getElementById('leaderboard_previous').addEventListener('click', function () {
+    if (pageNum >= 2) {
+      pageNum--;
+      document.getElementById('leaderboard_previous').addClass('btn-primary').removeClass('btn-secondary');
+      document.getElementById('leaderboard_next').addClass('btn-primary').removeClass('btn-secondary');
+      loadLeaderboardResults(pageNum);
+    } else {
+      document.getElementById('leaderboard_previous').addClass('btn-secondary');
+    }
+  });
+  document.getElementById('leaderboard_next').addEventListener('click', function () {
+    if (pageNum <= 2) {
+      pageNum++;
+      document.getElementById('leaderboard_next').addClass('btn-primary').removeClass('btn-secondary');
+      document.getElementById('leaderboard_previous').addClass('btn-primary').removeClass('btn-secondary');
+      loadLeaderboardResults(pageNum);
+    } else {
+      document.getElementById('leaderboard_next').addClass('btn-secondary');
+    }
+  });
+  // Pagination Number Change End
+
+  // Leaderboard Results Ajax Function
+  function loadLeaderboardResults(page = 1) {
     //Request data can be linked to form inputs
     var requestData = {};
     requestData.mvp = null; //Possible values 1 or 0
     requestData.expert = null; //Possible values 1 or 0
-    requestData.limit = 20;
-    requestData.page = 3;
+    requestData.limit = 20; // Limit to 20 People per Page
+    requestData.page = page;// Limit to 3 Pages
 
     var loader = en4.core.loader.clone();
     loader.addClass("sd_loader my-5");
@@ -78,7 +239,7 @@
           for (var i = 0; i < results.length; i++) {
             html += '<div class="leaderboard_item d-flex justify-content-between">' +
               '<div class="d-flex justify-content-center align-items-center">' +
-              (i + 1) +
+              ((page - 1) * 20 + (i + 1)) +
               '</div>' +
               '<div class="d-flex align-items-center leader position-relative">' +
               '<img src="' + results[i].avatarPhoto.photoURL + '"/>' +
@@ -93,6 +254,8 @@
               '</div>';
           }
           leaderboardContent.innerHTML = html;
+          // Showing current page in Pagination Section
+          document.getElementById('leaderboard_pageNum').innerText = page;
         } else {
           leaderboardContent.innerHTML = responseJSON.message;
         }

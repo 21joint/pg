@@ -4223,6 +4223,10 @@ body#global_page_user-profile-index {
             padding-bottom: 2rem; }
             body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .layout_core_container_tabs:not(.profile_cover_photo_tabs) > .generic_layout_container > h3 {
               border: none; }
+  body#global_page_user-profile-index .badges-earned div.bottom div div.col-sm .badge-holder {
+    min-width: 100%; }
+  body#global_page_user-profile-index .badges-slide .contributor .swiper-container .swiper-slide {
+    height: 282px !important; }
 
 .layout_sdparentalguide_ajax_struggles li.struggle_holder {
   border-bottom: 1px solid #F5F5F5; }
@@ -4508,12 +4512,14 @@ form#user_form_login #twitter-element a:hover, form#user_form_login #twitter-ele
   color: #fff;
   border-color: #1DA1F2; }
 
-#global_page_user-signup-index .right-side div {
+#global_page_user-signup-index .right-side > div {
   width: 100%; }
 #global_page_user-signup-index form {
   overflow-y: scroll;
   max-height: 900px;
   overflow-x: none; }
+  #global_page_user-signup-index form.family-form div.form-wrapper-heading {
+    font-size: 16px; }
   #global_page_user-signup-index form::-webkit-scrollbar {
     display: none; }
   #global_page_user-signup-index form h3 {
@@ -4713,7 +4719,7 @@ form.preference-holder {
       form.preference-holder #buttons-wrapper #fieldset-buttons a {
         width: 45%; }
 
-img.item_photo_user {
+.border-gear ~ img {
   border-style: solid !important;
   border-width: 5px 6px 5px 6px !important;
   -moz-border-image: url("../images/border.png") 20 20 20 20 round !important;
@@ -5219,6 +5225,8 @@ img.item_photo_user {
           transition: top 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1), width 150ms linear, background 150ms linear;
           width: 27px;
           height: 3px; }
+    header.extfox-header .container .logo svg {
+      height: 30px !important; }
     header.extfox-header .container .mini-menu ul li.profile-img a img {
       height: 32px !important;
       width: 32px !important;
@@ -5233,6 +5241,9 @@ img.item_photo_user {
       padding-top: 0px !important; }
       header.extfox-header .container .mini-menu ul li.notifications a i {
         font-size: 18px; }
+    header.extfox-header .container .mini-menu ul li.notifications span.updates_pulldown_active .pulldown_contents_wrapper {
+      right: -3rem !important;
+      width: 300px !important; }
     header.extfox-header .container .search-bar {
       z-index: 1;
       transition: .2s ease transform;
@@ -5446,6 +5457,12 @@ img.item_photo_user {
     .layout_sdparentalguide_ajax_theories .container .holder-my-theories .struggle-box_right-mobile .count_info.svg-icons-one .first-icon {
       display: none; }
 
+  .extfox-auth input[type='text'],
+  .extfox-auth input[type='number'],
+  .extfox-auth textarea {
+    font-size: 16px !important;
+    border-radius: 0;
+    -webkit-appearance: none; }
   .extfox-auth h3 {
     text-align: center;
     font-family: "Nunito", sans-serif !important;

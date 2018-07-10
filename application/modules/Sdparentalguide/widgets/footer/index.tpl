@@ -1,5 +1,5 @@
-<footer class="prg-footer">
-  <div class="bg-white border-top prg-footer--top">
+<footer class="parental-footer">
+  <div class="bg-white border-top parental-footer--top">
 
     <div class="container">
       <div class="top-holder row">
@@ -166,7 +166,7 @@
             </h6>
           </div>
 
-          <div class="prg-footer--social">
+          <div class="parental-footer--social">
 
             <ul class="list-inline text-center text-md-left m-0">
               <li class="list-inline-item align-middle">
@@ -219,8 +219,8 @@
       </div> <!-- end of top-holder -->
     </div> <!-- end of container -->
 
-  </div> <!-- end of holder -->
-  <div class="bg-white border-top prg-footer--bottom">
+  </div> <!-- end of footer-top -->
+  <div class="bg-white border-top parental-footer--bottom">
     <div class="container">
 
       <div class="bottom-holder row justify-content-between">
@@ -241,8 +241,8 @@
             </li>
           </ul>
         </div>
-      </div> <!-- end of bottom-holder -->
+      </div>
 
     </div> <!-- end of container -->
-  </div> <!-- end of holder -->
-</footer> <!-- end of extfox-footer -->
+  </div> <!-- end of footer-bottom-->
+</footer> <!-- end of parental-footer -->

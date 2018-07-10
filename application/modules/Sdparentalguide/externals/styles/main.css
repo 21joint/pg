@@ -72,14 +72,11 @@
 
 .leaderboard_item{
   padding: 10px 0px;
-  margin: 0px 20px;
   border-bottom: 1px solid #f5f5f5;
   transition: 0.5s;
 }
 .leaderboard_item:hover{
   border-bottom: 1px solid #dcf2f2;
-  margin: 0;
-  padding: 10px 20px;
   background-color: #e4fafa;
 }
 .leader img{
@@ -118,8 +115,8 @@
 }
 /* Leaderboard Item styling end */
 /* Community Leaderboard title, main cateogires, list of items -> end */
-
 /* Community Home Page jumbotron, carousel, list, faq, other items -> start */
+/* Community Home Page Jumbotron -> start */
 .leaderboard h1{
   font-size: 60px;
   color: #5cc7ce;
@@ -132,7 +129,91 @@
   font-family: 'Nunito', sans-serif;
   border-radius: 30px;
 }
-/* Community Home Page jumbotron, carousel, list, faq, other items -> start */
+/* Community Home Page Jumbotron -> end */
+/* Community Home Page Find Expert -> start */
+.find_expert_main{
+  background-color: #fff;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+.find_expert_badges{
+  height: 300px;
+  box-sizing: border-box;
+}
+.find_expert_badges .front_image{
+  width: 240px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 2;
+}
+.find_expert_badges .back_image{
+  width: 200px;
+  opacity: 0.5;
+  margin-top: 40px;
+}
+.find_expert_text{
+  box-sizing: border-box;
+  padding: 0px 20px!important;
+}
+.find_expert_text h2{
+  font-family: 'Nunito', sans-serif;
+  color: #5cc7ce;
+  font-weight: bolder;
+}
+.find_expert_text h3{
+  font-family: 'Nunito', sans-serif;
+  font-weight: bolder;
+  margin-bottom: 0px!important;
+  margin-top: 24px;
+}
+/* Community Home Page Find Expert -> end */
+/* Community Home Page Credibility Info -> start */
+.credibility_info_main{
+  box-sizing: border-box;
+}
+.credibility_info_text{
+  box-sizing: border-box;
+  padding: 0px 40px!important;
+}
+.credibility_info_text h2{
+  color: #5cc7ce;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bolder;
+}
+/* Community Home Page Credibility Info -> end */
+/* Community Home Page FAQ -> start */
+.faq_main{
+  background-color: #fff;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 0px 40px;
+}
+.faq_main h2{
+  color: #5cc7ce;
+  font-family: 'Nunito', sans-serif;
+  font-weight: bolder;
+}
+.faq_item{
+  border-bottom: 2px solid #e2e4e6;
+}
+.faq_item h4{
+  border-bottom: none;
+}
+.faq_title{
+
+}
+.faq_toggle{
+  transform: rotate(0deg);
+}
+.faq_transform{
+  transform: rotate(45deg);
+}
+.faq_text{
+
+}
+/* Community Home Page FAQ -> end */
+/* Community Home Page jumbotron, carousel, list, faq, other items -> end */
 
 /* Find a proper place for this -> end */
 
@@ -454,6 +535,7 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
 }
 
 @media screen and (max-width: 768px){
+    /* Community Leaderboard Page Start */
     #order_btn{
       font-size: 12px;
       color: #fff;
@@ -473,9 +555,20 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
       flex: 2!important;
       /* Fix for using community leaderboard */
     }
+    /* Community Leaderboard Page End */
+    /* Community Home Page Start */
+    .leaderboard h1{
+      font-size: 50px;
+    }
+    .leaderboard h5{
+      font-size: 14px;
+      color: #5cc7ce;
+    }
+    /* Community Home Page End */
 }
 
 @media screen and (max-width: 576px){
+    /* Community Leaderboard Page Start */
     .leaderboard_title h3{
       margin: 0!important;
     }
@@ -485,9 +578,20 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
     .leaderboard_title ul li{
       padding: 6px 24px;
     }
+    /* Community Leaderboard Page End */
+    /* Community Home Page Start */
+    .leaderboard h1{
+      font-size: 42px;
+    }
+    .leaderboard h5{
+      font-size: 12px;
+      color: #5cc7ce;
+    }
+    /* Community Home Page End */
 }
 
 @media screen and (max-width: 486px){
+    /* Community Leaderboard Page Start */
     .leaderboard_title h3{
         font-size: 14px;
     }
@@ -498,6 +602,16 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
     .leaderboard_item div{
         font-size: 12px;
     }
+    /* Community Leaderboard Page End */
+    /* Community Home Page Start */
+    .leaderboard h1{
+      font-size: 32px;
+    }
+    .leaderboard h5{
+      font-size: 12px;
+      color: #5cc7ce;
+    }
+    /* Community Home Page End */
 }
 
 @media screen and (max-width: 368px){

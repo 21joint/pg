@@ -1,7 +1,7 @@
 <div class="top_theorist_widget">
     <div class="widget_holder">
         <div class="widget_title">
-            <p class="widget_name"><?php echo $this->translate('Top Theorists');?></p>
+            <p class="widget_name"><?php echo $this->translate('Top Contributors');?></p>
             <?php if($this->more == 1):?>
                 <a href="<?php echo $this->url(array(), 'ggcommunity_leaderboard', true);?>" class="view_more"><?php echo $this->translate('view more'); ?></a>
             <?php endif;?>
