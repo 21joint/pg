@@ -197,16 +197,26 @@
 .faq_item{
   border-bottom: 2px solid #e2e4e6;
 }
-.faq_item h4{
-  border-bottom: none;
+.faq_item p{
+  margin: 0px 20px;
 }
 .faq_title{
 
 }
+.faq_title h4{
+  margin-left: 20px;
+  border-bottom: none;
+}
 .faq_toggle{
+  font-size: 30px;
+  font-weight: bolder;
   transform: rotate(0deg);
+  cursor: pointer;
+  color: #e2e4e6;
+  margin-right: 20px;
 }
 .faq_transform{
+  color: #5cc7ce;
   transform: rotate(45deg);
 }
 .faq_text{
