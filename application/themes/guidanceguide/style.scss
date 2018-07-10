@@ -598,7 +598,27 @@ body#global_page_user-profile-index {
             }
         }
     }
-    
+    .badges-earned {
+        div.bottom {
+            div {
+                div.col-sm {
+                    .badge-holder {
+                        min-width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    .badges-slide  {
+        .contributor {
+            .swiper-container {
+                .swiper-slide {
+                    height: 282px!important;
+                }
+            }
+        }
+    }
+
 }
 
 // Struggles Profile
@@ -1128,14 +1148,22 @@ form#user_form_login {
 // SignUp Page
 #global_page_user-signup-index {
     .right-side {
-        div {
+        > div {
             width: 100%;
         }
     }
     form {
+        
         overflow-y: scroll;
         max-height: 900px;
         overflow-x: none;
+
+        &.family-form {
+            div.form-wrapper-heading {
+                font-size: 16px;
+            }
+        }
+
         &::-webkit-scrollbar {
             display: none;
            }
@@ -1195,7 +1223,7 @@ form#user_form_login {
             }
         }
     }
-    div.form-wrapper-heading{
+    div.form-wrapper-heading {
         span {
             color:#5CC7CE;
             font-size:16px;
@@ -1222,7 +1250,7 @@ form#user_form_login {
       button,a{
           width: 44%;
       }
-    }
+    }    
 }
 
 // Preference Holder 
@@ -1401,13 +1429,15 @@ form.preference-holder {
 
 
 // Border Gear
-img.item_photo_user {
-    border-style: solid!important;
-    border-width: 5px 6px 5px 6px!important;
-    -moz-border-image: url('../images/border.png') 20 20 20 20 round!important;
-    -webkit-border-image: url('../images/border.png') 20 20 20 20 round!important;
-    -o-border-image: url('../images/border.png') 20 20 20 20 round!important;
-    border-image: url(../images/border.png) 20 20 20 20 fill!important;
+.border-gear {
+    ~ img {
+        border-style: solid!important;
+        border-width: 5px 6px 5px 6px!important;
+        -moz-border-image: url('../images/border.png') 20 20 20 20 round!important;
+        -webkit-border-image: url('../images/border.png') 20 20 20 20 round!important;
+        -o-border-image: url('../images/border.png') 20 20 20 20 round!important;
+        border-image: url(../images/border.png) 20 20 20 20 fill!important;
+    }
 }
    
 
@@ -1460,7 +1490,6 @@ img.item_photo_user {
 
 //  ExtfoxForm Settings
 #extfox-settings {
-
     &#delete {
         button {
             background-color: $danger !important;
@@ -1477,7 +1506,6 @@ img.item_photo_user {
             position: unset!important;
             
         }
-        
     }
     p {
         color:#333D40;
@@ -2115,6 +2143,12 @@ img.item_photo_user {
                 }
             }
 
+            .logo {
+                svg {
+                    height: 30px !important;
+                }
+            }
+
             // mini menu
             .mini-menu {
                 ul {
@@ -2141,6 +2175,14 @@ img.item_photo_user {
                                 padding-top: 0px!important;
                                 i {
                                     font-size: 18px;
+                                }
+                            }
+                            span {
+                                &.updates_pulldown_active {
+                                    .pulldown_contents_wrapper {
+                                        right: -3rem !important;
+                                        width: 300px !important;
+                                    }
                                 }
                             }
                         }
@@ -2554,6 +2596,15 @@ img.item_photo_user {
         }
     }
     .extfox-auth {
+
+        input[type='text'],
+        input[type='number'],
+        textarea {
+            font-size: 16px !important;
+            border-radius: 0;
+            -webkit-appearance: none;
+        }
+
         h3 {
             text-align: center;
             font-family: 'Nunito', sans-serif!important;

@@ -12,7 +12,7 @@
 <div class="leaderboard d-flex flex-column justify-content-center align-items-center">
     <h1 class="mt-5 text-uppercase">Our Community</h1>
     <h5>You can trust our community of real parents</h5>
-    <a href="#" id="readmore" class="btn-large btn-success text-white text-capitalize font-weight-bold mt-5 mb-4 px-5 py-3">Read More</a>
+    <a href="#" target="" id="readmore" class="btn-large btn-success text-white text-capitalize font-weight-bold mt-5 mb-4 px-5 py-3">Read More</a>
 </div>
 <div class="leaderboard_main d-flex justify-content-between">
     <div class="d-flex justify-content-center">Rank</div>
@@ -35,18 +35,99 @@
         <button id="leaderboard_next" class="text-white rounded-circle">></button>
     </div>
 </div>
-<div class="container-fluid d-flex justify-content-around align-items-center">
-    <div class="row">
-        <div class="col-lg-6">
-            
+<div class="find_expert_main container-fluid py-5 mt-5">
+    <div class="row d-flex align-items-center">
+        <div class="find_expert_badges col-lg position-relative d-flex justify-content-around align-items-center">
+            <img class="front_image" src="<?php echo $this->baseUrl(); ?>/application/modules/Sdparentalguide/externals/images/mvp_badge.png"/>
+            <img class="back_image" src="<?php echo $this->baseUrl(); ?>/application/modules/Sdparentalguide/externals/images/badge_baby.png"/>
+            <img class="back_image" src="<?php echo $this->baseUrl(); ?>/application/modules/Sdparentalguide/externals/images/badge_baby.png"/>
         </div>
-        <div class="col-lg-6">
-            
+        <div class="find_expert_text col-lg">
+            <h2>Find an expert. Become an expert.</h2>
+            <h3 class="text-capitalize">How to become a contributor to parental guidance</h3>
+            <p>Showcase your experience and expertise, while collecting fancy badges and earning credibility points! Email us at <a href="#" class="text-primary">xxxxxxxxxxx</a> to apply!</p>
+            <h3 class="text-capitalize">How to earn credibility</h3>
+            <p>Earn credibility by engaging in various activites on the site: Creating Reviews, Writing Stories, Commenting on threads. The more you engage, the faster you earn.</p>
+            <h3 class="text-capitalize">How to earn badges</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+            <h3 class="text-capitalize">Want to become an MVP?</h3>
+            <p>Our MVP program is based on overall excellence! We choose our top notch, engaged and community driven parents to join our MVP program on quarterly basis. You do NOT have to have certain number of badges.</p>
+        </div>
+    </div>
+</div>
+<div class="credibility_info_main my-5">
+    <div class="row">
+        <div class="credibility_info_text col-lg">
+            <h2 class="text-uppercase">Credibility info</h2>
+            <p class="mt-5">Do not delete the activities which you have performed to earn credibility. If you delete those activities, you will loose the credit earned.</p>
+            <p class="mt-5">Credibility is NOT the same as Contribution Badges. You will earn badges for delivering quality content in a specific area. Credibility is what helps you to earn recognition across the site. For example, you maybe a Gold Member Contributor for Car Seats, but only attained a level 2 Credibility because you are not an active user of the site.</p>
+            <p class="mt-5">As you engage across the site, your credibility will go up. You will earn "Credibility Level" badges once you cross a certain credibility ranking. This way everyone can see who is the most active and engaged member on the site!</p>
+        </div>
+        <div class="col-lg"><!-- Keeping up space --></div>
+    </div>
+</div>
+<div class="faq_main my-5 py-5 d-flex flex-column align-items-center justify-content-center ">
+    <h2 class="w-100 text-center">FAQ's</h2>
+    <div class="faq_content w-100">
+        <div class="faq_item mt-4 pb-4">
+            <div class="faq_title d-flex justify-content-between align-items-center">
+                <h4>Can anybody post reviews, earn badges and gain credibility score?</h4>
+                <button class="d-block faq_toggle">+</button>   
+            </div>
+            <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
+        </div>
+        <div class="faq_item mt-4 pb-4">
+            <div class="faq_title d-flex justify-content-between align-items-center">
+                <h4>What are the official hashtags for Guidance Guide and Parental Guidance?</h4>
+                <button class="d-block faq_toggle">+</button>   
+            </div>
+            <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
+        </div>
+        <div class="faq_item mt-4 pb-4">
+            <div class="faq_title d-flex justify-content-between align-items-center">
+                <h4>What if I don't have enough product to write a review and try to earn a badge?</h4>
+                <button class="d-block faq_toggle">+</button>   
+            </div>
+            <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
+        </div>
+        <div class="faq_item mt-4 pb-4">
+            <div class="faq_title d-flex justify-content-between align-items-center">
+                <h4>Can Contributors contact brands?</h4>
+                <button class="d-block faq_toggle">+</button>   
+            </div>
+            <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
+        </div>
+        <div class="faq_item mt-4 pb-4">
+            <div class="faq_title d-flex justify-content-between align-items-center">
+                <h4>I want to review a product, but it technically fits into multiple categories. Where should I put it?</h4>
+                <button class="d-block faq_toggle">+</button>   
+            </div>
+            <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
+        </div>
+        <div class="faq_item mt-4 pb-4">
+            <div class="faq_title d-flex justify-content-between align-items-center">
+                <h4>I am getting a ton of notifications that I don't want. Where do I find the notification settings?</h4>
+                <button class="d-block faq_toggle">+</button>   
+            </div>
+            <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
+        </div>
+        <div class="faq_item mt-4 pb-4">
+            <div class="faq_title d-flex justify-content-between align-items-center">
+                <h4>What browser is preffered for the best website functionality?</h4>
+                <button class="d-block faq_toggle">+</button>   
+            </div>
+            <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
+        </div>
+        <div class="faq_item mt-4 pb-4">
+            <div class="faq_title d-flex justify-content-between align-items-center">
+                <h4>I am having trouble receiving emails from Guidance Guide.</h4>
+                <button class="d-block faq_toggle">+</button>   
+            </div>
+            <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
         </div>
     </div>
 </div>
 
-<!-- Add the loader in place -->
 
 <script type='text/javascript'>
 //Dom ready
@@ -54,6 +135,12 @@ en4.core.runonce.add(function(){
     loadLeaderboardResults();
 });
 
+// FAQ on click display question and transform plus to close
+document.querySelector(".faq_toggle").addEventListener('click', function(){
+    document.querySelector(".faq_text").toggleClass("d-none");
+    document.querySelector(".faq_title").toggleClass("mb-3");
+    document.querySelector(".faq_toggle").toggleClass("faq_transform");
+});
 
 // Pagionation Number Change Start
 var pageNum = 1;
