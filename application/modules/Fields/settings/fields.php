@@ -508,7 +508,7 @@ Currency
       'base' => 'text',
       'label' => 'Family - GuidanceGuide',
       'category' => 'specific',
-      'helper' => 'fieldSoundcloud',
+      'helper' => 'fieldTextareaLinked',
     ),
 
     // Gender 
@@ -516,16 +516,15 @@ Currency
       'base' => 'text',
       'label' => 'Gender - GuidanceGuide',
       'category' => 'specific',
-      'helper' => 'fieldSpotify',
+      'helper' => 'fieldGender',
     ),
 
     'day_of_birth' => array(
       'base' => 'text',
       'label' => 'Birthday - GuidanceGuide',
       'category' => 'specific',
-      'helper' => 'fieldDayOfBirth',
+      'helper' => 'fieldTextareaLinked',
     ),
-
 
     'age_range' => array(
       'base' => 'text',

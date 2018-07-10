@@ -1,10 +1,40 @@
 <?php if($this->loaded_by_ajax):?>
-    <script type="text/javascript">
-        var profileParams = {
-            requestParams :{"title":"<?php echo $this->translate('Personal Info'); ?>", "titleCount":""},
-            responseContainer : $$('.layout_sdparentalguide_ajax_profile')
+<script type="text/javascript">
+var profileParams = {
+    requestParams :{"title":"<?php echo $this->translate('Personal Info'); ?>", "titleCount":""},
+    responseContainer : $$('.layout_sdparentalguide_ajax_profile')
+}
+en4.gg.ajaxTab.attachEvent('<?php echo $this->identity ?>', profileParams);
+
+// container tabs
+en4.core.runonce.add(function() {
+    var tabContainerSwitch = window.tabContainerSwitch = function(element) {
+      if( element.tagName.toLowerCase() == 'a' ) {
+        element = element.getParent('li');
+      }
+
+      var myContainer = element.getParent('.tabs_parent').getParent();
+      element.getParent('.tabs_parent').addClass('tab_collapsed');
+      myContainer.getChildren('div:not(.tabs_alt)').setStyle('display', 'none');
+      myContainer.getElements('ul > li').removeClass('active');
+      element.get('class').split(' ').each(function(className){
+        className = className.trim();
+        if( className.match(/^tab_[0-9]+$/) ) {
+          myContainer.getChildren('div.' + className).setStyle('display', null);
+          element.addClass('active');
         }
-        en4.gg.ajaxTab.attachEvent('<?php echo $this->identity ?>', profileParams);
+      });
+      
+    }
+    var moreTabSwitch = window.moreTabSwitch = function(el) {
+      el.toggleClass('tab_open');
+      el.toggleClass('tab_closed');
+    }
+    $$('.tab_collapsed_action').addEvent('click', function(event) {
+      event.target.getParent('.tabs_alt').toggleClass('tab_collapsed');
+    });
+});
+
 </script>
 <?php endif; ?>
 
