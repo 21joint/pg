@@ -1,5 +1,3 @@
-
-
 <?php if($this->loaded_by_ajax):?>
     <script type="text/javascript">
         var struggleAccountParams = {
@@ -17,14 +15,14 @@
 
 
 <?php if($this->showContent): ?>
-<div class="container mb-4 pl-0 pr-0">
+<div class="container mb-4 pl-0 pr-0 w-100">
     <div class="browse_main_holder bg-white">
         <div class="main_box px-lg-5 pb-3 px-md-5  px-sm-1 py-5">
-            <ul class="topic_holder ">
+            <ul class="topic_holder">
                 <?php if($this->paginator->getTotalItemCount() <= 0): ?>
 
-                    <div class="tip-message py-5">
-                        <span style="margin-bottom:0">
+                    <div class="tip-message py-5 ml-3">
+                        <span class="mb-0">
                             <?php echo $this->translate("No Stuggles") ?>
                         </span>
                     </div>

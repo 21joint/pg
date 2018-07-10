@@ -186,16 +186,16 @@
                     <div class="d-flex justify-content-between border-bottom pb-3">
                         <div class="holder text-left">
                             <p class="desc title text-dark">
-                                Latest Reviews
+                                <?php echo $this->translate('Latest Reviews'); ?>
                             </p>
                         </div>
                         <div class="holder text-right">
-                            <a href="javascript:void(0)" class="text-primary"> view all </a>
+                            <a href="javascript:void(0)" class="text-primary"> <?php echo $this->translate('view all'); ?> </a>
                         </div>
                     </div>
 
                     <div class="bottom small text-muted pt-4">
-                        Coming Soon..
+                        <?php echo $this->translate('“Coming Soon”'); ?>
                     </div>
 
                 </div>
@@ -207,16 +207,16 @@
                     <div class="d-flex justify-content-between border-bottom pb-3">
                         <div class="holder text-left">
                             <p class="desc title text-dark">
-                                Latest Guides
+                                <?php echo $this->translate('Latest Guides'); ?>
                             </p>
                         </div>
                         <div class="holder text-right">
-                            <a href="javascript:void(0)" class="text-primary"> view all </a>
+                            <a href="javascript:void(0)" class="text-primary"> <?php echo $this->translate('view all'); ?> </a>
                         </div>
                     </div>
 
                     <div class="bottom small text-muted pt-4">
-                        Coming Soon..
+                        <?php echo $this->translate('“Coming Soon”'); ?>
                     </div>
 
                 </div>
@@ -228,16 +228,16 @@
                     <div class="d-flex justify-content-between border-bottom pb-3">
                         <div class="holder text-left">
                             <p class="desc title text-dark">
-                                Latest Strugles
+                                <?php echo $this->translate('Latest Struggles'); ?>
                             </p>
                         </div>
                         <div class="holder text-right">
-                            <a href="javascript:void(0)" class="text-primary"> view all </a>
+                            <a href="javascript:void(0)" class="text-primary"> <?php echo $this->translate('view all'); ?> </a>
                         </div>
                     </div>
 
                     <div class="bottom small text-muted pt-4">
-                        Coming Soon..
+                        <?php echo $this->translate('“Coming Soon”'); ?>
                     </div>
 
                 </div>
