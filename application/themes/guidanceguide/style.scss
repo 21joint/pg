@@ -467,7 +467,9 @@ body#global_page_user-profile-index {
                 > .layout_middle {
 
                     .layout_user_cover_photo {
-
+                        .profile_cover_options {
+                            display: none;
+                        }
                         // cover photo and options
                         .profile_cover_photo_wrapper {
                             .profile_cover_photo_empty {
@@ -2624,7 +2626,8 @@ form.preference-holder {
         }
         .profile_cover_photo_wrapper {
             height: 349px;
-        } 
+        }
+         
     } 
 
     .extfox-auth {
