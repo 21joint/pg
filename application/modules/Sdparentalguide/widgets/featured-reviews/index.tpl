@@ -24,7 +24,6 @@
               <div class="row no-gutters cards-grid reviews"
                    id="featuredReviewsGrid"
                    data-filter="featured">
-
               </div>
             </div>
             <!--            <div class="col-12 px-0">-->
@@ -63,16 +62,15 @@
 </div>
 <!--page section ends /-->
 
-
 <!-- SINGLE REVIEW -->
 <div id="reviewSingleModal" class="modal" tabindex="-1" role="dialog">
-  <div class="pg-rview">
-    <div class="pg-rview--hero position-relative"
+  <div class="prg-review">
+    <div class="prg-review--hero position-relative"
          style="background-image: url(https://dzhywv9htu615.cloudfront.net/public/sitereview_listing/bf/8d/02/43691a2684f60db713b745e344f8fe54.JPG);">
       <img class="img-fluid w-100 invisible"
            src="https://dzhywv9htu615.cloudfront.net/public/sitereview_listing/bf/8d/02/43691a2684f60db713b745e344f8fe54.JPG"
            alt="">
-      <div class="pg-rview--stars">
+      <div class="prg-review--stars">
         <div class="card-stars">
           <ul class="list-inline my-0">
             <li class="list-inline-item align-middle">
@@ -264,6 +262,24 @@
     loader.addClass("sd_loader");
     var url = en4.core.baseUrl + "api/v1/review";
 
+    var buildCardRating = function (rating, max) {
+      var html = '';
+      for (var i = 0; i < rating; i++) {
+        html +=
+          '<li class="list-inline-item align-middle">\n' +
+          '<span class="card-star--icon"></span>\n' +
+          '</li>'
+      }
+      if (max - rating > 0) {
+        for (var j = 0; j < max - rating; j++) {
+          html +=
+            '<li class="list-inline-item align-middle">\n' +
+            '<span style="opacity: .4" class="card-star--icon"></span>\n' +
+            '</li>'
+        }
+      }
+      return html;
+    }
     var buildCard = function (rev, options) {
       var createdDt = new Date(rev.createdDateTime).toString().split(' ');
       var createdMonth = createdDt[1];
@@ -271,23 +287,22 @@
 
       return '<div class="col-6 col-lg-4 p-2">\n' +
         '                    <!--single review card-->\n' +
-        '                    <div class="card card-review h-100 d-flex flex-column"' +
-        'data-id="' + rev.reviewID + '">\n' +
+        '                    <div class="card card-review h-100 d-flex flex-column" data-id="' + rev.reviewID + '">\n' +
         '                      <div class="card-header p-0 overflow-hidden">\n' +
         '                        <div class="card-actions">\n' +
         '                          <ul class="row no-gutters mb-0">\n' +
         '                            <li class="col"><a class="d-flex justify-content-center align-items-center text-white"\n' +
         '                                               role="button"><span class="far fa-heart"></span></a></li>\n' +
         '                            <li class="col"><a class="d-flex justify-content-center align-items-center text-white"\n' +
-        '                                               role="button"><span class="far fa-heart"></span></a></li>\n' +
+        '                                               role="button"><span class="fas fa-clipboard"></span></a></li>\n' +
         '                            <li class="col"><a class="d-flex justify-content-center align-items-center text-white"\n' +
-        '                                               role="button"><span class="far fa-heart"></span></a></li>\n' +
+        '                                               role="button"><span class="fab fa-facebook-f"></span></a></li>\n' +
         '                            <li class="col"><a class="d-flex justify-content-center align-items-center text-white"\n' +
-        '                                               role="button"><span class="far fa-heart"></span></a></li>\n' +
+        '                                               role="button"><span class="fab fa-twitter"></span></a></li>\n' +
         '                            <li class="col"><a class="d-flex justify-content-center align-items-center text-white"\n' +
-        '                                               role="button"><span class="far fa-heart"></span></a></li>\n' +
+        '                                               role="button"><span class="fab fa-pinterest"></span></a></li>\n' +
         '                            <li class="col"><a class="d-flex justify-content-center align-items-center text-white"\n' +
-        '                                               role="button"><span class="far fa-heart"></span></a></li>\n' +
+        '                                               role="button"><span class="fas fa-link"></span></a></li>\n' +
         '                          </ul>\n' +
         '                        </div>\n' +
         '                        <a data-target="#reviewSingleModal" data-toggle="modal"\n' +
@@ -298,168 +313,7 @@
         '                        </a>\n' +
         '                        <div class="card-stars">\n' +
         '                          <ul class="list-inline my-0">\n' +
-        '                            <li class="list-inline-item align-middle">\n' +
-        '                              <svg xmlns="http://www.w3.org/2000/svg"\n' +
-        '                                   xmlns:xlink="http://www.w3.org/1999/xlink"\n' +
-        '                                   viewBox="0 0 21.059 20">\n' +
-        '                                <defs>\n' +
-        '                                  <style> .star-cls--1 {\n' +
-        '                                      fill: url(#linear-gradient);\n' +
-        '                                    }\n' +
-        '\n' +
-        '                                    .star-cls--2 {\n' +
-        '                                      fill: url(#linear-gradient-2);\n' +
-        '                                    }\n' +
-        '\n' +
-        '                                    .star-cls--3 {\n' +
-        '                                      fill: url(#linear-gradient-3);\n' +
-        '                                    }</style>\n' +
-        '                                  <linearGradient id="linear-gradient"\n' +
-        '                                                  x1="-0.222"\n' +
-        '                                                  y1="0.952"\n' +
-        '                                                  x2="0.971"\n' +
-        '                                                  y2="-0.34"\n' +
-        '                                                  gradientUnits="objectBoundingBox">\n' +
-        '                                    <stop offset="0" stop-color="#ce8f2a"/>\n' +
-        '                                    <stop offset="0.17" stop-color="#cf9330"/>\n' +
-        '                                    <stop offset="0.38" stop-color="#d39d3f"/>\n' +
-        '                                    <stop offset="0.62" stop-color="#d8ae59"/>\n' +
-        '                                    <stop offset="0.67" stop-color="#dab360"/>\n' +
-        '                                    <stop offset="0.92" stop-color="#edc64f"/>\n' +
-        '                                    <stop offset="1" stop-color="#edc64f"/>\n' +
-        '                                  </linearGradient>\n' +
-        '                                  <linearGradient id="linear-gradient-2"\n' +
-        '                                                  x1="1.543"\n' +
-        '                                                  y1="1.119"\n' +
-        '                                                  x2="0.162"\n' +
-        '                                                  y2="-0.102"\n' +
-        '                                                  gradientUnits="objectBoundingBox">\n' +
-        '                                    <stop offset="0" stop-color="#ce8f2a"/>\n' +
-        '                                    <stop offset="0.17" stop-color="#a28f70"/>\n' +
-        '                                    <stop offset="0.38" stop-color="#d39d3f"/>\n' +
-        '                                    <stop offset="0.62" stop-color="#d8ae59"/>\n' +
-        '                                    <stop offset="0.67" stop-color="#dab360"/>\n' +
-        '                                    <stop offset="0.92" stop-color="#edc64f"/>\n' +
-        '                                    <stop offset="1" stop-color="#edc64f"/>\n' +
-        '                                  </linearGradient>\n' +
-        '                                  <linearGradient id="linear-gradient-3"\n' +
-        '                                                  x1="1.616"\n' +
-        '                                                  y1="1.474"\n' +
-        '                                                  x2="0.258"\n' +
-        '                                                  y2="-0.026"\n' +
-        '                                                  xlink:href="#linear-gradient"/>\n' +
-        '                                </defs>\n' +
-        '                                <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">\n' +
-        '                                  <path id="Path_1811"\n' +
-        '                                        data-name="Path 1811"\n' +
-        '                                        class="star-cls--1"\n' +
-        '                                        d="M173.963,249.27l-3.757,4.959L167,249.922l6.261-1.4C174.163,248.269,174.463,248.619,173.963,249.27Z"\n' +
-        '                                        transform="translate(281.182 890.03)"/>\n' +
-        '                                  <path id="Path_1812"\n' +
-        '                                        data-name="Path 1812"\n' +
-        '                                        class="star-cls--2"\n' +
-        '                                        d="M149.407,253.5l-8.265,2.054c-.5.1-.651.7-.15.9l8.065,2.354Z"\n' +
-        '                                        transform="translate(294.316 887.504)"/>\n' +
-        '                                  <path id="Path_1813"\n' +
-        '                                        data-name="Path 1813"\n' +
-        '                                        class="star-cls--3"\n' +
-        '                                        d="M156,260.741l1.052-18.734c0-.551.551-.651.9-.25l11.22,13.975c.4.5.3,1.352-.852.9l-6.762-2.6-4.208,7.013C156.9,261.843,155.948,261.543,156,260.741Z"\n' +
-        '                                        transform="translate(286.674 893.486)"/>\n' +
-        '                                </g>\n' +
-        '                              </svg>\n' +
-        '                            </li>\n' +
-        '                            <li class="list-inline-item align-middle">\n' +
-        '                              <svg xmlns="http://www.w3.org/2000/svg"\n' +
-        '                                   xmlns:xlink="http://www.w3.org/1999/xlink"\n' +
-        '                                   viewBox="0 0 21.059 20">\n' +
-        '                                <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">\n' +
-        '                                  <path id="Path_1811"\n' +
-        '                                        data-name="Path 1811"\n' +
-        '                                        class="star-cls--1"\n' +
-        '                                        d="M173.963,249.27l-3.757,4.959L167,249.922l6.261-1.4C174.163,248.269,174.463,248.619,173.963,249.27Z"\n' +
-        '                                        transform="translate(281.182 890.03)"/>\n' +
-        '                                  <path id="Path_1812"\n' +
-        '                                        data-name="Path 1812"\n' +
-        '                                        class="star-cls--2"\n' +
-        '                                        d="M149.407,253.5l-8.265,2.054c-.5.1-.651.7-.15.9l8.065,2.354Z"\n' +
-        '                                        transform="translate(294.316 887.504)"/>\n' +
-        '                                  <path id="Path_1813"\n' +
-        '                                        data-name="Path 1813"\n' +
-        '                                        class="star-cls--3"\n' +
-        '                                        d="M156,260.741l1.052-18.734c0-.551.551-.651.9-.25l11.22,13.975c.4.5.3,1.352-.852.9l-6.762-2.6-4.208,7.013C156.9,261.843,155.948,261.543,156,260.741Z"\n' +
-        '                                        transform="translate(286.674 893.486)"/>\n' +
-        '                                </g>\n' +
-        '                              </svg>\n' +
-        '                            </li>\n' +
-        '                            <li class="list-inline-item align-middle">\n' +
-        '                              <svg xmlns="http://www.w3.org/2000/svg"\n' +
-        '                                   xmlns:xlink="http://www.w3.org/1999/xlink"\n' +
-        '                                   viewBox="0 0 21.059 20">\n' +
-        '                                <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">\n' +
-        '                                  <path id="Path_1811"\n' +
-        '                                        data-name="Path 1811"\n' +
-        '                                        class="star-cls--1"\n' +
-        '                                        d="M173.963,249.27l-3.757,4.959L167,249.922l6.261-1.4C174.163,248.269,174.463,248.619,173.963,249.27Z"\n' +
-        '                                        transform="translate(281.182 890.03)"/>\n' +
-        '                                  <path id="Path_1812"\n' +
-        '                                        data-name="Path 1812"\n' +
-        '                                        class="star-cls--2"\n' +
-        '                                        d="M149.407,253.5l-8.265,2.054c-.5.1-.651.7-.15.9l8.065,2.354Z"\n' +
-        '                                        transform="translate(294.316 887.504)"/>\n' +
-        '                                  <path id="Path_1813"\n' +
-        '                                        data-name="Path 1813"\n' +
-        '                                        class="star-cls--3"\n' +
-        '                                        d="M156,260.741l1.052-18.734c0-.551.551-.651.9-.25l11.22,13.975c.4.5.3,1.352-.852.9l-6.762-2.6-4.208,7.013C156.9,261.843,155.948,261.543,156,260.741Z"\n' +
-        '                                        transform="translate(286.674 893.486)"/>\n' +
-        '                                </g>\n' +
-        '                              </svg>\n' +
-        '                            </li>\n' +
-        '                            <li class="list-inline-item align-middle">\n' +
-        '                              <svg xmlns="http://www.w3.org/2000/svg"\n' +
-        '                                   xmlns:xlink="http://www.w3.org/1999/xlink"\n' +
-        '                                   viewBox="0 0 21.059 20">\n' +
-        '                                <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">\n' +
-        '                                  <path id="Path_1811"\n' +
-        '                                        data-name="Path 1811"\n' +
-        '                                        class="star-cls--1"\n' +
-        '                                        d="M173.963,249.27l-3.757,4.959L167,249.922l6.261-1.4C174.163,248.269,174.463,248.619,173.963,249.27Z"\n' +
-        '                                        transform="translate(281.182 890.03)"/>\n' +
-        '                                  <path id="Path_1812"\n' +
-        '                                        data-name="Path 1812"\n' +
-        '                                        class="star-cls--2"\n' +
-        '                                        d="M149.407,253.5l-8.265,2.054c-.5.1-.651.7-.15.9l8.065,2.354Z"\n' +
-        '                                        transform="translate(294.316 887.504)"/>\n' +
-        '                                  <path id="Path_1813"\n' +
-        '                                        data-name="Path 1813"\n' +
-        '                                        class="star-cls--3"\n' +
-        '                                        d="M156,260.741l1.052-18.734c0-.551.551-.651.9-.25l11.22,13.975c.4.5.3,1.352-.852.9l-6.762-2.6-4.208,7.013C156.9,261.843,155.948,261.543,156,260.741Z"\n' +
-        '                                        transform="translate(286.674 893.486)"/>\n' +
-        '                                </g>\n' +
-        '                              </svg>\n' +
-        '                            </li>\n' +
-        '                            <li class="list-inline-item align-middle">\n' +
-        '                              <svg xmlns="http://www.w3.org/2000/svg"\n' +
-        '                                   xmlns:xlink="http://www.w3.org/1999/xlink"\n' +
-        '                                   viewBox="0 0 21.059 20">\n' +
-        '                                <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">\n' +
-        '                                  <path id="Path_1811"\n' +
-        '                                        data-name="Path 1811"\n' +
-        '                                        class="star-cls--1"\n' +
-        '                                        d="M173.963,249.27l-3.757,4.959L167,249.922l6.261-1.4C174.163,248.269,174.463,248.619,173.963,249.27Z"\n' +
-        '                                        transform="translate(281.182 890.03)"/>\n' +
-        '                                  <path id="Path_1812"\n' +
-        '                                        data-name="Path 1812"\n' +
-        '                                        class="star-cls--2"\n' +
-        '                                        d="M149.407,253.5l-8.265,2.054c-.5.1-.651.7-.15.9l8.065,2.354Z"\n' +
-        '                                        transform="translate(294.316 887.504)"/>\n' +
-        '                                  <path id="Path_1813"\n' +
-        '                                        data-name="Path 1813"\n' +
-        '                                        class="star-cls--3"\n' +
-        '                                        d="M156,260.741l1.052-18.734c0-.551.551-.651.9-.25l11.22,13.975c.4.5.3,1.352-.852.9l-6.762-2.6-4.208,7.013C156.9,261.843,155.948,261.543,156,260.741Z"\n' +
-        '                                        transform="translate(286.674 893.486)"/>\n' +
-        '                                </g>\n' +
-        '                              </svg>\n' +
-        '                            </li>\n' +
+        buildCardRating(rev.authorRating, 5) +
         '                          </ul>\n' +
         '                        </div>\n' +
         '                      </div>\n' +
@@ -478,7 +332,7 @@
         '                                    <img class="rounded-circle"\n' +
         '                                         src="http://dzhywv9htu615.cloudfront.net/public/user/b3/03/03b0_84cd.png"\n' +
         '                                         alt="Generic placeholder image">\n' +
-        '                                    <b class="position-absolute d-flex justify-content-center align-items-center text-white bagde badge-primary rounded-circle ff-open--sans card-author--rank">' + rev.author.followersCount + '</b>\n' +
+        '                                    <b class="position-absolute d-flex justify-content-center align-items-center text-white bagde badge-primary rounded-circle ff-open--sans card-author--rank">' + rev.author.contributionLevel + '</b>\n' +
         '                                  </div>\n' +
         '                                </div>\n' +
         '                                <div class="col">\n' +
@@ -494,13 +348,13 @@
         '                          </div>\n' +
         '                          <div class="col-auto text-right d-none d-sm-block">\n' +
         '                            <ul class="list-inline my-0">\n' +
-        '                              <li class="text-asphalt flex-row align-items-center list-inline-item">\n' +
-        '                                <span class="far fa-heart"></span>\n' +
-        '                                <span>' + rev.likesCount + '</span>\n' +
+        '                              <li class="flex-row align-items-center list-inline-item">\n' +
+        '                                <span class="fas fa-heart"></span>\n' +
+        '                                <span class="text-asphalt">' + rev.likesCount + '</span>\n' +
         '                              </li>\n' +
-        '                              <li class="text-asphalt flex-row align-items-center list-inline-item">\n' +
-        '                                <span class="far fa-comments"></span>\n' +
-        '                                <span>' + rev.commentsCount + '</span>\n' +
+        '                              <li class="flex-row align-items-center list-inline-item">\n' +
+        '                                <span class="fas fa-comments"></span>\n' +
+        '                                <span class="text-asphalt">' + rev.commentsCount + '</span>\n' +
         '                              </li>\n' +
         '                            </ul>\n' +
         '                          </div>\n' +
@@ -515,6 +369,7 @@
         '                    </div>\n' +
         '                  </div>';
     };
+
 
     var request = new Request.JSON({
       url: url,

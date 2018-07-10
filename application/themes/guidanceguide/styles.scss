@@ -1,10 +1,11 @@
 @import "./colors";
 @import "./variables";
 @import "~bootstrap/scss/bootstrap";
-@import "~@fortawesome/fontawesome-free/scss/fa-regular";
 @import "./helpers";
 @import "./common";
+@import "./hover-dropdown";
 @import "./header";
+@import "./breadcrumb";
 @import "./widgets/card";
 @import "./widgets/pagination";
 @import "./footer";

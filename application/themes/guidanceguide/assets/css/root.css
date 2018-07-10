@@ -5254,31 +5254,31 @@ img.item_photo_user {
         top: 1.8rem;
         color: #333D40 !important;
         cursor: pointer; }
-  header.extfox-header .parental-mobile-menu-holder {
+  header.extfox-header .prg-mobile-menu-holder {
     border: none !important;
     display: block !important;
     position: relative;
     z-index: 9;
     transition: transform 0.5s cubic-bezier(0.86, 0, 0.07, 1);
     transform: translateX(-90%); }
-    header.extfox-header .parental-mobile-menu-holder.active {
+    header.extfox-header .prg-mobile-menu-holder.active {
       transform: translateX(0%); }
-    header.extfox-header .parental-mobile-menu-holder .container {
+    header.extfox-header .prg-mobile-menu-holder .container {
       position: absolute;
       width: 80%;
       height: 100vh;
       background: #fff;
       z-index: 9;
       box-shadow: 20px 0px 40px rgba(0, 0, 0, 0.16); }
-      header.extfox-header .parental-mobile-menu-holder .container .row {
+      header.extfox-header .prg-mobile-menu-holder .container .row {
         margin: 0; }
-        header.extfox-header .parental-mobile-menu-holder .container .row ul li {
+        header.extfox-header .prg-mobile-menu-holder .container .row ul li {
           width: 100%;
           margin-right: 0 !important;
           border-bottom: 1px solid whitesmoke; }
-          header.extfox-header .parental-mobile-menu-holder .container .row ul li:hover a {
+          header.extfox-header .prg-mobile-menu-holder .container .row ul li:hover a {
             border: none !important; }
-          header.extfox-header .parental-mobile-menu-holder .container .row ul li a {
+          header.extfox-header .prg-mobile-menu-holder .container .row ul li a {
             display: block;
             font-weight: bold;
             padding-left: 2rem; }

@@ -1,0 +1,7 @@
+[data-hover="dropdown"] {
+  &:hover {
+    > .dropdown-menu {
+      display: block;
+    }
+  }
+}

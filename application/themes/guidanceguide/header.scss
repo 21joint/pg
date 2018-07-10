@@ -1,5 +1,5 @@
 // HEADER
-.parental-header {
+.prg-header {
   .search {
     .form-control {
       border-radius: 50px;
@@ -19,19 +19,23 @@
     }
   }
   .search-bar {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
     display: flex;
     align-items: center;
-    bottom: 0;
     width: 100%;
     background-color: #ffffff;
-    z-index: 10;
-    padding: 15px 50px 15px 15px;
-    transform: translate(0, -100%);
     transition: 0.2s transform ease-in;
+    max-width: 350px;
+    @include media-breakpoint-down(xs) {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 10;
+      padding: 15px 50px 15px 15px;
+      transform: translate(0, -100%);
+      max-width: 100%;
+    }
     .fa-close {
       position: absolute;
       right: 15px;
@@ -89,19 +93,13 @@
     .container {
       ul {
         li {
-          a {
+          .nav-link {
             padding-top: 1rem;
             padding-bottom: 1rem;
-            border-bottom: 2px solid $white;
-            display: inline-block;
+            display: block;
           }
           &:not(:last-child) {
             margin-right: 3rem;
-          }
-          &:hover {
-            a {
-              border-bottom: 2px solid $primary;
-            }
           }
         }
       }
@@ -120,12 +118,15 @@
       background-color: $primary;
       left: 0;
       right: 0;
-      transition: 0.1s bottom ease-in-out;
+      transition: 0.15s bottom ease-in-out;
     }
     &:hover {
       &:after {
         bottom: 0;
       }
+    }
+    & + .dropdown-menu {
+      margin-top: -1px;
     }
   }
   .hamburger-menu {
@@ -172,9 +173,6 @@
       width: 20px;
     }
   }
-  .mini-menu {
-
-  }
 }
 
 .dropdown-menu--profile {
@@ -186,5 +184,15 @@
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: 14px;
+  }
+}
+
+.dropdown-menu--reviews {
+  border-radius: 0;
+  ul {
+    font-size: 0.875rem;
+  }
+  li {
+    margin-bottom: 5px;
   }
 }

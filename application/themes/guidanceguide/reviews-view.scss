@@ -1,12 +1,37 @@
-.pg-rview {
+.prg-review--single {
 
 }
 
-.pg-rview--hero {
+.prg-review--single---image {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   max-height: 400px;
   margin: 0 -20px;
+}
+
+.prg-review--single---hero {
   overflow: hidden;
+  .card-stars {
+    width: 230px;
+    .list-inline-item {
+      padding: 1.125rem 0;
+    }
+    .list-inline-item:not(:last-child) {
+      margin-right: .6rem;
+    }
+    img, svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.prg-review--single---title {
+  @include media-breakpoint-up(md) {
+    font-size: 40px;
+  }
+  @include media-breakpoint-up(lg) {
+    font-size: 60px;
+  }
 }

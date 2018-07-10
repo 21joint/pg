@@ -11,6 +11,12 @@ body {
   max-width: 1250px;
 }
 
+a {
+  @include hover-focus-active {
+    text-decoration: none;
+  }
+}
+
 a, button {
   @include transition($transition-base);
 }
@@ -36,7 +42,7 @@ a[role=button] {
     width: 50px;
     font-size: 16px;
     @include media-breakpoint-up(sm) {
-      width: auto;
+      width: 100%;
     }
   }
   .form-control {
@@ -83,6 +89,14 @@ a[role=button] {
 .content-box--title {
   font-size: 1.25rem;
   font-weight: $font-weight-bold;
+}
+
+.list-inline-item:not(:last-child) {
+  margin-right: 0;
+}
+
+.list-inline-item + .list-inline-item {
+  margin-left: .5rem;
 }
 
 img.thumb_icon, .suggestion_list .item_photo img {

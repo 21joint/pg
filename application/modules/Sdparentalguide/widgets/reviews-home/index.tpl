@@ -28,7 +28,7 @@
                      placeholder="Search for a specific review"/>
             </div>
             <div class="form-group col-auto col-sm-3 mb-0">
-              <button class="btn btn-lg btn-block btn-success text-white px-0 px-sm-3 px-sm-4">
+              <button class="btn btn-lg btn-block btn-success text-white px-0">
                 <i class="fa fa-search d-sm-none"></i><span class="d-none d-sm-inline">Search now</span></button>
             </div>
           </div>

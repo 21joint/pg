@@ -1,0 +1,27 @@
+@import "~@fortawesome/fontawesome-free/scss/variables";
+.breadcrumb {
+  font-size: .75rem;
+  padding: 1.2rem 1rem;
+}
+
+.breadcrumb-item {
+  color: $text-asphalt;
+  a {
+    color: $text-asphalt;
+    text-decoration: none;
+    @include hover-focus-active {
+      text-decoration: none;
+    }
+  }
+  &.active {
+    color: $text-asphalt;
+  }
+}
+
+.breadcrumb-item + .breadcrumb-item {
+  &:before {
+    font-family: 'fontawesome' !important;
+    color: inherit;
+    content: fa-content($fa-var-angle-double-right);
+  }
+}

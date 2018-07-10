@@ -39,7 +39,7 @@ class Engine_View_Helper_HtmlImage extends Zend_View_Helper_HtmlElement
 
 
     if (strpos($attribs['class'], 'item_photo_user') !== false) {
-      return '<div class="item-photo-guidance position-relative"><div class="statistic circle-badge position-absolute '.$attribs['class'].' d-flex justify-content-center align-items-center text-white"> ' . $counter .'</div> <img'.$this->_htmlAttribs($attribs).$closingBracket . "</div>";
+      return '<div class="item-photo-guidance position-relative"><div class="statistic circle-badge position-absolute '.$attribs['class'].' d-flex justify-content-center align-items-center text-white bg-primary"> ' . $counter .'</div> <img'.$this->_htmlAttribs($attribs).$closingBracket . "</div>";
     } else {
 
       return '<img'.$this->_htmlAttribs($attribs).$closingBracket;
