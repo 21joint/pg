@@ -390,6 +390,7 @@
   
     
     document.onclick = function(e){
+      
       var profileNotification = document.getElementById('core_mini_updates_pulldown');
       
       // For Profile Menu
@@ -409,7 +410,6 @@
           profileNotification.classList.remove('updates_pulldown_active');
         }
       }
-      
       
       // DropDown Profile Menu
       if(e.target === profileMenuBtn ){
