@@ -611,6 +611,65 @@ class Sdparentalguide_Api_Core extends Core_Api_Abstract{
 
         if (!empty($imageUrl))
             return $imageUrl;
-    }   
+    }
     
+    public function mapPGGResourceTypes($resourceType){
+        $mappedResourceType = $resourceType;
+        switch(strtolower($resourceType)){
+            case "review":
+                $mappedResourceType = "sitereview_listing";
+                break;
+            case "question":
+                $mappedResourceType = "ggcommunity_question";
+                break;
+            case "answer":
+                $mappedResourceType = "ggcommunity_answer";
+                break;
+            case "comment":
+                $mappedResourceType = "core_comment";
+                break;
+            case "member":
+                $mappedResourceType = "user";
+                break;
+            case "topic":
+                $mappedResourceType = "sdparentalguide_topic";
+                break;
+            case "badge":
+                $mappedResourceType = "sdparentalguide_badge";
+                break;
+            default:
+                break;
+        }
+        return $mappedResourceType;
+    }
+    
+    public function mapSEResourceTypes($resourceType){
+        $mappedResourceType = $resourceType;
+        switch(strtolower($resourceType)){
+            case "sitereview_listing":
+                $mappedResourceType = "Review";
+                break;
+            case "ggcommunity_question":
+                $mappedResourceType = "Question";
+                break;
+            case "ggcommunity_answer":
+                $mappedResourceType = "answer";
+                break;
+            case "core_comment":
+                $mappedResourceType = "Comment";
+                break;
+            case "user":
+                $mappedResourceType = "Member";
+                break;
+            case "sdparentalguide_topic":
+                $mappedResourceType = "Topic";
+                break;
+            case "sdparentalguide_badge":
+                $mappedResourceType = "Badge";
+                break;
+            default:
+                break;
+        }
+        return $mappedResourceType;
+    }
 }

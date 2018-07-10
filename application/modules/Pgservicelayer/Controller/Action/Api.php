@@ -76,6 +76,16 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
         if(!empty($consumerKey)){
             return true;
         }
+        
+//        $xRequestedWith = $this->getRequest()->getHeader("X-Requested-With");
+//        $xRequested = $this->getRequest()->getHeader("X-Request");;
+//        if($xRequestedWith == "XMLHttpRequest" && $xRequested == "JSON"){
+//            return false;
+//        }
+        $referer = $request->getServer("HTTP_REFERER");
+        if(!strstr($referer,$_SERVER['HTTP_HOST'])){
+            return true;
+        }
         return false;
     }
     public function postDispatch() {
@@ -244,8 +254,9 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
     }
     
     public function requireSubject(){
-        $resourceType = $this->getParam("resourceType");
-        $resourceId = $this->getParam("resourceID");
+        $resourceType = $this->getParam("contentType");
+        $resourceId = $this->getParam("contentID");
+        $resourceType = Engine_Api::_()->sdparentalguide()->mapPGGResourceTypes($resourceType);
         if(empty($resourceType) || empty($resourceId)){
             $this->respondWithError('no_record');
         }

@@ -110,5 +110,10 @@ class Ggcommunity_Model_Answer extends Core_Model_Item_Abstract
     
     return $this;
   }
+  
+  public function likes()
+  {
+    return new Engine_ProxyObject($this, Engine_Api::_()->getDbtable('likes', 'core'));
+  }
 
 }
