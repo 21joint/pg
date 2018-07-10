@@ -2606,16 +2606,19 @@ form.preference-holder {
 
                         bottom: -7em!important;
                     }
-                    
+                    .profile_cover_options {
+                        .edit-button{
+                            top: 10px!important;
+                        }
+                    }
                 }
                 
             }
         }
         .profile_cover_options{
             .save-button  {
-                top: 57px!important;
-                left: 15px;
-                right: 0px;
+                top: 20px !important;
+                right: 15px;
             }
         } 
     } 
