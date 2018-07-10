@@ -29,3 +29,9 @@ ADD `gg_deleted` tinyint NOT NULL DEFAULT '0';
 
 ALTER TABLE `engine4_gg_search_activity`
 ADD `source_url` text COLLATE 'utf8_general_ci' NULL AFTER `search_text`;
+
+ALTER TABLE `engine4_core_search`
+ADD `topic_id` int NULL DEFAULT '0';
+
+ALTER TABLE `engine4_gg_listing_ratings`
+ADD `listing_type` varchar(128) NOT NULL DEFAULT 'sitereview_listing' AFTER `listing_id`;

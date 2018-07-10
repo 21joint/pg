@@ -342,6 +342,9 @@ class Pgservicelayer_MembershipController extends Pgservicelayer_Controller_Acti
         try {
             // Follow
             if($subject->getType() == "user"){
+                if($subject->isSelf($viewer)){
+                    $this->respondWithError('unauthorized',$this->translate("You cannot follow yourself."));
+                }
                 $this->removeUserFollow($subject,$viewer);
             }else{
                 $this->followSeaoCore($subject,$viewer);

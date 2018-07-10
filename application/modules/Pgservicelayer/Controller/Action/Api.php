@@ -76,6 +76,16 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
         if(!empty($consumerKey)){
             return true;
         }
+        
+//        $xRequestedWith = $this->getRequest()->getHeader("X-Requested-With");
+//        $xRequested = $this->getRequest()->getHeader("X-Request");;
+//        if($xRequestedWith == "XMLHttpRequest" && $xRequested == "JSON"){
+//            return false;
+//        }
+        $referer = $request->getServer("HTTP_REFERER");
+        if(!strstr($referer,$_SERVER['HTTP_HOST'])){
+            return true;
+        }
         return false;
     }
     public function postDispatch() {

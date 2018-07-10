@@ -13,7 +13,9 @@ class Sdparentalguide_Model_DbTable_ListingRatings extends Engine_Db_Table
     protected $_name = 'gg_listing_ratings';
     
     public function getRating(Sitereview_Model_Listing $listing, User_Model_User $user){
-        return $this->fetchRow($this->select()->where('listing_id = ?',$listing->getIdentity())->where('user_id = ?',$user->getIdentity()));
+        $select = $this->select()->where('listing_id = ?',$listing->getIdentity())->where('user_id = ?',$user->getIdentity())
+                ->where('listing_type = ?',$listing->getType());
+        return $this->fetchRow($select);
     }
     public function getAvgListingRating(Sitereview_Model_Listing $sitereview){
         $select = $this->select()

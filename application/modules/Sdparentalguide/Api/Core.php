@@ -634,6 +634,9 @@ class Sdparentalguide_Api_Core extends Core_Api_Abstract{
             case "topic":
                 $mappedResourceType = "sdparentalguide_topic";
                 break;
+            case "badge":
+                $mappedResourceType = "sdparentalguide_badge";
+                break;
             default:
                 break;
         }
@@ -660,6 +663,9 @@ class Sdparentalguide_Api_Core extends Core_Api_Abstract{
                 break;
             case "sdparentalguide_topic":
                 $mappedResourceType = "Topic";
+                break;
+            case "sdparentalguide_badge":
+                $mappedResourceType = "Badge";
                 break;
             default:
                 break;
