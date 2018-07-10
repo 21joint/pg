@@ -26,13 +26,13 @@
     <div class="leaderboard_content">
         <!-- Content of ajax call goes here -->
     </div>
-    <div class="leaderboard_pagination d-flex justify-content-center align-items-center mt-5">
+    <div class="leaderboard_pagination d-flex justify-content-end align-items-center mt-5 mr-5">
         <!-- Content Pagination -->
-        <button id="leaderboard_previous" class="text-white rounded-circle"><</button>
+        <span id="leaderboard_previous" class="pagination_button"><</span>
         <span id="leaderboard_pageNum" class="mx-5">
             <!-- Displays the current page of Leaderboard Results -->
         </span>
-        <button id="leaderboard_next" class="text-white rounded-circle">></button>
+        <span id="leaderboard_next" class="pagination_button">></span>
     </div>
 </div>
 <div class="find_expert_main container-fluid py-5 mt-5">
@@ -74,56 +74,56 @@
                 <h4>Can anybody post reviews, earn badges and gain credibility score?</h4>
                 <span class="d-block faq_toggle">+</span>   
             </div>
-            <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
+            <p class="faq_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
         </div>
         <div class="faq_item mt-4 pb-4">
             <div class="faq_title d-flex justify-content-between align-items-center">
                 <h4>What are the official hashtags for Guidance Guide and Parental Guidance?</h4>
                 <span class="d-block faq_toggle">+</span>   
             </div>
-            <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
+            <p class="faq_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
         </div>
         <div class="faq_item mt-4 pb-4">
             <div class="faq_title d-flex justify-content-between align-items-center">
                 <h4>What if I don't have enough product to write a review and try to earn a badge?</h4>
                 <span class="d-block faq_toggle">+</span>   
             </div>
-            <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
+            <p class="faq_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
         </div>
         <div class="faq_item mt-4 pb-4">
             <div class="faq_title d-flex justify-content-between align-items-center">
                 <h4>Can Contributors contact brands?</h4>
                 <span class="d-block faq_toggle">+</span>   
             </div>
-            <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
+            <p class="faq_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
         </div>
         <div class="faq_item mt-4 pb-4">
             <div class="faq_title d-flex justify-content-between align-items-center">
                 <h4>I want to review a product, but it technically fits into multiple categories. Where should I put it?</h4>
                 <span class="d-block faq_toggle">+</span>   
             </div>
-            <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
+            <p class="faq_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
         </div>
         <div class="faq_item mt-4 pb-4">
             <div class="faq_title d-flex justify-content-between align-items-center">
                 <h4>I am getting a ton of notifications that I don't want. Where do I find the notification settings?</h4>
                 <span class="d-block faq_toggle">+</span>   
             </div>
-            <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
+            <p class="faq_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
         </div>
         <div class="faq_item mt-4 pb-4">
             <div class="faq_title d-flex justify-content-between align-items-center">
                 <h4>What browser is preffered for the best website functionality?</h4>
                 <span class="d-block faq_toggle">+</span>   
             </div>
-            <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
+            <p class="faq_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
         </div>
         <div class="faq_item mt-4 pb-4">
             <div class="faq_title d-flex justify-content-between align-items-center">
                 <h4>I am having trouble receiving emails from Guidance Guide.</h4>
                 <span class="d-block faq_toggle">+</span>   
             </div>
-            <p class="faq_text d-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
+            <p class="faq_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum pretium scelerisque lectus. Nulla tincidunt nulla sed est maximus dapibus. Nulla sit amet nibh sed ex scelerisque ultricies. Curabitur venenatis moleint nisi id viverra.</p>
         </div>
     </div>
 </div>
@@ -138,7 +138,7 @@ en4.core.runonce.add(function(){
 // FAQ on click display question and transform plus to close
 document.querySelectorAll(".faq_toggle").forEach(function(toggle){
     toggle.addEventListener('click', function(event){
-        event.target.parentNode.parentNode.querySelector(".faq_text").toggleClass("d-none");
+        event.target.parentNode.parentNode.querySelector(".faq_text").toggleClass("faq_text_disp");
         event.target.parentNode.toggleClass("mb-3");
         event.target.toggleClass("faq_transform");
     });
@@ -149,21 +149,21 @@ var pageNum = 1;
 document.getElementById('leaderboard_previous').addEventListener('click', function(){
     if(pageNum >= 2){
         pageNum--;
-        document.getElementById('leaderboard_previous').addClass('btn-primary').removeClass('btn-secondary');
-        document.getElementById('leaderboard_next').addClass('btn-primary').removeClass('btn-secondary');
+        document.getElementById('leaderboard_previous').removeClass('pagination_button_diss');
+        document.getElementById('leaderboard_next').removeClass('pagination_button_diss');
         loadLeaderboardResults(pageNum);
     }else{
-        document.getElementById('leaderboard_previous').addClass('btn-secondary');
+        document.getElementById('leaderboard_previous').addClass('pagination_button_diss');
     }
 });
 document.getElementById('leaderboard_next').addEventListener('click', function(){
     if(pageNum <= 2){
         pageNum++;
-        document.getElementById('leaderboard_next').addClass('btn-primary').removeClass('btn-secondary');
-        document.getElementById('leaderboard_previous').addClass('btn-primary').removeClass('btn-secondary');
+        document.getElementById('leaderboard_next').removeClass('pagination_button_diss');
+        document.getElementById('leaderboard_previous').removeClass('pagination_button_diss');
         loadLeaderboardResults(pageNum);
     }else{
-        document.getElementById('leaderboard_next').addClass('btn-secondary');
+        document.getElementById('leaderboard_next').addClass('pagination_button_diss');
     }
 });
 // Pagination Number Change End

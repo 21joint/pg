@@ -113,6 +113,19 @@
   padding: 0;
   margin: 0;
 }
+#leaderboard_pageNum{
+  color: #b4c0c1;
+  font-weight: bolder;
+}
+.pagination_button{
+  color: #5cc7ce;
+  font-size: 30px;
+  font-weight: bolder;
+  cursor: pointer;
+}
+.pagination_button_diss{
+  color: #e2e4e6;
+}
 /* Leaderboard Item styling end */
 /* Community Leaderboard title, main cateogires, list of items -> end */
 /* Community Home Page jumbotron, carousel, list, faq, other items -> start */
@@ -197,9 +210,6 @@
 .faq_item{
   border-bottom: 2px solid #e2e4e6;
 }
-.faq_item p{
-  margin: 0px 20px;
-}
 .faq_title{
 
 }
@@ -214,13 +224,22 @@
   cursor: pointer;
   color: #e2e4e6;
   margin-right: 20px;
+  transition: all 0.6s;
 }
 .faq_transform{
   color: #5cc7ce;
   transform: rotate(45deg);
 }
 .faq_text{
-
+  margin: 0px 20px;
+  opacity: 0; 
+  height: 0;
+  overflow: hidden;
+  transition: all 0.6s ease-in;
+}
+.faq_text_disp{
+  opacity: 1;
+  height: auto;
 }
 /* Community Home Page FAQ -> end */
 /* Community Home Page jumbotron, carousel, list, faq, other items -> end */
