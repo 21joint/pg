@@ -86,6 +86,7 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   white-space: nowrap;
+  line-height: 1;
   img, svg {
     width: 11px;
     height: 11px;
@@ -95,21 +96,12 @@
       height: 22px;
     }
   }
-  .list-inline-item:not(:last-child) {
-    margin-right: 0.1rem;
-  }
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-up(xs) {
     padding: .625rem .9rem;
-    .list-inline-item:not(:last-child) {
-      margin-right: 0.2rem;
-    }
   }
   @include media-breakpoint-up(md) {
     left: 20px;
     transform: translate(0, 0);
-    .list-inline-item:not(:last-child) {
-      margin-right: 0.366rem;
-    }
   }
 }
 

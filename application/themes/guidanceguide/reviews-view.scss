@@ -1,37 +1,59 @@
-.prg-review--single {
+.parental-review--single {
 
 }
 
-.prg-review--single---image {
+.parental-review--single---heroimage {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   max-height: 400px;
-  margin: 0 -20px;
 }
 
-.prg-review--single---hero {
+.parental-review--single---heroinner {
+
+}
+
+.parental-review--single---hero {
   overflow: hidden;
-  .card-stars {
-    width: 230px;
-    .list-inline-item {
-      padding: 1.125rem 0;
+
+}
+
+.parental-review--single---stars {
+  width: 230px;
+  bottom: 0;
+  .list-inline-item {
+    & + .list-inline-item {
+      margin-left: .4rem;
     }
-    .list-inline-item:not(:last-child) {
-      margin-right: .6rem;
-    }
-    img, svg {
-      width: 20px;
-      height: 20px;
-    }
+  }
+  img, svg {
+    width: 20px;
+    height: 20px;
+  }
+  @include media-breakpoint-up(sm) {
+    padding: 1rem;
   }
 }
 
-.prg-review--single---title {
+.parental-review--single---title {
+  font-size: 30px;
   @include media-breakpoint-up(md) {
     font-size: 40px;
   }
   @include media-breakpoint-up(lg) {
     font-size: 60px;
+  }
+}
+
+.parental-review--single---action {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  z-index: 10;
+  .btn {
+    width: 50px;
+    height: 50px;
+    line-height: 1;
+    color: #d6d6d6;
   }
 }

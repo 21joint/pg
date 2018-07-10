@@ -2,14 +2,19 @@
       href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
       integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
       crossorigin="anonymous">
-<header class="parental-header">
+<header class="parental-header bg-white">
   <div class="parental-header--top position-relative border-bottom py-3">
     <div class="container-fluid">
-      <div class="row align-items-center m-0">
-        <div class="col-auto px-0 d-sm-none"><span onclick="displayMenu()" class="hamburger-menu" aria-hidden="true">
-                <span class="bar"></span>
-            </span></div>
-        <div class="col-auto col-sm-4 logo d-flex align-items-center">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-auto d-md-none">
+          <button type="button"
+                  onclick="displayMenu()"
+                  class="bg-transparent hamburger-menu"
+                  aria-hidden="true">
+            <span class="bar"></span>
+          </button>
+        </div>
+        <div class="col-auto col-md-4 logo d-flex align-items-center">
           <a href="<?php echo $this->baseUrl(); ?>" class="d-md-block w-100">
             <svg style="height: 40px" class="align-middle" id="bc3286c2-b7fb-4350-9d0e-0eaf2ab71cf9" data-name="Layer 1"
                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480.81 171.45">
@@ -55,9 +60,10 @@
             </svg>
           </a>
         </div> <!-- end of logo -->
-        <div class="col-12 search search-bar" id="search-bar">
+        <div class="col-auto col-md-4 col-sm search search-bar" id="search-bar">
 
-          <form action="<?php echo $this->url(array('controller' => 'search'), 'default', true) ?>"
+          <form class="d-block w-100"
+                action="<?php echo $this->url(array('controller' => 'search'), 'default', true) ?>"
                 method="get">
             <input autocomplete="off"
                    type="text"
@@ -65,16 +71,17 @@
                    name="query"
                    id="global_search_field" alt="<?php echo $this->translate('Type to search...') ?>"
                    placeholder="<?php echo $this->translate('Type to search...') ?>"/>
-            <i class="fa fa-close position-absolute d-sm-none d-block" id="close_icon"> </i>
+            <button class="bg-transparent d-sm-none d-block btn-close--search" type="button" id="close_icon">
+              <i class="fa fa-close"></i>
+            </button>
           </form>
 
         </div> <!-- search -->
-
-        <div class="col-auto ml-auto col-sm-4 p-0 mini-menu" id="core_menu_mini_menu_extfox">
+        <div class="col-auto col-md-4 mini-menu" id="core_menu_mini_menu_extfox">
 
           <ul class="list-inline profile-items w-100 d-flex justify-content-sm-end justify-content-center align-items-center my-0">
 
-            <li class="list-inline-item align-middle search d-sm-none mr-2">
+            <li class="list-inline-item align-middle search d-sm-none mr-sm-2">
               <a class="d-flex align-items-center p-1 p-sm-2"
                  role="button"
                  id="search-icon">
@@ -94,20 +101,19 @@
                 </svg>
               </a>
             </li> <!-- end of search -->
-
               <?php if ($this->viewer->getIdentity() > 0): ?>
-                <li class="list-inline-item align-middle mr-2 notifications dropdown">
+                <li class="list-inline-item align-middle notifications dropdown">
                   <a role="button"
                      data-toggle="dropdown"
                      aria-haspopup="true"
                      data-boundary="window"
                      class="d-flex align-items-center position-relative core_mini_update updates_toogle p-1 p-sm-2">
-                    <i class="fa fa-bell-o"
+                    <i class="far fa-bell"
                        id="close_icon"></i><span class="notifications-count bg-primary text-white font-weight-bold position-absolute d-flex align-items-center justify-content-center"><?php echo $this->notificationCount; ?></span>
                   </a>
                   <div class="updates_pulldown" id="core_mini_updates_pulldown">
                     <div class="dropdown-menu dropdown-menu-right pulldown_contents_wrapper py-0">
-                      <div class="bg-primary text-right px-3 py-2 d-flex align-items-center justify-content-end mark-all">
+                      <div class="text-right px-3 py-2 d-flex align-items-center justify-content-end mark-all">
                           <?php echo $this->htmlLink('javascript:void(0);', $this->translate('Mark All Read'), array('id' => 'notifications_markread_link', 'class' => 'font-weight-light small')) ?>
                       </div>
                       <div class="pulldown_contents">
@@ -192,7 +198,7 @@
                       <li>
                         <a class="dropdown-item border-top py-3" href="<?php echo $this->baseUrl(); ?>/logout">
                           <div class="d-flex align-items-center justify-content-start">
-                            <i class="fa fa-sign-out mr-3" aria-hidden="true"></i>
+                            <i class="fas fa-sign-out-alt mr-3" aria-hidden="true"></i>
                             <b>Sign Out</b>
                           </div>
                         </a>
@@ -201,14 +207,13 @@
                   </div>
                 </li> <!-- name -->
               <?php else: ?>
-                <li class="list-inline-item align-middle">
+                <li class="list-inline-item align-middle d-none d-sm-inline-block">
                     <?php echo $this->htmlLink($this->url(array('action' => 'login'), 'user_login'), $this->translate('Sign In'), array('class' => 'btn btn-link font-weight-bold text-uppercase')); ?>
                 </li>
-                <li class="list-inline-item align-middle">
+                <li class="list-inline-item align-middle d-none d-sm-inline-block">
                     <?php echo $this->htmlLink($this->url(array('action' => 'index'), 'user_signup'), $this->translate('Sign Up'), array('class' => 'btn btn-success text-white text-uppercase')); ?>
                 </li>
               <?php endif; ?>
-
           </ul>
         </div> <!-- mini-menu -->
       </div>
@@ -216,39 +221,174 @@
   </div> <!-- top-menu -->
   <div class="parental-header--bottom border-bottom d-sm-block d-none parental-mobile-menu-holder"
        id="parental-mobile-menu-holder">
-    <div class="container">
+    <div class="container-fluid">
       <div class="row align-items-center justify-content-center">
-        <div class="col-auto">
-          <ul class="list-inline my-0">
-            <li class="list-inline-item align-middle">
+        <div class="col-12 col-lg-10 col-xl-8">
+          <ul class="list-unstyled row justify-content-around mb-0">
+            <li>
               <a class="nav-link" href="<?php echo $this->baseUrl(); ?>">
                 <b><?php echo $this->translate('Home'); ?></b>
               </a>
             </li>
-            <li class="list-inline-item align-middle">
-              <a class="nav-link" href="<?php echo $this->baseUrl(); ?>/reviews/home">
+            <li data-hover="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+              <a class="nav-link"
+                 href="<?php echo $this->baseUrl(); ?>/reviews/home"
+                 id="navbarDropdownMenuReviews">
                 <b><?php echo $this->translate('Reviews'); ?></b>
               </a>
+              <div class="dropdown-menu dropdown-menu--reviews px-4 pt-3" aria-labelledby="navbarDropdownMenuReviews">
+                <div class="row">
+                  <div class="col-sm-3 mb-3">
+                    <h6 class="d-flex align-items-center justify-content-between text-primary font-weight-bold">Toys or
+                      Books
+                      <i class="fas fa-angle-right"></i></h6>
+                    <ul class="my-2">
+                      <li><a href="#">Arts & Craft</a></li>
+                      <li><a href="#">Bath Toys</a></li>
+                      <li><a href="#">Books</a></li>
+                      <li><a href="#">Building Blocks</a></li>
+                      <li><a href="#">Infant Toys</a></li>
+                      <li><a href="#">Outdoor Play</a></li>
+                    </ul>
+                    <div class="mt-2">
+                      <a class="text-success font-weight-bold" href="#">view all</a>
+                    </div>
+                  </div>
+                  <div class="col-sm-3 mb-3">
+                    <h6 class="d-flex align-items-center justify-content-between text-primary font-weight-bold">Toys or
+                      Books
+                      <i class="fas fa-angle-right"></i></h6>
+                    <ul class="my-2">
+                      <li><a href="#">Arts & Craft</a></li>
+                      <li><a href="#">Bath Toys</a></li>
+                      <li><a href="#">Books</a></li>
+                      <li><a href="#">Building Blocks</a></li>
+                      <li><a href="#">Infant Toys</a></li>
+                      <li><a href="#">Outdoor Play</a></li>
+                    </ul>
+                    <div class="mt-2">
+                      <a class="text-success font-weight-bold" href="#">view all</a>
+                    </div>
+                  </div>
+                  <div class="col-sm-3 mb-3">
+                    <h6 class="d-flex align-items-center justify-content-between text-primary font-weight-bold">Toys or
+                      Books
+                      <i class="fas fa-angle-right"></i></h6>
+                    <ul class="my-2">
+                      <li><a href="#">Arts & Craft</a></li>
+                      <li><a href="#">Bath Toys</a></li>
+                      <li><a href="#">Books</a></li>
+                      <li><a href="#">Building Blocks</a></li>
+                      <li><a href="#">Infant Toys</a></li>
+                      <li><a href="#">Outdoor Play</a></li>
+                    </ul>
+                    <div class="mt-2">
+                      <a class="text-success font-weight-bold" href="#">view all</a>
+                    </div>
+                  </div>
+                  <div class="col-sm-3 mb-3">
+                    <h6 class="d-flex align-items-center justify-content-between text-primary font-weight-bold">Toys or
+                      Books
+                      <i class="fas fa-angle-right"></i></h6>
+                    <ul class="my-2">
+                      <li><a href="#">Arts & Craft</a></li>
+                      <li><a href="#">Bath Toys</a></li>
+                      <li><a href="#">Books</a></li>
+                      <li><a href="#">Building Blocks</a></li>
+                      <li><a href="#">Infant Toys</a></li>
+                      <li><a href="#">Outdoor Play</a></li>
+                    </ul>
+                    <div class="mt-2">
+                      <a class="text-success font-weight-bold" href="#">view all</a>
+                    </div>
+                  </div>
+                  <div class="col-sm-3 mb-3">
+                    <h6 class="d-flex align-items-center justify-content-between text-primary font-weight-bold">Toys or
+                      Books
+                      <i class="fas fa-angle-right"></i></h6>
+                    <ul class="my-2">
+                      <li><a href="#">Arts & Craft</a></li>
+                      <li><a href="#">Bath Toys</a></li>
+                      <li><a href="#">Books</a></li>
+                      <li><a href="#">Building Blocks</a></li>
+                      <li><a href="#">Infant Toys</a></li>
+                      <li><a href="#">Outdoor Play</a></li>
+                    </ul>
+                    <div class="mt-2">
+                      <a class="text-success font-weight-bold" href="#">view all</a>
+                    </div>
+                  </div>
+                  <div class="col-sm-3 mb-3">
+                    <h6 class="d-flex align-items-center justify-content-between text-primary font-weight-bold">Toys or
+                      Books
+                      <i class="fas fa-angle-right"></i></h6>
+                    <ul class="my-2">
+                      <li><a href="#">Arts & Craft</a></li>
+                      <li><a href="#">Bath Toys</a></li>
+                      <li><a href="#">Books</a></li>
+                      <li><a href="#">Building Blocks</a></li>
+                      <li><a href="#">Infant Toys</a></li>
+                      <li><a href="#">Outdoor Play</a></li>
+                    </ul>
+                    <div class="mt-2">
+                      <a class="text-success font-weight-bold" href="#">view all</a>
+                    </div>
+                  </div>
+                  <div class="col-sm-3 mb-3">
+                    <h6 class="d-flex align-items-center justify-content-between text-primary font-weight-bold">Toys or
+                      Books
+                      <i class="fas fa-angle-right"></i></h6>
+                    <ul class="my-2">
+                      <li><a href="#">Arts & Craft</a></li>
+                      <li><a href="#">Bath Toys</a></li>
+                      <li><a href="#">Books</a></li>
+                      <li><a href="#">Building Blocks</a></li>
+                      <li><a href="#">Infant Toys</a></li>
+                      <li><a href="#">Outdoor Play</a></li>
+                    </ul>
+                    <div class="mt-2">
+                      <a class="text-success font-weight-bold" href="#">view all</a>
+                    </div>
+                  </div>
+                  <div class="col-sm-3 mb-3">
+                    <h6 class="d-flex align-items-center justify-content-between text-primary font-weight-bold">Toys or
+                      Books
+                      <i class="fas fa-angle-right"></i></h6>
+                    <ul class="my-2">
+                      <li><a href="#">Arts & Craft</a></li>
+                      <li><a href="#">Bath Toys</a></li>
+                      <li><a href="#">Books</a></li>
+                      <li><a href="#">Building Blocks</a></li>
+                      <li><a href="#">Infant Toys</a></li>
+                      <li><a href="#">Outdoor Play</a></li>
+                    </ul>
+                    <div class="mt-2">
+                      <a class="text-success font-weight-bold" href="#">view all</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </li>
-            <li class="list-inline-item align-middle">
+            <li>
               <a class="nav-link" href="<?php echo $this->url(array(), 'listing_struggles', true); ?>">
                 <b><?php echo $this->translate('Struggles & Theories'); ?></b>
               </a>
             </li>
-            <li class="list-inline-item align-middle">
+            <li>
               <a class="nav-link" href="<?php echo $this->baseUrl(); ?>/community/home">
                 <b><?php echo $this->translate('Our Community'); ?></b>
               </a>
             </li>
               <?php if ($this->viewer->getIdentity() > 0): ?>
                   <?php if ($this->viewer->isAdmin()): ?>
-                  <li class="list-inline-item align-middle d-sm-none d-inline-block">
+                  <li class="d-sm-none">
                     <a href="<?php echo $this->baseUrl(); ?>/admin">
                         <?php echo $this->translate('Admin'); ?>
                     </a>
                   </li>
                   <?php endif; ?>
-                <li class="list-inline-item align-middle d-sm-none d-inline-block">
+                <li class="d-sm-none">
                   <a href="<?php echo $this->baseUrl(); ?>/logout">
                       <?php echo $this->translate('Log Out'); ?>
                   </a>
@@ -259,10 +399,8 @@
       </div>
     </div>
 
-  </div> <!-- border-bottom -->
+  </div> <!-- header-bottom -->
 </header>
-
-
 <script type='text/javascript'>
   var notificationUpdater;
 
@@ -382,7 +520,7 @@
   }
 
   function displayMenu() {
-    let mobileHolder = document.getElementById('prg-mobile-menu-holder');
+    let mobileHolder = document.getElementById('parental-mobile-menu-holder');
     if (mobileHolder.classList.contains('active') == false) {
       mobileHolder.classList.add('active');
       document.getElementsByTagName("body")[0].style = 'overflow: hidden';

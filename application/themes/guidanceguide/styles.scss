@@ -4,6 +4,7 @@
 @import "./helpers";
 @import "./common";
 @import "./hover-dropdown";
+@import "./modal";
 @import "./header";
 @import "./breadcrumb";
 @import "./widgets/card";
@@ -32,6 +33,7 @@
     font-size: 11px;
     box-shadow: 0 0 0 2px #ffffff;
     font-weight: 700;
+    background: $primary;
     @include media-breakpoint-up(sm) {
       bottom: .1rem;
       width: 18px;
@@ -246,7 +248,6 @@
         }
       }
     }
-
   }
 }
 
