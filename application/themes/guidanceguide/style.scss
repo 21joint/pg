@@ -2595,6 +2595,31 @@ form.preference-holder {
             }
         }
     }
+
+    .layout_user_cover_photo { 
+        // profile photo
+        .holder {
+            .profile_cover_head_section {
+
+                .profile_main_photo_wrapper {
+                    .profile_main_photo {
+
+                        bottom: -7em!important;
+                    }
+                    
+                }
+                
+            }
+        }
+        .profile_cover_options{
+            .save-button  {
+                top: 57px!important;
+                left: 15px;
+                right: 0px;
+            }
+        } 
+    } 
+
     .extfox-auth {
 
         input[type='text'],
