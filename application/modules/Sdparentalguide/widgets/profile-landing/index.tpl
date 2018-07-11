@@ -266,7 +266,7 @@
         if(!buttonFriend) return;
         let buttonFriendLink = buttonFriend.getElement('a');
         buttonFriendLink.removeClass('buttonlink');
-        buttonFriendLink.addClass('btn btn-success px-5 py-2 text-white');
+        buttonFriendLink.addClass('btn btn-success px-sm-5 px-3 py-2 text-white');
 
         <?php if($this->profileSettings):?>
             var tabs = document.getElementsByClassName('tabs_alt'); 

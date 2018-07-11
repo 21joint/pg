@@ -467,7 +467,9 @@ body#global_page_user-profile-index {
                 > .layout_middle {
 
                     .layout_user_cover_photo {
-
+                        .profile_cover_options {
+                            display: none;
+                        }
                         // cover photo and options
                         .profile_cover_photo_wrapper {
                             .profile_cover_photo_empty {
@@ -2595,6 +2597,39 @@ form.preference-holder {
             }
         }
     }
+
+    .layout_user_cover_photo { 
+        // profile photo
+        .holder {
+            .profile_cover_head_section {
+
+                .profile_main_photo_wrapper {
+                    .profile_main_photo {
+
+                        bottom: -7em!important;
+                    }
+                    .profile_cover_options {
+                       
+                        .edit-button{
+                            top: 10px!important;
+                        }
+                    }
+                }
+                
+            }
+        }
+        .profile_cover_options{
+            .save-button  {
+                top: 20px !important;
+                right: 15px;
+            }
+        }
+        .profile_cover_photo_wrapper {
+            height: 349px;
+        }
+         
+    } 
+
     .extfox-auth {
 
         input[type='text'],

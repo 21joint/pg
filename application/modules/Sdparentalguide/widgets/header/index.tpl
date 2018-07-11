@@ -393,6 +393,13 @@
       notificationBar.classList.add('updates_pulldown');
     }
 
+    if(type == 'all') {
+      hideProfileHover();
+      dropdownHolder.classList.remove('active');
+      notificationBar.classList.remove('updates_pulldown_active');
+      notificationBar.classList.add('updates_pulldown');
+    }
+
   }
 
   function hideProfileHover() {
@@ -405,8 +412,15 @@
   // hide search items
   document.onclick = function(e){
       e.stopPropagation();
+      
+      // Notification hide
+      if(e.target.id !== 'close_icon') {
+        activateProfileItem('profile-dropdown-menu');
+      }
+      if(e.target.id !== 'btn-drop'){
+        activateProfileItem('notifications');
+      }
+      
   }
    
-
-  
 </script>
