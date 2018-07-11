@@ -40,13 +40,13 @@
     <div class="leaderboard_content">
         <!-- Content of ajax call goes here -->
     </div>
-    <div class="leaderboard_pagination d-flex justify-content-center align-items-center mt-5">
+    <div class="leaderboard_pagination d-flex justify-content-end align-items-center mt-5 mr-5">
         <!-- Content Pagination -->
-        <button id="leaderboard_previous" class="text-white rounded-circle"><</button>
+        <span id="leaderboard_previous" class="pagination_button"><</span>
         <span id="leaderboard_pageNum" class="mx-5">
             <!-- Displays the current page of Leaderboard Results -->
         </span>
-        <button id="leaderboard_next" class="text-white rounded-circle">></button>
+        <span id="leaderboard_next" class="pagination_button">></span>
     </div>
 </div>
 
@@ -131,21 +131,21 @@ var pageNum = 1;
 document.getElementById('leaderboard_previous').addEventListener('click', function(){
     if(pageNum >= 2){
         pageNum--;
-        document.getElementById('leaderboard_previous').addClass('btn-primary').removeClass('btn-secondary');
-        document.getElementById('leaderboard_next').addClass('btn-primary').removeClass('btn-secondary');
+        document.getElementById('leaderboard_previous').removeClass('pagination_button_diss');
+        document.getElementById('leaderboard_next').removeClass('pagination_button_diss');
         loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
     }else{
-        document.getElementById('leaderboard_previous').addClass('btn-secondary');
+        document.getElementById('leaderboard_previous').addClass('pagination_button_diss');
     }
 });
 document.getElementById('leaderboard_next').addEventListener('click', function(){
     if(pageNum <= 9){
         pageNum++;
-        document.getElementById('leaderboard_next').addClass('btn-primary').removeClass('btn-secondary');
-        document.getElementById('leaderboard_previous').addClass('btn-primary').removeClass('btn-secondary');
+        document.getElementById('leaderboard_next').removeClass('pagination_button_diss');
+        document.getElementById('leaderboard_previous').removeClass('pagination_button_diss');
         loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
     }else{
-        document.getElementById('leaderboard_next').addClass('btn-secondary');
+        document.getElementById('leaderboard_next').addClass('pagination_button_diss');
     }
 });
 // Pagination Number Change End
