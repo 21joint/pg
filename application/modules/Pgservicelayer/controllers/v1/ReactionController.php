@@ -73,7 +73,17 @@ class Pgservicelayer_ReactionController extends Pgservicelayer_Controller_Action
 
         try {
             //1 for positive reaction and 0 for negative reaction
-            $reactionType = $this->getParam("reactionType",1);
+            $reactionType = $this->getParam("reactionType",1);            
+            if(strtolower($reactionType) == "like" || strtolower($reactionType) == "dislike"){
+                if($subject->getType() == "ggcommunity_answer" || $subject->getType() == "ggcommunity_question"){
+                    $this->respondWithError('unauthorized',$this->translate("You cannot like/dislike this entity."));
+                }
+            }else if(strtolower($reactionType) == "upvote" || strtolower($reactionType) == "downvote"){
+                if($subject->getType() != "ggcommunity_answer" && $subject->getType() != "ggcommunity_question"){
+                    $this->respondWithError('unauthorized',$this->translate("You cannot vote this entity."));
+                }
+            }
+            
             Engine_Api::_()->getApi("V1_Reaction","pgservicelayer")->toggleReaction($subject,$reactionType);
             $db->commit();
             $this->successResponseNoContent('no_content');            

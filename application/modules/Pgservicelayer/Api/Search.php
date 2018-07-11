@@ -47,12 +47,28 @@ class Pgservicelayer_Api_Search extends Core_Api_Search
       $row = $table->createRow();
       $row->type = $type;
       $row->id = $id;
+      $row->creation_date = date("Y-m-d H:i:s");
+    }
+    
+    $itemObject = $item;
+    $topic_id = 0;
+    if($type == "sitereview_listing"){
+        $listingType = $itemObject->getListingType();
+        if(!empty($listingType)){
+            $topic_id = $listingType->gg_topic_id;
+        }        
+    }else if($type == "sdparentalguide_badge" || $type == "ggcommunity_question"){
+        $topic_id = $itemObject->topic_id;
+    }
+    if(!empty($topic_id)){
+        $row->topic_id = $topic_id;
     }
 
     $row->title = $title;
     $row->description = $description;
     $row->keywords = $keywords;
     $row->hidden = $hiddenText;
+    $row->modified_date = date("Y-m-d H:i:s");
     $row->save();
   }
 }

@@ -218,6 +218,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
     }
     
     public function getCommentData(Core_Model_Item_Abstract $comment){
+        $dislikesTable = Engine_Api::_()->getDbTable("dislikes","nestedcomment");
         $viewer = Engine_Api::_()->user()->getViewer();
         $resource = $comment->getResource();
         $childCommentsSelect = $resource->comments()->getCommentSelect();
@@ -225,14 +226,14 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $commentInfo = array();
         $poster = Engine_Api::_()->getItem($comment->poster_type, $comment->poster_id);
         $commentInfo["commentID"] = $comment->comment_id;
-        $commentInfo['contentType'] = $comment->resource_type;
+        $commentInfo['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($comment->resource_type);
         $commentInfo['contentID'] = $comment->resource_id;
-        $commentInfo['commentsCount'] = Zend_Paginator::factory($childCommentsSelect)->getTotalItemCount();;
+        $commentInfo['commentsCount'] = Zend_Paginator::factory($childCommentsSelect)->getTotalItemCount();
         $commentInfo["body"] = $comment->body;
         $commentInfo["createdDateTime"] = $this->getFormatedDateTime($comment->creation_date);
         $commentInfo["likesCount"] = $comment->likes()->getLikeCount();        
-        $commentInfo['dislikesCount'] = 0;
-        $commentInfo['totalLikesCount'] = $commentInfo["likesCount"];
+        $commentInfo['dislikesCount'] = $dislikesTable->dislikes($comment)->getDislikeCount();
+        $commentInfo['totalLikesCount'] = $commentInfo["likesCount"] - $commentInfo['dislikesCount'];
         $commentInfo["lastModifiedDateTime"] = $this->getFormatedDateTime($comment->creation_date);
         $commentInfo["canDelete"] = false;
         if ($poster->isSelf($viewer)) {

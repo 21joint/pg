@@ -16,6 +16,10 @@ class Pgservicelayer_SearchController extends Pgservicelayer_Controller_Action_A
     public function indexAction(){
         try{
             $method = strtolower($this->getRequest()->getMethod());
+            $fixSearchDates = $this->getParam("fixSearchDates");
+            if(!empty($fixSearchDates)){
+                $this->fixSearchDates();
+            }
             if($method == 'get'){
                 $this->getAction();
             }
@@ -46,6 +50,7 @@ class Pgservicelayer_SearchController extends Pgservicelayer_Controller_Action_A
         $page = $this->getParam("page",1);
         $limit = $this->getParam("limit",10);
         $searchTable = Engine_Api::_()->getDbTable("search","core");
+        $searchTableName = $searchTable->info("name");
         $select = $searchTable->select();
         $contentType = $this->getParam("contentType");
         $search= $this->getParam("search");
@@ -63,23 +68,47 @@ class Pgservicelayer_SearchController extends Pgservicelayer_Controller_Action_A
                 foreach($contentType as $type){
                     $contentTypes[] = Engine_Api::_()->sdparentalguide()->mapPGGResourceTypes($type);
                 }
-                $select->where('type IN(?)', $contentTypes);
+                $select->where($searchTableName.'.type IN(?)', $contentTypes);
             }else{
                 $contentType = Engine_Api::_()->sdparentalguide()->mapPGGResourceTypes($contentType);
-                $select->where('type = ?', $contentType);
+                $select->where($searchTableName.'.type = ?', $contentType);
             }            
         }else{
-            $select->where('type IN(?)', $availableTypes);
+            $select->where($searchTableName.'.type IN(?)', $availableTypes);
+        }
+        
+        $orderBy = $this->getParam("orderBy");
+        if(empty($orderBy) && empty($search)){
+            $orderBy = "createdDateTime";
+        }
+        $orderByDirection = $this->getParam("orderByDirection","descending");
+        $orderByDirection = (strtolower($orderByDirection) == "descending")?"DESC":"ASC";
+        if($orderBy == "createdDateTime"){
+            $select->order("$searchTableName.creation_date $orderByDirection");
         }
         
         if(!empty($search)){
             $sourceUrl = urldecode($this->getParam("source"));
             Engine_Api::_()->getDbTable('search', 'sdparentalguide')->logSearch($search,$sourceUrl);
             $db = $searchTable->getAdapter();
-            $select->where('`title` LIKE ? OR `description` LIKE ? OR `keywords` LIKE ? OR `hidden` LIKE ?', "%".$search."%")
-                ->order(new Zend_Db_Expr($db->quoteInto('MATCH(`title`, `description`, `keywords`, `hidden`) AGAINST (?) DESC', $search)));
+            $topicsTable = Engine_Api::_()->getDbtable('topics', 'sdparentalguide');
+            $topicsTableName = $topicsTable->info("name");
+            
+            if(!empty($contentType) && is_string($contentType) && ($contentType == "sitereview_listing" || $contentType == "ggcommunity_question")){
+                $select->from($searchTableName)->setIntegrityCheck(false)
+                        ->joinLeft($topicsTableName,"$topicsTableName.topic_id = $searchTableName.topic_id OR $topicsTableName.topic_id IS NULL",array())
+                        ->where("$searchTableName.title LIKE ? OR $searchTableName.description LIKE ? OR $searchTableName.keywords LIKE ? OR $searchTableName.hidden LIKE ?"
+                                . " OR $topicsTableName.name LIKE ? OR $topicsTableName.name_plural LIKE ?", "%".$search."%");
+            }else{
+                $select->where("$searchTableName.title LIKE ? OR $searchTableName.description LIKE ? OR $searchTableName.keywords LIKE ? OR $searchTableName.hidden LIKE ?", "%".$search."%")
+                        ;
+            }
+            
+            if($orderBy != "createdDateTime"){
+                $select->order(new Zend_Db_Expr($db->quoteInto("MATCH($searchTableName.title, $searchTableName.description, $searchTableName.keywords, $searchTableName.hidden) AGAINST (?) $orderByDirection", $search)));
+            }
         }
-                
+                        
         $paginator = Zend_Paginator::factory($select);
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage($limit);
@@ -118,6 +147,9 @@ class Pgservicelayer_SearchController extends Pgservicelayer_Controller_Action_A
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage($limit);
         foreach($paginator as $item){
+            if(!Engine_Api::_()->hasItemType($item->type)){
+                continue;
+            }
             $itemObject = Engine_Api::_()->getItem($item->type,$item->id);
             if(empty($itemObject)){
                 continue;
@@ -146,5 +178,68 @@ class Pgservicelayer_SearchController extends Pgservicelayer_Controller_Action_A
         }
         $response['Results'] = array();
         $this->respondWithSuccess($response);
+    }
+    
+    public function fixSearchDates(){
+        set_time_limit(0);
+        ini_set('memory_limit', '1024M');
+        $page = $this->getParam("page",1);
+        $limit = $this->getParam("limit",10);
+        $searchTable = Engine_Api::_()->getDbTable("search","core");
+        $select = $searchTable->select()
+                ->where("creation_date IS NULL");
+        
+        $paginator = Zend_Paginator::factory($select);
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage($limit);
+        
+        foreach($paginator as $item){
+            if(!Engine_Api::_()->hasItemType($item->type)){
+                continue;
+            }
+            $itemObject = Engine_Api::_()->getItem($item->type,$item->id);
+            if(empty($itemObject)){
+                $item->creation_date = date("Y-m-d H:i:s");
+                $item->modified_date = date("Y-m-d H:i:s");
+                $item->save();
+                continue;
+            }
+            
+            if(isset($itemObject->gg_dt_created)){
+                $item->creation_date = $itemObject->gg_dt_created;
+            }
+            
+            if(isset($itemObject->gg_dt_lastmodified)){
+                $item->modified_date = $itemObject->gg_dt_lastmodified;
+            }
+            
+            if(isset($itemObject->creation_date) && empty($item->creation_date)){
+                $item->creation_date = $itemObject->creation_date;
+            }
+            
+            if(isset($itemObject->modified_date) && empty($item->modified_date)){
+                $item->modified_date = $itemObject->modified_date;
+            }
+            
+            if(empty($item->creation_date)){
+                $item->creation_date = date("Y-m-d H:i:s");
+            }
+            
+            if(empty($item->modified_date)){
+                $item->modified_date = date("Y-m-d H:i:s");
+            }
+            $item->save();            
+        }
+        
+        $response['ResultCount'] = $paginator->getTotalItemCount();
+        $response['NextPage'] = $paginator->getCurrentPageNumber()+1;
+        $response['totalPages'] = $paginator->count();
+        if($paginator->getCurrentPageNumber() >= $paginator->count()){
+            $response['NextPage'] = 0;
+            return;
+        }
+        $response['Results'] = array();
+        $this->respondWithSuccess($response);
+        
     }
 }

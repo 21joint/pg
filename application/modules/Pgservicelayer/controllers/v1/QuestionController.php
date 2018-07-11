@@ -94,9 +94,6 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
         }else if(is_array($id) && !empty ($id)){
             $select->where("$tableName.question_id IN (?)",$id);
         }
-        if(!empty($search)){
-            $select->where("title LIKE ?","%".$search."%");
-        }
         
         if($orderBy == "createDateTime"){
             $select->order("creation_date $orderByDirection");
@@ -293,7 +290,7 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
             $idsArray = array($id);
         }
         $questions = Engine_Api::_()->getItemMulti("ggcommunity_question",$idsArray);
-        if (empty($questions)) {
+        if (empty($questions) || count($questions) <= 0) {
             $this->respondWithError('no_record');
         }
         $table = Engine_Api::_()->getItemTable('ggcommunity_question');

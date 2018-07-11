@@ -35,3 +35,7 @@ ADD `topic_id` int NULL DEFAULT '0';
 
 ALTER TABLE `engine4_gg_listing_ratings`
 ADD `listing_type` varchar(128) NOT NULL DEFAULT 'sitereview_listing' AFTER `listing_id`;
+
+ALTER TABLE `engine4_core_search`
+ADD `creation_date` datetime NULL,
+ADD `modified_date` datetime NULL AFTER `creation_date`;
