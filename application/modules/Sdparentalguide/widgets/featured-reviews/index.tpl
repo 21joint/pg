@@ -280,7 +280,7 @@
         '                          </ul>\n' +
         '                        </div>\n' +
         '                        <a role="button" data-target="#reviewSingleModal" data-toggle="modal"\n' +
-        '                           data-call="' + en4.core.baseUrl + 'api/v1/review?id=' + rev.reviewID + '"\n' +
+        '                           data-call="' + en4.core.baseUrl + 'api/v1/review?reviewID=' + rev.reviewID + '"\n' +
         '                           class="d-block card-img--wrapper"\n' +
         '                             style="background-image: url(' + rev.coverPhoto.photoURL + ')">\n' +
         '                          <img class="invisible w-100 h-100 position-absolute" src="' + rev.coverPhoto.photoURL + '" alt="' + rev.title + '"/>\n' +
