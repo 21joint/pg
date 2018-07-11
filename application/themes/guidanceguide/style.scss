@@ -468,9 +468,6 @@ body#global_page_user-profile-index {
                 > .layout_middle {
 
                     .layout_user_cover_photo {
-                        .profile_cover_options {
-                           display: none;
-                        }
                         // cover photo and options
                         .profile_cover_photo_wrapper {
                             .profile_cover_photo_empty {
@@ -1046,14 +1043,19 @@ body#global_page_user-profile-index {
         font-weight: 700;
         color:#333D40;
     }
-    h6 {
-        font-size: 14px;
-        font-weight: 600;
-        color:#333D40;
-        p {
-            color:#B7C3C4;
+    .form-wrapper-heading  {
+        border:none!important;
+        h6 {
+            font-size: 14px;
+            font-weight: 600;
+            color:#333D40;
+            
+            p {
+                color:#B7C3C4;
+            }
         }
     }
+    
 } 
 
 
@@ -2632,8 +2634,8 @@ form.preference-holder {
                         }
                     }
                 }
-                
             }
+           
         }
         .profile_cover_options{
             .save-button  {
@@ -2643,6 +2645,13 @@ form.preference-holder {
         }
         .profile_cover_photo_wrapper {
             height: 349px;
+        }
+        .holder.container {
+            .user-options {
+                a {
+                    width: 100px!important;
+                }
+            }
         }
          
     } 
@@ -2788,7 +2797,15 @@ form.preference-holder {
         }
 
     }
-
+    // Border Gear
+    .border-gear {
+        ~ img {
+           
+            border-width: 4px 4px 4px 4px !important;
+            
+        }
+    }
+   
 
     // Close Button 
     .close-btn-x{

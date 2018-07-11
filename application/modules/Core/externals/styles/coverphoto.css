@@ -224,7 +224,10 @@
 }
 
 /*Cover Information Ends Here*/
-
+.profile_cover_photo_wrapper:hover .profile_cover_options,
+.profile_main_photo_wrapper:hover .profile_cover_options {
+  display: block;
+}
 /* Photo edit icon and options pulldown UI for Profile and Cover photo */
 .profile_cover_btn i {
   font-style: normal;
@@ -237,7 +240,9 @@
   height: 40px;
   border-radius: 50%;
 }
-
+.profile_cover_options {
+  display: none;
+}
 .profile_cover_options .edit-button {
   position: absolute;
   top: 20px;
