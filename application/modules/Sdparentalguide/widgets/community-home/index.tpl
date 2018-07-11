@@ -12,7 +12,10 @@
 <div class="leaderboard d-flex flex-column justify-content-center align-items-center">
     <h1 class="mt-5 text-uppercase">Our Community</h1>
     <h5>You can trust our community of real parents</h5>
-    <a href="#" id="readmore" class="btn-large btn-success text-white text-capitalize font-weight-bold mt-5 mb-4 px-5 py-3">See More</a>
+    <a id="seeMore" class="btn-large btn-success text-white text-capitalize font-weight-bold mt-5 mb-4 px-5 py-3">See More</a>
+</div>
+<div>
+    
 </div>
 <div class="leaderboard">
     <div class="leaderboard_main d-flex justify-content-between">
@@ -134,6 +137,8 @@
 en4.core.runonce.add(function(){
     loadLeaderboardResults();
 });
+
+document.getElementById("seeMore").href = en4.core.baseUrl+"community/leaderboard";
 
 // FAQ on click display question and transform plus to close
 document.querySelectorAll(".faq_toggle").forEach(function(toggle){
