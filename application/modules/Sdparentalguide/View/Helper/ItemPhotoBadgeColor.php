@@ -42,7 +42,7 @@ class Sdparentalguide_View_Helper_ItemPhotoBadgeColor extends Zend_View_Helper_A
         break;
         default: 
           $class = 'bg-primary';
-          $count = $subject->gg_expert_platinum_count + $subject->gg_expert_gold_count + $subject->gg_expert_silver_count + $subject->gg_expert_bronze_count;
+          $count = $subject->gg_contribution_level;
       }
       
       if($subject->gg_mvp === 1){
