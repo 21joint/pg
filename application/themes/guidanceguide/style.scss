@@ -2493,6 +2493,7 @@ form.preference-holder {
                     }
                 }
                 #add-birthday {
+                   
                     .col-12.d-flex, .col-12.years-range, .col-12.years, .col-12.final-date {
                         display: grid !important;
                         grid-template-columns: repeat(1, 1fr);
@@ -2707,6 +2708,7 @@ form.preference-holder {
         }
             
         #add-birthday {
+            overflow: hidden;
             .col-12.d-flex, .col-12.years-range, .col-12.years, .col-12.final-date  {
                 display: grid !important;
                 grid-template-columns: repeat(1, 1fr);
@@ -2717,6 +2719,11 @@ form.preference-holder {
                 }
             }
         } 
+        #family-information {
+            .btn-danger {
+                visibility: visible !important;
+            }
+        }
             
     }
     
