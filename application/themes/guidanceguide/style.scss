@@ -1038,6 +1038,10 @@ body#global_page_user-profile-index {
 }
 // Family Member
 .holder-familyMember{
+
+    #add-birthday {
+        overflow: hidden;
+    }
     h5 {
         font-size: 16px;
         font-weight: 700;
@@ -2717,7 +2721,6 @@ form.preference-holder {
         }
             
         #add-birthday {
-            overflow: hidden;
             .col-12.d-flex, .col-12.years-range, .col-12.years, .col-12.final-date  {
                 display: grid !important;
                 grid-template-columns: repeat(1, 1fr);
