@@ -47,59 +47,52 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
         if(Engine_Api::_()->core()->hasSubject()){
             $subject = Engine_Api::_()->core()->getSubject();
         }
+        $parentCommentId = null;
+        $commentId = $this->getParam('commentID');
+        if($subject->getType() == "core_comment"){
+            $subject = Engine_Api::_()->getItem($subject->resource_type,$subject->resource_id);
+            $parentCommentId = $this->getParam("contentID");
+        }
         if (!($subject instanceof Core_Model_Item_Abstract) ||
                 !$subject->getIdentity() ||
                 (!method_exists($subject, 'comments') && !method_exists($subject, 'likes')))
             $this->respondWithError('no_record');
         $canComment = $subject->authorization()->isAllowed($viewer, 'comment');
-        $canDelete = $subject->authorization()->isAllowed($viewer, 'edit');
-        if (!$canComment && !$canDelete)
-                $this->respondWithError('unauthorized');
-        
-        if (!$canComment && !$canDelete)
+        if (!$viewer->getIdentity() && !$canComment)
             $this->respondWithError('unauthorized');
         
         $page = $this->getParam("page",1);
         $limit = $this->getParam("limit",10);
+        $orderBy = $this->getParam("orderBy","createdDateTime");
+        $orderByDirection = $this->getParam("orderByDirection","descending");
+        $orderByDirection = (strtolower($orderByDirection) == "descending")?"DESC":"ASC";
         $isLike = Engine_Api::_()->getDbTable("likes", "core")->isLike($subject, $viewer);
-        if (null !== $page) {
-            $commentSelect = $subject->comments()->getCommentSelect();
-            $commentSelect->order('comment_id ' . $this->getRequestParam('order', 'ASC'));
-            $commentSelect->where("gg_deleted = ?",0);
-            $comments = Zend_Paginator::factory($commentSelect);
-            $comments->setCurrentPageNumber($page);
-            $comments->setItemCountPerPage($limit);
-        } else {
-            // If not has a page, show the
-            $commentSelect = $subject->comments()->getCommentSelect();
-            $commentSelect->order('comment_id DESC');
-            $commentSelect->where("gg_deleted = ?",0);
-            $comments = Zend_Paginator::factory($commentSelect);
-            $comments->setCurrentPageNumber(1);
-            $comments->setItemCountPerPage(4);
+        $commentSelect = $subject->comments()->getCommentSelect();
+        $commentSelect->reset("order");
+        if($orderBy == "createdDateTime"){
+            $commentSelect->order("creation_date $orderByDirection");
+        }else{
+            $commentSelect->order("comment_id $orderByDirection");
         }
+        if(!empty($parentCommentId)){
+            $commentSelect->where("parent_comment_id = ?",$parentCommentId);
+        }
+        if(!empty($commentId)){
+            $commentSelect->where("comment_id = ?",$commentId);
+        }
+        $commentSelect->where("gg_deleted = ?",0);
+        $comments = Zend_Paginator::factory($commentSelect);
+        $comments->setCurrentPageNumber($page);
+        $comments->setItemCountPerPage($limit);
         
         $response['ResultCount'] = $comments->getTotalItemCount();
         $response['Results'] = array();
         $response['isLike'] = !empty($isLike) ? 1 : 0;
         $response['canComment'] = $canComment;
         $response['canDelete'] = $canDelete;
-        $comments = $comments->getIterator();
-        if ($page > 1) {
-            $i = 0;
-            $l = count($comments) - 1;
-            $d = 1;
-            $e = $l + 1;
-        } else {
-            $i = count($comments) - 1;
-            $l = count($comments);
-            $d = -1;
-            $e = -1;
-        }
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
-        for (; $i != $e; $i += $d) {
-            $comment = $comments[$i];
-            $response['resourceType'] = $comment->getType();
+        foreach($comments as $comment){
+            $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($comment->getType());
             $response['Results'][] = $responseApi->getCommentData($comment);
         }
         $this->respondWithSuccess($response);
@@ -116,8 +109,7 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
             $this->respondWithError('no_record');
         $viewer = Engine_Api::_()->user()->getViewer();
         $canComment = $subject->authorization()->isAllowed($viewer, 'comment');
-        $canDelete = $subject->authorization()->isAllowed($viewer, 'edit');
-        if (!$canComment && !$canDelete)
+        if (!$viewer->getIdentity() && !$canComment)
             $this->respondWithError('unauthorized');
         
         // Filter HTML
@@ -138,7 +130,7 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
                 $db->commit();
                 $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
                 $response['ResultCount'] = 1;
-                $response['resourceType'] = $comment->getType();
+                $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($comment->getType());
                 $response['Results'] = array();
                 $response['Results'][] = $responseApi->getCommentData($comment);
                 $this->respondWithSuccess($response);
@@ -163,8 +155,7 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
             $this->respondWithError('no_record');
         $viewer = Engine_Api::_()->user()->getViewer();
         $canComment = $subject->authorization()->isAllowed($viewer, 'comment');
-        $canDelete = $subject->authorization()->isAllowed($viewer, 'edit');
-        if (!$canComment && !$canDelete)
+        if (!$viewer->getIdentity() && !$canComment)
             $this->respondWithError('unauthorized');
         
         // Filter HTML
@@ -197,7 +188,7 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
                 $db->commit();
                 $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
                 $response['ResultCount'] = 1;
-                $response['resourceType'] = $comment->getType();
+                $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($comment->getType());
                 $response['Results'] = array();
                 $response['Results'][] = $responseApi->getCommentData($comment);
                 $this->respondWithSuccess($response);
@@ -222,8 +213,7 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
             $this->respondWithError('no_record');
         $viewer = Engine_Api::_()->user()->getViewer();
         $canComment = $subject->authorization()->isAllowed($viewer, 'comment');
-        $canDelete = $subject->authorization()->isAllowed($viewer, 'edit');
-        if (!$canComment && !$canDelete)
+        if (!$viewer->getIdentity() && !$canComment)
             $this->respondWithError('unauthorized');
         
         $id = $this->getParam("commentID");

@@ -50,7 +50,7 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
         $avatarPhoto = ucfirst($this->getParam("photoType",""));
         $table = Engine_Api::_()->getDbTable('files', 'pgservicelayer');
         $tableName = $table->info("name");
-        $select = $table->select()->where('parent_file_id IS NULL');
+        $select = $table->select();
         if(is_string($id) && !empty($id)){
             $select->where("$tableName.file_id = ?",$id);
         }else if(is_array($id) && !empty ($id)){
