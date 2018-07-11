@@ -276,10 +276,13 @@
                 let textContent = liElements[i].getChildren()[0].textContent;
             
                 if( ((textContent == 'Personal Info') && ( getParam === 'general' )) || ((textContent == 'User Preferences') && ( getParam === 'preference' )) ){      
-                    showEditContent();
-                    liElements[i].getChildren()[0].click();
+                    var tabToOpen = liElements[i].getChildren()[0];
                 }
             }
+            setTimeout(function () {
+                tabToOpen.click();
+                showEditContent();
+            }, 300);
         <?php endif; ?>
             
     });
