@@ -8,6 +8,10 @@
  */
 ?>
 <style>
+.close-btn-x {
+    display:none;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -54,7 +58,7 @@ div.layout_page_user_signup_index .left-side {
             <h5 class="pb-2 mb-4"><?php echo $this->translate('Tell Us About Yourself'); ?></h5>
         </div>
         <!-- Gender holder -->
-        <div class="form-wrapper p-4 px-sm-0">
+        <div class="form-wrapper p-4">
             <div class="form-element">
                 <div class="form-wrapper-heading  ">
                     <h6 class="pb-2 d-flex align-items-center"> <?php echo $this->translate('Gender'); ?></h6>
@@ -92,7 +96,7 @@ div.layout_page_user_signup_index .left-side {
             <!-- end Gender holder -->
         </div>
         <!-- Age Holder -->
-        <div class="form-wrapper p-4 px-sm-0">
+        <div class="form-wrapper p-4">
             <div class="form-element">
                 <div class="form-wrapper-heading  ">
                     <h6 class="pb-2 d-flex  align-items-center"> <?php echo $this->translate('Age Range'); ?><p class="text-muted "> (<?php echo $this->translate('if you don"t want to tell us your actual birthday');?>) </p>  </h6>
@@ -247,9 +251,7 @@ div.layout_page_user_signup_index .left-side {
 <script>
 var rightSidePreferences = document.getElementsByClassName("right-side")[0];
 rightSidePreferences.classList.remove('col-xl-6', 'col-lg-6');
-rightSidePreferences.classList.add('col-xl-12', 'col-lg-12','col-12','px-0',);
-rightSidePreferences.firstElementChild.classList.add('col-xl-12', 'col-lg-12');
-rightSidePreferences.firstElementChild.classList.remove('col-xl-7','col-lg-7');
+rightSidePreferences.classList.add('col-xl-10', 'col-lg-10','col-12','px-0',);
 
 var lastItem = null;
 
@@ -257,13 +259,21 @@ function editFamily(el) {
 
     let memberHolder = el.getParent('div.row');
     let memberID = memberHolder.getAttribute('id');
+    console.log(memberID);
     let gender = memberHolder.getElement('input').getAttribute('value');
-
+    
     localStorage.setItem('update', memberID);
 
+  
+
     selectChildGender(gender);
+    // when click on edit clean div 
+    el.getParent('div.row').remove();
     addChild(0);
+   
 }
+
+
 
 function removeFamily(el) {
     el.getParent('div.row').remove();
