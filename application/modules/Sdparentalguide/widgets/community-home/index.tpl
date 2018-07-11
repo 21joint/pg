@@ -138,6 +138,7 @@ en4.core.runonce.add(function(){
     loadLeaderboardResults();
 });
 
+// See More Button linking to Community Leaderboard Page
 document.getElementById("seeMore").href = en4.core.baseUrl+"community/leaderboard";
 
 // FAQ on click display question and transform plus to close
