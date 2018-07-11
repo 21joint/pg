@@ -259,16 +259,11 @@ function editFamily(el) {
 
     let memberHolder = el.getParent('div.row');
     let memberID = memberHolder.getAttribute('id');
-    console.log(memberID);
     let gender = memberHolder.getElement('input').getAttribute('value');
     
     localStorage.setItem('update', memberID);
 
-  
-
     selectChildGender(gender);
-    // when click on edit clean div 
-    el.getParent('div.row').remove();
     addChild(0);
    
 }
