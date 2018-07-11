@@ -222,12 +222,12 @@
 .cover_photo_profile_options .profile_status_text a {
   color: #fff;
 }
+
+/*Cover Information Ends Here*/
 .profile_cover_photo_wrapper:hover .profile_cover_options,
 .profile_main_photo_wrapper:hover .profile_cover_options {
   display: block;
 }
-/*Cover Information Ends Here*/
-
 /* Photo edit icon and options pulldown UI for Profile and Cover photo */
 .profile_cover_btn i {
   font-style: normal;

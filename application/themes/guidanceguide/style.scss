@@ -164,7 +164,8 @@
                 }
                 .photo-image {
                     img {
-                        max-width: 55px;
+                        width: 55px;
+                        height: 55px;
                         border-radius: 50%;
                         object-fit: cover;
                     }
@@ -467,7 +468,6 @@ body#global_page_user-profile-index {
                 > .layout_middle {
 
                     .layout_user_cover_photo {
-
                         // cover photo and options
                         .profile_cover_photo_wrapper {
                             .profile_cover_photo_empty {
@@ -1036,7 +1036,27 @@ body#global_page_user-profile-index {
         } 
     } 
 }
-
+// Family Member
+.holder-familyMember{
+    h5 {
+        font-size: 16px;
+        font-weight: 700;
+        color:#333D40;
+    }
+    .form-wrapper-heading  {
+        border:none!important;
+        h6 {
+            font-size: 14px;
+            font-weight: 600;
+            color:#333D40;
+            
+            p {
+                color:#B7C3C4;
+            }
+        }
+    }
+    
+} 
 
 
 // Login Page
@@ -1153,11 +1173,6 @@ form#user_form_login {
         }
     }
     form {
-        
-        overflow-y: scroll;
-        max-height: 900px;
-        overflow-x: none;
-
         &.family-form {
             div.form-wrapper-heading {
                 font-size: 16px;
@@ -1495,16 +1510,25 @@ form.preference-holder {
             background-color: $danger !important;
         }
     }
-    h3, div.form-wrapper-heading  {
+    &.family-form {
+        .family-buttons-action {
+            button {
+                border: none;
+                &:hover {
+                    background: rgba(92, 199, 206, 0.66) !important;
+                }
+            }
+        }
+    }
+    h3, div.form-wrapper-heading {
         font-size: 20px;
         color:#333D40;
         border-bottom: 1px solid #F5F5F5;
         font-weight: 700;
         height: auto;
         span {
-            display: flex!important;
-            position: unset!important;
-            
+            display: flex !important;
+            position: unset !important;
         }
     }
     p {
@@ -1533,7 +1557,7 @@ form.preference-holder {
                     color:#B9CFD1!important;
                 }
             }
-            #family-information {
+            #family-information,#age-range,#gender {
                 > .row {
                     &:hover {
                         .actions {
@@ -2475,6 +2499,7 @@ form.preference-holder {
                     }
                 }
                 #add-birthday {
+                   
                     .col-12.d-flex, .col-12.years-range, .col-12.years, .col-12.final-date {
                         display: grid !important;
                         grid-template-columns: repeat(1, 1fr);
@@ -2595,6 +2620,46 @@ form.preference-holder {
             }
         }
     }
+
+    .layout_user_cover_photo { 
+        // profile photo
+        .holder {
+            .profile_cover_head_section {
+
+                .profile_main_photo_wrapper {
+                    .profile_main_photo {
+
+                        bottom: -7em!important;
+                    }
+                    .profile_cover_options {
+                       
+                        .edit-button{
+                            top: 10px!important;
+                        }
+                    }
+                }
+            }
+           
+        }
+        .profile_cover_options{
+            .save-button  {
+                top: 20px !important;
+                right: 15px;
+            }
+        }
+        .profile_cover_photo_wrapper {
+            height: 349px;
+        }
+        .holder.container {
+            .user-options {
+                a {
+                    width: 100px!important;
+                }
+            }
+        }
+         
+    } 
+
     .extfox-auth {
 
         input[type='text'],
@@ -2644,7 +2709,36 @@ form.preference-holder {
         }
     }
         
-
+    .holder-familyMember {
+        .holder {
+            padding: 2rem!important;
+        }
+        .form-wrapper {
+            padding-right: 0px!important;
+            .form-element {
+                padding: 0px!important;
+            }
+        }
+            
+        #add-birthday {
+            overflow: hidden;
+            .col-12.d-flex, .col-12.years-range, .col-12.years, .col-12.final-date  {
+                display: grid !important;
+                grid-template-columns: repeat(1, 1fr);
+                grid-gap: 10px;
+                grid-auto-rows: minmax(60px, auto);
+                &.d-none {
+                    display: none !important;
+                }
+            }
+        } 
+        #family-information {
+            .btn-danger {
+                visibility: visible !important;
+            }
+        }
+            
+    }
     
     // SignUp Page
     #global_page_user-signup-index {
@@ -2707,7 +2801,15 @@ form.preference-holder {
         }
 
     }
-
+    // Border Gear
+    .border-gear {
+        ~ img {
+           
+            border-width: 4px 4px 4px 4px !important;
+            
+        }
+    }
+   
 
     // Close Button 
     .close-btn-x{

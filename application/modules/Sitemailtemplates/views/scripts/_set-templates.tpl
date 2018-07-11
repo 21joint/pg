@@ -10,7 +10,15 @@
  * @author     SocialEngineAddOns
  */
 ?>
+<style>
 
+
+#emailFooter span a {
+	color:#FFD819!important;
+}
+
+
+</style>
 
 <?php 
   $siteTitle = '';
@@ -36,8 +44,10 @@
 ?>
 
 <?php $bodyContent .= '<div style="text-align:center;overflow:hidden;">';?>
+
 <?php if($this->show_icon && $this->sitelogo_location == 'body'):?>
 	<?php	$bodyContent .= '<div style="float:' .$this->sitelogo_position. '"><a href="' . $siteUrl . '" target="_blank"><img src="'.$path.'" style="max-width:800px;vertical-align: middle;" border="0" /></a></div>';?>
+	
 <?php endif;?>
 	
 <?php if($this->show_title && $this->sitetitle_location == 'body'):?>
@@ -92,65 +102,84 @@
 
 <?php echo $bodyHtmlTemplate = '
 
-	<section class="email" style="display: flex;align-items: center;justify-content: center;margin-top: 4rem;margin-bottom: 4rem;">
-        <div class="container" style=" width: 39%;">
-            <div class="header" style=" padding-left: 3rem;padding-top: 1.5rem;padding-bottom:0.3rem;background-color: #F5F5F5;display: flex;align-items: center;justify-content: flex-start;">
-				<div class="image-holder">
-                    <a href="#">
-                        <img src="https://i.imgur.com/rG8vDO3.png"/>
-                    </a>
-                </div>
-            </div> <!--end of header -->
-                
-            <div class="main" style="padding: 3rem;background-color: #F5F5F5;margin-bottom: 1rem;">
+	<table  align="center"  border="0" cellpadding="0" cellspacing="0"  id="bodyTable">
+		<tr>
+			<td valign="top">
+				<table border="0" cellpadding="20" cellspacing="0" width="600" id="emailContainer">
+					<tr bgcolor=" #F5F5F5">
+						<td valign="top">
+							<table border="0" cellpadding="20" cellspacing="0"  id="emailHeader">
+								<tr>
+									<td valign="top">
+										<a href="#">
+											<img style="width:50%;" src="https://i.imgur.com/rG8vDO3.png"/>
+										</a>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr bgcolor=" #F5F5F5">
+						<td valign="top">
+							<table border="0" cellpadding="20" cellspacing="0" width="100%" id="emailBody">
+								<tr style="
+								font-size:20px; font-weight: 400;font-family: "Open Sans", sans-serif;
+								">
+									<td valign="top" >
+										<!-- place fo html text -->
+										' .$html. '
+									</td>
+								</tr>
+								
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td valign="top" style="padding:0;">
+							<table border="0"  cellspacing="0" width="100%" id="emailFooter">
+								<tr>
+									<!-- footer text -->
+									<td  valign="top" style="margin-top:30px;display:block;color:#92999c;font-size:14px;font-family: "Open Sans", sans-serif;font-weight: 400;">
+										'.$this->textofFooter .'
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
 
-                <div class="row-one" style="margin-bottom: 6rem;">
-                    <div class="text-holder">
-					    ' .$html. '
-                    </div>
-                </div>
-            </div> <!-- end of main -->
-
-            <div class="footer" style="color: #93A4A6;">
-
-				<div class="footer-upper">
-	 				<div style="font-size: 14px!important;
-					 color: #93A4A6!important;">
-					'.$this->textofFooter .'
-					</div>
-                </div>
-
-                <div class="footer-bottom" style="margin-top: 1rem;display: flex;justify-content: space-between;">
-
-                    <div class="left-side" style="width: 78%;">
-                        <h5 style="font-weight: normal;color: #93A4A6;">Copyright ©2018</h5>
-                    </div>
-                    <div class="right-side" style="width: 22%;">
-                        <ul class="social-icons" style="padding:0;list-style: none;display: flex;
-						justify-content: space-between; align-items: center;">
-							<li>
-								<a style="width:30px;height:30px;display:block;" href="https://www.facebook.com/officialguidanceguide/">
-									<img style="width:100%;height:100%;" src="https://i.imgur.com/UYOEgCO.png"/>
-								</a>
-							</li>
-							<li>
-								<a style="width:30px;height:30px;display:block;"  href="https://twitter.com/guidanceguide?lang=en">
-									<img style="width:100%;height:100%;" src="https://i.imgur.com/ha5uXHO.png"/>
-								</a>
-							</li>
-							<li>
-								<a style="width:30px;height:30px;display:block;" href="https://instagram.com/@guidanceguide">
-									<img style="width:100%;height:100%;" src="https://i.imgur.com/IakWFWW.png"/>
-								</a>
-							</li>
-                        </ul>
-                    </div>
-
-                </div>
-
-            </div> 
-        </div> 
-	</section> 
+					<tr >
+						<td valign="top" style="padding:0;">
+							<table border="0"  cellspacing="0" width="100%" id="emailFooter">
+								<tr>
+									<!-- footer copy right -->
+									<td>
+										<h5 style="margin:0;font-weight: normal;font-size:14px;color: #93A4A6;">Copyright &reg;2018</h5>
+									</td>
+				
+									<!-- social icon -->
+									<td width="8%">
+										<a style="float:right;" href="https://www.facebook.com/officialguidanceguide/">
+											<img style="width:30px;height:30px;display:block;margin:0" src="https://i.imgur.com/UYOEgCO.png"/>
+										</a>
+									</td>
+									<td width="8%">
+										<a style="float:right;" href="https://twitter.com/guidanceguide?lang=en">
+											<img style="width:30px;height:30px;display:block; margin:0" src="https://i.imgur.com/ha5uXHO.png"/>
+										</a>
+									</td>
+									<td width="8%">
+										<a style="float:right;" href="https://instagram.com/@guidanceguide">
+											<img style="width:30px;height:30px;display:block;margin:0" src="https://i.imgur.com/IakWFWW.png"/>
+										</a>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
 ';?>
 
 
