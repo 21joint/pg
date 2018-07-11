@@ -164,7 +164,8 @@
                 }
                 .photo-image {
                     img {
-                        max-width: 55px;
+                        width: 55px;
+                        height: 55px;
                         border-radius: 50%;
                         object-fit: cover;
                     }
@@ -468,7 +469,7 @@ body#global_page_user-profile-index {
 
                     .layout_user_cover_photo {
                         .profile_cover_options {
-                            display: none;
+                           display: none;
                         }
                         // cover photo and options
                         .profile_cover_photo_wrapper {
@@ -1038,7 +1039,22 @@ body#global_page_user-profile-index {
         } 
     } 
 }
-
+// Family Member
+.holder-familyMember{
+    h5 {
+        font-size: 16px;
+        font-weight: 700;
+        color:#333D40;
+    }
+    h6 {
+        font-size: 14px;
+        font-weight: 600;
+        color:#333D40;
+        p {
+            color:#B7C3C4;
+        }
+    }
+} 
 
 
 // Login Page
@@ -1535,7 +1551,7 @@ form.preference-holder {
                     color:#B9CFD1!important;
                 }
             }
-            #family-information {
+            #family-information,#age-range,#gender {
                 > .row {
                     &:hover {
                         .actions {
@@ -2679,7 +2695,30 @@ form.preference-holder {
         }
     }
         
-
+    .holder-familyMember {
+        .holder {
+            padding: 2rem!important;
+        }
+        .form-wrapper {
+            padding-right: 0px!important;
+            .form-element {
+                padding: 0px!important;
+            }
+        }
+            
+        #add-birthday {
+            .col-12.d-flex, .col-12.years-range, .col-12.years, .col-12.final-date  {
+                display: grid !important;
+                grid-template-columns: repeat(1, 1fr);
+                grid-gap: 10px;
+                grid-auto-rows: minmax(60px, auto);
+                &.d-none {
+                    display: none !important;
+                }
+            }
+        } 
+            
+    }
     
     // SignUp Page
     #global_page_user-signup-index {
