@@ -64,19 +64,23 @@ document.getElementById('order_btn').addEventListener('click', function(){
     if(currentCategory == 0){
         categoryValue = document.getElementById('followers').getAttribute('data-order');
         currentCategory = 1;
-        loadLeaderboardResults(timeFrame, categoryValue, currentCategory); 
+        pageNum = 1;
+        loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum); 
     }else if(currentCategory == 1){
         categoryValue = document.getElementById('questions').getAttribute('data-order');
         currentCategory = 2;
-        loadLeaderboardResults(timeFrame, categoryValue, currentCategory);
+        pageNum = 1;
+        loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
     }else if(currentCategory == 2){
         categoryValue = document.getElementById('reviews').getAttribute('data-order');
         currentCategory = 3;
-        loadLeaderboardResults(timeFrame, categoryValue, currentCategory);
+        pageNum = 1;
+        loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
     }else{
         categoryValue = document.getElementById('points').getAttribute('data-order');
         currentCategory = 0;
-        loadLeaderboardResults(timeFrame, categoryValue, currentCategory);
+        pageNum = 1;
+        loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
     }
 });
 // Toggle Categories on Mobile End
@@ -88,6 +92,7 @@ var timeFrame;
 document.querySelectorAll('.leaderboard_nav').forEach(function(nav) {
     nav.addEventListener('click', function() {
         timeFrame = this.innerText;
+        pageNum = 1;
         // Using null and leaving out the previous sorting results
         // Better to always start from contributionPoints on any timeFrame
         loadLeaderboardResults(timeFrame, categoryValue, currentCategory);       
@@ -102,7 +107,8 @@ if(checkSize > 768){
     document.querySelectorAll('.order_by').forEach(function(order) {
             order.addEventListener('click', function() {
             orderBy = this.getAttribute('data-order');
-            loadLeaderboardResults(timeFrame, orderBy, currentCategory);   
+            pageNum = 1;
+            loadLeaderboardResults(timeFrame, orderBy, currentCategory, pageNum);   
         });
     });
 }
@@ -133,7 +139,11 @@ document.getElementById('leaderboard_previous').addEventListener('click', functi
         pageNum--;
         document.getElementById('leaderboard_previous').removeClass('pagination_button_diss');
         document.getElementById('leaderboard_next').removeClass('pagination_button_diss');
-        loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
+        if(checkSize > 768){
+            loadLeaderboardResults(timeFrame, orderBy, currentCategory, pageNum);
+        }else{
+            loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
+        } 
     }else{
         document.getElementById('leaderboard_previous').addClass('pagination_button_diss');
     }
@@ -143,7 +153,11 @@ document.getElementById('leaderboard_next').addEventListener('click', function()
         pageNum++;
         document.getElementById('leaderboard_next').removeClass('pagination_button_diss');
         document.getElementById('leaderboard_previous').removeClass('pagination_button_diss');
-        loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
+        if(checkSize > 768){
+            loadLeaderboardResults(timeFrame, orderBy, currentCategory, pageNum);
+        }else{
+            loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
+        }
     }else{
         document.getElementById('leaderboard_next').addClass('pagination_button_diss');
     }
@@ -184,7 +198,7 @@ function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints", disp
                                     ((page-1)*20+(i+1))+
                                 '</div>'+
                                 '<div class="d-flex align-items-center leader position-relative">'+
-                                    '<img src="'+results[i].avatarPhoto.photoURL+'"/>'+
+                                    '<img src="'+results[i].avatarPhoto.photoURLIcon+'"/>'+
                                     '<span class="cont_level position-absolute">'+
                                         results[i].contributionLevel+'</span>'+
                                     '<h4>'+results[i].displayName+'</h4>'+
