@@ -38,23 +38,16 @@ function hideHoverBoxes() {
 function showEditContent() {
    
     let tabs = document.getElementsByClassName('layout_core_container_tabs');
-    let btnCover = document.getElementsByClassName('profile_cover_options');
-    
    
-   if(tabs[0].classList.contains('updateMode') == true) {
-      
-     tabs[0].classList.remove('updateMode');
-     tabs[0].style = 'display: block;';
-     tabs[1].style = 'display: none;';
-     btnCover[0].style = 'display: none!important;';
-     btnCover[1].style = 'display: none!important;';
-   } else {
-    btnCover[0].style = 'display: block;';
-    btnCover[1].style = 'display: block;';
-    tabs[0].classList.add('updateMode');
-    tabs[0].style = 'display: none;';
-    tabs[1].style = 'display: block;';
-   }
+    if(tabs[0].classList.contains('updateMode') == true) {
+        tabs[0].classList.remove('updateMode');
+        tabs[0].style = 'display: block;';
+        tabs[1].style = 'display: none;';
+    } else {
+        tabs[0].classList.add('updateMode');
+        tabs[0].style = 'display: none;';
+        tabs[1].style = 'display: block;';
+    }
    
 }
 

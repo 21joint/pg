@@ -8,6 +8,10 @@
  */
 ?>
 <style>
+.close-btn-x {
+    display:none;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -36,122 +40,218 @@ div.layout_page_user_signup_index .left-side {
     font-family: 'Open-Sans', sans-serif;
 }
 </style>
-
-<div class="bg-white mb-2">
-    <div class="holder p-5">
-        <h1 class="text-primary font-weight-light mb-3">
-            <?php echo $this->translate('Tell Us About You and Your Family'); ?>
-        </h1>
-        <p class="desc font-weight-light small">
-            <?php echo $this->translate('Sdparentalguide_Form_Signup_FAMILY_Description'); ?>
-        </p>
-    </div>
-</div>
-
-<div class="bg-white p-5 mb-2">
-    <div class="form-wrapper">
-
-        <div class="form-wrapper-heading h5 pb-2 text-muted">
-            <?php echo $this->translate('Do you have any children?'); ?>
+<div class="holder-familyMember">
+    <!-- title top -->
+    <div class="bg-white mb-2">
+        <div class="holder p-5">
+            <h1 class="text-primary font-weight-light mb-3">
+                <?php echo $this->translate('Tell Us About You and Your Family'); ?>
+            </h1>
+            <p class="desc font-weight-light small">
+                <?php echo $this->translate('Sdparentalguide_Form_Signup_FAMILY_Description'); ?>
+            </p>
         </div>
-        
-        <div class="form-element mt-4">
-            <div class="container p-0 col-12 col-sm-12" id="family-information">
+    </div>
 
-                <div class="row add-child-form add-another-child my-5 mx-0 py-4" id="add-child-form">
-
-                    <div class="col-6 p-0">
-                        <p class="font-weight-normal">
-                            <?php echo $this->translate('Tell us their gender'); ?>
-                        </p>
-                    </div>
-                    <div class="col-5 p-0 d-flex justify-content-end">
-                        <div class="close-form">
-                            <a href="javascript:void(0)" class="d-flex align-items-center justify-content-center" onclick="addChild(1)">
-                                <i class="fa fa-close text-white"> </i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-12 d-flex add-gender p-0 mb-4" id="add-gender">
-                        <div class="col-3 col-xl-2 col-lg-2 mr-1 p-0 text-center male small add-gender-items add-gender-items-family">
-                            <a href="javascript:void(0)" onclick="selectChildGender(1)" class="d-block p-2">
-                                <div class="svg-holder w-100 text-center">
-                                    <svg id="male" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0,0H24V24H0Z" fill="none"/><path d="M20.44,3a.56.56,0,0,1,.56.56v3.7a.51.51,0,0,1-.35.52.47.47,0,0,1-.59-.14l-.8-.75-3.8,3.75a6.65,6.65,0,0,1,1,3.61,6.51,6.51,0,0,1-.91,3.38,6.88,6.88,0,0,1-2.46,2.46,6.69,6.69,0,0,1-6.75,0,6.88,6.88,0,0,1-2.46-2.46,6.69,6.69,0,0,1,0-6.75A6.88,6.88,0,0,1,6.38,8.41,6.51,6.51,0,0,1,9.75,7.5a6.65,6.65,0,0,1,3.61,1l3.75-3.8-.8-.8a.5.5,0,0,1-.09-.59A.51.51,0,0,1,16.73,3ZM9.75,18a3.76,3.76,0,0,0,3.75-3.75A3.76,3.76,0,0,0,9.75,10.5,3.76,3.76,0,0,0,6,14.25,3.76,3.76,0,0,0,9.75,18Z" fill="#333D40"/></svg>
-                                </div>
-                                <?php echo $this->translate('Male'); ?>
-                            </a>
-                        </div>
-                        <div class="col-3 col-xl-2 col-lg-2 mr-1 p-0 p-0 text-center female small add-gender-items add-gender-items-family">
-                            <a href="javascript:void(0)" onclick="selectChildGender(2)" class="d-block p-2">
-                                <div class="svg-holder w-100 text-center">
-                                    <svg id="female" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0,0H24V24H0Z" fill="none"/><path d="M18.7,8.25a6.7,6.7,0,0,1-5.25,6.56v2.44h1.69a.56.56,0,0,1,.56.56v1.88a.56.56,0,0,1-.56.56H13.45v1.68a.56.56,0,0,1-.56.56H11a.56.56,0,0,1-.56-.56V20.25H8.76a.56.56,0,0,1-.56-.56V17.81a.56.56,0,0,1,.56-.56h1.69V14.81A6.7,6.7,0,0,1,5.2,8.25a6.52,6.52,0,0,1,.91-3.37A6.88,6.88,0,0,1,8.58,2.41a6.69,6.69,0,0,1,6.75,0,6.88,6.88,0,0,1,2.46,2.46A6.51,6.51,0,0,1,18.7,8.25Zm-10.5,0A3.61,3.61,0,0,0,9.3,10.9a3.74,3.74,0,0,0,5.3,0,3.61,3.61,0,0,0,1.1-2.65A3.61,3.61,0,0,0,14.6,5.6a3.74,3.74,0,0,0-5.3,0A3.61,3.61,0,0,0,8.2,8.25Z" fill="#333D40"/></svg>
-                                </div>
-                                <?php echo $this->translate('Female'); ?>
-                            </a>
-                        </div>
-                        <div class="col-3 col-xl-2 col-lg-2 mr-1 p-0 text-center d-flex align-items-center small not-to-answer add-gender-items add-gender-items-family">
-                            <a href="javascript:void(0)" onclick="selectChildGender(3)" class="d-block p-2">
-                                <?php echo $this->translate('Prefer Not to Answer'); ?>
-                            </a>
+    <div class="bg-white p-4 mb-2">
+        <div class="form-wrapper-heading ">
+            <h5 class="pb-2 mb-4"><?php echo $this->translate('Tell Us About Yourself'); ?></h5>
+        </div>
+        <!-- Gender holder -->
+        <div class="form-wrapper p-4">
+            <div class="form-element">
+                <div class="form-wrapper-heading  ">
+                    <h6 class="pb-2 d-flex align-items-center"> <?php echo $this->translate('Gender'); ?></h6>
+                </div>
+                <div class="container p-0" id="gender"> 
+                    <div class="row add-child-form d-block mx-0 border-0">
+                        <div class="col-12 col-xl-12 col-lg-12 d-flex add-gender p-0 mb-4" id="add-gender"> 
+                            <div class="col-sm-3 col-xl-1 col-lg-2 mr-1 p-0 text-center male small add-gender-items  selected ">
+                                <a href="javascript:void(0)" onclick="selectGender(1, this)" class="d-block p-2">
+                                    <div class="svg-holder w-100 text-center">
+                                        <svg id="male" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0,0H24V24H0Z" fill="none"/><path d="M20.44,3a.56.56,0,0,1,.56.56v3.7a.51.51,0,0,1-.35.52.47.47,0,0,1-.59-.14l-.8-.75-3.8,3.75a6.65,6.65,0,0,1,1,3.61,6.51,6.51,0,0,1-.91,3.38,6.88,6.88,0,0,1-2.46,2.46,6.69,6.69,0,0,1-6.75,0,6.88,6.88,0,0,1-2.46-2.46,6.69,6.69,0,0,1,0-6.75A6.88,6.88,0,0,1,6.38,8.41,6.51,6.51,0,0,1,9.75,7.5a6.65,6.65,0,0,1,3.61,1l3.75-3.8-.8-.8a.5.5,0,0,1-.09-.59A.51.51,0,0,1,16.73,3ZM9.75,18a3.76,3.76,0,0,0,3.75-3.75A3.76,3.76,0,0,0,9.75,10.5,3.76,3.76,0,0,0,6,14.25,3.76,3.76,0,0,0,9.75,18Z" fill="#333D40"/></svg>
+                                    </div>
+                                    <?php echo $this->translate('Male'); ?>
+                                </a>
+                            </div>
+                            <div class="col-sm-3 col-xl-1 col-lg-2  mr-1 p-0 p-0 text-center female small add-gender-items  selected ">
+                                <a href="javascript:void(0)" onclick="selectGender(2, this)" class="d-block p-2">
+                                    <div class="svg-holder w-100 text-center">
+                                        <svg id="female" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0,0H24V24H0Z" fill="none"/><path d="M18.7,8.25a6.7,6.7,0,0,1-5.25,6.56v2.44h1.69a.56.56,0,0,1,.56.56v1.88a.56.56,0,0,1-.56.56H13.45v1.68a.56.56,0,0,1-.56.56H11a.56.56,0,0,1-.56-.56V20.25H8.76a.56.56,0,0,1-.56-.56V17.81a.56.56,0,0,1,.56-.56h1.69V14.81A6.7,6.7,0,0,1,5.2,8.25a6.52,6.52,0,0,1,.91-3.37A6.88,6.88,0,0,1,8.58,2.41a6.69,6.69,0,0,1,6.75,0,6.88,6.88,0,0,1,2.46,2.46A6.51,6.51,0,0,1,18.7,8.25Zm-10.5,0A3.61,3.61,0,0,0,9.3,10.9a3.74,3.74,0,0,0,5.3,0,3.61,3.61,0,0,0,1.1-2.65A3.61,3.61,0,0,0,14.6,5.6a3.74,3.74,0,0,0-5.3,0A3.61,3.61,0,0,0,8.2,8.25Z" fill="#333D40"/></svg>
+                                    </div>
+                                    <?php echo $this->translate('Female'); ?>
+                                </a>
+                            </div>
+                            <div class="col-sm-3 col-xl-1 col-lg-2 mr-1 p-0 text-center d-flex align-items-center small not-to-answer add-gender-items selected">
+                                <a href="javascript:void(0)" onclick="selectGender(3, this)" class="d-block p-2 text-center">
+                                    <?php echo $this->translate('Prefer Not to Answer'); ?>
+                                </a>
+                            </div>
+                            <input type="hidden" name="profile_gender" id="profile_gender" value=""/>
+                            <input type="hidden" name="" id="" class="field_container" value="">
                         </div>
                     </div> <!-- end of add-gender -->
-
-                    <div class="col-12 p-0">
-                        <span class="font-weight-normal">
-                            <?php echo $this->translate('What is their age'); ?> 
-                            <span class="text-muted small">(<?php echo $this->translate('This helps us to better provide and recommend products and content'); ?>)</span>
-                        </span>
-                    </div>
-
-                    <div class="col-12 d-flex add-birthday p-0 mb-4" id="add-birthday">
-                        
-                        <div class="col-12 selector-holder p-0" id="months">
-                            <div class="col-12 p-0 d-flex"></div>
-                            <div class="col-12 p-0 d-flex"></div>
-                        </div> <!-- months -->
-
-                        <div class="col-12 years-range selector-holder p-0 d-none" id="years-range">
-                        </div> <!-- year-range -->
-
-                        <div class="col-12 years selector-holder p-0 d-none" id="years">
-                            <div class="col-12 selector-holder p-0 d-flex" id="years-first"></div>
-                            <div class="col-12 selector-holder p-0 d-flex" id="years-second"> </div>
-                        </div> <!-- years -->
-
-                        <div class="col-12 final-date selector-holder p-0 d-none" id="final-date">
-                        </div> <!-- final-date -->
-
-                    </div> <!-- add-birthday -->
-
-                </div> <!-- end of add-child-form -->
-
-
-                <div class="row m-0 add-another-child">
-                    <div class="col-12 d-flex justify-content-center add-child py-3 px-0">
-                        <div class="add-child-holder">
-                            <a href="javascript:void(0);" onclick="addChild(0)" class="text-muted" id="add-child-button">
-                                <i class="fa fa-plus text-primary px-2"> </i>
-                                <?php echo $this->translate('Add another child'); ?>
-                            </a>
+                </div>
+            </div>
+            <!-- end Gender holder -->
+        </div>
+        <!-- Age Holder -->
+        <div class="form-wrapper p-4">
+            <div class="form-element">
+                <div class="form-wrapper-heading  ">
+                    <h6 class="pb-2 d-flex  align-items-center"> <?php echo $this->translate('Age Range'); ?><p class="text-muted "> (<?php echo $this->translate('if you don"t want to tell us your actual birthday');?>) </p>  </h6>
+                </div>
+                <div class="container p-0" id="age-range"> 
+                    <div class="row add-child-form add-age-range d-block mx-0 pb-4 border-0">
+                        <div class="add-gender age-range p-0 mb-4" id="add-gender">
+                            <div class="text-center age small add-gender-items px-2">
+                                <a href="javascript:void(0)" onclick="selectAge('18', this)" class="d-block w-100 py-4">
+                                    <?php echo $this->translate('Under 18'); ?>
+                                </a>
+                            </div>
+                            <div class="text-center age small add-gender-items px-2">
+                                <a href="javascript:void(0)" onclick="selectAge('18-24', this)" class="d-block w-100 py-4">
+                                    <?php echo $this->translate('18-24'); ?>
+                                </a>
+                            </div>
+                            <div class="text-center age small add-gender-items px-2">
+                                <a href="javascript:void(0)" onclick="selectAge('25-34', this)" class="d-block w-100 py-4">
+                                    <?php echo $this->translate('25-34'); ?>
+                                </a>
+                            </div>
+                            <div class="text-center age small add-gender-items px-2">
+                                <a href="javascript:void(0)" onclick="selectAge('35-44', this)" class="d-block w-100 py-4">
+                                    <?php echo $this->translate('35-44'); ?>
+                                </a>
+                            </div>
+                            <div class="text-center age small add-gender-items px-2">
+                                <a href="javascript:void(0)" onclick="selectAge('45-54', this)" class="d-block w-100 py-4">
+                                    <?php echo $this->translate('45-54'); ?>
+                                </a>
+                            </div>
+                            <div class="text-center age small add-gender-items px-2">
+                                <a href="javascript:void(0)" onclick="selectAge('55-64', this)" class="d-block w-100 py-4">
+                                    <?php echo $this->translate('55-64'); ?>
+                                </a>
+                            </div>
+                            <div class="text-center age small add-gender-items px-2">
+                                <a href="javascript:void(0)" onclick="selectAge('65', this)" class="d-block w-100 py-4">
+                                    <?php echo $this->translate('65+'); ?>
+                                </a>
+                            </div>
+                            <input type="hidden" name="profile_age_range" id="profile_age_range" value=""/>
+                            <input type="hidden" name="<?php echo $this->name; ?>" id="<?php echo $this->name; ?>" class="field_container">
                         </div>
                     </div>
-                </div> <!-- end of add another child -->
-
-            </div> <!-- end of family-information -->
-
-        </div> <!-- end of form-element -->
-
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+    <!-- End Age Holder -->
+    <!-- Family Holder -->
+    <div class="bg-white p-4 mb-2">
+        <div class="form-wrapper">
 
+            <div class="form-wrapper-heading h5 pb-2 text-muted">
+                <h5><?php echo $this->translate('Do you have any children?'); ?></h5>
+            </div>
+            
+            <div class="form-element mt-4 p-4">
+                <div class="container p-0 col-12 col-sm-12" id="family-information">
+
+                    <div class="row add-child-form add-another-child my-5 mx-0 py-4" id="add-child-form">
+
+                        <div class="col-6 p-0">
+                            <p class="font-weight-normal">
+                                <?php echo $this->translate('Tell us their gender'); ?>
+                            </p>
+                        </div>
+                        <div class="col-5 p-0 d-flex justify-content-end">
+                            <div class="close-form">
+                                <a href="javascript:void(0)" class="d-flex align-items-center justify-content-center" onclick="addChild(1)">
+                                    <i class="fa fa-close text-white"> </i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-12 d-flex add-gender p-0 mb-4" id="add-gender">
+                            <div class="col-3 col-xl-1 col-lg-2 mr-1 p-0 text-center male small add-gender-items add-gender-items-family">
+                                <a href="javascript:void(0)" onclick="selectChildGender(1)" class="d-block p-2">
+                                    <div class="svg-holder w-100 text-center">
+                                        <svg id="male" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0,0H24V24H0Z" fill="none"/><path d="M20.44,3a.56.56,0,0,1,.56.56v3.7a.51.51,0,0,1-.35.52.47.47,0,0,1-.59-.14l-.8-.75-3.8,3.75a6.65,6.65,0,0,1,1,3.61,6.51,6.51,0,0,1-.91,3.38,6.88,6.88,0,0,1-2.46,2.46,6.69,6.69,0,0,1-6.75,0,6.88,6.88,0,0,1-2.46-2.46,6.69,6.69,0,0,1,0-6.75A6.88,6.88,0,0,1,6.38,8.41,6.51,6.51,0,0,1,9.75,7.5a6.65,6.65,0,0,1,3.61,1l3.75-3.8-.8-.8a.5.5,0,0,1-.09-.59A.51.51,0,0,1,16.73,3ZM9.75,18a3.76,3.76,0,0,0,3.75-3.75A3.76,3.76,0,0,0,9.75,10.5,3.76,3.76,0,0,0,6,14.25,3.76,3.76,0,0,0,9.75,18Z" fill="#333D40"/></svg>
+                                    </div>
+                                    <?php echo $this->translate('Male'); ?>
+                                </a>
+                            </div>
+                            <div class="col-3 col-xl-1 col-lg-2 mr-1 p-0 p-0 text-center female small add-gender-items add-gender-items-family">
+                                <a href="javascript:void(0)" onclick="selectChildGender(2)" class="d-block p-2">
+                                    <div class="svg-holder w-100 text-center">
+                                        <svg id="female" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0,0H24V24H0Z" fill="none"/><path d="M18.7,8.25a6.7,6.7,0,0,1-5.25,6.56v2.44h1.69a.56.56,0,0,1,.56.56v1.88a.56.56,0,0,1-.56.56H13.45v1.68a.56.56,0,0,1-.56.56H11a.56.56,0,0,1-.56-.56V20.25H8.76a.56.56,0,0,1-.56-.56V17.81a.56.56,0,0,1,.56-.56h1.69V14.81A6.7,6.7,0,0,1,5.2,8.25a6.52,6.52,0,0,1,.91-3.37A6.88,6.88,0,0,1,8.58,2.41a6.69,6.69,0,0,1,6.75,0,6.88,6.88,0,0,1,2.46,2.46A6.51,6.51,0,0,1,18.7,8.25Zm-10.5,0A3.61,3.61,0,0,0,9.3,10.9a3.74,3.74,0,0,0,5.3,0,3.61,3.61,0,0,0,1.1-2.65A3.61,3.61,0,0,0,14.6,5.6a3.74,3.74,0,0,0-5.3,0A3.61,3.61,0,0,0,8.2,8.25Z" fill="#333D40"/></svg>
+                                    </div>
+                                    <?php echo $this->translate('Female'); ?>
+                                </a>
+                            </div>
+                            <div class="col-3 col-xl-1 col-lg-2 mr-1 p-0 text-center d-flex align-items-center small not-to-answer add-gender-items add-gender-items-family">
+                                <a href="javascript:void(0)" onclick="selectChildGender(3)" class="d-block p-2">
+                                    <?php echo $this->translate('Prefer Not to Answer'); ?>
+                                </a>
+                            </div>
+                        </div> <!-- end of add-gender -->
+
+                        <div class="col-12 p-0">
+                            <span class="font-weight-normal">
+                                <?php echo $this->translate('What is their age'); ?> 
+                                <span class="text-muted small">(<?php echo $this->translate('This helps us to better provide and recommend products and content'); ?>)</span>
+                            </span>
+                        </div>
+
+                        <div class="col-12 d-flex add-birthday p-0 mb-4" id="add-birthday">
+                            
+                            <div class="col-12 selector-holder p-0" id="months">
+                                <div class="col-12 p-0 d-flex"></div>
+                                <div class="col-12 p-0 d-flex"></div>
+                            </div> <!-- months -->
+
+                            <div class="col-12 years-range selector-holder p-0 d-none" id="years-range">
+                            </div> <!-- year-range -->
+
+                            <div class="col-12 years selector-holder p-0 d-none" id="years">
+                                <div class="col-12 selector-holder p-0 d-flex" id="years-first"></div>
+                                <div class="col-12 selector-holder p-0 d-flex" id="years-second"> </div>
+                            </div> <!-- years -->
+
+                            <div class="col-12 final-date selector-holder p-0 d-none" id="final-date">
+                            </div> <!-- final-date -->
+
+                        </div> <!-- add-birthday -->
+
+                    </div> <!-- end of add-child-form -->
+
+
+                    <div class="row m-0 add-another-child">
+                        <div class="col-12 d-flex justify-content-center add-child py-3 px-0">
+                            <div class="add-child-holder">
+                                <a href="javascript:void(0);" onclick="addChild(0)" class="text-muted" id="add-child-button">
+                                    <i class="fa fa-plus text-primary px-2"> </i>
+                                    <?php echo $this->translate('Add another child'); ?>
+                                </a>
+                            </div>
+                        </div>
+                    </div> <!-- end of add another child -->
+
+                </div> <!-- end of family-information -->
+
+            </div> <!-- end of form-element -->
+
+        </div>
+    </div>
+    <!-- End Family Holder -->
+</div>
 
 <script>
 var rightSidePreferences = document.getElementsByClassName("right-side")[0];
 rightSidePreferences.classList.remove('col-xl-6', 'col-lg-6');
-rightSidePreferences.classList.add('col-xl-12', 'col-lg-12','col-12','px-0',);
-rightSidePreferences.firstElementChild.classList.add('col-xl-12', 'col-lg-12');
-rightSidePreferences.firstElementChild.classList.remove('col-xl-7','col-lg-7');
+rightSidePreferences.classList.add('col-xl-10', 'col-lg-10','col-12','px-0',);
 
 var lastItem = null;
 
@@ -160,12 +260,15 @@ function editFamily(el) {
     let memberHolder = el.getParent('div.row');
     let memberID = memberHolder.getAttribute('id');
     let gender = memberHolder.getElement('input').getAttribute('value');
-
+    
     localStorage.setItem('update', memberID);
 
     selectChildGender(gender);
     addChild(0);
+   
 }
+
+
 
 function removeFamily(el) {
     el.getParent('div.row').remove();
@@ -380,6 +483,48 @@ function displayFamilySelector(type) {
         yearsHolder.classList.add('d-none');
     }
 
+}
+
+function selectAge(type, e) {
+
+    document.getElementById('profile_age_range').value = type;
+    
+    // Php need
+    //document.getElementById('<?php echo $this->name; ?>').value = type;
+
+    let addAgeRangeItems = document.getElementsByClassName('add-gender-items');
+    for(var i = 0; i < addAgeRangeItems.length; i++) {
+        addAgeRangeItems[i].classList.remove('selected-age');
+    }
+    e.getParent().classList.add('selected-age');
+}
+
+en4.core.runonce.add(function() {
+    let addAgeRangeItems = document.getElementsByClassName('add-gender-items age');
+    let currentAge = '<?php echo $this->subject()->gg_age_range; ?>';
+    for(var i = 0; i < addAgeRangeItems.length; i++) {
+
+        let age = addAgeRangeItems[i].getElement('a').innerText;
+        if(age == '65+') { age = '65'; } else if (age == 'Under 18') { age = '18'; }
+
+        if(age == currentAge) {
+            addAgeRangeItems[i].classList.add('selected-age');
+            document.getElementById('profile_age_range').value = type;
+            document.getElementById('<?php echo $this->name; ?>').value = type;
+        }
+    }
+});
+
+function selectGender(type, e) {
+    
+    let addGenderItems = document.getElementsByClassName('add-gender-items');
+    for(var i = 0; i < addGenderItems.length; i++) {
+        addGenderItems[i].classList.remove('selected');
+    }
+    e.getParent().classList.add('selected');
+
+    document.getElementById('profile_gender').value = type;
+    document.getElementById('<?php echo $this->name; ?>').value = type;
 }
 
 </script>
