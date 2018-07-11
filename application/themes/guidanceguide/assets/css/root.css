@@ -4157,6 +4157,8 @@ body#global_page_user-profile-index {
     padding-top: 0; }
     body#global_page_user-profile-index #global_wrapper #global_content {
       width: 100%; }
+      body#global_page_user-profile-index #global_wrapper #global_content .layout_top > .layout_middle .layout_user_cover_photo .profile_cover_options {
+        display: none; }
       body#global_page_user-profile-index #global_wrapper #global_content .layout_top > .layout_middle .layout_user_cover_photo .profile_cover_photo_wrapper .profile_cover_photo_empty {
         background: linear-gradient(to left, #5bc8ce, #5bc6cc); }
       body#global_page_user-profile-index #global_wrapper #global_content .layout_top > .layout_middle .layout_user_cover_photo .holder .profile_cover_head_section .profile_main_photo_wrapper .profile_main_photo {
@@ -5456,6 +5458,16 @@ form.preference-holder {
             margin: 0 !important; }
     .layout_sdparentalguide_ajax_theories .container .holder-my-theories .struggle-box_right-mobile .count_info.svg-icons-one .first-icon {
       display: none; }
+
+  .layout_user_cover_photo .holder .profile_cover_head_section .profile_main_photo_wrapper .profile_main_photo {
+    bottom: -7em !important; }
+  .layout_user_cover_photo .holder .profile_cover_head_section .profile_main_photo_wrapper .profile_cover_options .edit-button {
+    top: 10px !important; }
+  .layout_user_cover_photo .profile_cover_options .save-button {
+    top: 20px !important;
+    right: 15px; }
+  .layout_user_cover_photo .profile_cover_photo_wrapper {
+    height: 349px; }
 
   .extfox-auth input[type='text'],
   .extfox-auth input[type='number'],
