@@ -13,7 +13,9 @@
 <?php if($this->subject() && $this->subject() instanceof User_Model_User ): ?>
 <script type="text/javascript">
   en4.core.runonce.add(function() {
-
+    let tab = document.getElementById('main_tabs');
+    tab.addClass('container');
+    tab.addClass('m-auto');
   });
 </script>
 <?php else: ?>

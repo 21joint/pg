@@ -1173,11 +1173,6 @@ form#user_form_login {
         }
     }
     form {
-        
-        overflow-y: scroll;
-        max-height: 900px;
-        overflow-x: none;
-
         &.family-form {
             div.form-wrapper-heading {
                 font-size: 16px;
@@ -1515,16 +1510,25 @@ form.preference-holder {
             background-color: $danger !important;
         }
     }
-    h3, div.form-wrapper-heading  {
+    &.family-form {
+        .family-buttons-action {
+            button {
+                border: none;
+                &:hover {
+                    background: rgba(92, 199, 206, 0.66) !important;
+                }
+            }
+        }
+    }
+    h3, div.form-wrapper-heading {
         font-size: 20px;
         color:#333D40;
         border-bottom: 1px solid #F5F5F5;
         font-weight: 700;
         height: auto;
         span {
-            display: flex!important;
-            position: unset!important;
-            
+            display: flex !important;
+            position: unset !important;
         }
     }
     p {

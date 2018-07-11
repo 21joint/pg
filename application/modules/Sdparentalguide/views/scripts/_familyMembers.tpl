@@ -28,6 +28,7 @@ div, td {
 body {
     font-family: Open-Sans;
     background: #F7FCFC;
+    height: auto !important;
 }
 a:link, a:visited {
     color: #444f5d;
@@ -40,7 +41,7 @@ div.layout_page_user_signup_index .left-side {
     font-family: 'Open-Sans', sans-serif;
 }
 </style>
-<div class="holder-familyMember">
+<div class="holder-familyMember mt-0 mt-sm-5">
     <!-- title top -->
     <div class="bg-white mb-2">
         <div class="holder p-5">
@@ -66,7 +67,7 @@ div.layout_page_user_signup_index .left-side {
                 <div class="container p-0" id="gender"> 
                     <div class="row add-child-form d-block mx-0 border-0">
                         <div class="col-12 col-xl-12 col-lg-12 d-flex add-gender p-0 mb-4" id="add-gender"> 
-                            <div class="col-sm-3 col-xl-1 col-lg-2 mr-1 p-0 text-center male small add-gender-items  selected ">
+                            <div class="col-sm-3 col-xl-2 col-lg-2 mr-1 p-0 text-center male small add-gender-items">
                                 <a href="javascript:void(0)" onclick="selectGender(1, this)" class="d-block p-2">
                                     <div class="svg-holder w-100 text-center">
                                         <svg id="male" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0,0H24V24H0Z" fill="none"/><path d="M20.44,3a.56.56,0,0,1,.56.56v3.7a.51.51,0,0,1-.35.52.47.47,0,0,1-.59-.14l-.8-.75-3.8,3.75a6.65,6.65,0,0,1,1,3.61,6.51,6.51,0,0,1-.91,3.38,6.88,6.88,0,0,1-2.46,2.46,6.69,6.69,0,0,1-6.75,0,6.88,6.88,0,0,1-2.46-2.46,6.69,6.69,0,0,1,0-6.75A6.88,6.88,0,0,1,6.38,8.41,6.51,6.51,0,0,1,9.75,7.5a6.65,6.65,0,0,1,3.61,1l3.75-3.8-.8-.8a.5.5,0,0,1-.09-.59A.51.51,0,0,1,16.73,3ZM9.75,18a3.76,3.76,0,0,0,3.75-3.75A3.76,3.76,0,0,0,9.75,10.5,3.76,3.76,0,0,0,6,14.25,3.76,3.76,0,0,0,9.75,18Z" fill="#333D40"/></svg>
@@ -74,7 +75,7 @@ div.layout_page_user_signup_index .left-side {
                                     <?php echo $this->translate('Male'); ?>
                                 </a>
                             </div>
-                            <div class="col-sm-3 col-xl-1 col-lg-2  mr-1 p-0 p-0 text-center female small add-gender-items  selected ">
+                            <div class="col-sm-3 col-xl-2 col-lg-2 mr-1 p-0 p-0 text-center female small add-gender-items">
                                 <a href="javascript:void(0)" onclick="selectGender(2, this)" class="d-block p-2">
                                     <div class="svg-holder w-100 text-center">
                                         <svg id="female" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0,0H24V24H0Z" fill="none"/><path d="M18.7,8.25a6.7,6.7,0,0,1-5.25,6.56v2.44h1.69a.56.56,0,0,1,.56.56v1.88a.56.56,0,0,1-.56.56H13.45v1.68a.56.56,0,0,1-.56.56H11a.56.56,0,0,1-.56-.56V20.25H8.76a.56.56,0,0,1-.56-.56V17.81a.56.56,0,0,1,.56-.56h1.69V14.81A6.7,6.7,0,0,1,5.2,8.25a6.52,6.52,0,0,1,.91-3.37A6.88,6.88,0,0,1,8.58,2.41a6.69,6.69,0,0,1,6.75,0,6.88,6.88,0,0,1,2.46,2.46A6.51,6.51,0,0,1,18.7,8.25Zm-10.5,0A3.61,3.61,0,0,0,9.3,10.9a3.74,3.74,0,0,0,5.3,0,3.61,3.61,0,0,0,1.1-2.65A3.61,3.61,0,0,0,14.6,5.6a3.74,3.74,0,0,0-5.3,0A3.61,3.61,0,0,0,8.2,8.25Z" fill="#333D40"/></svg>
@@ -82,12 +83,11 @@ div.layout_page_user_signup_index .left-side {
                                     <?php echo $this->translate('Female'); ?>
                                 </a>
                             </div>
-                            <div class="col-sm-3 col-xl-1 col-lg-2 mr-1 p-0 text-center d-flex align-items-center small not-to-answer add-gender-items selected">
+                            <div class="col-sm-3 col-xl-2 col-lg-2 mr-1 p-0 text-center d-flex align-items-center small not-to-answer add-gender-items">
                                 <a href="javascript:void(0)" onclick="selectGender(3, this)" class="d-block p-2 text-center">
                                     <?php echo $this->translate('Prefer Not to Answer'); ?>
                                 </a>
                             </div>
-                            <input type="hidden" name="profile_gender" id="profile_gender" value=""/>
                             <input type="hidden" name="" id="" class="field_container" value="">
                         </div>
                     </div> <!-- end of add-gender -->
@@ -99,7 +99,7 @@ div.layout_page_user_signup_index .left-side {
         <div class="form-wrapper p-4">
             <div class="form-element">
                 <div class="form-wrapper-heading  ">
-                    <h6 class="pb-2 d-flex  align-items-center"> <?php echo $this->translate('Age Range'); ?><p class="text-muted "> (<?php echo $this->translate('if you don"t want to tell us your actual birthday');?>) </p>  </h6>
+                    <h6 class="pb-2 d-flex  align-items-center"> <?php echo $this->translate('Age Range'); ?><p class="text-muted "> (<?php echo $this->translate('if you don\'t want to tell us your actual birthday');?>) </p>  </h6>
                 </div>
                 <div class="container p-0" id="age-range"> 
                     <div class="row add-child-form add-age-range d-block mx-0 pb-4 border-0">
@@ -139,7 +139,6 @@ div.layout_page_user_signup_index .left-side {
                                     <?php echo $this->translate('65+'); ?>
                                 </a>
                             </div>
-                            <input type="hidden" name="profile_age_range" id="profile_age_range" value=""/>
                             <input type="hidden" name="<?php echo $this->name; ?>" id="<?php echo $this->name; ?>" class="field_container">
                         </div>
                     </div>
@@ -156,7 +155,7 @@ div.layout_page_user_signup_index .left-side {
                 <h5><?php echo $this->translate('Do you have any children?'); ?></h5>
             </div>
             
-            <div class="form-element mt-4 p-4">
+            <div class="form-element m-4">
                 <div class="container p-0 col-12 col-sm-12" id="family-information">
 
                     <div class="row add-child-form add-another-child my-5 mx-0 py-4" id="add-child-form">
@@ -175,7 +174,7 @@ div.layout_page_user_signup_index .left-side {
                         </div>
 
                         <div class="col-12 d-flex add-gender p-0 mb-4" id="add-gender">
-                            <div class="col-3 col-xl-1 col-lg-2 mr-1 p-0 text-center male small add-gender-items add-gender-items-family">
+                            <div class="col-3 col-xl-2 col-lg-2 mr-1 p-0 text-center male small add-gender-items add-gender-items-family">
                                 <a href="javascript:void(0)" onclick="selectChildGender(1)" class="d-block p-2">
                                     <div class="svg-holder w-100 text-center">
                                         <svg id="male" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0,0H24V24H0Z" fill="none"/><path d="M20.44,3a.56.56,0,0,1,.56.56v3.7a.51.51,0,0,1-.35.52.47.47,0,0,1-.59-.14l-.8-.75-3.8,3.75a6.65,6.65,0,0,1,1,3.61,6.51,6.51,0,0,1-.91,3.38,6.88,6.88,0,0,1-2.46,2.46,6.69,6.69,0,0,1-6.75,0,6.88,6.88,0,0,1-2.46-2.46,6.69,6.69,0,0,1,0-6.75A6.88,6.88,0,0,1,6.38,8.41,6.51,6.51,0,0,1,9.75,7.5a6.65,6.65,0,0,1,3.61,1l3.75-3.8-.8-.8a.5.5,0,0,1-.09-.59A.51.51,0,0,1,16.73,3ZM9.75,18a3.76,3.76,0,0,0,3.75-3.75A3.76,3.76,0,0,0,9.75,10.5,3.76,3.76,0,0,0,6,14.25,3.76,3.76,0,0,0,9.75,18Z" fill="#333D40"/></svg>
@@ -183,7 +182,7 @@ div.layout_page_user_signup_index .left-side {
                                     <?php echo $this->translate('Male'); ?>
                                 </a>
                             </div>
-                            <div class="col-3 col-xl-1 col-lg-2 mr-1 p-0 p-0 text-center female small add-gender-items add-gender-items-family">
+                            <div class="col-3 col-xl-2 col-lg-2 mr-1 p-0 p-0 text-center female small add-gender-items add-gender-items-family">
                                 <a href="javascript:void(0)" onclick="selectChildGender(2)" class="d-block p-2">
                                     <div class="svg-holder w-100 text-center">
                                         <svg id="female" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0,0H24V24H0Z" fill="none"/><path d="M18.7,8.25a6.7,6.7,0,0,1-5.25,6.56v2.44h1.69a.56.56,0,0,1,.56.56v1.88a.56.56,0,0,1-.56.56H13.45v1.68a.56.56,0,0,1-.56.56H11a.56.56,0,0,1-.56-.56V20.25H8.76a.56.56,0,0,1-.56-.56V17.81a.56.56,0,0,1,.56-.56h1.69V14.81A6.7,6.7,0,0,1,5.2,8.25a6.52,6.52,0,0,1,.91-3.37A6.88,6.88,0,0,1,8.58,2.41a6.69,6.69,0,0,1,6.75,0,6.88,6.88,0,0,1,2.46,2.46A6.51,6.51,0,0,1,18.7,8.25Zm-10.5,0A3.61,3.61,0,0,0,9.3,10.9a3.74,3.74,0,0,0,5.3,0,3.61,3.61,0,0,0,1.1-2.65A3.61,3.61,0,0,0,14.6,5.6a3.74,3.74,0,0,0-5.3,0A3.61,3.61,0,0,0,8.2,8.25Z" fill="#333D40"/></svg>
@@ -191,7 +190,7 @@ div.layout_page_user_signup_index .left-side {
                                     <?php echo $this->translate('Female'); ?>
                                 </a>
                             </div>
-                            <div class="col-3 col-xl-1 col-lg-2 mr-1 p-0 text-center d-flex align-items-center small not-to-answer add-gender-items add-gender-items-family">
+                            <div class="col-3 col-xl-2 col-lg-2 mr-1 p-0 text-center d-flex align-items-center small not-to-answer add-gender-items add-gender-items-family">
                                 <a href="javascript:void(0)" onclick="selectChildGender(3)" class="d-block p-2">
                                     <?php echo $this->translate('Prefer Not to Answer'); ?>
                                 </a>
@@ -246,14 +245,31 @@ div.layout_page_user_signup_index .left-side {
         </div>
     </div>
     <!-- End Family Holder -->
+
+    <div class="bg-white px-4 pb-4 mb-2">
+        <div class="form-wrapper">
+
+            <div class="d-flex justify-content-end family-buttons-action">
+                <button type="skip" name="skip" class="btn btn-light mr-2">
+                    <?php echo $this->translate('Skip'); ?>
+                </button>
+                <button type="submit" name="submit" class="btn btn-success">
+                    <?php echo $this->translate('Continue'); ?>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
 </div>
+
 
 <script>
 var rightSidePreferences = document.getElementsByClassName("right-side")[0];
 rightSidePreferences.classList.remove('col-xl-6', 'col-lg-6');
 rightSidePreferences.classList.add('col-xl-10', 'col-lg-10','col-12','px-0',);
-
-var lastItem = null;
+var lastItem = 0;
+localStorage.removeItem('update');
 
 function editFamily(el) {
 
@@ -268,10 +284,9 @@ function editFamily(el) {
    
 }
 
-
-
 function removeFamily(el) {
     el.getParent('div.row').remove();
+    localStorage.removeItem('update');
 }
 
 function addChild(type) {
@@ -295,14 +310,19 @@ function addChild(type) {
             }).inject( (i < 6) ? monthsHolder[0] : monthsHolder[1]  );
         }
     }
+    
+    let finalDateHolder = document.getElementById('final-date');
+    finalDateHolder.empty();
 }
 
 function selectChildGender(type) {
+
     let addGenderItems = document.getElementsByClassName('add-gender-items-family');
+    let item = type-1;
     for(var i = 0; i < addGenderItems.length; i++) {
         addGenderItems[i].classList.remove('selected');
-        if(type == i) {
-            addGenderItems[i - 1].classList.add('selected');
+        if(item == i) {
+            addGenderItems[i].classList.add('selected');
         }
     }
     setupFieldValue('gender', type);
@@ -355,7 +375,7 @@ function selectYearRange(type, e) {
         new Element('div', {
             'class' : 'mr-1 mt-2 p-0 text-center d-flex align-items-center small years-range-select selector-item',
             'html': '<a href="javascript:void(0)" onclick="displayFinalDate('+i+')" class="d-block px-3 py-4 w-100">'+i+'</a>',
-        }).inject( (count < 6) ? years[0] : years[1]  );
+        }).inject( (count < 5) ? years[0] : years[1]  );
         count++;
     }
 
@@ -415,13 +435,14 @@ function setupFamilyMember() {
 
     let item = new Element('div', {
         'class': 'row d-flex align-items-center my-4 mx-0',
+        'id': lastItem,
         'html': '<div class="col-2 p-0 family-item-holder">'+genderImage+'</div><div class="col-6 family-item p-0"> <span class="text-muted"> '+birthdayDate+' </span><p class="desc text-muted small">'+genderType+'</p>'+htmlInputFields+'</div>' + editMember
     });
 
     let updateItem = document.getElementById(localStorage.getItem('update'));
     if(updateItem) {
         updateItem.remove();
-        localStorage.removeItem('update')
+        localStorage.removeItem('update');
     }
         
     familyHolder.insertBefore(item, familyHolder.childNodes[0]);
@@ -489,9 +510,6 @@ function selectAge(type, e) {
 
     document.getElementById('profile_age_range').value = type;
     
-    // Php need
-    //document.getElementById('<?php echo $this->name; ?>').value = type;
-
     let addAgeRangeItems = document.getElementsByClassName('add-gender-items');
     for(var i = 0; i < addAgeRangeItems.length; i++) {
         addAgeRangeItems[i].classList.remove('selected-age');
@@ -524,7 +542,6 @@ function selectGender(type, e) {
     e.getParent().classList.add('selected');
 
     document.getElementById('profile_gender').value = type;
-    document.getElementById('<?php echo $this->name; ?>').value = type;
 }
 
 </script>
