@@ -78,11 +78,11 @@
 
                     </li> <!-- profile -->
                    
-                    <li class="list-inline-item name d-none d-sm-block position-relative">
+                    <li class="list-inline-item name d-none d-sm-flex position-relative">
                         <?php echo $this->htmlLink($this->viewer->getHref(), substr($this->viewer->getTitle(), 0, strrpos($this->viewer->getTitle(), ' ')), array('class' => 'font-weight-bold')); ?>
 
                         <a href="javascript:void(0)" onclick="showProfileDropdown(this)" class="pl-1">
-                          <svg id="btn-drop" height="10px" width="10px" id="f4ac1fec-dd15-475b-ba00-2616991e8a99" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="5.82" height="3.3" viewBox="0 0 5.82 3.3"><path d="M.39,0A.35.35,0,0,0,0,.24.36.36,0,0,0,.11.66L2.63,3.18a.38.38,0,0,0,.55,0L5.7.66A.36.36,0,0,0,5.78.24.35.35,0,0,0,5.43,0Z" transform="translate(0 0)" fill="#5cc7ce"/></svg>
+                          <img id='btn-drop' src="<?php echo $this->baseUrl() . '/application/themes/guidanceguide/assets/images/arrow_down.svg'?>"/>
                         </a>
 
                         <div class="item-profile-dropdown position-absolute" id="profile-dropdown-menu">
