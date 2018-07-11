@@ -130,4 +130,13 @@ class Ggcommunity_Model_Question extends Core_Model_Item_Abstract
     return $this;
   }
   
+  public function likes()
+  {
+    return new Engine_ProxyObject($this, Engine_Api::_()->getDbtable('likes', 'core'));
+  }
+  
+  public function comments()
+  {
+    return new Engine_ProxyObject($this, Engine_Api::_()->getDbtable('comments', 'core'));
+  }
 }

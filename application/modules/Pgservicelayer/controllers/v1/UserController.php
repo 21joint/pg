@@ -65,7 +65,7 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         $response['ResultCount'] = $paginator->getTotalItemCount();
         foreach($paginator as $user){
-            $response['resourceType'] = $user->getType();
+            $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($user->getType());
             $response['Results'][] = $responseApi->getUserData($user);
         }
         $this->respondWithSuccess($response);
@@ -108,7 +108,7 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
         $response['ResultCount'] = $paginator->getTotalItemCount();
         $response['Results'] = array();
         foreach($paginator as $user){
-            $response['resourceType'] = $user->getType();
+            $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($user->getType());
             $response['Results'][] = $responseApi->getUserData($user);
         }
         $this->respondWithSuccess($response);

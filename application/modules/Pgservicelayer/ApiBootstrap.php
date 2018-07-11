@@ -129,7 +129,8 @@ class Pgservicelayer_ApiBootstrap {
 
             $front->setRequest($request);
             $front->registerPlugin(new Sdparentalguide_Plugin_Core);
-
+            $front->registerPlugin(new Pgservicelayer_Plugin_Loader());
+            
             $response = $front->dispatch($request, $response);
             $response->sendResponse();
         } catch (Exception $e) {
@@ -624,33 +625,33 @@ class Pgservicelayer_ApiBootstrap {
         if (is_file(APPLICATION_PATH . '/application/modules/Sitereview/controllers/license/license.php'))
             include APPLICATION_PATH . '/application/modules/Sitereview/controllers/license/license.php';
 
-        if (is_file(APPLICATION_PATH . '/application/modules/Siteevent/controllers/license/license.php'))
-            include APPLICATION_PATH . '/application/modules/Siteevent/controllers/license/license.php';
-
-        if (is_file(APPLICATION_PATH . '/application/modules/Siteeventticket/controllers/license/license.php'))
-            include APPLICATION_PATH . '/application/modules/Siteeventticket/controllers/license/license.php';
-
-        if (is_file(APPLICATION_PATH . '/application/modules/Sitepage/controllers/license/license.php'))
-            include APPLICATION_PATH . '/application/modules/Sitepage/controllers/license/license.php';
-
-        if (is_file(APPLICATION_PATH . '/application/modules/Sitestore/controllers/license/license.php'))
-            include APPLICATION_PATH . '/application/modules/Sitestore/controllers/license/license.php';
-
-        if (is_file(APPLICATION_PATH . '/application/modules/Sitegroup/controllers/license/license.php'))
-            include APPLICATION_PATH . '/application/modules/Sitegroup/controllers/license/license.php';
-
-        if (is_file(APPLICATION_PATH . '/application/modules/Sitehashtag/controllers/license/license.php'))
-            include APPLICATION_PATH . '/application/modules/Sitehashtag/controllers/license/license.php';
-
-        if (is_file(APPLICATION_PATH . '/application/modules/Sitereaction/controllers/license/license.php'))
-            include APPLICATION_PATH . '/application/modules/Sitereaction/controllers/license/license.php';
-
-        if (is_file(APPLICATION_PATH . '/application/modules/Nestedcomment/controllers/license/license.php'))
-            include APPLICATION_PATH . '/application/modules/Nestedcomment/controllers/license/license.php';
-        if (is_file(APPLICATION_PATH . '/application/modules/Sitegateway/controllers/license/license.php'))
-            include APPLICATION_PATH . '/application/modules/Sitegateway/controllers/license/license.php';
-        if (is_file(APPLICATION_PATH . '/application/modules/Siteeventticket/controllers/license/license.php'))
-            include APPLICATION_PATH . '/application/modules/Siteeventticket/controllers/license/license.php';
+//        if (is_file(APPLICATION_PATH . '/application/modules/Siteevent/controllers/license/license.php'))
+//            include APPLICATION_PATH . '/application/modules/Siteevent/controllers/license/license.php';
+//
+//        if (is_file(APPLICATION_PATH . '/application/modules/Siteeventticket/controllers/license/license.php'))
+//            include APPLICATION_PATH . '/application/modules/Siteeventticket/controllers/license/license.php';
+//
+//        if (is_file(APPLICATION_PATH . '/application/modules/Sitepage/controllers/license/license.php'))
+//            include APPLICATION_PATH . '/application/modules/Sitepage/controllers/license/license.php';
+//
+//        if (is_file(APPLICATION_PATH . '/application/modules/Sitestore/controllers/license/license.php'))
+//            include APPLICATION_PATH . '/application/modules/Sitestore/controllers/license/license.php';
+//
+//        if (is_file(APPLICATION_PATH . '/application/modules/Sitegroup/controllers/license/license.php'))
+//            include APPLICATION_PATH . '/application/modules/Sitegroup/controllers/license/license.php';
+//
+//        if (is_file(APPLICATION_PATH . '/application/modules/Sitehashtag/controllers/license/license.php'))
+//            include APPLICATION_PATH . '/application/modules/Sitehashtag/controllers/license/license.php';
+//
+//        if (is_file(APPLICATION_PATH . '/application/modules/Sitereaction/controllers/license/license.php'))
+//            include APPLICATION_PATH . '/application/modules/Sitereaction/controllers/license/license.php';
+//
+//        if (is_file(APPLICATION_PATH . '/application/modules/Nestedcomment/controllers/license/license.php'))
+//            include APPLICATION_PATH . '/application/modules/Nestedcomment/controllers/license/license.php';
+//        if (is_file(APPLICATION_PATH . '/application/modules/Sitegateway/controllers/license/license.php'))
+//            include APPLICATION_PATH . '/application/modules/Sitegateway/controllers/license/license.php';
+//        if (is_file(APPLICATION_PATH . '/application/modules/Siteeventticket/controllers/license/license.php'))
+//            include APPLICATION_PATH . '/application/modules/Siteeventticket/controllers/license/license.php';
     }
     
     protected function _initSession()
