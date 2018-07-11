@@ -58,11 +58,7 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
                 (!method_exists($subject, 'comments') && !method_exists($subject, 'likes')))
             $this->respondWithError('no_record');
         $canComment = $subject->authorization()->isAllowed($viewer, 'comment');
-        $canDelete = $subject->authorization()->isAllowed($viewer, 'edit');
-        if (!$canComment && !$canDelete)
-                $this->respondWithError('unauthorized');
-        
-        if (!$canComment && !$canDelete)
+        if (!$viewer->getIdentity() && !$canComment)
             $this->respondWithError('unauthorized');
         
         $page = $this->getParam("page",1);
@@ -113,8 +109,7 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
             $this->respondWithError('no_record');
         $viewer = Engine_Api::_()->user()->getViewer();
         $canComment = $subject->authorization()->isAllowed($viewer, 'comment');
-        $canDelete = $subject->authorization()->isAllowed($viewer, 'edit');
-        if (!$canComment && !$canDelete)
+        if (!$viewer->getIdentity() && !$canComment)
             $this->respondWithError('unauthorized');
         
         // Filter HTML
@@ -160,8 +155,7 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
             $this->respondWithError('no_record');
         $viewer = Engine_Api::_()->user()->getViewer();
         $canComment = $subject->authorization()->isAllowed($viewer, 'comment');
-        $canDelete = $subject->authorization()->isAllowed($viewer, 'edit');
-        if (!$canComment && !$canDelete)
+        if (!$viewer->getIdentity() && !$canComment)
             $this->respondWithError('unauthorized');
         
         // Filter HTML
@@ -219,8 +213,7 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
             $this->respondWithError('no_record');
         $viewer = Engine_Api::_()->user()->getViewer();
         $canComment = $subject->authorization()->isAllowed($viewer, 'comment');
-        $canDelete = $subject->authorization()->isAllowed($viewer, 'edit');
-        if (!$canComment && !$canDelete)
+        if (!$viewer->getIdentity() && !$canComment)
             $this->respondWithError('unauthorized');
         
         $id = $this->getParam("commentID");

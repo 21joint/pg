@@ -95,9 +95,6 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
         }else if(is_array($id) && !empty ($id)){
             $select->where("$tableName.parent_id IN (?)",$id);
         }
-        if(!empty($search)){
-            $select->where("title LIKE ?","%".$search."%");
-        }
         
         $orderBy = $this->getParam("orderBy","createdDateTime");
         $orderByDirection = $this->getParam("orderByDirection","descending");
@@ -119,7 +116,7 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
         $response['ResultCount'] = $paginator->getTotalItemCount();
         $response['Results'] = array();
         foreach($paginator as $answer){
-            $response['resourceType'] = $answer->getType();
+            $response['resourceType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($answer->getType());
             $response['Results'][] = $responseApi->getAnswerData($answer,$subject);
         }
         $this->respondWithSuccess($response);
@@ -213,7 +210,7 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
             $this->respondWithError('no_record');
         }
         
-        $body = $this->getParam("body");
+        $body = $this->getParam("body",$answer->body);
         if(empty($body)){
             $this->respondWithValidationError('validation_fail', array(
                 'body' => $this->translate("Please complete this field - it is required.")
@@ -230,7 +227,6 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
             $answer->parent_type = $subject->getType();
             $answer->parent_id = $subject->getIdentity();
             $answer->body = $body;
-
             $answer->save();
             
             $answerChosen = $this->getParam("answerChosen");
@@ -277,7 +273,7 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
             $idsArray = array($id);
         }
         $answers = Engine_Api::_()->getItemMulti("ggcommunity_answer",$idsArray);
-        if (empty($answers)) {
+        if (empty($answers) || count($answers) <= 0) {
             $this->respondWithError('no_record');
         }
         $table = Engine_Api::_()->getItemTable('ggcommunity_answer');

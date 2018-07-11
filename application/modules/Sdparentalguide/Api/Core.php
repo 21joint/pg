@@ -653,7 +653,7 @@ class Sdparentalguide_Api_Core extends Core_Api_Abstract{
                 $mappedResourceType = "Question";
                 break;
             case "ggcommunity_answer":
-                $mappedResourceType = "answer";
+                $mappedResourceType = "Answer";
                 break;
             case "core_comment":
                 $mappedResourceType = "Comment";
