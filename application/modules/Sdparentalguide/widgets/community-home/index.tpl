@@ -209,7 +209,7 @@ function loadLeaderboardResults(page = 1){
                                     ((page-1)*20+(i+1))+
                                 '</div>'+
                                 '<div class="d-flex align-items-center leader position-relative">'+
-                                    '<img src="'+results[i].avatarPhoto.photoURL+'"/>'+
+                                    '<img src="'+results[i].avatarPhoto.photoURLIcon+'"/>'+
                                     '<span class="cont_level position-absolute">'+
                                         results[i].contributionLevel+'</span>'+
                                     '<h4>'+results[i].displayName+'</h4>'+
