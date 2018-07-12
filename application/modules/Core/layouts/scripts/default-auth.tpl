@@ -24,6 +24,10 @@
     $staticBaseUrl = $this->layout()->staticBaseUrl;
     $headIncludes = $this->layout()->headIncludes;
     
+    // add fontawesome
+    $this->headLink()
+    ->prependStylesheet($cssBaseUrl . 'externals/font-awesome/css/font-awesome.min.css');
+    
     $request = Zend_Controller_Front::getInstance()->getRequest();
     $this->headTitle()
       ->setSeparator(' - ');

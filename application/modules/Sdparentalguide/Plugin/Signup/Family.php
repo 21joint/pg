@@ -21,6 +21,7 @@ class Sdparentalguide_Plugin_Signup_Family extends Core_Plugin_FormSequence_Abst
 
   public function onSubmit(Zend_Controller_Request_Abstract $request)
   {
+    
     // Form was valid
     $skip = $request->getParam("skip");
     // do this if the form value for "skip" was not set
@@ -38,6 +39,11 @@ class Sdparentalguide_Plugin_Signup_Family extends Core_Plugin_FormSequence_Abst
   
   public function onProcess()
   {
+
+    echo "<Pre>";
+    print_r( $this->getSession()->data );
+    exit;
+    
     // In this case, the step was placed before the account step.
     // Register a hook to this method for onUserCreateAfter
     if( !$this->_registry->user ) {
