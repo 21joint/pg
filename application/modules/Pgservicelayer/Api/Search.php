@@ -32,6 +32,11 @@ class Pgservicelayer_Api_Search extends Core_Api_Search
     {
       return false;
     }
+    
+    if ($type == 'sitereview_listing')
+        $itemType = 'sitereview_listingtype_' . $item->listingtype_id;
+    else
+        $itemType = $type;
 
     // Check if already indexed
     $table = Engine_Api::_()->getDbtable('search', 'core');
@@ -63,6 +68,12 @@ class Pgservicelayer_Api_Search extends Core_Api_Search
     if(!empty($topic_id)){
         $row->topic_id = $topic_id;
     }
+    
+    if(isset($row->item_type))
+        $row->item_type = $itemType;
+    
+    if (isset($item->location))
+        $row->location = $item->location;
 
     $row->title = $title;
     $row->description = $description;
