@@ -270,6 +270,7 @@ function editFamily(el) {
 
 
 
+
 function removeFamily(el) {
     el.getParent('div.row').remove();
 }
@@ -419,6 +420,7 @@ function setupFamilyMember() {
     });
 
     let updateItem = document.getElementById(localStorage.getItem('update'));
+    console.log(localStorage.getItem('update'));
     if(updateItem) {
         updateItem.remove();
         localStorage.removeItem('update')

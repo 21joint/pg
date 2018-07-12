@@ -7,11 +7,11 @@
     $answer = $table->fetchAll($select);
     
 ?>
-<div class="extfox-widgets">
+<div class="extfox-widgets" id="extfox-widgets">
     
     <div class="row">
     
-        <div class="box-hover-member bg-white position-absolute">
+        <div id="box-hover-member" class="box-hover-member bg-white position-absolute">
             <div class="box-holder">
 
                 <div class="header d-flex mx-3 mt-3 p-relative pl-2 pt-2">
@@ -40,6 +40,7 @@
                             </div>
                             <i class="fa fa-circle pl-2"></i>
                             <div class="holder-followers pl-2">
+                                <?php echo $this->translate('Followers'); ?> 
                                 <?php echo $subject->gg_followers_count;?>
                             </div>
                         </div>
