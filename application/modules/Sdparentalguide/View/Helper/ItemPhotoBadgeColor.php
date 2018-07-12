@@ -22,29 +22,25 @@ class Sdparentalguide_View_Helper_ItemPhotoBadgeColor extends Zend_View_Helper_A
     
       $x = 0;
       $class = NULL;
-
-      switch($x){
-        case ($subject->gg_expert_platinum_count < $x):
-          $class = 'platinum';
-          $count = $subject->gg_expert_platinum_count;
-        break;
-        case ($subject->gg_expert_gold_count < $x):
-          $class = 'gold';
-          $count = $subject->gg_expert_gold_count;
-        break;
-        case($subject->gg_expert_silver_count < $x):
-          $class = 'silver';
-          $count = $subject->gg_expert_silver_count;
-        break;
-        case($subject->gg_expert_bronze_count > $x):
-          $class = 'bronze';
-          $count = $subject->gg_expert_bronze_count;
-        break;
-        default: 
-          $class = 'bg-primary';
-          $count = $subject->gg_expert_platinum_count + $subject->gg_expert_gold_count + $subject->gg_expert_silver_count + $subject->gg_expert_bronze_count;
-      }
       
+
+      if($subject->gg_expert_platinum_count > 0) {
+        $class = 'platinum';
+        $count = $subject->gg_expert_platinum_count;
+      } else if($subject->gg_expert_gold_count > 0) {
+        $class = 'gold';
+        $count = $subject->gg_expert_gold_count;
+      } else if ($subject->gg_expert_silver_count > 0) {
+        $class = 'silver';
+        $count = $subject->gg_expert_silver_count;
+      } else if ($subject->gg_expert_bronze_count > 0) {
+        $class = 'bronze';
+        $count = $subject->gg_expert_bronze_count;
+      } else if ($subject->gg_expert_platinum_count < 1 || $subject->gg_expert_gold_count < 1 ||  $subject->gg_expert_silver_count < 1 || $subject->gg_expert_bronze_count < 1) {
+        $class = 'primary';
+        $count = $subject->gg_contribution_level;
+      }
+        
       if($subject->gg_mvp === 1){
           $bordergear = 'border-gear';
       }
@@ -52,8 +48,6 @@ class Sdparentalguide_View_Helper_ItemPhotoBadgeColor extends Zend_View_Helper_A
       $itemsInfo['gear'] = $bordergear;
       $itemsInfo['class'] = $class;
       $itemsInfo['count'] = $count;
-      
-      
       
       return  $itemsInfo;
     
