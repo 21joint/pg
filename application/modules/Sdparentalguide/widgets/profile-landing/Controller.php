@@ -23,7 +23,6 @@ class Sdparentalguide_Widget_ProfileLandingController extends Engine_Content_Wid
 
 
     // following start function
-    
     $showFriend = true;
     
     // Don't render this if friendships are disabled
@@ -87,11 +86,7 @@ class Sdparentalguide_Widget_ProfileLandingController extends Engine_Content_Wid
 
     $this->view->showFriend = $showFriend;
    
-    // following end function
-
-    
     $this->view->profileSettings = $tab = Zend_Controller_Front::getInstance()->getRequest()->getParam('type', null);
-
 
     $table = Engine_Api::_()->getDbTable('badges', 'sdparentalguide');
     $bName = $table->info('name');

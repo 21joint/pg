@@ -10,22 +10,26 @@ class Sdparentalguide_Form_Signup_Family extends Engine_Form
 {
     public function init(){
         $translate = Zend_Registry::get("Zend_Translate");
-        //$this->setTitle("Tell Us About Your Family");
-        //$this->setDescription($translate->translate("Sdparentalguide_Form_Signup_FAMILY_Description"));
         $this->setAttrib("id","extfox-settings");
         $this->setAttrib("class","family-form global_form sd-signup-interests");
         
-        $this->addElement("MultiCheckbox","members",array(
+        $this->addElement("MultiCheckbox" ,"members", array(
             'label' => 'Family Members',
-            'required' => true,
+            'required' => false,
             'allowEmpty' => false,
             'decorators' => array(
                 array('ViewScript', array(
                   'viewScript' => '_familyMembers.tpl',
                   'viewModule' => 'sdparentalguide',
-                  'members' => $this->getFamilyMembers()
                 ))
             ),
+        ));
+
+        $this->addElement('Hidden', 'profile_age_range', array(
+            'order' => 331
+        ));
+        $this->addElement('Hidden', 'profile_gender', array(
+            'order' => 332
         ));
         
         $this->members->setRegisterInArrayValidator(false);

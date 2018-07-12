@@ -264,7 +264,7 @@
         if(!buttonFriend) return;
         let buttonFriendLink = buttonFriend.getElement('a');
         buttonFriendLink.removeClass('buttonlink');
-        buttonFriendLink.addClass('btn btn-success px-5 py-2 text-white');
+        buttonFriendLink.addClass('btn btn-success px-sm-5 px-3 py-2 text-white');
 
         <?php if($this->profileSettings):?>
             var tabs = document.getElementsByClassName('tabs_alt'); 
@@ -274,10 +274,13 @@
                 let textContent = liElements[i].getChildren()[0].textContent;
             
                 if( ((textContent == 'Personal Info') && ( getParam === 'general' )) || ((textContent == 'User Preferences') && ( getParam === 'preference' )) ){      
-                    showEditContent();
-                    liElements[i].getChildren()[0].click();
+                    var tabToOpen = liElements[i].getChildren()[0];
                 }
             }
+            setTimeout(function () {
+                tabToOpen.click();
+                showEditContent();
+            }, 300);
         <?php endif; ?>
             
     });

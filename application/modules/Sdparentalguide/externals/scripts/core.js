@@ -37,17 +37,17 @@ function hideHoverBoxes() {
 
 function showEditContent() {
    
-   let tabs = document.getElementsByClassName('layout_core_container_tabs');
-
-   if(tabs[0].classList.contains('updateMode') == true) {
-     tabs[0].classList.remove('updateMode');
-     tabs[0].style = 'display: block;';
-     tabs[1].style = 'display: none;';
-   } else {
-    tabs[0].classList.add('updateMode');
-    tabs[0].style = 'display: none;';
-    tabs[1].style = 'display: block;';
-   }
+    let tabs = document.getElementsByClassName('layout_core_container_tabs');
+   
+    if(tabs[0].classList.contains('updateMode') == true) {
+        tabs[0].classList.remove('updateMode');
+        tabs[0].style = 'display: block;';
+        tabs[1].style = 'display: none;';
+    } else {
+        tabs[0].classList.add('updateMode');
+        tabs[0].style = 'display: none;';
+        tabs[1].style = 'display: block;';
+    }
    
 }
 
