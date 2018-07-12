@@ -151,7 +151,7 @@
                     ?>
                     <?= $this->htmlLink($this->viewer->getHref(), $this->itemPhoto($this->viewer, 'thumb.icon')); ?>
                 </li> <!-- profile -->
-                <li class="list-inline-item align-middle name d-none d-sm-inline-block dropdown">
+                <li class="list-inline-item align-middle name d-none d-sm-inline-block dropdown ml-3">
                     <?= $this->htmlLink($this->viewer->getHref(), substr($this->viewer->getTitle(), 0, strrpos($this->viewer->getTitle(), ' ')), array('class' => 'font-weight-bold align-middle')); ?>
                   <a role="button"
                      data-toggle="dropdown"

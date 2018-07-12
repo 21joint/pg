@@ -9,9 +9,9 @@
 
 ?>
 
-<!--page section-->
+<!--PAGE SECTION-->
 <div class="page-section">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-12">
         <div class="content-box bg-sm-white">
@@ -60,77 +60,222 @@
     </div>
   </div>
 </div>
-<!--page section ends /-->
+<!--PAGE SECTION  ///-->
 <div id="reviewSingleModal" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-fluid" role="document">
     <div class="modal-content">
       <!-- SINGLE REVIEW LAYOUT -->
-      <div class="parental-review--single">
+      <div class="prg-review--single">
         <!--  hero-->
-        <div class="parental-review--single---hero position-relative">
-          <div class="parental-review--single---heroimage"
-               style="background-image: url(https://dzhywv9htu615.cloudfront.net/public/sitereview_listing/bf/8d/02/43691a2684f60db713b745e344f8fe54.JPG);">
+        <div class="prg-review--single---hero position-relative">
+          <!-- SINGLE REVIEW HERO IMAGE -->
+          <div class="prg-review--single---heroimage"
+               style="background-color: #eeeeee;">
             <img class="img-fluid w-100 invisible"
                  src="https://dzhywv9htu615.cloudfront.net/public/sitereview_listing/bf/8d/02/43691a2684f60db713b745e344f8fe54.JPG"
                  alt="">
           </div>
-          <div class="parental-review--single---heroinner">
+          <!-- SINGLE REVIEW HERO IMAGE ///-->
+
+          <!-- SINGLE REVIEW HERO INNER -->
+          <div class="prg-review--single---heroinner">
             <div class="container-fluid">
               <div class="row">
-                <div class="col-12">
-                  <div class="card-stars parental-review--single---stars text-center">
+                <div class="col-12 position-static">
+                  <!-- CARD STARS -->
+                  <div class="card-stars prg-review--single---stars text-center">
                     <ul class="list-inline my-0">
                       <li class="list-inline-item align-middle">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 21.059 20"><defs><style> .cls-1 {fill: url(#linear-gradient);}  .cls-2 {fill: url(#linear-gradient-2);}  .cls-3 {fill: url(#linear-gradient-3);}</style><linearGradient id="linear-gradient" x1="-0.222" y1="0.952" x2="0.971" y2="-0.34" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#ce8f2a"></stop><stop offset="0.17" stop-color="#cf9330"></stop><stop offset="0.38" stop-color="#d39d3f"></stop><stop offset="0.62" stop-color="#d8ae59"></stop><stop offset="0.67" stop-color="#dab360"></stop><stop offset="0.92" stop-color="#edc64f"></stop><stop offset="1" stop-color="#edc64f"></stop></linearGradient><linearGradient id="linear-gradient-2" x1="1.543" y1="1.119" x2="0.162" y2="-0.102" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#ce8f2a"></stop><stop offset="0.17" stop-color="#a28f70"></stop><stop offset="0.38" stop-color="#d39d3f"></stop><stop offset="0.62" stop-color="#d8ae59"></stop><stop offset="0.67" stop-color="#dab360"></stop><stop offset="0.92" stop-color="#edc64f"></stop><stop offset="1" stop-color="#edc64f"></stop></linearGradient><linearGradient id="linear-gradient-3" x1="1.616" y1="1.474" x2="0.258" y2="-0.026" xlink:href="#linear-gradient"></linearGradient></defs><g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)"><path id="Path_1811" data-name="Path 1811" class="cls-1" d="M173.963,249.27l-3.757,4.959L167,249.922l6.261-1.4C174.163,248.269,174.463,248.619,173.963,249.27Z" transform="translate(281.182 890.03)"></path><path id="Path_1812" data-name="Path 1812" class="cls-2" d="M149.407,253.5l-8.265,2.054c-.5.1-.651.7-.15.9l8.065,2.354Z" transform="translate(294.316 887.504)"></path><path id="Path_1813" data-name="Path 1813" class="cls-3" d="M156,260.741l1.052-18.734c0-.551.551-.651.9-.25l11.22,13.975c.4.5.3,1.352-.852.9l-6.762-2.6-4.208,7.013C156.9,261.843,155.948,261.543,156,260.741Z" transform="translate(286.674 893.486)"></path></g></svg>
+                        <a href="#">
+                          <svg xmlns="http://www.w3.org/2000/svg"
+                               xmlns:xlink="http://www.w3.org/1999/xlink"
+                               viewBox="0 0 21.059 20">
+                            <defs>
+                              <style> .cls-1 {
+                                  fill: url(#linear-gradient);
+                                }
+
+                                .cls-2 {
+                                  fill: url(#linear-gradient-2);
+                                }
+
+                                .cls-3 {
+                                  fill: url(#linear-gradient-3);
+                                }</style>
+                              <linearGradient id="linear-gradient"
+                                              x1="-0.222"
+                                              y1="0.952"
+                                              x2="0.971"
+                                              y2="-0.34"
+                                              gradientUnits="objectBoundingBox">
+                                <stop offset="0" stop-color="#ce8f2a"></stop>
+                                <stop offset="0.17" stop-color="#cf9330"></stop>
+                                <stop offset="0.38" stop-color="#d39d3f"></stop>
+                                <stop offset="0.62" stop-color="#d8ae59"></stop>
+                                <stop offset="0.67" stop-color="#dab360"></stop>
+                                <stop offset="0.92" stop-color="#edc64f"></stop>
+                                <stop offset="1" stop-color="#edc64f"></stop>
+                              </linearGradient>
+                              <linearGradient id="linear-gradient-2"
+                                              x1="1.543"
+                                              y1="1.119"
+                                              x2="0.162"
+                                              y2="-0.102"
+                                              gradientUnits="objectBoundingBox">
+                                <stop offset="0" stop-color="#ce8f2a"></stop>
+                                <stop offset="0.17" stop-color="#a28f70"></stop>
+                                <stop offset="0.38" stop-color="#d39d3f"></stop>
+                                <stop offset="0.62" stop-color="#d8ae59"></stop>
+                                <stop offset="0.67" stop-color="#dab360"></stop>
+                                <stop offset="0.92" stop-color="#edc64f"></stop>
+                                <stop offset="1" stop-color="#edc64f"></stop>
+                              </linearGradient>
+                              <linearGradient id="linear-gradient-3"
+                                              x1="1.616"
+                                              y1="1.474"
+                                              x2="0.258"
+                                              y2="-0.026"
+                                              xlink:href="#linear-gradient"></linearGradient>
+                            </defs>
+                            <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">
+                              <path id="Path_1811"
+                                    data-name="Path 1811"
+                                    class="cls-1"
+                                    d="M173.963,249.27l-3.757,4.959L167,249.922l6.261-1.4C174.163,248.269,174.463,248.619,173.963,249.27Z"
+                                    transform="translate(281.182 890.03)"></path>
+                              <path id="Path_1812"
+                                    data-name="Path 1812"
+                                    class="cls-2"
+                                    d="M149.407,253.5l-8.265,2.054c-.5.1-.651.7-.15.9l8.065,2.354Z"
+                                    transform="translate(294.316 887.504)"></path>
+                              <path id="Path_1813"
+                                    data-name="Path 1813"
+                                    class="cls-3"
+                                    d="M156,260.741l1.052-18.734c0-.551.551-.651.9-.25l11.22,13.975c.4.5.3,1.352-.852.9l-6.762-2.6-4.208,7.013C156.9,261.843,155.948,261.543,156,260.741Z"
+                                    transform="translate(286.674 893.486)"></path>
+                            </g>
+                          </svg>
+                        </a>
                       </li>
                       <li class="list-inline-item align-middle">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 21.059 20"><g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)"><path id="Path_1811" data-name="Path 1811" class="cls-1" d="M173.963,249.27l-3.757,4.959L167,249.922l6.261-1.4C174.163,248.269,174.463,248.619,173.963,249.27Z" transform="translate(281.182 890.03)"></path><path id="Path_1812" data-name="Path 1812" class="cls-2" d="M149.407,253.5l-8.265,2.054c-.5.1-.651.7-.15.9l8.065,2.354Z" transform="translate(294.316 887.504)"></path><path id="Path_1813" data-name="Path 1813" class="cls-3" d="M156,260.741l1.052-18.734c0-.551.551-.651.9-.25l11.22,13.975c.4.5.3,1.352-.852.9l-6.762-2.6-4.208,7.013C156.9,261.843,155.948,261.543,156,260.741Z" transform="translate(286.674 893.486)"></path></g></svg>
+                        <a href="#">
+                          <svg xmlns="http://www.w3.org/2000/svg"
+                               xmlns:xlink="http://www.w3.org/1999/xlink"
+                               viewBox="0 0 21.059 20">
+                            <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">
+                              <path id="Path_1811"
+                                    data-name="Path 1811"
+                                    class="cls-1"
+                                    d="M173.963,249.27l-3.757,4.959L167,249.922l6.261-1.4C174.163,248.269,174.463,248.619,173.963,249.27Z"
+                                    transform="translate(281.182 890.03)"></path>
+                              <path id="Path_1812"
+                                    data-name="Path 1812"
+                                    class="cls-2"
+                                    d="M149.407,253.5l-8.265,2.054c-.5.1-.651.7-.15.9l8.065,2.354Z"
+                                    transform="translate(294.316 887.504)"></path>
+                              <path id="Path_1813"
+                                    data-name="Path 1813"
+                                    class="cls-3"
+                                    d="M156,260.741l1.052-18.734c0-.551.551-.651.9-.25l11.22,13.975c.4.5.3,1.352-.852.9l-6.762-2.6-4.208,7.013C156.9,261.843,155.948,261.543,156,260.741Z"
+                                    transform="translate(286.674 893.486)"></path>
+                            </g>
+                          </svg>
+                        </a>
                       </li>
                       <li class="list-inline-item align-middle">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 21.059 20"><g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)"><path id="Path_1811" data-name="Path 1811" class="cls-1" d="M173.963,249.27l-3.757,4.959L167,249.922l6.261-1.4C174.163,248.269,174.463,248.619,173.963,249.27Z" transform="translate(281.182 890.03)"></path><path id="Path_1812" data-name="Path 1812" class="cls-2" d="M149.407,253.5l-8.265,2.054c-.5.1-.651.7-.15.9l8.065,2.354Z" transform="translate(294.316 887.504)"></path><path id="Path_1813" data-name="Path 1813" class="cls-3" d="M156,260.741l1.052-18.734c0-.551.551-.651.9-.25l11.22,13.975c.4.5.3,1.352-.852.9l-6.762-2.6-4.208,7.013C156.9,261.843,155.948,261.543,156,260.741Z" transform="translate(286.674 893.486)"></path></g></svg>
+                        <a href="#">
+                          <svg xmlns="http://www.w3.org/2000/svg"
+                               xmlns:xlink="http://www.w3.org/1999/xlink"
+                               viewBox="0 0 21.059 20">
+                            <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">
+                              <path id="Path_1811"
+                                    data-name="Path 1811"
+                                    class="cls-1"
+                                    d="M173.963,249.27l-3.757,4.959L167,249.922l6.261-1.4C174.163,248.269,174.463,248.619,173.963,249.27Z"
+                                    transform="translate(281.182 890.03)"></path>
+                              <path id="Path_1812"
+                                    data-name="Path 1812"
+                                    class="cls-2"
+                                    d="M149.407,253.5l-8.265,2.054c-.5.1-.651.7-.15.9l8.065,2.354Z"
+                                    transform="translate(294.316 887.504)"></path>
+                              <path id="Path_1813"
+                                    data-name="Path 1813"
+                                    class="cls-3"
+                                    d="M156,260.741l1.052-18.734c0-.551.551-.651.9-.25l11.22,13.975c.4.5.3,1.352-.852.9l-6.762-2.6-4.208,7.013C156.9,261.843,155.948,261.543,156,260.741Z"
+                                    transform="translate(286.674 893.486)"></path>
+                            </g>
+                          </svg>
+                        </a>
                       </li>
                       <li class="list-inline-item align-middle">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 21.059 20"><g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)"><path id="Path_1811" data-name="Path 1811" class="cls-1" d="M173.963,249.27l-3.757,4.959L167,249.922l6.261-1.4C174.163,248.269,174.463,248.619,173.963,249.27Z" transform="translate(281.182 890.03)"></path><path id="Path_1812" data-name="Path 1812" class="cls-2" d="M149.407,253.5l-8.265,2.054c-.5.1-.651.7-.15.9l8.065,2.354Z" transform="translate(294.316 887.504)"></path><path id="Path_1813" data-name="Path 1813" class="cls-3" d="M156,260.741l1.052-18.734c0-.551.551-.651.9-.25l11.22,13.975c.4.5.3,1.352-.852.9l-6.762-2.6-4.208,7.013C156.9,261.843,155.948,261.543,156,260.741Z" transform="translate(286.674 893.486)"></path></g></svg>
+                        <a href="#">
+                          <svg xmlns="http://www.w3.org/2000/svg"
+                               xmlns:xlink="http://www.w3.org/1999/xlink"
+                               viewBox="0 0 21.059 20">
+                            <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">
+                              <path id="Path_1811"
+                                    data-name="Path 1811"
+                                    class="cls-1"
+                                    d="M173.963,249.27l-3.757,4.959L167,249.922l6.261-1.4C174.163,248.269,174.463,248.619,173.963,249.27Z"
+                                    transform="translate(281.182 890.03)"></path>
+                              <path id="Path_1812"
+                                    data-name="Path 1812"
+                                    class="cls-2"
+                                    d="M149.407,253.5l-8.265,2.054c-.5.1-.651.7-.15.9l8.065,2.354Z"
+                                    transform="translate(294.316 887.504)"></path>
+                              <path id="Path_1813"
+                                    data-name="Path 1813"
+                                    class="cls-3"
+                                    d="M156,260.741l1.052-18.734c0-.551.551-.651.9-.25l11.22,13.975c.4.5.3,1.352-.852.9l-6.762-2.6-4.208,7.013C156.9,261.843,155.948,261.543,156,260.741Z"
+                                    transform="translate(286.674 893.486)"></path>
+                            </g>
+                          </svg>
+                        </a>
                       </li>
                       <li class="list-inline-item align-middle">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 21.059 20"><g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)"><path id="Path_1811" data-name="Path 1811" class="cls-1" d="M173.963,249.27l-3.757,4.959L167,249.922l6.261-1.4C174.163,248.269,174.463,248.619,173.963,249.27Z" transform="translate(281.182 890.03)"></path><path id="Path_1812" data-name="Path 1812" class="cls-2" d="M149.407,253.5l-8.265,2.054c-.5.1-.651.7-.15.9l8.065,2.354Z" transform="translate(294.316 887.504)"></path><path id="Path_1813" data-name="Path 1813" class="cls-3" d="M156,260.741l1.052-18.734c0-.551.551-.651.9-.25l11.22,13.975c.4.5.3,1.352-.852.9l-6.762-2.6-4.208,7.013C156.9,261.843,155.948,261.543,156,260.741Z" transform="translate(286.674 893.486)"></path></g></svg>
+                        <a href="#">
+                          <svg xmlns="http://www.w3.org/2000/svg"
+                               xmlns:xlink="http://www.w3.org/1999/xlink"
+                               viewBox="0 0 21.059 20">
+                            <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">
+                              <path id="Path_1811"
+                                    data-name="Path 1811"
+                                    class="cls-1"
+                                    d="M173.963,249.27l-3.757,4.959L167,249.922l6.261-1.4C174.163,248.269,174.463,248.619,173.963,249.27Z"
+                                    transform="translate(281.182 890.03)"></path>
+                              <path id="Path_1812"
+                                    data-name="Path 1812"
+                                    class="cls-2"
+                                    d="M149.407,253.5l-8.265,2.054c-.5.1-.651.7-.15.9l8.065,2.354Z"
+                                    transform="translate(294.316 887.504)"></path>
+                              <path id="Path_1813"
+                                    data-name="Path 1813"
+                                    class="cls-3"
+                                    d="M156,260.741l1.052-18.734c0-.551.551-.651.9-.25l11.22,13.975c.4.5.3,1.352-.852.9l-6.762-2.6-4.208,7.013C156.9,261.843,155.948,261.543,156,260.741Z"
+                                    transform="translate(286.674 893.486)"></path>
+                            </g>
+                          </svg>
+                        </a>
                       </li>
                     </ul>
                   </div>
-                  <div class="parental-review--single---action">
-                    <button type="button" class="btn btn-block bg-white rounded-circle p-0"><i class="fa fa-ellipsis-h"></i>
-                    </button>
-                  </div><div class="card-stars parental-review--single---stars text-center">
-                    <ul class="list-inline my-0">
-                      <li class="list-inline-item align-middle">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 21.059 20"><defs><style> .cls-1 {fill: url(#linear-gradient);}  .cls-2 {fill: url(#linear-gradient-2);}  .cls-3 {fill: url(#linear-gradient-3);}</style><linearGradient id="linear-gradient" x1="-0.222" y1="0.952" x2="0.971" y2="-0.34" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#ce8f2a"></stop><stop offset="0.17" stop-color="#cf9330"></stop><stop offset="0.38" stop-color="#d39d3f"></stop><stop offset="0.62" stop-color="#d8ae59"></stop><stop offset="0.67" stop-color="#dab360"></stop><stop offset="0.92" stop-color="#edc64f"></stop><stop offset="1" stop-color="#edc64f"></stop></linearGradient><linearGradient id="linear-gradient-2" x1="1.543" y1="1.119" x2="0.162" y2="-0.102" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#ce8f2a"></stop><stop offset="0.17" stop-color="#a28f70"></stop><stop offset="0.38" stop-color="#d39d3f"></stop><stop offset="0.62" stop-color="#d8ae59"></stop><stop offset="0.67" stop-color="#dab360"></stop><stop offset="0.92" stop-color="#edc64f"></stop><stop offset="1" stop-color="#edc64f"></stop></linearGradient><linearGradient id="linear-gradient-3" x1="1.616" y1="1.474" x2="0.258" y2="-0.026" xlink:href="#linear-gradient"></linearGradient></defs><g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)"><path id="Path_1811" data-name="Path 1811" class="cls-1" d="M173.963,249.27l-3.757,4.959L167,249.922l6.261-1.4C174.163,248.269,174.463,248.619,173.963,249.27Z" transform="translate(281.182 890.03)"></path><path id="Path_1812" data-name="Path 1812" class="cls-2" d="M149.407,253.5l-8.265,2.054c-.5.1-.651.7-.15.9l8.065,2.354Z" transform="translate(294.316 887.504)"></path><path id="Path_1813" data-name="Path 1813" class="cls-3" d="M156,260.741l1.052-18.734c0-.551.551-.651.9-.25l11.22,13.975c.4.5.3,1.352-.852.9l-6.762-2.6-4.208,7.013C156.9,261.843,155.948,261.543,156,260.741Z" transform="translate(286.674 893.486)"></path></g></svg>
-                      </li>
-                      <li class="list-inline-item align-middle">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 21.059 20"><g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)"><path id="Path_1811" data-name="Path 1811" class="cls-1" d="M173.963,249.27l-3.757,4.959L167,249.922l6.261-1.4C174.163,248.269,174.463,248.619,173.963,249.27Z" transform="translate(281.182 890.03)"></path><path id="Path_1812" data-name="Path 1812" class="cls-2" d="M149.407,253.5l-8.265,2.054c-.5.1-.651.7-.15.9l8.065,2.354Z" transform="translate(294.316 887.504)"></path><path id="Path_1813" data-name="Path 1813" class="cls-3" d="M156,260.741l1.052-18.734c0-.551.551-.651.9-.25l11.22,13.975c.4.5.3,1.352-.852.9l-6.762-2.6-4.208,7.013C156.9,261.843,155.948,261.543,156,260.741Z" transform="translate(286.674 893.486)"></path></g></svg>
-                      </li>
-                      <li class="list-inline-item align-middle">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 21.059 20"><g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)"><path id="Path_1811" data-name="Path 1811" class="cls-1" d="M173.963,249.27l-3.757,4.959L167,249.922l6.261-1.4C174.163,248.269,174.463,248.619,173.963,249.27Z" transform="translate(281.182 890.03)"></path><path id="Path_1812" data-name="Path 1812" class="cls-2" d="M149.407,253.5l-8.265,2.054c-.5.1-.651.7-.15.9l8.065,2.354Z" transform="translate(294.316 887.504)"></path><path id="Path_1813" data-name="Path 1813" class="cls-3" d="M156,260.741l1.052-18.734c0-.551.551-.651.9-.25l11.22,13.975c.4.5.3,1.352-.852.9l-6.762-2.6-4.208,7.013C156.9,261.843,155.948,261.543,156,260.741Z" transform="translate(286.674 893.486)"></path></g></svg>
-                      </li>
-                      <li class="list-inline-item align-middle">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 21.059 20"><g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)"><path id="Path_1811" data-name="Path 1811" class="cls-1" d="M173.963,249.27l-3.757,4.959L167,249.922l6.261-1.4C174.163,248.269,174.463,248.619,173.963,249.27Z" transform="translate(281.182 890.03)"></path><path id="Path_1812" data-name="Path 1812" class="cls-2" d="M149.407,253.5l-8.265,2.054c-.5.1-.651.7-.15.9l8.065,2.354Z" transform="translate(294.316 887.504)"></path><path id="Path_1813" data-name="Path 1813" class="cls-3" d="M156,260.741l1.052-18.734c0-.551.551-.651.9-.25l11.22,13.975c.4.5.3,1.352-.852.9l-6.762-2.6-4.208,7.013C156.9,261.843,155.948,261.543,156,260.741Z" transform="translate(286.674 893.486)"></path></g></svg>
-                      </li>
-                      <li class="list-inline-item align-middle">
-                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 21.059 20"><g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)"><path id="Path_1811" data-name="Path 1811" class="cls-1" d="M173.963,249.27l-3.757,4.959L167,249.922l6.261-1.4C174.163,248.269,174.463,248.619,173.963,249.27Z" transform="translate(281.182 890.03)"></path><path id="Path_1812" data-name="Path 1812" class="cls-2" d="M149.407,253.5l-8.265,2.054c-.5.1-.651.7-.15.9l8.065,2.354Z" transform="translate(294.316 887.504)"></path><path id="Path_1813" data-name="Path 1813" class="cls-3" d="M156,260.741l1.052-18.734c0-.551.551-.651.9-.25l11.22,13.975c.4.5.3,1.352-.852.9l-6.762-2.6-4.208,7.013C156.9,261.843,155.948,261.543,156,260.741Z" transform="translate(286.674 893.486)"></path></g></svg>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="parental-review--single---action">
-                    <button type="button" class="btn btn-block bg-white rounded-circle p-0"><i class="fa fa-ellipsis-h"></i>
+                  <!-- CARD STARS /// -->
+                  <!-- CARD ACTION  -->
+                  <div class="prg-review--single---action">
+                    <button type="button" class="btn btn-block bg-white rounded-circle p-0">
+                      <i class="fa fa-ellipsis-h"></i>
                     </button>
                   </div>
+                  <!-- CARD ACTION /// -->
                 </div>
               </div>
             </div>
           </div>
+          <!-- SINGLE REVIEW HERO INNER /// -->
         </div>
         <!--  hero ///-->
-        <!--  breadcrumb-->
-        <div class="parental-review--single---breadcrumb">
+        <!--  BREADCRUMB-->
+        <div class="prg-review--single---breadcrumb">
           <div class="container">
             <div class="row">
               <div class="col-12">
@@ -145,16 +290,16 @@
             </div>
           </div>
         </div>
-        <!--  breadcrumb ///-->
-        <!--  description -->
-        <div class="parental-review--single---content">
-          <div class="container">
+        <!--  BREADCRUMB ///-->
+        <!--  SINGLE REVIEW DESCRIPTION -->
+        <div class="prg-review--single---content">
+          <div class="container-fluid">
             <div class="row">
               <div class="col-sm-9">
-                <h2 class="parental-review--single---title text-primary font-weight-bold mb-5">Twisted Mustard Seed
+                <h2 class="prg-review--single---title text-primary font-weight-bold mb-5">Twisted Mustard Seed
                   Heartbreaker
                   Bag</h2>
-                <div class="parental-review--single---descr">
+                <div class="prg-review--single---descr">
                   <p>We love our gorgeous Twisted Mustard Seed Diaper Bag! It is absolutely beautiful. The pop of color
                     is
                     so
@@ -193,18 +338,8 @@
                   </p>
                 </div>
                 <!-- gallery-->
-                <div class="parental-review--single---gallery">
-                  <div class="row no-gutters">
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                    <div class="col"></div>
-                  </div>
+                <div class="prg-review--single---gallery">
+
                 </div>
                 <!--  gallery ///-->
               </div>
@@ -214,7 +349,7 @@
             </div>
           </div>
         </div>
-        <!--  description ///-->
+        <!--  SINGLE REVIEW DESCRIPTION ///-->
       </div>
       <!-- SINGLE REVIEW LAYOUT /// -->
     </div>
@@ -254,14 +389,14 @@
       }
       return html;
     }
-    var buildCard = function (rev, options) {
-      var createdDt = new Date(rev.createdDateTime).toString().split(' ');
+    var buildCard = function (review, options) {
+      var createdDt = new Date(review.createdDateTime).toString().split(' ');
       var createdMonth = createdDt[1];
       var createdDay = createdDt[2].charAt(0) == 0 ? createdDt[2].split('')[1] : createdDt[2];
 
       return '<div class="col-6 col-lg-4 p-2">\n' +
         '                    <!--single review card-->\n' +
-        '                    <div class="card card-review h-100 d-flex flex-column" data-id="' + rev.reviewID + '">\n' +
+        '                    <div class="card card-review h-100 d-flex flex-column" data-id="' + review.reviewID + '">\n' +
         '                      <div class="card-header p-0 overflow-hidden">\n' +
         '                        <div class="card-actions">\n' +
         '                          <ul class="row no-gutters mb-0">\n' +
@@ -280,21 +415,21 @@
         '                          </ul>\n' +
         '                        </div>\n' +
         '                        <a role="button" data-target="#reviewSingleModal" data-toggle="modal"\n' +
-        '                           data-call="' + en4.core.baseUrl + 'api/v1/review?reviewID=' + rev.reviewID + '"\n' +
+        '                           data-call="' + en4.core.baseUrl + 'api/v1/review?reviewID=' + review.reviewID + '"\n' +
         '                           class="d-block card-img--wrapper"\n' +
-        '                             style="background-image: url(' + rev.coverPhoto.photoURL + ')">\n' +
-        '                          <img class="invisible w-100 h-100 position-absolute" src="' + rev.coverPhoto.photoURL + '" alt="' + rev.title + '"/>\n' +
+        '                             style="background-image: url(' + review.coverPhoto.photoURL + ')">\n' +
+        '                          <img class="invisible w-100 h-100 position-absolute" src="' + review.coverPhoto.photoURL + '" alt="' + review.title + '"/>\n' +
         '                        </a>\n' +
         '                        <div class="card-stars">\n' +
         '                          <ul class="list-inline my-0">\n' +
-        buildCardRating(rev.authorRating, 5) +
+        buildCardRating(review.authorRating, 5) +
         '                          </ul>\n' +
         '                        </div>\n' +
         '                      </div>\n' +
         '                      <div class="card-body">\n' +
-        '                        <h6 class="card-subtitle my-1 text-primary font-weight-bold">' + rev.reviewCategorization.category + '</h6>\n' +
-        '                        <h5 class="card-title font-weight-bold">' + rev.title + '</h5>\n' +
-        '                        <p class="card-text mb-0 d-none d-sm-block">' + rev.shortDescription + '</p>\n' +
+        '                        <h6 class="card-subtitle my-1 text-primary font-weight-bold">' + review.reviewCategorization.category + '</h6>\n' +
+        '                        <h5 class="card-title font-weight-bold">' + review.title + '</h5>\n' +
+        '                        <p class="card-text mb-0 d-none d-sm-block">' + review.shortDescription + '</p>\n' +
         '                      </div>\n' +
         '                      <div class="card-footer bg-white">\n' +
         '                        <div class="row align-items-center justify-content-between flex-nowrap">\n' +
@@ -306,12 +441,12 @@
         '                                    <img class="rounded-circle"\n' +
         '                                         src="http://dzhywv9htu615.cloudfront.net/public/user/b3/03/03b0_84cd.png"\n' +
         '                                         alt="Generic placeholder image">\n' +
-        '                                    <b class="position-absolute d-flex justify-content-center align-items-center text-white bagde badge-primary rounded-circle ff-open--sans card-author--rank">' + rev.author.contributionLevel + '</b>\n' +
+        '                                    <b class="position-absolute d-flex justify-content-center align-items-center text-white bagde badge-primary rounded-circle ff-open--sans card-author--rank">' + review.author.contributionLevel + '</b>\n' +
         '                                  </div>\n' +
         '                                </div>\n' +
         '                                <div class="col">\n' +
-        '                                  <a href="' + en4.core.baseUrl + 'profile/' + rev.author.memberName + '">\n' +
-        '                                     <h6 class="card-author--title mb-0"><b>' + rev.author.displayName + '</b></h6>\n' +
+        '                                  <a href="' + en4.core.baseUrl + 'profile/' + review.author.memberName + '">\n' +
+        '                                     <h6 class="card-author--title mb-0"><b>' + review.author.displayName + '</b></h6>\n' +
         '                                  </a>\n' +
         '                                  <div class="card-date">\n' +
         '                                    <span class="ff-open--sans text-asphalt small">' + createdMonth + ' ' + createdDay + '</span>\n' +
@@ -324,11 +459,11 @@
         '                            <ul class="list-inline my-0">\n' +
         '                              <li class="flex-row align-items-center list-inline-item">\n' +
         '                                <span class="fas fa-heart"></span>\n' +
-        '                                <span class="text-asphalt">' + rev.likesCount + '</span>\n' +
+        '                                <span class="text-asphalt">' + review.likesCount + '</span>\n' +
         '                              </li>\n' +
         '                              <li class="flex-row align-items-center list-inline-item">\n' +
         '                                <span class="fas fa-comments"></span>\n' +
-        '                                <span class="text-asphalt">' + rev.commentsCount + '</span>\n' +
+        '                                <span class="text-asphalt">' + review.commentsCount + '</span>\n' +
         '                              </li>\n' +
         '                            </ul>\n' +
         '                          </div>\n' +

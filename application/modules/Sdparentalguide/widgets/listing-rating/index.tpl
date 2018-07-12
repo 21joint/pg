@@ -25,9 +25,9 @@ $this->headLink()
     <?php $listingRatingHtml = $this->translate("Product Rating: %s", $this->review_rating); ?>
 <?php endif; ?>
 
-<div class='sd_rate_review' title="" style="margin: 0px auto;">
+<div class='card-stars' title="" style="margin: 0px auto;">
     <span class='sd_rating_label'><?php echo $this->translate('Rate this review:') ?></span>
-    <ul class='sr_ug_rating <?php echo $reviewRatingClass; ?>' title="<?php echo $reviewRatingHtml; ?>" data-type='review_rating'>
+    <ul class='list-inline my-0 sr_ug_rating <?php echo $reviewRatingClass; ?>' title="<?php echo $reviewRatingHtml; ?>" data-type='review_rating'>
         <li id="1" class="rate one"><a href="javascript:void(0);" onclick="doDefaultRating(this,'1', 'onestar');" title="<?php echo $this->translate("1 Star"); ?>"   id="star_1_0">1</a></li>
         <li id="2" class="rate two"><a href="javascript:void(0);"  onclick="doDefaultRating(this,'2', 'twostar');" title="<?php echo $this->translate("2 Stars"); ?>"   id="star_2_0">2</a></li>
         <li id="3" class="rate three"><a href="javascript:void(0);"  onclick="doDefaultRating(this,'3', 'threestar');" title="<?php echo $this->translate("3 Stars"); ?>" id="star_3_0">3</a></li>

@@ -1,24 +1,24 @@
-.parental-review--single {
+.prg-review--single {
 
 }
 
-.parental-review--single---heroimage {
+.prg-review--single---heroimage {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   max-height: 400px;
 }
 
-.parental-review--single---heroinner {
+.prg-review--single---heroinner {
 
 }
 
-.parental-review--single---hero {
+.prg-review--single---hero {
   overflow: hidden;
 
 }
 
-.parental-review--single---stars {
+.prg-review--single---stars {
   width: 230px;
   bottom: 0;
   .list-inline-item {
@@ -35,7 +35,7 @@
   }
 }
 
-.parental-review--single---title {
+.prg-review--single---title {
   font-size: 30px;
   @include media-breakpoint-up(md) {
     font-size: 40px;
@@ -45,7 +45,7 @@
   }
 }
 
-.parental-review--single---action {
+.prg-review--single---action {
   position: absolute;
   top: 10px;
   right: 15px;

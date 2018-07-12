@@ -1,0 +1,32 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px" viewBox="0 0 45 45" xml:space="preserve"
+	>
+	<style>
+    <![CDATA[
+	    circle {
+			stroke-dasharray: 1, 200;
+			stroke-dashoffset: 0;
+			animation: dash-color 1.5s ease-in-out infinite;
+			stroke-linecap: round;
+	    }
+		@keyframes dash-color {
+			0% {
+				stroke: #5CC7CE;
+				stroke-dasharray: 1, 200;
+				stroke-dashoffset: 0;
+			}
+			40% {
+				stroke: #52B1B8;
+				stroke-dasharray: 89, 200;
+				stroke-dashoffset: -35px;
+			}
+			60%,
+			100% {
+				stroke: #5CC7CE;
+				stroke-dasharray: 89, 200;
+				stroke-dashoffset: -124px;
+			}
+		}
+    ]]>
+  </style>
+  	<circle cx="22" cy="22" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"  />
+</svg>

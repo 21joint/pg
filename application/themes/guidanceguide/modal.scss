@@ -1,5 +1,21 @@
+.modal {
+  &.modal-loading {
+    .modal-content {
+      background-image: url("/../images/loader.svg");
+      > * {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  }
+}
+
+.modal-content > * {
+  transition: 0.2s opacity ease-in, 0.2s visibility ease-in;
+}
+
 .modal-dialog {
   &.modal-fluid {
-    max-width: none;
+    max-width: 1250px;
   }
 }
