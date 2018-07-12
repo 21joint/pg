@@ -51,7 +51,9 @@ class Pgservicelayer_ActionController extends Pgservicelayer_Controller_Action_A
             $this->respondWithError('no_record');
         
         $table = Engine_Api::_()->getDbTable("views","pgservicelayer");
-        $select = $table->select()->order("action_id DESC");
+        $select = $table->select()->order("action_id DESC")
+                ->where('content_id = ?',$subject->getIdentity())
+                ->where('conent_type = ?',$subject->getType());
         $paginator = Zend_Paginator::factory($select);
         
         $response['ResultCount'] = $paginator->getTotalItemCount();
