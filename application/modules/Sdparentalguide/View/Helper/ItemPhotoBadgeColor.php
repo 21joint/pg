@@ -36,7 +36,7 @@ class Sdparentalguide_View_Helper_ItemPhotoBadgeColor extends Zend_View_Helper_A
       } else if ($subject->gg_expert_bronze_count > 0) {
         $class = 'bronze';
         $count = $subject->gg_expert_bronze_count;
-      } else {
+      } else if ($subject->gg_expert_platinum_count < 1 || $subject->gg_expert_gold_count < 1 ||  $subject->gg_expert_silver_count < 1 || $subject->gg_expert_bronze_count < 1) {
         $class = 'primary';
         $count = $subject->gg_contribution_level;
       }
