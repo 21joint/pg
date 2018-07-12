@@ -113,13 +113,23 @@ class Pgservicelayer_MembershipController extends Pgservicelayer_Controller_Acti
             $this->respondWithError('no_record');
         }
         
+        if($subject->isSelf($viewer)){
+            $this->respondWithError('unauthorized',$this->translate("You cannot follow yourself."));
+        }        
+        
         $db = Engine_Api::_()->getDbtable('membership', 'user')->getAdapter();
         $db->beginTransaction();
 
         try {
             // Follow
             if($subject->getType() == "user"){
-                $this->followUser($subject,$viewer);
+                $proxyObject = Engine_Api::_()->getDbTable("membership","pgservicelayer")->membership($subject);
+                if($proxyObject->isMember($viewer)){
+                    $this->removeUserFollow($subject,$viewer);
+                }else{
+                    $this->followUser($subject,$viewer);
+                }
+                
             }else{
                 $this->followSeaoCore($subject,$viewer);
             }
@@ -132,16 +142,18 @@ class Pgservicelayer_MembershipController extends Pgservicelayer_Controller_Acti
     }
     
     public function followUser($user,$viewer){
-        $user->membership()
+        $proxyObject = Engine_Api::_()->getDbTable("membership","pgservicelayer")->membership($user);
+        $isUserApprovalRequired = $proxyObject->isUserApprovalRequired($viewer);
+        $proxyObject
             ->addMember($viewer)
             ->setUserApproved($viewer);
-        $row = $user->membership()->getRow($viewer);
+        $row = $proxyObject->getRow($viewer);
         if(!empty($row)){
             $row->gg_guid = $user->getGuid()."-".$viewer->getGuid();
             $row->creation_date = date("Y-m-d H:i:s");
             $row->save();
-        }
-        if( !$viewer->membership()->isUserApprovalRequired() && !$viewer->membership()->isReciprocal() ) {
+        }        
+        if( !$isUserApprovalRequired && !$viewer->membership()->isReciprocal() ) {
         // if one way friendship and verification not required
 
         // Add activity
@@ -149,10 +161,8 @@ class Pgservicelayer_MembershipController extends Pgservicelayer_Controller_Acti
             ->addActivity($viewer, $user, 'friends_follow', '{item:$subject} is now following {item:$object}.');
 
         // Add notification
-        Engine_Api::_()->getDbtable('notifications', 'activity')
+        Engine_Api::_()->getApi('Siteapi_Core', 'activity')
             ->addNotification($user, $viewer, $viewer, 'friend_follow');
-
-        $message = Zend_Registry::get('Zend_Translate')->_("You are now following this member.");
         
         $user->gg_followers_count++;
         $user->save();
@@ -160,7 +170,7 @@ class Pgservicelayer_MembershipController extends Pgservicelayer_Controller_Acti
         $viewer->gg_following_count++;
         $viewer->save();
 
-      } else if( !$viewer->membership()->isUserApprovalRequired() && $viewer->membership()->isReciprocal() ){
+      } else if( !$isUserApprovalRequired && $viewer->membership()->isReciprocal() ){
         // if two way friendship and verification not required
 
         // Add activity
@@ -170,28 +180,22 @@ class Pgservicelayer_MembershipController extends Pgservicelayer_Controller_Acti
             ->addActivity($viewer, $user, 'friends', '{item:$object} is now friends with {item:$subject}.');
 
         // Add notification
-        Engine_Api::_()->getDbtable('notifications', 'activity')
+        Engine_Api::_()->getApi('Siteapi_Core', 'activity')
             ->addNotification($user, $viewer, $user, 'friend_accepted');
-
-        $message = Zend_Registry::get('Zend_Translate')->_("You are now friends with this member.");
 
       } else if( !$user->membership()->isReciprocal() ) {
         // if one way friendship and verification required
 
         // Add notification
-        Engine_Api::_()->getDbtable('notifications', 'activity')
+        Engine_Api::_()->getApi('Siteapi_Core', 'activity')
             ->addNotification($user, $viewer, $user, 'friend_follow_request');
-
-        $message = Zend_Registry::get('Zend_Translate')->_("Your friend request has been sent.");
 
       } else if( $user->membership()->isReciprocal() ) {
         // if two way friendship and verification required
 
         // Add notification
-        Engine_Api::_()->getDbtable('notifications', 'activity')
+        Engine_Api::_()->getApi('Siteapi_Core', 'activity')
             ->addNotification($user, $viewer, $user, 'friend_request');
-
-        $message = Zend_Registry::get('Zend_Translate')->_("Your friend request has been sent.");
       }
     }
     
@@ -242,7 +246,7 @@ class Pgservicelayer_MembershipController extends Pgservicelayer_Controller_Acti
                             $user_subject = Engine_Api::_()->user()->getUser($value['user_id']);
                             //ADD NOTIFICATION
                             if (!empty($value['notification']) && in_array('follow', $action_notification)) {
-                                Engine_Api::_()->getDbtable('notifications', 'activity')->addNotification($user_subject, $viewer, $resource, 'follow_' . $resource_type, array());
+                                Engine_Api::_()->getApi('Siteapi_Core', 'activity')->addNotification($user_subject, $viewer, $resource, 'follow_' . $resource_type, array());
                             }
                         }
                     }
@@ -259,7 +263,7 @@ class Pgservicelayer_MembershipController extends Pgservicelayer_Controller_Acti
                 }
                 elseif($resource_type == 'sitereview_wishlist') {
                         //ADD NOTIFICATION
-                    Engine_Api::_()->getDbtable('notifications', 'activity')->addNotification($resource->getOwner(), $viewer, $resource, 'follow_' . $resource_type, array());
+                    Engine_Api::_()->getApi('Siteapi_Core', 'activity')->addNotification($resource->getOwner(), $viewer, $resource, 'follow_' . $resource_type, array());
                 }
 
                 if($resource_type != 'siteevent_event') {
@@ -343,7 +347,7 @@ class Pgservicelayer_MembershipController extends Pgservicelayer_Controller_Acti
             // Follow
             if($subject->getType() == "user"){
                 if($subject->isSelf($viewer)){
-                    $this->respondWithError('unauthorized',$this->translate("You cannot follow yourself."));
+                    $this->respondWithError('unauthorized',$this->translate("You cannot unfollow yourself."));
                 }
                 $this->removeUserFollow($subject,$viewer);
             }else{
@@ -387,5 +391,140 @@ class Pgservicelayer_MembershipController extends Pgservicelayer_Controller_Acti
         
         $viewer->gg_following_count--;
         $viewer->save();
+    }
+    
+    public function confirmAction(){
+        $this->validateRequestMethod("POST");
+        $viewer = Engine_Api::_()->user()->getViewer();
+        if(!$viewer->getIdentity() && $this->isApiRequest()){
+            $this->respondWithError('unauthorized');
+        }
+        $subject = null;
+        if(Engine_Api::_()->core()->hasSubject()){
+            $subject = Engine_Api::_()->core()->getSubject();
+        }
+        if (!($subject instanceof Core_Model_Item_Abstract) ||
+                !$subject->getIdentity()){
+            $this->respondWithError('no_record');
+        }
+        $user = $subject;
+        $proxyObject = Engine_Api::_()->getDbTable("membership","pgservicelayer")->membership($viewer);
+        $isUserApprovalRequired = Engine_Api::_()->getDbTable("membership","pgservicelayer")->isUserApprovalRequired($user,$viewer); //It will set whethere resource approval is required or not.
+        if($proxyObject->isMember($viewer)){
+            $this->respondWithError('unauthorized',$this->translate("You are already following."));
+        }
+        
+        $db = Engine_Api::_()->getDbtable('membership', 'user')->getAdapter();
+        $db->beginTransaction();
+
+        try {
+          $proxyObject->setResourceApproved($user);
+
+          // Add activity
+          if( !$user->membership()->isReciprocal() ) {
+            Engine_Api::_()->getDbtable('actions', 'activity')
+                ->addActivity($user, $viewer, 'friends_follow', '{item:$subject} is now following {item:$object}.');
+          } else {
+            Engine_Api::_()->getDbtable('actions', 'activity')
+              ->addActivity($user, $viewer, 'friends', '{item:$object} is now friends with {item:$subject}.');
+            Engine_Api::_()->getDbtable('actions', 'activity')
+              ->addActivity($viewer, $user, 'friends', '{item:$object} is now friends with {item:$subject}.');
+          }
+
+          // Add notification
+          if( !$user->membership()->isReciprocal() ) {
+            Engine_Api::_()->getApi('Siteapi_Core', 'activity')
+              ->addNotification($user, $viewer, $user, 'friend_follow_accepted');
+          } else {
+            Engine_Api::_()->getApi('Siteapi_Core', 'activity')
+              ->addNotification($user, $viewer, $user, 'friend_accepted');
+          }
+
+          // Set the requests as handled
+          $notification = Engine_Api::_()->getDbtable('notifications', 'activity')
+              ->getNotificationBySubjectAndType($viewer, $user, 'friend_request');
+          if( $notification ) {
+            $notification->mitigated = true;
+            $notification->read = 1;
+            $notification->save();
+          }
+          $notification = Engine_Api::_()->getDbtable('notifications', 'activity')
+              ->getNotificationBySubjectAndType($viewer, $user, 'friend_follow_request');
+          if( $notification ) {
+            $notification->mitigated = true;
+            $notification->read = 1;
+            $notification->save();
+          }
+          
+          $viewer->gg_followers_count++;
+          $viewer->save();
+        
+          $user->gg_following_count++;
+          $user->save();
+
+          // Increment friends counter
+          Engine_Api::_()->getDbtable('statistics', 'core')->increment('user.friendships');
+
+          $db->commit();
+
+          $this->successResponseNoContent('no_content');
+        } catch( Exception $e ) {
+            $db->rollBack();
+            $this->respondWithServerError($e);
+        }
+    }
+    public function rejectAction(){
+        $this->validateRequestMethod("POST");
+        $viewer = Engine_Api::_()->user()->getViewer();
+        if(!$viewer->getIdentity() && $this->isApiRequest()){
+            $this->respondWithError('unauthorized');
+        }
+        $subject = null;
+        if(Engine_Api::_()->core()->hasSubject()){
+            $subject = Engine_Api::_()->core()->getSubject();
+        }
+        if (!($subject instanceof Core_Model_Item_Abstract) ||
+                !$subject->getIdentity()){
+            $this->respondWithError('no_record');
+        }
+        $user = $subject;
+        $proxyObject = Engine_Api::_()->getDbTable("membership","pgservicelayer")->membership($viewer);
+        $isUserApprovalRequired = Engine_Api::_()->getDbTable("membership","pgservicelayer")->isUserApprovalRequired($user,$viewer); //It will set whethere resource approval is required or not.
+        if(!$proxyObject->isMember($user,false)){
+            $this->respondWithError('unauthorized',$this->translate("You are not already following."));
+        }
+        
+        // Process
+        $db = Engine_Api::_()->getDbtable('membership', 'user')->getAdapter();
+        $db->beginTransaction();
+
+        try {
+          if ($viewer->membership()->isMember($user)) {
+            $viewer->membership()->removeMember($user);
+          }
+
+          // Set the request as handled
+          $notification = Engine_Api::_()->getDbtable('notifications', 'activity')
+            ->getNotificationBySubjectAndType($viewer, $user, 'friend_request');
+          if( $notification ) {
+            $notification->mitigated = true;
+            $notification->read = 1;
+            $notification->save();
+          }
+          $notification = Engine_Api::_()->getDbtable('notifications', 'activity')
+              ->getNotificationBySubjectAndType($viewer, $user, 'friend_follow_request');
+          if( $notification ) {
+            $notification->mitigated = true;
+            $notification->read = 1;
+            $notification->save();
+          }
+
+          $db->commit();
+
+          $this->successResponseNoContent('no_content');
+        } catch( Exception $e ) {
+          $db->rollBack();
+          $this->respondWithServerError($e);
+        }
     }
 }
