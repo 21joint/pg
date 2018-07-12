@@ -3934,6 +3934,8 @@ mark,
   height: 20px;
   font-size: 12px;
   border: 2px solid #fff; }
+  .item-photo-guidance .statistic.primary {
+    background: linear-gradient(to bottom right, #5CC7CE, #5CC7CE); }
   .item-photo-guidance .statistic.bronze {
     background: linear-gradient(to bottom right, #E5B8A8, #D7947C); }
   .item-photo-guidance .statistic.silver {
