@@ -437,6 +437,7 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
         $form->save();
 
         $values = $form->getValues();
+        $viewer->view_privacy =  $values['privacy'];
         $viewer->search = $values['search'];
         $viewer->save();
 

@@ -355,4 +355,16 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         );
         return $rowData;
     }
+    
+    public function getViewData($view){
+        $owner = Engine_Api::_()->user()->getUser($view->owner_id);
+        return array(
+            'actionID' => $view->action_id,
+            'actionType' => ucfirst($view->action_type),
+            'contentType' => Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($view->conent_type),
+            'contentID' => $view->content_id,
+            'createdDateTime' => $this->getFormatedDateTime($view->creation_date),
+            'author' => $owner->getIdentity()?$this->getUserData($owner):array(),
+        );
+    }
 }
