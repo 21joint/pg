@@ -152,7 +152,7 @@ en4.core.runonce.add(function(){
     loadMvpExpertResults();
 });
 
-// See More Button linking to Community Leaderboard Page
+// See More Button linking to Find an Expert Part of the Page
 document.getElementById("seeMore").href = en4.core.baseUrl+"community/home#findExpert";
 
 // FAQ on click display question and transform plus to close
