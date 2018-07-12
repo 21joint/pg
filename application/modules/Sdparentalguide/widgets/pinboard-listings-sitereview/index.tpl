@@ -29,6 +29,7 @@ $this->headLink()
 
   function loadAjaxListings() {
     var formData = <?php echo json_encode($this->params) ?>;
+    console.log(formData);
     if (window.loadingAjaxListings) {
       window.loadingAjaxListings.cancel();
     }

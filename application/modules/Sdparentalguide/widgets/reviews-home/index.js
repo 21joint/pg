@@ -12,8 +12,8 @@ jQuery(document).ready(function() {
         console.log(JSON.parse(res));
       },
       error: (error) => {
-        alert(error);
+        console.error(error);
       }
-    })
+    });
   });
 });

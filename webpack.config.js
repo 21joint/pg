@@ -16,7 +16,9 @@ const IS_DEV = (process.env.NODE_ENV === 'dev');
 
 module.exports = {
   entry: {
-    parental: './application/modules/Sdparentalguide/index.js'
+    parental: [
+      './application/modules/Sdparentalguide/index.js'
+    ]
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
