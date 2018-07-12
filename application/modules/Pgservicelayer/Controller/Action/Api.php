@@ -11,6 +11,15 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
 {
     protected $_inputStream = null;
     public function init(){
+        if($this->isApiRequest()){
+            header("Content-Type: application/json");
+            $user_id = Engine_Api::_()->getApi('oauth', 'pgservicelayer')->validateOauthToken();
+            $user = Engine_Api::_()->user()->getUser($user_id);
+            $viewer = Engine_Api::_()->user()->getViewer();
+            if(!$viewer->getIdentity() && $user->getIdentity()){
+                Engine_Api::_()->user()->setViewer($user);
+            }            
+        }
         $timezone = Engine_Api::_()->getApi('settings', 'core')->core_locale_timezone;
         $viewer   = Engine_Api::_()->user()->getViewer();
         $defaultLocale = $defaultLanguage = Engine_Api::_()->getApi('settings', 'core')->getSetting('core.locale.locale', 'en_US');
@@ -23,7 +32,28 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
         Zend_Registry::set('timezone', $timezone);
         Engine_Api::_()->getApi('Core', 'siteapi')->setView();
         Engine_Api::_()->getApi('Core', 'siteapi')->setTranslate();
-        Engine_Api::_()->getApi('Core', 'siteapi')->setLocal();        
+        Engine_Api::_()->getApi('Core', 'siteapi')->setLocal();
+        
+        if (!$viewer->getIdentity()) {
+            $this->validateOrigin();
+        }
+        
+        $method = strtolower($this->getRequest()->getMethod());
+        if($method == 'put' || $method == 'delete' || $method == 'patch' || $method == 'post'){
+            $inputStream = $this->getInputStream();
+            $params = (array)@json_decode($inputStream);
+            if(empty($params)){
+                parse_str($inputStream,$params);
+            }
+            $request = Zend_Controller_Front::getInstance()->getRequest();
+            if(!empty($params) && is_array($params)){
+                foreach($params as $key => $param){
+                    $this->setParam($key, $param);
+                    $request->setParam($key,$param);
+                    $_REQUEST[$key] = $param;
+                }
+            }
+        }
     }
     public function getInputStream(){
         if($this->_inputStream == null){
@@ -40,7 +70,20 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
         if(empty($consumerKey)){
             $consumerKey = $request->getParam("oauth_consumer_key",$request->getParam("oauth-consumer-key"));
         }
+        if(empty($consumerKey)){
+            $consumerKey = $request->getServer("HTTP_POSTMAN_TOKEN",$request->getHeader("HTTP_POSTMAN_TOKEN"));
+        }
         if(!empty($consumerKey)){
+            return true;
+        }
+        
+//        $xRequestedWith = $this->getRequest()->getHeader("X-Requested-With");
+//        $xRequested = $this->getRequest()->getHeader("X-Request");;
+//        if($xRequestedWith == "XMLHttpRequest" && $xRequested == "JSON"){
+//            return false;
+//        }
+        $referer = $request->getServer("HTTP_REFERER");
+        if(!strstr($referer,$_SERVER['HTTP_HOST'])){
             return true;
         }
         return false;
@@ -76,7 +119,7 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
     public function sendResponse() {
         ob_clean();
         $accept = $this->getRequest()->getHeader("Accept");
-        if(empty($accept) || strstr(strtolower($accept), "application/json")){
+        if(empty($accept) || strstr(strtolower($accept), "json") || $this->isApiRequest()){
             header("Content-Type: application/json");
         }        
         $front = Zend_Controller_Front::getInstance();
@@ -108,31 +151,7 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
     }
     
     public function preDispatch() {
-        if($this->isApiRequest()){
-            header("Content-Type: application/json");
-            $user_id = Engine_Api::_()->getApi('oauth', 'pgservicelayer')->validateOauthToken();
-            $user = Engine_Api::_()->user()->getUser($user_id);
-            $viewer = Engine_Api::_()->user()->getViewer();
-            if(!$viewer->getIdentity() && $user->getIdentity()){
-                Engine_Api::_()->user()->setViewer($user);
-            }            
-        }
-        $method = strtolower($this->getRequest()->getMethod());
-        if($method == 'put' || $method == 'delete' || $method == 'patch' || $method == 'post'){
-            $inputStream = $this->getInputStream();
-            $params = (array)@json_decode($inputStream);
-            if(empty($params)){
-                parse_str($inputStream,$params);
-            }
-            $request = Zend_Controller_Front::getInstance()->getRequest();
-            if(!empty($params) && is_array($params)){
-                foreach($params as $key => $param){
-                    $this->setParam($key, $param);
-                    $request->setParam($key,$param);
-                    $_REQUEST[$key] = $param;
-                }
-            }
-        }
+                
     }
     
     public function dispatch($action) {
@@ -206,10 +225,13 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
         $this->sendResponse();
     }
     public function respondWithServerError($exception){
-        $this->getResponse()
-                ->setHttpResponseCode(500)
-                ->setBody('Service temporary unavailable '.$exception->getMessage()." ".$exception->getTraceAsString())
-                ;
+        $this->view->status_code = 500;
+        $this->view->status = "Error";
+        $this->view->error = true;
+        $this->view->error_code = 500;
+        $this->view->message = "Service temporary unavailable";
+        $this->view->exceptionMessage = $exception->getMessage();
+        $this->view->stackTrace = $exception->getTraceAsString();
         $this->sendResponse();
     }
     public function getHost() {
@@ -229,5 +251,68 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
         }
 
         return $getPhotoHost;
+    }
+    
+    public function requireSubject(){
+        $resourceType = $this->getParam("contentType");
+        $resourceId = $this->getParam("contentID");
+        $resourceType = Engine_Api::_()->sdparentalguide()->mapPGGResourceTypes($resourceType);
+        if(empty($resourceType) || empty($resourceId)){
+            $this->respondWithError('no_record');
+        }
+        
+        if(!Engine_Api::_()->hasItemType($resourceType)){
+            $this->respondWithError('no_record');
+        }
+        
+        $subject = Engine_Api::_()->getItem($resourceType,$resourceId);
+        if(empty($subject) || !$subject->getIdentity()){
+            $this->respondWithError('no_record');
+        }
+        
+        if(!Engine_Api::_()->core()->hasSubject()){
+            Engine_Api::_()->core()->setSubject($subject);
+        }
+    }
+    
+    public function validateOrigin(){
+        if(empty($_SERVER['HTTP_ORIGIN'])){
+            return true;
+        }
+        $origin = $_SERVER['HTTP_ORIGIN'];
+        $origin = str_replace("http://","",$origin);
+        $origin = str_replace("https://","",$origin);
+        $origin = str_replace("www","",$origin);
+        $host = $_SERVER['HTTP_HOST'];
+        $host = str_replace("http://","",$host);
+        $host = str_replace("https://","",$host);
+        $host = str_replace("www","",$host);
+        
+        if($origin == $host){
+            return true;
+        }
+                
+        $this->view->status_code = 400;
+        $this->view->status = "Error";
+        $this->view->error = true;
+        $this->view->error_code = "unauthorized";
+
+        $this->view->message = $this->translate('You do not have permission to view this.');
+
+        $this->sendResponse();        
+    }
+    
+    public function validateParams($params = array()){
+        $params[] = 'rewrite';
+        $requestParams = (array)$_GET;
+        $invalidParams = array();
+        foreach($requestParams as $key => $value){
+            if(!in_array($key,$params)){
+                $invalidParams[] = $key;
+            }
+        }
+        if(!empty($invalidParams)){
+            $this->respondWithError("invalid_parameters",sprintf($this->translate("Extra parameters detected. %s"),implode(", ",$invalidParams)));
+        }
     }
 }

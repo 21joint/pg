@@ -89,9 +89,9 @@ class Pgservicelayer_Model_DbTable_Files extends Storage_Model_DbTable_Files
     $path = APPLICATION_PATH . DIRECTORY_SEPARATOR . 'temporary';
     $viewer = Engine_Api::_()->user()->getViewer();
     $params = array(
-        'parent_type' => $viewer->getType(),
-        'parent_id' => $viewer->getIdentity(),
-        'user_id' => $viewer->getIdentity(),
+        'parent_type' => "user",
+        'parent_id' => (int)$viewer->getIdentity(),
+        'user_id' => (int)$viewer->getIdentity(),
         'name' => $fileName,
     );
 
@@ -201,5 +201,32 @@ class Pgservicelayer_Model_DbTable_Files extends Storage_Model_DbTable_Files
         $result = $function($image, $file);
       }
       return $file;
+  }
+  
+  public function updatePhotoParent($file_id, Core_Model_Item_Abstract $parent){
+      if(empty($file_id)){
+          return false;
+      }
+      $fileObject = $this->getFile($file_id);
+      if(empty($fileObject)){
+          return false;
+      }
+      
+      $fileObject->parent_type = $parent->getType();
+      $fileObject->parent_id = $parent->getIdentity();
+      $user_id = 0;
+      if(isset($parent->user_id)){
+          $user_id = $parent->user_id;
+      }
+      if(isset($parent->owner_id)){
+          $user_id = $parent->owner_id;
+      }
+      $fileObject->user_id = $user_id;
+      $fileObject->save();
+      
+      $this->update(array('parent_type' => $parent->getType(),'parent_id' => $parent->getIdentity(),'user_id' => $user_id), array(
+          'parent_file_id = ?' => $fileObject->getIdentity()
+      ));
+      return true;
   }
 }

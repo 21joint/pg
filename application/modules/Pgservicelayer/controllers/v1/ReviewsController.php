@@ -10,19 +10,7 @@
 class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_Api
 {
     public function init(){
-        $timezone = Engine_Api::_()->getApi('settings', 'core')->core_locale_timezone;
-        $viewer   = Engine_Api::_()->user()->getViewer();
-        $defaultLocale = $defaultLanguage = Engine_Api::_()->getApi('settings', 'core')->getSetting('core.locale.locale', 'en_US');
-        $defaultLocaleObj = new Zend_Locale($defaultLocale);
-        Zend_Registry::set('LocaleDefault', $defaultLocaleObj);
-
-        if ($viewer->getIdentity()) {
-            $timezone = $viewer->timezone;
-        }
-        Zend_Registry::set('timezone', $timezone);
-        Engine_Api::_()->getApi('Core', 'siteapi')->setView();
-        Engine_Api::_()->getApi('Core', 'siteapi')->setTranslate();
-        Engine_Api::_()->getApi('Core', 'siteapi')->setLocal();
+        parent::init();
     }
     public function indexAction(){
         try{
@@ -51,17 +39,19 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         if(!$viewer->getIdentity() && $this->isApiRequest()){
             $this->respondWithError('unauthorized');
         }
+        
         $id = $this->getParam("reviewID");   
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         $params = array();
         $customFieldValues = array();
         $page = $this->getParam("page",1);
-        $limit = $this->getParam("limit",50);
+        $limit = $this->getParam("limit",10);
         $params['type'] = 'browse';
         $params['user_id'] = $this->getParam("authorID",$this->getParam("author"));
         $params['listingtype_id'] = $this->getParam("typeID",-1);
         $params['category_id'] = $this->getParam("categoryID");
         $params['subcategory_id'] = $this->getParam("subCategoryID");
+        $params['show'] = null;
         $listingTable = Engine_Api::_()->getDbTable('listings', 'sitereview');
         $listingTableName = $listingTable->info("name");
         $listingTypeTable = Engine_Api::_()->getDbtable('locations', 'sitereview');
@@ -125,9 +115,10 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         $paginator = Zend_Paginator::factory($select);
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage($limit);
-        $response['ResultCount'] = $paginator->getTotalItemCount();
+        $response['ResultCount'] = $paginator->getTotalItemCount();        
         $response['Results'] = array();
         foreach($paginator as $sitereview){
+            $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($sitereview->getType());
             $response['Results'][] = $responseApi->getReviewData($sitereview);
         }
         $this->respondWithSuccess($response);
@@ -167,8 +158,8 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
             'title' => $this->getParam("title"),
             'category_id' => $this->getParam("categoryID"),
             'subcategory_id' => $this->getParam("subCategoryID"),
-            'body' => $this->getParam("summaryDescription"),
-            'gg_author_product_rating' => (int)$this->getParam("ownerRating",0),
+            'body' => $this->getParam("longDescription"),
+            'gg_author_product_rating' => (int)$this->getParam("authorRating",0),
             'photo_id' => (int)$this->getParam("photoID",0),
             'search' => (int)$this->getParam("search",0),
             'auth_view' => $this->getParam("authView","everyone"),
@@ -231,7 +222,6 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
                     }
                 }
             }
-            $values['gg_author_product_rating'] = (int)$values['owner_rating'];
             $sitereview = $table->createRow();
             $sitereview->setFromArray($values);
 
@@ -251,6 +241,10 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
             //END PACKAGE WORK
 
             $sitereview->save();
+            
+            if(!empty($sitereview->photo_id)){
+                Engine_Api::_()->getDbTable('files', 'pgservicelayer')->updatePhotoParent($sitereview->photo_id,$sitereview);
+            }
             
             $categoryIds = array();
             $categoryIds[] = $sitereview->category_id;
@@ -414,6 +408,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         $sitereviewData = $responseApi->getReviewData($sitereview);
         $response['ResultCount'] = 1;
+        $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($sitereview->getType());
         $response['Results'] = array($sitereviewData);
         $this->respondWithSuccess($response);
         
@@ -434,6 +429,9 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         
         $id = $this->getParam("reviewID");
         $sitereview = Engine_Api::_()->getItem("sitereview_listing",$id);
+        if(empty($sitereview)){
+            $this->respondWithError('no_record');
+        }
         
         $form = Engine_Api::_()->getApi("V1_Forms","pgservicelayer")->getReviewForm();
         $validators = Engine_Api::_()->getApi("V1_Validators","pgservicelayer")->getReviewValidators();
@@ -457,8 +455,8 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
             'title' => $this->getParam("title"),
             'category_id' => $this->getParam("categoryID"),
             'subcategory_id' => $this->getParam("subCategoryID"),
-            'body' => $this->getParam("summaryDescription"),
-            'gg_author_product_rating' => (int)$this->getParam("ownerRating",0),
+            'body' => $this->getParam("longDescription"),
+            'gg_author_product_rating' => (int)$this->getParam("authorRating",0),
             'photo_id' => (int)$this->getParam("photoID",0),
             'search' => (int)$this->getParam("search",0),
             'auth_view' => $this->getParam("authView","everyone"),
@@ -521,9 +519,12 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
                     }
                 }
             }
-            $values['gg_author_product_rating'] = (int)$values['owner_rating'];
             $sitereview->modified_date = date('Y-m-d H:i:s');
             $sitereview->setFromArray($values);
+            
+            if(!empty($sitereview->photo_id)){
+                Engine_Api::_()->getDbTable('files', 'pgservicelayer')->updatePhotoParent($sitereview->photo_id,$sitereview);
+            }
 
             if ($sitereview->approved) {
                 $sitereview->approved_date = date('Y-m-d H:i:s');
@@ -644,6 +645,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         $sitereviewData = $responseApi->getReviewData($sitereview);
         $response['ResultCount'] = 1;
+        $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($sitereview->getType());
         $response['Results'] = array($sitereviewData);
         $this->respondWithSuccess($response);
     }

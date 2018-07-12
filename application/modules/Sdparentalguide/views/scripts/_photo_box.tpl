@@ -40,8 +40,13 @@
                             </div>
                             <i class="fa fa-circle pl-2"></i>
                             <div class="holder-followers pl-2">
+<<<<<<< HEAD
                                 <?php echo $this->translate('Followers'); ?> 
                                 <?php echo $subject->gg_followers_count;?>
+=======
+                            <?php 
+                                echo $this->translate(array("%s Follower", "%s Followers", $subject->gg_followers_count), $this->locale()->toNumber($subject->gg_followers_count)) ?>
+>>>>>>> 02fd98dec249685b48df027011d7cd01cce898af
                             </div>
                         </div>
                     </div>
@@ -54,25 +59,33 @@
                                 <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
                                     <?php echo $subject->gg_bronze_count; ?>
                                 </div>
-                                <span class="text-muted small">Bronze</span>
+                                <span class="text-muted small">
+                                    <?php echo $this->translate('Bronze'); ?>
+                                </span>
                             </div>
                             <div class="col-sm silver">
                                 <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
                                     <?php echo $subject->gg_silver_count; ?>     
                                 </div>
-                                <span class="text-muted small">Silver</span>
+                                <span class="text-muted small">
+                                    <?php echo $this->translate('Silver'); ?>
+                                </span>
                             </div>
                             <div class="col-sm gold">
                                 <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
                                     <?php echo $subject->gg_gold_count; ?>  
                                 </div>
-                                <span class="text-muted small">Gold</span>
+                                <span class="text-muted small">
+                                    <?php echo $this->translate('Gold'); ?>
+                                </span>
                             </div>
                             <div class="col-sm platinium">
                                 <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
                                     <?php echo $subject->gg_platinum_count; ?>
                                 </div>
-                                <span class="text-muted small">Platinium</span>
+                                <span class="text-muted small">
+                                    <?php echo $this->translate('Platinium'); ?>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -81,14 +94,14 @@
                 <div class="footer border-top border-gray d-flex justify-content-between align-items-center">
                     
                     <div class="col-sm text-center border-right py-3">
-                        Reviews 
+                        <?php echo $this->translate('Reviews'); ?>
                         <span class="text-primary font-weight-bold">
                             <?php echo $subject->gg_review_count;?>
                         </span>
                     </div>
 
                     <div class="col-sm text-center py-3">
-                        Answers 
+                        <?php echo $this->translate('Answers'); ?>
                         <span class="text-primary font-weight-bold">
                            <?php echo count($answer); ?>
                         </span>
