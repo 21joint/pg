@@ -33,6 +33,9 @@ class Pgservicelayer_Loader extends Engine_Loader {
     if ($class == 'Core_Api_Search') {
       $class = "Pgservicelayer_Api_Search";
     }
+    if ($class == 'User_Model_DbTable_Membership') {
+      $class = "Pgservicelayer_Model_DbTable_Membership";
+    }
     return parent::load($class);
   }
 
