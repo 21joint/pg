@@ -10,7 +10,7 @@
 ?>
 
 
-<!--page hero-->
+<!-- PAGE HERO -->
 <div class="page-hero bg-white">
   <div class="container-fluid">
     <div class="row justify-content-center">
@@ -37,4 +37,4 @@
     </div>
   </div>
 </div>
-<!--page hero ends /-->
+<!-- PAGE HERO ///-->

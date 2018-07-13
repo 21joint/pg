@@ -233,7 +233,7 @@
             <li data-hover="dropdown" aria-haspopup="true"
                 aria-expanded="false">
               <a class="nav-link"
-                 href="<?php echo $this->baseUrl(); ?>/reviews/home"
+                 href="<?php echo $this->baseUrl(); ?>/widgets/reviews/home"
                  id="navbarDropdownMenuReviews">
                 <b><?php echo $this->translate('Reviews'); ?></b>
               </a>
@@ -401,7 +401,7 @@
 
   </div> <!-- header-bottom -->
 </header>
-<script type='text/javascript'>
+<script type="text/javascript">
   var notificationUpdater;
 
   en4.core.runonce.add(function (e) {

@@ -1,16 +1,20 @@
 @import "./colors";
 @import "./variables";
-@import "~bootstrap/scss/bootstrap";
+@import "./externals";
 @import "./helpers";
+@import "./components/breadcrumb";
+@import "./components/forms";
+@import "./components/select2";
+@import "./components/hover-dropdown";
+@import "./components/modal";
 @import "./common";
-@import "./hover-dropdown";
-@import "./modal";
 @import "./header";
-@import "./breadcrumb";
 @import "./widgets/card";
 @import "./widgets/pagination";
+@import "./widgets/reviews/single";
+@import "./widgets/reviews/create";
 @import "./footer";
-@import "./reviews-view";
+
 
 // CORE
 .seaocore_up_button {

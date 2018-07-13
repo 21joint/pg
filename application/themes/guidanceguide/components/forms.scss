@@ -1,0 +1,15 @@
+label {
+  font-weight: 500;
+  @include media-breakpoint-up(sm) {
+    font-size: 16px;
+  }
+}
+
+.form-control {
+  border-style: solid;
+  border-width: 0 0 2px 0;
+  border-color: $primary;
+  resize: none;
+  border-radius: 0;
+  background-color: transparent;
+}

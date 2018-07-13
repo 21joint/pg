@@ -1,7 +1,8 @@
 .modal {
   &.modal-loading {
     .modal-content {
-      background-image: url("/../images/loader.svg");
+      background-image: url("/assets/images/loader.svg");
+      background-size: 18px;
       > * {
         opacity: 0;
         visibility: hidden;

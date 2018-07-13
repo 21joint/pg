@@ -1,0 +1,13 @@
+.prg-review--create {
+  .form-row {
+    & + .form-row {
+      margin-top: 80px;
+    }
+  }
+  textarea{
+    font-size: 28px;
+  }
+  @include media-breakpoint-up(sm) {
+    padding: 80px 0;
+  }
+}

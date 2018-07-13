@@ -30,6 +30,6 @@ module.exports = merge(webpackConfig, {
       }));
     }
   },
-  devtool: 'inline-source-map'
+  devtool: 'cheap-eval-source-map'
 
 });

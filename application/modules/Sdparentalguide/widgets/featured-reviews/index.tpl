@@ -61,8 +61,8 @@
   </div>
 </div>
 <!--PAGE SECTION  ///-->
-<div id="reviewSingleModal" class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-fluid" role="document">
+<div id="reviewSingleModal" class="modal fade" tabindex="-1" role="document">
+  <div class="modal-dialog modal-fluid">
     <div class="modal-content">
       <!-- SINGLE REVIEW LAYOUT -->
       <div class="prg-review--single">

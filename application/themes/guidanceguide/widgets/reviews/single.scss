@@ -2,6 +2,11 @@
 
 }
 
+.prg-review--single---hero {
+  overflow: hidden;
+
+}
+
 .prg-review--single---heroimage {
   background-repeat: no-repeat;
   background-size: cover;
@@ -10,11 +15,6 @@
 }
 
 .prg-review--single---heroinner {
-
-}
-
-.prg-review--single---hero {
-  overflow: hidden;
 
 }
 
@@ -55,5 +55,12 @@
     height: 50px;
     line-height: 1;
     color: #d6d6d6;
+  }
+}
+
+.prg-review--single---gallery {
+  img {
+    max-width: 264px;
+    max-height: 264px;
   }
 }
