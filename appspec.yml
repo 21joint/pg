@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /var/www/html/tst-pg/parentalguidance
+    destination: /var/www/html/int-pg/parentalguidance
 
 hooks:
   AfterInstall:
