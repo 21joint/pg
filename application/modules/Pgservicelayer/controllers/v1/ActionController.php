@@ -10,9 +10,7 @@
 class Pgservicelayer_ActionController extends Pgservicelayer_Controller_Action_Api
 {
     public function init(){
-        parent::init();
-        
-        $this->requireSubject();
+        parent::init();        
     }
     
     public function indexAction(){
@@ -22,6 +20,7 @@ class Pgservicelayer_ActionController extends Pgservicelayer_Controller_Action_A
                 $this->getAction();
             }
             else if($method == 'post'){
+                $this->requireSubject();
                 $this->postAction();
             }
             else if($method == 'put' || $method == 'patch'){
@@ -43,35 +42,48 @@ class Pgservicelayer_ActionController extends Pgservicelayer_Controller_Action_A
         if(!$viewer->getIdentity() && $this->isApiRequest()){
             $this->respondWithError('unauthorized');
         }
-        $subject = null;
-        if(Engine_Api::_()->core()->hasSubject()){
-            $subject = Engine_Api::_()->core()->getSubject();
-        }
-        if (!($subject instanceof Core_Model_Item_Abstract) || !$subject->getIdentity() )
-            $this->respondWithError('no_record');
         
         $page = $this->getParam("page",1);
         $limit = $this->getParam("limit",50);
         $table = Engine_Api::_()->getDbTable("views","pgservicelayer");
-        $select = $table->select()->order("action_id DESC")
-                ->where('content_id = ?',$subject->getIdentity())
-                ->where('conent_type = ?',$subject->getType());
+        $select = $table->select()->order("action_id DESC");
         $actionType = $this->getParam("actionType");
         if(!empty($actionType)){
-            $select->where("action_type = ?",$actionType);
+            $select->where("action_type = ?",strtolower($actionType));
         }
+        
+        $contentType = $this->getParam("contentType");
+        $contentType = Engine_Api::_()->sdparentalguide()->mapPGGResourceTypes($contentType);
+        if(!empty($contentType)){
+            $select->where("conent_type = ?",$contentType);
+        }
+        
+        $contentID = $this->getParam("contentID");
+        if(!empty($contentID)){
+            $select->where("content_id = ?",$contentID);
+        }
+        $actionID = $this->getParam("actionID");
+        if(!empty($actionID)){
+            $select->where("action_id = ?",$actionID);
+        }
+        $memberID = $this->getParam("memberID");
+        if(!empty($memberID)){
+            $select->where("owner_id = ?",$memberID);
+        }
+        
         $paginator = Zend_Paginator::factory($select);
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage($limit);
         
-        $response['ResultCount'] = $paginator->getTotalItemCount();
+        $response['ResultCount'] = 0;
         $response['Results'] = array();
         $response['contentType'] = "";
         if($page > $paginator->count()){
             $this->respondWithSuccess($response);
         }
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
-        foreach($paginator as $view){            
+        foreach($paginator as $view){
+            ++$response['ResultCount'];
             $response['Results'][] = $responseApi->getViewData($view);
         }
         $this->respondWithSuccess($response);
@@ -95,9 +107,9 @@ class Pgservicelayer_ActionController extends Pgservicelayer_Controller_Action_A
         $db->beginTransaction();
 
         try {
-            $actionType = $this->getParam("actionType","click");
-            if(empty($actionType)){
-                $actionType = "click";
+            $actionType = $this->getParam("actionType");
+            if(strtolower($actionType) != "click" && strtolower($actionType) != "view" && strtolower($actionType) != "pause"){
+                $this->respondWithError('unauthorized',$this->translate("Invalid actionType passed."));
             }
             $view = $table->addView($subject,$actionType);
             $db->commit();

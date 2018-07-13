@@ -134,7 +134,7 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
         ) {
             $data = @json_encode($this->view);
         } else {
-            $data = @json_encode($this->view, JSON_NUMERIC_CHECK);
+            $data = @json_encode($this->view);
         }
 
         if (!function_exists('json_encode') || empty($data))

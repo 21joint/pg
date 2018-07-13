@@ -115,13 +115,14 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         $paginator = Zend_Paginator::factory($select);
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage($limit);
-        $response['ResultCount'] = $paginator->getTotalItemCount();   
+        $response['ResultCount'] = 0;   
         $response['Results'] = array();
         if($page > $paginator->count()){
             $this->respondWithSuccess($response);
         }
         foreach($paginator as $sitereview){
             $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($sitereview->getType());
+            ++$response['ResultCount'];
             $response['Results'][] = $responseApi->getReviewData($sitereview);
         }
         $this->respondWithSuccess($response);
@@ -420,7 +421,12 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         $viewer = Engine_Api::_()->user()->getViewer();
         $viewer_id = $viewer->getIdentity();
         $level_id = !empty($viewer_id) ? $viewer->level_id : Engine_Api::_()->getDbtable('levels', 'authorization')->fetchRow(array('type = ?' => "public"))->level_id;
-        $listingtype_id = $this->getParam("typeID",0);
+        $id = $this->getParam("reviewID");
+        $sitereview = Engine_Api::_()->getItem("sitereview_listing",$id);
+        if(empty($sitereview)){
+            $this->respondWithError('no_record');
+        }
+        $listingtype_id = $sitereview->listingtype_id;
         $listingType = Engine_Api::_()->getItem("sitereview_listingtype",$listingtype_id);
         if(empty($listingType)){
             $this->respondWithError('no_record',$this->translate("Review category not specified"));
@@ -430,15 +436,25 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
             $this->respondWithError('unauthorized');
         }
         
-        $id = $this->getParam("reviewID");
-        $sitereview = Engine_Api::_()->getItem("sitereview_listing",$id);
-        if(empty($sitereview)){
-            $this->respondWithError('no_record');
-        }
+        
         
         $form = Engine_Api::_()->getApi("V1_Forms","pgservicelayer")->getReviewForm();
         $validators = Engine_Api::_()->getApi("V1_Validators","pgservicelayer")->getReviewValidators();
-        $values = $data = $this->getAllParams();
+        $values = $data = array(
+            'typeID' => $this->getParam("typeID",$sitereview->listingtype_id),
+            'title' => $this->getParam("title",$sitereview->getTitle()),
+            'categoryID' => $this->getParam("categoryID",$sitereview->category_id),
+            'subCategoryID' => $this->getParam("subCategoryID",$sitereview->subcategory_id),
+            'longDescription' => $this->getParam("longDescription",$sitereview->body),
+            'authorRating' => (int)$this->getParam("authorRating",$sitereview->gg_author_product_rating),
+            'photoID' => (int)$this->getParam("photoID",$sitereview->photo_id),
+            'search' => (int)$this->getParam("search",$sitereview->search),
+            'authView' => $this->getParam("authView","everyone"),
+            'authComment' => $this->getParam("authComment","everyone"),
+            'authTopic' => $this->getParam("authTopic","everyone"),
+            'authPhoto' => $this->getParam("authPhoto","everyone"),
+            'authVideo' => $this->getParam("authVideo","everyone"),
+        );
         
         foreach ($form as $element) {
             if (isset($data[$element['name']])){
@@ -454,14 +470,14 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         
         //Values for database
         $values = array(
-            'listingtype_id' => $this->getParam("typeID"),
-            'title' => $this->getParam("title"),
-            'category_id' => $this->getParam("categoryID"),
-            'subcategory_id' => $this->getParam("subCategoryID"),
-            'body' => $this->getParam("longDescription"),
-            'gg_author_product_rating' => (int)$this->getParam("authorRating",0),
-            'photo_id' => (int)$this->getParam("photoID",0),
-            'search' => (int)$this->getParam("search",0),
+            'listingtype_id' => $this->getParam("typeID",$sitereview->listingtype_id),
+            'title' => $this->getParam("title",$sitereview->getTitle()),
+            'category_id' => $this->getParam("categoryID",$sitereview->category_id),
+            'subcategory_id' => $this->getParam("subCategoryID",$sitereview->subcategory_id),
+            'body' => $this->getParam("longDescription",$sitereview->body),
+            'gg_author_product_rating' => (int)$this->getParam("authorRating",$sitereview->gg_author_product_rating),
+            'photo_id' => (int)$this->getParam("photoID",$sitereview->photo_id),
+            'search' => (int)$this->getParam("search",$sitereview->search),
             'auth_view' => $this->getParam("authView","everyone"),
             'auth_comment' => $this->getParam("authComment","everyone"),
             'auth_topic' => $this->getParam("authTopic","everyone"),
@@ -690,6 +706,10 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         $listingTypeTableName = $listingTypeTable->info('name');
         $select = $listingTypeTable->select()->from($listingTypeTableName, array('title_plural','title_singular', 'listingtype_id'))
                 ->where('visible = ?',1)->order("order ASC")->order("listingtype_id ASC");
+        $typeID = $this->getParam("typeID");
+        if(!empty($typeID)){
+            $select->where("listingtype_id = ?",$typeID);
+        }
         $listingTypes = $listingTypeTable->fetchAll($select);
         
         $table = Engine_Api::_()->getDbTable("categories","sitereview");

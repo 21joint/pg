@@ -75,6 +75,11 @@ class Pgservicelayer_MembershipController extends Pgservicelayer_Controller_Acti
             $select->where("poster_id = ?",$followerID);
         }
         
+        $approved = (bool)$this->getParam("approved",1);
+        if($subject->getType() == "user"){
+            $select->where("$tableName.active = ?",(int)$approved);
+        }
+        
         $orderByDirection = $this->getParam("orderByDirection","descending");
         $orderBy = $this->getParam("orderBy","createdDateTime");
         $orderByDirection = ($orderByDirection == "descending")?"DESC":"ASC";
@@ -90,13 +95,14 @@ class Pgservicelayer_MembershipController extends Pgservicelayer_Controller_Acti
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage($limit);
         
-        $response['ResultCount'] = $paginator->getTotalItemCount();
+        $response['ResultCount'] = 0;
         $response['Results'] = array();
         if($page > $paginator->count()){
             $this->respondWithSuccess($response);
         }
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         foreach($paginator as $row){
+            ++$response['ResultCount'];
             $response['Results'][] = $responseApi->getFollowData($subject,$row);
         }
         $this->respondWithSuccess($response);

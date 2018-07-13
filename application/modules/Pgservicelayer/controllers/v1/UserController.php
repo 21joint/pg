@@ -27,6 +27,15 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
             ->where("search = ?", 1)
             ->where("enabled = ?", 1)
             ;
+        $mvp = $this->getParam("mvp");
+        if(!empty($mvp)){
+            $select->where("gg_mvp = ?",1);
+        }
+        $expert = $this->getParam("expert");
+        if(!empty($expert)){
+            $select->where("gg_expert_bronze_count > ? OR gg_expert_silver_count > ? OR gg_expert_gold_count > ? OR gg_expert_platinum_count > ?",0);
+        }
+        
         $page = $this->getParam("page",1);
         $limit = $this->getParam("limit",10);
         
@@ -61,7 +70,7 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
         $response = array(
             'contributionRangeType' => $contributionRangeType,
             'orderBy' => $orderBy,
-            'ResultCount' => $paginator->getTotalItemCount(),
+            'ResultCount' => 0,
             'Results' => array(),
         );
         
@@ -71,6 +80,7 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
         }
         foreach($paginator as $user){
             $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($user->getType());
+            ++$response['ResultCount'];
             $response['Results'][] = $responseApi->getUserData($user);
         }
         $this->respondWithSuccess($response);
@@ -112,13 +122,14 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage($limit);
         
-        $response['ResultCount'] = $paginator->getTotalItemCount();
+        $response['ResultCount'] = 0;
         $response['Results'] = array();
         if($page > $paginator->count()){
             $this->respondWithSuccess($response);
         }
         foreach($paginator as $user){
             $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($user->getType());
+            ++$response['ResultCount'];
             $response['Results'][] = $responseApi->getUserData($user);
         }
         $this->respondWithSuccess($response);

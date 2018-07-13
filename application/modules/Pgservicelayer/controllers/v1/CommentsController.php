@@ -74,9 +74,13 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
         }else{
             $commentSelect->order("comment_id $orderByDirection");
         }
+        
         if(!empty($parentCommentId)){
             $commentSelect->where("parent_comment_id = ?",$parentCommentId);
+        }else{
+            $commentSelect->where("parent_comment_id = ?",0);
         }
+        
         if(!empty($commentId)){
             $commentSelect->where("comment_id = ?",$commentId);
         }
@@ -85,16 +89,17 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
         $comments->setCurrentPageNumber($page);
         $comments->setItemCountPerPage($limit);
         
-        $response['ResultCount'] = $comments->getTotalItemCount();
+        $response['ResultCount'] = 0;
         $response['Results'] = array();
-        $response['isLike'] = !empty($isLike) ? 1 : 0;
-        $response['canComment'] = $canComment;
+        $response['isLike'] = (bool)(!empty($isLike) ? 1 : 0);
+        $response['canComment'] = (bool)$canComment;
         if($page > $comments->count()){
             $this->respondWithSuccess($response);
         }
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         foreach($comments as $comment){
             $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($comment->getType());
+            ++$response['ResultCount'];
             $response['Results'][] = $responseApi->getCommentData($comment);
         }
         $this->respondWithSuccess($response);
@@ -104,6 +109,11 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
         $subject = null;
         if(Engine_Api::_()->core()->hasSubject()){
             $subject = Engine_Api::_()->core()->getSubject();
+        }
+        $parentCommentId = null;
+        if($subject->getType() == "core_comment"){
+            $subject = Engine_Api::_()->getItem($subject->resource_type,$subject->resource_id);
+            $parentCommentId = $this->getParam("contentID");
         }
         if (!($subject instanceof Core_Model_Item_Abstract) ||
                 !$subject->getIdentity() ||
@@ -121,12 +131,21 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
 
         $body = $this->getParam('body');
         $body = $filter->filter($body);
+        if(empty($body)){
+            $this->respondWithValidationError('validation_fail', array(
+                'body' => $this->translate("Please complete this field - it is required.")
+            ));
+        }
 
         $db = $subject->comments()->getCommentTable()->getAdapter();
         $db->beginTransaction();
 
         try {
-            $comment = $subject->comments()->addComment($viewer, $body);            
+            $comment = $subject->comments()->addComment($viewer, $body);
+            if(!empty($parentCommentId) && isset($comment->parent_comment_id)){
+                $comment->parent_comment_id = $parentCommentId;
+                $comment->save();
+            }
             Engine_Api::_()->getDbtable('statistics', 'core')->increment('core.comments');
             if (!empty($comment)) {
                 $db->commit();
@@ -151,6 +170,11 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
         if(Engine_Api::_()->core()->hasSubject()){
             $subject = Engine_Api::_()->core()->getSubject();
         }
+        $parentCommentId = null;
+        if($subject->getType() == "core_comment"){
+            $subject = Engine_Api::_()->getItem($subject->resource_type,$subject->resource_id);
+            $parentCommentId = $this->getParam("contentID");
+        }
         if (!($subject instanceof Core_Model_Item_Abstract) ||
                 !$subject->getIdentity() ||
                 (!method_exists($subject, 'comments') && !method_exists($subject, 'likes')))
@@ -160,13 +184,6 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
         if (!$viewer->getIdentity() && !$canComment)
             $this->respondWithError('unauthorized');
         
-        // Filter HTML
-        $filter = new Zend_Filter();
-        $filter->addFilter(new Engine_Filter_Censor());
-        $filter->addFilter(new Engine_Filter_HtmlSpecialChars());
-
-        $body = $this->getParam('body');
-        $body = $filter->filter($body);
         $comment_id = $this->getParam('commentID');
         if(empty($comment_id)){
             $this->respondWithError('no_record');
@@ -175,6 +192,20 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
         if(empty($comment)){
             $this->respondWithError('no_record');
         }
+        
+        // Filter HTML
+        $filter = new Zend_Filter();
+        $filter->addFilter(new Engine_Filter_Censor());
+        $filter->addFilter(new Engine_Filter_HtmlSpecialChars());
+
+        $body = $this->getParam('body',$comment->body);
+        $body = $filter->filter($body);
+        if(empty($body)){
+            $this->respondWithValidationError('validation_fail', array(
+                'body' => $this->translate("Please complete this field - it is required.")
+            ));
+        }
+        
         $poster = Engine_Api::_()->getItem($comment->poster_type, $comment->poster_id);
         if(!$poster->isSelf($viewer)){
             $this->respondWithError('unauthorized');
