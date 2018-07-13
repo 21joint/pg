@@ -48,13 +48,14 @@ class Pgservicelayer_SearchController extends Pgservicelayer_Controller_Action_A
         }
         
         $page = $this->getParam("page",1);
-        $limit = $this->getParam("limit",10);
+        $limit = $this->getParam("limit",50);
         $searchTable = Engine_Api::_()->getDbTable("search","core");
         $searchTableName = $searchTable->info("name");
         $select = $searchTable->select();
         $contentType = $this->getParam("contentType");
         $search= $this->getParam("search");
-        $availableTypes = Engine_Api::_()->getItemTypes();
+//        $availableTypes = Engine_Api::_()->getItemTypes();
+        $availableTypes = Engine_Api::_()->getApi("search","pgservicelayer")->getPggTypes();
         $topicID = $this->getParam("topicID");
         if(is_string($topicID) && !empty($topicID)){
             $select->where("topic_id = ?",$topicID);
@@ -114,6 +115,9 @@ class Pgservicelayer_SearchController extends Pgservicelayer_Controller_Action_A
         $paginator->setItemCountPerPage($limit);
         $response['ResultCount'] = $paginator->getTotalItemCount();
         $response['Results'] = array();
+        if($page > $paginator->count()){
+            $this->respondWithSuccess($response);
+        }
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         foreach($paginator as $key => $item){
             $searchItemData = $responseApi->getSearchItemData($item);

@@ -53,7 +53,7 @@ class Pgservicelayer_MembershipController extends Pgservicelayer_Controller_Acti
             $this->respondWithError('no_record');
         }
         $page = $this->getParam("page",1);
-        $limit = $this->getParam("limit",10);
+        $limit = $this->getParam("limit",50);
         if($subject->getType() == "user"){
             $table = $subject->membership()->getReceiver();
             $tableName = $table->info("name");
@@ -92,6 +92,9 @@ class Pgservicelayer_MembershipController extends Pgservicelayer_Controller_Acti
         
         $response['ResultCount'] = $paginator->getTotalItemCount();
         $response['Results'] = array();
+        if($page > $paginator->count()){
+            $this->respondWithSuccess($response);
+        }
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         foreach($paginator as $row){
             $response['Results'][] = $responseApi->getFollowData($subject,$row);

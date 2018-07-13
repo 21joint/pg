@@ -115,6 +115,9 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
         $paginator->setItemCountPerPage($limit);
         $response['ResultCount'] = $paginator->getTotalItemCount();
         $response['Results'] = array();
+        if($page > $paginator->count()){
+            $this->respondWithSuccess($response);
+        }
         foreach($paginator as $answer){
             $response['resourceType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($answer->getType());
             $response['Results'][] = $responseApi->getAnswerData($answer,$subject);

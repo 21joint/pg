@@ -69,6 +69,9 @@ class Pgservicelayer_TopicController extends Pgservicelayer_Controller_Action_Ap
         $paginator->setItemCountPerPage($limit);
         $response['ResultCount'] = $paginator->getTotalItemCount();
         $response['Results'] = array();
+        if($page > $paginator->count()){
+            $this->respondWithSuccess($response);
+        }
         foreach($paginator as $topic){
             $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($topic->getType());
             $response['Results'][] = $responseApi->getTopicData($topic);

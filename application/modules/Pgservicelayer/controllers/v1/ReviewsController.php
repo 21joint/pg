@@ -45,7 +45,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         $params = array();
         $customFieldValues = array();
         $page = $this->getParam("page",1);
-        $limit = $this->getParam("limit",10);
+        $limit = $this->getParam("limit",50);
         $params['type'] = 'browse';
         $params['user_id'] = $this->getParam("authorID",$this->getParam("author"));
         $params['listingtype_id'] = $this->getParam("typeID",-1);
@@ -115,8 +115,11 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         $paginator = Zend_Paginator::factory($select);
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage($limit);
-        $response['ResultCount'] = $paginator->getTotalItemCount();        
+        $response['ResultCount'] = $paginator->getTotalItemCount();   
         $response['Results'] = array();
+        if($page > $paginator->count()){
+            $this->respondWithSuccess($response);
+        }
         foreach($paginator as $sitereview){
             $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($sitereview->getType());
             $response['Results'][] = $responseApi->getReviewData($sitereview);

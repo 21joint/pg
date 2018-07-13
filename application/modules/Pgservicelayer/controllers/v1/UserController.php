@@ -27,6 +27,8 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
             ->where("search = ?", 1)
             ->where("enabled = ?", 1)
             ;
+        $page = $this->getParam("page",1);
+        $limit = $this->getParam("limit",10);
         
         //Contribution Range
         if(strtolower($contributionRangeType) == "week" || strtolower($contributionRangeType) == "month"){
@@ -53,17 +55,20 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
         }
         
         $paginator = Zend_Paginator::factory($select);
-        $paginator->setItemCountPerPage($this->getParam("limit",10));
-        $paginator->setCurrentPageNumber($this->getParam("page",1));
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage($limit);
         
         $response = array(
             'contributionRangeType' => $contributionRangeType,
             'orderBy' => $orderBy,
+            'ResultCount' => $paginator->getTotalItemCount(),
             'Results' => array(),
         );
-        $api = Engine_Api::_()->sdparentalguide();
+        
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
-        $response['ResultCount'] = $paginator->getTotalItemCount();
+        if($page > $paginator->count()){
+            $this->respondWithSuccess($response);
+        }
         foreach($paginator as $user){
             $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($user->getType());
             $response['Results'][] = $responseApi->getUserData($user);
@@ -101,12 +106,17 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
             $select->where("$usersTableName.user_id IN (?)",$id);
         }
         
+        $page = $this->getParam("page",1);
+        $limit = $this->getParam("limit",50);
         $paginator = Zend_Paginator::factory($select);
-        $paginator->setItemCountPerPage($this->getParam("limit",10));
-        $paginator->setCurrentPageNumber($this->getParam("page",1));
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage($limit);
         
         $response['ResultCount'] = $paginator->getTotalItemCount();
         $response['Results'] = array();
+        if($page > $paginator->count()){
+            $this->respondWithSuccess($response);
+        }
         foreach($paginator as $user){
             $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($user->getType());
             $response['Results'][] = $responseApi->getUserData($user);

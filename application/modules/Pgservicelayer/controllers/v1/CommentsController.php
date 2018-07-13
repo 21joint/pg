@@ -62,7 +62,7 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
             $this->respondWithError('unauthorized');
         
         $page = $this->getParam("page",1);
-        $limit = $this->getParam("limit",10);
+        $limit = $this->getParam("limit",50);
         $orderBy = $this->getParam("orderBy","createdDateTime");
         $orderByDirection = $this->getParam("orderByDirection","descending");
         $orderByDirection = (strtolower($orderByDirection) == "descending")?"DESC":"ASC";
@@ -89,7 +89,9 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
         $response['Results'] = array();
         $response['isLike'] = !empty($isLike) ? 1 : 0;
         $response['canComment'] = $canComment;
-        $response['canDelete'] = $canDelete;
+        if($page > $comments->count()){
+            $this->respondWithSuccess($response);
+        }
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         foreach($comments as $comment){
             $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($comment->getType());

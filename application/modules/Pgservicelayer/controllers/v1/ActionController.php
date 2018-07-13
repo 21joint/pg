@@ -50,15 +50,26 @@ class Pgservicelayer_ActionController extends Pgservicelayer_Controller_Action_A
         if (!($subject instanceof Core_Model_Item_Abstract) || !$subject->getIdentity() )
             $this->respondWithError('no_record');
         
+        $page = $this->getParam("page",1);
+        $limit = $this->getParam("limit",50);
         $table = Engine_Api::_()->getDbTable("views","pgservicelayer");
         $select = $table->select()->order("action_id DESC")
                 ->where('content_id = ?',$subject->getIdentity())
                 ->where('conent_type = ?',$subject->getType());
+        $actionType = $this->getParam("actionType");
+        if(!empty($actionType)){
+            $select->where("action_type = ?",$actionType);
+        }
         $paginator = Zend_Paginator::factory($select);
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage($limit);
         
         $response['ResultCount'] = $paginator->getTotalItemCount();
         $response['Results'] = array();
         $response['contentType'] = "";
+        if($page > $paginator->count()){
+            $this->respondWithSuccess($response);
+        }
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         foreach($paginator as $view){            
             $response['Results'][] = $responseApi->getViewData($view);
