@@ -418,7 +418,7 @@ function setupFamilyMember() {
 
     lastItem = lastItem + 1;
 
-    var htmlInputFields = '<input type="hidden" name="family_'+ lastItem +'[gender]" id="field-gender" value="'+gender+'"><input type="hidden" name="family_'+ lastItem +'[birthday]" id="field-birthday" value="'+birthdayDate+'">';
+    var htmlInputFields = '<input type="hidden" name="family" id="field-gender" value="'+gender+'"><input type="hidden" name="family" id="field-birthday" value="'+birthdayDate+'">';
 
     if(gender == 3) {
         genderImage = '<div class="unknown d-flex align-items-center justify-content-center text-white">X</div>';
@@ -445,7 +445,7 @@ function setupFamilyMember() {
         updateItem.remove();
         localStorage.removeItem('update');
     }
-        
+
     familyHolder.insertBefore(item, familyHolder.childNodes[0]);
 
     displayFamilySelector('month');

@@ -39,7 +39,6 @@ class Sdparentalguide_Plugin_Signup_Family extends Core_Plugin_FormSequence_Abst
   
   public function onProcess()
   {
-   
     
     // In this case, the step was placed before the account step.
     // Register a hook to this method for onUserCreateAfter
@@ -50,44 +49,36 @@ class Sdparentalguide_Plugin_Signup_Family extends Core_Plugin_FormSequence_Abst
       ));
       return;
     }
+
     $user = $this->_registry->user;
- 
     $data = $this->getSession()->data;
 
-    
-    // if(empty($data['members']) || count($data['members']) <= 0){
-    //     return;
-    // }
-    
+    echo "<pre>";
+    print_r($data);
+    exit;
 
-
-    $gender = $data['profile_gender'];
+    $gender = $data['profile_gender'] ? $data['profile_gender'] : 3;
     $age = $data['profile_age_range'];
-
-    if(empty($gender)){
-      $gender = 3;
-    }
 
     // Save values for gender and age
     $user->gg_gender = $gender;
     $user->gg_age_range = $age;
     
-    
-  
     //Meta for Gender
     $fieldsMeta = Engine_Api::_()->fields()->getTable('user', 'meta');
     $select = $fieldsMeta->select()
-                ->where('type = ?' ,'sex')
-                ->orwhere('type = ?', 'age_range');
-    
-    $rowMetaGender = $fieldsMeta->fetchAll($select);
+      ->where('type = ?' ,'sex')
+      ->orWhere('type = ?', 'age_range')
+    ;
+  
+    $fields = $fieldsMeta->fetchAll($select);
+    if(count($fields) < 2) return;
 
-    $ageId = $rowMetaGender[0]->field_id;
-    $genderId = $rowMetaGender[1]->field_id;
+    $ageId = $fields[0]->field_id;
+    $genderId = $fields[1]->field_id;
     
-    
-      $db = Engine_Db_Table::getDefaultAdapter();
-      $db->beginTransaction();
+    $db = Engine_Db_Table::getDefaultAdapter();
+    $db->beginTransaction();
 
     try {
 
@@ -105,14 +96,11 @@ class Sdparentalguide_Plugin_Signup_Family extends Core_Plugin_FormSequence_Abst
         $valueAge->item_id =$user->getIdentity();
         $valueAge->value = $age; 
         $valueAge->save();
-
-
-        // User table gender
        
     } catch (Exception $ex) {
       $db->rollBack();
       throw $ex;
-     }
+    }
     
   }
 
