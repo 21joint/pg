@@ -4,6 +4,7 @@ application/settings/database.php
 application/settings/general.php
 application/settings/mail.php
 application/themes/guidanceguide/.sass-cache
+
 appspec.yml
 public/temporary
 temporary
@@ -14,6 +15,7 @@ temporary/package/
 temporary/scaffold
 temporary/scaffold/
 temporary/session
+<<<<<<< HEAD
 node_modules/
 bower_components/
 .DS_Store

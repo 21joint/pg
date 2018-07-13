@@ -165,7 +165,7 @@ div.layout_page_user_signup_index .left-side {
                                 <?php echo $this->translate('Tell us their gender'); ?>
                             </p>
                         </div>
-                        <div class="col-5 p-0 d-flex justify-content-end">
+                        <div class="col-3 p-0 d-flex justify-content-end">
                             <div class="close-form">
                                 <a href="javascript:void(0)" class="d-flex align-items-center justify-content-center" onclick="addChild(1)">
                                     <i class="fa fa-close text-white"> </i>
@@ -418,7 +418,7 @@ function setupFamilyMember() {
 
     lastItem = lastItem + 1;
 
-    var htmlInputFields = '<input type="hidden" name="family_'+ lastItem +'[gender]" id="field-gender" value="'+gender+'"><input type="hidden" name="family_'+ lastItem +'[birthday]" id="field-birthday" value="'+birthdayDate+'">';
+    var htmlInputFields = '<input type="hidden" name="family" id="field-gender" value="'+gender+'"><input type="hidden" name="family" id="field-birthday" value="'+birthdayDate+'">';
 
     if(gender == 3) {
         genderImage = '<div class="unknown d-flex align-items-center justify-content-center text-white">X</div>';
@@ -431,7 +431,7 @@ function setupFamilyMember() {
         genderType = '<?php echo $this->translate("Female"); ?>';
     }
 
-    editMember = '<div class="col-4 p-0 actions d-flex justify-content-end"><a href="javascript:void(0)" onclick="editFamily(this)" class="btn btn-light small p-3 mr-1">Edit</a><a href="javascript:void(0)" onclick="removeFamily(this)" class="btn btn-danger text-white small p-3">Delete</a></div>';
+    editMember = '<div class="col-4 p-0 actions d-flex justify-content-end"><a href="javascript:void(0)" onclick="editFamily(this)" class="btn btn-light small p-3 mr-2">Edit</a><a href="javascript:void(0)" onclick="removeFamily(this)" class="btn btn-danger text-white small p-3">Delete</a></div>';
 
     let item = new Element('div', {
         'class': 'row d-flex align-items-center my-4 mx-0',
@@ -440,11 +440,12 @@ function setupFamilyMember() {
     });
 
     let updateItem = document.getElementById(localStorage.getItem('update'));
+    console.log(localStorage.getItem('update'));
     if(updateItem) {
         updateItem.remove();
         localStorage.removeItem('update');
     }
-        
+
     familyHolder.insertBefore(item, familyHolder.childNodes[0]);
 
     displayFamilySelector('month');

@@ -78,6 +78,7 @@
                                     ->limit(5)
                                 ;
                                 $badges = $table->fetchAll($select);
+
                             ?>
 
                             <li class="border-grey-light py-3">
@@ -99,11 +100,12 @@
                                         <?php if($badge->profile_display > 0): ?>
                                             <?php 
                                                 $userTable = Engine_Api::_()->getDbtable('assignedBadges', 'sdparentalguide');
-                                                $select = $userTable->select()
-                                                    ->limit('user_id = ?', $this->subject->getIdentity(0))
+                                                $selectAssignedBadges = $userTable->select()
+                                                    ->where('user_id = ?', $this->subject->getIdentity(0))
                                                     ->where('badge_id = ?', $badge->getIdentity())
+                                                    ->limit(1)
                                                 ;
-                                                $uBadge = $userTable->fetchRow($select);
+                                                $uBadge = $userTable->fetchRow($selectAssignedBadges);
                                             ?>
                                             <?php if(count($uBadge) > 0): ?>
                                                 <div class="badge-image col-xl-2 col-lg-2 col-6 pl-lg-0 <?php echo ($uBadge->active == 1) ? 'active' : 'inactive'; ?> ">

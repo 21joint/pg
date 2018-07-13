@@ -4453,6 +4453,8 @@ body#global_page_user-profile-index {
 .layout_sdparentalguide_ajax_preferences #buttons-wrapper #fieldset-buttons a {
   display: none !important; }
 
+.holder-familyMember #add-birthday {
+  overflow: hidden; }
 .holder-familyMember h5 {
   font-size: 16px;
   font-weight: 700;
@@ -5192,9 +5194,6 @@ form.preference-holder {
 .full-height-auth #global_wrapper_extfox, .full-height-auth #global_wrapper_extfox #global_content_extfox, .layout_page_user_auth_forgot, .full-height-auth .layout_core_content, .full-height-auth .layout_main, .full-height-auth .layout_middle, .full-height-auth .layout_core_content, .layout_page_user_auth_login, .layout_page_user_signup_index, .layout_page_user_auth_reset, .layout_page_core_error_requireuser, .full-height-auth.layout_main {
   height: 100%; }
 
-.height-vh {
-  height: 100%; }
-
 @media only screen and (max-width: 768px) {
   .grib-grab-two {
     grid-template-columns: repeat(1, 1fr); }
@@ -5518,15 +5517,13 @@ form.preference-holder {
     padding-right: 0px !important; }
     .holder-familyMember .form-wrapper .form-element {
       padding: 0px !important; }
-  .holder-familyMember #add-birthday {
-    overflow: hidden; }
-    .holder-familyMember #add-birthday .col-12.d-flex, .holder-familyMember #add-birthday .col-12.years-range, .holder-familyMember #add-birthday .col-12.years, .holder-familyMember #add-birthday .col-12.final-date {
-      display: grid !important;
-      grid-template-columns: repeat(1, 1fr);
-      grid-gap: 10px;
-      grid-auto-rows: minmax(60px, auto); }
-      .holder-familyMember #add-birthday .col-12.d-flex.d-none, .holder-familyMember #add-birthday .col-12.years-range.d-none, .holder-familyMember #add-birthday .col-12.years.d-none, .holder-familyMember #add-birthday .col-12.final-date.d-none {
-        display: none !important; }
+  .holder-familyMember #add-birthday .col-12.d-flex, .holder-familyMember #add-birthday .col-12.years-range, .holder-familyMember #add-birthday .col-12.years, .holder-familyMember #add-birthday .col-12.final-date {
+    display: grid !important;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(60px, auto); }
+    .holder-familyMember #add-birthday .col-12.d-flex.d-none, .holder-familyMember #add-birthday .col-12.years-range.d-none, .holder-familyMember #add-birthday .col-12.years.d-none, .holder-familyMember #add-birthday .col-12.final-date.d-none {
+      display: none !important; }
   .holder-familyMember #family-information .btn-danger {
     visibility: visible !important; }
 

@@ -124,6 +124,7 @@
                                 </div>
                                 <?php endforeach; ?>
                             </div>
+                            
                             <!-- Add Arrows -->
                             <div class="swiper-button-next"></div>
                             <div class="swiper-button-prev"></div>
@@ -150,17 +151,19 @@
                                 </p>
                             </div>
                             <div class="holder text-right">
-                                <a href="javascript:void(0)" class="text-primary"> view all </a>
+                                <!-- <a href="javascript:void(0)" class="text-primary"> 
+                                    <?php echo $this->translate('view all'); ?> 
+                                </a> -->
                             </div>
                         </div>
 
-                        <div class="row m-0 pt-4 bottom followers">
+                        <div class="row pt-4 bottom followers">
 
                             <?php foreach( $this->friends as $membership ):
                             if( !isset($this->friendUsers[$membership->resource_id]) ) continue;
                             $member = $this->friendUsers[$membership->resource_id];
                             ?>
-                            <div class="col-sm-6 mb-1 py-3 item-holder" id="user_friend_<?php echo $member->getIdentity() ?>">
+                            <div class="col-sm-4 m-2 py-3 item-holder" id="user_friend_<?php echo $member->getIdentity() ?>">
                                 <div class=" text-center">
                                     <?php echo $this->htmlLink($member->getHref(), $this->itemPhoto($member, 'thumb.icon'), array('class' => 'profile_friends_icon')) ?>
                                 
