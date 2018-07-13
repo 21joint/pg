@@ -1041,6 +1041,10 @@ body#global_page_user-profile-index {
 }
 // Family Member
 .holder-familyMember{
+
+    #add-birthday {
+        overflow: hidden;
+    }
     h5 {
         font-size: 16px;
         font-weight: 700;
@@ -2096,9 +2100,6 @@ form.preference-holder {
 // For auth page
 .full-height-auth #global_wrapper_extfox,.full-height-auth #global_wrapper_extfox #global_content_extfox,.layout_page_user_auth_forgot,.full-height-auth .layout_core_content,.full-height-auth .layout_main,.full-height-auth .layout_middle,.full-height-auth .layout_core_content,.layout_page_user_auth_login,.layout_page_user_signup_index,.layout_page_user_auth_reset,.layout_page_core_error_requireuser,.full-height-auth.layout_main {
     height: 100%;
-} 
-.height-vh {
-    height: 100%;
 }
 
         
@@ -2724,7 +2725,6 @@ form.preference-holder {
         }
             
         #add-birthday {
-            overflow: hidden;
             .col-12.d-flex, .col-12.years-range, .col-12.years, .col-12.final-date  {
                 display: grid !important;
                 grid-template-columns: repeat(1, 1fr);

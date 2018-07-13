@@ -176,7 +176,7 @@
   <?php echo $headIncludes ?>
   
 </head>
-    <body style="margin:0;" id="global_page_<?php echo $identity ?>" class="<?php  echo ($identity == 'core-index-index')  ? '' : 'height-vh full-height-auth'; ?>">
+    <body style="margin:0;" id="global_page_<?php echo $identity ?>" class="<?php  echo ($identity == 'core-index-index')  ? '' : 'h-100 full-height-auth'; ?>">
         <?php echo $this->layout()->content ?>
     </body>
 </html>
