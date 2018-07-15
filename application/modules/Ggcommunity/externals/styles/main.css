@@ -1296,7 +1296,7 @@ div.draft_main_holder ul li:before {
     color:#B9CFD1!important;
 }
 /* Testing UI changes */
-.count_close_closed > #answer_count > svg{
+.count_close_closed > #answer_count > svg > path{
     fill: #ccc!important;
 }
 /* Testing End */
