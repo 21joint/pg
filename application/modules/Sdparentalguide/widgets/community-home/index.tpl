@@ -23,7 +23,7 @@
     <div id="sd-response" class="container d-flex justify-content-center align-items-center">
         <!-- Loader goes here -->
     </div>
-    <div class="mvps_content p-5 d-flex justify-content-between align-items-center">
+    <div class="mvps_content p-5 d-flex justify-content-between align-items-center position-relative">
         <!-- Content of ajax call goes here -->
     </div> 
 </div>
