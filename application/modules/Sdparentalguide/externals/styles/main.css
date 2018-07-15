@@ -168,7 +168,15 @@
   border-right: 0px;
 }
 .mvps_content{
-
+  
+}
+#mvps_left{
+  top: 240px;
+  left: 0px;
+}
+#mvps_right{
+  top: 240px;
+  right: 0px;
 }
 /* ADD REST OF THE STYLING BELOW THIS LINE*/
 .mvps_item{
