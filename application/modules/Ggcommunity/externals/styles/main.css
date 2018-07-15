@@ -1297,7 +1297,7 @@ div.draft_main_holder ul li:before {
 }
 /* Testing UI changes */
 .count_close_closed > #answer_count{
-    fill: #ccc;
+    fill: #ccc!important;
 }
 /* Testing End */
 .browse_main_holder .struggle_box_right ul.struggle_count_info  li span.count.answers.counter.count_close.closed_accepted_answer,.browse_main_holder .struggle_box_right ul.struggle_count_info  li span.count.answers.counter.count_close.closed_accepted_answer{
