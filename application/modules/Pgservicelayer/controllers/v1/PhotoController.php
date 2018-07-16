@@ -61,7 +61,7 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
         $paginator = Zend_Paginator::factory($select);
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage($limit);
-        $response['ResultCount'] = $paginator->getTotalItemCount();
+        $response['ResultCount'] = 0;
         $response['Results'] = array();
         foreach($paginator as $photo){
             $photos = $responseApi->getContentImage($photo);
@@ -70,6 +70,7 @@ class Pgservicelayer_PhotoController extends Pgservicelayer_Controller_Action_Ap
                 'photoURL' => ''
             );
             $photoArray = array_merge($photoArray,$photos);
+            ++$response['ResultCount'];
             $response['Results'][] = $photoArray;
         }
         $this->respondWithSuccess($response);
