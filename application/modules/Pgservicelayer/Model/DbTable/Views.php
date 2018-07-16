@@ -40,9 +40,13 @@ class Pgservicelayer_Model_DbTable_Views extends Engine_Db_Table {
         $row->save();
         
         if(strtolower($actionType) == "click"){
-            $subject->click_count++;
-        }else{
-            $subject->view_count++;
+            if(isset($subject->click_count)){
+                $subject->click_count++;
+            }            
+        }else if(strtolower($actionType) == "view"){
+            if(isset($subject->view_count)){
+                $subject->view_count++;
+            }            
         }
         $subject->save();
         

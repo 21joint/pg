@@ -82,4 +82,14 @@ class Pgservicelayer_Api_Search extends Core_Api_Search
     $row->modified_date = date("Y-m-d H:i:s");
     $row->save();
   }
+  
+  public function getPggTypes(){
+      return array(
+          'user',
+          'ggcommunity_question',
+          'sdparentalguide_badge',
+          'sdparentalguide_topic',
+          'sitereview_listing'
+      );
+  }
 }

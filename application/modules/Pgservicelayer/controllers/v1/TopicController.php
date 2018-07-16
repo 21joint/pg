@@ -67,21 +67,25 @@ class Pgservicelayer_TopicController extends Pgservicelayer_Controller_Action_Ap
         $paginator = Zend_Paginator::factory($select);
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage($limit);
-        $response['ResultCount'] = $paginator->getTotalItemCount();
+        $response['ResultCount'] = 0;
         $response['Results'] = array();
+        if($page > $paginator->count()){
+            $this->respondWithSuccess($response);
+        }
         foreach($paginator as $topic){
             $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($topic->getType());
+            ++$response['ResultCount'];
             $response['Results'][] = $responseApi->getTopicData($topic);
         }
         $this->respondWithSuccess($response);
     }
     
     public function postAction(){
-        
+        $this->respondWithError('invalid_method');
     }
     
     public function putAction(){
-        
+        $this->respondWithError('invalid_method');
     }
     
     public function deleteAction(){
@@ -113,7 +117,7 @@ class Pgservicelayer_TopicController extends Pgservicelayer_Controller_Action_Ap
             $db->commit();
         } catch (Exception $e) {
             $db->rollBack();
-            $this->respondWithServerError($ex);
+            $this->respondWithServerError($e);
         }
         $this->successResponseNoContent('no_content');
     }

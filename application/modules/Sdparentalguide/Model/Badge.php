@@ -219,4 +219,18 @@ class Sdparentalguide_Model_Badge extends Core_Model_Item_Abstract
     }
     $user->save();
   }
+  
+  public function isAssigned($user,$bool = false){
+      $assignedTable = Engine_Api::_()->getDbtable('assignedBadges', 'sdparentalguide');
+      $row = $assignedTable->fetchRow($assignedTable->select()->where('badge_id = ?',$this->getIdentity())->where('user_id = ?',$user->getIdentity()));
+      if($bool){
+          if($row){
+              return true;
+          }else{
+              return false;
+          }
+      }else{
+          return $row;
+      }
+  }
 } 
