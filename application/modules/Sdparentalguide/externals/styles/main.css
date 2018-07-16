@@ -168,6 +168,9 @@
 .mvps_main h3:last-child{
   border-right: 0px;
 }
+#go_to_leaderboard:hover{
+  color: #5cc7ce;
+}
 .mvps_content{
   
 }

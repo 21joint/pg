@@ -18,9 +18,17 @@
 <!-- MVPs and Experts Component -->
 <div class="mvps position-relative">
     <div class="mvps_main d-flex justify-content-around align-items-center">
-        <h3 id="meet_mvps" class="py-3 d-flex justify-content-center mvps_main_active">Meet our MVP's</h3>
-        <h3 id="meet_experts" class="py-3 d-flex justify-content-center">Meet our Experts</h3>
-        <h3 class="py-3 d-flex justify-content-center"><a id="go_to_leaderboard" href="">More...</a></h3>
+        <h3 id="meet_mvps" class="py-3 d-flex justify-content-center mvps_main_active">
+            <span class="d-md-block d-none">Meet our MVP's</span>
+            <span class="d-md-none d-block">MVP's</span>
+        </h3>
+        <h3 id="meet_experts" class="py-3 d-flex justify-content-center">
+            <span class="d-md-block d-none">Meet our Experts</span>
+            <span class="d-md-none d-block">Experts</span>
+        </h3>
+        <h3 class="py-3 d-flex justify-content-center">
+            <a id="go_to_leaderboard">More...</a>
+        </h3>
     </div>
     <div id="sd-response" class="mvps_content p-5 d-flex justify-content-between align-items-center">
         <!-- Loader goes here -->
