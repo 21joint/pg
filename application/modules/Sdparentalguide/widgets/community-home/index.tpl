@@ -272,7 +272,6 @@ document.getElementById("go_to_leaderboard").href = en4.core.baseUrl+"community/
 
 // Go Left and Right to Browse MVPs and Experts
 var current_mvp = 0;
-// Set Range for current_mvp
 document.getElementById("mvps_right").addEventListener('click', function(){
     if(current_mvp <= 16){
         this.addClass("d-block").removeClass("d-none");
