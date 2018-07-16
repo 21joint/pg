@@ -47,7 +47,7 @@
 /* Leaderboard Title styling end */
 
 .leaderboard_main{
-  padding: 24px 20px 12px;
+  padding: 24px 0px 12px;
   font-size: 12px;
   /*border-bottom: 1px solid #f5f5f5;*/
 }
@@ -142,7 +142,71 @@
   font-family: 'Nunito', sans-serif;
   border-radius: 30px;
 }
+#community_home_contribution{
+  flex: 2!important;
+}
 /* Community Home Page Jumbotron -> end */
+/* Community Home Page Mvps Showcase -> start */
+.mvps{
+  background-color: #fff;
+  border-radius: 20px;
+  color: #5f727f;
+  margin-bottom: 20px;
+}
+.mvps_main h3{
+  color: #5f727f;
+  flex: 1;
+  cursor: pointer;
+  border-right: 1px solid #e2e4e6;
+  border-bottom: 1px solid #e2e4e6;
+}
+.mvps_main_active{
+  color: #5cc7ce!important;
+  border-bottom: 2px solid #5cc7ce!important;
+}
+.mvps_main h3:last-child{
+  border-right: 0px;
+}
+.mvps_content{
+  
+}
+#mvps_left{
+  top: 240px;
+  left: 0px;
+}
+#mvps_right{
+  top: 240px;
+  right: 0px;
+}
+/* ADD REST OF THE STYLING BELOW THIS LINE*/
+.mvps_item{
+  padding-top: 20px;
+  border: 1px solid #e2e4e6;
+  border-radius: 10px;
+}
+.mvps_item img{
+  width: 100px;
+  border-radius: 50%;
+}
+.mvps_item h4{
+  border: 0px;
+  width: 160px;
+}
+.mvps_item span{
+  top: 96px;
+  left: 96px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 2px solid #e4fafa;
+  border-radius: 50%;
+  padding: 3px 8px;
+  background-color: #5cc7ce;
+  color: white;
+}
+.mvps_contribution{
+  border-top: 1px solid #e2e4e6;
+}
+/* Community Home Page Mvps Showcase -> end */
 /* Community Home Page Find Expert -> start */
 .find_expert_main{
   background-color: #fff;
@@ -579,10 +643,6 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
     }
     .leaderboard_item div:nth-child(2){
       flex: 6;
-    }
-    .leaderboard_main > .contribution_home{
-      flex: 2!important;
-      /* Fix for using community leaderboard */
     }
     /* Community Leaderboard Page End */
     /* Community Home Page Start */

@@ -9,21 +9,36 @@
 
 ?>
 
+<!-- Title Component -->
 <div class="leaderboard d-flex flex-column justify-content-center align-items-center">
     <h1 class="mt-5 text-uppercase">Our Community</h1>
     <h5>You can trust our community of real parents</h5>
     <a id="seeMore" class="btn-large btn-success text-white text-capitalize font-weight-bold mt-5 mb-4 px-5 py-3">See More</a>
 </div>
-<div>
-    
+<!-- MVPs and Experts Component -->
+<div class="mvps position-relative">
+    <div class="mvps_main d-flex justify-content-around align-items-center">
+        <h3 id="meet_mvps" class="py-3 d-flex justify-content-center mvps_main_active">Meet our MVP's</h3>
+        <h3 id="meet_experts" class="py-3 d-flex justify-content-center">Meet our Experts</h3>
+        <h3 class="py-3 d-flex justify-content-center"><a id="go_to_leaderboard" href="">More...</a></h3>
+    </div>
+    <div id="sd-response" class="container d-flex justify-content-center align-items-center">
+        <!-- Loader goes here -->
+    </div>
+    <div class="mvps_content p-5 d-flex justify-content-between align-items-center">
+        <!-- Content of ajax call goes here -->
+    </div>
+    <button id="mvps_left" class="btn-large rounded-circle position-absolute"><</button>
+    <button id="mvps_right" class="btn-large rounded-circle position-absolute">></button>
 </div>
+<!-- Leaderboard Component -->
 <div class="leaderboard">
     <div class="leaderboard_main d-flex justify-content-between">
         <div class="d-flex justify-content-center">Rank</div>
         <div class="d-flex">Leader</div>
-        <div id="points" class="order_by contribution_home d-flex justify-content-center align-items-center" data-order="contributionPoints">Contribution</div>
+        <div id="community_home_contribution" class="d-flex justify-content-center align-items-center">Contribution</div>
     </div>
-    <div id="sd-response" class="container d-flex justify-content-center align-items-center">
+    <div id="sd-response-mvps" class="container d-flex justify-content-center align-items-center">
         <!-- Loader goes here -->
     </div>
     <div class="leaderboard_content">
@@ -38,7 +53,7 @@
         <span id="leaderboard_next" class="pagination_button">></span>
     </div>
 </div>
-<div class="find_expert_main container-fluid py-5 mt-5">
+<div id="findExpert" class="find_expert_main container-fluid py-5 mt-5">
     <div class="row d-flex align-items-center">
         <div class="find_expert_badges col-lg position-relative d-flex justify-content-around align-items-center">
             <img class="front_image" src="<?php echo $this->baseUrl(); ?>/application/modules/Sdparentalguide/externals/images/mvp_badge.png"/>
@@ -133,13 +148,17 @@
 
 
 <script type='text/javascript'>
-//Dom ready
+//Dom ready for Leaderboard Results
 en4.core.runonce.add(function(){
     loadLeaderboardResults();
 });
+// Dom ready for Mvps and Experts Results
+en4.core.runonce.add(function(){
+    loadMvpExpertResults();
+});
 
-// See More Button linking to Community Leaderboard Page
-document.getElementById("seeMore").href = en4.core.baseUrl+"community/leaderboard";
+// See More Button linking to Find an Expert Part of the Page
+document.getElementById("seeMore").href = en4.core.baseUrl+"community/home#findExpert";
 
 // FAQ on click display question and transform plus to close
 document.querySelectorAll(".faq_toggle").forEach(function(toggle){
@@ -174,19 +193,19 @@ document.getElementById('leaderboard_next').addEventListener('click', function()
 });
 // Pagination Number Change End
 
-// Leaderboard Results Ajax Function
-function loadLeaderboardResults(page = 1){
+// Leaderboard Results Ajax Function -> start
+function loadLeaderboardResults(page = 1) {
     //Request data can be linked to form inputs
     var requestData = {};
-    requestData.mvp = null; //Possible values 1 or 0
-    requestData.expert = null; //Possible values 1 or 0
-    requestData.limit = 20; // Limit to 20 People per Page
-    requestData.page = page;// Limit to 3 Pages
-    
+    requestData.contributionRangeType = "Overall"; //Possible values "Overall", "Week", "Month"
+    requestData.orderBy = "contributionPoints"; //Possible values "contributionPoints", "questionCount", "reviewCount", "followers"
+    requestData.limit = 20;//Display limit for users
+    requestData.page = page;//Place for pagination
+
     var loader = en4.core.loader.clone();
     loader.addClass("sd_loader my-5");
-    var url = en4.core.baseUrl+"api/v1/member";
-    
+    var url = en4.core.baseUrl+"api/v1/ranking";
+
     var request = new Request.JSON({
         url: url,
         method: 'get',
@@ -195,7 +214,7 @@ function loadLeaderboardResults(page = 1){
         onError: function(){ loader.destroy(); }, //When request throws an error.
         onCancel: function(){ loader.destroy(); }, //When request is cancelled.
         onSuccess: function(responseJSON){ //When request is succeeded.
-            loader.destroy();
+            loader.destroy(); 
 
             var leaderboardContent = document.querySelector('.leaderboard_content');
 
@@ -203,7 +222,7 @@ function loadLeaderboardResults(page = 1){
 
                 var html = "";
                 var results = responseJSON.body.Results;
-                for(var i = 0; i < results.length; i++){
+                for(var i = 0; i < results.length; i++) {
                     html += '<div class="leaderboard_item d-flex justify-content-between">'+
                                 '<div class="d-flex justify-content-center align-items-center">'+
                                     ((page-1)*20+(i+1))+
@@ -221,13 +240,90 @@ function loadLeaderboardResults(page = 1){
                             '</div>';
                 }
                 leaderboardContent.innerHTML = html;
-                // Showing current page in Pagination Section
-                document.getElementById('leaderboard_pageNum').innerText = page;                          
+                // Showing current page in pagination section
+                document.getElementById('leaderboard_pageNum').innerText = page;
             }else{
                 leaderboardContent.innerHTML = responseJSON.message;
             }
         }
     });
     request.send();
-}    
+}
+// Leaderboard Results Ajax Function -> end
+
+// Toggle Between MVPs and Experts
+var disp_mvps;
+var disp_experts;
+document.getElementById("meet_mvps").addEventListener('click', function(){
+    this.addClass("mvps_main_active");
+    document.getElementById("meet_experts").removeClass("mvps_main_active");
+    // disp_mvps = 1;
+    // disp_experts = 0;
+    // loadMvpExpertResults(disp_mvps, disp_experts);
+});
+document.getElementById("meet_experts").addEventListener('click', function(){
+    this.addClass("mvps_main_active");
+    document.getElementById("meet_mvps").removeClass("mvps_main_active");
+    // disp_mvps = 0;
+    // disp_experts = 1;
+    // loadMvpExpertResults(disp_mvps, disp_experts);
+});
+
+// Go to Community Leaderboard Page
+document.getElementById("go_to_leaderboard").href = en4.core.baseUrl+"community/leaderboard";
+
+// Go Left and Right to Browse MVPs and Experts
+
+
+// MVPs and Experts Results Ajax Function -> start
+// Arguments disp_mvps = 1, disp_experts = 0 When everything get wired
+function loadMvpExpertResults(){
+    //Request data can be linked to form inputs
+    var requestData = {};
+    requestData.mvp = null; //Possible values 1 or 0 -> disp_mvps from arguments
+    requestData.expert = null; //Possible values 1 or 0 -> disp_experts from arguments
+    requestData.limit = 20; // Limit to 20 People per Page
+    requestData.page = 1;// Limit to 3 Pages
+    
+    var loader = en4.core.loader.clone();
+    loader.addClass("sd_loader");
+    var url = en4.core.baseUrl+"api/v1/member";
+    
+    var request = new Request.JSON({
+        url: url,
+        method: 'get',
+        data: requestData,
+        onRequest: function(){ loader.inject($("sd-response-mvps")); }, //When request is sent.
+        onError: function(){ loader.destroy(); }, //When request throws an error.
+        onCancel: function(){ loader.destroy(); }, //When request is cancelled.
+        onSuccess: function(responseJSON){ //When request is succeeded.
+            loader.destroy();
+
+            var leaderboardContent = document.querySelector('.mvps_content');
+            
+            if(responseJSON.status_code == 200){
+
+                var html = "";
+                var results = responseJSON.body.Results;
+                for(var i = 0; i < results.length; i++){
+                    html += '<div class="mvps_item d-flex flex-column align-items-center justify-content-center position-relative mr-5">'+
+                                '<img src="'+results[i].avatarPhoto.photoURLIcon+'"/>'+
+                                '<span class="cont_level position-absolute">'+
+                                        results[i].contributionLevel+'</span>'+
+                                '<h4 class="text-center mt-1 mb-5">'+results[i].displayName+'</h4>'+
+                                '<div class="mvps_contribution d-flex justify-content-center align-items-center w-100 py-2">'+
+                                    '<svg style="margin: 3px 5px 0px 0px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px" viewBox="0 0 42.03 39.91"><defs><linearGradient id="a" x1="26.26" y1="12.68" x2="40.67" y2="12.68" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#51b2b6"></stop><stop offset="1" stop-color="#5bc6cd"></stop></linearGradient><linearGradient id="b" y1="17.32" x2="17.39" y2="17.32" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5bc6cd"></stop><stop offset="1" stop-color="#51b2b6"></stop></linearGradient></defs><title>star_pg</title><path d="M40.23,8.55,32.7,18.46l-6.44-8.6L38.77,7C40.61,6.57,41.14,7.31,40.23,8.55Z" fill="url(#a)"></path><path d="M17.39,12,.93,16.13c-1,.24-1.28,1.35-.32,1.79l16.06,4.7Z" fill="url(#b)"></path><path d="M15.31,38.4,17.42,1c0-1.06,1.1-1.31,1.76-.45L41.59,28.45c.83,1,.6,2.71-1.71,1.81L26.36,25.09l-8.44,14A1.36,1.36,0,0,1,15.31,38.4Z" fill="#5bc6cd"></path></svg>'+
+                                    results[i].contribution+
+                                '</div>'+
+                            '</div>';
+                }
+                leaderboardContent.innerHTML = html;                       
+            }else{
+                leaderboardContent.innerHTML = responseJSON.message;
+            }
+        }
+    });
+    request.send();
+}
+// MVPS and Experts Results Ajax Function -> end
 </script>

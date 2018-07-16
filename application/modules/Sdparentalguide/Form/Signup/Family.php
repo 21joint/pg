@@ -31,11 +31,14 @@ class Sdparentalguide_Form_Signup_Family extends Engine_Form
         $this->addElement('Hidden', 'profile_gender', array(
             'order' => 332
         ));
+        $this->addElement('Hidden', 'family', array(
+            'order' => 333
+        ));
         
         $this->members->setRegisterInArrayValidator(false);
         
         $this->addElement('Hidden', 'nextStep', array(
-            'order' => 333
+            'order' => 334
         ));
 
         $this->addElement('Hidden', 'skip', array(
