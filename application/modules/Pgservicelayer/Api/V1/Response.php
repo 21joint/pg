@@ -404,7 +404,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         return array(
             'badge' => $badgeData,
             'member' => $this->getUserData($member),
-            'assigned' => $assigned,
+//            'assigned' => $assigned,
             'active' => $active
         );
     }

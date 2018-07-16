@@ -55,7 +55,7 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
                         new Zend_Db_Expr("COUNT($creditsTableName.credit_id) as gg_activities"))))
                         ->group("$creditsTableName.user_id");                
                 $select->where("$creditsTableName.creation_date BETWEEN '$maxDate' AND '$currentDate'");
-            }elseif($orderBy == 'reviewCount'){
+            }elseif($orderBy == 'reviewCount' || strtolower($orderBy) == 'reviews'){
                 $listingTable = Engine_Api::_()->getDbtable('listings','sitereview');
                 $listingTableName = $listingTable->info("name");
                 $select->joinLeft($listingTableName,"$listingTableName.owner_id = $usersTableName.user_id",array(new Zend_Db_Expr("COUNT($listingTableName.listing_id) as gg_review_count")));
@@ -70,7 +70,7 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
                 $select->where("$membershipTableName.creation_date BETWEEN '$maxDate' AND '$currentDate'")
                         ->where("$membershipTableName.active = ?",1)
                         ->group("$membershipTableName.resource_id");
-            }elseif($orderBy == 'questionCount'){
+            }elseif($orderBy == 'questionCount' || strtolower($orderBy) == 'questions'){
                 $questionsTable = Engine_Api::_()->getDbtable('questions','ggcommunity');
                 $questionsTableName = $questionsTable->info("name");
                 $select->joinLeft($questionsTableName,"$questionsTableName.user_id = $usersTableName.user_id",array(new Zend_Db_Expr("COUNT($questionsTableName.question_id) as gg_question_count")));
@@ -84,9 +84,9 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
         //Possible values "contributionPoints", "questionCount", "reviewCount", "followers"
         if($orderBy == 'contributionPoints'){
             $select->order("gg_contribution DESC");
-        }elseif($orderBy == 'reviewCount'){
+        }elseif($orderBy == 'reviewCount' || strtolower($orderBy) == 'reviews'){
             $select->order("gg_review_count DESC");
-        }elseif($orderBy == 'questionCount'){
+        }elseif($orderBy == 'questionCount' || strtolower($orderBy) == 'questions'){
             $select->order("gg_question_count DESC");
         }elseif($orderBy == 'followers'){
             $select->order("gg_followers_count DESC");
