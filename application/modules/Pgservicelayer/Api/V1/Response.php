@@ -372,4 +372,40 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             'author' => $owner->getIdentity()?$this->getUserData($owner):array(),
         );
     }
+    
+    public function getBadgeData(Sdparentalguide_Model_Badge $badge){
+        $contentImages = $this->getContentImage($badge);
+        $contentImages['photoID'] = (string)$badge->photo_id;
+        $topic = $badge->getTopic();
+        return array(
+            'badgeID' => (string)$badge->getIdentity(),
+            'badgeType' => (string)$badge->getBadgeType(),
+            'badgeLevel' => (string)$badge->getLevel(),
+            'badgePhoto' => $contentImages,
+            'badgeDescription' => (string)strip_tags($badge->description),
+            'topic' => $this->getTopicData($topic)
+        );
+    }
+    public function getMemberBadgeData(Sdparentalguide_Model_Badge $badge,$member = null){
+        $badgeData = $this->getBadgeData($badge);
+        if(empty($member) || !$member->getIdentity()){
+            $member = Engine_Api::_()->user()->getUser($member);
+        }
+        
+        $active = $assigned = false;
+        $assignedRow = $badge->isAssigned($member);
+        if(!empty($assignedRow)){
+            $assigned = true;
+            if($assignedRow->active == true){
+                $active = true;
+            }
+        }
+        
+        return array(
+            'badge' => $badgeData,
+            'member' => $this->getUserData($member),
+            'assigned' => $assigned,
+            'active' => $active
+        );
+    }
 }

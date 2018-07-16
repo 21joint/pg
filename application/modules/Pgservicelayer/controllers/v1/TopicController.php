@@ -117,7 +117,7 @@ class Pgservicelayer_TopicController extends Pgservicelayer_Controller_Action_Ap
             $db->commit();
         } catch (Exception $e) {
             $db->rollBack();
-            $this->respondWithServerError($ex);
+            $this->respondWithServerError($e);
         }
         $this->successResponseNoContent('no_content');
     }
