@@ -22,14 +22,12 @@
         <h3 id="meet_experts" class="py-3 d-flex justify-content-center">Meet our Experts</h3>
         <h3 class="py-3 d-flex justify-content-center"><a id="go_to_leaderboard" href="">More...</a></h3>
     </div>
-    <div id="sd-response" class="container d-flex justify-content-center align-items-center">
+    <div id="sd-response" class="mvps_content p-5 d-flex justify-content-between align-items-center">
         <!-- Loader goes here -->
-    </div>
-    <div class="mvps_content p-5 d-flex justify-content-between align-items-center">
         <!-- Content of ajax call goes here -->
     </div>
-    <button id="mvps_left" class="btn-large rounded-circle position-absolute"><</button>
-    <button id="mvps_right" class="btn-large rounded-circle position-absolute">></button>
+    <button id="mvps_left" class="btn-lg text-primary rounded-circle position-absolute d-none"><</button>
+    <button id="mvps_right" class="btn-lg text-primary rounded-circle position-absolute">></button>
 </div>
 <!-- Leaderboard Component -->
 <div class="leaderboard">
@@ -273,7 +271,28 @@ document.getElementById("meet_experts").addEventListener('click', function(){
 document.getElementById("go_to_leaderboard").href = en4.core.baseUrl+"community/leaderboard";
 
 // Go Left and Right to Browse MVPs and Experts
-
+var current_mvp = 0;
+// Set Range for current_mvp
+document.getElementById("mvps_right").addEventListener('click', function(){
+    if(current_mvp <= 16){
+        this.addClass("d-block").removeClass("d-none");
+        document.querySelector(".mvps_content").childNodes[current_mvp].addClass("d-none").removeClass("d-flex");
+        document.getElementById("mvps_left").addClass("d-block").removeClass("d-none");
+        current_mvp++;  
+    }else{
+        this.addClass("d-none").removeClass("d-block");
+    }  
+});
+document.getElementById("mvps_left").addEventListener('click', function(){
+    if(current_mvp >= 1){
+        current_mvp--;
+        this.addClass("d-block").removeClass("d-none");
+        document.querySelector(".mvps_content").childNodes[current_mvp].addClass("d-flex").removeClass("d-none");
+        document.getElementById("mvps_right").addClass("d-block").removeClass("d-none"); 
+    }else{
+        this.addClass("d-none").removeClass("d-block");
+    }
+});
 
 // MVPs and Experts Results Ajax Function -> start
 // Arguments disp_mvps = 1, disp_experts = 0 When everything get wired
