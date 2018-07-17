@@ -4,6 +4,7 @@
         . 'application/modules/Ggcommunity/externals/styles/swiper.min.css');
 ?>
 
+<!-- This Widget is Not Displayed on the Page until said otherwise -->
 <div class="featured_widget row ">
     <div class="widget_holder">
         <div class="holder-title">

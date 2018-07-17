@@ -876,6 +876,8 @@ div.draft_main_holder ul li:before {
 .layout_ggcommunity_featured_topics {
     margin:20px auto 20px;
     border-radius: 20px;
+    /* Display: none; -> Removed from view for testing */
+    display: none;
 }
 .layout_ggcommunity_featured_topics .featured_widget{
     background-color:#fff;

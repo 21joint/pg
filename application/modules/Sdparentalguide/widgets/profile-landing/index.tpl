@@ -226,6 +226,7 @@
             </div> <!-- end of latest-guides -->
 
             <div class="latest-strugles bg-white widget">
+                <!-- Above latest-struggles are spelled wrong -->
                 <div class="holder p-4">
                     
                     <div class="d-flex justify-content-between border-bottom pb-3">
@@ -235,7 +236,7 @@
                             </p>
                         </div>
                         <div class="holder text-right">
-                            <a href="javascript:void(0)" class="text-primary"> <?php echo $this->translate('view all'); ?> </a>
+                            <a id="pokusaj" class="text-primary" href="javascript:void(0)"> <?php echo $this->translate('view all'); ?> </a>
                         </div>
                     </div>
 
