@@ -10,9 +10,10 @@ class Ggcommunity_Api_Core extends Core_Api_Abstract
    
 
     public function getPermission($user) {
+        $level_id = !empty($user->getIdentity()) ? $user->level_id : Engine_Api::_()->getDbtable('levels', 'authorization')->fetchRow(array('type = ?' => "public"))->level_id;
         $permissionTable = Engine_Api::_()->getDbtable('permissions', 'authorization');
         $select = $permissionTable->select()
-          ->where('level_id = ?', $user->level_id)
+          ->where('level_id = ?', $level_id)
           ->where('type = ?', 'ggcommunity')
         ;
         $rows = $permissionTable->fetchAll($select);

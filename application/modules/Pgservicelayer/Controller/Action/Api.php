@@ -81,7 +81,11 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
 //            return false;
 //        }
         $referer = $request->getServer("HTTP_REFERER");
+<<<<<<< HEAD
         if (!strstr($referer, $_SERVER['HTTP_HOST'])) {
+=======
+        if(!strstr($referer,$_SERVER['HTTP_HOST'])){
+>>>>>>> aa26cc6c4efa38d281568f2905b2a2e45b35d6f0
             return true;
         }
         return false;
@@ -134,7 +138,7 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
         ) {
             $data = @json_encode($this->view);
         } else {
-            $data = @json_encode($this->view, JSON_NUMERIC_CHECK);
+            $data = @json_encode($this->view);
         }
 
         if (!function_exists('json_encode') || empty($data))

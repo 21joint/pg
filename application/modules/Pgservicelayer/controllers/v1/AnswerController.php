@@ -68,6 +68,7 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
         }
         
         $id = $this->getParam("questionID");
+        $answerID = $this->getParam("answerID");
         $search = $this->getParam("topicName");
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         $page = $this->getParam("page",1);
@@ -85,9 +86,15 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
             $select->where("$tableName.accepted = ?",(int)$answerChosen);
         }
         
-        $authorID = $this->getParam("authorID","-1");
+        $authorID = $this->getParam("memberID",$this->getParam("authorID","-1"));
         if($authorID != -1){
             $select->where("$tableName.user_id = ?",(int)$authorID);
+        }
+        
+        if(is_string($answerID) && !empty($answerID)){
+            $select->where("$tableName.answer_id = ?",$answerID);
+        }else if(is_array($id) && !empty ($id)){
+            $select->where("$tableName.answer_id IN (?)",$answerID);
         }
         
         if(is_string($id) && !empty($id)){
@@ -113,10 +120,14 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
         $paginator = Zend_Paginator::factory($select);
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage($limit);
-        $response['ResultCount'] = $paginator->getTotalItemCount();
+        $response['ResultCount'] = 0;
         $response['Results'] = array();
+        if($page > $paginator->count()){
+            $this->respondWithSuccess($response);
+        }
         foreach($paginator as $answer){
             $response['resourceType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($answer->getType());
+            ++$response['ResultCount'];
             $response['Results'][] = $responseApi->getAnswerData($answer,$subject);
         }
         $this->respondWithSuccess($response);
@@ -161,7 +172,7 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
             $answer->save();
             
             $answerChosen = $this->getParam("answerChosen");
-            if(!empty($answerChosen)){
+            if(!empty($answerChosen) && ($subject->user_id = $viewer->getIdentity() || $viewer->isAdminOnly())){
                 $table->update(array('accepted' => 0),array('parent_id = ?' => $subject->getIdentity(),'parent_type = ?' => $subject->getType()));
                 $answer->accepted = 1;
                 $answer->save();
@@ -230,7 +241,7 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
             $answer->save();
             
             $answerChosen = $this->getParam("answerChosen");
-            if(!empty($answerChosen)){
+            if(!empty($answerChosen) && ($subject->user_id = $viewer->getIdentity() || $viewer->isAdminOnly())){
                 $table->update(array('accepted' => 0),array('parent_id = ?' => $subject->getIdentity(),'parent_type = ?' => $subject->getType()));
                 $answer->accepted = 1;
                 $answer->save();

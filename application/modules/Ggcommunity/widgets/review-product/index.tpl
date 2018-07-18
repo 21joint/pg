@@ -1,3 +1,4 @@
+<!-- This Widget is Not Displayed on page until everything is wired correctly -->
 <div class="review_product_widget">
     <div class="widget_holder">
         <!-- holder image -->

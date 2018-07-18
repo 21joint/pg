@@ -119,10 +119,14 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
         $paginator = Zend_Paginator::factory($select);
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage($limit);
-        $response['ResultCount'] = $paginator->getTotalItemCount();
+        $response['ResultCount'] = 0;
         $response['Results'] = array();
+        if($page > $paginator->count()){
+            $this->respondWithSuccess($response);
+        }
         foreach($paginator as $question){
             $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($question->getType());
+            ++$response['ResultCount'];
             $response['Results'][] = $responseApi->getQuestionData($question);
         }
         $this->respondWithSuccess($response);
@@ -163,7 +167,7 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
             'title' => $this->getParam("title"),
             'topic_id' => $this->getParam("topicID"),
             'body' => $this->getParam("body"),
-            'photo_id' => $this->getParam("photoID"),
+            'photo_id' => (int)$this->getParam("photoID"),
             'draft' => 0
         );
         $table = Engine_Api::_()->getDbTable('questions','ggcommunity');
@@ -236,11 +240,17 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
         $form = Engine_Api::_()->getApi("V1_Forms","pgservicelayer")->getQuestionForm();
         $validators = Engine_Api::_()->getApi("V1_Validators","pgservicelayer")->getQuestionValidators();
         
-        $values = $data = $_REQUEST;
+        $values = $data = array(
+            'title' => $this->getParam("title",$question->getTitle()),
+            'topicID' => $this->getParam("topicID",$question->topic_id),
+            'body' => $this->getParam("body",$question->body),
+            'photoID' => $this->getParam("photoID",$question->photo_id),
+            'draft' => 0
+        );;
 
         foreach ($form as $element) {
-            if (isset($_REQUEST[$element['name']])){
-                $values[$element['name']] = $_REQUEST[$element['name']];
+            if (isset($data[$element['name']])){
+                $values[$element['name']] = $data[$element['name']];
             }
         }
         $values['validators'] = $validators;
@@ -251,10 +261,10 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
         
         //Values for database
         $values = array(
-            'title' => $this->getParam("title"),
-            'topic_id' => $this->getParam("topicID"),
-            'body' => $this->getParam("body"),
-            'photo_id' => $this->getParam("photoID"),
+            'title' => $this->getParam("title",$question->getTitle()),
+            'topic_id' => $this->getParam("topicID",$question->topic_id),
+            'body' => $this->getParam("body",$question->body),
+            'photo_id' => $this->getParam("photoID",$question->photo_id),
             'draft' => 0
         );
         $table = Engine_Api::_()->getDbTable('questions','ggcommunity');
