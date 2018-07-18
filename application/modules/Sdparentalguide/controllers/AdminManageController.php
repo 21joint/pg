@@ -17,6 +17,7 @@ class Sdparentalguide_AdminManageController extends Core_Controller_Action_Admin
       $settingFile = APPLICATION_PATH . '/application/settings/cache.php';
       $defaultFilePath = APPLICATION_PATH . '/temporary/cache';
       $this->view->form = $form = new Sdparentalguide_Form_Admin_Manage_Global();
+      return;
 
       if( file_exists($settingFile) ) {
         $currentCache = include $settingFile;
@@ -239,6 +240,10 @@ class Sdparentalguide_AdminManageController extends Core_Controller_Action_Admin
     
     if(!empty($values['level'])){
         $select->where("level = ?",$values['level']);
+    }
+    
+    if(!empty($values['type'])){
+        $select->where("type = ?",$values['type']);
     }
     
     if(isset($values['active']) && ($values['active'] == 0 || $values['active'] == 1)){
@@ -533,6 +538,127 @@ class Sdparentalguide_AdminManageController extends Core_Controller_Action_Admin
       $mvp = $this->getParam("mvp",0);
       $table = Engine_Api::_()->getDbtable('users', 'user');
       $table->update(array('gg_mvp' => (int)$mvp),array('user_id IN(?)' => $user_ids));
+      $this->view->status = true;
+  }
+  
+  public function jobsAction(){
+      $this->view->navigation = $navigation = Engine_Api::_()->getApi('menus', 'core')
+                ->getNavigation('sdparentalguide_admin_main', array(), 'sdparentalguide_admin_main_jobs');
+      
+      $this->view->formFilterJobs = $formFilterJobs = new Sdparentalguide_Form_Admin_Manage_FilterJobs();
+      
+      $tasksTable = Engine_Api::_()->getDbTable("tasks","sdparentalguide");
+      if($this->getRequest()->isPost()){
+          
+          $taskId = $this->getParam("task_id");
+          $page = $this->getParam("page",1);
+          $job_user = $this->getParam("job_user");
+          $task = Engine_Api::_()->getItem("sdparentalguide_task",$taskId);
+          if(empty($task)){
+              $this->view->status = false;
+              return;
+          }
+          if($page == 1){
+              $task->log(sprintf($this->view->translate("Batch Job Starting: %s"),$task->getTitle()));
+          }
+          $paginator = $task->run($page,$job_user);
+          $this->view->nextPage = 0;
+          if($paginator->count() > $paginator->getCurrentPageNumber()){
+              $this->view->nextPage = ($page+1);
+          }else{
+              $task->log(sprintf($this->view->translate("Batch Job Finished: %s"),$task->getTitle()));
+          }
+          $this->view->totalPages = $paginator->count();
+          $this->view->status = true;
+          
+      }else{       
+        $this->view->tasks = $tasksTable->fetchAll($tasksTable->select());
+      }
+  }
+  
+  public function suggestUserAction(){
+    $table = Engine_Api::_()->getDbTable('users', 'user');
+    $tableName = $table->info("name");
+    $valuesTable = Engine_Api::_()->fields()->getTable('user', 'values');
+    $valuesTableName = $valuesTable->info("name");
+    $select = $table->select();
+    $type = $this->getParam("type","displayname");
+    if( null !== ($text = $this->getParam('search', $this->getParam('value'))) ) {
+        $select->setIntegrityCheck(false)
+                ->from($tableName)
+                ->joinLeft($valuesTableName,"$valuesTableName.item_id = $tableName.user_id",array());
+        if($type == 'first_name'){
+            $select->where("$valuesTableName.field_id = ?",3)
+                    ->where("$valuesTableName.value LIKE ? ", '%'. $text .'%');
+        }else{
+            $select->where("$valuesTableName.field_id = ?",4)
+                    ->where("$valuesTableName.value LIKE ? ", '%'. $text .'%');
+        }
+    }
+    if( null !== ($text = $this->getParam('username')) ) {
+      $select->where("username LIKE ?", '%'. $text .'%');
+    }
+    if( null !== ($text = $this->getParam('email')) ) {
+      $select->where("email LIKE ?", '%'. $text .'%');
+    }
+    $select->limit(20);
+    $users = $table->fetchAll($select);
+    $data = array();
+    if(count($users) > 0){
+      foreach($users as $user){
+          $label = $user->username;
+          $displaynameArray = explode(" ",$user->displayname);
+          if($type == 'email'){
+              $label = $user->email;
+          }
+          $firstName = isset($displaynameArray[0])?$displaynameArray[0]:$user->displayname;
+          if($type == 'first_name'){
+              $label = $firstName;
+          }
+          $lastName = isset($displaynameArray[1])?$displaynameArray[1]:'';
+          if($type == 'last_name'){
+              $label = $lastName;
+          }
+          $data[] = array(
+            'type'  => 'user',
+            'id'    => $user->getIdentity(),
+            'guid'  => $user->getGuid(),
+            'label' => $label,
+            'photo' => "",
+            'url'   => $user->getHref(),
+            'first_name' => $firstName,
+            'last_name' => $lastName,
+            'email' => $user->email,
+            'username' => $user->username
+          );
+      }
+    }
+
+    if( $this->_getParam('sendNow', true) ) {
+      return $this->_helper->json($data);
+    } else {
+      $this->_helper->viewRenderer->setNoRender(true);
+      $data = Zend_Json::encode($data);
+      $this->getResponse()->setBody($data);
+    }
+  }
+  
+  public function userDetailAction(){
+      $user = Engine_Api::_()->user()->getUser($this->getParam("user_id"));
+      if(!$user->getIdentity()){
+          $this->view->status = false;
+          return;
+      }
+      
+      $api = Engine_Api::_()->sdparentalguide();
+      $userData = $user->toArray();
+      $userData['first_name'] = $api->getFieldValue($user,3);
+      $userData['last_name'] = $api->getFieldValue($user,4);
+      $userData['href'] = $user->getHref();
+      unset($userData['creation_ip']);
+      unset($userData['lastlogin_ip']);
+      unset($userData['gg_ip_lastmodified']);
+      $this->view->data = $userData;
       $this->view->status = true;
   }
 }

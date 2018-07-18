@@ -501,6 +501,40 @@ Currency
       'category' => 'specific',
       'helper' => 'fieldCurrency',
       'adminFormClass' => 'Fields_Form_Admin_Field_Currency',
-    )
+    ),
+
+    // family field
+    'family' => array(
+      'base' => 'text',
+      'label' => 'Family - GuidanceGuide',
+      'category' => 'specific',
+      'helper' => 'fieldTextareaLinked',
+    ),
+
+    // Gender 
+    'sex' => array(
+      'base' => 'text',
+      'label' => 'Gender - GuidanceGuide',
+      'category' => 'specific',
+      'helper' => 'fieldGender',
+    ),
+
+    'day_of_birth' => array(
+      'base' => 'text',
+      'label' => 'Birthday - GuidanceGuide',
+      'category' => 'specific',
+      'helper' => 'fieldTextareaLinked',
+    ),
+
+    'age_range' => array(
+      'base' => 'text',
+      'label' => 'Age Range - GuidanceGuide',
+      'category' => 'specific',
+      'helper' => 'fieldAgeRange',
+    ),
+
+
+   
+
   ),
 ) ?>

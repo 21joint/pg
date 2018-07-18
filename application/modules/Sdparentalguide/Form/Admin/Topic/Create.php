@@ -13,8 +13,15 @@ class Sdparentalguide_Form_Admin_Topic_Create extends Engine_Form
         $this->setAttrib("class","global_form_popup");
         
         $this->addElement("Text",'name',array(
-            'label' => 'Topic Name',
-            'placeholder' => 'Topic Name',
+            'label' => 'Topic Name (Singular)',
+            'placeholder' => 'Topic Name (Singular)',
+            'allowEmpty' => false,
+            'required' => true
+        ));
+        
+        $this->addElement("Text",'name_plural',array(
+            'label' => 'Topic Name (Plural)',
+            'placeholder' => 'Topic Name (Plural)',
             'allowEmpty' => false,
             'required' => true
         ));
@@ -40,30 +47,57 @@ class Sdparentalguide_Form_Admin_Topic_Create extends Engine_Form
         )
     ));
         
-        $listingtypes = Engine_Api::_()->getDbTable("listingtypes","sitereview")->getListingTypesArray();
-        $listingtypes['0'] = 'All';
-        ksort($listingtypes);
-        $this->addElement("Select",'listingtype_id',array(
-            'label' => 'Listing Type',
-//            'required' => true,
-//            'allowEmpty' => false,
-            'multiOptions' => $listingtypes,
-            'onchange' => 'loadCategories(this);'
+        $this->addElement("Radio","approved",array(
+            'label' => 'Status',
+            'allowEmpty' => false,
+            'required' => true,
+            'multiOptions' => array(
+                '1' => 'Active',
+                '0' => 'Inactive'
+            ),
+            'value' => 1
         ));
         
-        $this->addElement("Select",'category_id',array(
-            'label' => 'Listing Type Category',
-//            'required' => true,
-//            'allowEmpty' => false,
-            'onchange' => 'loadSubCategories(this);'
+        $this->addElement("Radio","badges",array(
+            'label' => 'Badges',
+            'allowEmpty' => false,
+            'required' => true,
+            'multiOptions' => array(
+                '1' => 'Allow Badges',
+                '0' => 'No Badges'
+            ),
+            'value' => 1
         ));
-        $this->category_id->setRegisterInArrayValidator(false);
         
-        
-        $this->addElement("Select",'subcategory_id',array(
-            'label' => 'Listing Type Subcategory',
+        $this->addElement("Radio","featured",array(
+            'label' => 'Featured',
+            'allowEmpty' => false,
+            'required' => true,
+            'multiOptions' => array(
+                '1' => 'Yes',
+                '0' => 'No'
+            ),
+            'value' => 1
         ));
-        $this->subcategory_id->setRegisterInArrayValidator(false);
+        
+        $this->addElement("File",'photo',array(
+            'label' => 'Icon',
+//            'description' => 'Uploaded image must be square.',
+            'required' => true,
+            'allowEmpty' => false,
+            'onchange' => 'previewIcon(this);',
+            'destination' => APPLICATION_PATH.'/public/temporary/',
+            'validators' => array(
+                array('Count', false, 1),
+                array('Extension', false, 'jpg,png,gif,jpeg'),
+            ),
+        ));
+        $this->photo->getDecorator('Description')->setOptions(array('placement' => 'APPEND'));
+        
+//        $dimentionValidator = new Engine_Validate_Callback(array($this, 'checkDimentions'), $this->photo);
+//        $dimentionValidator->setMessage("Please upload square image.");
+//        $this->photo->addValidator($dimentionValidator);
+        
         
         $this->addElement('Button', 'save', array(
             'label' => 'Save',

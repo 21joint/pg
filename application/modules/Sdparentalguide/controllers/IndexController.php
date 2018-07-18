@@ -300,6 +300,9 @@ class Sdparentalguide_IndexController extends Core_Controller_Action_Standard
         if(!empty($values['level'])){
             $select->where("level = ?",$values['level']);
         }
+        if(!empty($values['type'])){
+            $select->where("type = ?",$values['type']);
+        }
 
         $select->where("active = ?", 1);
 
@@ -487,5 +490,10 @@ class Sdparentalguide_IndexController extends Core_Controller_Action_Standard
             }
         }
         return $this->_helper->json($data);
+    }
+    
+    public function leaderboardAction(){
+        Engine_Api::_()->getApi("install","sdparentalguide")->addLeaderboardPage();
+        $this->_helper->content->setEnabled();
     }
 }

@@ -120,6 +120,7 @@ class Core_Model_Comment extends Core_Model_Item_Abstract
     $commentedItem = $this->getResource();
     $poster = $this->getPoster();
     $activityApi = Engine_Api::_()->getDbtable('actions', 'activity');
+    if(count($commentedItem) < 1) return;
     $activityApi->removeActivities($poster, $commentedItem, 'comment_' . $commentedItem->getType());
     parent::_postDelete();
   }

@@ -35,7 +35,16 @@ class Engine_View_Helper_HtmlImage extends Zend_View_Helper_HtmlElement
         'alt' => $alt), $attribs);
 
     $closingBracket = $this->getClosingBracket();
+     
+    
+    if (strpos($attribs['class'], 'item_photo_user') !== false) {
+      return '<div class="item-photo-guidance position-relative"><div class="statistic '. $attribs['gear'] .' circle-badge position-absolute '.  $attribs['class']  . ' d-flex justify-content-center align-items-center text-white"> ' .  $attribs['count']  .'</div> <img'.$this->_htmlAttribs($attribs).$closingBracket . "</div>";
+    } else {
 
-    return '<img'.$this->_htmlAttribs($attribs).$closingBracket;
+      return '<img'.$this->_htmlAttribs($attribs).$closingBracket;
+
+    }
+
+    
   }
 }

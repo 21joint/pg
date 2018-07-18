@@ -22,9 +22,7 @@ foreach( $it as $file ) {
   $ext = strtolower(ltrim(substr($basename, $pos), '.'));
   if( !in_array($ext, $imageExtensions) ) continue;
   $logoOptions['public/admin/' . $basename] = $basename;
-  
 }
-
 
 return array(
   
@@ -323,26 +321,6 @@ return array(
     ),
     'autoEdit' => true,
     'adminForm' => 'Ggcommunity_Form_Admin_Widget_ReviewProduct',
-    // 'adminForm' => array(
-    //   'elements' => array(
-    //     array(
-    //       'Text',
-    //       'title',
-    //       array(
-    //         'label' => 'Title'
-    //       )
-    //     ),
-    //     array(
-    //       'Select',
-    //       'select',
-    //       array(
-    //         'label' => 'Select Image',
-    //         'multiOptions' => $logoOptions
-    //       )
-    //     ),
-    //   )
-    // ),
-
   ),
 
   

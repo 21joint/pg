@@ -57,17 +57,17 @@ class Sdparentalguide_Form_Admin_Badge_FilterBadges extends Engine_Form
       ->addDecorator('HtmlTag', array('tag' => 'div','class' => 'topic_suggest'))
       ;
     
-//    $levelOptions = Engine_Api::_()->sdparentalguide()->getBadgeLevels();
-//    $levelOptions[''] = 'All';
-//    ksort($levelOptions);
-//    $level = new Zend_Form_Element_Select('level');
-//    $level
-//      ->setLabel('Level')
-//      ->clearDecorators()
-//      ->addDecorator('ViewHelper')
-//      ->addDecorator('Label', array('tag' => null, 'placement' => 'PREPEND'))
-//      ->addDecorator('HtmlTag', array('tag' => 'div'))
-//      ->setMultiOptions($levelOptions)->setAttrib("onchange","searchBadges();");
+    $levelOptions = Engine_Api::_()->sdparentalguide()->getBadgeLevels();
+    $levelOptions[''] = 'All';
+    ksort($levelOptions);
+    $level = new Zend_Form_Element_Select('level');
+    $level
+      ->setLabel('Level')
+      ->clearDecorators()
+      ->addDecorator('ViewHelper')
+      ->addDecorator('Label', array('tag' => null, 'placement' => 'PREPEND'))
+      ->addDecorator('HtmlTag', array('tag' => 'div'))
+      ->setMultiOptions($levelOptions)->setAttrib("onchange","searchBadges();");
     
     
     $badgeTypeOptions = Engine_Api::_()->sdparentalguide()->getBadgeTypes();
@@ -99,7 +99,7 @@ class Sdparentalguide_Form_Admin_Badge_FilterBadges extends Engine_Form
       ->clearDecorators()
       ->addDecorator('ViewHelper')
       ->addDecorator('Label', array('tag' => null, 'placement' => 'PREPEND'))
-      ->addDecorator('HtmlTag', array('tag' => 'div'))
+      ->addDecorator('HtmlTag', array('tag' => 'div','class' => 'sd_profile_display'))
       ->setMultiOptions(array(
           '-11' => 'All',
           '1' => 'Display on Profile',
@@ -124,7 +124,7 @@ class Sdparentalguide_Form_Admin_Badge_FilterBadges extends Engine_Form
 //      $listingtype_id,
       $topic,
       $badgeType,
-//      $level,
+      $level,
       $active,
       $profile_display
     ));

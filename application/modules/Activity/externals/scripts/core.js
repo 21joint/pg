@@ -118,8 +118,7 @@ en4.activity = {
     en4.core.request.send(new Request.JSON({
       'url' : en4.core.baseUrl + 'activity/notifications/hide'
     }));
-    $('updates_toggle').set('html', reset_text).removeClass('new_updates');
-    $('update_count').removeClass('minimenu_update_count_bubble_active');
+    $('updates_toggle').getElement('.tip-notifications').getElement('span').set('html', '0');
     /*
     var notify_link = $('core_menu_mini_menu_updates_count').clone();
     $('new_notification').destroy();
@@ -157,7 +156,7 @@ en4.activity = {
 
   showNotifications : function(responseJSON){
     if (responseJSON.notificationCount>0){
-      $('updates_toggle').set('html', responseJSON.text).addClass('new_updates');
+      $('updates_toggle').getElement('.tip-notifications').getElement('span').set('html', responseJSON.notificationCount);
     }
   },
 
@@ -357,8 +356,7 @@ NotificationUpdateHandler = new Class({
         if (!$('updates_toggle')) {
             return;
         }
-      $('updates_toggle').set('html', responseJSON.text).addClass('new_updates');
-      $('update_count').set('html', responseJSON.notificationCount).addClass('minimenu_update_count_bubble_active');
+      $('updates_toggle').getElement('.tip-notifications').getElement('span').set('html', responseJSON.notificationCount);
     } else {
       this.options.delay = Math.min(this.options.maxDelay, this.options.delayFactor * this.options.delay);
     }

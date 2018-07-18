@@ -34,7 +34,34 @@
     <div class="profile_cover_wrapper">
       <div class="profile_cover_photo_wrapper" id="user_cover_photo">
       </div>
-      <div class="profile_cover_head_section" id="user_main_photo"></div>
+      <div class="holder container">
+        <div class="row">
+          <div class="col-12 col-sm-6 p-0">
+            <div class="profile_cover_head_section" id="user_main_photo"></div>
+          </div>
+          <div class="p-0 col-sm-6 col-xl-6 col-lg-6 d-flex align-items-end  flex-sm-row flex-column justify-content-end user-options">
+
+            <?php if(!$this->user->isSelf($this->viewer())): ?>
+              <div class="item pr-sm-2 px-sm-0 px-5 d-sm-block d-flex justify-content-sm-end" id="user-friendship-cover">
+                <?php echo $this->userFriendshipAjax($this->user) ?>
+              </div>
+            <?php else: ?>
+              <div class="item pr-sm-2  d-sm-block px-sm-0 px-5 d-flex justify-content-end" id="user-friendship-cover">
+                <a class="btn btn-success text-white px-5 py-2 " href="javascript:void(0);" onclick="en4.gg.ggAjax('user', <?php echo $this->user->getIdentity(); ?>, 'user-privacy', this)">
+                  <?php echo ($this->user->search == 1) ? $this->translate('Make Private') : $this->translate('Make Public'); ?>
+                </a>
+              </div>
+            <?php endif; ?>
+            <?php if($this->user->isSelf($this->viewer())): ?>
+            <div class="item d-sm-block px-sm-0 px-5 d-flex justify-content-end mt-sm-0 mt-3">
+              <a class="btn btn-success text-white px-5 py-2 " href="javascript:void(0);" onclick="showEditContent()">
+                <?php echo $this->translate('Edit Profile');?>
+              </a>
+            </div>
+            <?php endif; ?>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="clr"></div>

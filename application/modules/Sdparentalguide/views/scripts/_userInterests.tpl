@@ -14,69 +14,44 @@
 ?>
 
 <style type="text/css">
-.sd_signup_interests>li{
-    padding: 30px;
-    box-sizing: border-box;
-    vertical-align: top;
-}
-.sd_listing_categories {
-    text-align: left;
-}
-.sd_listing_categories input{
-    display: none;
-}
-.sd_listing_categories .sd-checkbox{
-    width: 12px;
-    height: 12px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    vertical-align: middle;
-    margin-top: -2px;
-    margin-right: 5px;
-    background-color: #dedede;
-    position: relative;
-}
-.sd_listing_categories input:checked+span:before {
-    content: "";
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    position: absolute;
-    top: 1px;
-    left: 1px;
-    background-color: #1bc1d6;
-    border-radius: 3px;
-}
-.sd_listing_categories label {
-    cursor: pointer;
-}
-.sd_listing_photo img {
-    cursor: pointer;
+#global_page_user-signup-index .left-side {
+    display: none !important;
 }
 </style>
 
 <?php if(count($this->listingTypes) > 0): ?>
 <?php $catTable = Engine_Api::_()->getDbTable("categories","sitereview"); ?>
-<ul class="sd_signup_interests">
+<ul class="sd_signup_interests my-0 col-lg-9 mx-auto">
     <?php foreach($this->listingTypes as $listingType): ?>
     <?php $categories = $catTable->getCategoriesList($listingType->listingtype_id,0); ?>
     <?php if(count($categories) <= 0){ continue; } ?>
-    <li class="sd-interest-list">
-        <div class="sd_listing_photo">
-            <?php echo $this->itemPhoto($listingType,'thumb.profile',$listingType->getTitle(),array('title' => $listingType->getTitle(),'onclick' => 'markListingCategories(this);')); ?>
+   
+    <li class="mt-1 py-4">
+        <div class="holder-image position-relative mb-3 col-xl-11 col-11 mx-auto col-lg-11 px-0" style="background-image: url('<?php echo $listingType->getPhotoUrl(); ?>');">
+            <div class="holder-category-title bg-primary d-flex position-absolute align-items-center justify-content-center py-3 text-white">
+                <span><?php echo $listingType->getTitle(); ?></span>
+            </div>
+
+            <div class="holder-select-all position-absolute ">
+                <a class="d-flex  bg-success  align-items-center justify-content-center py-3 text-white" onclick="markListingCategories(this);"><?php echo $this->translate('Select all');?></a>
+            </div>
         </div>
-        <ul class="sd_listing_categories">
-            <?php foreach($categories as $category): ?>
-            <?php if(empty($category->getTitle())){ continue; } ?>
-            <li>
-                <label for="category-<?php echo $category->category_id; ?>">
-                    <input type="checkbox" name="categories[]" <?php if(in_array($category->category_id,$this->savedCategories)){ echo 'checked=checked'; } ?> class="sd_listing_category" value="<?php echo $category->category_id; ?>" id="category-<?php echo $category->category_id; ?>"/>
-                    <span class="sd-checkbox"></span><?php echo $category->getTitle(); ?>
-                </label>
-            </li>
-            <?php endforeach; ?>
-        </ul>
+
+        
+        <div class="holder-listing-categories col-xl-11 col-lg-11 col-11 mx-auto ">
+            <div  class="sd_listing_categories">
+
+                <?php foreach($categories as $category): ?>
+                    <?php if(empty($category->getTitle())){ continue; } ?>
+                    <div class="holder position-relative">
+                        <input type="checkbox"  name="categories[]" <?php if(in_array($category->category_id,$this->savedCategories)){ echo 'checked=checked'; } ?> class="sd_listing_category" value="<?php echo $category->category_id; ?>" id="category-<?php echo $category->category_id; ?>"/>
+                        <label class="label-check" for="category-<?php echo $category->category_id; ?>">
+                            <?php echo $category->getTitle(); ?>
+                        </label>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
     </li>
     <?php endforeach; ?>
 </ul>
@@ -85,54 +60,27 @@
 
 
 <script type="text/javascript">
-en4.core.runonce.add(function(){
-    var e = $$(".sd_signup_interests");
-    e.pinBoardSeaoMasonry({
-        singleMode: true, 
-        itemSelector: '.sd-interest-list'
-    });
-    setTimeout(function() {
-        var e = $$(".sd_signup_interests");
-        e.pinBoardSeaoMasonry({
-            singleMode: true, 
-            itemSelector: '.sd-interest-list'
-        });
-    }, 200);
-    setTimeout(function() {
-        var e = $$(".sd_signup_interests");
-        e.pinBoardSeaoMasonry({
-            singleMode: true, 
-            itemSelector: '.sd-interest-list'
-        });
-    }, 500);
-    setTimeout(function() {
-        var e = $$(".sd_signup_interests");
-        e.pinBoardSeaoMasonry({
-            singleMode: true, 
-            itemSelector: '.sd-interest-list'
-        });
-    }, 1000);
-});
-window.addEvent("resize",function(){
-    setTimeout(function() {
-        var e = $$(".sd_signup_interests");
-        e.pinBoardSeaoMasonry({
-            singleMode: true, 
-            itemSelector: '.sd-interest-list'
-        });
-    }, 500);
-});
+
 function markListingCategories(element){
+    
     var parent = $(element).getParent("li");
     var checkboxes = parent.getElements("input[type=checkbox]");
+   
     if(checkboxes.length <= 0){
         return;
     }
     if(parent.hasClass("checked_all")){
         checkboxes.set("checked",null);
-    }else{
-        checkboxes.set("checked",true);
+    } else{
+        checkboxes.set("checked",true);  
     }
     parent.toggleClass("checked_all");
 }
+
+var rightSidePreferences = document.getElementsByClassName("right-side")[0];
+rightSidePreferences.classList.remove('col-xl-6', 'col-lg-6');
+rightSidePreferences.classList.add('col-xl-12', 'col-lg-12','col-12','px-0',);
+rightSidePreferences.firstElementChild.classList.add('col-xl-12', 'col-lg-12');
+rightSidePreferences.firstElementChild.classList.remove('col-xl-7','col-lg-7');
+
 </script>

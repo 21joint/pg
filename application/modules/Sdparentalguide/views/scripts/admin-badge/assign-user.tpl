@@ -57,7 +57,7 @@
         </div>
         <div class='user_username'>
             <?php echo $this->htmlLink($user->getHref(),
-                  $this->string()->truncate($api->getFieldValue($user,3).", ".$api->getFieldValue($user,4), 32),
+                  $this->string()->truncate($api->getFieldValue($user,3)." ".$api->getFieldValue($user,4), 32),
                   array('target' => '_blank'))?>
         </div>
         <div class='user_username'>
@@ -73,9 +73,10 @@
     <thead>
       <tr>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Badge Name") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Image") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Topic Name") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Image") ?></th>        
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Type") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Level") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Topic Name") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Action") ?></th>
       </tr>
     </thead>
@@ -87,15 +88,20 @@
             <td class='admin_table_centered admin_table_bold'>
               <?php echo $item->getTitle(); ?>
             </td>
-            <td class='admin_table_centered admin_table_user'><?php echo $this->itemPhoto($item,'thumb.icon',$item->getTitle()); ?></td>
-            <td class='admin_table_centered admin_table_email'>
-                <?php if(($topic = $item->getTopic())): ?>
-                    <?php echo $topic->getTitle(); ?>
-                <?php endif; ?>
-            </td>
+            <td class='admin_table_centered admin_table_user'><?php echo $this->itemPhoto($item,'thumb.icon',$item->getTitle()); ?></td>            
             <td class="admin_table_centered nowrap">
                <?php if(($badgeType = $item->getBadgeType())): ?>
                     <?php echo $this->translate($badgeType); ?>
+                <?php endif; ?>
+            </td>
+            <td class="admin_table_centered nowrap">
+               <?php if(($level = $item->getLevel())): ?>
+                    <?php echo $this->translate($level); ?>
+                <?php endif; ?>
+            </td>
+            <td class='admin_table_centered admin_table_email'>
+                <?php if(($topic = $item->getTopic())): ?>
+                    <?php echo $topic->getTitle(); ?>
                 <?php endif; ?>
             </td>
             <td class='admin_table_centered table_options'>
@@ -319,6 +325,12 @@ function deleteAssignedBadge(element,badgeId,userId){
               onclick: "assignBadge(this,'"+badgeId+"','"+userId+"');"
           });
           anchor.inject(options,"bottom");
+          anchor = new Element("a",{
+                href: 'javascript:void(0);',
+                html: "&nbsp;&nbsp;<?php echo $this->translate('Display'); ?>",
+                onclick: "displayBadge(this,'"+badgeId+"','"+userId+"','1');"
+          });
+          anchor.inject(options,"bottom");
           var tableBody = $$(".admin_table_form.all_badges tbody");
           row.inject(tableBody[0],"bottom");
           Smoothbox.bind(row);
@@ -396,13 +408,13 @@ function updateDisplayStatus(element,badgeId,userId,status){
           var anchor = new Element("a",{
                 href: 'javascript:void(0);',
                 html: "&nbsp;&nbsp;<?php echo $this->translate('Hide'); ?>",
-                onclick: "updateAssignStatus(this,'"+badgeId+"','"+userId+"','0');"
+                onclick: "updateDisplayStatus(this,'"+badgeId+"','"+userId+"','0');"
           });
           if(status == '0'){
             anchor = new Element("a",{
                 href: 'javascript:void(0);',
                 html: "&nbsp;&nbsp;<?php echo $this->translate('Display'); ?>",
-                onclick: "updateAssignStatus(this,'"+badgeId+"','"+userId+"','1');"
+                onclick: "updateDisplayStatus(this,'"+badgeId+"','"+userId+"','1');"
             });
           }
           anchor.inject($(element),"after");
@@ -495,9 +507,10 @@ en4.core.runonce.add(function(){
     <thead>
       <tr>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Badge Name") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Image") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Topic Name") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Image") ?></th>        
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Type") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Level") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Topic Name") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Action") ?></th>
       </tr>
     </thead>
@@ -509,15 +522,20 @@ en4.core.runonce.add(function(){
             <td class='admin_table_centered admin_table_bold'>
               <?php echo $item->getTitle(); ?>
             </td>
-            <td class='admin_table_centered admin_table_user'><?php echo $this->itemPhoto($item,'thumb.icon',$item->getTitle()); ?></td>
-            <td class='admin_table_centered admin_table_email'>
-                <?php if(($topic = $item->getTopic())): ?>
-                    <?php echo $topic->getTitle(); ?>
-                <?php endif; ?>
-            </td>
+            <td class='admin_table_centered admin_table_user'><?php echo $this->itemPhoto($item,'thumb.icon',$item->getTitle()); ?></td>            
             <td class="admin_table_centered nowrap">
                <?php if(($badgeType = $item->getBadgeType())): ?>
                     <?php echo $this->translate($badgeType); ?>
+                <?php endif; ?>
+            </td>
+            <td class="admin_table_centered nowrap">
+               <?php if(($level = $item->getLevel())): ?>
+                    <?php echo $this->translate($level); ?>
+                <?php endif; ?>
+            </td>
+            <td class='admin_table_centered admin_table_email'>
+                <?php if(($topic = $item->getTopic())): ?>
+                    <?php echo $topic->getTitle(); ?>
                 <?php endif; ?>
             </td>
             <td class='admin_table_centered table_options'>

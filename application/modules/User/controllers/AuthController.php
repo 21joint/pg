@@ -30,12 +30,22 @@ class User_AuthController extends Core_Controller_Action_Standard
       return;
     }
 
+
+
     // Make form
     $this->view->form = $form = new User_Form_Login();
     $form->setAction($this->view->url(array('return_url' => null), 'user_login'));
     $form->populate(array(
       'return_url' => $this->_getParam('return_url'),
     ));
+
+
+    
+    // // For Button
+    $form->getElement('submit')->setAttrib('class', 'btn btn-outline-success text-uppercase py-2 w-100 px-0');
+
+    $form->getElement('cancel')->setAttrib('class', 'btn btn-outline-success text-uppercase py-2 w-100 px-0');
+   
 
     // Render
     $disableContent = $this->_getParam('disableContent', 0);
@@ -44,6 +54,8 @@ class User_AuthController extends Core_Controller_Action_Standard
         ->setEnabled()
         ;
     }
+
+    
     
     // Not a post
     if( !$this->getRequest()->isPost() ) {
@@ -496,6 +508,11 @@ class User_AuthController extends Core_Controller_Action_Standard
     // Make form
     $this->view->form = $form = new User_Form_Auth_Forgot();
 
+  
+    // For Button
+    $form->getElement('submit')->setAttrib('class', 'btn btn-success text-white py-2  text-uppercase w-50 mt-5');
+    
+
     // Check request
     if( !$this->getRequest()->isPost() ) {
       return;
@@ -572,6 +589,8 @@ class User_AuthController extends Core_Controller_Action_Standard
       return $this->_helper->redirector->gotoRoute(array('action' => 'home'), 'user_general', true);
     }
 
+    $this->_helper->layout->setLayout('default-auth');
+
     // Check for empty params
     $user_id = $this->_getParam('uid');
     $code = $this->_getParam('code');
@@ -606,6 +625,13 @@ class User_AuthController extends Core_Controller_Action_Standard
     
     // Make form
     $this->view->form = $form = new User_Form_Auth_Reset();
+
+    // For Button
+    $form->getElement('submit')->setAttrib('class', 'btn btn-success text-white py-2  text-uppercase w-50');
+    
+
+
+
     $form->setAction($this->_helper->url->url(array()));
 
     // Check request

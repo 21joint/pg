@@ -67,7 +67,7 @@
         </div>
         <div class='user_username'>
             <?php echo $this->htmlLink($user->getHref(),
-                  $this->string()->truncate($api->getFieldValue($user,3).", ".$api->getFieldValue($user,4), 32),
+                  $this->string()->truncate($api->getFieldValue($user,3)." ".$api->getFieldValue($user,4), 32),
                   array('target' => '_blank'))?>
         </div>
     </div>
@@ -81,6 +81,8 @@
       <tr>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Badge Name") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Image") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Type") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Level") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Topic Name") ?></th>
       </tr>
     </thead>
@@ -93,6 +95,16 @@
               <?php echo $item->getTitle(); ?>
             </td>
             <td class='admin_table_centered admin_table_user'><?php echo $this->itemPhoto($item,'thumb.icon',$item->getTitle()); ?></td>
+            <td class="admin_table_centered nowrap">
+               <?php if(($badgeType = $item->getBadgeType())): ?>
+                    <?php echo $this->translate($badgeType); ?>
+                <?php endif; ?>
+            </td>
+            <td class="admin_table_centered nowrap">
+               <?php if(($level = $item->getLevel())): ?>
+                    <?php echo $this->translate($level); ?>
+                <?php endif; ?>
+            </td>            
             <td class='admin_table_centered admin_table_email'>
                 <?php if(($topic = $item->getTopic())): ?>
                     <?php echo $topic->getTitle(); ?>
@@ -324,6 +336,18 @@ en4.core.runonce.add(function(){
             choice.store('autocompleteChoice', token);
           }            
         },
+        onCommand: function(e){
+            if(!e){
+                return;
+            }
+            if(e.control || e.shift || e.alt || e.meta){
+                return;
+            }
+            if(e.key == 'enter' || e.key == 'tab' || e.key == 'capslock'){
+                return;
+            }
+            $("topic_id").value = '';
+        },
         onPush : function(){
           
         },
@@ -366,8 +390,9 @@ en4.core.runonce.add(function(){
       <tr>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Badge Name") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Image") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Topic Name") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Type") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Level") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Topic Name") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Action") ?></th>
       </tr>
     </thead>
@@ -379,15 +404,20 @@ en4.core.runonce.add(function(){
             <td class='admin_table_centered admin_table_bold'>
               <?php echo $item->getTitle(); ?>
             </td>
-            <td class='admin_table_centered admin_table_user'><?php echo $this->itemPhoto($item,'thumb.icon',$item->getTitle()); ?></td>
-            <td class='admin_table_centered admin_table_email'>
-                <?php if(($topic = $item->getTopic())): ?>
-                    <?php echo $topic->getTitle(); ?>
+            <td class='admin_table_centered admin_table_user'><?php echo $this->itemPhoto($item,'thumb.icon',$item->getTitle()); ?></td>            
+            <td class="admin_table_centered nowrap">
+               <?php if(($badgeType = $item->getBadgeType())): ?>
+                    <?php echo $this->translate($badgeType); ?>
                 <?php endif; ?>
             </td>
             <td class="admin_table_centered nowrap">
                <?php if(($level = $item->getLevel())): ?>
                     <?php echo $this->translate($level); ?>
+                <?php endif; ?>
+            </td>
+            <td class='admin_table_centered admin_table_email'>
+                <?php if(($topic = $item->getTopic())): ?>
+                    <?php echo $topic->getTitle(); ?>
                 <?php endif; ?>
             </td>
             <td class='admin_table_centered table_options'>
@@ -429,4 +459,7 @@ en4.core.runonce.add(function(){
     right: 0px;
     bottom: -5px;    
 }    
+.sd_profile_display {
+    display: none !important;
+}
 </style>

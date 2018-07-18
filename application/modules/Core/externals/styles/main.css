@@ -1486,22 +1486,26 @@ Used for the modal popup smoothbox.
 #TB_window a:focus {
 	color: #666666;
 }
+
 #TB_overlay {
 	position: absolute;
 	z-index: 100;
 	top: 0px;
 	left: 0px;
-	background-color: #000;
+  background-color: #000;
+  opacity: 0.6;
 }
+
 #TB_window {
- +rounded(8px);
 	position: absolute;
 	z-index: 102;
 	text-align: left;
-	background: #eee;
-	color: #000;
-	border: 8px solid #444;
+	color: #fff;
+  border: none;
+  box-shadow:0px 8px 55px rgba(0, 0, 0, 0.16)!important;
+  background: #fff;
 }
+
 #TB_caption {
 	height: 25px;
 	padding: 7px 30px 10px 25px;
@@ -1523,19 +1527,20 @@ Used for the modal popup smoothbox.
 	padding: 7px 0 5px 10px;
 	margin-bottom: 1px;
 }
-#TB_title {
-	background-color: #e9f4fa;
-	height: 33px;
-	border-bottom: 1px solid #d7e8f1;
-}
+
 /* hide the title bar by default */
 #TB_title {
-	display: none;
+  position: absolute;
+  right: 0;
+  top:0;
 }
 #TB_title * {
 	font-weight: bold;
-	font-size: 13pt;
-	letter-spacing: -1px;
+  font-size: 13pt;
+  letter-spacing: -1px;
+  position: relative;
+  top: 2px;
+  right: 2px;
 }
 #TB_ajaxContent {
 	clear: both;
@@ -1565,9 +1570,9 @@ Used for the modal popup smoothbox.
 #TB_iframeContent {
 	clear: both;
 	border: none;
-	margin-bottom: -1px;
-	margin-top: 1px;
 }
+
+/* For All Smoothbox */
 /* IE6 */
 * html #TB_iframeContent {
 	margin-bottom: 1px;
@@ -2507,8 +2512,6 @@ ul.profile_options_pulldown > li:hover a,
      width: 100%;
      box-sizing: border-box;
    }
-   div.layout_page_header .layout_main,
-   div.layout_page_footer .layout_main,
    div#global_content
    {
      padding-left: 20px;

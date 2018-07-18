@@ -10,7 +10,15 @@
  * @author     John
  */
 ?>
-
+<?php if($this->subject() && $this->subject() instanceof User_Model_User ): ?>
+<script type="text/javascript">
+en4.core.runonce.add(function() {
+    let tab = document.getElementById('main_tabs');
+    tab.addClass('container');
+    tab.addClass('m-auto');
+});
+</script>
+<?php else: ?>
 <script type="text/javascript">
   en4.core.runonce.add(function() {
     var tabContainerSwitch = window.tabContainerSwitch = function(element) {
@@ -40,6 +48,7 @@
     });
   });
 </script>
+<?php endif; ?>
 
 <div class='tabs_alt tabs_parent tab_collapsed'>
   <span class="tab_collapsed_action"></span>

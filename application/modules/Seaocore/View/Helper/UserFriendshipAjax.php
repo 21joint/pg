@@ -69,20 +69,26 @@ class Seaocore_View_Helper_UserFriendshipAjax extends Zend_View_Helper_Abstract
     if( !$direction ) {
       // one-way mode
       if( null === $row ) {
-        return "<a class='buttonlink' id='addfriend_".$user->user_id."' href='javascript:void(0);'
+        return "<a class='btn btn-success px-5 py-2 text-white' id='addfriend_".$user->user_id."' href='javascript:void(0);'
 onclick='addfriend($(this), ".$user->user_id .")'
 style='background-image: url(application/modules/User/externals/images/friends/add.png);'>" .
             	 $this->view->translate('Follow') . "</a>";
       } 
-//      else if( $row->resource_approved == 0 ) {
-//        return $this->view->htmlLink(array('route' => 'user_extended', 'controller' => 'friends', 'action' => 'cancel', 'user_id' => $user->user_id), $this->view->translate('Cancel Follow Request'), array(
-//          'class' => 'buttonlink smoothbox icon_friend_cancel'
-//        ));
-//      } else {
-//        return $this->view->htmlLink(array('route' => 'user_extended', 'controller' => 'friends', 'action' => 'remove', 'user_id' => $user->user_id), $this->view->translate('Unfollow'), array(
-//          'class' => 'buttonlink smoothbox icon_friend_remove'
-//        ));
-//      }
+     else if( $row->resource_approved == 0 ) {
+      return "<a class='btn btn-success px-sm-5 px-3 py-2 text-white' id='addfriend_".$user->user_id."' href='javascript:void(0);'
+      onclick='addfriend($(this), ".$user->user_id .")'
+      style='background-image: url(application/modules/User/externals/images/friends/add.png);'>" .
+                     $this->view->translate('Follow') . "</a>";
+     }
+     else {
+/*        return $this->view->htmlLink(array('route' => 'user_extended', 'controller' => 'friends', 'action' => 'remove', 'user_id' => $user->user_id), $this->view->translate('Unfollow'), array(
+         'class' => 'buttonlink smoothbox icon_friend_remove'
+       )); */
+
+       return "<a class='btn btn-danger px-sm-5 px-3  py-2 text-white' id='removefriend_".$user->user_id."' href='javascript:void(0);'
+onclick='removefriend($(this), ".$user->user_id .")'>" .
+            	 $this->view->translate('Unfollow') . "</a>";
+     }
 
     } else {
       // two-way mode

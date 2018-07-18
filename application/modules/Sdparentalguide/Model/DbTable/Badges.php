@@ -12,7 +12,3 @@ class Sdparentalguide_Model_DbTable_Badges extends Engine_Db_Table
     protected $_rowClass = "Sdparentalguide_Model_Badge";
     protected $_name = 'gg_badges';
 } 
-
-
-
-

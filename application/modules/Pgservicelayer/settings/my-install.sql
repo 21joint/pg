@@ -1,0 +1,1 @@
+INSERT IGNORE INTO `engine4_core_modules` (`name`, `title`, `description`, `version`, `enabled`, `type`) VALUES  ('pgservicelayer', 'PG Service Layer', 'PG Service Layer', '4.10.3', 1, 'extra') ;

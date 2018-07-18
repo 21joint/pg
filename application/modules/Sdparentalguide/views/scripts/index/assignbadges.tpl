@@ -166,7 +166,7 @@ function startSearch(){
               <?php echo $api->getFieldValue($item,4); ?>
             </td>
             <td class='admin_table_centered'>
-                <a href='<?php echo $this->url(array('action' => 'assign-user','user_id' => $user->getIdentity()));?>'>
+                <a href='<?php echo $this->url(array('action' => 'assign-user','user_id' => $user->getIdentity()),'sdparentalguide_badger_assignuser',true);?>'>
                     <?php echo $this->translate("View") ?>
                 </a>
             </td>            

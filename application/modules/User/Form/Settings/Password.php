@@ -24,11 +24,14 @@ class User_Form_Settings_Password extends Engine_Form
     // @todo replace fake values with real values
     $this->setTitle('Change Password')
       ->setAction(Zend_Controller_Front::getInstance()->getRouter()->assemble(array()))
-      ;
+      ->setAttrib('id', 'extfox-settings')
+      ->setAttrib('class', 'extfox-settings-password')
+    ;
 
     // Init old password
     $this->addElement('Password', 'oldPassword', array(
       'label' => 'Old Password',
+      'placeholder' => 'Enter your old password',
       'required' => true,
       'allowEmpty' => false,
     ));
@@ -38,6 +41,7 @@ class User_Form_Settings_Password extends Engine_Form
       'label' => 'New Password',
       'description' => 'Passwords must be at least 6 characters in length.',
       'required' => true,
+      'placeholder' => 'Enter your new password',
       'allowEmpty' => false,
       'validators' => array(
         array('stringLength', false, array(6, 32))
@@ -49,6 +53,7 @@ class User_Form_Settings_Password extends Engine_Form
     $this->addElement('Password', 'passwordConfirm', array(
       'label' => 'New Password (again)',
       'description' => 'Enter your password again for confirmation.',
+      'placeholder' => 'Enter your password again for confirmation',
       'required' => true,
       'allowEmpty' => false
     ));

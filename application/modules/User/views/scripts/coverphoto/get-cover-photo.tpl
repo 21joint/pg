@@ -60,7 +60,7 @@
                 <?php echo $this->translate('Upload Cover Photo'); ?>
               </a>
             </li>
-            <?php if (Engine_Api::_()->getDbtable('modules', 'core')->isModuleEnabled('album')):?>
+            <?php if (!Engine_Api::_()->getDbtable('modules', 'core')->isModuleEnabled('album')):?>
               <li>
                 <?php echo $this->htmlLink(
                   array('route' => 'user_coverphoto', 'action' => 'choose-from-albums', 'user_id' => $userId),
@@ -87,10 +87,10 @@
       <?php if (!empty($this->user->coverphoto)) : ?>
         <div class="save-button is_hidden">
           <span class="save-positions">
-            <button><?php echo $this->translate("Save Position"); ?></button>
+            <button class="btn btn-primary px-4 py-2 text-white"><?php echo $this->translate("Save Position"); ?></button>
           </span>
           <span class="cancel">
-            <button><?php echo $this->translate("Cancel"); ?></button>
+            <button class="btn btn-primary px-4 py-2 text-white"><?php echo $this->translate("Cancel"); ?></button>
           </span>
         </div>
       <?php endif; ?>
@@ -160,10 +160,10 @@
     <?php if (!empty($this->uploadDefaultCover)) : ?>
       <div class="save-button is_hidden">
         <span class="save-positions">
-          <button><?php echo $this->translate("Save Position"); ?></button>
+          <button class="btn btn-primary px-4 py-2 text-white"><?php echo $this->translate("Save Position"); ?></button>
         </span>
         <span class="cancel">
-          <button><?php echo $this->translate("Cancel"); ?></button>
+          <button class="btn btn-primary px-4 py-2 text-white"><?php echo $this->translate("Cancel"); ?></button>
         </span>
       </div>
     <?php endif; ?>

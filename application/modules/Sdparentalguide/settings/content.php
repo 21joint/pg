@@ -14,12 +14,11 @@ $showOptions = array(
         'value' => 'activities',
     )
 );
-$count=array(
-        'text',
-    'count',
+$count = array(
+    'text', 'count',
     array(
-        'label' => 'Number of top active members to be shown (Note: Maximum 10 will be shown).',
-         'value' => '',
+    'label' => 'Number of top active members to be shown (Note: Maximum 10 will be shown).',
+        'value' => '',
     ));
 
 
@@ -606,4 +605,318 @@ return array(
         'type' => 'widget',
         'name' => 'sdparentalguide.listing-rating',
     ),
+    array(
+        'title' => $view->translate('Footer Menu'),
+        'description' => $view->translate('Displaying latest footer menu for ParentalGuide'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.footer',
+    ),
+    array(
+        'title' => $view->translate('Header Menu'),
+        'description' => $view->translate('Displaying header menu for ParentalGuide'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.header',
+    ),
+
+    array(
+        'title' => $view->translate('Profile Landing'),
+        'description' => $view->translate('Displaying widget for Reviews, Contribution Points, Following and Latest Guides'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.profile-landing',
+        'defaultParams' => array(
+            'title' => 'Overview',
+        ),
+    ),
+
+    array(
+        'title' => $view->translate('AJAX Profile Password'),
+        'description' => $view->translate('Edit Password in AJAX Mode'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-password',
+        'defaultParams' => array(
+            'title' => 'Password',
+        ),
+    ),
+
+    array(
+        'title' => $view->translate('AJAX Delete Profile'),
+        'description' => $view->translate('Delete Profile in AJAX Mode'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-delete',
+        'defaultParams' => array(
+            'title' => 'Delete Account',
+        ),
+    ),
+
+    array(
+        'title' => $view->translate('AJAX Update Profile'),
+        'description' => $view->translate('Update Profile in AJAX Mode'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-profile',
+        'defaultParams' => array(
+            'title' => 'Personal Info',
+        ),
+    ),
+
+    array(
+        'title' => $view->translate('AJAX Update Notifications'),
+        'description' => $view->translate('Update Notifications in AJAX Mode'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-notifications',
+        'defaultParams' => array(
+            'title' => 'Notifications',
+        ),
+    ),
+
+    array(
+        'title' => $view->translate('AJAX Update Privacy'),
+        'description' => $view->translate('Update Privacy in AJAX Mode'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-privacy',
+        'defaultParams' => array(
+            'title' => 'Privacy',
+        ),
+    ),
+
+    array(
+        'title' => $view->translate('AJAX My Struggles'),
+        'description' => $view->translate('My Struggles in AJAX Mode'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-struggles',
+        'defaultParams' => array(
+            'title' => 'My Struggles',
+            'titleCount' => true,
+        ),
+    ),
+
+    array(
+        'title' => $view->translate('AJAX My Theories'),
+        'description' => $view->translate('My Theories in AJAX Mode'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-theories',
+        'defaultParams' => array(
+            'title' => 'My Theories',
+            'titleCount' => true,
+        ),
+    ),
+
+    array(
+        'title' => $view->translate('AJAX My Badges'),
+        'description' => $view->translate('AJAX My Badges'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-badges',
+        'defaultParams' => array(
+            'title' => 'My Badges',
+            'titleCount' => true,
+        ),
+    ),
+
+    array(
+        'title' => $view->translate('AJAX Privacy'),
+        'description' => $view->translate('AJAX Privacy'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-privacy',
+        'defaultParams' => array(
+            'title' => 'Privacy',
+        ),
+    ),
+
+    array(
+        'title' => $view->translate('AJAX My Info'),
+        'description' => $view->translate('AJAX My Info'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-info',
+        'defaultParams' => array(
+            'title' => 'My Info',
+        ),
+    ),
+
+    array(
+        'title' => $view->translate('AJAX User Preferences'),
+        'description' => $view->translate('AJAX User Preferences'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-preferences',
+        'defaultParams' => array(
+            'title' => 'User Preferences',
+        ),
+    ),
+    
+    array(
+        'title' => $view->translate('PG Community Leaderboard'),
+        'description' => $view->translate('PG Community Leaderboard'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.community-leaderboard',
+        'defaultParams' => array(
+            'title' => 'Community Leaderboard',
+        ),
+    ),
+    
+    //PG Home
+    array(
+        'title' => $view->translate('PG Home Page Featured Reviews'),
+        'description' => $view->translate('PG Home Page Featured Reviews'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.featured-reviews',
+        'defaultParams' => array(
+            'title' => 'Featured Reviews',
+        ),
+    ),
+    array(
+        'title' => $view->translate('PG Home Page Latest Reviews'),
+        'description' => $view->translate('PG Home Page Latest Reviews'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.latest-reviews',
+        'defaultParams' => array(
+            'title' => 'Latest Reviews',
+        ),
+    ),
+    array(
+        'title' => $view->translate('PG Home Page Users'),
+        'description' => $view->translate('PG Home Page Users'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.home-users',
+        'defaultParams' => array(
+            'title' => 'Users',
+        ),
+    ),    
+    array(
+        'title' => $view->translate('PG Home Page Featured Struggles'),
+        'description' => $view->translate('PG Home Page Featured Struggles'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.featured-struggles',
+        'defaultParams' => array(
+            'title' => 'Featured Struggles',
+        ),
+    ),
+    array(
+        'title' => $view->translate('PG Home Page Featured Guides'),
+        'description' => $view->translate('PG Home Page Featured Guides'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.featured-guides',
+        'defaultParams' => array(
+            'title' => 'Featured Guides',
+        ),
+    ),
+    
+    //PG Reviews
+    array(
+        'title' => $view->translate('PG Reviews Home Page'),
+        'description' => $view->translate('PG Reviews Home Page'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.reviews-home',
+        'defaultParams' => array(
+            'title' => 'Reviews Home',
+        ),
+    ),
+    array(
+        'title' => $view->translate('PG Reviews Create Page'),
+        'description' => $view->translate('PG Reviews Create Page'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.reviews-create',
+        'defaultParams' => array(
+            'title' => 'Create Reviews',
+        ),
+    ),
+    array(
+        'title' => $view->translate('PG Reviews View Page'),
+        'description' => $view->translate('PG Reviews View Page'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.reviews-view',
+        'defaultParams' => array(
+            'title' => 'View Review',
+        ),
+    ),
+    
+    //PG Guides
+    array(
+        'title' => $view->translate('PG Guides Home Page'),
+        'description' => $view->translate('PG Guides Home Page'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.guides-home',
+        'defaultParams' => array(
+            'title' => 'Guides Home',
+        ),
+    ),
+    array(
+        'title' => $view->translate('PG Guides Create Page'),
+        'description' => $view->translate('PG Guides Create Page'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.guides-create',
+        'defaultParams' => array(
+            'title' => 'Create Guides',
+        ),
+    ),
+    array(
+        'title' => $view->translate('PG Guides View Page'),
+        'description' => $view->translate('PG Guides View Page'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.guides-view',
+        'defaultParams' => array(
+            'title' => 'View Guide',
+        ),
+    ),
+
+    //PG Community
+    array(
+        'title' => $view->translate('PG Community Home Page'),
+        'description' => $view->translate('PG Community Home Page'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.community-home',
+        'defaultParams' => array(
+            'title' => 'Community Home',
+        ),
+    ),
+    
+    //PG Search
+    array(
+        'title' => $view->translate('PG Search Page'),
+        'description' => $view->translate('PG Search Page'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.search',
+        'defaultParams' => array(
+            'title' => 'Search',
+        ),
+    ),
+    
+    //PG Topics
+    array(
+        'title' => $view->translate('PG Topics Home Page'),
+        'description' => $view->translate('PG Topics Home Page'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.topics-home',
+        'defaultParams' => array(
+            'title' => 'Topics Home',
+        ),
+    ),
+    
+
 ) ?>

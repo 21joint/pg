@@ -59,23 +59,17 @@ class Sdparentalguide_Form_Admin_Topic_Filter extends Engine_Form
           '1' => 'Badges',
       ))->setAttrib("onchange","searchTopics();");
     
-    $sync = new Zend_Form_Element_Button('sync');
-    $sync
-      ->setLabel('Syncronize with Listings')
+    $featured = new Zend_Form_Element_Radio('featured');
+    $featured
       ->clearDecorators()
       ->addDecorator('ViewHelper')
-      ->addDecorator('HtmlTag', array('tag' => 'div','class' => 'sync'))
-      ->setAttrib("onclick","synchronizeTopics(this);")
-      ;
+      ->addDecorator('Label', array('tag' => null, 'placement' => 'PREPEND'))
+      ->addDecorator('HtmlTag', array('tag' => 'div','class' => 'badges'))
+      ->setMultiOptions(array(
+          '-1111' => 'All',
+          '1' => 'Featured',
+      ))->setAttrib("onchange","searchTopics();");
     
-    $sync_tags = new Zend_Form_Element_Button('sync_tags');
-    $sync_tags
-      ->setLabel('Syncronize with Tags')
-      ->clearDecorators()
-      ->addDecorator('ViewHelper')
-      ->addDecorator('HtmlTag', array('tag' => 'div','class' => 'sync_tags'))
-      ->setAttrib("onclick","synchronizeTags(this);")
-      ;
 
     $this->addElement('Hidden', 'order', array(
       'order' => 10001,
@@ -89,11 +83,9 @@ class Sdparentalguide_Form_Admin_Topic_Filter extends Engine_Form
     $this->addElements(array(
       $active,
       $badges,
-      $sync,
-      $sync_tags,
+      $featured,
     ));
     
-    $this->addDisplayGroup(array('sync','sync_tags'), "grp_sync");
     
     $search = new Zend_Form_Element_Text('search');
     $search
@@ -109,48 +101,11 @@ class Sdparentalguide_Form_Admin_Topic_Filter extends Engine_Form
     foreach($listingtypes as $listingType){
         $listingtypesOptions[$listingType->getIdentity()] = $listingType->getTitle();
     }
-    
-    $listing_type = new Zend_Form_Element_Select('listingtype_id');
-    $listing_type
-      ->setLabel('Listing Type')
-      ->clearDecorators()
-      ->addDecorator('ViewHelper')
-      ->addDecorator('Label', array('tag' => null, 'placement' => 'PREPEND'))
-      ->addDecorator('HtmlTag', array('tag' => 'div','class' => 'sd_inline_field listingtype_id'))
-      ->setMultiOptions($listingtypesOptions)
-      ->setAttrib("onchange","loadCategories(this);")
-      ;
-    
-    $category_id = new Zend_Form_Element_Select('category_id');
-    $category_id
-      ->setLabel('Category')
-      ->setAttrib('placeholder','Category')
-      ->clearDecorators()
-      ->addDecorator('ViewHelper')
-      ->addDecorator('Label', array('tag' => null, 'placement' => 'PREPEND'))
-      ->addDecorator('HtmlTag', array('tag' => 'div','class' => 'sd_inline_field category','id' => 'category-wrapper'))
-      ->setAttrib("onchange","loadSubCategories(this);")
-      ;
-    
-    $subcategory_id = new Zend_Form_Element_Select('subcategory_id');
-    $subcategory_id
-      ->setLabel('Sub Category')
-      ->setAttrib('placeholder','Sub Category')
-      ->clearDecorators()
-      ->addDecorator('ViewHelper')
-      ->addDecorator('Label', array('tag' => null, 'placement' => 'PREPEND'))
-      ->addDecorator('HtmlTag', array('tag' => 'div','class' => 'sd_inline_field subcategory','id' => 'subcategory-wrapper'))
-      ->removeValidator("InArray");
-    
+        
     $this->addElements(array(
       $search,
-      $listing_type,
-      $category_id,
-      $subcategory_id,
     ));
     
-    $this->addDisplayGroup(array('listingtype_id','category_id','subcategory_id'),'grp1');
-
     // Set default action without URL-specified params
     $params = array();
     foreach (array_keys($this->getValues()) as $key) {

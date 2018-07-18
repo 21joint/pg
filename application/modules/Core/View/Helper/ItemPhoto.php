@@ -23,9 +23,12 @@ class Core_View_Helper_ItemPhoto extends Engine_View_Helper_HtmlImage
   protected $_classPrefix = '';
   protected $_url;
   protected $_attribs = array();
+  
 
   public function itemPhoto($item, $type = 'thumb.profile', $alt = "", $attribs = array())
   {
+   
+    echo $itemPhotoGuidance = Zend_Registry::get('Zend_View')->itemPhotoGuidance($item);
     return $this->setAttributes($item, $type, $attribs)->htmlImage($this->_url, $alt, $this->_attribs);
   }
 
@@ -35,20 +38,27 @@ class Core_View_Helper_ItemPhoto extends Engine_View_Helper_HtmlImage
       throw new Zend_View_Exception("Item must be a valid item");
     }
 
+    $itemPhotoBadgeColor = Zend_Registry::get('Zend_View')->ItemPhotoBadgeColor($item);
+
+   
     // Get url
     $src = $item->getPhotoUrl($type);
     $safeName = ( $type ? str_replace('.', '_', $type) : 'main' );
     $attribs['class'] = ( isset($attribs['class']) ? $attribs['class'] . ' ' : '' );
     $attribs['class'] .= $this->_classPrefix . $safeName . ' ';
     $attribs['class'] .= $this->_classPrefix . 'item_photo_' . $item->getType() . ' ';
-
-    // Default image
+    $attribs['class'] .= $itemPhotoBadgeColor['class'];
+    $attribs['count'] .= $itemPhotoBadgeColor['count'];
+    $attribs['gear'] .= $itemPhotoBadgeColor['gear'];
+     // Default image
     if( !$src ) {
       $src = $this->getNoPhoto($item, $safeName);
-      $attribs['class'] .= $this->_classPrefix . 'item_nophoto ';
+      $attribs['class']  .=  $this->_classPrefix . ' item_nophoto ';
     }
     $this->_url = $src;
     $this->_attribs = $attribs;
+    
+
     return $this;
   }
 

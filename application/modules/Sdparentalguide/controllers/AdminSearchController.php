@@ -124,10 +124,21 @@ class Sdparentalguide_AdminSearchController extends Core_Controller_Action_Admin
                 ->getNavigation('sdparentalguide_admin_main_search', array(), 'sdparentalguide_admin_search_activity'); 
         
         $request = Zend_Controller_Front::getInstance()->getRequest();
-        $column_name = $request->getParam('column_name','search_activity_id');
-        $this->view->order = $order = $request->getParam('order','DESC');        
+        $this->view->order_column = $column_name = $request->getParam('column_name','search_text');
+        $this->view->order = $order = $request->getParam('order','ASC');        
         $table = Engine_Api::_()->getDbtable('search', 'sdparentalguide');
+        $clear = $request->getParam("clear");
+        if(!empty($clear)){
+            $db = $table->getDefaultAdapter();
+            $db->query("TRUNCATE TABLE engine4_gg_search_activity");
+            return $this->_helper->redirector->gotoRoute(array('clear' => 0));
+        }
+        
         $select = $table->select();
+        $search = $request->getParam("query");
+        if(!empty($search)){
+            $select->where("search_text LIKE ?","%".$search."%");
+        }
         if(!empty($column_name)){
             $select->order("$column_name $order");
         }
@@ -143,36 +154,47 @@ class Sdparentalguide_AdminSearchController extends Core_Controller_Action_Admin
         $this->view->navigation2 = $navigation2 = Engine_Api::_()->getApi('menus', 'core')
                 ->getNavigation('sdparentalguide_admin_main_search', array(), 'sdparentalguide_admin_search_analytics'); 
                 
-        $searchActivitiesTable = Engine_Api::_()->getDbtable('search', 'sdparentalguide');
-        $selectActivities = $searchActivitiesTable->select()
-                    ->from($searchActivitiesTable->info('name'), array('COUNT(search_activity_id) as count', 'search_text as search_term'))
-                    ->group("search_text")
-                    ;
-        $searchActivities = $searchActivitiesTable->fetchAll($selectActivities);
-        
-        $analyticsTable = Engine_Api::_()->getDbtable('searchanalytics', 'sdparentalguide');
-        $analyticsTableName = $analyticsTable->info('name');
-        
-        foreach ($searchActivities as $searchActivity) {
-            $analyticsSelect = $analyticsTable->select()->where($analyticsTableName.'.search_term LIKE ? ', "%".$searchActivity['search_term']."%");
-            $analytics = $analyticsTable->fetchRow($analyticsSelect);
-            if($analytics){
-                $analytics->count = $searchActivity->count;
-                $analytics->save();
-            }else{
-                $analyticsValues['search_term'] = $searchActivity['search_term'];
-                $analyticsValues['count'] = $searchActivity['count'];
-                $analyticsTerm = $analyticsTable->createRow();
-                $analyticsTerm->setFromArray($analyticsValues);
-                $analyticsTerm->save();                
-            }
-        }
+//        $searchActivitiesTable = Engine_Api::_()->getDbtable('search', 'sdparentalguide');
+//        $selectActivities = $searchActivitiesTable->select()
+//                    ->from($searchActivitiesTable->info('name'), array('COUNT(search_activity_id) as count', 'search_text as search_term'))
+//                    ->group("search_text")
+//                    ;
+//        $searchActivities = $searchActivitiesTable->fetchAll($selectActivities);
+//        
+        $analyticsTable = Engine_Api::_()->getDbtable('searchAnalytics', 'sdparentalguide');
+//        $analyticsTableName = $analyticsTable->info('name');
+//        
+//        foreach ($searchActivities as $searchActivity) {
+//            $analyticsSelect = $analyticsTable->select()->where($analyticsTableName.'.search_term LIKE ? ', "%".$searchActivity['search_term']."%");
+//            $analytics = $analyticsTable->fetchRow($analyticsSelect);
+//            if($analytics){
+//                $analytics->count = $searchActivity->count;
+//                $analytics->save();
+//            }else{
+//                $analyticsValues['search_term'] = $searchActivity['search_term'];
+//                $analyticsValues['count'] = $searchActivity['count'];
+//                $analyticsTerm = $analyticsTable->createRow();
+//                $analyticsTerm->setFromArray($analyticsValues);
+//                $analyticsTerm->save();                
+//            }
+//        }
         
         $request = Zend_Controller_Front::getInstance()->getRequest();
-        $column_name = $request->getParam('column_name','count');
+        $this->view->order_column = $column_name = $request->getParam('column_name','count');
         $this->view->order = $order = $request->getParam('order','DESC');
+        $search = $request->getParam("query");
+        
+        $clear = $request->getParam("clear");
+        if(!empty($clear)){
+            $db = $analyticsTable->getDefaultAdapter();
+            $db->query("TRUNCATE TABLE engine4_gg_search_analytics");
+            return $this->_helper->redirector->gotoRoute(array('clear' => 0));
+        }
         
         $select = $analyticsTable->select();
+        if(!empty($search)){
+            $select->where("search_term LIKE ?","%".$search."%");
+        }
         if(!empty($column_name)){
             $select->order("$column_name $order");
         }

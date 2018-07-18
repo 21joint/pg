@@ -107,6 +107,8 @@ class Core_ErrorController extends Core_Controller_Action_Standard
 
     // Show the login form for them :P
     $this->view->form = $form = new User_Form_Login();
+    $form->getElement('submit')->setAttrib('class', 'btn btn-outline-success text-uppercase py-2 w-100 px-0');
+    $form->getElement('cancel')->setAttrib('class', 'btn btn-outline-success text-uppercase py-2 w-100 px-0');
     $form->addError('Please sign in to continue..');
     $form->return_url->setValue(Zend_Controller_Front::getInstance()->getRouter()->assemble(array()));
     

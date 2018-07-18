@@ -85,7 +85,7 @@
 
     // Question profile
     'question_profile' => array(
-      'route' => 'ggcommunity/question/:question_id/*',
+      'route' => 'struggles/question/:question_id/*',
       'defaults' => array(
         'module' => 'ggcommunity',
         'controller' => 'question-profile',
@@ -98,7 +98,7 @@
 
     // List Struggles
     'listing_struggles' => array(
-      'route' => 'ggcommunity/home',
+      'route' => 'struggles/home',
       'defaults' => array(
         'module' => 'ggcommunity',
         'controller' => 'question-index',
@@ -108,7 +108,7 @@
 
     // Browse Struggles
     'browse_struggles' => array(
-      'route' => 'ggcommunity/browse',
+      'route' => 'struggles/browse',
       'defaults' => array(
         'module' => 'ggcommunity',
         'controller' => 'question-index',
@@ -139,6 +139,15 @@
       ),
       'reqs' => array(
        
+      )
+    ),
+      
+    'create_struggles' => array(
+      'route' => 'struggles/create',
+      'defaults' => array(
+        'module' => 'ggcommunity',
+        'controller' => 'question-index',
+        'action' => 'create',
       )
     ),
    

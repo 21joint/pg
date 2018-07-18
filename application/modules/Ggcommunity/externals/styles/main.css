@@ -822,6 +822,8 @@ div.draft_main_holder ul li:before {
     background-color:#fff;  
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    margin:0 auto 20px;
+
 }
 .layout_ggcommunity_search_struggle .search_widget .logo_holder {
     text-align: center;
@@ -874,6 +876,8 @@ div.draft_main_holder ul li:before {
 .layout_ggcommunity_featured_topics {
     margin:20px auto 20px;
     border-radius: 20px;
+    /* Display: none; -> Removed from view for testing */
+    display: none;
 }
 .layout_ggcommunity_featured_topics .featured_widget{
     background-color:#fff;
@@ -1170,8 +1174,10 @@ div.draft_main_holder ul li:before {
     font-size:12px;
     color:#93A4A6;
 }
+.layout_ggcommunity_top_theorist .member_left_side .item-photo-guidance  {
+    margin-right: 15px;
+}
 .layout_ggcommunity_top_theorist a.struggle_owner_image {
-    margin-right:15px;
     position: relative;
 }
 .layout_ggcommunity_top_theorist .member_right_side {
@@ -1190,6 +1196,13 @@ div.draft_main_holder ul li:before {
 .browse_main_holder .primary{
     color: #5CC7CE;
 }
+.browse_main_holder .open_accepted_answer {
+    background-color: #5CC7CE;
+    color: #FFF!important;
+    padding: 1px 20px;
+    border: 1px solid #5CC7CE;
+    border-radius: 21px;
+}
 .browse_main_holder .closed_accepted_answer {
     background-color: #B9CFD1;
     color: #FFF!important;
@@ -1207,14 +1220,6 @@ div.draft_main_holder ul li:before {
 .browse_main_holder .title_close {
     color: #CFCFCF!important;
 }
-.browse_main_holder .open_accepted_answer {
-    background-color: #5CC7CE;
-    color: #FFF!important;
-    padding: 1px 20px;
-    border: 1px solid #5CC7CE;
-    border-radius: 21px;
-}
-
 
 /* Browse Search Page */
 .layout_page_ggcommunity_question-index_browse .browse_top_holder,.layout_page_ggcommunity_question-index_browse  .browse_main_holder,
@@ -1231,6 +1236,7 @@ div.draft_main_holder ul li:before {
 .layout_page_ggcommunity_question-index_browse .browse_main_holder,
 .layout_page_ggcommunity_question-index_manage .browse_main_holder {
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .browse_top_holder .search_description p{
@@ -1291,7 +1297,7 @@ div.draft_main_holder ul li:before {
 }
 .browse_main_holder .struggle_box_right ul.struggle_count_info.count_close_closed li span.count.votes.counter.count_close,.browse_main_holder .struggle_box_right ul.struggle_count_info.count_close_closed li span.count.answers.counter.count_close,.browse_main_holder .struggle_box_right ul.struggle_count_info.count_close_closed li span.count.comments.counter.count_close{
     color:#B9CFD1!important;
-} 
+}
 .browse_main_holder .struggle_box_right ul.struggle_count_info  li span.count.answers.counter.count_close.closed_accepted_answer,.browse_main_holder .struggle_box_right ul.struggle_count_info  li span.count.answers.counter.count_close.closed_accepted_answer{
     color:#fff!important;
 }
@@ -1301,9 +1307,12 @@ div.draft_main_holder ul li:before {
     font-family: 'Open Sans', sans-serif;
 }
 .layout_page_ggcommunity_question-index_browse .border,.layout_page_ggcommunity_question-index_browse .tab a:hover {
-    border-bottom:2px solid #5CC7CE;
-    padding-bottom: 15px;
-    color:#5CC7CE;
+    border-bottom:2px solid #5CC7CE!important;
+    padding-bottom: 15px!important;
+    color:#5CC7CE!important;
+    border-top: 0!important;
+    border-left: 0!important;
+    border-right: 0!important;
 }
 .browse_main_holder .struggle_box_right .struggle_count_info li {
     text-align: center;
@@ -1450,6 +1459,8 @@ div.draft_main_holder ul li:before {
     position: relative;
     height: 330px;
     border-radius: 10px;
+    /* Display: none; -> for testing, until service becomes available */
+    display: none;
 } 
 .layout_ggcommunity_review_product .review_product_widget {
     height: 100%;
@@ -1858,6 +1869,31 @@ ul.paginationControl > li.selected,ul.paginationControl > li a:hover,ul.paginati
     color:#fff;
 }
 @media (max-width: 1024px){
+    /* make svgs visible under this line */
+    .browse_main_holder .struggle_box_right .struggle_count_info li.count_info p.count_title {
+        margin-top: 0px!important;
+        display: none!important;
+    }
+    /* add styling for number displays under this line */
+    .browse_main_holder .struggle_box_right .struggle_count_info .count {
+        color: grey!important;
+        font-size: 13px!important;
+    }
+    /* removes styling from accepted answer under this line open -> answer*/
+    .browse_main_holder .open_accepted_answer{
+        background-color: #fff;
+        padding: 0px;
+        border: none;
+    }
+    /* removes styling from accepted answer under this line open -> answer*/
+    .browse_main_holder .closed_accepted_answer{
+        background-color: #fff!important;
+        padding: 0px!important;
+        border: none!important;
+    }
+    .browse_main_holder .struggle_box_right ul.struggle_count_info li span.count.answers.counter.count_close.closed_accepted_answer, .browse_main_holder .struggle_box_right ul.struggle_count_info li span.count.answers.counter.count_close.closed_accepted_answer{
+        color: #B9CFD1!important;
+    }
     #global_page_ggcommunity-question-profile-view div#global_content,#global_page_ggcommunity-question-index-create .layout_main .layout_middle {
         width: 100%;
         padding: 0px;
@@ -1944,6 +1980,7 @@ ul.paginationControl > li.selected,ul.paginationControl > li a:hover,ul.paginati
         font-size: 8px;
         line-height: 1.4;
     }
+
 }
 @media (max-width: 480px){
     /* Profile Questions */

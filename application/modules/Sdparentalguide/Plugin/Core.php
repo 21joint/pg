@@ -43,8 +43,6 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             if($auditingSaved && Zend_Registry::get("Auditing_Created") > 20){
                 return;
             }
-                        
-            $this->addHashtagListingMapping($payload);
             
         } catch (Exception $ex) {
             //Silent
@@ -73,6 +71,7 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             
             if( $payload instanceof Sitecredit_Model_Credit ) {
                 $this->updateUserCredits($payload);
+                $this->updateTransactionTopic($payload);
             }
             
             if( $payload instanceof Sitereview_Model_Listing ) {
@@ -83,23 +82,7 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                     }
                 }
             }
-            
-            if( $payload instanceof Sitehashtag_Model_Tag ) {
-                $this->addHashtagTopic($payload);
-            }
-            
-            if( $payload instanceof Core_Model_Tag ) {
-                $this->addHashtagTopic($payload);
-            }
-            
-            if( $payload instanceof Core_Model_TagMap ) {
-                $this->addListingMapping($payload);
-            }
-            
-            if( $payload instanceof Sitehashtag_Model_Tagmap ) {
-                $this->addHashtagListingMapping($payload);
-            }
-            
+                        
         } catch (Exception $ex) {
             //Silent
 //            throw $ex;
@@ -119,8 +102,30 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             if($auditingSaved && Zend_Registry::get("Auditing_Created") > 20){
                 return;
             }
-            if( $payload instanceof Sitereview_Model_Listing ) {
-                $this->mapListingTopics($payload);
+            
+            if( $payload instanceof Sitereview_Model_Listing && $payload->approved) {
+                $viewer->gg_review_count++;
+                $viewer->save();
+            }
+            
+            
+            if( $payload instanceof Ggcommunity_Model_Question && $payload->approved && !$payload->draft) {
+                $viewer->gg_question_count++;
+                $viewer->save();
+            }
+            
+            if( $payload instanceof Sitecredit_Model_Credit) {
+                $creditsTable = Engine_Api::_()->getDbtable('credits','sdparentalguide');
+                $row = $creditsTable->getUserActivityCount($viewer);
+                $userCredits = 0;
+                $userActivities = 0;
+                if(!empty($row)){
+                    $userCredits = $row->credit;
+                    $userActivities = $row->activities;
+                }
+                $viewer->gg_contribution = $userCredits;
+                $viewer->gg_activities = $userActivities;
+                $viewer->save();
             }
             
         } catch (Exception $ex) {
@@ -171,22 +176,101 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                 $params['gg_dt_lastmodified'] = date("Y-m-d H:i:s");
                 $table = $payload->getTable();
                 $info = $table->info("primary");
-                if(empty($info) || !is_array($info)){
-                    return;
-                }
-                $where = array();
-                foreach($info as $primaryKey){
-                    if(!isset($payload->$primaryKey)){
-                        continue;
+                if(!empty($info) && is_array($info)){
+                    $where = array();
+                    foreach($info as $primaryKey){
+                        if(!isset($payload->$primaryKey)){
+                            continue;
+                        }
+
+                        $where["$primaryKey = ?"] = $payload->$primaryKey;
                     }
-                    
-                    $where["$primaryKey = ?"] = $payload->$primaryKey;
-                }
-                if(!empty($where)){
-                    $table->update($params,$where);
-                }
-                Zend_Registry::set("Auditing_Saved",1);
+                    if(!empty($where)){
+                        $table->update($params,$where);
+                    }
+                    Zend_Registry::set("Auditing_Saved",1);
+                }                
             }
+        } catch (Exception $ex) {
+            //Silent
+        }
+        Zend_Registry::set("Auditing_Saved",1);
+    }
+    public function onItemUpdateBefore($event){
+        try{
+            $payload = $event->getPayload();
+            $viewer = Engine_Api::_()->user()->getViewer();
+            $auditingSaved = Zend_Registry::isRegistered("Auditing_Saved");
+            if(!empty($auditingSaved)){
+                return;
+            }
+            //This will fix max level error by saving data mannually.
+            if($this->isAllowedAuditing($payload)) {
+                $params = $this->getAuditingParams($payload);
+                $params['gg_user_lastmodified'] = $viewer->getIdentity();
+                $params['gg_dt_lastmodified'] = date("Y-m-d H:i:s");
+                $table = $payload->getTable();
+                $info = $table->info("primary");
+                if(!empty($info) && is_array($info)){
+                    $where = array();
+                    foreach($info as $primaryKey){
+                        if(!isset($payload->$primaryKey)){
+                            continue;
+                        }
+
+                        $where["$primaryKey = ?"] = $payload->$primaryKey;
+                    }
+                    if(!empty($where)){
+                        $table->update($params,$where);
+                    }
+                    Zend_Registry::set("Auditing_Saved",1);
+                }
+                
+            }
+            
+            $modifiedFields = $payload->getModifiedFields();
+                        
+            if( $payload instanceof Sitereview_Model_Listing && $payload->approved && isset($modifiedFields['approved'])) {
+                $payload->getOwner()->gg_review_count++;
+                $payload->getOwner()->save();
+            }
+            
+            if( $payload instanceof Sitereview_Model_Listing && !$payload->approved && isset($modifiedFields['approved'])) {
+                $payload->getOwner()->gg_review_count--;
+                $payload->getOwner()->save();
+            }
+            
+            if( $payload instanceof Ggcommunity_Model_Question && (isset($modifiedFields['approved']) || isset($modifiedFields['draft']))) {
+                if($payload->approved && !$payload->draft){
+                    $payloadUser = Engine_Api::_()->user()->getUser($payload->user_id);
+                    $payloadUser->gg_question_count++;
+                    $payloadUser->save();
+                }
+            }            
+            if( $payload instanceof Ggcommunity_Model_Question && (isset($modifiedFields['approved']) || isset($modifiedFields['draft']))) {
+                if((!$payload->approved || $payload->draft)){
+                    $payloadUser = Engine_Api::_()->user()->getUser($payload->user_id);
+                    $payloadUser->gg_question_count--;
+                    $payloadUser->save();
+                }
+            }
+            
+            
+            $contributionLevelSaved = Zend_Registry::isRegistered("ContributionLevel_Saved");
+            if( $payload instanceof User_Model_User && empty($contributionLevelSaved) && isset($modifiedFields['gg_contribution'])) {
+                $api = Engine_Api::_()->sdparentalguide();
+                $badge = $api->getUserBadge($payload->gg_contribution);
+                if(!empty($badge)){
+                    $payload->gg_contribution_level = $badge->gg_contribution_level;
+                    if(!$payload->isAdminOnly() && $badge->gg_level_id > 0){
+                        $payload->level_id = $badge->gg_level_id;
+                    }            
+                    $payload->save();
+                    Zend_Registry::set("ContributionLevel_Saved",1);
+                }
+                
+            }
+            
         } catch (Exception $ex) {
             //Silent
         }
@@ -227,6 +311,16 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             $request->setModuleName("sdparentalguide");
         }
         
+        
+        if($moduleName == "user" && $controllerName == "friends"){
+            $request->setModuleName("sdparentalguide");
+        }
+        
+        if($moduleName == "siteusercoverphoto" && $controllerName == "friends"){
+            $request->setControllerName("friendsPhoto");
+            $request->setModuleName("sdparentalguide");
+        }
+        
         $searchText = $request->getParam("query");
         if(!empty($searchText) && $moduleName == "core" && $controllerName == "search" && $actionName == "index"){
             Engine_Api::_()->getDbTable('search', 'sdparentalguide')->logSearch($searchText);
@@ -234,6 +328,42 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
         
         if(!empty($searchText) && $moduleName == "siteadvsearch" && $controllerName == "index" && $actionName == "index"){
             Engine_Api::_()->getDbTable('search', 'sdparentalguide')->logSearch($searchText);
+        }
+        
+        $router = Zend_Controller_Front::getInstance()->getRouter();
+        $currentRoute = $router->getCurrentRoute();
+        if(!empty($currentRoute)){
+            $matchedPath = $currentRoute->getMatchedPath();
+            if($matchedPath == 'members/home'){
+                $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('redirector');
+                return $redirector->gotoRoute(array(), "sdparentalguide_user_home", true);
+            }
+            
+            $viewer = Engine_Api::_()->user()->getViewer();
+            if($matchedPath == 'profile' && $viewer->getIdentity()){
+                $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('redirector');
+                return $redirector->gotoRoute(array('id' => $viewer->getIdentity()), "user_profile", true);
+            }
+            
+            if($matchedPath == 'members'){
+                $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('redirector');
+                return $redirector->gotoRoute(array(), "sdparentalguide_user_home", true);
+            }
+            
+            if($matchedPath == 'wishlists'){
+                $request->setControllerName("error");
+                $request->setActionName("notfound");
+            }
+            
+            if($matchedPath == 'reviews'){
+                $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('redirector');
+                return $redirector->gotoUrl("reviews/home",array('prependBase' => true));
+            }
+            
+            if($matchedPath == 'community'){
+                $redirector = Zend_Controller_Action_HelperBroker::getStaticHelper('redirector');
+                return $redirector->gotoUrl("community/home",array('prependBase' => true));
+            }
         }
     }
     public function getPageByName($name){
@@ -265,14 +395,27 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
   }
   
   public function onItemDeleteBefore($event){
-      $item = $event->getPayload();
-      if($item instanceof Sdparentalguide_Model_Badge){
-          $assignedTable = Engine_Api::_()->getDbtable('assignedBadges', 'sdparentalguide');
-          $assignedTable->delete(array('badge_id = ?' => $item->getIdentity()));
-      }
-      if($item instanceof User_Model_User){
-          $assignedTable = Engine_Api::_()->getDbtable('assignedBadges', 'sdparentalguide');
-          $assignedTable->delete(array('user_id = ?' => $item->getIdentity()));
+      $item = $event->getPayload();      
+      try{
+          if($item instanceof Sdparentalguide_Model_Badge){
+                $assignedTable = Engine_Api::_()->getDbtable('assignedBadges', 'sdparentalguide');
+                $assignedTable->delete(array('badge_id = ?' => $item->getIdentity()));
+          }
+          if($item instanceof User_Model_User){
+                $assignedTable = Engine_Api::_()->getDbtable('assignedBadges', 'sdparentalguide');
+                $assignedTable->delete(array('user_id = ?' => $item->getIdentity()));
+          }
+          if( $item instanceof Ggcommunity_Model_Question && $item->approved && !$item->draft) {
+                $item->getOwner()->gg_question_count--;
+                $item->getOwner()->save();
+          }
+          
+          if( $item instanceof Sitereview_Model_Listing && $item->approved) {
+                $item->getOwner()->gg_review_count--;
+                $item->getOwner()->save();
+          }
+      } catch (Exception $ex) {
+          //Silent
       }
   }
   public function onRenderLayoutAdmin($event,$simple = false){
@@ -287,23 +430,6 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
   public function onRenderLayoutAdminSimple($event){
       $this->onRenderLayoutAdmin($event, true);
   }
-    public function addHashtagTopic($payload){
-        $table = Engine_Api::_()->getDbtable('topics', 'sdparentalguide');
-        try {
-            $name = str_replace("#","",$payload['text']);
-            if($table->checkTopic($name)){
-                return;
-            }
-            
-            $topic = $table->createTagTopic($name);            
-            $payload->topic_id = $topic->topic_id;
-//            $payload->save();
-            
-        } catch( Exception $e ) {
-          //Silent
-//          throw $e;
-        }
-    }
     
     public function onRenderLayoutDefault($event, $mode = null){
         $view = $event->getPayload();
@@ -340,59 +466,23 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                 }                
             }
         }        
-    }
-    
-    public function addListingMapping($payload){
-        if($payload->resource_type != "sitereview_listing" || $payload->tag_type != "core_tag"){
-            return;
-        }        
-        $coreTag = Engine_Api::_()->getItem("core_tag",$payload->tag_id);
-        if(empty($coreTag)){
-            return;
-        }
-        $table = Engine_Api::_()->getDbTable("listingTopics","sdparentalguide");
-        $table->addListingTopic($coreTag->topic_id,$payload->resource_id);
-    }
-    
-    public function addHashtagListingMapping($payload){
-        if(!isset($payload->action_id) || empty($payload->action_id) || empty($payload->body) || $payload->object_type != "sitereview_listing"){
-            return;
-        }
-        if($payload->type != "comment_sitereview_listing"){
+    }    
+
+    public function updateTransactionTopic($payload){
+        if($payload->resource_type != "sitereview_listing"){
             return;
         }
         
-        $tabMapTable = Engine_Api::_()->getDbtable('tagmaps', 'sitehashtag');
-        $tagMap = $tabMapTable->fetchRow($tabMapTable->select()->where('action_id = ?',$payload->action_id));
-        if(empty($tagMap)){
+        $listing = Engine_Api::_()->getItem($payload->resource_type,$payload->resource_id);
+        if(empty($listing)){
             return;
         }
-        $table = Engine_Api::_()->getDbTable("listingTopics","sdparentalguide");
-        $hashTag = Engine_Api::_()->getItem("sitehashtag_tag",$tagMap->tag_id);
-        if(empty($hashTag)){
+        $listingType = $listing->getListingType();
+        if(empty($listingType)){
             return;
         }
-        $table->addListingTopic($hashTag->topic_id,$payload->object_id);
-    }
-    
-    public function mapListingTopics($payload){
-        $table = Engine_Api::_()->getDbtable('topics', 'sdparentalguide');
-        $select = $table->select()->where('listingtype_id = ?',$payload->listingtype_id);
-        if(!empty($payload->category_id)){
-            $select->where("category_id = ?",$payload->category_id);
-        }
-        if(!empty($payload->subcategory_id)){
-            $select->where("subcategory_id = ?",$payload->subcategory_id);
-        }
-        $topics = $table->fetchAll($select);
-        if(count($topics) <= 0){
-            return;
-        }
-        $listingTopicTable = Engine_Api::_()->getDbTable("listingTopics","sdparentalguide");
-        foreach($topics as $topic){
-            $listingTopicTable->addListingTopic($topic->topic_id,$payload->getIdentity());
-            $topic->listing_count++;
-            $topic->save();
-        }
+        
+        $payload->gg_topic_id = $listingType->gg_topic_id;
+//        $payload->save();
     }
 }

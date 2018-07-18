@@ -43,72 +43,6 @@
 </div>
 
 <script type='text/javascript'>
-window.syncRequest = 0;
-function synchronizeTopics(element,page){
-    if(window.syncRequest){
-        return;
-    }
-    window.syncRequest = 1;
-    var loader = en4.core.loader.clone();
-    loader.addClass("sd_loader");
-    var req = new Request.JSON({
-        url: '<?php echo $this->url(array("action" => "sync")); ?>',
-        data: {
-            format: 'json',
-            page: page
-        },
-        onRequest: function(){
-            loader.inject($(element),"bottom");
-        },
-        onCancel: function(){
-            loader.destroy();
-        },
-        onSuccess: function(responseJSON){
-          window.syncRequest = 0;
-          loader.destroy();
-          if(responseJSON.continue){
-              synchronizeTopics(element,responseJSON.nextPage);
-          }else{
-              window.location.reload();
-          }
-        }
-    });
-    req.send();
-}    
-en4.core.runonce.add(function(){
-    
-});
-window.syncTagsRequest = 0;
-function synchronizeTags(element){
-    if(window.syncTagsRequest){
-        return;
-    }
-    window.syncTagsRequest = 1;
-    var loader = en4.core.loader.clone();
-    loader.addClass("sd_loader");
-    var req = new Request.JSON({
-        url: '<?php echo $this->url(array("action" => "synctags")); ?>',
-        data: {
-            format: 'json'
-        },
-        onRequest: function(){
-            loader.inject($(element),"bottom");
-        },
-        onCancel: function(){
-            loader.destroy();
-        },
-        onSuccess: function(responseJSON){
-          window.syncTagsRequest = 0;
-          loader.destroy();          
-          if(responseJSON.continue){
-              synchronizeTags(element);
-          }else{
-              window.location.reload();
-          }
-        }
-    });
-    req.send();
-} 
 function selectAll()
 {
   var i;
@@ -176,17 +110,19 @@ function searchTopics(){
 
 <div class="admin_table_form">
 <form id='multimodify_form' method="post" action="<?php echo $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
+  <button type="submit"><?php echo $this->translate("Delete Selected"); ?></button>
+  <br><br>
   <table class='admin_table'>
     <thead>
       <tr>
-        <th style='width: 100px;' class='admin_table_centered'>
+        <th style='width: 5%;' class='admin_table_centered'>
             <input onclick="selectAll()" type='checkbox' class='checkbox' id="select-all" style="display:none;">
             <label for="select-all" class='admin_table_centered'><?php echo $this->translate("Select"); ?></label>
         </th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Topic Name"); ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Listing Type") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Category") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Subcategory") ?></th>
+        <th style='width: 50%;' class='admin_table_centered'><?php echo $this->translate("Topic Name"); ?></th>
+        <th style='width: 10%;' class='admin_table_centered'><?php echo $this->translate("Allow Badges"); ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Featured") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Icon") ?></th>
         <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Action") ?></th>
       </tr>
     </thead>
@@ -195,23 +131,19 @@ function searchTopics(){
         <?php $api = Engine_Api::_()->sdparentalguide(); ?>
         <?php foreach( $this->paginator as $item ):?>
           <tr>
-            <td><input class="sd_select_checkbox" data-id='<?php echo $item->getIdentity(); ?>' value=<?php echo $item->getIdentity();?> type='checkbox' class='checkbox'></td>
+            <td><input class="sd_select_checkbox" name="topic_ids[]" data-id='<?php echo $item->getIdentity(); ?>' value=<?php echo $item->getIdentity();?> type='checkbox' class='checkbox'></td>
             <td class='admin_table_centered admin_table_bold'>
               <?php echo $item->getTitle(); ?>
             </td>
-            <td class='admin_table_centered admin_table_user'>
-                <?php if(($listingType = $item->getListingType())): ?>
-                    <?php echo $listingType->getTitle(); ?>
-                <?php endif; ?>
+            <td class='admin_table_centered'>
+                <input type="radio" class="sd_radio_badges" disabled <?php echo ( $item->badges ? 'checked=checked' : '' ); ?>>
             </td>
-            <td class='admin_table_centered admin_table_email'>
-                <?php if(($category = $item->getCategory())): ?>
-                    <?php echo $category->getTitle(); ?>
-                <?php endif; ?>
+            <td class='admin_table_centered'>
+                <input type="radio" class="sd_radio_featured" disabled <?php echo ( $item->featured ? 'checked=checked' : '' ); ?>>
             </td>
-            <td class="admin_table_centered nowrap">
-               <?php if(($subcategory = $item->getSubCategory())): ?>
-                    <?php echo $subcategory->getTitle(); ?>
+            <td class='admin_table_centered'>
+                <?php if($item->photo_id): ?>
+                    <img src='<?php echo $item->getPhotoUrl("thumb.icon"); ?>' alt='<?php echo $item->getTitle(); ?>'/>
                 <?php endif; ?>
             </td>
             <td class='admin_table_centered'>
@@ -226,13 +158,7 @@ function searchTopics(){
                     <a href='javascript:void(0);' onclick="approveTopic(this,'<?php echo $item->getIdentity(); ?>','1');">
                         <?php echo $this->translate("Activate") ?>
                     </a>
-                <?php endif; ?>
-                <a class='smoothbox' href='<?php echo $this->url(array( 'action' => 'listings','topic_id' => $item->getIdentity()));?>'>
-                    <?php echo $this->translate("Listings") ?>
-                </a>
-                <a class='smoothbox' href='<?php echo $this->url(array( 'action' => 'hashtags','topic_id' => $item->getIdentity()));?>'>
-                    <?php echo $this->translate("Hashtags") ?>
-                </a>
+                <?php endif; ?>                
                 <a class='smoothbox' href='<?php echo $this->url(array('action' => 'delete','topic_id' => $item->getIdentity()));?>'>
                     <?php echo $this->translate("Delete") ?>
                 </a>

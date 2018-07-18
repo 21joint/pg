@@ -11,9 +11,6 @@
             <div class="question-owner-photo">
                 <a href="<?php echo $owner->getHref(); ?>">
                     <?php echo $this->itemPhoto($owner, 'thumb.icon', array('class'=> 'owner_thumb')) ?>
-                    <div class="owner_level">
-                        <?php echo $item->getOwner()->level_id;?>
-                    </div>
                 </a>
                 
             </div>

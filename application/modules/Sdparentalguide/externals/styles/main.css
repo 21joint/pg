@@ -1,3 +1,335 @@
+/* Find a proper place for this -> start */
+
+#global_wrapper{
+  width: 100%;
+  background-color: #f7fcfc;
+  /* Prefered color */
+}
+.leaderboard{
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 40px 0px;
+  color: #5f727f;
+  margin-bottom: 20px;
+}
+/* General Main and Wrapper styling end */
+/* Community Leaderboard title, main cateogires, list of items -> start */
+.leaderboard_title{
+  padding: 0px 20px;
+  border-bottom: 1px solid #f5f5f5;
+}
+.leaderboard_title h3{
+  color: #333D40;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  margin-left: 12px;
+  margin-bottom: 0!important;
+}
+.leaderboard_title ul{
+    margin-right: 12px;
+}
+.leaderboard_title ul li{
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  padding: 6px 30px 6px 30px;
+  border: 1px solid #fff;
+  border-bottom: 0;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+  transition: 0.4s;
+}
+.leaderboard_title ul li:hover{
+  border: 1px solid #f5f5f5;
+  border-bottom: 0;
+  cursor: pointer;
+  color: #5cc7ce;
+}
+/* Leaderboard Title styling end */
+
+.leaderboard_main{
+  padding: 24px 0px 12px;
+  font-size: 12px;
+  /*border-bottom: 1px solid #f5f5f5;*/
+}
+/* -> For testing .leaderboard_main div{
+  border: 1px solid red;
+}*/
+.leaderboard_main div:first-child{
+  flex: 1;
+}
+.leaderboard_main div:nth-child(n+3){
+  text-align: center;
+  flex: 2;
+  cursor: pointer;
+}
+.leaderboard_main div:nth-child(2){
+  flex: 7;
+}
+.active_category, .order_by:hover{
+  color: #5bc6cd!important;
+}
+/* Leaderboard Main styling end */
+
+.leaderboard_item{
+  padding: 10px 0px;
+  border-bottom: 1px solid #f5f5f5;
+  transition: 0.5s;
+}
+.leaderboard_item:hover{
+  border-bottom: 1px solid #dcf2f2;
+  background-color: #e4fafa;
+}
+.leader img{
+  border-radius: 50%;
+  margin-right: 16px;
+}
+.leader .cont_level{
+  top: 25px;
+  left: 28px;
+  font-size: 11px;
+  font-weight: bold;
+  border: 2px solid #e4fafa;
+  border-radius: 50%;
+  padding: 2px 6px;
+  background-color: #5cc7ce;
+  color: white;
+}
+/* -> For testing .leaderboard_item div{
+  border: 1px solid red;
+}*/
+.leaderboard_item div:first-child{
+  text-align: center;
+  flex: 1;
+}
+.leaderboard_item div:nth-child(n+3){
+  text-align: center;
+  flex: 2;
+}
+.leaderboard_item div:nth-child(2){
+  flex: 7;
+}
+.leaderboard_item div:nth-child(2) h4{
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+#leaderboard_pageNum{
+  color: #b4c0c1;
+  font-weight: 700;
+}
+.pagination_button{
+  color: #5cc7ce;
+  font-size: 30px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.pagination_button_diss{
+  color: #e2e4e6;
+}
+/* Leaderboard Item styling end */
+/* Community Leaderboard title, main cateogires, list of items -> end */
+/* Community Home Page jumbotron, carousel, list, faq, other items -> start */
+/* Community Home Page Jumbotron -> start */
+.leaderboard h1{
+  font-size: 60px;
+  color: #5cc7ce;
+}
+.leaderboard h5{
+  font-size: 16px;
+  color: #5cc7ce;
+}
+.leaderboard a{
+  font-family: 'Nunito', sans-serif;
+  border-radius: 30px;
+}
+#community_home_contribution{
+  flex: 2!important;
+}
+/* Community Home Page Jumbotron -> end */
+/* Community Home Page Mvps Showcase -> start */
+.mvps{
+  background-color: #fff;
+  height: 409px;
+  border-radius: 20px;
+  color: #5f727f;
+  margin-bottom: 20px;
+}
+.mvps_main h3{
+  color: #5f727f;
+  flex: 1;
+  cursor: pointer;
+  border-right: 1px solid #e2e4e6;
+  border-bottom: 1px solid #e2e4e6;
+}
+.mvps_main_active{
+  color: #5cc7ce!important;
+  border-bottom: 2px solid #5cc7ce!important;
+}
+.mvps_main h3:last-child{
+  border-right: 0px;
+}
+#go_to_leaderboard:hover{
+  color: #5cc7ce;
+}
+.mvps_content{
+  
+}
+#mvps_left{
+  top: 240px;
+  left: 4px;
+  font-weight: 700;
+  background-color: #fff;
+  box-shadow: 0 15px 12px rgba(62, 76, 77, 0.16);
+}
+#mvps_left:hover{
+  background-color: #fff;
+  opacity: 1;
+  box-shadow: 0 15px 12px rgba(62, 76, 77, 0.26);
+}
+#mvps_right{
+  top: 240px;
+  right: 4px;
+  font-weight: 700;
+  background-color: #fff;
+  box-shadow: 0 15px 12px rgba(62, 76, 77, 0.16);
+}
+#mvps_right:hover{
+  background-color: #fff;
+  opacity: 1;
+  box-shadow: 0 15px 12px rgba(62, 76, 77, 0.26);
+}
+.mvps_item{
+  padding-top: 20px;
+  border: 1px solid #e2e4e6;
+  border-radius: 10px;
+}
+.mvps_item img{
+  width: 100px;
+  border-radius: 50%;
+}
+.mvps_item h4{
+  border: 0px;
+  width: 160px;
+}
+.mvps_item span{
+  top: 96px;
+  left: 96px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 2px solid #e4fafa;
+  border-radius: 50%;
+  padding: 3px 8px;
+  background-color: #5cc7ce;
+  color: white;
+}
+.mvps_contribution{
+  border-top: 1px solid #e2e4e6;
+}
+/* Community Home Page Mvps Showcase -> end */
+/* Community Home Page Find Expert -> start */
+.find_expert_main{
+  background-color: #fff;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+.find_expert_badges{
+  height: 300px;
+  box-sizing: border-box;
+}
+.find_expert_badges .front_image{
+  width: 240px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 2;
+}
+.find_expert_badges .back_image{
+  width: 200px;
+  opacity: 0.5;
+  margin-top: 40px;
+}
+.find_expert_text{
+  box-sizing: border-box;
+  padding: 0px 20px!important;
+}
+.find_expert_text h2{
+  font-family: 'Nunito', sans-serif;
+  color: #5cc7ce;
+  font-weight: 700;
+}
+.find_expert_text h3{
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  margin-bottom: 0px!important;
+  margin-top: 24px;
+}
+/* Community Home Page Find Expert -> end */
+/* Community Home Page Credibility Info -> start */
+.credibility_info_main{
+  box-sizing: border-box;
+}
+.credibility_info_text{
+  box-sizing: border-box;
+  padding: 0px 40px!important;
+}
+.credibility_info_text h2{
+  color: #5cc7ce;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+}
+/* Community Home Page Credibility Info -> end */
+/* Community Home Page FAQ -> start */
+.faq_main{
+  background-color: #fff;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 0px 40px;
+}
+.faq_main h2{
+  color: #5cc7ce;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+}
+.faq_item{
+  border-bottom: 2px solid #e2e4e6;
+}
+.faq_title{
+
+}
+.faq_title h4{
+  margin-left: 20px;
+  border-bottom: none;
+}
+.faq_toggle{
+  font-size: 30px;
+  font-weight: 700;
+  transform: rotate(0deg);
+  cursor: pointer;
+  color: #e2e4e6;
+  margin-right: 20px;
+  transition: all 0.6s;
+}
+.faq_transform{
+  color: #5cc7ce;
+  transform: rotate(45deg);
+}
+.faq_text{
+  margin: 0px 20px;
+  opacity: 0; 
+  height: 0;
+  overflow: hidden;
+  transition: all 0.6s ease-in;
+}
+.faq_text_disp{
+  opacity: 1;
+  height: auto;
+}
+/* Community Home Page FAQ -> end */
+/* Community Home Page jumbotron, carousel, list, faq, other items -> end */
+
+/* Find a proper place for this -> end */
+
+
 .layout_sdparentalguide_listing_search .sd_listing_search{
      background-color: #fff !important;
 }
@@ -311,5 +643,87 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
     .layout_sdparentalguide_assigned_badges .seaocore_photo_strips div.thumb_photo{
         float: none;
         display: inline-block;
+    }
+}
+
+@media screen and (max-width: 768px){
+    /* Community Leaderboard Page Start */
+    #order_btn{
+      font-size: 12px;
+      color: #fff;
+      font-weight: bold;
+      background-color: #5bc6cd;
+    }
+    .leaderboard_main div:nth-child(2){
+      flex: 6;
+    }
+    .leaderboard_main div:nth-child(n+3){
+      flex: 1;
+    }
+    .leaderboard_item div:nth-child(2){
+      flex: 6;
+    }
+    /* Community Leaderboard Page End */
+    /* Community Home Page Start */
+    .leaderboard h1{
+      font-size: 50px;
+    }
+    .leaderboard h5{
+      font-size: 14px;
+      color: #5cc7ce;
+    }
+    /* Community Home Page End */
+}
+
+@media screen and (max-width: 576px){
+    /* Community Leaderboard Page Start */
+    .leaderboard_title h3{
+      margin: 0!important;
+    }
+    .leaderboard_title ul{
+      margin: 0;
+    }
+    .leaderboard_title ul li{
+      padding: 6px 24px;
+    }
+    /* Community Leaderboard Page End */
+    /* Community Home Page Start */
+    .leaderboard h1{
+      font-size: 42px;
+    }
+    .leaderboard h5{
+      font-size: 12px;
+      color: #5cc7ce;
+    }
+    /* Community Home Page End */
+}
+
+@media screen and (max-width: 486px){
+    /* Community Leaderboard Page Start */
+    .leaderboard_title h3{
+        font-size: 14px;
+    }
+    .leaderboard_title ul li{
+      padding: 8px 12px;
+      font-size: 12px;
+    }
+    .leaderboard_item div{
+        font-size: 12px;
+    }
+    /* Community Leaderboard Page End */
+    /* Community Home Page Start */
+    .leaderboard h1{
+      font-size: 32px;
+    }
+    .leaderboard h5{
+      font-size: 12px;
+      color: #5cc7ce;
+    }
+    /* Community Home Page End */
+}
+
+@media screen and (max-width: 368px){
+    .leaderboard_title ul li{
+      padding: 8px 8px;
     }
 }

@@ -212,46 +212,6 @@ html[dir="rtl"] .layout_right
   display: inline-block;
   overflow: hidden;
 }
-/* Header */
-.layout_page_header
-{
-  background-color: $theme_topbar_background_color;
-  text-align: center;
-  padding: 0px;
-  clear: both;
-  border-bottom: $theme_topbar_border;
-  background-repeat: no-repeat;
-  background-position: top center;
-  position:relative;
-}
-.layout_page_header .layout_main
-{
-  width: $theme_topbar_width;
-}
-/* Footer */
-.layout_page_footer
-{
-  clear: both;
-  text-align: center;
-  overflow: hidden;
-  margin-top: 30px;
-  +foreground;
-}
-.layout_page_footer .layout_main
-{
-  +rounded; 
-  text-align: left;
-  overflow: hidden;
-  padding: 10px;
-  width: 90%;
-  margin: 0 auto;
-}
-div.layout_core_menu_footer
-{
-  color: $theme_font_color_light;
-  margin-top: 0;
-  font-size: 95%;
-}
 
 /*
 MAIN MENU WIDGET
@@ -852,16 +812,13 @@ html[dir="rtl"] .global_form > div
 {
   font-weight: 600;
   border-bottom: 1px solid $theme_foreground_border_color_light;
-  height: 1em;
-  margin-bottom: 15px;
+  margin-bottom: 3rem;
 }
 .global_form div.form-wrapper-heading > span
 {
   display: block;
-  position: absolute;
   overflow: hidden;
   padding: 4px 6px 4px 0px;
-  background: $theme_form_background_color;
 }
 html[dir="rtl"] .global_form div.form-wrapper-heading > span
 {
@@ -1656,16 +1613,11 @@ as an alternative to regular input select boxes in some places.
 .pulldown_contents_wrapper
 {
   display: none;
-  +rounded(5px);
   overflow: hidden;
   position: absolute;
-  width: 300px;
-  max-width: 300px;
-  padding: 4px;
-  background-color: $theme_pulldown_border_color;
+  width: 350px;
+  max-width: 350px;
   z-index: 99;
-  margin-top: 22px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 .pulldown_active .pulldown_contents_wrapper
 {
@@ -2259,10 +2211,7 @@ ul.requests_widget
 /*
 Popup
 */
-#TB_window
-{
-  border-color: $theme_popup_border_color;
-}
+
 #user_form_login.global_form_box #remember-wrapper label
 {
   margin-top: 0;
