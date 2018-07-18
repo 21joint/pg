@@ -876,6 +876,8 @@ div.draft_main_holder ul li:before {
 .layout_ggcommunity_featured_topics {
     margin:20px auto 20px;
     border-radius: 20px;
+    /* Display: none; -> Removed from view for testing */
+    display: none;
 }
 .layout_ggcommunity_featured_topics .featured_widget{
     background-color:#fff;
@@ -1234,6 +1236,7 @@ div.draft_main_holder ul li:before {
 .layout_page_ggcommunity_question-index_browse .browse_main_holder,
 .layout_page_ggcommunity_question-index_manage .browse_main_holder {
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .browse_top_holder .search_description p{
@@ -1456,6 +1459,8 @@ div.draft_main_holder ul li:before {
     position: relative;
     height: 330px;
     border-radius: 10px;
+    /* Display: none; -> for testing, until service becomes available */
+    display: none;
 } 
 .layout_ggcommunity_review_product .review_product_widget {
     height: 100%;

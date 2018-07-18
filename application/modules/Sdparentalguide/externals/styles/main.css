@@ -115,12 +115,12 @@
 }
 #leaderboard_pageNum{
   color: #b4c0c1;
-  font-weight: bolder;
+  font-weight: 700;
 }
 .pagination_button{
   color: #5cc7ce;
   font-size: 30px;
-  font-weight: bolder;
+  font-weight: 700;
   cursor: pointer;
 }
 .pagination_button_diss{
@@ -149,6 +149,7 @@
 /* Community Home Page Mvps Showcase -> start */
 .mvps{
   background-color: #fff;
+  height: 409px;
   border-radius: 20px;
   color: #5f727f;
   margin-bottom: 20px;
@@ -167,18 +168,36 @@
 .mvps_main h3:last-child{
   border-right: 0px;
 }
+#go_to_leaderboard:hover{
+  color: #5cc7ce;
+}
 .mvps_content{
   
 }
 #mvps_left{
   top: 240px;
-  left: 0px;
+  left: 4px;
+  font-weight: 700;
+  background-color: #fff;
+  box-shadow: 0 15px 12px rgba(62, 76, 77, 0.16);
+}
+#mvps_left:hover{
+  background-color: #fff;
+  opacity: 1;
+  box-shadow: 0 15px 12px rgba(62, 76, 77, 0.26);
 }
 #mvps_right{
   top: 240px;
-  right: 0px;
+  right: 4px;
+  font-weight: 700;
+  background-color: #fff;
+  box-shadow: 0 15px 12px rgba(62, 76, 77, 0.16);
 }
-/* ADD REST OF THE STYLING BELOW THIS LINE*/
+#mvps_right:hover{
+  background-color: #fff;
+  opacity: 1;
+  box-shadow: 0 15px 12px rgba(62, 76, 77, 0.26);
+}
 .mvps_item{
   padding-top: 20px;
   border: 1px solid #e2e4e6;
@@ -236,11 +255,11 @@
 .find_expert_text h2{
   font-family: 'Nunito', sans-serif;
   color: #5cc7ce;
-  font-weight: bolder;
+  font-weight: 700;
 }
 .find_expert_text h3{
   font-family: 'Nunito', sans-serif;
-  font-weight: bolder;
+  font-weight: 700;
   margin-bottom: 0px!important;
   margin-top: 24px;
 }
@@ -256,7 +275,7 @@
 .credibility_info_text h2{
   color: #5cc7ce;
   font-family: 'Nunito', sans-serif;
-  font-weight: bolder;
+  font-weight: 700;
 }
 /* Community Home Page Credibility Info -> end */
 /* Community Home Page FAQ -> start */
@@ -269,7 +288,7 @@
 .faq_main h2{
   color: #5cc7ce;
   font-family: 'Nunito', sans-serif;
-  font-weight: bolder;
+  font-weight: 700;
 }
 .faq_item{
   border-bottom: 2px solid #e2e4e6;
@@ -283,7 +302,7 @@
 }
 .faq_toggle{
   font-size: 30px;
-  font-weight: bolder;
+  font-weight: 700;
   transform: rotate(0deg);
   cursor: pointer;
   color: #e2e4e6;

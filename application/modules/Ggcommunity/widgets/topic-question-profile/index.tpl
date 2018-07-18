@@ -9,7 +9,7 @@
             <div class="question-topics-box flex-start">
                 <?php foreach($topics as $topic):?>
                     <?php $topic_item = Engine_Api::_()->getItem('sdparentalguide_topic', $topic['topic_id']); ?>
-                        <a href="javascript:void(0)" class="btn tags small"><?php echo $topic_item; ?></a>
+                        <a id="go_to_topic" href="javascript:void(0)" class="btn tags small"><?php echo $topic_item; ?></a>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -86,6 +86,16 @@
                                     } 
                                 }
                             }
+
+                            // By Clicking Topic Button go to the page for that topic
+                            // Parameters for Redirecting
+                            var topicID = "<?php echo $topic['topic_id']; ?>";
+                            var topicName = "<?php echo $topic_item; ?>";
+                            // Redirect based on topicID if not said otherwise
+                            document.getElementById("go_to_topic").href = en4.core.baseUrl + "/topics?topicID=" + topicID;
+                            //+PHP to check for topicID;
+                            // If previous request fails redirect to -> /topics?topicName={{topicName}}
+                            
                     </script>
                 </div>
             <?php endif;?>
