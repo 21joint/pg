@@ -11,14 +11,14 @@ class Pgservicelayer_ApiBootstrap {
 
     /**
      * Contains the loader/autoloader instance
-     * 
+     *
      * @var Engine_Loader
      */
     static $_autoloader;
 
     /**
      * Calling Bootstrap
-     * 
+     *
      * @var Engine_Loader
      */
     static $_bootstrap;
@@ -92,7 +92,7 @@ class Pgservicelayer_ApiBootstrap {
         }
 
         $this->_moduleBaePath = APPLICATION_PATH . DIRECTORY_SEPARATOR . 'application'
-                . DIRECTORY_SEPARATOR . 'modules';
+            . DIRECTORY_SEPARATOR . 'modules';
 
         $this->_initDb();
         $this->_initModules();
@@ -130,19 +130,19 @@ class Pgservicelayer_ApiBootstrap {
             $front->setRequest($request);
             $front->registerPlugin(new Sdparentalguide_Plugin_Core);
             $front->registerPlugin(new Pgservicelayer_Plugin_Loader());
-            
+
             $response = $front->dispatch($request, $response);
             $response->sendResponse();
         } catch (Exception $e) {
             $response->setHttpResponseCode(self::HTTP_INTERNAL_ERROR)
-                    ->setBody('Service temporary unavailable\n '.$e->getMessage()." \n ".$e->getTraceAsString())
-                    ->sendResponse();
+                ->setBody('Service temporary unavailable\n '.$e->getMessage()." \n ".$e->getTraceAsString())
+                ->sendResponse();
         }
     }
 
     /**
      * Set the resource container
-     * 
+     *
      * @param Zend_Registry $container
      * @return Engine_Application_Bootstrap_Abstract
      */
@@ -153,7 +153,7 @@ class Pgservicelayer_ApiBootstrap {
 
     /**
      * Get the current resource container
-     * 
+     *
      * @return Zend_Registry
      */
     public function getContainer() {
@@ -200,9 +200,9 @@ class Pgservicelayer_ApiBootstrap {
         $this->_loadLicense();
         $frontController = Pgservicelayer_Controller_Front::getInstance();
         $frontController
-                //->addModuleDirectory(APPLICATION_PATH . "/application/modules/")
-                ->setDefaultModule('pgservicelayer')
-                ->setParam('prefixDefaultModule', 'true');
+            //->addModuleDirectory(APPLICATION_PATH . "/application/modules/")
+            ->setDefaultModule('pgservicelayer')
+            ->setParam('prefixDefaultModule', 'true');
 
         // Add our special path for action helpers
         //$this->initActionHelperPath();
@@ -232,25 +232,25 @@ class Pgservicelayer_ApiBootstrap {
             case 'mysqli':
             case 'mysql':
             case 'pdo_mysql': {
-                    $db->query("SET time_zone = '+0:00'");
-                    break;
-                }
+                $db->query("SET time_zone = '+0:00'");
+                break;
+            }
 
             case 'postgresql': {
-                    $db->query("SET time_zone = '+0:00'");
-                    break;
-                }
+                $db->query("SET time_zone = '+0:00'");
+                break;
+            }
 
             default: {
-                    // do nothing
-                }
+                // do nothing
+            }
         }
 
         // attempt to disable strict mode
         try {
             $db->query("SET SQL_MODE = ''");
         } catch (Exception $e) {
-            
+
         }
         $resource = 'db';
         $this->getContainer()->{'db'} = $db;
@@ -265,7 +265,7 @@ class Pgservicelayer_ApiBootstrap {
         $enabledModuleNames = Engine_Api::_()->getDbtable('modules', 'core')->getEnabledModuleNames();
         $baseDir = APPLICATION_PATH;
         $moduleBaePath = $baseDir . DIRECTORY_SEPARATOR . 'application'
-                . DIRECTORY_SEPARATOR . 'modules' . DIRECTORY_SEPARATOR;
+            . DIRECTORY_SEPARATOR . 'modules' . DIRECTORY_SEPARATOR;
         foreach ($enabledModuleNames as $module) {
             // Default module is already bootstrapped, but bootstrap others
             if (strtolower($module) === strtolower($default)) {
@@ -299,7 +299,7 @@ class Pgservicelayer_ApiBootstrap {
         } else if (is_writable(APPLICATION_PATH . '/temporary/cache') || (
                 !@is_dir(APPLICATION_PATH . '/temporary/cache') &&
                 @mkdir(APPLICATION_PATH . '/temporary/cache', 0777, true)
-                )) {
+            )) {
             // Auto default config
             $options = array(
                 'default_backend' => 'File',
@@ -327,10 +327,10 @@ class Pgservicelayer_ApiBootstrap {
         $backend = key($options['backend']);
         Engine_Cache::setConfig($options);
         if( in_array($backend, array('Engine_Cache_Backend_Apc', 'Engine_Cache_Backend_Redis')) ) {
-          $cache = Engine_Cache::factory($frontend, $backend, array(), array(), false, true);
-         } else {
-           $cache = Engine_Cache::factory($frontend, $backend);
-         }
+            $cache = Engine_Cache::factory($frontend, $backend, array(), array(), false, true);
+        } else {
+            $cache = Engine_Cache::factory($frontend, $backend);
+        }
 
         // Disable caching in development mode
         if (APPLICATION_ENV == 'development') {
@@ -362,47 +362,47 @@ class Pgservicelayer_ApiBootstrap {
         // Get log config
         $db = Engine_Db_Table::getDefaultAdapter();
         $logAdapter = $db->select()
-                ->from('engine4_core_settings', 'value')
-                ->where('`name` = ?', 'core.log.adapter')
-                ->query()
-                ->fetchColumn();
+            ->from('engine4_core_settings', 'value')
+            ->where('`name` = ?', 'core.log.adapter')
+            ->query()
+            ->fetchColumn();
 
         // Set up log
         switch ($logAdapter) {
             case 'database': {
-                    try {
-                        $log->addWriter(new Zend_Log_Writer_Db($db, 'engine4_core_log'));
-                    } catch (Exception $e) {
-                        // Make sure logging doesn't cause exceptions
-                        $log->addWriter(new Zend_Log_Writer_Null());
-                    }
-                    break;
+                try {
+                    $log->addWriter(new Zend_Log_Writer_Db($db, 'engine4_core_log'));
+                } catch (Exception $e) {
+                    // Make sure logging doesn't cause exceptions
+                    $log->addWriter(new Zend_Log_Writer_Null());
                 }
+                break;
+            }
             default:
             case 'file': {
-                    try {
+                try {
+                    $log->addWriter(new Zend_Log_Writer_Stream(APPLICATION_PATH . '/temporary/log/main.log'));
+                } catch (Exception $e) {
+                    // Check directory
+                    if (!@is_dir(APPLICATION_PATH . '/temporary/log') &&
+                        @mkdir(APPLICATION_PATH . '/temporary/log', 0777, true)) {
                         $log->addWriter(new Zend_Log_Writer_Stream(APPLICATION_PATH . '/temporary/log/main.log'));
-                    } catch (Exception $e) {
-                        // Check directory
-                        if (!@is_dir(APPLICATION_PATH . '/temporary/log') &&
-                                @mkdir(APPLICATION_PATH . '/temporary/log', 0777, true)) {
-                            $log->addWriter(new Zend_Log_Writer_Stream(APPLICATION_PATH . '/temporary/log/main.log'));
+                    } else {
+                        // Silence ...
+                        if (APPLICATION_ENV !== 'production') {
+                            $log->log($e->__toString(), Zend_Log::CRIT);
                         } else {
-                            // Silence ...
-                            if (APPLICATION_ENV !== 'production') {
-                                $log->log($e->__toString(), Zend_Log::CRIT);
-                            } else {
-                                // Make sure logging doesn't cause exceptions
-                                $log->addWriter(new Zend_Log_Writer_Null());
-                            }
+                            // Make sure logging doesn't cause exceptions
+                            $log->addWriter(new Zend_Log_Writer_Null());
                         }
                     }
-                    break;
                 }
+                break;
+            }
             case 'none': {
-                    $log->addWriter(new Zend_Log_Writer_Null());
-                    break;
-                }
+                $log->addWriter(new Zend_Log_Writer_Null());
+                break;
+            }
         }
 
         // Save to registry
@@ -475,7 +475,7 @@ class Pgservicelayer_ApiBootstrap {
                                 $temp['routes'][$key]['route'] = 'se' . @ltrim($value['route'], "/");
                         }
                     }
-                    
+
                     if (($apiModName == 'sitegroup') && isset($temp['routes']) && (is_array($this->_notIncludeRoute) && !in_array($apiModName, $this->_notIncludeRoute))) {
                         foreach ($temp['routes'] as $key => $value) {
                             if (isset($value['route']) && !empty($value['route']) && in_array($value['route'], $this->_notIncludeListingRoute))
@@ -564,10 +564,10 @@ class Pgservicelayer_ApiBootstrap {
         // Check which Translation Adapter has been selected
         $db = Engine_Db_Table::getDefaultAdapter();
         $translationAdapter = $db->select()
-                ->from('engine4_core_settings', 'value')
-                ->where('`name` = ?', 'core.translate.adapter')
-                ->query()
-                ->fetchColumn();
+            ->from('engine4_core_settings', 'value')
+            ->where('`name` = ?', 'core.translate.adapter')
+            ->query()
+            ->fetchColumn();
 
         // Use Array Translation Adapter, Loop through all Availible Translations
         if ($translationAdapter == 'array') {
@@ -590,17 +590,17 @@ class Pgservicelayer_ApiBootstrap {
             $language_count = count($locale_array);
             // Add the First One
             $translate = new Zend_Translate(
-                    array(
-                'adapter' => 'array',
-                'content' => $languagePath . DIRECTORY_SEPARATOR . $locale_array[0] . DIRECTORY_SEPARATOR . $locale_array[0] . '.php',
-                'locale' => $locale_array[0])
+                array(
+                    'adapter' => 'array',
+                    'content' => $languagePath . DIRECTORY_SEPARATOR . $locale_array[0] . DIRECTORY_SEPARATOR . $locale_array[0] . '.php',
+                    'locale' => $locale_array[0])
             );
             if ($language_count > 1) {
                 for ($i = 1; $i < $language_count; $i++) {
                     $translate->addTranslation(
-                            array(
-                                'content' => $languagePath . DIRECTORY_SEPARATOR . $locale_array[$i] . DIRECTORY_SEPARATOR . $locale_array[$i] . '.php',
-                                'locale' => $locale_array[$i])
+                        array(
+                            'content' => $languagePath . DIRECTORY_SEPARATOR . $locale_array[$i] . DIRECTORY_SEPARATOR . $locale_array[$i] . '.php',
+                            'locale' => $locale_array[$i])
                     );
                 }
             }
@@ -608,7 +608,7 @@ class Pgservicelayer_ApiBootstrap {
         // Use CSV Translation Adapter
         else {
             $translate = new Zend_Translate(
-                    'Csv', APPLICATION_PATH . '/application/languages', null, $params
+                'Csv', APPLICATION_PATH . '/application/languages', null, $params
             );
         }
         Zend_Registry::set('Zend_Translate', $translate);
@@ -653,7 +653,7 @@ class Pgservicelayer_ApiBootstrap {
 //        if (is_file(APPLICATION_PATH . '/application/modules/Siteeventticket/controllers/license/license.php'))
 //            include APPLICATION_PATH . '/application/modules/Siteeventticket/controllers/license/license.php';
     }
-    
+
     protected function _initSession()
     {
         // Get session configuration
