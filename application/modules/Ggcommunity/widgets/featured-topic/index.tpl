@@ -8,9 +8,19 @@
                     <?php echo $x++; ?>.
                 </div>
                 <div class="description-holder">
-                    <p class="ftw_title" ><?php echo $topic->name?></p>
+                    <!-- Turn paragraph to link -->
+                    <a class="ftw_title" data-ref="<?php echo $topic->topic_id ?>"><?php echo $topic->name ?></a>
                 </div>
             </li>
         <?php endforeach; ?>
     </ul>   
 </div>
+
+<script type="text/javascript">
+    // Every Topic Link should Redirect to their own Topic Page
+    document.querySelectorAll(".ftw_title").forEach(function(curr_topic){
+        var current_topic = curr_topic;
+        var topicID_w = current_topic.dataset.ref;
+        curr_topic.href = en4.core.baseUrl + "topics?topicID=" + topicID_w;
+    });
+</script>
