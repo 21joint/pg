@@ -18,6 +18,7 @@
 
 <script type="text/javascript">
     // Every Topic Link should Redirect to their own Topic Page
+    // IDs of every item are stored in data-ref attribute
     document.querySelectorAll(".ftw_title").forEach(function(curr_topic){
         var current_topic = curr_topic;
         var topicID_w = current_topic.dataset.ref;
