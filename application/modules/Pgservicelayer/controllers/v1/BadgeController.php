@@ -15,6 +15,10 @@ class Pgservicelayer_BadgeController extends Pgservicelayer_Controller_Action_Ap
     
     public function indexAction(){
         $this->validateRequestMethod();
+        $viewer = Engine_Api::_()->user()->getViewer();
+        if(!$viewer->getIdentity() && $this->isApiRequest()){
+            $this->respondWithError('unauthorized');
+        }
         try{
             $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
             $table = Engine_Api::_()->getDbtable('badges', 'sdparentalguide');
@@ -60,6 +64,10 @@ class Pgservicelayer_BadgeController extends Pgservicelayer_Controller_Action_Ap
     
     public function memberbadgeAction(){
         $this->validateRequestMethod();
+        $viewer = Engine_Api::_()->user()->getViewer();
+        if(!$viewer->getIdentity() && $this->isApiRequest()){
+            $this->respondWithError('unauthorized');
+        }
         try{
             $this->validateParams(array('memberID','badgeID','page','limit'));
             $id = $this->getParam("memberID");
