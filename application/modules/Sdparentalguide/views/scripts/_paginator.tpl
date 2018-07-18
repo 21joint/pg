@@ -30,7 +30,7 @@
     <ul class="paginationControl">
       <?php if( isset($this->previous) ): ?>
         <li>
-          <?php echo $this->htmlLink(array_merge($params, array(
+          <?= $this->htmlLink(array_merge($params, array(
             'reset' => true,
             'route' => 'sdparentalguide_general',
             'action' => 'listings',
@@ -39,7 +39,7 @@
           )), $this->translate('&#171; First')) ?>
         </li>
         <li>
-          <?php echo $this->htmlLink(array_merge($params, array(
+          <?= $this->htmlLink(array_merge($params, array(
             'reset' => true,
             'route' => 'sdparentalguide_general',
             'action' => 'listings',
@@ -51,7 +51,7 @@
       <?php foreach ($this->pagesInRange as $page): ?>
         <?php if ($page != $this->current): ?>
           <li>
-            <?php echo $this->htmlLink(array_merge($params, array(
+            <?= $this->htmlLink(array_merge($params, array(
               'reset' => true,
               'route' => 'sdparentalguide_general',
               'action' => 'listings',
@@ -61,13 +61,13 @@
           </li>
         <?php else: ?>
           <li class="selected">
-            <a href='<?php echo $this->escape($this->url()) ?>'><?php echo $page; ?></a>
+            <a href='<?= $this->escape($this->url()) ?>'><?= $page; ?></a>
           </li>
         <?php endif; ?>
       <?php endforeach; ?>
       <?php if (isset($this->next)): ?>
         <li>
-          <?php echo $this->htmlLink(array_merge($params, array(
+          <?= $this->htmlLink(array_merge($params, array(
             'reset' => true,
             'route' => 'sdparentalguide_general',
             'action' => 'listings',
@@ -76,7 +76,7 @@
           )), $this->translate('Next &#187;')) ?>
         </li>
         <li>
-          <?php echo $this->htmlLink(array_merge($params, array(
+          <?= $this->htmlLink(array_merge($params, array(
             'reset' => true,
             'route' => 'sdparentalguide_general',
             'action' => 'listings',

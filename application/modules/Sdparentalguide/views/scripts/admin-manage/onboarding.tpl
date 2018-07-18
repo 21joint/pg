@@ -8,7 +8,7 @@
  */
 ?>
 
-<h2><?php echo $this->translate("Parental Guidance Customizations") ?></h2>
+<h2><?= $this->translate("Parental Guidance Customizations") ?></h2>
 
 <?php if( count($this->navigation) ): ?>
   <div class='tabs'>
@@ -22,6 +22,6 @@
 
 <div class='clear'>
     <div class='settings'>
-      <?php echo $this->form->render($this); ?>
+      <?= $this->form->render($this); ?>
     </div>
 </div>

@@ -15,7 +15,6 @@
 <html class="h-100" style="overflow-x: hidden;" id="smoothbox_window" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $locale ?>" lang="<?php echo $locale ?>" dir="<?php echo $orientation ?>">
 <head>
   <base href="<?php echo rtrim($this->serverUrl($this->baseUrl()), '/'). '/' ?>" />
-  <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700|Open+Sans:300,400,600" rel="stylesheet">
 
   <?php // TITLE/META ?>
   <?php

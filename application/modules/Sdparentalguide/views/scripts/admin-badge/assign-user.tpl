@@ -21,7 +21,7 @@
 ?>
 
 
-<h2><?php echo $this->translate("Parental Guidance Customizations") ?></h2>
+<h2><?= $this->translate("Parental Guidance Customizations") ?></h2>
 
 <?php if( count($this->navigation) ): ?>
   <div class='tabs'>
@@ -51,33 +51,33 @@
     <?php $user = $this->user; ?>
     <div class='user_info'>
         <div class='user_username'>
-            <?php echo $this->htmlLink($user->getHref(),
+            <?= $this->htmlLink($user->getHref(),
                   $this->string()->truncate($user->username, 32),
                   array('target' => '_blank'))?>
         </div>
         <div class='user_username'>
-            <?php echo $this->htmlLink($user->getHref(),
+            <?= $this->htmlLink($user->getHref(),
                   $this->string()->truncate($api->getFieldValue($user,3)." ".$api->getFieldValue($user,4), 32),
                   array('target' => '_blank'))?>
         </div>
         <div class='user_username'>
-            <?php echo Engine_Api::_()->getItem("authorization_level",$user->level_id)->getTitle(); ?>
+            <?= Engine_Api::_()->getItem("authorization_level",$user->level_id)->getTitle(); ?>
         </div>
     </div>
     <div class='user_photo'>
-        <?php echo $this->htmlLink($this->user->getHref(array('target' => '_blank')),$this->itemPhoto($this->user,'thumb.profile')); ?>
+        <?= $this->htmlLink($this->user->getHref(array('target' => '_blank')),$this->itemPhoto($this->user,'thumb.profile')); ?>
     </div>
 </div>
-<form id='multimodify_form' method="post" action="<?php echo $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
+<form id='multimodify_form' method="post" action="<?= $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
   <table class='admin_table'>
     <thead>
       <tr>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Badge Name") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Image") ?></th>        
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Type") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Level") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Topic Name") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Action") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Badge Name") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Image") ?></th>        
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Type") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Level") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Topic Name") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Action") ?></th>
       </tr>
     </thead>
     <tbody>
@@ -86,45 +86,45 @@
         <?php foreach( $this->assignedBadges as $item ):?>
           <tr>
             <td class='admin_table_centered admin_table_bold'>
-              <?php echo $item->getTitle(); ?>
+              <?= $item->getTitle(); ?>
             </td>
-            <td class='admin_table_centered admin_table_user'><?php echo $this->itemPhoto($item,'thumb.icon',$item->getTitle()); ?></td>            
+            <td class='admin_table_centered admin_table_user'><?= $this->itemPhoto($item,'thumb.icon',$item->getTitle()); ?></td>            
             <td class="admin_table_centered nowrap">
                <?php if(($badgeType = $item->getBadgeType())): ?>
-                    <?php echo $this->translate($badgeType); ?>
+                    <?= $this->translate($badgeType); ?>
                 <?php endif; ?>
             </td>
             <td class="admin_table_centered nowrap">
                <?php if(($level = $item->getLevel())): ?>
-                    <?php echo $this->translate($level); ?>
+                    <?= $this->translate($level); ?>
                 <?php endif; ?>
             </td>
             <td class='admin_table_centered admin_table_email'>
                 <?php if(($topic = $item->getTopic())): ?>
-                    <?php echo $topic->getTitle(); ?>
+                    <?= $topic->getTitle(); ?>
                 <?php endif; ?>
             </td>
             <td class='admin_table_centered table_options'>
                 <?php if($item->assigned_active): ?>
-                    <a href='javascript:void(0);' onclick="updateAssignStatus(this,'<?php echo $item->getIdentity(); ?>','<?php echo $this->user->getIdentity(); ?>','0');">
-                        <?php echo $this->translate("Inactive") ?>
+                    <a href='javascript:void(0);' onclick="updateAssignStatus(this,'<?= $item->getIdentity(); ?>','<?= $this->user->getIdentity(); ?>','0');">
+                        <?= $this->translate("Inactive") ?>
                     </a>
                 <?php else: ?>
-                    <a href='javascript:void(0);' onclick="updateAssignStatus(this,'<?php echo $item->getIdentity(); ?>','<?php echo $this->user->getIdentity(); ?>','1');">
-                        <?php echo $this->translate("Activate") ?>
+                    <a href='javascript:void(0);' onclick="updateAssignStatus(this,'<?= $item->getIdentity(); ?>','<?= $this->user->getIdentity(); ?>','1');">
+                        <?= $this->translate("Activate") ?>
                     </a>
                 <?php endif; ?>
                 <?php if($item->profile_display): ?>
-                    <a href='javascript:void(0);' onclick="updateDisplayStatus(this,'<?php echo $item->getIdentity(); ?>','<?php echo $this->user->getIdentity(); ?>','0');">
-                        &nbsp;&nbsp;<?php echo $this->translate("Hide") ?>
+                    <a href='javascript:void(0);' onclick="updateDisplayStatus(this,'<?= $item->getIdentity(); ?>','<?= $this->user->getIdentity(); ?>','0');">
+                        &nbsp;&nbsp;<?= $this->translate("Hide") ?>
                     </a>
                 <?php else: ?>
-                    <a href='javascript:void(0);' onclick="updateDisplayStatus(this,'<?php echo $item->getIdentity(); ?>','<?php echo $this->user->getIdentity(); ?>','1');">
-                        &nbsp;&nbsp;<?php echo $this->translate("Display") ?>
+                    <a href='javascript:void(0);' onclick="updateDisplayStatus(this,'<?= $item->getIdentity(); ?>','<?= $this->user->getIdentity(); ?>','1');">
+                        &nbsp;&nbsp;<?= $this->translate("Display") ?>
                     </a>
                 <?php endif; ?>
-                <a href='javascript:void(0);' onclick="deleteAssignedBadge(this,'<?php echo $item->getIdentity(); ?>','<?php echo $this->user->getIdentity(); ?>');">
-                    &nbsp;&nbsp;<?php echo $this->translate("Delete") ?>
+                <a href='javascript:void(0);' onclick="deleteAssignedBadge(this,'<?= $item->getIdentity(); ?>','<?= $this->user->getIdentity(); ?>');">
+                    &nbsp;&nbsp;<?= $this->translate("Delete") ?>
                 </a>
             </td>            
           </tr>
@@ -139,7 +139,7 @@
 <div class='admin_results assigned_badges'>
   <div>
     <?php $count = count($this->assignedBadges) ?>
-    <?php echo $this->translate(array("%s badge assigned", "%s badges assigned", $count),
+    <?= $this->translate(array("%s badge assigned", "%s badges assigned", $count),
         $this->locale()->toNumber($count)) ?>
   </div>
 </div>
@@ -168,7 +168,7 @@ function searchBadges(){
     formData.format = 'html';
     
     window.searchRequest = new Request.HTML({
-        url: '<?php echo $this->url(); ?>',
+        url: '<?= $this->url(); ?>',
         data: formData,
         onRequest: function(){
             loader.inject(form,"bottom");
@@ -221,19 +221,19 @@ function assignBadge(element,badgeId,userId){
           options.empty();
           var anchor = new Element("a",{
               href: 'javascript:void(0);',
-              html: "<?php echo $this->translate('Inactive'); ?>",
+              html: "<?= $this->translate('Inactive'); ?>",
               onclick: "updateAssignStatus(this,'"+badgeId+"','"+userId+"','0');"
           });
           anchor.inject(options,"bottom");
           var anchor = new Element("a",{
               href: 'javascript:void(0);',
-              html: "&nbsp;&nbsp;<?php echo $this->translate('Hide'); ?>",
+              html: "&nbsp;&nbsp;<?= $this->translate('Hide'); ?>",
               onclick: "updateDisplayStatus(this,'"+badgeId+"','"+userId+"','0');"
           });
           anchor.inject(options,"bottom");
           var anchor = new Element("a",{
               href: 'javascript:void(0);',
-              html: "&nbsp;&nbsp;<?php echo $this->translate('Delete'); ?>",
+              html: "&nbsp;&nbsp;<?= $this->translate('Delete'); ?>",
               onclick: "deleteAssignedBadge(this,'"+badgeId+"','"+userId+"');"
           });
           anchor.inject(options,"bottom");
@@ -271,19 +271,19 @@ function displayBadge(element,badgeId,userId){
           options.empty();
           var anchor = new Element("a",{
               href: 'javascript:void(0);',
-              html: "<?php echo $this->translate('Activate'); ?>",
+              html: "<?= $this->translate('Activate'); ?>",
               onclick: "updateAssignStatus(this,'"+badgeId+"','"+userId+"','1');"
           });
           anchor.inject(options,"bottom");
           var anchor = new Element("a",{
               href: 'javascript:void(0);',
-              html: "&nbsp;&nbsp;<?php echo $this->translate('Hide'); ?>",
+              html: "&nbsp;&nbsp;<?= $this->translate('Hide'); ?>",
               onclick: "updateDisplayStatus(this,'"+badgeId+"','"+userId+"','0');"
           });
           anchor.inject(options,"bottom");
           var anchor = new Element("a",{
               href: 'javascript:void(0);',
-              html: "&nbsp;&nbsp;<?php echo $this->translate('Delete'); ?>",
+              html: "&nbsp;&nbsp;<?= $this->translate('Delete'); ?>",
               onclick: "deleteAssignedBadge(this,'"+badgeId+"','"+userId+"');"
           });
           anchor.inject(options,"bottom");
@@ -321,13 +321,13 @@ function deleteAssignedBadge(element,badgeId,userId){
           options.empty();
           var anchor = new Element("a",{
               href: 'javascript:void(0);',
-              html: "<?php echo $this->translate('Assign'); ?>",
+              html: "<?= $this->translate('Assign'); ?>",
               onclick: "assignBadge(this,'"+badgeId+"','"+userId+"');"
           });
           anchor.inject(options,"bottom");
           anchor = new Element("a",{
                 href: 'javascript:void(0);',
-                html: "&nbsp;&nbsp;<?php echo $this->translate('Display'); ?>",
+                html: "&nbsp;&nbsp;<?= $this->translate('Display'); ?>",
                 onclick: "displayBadge(this,'"+badgeId+"','"+userId+"','1');"
           });
           anchor.inject(options,"bottom");
@@ -364,13 +364,13 @@ function updateAssignStatus(element,badgeId,userId,status){
           var options = row.getElement(".table_options");
           var anchor = new Element("a",{
                 href: 'javascript:void(0);',
-                html: "<?php echo $this->translate('Inactive'); ?>",
+                html: "<?= $this->translate('Inactive'); ?>",
                 onclick: "updateAssignStatus(this,'"+badgeId+"','"+userId+"','0');"
           });
           if(status == '0'){
             anchor = new Element("a",{
                 href: 'javascript:void(0);',
-                html: "<?php echo $this->translate('Activate'); ?>",
+                html: "<?= $this->translate('Activate'); ?>",
                 onclick: "updateAssignStatus(this,'"+badgeId+"','"+userId+"','1');"
             });
           }
@@ -407,13 +407,13 @@ function updateDisplayStatus(element,badgeId,userId,status){
           var options = row.getElement(".table_options");
           var anchor = new Element("a",{
                 href: 'javascript:void(0);',
-                html: "&nbsp;&nbsp;<?php echo $this->translate('Hide'); ?>",
+                html: "&nbsp;&nbsp;<?= $this->translate('Hide'); ?>",
                 onclick: "updateDisplayStatus(this,'"+badgeId+"','"+userId+"','0');"
           });
           if(status == '0'){
             anchor = new Element("a",{
                 href: 'javascript:void(0);',
-                html: "&nbsp;&nbsp;<?php echo $this->translate('Display'); ?>",
+                html: "&nbsp;&nbsp;<?= $this->translate('Display'); ?>",
                 onclick: "updateDisplayStatus(this,'"+badgeId+"','"+userId+"','1');"
             });
           }
@@ -440,7 +440,7 @@ en4.core.runonce.add(function(){
             searchBadges();
         }
     });
-    var autoCompleter = new Autocompleter.Request.JSON('topic', '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'topics','action' => 'suggest'), 'admin_default', true) ?>', {
+    var autoCompleter = new Autocompleter.Request.JSON('topic', '<?= $this->url(array('module' => 'sdparentalguide','controller' => 'topics','action' => 'suggest'), 'admin_default', true) ?>', {
         'minLength': 3,
         'delay' : 250,
         'selectMode': 'pick',
@@ -498,20 +498,20 @@ en4.core.runonce.add(function(){
 </script>
 <br />
 <div class='admin_search'>
-    <?php echo $this->formFilter->render($this) ?>
+    <?= $this->formFilter->render($this) ?>
 </div>
 <br/>
 <div class="admin_table_form all_badges">
-<form id='multimodify_form' method="post" action="<?php echo $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
+<form id='multimodify_form' method="post" action="<?= $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
   <table class='admin_table'>
     <thead>
       <tr>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Badge Name") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Image") ?></th>        
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Type") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Level") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Topic Name") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Action") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Badge Name") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Image") ?></th>        
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Type") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Level") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Topic Name") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Action") ?></th>
       </tr>
     </thead>
     <tbody>
@@ -520,30 +520,30 @@ en4.core.runonce.add(function(){
         <?php foreach( $this->paginator as $item ):?>
           <tr>
             <td class='admin_table_centered admin_table_bold'>
-              <?php echo $item->getTitle(); ?>
+              <?= $item->getTitle(); ?>
             </td>
-            <td class='admin_table_centered admin_table_user'><?php echo $this->itemPhoto($item,'thumb.icon',$item->getTitle()); ?></td>            
+            <td class='admin_table_centered admin_table_user'><?= $this->itemPhoto($item,'thumb.icon',$item->getTitle()); ?></td>            
             <td class="admin_table_centered nowrap">
                <?php if(($badgeType = $item->getBadgeType())): ?>
-                    <?php echo $this->translate($badgeType); ?>
+                    <?= $this->translate($badgeType); ?>
                 <?php endif; ?>
             </td>
             <td class="admin_table_centered nowrap">
                <?php if(($level = $item->getLevel())): ?>
-                    <?php echo $this->translate($level); ?>
+                    <?= $this->translate($level); ?>
                 <?php endif; ?>
             </td>
             <td class='admin_table_centered admin_table_email'>
                 <?php if(($topic = $item->getTopic())): ?>
-                    <?php echo $topic->getTitle(); ?>
+                    <?= $topic->getTitle(); ?>
                 <?php endif; ?>
             </td>
             <td class='admin_table_centered table_options'>
-                <a href='javascript:void(0);' onclick="assignBadge(this,'<?php echo $item->getIdentity(); ?>','<?php echo $this->user->getIdentity(); ?>');">
-                    <?php echo $this->translate("Assign") ?>
+                <a href='javascript:void(0);' onclick="assignBadge(this,'<?= $item->getIdentity(); ?>','<?= $this->user->getIdentity(); ?>');">
+                    <?= $this->translate("Assign") ?>
                 </a>
-                <a href='javascript:void(0);' onclick="displayBadge(this,'<?php echo $item->getIdentity(); ?>','<?php echo $this->user->getIdentity(); ?>','1');">
-                    &nbsp;&nbsp;<?php echo $this->translate("Display") ?>
+                <a href='javascript:void(0);' onclick="displayBadge(this,'<?= $item->getIdentity(); ?>','<?= $this->user->getIdentity(); ?>','1');">
+                    &nbsp;&nbsp;<?= $this->translate("Display") ?>
                 </a>
             </td>            
           </tr>
@@ -559,17 +559,17 @@ en4.core.runonce.add(function(){
 <div class='admin_results all_badges' style='position: relative;overflow: visible;'>
   <div>
     <?php $count = $this->paginator->getTotalItemCount() ?>
-    <?php echo $this->translate(array("%s badge found", "%s badges found", $count),
+    <?= $this->translate(array("%s badge found", "%s badges found", $count),
         $this->locale()->toNumber($count)) ?>
   </div>
   <div>
-    <?php echo $this->paginationControl($this->paginator, null, null, array(
+    <?= $this->paginationControl($this->paginator, null, null, array(
       'pageAsQuery' => true,
       'query' => $this->formValues,
       //'params' => $this->formValues,
     )); ?>
   </div>
-  <?php echo $this->htmlLink($this->url(array('module' => 'sdparentalguide', 'controller' => 'manage','action' => 'badge-users'),'',true),"<i class='fa fa-times'></i>",array('class' => 'sd_close')); ?>
+  <?= $this->htmlLink($this->url(array('module' => 'sdparentalguide', 'controller' => 'manage','action' => 'badge-users'),'',true),"<i class='fa fa-times'></i>",array('class' => 'sd_close')); ?>
 </div>
 </div>
 <style type='text/css'>

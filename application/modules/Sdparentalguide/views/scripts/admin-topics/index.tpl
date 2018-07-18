@@ -8,7 +8,7 @@
  */
 ?>
 
-<h2><?php echo $this->translate("Parental Guidance Customizations") ?></h2>
+<h2><?= $this->translate("Parental Guidance Customizations") ?></h2>
 
 <?php if( count($this->navigation) ): ?>
   <div class='tabs'>
@@ -39,7 +39,7 @@
 }
 </style>
 <div class='admin_search'>
-    <?php echo $this->formFilter->render($this) ?>
+    <?= $this->formFilter->render($this) ?>
 </div>
 
 <script type='text/javascript'>
@@ -77,7 +77,7 @@ function searchTopics(){
     formData.format = 'html';
     
     window.searchRequest = new Request.HTML({
-        url: '<?php echo $this->url(); ?>',
+        url: '<?= $this->url(); ?>',
         data: formData,
         onRequest: function(){
             loader.inject(form,"bottom");
@@ -109,21 +109,21 @@ function searchTopics(){
 <br />
 
 <div class="admin_table_form">
-<form id='multimodify_form' method="post" action="<?php echo $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
-  <button type="submit"><?php echo $this->translate("Delete Selected"); ?></button>
+<form id='multimodify_form' method="post" action="<?= $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
+  <button type="submit"><?= $this->translate("Delete Selected"); ?></button>
   <br><br>
   <table class='admin_table'>
     <thead>
       <tr>
         <th style='width: 5%;' class='admin_table_centered'>
             <input onclick="selectAll()" type='checkbox' class='checkbox' id="select-all" style="display:none;">
-            <label for="select-all" class='admin_table_centered'><?php echo $this->translate("Select"); ?></label>
+            <label for="select-all" class='admin_table_centered'><?= $this->translate("Select"); ?></label>
         </th>
-        <th style='width: 50%;' class='admin_table_centered'><?php echo $this->translate("Topic Name"); ?></th>
-        <th style='width: 10%;' class='admin_table_centered'><?php echo $this->translate("Allow Badges"); ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Featured") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Icon") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Action") ?></th>
+        <th style='width: 50%;' class='admin_table_centered'><?= $this->translate("Topic Name"); ?></th>
+        <th style='width: 10%;' class='admin_table_centered'><?= $this->translate("Allow Badges"); ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Featured") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Icon") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Action") ?></th>
       </tr>
     </thead>
     <tbody>
@@ -131,36 +131,36 @@ function searchTopics(){
         <?php $api = Engine_Api::_()->sdparentalguide(); ?>
         <?php foreach( $this->paginator as $item ):?>
           <tr>
-            <td><input class="sd_select_checkbox" name="topic_ids[]" data-id='<?php echo $item->getIdentity(); ?>' value=<?php echo $item->getIdentity();?> type='checkbox' class='checkbox'></td>
+            <td><input class="sd_select_checkbox" name="topic_ids[]" data-id='<?= $item->getIdentity(); ?>' value=<?= $item->getIdentity();?> type='checkbox' class='checkbox'></td>
             <td class='admin_table_centered admin_table_bold'>
-              <?php echo $item->getTitle(); ?>
+              <?= $item->getTitle(); ?>
             </td>
             <td class='admin_table_centered'>
-                <input type="radio" class="sd_radio_badges" disabled <?php echo ( $item->badges ? 'checked=checked' : '' ); ?>>
+                <input type="radio" class="sd_radio_badges" disabled <?= ( $item->badges ? 'checked=checked' : '' ); ?>>
             </td>
             <td class='admin_table_centered'>
-                <input type="radio" class="sd_radio_featured" disabled <?php echo ( $item->featured ? 'checked=checked' : '' ); ?>>
+                <input type="radio" class="sd_radio_featured" disabled <?= ( $item->featured ? 'checked=checked' : '' ); ?>>
             </td>
             <td class='admin_table_centered'>
                 <?php if($item->photo_id): ?>
-                    <img src='<?php echo $item->getPhotoUrl("thumb.icon"); ?>' alt='<?php echo $item->getTitle(); ?>'/>
+                    <img src='<?= $item->getPhotoUrl("thumb.icon"); ?>' alt='<?= $item->getTitle(); ?>'/>
                 <?php endif; ?>
             </td>
             <td class='admin_table_centered'>
-                <a class='smoothbox' href='<?php echo $this->url(array( 'action' => 'edit','topic_id' => $item->getIdentity()));?>'>
-                    <?php echo $this->translate("Edit") ?>
+                <a class='smoothbox' href='<?= $this->url(array( 'action' => 'edit','topic_id' => $item->getIdentity()));?>'>
+                    <?= $this->translate("Edit") ?>
                 </a>
                 <?php if($item->approved): ?>
-                    <a href='javascript:void(0);' onclick="approveTopic(this,'<?php echo $item->getIdentity(); ?>','0');">
-                        <?php echo $this->translate("Inactivate") ?>
+                    <a href='javascript:void(0);' onclick="approveTopic(this,'<?= $item->getIdentity(); ?>','0');">
+                        <?= $this->translate("Inactivate") ?>
                     </a>
                 <?php else: ?>
-                    <a href='javascript:void(0);' onclick="approveTopic(this,'<?php echo $item->getIdentity(); ?>','1');">
-                        <?php echo $this->translate("Activate") ?>
+                    <a href='javascript:void(0);' onclick="approveTopic(this,'<?= $item->getIdentity(); ?>','1');">
+                        <?= $this->translate("Activate") ?>
                     </a>
                 <?php endif; ?>                
-                <a class='smoothbox' href='<?php echo $this->url(array('action' => 'delete','topic_id' => $item->getIdentity()));?>'>
-                    <?php echo $this->translate("Delete") ?>
+                <a class='smoothbox' href='<?= $this->url(array('action' => 'delete','topic_id' => $item->getIdentity()));?>'>
+                    <?= $this->translate("Delete") ?>
                 </a>
             </td>            
           </tr>
@@ -178,11 +178,11 @@ function searchTopics(){
 <div class='admin_results'>
   <div>
     <?php $count = $this->paginator->getTotalItemCount() ?>
-    <?php echo $this->translate(array("%s topic found", "%s topics found", $count),
+    <?= $this->translate(array("%s topic found", "%s topics found", $count),
         $this->locale()->toNumber($count)) ?>
   </div>
   <div>
-    <?php echo $this->paginationControl($this->paginator, null, null, array(
+    <?= $this->paginationControl($this->paginator, null, null, array(
       'pageAsQuery' => true,
       'query' => $this->formValues,
       //'params' => $this->formValues,
@@ -203,7 +203,7 @@ function loadSubCategories(){
     }
     var loader = en4.core.loader.clone();
     loader.addClass("sd_loader");
-    var url = '<?php echo $this->url(array('action' => 'get-subcategories'), 'sdparentalguide_general', true) ?>';
+    var url = '<?= $this->url(array('action' => 'get-subcategories'), 'sdparentalguide_general', true) ?>';
     var req = new Request.JSON({
       url: url,
       data: {
@@ -223,7 +223,7 @@ function loadSubCategories(){
           loader.destroy();
           $("subcategory_id").empty();
           if(responseJSON.status && responseJSON.categories.length > 0){
-              var options = "<option value='0'><?php echo $this->translate('Sub Category'); ?></option>";
+              var options = "<option value='0'><?= $this->translate('Sub Category'); ?></option>";
               Object.each(responseJSON.categories,function(category){
                   options += "<option value='"+category.id+"'>"+category.title+"</option>";
               });
@@ -241,7 +241,7 @@ function loadCategories(element){
   loader.addClass("sd_loader");
   $("category-wrapper").setStyle("display","none");
   $$(".sd_listing_search .sd_inline_field.subcategory").setStyle("display","none");
-  var url = '<?php echo $this->url(array('action' => 'get-categories'), 'sdparentalguide_general', true) ?>';
+  var url = '<?= $this->url(array('action' => 'get-categories'), 'sdparentalguide_general', true) ?>';
   var req = new Request.JSON({
       url: url,
       data: {
@@ -262,7 +262,7 @@ function loadCategories(element){
           $("category_id").empty();
           if(responseJSON.status && responseJSON.categories.length > 0){
               $("category_id").set("html","");
-              var options = "<option value='0'><?php echo $this->translate('Category'); ?></option>";
+              var options = "<option value='0'><?= $this->translate('Category'); ?></option>";
               Object.each(responseJSON.categories,function(category){
                   options += "<option value='"+category.id+"'>"+category.title+"</option>";
               });
@@ -299,13 +299,13 @@ function approveTopic(element,topicId,status){
           var options = row.getElement(".table_options");
           var anchor = new Element("a",{
                 href: 'javascript:void(0);',
-                html: "<?php echo $this->translate('Inactivate'); ?>",
+                html: "<?= $this->translate('Inactivate'); ?>",
                 onclick: "approveTopic(this,'"+topicId+"','0');"
           });
           if(status == '0'){
             anchor = new Element("a",{
                 href: 'javascript:void(0);',
-                html: "<?php echo $this->translate('Activate'); ?>",
+                html: "<?= $this->translate('Activate'); ?>",
                 onclick: "approveTopic(this,'"+topicId+"','1');"
             });
           }
@@ -329,7 +329,7 @@ function bulkApprove(element,status){
   var loader = en4.core.loader.clone();
   loader.addClass("sd_loader");
   
-  var url = '<?php echo $this->url(array('action' => 'approve-bulk')) ?>';
+  var url = '<?= $this->url(array('action' => 'approve-bulk')) ?>';
   var req = new Request.JSON({
       url: url,
       data: {
@@ -360,7 +360,7 @@ function bulkAllowBadges(element,status){
   var loader = en4.core.loader.clone();
   loader.addClass("sd_loader");
   
-  var url = '<?php echo $this->url(array('action' => 'bulk-badges')) ?>';
+  var url = '<?= $this->url(array('action' => 'bulk-badges')) ?>';
   var req = new Request.JSON({
       url: url,
       data: {

@@ -8,7 +8,7 @@
  */
 ?>
 
-<h2><?php echo $this->translate("Parental Guidance Customizations") ?></h2>
+<h2><?= $this->translate("Parental Guidance Customizations") ?></h2>
 
 <style type='text/css'>
 .admin_table tr td a {
@@ -47,7 +47,7 @@ function searchSearch(){
     formData.format = 'html';
     
     window.searchRequest = new Request.HTML({
-        url: '<?php echo $this->url(); ?>',
+        url: '<?= $this->url(); ?>',
         data: formData,
         onRequest: function(){
             loader.inject(form,"bottom");
@@ -101,16 +101,16 @@ function searchSearch(){
 <div class='sd_layout_middle'>
     
 <div class='admin_search search_search'>
-    <?php echo $this->formFilter->render($this) ?>
+    <?= $this->formFilter->render($this) ?>
 </div>
 
 <div class="admin_table_form">
-<form id='multimodify_form' method="post" action="<?php echo $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
+<form id='multimodify_form' method="post" action="<?= $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
   <table class='admin_table'>
     <thead>
       <tr>
-        <th style='width: 50%;' class='admin_table_centered'><?php echo $this->translate("Search Term"); ?></th>
-        <th style='width: 50%;' class='admin_table_centered'><?php echo $this->translate("Action") ?></th>
+        <th style='width: 50%;' class='admin_table_centered'><?= $this->translate("Search Term"); ?></th>
+        <th style='width: 50%;' class='admin_table_centered'><?= $this->translate("Action") ?></th>
       </tr>
     </thead>
     <tbody>
@@ -119,14 +119,14 @@ function searchSearch(){
         <?php foreach( $this->paginator as $item ):?>
           <tr>
             <td class='admin_table_centered admin_table_bold'>
-              <?php echo $item->name; ?>
+              <?= $item->name; ?>
             </td>
             <td class='admin_table_centered'>
-                <a href='<?php echo $this->url(array('module' => 'sdparentalguide', 'controller' => 'alias', 'action' => 'index' ,'searchterm_id' => $item->getIdentity()));?>'>
-                    <?php echo $this->translate("Alias") ?>
+                <a href='<?= $this->url(array('module' => 'sdparentalguide', 'controller' => 'alias', 'action' => 'index' ,'searchterm_id' => $item->getIdentity()));?>'>
+                    <?= $this->translate("Alias") ?>
                 </a>
-                <a class='smoothbox' href='<?php echo $this->url(array('action' => 'delete','searchterm_id' => $item->getIdentity()));?>'>
-                    <?php echo $this->translate("Delete") ?>
+                <a class='smoothbox' href='<?= $this->url(array('action' => 'delete','searchterm_id' => $item->getIdentity()));?>'>
+                    <?= $this->translate("Delete") ?>
                 </a>
             </td>            
           </tr>
@@ -144,11 +144,11 @@ function searchSearch(){
 <div class='admin_results'>
   <div>
     <?php $count = $this->paginator->getTotalItemCount() ?>
-    <?php echo $this->translate(array("%s Search Term found", "%s Search Terms found", $count),
+    <?= $this->translate(array("%s Search Term found", "%s Search Terms found", $count),
         $this->locale()->toNumber($count)) ?>
   </div>
   <div>
-    <?php echo $this->paginationControl($this->paginator, null, null, array(
+    <?= $this->paginationControl($this->paginator, null, null, array(
       'pageAsQuery' => true,
       'query' => $this->formValues,
       //'params' => $this->formValues,

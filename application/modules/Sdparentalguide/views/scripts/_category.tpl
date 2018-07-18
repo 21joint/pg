@@ -11,27 +11,27 @@
  */
  ?>
 
-<div class="form-wrapper" id="category_id-wrapper" style='display:none;'>
+<div class="form-group" id="category_id-wrapper" style='display:none;'>
 	<div class="form-label" id="category_id-label">
-		<label class="optional" for="category_id"><?php echo $this->translate('Category');?></label>
+		<label class="optional" for="category_id"><?= $this->translate('Category');?></label>
 	</div>
 	<div class="form-element" id="category_id-element">
 		<select id="category_id" name="category_id" onchange='addOptions(this.value, "cat_dependency", "subcategory_id", 0); setHiddenValues("category_id")'></select>
 	</div>
 </div>
 
-<div class="form-wrapper" id="subcategory_id-wrapper" style='display:none;'>
+<div class="form-group" id="subcategory_id-wrapper" style='display:none;'>
 	<div class="form-label" id="subcategory_id-label">
-		<label class="optional" for="subcategory_id"><?php echo $this->translate('Sub-Category');?></label>
+		<label class="optional" for="subcategory_id"><?= $this->translate('Sub-Category');?></label>
 	</div>
 	<div class="form-element" id="subcategory_id-element">
 		<select id="subcategory_id" name="subcategory_id" onchange='addOptions(this.value, "subcat_dependency", "subsubcategory_id", 0); setHiddenValues("subcategory_id");'></select>
 	</div>
 </div>
 
-<div class="form-wrapper" id="subsubcategory_id-wrapper" style='display:none;'>
+<div class="form-group" id="subsubcategory_id-wrapper" style='display:none;'>
 	<div class="form-label" id="subsubcategory_id-label">
-		<label class="optional" for="subsubcategory_id"><?php echo $this->translate('3%s Level Category', "<sup>rd</sup>") ?></label>
+		<label class="optional" for="subsubcategory_id"><?= $this->translate('3%s Level Category', "<sup>rd</sup>") ?></label>
 	</div>
 	<div class="form-element" id="subsubcategory_id-element">
 		<select id="subsubcategory_id" name="subsubcategory_id" onchange='setHiddenValues("subsubcategory_id")' ></select>
@@ -65,7 +65,7 @@
             }
         }    
         if(element_value <= 0) return;    
-  	var url = '<?php echo $this->url(array('module' => 'sitereview', 'controller' => 'general', 'action' => 'categories'), "admin_default", true);?>';
+  	var url = '<?= $this->url(array('module' => 'sitereview', 'controller' => 'general', 'action' => 'categories'), "admin_default", true);?>';
         en4.core.request.send(new Request.JSON({      	
             url : url,
             data : {
@@ -100,7 +100,7 @@
     }
     document.id('listingtype_id').addEvent('change',function() {
         var listingTypes = this.getSelected().get("value"); // gets the option that's selected and then it's value
-        var url = '<?php echo $this->url(array('action' => 'categories'), 'sdparentalguide_general', true) ?>';
+        var url = '<?= $this->url(array('action' => 'categories'), 'sdparentalguide_general', true) ?>';
         var element = $('category_id');        
         en4.core.request.send(new Request.JSON({      	
             url : url,

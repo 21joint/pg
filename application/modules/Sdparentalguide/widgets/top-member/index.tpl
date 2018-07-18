@@ -44,7 +44,7 @@ $this->headLink()
        el.store('tip:title', '<div class="" style="">'+
  ' <div class="uiOverlay info_tip" style="width: 300px; top: 0px; ">'+
     '<div class="info_tip_content_wrapper" ><div class="info_tip_content"><div class="info_tip_content_loader">'+
-  '<img src="<?php echo $this->layout()->staticBaseUrl ?>application/modules/Core/externals/images/loading.gif" alt="Loading" /><?php echo $this->translate("Loading ...") ?></div>'+
+  '<img src="<?= $this->layout()->staticBaseUrl ?>application/modules/Core/externals/images/loading.gif" alt="Loading" /><?= $this->translate("Loading ...") ?></div>'+
 '</div></div></div></div>'  
 );
         el.store('tip:text', '');       
@@ -139,33 +139,33 @@ $this->headLink()
       
       <tr>
         <td style="width: 50px;">
-            <span class="sd_rank"><?php echo $rank; ?></span>
-            <span><?php echo $this->htmlLink($user->getHref(), $this->itemPhoto($user, 'thumb.icon')); ?></span>
+            <span class="sd_rank"><?= $rank; ?></span>
+            <span><?= $this->htmlLink($user->getHref(), $this->itemPhoto($user, 'thumb.icon')); ?></span>
         </td>
         <td>
             <div class="sd_active_member_wrap">
-            <div class="active_member_title"><?php echo $this->htmlLink($user->getHref(), Engine_Api::_()->seaocore()->seaocoreTruncateText($user->getTitle(),15), array('title' => $user->getTitle())) ?></div>
+            <div class="active_member_title"><?= $this->htmlLink($user->getHref(), Engine_Api::_()->seaocore()->seaocoreTruncateText($user->getTitle(),15), array('title' => $user->getTitle())) ?></div>
            <?php if($this->basedon=='activities') :  ?>
              <div class="active_member_icon">
-               <span> <?php echo "<img src =".$this->layout()->staticBaseUrl.'application/modules/Sitecredit/externals/images/icons/activity.png'." />"; ?> </span>
-               <span class="active_member_icon_points"> <?php echo $user->gg_activities; ?></span>
+               <span> <?= "<img src =".$this->layout()->staticBaseUrl.'application/modules/Sitecredit/externals/images/icons/activity.png'." />"; ?> </span>
+               <span class="active_member_icon_points"> <?= $user->gg_activities; ?></span>
                <?php else : ?>
-               <span><?php echo "<img src =".$this->layout()->staticBaseUrl.'application/modules/Sitecredit/externals/images/icons/credit.png'." />"; ?> </span>
-               <span class="active_member_icon_points"><?php echo $user->gg_contribution; ?></span>
+               <span><?= "<img src =".$this->layout()->staticBaseUrl.'application/modules/Sitecredit/externals/images/icons/credit.png'." />"; ?> </span>
+               <span class="active_member_icon_points"><?= $user->gg_contribution; ?></span>
              </div>
              <?php endif; ?>
             </div>
             <?php $badge = $api->getUserBadge($user->gg_contribution); ?>
             <div class="sd_user_badge">
                 <?php if(!empty($badge)): ?>            
-                    <?php echo $this->htmlLink(array('route' => 'credit_general', 'module' => 'sitecredit', 'controller' => 'index', 'action' => 'view-detail', 'id' => 
+                    <?= $this->htmlLink(array('route' => 'credit_general', 'module' => 'sitecredit', 'controller' => 'index', 'action' => 'view-detail', 'id' => 
                     $badge->badge_id), $this->itemPhoto($badge, 'thumb.icon'),array('class' => 'smoothbox'));?>
-                    <div class="badge_title"><?php echo $this->translate($badge->title) ?></div>            
+                    <div class="badge_title"><?= $this->translate($badge->title) ?></div>            
                 <?php endif; ?>
             </div>
             <?php if($user->gg_featured): ?>
             <div class="sd_featured_user">
-                <img src="<?php echo $this->layout()->staticBaseUrl; ?>application/modules/Sdparentalguide/externals/images/featured_small.png"/>
+                <img src="<?= $this->layout()->staticBaseUrl; ?>application/modules/Sdparentalguide/externals/images/featured_small.png"/>
             </div>
             <?php endif; ?>
         </td>
@@ -180,7 +180,7 @@ $this->headLink()
       ?>
       <?php if( trim($pagination) ): ?>
         <div class='browsemembers_viewmore' id="browsemembers_viewmore">
-          <?php echo $pagination ?>
+          <?= $pagination ?>
         </div>
       <?php endif ?>
     <?php endif; ?>

@@ -10,20 +10,21 @@ jQuery(document).ready(function () {
       method: 'GET',
       url: url,
       success: function (res) {
-        let data = JSON.parse(res);
-        console.info(data);
-        $reviewSingleModal
-          .find('.prg-review--single---heroimage').css('background-image', 'url(' + data.body.Results[0].coverPhoto.photoURL + ')');
+
+        let revData = JSON.parse(res).body.Results[0];
+        console.log(revData);
+        $reviewSingleModal.find('.prg-review--single---descr').html(revData.longDescription);
+        $reviewSingleModal.find('.prg-review--single---title').text(revData.title);
+        $reviewSingleModal.find('.prg-review--single---heroimage').css('background-image', 'url(' + revData.coverPhoto.photoURL + ')');
         $reviewSingleModal.find('.prg-review--single---gallery').html(function () {
           let _html = '';
 
-          _html += '<ul class="row no-gutters">\n';
+          _html += '<ul class="d-flex flex-wrap list-unstyled">\n';
 
-          for (let _photo = 0; _photo < data.body.Results[0].reviewPhotos.length; ++_photo) {
-            _html += '<li class="col-4 p-1"><img class="img-fluid w-100" src="' + data.body.Results[0].reviewPhotos[_photo].photoURL + '" alt="">\n';
-            _html += '</li>\n';
+          for (let _photo = 0; _photo < revData.reviewPhotos.length; ++_photo) {
+            _html += '<li class="col-4 p-1"><div class="embed-responsive embed-responsive-1by1"><img class="embed-responsive-item" src="' + revData.reviewPhotos[_photo].photoURL + '" alt="">\n';
+            _html += '</div></li>\n';
           }
-
           _html += '</ul>\n';
           return _html;
         })

@@ -20,7 +20,7 @@
       ->appendFile($this->layout()->staticBaseUrl . 'externals/autocompleter/Autocompleter.Request.js');
 ?>
 
-<h2><?php echo $this->translate("Parental Guidance Customizations") ?></h2>
+<h2><?= $this->translate("Parental Guidance Customizations") ?></h2>
 
 <?php if( count($this->navigation) ): ?>
   <div class='tabs'>
@@ -31,17 +31,17 @@
     ?>
   </div>
 <?php endif; ?>
-<?php echo $this->formFilterJobs->render($this) ?>
+<?= $this->formFilterJobs->render($this) ?>
 <div class="admin_table_form" style="clear:both;display:none;">
-<form id='multimodify_form' method="post" action="<?php echo $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
+<form id='multimodify_form' method="post" action="<?= $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
   <table class='admin_table'>
     <thead>
       <tr>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("User Name") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("First Name") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Last Name") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Email") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Options") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("User Name") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("First Name") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Last Name") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Email") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Options") ?></th>
       </tr>
     </thead>
     <tbody>
@@ -58,15 +58,15 @@
             <ul class="sd_jobs_list">
                 <li class="sd_jobs_header">
                     <ul>
-                        <li><?php echo $this->translate("Job Description"); ?></li>
-                        <li><?php echo $this->translate("Action"); ?></li>
+                        <li><?= $this->translate("Job Description"); ?></li>
+                        <li><?= $this->translate("Action"); ?></li>
                     </ul>
                 </li>
                 <?php foreach($this->tasks as $task): ?>
                     <li class="sd_tasks">
                         <ul>
-                            <li><?php echo $task->getTitle(); ?></li>
-                            <li><button type="button" <?php echo $task->enabled?'':'disabled="disabled"'; ?> onclick="runCustomTask(this,'<?php echo $task->getIdentity(); ?>','1');"><?php echo $this->translate("Run"); ?></button></li>
+                            <li><?= $task->getTitle(); ?></li>
+                            <li><button type="button" <?= $task->enabled?'':'disabled="disabled"'; ?> onclick="runCustomTask(this,'<?= $task->getIdentity(); ?>','1');"><?= $this->translate("Run"); ?></button></li>
                         </ul>
                     </li>
                 <?php endforeach; ?>
@@ -77,12 +77,12 @@
 <script type='text/javascript'>
 function runCustomTask(element,taskId,page){
     if(page == '1' && $("job_user").get("value").length <= 0){
-        var confirm = window.confirm("<?php echo $this->translate('Are you sure you want to process for All Users?'); ?>");
+        var confirm = window.confirm("<?= $this->translate('Are you sure you want to process for All Users?'); ?>");
         if(!confirm){
             return;
         }
     }
-    var smoothBoxHtml = "<div class='sd_task_loader'><h3><?php echo $this->translate('Running Task'); ?></h3></div>";
+    var smoothBoxHtml = "<div class='sd_task_loader'><h3><?= $this->translate('Running Task'); ?></h3></div>";
     if(page == '1'){
         var smoothBoxHtmlElement = new Element("div",{
             'html': smoothBoxHtml,
@@ -93,7 +93,7 @@ function runCustomTask(element,taskId,page){
     var loader = en4.core.loader.clone();
     loader.addClass("sd_loader");
     var req = new Request.JSON({
-        url: "<?php echo $this->url(); ?>",
+        url: "<?= $this->url(); ?>",
         data: {
             format: 'json',
             task_id: taskId,
@@ -110,7 +110,7 @@ function runCustomTask(element,taskId,page){
             if(responseJSON.status && responseJSON.nextPage){
                 runCustomTask(element,taskId,responseJSON.nextPage);
             }else{
-                $$(".sd_task_loader h3").set("html","<?php echo $this->translate('Task Completed Successfully.'); ?>");
+                $$(".sd_task_loader h3").set("html","<?= $this->translate('Task Completed Successfully.'); ?>");
                 loader.destroy();
                 setTimeout(function(){
                     Smoothbox.close()
@@ -127,7 +127,7 @@ en4.core.runonce.add(function(){
     var loader = en4.core.loader.clone();
     loader.addClass("sd_loader");
     
-    var autoCompleter = new Autocompleter.Request.JSON('displayname', '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'suggest-user','format' => 'json'), 'admin_default', true) ?>', {
+    var autoCompleter = new Autocompleter.Request.JSON('displayname', '<?= $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'suggest-user','format' => 'json'), 'admin_default', true) ?>', {
         'minLength': 3,
         'delay' : 250,
         'postVar': 'username',
@@ -196,7 +196,7 @@ en4.core.runonce.add(function(){
         $$(".admin_table_form").setStyle("display","block");
     };
     
-    var autoCompleterEmail = new Autocompleter.Request.JSON('email', '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'suggest-user','type' => 'email','format' => 'json'), 'admin_default', true) ?>', {
+    var autoCompleterEmail = new Autocompleter.Request.JSON('email', '<?= $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'suggest-user','type' => 'email','format' => 'json'), 'admin_default', true) ?>', {
         'minLength': 3,
         'delay' : 250,
         'postVar': 'email',
@@ -265,7 +265,7 @@ en4.core.runonce.add(function(){
         $$(".admin_table_form").setStyle("display","block");
     };
     
-    var autoCompleterFirstName = new Autocompleter.Request.JSON('first_name', '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'suggest-user','type' => 'first_name','format' => 'json'), 'admin_default', true) ?>', {
+    var autoCompleterFirstName = new Autocompleter.Request.JSON('first_name', '<?= $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'suggest-user','type' => 'first_name','format' => 'json'), 'admin_default', true) ?>', {
         'minLength': 3,
         'delay' : 250,
         'selectMode': 'pick',
@@ -333,7 +333,7 @@ en4.core.runonce.add(function(){
         $$(".admin_table_form").setStyle("display","block");
     };
     
-    var autoCompleterLastName = new Autocompleter.Request.JSON('last_name', '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'suggest-user','type' => 'last_name','format' => 'json'), 'admin_default', true) ?>', {
+    var autoCompleterLastName = new Autocompleter.Request.JSON('last_name', '<?= $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'suggest-user','type' => 'last_name','format' => 'json'), 'admin_default', true) ?>', {
         'minLength': 3,
         'delay' : 250,
         'selectMode': 'pick',
@@ -415,7 +415,7 @@ function loadUserData(toID){
     var loader = en4.core.loader.clone();
     loader.addClass("sd_loader");
     var req = new Request.JSON({
-        url: "<?php echo $this->url(array('action' => 'user-detail','format' => 'json')); ?>",
+        url: "<?= $this->url(array('action' => 'user-detail','format' => 'json')); ?>",
         data: {
             user_id: toID
         },

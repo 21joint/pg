@@ -13,18 +13,18 @@
 		<tr>
 			<td>
 				<div class="photo">
-					<?php echo $this->itemPhoto($this->badge, 'thumb.profile')?>
+					<?= $this->itemPhoto($this->badge, 'thumb.profile')?>
 				</div> 
 			</td>
 			<td> 
 				<div class="credit_points">
-					<strong>Credit Values :</strong> <?php echo $this->badge->credit_count?>
+					<strong>Credit Values :</strong> <?= $this->badge->credit_count?>
 				</div>
-				<div class="desc"><h4><?php echo $this->badge->description?></h4></div>
+				<div class="desc"><h4><?= $this->badge->description?></h4></div>
 			</td>
 		</tr>
 	</table>
-	<input type="hidden" name="confirm" value="<?php echo $this->id?>"/>
+	<input type="hidden" name="confirm" value="<?= $this->id?>"/>
 </div>
 <?php if( @$this->closeSmoothbox ): ?>
 	<script type="text/javascript">

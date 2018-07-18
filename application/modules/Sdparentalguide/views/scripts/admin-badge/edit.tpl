@@ -23,7 +23,7 @@
 
 
 
-<?php echo $this->form->render($this); ?>
+<?= $this->form->render($this); ?>
 
 <script type="text/javascript">
 function previewBadgeIcon(element){
@@ -69,7 +69,7 @@ en4.core.runonce.add(function(){
             searchBadges();
         }
     });
-    var autoCompleter = new Autocompleter.Request.JSON('topic', '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'topics','action' => 'suggest'), 'admin_default', true) ?>', {
+    var autoCompleter = new Autocompleter.Request.JSON('topic', '<?= $this->url(array('module' => 'sdparentalguide','controller' => 'topics','action' => 'suggest'), 'admin_default', true) ?>', {
         'minLength': 3,
         'delay' : 250,
         'selectMode': 'pick',

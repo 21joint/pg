@@ -1,4 +1,3 @@
-
 <?php
 
 /**
@@ -13,35 +12,35 @@ $enableModules = array("core", "user", "activity", "blog", "classified", "group"
 defined('DS') || define('DS', DIRECTORY_SEPARATOR);
 defined('PS') || define('PS', PATH_SEPARATOR);
 if (defined('_ENGINE_R_MAIN')) {
-  return;
+    return;
 }
 define('_ENGINE_R_CONF', true);
 define('_ENGINE_R_INIT', true);
 defined('APPLICATION_PATH_COR') ||
-  define('APPLICATION_PATH_COR', realpath(dirname(__FILE__)));
+define('APPLICATION_PATH_COR', realpath(dirname(__FILE__)));
 defined('APPLICATION_PATH_LIB') ||
-  define('APPLICATION_PATH_LIB', APPLICATION_PATH_COR . DS . 'libraries');
+define('APPLICATION_PATH_LIB', APPLICATION_PATH_COR . DS . 'libraries');
 defined('_ENGINE') || define('_ENGINE', true);
 
 defined('APPLICATION_PATH') ||
-  define('APPLICATION_PATH', realpath(dirname(dirname(__FILE__))));
+define('APPLICATION_PATH', realpath(dirname(dirname(__FILE__))));
 set_include_path(
-  APPLICATION_PATH_LIB . PS .
-  APPLICATION_PATH_LIB . DS . 'PEAR' . PS .
-  '.' // get_include_path()
+    APPLICATION_PATH_LIB . PS .
+    APPLICATION_PATH_LIB . DS . 'PEAR' . PS .
+    '.' // get_include_path()
 );
 // Sub apps
 if (!defined('_ENGINE_R_MAIN') && !defined('_ENGINE_R_INIT')) {
-  if (@$_GET['m'] == 'css') {
-    define('_ENGINE_R_MAIN', 'css.php');
-    define('_ENGINE_R_INIT', false);
-  } else if (@$_GET['m'] == 'lite') {
-    define('_ENGINE_R_MAIN', 'lite.php');
-    define('_ENGINE_R_INIT', true);
-  } else {
-    define('_ENGINE_R_MAIN', false);
-    define('_ENGINE_R_INIT', true);
-  }
+    if (@$_GET['m'] == 'css') {
+        define('_ENGINE_R_MAIN', 'css.php');
+        define('_ENGINE_R_INIT', false);
+    } else if (@$_GET['m'] == 'lite') {
+        define('_ENGINE_R_MAIN', 'lite.php');
+        define('_ENGINE_R_INIT', true);
+    } else {
+        define('_ENGINE_R_MAIN', false);
+        define('_ENGINE_R_INIT', true);
+    }
 }
 
 define('DEFAULT_APP_MODULES', implode(",", $enableModules));
@@ -58,43 +57,43 @@ define('_IOS_VERSION', $iosVersion);
 
 $type = 'both';
 if ((!empty($_REQUEST['_ANDROID_VERSION']) && empty($_REQUEST['_IOS_VERSION'])))
-  $type = 'android';
+    $type = 'android';
 elseif ((!empty($_REQUEST['_IOS_VERSION']) && empty($_REQUEST['_ANDROID_VERSION'])))
-  $type = 'ios';
+    $type = 'ios';
 define('_CLIENT_TYPE', $type);
 
 
 // development mode
 $application_env = @$generalConfig['environment_mode'];
 defined('APPLICATION_ENV') || define('APPLICATION_ENV', (
-    !empty($_SERVER['_ENGINE_ENVIRONMENT']) ? $_SERVER['_ENGINE_ENVIRONMENT'] : (
-      $application_env ? $application_env :
-        'production'
-      )
-    )
+!empty($_SERVER['_ENGINE_ENVIRONMENT']) ? $_SERVER['_ENGINE_ENVIRONMENT'] : (
+$application_env ? $application_env :
+    'production'
+)
+)
 );
 
 // Boot
 if (_ENGINE_R_INIT) {
 
-  // Application
-  require_once 'Engine/Loader.php';
-  require_once 'Engine/Application.php';
+    // Application
+    require_once 'Engine/Loader.php';
+    require_once 'Engine/Application.php';
 
-  // Create application, bootstrap, and run
-  $application = new Engine_Application(
-    array(
-    'environment' => APPLICATION_ENV,
-    'autoloaderNamespaces' => array(
-      'Zend' => APPLICATION_PATH_LIB . DS . 'Zend',
-      'Engine' => APPLICATION_PATH_LIB . DS . 'Engine',
-      'Core' => APPLICATION_PATH_COR . DS . 'modules' . DS . 'Core',
-      'Pgservicelayer' => APPLICATION_PATH_COR . DS . 'modules' . DS . 'Pgservicelayer',
-    ),
-    )
-  );
-  Engine_Application::setInstance($application);
-  Engine_Api::getInstance()->setApplication($application);
+    // Create application, bootstrap, and run
+    $application = new Engine_Application(
+        array(
+            'environment' => APPLICATION_ENV,
+            'autoloaderNamespaces' => array(
+                'Zend' => APPLICATION_PATH_LIB . DS . 'Zend',
+                'Engine' => APPLICATION_PATH_LIB . DS . 'Engine',
+                'Core' => APPLICATION_PATH_COR . DS . 'modules' . DS . 'Core',
+                'Pgservicelayer' => APPLICATION_PATH_COR . DS . 'modules' . DS . 'Pgservicelayer',
+            ),
+        )
+    );
+    Engine_Application::setInstance($application);
+    Engine_Api::getInstance()->setApplication($application);
 }
 
 $server = new Pgservicelayer_ApiBootstrap();

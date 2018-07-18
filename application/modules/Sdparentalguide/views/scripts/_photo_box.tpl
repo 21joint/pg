@@ -23,20 +23,20 @@
                     </div>
 
                     <div class="photo-image">
-                        <a href="<?php echo $subject->getHref(); ?>">
-                            <img src="<?php echo $subject->getPhotoUrl(); ?>" />
+                        <a href="<?= $subject->getHref(); ?>">
+                            <img src="<?= $subject->getPhotoUrl(); ?>" />
                         </a>
                     </div>
                     <div class="right-side pl-3">
                         <div class="text-dark font-weight-bold pb-1">
-                            <?php echo $this->htmlLink($subject->getHref(), $subject->getTitle()); ?>
+                            <?= $this->htmlLink($subject->getHref(), $subject->getTitle()); ?>
                         </div>
                         <div class="header-star d-flex align-items-center">
                             <div class="holder-rate d-flex align-items-center">
                                 <div class="d-flex align-items-center">
                                     <svg height="20px" style="margin-top: 3px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68.137 80"><defs><style>.b_box_hover{fill:#52b1b8;}.c_box_hover{fill:#5cc7cd;}</style></defs><g transform="translate(13961.751 6200.271)"><g transform="translate(-13961.75 -6200.271)"><path class="b_box_hover" d="M108.85,27,96.662,43.071,86.2,29.121l20.283-4.571C109.459,23.8,110.323,24.992,108.85,27Z" transform="translate(-43.623 -13.136)"/><path class="b_box_hover" d="M30.556,40.68,3.864,47.338c-1.7.386-2.077,2.189-.508,2.9l26.032,7.618Z" transform="translate(-2.361 -21.186)"/><path class="c_box_hover" d="M51.227,64.559l3.438-60.7c0-1.717,1.772-2.118,2.834-.731l36.336,45.3c1.346,1.59.975,4.4-2.773,2.93L69.148,42.97,55.462,65.625C54.076,68.017,51.11,67.042,51.227,64.559Z" transform="translate(-26.41 -2.293)"/></g></g></svg>
                                 </div>
-                                <span class="text-primary pl-2"><?php echo $subject->gg_contribution; ?> </span>
+                                <span class="text-primary pl-2"><?= $subject->gg_contribution; ?> </span>
                             </div>
                             <i class="fa fa-circle pl-2"></i>
                             <div class="holder-followers pl-2">
@@ -52,34 +52,34 @@
                         <div class="bottom row d-flex justify-content-center m-0">
                             <div class="col-sm bronze">
                                 <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
-                                    <?php echo $subject->gg_bronze_count; ?>
+                                    <?= $subject->gg_bronze_count; ?>
                                 </div>
                                 <span class="text-muted small">
-                                    <?php echo $this->translate('Bronze'); ?>
+                                    <?= $this->translate('Bronze'); ?>
                                 </span>
                             </div>
                             <div class="col-sm silver">
                                 <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
-                                    <?php echo $subject->gg_silver_count; ?>     
+                                    <?= $subject->gg_silver_count; ?>     
                                 </div>
                                 <span class="text-muted small">
-                                    <?php echo $this->translate('Silver'); ?>
+                                    <?= $this->translate('Silver'); ?>
                                 </span>
                             </div>
                             <div class="col-sm gold">
                                 <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
-                                    <?php echo $subject->gg_gold_count; ?>  
+                                    <?= $subject->gg_gold_count; ?>  
                                 </div>
                                 <span class="text-muted small">
-                                    <?php echo $this->translate('Gold'); ?>
+                                    <?= $this->translate('Gold'); ?>
                                 </span>
                             </div>
                             <div class="col-sm platinium">
                                 <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
-                                    <?php echo $subject->gg_platinum_count; ?>
+                                    <?= $subject->gg_platinum_count; ?>
                                 </div>
                                 <span class="text-muted small">
-                                    <?php echo $this->translate('Platinium'); ?>
+                                    <?= $this->translate('Platinium'); ?>
                                 </span>
                             </div>
                         </div>
@@ -89,16 +89,16 @@
                 <div class="footer border-top border-gray d-flex justify-content-between align-items-center">
                     
                     <div class="col-sm text-center border-right py-3">
-                        <?php echo $this->translate('Reviews'); ?>
+                        <?= $this->translate('Reviews'); ?>
                         <span class="text-primary font-weight-bold">
-                            <?php echo $subject->gg_review_count;?>
+                            <?= $subject->gg_review_count;?>
                         </span>
                     </div>
 
                     <div class="col-sm text-center py-3">
-                        <?php echo $this->translate('Answers'); ?>
+                        <?= $this->translate('Answers'); ?>
                         <span class="text-primary font-weight-bold">
-                           <?php echo count($answer); ?>
+                           <?= count($answer); ?>
                         </span>
                     </div>
                 </div>

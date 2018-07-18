@@ -50,7 +50,7 @@ class User_Form_Login extends Engine_Form_Email
     $this->setTitle('Share Your Struggle. Provide Your Theories. Gain Advice.');
     $this->setDescription($description);
     $this->setAttrib('id', 'user_form_login');
-    $this->setAttrib('class', 'extfox-auth');
+    $this->setAttrib('class', 'prg-login--form');
     $this->loadDefaultDecorators();
     $this->getDecorator('Description')->setOption('escape', false);
 
@@ -71,7 +71,7 @@ class User_Form_Login extends Engine_Form_Email
       'tabindex' => $tabindex++,
       'autofocus' => 'autofocus',
       'inputType' => 'email',
-      'class' => 'text',
+      'class' => 'form-control',
     ));
 
     $emailElement->getValidator('EmailAddress')->getHostnameValidator()->setValidateTld(false);
@@ -81,6 +81,7 @@ class User_Form_Login extends Engine_Form_Email
     $this->addElement('Password', 'password', array(
       'label' => $password,
       'required' => true,
+      'class' => 'form-control',
       'allowEmpty' => false,
       'tabindex' => $tabindex++,
       'filters' => array(
@@ -133,6 +134,7 @@ class User_Form_Login extends Engine_Form_Email
     $this->addElement('Cancel', 'cancel', array(
       'label' => 'Sign Up',
       'link' => true,
+      'role'=> 'button',
       'href' => Zend_Controller_Front::getInstance()->getRouter()->assemble(array('controller' => 'signup', 'action' => 'index'), 'user_signup', true),
     ));
 

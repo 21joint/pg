@@ -83,7 +83,7 @@
 		</table>
 
 		<center>
-			<div id="submit-wrapper" class="form-wrapper">
+			<div id="submit-wrapper" class="form-group">
 				<div id="submit-label" class="form-label">&nbsp;</div>
 				<div id="submit-element" class="form-element">
 					<button name="submit" id="submit" type="submit">Save Changes</button>

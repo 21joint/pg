@@ -23,21 +23,21 @@
 <ul class="seaocore_photo_strips slides">
     <?php foreach($this->assignedBadges as $badge): ?>
         <li class="thumb_photo">
-            <?php echo $this->itemPhoto($badge,'thumb.profile',$badge->getTitle(),array('title' => $badge->getTitle(),'class' => 'thumb_img')); ?>
+            <?= $this->itemPhoto($badge,'thumb.profile',$badge->getTitle(),array('title' => $badge->getTitle(),'class' => 'thumb_img')); ?>
         </li>
     <?php endforeach; ?>
 </ul>
 </div>
-<?php echo $this->headLink()->appendStylesheet($this->layout()->staticBaseUrl.'application/modules/Sdparentalguide/externals/scripts/flexslider/flexslider.css'); ?>
-<script type="text/javascript" src="<?php echo $this->layout()->staticBaseUrl; ?>application/modules/Sdparentalguide/externals/scripts/flexslider/jquery.min.js"></script>
+<?= $this->headLink()->appendStylesheet($this->layout()->staticBaseUrl.'application/modules/Sdparentalguide/externals/scripts/flexslider/flexslider.css'); ?>
+<script type="text/javascript" src="<?= $this->layout()->staticBaseUrl; ?>application/modules/Sdparentalguide/externals/scripts/flexslider/jquery.min.js"></script>
 <script type="text/javascript">var sdjq = $.noConflict();</script>
-<script type="text/javascript" src="<?php echo $this->layout()->staticBaseUrl; ?>application/modules/Sdparentalguide/externals/scripts/flexslider/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="<?= $this->layout()->staticBaseUrl; ?>application/modules/Sdparentalguide/externals/scripts/flexslider/jquery.flexslider-min.js"></script>
 <script type="text/javascript">
 window.addEvent("domready",function(){
     sdjq('.flexslider').flexslider({
         animation: "slide",
         animationLoop: false,
-        itemWidth: <?php echo (int)$this->photoWidth; ?>,
+        itemWidth: <?= (int)$this->photoWidth; ?>,
         itemMargin: 5,
         pausePlay: false,
         allowOneSlide: true,

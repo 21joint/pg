@@ -2582,7 +2582,7 @@ i.arrow_btm{
 .sr_item_filters .form-elements{
   padding:0px !important;
 }
-.sr_item_filters .form-wrapper{
+.sr_item_filters .form-group{
   margin-left:5px;
   padding:5px;
   float:left;
@@ -2744,11 +2744,11 @@ i.arrow_btm{
   margin:0 0 5px;
 	display:inherit;
 }
-.sitereview_advanced_search_form  .form-wrapper,
-.sitereview_advanced_search_form  .form-wrapper + .form-wrapper{
+.sitereview_advanced_search_form  .form-group,
+.sitereview_advanced_search_form  .form-group + .form-group{
   margin:0px !important;
 }
-.sitereview_advanced_search_form #fieldset-grp3 .form-wrapper{
+.sitereview_advanced_search_form #fieldset-grp3 .form-group{
   width:35%;
   float:left;
 }
@@ -2761,7 +2761,7 @@ i.arrow_btm{
   font-size:11px;
   margin-top:20px;
 }
-html[dir="rtl"] .sitereview_advanced_search_form #fieldset-grp3 .form-wrapper,
+html[dir="rtl"] .sitereview_advanced_search_form #fieldset-grp3 .form-group,
 html[dir="rtl"] .sitereview_advanced_search_form #fieldset-grp3 #locationmiles-wrapper,
 html[dir="rtl"] .sitereview_advanced_search_form #advances_search{
   float:right;
@@ -2787,14 +2787,14 @@ html[dir="rtl"] .sitereview_advanced_search_form #advances_search{
   padding:10px 5px 10px 0;
   display:none;
 }
-.sitereview_advanced_search_form #fieldset-grp1 .form-wrapper,
-.sitereview_advanced_search_form #fieldset-grp2 .form-wrapper{
+.sitereview_advanced_search_form #fieldset-grp1 .form-group,
+.sitereview_advanced_search_form #fieldset-grp2 .form-group{
   margin-left:10px !important;
   display:inline-block;
   margin-bottom:5px;
 }
-html[dir="rtl"] .sitereview_advanced_search_form #fieldset-grp1 .form-wrapper, 
-html[dir="rtl"] .sitereview_advanced_search_form #fieldset-grp2 .form-wrapper{
+html[dir="rtl"] .sitereview_advanced_search_form #fieldset-grp1 .form-group,
+html[dir="rtl"] .sitereview_advanced_search_form #fieldset-grp2 .form-group{
   margin-left:0px;
   margin-right:10px;
 }
@@ -3474,7 +3474,7 @@ ul.sitereview_package_list .sitereview_list_details{
 	/* create form Tiny mc editor */
 	#sitereview_create .mce-container, #sitereview_create .mce-container *, #sitereview_create .mce-widget, #sitereview_create .mce-widget *{box-sizing: border-box;}
 	/* Post a discussion form testarea */
-	.global_form div.form-wrapper #body-element textarea{height:150px !important;max-width:inherit !important;width:100% !important;box-sizing:border-box;}
+	.global_form div.form-group #body-element textarea{height:150px !important;max-width:inherit !important;width:100% !important;box-sizing:border-box;}
 	/* Wishlist grid view */
 	.sr_wishlist_browse_grid li {margin: 2% 1% !important;width: 30% !important;}
 	.sr_wishlist_browse_grid li .item_cover img {width: 100%;}
@@ -3533,9 +3533,9 @@ ul.sitereview_package_list .sitereview_list_details{
 	#filter_form input[type="text"], #filter_form input[type="password"], #filter_form input[type="email"], #filter_form select, #filter_form textarea, #sitereview_topic_create .form-element input[type = "text"] {box-sizing: border-box;width: 100% !important;}	
 	#filter_form ul li #price-max{margin-top:10px;}
 	/* Wishlist filer form */
-	#filter_form.sr_item_filters .form-wrapper {box-sizing: border-box;width: 100%;margin:0;}
+	#filter_form.sr_item_filters .form-group {box-sizing: border-box;width: 100%;margin:0;}
 	/* Advaned search form */
-	.sitereview_advanced_search_form #filter_form .form-wrapper{width:100% !important;margin-left:0 !important;}
+	.sitereview_advanced_search_form #filter_form .form-group{width:100% !important;margin-left:0 !important;}
 	.sitereview_advanced_search_form #fieldset-grp1, .sitereview_advanced_search_form #fieldset-grp2 {padding: 0;}
 	/* Sitereview create form */
 	#sitereviews_create .form-element, #sitereviews_create .form-label {width: 100% !important;}

@@ -43,7 +43,7 @@
     margin-top: 0px;
 }
 </style>
-<h2><?php echo $this->translate("Assign Badges") ?></h2>
+<h2><?= $this->translate("Assign Badges") ?></h2>
 
 <script type='text/javascript'>
 window.searchTimeout = null;
@@ -95,7 +95,7 @@ function startSearch(){
       window.searchRequest.cancel();
   }
   data.format = 'html';
-  var url = '<?php echo $this->url() ?>';
+  var url = '<?= $this->url() ?>';
   window.searchRequest = new Request.HTML({
       url: url,
       data: data,
@@ -128,21 +128,21 @@ function startSearch(){
 
 <div class='sd_layout_middle sd-badges-badges-list'>
 <div class='admin_search'>
-    <?php echo $this->formFilter->render($this) ?>
+    <?= $this->formFilter->render($this) ?>
 </div>
 
 <br />
 
 <div class="admin_table_form sd-badges-list-table">
-<form id='multimodify_form' method="post" action="<?php echo $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
+<form id='multimodify_form' method="post" action="<?= $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
   <table class='admin_table'>
     <thead>
       <tr>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Profile Photo") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("User Name") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("First Name") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Last Name") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Options") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Profile Photo") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("User Name") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("First Name") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Last Name") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Options") ?></th>
       </tr>
     </thead>
     <tbody>
@@ -154,20 +154,20 @@ function startSearch(){
           ?>
           <tr>
             <td class='admin_table_centered admin_table_bold'>
-              <?php echo $this->htmlLink($user->getHref(), $this->itemPhoto($user, 'thumb.icon')); ?> 
+              <?= $this->htmlLink($user->getHref(), $this->itemPhoto($user, 'thumb.icon')); ?> 
             </td>
             <td class='admin_table_centered admin_table_bold'>
-              <?php echo $this->htmlLink($user->getHref(),
+              <?= $this->htmlLink($user->getHref(),
                   $this->string()->truncate($user->username, 15),
                   array('target' => '_blank'))?>
             </td>
-            <td class='admin_table_centered admin_table_user'><?php echo $api->getFieldValue($item,3); ?></td>
+            <td class='admin_table_centered admin_table_user'><?= $api->getFieldValue($item,3); ?></td>
             <td class='admin_table_centered admin_table_email'>
-              <?php echo $api->getFieldValue($item,4); ?>
+              <?= $api->getFieldValue($item,4); ?>
             </td>
             <td class='admin_table_centered'>
-                <a href='<?php echo $this->url(array('action' => 'assign-user','user_id' => $user->getIdentity()),'sdparentalguide_badger_assignuser',true);?>'>
-                    <?php echo $this->translate("View") ?>
+                <a href='<?= $this->url(array('action' => 'assign-user','user_id' => $user->getIdentity()),'sdparentalguide_badger_assignuser',true);?>'>
+                    <?= $this->translate("View") ?>
                 </a>
             </td>            
           </tr>
@@ -185,11 +185,11 @@ function startSearch(){
 <div class='admin_results'>
   <div>
     <?php $count = $this->paginator->getTotalItemCount() ?>
-    <?php echo $this->translate(array("%s member found", "%s members found", $count),
+    <?= $this->translate(array("%s member found", "%s members found", $count),
         $this->locale()->toNumber($count)) ?>
   </div>
   <div>
-    <?php echo $this->paginationControl($this->paginator, null, null, array(
+    <?= $this->paginationControl($this->paginator, null, null, array(
       'pageAsQuery' => true,
       'query' => $this->formValues,
       //'params' => $this->formValues,

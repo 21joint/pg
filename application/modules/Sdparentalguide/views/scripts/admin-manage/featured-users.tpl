@@ -18,7 +18,7 @@
       ->appendFile($this->layout()->staticBaseUrl . 'externals/autocompleter/Autocompleter.Local.js')
       ->appendFile($this->layout()->staticBaseUrl . 'externals/autocompleter/Autocompleter.Request.js');
 ?>
-<h2><?php echo $this->translate("Parental Guidance Customizations") ?></h2>
+<h2><?= $this->translate("Parental Guidance Customizations") ?></h2>
 
 <?php if( count($this->navigation) ): ?>
   <div class='tabs'>
@@ -31,8 +31,8 @@
 <?php endif; ?>
 
 <script type="text/javascript">
-  var currentOrder = '<?php echo $this->order ?>';
-  var currentOrderDirection = '<?php echo $this->order_direction ?>';
+  var currentOrder = '<?= $this->order ?>';
+  var currentOrderDirection = '<?= $this->order_direction ?>';
   var changeOrder = function(order, default_direction){
     // Just change direction
     if( order == currentOrder ) {
@@ -49,7 +49,7 @@ function multiModify()
   var multimodify_form = $('multimodify_form');
   if (multimodify_form.submit_button.value == 'delete')
   {
-    return confirm('<?php echo $this->string()->escapeJavascript($this->translate("Are you sure you want to delete the selected user accounts?")) ?>');
+    return confirm('<?= $this->string()->escapeJavascript($this->translate("Are you sure you want to delete the selected user accounts?")) ?>');
   }
 }
 
@@ -72,7 +72,7 @@ en4.core.runonce.add(function(){
     var loader = en4.core.loader.clone();
     loader.addClass("sd_loader");
     
-    var autoCompleter = new Autocompleter.Request.JSON('username', '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'suggest'), 'admin_default', true) ?>', {
+    var autoCompleter = new Autocompleter.Request.JSON('username', '<?= $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'suggest'), 'admin_default', true) ?>', {
         'minLength': 3,
         'delay' : 250,
         'selectMode': 'pick',
@@ -126,7 +126,7 @@ en4.core.runonce.add(function(){
         startSearch();
     };
 
-    var autoCompleter2 = new Autocompleter.Request.JSON('level', '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'suggest-level'), 'admin_default', true) ?>', {
+    var autoCompleter2 = new Autocompleter.Request.JSON('level', '<?= $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'suggest-level'), 'admin_default', true) ?>', {
         'minLength': 3,
         'delay' : 250,
         'selectMode': 'pick',
@@ -193,7 +193,7 @@ function markFeatured(element){
   var loader = en4.core.loader.clone();
   loader.addClass("sd_loader");
   
-  var url = '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'mark-featured'), 'admin_default', true) ?>';
+  var url = '<?= $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'mark-featured'), 'admin_default', true) ?>';
   var req = new Request.JSON({
       url: url,
       data: {
@@ -232,7 +232,7 @@ function markUnfeatured(element){
   var loader = en4.core.loader.clone();
   loader.addClass("sd_loader");
   
-  var url = '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'mark-featured'), 'admin_default', true) ?>';
+  var url = '<?= $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'mark-featured'), 'admin_default', true) ?>';
   var req = new Request.JSON({
       url: url,
       data: {
@@ -279,7 +279,7 @@ function startSearch(){
       window.searchRequest.cancel();
   }
   data.format = 'html';
-  var url = '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'featured-users'), 'admin_default', true) ?>';
+  var url = '<?= $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'featured-users'), 'admin_default', true) ?>';
   window.searchRequest = new Request.HTML({
       url: url,
       data: data,
@@ -309,11 +309,11 @@ function startSearch(){
   window.searchRequest.send();  
 }
 function loginAsUser(id) {
-  if( !confirm('<?php echo $this->translate('Note that you will be logged out of your current account if you click ok.') ?>') ) {
+  if( !confirm('<?= $this->translate('Note that you will be logged out of your current account if you click ok.') ?>') ) {
     return;
   }
-  var url = '<?php echo $this->url(array('module' => 'user','controller' => 'manage','action' => 'login'),'admin_default',true) ?>';
-  var baseUrl = '<?php echo $this->url(array(), 'default', true) ?>';
+  var url = '<?= $this->url(array('module' => 'user','controller' => 'manage','action' => 'login'),'admin_default',true) ?>';
+  var baseUrl = '<?= $this->url(array(), 'default', true) ?>';
   (new Request.JSON({
     url : url,
     data : {
@@ -339,7 +339,7 @@ function markMvp(element){
   var loader = en4.core.loader.clone();
   loader.addClass("sd_loader");
   
-  var url = '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'mark-mvp'), 'admin_default', true) ?>';
+  var url = '<?= $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'mark-mvp'), 'admin_default', true) ?>';
   var req = new Request.JSON({
       url: url,
       data: {
@@ -378,7 +378,7 @@ function removeMvp(element){
   var loader = en4.core.loader.clone();
   loader.addClass("sd_loader");
   
-  var url = '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'mark-mvp'), 'admin_default', true) ?>';
+  var url = '<?= $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'mark-mvp'), 'admin_default', true) ?>';
   var req = new Request.JSON({
       url: url,
       data: {
@@ -411,26 +411,26 @@ function removeMvp(element){
         <form>
             <div class="sd_feature_selected">
                 <input type="radio" id="sd_feature_selected" name='featured' style="display: none;"/>
-                <label for="sd_feature_selected" class="button" onclick='markFeatured(this);'><?php echo $this->translate("Feature Selected"); ?></label>
+                <label for="sd_feature_selected" class="button" onclick='markFeatured(this);'><?= $this->translate("Feature Selected"); ?></label>
             </div>
             <div class="sd_unfeature_selected">
                 <input type="radio" id="sd_unfeature_selected" name='featured' style="display: none;"/>
-                <label for="sd_unfeature_selected" class="button" onclick="markUnfeatured(this);"><?php echo $this->translate("Un-Feature Selected"); ?></label>
+                <label for="sd_unfeature_selected" class="button" onclick="markUnfeatured(this);"><?= $this->translate("Un-Feature Selected"); ?></label>
             </div>
             <div class="sd_make_mvp_selected">
                 <input type="radio" id="sd_make_mvp_selected" name='mvp' style="display: none;"/>
-                <label for="sd_make_mvp_selected" class="button" onclick="markMvp(this);"><?php echo $this->translate("Make MVP"); ?></label>
+                <label for="sd_make_mvp_selected" class="button" onclick="markMvp(this);"><?= $this->translate("Make MVP"); ?></label>
             </div>
             <div class="sd_remove_mvp_selected">
                 <input type="radio" id="sd_remove_mvp_selected" name='mvp' style="display: none;"/>
-                <label for="sd_remove_mvp_selected" class="button" onclick="removeMvp(this);"><?php echo $this->translate("Remove MVP"); ?></label>
+                <label for="sd_remove_mvp_selected" class="button" onclick="removeMvp(this);"><?= $this->translate("Remove MVP"); ?></label>
             </div>
             <div class='sd_search_button'>
-                <button class="button" type='button' onclick="startSearch(this);"><?php echo $this->translate("Search"); ?></button>
+                <button class="button" type='button' onclick="startSearch(this);"><?= $this->translate("Search"); ?></button>
             </div>
         </form>
     </div>
-    <?php echo $this->formFilter->render($this) ?>
+    <?= $this->formFilter->render($this) ?>
 </div>
 
 <br />
@@ -438,11 +438,11 @@ function removeMvp(element){
 <div class='admin_results'>
   <div>
     <?php $count = $this->paginator->getTotalItemCount() ?>
-    <?php echo $this->translate(array("%s member found", "%s members found", $count),
+    <?= $this->translate(array("%s member found", "%s members found", $count),
         $this->locale()->toNumber($count)) ?>
   </div>
   <div>
-    <?php echo $this->paginationControl($this->paginator, null, null, array(
+    <?= $this->paginationControl($this->paginator, null, null, array(
       'pageAsQuery' => true,
       'query' => $this->formValues,
       //'params' => $this->formValues,
@@ -453,21 +453,21 @@ function removeMvp(element){
 <br />
 
 <div class="admin_table_form">
-<form id='multimodify_form' method="post" action="<?php echo $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
+<form id='multimodify_form' method="post" action="<?= $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
   <table class='admin_table'>
     <thead>
       <tr>
         <th style='width: 100px;' class='admin_table_centered'>
             <input onclick="selectAll()" type='checkbox' class='checkbox' id="select-all" style="display:none;">
-            <label for="select-all" class='admin_table_centered'><?php echo $this->translate("Select"); ?></label>
+            <label for="select-all" class='admin_table_centered'><?= $this->translate("Select"); ?></label>
         </th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("User Name") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("First Name") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Last Name") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Level") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Featured") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("MVP") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Options") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("User Name") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("First Name") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Last Name") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Level") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Featured") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("MVP") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Options") ?></th>
       </tr>
     </thead>
     <tbody>
@@ -478,32 +478,32 @@ function removeMvp(element){
           if(empty($user)) { continue; }
           ?>
           <tr>
-            <td><input data-id='<?php echo $item->user_id; ?>' value=<?php echo $item->getIdentity();?> type='checkbox' class='checkbox'></td>
+            <td><input data-id='<?= $item->user_id; ?>' value=<?= $item->getIdentity();?> type='checkbox' class='checkbox'></td>
             <td class='admin_table_centered admin_table_bold'>
-              <?php echo $this->htmlLink($user->getHref(),
+              <?= $this->htmlLink($user->getHref(),
                   $this->string()->truncate($user->username, 10),
                   array('target' => '_blank'))?>
             </td>
-            <td class='admin_table_centered admin_table_user'><?php echo $api->getFieldValue($item,3); ?></td>
+            <td class='admin_table_centered admin_table_user'><?= $api->getFieldValue($item,3); ?></td>
             <td class='admin_table_centered admin_table_email'>
-              <?php echo $api->getFieldValue($item,4); ?>
+              <?= $api->getFieldValue($item,4); ?>
             </td>
             <td class="admin_table_centered nowrap">
-              <?php echo Engine_Api::_()->getItem("authorization_level",$user->level_id)->getTitle(); ?>
+              <?= Engine_Api::_()->getItem("authorization_level",$user->level_id)->getTitle(); ?>
             </td>
             <td class='admin_table_centered'>
-                <input type="radio" disabled <?php echo ( $item->gg_featured ? $this->translate('checked=checked') : '' ); ?>>              
+                <input type="radio" disabled <?= ( $item->gg_featured ? $this->translate('checked=checked') : '' ); ?>>              
             </td>
             <td class='admin_table_centered'>
-                <input type="radio" disabled class='radio_mvp' <?php echo ( $item->gg_mvp ? $this->translate('checked=checked') : '' ); ?>>              
+                <input type="radio" disabled class='radio_mvp' <?= ( $item->gg_mvp ? $this->translate('checked=checked') : '' ); ?>>              
             </td>
             <td>
-                <a class='smoothbox' href='<?php echo $this->url(array('module' => 'user','controller' => 'manage','action' => 'edit', 'id' => $item->user_id),'admin_default',true);?>'>
-                <?php echo $this->translate("edit") ?>
+                <a class='smoothbox' href='<?= $this->url(array('module' => 'user','controller' => 'manage','action' => 'edit', 'id' => $item->user_id),'admin_default',true);?>'>
+                <?= $this->translate("edit") ?>
               </a>
               <?php if ( $item->level_id != 1 ): ?>
-                <a href='<?php echo $this->url(array('module' => 'user','controller' => 'manage','action' => 'login', 'id' => $item->user_id),'admin_default',true);?>' onclick="loginAsUser(<?php echo $item->user_id ?>); return false;">
-                  <?php echo $this->translate("login") ?>
+                <a href='<?= $this->url(array('module' => 'user','controller' => 'manage','action' => 'login', 'id' => $item->user_id),'admin_default',true);?>' onclick="loginAsUser(<?= $item->user_id ?>); return false;">
+                  <?= $this->translate("login") ?>
                 </a>
               <?php endif; ?>
             </td>

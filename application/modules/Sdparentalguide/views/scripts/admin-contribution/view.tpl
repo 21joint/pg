@@ -11,8 +11,8 @@
  */
 ?>
 <div class="transaction_view_popup">
-  <h3><?php echo $this->translate("Details :") ?> 
-    <span><a href='javascript:void(0);' onclick='javascript:parent.Smoothbox.close()'> <?php echo $this->translate("Close X") ?></a></span>
+  <h3><?= $this->translate("Details :") ?> 
+    <span><a href='javascript:void(0);' onclick='javascript:parent.Smoothbox.close()'> <?= $this->translate("Close X") ?></a></span>
   </h3>
   <?php 
   $user=Engine_Api::_()->user()->getUser($this->result->user_id);
@@ -29,7 +29,7 @@
       
       <table class="table">
         <tr>
-          <td valign="top"><?php echo $this->htmlLink($user->getOwner()->getHref(),$this->itemPhoto($user, 'thumb.icon'), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
+          <td valign="top"><?= $this->htmlLink($user->getOwner()->getHref(),$this->itemPhoto($user, 'thumb.icon'), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
           <td>
            <table width="100%" class="table">
             <tr>
@@ -38,15 +38,15 @@
             </tr>
             <tr>
               <td width="40%"><strong>User Name :</strong></td>
-              <td width="60%"><?php echo $this->htmlLink($user->getOwner()->getHref(), $this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
+              <td width="60%"><?= $this->htmlLink($user->getOwner()->getHref(), $this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
             </tr>
             <tr>
               <td width="40%"><strong>Activity Type : </strong></td>
-              <td width="60%"><?php echo $activity_type; ?></td>
+              <td width="60%"><?= $activity_type; ?></td>
             </tr>
             <tr>
               <td width="40%"><strong>Credit Values :</strong></td>
-              <td width="60%"><?php echo $this->result->credit_point; ?></td>
+              <td width="60%"><?= $this->result->credit_point; ?></td>
             </tr>
             <tr>
               <td width="40%"><strong>Type :</strong></td>
@@ -54,7 +54,7 @@
             </tr>
             <tr>
               <td width="40%"><strong>Date :</strong></td>
-              <td width="60%"><?php echo date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
+              <td width="60%"><?= date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
             </tr>
           </table>
         </td>
@@ -65,7 +65,7 @@
     
     <table class="table">
       <tr>
-        <td><?php echo $this->htmlLink($user->getOwner()->getHref(),$this->itemPhoto($user, 'thumb.icon'), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank'));?></td>
+        <td><?= $this->htmlLink($user->getOwner()->getHref(),$this->itemPhoto($user, 'thumb.icon'), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank'));?></td>
         <td>
          <table width="100%" class="table">
           <tr>
@@ -74,7 +74,7 @@
           </tr>
           <tr>
             <td width="40%"><strong>User Name :</strong></td>
-            <td width="60%"><?php echo $this->htmlLink($user->getOwner()->getHref(), $this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
+            <td width="60%"><?= $this->htmlLink($user->getOwner()->getHref(), $this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
           </tr>
           <tr>
             <td width="40%"><strong>Previous Level : </strong></td>
@@ -86,7 +86,7 @@
           </tr>
           <tr>
             <td width="40%"><strong>Credit Values :</strong></td>
-            <td width="60%"><?php echo abs($this->result->credit_point); ?></td>
+            <td width="60%"><?= abs($this->result->credit_point); ?></td>
           </tr>
           <tr>
             <td width="40%"><strong>Type :</strong></td>
@@ -94,7 +94,7 @@
           </tr>
           <tr>
             <td width="40%"><strong>Date :</strong></td>
-            <td width="60%"><?php echo date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
+            <td width="60%"><?= date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
           </tr>
         </table>
       </td>
@@ -106,12 +106,12 @@
   ?>
   <table class="table">
     <tr>
-      <td><?php echo $this->htmlLink($user->getOwner()->getHref(),$this->itemPhoto($user, 'thumb.icon'), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank'));?></td>
+      <td><?= $this->htmlLink($user->getOwner()->getHref(),$this->itemPhoto($user, 'thumb.icon'), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank'));?></td>
       <td>
        <table width="100%" class="table">
         <tr>
           <td width="40%"><strong>Order Id :</strong></td>
-          <td width="60%"><?php echo $this->result->type_id; ?></td>
+          <td width="60%"><?= $this->result->type_id; ?></td>
         </tr>
         <tr>
           <td width="40%"><strong>Credit type :</strong></td>
@@ -119,7 +119,7 @@
         </tr>
         <tr>
           <td width="40%"><strong>User Name :</strong></td>
-          <td width="60%"><?php echo $this->htmlLink($user->getOwner()->getHref(), $this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
+          <td width="60%"><?= $this->htmlLink($user->getOwner()->getHref(), $this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
         </tr>
         <tr>
           <td width="40%"><strong>Amount : </strong></td>
@@ -128,7 +128,7 @@
         </tr>
         <tr>
           <td width="40%"><strong>Credit Values :</strong></td>
-          <td width="60%"><?php echo abs($this->result->credit_point); ?></td>
+          <td width="60%"><?= abs($this->result->credit_point); ?></td>
         </tr>
         <tr>
           <td width="40%"><strong>Payment Gateway : </strong></td>
@@ -140,10 +140,10 @@
         </tr>
         <tr>
           <td width="40%"><strong>Date :</strong></td>
-          <td width="60%"><?php echo date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
+          <td width="60%"><?= date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
         </tr>
         <tr><td> 
-         <?php echo $this->htmlLink($this->url(array('action' => 'print-invoice', 'credit_id' =>$this->result->credit_id ), 'credit_general', true), $this->translate('Print Invoice'), array('target' => '_blank'));?>
+         <?= $this->htmlLink($this->url(array('action' => 'print-invoice', 'credit_id' =>$this->result->credit_id ), 'credit_general', true), $this->translate('Print Invoice'), array('target' => '_blank'));?>
 
        </td></tr>
      </table>
@@ -159,7 +159,7 @@ case 'sent_to_friend' :
 ?>
 <table class="table">
   <tr>
-    <td><?php echo $this->htmlLink($user->getOwner()->getHref(),$this->itemPhoto($user, 'thumb.icon'), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank'));?></td>
+    <td><?= $this->htmlLink($user->getOwner()->getHref(),$this->itemPhoto($user, 'thumb.icon'), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank'));?></td>
     <td>
      <table width="100%" class="table">
       <tr>
@@ -168,7 +168,7 @@ case 'sent_to_friend' :
       </tr>
       <tr>
         <td width="40%"><strong>User Name :</strong></td>
-        <td width="60%"><?php echo $this->htmlLink($user->getOwner()->getHref(), $this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
+        <td width="60%"><?= $this->htmlLink($user->getOwner()->getHref(), $this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
       </tr>
       <tr>
         <td width="40%"><strong>Sent To : </strong></td>
@@ -177,7 +177,7 @@ case 'sent_to_friend' :
       </tr>
       <tr>
         <td width="40%"><strong>Credit Values :</strong></td>
-        <td width="60%"><?php echo abs($this->result->credit_point); ?></td>
+        <td width="60%"><?= abs($this->result->credit_point); ?></td>
       </tr>
       <tr>
         <td width="40%"><strong>Type :</strong></td>
@@ -185,7 +185,7 @@ case 'sent_to_friend' :
       </tr>
       <tr>
         <td width="40%"><strong>Date :</strong></td>
-        <td width="60%"><?php echo date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
+        <td width="60%"><?= date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
       </tr>
     </table>
   </td>
@@ -203,7 +203,7 @@ case 'received_from_friend' :
     <td valign="top">
       <table class="table">
         <tr>
-          <td><?php echo $this->htmlLink($user->getOwner()->getHref(),$this->itemPhoto($user, 'thumb.icon'), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank'));?></td>
+          <td><?= $this->htmlLink($user->getOwner()->getHref(),$this->itemPhoto($user, 'thumb.icon'), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank'));?></td>
         </tr>
       </table>
     </td>
@@ -215,7 +215,7 @@ case 'received_from_friend' :
       </tr>
       <tr>
         <td width="40%"><strong>User Name :</strong></td>
-        <td width="60%"><?php echo $this->htmlLink($user->getOwner()->getHref(), $this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank'));  ?></td>
+        <td width="60%"><?= $this->htmlLink($user->getOwner()->getHref(), $this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank'));  ?></td>
       </tr>
       <tr>
         <td width="40%"><strong>Received From : </strong></td>
@@ -224,7 +224,7 @@ case 'received_from_friend' :
       </tr>
       <tr>
         <td width="40%"><strong>Credit Values :</strong></td>
-        <td width="60%"><?php echo $this->result->credit_point; ?></td>
+        <td width="60%"><?= $this->result->credit_point; ?></td>
       </tr>
       <tr>
         <td width="40%"><strong>Type :</strong></td>
@@ -232,7 +232,7 @@ case 'received_from_friend' :
       </tr>
       <tr>
         <td width="40%"><strong>Date :</strong></td>
-        <td width="60%"><?php echo date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
+        <td width="60%"><?= date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
       </tr>
     </table>
   </td>
@@ -251,7 +251,7 @@ if(!empty($activity_type)){
 <table class="table">
   <tr>
     <td valign="top">
-      <?php echo $this->htmlLink($user->getOwner()->getHref(),$this->itemPhoto($user, 'thumb.icon'), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank'));?>
+      <?= $this->htmlLink($user->getOwner()->getHref(),$this->itemPhoto($user, 'thumb.icon'), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank'));?>
     </td>
     <td>
      <table width="100%" class="table">
@@ -261,15 +261,15 @@ if(!empty($activity_type)){
       </tr>
       <tr>
         <td width="40%"><strong>User Name :</strong></td>
-        <td width="60%"><?php echo $this->htmlLink($user->getOwner()->getHref(), $this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
+        <td width="60%"><?= $this->htmlLink($user->getOwner()->getHref(), $this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
       </tr>
       <tr>
         <td width="40%"><strong>Activity Type : </strong></td>
-        <td width="60%"><?php echo $activity_type; ?></td>
+        <td width="60%"><?= $activity_type; ?></td>
       </tr>
       <tr>
         <td width="40%"><strong>Credit Values :</strong></td>
-        <td width="60%"><?php echo abs($this->result->credit_point); ?></td>
+        <td width="60%"><?= abs($this->result->credit_point); ?></td>
       </tr>
       <tr>
         <td width="40%"><strong>Deleted By :</strong></td>
@@ -281,7 +281,7 @@ if(!empty($activity_type)){
       </tr>
       <tr>
         <td width="40%"><strong>Date :</strong></td>
-        <td width="60%"><?php echo date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
+        <td width="60%"><?= date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
       </tr>
     </table>
   </td>
@@ -291,7 +291,7 @@ if(!empty($activity_type)){
 <table class="table">
   <tr>
     <td valign="top">
-      <?php echo $this->htmlLink($user->getOwner()->getHref(),$this->itemPhoto($user, 'thumb.icon'), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank'));?>
+      <?= $this->htmlLink($user->getOwner()->getHref(),$this->itemPhoto($user, 'thumb.icon'), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank'));?>
     </td>
     <td>
      <table width="100%" class="table">
@@ -301,11 +301,11 @@ if(!empty($activity_type)){
       </tr>
       <tr>
         <td width="40%"><strong>User Name :</strong></td>
-        <td width="60%"><?php echo $this->htmlLink($user->getOwner()->getHref(), $this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
+        <td width="60%"><?= $this->htmlLink($user->getOwner()->getHref(), $this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
       </tr>
       <tr>
         <td width="40%"><strong>Credit Values :</strong></td>
-        <td width="60%"><?php echo $this->result->credit_point; ?></td>
+        <td width="60%"><?= $this->result->credit_point; ?></td>
       </tr>
       <tr>
         <td width="40%"><strong>Sent By : </strong></td>
@@ -313,7 +313,7 @@ if(!empty($activity_type)){
       </tr>
       <tr>
         <td width="40%"><strong>Reason :</strong></td>
-        <td width="60%"><?php echo $this->result->reason; ?></td>
+        <td width="60%"><?= $this->result->reason; ?></td>
       </tr>
       <tr>
         <td width="40%"><strong>Type :</strong></td>
@@ -321,7 +321,7 @@ if(!empty($activity_type)){
       </tr>
       <tr>
         <td width="40%"><strong>Date :</strong></td>
-        <td width="60%"><?php echo date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
+        <td width="60%"><?= date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
       </tr>
     </table>
   </td>
@@ -334,7 +334,7 @@ if($this->result->type_id){
 <table class="table" width="100%">
   <tr>
     <td valign="top">
-      <?php echo $this->htmlLink($user->getOwner()->getHref(),$this->itemPhoto($user, 'thumb.icon'), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank'));?>
+      <?= $this->htmlLink($user->getOwner()->getHref(),$this->itemPhoto($user, 'thumb.icon'), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank'));?>
     </td>
     <td>
      <table width="100%" class="table">
@@ -344,7 +344,7 @@ if($this->result->type_id){
       </tr>
       <tr>
         <td width="40%"><strong>User Name :</strong></td>
-        <td width="60%"><?php echo $this->htmlLink($user->getOwner()->getHref(), $this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
+        <td width="60%"><?= $this->htmlLink($user->getOwner()->getHref(), $this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
       </tr>
       <tr>
         <td width="40%"><strong>User Sign Up with link : </strong></td>
@@ -353,7 +353,7 @@ if($this->result->type_id){
       </tr>
       <tr>
         <td width="40%"><strong>Credit Values :</strong></td>
-        <td width="60%"><?php echo $this->result->credit_point; ?></td>
+        <td width="60%"><?= $this->result->credit_point; ?></td>
       </tr>
       <tr>
         <td width="40%"><strong>Type :</strong></td>
@@ -361,7 +361,7 @@ if($this->result->type_id){
       </tr>
       <tr>
         <td width="40%"><strong>Date :</strong></td>
-        <td width="60%"><?php echo date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
+        <td width="60%"><?= date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
       </tr>
     </table>
   </td>
@@ -383,15 +383,15 @@ foreach ($order_ids as $order_id) {
   </tr>
   <tr>
     <td width="40%"><strong>User Name :</strong></td>
-    <td width="60%"><?php echo $this->htmlLink($user->getOwner()->getHref(), $this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
+    <td width="60%"><?= $this->htmlLink($user->getOwner()->getHref(), $this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
   </tr>
   <tr>
     <td width="40%"><strong>Orders :</strong></td>
-    <td width="60%"><?php echo $viewer_orders;?></td>
+    <td width="60%"><?= $viewer_orders;?></td>
   </tr>
   <tr>
     <td width="40%"><strong>Credits Redeemed :</strong></td>
-    <td width="60%"><?php echo abs($this->result->credit_point); ?></td>
+    <td width="60%"><?= abs($this->result->credit_point); ?></td>
   </tr>
   <tr>
     <td width="40%"><strong>Type :</strong></td>
@@ -399,7 +399,7 @@ foreach ($order_ids as $order_id) {
   </tr>
   <tr>
     <td width="40%"><strong>Date :</strong></td>
-    <td width="60%"><?php echo date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
+    <td width="60%"><?= date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
   </tr>
 </table>
 
@@ -418,15 +418,15 @@ $viewer_orders = '<a target="_blank" href="' . $tempViewUrl . '">#' . $this->res
   </tr>
   <tr>
     <td width="40%"><strong>User Name :</strong></td>
-    <td width="60%"><?php echo $this->htmlLink($user->getOwner()->getHref(),$this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
+    <td width="60%"><?= $this->htmlLink($user->getOwner()->getHref(),$this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
   </tr>  
   <tr>
     <td width="40%"><strong>Orders :</strong></td>
-    <td width="60%"><?php echo $viewer_orders;?></td>
+    <td width="60%"><?= $viewer_orders;?></td>
   </tr>
   <tr>
     <td width="40%"><strong>Credits Redeemed :</strong></td>
-    <td width="60%"><?php echo abs($this->result->credit_point); ?></td>
+    <td width="60%"><?= abs($this->result->credit_point); ?></td>
   </tr>
   <tr>
     <td width="40%"><strong>Type :</strong></td>
@@ -434,7 +434,7 @@ $viewer_orders = '<a target="_blank" href="' . $tempViewUrl . '">#' . $this->res
   </tr>
   <tr>
     <td width="40%"><strong>Date :</strong></td>
-    <td width="60%"><?php echo date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
+    <td width="60%"><?= date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
   </tr>
 </table>
 <?php break;
@@ -446,11 +446,11 @@ case 'subscription' : ?>
   </tr>
   <tr>
     <td width="40%"><strong>User Name :</strong></td>
-    <td width="60%"><?php echo $this->htmlLink($user->getOwner()->getHref(),$this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
+    <td width="60%"><?= $this->htmlLink($user->getOwner()->getHref(),$this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
   </tr>  
   <tr>
     <td width="40%"><strong>Credits Redeemed :</strong></td>
-    <td width="60%"><?php echo abs($this->result->credit_point); ?></td>
+    <td width="60%"><?= abs($this->result->credit_point); ?></td>
   </tr>
   <tr>
     <td width="40%"><strong>Type :</strong></td>
@@ -458,7 +458,7 @@ case 'subscription' : ?>
   </tr>
   <tr>
     <td width="40%"><strong>Date :</strong></td>
-    <td width="60%"><?php echo date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
+    <td width="60%"><?= date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
   </tr>
 </table>
 <?php break;
@@ -470,11 +470,11 @@ case 'siteeventpaid_package' : ?>
   </tr>
   <tr>
     <td width="40%"><strong>User Name :</strong></td>
-    <td width="60%"><?php echo $this->htmlLink($user->getOwner()->getHref(),$this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
+    <td width="60%"><?= $this->htmlLink($user->getOwner()->getHref(),$this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
   </tr>  
   <tr>
     <td width="40%"><strong>Credits Redeemed :</strong></td>
-    <td width="60%"><?php echo abs($this->result->credit_point); ?></td>
+    <td width="60%"><?= abs($this->result->credit_point); ?></td>
   </tr>
   <tr>
     <td width="40%"><strong>Type :</strong></td>
@@ -482,7 +482,7 @@ case 'siteeventpaid_package' : ?>
   </tr>
   <tr>
     <td width="40%"><strong>Date :</strong></td>
-    <td width="60%"><?php echo date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
+    <td width="60%"><?= date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
   </tr>
 </table>
 <?php break;
@@ -494,11 +494,11 @@ case 'sitestore_package' : ?>
   </tr>
   <tr>
     <td width="40%"><strong>User Name :</strong></td>
-    <td width="60%"><?php echo $this->htmlLink($user->getOwner()->getHref(),$this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
+    <td width="60%"><?= $this->htmlLink($user->getOwner()->getHref(),$this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
   </tr>  
   <tr>
     <td width="40%"><strong>Credits Redeemed :</strong></td>
-    <td width="60%"><?php echo abs($this->result->credit_point); ?></td>
+    <td width="60%"><?= abs($this->result->credit_point); ?></td>
   </tr>
   <tr>
     <td width="40%"><strong>Type :</strong></td>
@@ -506,7 +506,7 @@ case 'sitestore_package' : ?>
   </tr>
   <tr>
     <td width="40%"><strong>Date :</strong></td>
-    <td width="60%"><?php echo date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
+    <td width="60%"><?= date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
   </tr>
 </table>
 <?php break;
@@ -518,11 +518,11 @@ case 'sitepage_package' : ?>
   </tr>
   <tr>
     <td width="40%"><strong>User Name :</strong></td>
-    <td width="60%"><?php echo $this->htmlLink($user->getOwner()->getHref(),$this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
+    <td width="60%"><?= $this->htmlLink($user->getOwner()->getHref(),$this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
   </tr>  
   <tr>
     <td width="40%"><strong>Credits Redeemed :</strong></td>
-    <td width="60%"><?php echo abs($this->result->credit_point); ?></td>
+    <td width="60%"><?= abs($this->result->credit_point); ?></td>
   </tr>
   <tr>
     <td width="40%"><strong>Type :</strong></td>
@@ -530,7 +530,7 @@ case 'sitepage_package' : ?>
   </tr>
   <tr>
     <td width="40%"><strong>Date :</strong></td>
-    <td width="60%"><?php echo date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
+    <td width="60%"><?= date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
   </tr>
 </table>
 <?php break;
@@ -542,11 +542,11 @@ case 'sitereviewpaidlisting_package' : ?>
   </tr>
   <tr>
     <td width="40%"><strong>User Name :</strong></td>
-    <td width="60%"><?php echo $this->htmlLink($user->getOwner()->getHref(),$this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
+    <td width="60%"><?= $this->htmlLink($user->getOwner()->getHref(),$this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
   </tr>  
   <tr>
     <td width="40%"><strong>Credits Redeemed :</strong></td>
-    <td width="60%"><?php echo abs($this->result->credit_point); ?></td>
+    <td width="60%"><?= abs($this->result->credit_point); ?></td>
   </tr>
   <tr>
     <td width="40%"><strong>Type :</strong></td>
@@ -554,7 +554,7 @@ case 'sitereviewpaidlisting_package' : ?>
   </tr>
   <tr>
     <td width="40%"><strong>Date :</strong></td>
-    <td width="60%"><?php echo date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
+    <td width="60%"><?= date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
   </tr>
 </table>
 <?php break;
@@ -566,11 +566,11 @@ case 'communityad_package' : ?>
   </tr>
   <tr>
     <td width="40%"><strong>User Name :</strong></td>
-    <td width="60%"><?php echo $this->htmlLink($user->getOwner()->getHref(),$this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
+    <td width="60%"><?= $this->htmlLink($user->getOwner()->getHref(),$this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
   </tr>  
   <tr>
     <td width="40%"><strong>Credits Redeemed :</strong></td>
-    <td width="60%"><?php echo abs($this->result->credit_point); ?></td>
+    <td width="60%"><?= abs($this->result->credit_point); ?></td>
   </tr>
   <tr>
     <td width="40%"><strong>Type :</strong></td>
@@ -578,7 +578,7 @@ case 'communityad_package' : ?>
   </tr>
   <tr>
     <td width="40%"><strong>Date :</strong></td>
-    <td width="60%"><?php echo date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
+    <td width="60%"><?= date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
   </tr>
 </table>
 <?php break;
@@ -590,11 +590,11 @@ case 'sitegroup_package' : ?>
   </tr>
   <tr>
     <td width="40%"><strong>User Name :</strong></td>
-    <td width="60%"><?php echo $this->htmlLink($user->getOwner()->getHref(),$this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
+    <td width="60%"><?= $this->htmlLink($user->getOwner()->getHref(),$this->string()->stripTags($user->getOwner()->getTitle()), array('title' => $user->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
   </tr>  
   <tr>
     <td width="40%"><strong>Credits Redeemed :</strong></td>
-    <td width="60%"><?php echo abs($this->result->credit_point); ?></td>
+    <td width="60%"><?= abs($this->result->credit_point); ?></td>
   </tr>
   <tr>
     <td width="40%"><strong>Type :</strong></td>
@@ -602,7 +602,7 @@ case 'sitegroup_package' : ?>
   </tr>
   <tr>
     <td width="40%"><strong>Date :</strong></td>
-    <td width="60%"><?php echo date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
+    <td width="60%"><?= date('dS F Y ', strtotime($this->result->creation_date)) ?></td>
   </tr>
 </table>
 <?php break;

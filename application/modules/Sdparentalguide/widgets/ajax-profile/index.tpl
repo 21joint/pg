@@ -1,10 +1,10 @@
 <?php if($this->loaded_by_ajax):?>
 <script type="text/javascript">
 var profileParams = {
-    requestParams :{"title":"<?php echo $this->translate('Personal Info'); ?>", "titleCount":""},
+    requestParams :{"title":"<?= $this->translate('Personal Info'); ?>", "titleCount":""},
     responseContainer : $$('.layout_sdparentalguide_ajax_profile')
 }
-en4.gg.ajaxTab.attachEvent('<?php echo $this->identity ?>', profileParams);
+en4.gg.ajaxTab.attachEvent('<?= $this->identity ?>', profileParams);
 
 // container tabs
 en4.core.runonce.add(function() {
@@ -57,7 +57,7 @@ en4.core.runonce.add(function() {
             'Everyone', 'All Members', 'Friends', 'Only Me',
         ));
         ?>
-        <?php echo $this->form->render($this) ?>
+        <?= $this->form->render($this) ?>
         
     </div>
 </div>
@@ -67,7 +67,7 @@ window.addEvent('domready', function() {
     en4.user.buildFieldPrivacySelector($$('.global_form *[data-field-id]'));
 });
 en4.core.runonce.add(function() {
-    var form = document.getElementsByClassName('ajax-form-' + <?php echo $this->identity; ?>)[0];
+    var form = document.getElementsByClassName('ajax-form-' + <?= $this->identity; ?>)[0];
     en4.gg.ggAjaxForm(form, 'edit-profile');
     form.style.width = '80%';
     form.style.margin = '0 auto';

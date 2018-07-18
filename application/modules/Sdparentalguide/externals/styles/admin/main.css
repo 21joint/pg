@@ -173,7 +173,7 @@ ul.message-autosuggest > li span.autocompleter-queried
 #filter_form .topic_buttons > div {
     margin-bottom: 10px;
 }
-.form-wrapper .sd_inline_field {
+.form-group .sd_inline_field {
     display: inline-block;
 }
 #filter_form .topic_buttons > div > button
@@ -211,7 +211,7 @@ ul.message-autosuggest > li span.autocompleter-queried
 #global_page_sdparentalguide-admin-topics-create .form-label {
     margin-bottom: 5px;
 }
-#global_page_sdparentalguide-admin-topics-create .form-wrapper select {
+#global_page_sdparentalguide-admin-topics-create .form-group select {
     width: 200px;
 }
 #global_page_sdparentalguide-admin-topics-create #buttons-wrapper{

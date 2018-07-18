@@ -20,7 +20,7 @@
       ->appendFile($this->layout()->staticBaseUrl . 'externals/autocompleter/Autocompleter.Request.js');
 ?>
 
-<?php echo $this->form->render(); ?>
+<?= $this->form->render(); ?>
 
 <?php include_once APPLICATION_PATH.'/application/modules/Sdparentalguide/views/scripts/listingSearchJs.tpl'; ?>
 

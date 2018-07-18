@@ -1,14 +1,15 @@
 const pkg = require('./package');
 const merge = require('webpack-merge');
 const webpack = require('webpack');
-const webpackConfig = require('./webpack.config');
 const proxyMiddleware = require('http-proxy-middleware');
+const webpackConfig = require('./webpack.config');
 
 module.exports = merge(webpackConfig, {
+  mode: 'development',
   devServer: {
     open: true,
     openPage: 'parentalguidance',
-    port: 3000,
+    port: 5555,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'DELETE, HEAD, GET, OPTIONS, POST, PUT',
@@ -29,7 +30,5 @@ module.exports = merge(webpackConfig, {
         logLevel: 'debug'
       }));
     }
-  },
-  devtool: 'cheap-eval-source-map'
-
+  }
 });

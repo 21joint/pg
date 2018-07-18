@@ -27,13 +27,13 @@
     <?php if(count($categories) <= 0){ continue; } ?>
    
     <li class="mt-1 py-4">
-        <div class="holder-image position-relative mb-3 col-xl-11 col-11 mx-auto col-lg-11 px-0" style="background-image: url('<?php echo $listingType->getPhotoUrl(); ?>');">
+        <div class="holder-image position-relative mb-3 col-xl-11 col-11 mx-auto col-lg-11 px-0" style="background-image: url('<?= $listingType->getPhotoUrl(); ?>');">
             <div class="holder-category-title bg-primary d-flex position-absolute align-items-center justify-content-center py-3 text-white">
-                <span><?php echo $listingType->getTitle(); ?></span>
+                <span><?= $listingType->getTitle(); ?></span>
             </div>
 
             <div class="holder-select-all position-absolute ">
-                <a class="d-flex  bg-success  align-items-center justify-content-center py-3 text-white" onclick="markListingCategories(this);"><?php echo $this->translate('Select all');?></a>
+                <a class="d-flex  bg-success  align-items-center justify-content-center py-3 text-white" onclick="markListingCategories(this);"><?= $this->translate('Select all');?></a>
             </div>
         </div>
 
@@ -44,9 +44,9 @@
                 <?php foreach($categories as $category): ?>
                     <?php if(empty($category->getTitle())){ continue; } ?>
                     <div class="holder position-relative">
-                        <input type="checkbox"  name="categories[]" <?php if(in_array($category->category_id,$this->savedCategories)){ echo 'checked=checked'; } ?> class="sd_listing_category" value="<?php echo $category->category_id; ?>" id="category-<?php echo $category->category_id; ?>"/>
-                        <label class="label-check" for="category-<?php echo $category->category_id; ?>">
-                            <?php echo $category->getTitle(); ?>
+                        <input type="checkbox"  name="categories[]" <?php if(in_array($category->category_id,$this->savedCategories)){ echo 'checked=checked'; } ?> class="sd_listing_category" value="<?= $category->category_id; ?>" id="category-<?= $category->category_id; ?>"/>
+                        <label class="label-check" for="category-<?= $category->category_id; ?>">
+                            <?= $category->getTitle(); ?>
                         </label>
                     </div>
                 <?php endforeach; ?>

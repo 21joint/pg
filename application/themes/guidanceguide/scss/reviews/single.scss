@@ -45,6 +45,10 @@
   }
 }
 
+.prg-review--single---content {
+  padding: 0 25px;
+}
+
 .prg-review--single---action {
   position: absolute;
   top: 10px;
@@ -59,8 +63,7 @@
 }
 
 .prg-review--single---gallery {
-  img {
-    max-width: 264px;
-    max-height: 264px;
+  .embed-responsive-item {
+    //border: 5px solid #ffffff;
   }
 }

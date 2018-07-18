@@ -19,7 +19,7 @@
       ->appendFile($this->layout()->staticBaseUrl . 'externals/autocompleter/Autocompleter.Request.js');
 ?>
 
-<h2><?php echo $this->translate("Parental Guidance Customizations") ?></h2>
+<h2><?= $this->translate("Parental Guidance Customizations") ?></h2>
 
 <?php if( count($this->navigation) ): ?>
   <div class='tabs'>
@@ -102,7 +102,7 @@ function startSearch(){
       }
   }catch(e){ console.log(e); }
   data.format = 'html';
-  var url = '<?php echo $this->url() ?>';
+  var url = '<?= $this->url() ?>';
   window.searchRequest = new Request.HTML({
       url: url,
       data: data,
@@ -155,12 +155,12 @@ function markAssigned(element){
   var loader = en4.core.loader.clone();
   loader.addClass("sd_loader");
   
-  var url = '<?php echo $this->url(array('action' => 'assign-bulk')) ?>';
+  var url = '<?= $this->url(array('action' => 'assign-bulk')) ?>';
   var req = new Request.JSON({
       url: url,
       data: {
           user_ids: ids,
-          badge_id: '<?php echo $this->badge->getIdentity(); ?>',
+          badge_id: '<?= $this->badge->getIdentity(); ?>',
           format: 'json'
       },
       onRequest: function(){
@@ -197,12 +197,12 @@ function unmarkAssigned(element){
   var loader = en4.core.loader.clone();
   loader.addClass("sd_loader");
   
-  var url = '<?php echo $this->url(array('action' => 'delete-bulk')) ?>';
+  var url = '<?= $this->url(array('action' => 'delete-bulk')) ?>';
   var req = new Request.JSON({
       url: url,
       data: {
           user_ids: ids,
-          badge_id: '<?php echo $this->badge->getIdentity(); ?>',
+          badge_id: '<?= $this->badge->getIdentity(); ?>',
           format: 'json'
       },
       onRequest: function(){
@@ -239,12 +239,12 @@ function activateAssigned(element){
   var loader = en4.core.loader.clone();
   loader.addClass("sd_loader");
   
-  var url = '<?php echo $this->url(array('action' => 'status-bulk')) ?>';
+  var url = '<?= $this->url(array('action' => 'status-bulk')) ?>';
   var req = new Request.JSON({
       url: url,
       data: {
           user_ids: ids,
-          badge_id: '<?php echo $this->badge->getIdentity(); ?>',
+          badge_id: '<?= $this->badge->getIdentity(); ?>',
           status: 1,
           format: 'json'
       },
@@ -283,12 +283,12 @@ function revokeAssigned(element){
   var loader = en4.core.loader.clone();
   loader.addClass("sd_loader");
   
-  var url = '<?php echo $this->url(array('action' => 'status-bulk')) ?>';
+  var url = '<?= $this->url(array('action' => 'status-bulk')) ?>';
   var req = new Request.JSON({
       url: url,
       data: {
           user_ids: ids,
-          badge_id: '<?php echo $this->badge->getIdentity(); ?>',
+          badge_id: '<?= $this->badge->getIdentity(); ?>',
           status: 0,
           format: 'json'
       },
@@ -326,12 +326,12 @@ function switchProfileDisplay(element,display){
   var loader = en4.core.loader.clone();
   loader.addClass("sd_loader");
   
-  var url = '<?php echo $this->url(array('action' => 'display-bulk')) ?>';
+  var url = '<?= $this->url(array('action' => 'display-bulk')) ?>';
   var req = new Request.JSON({
       url: url,
       data: {
           user_ids: ids,
-          badge_id: '<?php echo $this->badge->getIdentity(); ?>',
+          badge_id: '<?= $this->badge->getIdentity(); ?>',
           display: display,
           format: 'json'
       },
@@ -363,70 +363,70 @@ function switchProfileDisplay(element,display){
 <div class='admin_search'>
     <div class="sd_badge_actions">
         <div class="sd_badge_details">
-            <h3><?php echo $badge->getTitle(); ?></h3>
+            <h3><?= $badge->getTitle(); ?></h3>
             <div class="sd_assign_selected">
-                <a href='javascript:void(0);'><button onclick="markAssigned(this);"><?php echo $this->translate("Assign Badge"); ?></button></a>
+                <a href='javascript:void(0);'><button onclick="markAssigned(this);"><?= $this->translate("Assign Badge"); ?></button></a>
             </div>
             <div class="sd_assign_selected">
-                <a href='javascript:void(0);'><button onclick="unmarkAssigned(this);"><?php echo $this->translate("Un-Assign Badge"); ?></button></a>
+                <a href='javascript:void(0);'><button onclick="unmarkAssigned(this);"><?= $this->translate("Un-Assign Badge"); ?></button></a>
             </div>
             
             <div class="sd_profile_display_selected">
-                <a href='javascript:void(0);'><button onclick="switchProfileDisplay(this,1);"><?php echo $this->translate("Display of Profile"); ?></button></a>
+                <a href='javascript:void(0);'><button onclick="switchProfileDisplay(this,1);"><?= $this->translate("Display of Profile"); ?></button></a>
             </div>
             <div class="sd_profile_display_selected">
-                <a href='javascript:void(0);'><button onclick="switchProfileDisplay(this,0);"><?php echo $this->translate("Remove from Profile"); ?></button></a>
+                <a href='javascript:void(0);'><button onclick="switchProfileDisplay(this,0);"><?= $this->translate("Remove from Profile"); ?></button></a>
             </div>
         </div>
         <div class="sd_badge_photo">
-            <?php echo $this->itemPhoto($badge,'thumb.profile',$badge->getTitle()); ?>
+            <?= $this->itemPhoto($badge,'thumb.profile',$badge->getTitle()); ?>
         </div>
     </div>
     <div class="sd_badge_actions_wrap">
         <div class="sd_badge_actions">
             <div class="sd_activate_selected">
-                <a href='javascript:void(0);'><button onclick="activateAssigned(this);"><?php echo $this->translate("Activate"); ?></button></a>
+                <a href='javascript:void(0);'><button onclick="activateAssigned(this);"><?= $this->translate("Activate"); ?></button></a>
             </div>
             <div class="sd_revoke_selected">
-                <a href='javascript:void(0);'><button onclick="revokeAssigned(this);"><?php echo $this->translate("Inactive"); ?></button></a>
+                <a href='javascript:void(0);'><button onclick="revokeAssigned(this);"><?= $this->translate("Inactive"); ?></button></a>
             </div>
             <div class="sd_start_search">
-                <a href='javascript:void(0);'><button onclick="startSearch();"><?php echo $this->translate("Search"); ?></button></a>
+                <a href='javascript:void(0);'><button onclick="startSearch();"><?= $this->translate("Search"); ?></button></a>
             </div>
         </div>
         <div class='sd_assign_filter' id="assigned_checkbox">
-            <input type="radio" name="active" id="active-" value="" onchange="startSearch();"><label for="active-"><?php echo $this->translate("All"); ?></label><br>
-            <input type="radio" name="active" id="active-1" value="1" onchange="startSearch();"><label for="active-1"><?php echo $this->translate("Active"); ?></label><br>
-            <input type="radio" name="active" id="active-0" value="0" onchange="startSearch();"><label for="active-0"><?php echo $this->translate("Inactive"); ?></label>
+            <input type="radio" name="active" id="active-" value="" onchange="startSearch();"><label for="active-"><?= $this->translate("All"); ?></label><br>
+            <input type="radio" name="active" id="active-1" value="1" onchange="startSearch();"><label for="active-1"><?= $this->translate("Active"); ?></label><br>
+            <input type="radio" name="active" id="active-0" value="0" onchange="startSearch();"><label for="active-0"><?= $this->translate("Inactive"); ?></label>
         </div>
         <div class='sd_assign_filter' id="profile_display_checkbox">
-            <input type="radio" name="profile_display" id="profile_display-" value="" onchange="startSearch();"><label for="profile_display-"><?php echo $this->translate("All"); ?></label><br>
-            <input type="radio" name="profile_display" id="profile_display-1" value="1" onchange="startSearch();"><label for="profile_display-1"><?php echo $this->translate("Displayed on Profile"); ?></label><br>
-            <input type="radio" name="profile_display" id="profile_display-0" value="0" onchange="startSearch();"><label for="profile_display-0"><?php echo $this->translate("Not Displayed on Profile"); ?></label>
+            <input type="radio" name="profile_display" id="profile_display-" value="" onchange="startSearch();"><label for="profile_display-"><?= $this->translate("All"); ?></label><br>
+            <input type="radio" name="profile_display" id="profile_display-1" value="1" onchange="startSearch();"><label for="profile_display-1"><?= $this->translate("Displayed on Profile"); ?></label><br>
+            <input type="radio" name="profile_display" id="profile_display-0" value="0" onchange="startSearch();"><label for="profile_display-0"><?= $this->translate("Not Displayed on Profile"); ?></label>
         </div>
     </div>
-    <?php echo $this->formFilter->render($this) ?>
+    <?= $this->formFilter->render($this) ?>
 </div>
 
 <br />
 
 <div class="admin_table_form">
-<form id='multimodify_form' method="post" action="<?php echo $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
+<form id='multimodify_form' method="post" action="<?= $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
   <table class='admin_table'>
     <thead>
       <tr>
         <th style='width: 2%;' class='admin_table_centered'>
             <input onclick="selectAll()" type='checkbox' class='checkbox' id="select-all" style="display:none;">
-            <label for="select-all" class='admin_table_centered'><?php echo $this->translate("Select"); ?></label>
+            <label for="select-all" class='admin_table_centered'><?= $this->translate("Select"); ?></label>
         </th>
-        <th style='width: 8%;' class='admin_table_centered'><?php echo $this->translate("User Name") ?></th>
-        <th style='width: 15%;' class='admin_table_centered'><?php echo $this->translate("First Name") ?></th>
-        <th style='width: 15%;' class='admin_table_centered'><?php echo $this->translate("Last Name") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Level") ?></th>        
-        <th style='width: 8%;' class='admin_table_centered'><?php echo $this->translate("Assigned") ?></th>
-        <th style='width: 8%;' class='admin_table_centered'><?php echo $this->translate("Inactive") ?></th>
-        <th style='width: 8%;' class='admin_table_centered'><?php echo $this->translate("Display (User)") ?></th>
-        <th style='width: 8%;' class='admin_table_centered'><?php echo $this->translate("Display (All)") ?></th>
+        <th style='width: 8%;' class='admin_table_centered'><?= $this->translate("User Name") ?></th>
+        <th style='width: 15%;' class='admin_table_centered'><?= $this->translate("First Name") ?></th>
+        <th style='width: 15%;' class='admin_table_centered'><?= $this->translate("Last Name") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Level") ?></th>        
+        <th style='width: 8%;' class='admin_table_centered'><?= $this->translate("Assigned") ?></th>
+        <th style='width: 8%;' class='admin_table_centered'><?= $this->translate("Inactive") ?></th>
+        <th style='width: 8%;' class='admin_table_centered'><?= $this->translate("Display (User)") ?></th>
+        <th style='width: 8%;' class='admin_table_centered'><?= $this->translate("Display (All)") ?></th>
       </tr>
     </thead>
     <tbody>
@@ -437,30 +437,30 @@ function switchProfileDisplay(element,display){
           if(empty($user)) { continue; }
           ?>
           <tr>
-            <td><input class="sd_select_checkbox" data-id='<?php echo $item->user_id; ?>' value=<?php echo $item->getIdentity();?> type='checkbox' class='checkbox'></td>
+            <td><input class="sd_select_checkbox" data-id='<?= $item->user_id; ?>' value=<?= $item->getIdentity();?> type='checkbox' class='checkbox'></td>
             <td class='admin_table_centered admin_table_bold'>
-              <?php echo $this->htmlLink($user->getHref(),
+              <?= $this->htmlLink($user->getHref(),
                   $this->string()->truncate($user->username, 10),
                   array('target' => '_blank'))?>
             </td>
-            <td class='admin_table_centered admin_table_user'><?php echo $api->getFieldValue($item,3); ?></td>
+            <td class='admin_table_centered admin_table_user'><?= $api->getFieldValue($item,3); ?></td>
             <td class='admin_table_centered admin_table_email'>
-              <?php echo $api->getFieldValue($item,4); ?>
+              <?= $api->getFieldValue($item,4); ?>
             </td>
             <td class="admin_table_centered nowrap">
-              <?php echo $this->string()->truncate(Engine_Api::_()->getItem("authorization_level",$user->level_id)->getTitle(),15); ?>
+              <?= $this->string()->truncate(Engine_Api::_()->getItem("authorization_level",$user->level_id)->getTitle(),15); ?>
             </td>
             <td class='admin_table_centered'>
-                <input type="radio" class="sd_radio_assigned" disabled <?php echo ( $item->badge_id ? $this->translate('checked=checked') : '' ); ?>>
+                <input type="radio" class="sd_radio_assigned" disabled <?= ( $item->badge_id ? $this->translate('checked=checked') : '' ); ?>>
             </td>
             <td class='admin_table_centered'>
-                <input type="radio" class="sd_radio_revoked" disabled <?php echo ( $item->active === 0 ? $this->translate('checked=checked') : '' ); ?>>
+                <input type="radio" class="sd_radio_revoked" disabled <?= ( $item->active === 0 ? $this->translate('checked=checked') : '' ); ?>>
             </td>
             <td class="admin_table_centered nowrap">
-                <input type="radio" class="sd_radio_display" disabled <?php echo ( $item->profile_display ? $this->translate('checked=checked') : '' ); ?>>  
+                <input type="radio" class="sd_radio_display" disabled <?= ( $item->profile_display ? $this->translate('checked=checked') : '' ); ?>>  
             </td>
             <td class="admin_table_centered nowrap">
-                <input type="radio" class="sd_radio_display" disabled <?php echo ( $this->badge->profile_display ? $this->translate('checked=checked') : '' ); ?>>  
+                <input type="radio" class="sd_radio_display" disabled <?= ( $this->badge->profile_display ? $this->translate('checked=checked') : '' ); ?>>  
             </td>
           </tr>
         <?php endforeach; ?>
@@ -477,11 +477,11 @@ function switchProfileDisplay(element,display){
 <div class='admin_results'>
   <div>
     <?php $count = $this->paginator->getTotalItemCount() ?>
-    <?php echo $this->translate(array("%s member found", "%s members found", $count),
+    <?= $this->translate(array("%s member found", "%s members found", $count),
         $this->locale()->toNumber($count)) ?>
   </div>
   <div>
-    <?php echo $this->paginationControl($this->paginator, null, null, array(
+    <?= $this->paginationControl($this->paginator, null, null, array(
       'pageAsQuery' => true,
       'query' => $this->formValues,
       //'params' => $this->formValues,

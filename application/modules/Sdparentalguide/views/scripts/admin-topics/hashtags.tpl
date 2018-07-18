@@ -9,19 +9,19 @@
 ?>
 
 <div class='sd_content_wrapper'>
-<h2 style="text-align: center;"><?php echo $this->translate("Related Hashtags"); ?></h2>
+<h2 style="text-align: center;"><?= $this->translate("Related Hashtags"); ?></h2>
 <a href="javascript:void(0);" onclick="window.parent.Smoothbox.close();" style="position: absolute;top:0px;right:5px;font-size:25px;"><i class="fa fa-times"></i></a>
-<h3><?php echo $this->topic->getTitle(); ?></h3>
+<h3><?= $this->topic->getTitle(); ?></h3>
 
 <br />
 
 <div class="admin_table_form">
-<form id='multimodify_form' method="post" action="<?php echo $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
+<form id='multimodify_form' method="post" action="<?= $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
   <table class='admin_table'>
     <thead>
       <tr>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Hashtag"); ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Action") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Hashtag"); ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Action") ?></th>
       </tr>
     </thead>
     <tbody>
@@ -30,7 +30,7 @@
         <?php foreach( $this->paginator as $item ):?>
           <tr>
             <td class='admin_table_centered admin_table_bold'>
-              <?php echo $item['text']; ?>
+              <?= $item['text']; ?>
             </td>
             <td class='admin_table_centered'>
                
@@ -40,7 +40,7 @@
       <?php else: ?>
       
         <tr class="tip">
-            <td><?php echo $this->translate("No Related hashtags found."); ?></td>
+            <td><?= $this->translate("No Related hashtags found."); ?></td>
         </tr>
       <?php endif; ?>
     </tbody>

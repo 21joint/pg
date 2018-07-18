@@ -28,17 +28,17 @@
     echo '</span>';
   }
   ?>
-  <div class="profile_friends_lists_addlink" id="profile_friends_lists_addlink_<?php echo $this->friend->user_id;?>" >
-    <a href="#"  onclick="showFriendListMenu(<?php echo $this->friend->user_id;?>); return false;">
+  <div class="profile_friends_lists_addlink" id="profile_friends_lists_addlink_<?= $this->friend->user_id;?>" >
+    <a href="#"  onclick="showFriendListMenu(<?= $this->friend->user_id;?>); return false;">
       <span class="profile_friends_lists_addlinktext">
-        <img src='<?php echo $this->layout()->staticBaseUrl ?>application/modules/User/externals/images/friends/add_list.png' alt='' />
-        <?php echo $this->translate('add to list');?>
+        <img src='<?= $this->layout()->staticBaseUrl ?>application/modules/User/externals/images/friends/add_list.png' alt='' />
+        <?= $this->translate('add to list');?>
       </span>
     </a>
-    <div class="profile_friends_lists_menu" id="profile_friends_lists_menu_<?php echo $this->friend->user_id; ?>">
+    <div class="profile_friends_lists_menu" id="profile_friends_lists_menu_<?= $this->friend->user_id; ?>">
       <div>
         <div class="profile_friends_lists_menu_title">
-          <?php echo $this->translate('Choose Friend List');?> (<a href="javascript:void(0);" onclick="hideFriendListMenu(<?php echo $this->friend->user_id;?>)">x</a>)
+          <?= $this->translate('Choose Friend List');?> (<a href="javascript:void(0);" onclick="hideFriendListMenu(<?= $this->friend->user_id;?>)">x</a>)
         </div>
         <ul>
           <?php
@@ -57,7 +57,7 @@
           ?>
         </ul>
         <div class="profile_friends_lists_menu_input">
-          <input type="text" maxlength="30" onclick="clearNewListText(<?php echo $this->friend->user_id;?>)" onchange="assignFriend(<?php echo $this->friend->user_id;?>, 0, 'add');" id="friends_lists_menu_input_<?php echo $this->friend->user_id;?>" value="<?php echo $this->translate('New list...');?>"/>
+          <input type="text" maxlength="30" onclick="clearNewListText(<?= $this->friend->user_id;?>)" onchange="assignFriend(<?= $this->friend->user_id;?>, 0, 'add');" id="friends_lists_menu_input_<?= $this->friend->user_id;?>" value="<?= $this->translate('New list...');?>"/>
         </div>
       </div>
     </div>

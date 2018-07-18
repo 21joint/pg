@@ -35,7 +35,7 @@
 <div class='clear seaocore_settings_form'>
   <div class='settings'>
 
-    <?php echo $this->form->render($this); ?>
+    <?= $this->form->render($this); ?>
   </div>
 </div>
 

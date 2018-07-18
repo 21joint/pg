@@ -7,4 +7,4 @@
  * @author     Stars Developer
  */
 ?>
-<?php echo $this->form->render($this) ?>
+<?= $this->form->render($this) ?>

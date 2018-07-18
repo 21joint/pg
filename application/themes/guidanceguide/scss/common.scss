@@ -18,12 +18,27 @@ a {
   }
 }
 
+ul {
+  list-style: none;
+}
+
 a, button {
   @include transition($transition-base);
 }
 
-a[role=button] {
+a[role=button], a.btn {
   cursor: pointer;
+  text-decoration: none !important;
+}
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: none;
+}
+
+.btn {
+  font-size: .875rem;
 }
 
 .page-section {

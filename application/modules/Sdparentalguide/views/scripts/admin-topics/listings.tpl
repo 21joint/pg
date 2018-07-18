@@ -9,22 +9,22 @@
 ?>
 
 <div class='sd_content_wrapper'>
-<h2 style="text-align: center;"><?php echo $this->translate("Related Listings"); ?></h2>
+<h2 style="text-align: center;"><?= $this->translate("Related Listings"); ?></h2>
 <a href="javascript:void(0);" onclick="window.parent.Smoothbox.close();" style="position: absolute;top:0px;right:5px;font-size:25px;"><i class="fa fa-times"></i></a>
-<h3><?php echo $this->topic->getTitle(); ?></h3>
+<h3><?= $this->topic->getTitle(); ?></h3>
 
 <br />
 
 <div class="admin_table_form">
-<form id='multimodify_form' method="post" action="<?php echo $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()" style="max-height: 400px;">
+<form id='multimodify_form' method="post" action="<?= $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()" style="max-height: 400px;">
   <table class='admin_table' style="width: 600px;">
     <thead>
       <tr>
-        <th style='width: 40%;' class='admin_table_centered'><?php echo $this->translate("Listing"); ?></th>
-        <th style='width: 5%;' class='admin_table_centered'><?php echo $this->translate("Listing Type") ?></th>
-        <th style='width: 5%;' class='admin_table_centered'><?php echo $this->translate("Listing Category") ?></th>
-        <th style='width: 5%;' class='admin_table_centered'><?php echo $this->translate("Listing Sub-Category") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Action") ?></th>
+        <th style='width: 40%;' class='admin_table_centered'><?= $this->translate("Listing"); ?></th>
+        <th style='width: 5%;' class='admin_table_centered'><?= $this->translate("Listing Type") ?></th>
+        <th style='width: 5%;' class='admin_table_centered'><?= $this->translate("Listing Category") ?></th>
+        <th style='width: 5%;' class='admin_table_centered'><?= $this->translate("Listing Sub-Category") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Action") ?></th>
       </tr>
     </thead>
     <tbody>
@@ -34,21 +34,21 @@
         <?php foreach( $this->paginator as $item ):?>
           <tr>
             <td class='admin_table_centered admin_table_bold'>
-              <?php echo $this->htmlLink($item->getHref(),
+              <?= $this->htmlLink($item->getHref(),
                   $this->string()->truncate($item->getTitle(), 32),
                   array('target' => '_blank'))?>
             </td>
             <td class='admin_table_centered'>
-               <?php echo $item->getListingType()->getTitle(); ?>
+               <?= $item->getListingType()->getTitle(); ?>
             </td>
             <td class='admin_table_centered'>
                <?php if(($category = $item->getCategory())): ?> 
-                    <?php echo $category->getTitle(); ?>
+                    <?= $category->getTitle(); ?>
                 <?php endif; ?>
             </td>
             <td class='admin_table_centered'>
                <?php if(($subcategory = $catTable->getCategory($item->subcategory_id))): ?> 
-                    <?php echo $subcategory->getTitle(); ?>
+                    <?= $subcategory->getTitle(); ?>
                 <?php endif; ?>
             </td>
             <td class='admin_table_centered'>
@@ -59,7 +59,7 @@
       <?php else: ?>
       
         <tr class="tip">
-            <td><?php echo $this->translate("No Related listings found."); ?></td>
+            <td><?= $this->translate("No Related listings found."); ?></td>
         </tr>
       <?php endif; ?>
     </tbody>

@@ -1,23 +1,22 @@
 const pkg = require('./package');
 const path = require('path');
 const merge = require('webpack-merge');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpackConfig = require('./webpack.config');
 const args = require('yargs').argv;
+const Modules = require('./conf').modules;
 
-
-const publicPath = args.git ? '/' + pkg.name + '/' : '/';
-const dist = args.git ? 'docs' : 'dist';
 
 module.exports = merge(webpackConfig, {
-    target: 'web',
-    output: {
-        path: path.join(__dirname, dist),
-        filename: 'scripts/[name].[hash].js',
-        publicPath: publicPath
-    },
-    plugins: [
-        new CleanWebpackPlugin([dist])
-    ],
-    devtool: 'inline-source-map',
+  target: 'web',
+  output: {
+    filename: 'scripts/[name].bundle.js'
+  },
+  plugins: [
+    new CleanWebpackPlugin([Modules.prg.dist]),
+    new ExtractTextPlugin({
+      filename: 'styles/[name].bundle.css'
+    })
+  ]
 });

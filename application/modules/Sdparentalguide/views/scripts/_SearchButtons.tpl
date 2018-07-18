@@ -10,10 +10,10 @@
 
 <div class="search_buttons">
     <div>
-        <button type='submit' onclick="searchSearch(this);" id='sd_searchterm_button'><?php echo $this->translate("Search"); ?></button>
+        <button type='submit' onclick="searchSearch(this);" id='sd_searchterm_button'><?= $this->translate("Search"); ?></button>
     </div>
     <div>
-        <a href="<?php echo $this->url(array('action' => 'create')); ?>" class='create_search smoothbox'><button type='button'><?php echo $this->translate("New Search Term"); ?></button></a>
+        <a href="<?= $this->url(array('action' => 'create')); ?>" class='create_search smoothbox'><button type='button'><?= $this->translate("New Search Term"); ?></button></a>
     </div>
 </div>
 

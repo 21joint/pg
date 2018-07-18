@@ -10,12 +10,15 @@
 @import "./components/modal";
 @import "./common";
 @import "./header";
+//CARD
 @import "./widgets/card";
+//PAGINATION
 @import "./widgets/pagination";
-@import "./widgets/reviews/single";
-@import "./widgets/reviews/create";
+//AUTH
+@import "./login/login";
+@import "./reviews/single";
+@import "./reviews/create";
 @import "./footer";
-
 
 // CORE
 .seaocore_up_button {
@@ -173,16 +176,16 @@
             background-repeat: no-repeat;
             background-position: 50% 50%;
             &.bronze {
-              background-image: url('./assets/images/badges/Bronze.svg');
+              background-image: url('../images/badges/Bronze.svg');
             }
             &.silver {
-              background-image: url('./assets/images/badges/Silver.svg');
+              background-image: url('../images/badges/Silver.svg');
             }
             &.gold {
-              background-image: url('./assets/images/badges/Gold.svg');
+              background-image: url('../images/badges/Gold.svg');
             }
             &.platinium {
-              background-image: url('./assets/images/badges/Platinum.svg');
+              background-image: url('../images/badges/Platinum.svg');
             }
             .badge-holder {
               min-height: 60px;

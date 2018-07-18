@@ -1,7 +1,7 @@
-<div class="holder-form holder-forgot d-flex w-100 h-100">
+<div class="row holder-form holder-forgot h-100">
 
   <!-- place for partial  -->
-  <div class="left-side col-xl-6 col-lg-6 pl-0 pr-0 d-none d-sm-block">
+  <div class="left-side col-xl-6 col-lg-6 d-none d-sm-block">
       <?php echo $this->partial('login_partial/_left-side.tpl', 'sdparentalguide'); ?>
   </div>
 

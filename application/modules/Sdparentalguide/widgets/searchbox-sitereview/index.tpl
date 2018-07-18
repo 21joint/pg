@@ -15,7 +15,7 @@
 ?>
 <ul class="seaocore_sidebar_list">
 	<li>
-		<?php echo $this->form->setAttrib('class', 'sitereview-search-box')->render($this) ?>
+		<?= $this->form->setAttrib('class', 'sitereview-search-box')->render($this) ?>
 	</li>
 </ul>	
 
@@ -40,7 +40,7 @@
             $(this).getParent().getElement(".seaocore-autosuggest").setStyle("opacity","0");
         }
     });
-    var contentAutocomplete = new Autocompleter.Request.JSON('title', '<?php echo $this->url(array('module' => 'sdparentalguide', 'controller' => 'index', 'action' => 'ajax-search'), "default", true) ?>', {
+    var contentAutocomplete = new Autocompleter.Request.JSON('title', '<?= $this->url(array('module' => 'sdparentalguide', 'controller' => 'index', 'action' => 'ajax-search'), "default", true) ?>', {
       'postVar' : 'text',
       'minLength': 1,
       'selectMode': 'pick',
@@ -51,7 +51,7 @@
       'filterSubset' : true,
       'multiple' : false,
       postData : {
-        listingtype_id: <?php echo $this->listingtype_id ?>,
+        listingtype_id: <?= $this->listingtype_id ?>,
       },
       'injectChoice': function(token) {
 	      if(typeof token.label != 'undefined' ) {
@@ -61,7 +61,7 @@
             choice.inject(this.choices);
             choice.store('autocompleteChoice', token);
           }
-          if(token.sitereview_url == 'seeMoreLink' && <?php echo $this->listingtype_id ?> > 0) {
+          if(token.sitereview_url == 'seeMoreLink' && <?= $this->listingtype_id ?> > 0) {
             var title = $('title').value;
             var choice = new Element('li', {'class': 'autocompleter-choices1', 'html': '', 'id':'stopevent', 'sitereview_url':''});
             new Element('div', {'html': 'See More Results for '+title ,'class': 'autocompleter-choicess', onclick:'javascript:Seemore()'}).inject(choice);
@@ -92,13 +92,13 @@
   function Seemore() {
     $('stopevent').removeEvents('click');
     <?php if($this->listingtype_id > 0): ?>
-    var url = '<?php echo $this->url(array('action' => 'index'), "sitereview_general_listtype_$this->listingtype_id", true); ?>';
+    var url = '<?= $this->url(array('action' => 'index'), "sitereview_general_listtype_$this->listingtype_id", true); ?>';
   	window.location.href= url + "?search=" + encodeURIComponent($('title').value);
     <?php endif; ?>
   }
 
   function getPageResults(url) {
-    var listingtype_id = <?php echo $this->listingtype_id ?>;
+    var listingtype_id = <?= $this->listingtype_id ?>;
     if(url != 'null' ) {
       if (url == 'seeMoreLink' && listingtype_id > 0) {
         Seemore();

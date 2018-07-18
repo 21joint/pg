@@ -78,7 +78,7 @@ $this->headScript()
   en4.core.runonce.add(function()
   {
 
-   contentAutocomplete = new Autocompleter.Request.JSON('username', '<?php echo $this->url(array('module' => 'sitecredit', 'controller' => 'user', 'action' => 'getallusers'), 'admin_default', true) ?>', {
+   contentAutocomplete = new Autocompleter.Request.JSON('username', '<?= $this->url(array('module' => 'sitecredit', 'controller' => 'user', 'action' => 'getallusers'), 'admin_default', true) ?>', {
     'postVar' : 'search',
     'postData' : {'user_ids': $('user_id').value},
     'minLength': 1,
@@ -127,8 +127,8 @@ $this->headScript()
 </script>
 
 <script type="text/javascript">
-  var currentOrder = '<?php echo $this->order ?>';
-  var currentOrderDirection = '<?php echo $this->order_direction ?>';
+  var currentOrder = '<?= $this->order ?>';
+  var currentOrderDirection = '<?= $this->order_direction ?>';
   var changeOrder = function (order, default_direction) {
         // Just change direction
         if (order == currentOrder) {
@@ -143,7 +143,7 @@ $this->headScript()
       };
     </script>
     <h2>
-      <?php echo $this->translate("Parental Guidance Customizations") ?>
+      <?= $this->translate("Parental Guidance Customizations") ?>
     </h2>
     <?php if( count($this->navigation) ): ?>
       <div class='tabs'>
@@ -172,7 +172,7 @@ $this->headScript()
           <p> Browse through the transactions made by users with their credits. The search box below will search through the various user and their transaction type. You can also use the filters ‘Time Interval’ and ‘Credit Point’ to filter the transactions. </p>
         </div>
 <div class='admin_search'>
-  <?php echo $this->formFilter->render($this) ?>
+  <?= $this->formFilter->render($this) ?>
 </div>
 <div class="mbot10">
   <?php 
@@ -181,38 +181,38 @@ $this->headScript()
 </div>
 <?php if( count($this->paginator) ): ?>
   <?php $creditTable = Engine_Api::_()->getDbTable('credits', 'sdparentalguide'); ?>
-  <form id='credit_form' method="post" action="<?php echo $this->url();?>" >
+  <form id='credit_form' method="post" action="<?= $this->url();?>" >
     <table class='admin_table' width="80%">
       <thead>
         <tr>
           <?php $class = ( $this->order == 'username' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-          <th width="5%" rowspan="2"  align="center" class="<?php echo $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('username', 'ASC');"><?php echo $this->translate("User Name") ?></a></th> 
+          <th width="5%" rowspan="2"  align="center" class="<?= $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('username', 'ASC');"><?= $this->translate("User Name") ?></a></th> 
           <?php $class = ( $this->order == 'firstname' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-          <th width="5%" rowspan="2"  align="center" class="<?php echo $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('displayname', 'ASC');"><?php echo $this->translate("First Name") ?></a></th> 
+          <th width="5%" rowspan="2"  align="center" class="<?= $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('displayname', 'ASC');"><?= $this->translate("First Name") ?></a></th> 
           <?php $class = ( $this->order == 'lastname' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-          <th width="5%" rowspan="2"  align="center" class="<?php echo $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('lastname', 'ASC');"><?php echo $this->translate("Last Name") ?></a></th> 
+          <th width="5%" rowspan="2"  align="center" class="<?= $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('lastname', 'ASC');"><?= $this->translate("Last Name") ?></a></th> 
           
           <?php $class = ( $this->order == 'email' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-          <th width="5%" rowspan="2"  align="center" class="<?php echo $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('email', 'ASC');"><?php echo $this->translate("Email") ?></a></th> 
+          <th width="5%" rowspan="2"  align="center" class="<?= $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('email', 'ASC');"><?= $this->translate("Email") ?></a></th> 
           <?php $class = ( $this->order == 'memberlevel' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-          <th width="5%" rowspan="2"  align="center" class="<?php echo $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('level_id', 'ASC');"><?php echo $this->translate("Member Level") ?></a></th> 
+          <th width="5%" rowspan="2"  align="center" class="<?= $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('level_id', 'ASC');"><?= $this->translate("Member Level") ?></a></th> 
           
           <?php $class = ( $this->order == 'type' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-          <th width="5%" rowspan="2"  align="center" class="<?php echo $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('type', 'ASC');"><?php echo $this->translate("Credit Type") ?></a></th>  
+          <th width="5%" rowspan="2"  align="center" class="<?= $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('type', 'ASC');"><?= $this->translate("Credit Type") ?></a></th>  
           
           <?php $class = ( $this->order == 'topic' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-          <th width="5%" rowspan="2"  align="center" class="<?php echo $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('gg_topic_id', 'ASC');"><?php echo $this->translate("Custom_Topic") ?></a></th> 
+          <th width="5%" rowspan="2"  align="center" class="<?= $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('gg_topic_id', 'ASC');"><?= $this->translate("Custom_Topic") ?></a></th> 
           
           <?php $class = ( $this->order == 'credit_point' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-          <th width="5%" colspan="2"  align="center" class="<?php echo $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('credit_point', 'ASC');"><?php echo $this->translate("Credit Values") ?></a></th> 
+          <th width="5%" colspan="2"  align="center" class="<?= $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('credit_point', 'ASC');"><?= $this->translate("Credit Values") ?></a></th> 
           <?php $class = ( $this->order == 'creation_date' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-          <th width ="5%" rowspan="2"  align="center" class="<?php echo $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('creation_date', 'ASC');"><?php echo $this->translate("Date") ?></a></th>
+          <th width ="5%" rowspan="2"  align="center" class="<?= $class ?>"><a href="javascript:void(0);" onclick="javascript:changeOrder('creation_date', 'ASC');"><?= $this->translate("Date") ?></a></th>
           
           <th width="5%" rowspan="2" align="center">Options</th>
         </tr>
         <tr>
-          <th class="<?php echo $class ?>"  align="center">Addition</th>
-          <th class="<?php echo $class ?>"  align="center">Deduction</th>
+          <th class="<?= $class ?>"  align="center">Addition</th>
+          <th class="<?= $class ?>"  align="center">Deduction</th>
         </tr> 
 
       </thead>
@@ -227,7 +227,7 @@ $this->headScript()
             <tr>
             <?php endif; ?>
 
-          <td align="center"><?php echo $this->htmlLink($item->getOwner()->getHref(), $this->string()->stripTags($item->getOwner()->getTitle()), array('title' => $item->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
+          <td align="center"><?= $this->htmlLink($item->getOwner()->getHref(), $this->string()->stripTags($item->getOwner()->getTitle()), array('title' => $item->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
           <td align="center">
             <?php $firstName = $creditTable->getFieldValue($item->user_id, 3);
                   if($firstName){ echo $firstName; }
@@ -239,7 +239,7 @@ $this->headScript()
             ?>
           </td>
           <td align="center">
-            <?php echo $item->email; ?>
+            <?= $item->email; ?>
           </td>
           <td align="center">
             <?php $memberLevel = $creditTable->getUserLevel($item->level_id);
@@ -254,21 +254,21 @@ $this->headScript()
 
           <td align="center">
               <?php if(($topic = Engine_Api::_()->getItem('sdparentalguide_topic', $item->gg_topic_id))): ?>
-                <?php echo $topic->getTitle(); ?>
+                <?= $topic->getTitle(); ?>
               <?php endif; ?>
           </td>
             <?php if($item->credit_point >0 ) : ?>
-              <td align="center"><?php echo $item->credit_point ?></td>
+              <td align="center"><?= $item->credit_point ?></td>
               <td align="center"></td>
             <?php else : ?>
               <td align="center"></td>
-              <td align="center"><?php echo (abs($item->credit_point)); ?></td>
+              <td align="center"><?= (abs($item->credit_point)); ?></td>
             <?php endif; ?>
             <td align="center"><?php
               echo date('dS F Y ', strtotime($item->creation_date)); 
              // echo date('d-m-Y', strtotime($item->creation_date)) ?>
            </td>
-           <td align="center"><?php echo $this->htmlLink(
+           <td align="center"><?= $this->htmlLink(
             array('route' => 'admin_default', 'module' => 'sitecredit', 'controller' => 'transaction', 'action' => 'view', 'id' => $item->credit_id),
             $this->translate("View"),
             array('class' => 'smoothbox')) ?>         
@@ -293,8 +293,8 @@ $this->headScript()
 </div>
   <script type="text/javascript">
     window.addEvent('domready',function () {    
-        if(<?php echo empty($this->credit_type)?0:1;?>) {
-           $('<?php echo $this->credit_type ?>').selected=true;
+        if(<?= empty($this->credit_type)?0:1;?>) {
+           $('<?= $this->credit_type ?>').selected=true;
         }       
       onTimeChange();
     });
@@ -314,14 +314,14 @@ $this->headScript()
   $calendarFormatString = str_replace('y', 'Y', $calendarFormatString);
   ?>
   <script type="text/javascript">
-    seao_dateFormat = '<?php echo $this->locale()->useDateLocaleFormat(); ?>';
-    var showMarkerInDate = "<?php echo $this->showMarkerInDate ?>";
+    seao_dateFormat = '<?= $this->locale()->useDateLocaleFormat(); ?>';
+    var showMarkerInDate = "<?= $this->showMarkerInDate ?>";
     en4.core.runonce.add(function()
     {
       en4.core.runonce.add(function init()
       {
         monthList = [];
-        myCal = new Calendar({'start_cal[date]': '<?php echo $calendarFormatString; ?>', 'end_cal[date]': '<?php echo $calendarFormatString; ?>'}, {
+        myCal = new Calendar({'start_cal[date]': '<?= $calendarFormatString; ?>', 'end_cal[date]': '<?= $calendarFormatString; ?>'}, {
           classes: ['event_calendar'],
           pad: 0,
           direction: 0

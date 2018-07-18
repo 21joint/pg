@@ -3,7 +3,7 @@
     <div class="container">
       <div class="top-holder row">
         <div class="section-one col-12 col-md-3 d-flex justify-content-md-start justify-content-center mb-4 mb-md-0">
-          <a href="<?php echo $this->baseUrl(); ?>">
+          <a href="<?= $this->baseUrl(); ?>">
             <svg width="110px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216.315 60"><defs><style>.a {fill: #fed713;}  .b {fill: #8f8279;}  .c {fill: url(#a);}  .d {fill: url(#b);}</style><linearGradient id="a" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#bbb6b0"/><stop offset="0.05" stop-color="#bfbab3"/><stop offset="0.27" stop-color="#cdc8c0"/><stop offset="0.54" stop-color="#d5d0c8"/><stop offset="1" stop-color="#d8d3ca"/></linearGradient><linearGradient id="b" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#d8d3ca"/><stop offset="0.46" stop-color="#d5d0c8"/><stop offset="0.73" stop-color="#cdc8c0"/><stop offset="0.95" stop-color="#bfbab3"/><stop offset="1" stop-color="#bbb6b0"/></linearGradient></defs><g transform="translate(-2.361 -2.293)"><path class="a" d="M172.122,35.136a10.167,10.167,0,0,1-6.593,2.43,10,10,0,0,1-2.712-.367,10.115,10.115,0,0,1-2.435-1.036,10.551,10.551,0,0,1-2.067-1.6,9.959,9.959,0,0,1-1.6-2.067,10.392,10.392,0,0,1-1.027-2.449,10.067,10.067,0,0,1-.367-2.717,9.916,9.916,0,0,1,.367-2.7,10.462,10.462,0,0,1,1.027-2.435,9.959,9.959,0,0,1,1.6-2.067,10.171,10.171,0,0,1,13.807-.565L170.055,23a6.644,6.644,0,0,0-2.067-1.413,6.183,6.183,0,0,0-4.907,0,6.485,6.485,0,0,0-1.992,1.347,6.339,6.339,0,0,0-1.352,1.987,6.023,6.023,0,0,0-.494,2.435,6.122,6.122,0,0,0,.5,2.425,6.376,6.376,0,0,0,3.344,3.353,6.023,6.023,0,0,0,2.444.494,5.839,5.839,0,0,0,1.45-.179,6.635,6.635,0,0,0,1.337-.494V27.309h3.805Z" transform="translate(-80.928 -7.852)"/><path class="a" d="M215.607,29.471a7.71,7.71,0,0,1-.622,3.085,7.912,7.912,0,0,1-1.7,2.51,8.053,8.053,0,0,1-2.519,1.691,7.911,7.911,0,0,1-10.37-4.2,7.707,7.707,0,0,1-.622-3.084V17.59h3.946V29.471a3.815,3.815,0,0,0,.311,1.53,3.961,3.961,0,0,0,7.294,0,3.815,3.815,0,0,0,.311-1.53V17.59h3.96Z" transform="translate(-104.45 -8.093)"/><path class="a" d="M247.4,37.389h-3.96V17.61h3.96Z" transform="translate(-127.55 -8.104)"/><path class="a" d="M278.256,27.495a9.757,9.757,0,0,1-1.352,4.987,10.187,10.187,0,0,1-1.545,2,9.819,9.819,0,0,1-6.993,2.906H262.4V17.61h5.962a9.743,9.743,0,0,1,2.628.353,9.842,9.842,0,0,1,4.365,2.552A10.194,10.194,0,0,1,276.9,22.5a9.756,9.756,0,0,1,1.352,4.987Zm-3.96,0a5.779,5.779,0,0,0-.471-2.3,5.962,5.962,0,0,0-1.271-1.884,6.038,6.038,0,0,0-1.865-1.276,5.755,5.755,0,0,0-2.312-.471H266.4V33.428h1.973a5.82,5.82,0,0,0,2.312-.471,5.906,5.906,0,0,0,3.16-3.16A5.825,5.825,0,0,0,274.3,27.495Z" transform="translate(-137.582 -8.104)"/><path class="a" d="M319.747,37.378h-3.96v-3.96h-7.921v3.96H303.92V25.511a7.713,7.713,0,0,1,.622-3.085,8.057,8.057,0,0,1,1.691-2.519,7.935,7.935,0,0,1,12.917,2.543,7.712,7.712,0,0,1,.622,3.085Zm-3.96-7.907v-3.96a3.86,3.86,0,0,0-.311-1.54,3.948,3.948,0,0,0-7.28,0,3.863,3.863,0,0,0-.311,1.54v3.96Z" transform="translate(-159.549 -8.094)"/><path class="a" d="M363.413,37.378h-4.238l-7.624-13v13h-3.96V17.6h4.238l7.629,13.04V17.59h3.96Z" transform="translate(-182.654 -8.093)"/><path class="a" d="M406.319,35.036a10.238,10.238,0,1,1-9.348-17.669A10,10,0,0,1,399.684,17a10.214,10.214,0,0,1,3.546.626,9.831,9.831,0,0,1,3.089,1.827l-2.1,3.447a5.93,5.93,0,0,0-2.058-1.441,6.292,6.292,0,0,0-2.482-.5,6.122,6.122,0,0,0-2.444.5,6.46,6.46,0,0,0-2,1.347,6.3,6.3,0,0,0-1.352,2,6.121,6.121,0,0,0-.494,2.449,6.019,6.019,0,0,0,.494,2.435,6.376,6.376,0,0,0,3.353,3.344,6.122,6.122,0,0,0,2.453.494,6.287,6.287,0,0,0,2.472-.518,5.926,5.926,0,0,0,2.058-1.413Z" transform="translate(-204.798 -7.781)"/><path class="a" d="M446.472,37.389H432.91V17.61h13.562v3.951h-9.607v3.96h6.5v3.96h-6.5v3.946h9.6Z" transform="translate(-227.796 -8.104)"/><path class="b" d="M172.122,92.936a10.167,10.167,0,0,1-6.593,2.43A10,10,0,0,1,162.817,95a10.115,10.115,0,0,1-2.435-1.036,10.552,10.552,0,0,1-2.067-1.6,9.958,9.958,0,0,1-1.6-2.067,10.393,10.393,0,0,1-1.027-2.449,10.067,10.067,0,0,1-.367-2.717,9.915,9.915,0,0,1,.367-2.7,10.462,10.462,0,0,1,1.027-2.435,9.958,9.958,0,0,1,1.6-2.067,10.171,10.171,0,0,1,13.807-.565L170.055,80.8a6.644,6.644,0,0,0-2.067-1.413,6.183,6.183,0,0,0-4.907,0,6.485,6.485,0,0,0-1.992,1.347,6.339,6.339,0,0,0-1.352,1.987,6.023,6.023,0,0,0-.494,2.435,6.122,6.122,0,0,0,.494,2.453,6.376,6.376,0,0,0,3.344,3.353,6.023,6.023,0,0,0,2.449.48,5.84,5.84,0,0,0,1.45-.179,6.635,6.635,0,0,0,1.337-.494V85.123h3.805Z" transform="translate(-80.928 -38.433)"/><path class="b" d="M215.607,87.277a7.71,7.71,0,0,1-.622,3.085,7.912,7.912,0,0,1-1.7,2.51,8.053,8.053,0,0,1-2.519,1.691,7.911,7.911,0,0,1-10.37-4.2,7.707,7.707,0,0,1-.622-3.085V75.4h3.946V87.277a3.815,3.815,0,0,0,.311,1.53,3.961,3.961,0,0,0,7.294,0,3.815,3.815,0,0,0,.311-1.53V75.4h3.96Z" transform="translate(-104.45 -38.68)"/><path class="b" d="M247.4,95.189h-3.96V75.41h3.96Z" transform="translate(-127.55 -38.685)"/><path class="b" d="M278.256,85.3a9.757,9.757,0,0,1-1.356,4.992,10.184,10.184,0,0,1-1.545,2,9.819,9.819,0,0,1-6.993,2.906H262.4V75.42h5.962a9.743,9.743,0,0,1,2.628.353,9.842,9.842,0,0,1,4.365,2.552,10.193,10.193,0,0,1,1.545,2,9.756,9.756,0,0,1,1.352,4.987Zm-3.96,0a5.779,5.779,0,0,0-.471-2.3,5.962,5.962,0,0,0-1.271-1.884,6.037,6.037,0,0,0-1.884-1.276,5.755,5.755,0,0,0-2.312-.471h-1.973V91.233h1.973a5.821,5.821,0,0,0,2.312-.471,5.905,5.905,0,0,0,3.16-3.16A5.826,5.826,0,0,0,274.3,85.3Z" transform="translate(-137.582 -38.69)"/><path class="b" d="M317.952,95.189H304.39V75.41h13.562v3.951h-9.6v3.96h6.5v3.96h-6.5v3.946h9.6Z" transform="translate(-159.798 -38.685)"/><path class="c" d="M107.2,26.808l-11.3,14.9L86.2,28.772l18.809-4.238C107.768,23.837,108.569,24.943,107.2,26.808Z" transform="translate(-44.358 -11.656)"/><path class="d" d="M28.506,40.68,3.755,46.854c-1.578.358-1.926,2.03-.471,2.689l24.139,7.064Z" transform="translate(0 -20.31)"/><path class="a" d="M51.227,60.031,54.415,3.747c0-1.592,1.644-1.964,2.628-.678L90.737,45.075c1.248,1.474.9,4.083-2.571,2.717l-20.32-7.78L55.154,61.02C53.868,63.238,51.118,62.334,51.227,60.031Z" transform="translate(-25.852 0)"/></g></svg>
           </a>
         </div> <!-- end of section-one -->
@@ -11,26 +11,26 @@
         <div class="section-two col-6 col-md-3 mb-4 mb-md-0">
           <div class="title-holder mb-4">
             <h6 class="text-uppercase border-white font-weight-bold m-0 p-0">
-                <?php echo $this->translate('Company'); ?>
+                <?= $this->translate('Company'); ?>
             </h6>
           </div>
 
           <div class="description-holder">
-            <ul class="m-0">
+            <ul class="list-unstyled m-0">
               <li>
                 <a href="http://www.guidanceguide.com" target="_blank">
-                    <?php echo $this->translate('Guidance Guide'); ?>
+                    <?= $this->translate('Guidance Guide'); ?>
                 </a>
               </li>
               <li>
                 <a href="http://www.guidanceguide.com/about.php"
                    target="_blank">
-                    <?php echo $this->translate('About Us'); ?>
+                    <?= $this->translate('About Us'); ?>
                 </a>
               </li>
               <li>
                 <a href="http://www.guidanceguide.com/contact.php">
-                    <?php echo $this->translate('Contact Us'); ?>
+                    <?= $this->translate('Contact Us'); ?>
                 </a>
               </li>
             </ul>
@@ -42,30 +42,30 @@
 
           <div class="title-holder mb-4">
             <h6 class="text-uppercase border-white font-weight-bold m-0 p-0">
-                <?php echo $this->translate('Our Communitties'); ?>
+                <?= $this->translate('Our Communitties'); ?>
             </h6>
           </div>
 
           <div class="description-holder">
-            <ul>
+            <ul class="list-unstyled">
               <li>
                 <a href="javascript:void(0)">
-                    <?php echo $this->translate('Parental Guidance'); ?>
+                    <?= $this->translate('Parental Guidance'); ?>
                 </a>
                 <ul>
                   <li>
                     <a href="javascript:void(0)">
-                        <?php echo $this->translate('Reviews'); ?>
+                        <?= $this->translate('Reviews'); ?>
                     </a>
                   </li>
                   <li>
                     <a href="javascript:void(0)">
-                        <?php echo $this->translate('Guides'); ?>
+                        <?= $this->translate('Guides'); ?>
                     </a>
                   </li>
                   <li>
                     <a href="javascript:void(0)">
-                        <?php echo $this->translate('Struggles & Theories'); ?>
+                        <?= $this->translate('Struggles & Theories'); ?>
                     </a>
                   </li>
                 </ul>
@@ -79,13 +79,13 @@
 
           <div class="title-holder mb-3">
             <h6 class="text-uppercase border-white font-weight-bold m-0 p-0 d-none d-sm-block">
-                <?php echo $this->translate('Connect with Us'); ?>
+                <?= $this->translate('Connect with Us'); ?>
             </h6>
           </div>
 
           <div class="parental-footer--social">
 
-            <ul class="list-inline text-center text-md-left m-0">
+            <ul class="list-inline text-center text-md-left m-0 list-unstyled">
               <li class="list-inline-item align-middle">
                 <a class="d-flex align-items-center justify-content-center" href="javascript:void(0);">
                   <svg aria-hidden="true" data-prefix="fab"
@@ -141,18 +141,18 @@
     <div class="container">
       <div class="bottom-holder row justify-content-between">
         <div class="col-auto d-flex text-left small text-muted font-weight-light">
-            <?php echo $this->translate('Copyright &copy 2018'); ?>
+            <?= $this->translate('Copyright &copy 2018'); ?>
         </div>
         <div class="col-auto text-right d-flex justify-content-start justify-content-sm-end">
           <ul class="list-inline small text-muted font-weight-light m-0">
             <li class="list-inline-item align-middle">
-              <a href="<?php echo $this->baseUrl() . '/help/privacy' ?>">
-                  <?php echo $this->translate('Privacy Policy'); ?>
+              <a href="<?= $this->baseUrl() . '/help/privacy' ?>">
+                  <?= $this->translate('Privacy Policy'); ?>
               </a>
             </li>
             <li class="list-inline-item align-middle">
-              <a href="<?php echo $this->baseUrl() . '/help/terms' ?>">
-                  <?php echo $this->translate('Terms Of Use'); ?>
+              <a href="<?= $this->baseUrl() . '/help/terms' ?>">
+                  <?= $this->translate('Terms Of Use'); ?>
               </a>
             </li>
           </ul>

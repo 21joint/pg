@@ -1,10 +1,10 @@
 <?php if($this->loaded_by_ajax):?>
     <script type="text/javascript">
         var badgesAccountParams = {
-            requestParams :{"title":"<?php echo $this->translate('Badges'); ?>", "titleCount":""},
+            requestParams :{"title":"<?= $this->translate('Badges'); ?>", "titleCount":""},
             responseContainer : $$('.layout_sdparentalguide_ajax_badges')
         }
-        en4.gg.ajaxTab.attachEvent('<?php echo $this->identity ?>', badgesAccountParams);
+        en4.gg.ajaxTab.attachEvent('<?= $this->identity ?>', badgesAccountParams);
 </script>
 <?php endif; ?>
 
@@ -21,7 +21,7 @@
 
                             <!-- title holder -->
                             <div class="title-holder mb-4">
-                                <h4 class="pb-4"><?php echo $this->translate('Special Badges');?></h4>
+                                <h4 class="pb-4"><?= $this->translate('Special Badges');?></h4>
                             </div>
 
                             <!-- win badges -->
@@ -30,16 +30,16 @@
                                 <li class="d-flex align-items-center border-grey-light">
                                     
                                     <div class="left-side col-xl-2 col-lg-2 col-3 thumbnail-photo">
-                                        <?php echo $this->itemPhoto($special, 'thumb.normal'); ?>
+                                        <?= $this->itemPhoto($special, 'thumb.normal'); ?>
                                     </div>
                                     <div class="right-side">
                                         <div class="title-holder">
                                             <h5>
-                                                <?php echo $special->name; ?>
+                                                <?= $special->name; ?>
                                             </h5>
                                         </div>
                                         <div class="description-holder">
-                                            <p><?php echo $special->description; ?></p>
+                                            <p><?= $special->description; ?></p>
                                         </div>
                                     </div>
                                     
@@ -49,7 +49,7 @@
                         <?php else: ?>
                         <div class="tip-message py-2 w-100">
                             <span class="mb-0">
-                                <?php echo $this->translate('No special badges to your profile yet..'); ?>
+                                <?= $this->translate('No special badges to your profile yet..'); ?>
                             </span>
                         </div>
                         <?php endif; ?>
@@ -62,7 +62,7 @@
                         <!-- title holder -->
                         <div class="title-holder mb-4">
                             <h4 class="pb-4">
-                                <?php echo $this->translate('Contributor Badges');?>
+                                <?= $this->translate('Contributor Badges');?>
                             </h4>
                         </div>
 
@@ -86,11 +86,11 @@
                                 <div class="top-holder border-bottom-grey-light px-4 ">
                                     <div class="title-holder pb-3">
                                         <h6>
-                                            <?php echo $topic->getTitle(); ?>
+                                            <?= $topic->getTitle(); ?>
                                         </h6>
                                     </div>
                                     <div class="description-holder pb-3">
-                                        <p><?php echo $topic->getDescription(); ?></p>
+                                        <p><?= $topic->getDescription(); ?></p>
                                     </div>
                                 </div>
                                 <!-- badge image -->
@@ -108,12 +108,12 @@
                                                 $uBadge = $userTable->fetchRow($selectAssignedBadges);
                                             ?>
                                             <?php if(count($uBadge) > 0): ?>
-                                                <div class="badge-image col-xl-2 col-lg-2 col-6 pl-lg-0 <?php echo ($uBadge->active == 1) ? 'active' : 'inactive'; ?> ">
-                                                    <?php echo $this->itemPhoto($badge, 'thumb.normal'); ?>
+                                                <div class="badge-image col-xl-2 col-lg-2 col-6 pl-lg-0 <?= ($uBadge->active == 1) ? 'active' : 'inactive'; ?> ">
+                                                    <?= $this->itemPhoto($badge, 'thumb.normal'); ?>
                                                 </div>
                                             <?php else: ?>
                                                 <div class="badge-image col-xl-2 col-lg-2 col-6 pl-lg-0 inactive">
-                                                    <?php echo $this->itemPhoto($badge, 'thumb.normal'); ?>
+                                                    <?= $this->itemPhoto($badge, 'thumb.normal'); ?>
                                                 </div>
                                             <?php endif; ?>
                                             
@@ -130,7 +130,7 @@
                         <?php else: ?>
                         <div class="tip-message py-2 w-100">
                             <span class="mb-0">
-                                <?php echo $this->translate('No Contributor badges to your profile yet..'); ?>
+                                <?= $this->translate('No Contributor badges to your profile yet..'); ?>
                             </span>
                         </div>
                         <?php endif; ?>

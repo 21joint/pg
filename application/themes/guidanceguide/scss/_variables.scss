@@ -1,4 +1,4 @@
-$fa-font-path: "/webfonts";
+//$fa-font-path: "/webfonts";
 //
 //// Variables
 ////
@@ -333,7 +333,7 @@ $hr-border-color: rgba(245, 245, 245, 1);
 ////
 //// Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
 //
-$input-btn-padding-y: .5rem;
+$input-btn-padding-y: .375rem;
 $input-btn-padding-x: 1.5rem;
 //$input-btn-line-height:       $line-height-base !default;
 //
@@ -393,8 +393,8 @@ $btn-transition: color .15s ease-in-out, background-color .15s ease-in-out, bord
 //
 //$label-margin-bottom:                   .5rem !default;
 //
-//$input-padding-y:                       $input-btn-padding-y !default;
-//$input-padding-x:                       $input-btn-padding-x !default;
+$input-padding-y: $input-btn-padding-y !default;
+$input-padding-x: 0;
 //$input-line-height:                     $input-btn-line-height !default;
 //
 //$input-padding-y-sm:                    $input-btn-padding-y-sm !default;
@@ -421,7 +421,7 @@ $input-border-radius-lg: 100px;
 //$input-focus-border-color:              lighten($component-active-bg, 25%) !default;
 //$input-focus-color:                     $input-color !default;
 //$input-focus-width:                     $input-btn-focus-width !default;
-//$input-focus-box-shadow:                $input-btn-focus-box-shadow !default;
+$input-focus-box-shadow: none;
 //
 $input-placeholder-color: #93A4A6;
 //$input-plaintext-color:                 $body-color !default;

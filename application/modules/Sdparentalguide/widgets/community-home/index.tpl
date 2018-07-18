@@ -53,11 +53,11 @@
   <div class="row d-flex align-items-center">
     <div class="find_expert_badges col-lg position-relative d-flex justify-content-around align-items-center">
       <img class="front_image"
-           src="<?php echo $this->baseUrl(); ?>/application/modules/Sdparentalguide/externals/images/mvp_badge.png"/>
+           src="<?= $this->baseUrl(); ?>/application/modules/Sdparentalguide/externals/images/mvp_badge.png"/>
       <img class="back_image"
-           src="<?php echo $this->baseUrl(); ?>/application/modules/Sdparentalguide/externals/images/badge_baby.png"/>
+           src="<?= $this->baseUrl(); ?>/application/modules/Sdparentalguide/externals/images/badge_baby.png"/>
       <img class="back_image"
-           src="<?php echo $this->baseUrl(); ?>/application/modules/Sdparentalguide/externals/images/badge_baby.png"/>
+           src="<?= $this->baseUrl(); ?>/application/modules/Sdparentalguide/externals/images/badge_baby.png"/>
     </div>
     <div class="find_expert_text col-lg">
       <h2>Find an expert. Become an expert.</h2>

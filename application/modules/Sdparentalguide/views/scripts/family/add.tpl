@@ -9,7 +9,7 @@
 ?>
 
 <?php if(!$this->smoothboxClose): ?>
-<?php echo $this->form->render($this) ?>
+<?= $this->form->render($this) ?>
 
 
 <style type='text/css'>
@@ -19,18 +19,18 @@
 </style>
 <?php else: ?>
 <div class="global_form_popup_message">
-    <?php echo $this->translate("Your changes have been saved."); ?>
+    <?= $this->translate("Your changes have been saved."); ?>
 </div>
 <?php $member = $this->member; ?>
 <script type="text/javascript">
 en4.core.runonce.add(function(){
     try{
-        var editUrl = "<?php echo $this->url(array('action' => 'edit','id' => $member->family_member_id),'sdparentalguide_family',true); ?>";
+        var editUrl = "<?= $this->url(array('action' => 'edit','id' => $member->family_member_id),'sdparentalguide_family',true); ?>";
         var tbody = window.parent.$("SignupForm").getElement("table tbody");
         var tr = new Element("tr",{
-            'html': '<td><?php echo $member->getRelationship(); ?></td><td><?php echo $member->getGender(); ?></td><td><?php echo $this->locale()->toDate($member->dob,array("timezone" => "UTC")); ?></td>'+
-                    "<td><a class='smoothbox' href='"+editUrl+"'><?php echo $this->translate('Edit'); ?><a></td><input type='hidden' name='members[]' value='<?php echo $member->family_member_id; ?>'/>",
-            'id': 'family_member_<?php echo $member->family_member_id; ?>'
+            'html': '<td><?= $member->getRelationship(); ?></td><td><?= $member->getGender(); ?></td><td><?= $this->locale()->toDate($member->dob,array("timezone" => "UTC")); ?></td>'+
+                    "<td><a class='smoothbox' href='"+editUrl+"'><?= $this->translate('Edit'); ?><a></td><input type='hidden' name='members[]' value='<?= $member->family_member_id; ?>'/>",
+            'id': 'family_member_<?= $member->family_member_id; ?>'
         });
         tr.inject(tbody,"bottom");
         window.parent.Smoothbox.bind(tbody);

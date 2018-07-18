@@ -21,7 +21,7 @@
 ?>
 
 
-<h2><?php echo $this->translate("Parental Guidance Customizations") ?></h2>
+<h2><?= $this->translate("Parental Guidance Customizations") ?></h2>
 
 <?php if( count($this->navigation) ): ?>
   <div class='tabs'>
@@ -47,10 +47,10 @@
 
 <div class='sd_layout_middle'>
 <div class='admin_search'>
-    <?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'badge', 'action' => 'create'), $this->translate('Add Badge'), array(
+    <?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'badge', 'action' => 'create'), $this->translate('Add Badge'), array(
       'class' => 'smoothbox buttonlink',
       'style' => 'background-image: url(' . $this->layout()->staticBaseUrl . 'application/modules/Core/externals/images/admin/new_category.png);')) ?>
-    <?php echo $this->formFilter->render($this) ?>
+    <?= $this->formFilter->render($this) ?>
 </div>
 
 <script type='text/javascript'>
@@ -77,7 +77,7 @@ function searchBadges(){
     formData.format = 'html';
     
     window.searchRequest = new Request.HTML({
-        url: '<?php echo $this->url(); ?>',
+        url: '<?= $this->url(); ?>',
         data: formData,
         onRequest: function(){
             loader.inject(form,"bottom");
@@ -121,7 +121,7 @@ en4.core.runonce.add(function(){
             searchBadges();
         }
     });
-    var autoCompleter = new Autocompleter.Request.JSON('topic', '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'topics','action' => 'suggest'), 'admin_default', true) ?>', {
+    var autoCompleter = new Autocompleter.Request.JSON('topic', '<?= $this->url(array('module' => 'sdparentalguide','controller' => 'topics','action' => 'suggest'), 'admin_default', true) ?>', {
         'minLength': 3,
         'delay' : 250,
         'selectMode': 'pick',
@@ -180,18 +180,18 @@ en4.core.runonce.add(function(){
 <br />
 
 <div class="admin_table_form">
-<form id='multimodify_form' method="post" action="<?php echo $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
+<form id='multimodify_form' method="post" action="<?= $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
   <table class='admin_table'>
     <thead>
       <tr>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Badge Name") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Image") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Topic Name") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Type") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Level") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Active") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Displayed") ?></th>
-        <th style='width: 20%;' class='admin_table_centered'><?php echo $this->translate("Action") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Badge Name") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Image") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Topic Name") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Type") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Level") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Active") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Displayed") ?></th>
+        <th style='width: 20%;' class='admin_table_centered'><?= $this->translate("Action") ?></th>
       </tr>
     </thead>
     <tbody>
@@ -200,39 +200,39 @@ en4.core.runonce.add(function(){
         <?php foreach( $this->paginator as $item ):?>
           <tr>
             <td class='admin_table_centered admin_table_bold'>
-              <?php echo $item->getTitle(); ?>
+              <?= $item->getTitle(); ?>
             </td>
-            <td class='admin_table_centered admin_table_user'><?php echo $this->itemPhoto($item,'thumb.icon',$item->getTitle()); ?></td>
+            <td class='admin_table_centered admin_table_user'><?= $this->itemPhoto($item,'thumb.icon',$item->getTitle()); ?></td>
             <td class='admin_table_centered admin_table_email'>
                 <?php if(($topic = $item->getTopic())): ?>
-                    <?php echo $topic->getTitle(); ?>
+                    <?= $topic->getTitle(); ?>
                 <?php endif; ?>
             </td>
             <td class="admin_table_centered nowrap">
                <?php if(($badgeType = $item->getBadgeType())): ?>
-                    <?php echo $this->translate($badgeType); ?>
+                    <?= $this->translate($badgeType); ?>
                 <?php endif; ?>
             </td>
             <td class="admin_table_centered nowrap">
                <?php if(($level = $item->getLevel())): ?>
-                    <?php echo $this->translate($level); ?>
+                    <?= $this->translate($level); ?>
                 <?php endif; ?>
             </td>
             <td class="admin_table_centered nowrap">
-                <input type="radio" disabled <?php echo ( $item->active ? $this->translate('checked=checked') : '' ); ?>>  
+                <input type="radio" disabled <?= ( $item->active ? $this->translate('checked=checked') : '' ); ?>>  
             </td>
             <td class="admin_table_centered nowrap">
-                <input type="radio" disabled <?php echo ( $item->profile_display ? $this->translate('checked=checked') : '' ); ?>>  
+                <input type="radio" disabled <?= ( $item->profile_display ? $this->translate('checked=checked') : '' ); ?>>  
             </td>
             <td class='admin_table_centered'>
-                <a href='<?php echo $this->url(array('controller' => 'badge', 'action' => 'assign','badge_id' => $item->getIdentity()));?>'>
-                    <?php echo $this->translate("Assign") ?>
+                <a href='<?= $this->url(array('controller' => 'badge', 'action' => 'assign','badge_id' => $item->getIdentity()));?>'>
+                    <?= $this->translate("Assign") ?>
                 </a>
-                <a class='smoothbox' href='<?php echo $this->url(array('controller' => 'badge', 'action' => 'edit','badge_id' => $item->getIdentity()));?>'>
-                    &nbsp;&nbsp;<?php echo $this->translate("Edit") ?>
+                <a class='smoothbox' href='<?= $this->url(array('controller' => 'badge', 'action' => 'edit','badge_id' => $item->getIdentity()));?>'>
+                    &nbsp;&nbsp;<?= $this->translate("Edit") ?>
                 </a>&nbsp;
-                <a class='smoothbox' href='<?php echo $this->url(array('controller' => 'badge', 'action' => 'delete','badge_id' => $item->getIdentity()));?>'>
-                    <?php echo $this->translate("Delete") ?>
+                <a class='smoothbox' href='<?= $this->url(array('controller' => 'badge', 'action' => 'delete','badge_id' => $item->getIdentity()));?>'>
+                    <?= $this->translate("Delete") ?>
                 </a>
             </td>            
           </tr>
@@ -250,11 +250,11 @@ en4.core.runonce.add(function(){
 <div class='admin_results'>
   <div>
     <?php $count = $this->paginator->getTotalItemCount() ?>
-    <?php echo $this->translate(array("%s badge found", "%s badges found", $count),
+    <?= $this->translate(array("%s badge found", "%s badges found", $count),
         $this->locale()->toNumber($count)) ?>
   </div>
   <div>
-    <?php echo $this->paginationControl($this->paginator, null, null, array(
+    <?= $this->paginationControl($this->paginator, null, null, array(
       'pageAsQuery' => true,
       'query' => $this->formValues,
       //'params' => $this->formValues,

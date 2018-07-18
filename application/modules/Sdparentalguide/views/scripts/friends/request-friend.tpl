@@ -16,9 +16,9 @@
   {
     var url;
     if( action == 'confirm' ) {
-      url = '<?php echo $this->url(array('controller' => 'friends', 'action' => 'confirm'), 'user_extended', true) ?>';
+      url = '<?= $this->url(array('controller' => 'friends', 'action' => 'confirm'), 'user_extended', true) ?>';
     } else if( action == 'reject' ) {
-      url = '<?php echo $this->url(array('controller' => 'friends', 'action' => 'reject'), 'user_extended', true) ?>';
+      url = '<?= $this->url(array('controller' => 'friends', 'action' => 'reject'), 'user_extended', true) ?>';
     } else {
       return false;
     }
@@ -44,19 +44,19 @@
   'format' => 'json'
 ));?>
 
-<li id="user-widget-request-<?php echo $this->notification->notification_id ?>">
-  <?php echo $this->itemPhoto($this->notification->getSubject(), 'thumb.icon') ?>
+<li id="user-widget-request-<?= $this->notification->notification_id ?>">
+  <?= $this->itemPhoto($this->notification->getSubject(), 'thumb.icon') ?>
   <div>
     <div>
-      <?php echo $this->translate('%1$s has sent you a friend request.', $this->htmlLink($this->notification->getSubject()->getHref(), $this->notification->getSubject()->getTitle())); ?>
+      <?= $this->translate('%1$s has sent you a friend request.', $this->htmlLink($this->notification->getSubject()->getHref(), $this->notification->getSubject()->getTitle())); ?>
     </div>
     <div>
-      <button type="submit" onclick='userWidgetRequestSend("confirm", <?php echo $params ?>)'>
-        <?php echo $this->translate('Add Friend');?>
+      <button type="submit" onclick='userWidgetRequestSend("confirm", <?= $params ?>)'>
+        <?= $this->translate('Add Friend');?>
       </button>
-      <?php echo $this->translate('or');?>
-      <a href="javascript:void(0);" onclick='userWidgetRequestSend("reject", <?php echo $params ?>)'>
-        <?php echo $this->translate('ignore request');?>
+      <?= $this->translate('or');?>
+      <a href="javascript:void(0);" onclick='userWidgetRequestSend("reject", <?= $params ?>)'>
+        <?= $this->translate('ignore request');?>
       </a>
     </div>
   </div>

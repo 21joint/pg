@@ -26,24 +26,24 @@ $this->headLink()
 <?php endif; ?>
 
 <div class='card-stars' title="" style="margin: 0px auto;">
-    <span class='sd_rating_label'><?php echo $this->translate('Rate this review:') ?></span>
-    <ul class='list-inline my-0 sr_ug_rating <?php echo $reviewRatingClass; ?>' title="<?php echo $reviewRatingHtml; ?>" data-type='review_rating'>
-        <li id="1" class="rate one"><a href="javascript:void(0);" onclick="doDefaultRating(this,'1', 'onestar');" title="<?php echo $this->translate("1 Star"); ?>"   id="star_1_0">1</a></li>
-        <li id="2" class="rate two"><a href="javascript:void(0);"  onclick="doDefaultRating(this,'2', 'twostar');" title="<?php echo $this->translate("2 Stars"); ?>"   id="star_2_0">2</a></li>
-        <li id="3" class="rate three"><a href="javascript:void(0);"  onclick="doDefaultRating(this,'3', 'threestar');" title="<?php echo $this->translate("3 Stars"); ?>" id="star_3_0">3</a></li>
-        <li id="4" class="rate four"><a href="javascript:void(0);"  onclick="doDefaultRating(this,'4', 'fourstar');" title="<?php echo $this->translate("4 Stars"); ?>"   id="star_4_0">4</a></li>
-        <li id="5" class="rate five"><a href="javascript:void(0);"  onclick="doDefaultRating(this,'5', 'fivestar');" title="<?php echo $this->translate("5 Stars"); ?>"  id="star_5_0">5</a></li>
+    <span class='sd_rating_label'><?= $this->translate('Rate this review:') ?></span>
+    <ul class='list-inline my-0 sr_ug_rating <?= $reviewRatingClass; ?>' title="<?= $reviewRatingHtml; ?>" data-type='review_rating'>
+        <li id="1" class="rate one"><a href="javascript:void(0);" onclick="doDefaultRating(this,'1', 'onestar');" title="<?= $this->translate("1 Star"); ?>"   id="star_1_0">1</a></li>
+        <li id="2" class="rate two"><a href="javascript:void(0);"  onclick="doDefaultRating(this,'2', 'twostar');" title="<?= $this->translate("2 Stars"); ?>"   id="star_2_0">2</a></li>
+        <li id="3" class="rate three"><a href="javascript:void(0);"  onclick="doDefaultRating(this,'3', 'threestar');" title="<?= $this->translate("3 Stars"); ?>" id="star_3_0">3</a></li>
+        <li id="4" class="rate four"><a href="javascript:void(0);"  onclick="doDefaultRating(this,'4', 'fourstar');" title="<?= $this->translate("4 Stars"); ?>"   id="star_4_0">4</a></li>
+        <li id="5" class="rate five"><a href="javascript:void(0);"  onclick="doDefaultRating(this,'5', 'fivestar');" title="<?= $this->translate("5 Stars"); ?>"  id="star_5_0">5</a></li>
     </ul>
 </div>
 
 <div class='sd_rate_listing' style="margin: 0px auto;margin-top: 5px;">
-    <span class='sd_rating_label'><?php echo $this->translate('Rate this product:') ?></span>
-    <ul class='sr_ug_rating <?php echo $listingRatingClass; ?>' title="<?php echo $listingRatingHtml; ?>" data-type='product_rating'>
-        <li id="1" class="rate one"><a href="javascript:void(0);" onclick="doDefaultRating(this,'1', 'onestar');" title="<?php echo $this->translate("1 Star"); ?>"   id="star_1_0">1</a></li>
-        <li id="2" class="rate two"><a href="javascript:void(0);"  onclick="doDefaultRating(this,'2', 'twostar');" title="<?php echo $this->translate("2 Stars"); ?>"   id="star_2_0">2</a></li>
-        <li id="3" class="rate three"><a href="javascript:void(0);"  onclick="doDefaultRating(this,'3', 'threestar');" title="<?php echo $this->translate("3 Stars"); ?>" id="star_3_0">3</a></li>
-        <li id="4" class="rate four"><a href="javascript:void(0);"  onclick="doDefaultRating(this,'4', 'fourstar');" title="<?php echo $this->translate("4 Stars"); ?>"   id="star_4_0">4</a></li>
-        <li id="5" class="rate five"><a href="javascript:void(0);"  onclick="doDefaultRating(this,'5', 'fivestar');" title="<?php echo $this->translate("5 Stars"); ?>"  id="star_5_0">5</a></li>
+    <span class='sd_rating_label'><?= $this->translate('Rate this product:') ?></span>
+    <ul class='sr_ug_rating <?= $listingRatingClass; ?>' title="<?= $listingRatingHtml; ?>" data-type='product_rating'>
+        <li id="1" class="rate one"><a href="javascript:void(0);" onclick="doDefaultRating(this,'1', 'onestar');" title="<?= $this->translate("1 Star"); ?>"   id="star_1_0">1</a></li>
+        <li id="2" class="rate two"><a href="javascript:void(0);"  onclick="doDefaultRating(this,'2', 'twostar');" title="<?= $this->translate("2 Stars"); ?>"   id="star_2_0">2</a></li>
+        <li id="3" class="rate three"><a href="javascript:void(0);"  onclick="doDefaultRating(this,'3', 'threestar');" title="<?= $this->translate("3 Stars"); ?>" id="star_3_0">3</a></li>
+        <li id="4" class="rate four"><a href="javascript:void(0);"  onclick="doDefaultRating(this,'4', 'fourstar');" title="<?= $this->translate("4 Stars"); ?>"   id="star_4_0">4</a></li>
+        <li id="5" class="rate five"><a href="javascript:void(0);"  onclick="doDefaultRating(this,'5', 'fivestar');" title="<?= $this->translate("5 Stars"); ?>"  id="star_5_0">5</a></li>
     </ul>
 </div>
  <script type="text/javascript">
@@ -61,7 +61,7 @@ function doDefaultRating(element,rating,classstar) {
 
 function rateListing(type,rating){
     var req = new Request.JSON({
-        url: en4.core.baseUrl + 'widget/index/content_id/' + <?php echo sprintf('%d', $this->identity) ?>,
+        url: en4.core.baseUrl + 'widget/index/content_id/' + <?= sprintf('%d', $this->identity) ?>,
         data: {
             format: 'json',
             type: type,

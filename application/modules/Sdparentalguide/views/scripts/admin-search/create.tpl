@@ -8,7 +8,7 @@
  */
 ?>
 
-<?php echo $this->form->render($this); ?>
+<?= $this->form->render($this); ?>
 
 <style type='text/css'>
 #category_id-wrapper,
@@ -26,7 +26,7 @@ function loadSubCategories(){
     }
     var loader = en4.core.loader.clone();
     loader.addClass("sd_loader");
-    var url = '<?php echo $this->url(array('action' => 'get-subcategories'), 'sdparentalguide_general', true) ?>';
+    var url = '<?= $this->url(array('action' => 'get-subcategories'), 'sdparentalguide_general', true) ?>';
     var req = new Request.JSON({
       url: url,
       data: {
@@ -46,7 +46,7 @@ function loadSubCategories(){
           loader.destroy();
           $("subcategory_id").empty();
           if(responseJSON.status && responseJSON.categories.length > 0){
-              var options = "<option value='0'><?php echo $this->translate('Sub Category'); ?></option>";
+              var options = "<option value='0'><?= $this->translate('Sub Category'); ?></option>";
               Object.each(responseJSON.categories,function(category){
                   options += "<option value='"+category.id+"'>"+category.title+"</option>";
               });
@@ -64,7 +64,7 @@ function loadCategories(element){
   loader.addClass("sd_loader");
   $("category_id-wrapper").setStyle("display","none");
   $$(".sd_listing_search .sd_inline_field.subcategory").setStyle("display","none");
-  var url = '<?php echo $this->url(array('action' => 'get-categories'), 'sdparentalguide_general', true) ?>';
+  var url = '<?= $this->url(array('action' => 'get-categories'), 'sdparentalguide_general', true) ?>';
   var req = new Request.JSON({
       url: url,
       data: {
@@ -85,7 +85,7 @@ function loadCategories(element){
           $("category_id").empty();
           if(responseJSON.status && responseJSON.categories.length > 0){
               $("category_id").set("html","");
-              var options = "<option value='0'><?php echo $this->translate('Category'); ?></option>";
+              var options = "<option value='0'><?= $this->translate('Category'); ?></option>";
               Object.each(responseJSON.categories,function(category){
                   options += "<option value='"+category.id+"'>"+category.title+"</option>";
               });

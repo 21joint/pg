@@ -1,10 +1,10 @@
 <?php if($this->loaded_by_ajax):?>
     <script type="text/javascript">
         var theoriesAccountParams = {
-            requestParams :{"title":"<?php echo $this->translate('Theories'); ?>", "titleCount":""},
+            requestParams :{"title":"<?= $this->translate('Theories'); ?>", "titleCount":""},
             responseContainer : $$('.layout_sdparentalguide_ajax_theories')
         }
-        en4.gg.ajaxTab.attachEvent('<?php echo $this->identity ?>',theoriesAccountParams);
+        en4.gg.ajaxTab.attachEvent('<?= $this->identity ?>',theoriesAccountParams);
 
         // when item is clicked, filter by ID
         function filterAjaxTheoriesContent(itemParams) {
@@ -21,7 +21,7 @@
                 <?php if($this->paginator->getTotalItemCount() <= 0): ?>
                 <div class="tip-message py-5 ml-3">
                     <span class="mb-0">
-                        <?php echo $this->translate("No Theories") ?>
+                        <?= $this->translate("No Theories") ?>
                     </span>
                 </div>
                 <?php else: ?>
@@ -29,12 +29,12 @@
 
                     <div class="bottom-holder">
                         <div class="title-holder d-flex mb-4">
-                            <h4 class="py-4 w-100 m-0 left-side"><?php echo $this->translate('Struggle');?></h4>
-                            <h4 class="py-4 w-100 m-0 right-side d-none d-sm-block"><?php echo $this->translate('Theory');?></h4>
+                            <h4 class="py-4 w-100 m-0 left-side"><?= $this->translate('Struggle');?></h4>
+                            <h4 class="py-4 w-100 m-0 right-side d-none d-sm-block"><?= $this->translate('Theory');?></h4>
                         </div>
                         
                         <?php foreach($this->paginator as $item):?>
-                            <?php echo $this->partial('ajax/theories/_theories.tpl', 'sdparentalguide', array(
+                            <?= $this->partial('ajax/theories/_theories.tpl', 'sdparentalguide', array(
                                 'item' => $item,
                                 'subject' => $this->subject,
                             )); ?>
@@ -42,7 +42,7 @@
                     </div>
                 </div>
 
-                <?php echo $this->partial('ajax/theories/_pagination.tpl', 'sdparentalguide', array(
+                <?= $this->partial('ajax/theories/_pagination.tpl', 'sdparentalguide', array(
                     'paginator' => $this->paginator,
                 )); ?>
 

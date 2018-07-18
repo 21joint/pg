@@ -9,14 +9,14 @@
 ?>
 
 <?php if(!$this->smoothboxClose): ?>
-<?php echo $this->form->render($this) ?>
+<?= $this->form->render($this) ?>
 
 <script type="text/javascript">
 function deleteMember(element){
     var loader = en4.core.loader.clone();
     loader.addClass("sd_loader");
     var req = new Request.JSON({
-        url: "<?php echo $this->url(array('action' => 'delete','id' => $this->id),'sdparentalguide_family',true); ?>",
+        url: "<?= $this->url(array('action' => 'delete','id' => $this->id),'sdparentalguide_family',true); ?>",
         data: {
             format: 'json',            
         },
@@ -26,7 +26,7 @@ function deleteMember(element){
         onSuccess: function(json){
             loader.destroy();
             if(json.status){
-                window.parent.$("family_member_<?php echo $this->id; ?>").destroy();
+                window.parent.$("family_member_<?= $this->id; ?>").destroy();
                 window.parent.Smoothbox.close();
             }
         }
@@ -41,17 +41,17 @@ function deleteMember(element){
 </style>
 <?php else: ?>
 <div class="global_form_popup_message">
-    <?php echo $this->translate("Your changes have been saved."); ?>
+    <?= $this->translate("Your changes have been saved."); ?>
 </div>
 <?php $member = $this->member; ?>
 <script type="text/javascript">
 en4.core.runonce.add(function(){
     try{
-        var editUrl = "<?php echo $this->url(array('action' => 'edit','id' => $member->family_member_id),'sdparentalguide_family',true); ?>";
+        var editUrl = "<?= $this->url(array('action' => 'edit','id' => $member->family_member_id),'sdparentalguide_family',true); ?>";
         var tbody = window.parent.$("SignupForm").getElement("table tbody");
-        var newHtml = '<td><?php echo $member->getRelationship(); ?></td><td><?php echo $member->getGender(); ?></td><td><?php echo $this->locale()->toDate($member->dob,array("timezone" => "UTC")); ?></td>'+
-                    "<td><a class='smoothbox' href='"+editUrl+"'><?php echo $this->translate('Edit'); ?><a></td><input type='hidden' name='members[]' value='<?php echo $member->family_member_id; ?>'/>";
-        window.parent.$("family_member_<?php echo $member->family_member_id; ?>").set("html",newHtml);
+        var newHtml = '<td><?= $member->getRelationship(); ?></td><td><?= $member->getGender(); ?></td><td><?= $this->locale()->toDate($member->dob,array("timezone" => "UTC")); ?></td>'+
+                    "<td><a class='smoothbox' href='"+editUrl+"'><?= $this->translate('Edit'); ?><a></td><input type='hidden' name='members[]' value='<?= $member->family_member_id; ?>'/>";
+        window.parent.$("family_member_<?= $member->family_member_id; ?>").set("html",newHtml);
         window.parent.Smoothbox.bind(tbody);
         setTimeout(function(){ window.parent.Smoothbox.close(); },1500);
     }catch(e){ console.log(e); }

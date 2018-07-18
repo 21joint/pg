@@ -35,19 +35,19 @@ $this->headLink()
       break;
   }
   ?>
-<div class="form-wrapper" id="owner_rating-wrapper">
+<div class="form-group" id="owner_rating-wrapper">
     <div class="form-label" id="owner_rating-label">
-        <label class="optional" for="owner_rating"><?php echo $this->translate('Owner Rating');?></label>
+        <label class="optional" for="owner_rating"><?= $this->translate('Owner Rating');?></label>
     </div>
     <div class="form-element" id="owner_rating-element">
-        <ul id= 'rate_0' class='sr_ug_rating <?php echo $rating_value; ?>'>
-            <li id="1" class="rate one"><a href="javascript:void(0);" onclick="doDefaultRating('star_1', '0', 'onestar');" title="<?php echo $this->translate("1 Star"); ?>"   id="star_1_0">1</a></li>
-            <li id="2" class="rate two"><a href="javascript:void(0);"  onclick="doDefaultRating('star_2', '0', 'twostar');" title="<?php echo $this->translate("2 Stars"); ?>"   id="star_2_0">2</a></li>
-            <li id="3" class="rate three"><a href="javascript:void(0);"  onclick="doDefaultRating('star_3', '0', 'threestar');" title="<?php echo $this->translate("3 Stars"); ?>" id="star_3_0">3</a></li>
-            <li id="4" class="rate four"><a href="javascript:void(0);"  onclick="doDefaultRating('star_4', '0', 'fourstar');" title="<?php echo $this->translate("4 Stars"); ?>"   id="star_4_0">4</a></li>
-            <li id="5" class="rate five"><a href="javascript:void(0);"  onclick="doDefaultRating('star_5', '0', 'fivestar');" title="<?php echo $this->translate("5 Stars"); ?>"  id="star_5_0">5</a></li>
+        <ul id= 'rate_0' class='sr_ug_rating <?= $rating_value; ?>'>
+            <li id="1" class="rate one"><a href="javascript:void(0);" onclick="doDefaultRating('star_1', '0', 'onestar');" title="<?= $this->translate("1 Star"); ?>"   id="star_1_0">1</a></li>
+            <li id="2" class="rate two"><a href="javascript:void(0);"  onclick="doDefaultRating('star_2', '0', 'twostar');" title="<?= $this->translate("2 Stars"); ?>"   id="star_2_0">2</a></li>
+            <li id="3" class="rate three"><a href="javascript:void(0);"  onclick="doDefaultRating('star_3', '0', 'threestar');" title="<?= $this->translate("3 Stars"); ?>" id="star_3_0">3</a></li>
+            <li id="4" class="rate four"><a href="javascript:void(0);"  onclick="doDefaultRating('star_4', '0', 'fourstar');" title="<?= $this->translate("4 Stars"); ?>"   id="star_4_0">4</a></li>
+            <li id="5" class="rate five"><a href="javascript:void(0);"  onclick="doDefaultRating('star_5', '0', 'fivestar');" title="<?= $this->translate("5 Stars"); ?>"  id="star_5_0">5</a></li>
         </ul>
-        <input type='hidden' name='owner_rating' id='review_rate_0' value='<?php echo $ratingValue; ?>'/>
+        <input type='hidden' name='owner_rating' id='review_rate_0' value='<?= $ratingValue; ?>'/>
     </div>
     
 </div>

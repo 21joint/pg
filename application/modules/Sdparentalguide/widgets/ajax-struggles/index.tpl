@@ -1,10 +1,10 @@
 <?php if($this->loaded_by_ajax):?>
     <script type="text/javascript">
         var struggleAccountParams = {
-            requestParams :{"title":"<?php echo $this->translate('Struggles'); ?>", "titleCount":""},
+            requestParams :{"title":"<?= $this->translate('Struggles'); ?>", "titleCount":""},
             responseContainer : $$('.layout_sdparentalguide_ajax_struggles')
         }
-        en4.gg.ajaxTab.attachEvent('<?php echo $this->identity ?>', struggleAccountParams);
+        en4.gg.ajaxTab.attachEvent('<?= $this->identity ?>', struggleAccountParams);
 
         // when item is clicked, filter by ID
         function filterAjaxStruggleContent(itemParams) {
@@ -23,21 +23,21 @@
 
                     <div class="tip-message py-5 ml-3">
                         <span class="mb-0">
-                            <?php echo $this->translate("No Stuggles") ?>
+                            <?= $this->translate("No Stuggles") ?>
                         </span>
                     </div>
 
                 <?php else: ?>
                     <?php foreach($this->paginator as $item):?>
 
-                        <?php echo $this->partial('ajax/struggles/_struggles.tpl', 'sdparentalguide', array(
+                        <?= $this->partial('ajax/struggles/_struggles.tpl', 'sdparentalguide', array(
                             'item' => $item,
                         )); ?>
                     <?php endforeach; ?>
                 <?php endif;?>
             </ul>
             
-            <?php echo $this->partial('ajax/struggles/_pagination.tpl', 'sdparentalguide', array(
+            <?= $this->partial('ajax/struggles/_pagination.tpl', 'sdparentalguide', array(
                 'paginator' => $this->paginator,
             )); ?>
 

@@ -1,10 +1,10 @@
 <?php if($this->loaded_by_ajax):?>
     <script type="text/javascript">
         var deleteAccountParams = {
-            requestParams :{"title":"<?php echo $this->translate('Delete Account'); ?>", "titleCount":""},
+            requestParams :{"title":"<?= $this->translate('Delete Account'); ?>", "titleCount":""},
             responseContainer : $$('.layout_sdparentalguide_ajax_delete')
         }
-        en4.gg.ajaxTab.attachEvent('<?php echo $this->identity ?>', deleteAccountParams);
+        en4.gg.ajaxTab.attachEvent('<?= $this->identity ?>', deleteAccountParams);
 </script>
 <?php endif; ?>
 
@@ -13,12 +13,12 @@
     <div class="row mx-lg-3 mx-xl-3 mx-sm-0">
         <div class="text d-block text-danger p-2 w-100" id="errorForm"></div>
         <div class="text d-block text-success p-2 w-100" id="successForm"></div>
-        <?php echo $this->form->render($this); ?>
+        <?= $this->form->render($this); ?>
     </div>
 </div>
 <script>
 en4.core.runonce.add(function() {
-    var form = document.getElementsByClassName('ajax-form-' + <?php echo $this->identity; ?>)[0];
+    var form = document.getElementsByClassName('ajax-form-' + <?= $this->identity; ?>)[0];
     en4.gg.ggAjaxForm(form, 'delete');
 });
 </script>

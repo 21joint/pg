@@ -13,7 +13,7 @@ en4.core.runonce.add(function(){
     var loader = en4.core.loader.clone();
     loader.addClass("sd_loader");
     
-    var autoCompleter = new Autocompleter.Request.JSON('username', '<?php echo $this->url(array('action' => 'suggest-username'), 'sdparentalguide_general', true) ?>', {
+    var autoCompleter = new Autocompleter.Request.JSON('username', '<?= $this->url(array('action' => 'suggest-username'), 'sdparentalguide_general', true) ?>', {
         'minLength': 3,
         'delay' : 250,
         'selectMode': 'pick',
@@ -66,7 +66,7 @@ en4.core.runonce.add(function(){
         $("user_id").value = toID;
     };
     
-    var autoCompleter2 = new Autocompleter.Request.JSON('first_name', '<?php echo $this->url(array('action' => 'suggest-displayname'), 'sdparentalguide_general', true) ?>', {
+    var autoCompleter2 = new Autocompleter.Request.JSON('first_name', '<?= $this->url(array('action' => 'suggest-displayname'), 'sdparentalguide_general', true) ?>', {
         'minLength': 3,
         'delay' : 250,
         'selectMode': 'pick',
@@ -119,7 +119,7 @@ en4.core.runonce.add(function(){
         $("user_id").value = toID;
     };
     
-    var autoCompleter3 = new Autocompleter.Request.JSON('last_name', '<?php echo $this->url(array('action' => 'suggest-displayname'), 'sdparentalguide_general', true) ?>', {
+    var autoCompleter3 = new Autocompleter.Request.JSON('last_name', '<?= $this->url(array('action' => 'suggest-displayname'), 'sdparentalguide_general', true) ?>', {
         'minLength': 3,
         'delay' : 250,
         'selectMode': 'pick',
@@ -182,7 +182,7 @@ function loadSubCategories(){
     }
     var loader = en4.core.loader.clone();
     loader.addClass("sd_loader");
-    var url = '<?php echo $this->url(array('action' => 'get-subcategories'), 'sdparentalguide_general', true) ?>';
+    var url = '<?= $this->url(array('action' => 'get-subcategories'), 'sdparentalguide_general', true) ?>';
     var req = new Request.JSON({
       url: url,
       data: {
@@ -202,7 +202,7 @@ function loadSubCategories(){
           loader.destroy();
           $("subcategory_id").empty();
           if(responseJSON.status && responseJSON.categories.length > 0){
-              var options = "<option value='0'><?php echo $this->translate('Sub Category'); ?></option>";
+              var options = "<option value='0'><?= $this->translate('Sub Category'); ?></option>";
               Object.each(responseJSON.categories,function(category){
                   options += "<option value='"+category.id+"'>"+category.title+"</option>";
               });
@@ -220,7 +220,7 @@ function loadCategories(element){
   loader.addClass("sd_loader");
   $("category-wrapper").setStyle("display","none");
   $$(".sd_listing_search .sd_inline_field.subcategory").setStyle("display","none");
-  var url = '<?php echo $this->url(array('action' => 'get-categories'), 'sdparentalguide_general', true) ?>';
+  var url = '<?= $this->url(array('action' => 'get-categories'), 'sdparentalguide_general', true) ?>';
   var req = new Request.JSON({
       url: url,
       data: {
@@ -241,7 +241,7 @@ function loadCategories(element){
           $("category_id").empty();
           if(responseJSON.status && responseJSON.categories.length > 0){
               $("category_id").set("html","");
-              var options = "<option value='0'><?php echo $this->translate('Category'); ?></option>";
+              var options = "<option value='0'><?= $this->translate('Category'); ?></option>";
               Object.each(responseJSON.categories,function(category){
                   options += "<option value='"+category.id+"'>"+category.title+"</option>";
               });

@@ -42,9 +42,9 @@ class User_AuthController extends Core_Controller_Action_Standard
 
     
     // // For Button
-    $form->getElement('submit')->setAttrib('class', 'btn btn-outline-success text-uppercase py-2 w-100 px-0');
+    $form->getElement('submit')->setAttrib('class', 'btn btn-lg btn-success text-white text-uppercase w-100 px-0');
 
-    $form->getElement('cancel')->setAttrib('class', 'btn btn-outline-success text-uppercase py-2 w-100 px-0');
+    $form->getElement('cancel')->setAttrib('class', 'btn btn-lg btn-outline-success text-uppercase w-100 px-0');
    
 
     // Render

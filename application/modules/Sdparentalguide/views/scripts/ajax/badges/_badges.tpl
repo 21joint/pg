@@ -6,7 +6,7 @@
 
         <!-- title holder -->
         <div class="title-holder mb-4">
-            <h4 class="pb-4"><?php echo $this->translate('Special Badges');?></h4>
+            <h4 class="pb-4"><?= $this->translate('Special Badges');?></h4>
         </div>
 
         <!-- win badges -->
@@ -15,7 +15,7 @@
                 <li class="d-flex align-items-center border-grey-light ">
                     
                     <div class="left-side col-xl-2 col-lg-2 col-3">
-                        <img class="w-100 d-block" src="<?php echo $this->baseUrl(). '/application/modules/Sdparentalguide/externals/images/mvp_badge.png' ?>"/>
+                        <img class="w-100 d-block" src="<?= $this->baseUrl(). '/application/modules/Sdparentalguide/externals/images/mvp_badge.png' ?>"/>
                     </div>
                     <div class="right-side">
                         <div class="title-holder">
@@ -33,7 +33,7 @@
             <?php for($x = 0; $x < 2; $x++):?>
                 <li class="d-flex align-items-center border-grey-light ">
                     <div class="left-side col-xl-2 col-lg-2 col-3">
-                        <img class="w-100 d-block"  src="<?php echo $this->baseUrl(). '/application/modules/Sdparentalguide/externals/images/badge_not.png' ?>"/>
+                        <img class="w-100 d-block"  src="<?= $this->baseUrl(). '/application/modules/Sdparentalguide/externals/images/badge_not.png' ?>"/>
                     </div>
                     <div class="right-side">
                         <div class="title-holder">
@@ -53,7 +53,7 @@
     <div class="contributor-badges-holder pt-3 pb-4 px-5 bg-white mb-4">
         <!-- title holder -->
         <div class="title-holder mb-4">
-            <h4 class="pb-4"><?php echo $this->translate('Contributor Badges');?></h4>
+            <h4 class="pb-4"><?= $this->translate('Contributor Badges');?></h4>
         </div>
 
         <ul class="grib-grab-two">
@@ -73,7 +73,7 @@
                     <div class="bottom-holder d-flex align-items-center px-3 pt-3 ml-auto mr-auto holder-badge-image">
                         <?php for($y = 0; $y < 5; $y++):?>
                             <div class="col-xl-2 col-lg-2 pl-0 ">
-                                <img class="w-100 d-block" src="<?php echo $this->baseUrl(). '/application/modules/Sdparentalguide/externals/images/badge_carseat.png' ?>"/>
+                                <img class="w-100 d-block" src="<?= $this->baseUrl(). '/application/modules/Sdparentalguide/externals/images/badge_carseat.png' ?>"/>
                             </div>
                         <?php endfor; ?>
                     </div>
@@ -96,7 +96,7 @@
                     <div class="bottom-holder d-flex align-items-center px-3 pt-3 ml-auto mr-auto holder-badge-image">
                         <?php for($y = 0; $y < 5; $y++):?>
                             <div class="col-xl-2 col-lg-2 pl-0 ">
-                                <img class="w-100 d-block" src="<?php echo $this->baseUrl(). '/application/modules/Sdparentalguide/externals/images/badge_baby.png' ?>"/>
+                                <img class="w-100 d-block" src="<?= $this->baseUrl(). '/application/modules/Sdparentalguide/externals/images/badge_baby.png' ?>"/>
                             </div>
                         <?php endfor; ?>
                     </div>

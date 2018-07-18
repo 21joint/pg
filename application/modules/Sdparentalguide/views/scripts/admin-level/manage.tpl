@@ -8,7 +8,7 @@
  */
 ?>
 <h2 class="fleft">
-  <?php echo $this->translate("Parental Guidance Customizations") ?>
+  <?= $this->translate("Parental Guidance Customizations") ?>
 </h2>
 <?php if( count($this->navigation) ): ?>
   <div class='tabs clr'>
@@ -64,7 +64,7 @@
         <?php if( empty($this->username)):?>
           <input type="text" id="username" name="username" /> 
         <?php else: ?>
-          <input type="text" id="username" name="username" value="<?php echo $this->username ?>"/>
+          <input type="text" id="username" name="username" value="<?= $this->username ?>"/>
         <?php endif;?>
       </div>
       <div>
@@ -73,13 +73,13 @@
           <?php if( $this->order_min_amount == ''):?>
             <input type="text" name="order_min_amount" onkeypress="return isNumberKey(event)" placeholder="min"  /> 
           <?php else: ?>
-            <input type="text" name="order_min_amount" onkeypress="return isNumberKey(event)" placeholder="min" value="<?php echo $this->order_min_amount ?>" />
+            <input type="text" name="order_min_amount" onkeypress="return isNumberKey(event)" placeholder="min" value="<?= $this->order_min_amount ?>" />
           <?php endif;?>
           
           <?php if( $this->order_max_amount == ''):?>
             <input type="text" name="order_max_amount" onkeypress="return isNumberKey(event)" placeholder="max"  /> 
           <?php else: ?>
-            <input type="text" name="order_max_amount" onkeypress="return isNumberKey(event)" placeholder="max" value="<?php echo $this->order_max_amount ?>" />
+            <input type="text" name="order_max_amount" onkeypress="return isNumberKey(event)" placeholder="max" value="<?= $this->order_max_amount ?>" />
           <?php endif;?>
         </div>   
       </div>
@@ -90,36 +90,36 @@
   </div>
 
 <div class='admin_search'>
-  <?php echo $this->formFilter->render($this) ?>
+  <?= $this->formFilter->render($this) ?>
 </div>
 
 <div class="mbot10">
   <?php $count = $this->paginator->getTotalItemCount() ?>
-  <?php echo $this->translate(array("%s record found", "%s records found", $count), $count) ?>
+  <?= $this->translate(array("%s record found", "%s records found", $count), $count) ?>
 </div>
 <?php if( count($this->paginator) ): ?>
-  <form id='badge_form' method="post" action="<?php echo $this->url();?>">
+  <form id='badge_form' method="post" action="<?= $this->url();?>">
     <table class='admin_table'>
 
       <thead>
        <tr>
         <?php $class = ( $this->order == 'badge_id' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-        <th class="<?php echo $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('badge_id', 'ASC');">Id</a></th>
+        <th class="<?= $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('badge_id', 'ASC');">Id</a></th>
                 
         <?php $class = ( $this->order == 'title' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-        <th class="<?php echo $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('title', 'ASC');">Title</a></th>
+        <th class="<?= $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('title', 'ASC');">Title</a></th>
         
         <?php $class = ( $this->order == 'credit_count' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-        <th class="<?php echo $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('credit_count', 'ASC');">Credit Values</a></th>
+        <th class="<?= $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('credit_count', 'ASC');">Credit Values</a></th>
         
         <?php $class = ( $this->order == 'gg_contribution_level' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-        <th class="<?php echo $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('gg_contribution_level', 'ASC');">Credibility Level</a></th>
+        <th class="<?= $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('gg_contribution_level', 'ASC');">Credibility Level</a></th>
         
         <?php $class = ( $this->order == 'gg_level_id' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-        <th class="<?php echo $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('gg_level_id', 'ASC');">Profile Level</a></th>
+        <th class="<?= $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('gg_level_id', 'ASC');">Profile Level</a></th>
         
         <?php $class = ( $this->order == 'creation_date' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-        <th class="<?php echo $class ?>" align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('creation_date', 'ASC');">Date</a>   </th>
+        <th class="<?= $class ?>" align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('creation_date', 'ASC');">Date</a>   </th>
         
         <th align="center">Options</th>
         
@@ -131,28 +131,28 @@
       $k=0;
       foreach ($this->paginator as $item): ?>
       <tr>
-        <td><?php echo $item->badge_id ?></td>
-        <td><?php echo $item->title ?></td>
-        <td><?php echo $item->credit_count ?></td>
+        <td><?= $item->badge_id ?></td>
+        <td><?= $item->title ?></td>
+        <td><?= $item->credit_count ?></td>
         <td>
-            <?php echo $item->gg_contribution_level; ?>
+            <?= $item->gg_contribution_level; ?>
         </td>
         <td>
            <?php if(($level = Engine_Api::_()->getItem('authorization_level', $item->gg_level_id))): ?>
-                <?php echo $this->translate($level); ?>
+                <?= $this->translate($level); ?>
             <?php endif; ?>
         </td>
-        <td><?php echo date('dS F Y ', strtotime($item->creation_date));//date('d-m-Y', strtotime($item->creation_date)) ?></td>
+        <td><?= date('dS F Y ', strtotime($item->creation_date));//date('d-m-Y', strtotime($item->creation_date)) ?></td>
         <td>   
-          <?php echo $this->htmlLink(
+          <?= $this->htmlLink(
             array('route' => 'default', 'module' => 'sdparentalguide', 'controller' => 'admin-level', 'action' => 'view-detail', 'id' => $item->badge_id),
             "Details",
             array('class' => 'smoothbox')) ?>  | 
-          <?php echo $this->htmlLink(
+          <?= $this->htmlLink(
             array('route' => 'default', 'module' => 'sdparentalguide', 'controller' => 'admin-level', 'action' => 'edit', 'id' => $item->badge_id),
             "Edit",
             array('class' => 'smoothbox')) ?>   |
-          <?php echo $this->htmlLink(
+          <?= $this->htmlLink(
             array('route' => 'default', 'module' => 'sdparentalguide', 'controller' => 'admin-level', 'action' => 'delete', 'id' => $item->badge_id),
             "Delete",
             array('class' => 'smoothbox')) ?>        
@@ -176,8 +176,8 @@
 </div>
 
 <script type="text/javascript">
-  var currentOrder = '<?php echo $this->order ?>';
-  var currentOrderDirection = '<?php echo $this->order_direction ?>';
+  var currentOrder = '<?= $this->order ?>';
+  var currentOrderDirection = '<?= $this->order_direction ?>';
   var changeOrder = function (order, default_direction) {
         // Just change direction
         if (order == currentOrder) {

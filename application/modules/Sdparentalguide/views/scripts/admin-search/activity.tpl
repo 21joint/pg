@@ -10,7 +10,7 @@
  * @author     John
  */
 ?>
-<h2><?php echo $this->translate("Parental Guidance Customizations") ?></h2>
+<h2><?= $this->translate("Parental Guidance Customizations") ?></h2>
 <?php $this->headLink()
       ->prependStylesheet($this->layout()->staticBaseUrl . 'externals/font-awesome/css/font-awesome.min.css'); ?>
 <style type='text/css'>
@@ -83,17 +83,17 @@
 function changeOrder(elm, column_name, direction){
     var content = elm.getParent(".admin_table_form");
     var loader = new Element('div',{'class':'sd_loader'});
-    var page = <?php echo $this->paginator->getCurrentPageNumber(); ?>;
+    var page = <?= $this->paginator->getCurrentPageNumber(); ?>;
     direction = direction == 'ASC' ? 'DESC' : 'ASC' ;
     en4.core.loader.clone().inject(loader,"bottom");
-    var url = '<?php echo $this->url(array('module' => 'sdparentalguide', 'controller' => 'search', 'action' => 'activity'), '', true) ?>';
+    var url = '<?= $this->url(array('module' => 'sdparentalguide', 'controller' => 'search', 'action' => 'activity'), '', true) ?>';
     var req = new Request.HTML({
     url: url,
     data: {
         column_name: column_name,
         order: direction,
         format : 'html',
-        page : <?php echo $this->paginator->getCurrentPageNumber(); ?>,
+        page : <?= $this->paginator->getCurrentPageNumber(); ?>,
         query: $("search_query").value
     },
     onRequest: function(){
@@ -116,25 +116,25 @@ function changeOrder(elm, column_name, direction){
     req.send();  
 }
 function startSearch(element){
-    var direction = '<?php echo $this->order; ?>';
-    var order = '<?php echo $this->order_column; ?>';
+    var direction = '<?= $this->order; ?>';
+    var order = '<?= $this->order_column; ?>';
     changeOrder(element, order, direction);
 }
 </script>
 
 <div class="admin_table_form sd_layout_middle">
     <form method="post" onsubmit="startSearch(this);">
-        <input type='text' id='search_query' placeholder="<?php echo $this->translate('Search'); ?>" style='margin-right:5px;vertical-align: middle;'/>
-        <button onclick="startSearch(this);" style='margin-right:5px;vertical-align: middle;' type="submit"><?php echo $this->translate("Search"); ?></button>
-        <a href='<?php echo $this->url(array("clear" => 1)); ?>'><button type="button"><?php echo $this->translate("Clear All"); ?></button></a>
+        <input type='text' id='search_query' placeholder="<?= $this->translate('Search'); ?>" style='margin-right:5px;vertical-align: middle;'/>
+        <button onclick="startSearch(this);" style='margin-right:5px;vertical-align: middle;' type="submit"><?= $this->translate("Search"); ?></button>
+        <a href='<?= $this->url(array("clear" => 1)); ?>'><button type="button"><?= $this->translate("Clear All"); ?></button></a>
     </form>
     <br>
     <table class='admin_table'>
         <thead>
             <tr>
-                <th><a href="javascript:void(0);" class="<?php echo $this->order_column == 'search_text'?'sort_active '.strtolower($this->order):''; ?>" onclick="changeOrder(this, 'search_text','<?php echo $this->order ;?>')"><?php echo $this->translate("Search Activity") ?></a></th>
-                <th><a href="javascript:void(0);" class="<?php echo $this->order_column == 'gg_user_created'?'sort_active '.strtolower($this->order):''; ?>" onclick="changeOrder(this, 'gg_user_created', '<?php echo $this->order ;?>')"><?php echo $this->translate("User") ?></a></th>
-                <th><a href="javascript:void(0);" class="<?php echo $this->order_column == 'gg_dt_created'?'sort_active '.strtolower($this->order):''; ?>" onclick="changeOrder(this, 'gg_dt_created', '<?php echo $this->order ;?>')"><?php echo $this->translate("Date/Time") ?></a></th>
+                <th><a href="javascript:void(0);" class="<?= $this->order_column == 'search_text'?'sort_active '.strtolower($this->order):''; ?>" onclick="changeOrder(this, 'search_text','<?= $this->order ;?>')"><?= $this->translate("Search Activity") ?></a></th>
+                <th><a href="javascript:void(0);" class="<?= $this->order_column == 'gg_user_created'?'sort_active '.strtolower($this->order):''; ?>" onclick="changeOrder(this, 'gg_user_created', '<?= $this->order ;?>')"><?= $this->translate("User") ?></a></th>
+                <th><a href="javascript:void(0);" class="<?= $this->order_column == 'gg_dt_created'?'sort_active '.strtolower($this->order):''; ?>" onclick="changeOrder(this, 'gg_dt_created', '<?= $this->order ;?>')"><?= $this->translate("Date/Time") ?></a></th>
             </tr>
         </thead>
         <tbody>
@@ -143,20 +143,20 @@ function startSearch(element){
                     $user = $this->item('user', $item->gg_user_created);
                 ?>
                     <tr>
-                        <td><?php echo $item->search_text; ?></td>
+                        <td><?= $item->search_text; ?></td>
                         <td class='admin_table_bold'>
-                            <?php echo $this->string()->truncate($user->getTitle(), 20); ?>
+                            <?= $this->string()->truncate($user->getTitle(), 20); ?>
                         </td>
-                        <td><?php echo $item->gg_dt_created; ?></td>
+                        <td><?= $item->gg_dt_created; ?></td>
                     </tr>
                 <?php endforeach; ?>
             <?php else: ?>
-            <tr><td colspan="3"><div class="tip"><span><?php echo $this->translate("No search activities found."); ?></span></td></tr>
+            <tr><td colspan="3"><div class="tip"><span><?= $this->translate("No search activities found."); ?></span></td></tr>
             <?php endif; ?>
         </tbody>
     </table>
     <div>
-        <?php echo $this->paginationControl($this->paginator, null, null, array(
+        <?= $this->paginationControl($this->paginator, null, null, array(
             'pageAsQuery' => true,
             'query' => $this->formValues,
             //'params' => $this->formValues,

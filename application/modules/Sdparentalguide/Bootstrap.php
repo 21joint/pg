@@ -7,13 +7,11 @@ class Sdparentalguide_Bootstrap extends Engine_Application_Bootstrap_Abstract
         Zend_Controller_Front::getInstance()->registerPlugin(new Sdparentalguide_Plugin_Core);
         $this->initViewHelperPath();
         $this->initActionHelperPath();
-
+        $staticBaseUrl = Zend_Registry::get('StaticBaseUrl');
         $headLink = new Zend_View_Helper_HeadLink();
-        $baseUrl = Zend_Registry::get('StaticBaseUrl');
-
         $headScript = new Zend_View_Helper_HeadScript();
-        $headLink->appendStylesheet($baseUrl . '../styles/parental.css');
-        $headScript->appendFile($baseUrl . '../scripts/parental.js');
-        $headScript->appendFile($baseUrl . 'application/modules/Sdparentalguide/externals/scripts/core.js');
+
+        $headLink->appendStylesheet($staticBaseUrl.'application/modules/Sdparentalguide/externals/build/styles/prg.bundle.css');
+        $headScript->appendFile($staticBaseUrl.'application/modules/Sdparentalguide/externals/build/scripts/prg.bundle.js');
     }
 }

@@ -27,7 +27,7 @@
 </style>
 
 <h2>
-  <?php echo $this->translate("Parental Guidance Customizations") ?>
+  <?= $this->translate("Parental Guidance Customizations") ?>
 </h2>
 <?php if( count($this->navigation) ): ?>
   <div class='tabs'>
@@ -58,7 +58,7 @@
         </p>
     </div>
 <div class='admin_search'>
-  <?php echo $this->formFilter->render($this) ?>
+  <?= $this->formFilter->render($this) ?>
 </div>
 <div class="mbot10">
   <?php 
@@ -68,30 +68,30 @@
 
 <?php if( count($this->paginator) ): ?>
   <?php $creditTable = Engine_Api::_()->getDbTable('credits', 'sdparentalguide'); ?>
-  <form id='credit_form' method="post" action="<?php echo $this->url();?>" >
+  <form id='credit_form' method="post" action="<?= $this->url();?>" >
     <table class='admin_table' width="80%">
       <thead>
         <tr>
           <?php $class = ( $this->order == 'displayname' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-          <th class="<?php echo $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('username', 'ASC');"><?php echo $this->translate("User Name") ?></a></th>
+          <th class="<?= $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('username', 'ASC');"><?= $this->translate("User Name") ?></a></th>
           <?php $class = ( $this->order == 'firstname' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-          <th class="<?php echo $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('displayname', 'ASC');"><?php echo $this->translate("First Name") ?></a></th>
+          <th class="<?= $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('displayname', 'ASC');"><?= $this->translate("First Name") ?></a></th>
           <?php $class = ( $this->order == 'lastname' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-          <th class="<?php echo $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('lastname', 'ASC');"><?php echo $this->translate("Last Name") ?></a></th>
+          <th class="<?= $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('lastname', 'ASC');"><?= $this->translate("Last Name") ?></a></th>
           <?php $class = ( $this->order == 'email' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-          <th class="<?php echo $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('email', 'ASC');"><?php echo $this->translate("Email") ?></a></th>
+          <th class="<?= $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('email', 'ASC');"><?= $this->translate("Email") ?></a></th>
           <?php $class = ( $this->order == 'level_id' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-          <th class="<?php echo $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('level_id', 'ASC');"><?php echo $this->translate("Member Level") ?></a></th>
+          <th class="<?= $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('level_id', 'ASC');"><?= $this->translate("Member Level") ?></a></th>
           <?php $class = ( $this->order == 'topic' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-          <th class="<?php echo $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('topic', 'ASC');"><?php echo $this->translate("Custom_Topic") ?></a></th>
+          <th class="<?= $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('topic', 'ASC');"><?= $this->translate("Custom_Topic") ?></a></th>
           <?php $class = ( $this->order == 'credit' ? 'admin_table_ordering admin_table_direction_' . strtolower($this->order_direction) : '' ) ?>
-          <th class="<?php echo $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('credit', 'ASC');"><?php echo $this->translate("Credit Values") ?></a></th>                                          
+          <th class="<?= $class ?>"  align="center"><a href="javascript:void(0);" onclick="javascript:changeOrder('credit', 'ASC');"><?= $this->translate("Credit Values") ?></a></th>                                          
         </tr> 
       </thead>
       <tbody>
         <?php foreach ($this->paginator as $item): ?>
         <tr>
-          <td><?php echo $this->htmlLink($item->getOwner()->getHref(),$this->string()->stripTags($item->getOwner()->getTitle()), array('title' => $item->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
+          <td><?= $this->htmlLink($item->getOwner()->getHref(),$this->string()->stripTags($item->getOwner()->getTitle()), array('title' => $item->getOwner()->getTitle(), 'target' => '_blank')); ?></td>
           <td>
             <?php $firstName = $creditTable->getFieldValue($item->user_id, 3);
                   if($firstName){ echo $firstName; }
@@ -102,7 +102,7 @@
                   if($lastName){ echo $lastName; }
             ?>
           </td>
-          <td> <?php echo $item->email; ?> </td>
+          <td> <?= $item->email; ?> </td>
           <td>
             <?php $memberLevel = $creditTable->getUserLevel($item->level_id);
                   if($memberLevel){ echo $memberLevel; }
@@ -188,7 +188,7 @@ $this->headScript()
   en4.core.runonce.add(function()
   {
 
-   contentAutocomplete = new Autocompleter.Request.JSON('username', '<?php echo $this->url(array('module' => 'sitecredit', 'controller' => 'user', 'action' => 'getallusers'), 'admin_default', true) ?>', {
+   contentAutocomplete = new Autocompleter.Request.JSON('username', '<?= $this->url(array('module' => 'sitecredit', 'controller' => 'user', 'action' => 'getallusers'), 'admin_default', true) ?>', {
     'postVar' : 'search',
     'postData' : {'user_ids': $('user_id').value},
     'minLength': 1,
@@ -239,8 +239,8 @@ $this->headScript()
 
 
 <script type="text/javascript">
-  var currentOrder = '<?php echo $this->order ?>';
-  var currentOrderDirection = '<?php echo $this->order_direction ?>';
+  var currentOrder = '<?= $this->order ?>';
+  var currentOrderDirection = '<?= $this->order_direction ?>';
   var changeOrder = function (order, default_direction) {
         // Just change direction
         if (order == currentOrder) {

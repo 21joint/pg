@@ -23,7 +23,8 @@
             <div class="col-12 px-0 px-sm-3">
               <div class="row no-gutters cards-grid reviews"
                    id="featuredReviewsGrid"
-                   data-filter="featured">
+                   data-filter="featured"
+                   data-loader>
               </div>
             </div>
             <!--            <div class="col-12 px-0">-->
@@ -399,7 +400,7 @@
         '                    <div class="card card-review h-100 d-flex flex-column" data-id="' + review.reviewID + '">\n' +
         '                      <div class="card-header p-0 overflow-hidden">\n' +
         '                        <div class="card-actions">\n' +
-        '                          <ul class="row no-gutters mb-0">\n' +
+        '                          <ul class="row list-unstyled no-gutters mb-0">\n' +
         '                            <li class="col"><a class="d-flex justify-content-center align-items-center text-white"\n' +
         '                                               role="button"><span class="far fa-heart"></span></a></li>\n' +
         '                            <li class="col"><a class="d-flex justify-content-center align-items-center text-white"\n' +

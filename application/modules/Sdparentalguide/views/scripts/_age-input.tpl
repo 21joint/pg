@@ -6,41 +6,41 @@
         <div class="add-gender age-range p-0 mb-4" id="add-gender">
             <div class="text-center age small add-gender-items px-2">
                 <a href="javascript:void(0)" onclick="selectAge('18', this)" class="d-block w-100 py-4">
-                    <?php echo $this->translate('Under 18'); ?>
+                    <?= $this->translate('Under 18'); ?>
                 </a>
             </div>
             <div class="text-center age small add-gender-items px-2">
                 <a href="javascript:void(0)" onclick="selectAge('18-24', this)" class="d-block w-100 py-4">
-                    <?php echo $this->translate('18-24'); ?>
+                    <?= $this->translate('18-24'); ?>
                 </a>
             </div>
             <div class="text-center age small add-gender-items px-2">
                 <a href="javascript:void(0)" onclick="selectAge('25-34', this)" class="d-block w-100 py-4">
-                    <?php echo $this->translate('25-34'); ?>
+                    <?= $this->translate('25-34'); ?>
                 </a>
             </div>
             <div class="text-center age small add-gender-items px-2">
                 <a href="javascript:void(0)" onclick="selectAge('35-44', this)" class="d-block w-100 py-4">
-                    <?php echo $this->translate('35-44'); ?>
+                    <?= $this->translate('35-44'); ?>
                 </a>
             </div>
             <div class="text-center age small add-gender-items px-2">
                 <a href="javascript:void(0)" onclick="selectAge('45-54', this)" class="d-block w-100 py-4">
-                    <?php echo $this->translate('45-54'); ?>
+                    <?= $this->translate('45-54'); ?>
                 </a>
             </div>
             <div class="text-center age small add-gender-items px-2">
                 <a href="javascript:void(0)" onclick="selectAge('55-64', this)" class="d-block w-100 py-4">
-                    <?php echo $this->translate('55-64'); ?>
+                    <?= $this->translate('55-64'); ?>
                 </a>
             </div>
             <div class="text-center age small add-gender-items px-2">
                 <a href="javascript:void(0)" onclick="selectAge('65', this)" class="d-block w-100 py-4">
-                    <?php echo $this->translate('65+'); ?>
+                    <?= $this->translate('65+'); ?>
                 </a>
             </div>
             <input type="hidden" name="profile_age_range" id="profile_age_range" value=""/>
-            <input type="hidden" name="<?php echo $this->name; ?>" id="<?php echo $this->name; ?>" class="field_container">
+            <input type="hidden" name="<?= $this->name; ?>" id="<?= $this->name; ?>" class="field_container">
         </div>
     </div> <!-- end of add-gender -->
 </div>
@@ -50,7 +50,7 @@
 function selectAge(type, e) {
 
     document.getElementById('profile_age_range').value = type;
-    document.getElementById('<?php echo $this->name; ?>').value = type;
+    document.getElementById('<?= $this->name; ?>').value = type;
 
     let addAgeRangeItems = document.getElementsByClassName('add-gender-items');
     for(var i = 0; i < addAgeRangeItems.length; i++) {
@@ -61,7 +61,7 @@ function selectAge(type, e) {
 
 en4.core.runonce.add(function() {
     let addAgeRangeItems = document.getElementsByClassName('add-gender-items age');
-    let currentAge = '<?php echo $this->subject()->gg_age_range; ?>';
+    let currentAge = '<?= $this->subject()->gg_age_range; ?>';
     for(var i = 0; i < addAgeRangeItems.length; i++) {
 
         let age = addAgeRangeItems[i].getElement('a').innerText;
@@ -70,7 +70,7 @@ en4.core.runonce.add(function() {
         if(age == currentAge) {
             addAgeRangeItems[i].classList.add('selected-age');
             document.getElementById('profile_age_range').value = type;
-            document.getElementById('<?php echo $this->name; ?>').value = type;
+            document.getElementById('<?= $this->name; ?>').value = type;
         }
     }
 });

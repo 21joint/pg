@@ -18,7 +18,7 @@
       ->appendFile($this->layout()->staticBaseUrl . 'externals/autocompleter/Autocompleter.Local.js')
       ->appendFile($this->layout()->staticBaseUrl . 'externals/autocompleter/Autocompleter.Request.js');
 ?>
-<h2><?php echo $this->translate("Parental Guidance Customizations") ?></h2>
+<h2><?= $this->translate("Parental Guidance Customizations") ?></h2>
 
 <?php if( count($this->navigation) ): ?>
   <div class='tabs'>
@@ -31,8 +31,8 @@
 <?php endif; ?>
 
 <script type="text/javascript">
-  var currentOrder = '<?php echo $this->order ?>';
-  var currentOrderDirection = '<?php echo $this->order_direction ?>';
+  var currentOrder = '<?= $this->order ?>';
+  var currentOrderDirection = '<?= $this->order_direction ?>';
   var changeOrder = function(order, default_direction){
     // Just change direction
     if( order == currentOrder ) {
@@ -49,7 +49,7 @@ function multiModify()
   var multimodify_form = $('multimodify_form');
   if (multimodify_form.submit_button.value == 'delete')
   {
-    return confirm('<?php echo $this->string()->escapeJavascript($this->translate("Are you sure you want to delete the selected user accounts?")) ?>');
+    return confirm('<?= $this->string()->escapeJavascript($this->translate("Are you sure you want to delete the selected user accounts?")) ?>');
   }
 }
 
@@ -68,7 +68,7 @@ function loadCategories(element){
   var loader = en4.core.loader.clone();
   loader.addClass("sd_loader");
   
-  var url = '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'get-categories'), 'admin_default', true) ?>';
+  var url = '<?= $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'get-categories'), 'admin_default', true) ?>';
   var req = new Request.JSON({
       url: url,
       data: {
@@ -107,7 +107,7 @@ en4.core.runonce.add(function(){
     var loader = en4.core.loader.clone();
     loader.addClass("sd_loader");
     
-    var autoCompleter = new Autocompleter.Request.JSON('username', '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'suggest'), 'admin_default', true) ?>', {
+    var autoCompleter = new Autocompleter.Request.JSON('username', '<?= $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'suggest'), 'admin_default', true) ?>', {
         'minLength': 3,
         'delay' : 250,
         'selectMode': 'pick',
@@ -161,7 +161,7 @@ en4.core.runonce.add(function(){
         startSearch();
     };
 
-    var autoCompleter2 = new Autocompleter.Request.JSON('level', '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'suggest-level'), 'admin_default', true) ?>', {
+    var autoCompleter2 = new Autocompleter.Request.JSON('level', '<?= $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'suggest-level'), 'admin_default', true) ?>', {
         'minLength': 3,
         'delay' : 250,
         'selectMode': 'pick',
@@ -232,7 +232,7 @@ function approveSelected(element){
   data.format = 'html';
   data.listing_ids = ids;
   
-  var url = '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'approve-listing'), 'admin_default', true) ?>';
+  var url = '<?= $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'approve-listing'), 'admin_default', true) ?>';
   var req = new Request.HTML({
       url: url,
       data: data,
@@ -274,7 +274,7 @@ function denySelected(element){
   data.format = 'html';
   data.listing_ids = ids;
   
-  var url = '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'deny-listing'), 'admin_default', true) ?>';
+  var url = '<?= $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'deny-listing'), 'admin_default', true) ?>';
   var req = new Request.HTML({
       url: url,
       data: data,
@@ -309,7 +309,7 @@ function startSearch(){
       window.searchRequest.cancel();
   }
   data.format = 'html';
-  var url = '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'listings'), 'admin_default', true) ?>';
+  var url = '<?= $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'listings'), 'admin_default', true) ?>';
   window.searchRequest = new Request.HTML({
       url: url,
       data: data,
@@ -339,7 +339,7 @@ function startSearch(){
   window.searchRequest.send();  
 }
 function deleteSelected(element){
-  var confirm = window.confirm("<?php echo $this->translate('Are you sure you want to delete selected listings?'); ?>");
+  var confirm = window.confirm("<?= $this->translate('Are you sure you want to delete selected listings?'); ?>");
   if(!confirm){
       return;
   }
@@ -359,7 +359,7 @@ function deleteSelected(element){
   data.format = 'html';
   data.listing_ids = ids;
   
-  var url = '<?php echo $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'delete-listing'), 'admin_default', true) ?>';
+  var url = '<?= $this->url(array('module' => 'sdparentalguide','controller' => 'manage','action' => 'delete-listing'), 'admin_default', true) ?>';
   var req = new Request.HTML({
       url: url,
       data: data,
@@ -397,9 +397,9 @@ function featureListing(element,status){
           listing_id: id.get("data-id")
       },
       onComplete: function(responseJSON){
-          var newHref = '<?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => ""), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Seaocore/externals/images/unfeatured.gif', '', array('title' => $this->translate('Make Featured'),'onclick' => 'featureListing(this,1);'))) ?>';
+          var newHref = '<?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => ""), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Seaocore/externals/images/unfeatured.gif', '', array('title' => $this->translate('Make Featured'),'onclick' => 'featureListing(this,1);'))) ?>';
           if(status == 1){
-              newHref = '<?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => ""), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Seaocore/externals/images/featured.gif', '', array('title' => $this->translate('Make Un-featured'),'onclick' => 'featureListing(this,0);'))) ?>';
+              newHref = '<?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => ""), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Seaocore/externals/images/featured.gif', '', array('title' => $this->translate('Make Un-featured'),'onclick' => 'featureListing(this,0);'))) ?>';
           }
           $(element).getParent("td").set("html",newHref);
       }
@@ -418,9 +418,9 @@ function sponsoredListing(element,status){
           listing_id: id.get("data-id")
       },
       onComplete: function(responseJSON){
-          var newHref = '<?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => ""), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Seaocore/externals/images/unsponsored.png', '', array('title' => $this->translate('Make Sponsored'),'onclick' => 'sponsoredListing(this,1);'))) ?>';
+          var newHref = '<?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => ""), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Seaocore/externals/images/unsponsored.png', '', array('title' => $this->translate('Make Sponsored'),'onclick' => 'sponsoredListing(this,1);'))) ?>';
           if(status == 1){
-              newHref = '<?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => ""), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Seaocore/externals/images/sponsored.png', '', array('title' => $this->translate('Make Unsponsored'),'onclick' => 'sponsoredListing(this,0);'))) ?>';
+              newHref = '<?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => ""), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Seaocore/externals/images/sponsored.png', '', array('title' => $this->translate('Make Unsponsored'),'onclick' => 'sponsoredListing(this,0);'))) ?>';
           }
           $(element).getParent("td").set("html",newHref);
       }
@@ -439,9 +439,9 @@ function markAsNew(element,status){
           listing_id: id.get("data-id")
       },
       onComplete: function(responseJSON){
-          var newHref = '<?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => ""), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Sitereview/externals/images/icons/new-disable.png', '', array('title' => $this->translate('Set New Label'),'onclick' => 'markAsNew(this,1);'))) ?>';
+          var newHref = '<?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => ""), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Sitereview/externals/images/icons/new-disable.png', '', array('title' => $this->translate('Set New Label'),'onclick' => 'markAsNew(this,1);'))) ?>';
           if(status == 1){
-              newHref = '<?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => ""), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Sitereview/externals/images/icons/new.png', '', array('title' => $this->translate('Remove New Label'),'onclick' => 'markAsNew(this,0);'))) ?>';
+              newHref = '<?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => ""), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Sitereview/externals/images/icons/new.png', '', array('title' => $this->translate('Remove New Label'),'onclick' => 'markAsNew(this,0);'))) ?>';
           }
           $(element).getParent("td").set("html",newHref);
       }
@@ -460,9 +460,9 @@ function approveListing(element,status){
           listing_id: id.get("data-id")
       },
       onComplete: function(responseJSON){
-          var newHref = '<?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => ""), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Seaocore/externals/images/disapproved.gif', '', array('title' => $this->translate('Make Approved'),'onclick' => 'approveListing(this,1);'))) ?>';
+          var newHref = '<?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => ""), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Seaocore/externals/images/disapproved.gif', '', array('title' => $this->translate('Make Approved'),'onclick' => 'approveListing(this,1);'))) ?>';
           if(status == 1){
-              newHref = '<?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => ""), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Seaocore/externals/images/approved.gif', '', array('title' => $this->translate('Make Dis-Approved'),'onclick' => 'approveListing(this,0);'))) ?>';
+              newHref = '<?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => ""), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Seaocore/externals/images/approved.gif', '', array('title' => $this->translate('Make Dis-Approved'),'onclick' => 'approveListing(this,0);'))) ?>';
           }
           $(element).getParent("td").set("html",newHref);
       }
@@ -481,9 +481,9 @@ function closeListing(element,status){
           listing_id: id.get("data-id")
       },
       onComplete: function(responseJSON){
-          var newHref = '<?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => ""), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Sitereview/externals/images/unclose.png', '', array('title' => $this->translate('Make Closed'),'onclick' => 'closeListing(this,0);'))) ?>';
+          var newHref = '<?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => ""), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Sitereview/externals/images/unclose.png', '', array('title' => $this->translate('Make Closed'),'onclick' => 'closeListing(this,0);'))) ?>';
           if(status == 1){
-              newHref = '<?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => ""), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Sitereview/externals/images/close.png', '', array('title' => $this->translate('Make Open'),'onclick' => 'closeListing(this,1);'))) ?>';
+              newHref = '<?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => ""), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Sitereview/externals/images/close.png', '', array('title' => $this->translate('Make Open'),'onclick' => 'closeListing(this,1);'))) ?>';
           }
           $(element).getParent("td").set("html",newHref);
       }
@@ -496,20 +496,20 @@ function closeListing(element,status){
     <div class="sd_top_search" style="">
         <form>
             <div class='sd_search_button'>
-                <button class="button" type='button' onclick="startSearch(this);"><?php echo $this->translate("Search"); ?></button>
+                <button class="button" type='button' onclick="startSearch(this);"><?= $this->translate("Search"); ?></button>
             </div>
             <div class="sd_approve_selected">
-                <label id="sd_approve_selected" class="button" onclick='approveSelected(this);'><?php echo $this->translate("Approve All Selected"); ?></label>
+                <label id="sd_approve_selected" class="button" onclick='approveSelected(this);'><?= $this->translate("Approve All Selected"); ?></label>
             </div>
             <div class="sd_deny_selected">
-                <label id="sd_deny_selected" class="button" onclick="denySelected(this);"><?php echo $this->translate("Deny All Selected"); ?></label>
+                <label id="sd_deny_selected" class="button" onclick="denySelected(this);"><?= $this->translate("Deny All Selected"); ?></label>
             </div>   
             <div class="sd_delete_selected">
-                <label id="sd_delete_selected" class="button" onclick="deleteSelected(this);"><?php echo $this->translate("Delete Selected"); ?></label>
+                <label id="sd_delete_selected" class="button" onclick="deleteSelected(this);"><?= $this->translate("Delete Selected"); ?></label>
             </div> 
         </form>
     </div>
-    <?php echo $this->formFilter->render($this) ?>
+    <?= $this->formFilter->render($this) ?>
 </div>
 
 <br />
@@ -517,11 +517,11 @@ function closeListing(element,status){
 <div class='admin_results'>
   <div>
     <?php $count = $this->paginator->getTotalItemCount() ?>
-    <?php echo $this->translate(array("%s listing found", "%s listings found", $count),
+    <?= $this->translate(array("%s listing found", "%s listings found", $count),
         $this->locale()->toNumber($count)) ?>
   </div>
   <div>
-    <?php echo $this->paginationControl($this->paginator, null, null, array(
+    <?= $this->paginationControl($this->paginator, null, null, array(
       'pageAsQuery' => true,
       'query' => $this->formValues,
       //'params' => $this->formValues,
@@ -532,35 +532,35 @@ function closeListing(element,status){
 <br />
 
 <div class="admin_table_form">
-<form id='multimodify_form' method="post" action="<?php echo $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
+<form id='multimodify_form' method="post" action="<?= $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
   <table class='admin_table'>
     <thead>
       <tr>
         <th style='width: 100px;' class='admin_table_centered'>
             <input onclick="selectAll()" type='checkbox' class='checkbox' id="select-all" style="display:none;">
-            <label for="select-all" class='admin_table_centered'><?php echo $this->translate("Select"); ?></label>
+            <label for="select-all" class='admin_table_centered'><?= $this->translate("Select"); ?></label>
         </th>
-        <th style='width: 5%;' class='admin_table_centered'><?php echo $this->translate("User ID") ?></th>
-        <th style='width: 5%;' class='admin_table_centered'><?php echo $this->translate("Display Name") ?></th>
-        <th style='width: 5%;' class='admin_table_centered'><?php echo $this->translate("Username") ?></th>
-        <th style='width: 5%;' class='admin_table_centered'><?php echo $this->translate("Email") ?></th>
-        <th style='width: 5%;' class='admin_table_centered'><?php echo $this->translate("User Level") ?></th>        
-        <th style='width: 5%;' class='admin_table_centered'><?php echo $this->translate("User Approved") ?></th>
-        <th style='width: 5%;' class='admin_table_centered'><?php echo $this->translate("Listing ID") ?></th>
-        <th style='width: 5%;' class='admin_table_centered'><?php echo $this->translate("Listing Title") ?></th>
-        <th style='width: 5%;' class='admin_table_centered'><?php echo $this->translate("Listing Type") ?></th>
-        <th style='width: 5%;' class='admin_table_centered'><?php echo $this->translate("Listing Category") ?></th>
-        <th style='width: 5%;' class='admin_table_centered'><?php echo $this->translate("Listing Sub-Category") ?></th>
-        <th style='width: 5%;' class='admin_table_centered'><?php echo $this->translate("Listing") ?></th>
-        <th style='width: 5%;' class='admin_table_centered'><?php echo $this->translate("Views") ?></th>
-        <th style='width: 5%;' class='admin_table_centered'><?php echo $this->translate("Comments") ?></th>
-        <th style='width: 5%;' class='admin_table_centered'><?php echo $this->translate("Likes") ?></th>
-        <th style='width: 5%;' class='admin_table_centered'><?php echo $this->translate("Featured") ?></th>
-        <th style='width: 5%;' class='admin_table_centered'><?php echo $this->translate("Sponsored") ?></th>
-        <th style='width: 5%;' class='admin_table_centered'><?php echo $this->translate("New") ?></th>        
-        <th style='width: 5%;' class='admin_table_centered'><?php echo $this->translate("Approved") ?></th>
-        <th style='width: 5%;' class='admin_table_centered'><?php echo $this->translate("Closed") ?></th>
-        <th style='width: 5%;' class='admin_table_centered'><?php echo $this->translate("Listing Info") ?></th>
+        <th style='width: 5%;' class='admin_table_centered'><?= $this->translate("User ID") ?></th>
+        <th style='width: 5%;' class='admin_table_centered'><?= $this->translate("Display Name") ?></th>
+        <th style='width: 5%;' class='admin_table_centered'><?= $this->translate("Username") ?></th>
+        <th style='width: 5%;' class='admin_table_centered'><?= $this->translate("Email") ?></th>
+        <th style='width: 5%;' class='admin_table_centered'><?= $this->translate("User Level") ?></th>        
+        <th style='width: 5%;' class='admin_table_centered'><?= $this->translate("User Approved") ?></th>
+        <th style='width: 5%;' class='admin_table_centered'><?= $this->translate("Listing ID") ?></th>
+        <th style='width: 5%;' class='admin_table_centered'><?= $this->translate("Listing Title") ?></th>
+        <th style='width: 5%;' class='admin_table_centered'><?= $this->translate("Listing Type") ?></th>
+        <th style='width: 5%;' class='admin_table_centered'><?= $this->translate("Listing Category") ?></th>
+        <th style='width: 5%;' class='admin_table_centered'><?= $this->translate("Listing Sub-Category") ?></th>
+        <th style='width: 5%;' class='admin_table_centered'><?= $this->translate("Listing") ?></th>
+        <th style='width: 5%;' class='admin_table_centered'><?= $this->translate("Views") ?></th>
+        <th style='width: 5%;' class='admin_table_centered'><?= $this->translate("Comments") ?></th>
+        <th style='width: 5%;' class='admin_table_centered'><?= $this->translate("Likes") ?></th>
+        <th style='width: 5%;' class='admin_table_centered'><?= $this->translate("Featured") ?></th>
+        <th style='width: 5%;' class='admin_table_centered'><?= $this->translate("Sponsored") ?></th>
+        <th style='width: 5%;' class='admin_table_centered'><?= $this->translate("New") ?></th>        
+        <th style='width: 5%;' class='admin_table_centered'><?= $this->translate("Approved") ?></th>
+        <th style='width: 5%;' class='admin_table_centered'><?= $this->translate("Closed") ?></th>
+        <th style='width: 5%;' class='admin_table_centered'><?= $this->translate("Listing Info") ?></th>
       </tr>
     </thead>
     <tbody>
@@ -571,111 +571,111 @@ function closeListing(element,status){
           $user = Engine_Api::_()->getItem('user', $item->owner_id);
           if(empty($user)) { continue; }
           ?>
-          <tr data-id='<?php echo $item->getIdentity(); ?>'>
-            <td><input data-id='<?php echo $item->getIdentity(); ?>' value=<?php echo $item->getIdentity();?> type='checkbox' class='checkbox'></td>
-            <td><?php echo $this->htmlLink($user->getHref(),
+          <tr data-id='<?= $item->getIdentity(); ?>'>
+            <td><input data-id='<?= $item->getIdentity(); ?>' value=<?= $item->getIdentity();?> type='checkbox' class='checkbox'></td>
+            <td><?= $this->htmlLink($user->getHref(),
                   $this->string()->truncate($user->getIdentity(), 10),
                   array('target' => '_blank'))?></td>
             <td class='admin_table_centered admin_table_bold'>
-              <?php echo $this->htmlLink($user->getHref(),
+              <?= $this->htmlLink($user->getHref(),
                   $this->string()->truncate($user->getTitle(), 10),
                   array('target' => '_blank'))?>
             </td>
             <td class='admin_table_centered admin_table_bold'>
-              <?php echo $this->htmlLink($user->getHref(),
+              <?= $this->htmlLink($user->getHref(),
                   $this->string()->truncate($user->username, 10),
                   array('target' => '_blank'))?>
             </td>
             <td class='admin_table_centered admin_table_bold'>
-                <a href="mailto:<?php echo $user->email; ?>"><?php echo $user->email; ?></a>
+                <a href="mailto:<?= $user->email; ?>"><?= $user->email; ?></a>
             </td>
             <td class="admin_table_centered nowrap">
-              <?php echo $this->string()->truncate(Engine_Api::_()->getItem("authorization_level",$user->level_id)->getTitle(),10); ?>
+              <?= $this->string()->truncate(Engine_Api::_()->getItem("authorization_level",$user->level_id)->getTitle(),10); ?>
             </td>
-            <td class='admin_table_centered admin_table_user'><?php echo ( $user->approved ? $this->translate('Yes') : 'No' ); ?></td>
+            <td class='admin_table_centered admin_table_user'><?= ( $user->approved ? $this->translate('Yes') : 'No' ); ?></td>
             <td class='admin_table_centered admin_table_bold'>
-              <?php echo $this->htmlLink($item->getHref(),
+              <?= $this->htmlLink($item->getHref(),
                   $this->string()->truncate($item->getIdentity(), 10),
                   array('target' => '_blank'))?>
             </td>
             <td class='admin_table_centered admin_table_bold'>
-              <?php echo $this->htmlLink($item->getHref(),
+              <?= $this->htmlLink($item->getHref(),
                   $this->string()->truncate($item->getTitle(), 10),
                   array('target' => '_blank'))?>
             </td>
             <td class="admin_table_centered nowrap">
-              <?php echo $item->getListingType()->getTitle(); ?>
+              <?= $item->getListingType()->getTitle(); ?>
             </td>
             <td class='admin_table_centered'>
                 <?php if(($category = $item->getCategory())): ?> 
-                    <?php echo $category->getTitle(); ?>
+                    <?= $category->getTitle(); ?>
                 <?php endif; ?>
             </td>
             <td class='admin_table_centered'>
                 <?php if(($subcategory = $catTable->getCategory($item->subcategory_id))): ?> 
-                    <?php echo $subcategory->getTitle(); ?>
+                    <?= $subcategory->getTitle(); ?>
                 <?php endif; ?>
             </td>
             <td class='admin_table_centered'>
                 
             </td>
             <td class='admin_table_centered'>
-                <?php echo $item->view_count; ?>
+                <?= $item->view_count; ?>
             </td>
             <td class='admin_table_centered'>
-                <?php echo $item->comment_count; ?>
+                <?= $item->comment_count; ?>
             </td>
             <td class='admin_table_centered'>
-                <?php echo $item->like_count; ?>
+                <?= $item->like_count; ?>
             </td>
             <?php if($item->featured == 1):?> 
-                <td align="center" class="admin_table_centered"> <?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => $item->listing_id), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Seaocore/externals/images/featured.gif', '', array('title' => $this->translate('Make Un-featured'),'onclick' => 'featureListing(this,0);'))) ?></td>
+                <td align="center" class="admin_table_centered"> <?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => $item->listing_id), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Seaocore/externals/images/featured.gif', '', array('title' => $this->translate('Make Un-featured'),'onclick' => 'featureListing(this,0);'))) ?></td>
             <?php else: ?>
-		<td align="center" class="admin_table_centered"><?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => $item->listing_id), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Seaocore/externals/images/unfeatured.gif', '', array('title' => $this->translate('Make Featured'),'onclick' => 'featureListing(this,1);'))) ?></td>
+		<td align="center" class="admin_table_centered"><?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => $item->listing_id), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Seaocore/externals/images/unfeatured.gif', '', array('title' => $this->translate('Make Featured'),'onclick' => 'featureListing(this,1);'))) ?></td>
             <?php endif; ?>
             <?php if($item->sponsored == 1):?>
-                <td align="center" class="admin_table_centered"> <?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => $item->listing_id), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Seaocore/externals/images/sponsored.png', '', array('title' => $this->translate('Make Unsponsored'),'onclick' => 'sponsoredListing(this,0);'))); ?></td>
+                <td align="center" class="admin_table_centered"> <?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => $item->listing_id), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Seaocore/externals/images/sponsored.png', '', array('title' => $this->translate('Make Unsponsored'),'onclick' => 'sponsoredListing(this,0);'))); ?></td>
             <?php else: ?>
-                <td align="center" class="admin_table_centered"> <?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => $item->listing_id), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Seaocore/externals/images/unsponsored.png', '', array('title' => $this->translate('Make Sponsored'),'onclick' => 'sponsoredListing(this,1);'))); ?>
+                <td align="center" class="admin_table_centered"> <?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => $item->listing_id), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Seaocore/externals/images/unsponsored.png', '', array('title' => $this->translate('Make Sponsored'),'onclick' => 'sponsoredListing(this,1);'))); ?>
             <?php endif; ?>   
             <?php if($item->newlabel == 1):?> 
-		<td align="center" class="admin_table_centered"><?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => $item->listing_id), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Sitereview/externals/images/icons/new.png', '', array('title' => $this->translate('Remove New Label'),'onclick' => 'markAsNew(this,0);'))) ?></td>
+		<td align="center" class="admin_table_centered"><?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => $item->listing_id), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Sitereview/externals/images/icons/new.png', '', array('title' => $this->translate('Remove New Label'),'onclick' => 'markAsNew(this,0);'))) ?></td>
             <?php else: ?>
-		<td align="center" class="admin_table_centered"> <?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => $item->listing_id), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Sitereview/externals/images/icons/new-disable.png', '', array('title' => $this->translate('Set New Label'),'onclick' => 'markAsNew(this,1);'))) ?></td>
+		<td align="center" class="admin_table_centered"> <?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => $item->listing_id), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Sitereview/externals/images/icons/new-disable.png', '', array('title' => $this->translate('Set New Label'),'onclick' => 'markAsNew(this,1);'))) ?></td>
             <?php endif; ?>
             <?php if($item->approved == 1):?>
-                <td align="center" class="admin_table_centered"> <?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => $item->listing_id), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Seaocore/externals/images/approved.gif', '', array('title' => $this->translate('Make Dis-Approved'),'onclick' => 'approveListing(this,0);'))) ?></td>
+                <td align="center" class="admin_table_centered"> <?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => $item->listing_id), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Seaocore/externals/images/approved.gif', '', array('title' => $this->translate('Make Dis-Approved'),'onclick' => 'approveListing(this,0);'))) ?></td>
             <?php else: ?>
-                <td align="center" class="admin_table_centered"> <?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => $item->listing_id), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Seaocore/externals/images/disapproved.gif', '', array('title' => $this->translate('Make Approved'),'onclick' => 'approveListing(this,1);'))) ?></td>
+                <td align="center" class="admin_table_centered"> <?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => $item->listing_id), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Seaocore/externals/images/disapproved.gif', '', array('title' => $this->translate('Make Approved'),'onclick' => 'approveListing(this,1);'))) ?></td>
             <?php endif; ?>
 
             <?php if($item->closed == 0):?>
-                <td align="center" class="admin_table_centered">  <?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => $item->listing_id), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Sitereview/externals/images/unclose.png', '', array('title'=> $this->translate('Make Closed'),'onclick' => 'closeListing(this,1);'))) ?>
+                <td align="center" class="admin_table_centered">  <?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => $item->listing_id), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Sitereview/externals/images/unclose.png', '', array('title'=> $this->translate('Make Closed'),'onclick' => 'closeListing(this,1);'))) ?>
             <?php else: ?>
-                <td align="center" class="admin_table_centered"> <?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => $item->listing_id), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Sitereview/externals/images/close.png', '', array('title'=> $this->translate('Make Open'),'onclick' => 'closeListing(this,0);'))) ?>
+                <td align="center" class="admin_table_centered"> <?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sdparentalguide', 'controller' => 'manage', 'action' => 'update-listing', 'listing_id' => $item->listing_id), $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Sitereview/externals/images/close.png', '', array('title'=> $this->translate('Make Open'),'onclick' => 'closeListing(this,0);'))) ?>
             <?php endif; ?>  
             <td>
-                <?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sitereview', 'controller' => 'manage', 'action' => 'detail', 'id' => $item->listing_id), $this->translate('details'), array('class' => 'smoothbox')) ?> |
-								<a href="<?php echo $this->url(array('listing_id' => $item->listing_id, 'slug' => $item->getSlug()), "sitereview_entry_view_listtype_$item->listingtype_id") ?>"  target='_blank'><?php echo $this->translate('view'); ?></a> |
-								<?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sitereview', 'controller' => 'general', 'action' => 'change-owner', 'listing_id' => $item->listing_id), $this->translate('change owner'), array('class' => 'smoothbox')) ?>
+                <?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sitereview', 'controller' => 'manage', 'action' => 'detail', 'id' => $item->listing_id), $this->translate('details'), array('class' => 'smoothbox')) ?> |
+								<a href="<?= $this->url(array('listing_id' => $item->listing_id, 'slug' => $item->getSlug()), "sitereview_entry_view_listtype_$item->listingtype_id") ?>"  target='_blank'><?= $this->translate('view'); ?></a> |
+								<?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sitereview', 'controller' => 'general', 'action' => 'change-owner', 'listing_id' => $item->listing_id), $this->translate('change owner'), array('class' => 'smoothbox')) ?>
                                 
                               <?php if(Engine_Api::_()->hasModuleBootstrap('sitereviewlistingtype') && Engine_Api::_()->getDbTable('listingtypes', 'sitereview')->getListingTypeCount() > 1): ?> | 
-                                <?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sitereview', 'controller' => 'general', 'action' => 'change-listingtype', 'listing_id' => $item->listing_id), $this->translate('change listing type'), array('class' => 'smoothbox')) ?>  
+                                <?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sitereview', 'controller' => 'general', 'action' => 'change-listingtype', 'listing_id' => $item->listing_id), $this->translate('change listing type'), array('class' => 'smoothbox')) ?>  
                               <?php endif; ?>  
                                 
 							  <?php  if (Engine_Api::_()->sitereview()->hasPackageEnable($item->listingtype_id)) : ?>
                 |
-								<?php echo $this->htmlLink(array('route' => "sitereview_package_listtype_$item->listingtype_id", 'action' => 'update-package', 'listing_id' => $item->listing_id), $this->translate('edit package'), array(
+								<?= $this->htmlLink(array('route' => "sitereview_package_listtype_$item->listingtype_id", 'action' => 'update-package', 'listing_id' => $item->listing_id), $this->translate('edit package'), array(
 									'target' => '_blank',
 								)) ?>   
         <?php if(Engine_Api::_()->sitereviewpaidlisting()->canAdminShowRenewLink($item->listing_id)):?> |
-          <?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sitereview', 'controller' => 'general', 'action' => 'renew', 'id' => $item->listing_id), $this->translate('renew'), array(
+          <?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sitereview', 'controller' => 'general', 'action' => 'renew', 'id' => $item->listing_id), $this->translate('renew'), array(
           'class' => 'smoothbox',
           )) ?>
        <?php endif; ?>
          <?php endif;?>
          |
-								<?php echo $this->htmlLink(array('route' => 'admin_default', 'module' => 'sitereview', 'controller' => 'general', 'action' => 'delete', 'listing_id' => $item->listing_id), $this->translate('delete'), array(
+								<?= $this->htmlLink(array('route' => 'admin_default', 'module' => 'sitereview', 'controller' => 'general', 'action' => 'delete', 'listing_id' => $item->listing_id), $this->translate('delete'), array(
 									'class' => 'smoothbox',
 								)) ?>
             </td>

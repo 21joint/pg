@@ -11,19 +11,19 @@
  */
 ?>
 
-<form method="post" class="global_form_popup" action="<?php echo $this->url(array()) ?>">
+<form method="post" class="global_form_popup" action="<?= $this->url(array()) ?>">
   <div>
-    <h3><?php echo $this->translate("Delete Alias Term?") ?></h3>
+    <h3><?= $this->translate("Delete Alias Term?") ?></h3>
     <p>
-      <?php echo $this->translate("Are you sure that you want to delete this Alias Term? It will not be recoverable after being deleted.") ?>
+      <?= $this->translate("Are you sure that you want to delete this Alias Term? It will not be recoverable after being deleted.") ?>
     </p>
     <br />
     <p>
-      <input type="hidden" name="confirm" value="<?php echo $this->badge_id?>"/>
-      <button type='submit'><?php echo $this->translate("Delete") ?></button>
-      <?php echo $this->translate("or") ?>
+      <input type="hidden" name="confirm" value="<?= $this->badge_id?>"/>
+      <button type='submit'><?= $this->translate("Delete") ?></button>
+      <?= $this->translate("or") ?>
 			<a href='javascript:void(0);' onclick='javascript:parent.Smoothbox.close()'>
-				<?php echo $this->translate("cancel") ?>
+				<?= $this->translate("cancel") ?>
 			</a>
     </p>
   </div>

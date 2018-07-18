@@ -15,7 +15,7 @@
     </p>
     <br />
     <p>
-      <input type="hidden" name="confirm" value="<?php echo $this->offer_id?>"/>
+      <input type="hidden" name="confirm" value="<?= $this->offer_id?>"/>
       <button type='submit'>Delete</button>
        or
       <a href='javascript:void(0);' onclick='javascript:parent.Smoothbox.close()'>

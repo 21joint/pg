@@ -8,8 +8,14 @@ label {
 .form-control {
   border-style: solid;
   border-width: 0 0 2px 0;
-  border-color: $primary;
   resize: none;
   border-radius: 0;
   background-color: transparent;
+  &:focus {
+    border-color: $primary;
+  }
+  &.form-control-rounded {
+    border-radius: 100px;
+    border-width: 2px;
+  }
 }

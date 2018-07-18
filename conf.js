@@ -1,14 +1,15 @@
-const Pkg = require('./package');
+const pkg = require('./package');
 const path = require('path');
 
 module.exports = {
-    title: Pkg.name,
-    description: Pkg.description,
-    modules: {
-        parental_guidance: {
-            prefix: 'prntl',
-            path: path.resolve(__dirname, 'application/modules/Sdparentalguide'),
-            main: 'index.js'
-        }
-    },
+  title: pkg.name,
+  prefix: 'prg',
+  description: pkg.description,
+  modules: {
+    prg: {
+      path: path.resolve(__dirname, 'application/modules/Sdparentalguide'),
+      dist: path.resolve(__dirname, 'application/modules/Sdparentalguide/externals/build'),
+      main: 'index.js'
+    }
+  },
 };

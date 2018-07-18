@@ -1,12 +1,14 @@
 const path = require('path');
-const Pkg = require('./package');
+const pkg = require('./package');
+const Conf = require('./conf');
 const args = require('yargs').argv;
 const glob = require('glob');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // const CopyWebpackPlugin = require("copy-webpack-plugin");
-const Modules = require('./conf').modules;
+const Modules = Conf.modules;
+
 
 const IS_DEV = (process.env.NODE_ENV === 'dev');
 
@@ -16,23 +18,21 @@ const IS_DEV = (process.env.NODE_ENV === 'dev');
 
 module.exports = {
   entry: {
-    parental: [
+    prg: [
       './application/modules/Sdparentalguide/index.js'
     ]
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'scripts/[name].js',
-    publicPath: '/'
+    filename: 'scripts/[name].bundle.js',
+    publicPath: '/',
+    path: Modules.prg.dist
   },
   module: {
     rules: [
       // JS
       {
         test: /\.js$/,
-        include: [
-          path.resolve(__dirname, 'application')
-        ],
+        exclude: /node_modules/,
         use: [
           'babel-loader'
         ]
@@ -110,13 +110,19 @@ module.exports = {
       'window.jQuery': 'jquery'
     }),
     new HtmlWebpackPlugin({
-      template: './application/modules/Sdparentalguide/widgets/reviews-home/index.tpl'
+      template: './application/modules/Sdparentalguide/widgets/header/index.tpl'
     }),
-    new HtmlWebpackPlugin({
-      template: './application/modules/Sdparentalguide/widgets/featured-reviews/index.tpl'
-    }),
+    // new HtmlWebpackPlugin({
+    //   template: './application/modules/Sdparentalguide/widgets/reviews-view/index.tpl'
+    // }),
+    // new HtmlWebpackPlugin({
+    //   template: './application/modules/Sdparentalguide/widgets/reviews-create/index.tpl'
+    // }),
+    // new HtmlWebpackPlugin({
+    //   template: './application/modules/Sdparentalguide/widgets/featured-reviews/index.tpl'
+    // }),
     new ExtractTextPlugin({
-      filename: 'styles/[name].css'
+      filename: 'styles/[name].bundle.css'
     })
   ]
 };

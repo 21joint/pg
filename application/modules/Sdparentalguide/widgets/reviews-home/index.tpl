@@ -24,7 +24,7 @@
           <div class="form-row">
             <div class="form-group col col-md-8 col-lg-9 mb-0">
               <input type="text"
-                     class="form-control form-control-lg px-4 w-100"
+                     class="form-control form-control-lg form-control-rounded px-4 w-100"
                      placeholder="Search for a specific review"/>
             </div>
             <div class="form-group col-auto col-sm-4 col-lg-3 mb-0">

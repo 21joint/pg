@@ -25,7 +25,7 @@ $this->headScript()
   en4.core.runonce.add(function()
   {
     checkDraft();
-    new Autocompleter.Request.JSON('tags', '<?php echo $this->url(array('module' => 'seaocore', 'controller' => 'index', 'action' => 'tag-suggest', 'resourceType' => 'sitereview_listing'), 'default', true) ?>', {
+    new Autocompleter.Request.JSON('tags', '<?= $this->url(array('module' => 'seaocore', 'controller' => 'index', 'action' => 'tag-suggest', 'resourceType' => 'sitereview_listing'), 'default', true) ?>', {
       'postVar' : 'text',
       'minLength': 1,
       'selectMode': 'pick',
@@ -83,7 +83,7 @@ $this->headScript()
   }
   en4.core.runonce.add(function(){
     var endtime_element = document.getElementById("end_date-wrapper");
-    if('<?php echo $this->expiry_setting; ?>' !='1'){
+    if('<?= $this->expiry_setting; ?>' !='1'){
       document.getElementById("end_date_enable-wrapper").style.display = "none";
       endtime_element.style.display = "none";
     }else{
@@ -95,7 +95,7 @@ $this->headScript()
     }
     if($('end_date-date')){
       // check end date and make it the same date if it's too
-      cal_end_date.calendars[0].start = new Date( "<?php echo (string) date('Y-m-d').' 00:00:00'; ?>" );
+      cal_end_date.calendars[0].start = new Date( "<?= (string) date('Y-m-d').' 00:00:00'; ?>" );
       // redraw calendar
       cal_end_date.navigate(cal_end_date.calendars[0], 'm', 1);
       cal_end_date.navigate(cal_end_date.calendars[0], 'm', -1);
@@ -115,15 +115,15 @@ echo $this->partial('_jsSwitch.tpl', 'fields', array(
 <?php include_once APPLICATION_PATH . '/application/modules/Sitereview/views/scripts/_DashboardNavigation.tpl'; ?>
 <div class="sr_dashboard_content">
 
-	<?php echo $this->partial('application/modules/Sitereview/views/scripts/dashboard/header.tpl', array('sitereview'=>$this->sitereview));?>
+	<?= $this->partial('application/modules/Sitereview/views/scripts/dashboard/header.tpl', array('sitereview'=>$this->sitereview));?>
 	<div class="sr_create_list_form">
-  	<?php echo $this->form->render(); ?>
+  	<?= $this->form->render(); ?>
   </div>	
 </div>
 </div>
 <script type="text/javascript">
   
-var category_edit = '<?php echo $this->category_edit ?>';  
+var category_edit = '<?= $this->category_edit ?>';  
 
 var prefieldForm = function() {
 <?php
@@ -139,14 +139,14 @@ var prefieldForm = function() {
 
       if (!is_array($elementGetValue) && $elementGetType == 'Engine_Form_Element_Radio') {
         ?>
-                        $('<?php echo $elementGetName . "-" . $elementGetValue ?>').checked = 1; 
+                        $('<?= $elementGetName . "-" . $elementGetValue ?>').checked = 1; 
       <?php } elseif (!is_array($elementGetValue) && $elementGetType == 'Engine_Form_Element_Checkbox') { ?>
-                        $('<?php echo $elementGetName ?>').checked = <?php echo $elementGetValue ?>;
+                        $('<?= $elementGetName ?>').checked = <?= $elementGetValue ?>;
           <?php
           } elseif (is_array($elementGetValue) && ($elementGetType == 'Engine_Form_Element_MultiCheckbox' || $elementGetType == 'Fields_Form_Element_Ethnicity' || $elementGetType == 'Fields_Form_Element_LookingFor' || $elementGetType == Fields_Form_Element_PartnerGender)) {
             foreach ($elementGetValue as $key => $value) {
               ?>
-                                $('<?php echo $elementGetName . "-" . $value ?>').checked = 1;
+                                $('<?= $elementGetName . "-" . $value ?>').checked = 1;
             <?php
             }
           } elseif (is_array($elementGetValue) && $elementGetType == 'Engine_Form_Element_Multiselect') {
@@ -154,15 +154,15 @@ var prefieldForm = function() {
               $key_temp = array_search($value, array_keys($element->options));
               if ($key !== FALSE) {
                 ?>
-                                    $('<?php echo $elementGetName ?>').options['<?php echo $key_temp ?>'].selected = 1;
+                                    $('<?= $elementGetName ?>').options['<?= $key_temp ?>'].selected = 1;
               <?php
               }
             }
           } elseif (!is_array($elementGetValue) && ($elementGetType == 'Engine_Form_Element_Text' || $elementGetType == 'Engine_Form_Element_Textarea' || $elementGetType == 'Fields_Form_Element_AboutMe' || $elementGetType == 'Fields_Form_Element_Aim' || $elementGetType == 'Fields_Form_Element_City' || $elementGetType == 'Fields_Form_Element_Facebook' || $elementGetType == 'Fields_Form_Element_FirstName' || $elementGetType == 'Fields_Form_Element_Interests' || $elementGetType == 'Fields_Form_Element_LastName' || $elementGetType == 'Fields_Form_Element_Location' || $elementGetType == 'Fields_Form_Element_Twitter' || $elementGetType == 'Fields_Form_Element_Website' || $elementGetType == 'Fields_Form_Element_ZipCode')) {
             ?>
-                            $('<?php echo $elementGetName ?>').value = "<?php echo $this->string()->escapeJavascript($elementGetValue, false) ?>";
+                            $('<?= $elementGetName ?>').value = "<?= $this->string()->escapeJavascript($elementGetValue, false) ?>";
           <?php } elseif (!is_array($elementGetValue) && $elementGetType != 'Engine_Form_Element_Date' && $elementGetType != 'Fields_Form_Element_Birthdate' && $elementGetType != 'Engine_Form_Element_Heading') { ?>
-                            $('<?php echo $elementGetName ?>').value = "<?php echo $this->string()->escapeJavascript($elementGetValue, false) ?>";
+                            $('<?= $elementGetName ?>').value = "<?= $this->string()->escapeJavascript($elementGetValue, false) ?>";
           <?php
           }
         }
@@ -173,14 +173,14 @@ var prefieldForm = function() {
 
     window.addEvent('domready', function() {
       <?php if ($this->profileType): ?>			
-        $('<?php echo '0_0_' . $this->defaultProfileId ?>').value= <?php echo $this->profileType ?>;
-        changeFields($('<?php echo '0_0_' . $this->defaultProfileId ?>'));
+        $('<?= '0_0_' . $this->defaultProfileId ?>').value= <?= $this->profileType ?>;
+        changeFields($('<?= '0_0_' . $this->defaultProfileId ?>'));
       <?php endif; ?>
     });
 
     var getProfileType = function(category_id) { 
 
-      var mapping = <?php echo Zend_Json_Encoder::encode(Engine_Api::_()->getDbTable('categories', 'sitereview')->getMapping($this->listingtype_id, 'profile_type')); ?>;
+      var mapping = <?= Zend_Json_Encoder::encode(Engine_Api::_()->getDbTable('categories', 'sitereview')->getMapping($this->listingtype_id, 'profile_type')); ?>;
       for(i = 0; i < mapping.length; i++) {
         if(mapping[i].category_id == category_id)
           return mapping[i].profile_type;
@@ -188,7 +188,7 @@ var prefieldForm = function() {
       return 0;
     }
 
-    var defaultProfileId = '<?php echo '0_0_' . $this->defaultProfileId ?>'+'-wrapper';
+    var defaultProfileId = '<?= '0_0_' . $this->defaultProfileId ?>'+'-wrapper';
     if($type($(defaultProfileId)) && typeof $(defaultProfileId) != 'undefined') {
       $(defaultProfileId).setStyle('display', 'none');
     }
@@ -203,7 +203,7 @@ var prefieldForm = function() {
     if($('subsubcategory_id-label'))
       $('subsubcategory_id-label').style.display = 'block';
 
-    var subcatid = '<?php echo $this->sitereview->subcategory_id; ?>';
+    var subcatid = '<?= $this->sitereview->subcategory_id; ?>';
 
     var show_subcat = 1;
 
@@ -217,7 +217,7 @@ var prefieldForm = function() {
         if($('subcategory_id-wrapper'))
           $('subcategory_id-wrapper').style.display = 'block';
 
-      var url = '<?php echo $this->url(array('action' => 'sub-category'), "sitereview_general_listtype_$this->listingtype_id", true); ?>';
+      var url = '<?= $this->url(array('action' => 'sub-category'), "sitereview_general_listtype_$this->listingtype_id", true); ?>';
       en4.core.request.send(new Request.JSON({      	
         url : url,
         data : {
@@ -267,14 +267,14 @@ var prefieldForm = function() {
       if($('buttons-wrapper')) {
         $('buttons-wrapper').style.display = 'none';
       }
-      $('subsubcategory_backgroundimage').innerHTML = '<div class="form-label"></div><div  class="form-element"><img src="<?php echo $this->layout()->staticBaseUrl; ?>application/modules/Seaocore/externals/images/core/loading.gif" /></center></div>';
+      $('subsubcategory_backgroundimage').innerHTML = '<div class="form-label"></div><div  class="form-element"><img src="<?= $this->layout()->staticBaseUrl; ?>application/modules/Seaocore/externals/images/core/loading.gif" /></center></div>';
 
       $('subsubcategory_backgroundimage').style.display = 'block';
       if(subsubcatid == '') {
         if($('subsubcategory_id-wrapper'))
           $('subsubcategory_id-wrapper').style.display = 'none';
       }
-      var url = '<?php echo $this->url(array('action' => 'subsub-category'), "sitereview_general_listtype_$this->listingtype_id", true); ?>';
+      var url = '<?= $this->url(array('action' => 'subsub-category'), "sitereview_general_listtype_$this->listingtype_id", true); ?>';
       var request = new Request.JSON({
         url : url,
         data : {
@@ -301,15 +301,15 @@ var prefieldForm = function() {
       request.send();
     };
 
-    var cat = '<?php echo $this->sitereview->category_id ?>';
+    var cat = '<?= $this->sitereview->category_id ?>';
     if(cat != '') {
-      subsubcatid = '<?php echo $this->sitereview->subsubcategory_id; ?>';
-      var subcatname = '<?php echo $this->subcategory_name; ?>';			 
+      subsubcatid = '<?= $this->sitereview->subsubcategory_id; ?>';
+      var subcatname = '<?= $this->subcategory_name; ?>';			 
       subcategory(cat, subcatid, subcatname,subsubcatid);
     }
   }
   
-  var show_editor = '<?php echo $this->show_editor;?>';
+  var show_editor = '<?= $this->show_editor;?>';
   if($('body-wrapper') && show_editor == 1) {
 		<?php
   echo $this->tinyMCESEAO()->render(array('element_id'=>'"body"',

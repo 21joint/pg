@@ -14,38 +14,38 @@
     <?php foreach ($this->listings as $sitereview): ?>
     <?php $owner = $sitereview->getOwner(); if(empty($owner)) { continue; } ?>
     <?php $firstName = $api->getFirstName($owner); $lastName = $api->getLastName($owner); ?>
-    <li data-id='<?php echo $sitereview->getIdentity(); ?>'>
+    <li data-id='<?= $sitereview->getIdentity(); ?>'>
         <div class="sd_listing_thumb flexslider">
-            <?php echo $this->partial('application/modules/Sdparentalguide/views/scripts/_listingPhotos.tpl', array('sitereview' => $sitereview)); ?>            
+            <?= $this->partial('application/modules/Sdparentalguide/views/scripts/_listingPhotos.tpl', array('sitereview' => $sitereview)); ?>            
         </div>
         <div class='seaocore_sidebar_list_info'>
             <div class="sd_sidebar_list_info_header">
                 <div class='seaocore_sidebar_list_title'>
-                  <?php echo $this->htmlLink($sitereview->getHref(), Engine_Api::_()->seaocore()->seaocoreTruncateText($sitereview->getTitle(), $this->truncation), array('title' => $sitereview->getTitle())) ?>
+                  <?= $this->htmlLink($sitereview->getHref(), Engine_Api::_()->seaocore()->seaocoreTruncateText($sitereview->getTitle(), $this->truncation), array('title' => $sitereview->getTitle())) ?>
                 </div>
                 <div class='seaocore_sidebar_list_owner'>
                     <span class="listing_owner_title">
-                        <?php echo $this->htmlLink($owner->getHref(), $owner->username.", ".$firstName.", ".$lastName) ?>,
+                        <?= $this->htmlLink($owner->getHref(), $owner->username.", ".$firstName.", ".$lastName) ?>,
                     </span>
                     <?php if($sitereview->category_id): ?>
-                        <span class="listing_category"><?php echo $sitereview->getCategory(); ?></span>
+                        <span class="listing_category"><?= $sitereview->getCategory(); ?></span>
                         <?php $subCategory = Engine_Api::_()->getItem('sitereview_category', $sitereview->subcategory_id); ?>
                         <?php if($subCategory): ?>
-                            | <span class="listing_category"><?php echo $subCategory; ?></span>
+                            | <span class="listing_category"><?= $subCategory; ?></span>
                         <?php endif; ?>
                     <?php endif; ?>
-                    <span class="listing_date"><?php echo $this->locale()->toDate($sitereview->creation_date); ?></span>                    
+                    <span class="listing_date"><?= $this->locale()->toDate($sitereview->creation_date); ?></span>                    
                 </div>
             </div>
              <?php if($this->truncationDescription): ?>
               <div class="seaocore_description">
-                <?php echo $this->viewMore(strip_tags($sitereview->body), $this->truncationDescription,10000) ?>
+                <?= $this->viewMore(strip_tags($sitereview->body), $this->truncationDescription,10000) ?>
               </div>  
             <?php endif;  ?>
         </div>
         <div class="sd_listing_grading">
             <?php $form = new Sdparentalguide_Form_Listing_Grading(array('item' => $sitereview)); ?>
-            <?php echo $form->render(); ?>
+            <?= $form->render(); ?>
             <script type="text/javascript">
                en4.core.runonce.add(function(){
                    tinymce.init({
@@ -67,7 +67,7 @@
                         browser_spellcheck: true,
                         language: "en",
                         directionality: "ltr",
-                        elements: "notes_<?php echo $sitereview->getIdentity(); ?>"
+                        elements: "notes_<?= $sitereview->getIdentity(); ?>"
                     });
                });
             </script>
@@ -75,21 +75,21 @@
     </li>
     <?php endforeach; ?>
     
-    <?php echo $this->paginationControl($this->listings, null, array('_paginator.tpl','sdparentalguide'), array(
+    <?= $this->paginationControl($this->listings, null, array('_paginator.tpl','sdparentalguide'), array(
           'pageAsQuery' => true,
           'query' => $this->formValues
         )); ?>
 </ul>
 <?php else: ?>
 <div class='tip'>
-    <span><?php echo $this->translate("No listings found matching your search criteria"); ?></span>
+    <span><?= $this->translate("No listings found matching your search criteria"); ?></span>
 </div>
 <?php endif; ?>
 
-<?php echo $this->headLink()->appendStylesheet($this->layout()->staticBaseUrl.'application/modules/Sdparentalguide/externals/scripts/flexslider/flexslider.css'); ?>
-<script type="text/javascript" src="<?php echo $this->layout()->staticBaseUrl; ?>application/modules/Sdparentalguide/externals/scripts/flexslider/jquery.min.js"></script>
+<?= $this->headLink()->appendStylesheet($this->layout()->staticBaseUrl.'application/modules/Sdparentalguide/externals/scripts/flexslider/flexslider.css'); ?>
+<script type="text/javascript" src="<?= $this->layout()->staticBaseUrl; ?>application/modules/Sdparentalguide/externals/scripts/flexslider/jquery.min.js"></script>
 <script type="text/javascript">try{ var sdjq = $.noConflict(); }catch(e){  }</script>
-<script type="text/javascript" src="<?php echo $this->layout()->staticBaseUrl; ?>application/modules/Sdparentalguide/externals/scripts/flexslider/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="<?= $this->layout()->staticBaseUrl; ?>application/modules/Sdparentalguide/externals/scripts/flexslider/jquery.flexslider-min.js"></script>
 <script type="text/javascript">
 en4.core.runonce.add(function(){
     sdjq('.flexslider').flexslider({
@@ -107,7 +107,7 @@ en4.core.runonce.add(function(){
 function searchListings(element){
     var loader = en4.core.loader.clone();
     loader.addClass("sd_loader");
-    var url = '<?php echo $this->url(array('module' => 'core', 'controller' => 'widget', 'action' => 'index', 'content_id' => $this->identity), 'default', true) ?>';
+    var url = '<?= $this->url(array('module' => 'core', 'controller' => 'widget', 'action' => 'index', 'content_id' => $this->identity), 'default', true) ?>';
     var form = $(element).getParent("form"); 
     var data = form.toQueryString().parseQueryString();
     data.format = 'html';
@@ -139,7 +139,7 @@ function searchListings(element){
 function saveNSearchListings(element){
     var loader = en4.core.loader.clone();
     loader.addClass("sd_loader");
-    var url = '<?php echo $this->url(array('module' => 'core', 'controller' => 'widget', 'action' => 'index', 'content_id' => $this->identity), 'default', true) ?>';
+    var url = '<?= $this->url(array('module' => 'core', 'controller' => 'widget', 'action' => 'index', 'content_id' => $this->identity), 'default', true) ?>';
     var form = $(element).getParent("form"); 
     var data = form.toQueryString().parseQueryString();
     data.format = 'html';
@@ -220,7 +220,7 @@ function showLargeImage(element){
     });
 }
 function markAllGrading(element){
-    var parent = $(element).getParent(".form-wrapper");
+    var parent = $(element).getParent(".form-group");
     if(!parent){
         return;
     }

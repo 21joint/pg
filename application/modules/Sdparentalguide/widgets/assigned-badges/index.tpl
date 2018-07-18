@@ -12,14 +12,14 @@
 
 <style type="text/css">
   div.thumb_photo{
-    height:  <?php echo $this->photoHeight; ?>px !important;
-    width: <?php echo $this->photoWidth; ?>px !important; 
+    height:  <?= $this->photoHeight; ?>px !important;
+    width: <?= $this->photoWidth; ?>px !important; 
     background: transparent !important;
     margin: 5px !important;
   }
   div.thumb_photo a.thumb_img {
-    width: <?php echo $this->photoWidth; ?>px !important; 
-    height:  <?php echo $this->photoHeight; ?>px !important; 
+    width: <?= $this->photoWidth; ?>px !important; 
+    height:  <?= $this->photoHeight; ?>px !important; 
     background-size: cover ;
   }
 </style>
@@ -36,7 +36,7 @@
     ?>
     <?php foreach($this->assignedBadges as $badge): ?>
         <div class="thumb_photo">
-            <a href="javascript:void(0);"  title="<?php echo $badge->getTitle(); ?>" style="background-image: url('<?php echo $badge->getPhotoUrl($photo_type); ?>');" class="thumb_img">
+            <a href="javascript:void(0);"  title="<?= $badge->getTitle(); ?>" style="background-image: url('<?= $badge->getPhotoUrl($photo_type); ?>');" class="thumb_img">
             </a>
         </div>
     <?php endforeach; ?>
