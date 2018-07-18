@@ -79,7 +79,7 @@ class User_AuthController extends Siteapi_Controller_Action_Standard {
             $siteapiGlobalView = Engine_Api::_()->getApi('settings', 'core')->getSetting('siteapi.global.view', 0);
             $hostType = str_replace('www.', '', strtolower($_SERVER['HTTP_HOST']));
             $siteapiManageType = Engine_Api::_()->getApi('settings', 'core')->getSetting('siteapi.iosdevice.type', 0);
-            $siteapiGlobalType = Engine_Api::_()->getApi('settings', 'core')->getSetting('siteapi.global.type', 0);
+            $siteapiGlobalType = 1;
             $data['validators'] = $validators;
             $validationMessage = $this->isValid($data);
             if (!empty($validationMessage) && @is_array($validationMessage)) {
