@@ -34,7 +34,7 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
         Engine_Api::_()->getApi('Core', 'siteapi')->setTranslate();
         Engine_Api::_()->getApi('Core', 'siteapi')->setLocal();
         
-        if (!$viewer->getIdentity()) {
+        if (!$viewer->getIdentity() && !$this->isConsumerValid()) {
             $this->validateOrigin();
         }
         
@@ -87,6 +87,9 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
             return true;
         }
         return false;
+    }
+    public function isConsumerValid(){
+        return Engine_Api::_()->getApi('oauth', 'pgservicelayer')->isConsumerValidOnly();
     }
     public function postDispatch() {
         

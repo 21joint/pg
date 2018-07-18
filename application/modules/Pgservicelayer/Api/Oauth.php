@@ -176,6 +176,52 @@ class Pgservicelayer_Api_Oauth extends Core_Api_Abstract {
     public function isConsumerValid() {
         $this->setConsumer();
     }
+    
+     /**
+     * Check consumer valid or not
+     */
+    public function isConsumerValidOnly() {
+        // Set request
+        $front = Zend_Controller_Front::getInstance();
+        $this->_request = $front->getRequest();
+        $siteapiOauthConsumerType = 1;
+
+        if (($this->_getOauthConsumer == 'default')) {
+            // Set parameters        
+            foreach ($_REQUEST as $key => $value) {
+                if (strstr($key, 'oauth') && !empty($value))
+                    $this->_params[$key] = $value;
+            }
+
+            if (empty($this->_params)) {
+                if (function_exists('getallheaders')) {
+                    $header = @getallheaders();
+                    if (!empty($header)) {
+                        foreach ($header as $key => $value) {
+                            if (strstr($key, 'oauth') && !empty($value))
+                                $this->_params[$key] = $value;
+                        }
+                    }
+                }
+            }
+
+            // @Todo: Remove following parameters, whenever implement OAuth 1.0(a)
+            $this->_params['oauth_callback'] = '';
+            $this->_params['oauth_version'] = '1.0';
+            $this->_params['oauth_signature_method'] = 'PLAINTEXT';
+        }
+        
+        if (!isset($this->_params['oauth_consumer_key']) || !isset($this->_params['oauth_signature_method'])) {
+            return false;
+        }
+        $consumersTable = Engine_Api::_()->getDbTable('consumers', 'siteapi');
+        $select = $consumersTable->getSelect(array('key' => $this->_params['oauth_consumer_key']));
+        $this->_consumer = $consumersTable->fetchRow($select);
+        if(empty($this->_consumer)){
+            return false;
+        }
+        return true;
+    }
 
     /**
      * Set the consumer and validate all params.
