@@ -324,6 +324,9 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             case 'ggcommunity_answer':
                 $itemArray = $this->getAnswerData($itemObject);
                 break;
+            case 'sdparentalguide_badge':
+                $itemArray = $this->getBadgeData($itemObject);
+                break;
             default:
                 break;
         }
@@ -406,6 +409,14 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             'member' => $this->getUserData($member),
 //            'assigned' => $assigned,
             'active' => $active
+        );
+    }
+    
+    public function getRatingData(Sdparentalguide_Model_ListingRating $rating){
+        return array(
+            "ratingID" => (string)$rating->getIdentity(),
+            'contentType' => Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($rating->listing_type),
+            'contentID' => (string)$rating->listing_id,
         );
     }
 }
