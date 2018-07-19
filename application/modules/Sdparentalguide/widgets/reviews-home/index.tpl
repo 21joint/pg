@@ -44,7 +44,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
-        <div class="content-box bg-sm-white" data-load=".card">
+        <div class="content-box bg-sm-white">
           <div class="row">
             <div class="col-12">
               <h2 class="content-box--title mb-0">Featured Reviews</h2>
@@ -53,7 +53,8 @@
             <div class="col-12 px-0 px-sm-3">
               <div class="row no-gutters cards-grid reviews"
                    id="featuredReviewsGrid"
-                   data-filter="featured">
+                   data-load=".card"
+                   data-url="review">
               </div>
             </div>
             <!--            <div class="col-12 px-0">-->

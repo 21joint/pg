@@ -1,3 +1,10 @@
+.card {
+  transition: .3s .3s opacity ease;
+  opacity: 1;
+  &.card-loading {
+    opacity: 0;
+  }
+}
 .card-review {
   border-color: rgb(245, 245, 245);
   border-radius: 10px;

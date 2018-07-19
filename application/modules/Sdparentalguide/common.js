@@ -11,5 +11,4 @@ import './widgets/header/index';
       });
     })
   });
-  $(document).ajaxStart();
 })(jQuery);

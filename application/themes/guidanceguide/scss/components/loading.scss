@@ -1,0 +1,9 @@
+[data-load] {
+  &.loading {
+    background-image: url('../images/loader.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 48px;
+    min-height: 50vh;
+  }
+}

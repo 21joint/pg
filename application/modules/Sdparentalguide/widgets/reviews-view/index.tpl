@@ -10,7 +10,7 @@
 ?>
 
 <!-- SINGLE REVIEW LAYOUT -->
-<div class="prg-review--single">
+<div class="prg-review--single" data-load>
   <!--  hero-->
   <div class="prg-review--single---hero position-relative">
     <!-- SINGLE REVIEW HERO IMAGE -->

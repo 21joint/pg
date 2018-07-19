@@ -6,7 +6,7 @@
   z-index: 100;
   left: 50%;
   transform: translate(-50%, 0);
-  padding: 0 0.75rem;
+  padding: .25rem 0.75rem;
   background-color: #ffffff;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -21,7 +21,7 @@
       height: 22px;
     }
   }
-  @include media-breakpoint-up(xs) {
+  @include media-breakpoint-up(sm) {
     padding: .625rem .9rem;
   }
   @include media-breakpoint-up(md) {
