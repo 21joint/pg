@@ -698,6 +698,9 @@
     font-size: 14px;
     font-weight: 400;
 }
+.ftw_title:hover{
+    color: #5CC7CE;
+}
 /* Draft widget  and Earn Points and Ask same strucutres like draft*/
 .layout_ggcommunity_draft_question {
     padding: 0 !important;

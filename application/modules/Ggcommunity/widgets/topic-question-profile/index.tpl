@@ -92,8 +92,8 @@
                             var topicID = "<?php echo $topic['topic_id']; ?>";
                             var topicName = "<?php echo $topic_item; ?>";
                             // Redirect based on topicID if not said otherwise
-                            document.getElementById("go_to_topic").href = en4.core.baseUrl + "/topics?topicID=" + topicID;
-                            //+PHP to check for topicID;
+                            document.getElementById("go_to_topic").href = en4.core.baseUrl + "topics?topicID=" + topicID;
+                            // +PHP to check for topicID;
                             // If previous request fails redirect to -> /topics?topicName={{topicName}}
                             
                     </script>
