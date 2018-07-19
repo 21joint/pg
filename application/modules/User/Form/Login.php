@@ -50,7 +50,7 @@ class User_Form_Login extends Engine_Form_Email
     $this->setTitle('Share Your Struggle. Provide Your Theories. Gain Advice.');
     $this->setDescription($description);
     $this->setAttrib('id', 'user_form_login');
-    $this->setAttrib('class', 'prg-login--form');
+    $this->setAttrib('class', 'prg-auth--form');
     $this->loadDefaultDecorators();
     $this->getDecorator('Description')->setOption('escape', false);
 

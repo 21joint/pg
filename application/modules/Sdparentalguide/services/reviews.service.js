@@ -167,7 +167,7 @@ module.exports = (function ($) {
             console.error(error);
           },
           complete: function () {
-            $(options.container).removeClass('loading');
+            $('[data-load]').removeClass('loading');
           }
         });
       }

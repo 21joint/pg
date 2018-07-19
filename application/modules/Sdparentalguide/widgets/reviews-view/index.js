@@ -5,7 +5,7 @@ import jQuery from 'jquery';
 (function ($) {
   $(document).ready(function () {
     let revId = window.location.search.split('=')[1];
-    console.log(revId, window.location.search.split('='));
+
     Reviews.loadSingle({
       id: revId,
       container: '.prg-review--single'
