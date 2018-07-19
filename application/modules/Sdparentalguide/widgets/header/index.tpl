@@ -460,25 +460,36 @@
   let search_icon = document.getElementById('search-icon');
   let close_icon = document.getElementById('close_icon');
 
-  search_icon.addEventListener('click', function () {
-    showDropdownItem(search_holder);
-    search_holder.children[0].children[0].focus();
+  search_icon.addEventListener('click', function() {
+      showDropdownItem(search_holder);
+      search_holder.children[0].children[0].focus();
   });
 
-  close_icon.addEventListener('click', function () {
-    showDropdownItem(search_holder);
+  close_icon.addEventListener('click', function() {
+      showDropdownItem(search_holder);
   });
 
   //take element and check if you want to display active or inactive
   function showDropdownItem(element) {
-    let isActive = element.classList.value.search('active');
-    ((isActive < 1) ? element.className += ' active' : element.classList.remove('active'));
+      let isActive = element.classList.value.search('active');
+      ((isActive < 1) ? element.className += ' active' : element.classList.remove('active'));
+  }
+
+  function displayMenu() {
+    let mobileHolder = document.getElementById('parental-mobile-menu-holder');
+    if(mobileHolder.classList.contains('active') == false) {
+      mobileHolder.classList.add('active');
+      document.getElementsByTagName("body")[0].style = 'overflow: hidden';
+    } else {
+      mobileHolder.classList.remove('active');
+      document.getElementsByTagName("body")[0].style = 'overflow-x: hidden';
+    }
   }
 
   function showProfileDropdown(e) {
     let dropdownHolder = document.getElementById('profile-dropdown-menu');
-
-    if (dropdownHolder.classList.contains('active') == false) {
+    
+    if(dropdownHolder.classList.contains('active') == false) {
       dropdownHolder.classList.add('active');
       activateProfileItem('profile-dropdown-menu');
     } else {
@@ -489,21 +500,28 @@
   function activateProfileItem(type) {
     let notificationBar = $('core_mini_updates_pulldown');
     let dropdownHolder = document.getElementById('profile-dropdown-menu');
-
+    
     // hide notifications and hover
-    if (type == 'profile-dropdown-menu') {
+    if(type == 'profile-dropdown-menu') {
       notificationBar.classList.remove('updates_pulldown_active');
       notificationBar.classList.add('updates_pulldown');
       hideProfileHover();
     }
 
     // hide dropdown and notifications
-    if (type == 'notifications') {
+    if(type == 'notifications') {
       dropdownHolder.classList.remove('active');
       hideProfileHover();
     }
 
-    if (type == 'profile-hover') {
+    if(type == 'profile-hover') {
+      dropdownHolder.classList.remove('active');
+      notificationBar.classList.remove('updates_pulldown_active');
+      notificationBar.classList.add('updates_pulldown');
+    }
+
+    if(type == 'all') {
+      hideProfileHover();
       dropdownHolder.classList.remove('active');
       notificationBar.classList.remove('updates_pulldown_active');
       notificationBar.classList.add('updates_pulldown');
@@ -513,10 +531,23 @@
 
   function hideProfileHover() {
     let profileHovers = $$('.item_photo_user').getParent().getParent().getParent().getElement('.extfox-widgets');
-    profileHovers.each(function (element) {
-      element.classList.remove('active');
+    profileHovers.each( function (element) {
+        element.classList.remove('active');
     });
   }
 
+  // hide search items
+  document.onclick = function(e){
+      e.stopPropagation();
+
+      // Notification hide
+      if(e.target.id !== 'close_icon') {
+        activateProfileItem('profile-dropdown-menu');
+      }
+      if(e.target.id !== 'btn-drop'){
+        activateProfileItem('notifications');
+      }
+
+  }
 
 </script>

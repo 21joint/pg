@@ -174,6 +174,11 @@ en4.core.runonce.add(function() {
 
 });
 
+function getMonth(month) {
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    return months[month];
+}
+
 function editFamily(el) {
 
     let memberHolder = el.getParent('div.row');
@@ -309,7 +314,7 @@ function setupFamilyMember() {
     var genderImage;
     var genderType;
     var gender = localStorage.getItem('gender');
-    var birthdayDate = localStorage.getItem('final-year') + '-' + localStorage.getItem('month');
+    var birthdayDate = getMonth(localStorage.getItem('month')) + ' ' + localStorage.getItem('final-year');
     var editMember;
 
     lastItem = lastItem + 1;

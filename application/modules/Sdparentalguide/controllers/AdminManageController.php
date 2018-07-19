@@ -574,6 +574,7 @@ class Sdparentalguide_AdminManageController extends Core_Controller_Action_Admin
       }else{       
         $this->view->tasks = $tasksTable->fetchAll($tasksTable->select());
       }
+
   }
   
   public function suggestUserAction(){

@@ -1,12 +1,4 @@
 <?php $subject = $this->subject; ?>
-
-<?php 
-    $table = Engine_Api::_()->getDbtable('answers', 'ggcommunity');
-    $select = $table->select()
-        ->where('user_id = ?',$subject->getIdentity() );
-    $answer = $table->fetchAll($select);
-    
-?>
 <div class="extfox-widgets" id="extfox-widgets">
     
     <div class="row">
@@ -60,7 +52,7 @@
                             </div>
                             <div class="col-sm silver">
                                 <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
-                                    <?= $subject->gg_silver_count; ?>     
+                                    <?= $subject->gg_silver_count; ?>
                                 </div>
                                 <span class="text-muted small">
                                     <?= $this->translate('Silver'); ?>
@@ -68,7 +60,7 @@
                             </div>
                             <div class="col-sm gold">
                                 <div class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
-                                    <?= $subject->gg_gold_count; ?>  
+                                    <?= $subject->gg_gold_count; ?>
                                 </div>
                                 <span class="text-muted small">
                                     <?= $this->translate('Gold'); ?>
@@ -89,6 +81,9 @@
                 <div class="footer border-top border-gray d-flex justify-content-between align-items-center">
                     
                     <div class="col-sm text-center border-right py-3">
+                        <?php
+                            echo $this->translate(array("Review <span class='text-primary font-weight-bold'>%s</span>", "Reviews <span class='text-primary font-weight-bold'>%s</span>", $subject->gg_review_count), $this->locale()->toNumber($subject->gg_review_count))
+                        ?>
                         <?= $this->translate('Reviews'); ?>
                         <span class="text-primary font-weight-bold">
                             <?= $subject->gg_review_count;?>
@@ -96,6 +91,9 @@
                     </div>
 
                     <div class="col-sm text-center py-3">
+                        <?php
+                            echo $this->translate(array("Answer <span class='text-primary font-weight-bold'>%s</span>", "Answers <span class='text-primary font-weight-bold'>%s</span>", $subject->gg_answer_count), $this->locale()->toNumber($subject->gg_answer_count))
+                        ?>
                         <?= $this->translate('Answers'); ?>
                         <span class="text-primary font-weight-bold">
                            <?= count($answer); ?>
