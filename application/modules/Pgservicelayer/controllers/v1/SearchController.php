@@ -48,13 +48,14 @@ class Pgservicelayer_SearchController extends Pgservicelayer_Controller_Action_A
         }
         
         $page = $this->getParam("page",1);
-        $limit = $this->getParam("limit",10);
+        $limit = $this->getParam("limit",50);
         $searchTable = Engine_Api::_()->getDbTable("search","core");
         $searchTableName = $searchTable->info("name");
         $select = $searchTable->select();
         $contentType = $this->getParam("contentType");
         $search= $this->getParam("search");
-        $availableTypes = Engine_Api::_()->getItemTypes();
+//        $availableTypes = Engine_Api::_()->getItemTypes();
+        $availableTypes = Engine_Api::_()->getApi("search","pgservicelayer")->getPggTypes();
         $topicID = $this->getParam("topicID");
         if(is_string($topicID) && !empty($topicID)){
             $select->where("topic_id = ?",$topicID);
@@ -100,20 +101,23 @@ class Pgservicelayer_SearchController extends Pgservicelayer_Controller_Action_A
                         ->where("$searchTableName.title LIKE ? OR $searchTableName.description LIKE ? OR $searchTableName.keywords LIKE ? OR $searchTableName.hidden LIKE ?"
                                 . " OR $topicsTableName.name LIKE ? OR $topicsTableName.name_plural LIKE ?", "%".$search."%");
             }else{
-                $select->where("$searchTableName.title LIKE ? OR $searchTableName.description LIKE ? OR $searchTableName.keywords LIKE ? OR $searchTableName.hidden LIKE ?", "%".$search."%")
+                $select->where("$searchTableName.title LIKE ? OR $searchTableName.keywords LIKE ? OR $searchTableName.hidden LIKE ?", "%".$search."%")
                         ;
             }
             
             if($orderBy != "createdDateTime"){
-                $select->order(new Zend_Db_Expr($db->quoteInto("MATCH($searchTableName.title, $searchTableName.description, $searchTableName.keywords, $searchTableName.hidden) AGAINST (?) $orderByDirection", $search)));
+                $select->order(new Zend_Db_Expr($db->quoteInto("MATCH($searchTableName.title, $searchTableName.keywords, $searchTableName.hidden) AGAINST (?) $orderByDirection", $search)));
             }
         }
                         
         $paginator = Zend_Paginator::factory($select);
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage($limit);
-        $response['ResultCount'] = $paginator->getTotalItemCount();
+        $response['ResultCount'] = 0;
         $response['Results'] = array();
+        if($page > $paginator->count()){
+            $this->respondWithSuccess($response);
+        }
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         foreach($paginator as $key => $item){
             $searchItemData = $responseApi->getSearchItemData($item);
@@ -124,10 +128,10 @@ class Pgservicelayer_SearchController extends Pgservicelayer_Controller_Action_A
                         'id = ?' => $item->id,
                     ));
                 }
-                $response['ResultCount'] = $response['ResultCount'] - 1;
                 continue;
             }
             $searchItemData['searchRank'] = ++$key;
+            ++$response['ResultCount'];
             $response['Results'][] = $searchItemData;
         }
         $this->respondWithSuccess($response);

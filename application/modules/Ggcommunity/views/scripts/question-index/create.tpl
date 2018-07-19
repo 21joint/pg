@@ -52,10 +52,13 @@
     }
   });
     
-  var submit  = document.getElementById('submit_draft');
-  submit.onclick = function(){
-    document.getElementById('draft').value = 1;
-  };
+  // Functionality for Submit Draft Button
+  // var submit  = document.getElementById('submit_draft');
+  // submit.onclick = function(){
+  //   document.getElementById('draft').value = 1;
+  // };
+  document.getElementById("submit_draft").addClass("d-none");
+  // Taking it out of the view of the page with d-none attribute
 
   // this is for changing options for year of closed date, take from current year and next 10 years
   var select_year = document.getElementById("date_closed-year");

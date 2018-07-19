@@ -12,7 +12,7 @@ class Sdparentalguide_Model_DbTable_ListingRatings extends Engine_Db_Table
     protected $_rowClass = "Sdparentalguide_Model_ListingRating";
     protected $_name = 'gg_listing_ratings';
     
-    public function getRating(Sitereview_Model_Listing $listing, User_Model_User $user){
+    public function getRating(Core_Model_Item_Abstract $listing, User_Model_User $user){
         $select = $this->select()->where('listing_id = ?',$listing->getIdentity())->where('user_id = ?',$user->getIdentity())
                 ->where('listing_type = ?',$listing->getType());
         return $this->fetchRow($select);

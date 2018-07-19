@@ -9,24 +9,35 @@
 
 ?>
 
+<!-- Title Component -->
 <div class="leaderboard d-flex flex-column justify-content-center align-items-center">
     <h1 class="mt-5 text-uppercase">Our Community</h1>
     <h5>You can trust our community of real parents</h5>
     <a id="seeMore" class="btn-large btn-success text-white text-capitalize font-weight-bold mt-5 mb-4 px-5 py-3">See More</a>
 </div>
-<div class="mvps">
+<!-- MVPs and Experts Component -->
+<div class="mvps position-relative">
     <div class="mvps_main d-flex justify-content-around align-items-center">
-        <h3 id="meet_mvps" class="py-3 d-flex justify-content-center mvps_main_active">Meet our MVP's</h3>
-        <h3 id="meet_experts" class="py-3 d-flex justify-content-center">Meet our Experts</h3>
-        <h3 class="py-3 d-flex justify-content-center"><a id="go_to_leaderboard" href="">More...</a></h3>
+        <h3 id="meet_mvps" class="py-3 d-flex justify-content-center mvps_main_active">
+            <span class="d-md-block d-none">Meet our MVP's</span>
+            <span class="d-md-none d-block">MVP's</span>
+        </h3>
+        <h3 id="meet_experts" class="py-3 d-flex justify-content-center">
+            <span class="d-md-block d-none">Meet our Experts</span>
+            <span class="d-md-none d-block">Experts</span>
+        </h3>
+        <h3 class="py-3 d-flex justify-content-center">
+            <a id="go_to_leaderboard">More...</a>
+        </h3>
     </div>
-    <div id="sd-response" class="container d-flex justify-content-center align-items-center">
+    <div id="sd-response" class="mvps_content p-5 d-flex justify-content-between align-items-center">
         <!-- Loader goes here -->
-    </div>
-    <div class="mvps_content p-5 d-flex justify-content-between align-items-center">
         <!-- Content of ajax call goes here -->
-    </div> 
+    </div>
+    <button id="mvps_left" class="btn-lg text-primary rounded-circle position-absolute d-none"><</button>
+    <button id="mvps_right" class="btn-lg text-primary rounded-circle position-absolute">></button>
 </div>
+<!-- Leaderboard Component -->
 <div class="leaderboard">
     <div class="leaderboard_main d-flex justify-content-between">
         <div class="d-flex justify-content-center">Rank</div>
@@ -246,7 +257,7 @@ function loadLeaderboardResults(page = 1) {
 }
 // Leaderboard Results Ajax Function -> end
 
-// Toggle Between Mvps and Experts
+// Toggle Between MVPs and Experts
 var disp_mvps;
 var disp_experts;
 document.getElementById("meet_mvps").addEventListener('click', function(){
@@ -267,7 +278,30 @@ document.getElementById("meet_experts").addEventListener('click', function(){
 // Go to Community Leaderboard Page
 document.getElementById("go_to_leaderboard").href = en4.core.baseUrl+"community/leaderboard";
 
-// MVPS and Experts Results Ajax Function -> start
+// Go Left and Right to Browse MVPs and Experts
+var current_mvp = 0;
+document.getElementById("mvps_right").addEventListener('click', function(){
+    if(current_mvp <= 16){
+        this.addClass("d-block").removeClass("d-none");
+        document.querySelector(".mvps_content").childNodes[current_mvp].addClass("d-none").removeClass("d-flex");
+        document.getElementById("mvps_left").addClass("d-block").removeClass("d-none");
+        current_mvp++;  
+    }else{
+        this.addClass("d-none").removeClass("d-block");
+    }  
+});
+document.getElementById("mvps_left").addEventListener('click', function(){
+    if(current_mvp >= 1){
+        current_mvp--;
+        this.addClass("d-block").removeClass("d-none");
+        document.querySelector(".mvps_content").childNodes[current_mvp].addClass("d-flex").removeClass("d-none");
+        document.getElementById("mvps_right").addClass("d-block").removeClass("d-none"); 
+    }else{
+        this.addClass("d-none").removeClass("d-block");
+    }
+});
+
+// MVPs and Experts Results Ajax Function -> start
 // Arguments disp_mvps = 1, disp_experts = 0 When everything get wired
 function loadMvpExpertResults(){
     //Request data can be linked to form inputs
@@ -309,7 +343,7 @@ function loadMvpExpertResults(){
                                 '</div>'+
                             '</div>';
                 }
-                leaderboardContent.innerHTML = html;                        
+                leaderboardContent.innerHTML = html;                       
             }else{
                 leaderboardContent.innerHTML = responseJSON.message;
             }

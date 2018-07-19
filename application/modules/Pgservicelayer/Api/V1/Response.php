@@ -74,7 +74,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $topic = Engine_Api::_()->getItem("sdparentalguide_topic",$listingType->gg_topic_id);
         return $this->getTopicData($topic);
     }
-    public function getListingPhotos(\Sitereview_Model_Listing $listing) {
+    public function getListingPhotos(Sitereview_Model_Listing $listing) {
         $listingPhotos = parent::getListingPhotos($listing);
         if($listingPhotos->getTotalItemCount() <= 0){
             return array();
@@ -84,12 +84,8 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $avatarPhoto = ucfirst($request->getParam("photoType",""));
         foreach($listingPhotos as $photo){
             $photos = $this->getContentImage($photo);
-            $photoArray = array(
-                'photoID' => (string)$photo->getIdentity(),
-                'photoURL' => ''
-            );
-            $photoArray['photoURL'] = isset($photos['photoURL'.$avatarPhoto])?$photos['photoURL'.$avatarPhoto]:$photos['photoURLIcon'];
-            $listingPhotosArray[] = $photoArray;
+            $photos['photoID'] = (string)$photo->getIdentity();
+            $listingPhotosArray[] = $photos;
         }
         return $listingPhotosArray;
     }
@@ -164,12 +160,19 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $contentImages = $this->getContentImage($user);
         $contentImages['photoID'] = (string)$user->photo_id;
 //        $contentImages['photoURL'] = isset($userPhotos['photoURL'.$avatarPhoto])?$userPhotos['photoURL'.$avatarPhoto]:$userPhotos['photoURLIcon'];
+        $coverPhotos = array();
+        if(!empty($user->user_cover)){
+            $fileObject = Engine_Api::_()->storage()->get($user->user_cover);
+            $coverPhotos = $this->getContentImage($fileObject);
+            $coverPhotos['photoID'] = (string)$user->user_cover;
+        }
+        
         $expert = ($user->gg_expert_bronze_count || $user->gg_expert_silver_count || $user->gg_expert_gold_count || $user->gg_expert_platinum_count);
         $userArray = array(
             'memberID' => (string)$user->getIdentity(),
             'memberName' => (string)$user->username,
-            'displayName' => $user->getTitle(),
-            'firstName' => $this->getFieldValue($user, 3),
+            'displayName' => (string)$user->getTitle(),
+            'firstName' => (string)$this->getFieldValue($user, 3),
             'lastName' => (string)$this->getFieldValue($user, 4),
             'followersCount' => $user->gg_followers_count,
             'followingCount' => $user->gg_following_count,
@@ -190,7 +193,8 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             'expertPlatinumCount' => $user->gg_expert_platinum_count,
             'mvp' => (bool)$user->gg_mvp,
             'expert' => (bool)$expert,
-            'memberSinceDateTime' => $this->getFormatedDateTime($user->creation_date)
+            'memberSinceDateTime' => $this->getFormatedDateTime($user->creation_date),
+            'coverPhoto' => $coverPhotos
         );
         return $userArray;
     }
@@ -205,7 +209,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         if(empty($topic)){
             return $topicArray;
         }
-        $topicArray['topicID'] = $topic->getIdentity();
+        $topicArray['topicID'] = (string)$topic->getIdentity();
         $topicArray['topicName'] = $topic->getTitle();
         $request = Zend_Controller_Front::getInstance()->getRequest();
         $avatarPhoto = ucfirst($request->getParam("photoType","icon"));
@@ -213,7 +217,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
 //        $contentImages['photoURL'] = isset($topicPhotos['photoURL'.$avatarPhoto])?$topicPhotos['photoURL'.$avatarPhoto]:$topicPhotos['photoURLIcon'];
         $contentImages['photoID'] = (string)$topic->photo_id;
         $topicArray['topicPhoto'] = $contentImages;
-        $topicArray['featured'] = $topic->featured;
+        $topicArray['featured'] = (bool)$topic->featured;
         return $topicArray;
     }
     
@@ -225,9 +229,9 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $childCommentsSelect->where('parent_comment_id =?', $comment->getIdentity());        
         $commentInfo = array();
         $poster = Engine_Api::_()->getItem($comment->poster_type, $comment->poster_id);
-        $commentInfo["commentID"] = $comment->comment_id;
+        $commentInfo["commentID"] = (string)$comment->comment_id;
         $commentInfo['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($comment->resource_type);
-        $commentInfo['contentID'] = $comment->resource_id;
+        $commentInfo['contentID'] = (string)$comment->resource_id;
         $commentInfo['commentsCount'] = Zend_Paginator::factory($childCommentsSelect)->getTotalItemCount();
         $commentInfo["body"] = $comment->body;
         $commentInfo["createdDateTime"] = $this->getFormatedDateTime($comment->creation_date);
@@ -320,6 +324,9 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             case 'ggcommunity_answer':
                 $itemArray = $this->getAnswerData($itemObject);
                 break;
+            case 'sdparentalguide_badge':
+                $itemArray = $this->getBadgeData($itemObject);
+                break;
             default:
                 break;
         }
@@ -348,10 +355,11 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $rowData = array(
             'followID' => (string)$followId,
             'contentType' => Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($subject->getType()),
-            'contentID' => $subject->getIdentity(),
-            'followerID' => $resource_id,
+            'contentID' => (string)$subject->getIdentity(),
+            'followerID' => (string)$resource_id,
             'createdDateTime' => $this->getFormatedDateTime($row->creation_date),
-            'author' => $this->getUserData($follower)
+            'author' => $this->getUserData($follower),
+            'approved' => (bool)$row->active
         );
         return $rowData;
     }
@@ -359,12 +367,56 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
     public function getViewData($view){
         $owner = Engine_Api::_()->user()->getUser($view->owner_id);
         return array(
-            'actionID' => $view->action_id,
+            'actionID' => (string)$view->action_id,
             'actionType' => ucfirst($view->action_type),
             'contentType' => Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($view->conent_type),
-            'contentID' => $view->content_id,
+            'contentID' => (string)$view->content_id,
             'createdDateTime' => $this->getFormatedDateTime($view->creation_date),
             'author' => $owner->getIdentity()?$this->getUserData($owner):array(),
+        );
+    }
+    
+    public function getBadgeData(Sdparentalguide_Model_Badge $badge){
+        $contentImages = $this->getContentImage($badge);
+        $contentImages['photoID'] = (string)$badge->photo_id;
+        $topic = $badge->getTopic();
+        return array(
+            'badgeID' => (string)$badge->getIdentity(),
+            'badgeType' => (string)$badge->getBadgeType(),
+            'badgeLevel' => (string)$badge->getLevel(),
+            'badgePhoto' => $contentImages,
+            'badgeDescription' => (string)strip_tags($badge->description),
+            'topic' => $this->getTopicData($topic)
+        );
+    }
+    public function getMemberBadgeData(Sdparentalguide_Model_Badge $badge,$member = null){
+        $badgeData = $this->getBadgeData($badge);
+        if(empty($member) || !$member->getIdentity()){
+            $member = Engine_Api::_()->user()->getUser($member);
+        }
+        
+        $active = $assigned = false;
+        $assignedRow = $badge->isAssigned($member);
+        if(!empty($assignedRow)){
+            $assigned = true;
+            if($assignedRow->active == true){
+                $active = true;
+            }
+        }
+        
+        return array(
+            'badge' => $badgeData,
+            'member' => $this->getUserData($member),
+//            'assigned' => $assigned,
+            'active' => $active
+        );
+    }
+    
+    public function getRatingData(Sdparentalguide_Model_ListingRating $rating){
+        return array(
+            "ratingID" => (string)$rating->getIdentity(),
+            'contentType' => Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($rating->listing_type),
+            'contentID' => (string)$rating->listing_id,
         );
     }
 }

@@ -190,6 +190,36 @@ $routes['pgservicelayer'] = array(
           'action' => '\D+',
         )
     ),
+    'pgservicelayer_apibadge' => array(
+        'route' => 'api/:version/badge/*',
+        'defaults' => array(
+          'module' => 'pgservicelayer',
+          'controller' => 'badge',
+          'action' => 'index',
+          'version' => 'v1'
+        ),
+    ),
+    'pgservicelayer_apimemberbadge' => array(
+        'route' => 'api/:version/memberbadge/*',
+        'defaults' => array(
+          'module' => 'pgservicelayer',
+          'controller' => 'badge',
+          'action' => 'memberbadge',
+          'version' => 'v1'
+        ),
+    ),
+    'pgservicelayer_apiviews' => array(
+        'route' => 'api/:version/login/*',
+        'defaults' => array(
+          'module' => 'pgservicelayer',
+          'controller' => 'auth',
+          'action' => 'login',
+          'version' => 'v1'
+        ),
+        'reqs' => array(
+          'action' => '\D+',
+        )
+    ),
 );
 
 return $routes;
