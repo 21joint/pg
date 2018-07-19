@@ -2,8 +2,6 @@
     $this->headScript()->appendFile($this->layout()->staticBaseUrl . 'application/modules/Ggcommunity/externals/scripts/swiper.min.js');
     $this->headLink()->appendStylesheet($this->layout()->staticBaseUrl
         . 'application/modules/Ggcommunity/externals/styles/swiper.min.css');
-
-    $struggles= Engine_Api::_()->getItemTable('ggcommunity_question')->getQuestionsPaginator($this->subject->user_id);
 ?>
 
 
@@ -43,7 +41,7 @@
                         </div> -->
                         <div class="col-sm col-5 col-xl-3 col-lg-3 text-center border-left">
                             <h5 class="text-primary font-weight-bold"> 
-                                <?php echo $this->subject->member_count; ?>
+                                <?php echo $this->subject->gg_guide_count; ?>
                             </h5>
                             <p class="desc text-dark">
                                 <?php echo $this->translate('Struggles'); ?>
@@ -56,9 +54,20 @@
 
             <div class="badges-earned bg-white mb-4 widget">
                 <div class="holder p-4">
-                    <p class="desc title text-dark border-bottom pb-3">
-                        <?php echo $this->translate('Badges Earned'); ?>
-                    </p>
+
+                    <div class="d-flex justify-content-between border-bottom pb-3">
+                        <div class="holder text-left">
+                            <p class="desc title text-dark">
+                                <?php echo $this->translate('Badges Earned'); ?>
+                            </p>
+                        </div>
+                        <div class="holder text-right">
+                            <a href="javascript:void(0)"  class="badges-ern text-primary">
+                                <?php echo $this->translate('view all'); ?>
+                            </a>
+                        </div>
+                    </div>
+
                     <div class="bottom row pt-4">
                         <div class="col-2 text-center">
                             <div class="col-sm px-0 bronze text-center">
@@ -99,24 +108,20 @@
             <?php if($this->specialBadges->getTotalItemCount() >= 1):?>
             <div class="badges-slide mb-4 bg-white widget">
                 <div class="holder p-4">
+
                     <div class="d-flex justify-content-between border-bottom pb-3">
                         <div class="holder text-left">
                             <p class="desc title text-dark">
                                 <?php echo $this->translate('Badges Earned'); ?>
                             </p>
                         </div>
-                        <div class="holder text-right">
-                            <a href="javascript:void(0)"  class="badges-ern text-primary">
-                                <?php echo $this->translate('view all'); ?>
-                            </a>
-                        </div>
                     </div>
 
                     <div class="contributor slider pt-4">
 
                         <!-- Swiper -->
-                        <!-- Swiper -->
                         <div class="swiper-container">
+
                             <div class="swiper-wrapper">
                                 <?php foreach($this->specialBadges as $special):?>
                                 <div class="swiper-slide mb-0">
@@ -132,51 +137,12 @@
                             <div class="swiper-button-prev"></div>
                             <!-- Add Pagination -->
                             <div class="swiper-pagination"></div>
+                            
                         </div>
 
                     </div>
                 </div>
             </div> <!-- end of badges slide -->
-            <?php endif;?>
-    
-            <?php if($this->showFriend):?>
-                
-                <div class="following bg-white widget">
-                    <div class="holder p-4">
-                        <div class="d-flex justify-content-between border-bottom pb-3">
-                            <div class="holder text-left">
-                                <p class="desc title text-dark">
-                                    <?php echo $this->translate('Following');?>
-                                    <span class="total text-primary">
-                                    <?php echo $this->friends->getTotalItemCount(); ?>
-                                    </span>
-                                </p>
-                            </div>
-                            <div class="holder text-right">
-                                <!-- <a href="javascript:void(0)" class="text-primary"> 
-                                    <?php echo $this->translate('view all'); ?> 
-                                </a> -->
-                            </div>
-                        </div>
-
-                        <div class="row pt-4 bottom followers">
-
-                            <?php foreach( $this->friends as $membership ):
-                            if( !isset($this->friendUsers[$membership->resource_id]) ) continue;
-                            $member = $this->friendUsers[$membership->resource_id];
-                            ?>
-                            <div class="col-sm-4 m-2 py-3 item-holder" id="user_friend_<?php echo $member->getIdentity() ?>">
-                                <div class=" text-center">
-                                    <?php echo $this->htmlLink($member->getHref(), $this->itemPhoto($member, 'thumb.icon'), array('class' => 'profile_friends_icon')) ?>
-                                
-                                </div>
-                                <?php echo $this->htmlLink($member->getHref(), $member->getTitle(),array('class' => 'text-center w-100 d-block font-weight-bold')) ?>
-                            </div>
-                            <?php endforeach;?>
-                        </div>
-                    </div>
-                </div> <!-- end of  following -->
-                
             <?php endif;?>
           
         </div> <!-- left side -->
@@ -287,7 +253,6 @@
                 showEditContent();
             }, 300);
         <?php endif; ?>
-            
     });
 
     $$('.badges-ern').addEvent('click',function(event){
