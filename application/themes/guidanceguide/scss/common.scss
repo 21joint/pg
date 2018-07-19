@@ -49,20 +49,22 @@ html [type="button"],
   padding: 40px 0;
   .form-control, .btn {
     font-size: 0.75rem;
-    height: 50px;
+    height: 40px;
   }
   .btn {
-    width: 50px;
+    width: 40px;
     font-size: 16px;
+    line-height: 1;
   }
-
   @include media-breakpoint-up(sm) {
     padding: 80px 0 40px;
     .form-control {
       font-size: 0.9375rem;
+      height: 50px;
     }
     .btn {
       width: 100%;
+      height: 50px;
     }
   }
   @include media-breakpoint-up(md) {
@@ -97,9 +99,9 @@ html [type="button"],
   border-radius: 20px;
   padding: 15px 0;
   min-height: 576px;
-  @include media-breakpoint-up(md) {
+  @include media-breakpoint-up(sm) {
     background-color: #fff;
-    padding: 15px;
+    padding: 20px;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
   }
 }
@@ -135,5 +137,20 @@ img.thumb_icon, .suggestion_list .item_photo img {
   @include media-breakpoint-down(sm) {
     width: 32px !important;
     height: 32px !important;
+  }
+}
+
+.card-aside {
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+}
+
+.prg-aside {
+  li + li {
+    margin-top: 20px;
+  }
+  .card-aside--title {
+    font-size: 14px;
   }
 }

@@ -117,63 +117,101 @@
       margin-top: -1px;
     }
   }
-  .hamburger-menu {
-    display: block;
-    transition: all 150ms linear;
-    width: 22px;
-    height: 22px;
-    padding: 0;
-    margin: 0;
-    .bar {
-      position: relative;
-      background: #333D40;
-      transition: all 0ms 100ms, width 150ms linear;
-      display: block;
-      height: 3px;
-      width: 20px;
-      margin: auto;
-      &:before {
-        content: "";
-        position: absolute;
-        right: 0;
-        bottom: 7px;
-        background: #333D40;
-        transition: bottom 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1), width 150ms linear, background 150ms linear;
-        width: 20px;
-        height: 3px;
-      }
-      &:after {
-        content: "";
-        position: absolute;
-        right: 0;
-        top: 7px;
-        background: #333D40;
-        transition: bottom 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1), width 150ms linear;
-        transition: top 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1), width 150ms linear, background 150ms linear;
-        width: 20px;
-        height: 3px;
-      }
-    }
-    &:not(.acitve):hover .bar, &:not(.acitve).hover .bar {
-      width: 31px;
-    }
-    &:not(.active):hover .bar:before, &:not(.active).hover .bar:before {
-      width: 17px;
-    }
-    &:not(.active):hover .bar:after, &:not(.active).hover .bar:after {
-      width: 20px;
-    }
-  }
-  &--bottom {
-    li {
-      &:hover {
-        .nav-link {
-          &:after {
-            bottom: 0;
-          }
+
+}
+
+.prg-header--top {
+  z-index: 200;
+  background-color: #ffffff;
+}
+
+.prg-header--bottom {
+  position: absolute;
+  left: 0;
+  z-index: 101;
+  width: 256px;
+  background-color: #ffffff;
+  bottom: 0;
+  top: 65px;
+  box-shadow: 20px 0 40px rgba(0, 0, 0, .16);
+  transform: translate(-110%, 0);
+  transition: transform .27s, cubic-bezier(.86, 0, .07, 1);
+  li {
+    &:hover {
+      .nav-link {
+        &:after {
+          bottom: 0;
         }
       }
     }
+  }
+  .prg-nav--open & {
+    transform: translate(0%, 0%);
+  }
+  @include media-breakpoint-up(md) {
+    transform: translate(0, 0);
+    position: relative;
+    width: auto;
+    top: 0;
+    box-shadow: none;
+  }
+}
+
+.prg-nav--open {
+  overflow: hidden;
+}
+
+.prg-hamburger--btn {
+  display: block;
+  transition: all 150ms linear;
+  width: 22px;
+  height: 22px;
+  outline: 0;
+  .bar {
+    position: relative;
+    background: #333D40;
+    transition: all 0ms 100ms, width 150ms linear;
+    display: block;
+    height: 3px;
+    width: 20px;
+    margin: auto;
+    &:before {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 7px;
+      background: #333D40;
+      transition: bottom 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1), width 150ms linear, background 150ms linear;
+      width: 20px;
+      height: 3px;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 7px;
+      background: #333D40;
+      transition: bottom 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1), width 150ms linear;
+      transition: top 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1), width 150ms linear, background 150ms linear;
+      width: 20px;
+      height: 3px;
+    }
+  }
+  &:not(.acitve):hover .bar, &:not(.acitve).hover .bar {
+    width: 31px;
+  }
+  &:not(.active):hover .bar:before, &:not(.active).hover .bar:before {
+    width: 17px;
+  }
+  &:not(.active):hover .bar:after, &:not(.active).hover .bar:after {
+    width: 20px;
+  }
+}
+
+.prg-logo--image {
+  height: 32px;
+  @include media-breakpoint-up(sm) {
+    height: 40px;
   }
 }
 

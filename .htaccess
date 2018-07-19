@@ -1,7 +1,7 @@
 
 # $Id: .htaccess 9977 2013-03-19 20:51:56Z john $
-
 <IfModule mod_rewrite.c>
+
   Options +FollowSymLinks
   RewriteEngine On
 

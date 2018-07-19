@@ -37,10 +37,14 @@ module.exports = {
           'babel-loader'
         ]
       },
-
+      //CSS
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
       // SCSS
       {
-        test: /\.s?css$/,
+        test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [

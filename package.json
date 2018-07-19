@@ -7,7 +7,7 @@
     "levon@21joint.com"
   ],
   "config": {
-    "API_PROXY": "https://int-pg.guidanceguide.com/"
+    "API_PROXY": "https://int-pg.guidanceguide.com/api/v1/review?oauth_token=jet6u8z8zbjb1234s0b6u7ygp3v1ien&oauth_secret=r63xeerxhkgy3oxbh2h46785abjm4tfo&oauth_consumer_key=el0fpnlzzcjnh0s8aowtmnpkluk64cnn&oauth_consumer_secret=88tpfkretevr8qh21ut1bdxh3c6bd82x"
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=dev webpack-dev-server --progress --mode development --config webpack.config.dev.js",
@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/guidanceguide/parentalguidance#readme",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.1.0",
+    "@fortawesome/fontawesome-free": "^5.1.1",
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.1.2",
@@ -34,12 +34,12 @@
     "select2": "^4.0.6-rc.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.53",
-    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.53",
-    "@babel/plugin-transform-runtime": "^7.0.0-beta.53",
-    "@babel/preset-env": "^7.0.0-beta.53",
-    "@babel/register": "^7.0.0-beta.53",
-    "@babel/runtime": "^7.0.0-beta.53",
+    "@babel/core": "^7.0.0-beta.54",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.54",
+    "@babel/plugin-transform-runtime": "^7.0.0-beta.54",
+    "@babel/preset-env": "^7.0.0-beta.54",
+    "@babel/register": "^7.0.0-beta.54",
+    "@babel/runtime": "^7.0.0-beta.54",
     "@webpack-contrib/eslint-config-webpack": "^2.0.4",
     "autoprefixer": "^8.6.5",
     "babel-core": "^6.26.3",
@@ -93,9 +93,9 @@
     "uglifyjs-webpack-plugin": "^1.2.7",
     "url-loader": "^1.0.1",
     "val-loader": "^1.1.1",
-    "webpack": "^4.16.0",
+    "webpack": "^4.16.1",
     "webpack-bundle-analyzer": "^2.13.1",
-    "webpack-cli": "^3.0.8",
+    "webpack-cli": "^3.1.0",
     "webpack-concat-plugin": "^3.0.0",
     "webpack-dev-server": "^3.1.4",
     "webpack-merge": "^4.1.3",

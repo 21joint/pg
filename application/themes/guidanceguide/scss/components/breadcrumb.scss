@@ -1,8 +1,8 @@
-@import "../../../../node_modules/@fortawesome/fontawesome-free/scss/variables";
-
 .breadcrumb {
   font-size: .75rem;
-  padding: 1.2rem 1rem;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin-bottom: 0;
 }
 
 .breadcrumb-item {
@@ -15,7 +15,7 @@
     }
   }
   &.active {
-    color: $text-asphalt;
+    color: #c5c5c5;
   }
 }
 

@@ -46,7 +46,17 @@
 }
 
 .prg-review--single---content {
-  padding: 0 25px;
+  //padding: 0 25px;
+  .container-fluid {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.prg-review--single---descr {
+  @include media-breakpoint-up(md) {
+    font-size: 1.125rem;
+  }
 }
 
 .prg-review--single---action {

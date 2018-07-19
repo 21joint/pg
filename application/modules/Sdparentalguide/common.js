@@ -1,12 +1,15 @@
-import jQuery from 'jquery';
-import 'select2';
+import '../../themes/guidanceguide/scss/styles.scss';
+import './widgets/header/index';
 
 
-jQuery(document).ready(function () {
-  jQuery('select').each(function (i, sl) {
-    jQuery(sl).select2({
-      minimumResultsForSearch: -1,
-      placeholder: jQuery(sl).attr('placeholder')
-    });
-  })
-});
+(function ($) {
+  $(document).ready(function () {
+    $('select').each(function (i, sl) {
+      $(sl).select2({
+        minimumResultsForSearch: -1,
+        placeholder: $(sl).attr('placeholder')
+      });
+    })
+  });
+  $(document).ajaxStart();
+})(jQuery);

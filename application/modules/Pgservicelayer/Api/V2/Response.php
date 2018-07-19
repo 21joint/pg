@@ -93,6 +93,7 @@ class Pgservicelayer_Api_V2_Response extends Sdparentalguide_Api_Core {
         }
         return $listingPhotosArray;
     }
+    
     public function getReviewData(Sitereview_Model_Listing $sitereview){
         $view = Zend_Registry::get("Zend_View");
         $viewer = Engine_Api::_()->user()->getViewer();
@@ -192,6 +193,7 @@ class Pgservicelayer_Api_V2_Response extends Sdparentalguide_Api_Core {
         );
         return $userArray;
     }
+    
     public function getTopicData($topic){
         $topicArray = array(
             'topicID' => '',
@@ -213,6 +215,7 @@ class Pgservicelayer_Api_V2_Response extends Sdparentalguide_Api_Core {
         $topicArray['featured'] = $topic->featured;
         return $topicArray;
     }
+    
     public function getCommentData(Core_Model_Item_Abstract $comment){
         $viewer = Engine_Api::_()->user()->getViewer();
         $resource = $comment->getResource();
@@ -238,6 +241,7 @@ class Pgservicelayer_Api_V2_Response extends Sdparentalguide_Api_Core {
         $commentInfo["author"] = $this->getUserData($poster);
         return $commentInfo;
     }
+    
     public function getQuestionData(Ggcommunity_Model_Question $question){
         $view = Zend_Registry::get("Zend_View");
         $questionArray = array();
@@ -269,6 +273,7 @@ class Pgservicelayer_Api_V2_Response extends Sdparentalguide_Api_Core {
         $questionArray['author'] = $this->getUserData($question->getOwner());
         return $questionArray;
     }
+    
     public function getAnswerData(Ggcommunity_Model_Answer $answer,$question = null){
         if(empty($question)){
             $question = Engine_Api::_()->getItem("ggcommunity_question",$answer->parent_id);

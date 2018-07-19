@@ -1,0 +1,31 @@
+@import "~bootstrap/scss/bootstrap-grid";
+
+.prg-stars {
+  position: absolute;
+  bottom: -1px;
+  z-index: 100;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 0 0.75rem;
+  background-color: #ffffff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  white-space: nowrap;
+  line-height: 1;
+  img, svg {
+    width: 11px;
+    height: 11px;
+    display: block;
+    @include media-breakpoint-up(md) {
+      width: 22px;
+      height: 22px;
+    }
+  }
+  @include media-breakpoint-up(xs) {
+    padding: .625rem .9rem;
+  }
+  @include media-breakpoint-up(md) {
+    left: 20px;
+    transform: translate(0, 0);
+  }
+}

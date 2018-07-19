@@ -2,14 +2,12 @@ const pkg = require('./package');
 const merge = require('webpack-merge');
 const webpack = require('webpack');
 const proxyMiddleware = require('http-proxy-middleware');
+const cors = require('cors');
 const webpackConfig = require('./webpack.config');
 
 module.exports = merge(webpackConfig, {
-  mode: 'development',
   devServer: {
-    open: true,
-    openPage: 'parentalguidance',
-    port: 5555,
+    port: 2121,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'DELETE, HEAD, GET, OPTIONS, POST, PUT',
@@ -30,5 +28,8 @@ module.exports = merge(webpackConfig, {
         logLevel: 'debug'
       }));
     }
-  }
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin({})
+  ]
 });
