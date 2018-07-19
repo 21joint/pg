@@ -42,11 +42,14 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
         $limit = $this->getParam("limit",10);
         
         //Contribution Range
-        if(strtolower($contributionRangeType) == "week" || strtolower($contributionRangeType) == "month"){
+        if(strtolower($contributionRangeType) == "week" || strtolower($contributionRangeType) == "month" || strtolower($contributionRangeType) == "today"){
             $maxDate = date("Y-m-d H:i:s",strtotime("-1 months"));
             $currentDate = date("Y-m-d H:i:s");
             if(strtolower($contributionRangeType) == "week"){
                 $maxDate = date("Y-m-d H:i:s",strtotime("-1 week"));
+            }
+            if(strtolower($contributionRangeType) == "today"){
+                $maxDate = date("Y-m-d H:i:s",strtotime("-1 day"));
             }
             if($orderBy == "contributionPoints"){
                 $creditsTable = Engine_Api::_()->getDbtable('credits','sitecredit');
