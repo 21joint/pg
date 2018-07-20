@@ -7,9 +7,9 @@
             
             <div class="col-6 col-sm-4 p-0 logo d-flex align-items-center">
                 
-                <a href="javascript:void(0);" class="hamburger-menu px-3 d-md-none d-block">
+                <a id="burger" href="javascript:void(0);" class=" px-3 d-md-none d-block">
                   <span onclick="displayMenu()" class="hamburger-menu" aria-hidden="true">
-                      <span class="bar"></span>
+                      <span id="bar" class="bar"></span>
                   </span>
                 </a>
                 <a href="<?php echo $this->baseUrl(); ?>" class="logo">
@@ -355,12 +355,20 @@
   }
 
   function displayMenu() {
+    
     let mobileHolder = document.getElementById('parental-mobile-menu-holder');
+    let barMe = document.getElementById('bar');
+
     if(mobileHolder.classList.contains('active') == false) {
       mobileHolder.classList.add('active');
+      barMe.classList.add('active');
       document.getElementsByTagName("body")[0].style = 'overflow: hidden';
-    } else {
+     
+    } 
+    else {
+
       mobileHolder.classList.remove('active');
+      barMe.classList.remove('active');
       document.getElementsByTagName("body")[0].style = 'overflow-x: hidden';
     }
   }
@@ -418,7 +426,8 @@
   // hide search items
   document.onclick = function(e){
       e.stopPropagation();
-      
+      let mobileHolder = document.getElementById('parental-mobile-menu-holder');
+      let barMe = document.getElementById('bar');
       // Notification hide
       if(e.target.id !== 'close_icon') {
         activateProfileItem('profile-dropdown-menu');
@@ -427,6 +436,12 @@
         activateProfileItem('notifications');
       }
       
+      if(e.target.id !== 'bar'){
+        mobileHolder.classList.remove('active');
+        barMe.classList.remove('active');
+      }
+      
+
   }
    
 </script>

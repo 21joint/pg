@@ -2133,16 +2133,13 @@ form.preference-holder {
                 display: block;
                 margin-top: -.5rem;
                 transition: all 150ms linear;
-            
-                &:not(.acitve):hover .bar, &:not(.acitve).hover .bar {
-                    width: 31px;
-                }
-                &:not(.active):hover .bar:before, &:not(.active).hover .bar:before {
+                .bar.active::before{
                     width: 17px;
                 }
-                &:not(.active):hover .bar:after, &:not(.active).hover .bar:after {
+                .bar.active::after {
                     width: 20px;
                 }
+        
 
                 .bar {
                         position: relative;
