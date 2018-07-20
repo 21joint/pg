@@ -250,10 +250,10 @@ div.layout_page_user_signup_index .left-side {
         <div class="form-wrapper">
 
             <div class="d-flex justify-content-end family-buttons-action">
-                <button type="skip" name="skip" class="btn btn-light mr-2">
+                <button type="skip" name="skip" class="btn btn-light mr-2 w-25">
                     <?php echo $this->translate('Skip'); ?>
                 </button>
-                <button type="submit" name="submit" class="btn btn-success">
+                <button type="submit" name="submit" class="btn btn-success w-25">
                     <?php echo $this->translate('Continue'); ?>
                 </button>
             </div>
