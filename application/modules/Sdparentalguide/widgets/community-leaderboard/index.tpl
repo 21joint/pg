@@ -12,7 +12,7 @@
 
 <div class="leaderboard">
     <div class="leaderboard_title d-flex justify-content-between align-items-center">
-        <h3>Leaderboard</h3>
+        <h3><?php echo $this->translate('Leaderboard'); ?></h3>
         <!-- <ul class="d-flex align">
             <li class="leaderboard_nav">Overall</li>
             <li class="leaderboard_nav">Week</li>
@@ -20,14 +20,14 @@
         </ul> --><!-- Add back in when the service is provided -->
     </div>
     <div class="leaderboard_main d-flex justify-content-between">
-        <div class="d-flex justify-content-center">Rank</div>
-        <div class="d-flex">Leader</div>
+        <div class="d-flex justify-content-center"><?php echo $this->translate('Rank'); ?></div>
+        <div class="d-flex"><?php echo $this->translate('Leader'); ?></div>
         <!-- Categories Start -->
-        <div id="points" class="order_by d-flex justify-content-center align-items-center" data-order="contributionPoints">Contribution</div>
-        <div id="reviews" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="reviewCount">Reviews</div>
+        <div id="points" class="order_by d-flex justify-content-center align-items-center" data-order="contributionPoints"><?php echo $this->translate('Contribution'); ?></div>
+        <div id="reviews" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="reviewCount"><?php echo $this->translate('Reviews'); ?></div>
         <!-- <div class="d-none d-md-flex justify-content-center align-items-center">Answers --><!-- Sort By Answer not supported yet by the service layer --><!-- </div> -->
-        <div id="questions" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="questionCount">Questions</div>
-        <div id="followers" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="followers">Followers</div>
+        <div id="questions" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="questionCount"><?php echo $this->translate('Questions'); ?></div>
+        <div id="followers" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="followers"><?php echo $this->translate('Followers'); ?></div>
         <!-- Categories End -->
         <div class="d-flex d-md-none justify-content-center align-items-center">
             <button id="order_btn" class="btn-primary rounded-circle">></button>

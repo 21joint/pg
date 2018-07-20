@@ -1,5 +1,4 @@
-/* Find a proper place for this -> start */
-
+/* General Main and Wrapper styling start */
 #global_wrapper{
   width: 100%;
   background-color: #f7fcfc;
@@ -327,8 +326,21 @@
 /* Community Home Page FAQ -> end */
 /* Community Home Page jumbotron, carousel, list, faq, other items -> end */
 
-/* Find a proper place for this -> end */
-
+/* Profile Page Components -> start */
+.struggle_owner_name{
+  margin-right: 10px;
+}
+.list-inline{
+  margin-right: 10px;
+}
+.list-inline a{
+  color: #93a4a6!important;
+  transition: color 0.2s ease-in-out;
+}
+.list-inline a:hover{
+  color: #5cc7ce!important;
+}
+/* Profile Page Components -> end */
 
 .layout_sdparentalguide_listing_search .sd_listing_search{
      background-color: #fff !important;
