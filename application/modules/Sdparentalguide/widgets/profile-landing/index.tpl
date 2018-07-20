@@ -359,12 +359,9 @@
                                 '</div>';
                     }
                     strugglesContent.innerHTML = html;
-                    // Testing and structure 
-                    console.log(responseJSON);
+                    // console.log(responseJSON);
                 }else{
                     strugglesContent.innerHTML = responseJSON.message;
-                    // Testing and structure
-                    // console.log(responseJSON);
                 }
             }
         });
