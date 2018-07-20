@@ -2319,7 +2319,30 @@ form.preference-holder {
                 padding: 0;
                 .layout_top {
                     + .layout_main {
-
+                        .layout_core_container_tabs:not(.profile_cover_photo_tabs) {
+                            > .tabs_alt {
+                                ul{
+                                    padding: 0!important;
+                                    width: 93%;
+                                    margin:0 auto;
+                                    li {
+                                        a {
+                                            text-transform: none;
+                                                color: #333D40;
+                                                font-weight: 400;
+                                                font-size: .9em;
+                                                padding: 1.2rem;
+                                        }
+                                        &.active {
+                                            a {
+                                                
+                                                border: none;
+                                            }
+                                        }
+                                    }
+                                }
+                            } 
+                        }  
                         // profile tabs
                         .profile_cover_photo_tabs {
                             margin-top: 40px;
@@ -2486,6 +2509,15 @@ form.preference-holder {
     // Ajax Edit Profile Form
     .layout_sdparentalguide_ajax_profile {
         #extfox-settings {
+            [id='1_1_24-wrapper'] {
+                input[type=checkbox] + label:before {
+                   width: 17px!important;
+                   height: 17px!important;
+                }
+                input[type=checkbox] + label:after{
+                    top: 14px;
+                }
+            }
             .form-wrapper {
                 input[type=checkbox] {
                     display: none;
@@ -2495,6 +2527,7 @@ form.preference-holder {
                         align-items: center;
                     }
                 }
+               
                 .form-options-wrapper {
                     display: block;
                     float: left;
@@ -2511,7 +2544,7 @@ form.preference-holder {
                    
                     .col-12.d-flex, .col-12.years-range, .col-12.years, .col-12.final-date {
                         display: grid !important;
-                        grid-template-columns: repeat(1, 1fr);
+                        grid-template-columns: repeat(3, 1fr);
                         grid-gap: 10px;
                         grid-auto-rows: minmax(60px, auto);
                         &.d-none {
@@ -2519,6 +2552,7 @@ form.preference-holder {
                         }
                     }
                 }
+
             }
         }
     }
@@ -2566,11 +2600,17 @@ form.preference-holder {
         }
     }
     // Password
-    .layout_sdparentalguide_ajax_password {
+    .layout_sdparentalguide_ajax_password,.layout_sdparentalguide_ajax_privacy,.layout_sdparentalguide_ajax_notifications {
         .container {
-            width: 95%!important;
+            width: 100%!important;
+            padding: 0px!important;
+            #extfox-settings {
+                width: 89%;
+                margin:0 auto;
+            }
         }
     }
+   
 
     .layout_sdparentalguide_ajax_preferences {
         .sd_signup_interests {
@@ -2651,6 +2691,7 @@ form.preference-holder {
            
         }
         .profile_cover_options{
+           
             .save-button  {
                 top: 20px !important;
                 right: 15px;
@@ -2659,12 +2700,9 @@ form.preference-holder {
         .profile_cover_photo_wrapper {
             height: 349px;
         }
-        .holder.container {
-            .user-options {
-                a {
-                    width: 100px!important;
-                }
-            }
+        
+        #cover_photo_options {
+            display: block;
         }
          
     } 
@@ -2800,10 +2838,14 @@ form.preference-holder {
         #buttons-wrapper {
             width: 100%!important;
             #fieldset-buttons {
-                width: 90%!important;
+                width: 100%!important;
                 float: none!important;
                 button,a {
                     width: 45%;
+                    margin:0 auto;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                 }
             }
         }
