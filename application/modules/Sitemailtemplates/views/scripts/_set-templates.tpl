@@ -103,7 +103,6 @@
 <?php echo $bodyHtmlTemplate = '
 
 	<html>
-	<title>Email Templates</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Righteous" rel="stylesheet">
 	<style>	
@@ -124,7 +123,7 @@
 	</style>
 	<body style="background-color:#F5F5F5;">
 	
-		<table  align="center"  border="0" cellpadding="0" cellspacing="0"  id="bodyTable">
+		<table style="margin-top:70px;"  align="center"  border="0" cellpadding="0" cellspacing="0"  id="bodyTable">
 			<tr>
 				<td valign="top">
 					<table border="0" cellpadding="20" cellspacing="0" width="600" id="emailContainer">
