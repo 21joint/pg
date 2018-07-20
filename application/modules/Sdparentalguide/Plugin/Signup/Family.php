@@ -53,10 +53,6 @@ class Sdparentalguide_Plugin_Signup_Family extends Core_Plugin_FormSequence_Abst
     $user = $this->_registry->user;
     $data = $this->getSession()->data;
 
-    echo "<pre>";
-    print_r($data);
-    exit;
-
     $gender = $data['profile_gender'] ? $data['profile_gender'] : 3;
     $age = $data['profile_age_range'];
 
@@ -73,9 +69,6 @@ class Sdparentalguide_Plugin_Signup_Family extends Core_Plugin_FormSequence_Abst
   
     $fields = $fieldsMeta->fetchAll($select);
     if(count($fields) < 2) return;
-
-    $ageId = $fields[0]->field_id;
-    $genderId = $fields[1]->field_id;
     
     $db = Engine_Db_Table::getDefaultAdapter();
     $db->beginTransaction();
@@ -85,21 +78,45 @@ class Sdparentalguide_Plugin_Signup_Family extends Core_Plugin_FormSequence_Abst
         // Fields table for gender
         $table = Engine_Api::_()->fields()->getTable('user', 'values');
         $valuesGender = $table->createRow();
-        $valuesGender->field_id = $genderId;
+        $valuesGender->field_id = $fields[0]->field_id;
         $valuesGender->item_id = $user->getIdentity();
         $valuesGender->value = $gender;
         $valuesGender->save();
   
         // Fields table for Age
         $valueAge = $table->createRow();
-        $valueAge->field_id = $ageId;
+        $valueAge->field_id = $fields[1]->field_id;
         $valueAge->item_id =$user->getIdentity();
         $valueAge->value = $age; 
         $valueAge->save();
+
+        $db->commit();
        
     } catch (Exception $ex) {
       $db->rollBack();
       throw $ex;
+    }
+
+    // import stuff for family
+    $table = Engine_Api::_()->getDbtable('familyMembers', 'sdparentalguide');
+
+    $family = preg_split('/[,]+/', $data['family']);
+    if(count($family) < 1) return;
+
+    foreach($family as $item) {
+
+      if(!$item) return;
+
+      $item = preg_split('/[-]+/', $item);
+      $prefParams = array(
+        'owner_id' => $user->getIdentity(),
+        'gender' => $item[0],
+        'dob' => $item[2] . '-' . $item[1] . '-01'
+      );
+      $prefRow = $table->createRow();
+      $prefRow->setFromArray($prefParams);
+      $prefRow->save();
+
     }
     
   }
