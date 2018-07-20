@@ -95,14 +95,16 @@
                                 <?php echo $this->viewer->email; ?>
                               </p>
                             </div>
-                            <div class="items mx-4">
+                            <div class="items profile-items mx-4">
                               <li class="list-inline py-3">
                                 <a href="<?php echo $this->url(array('id' => $this->viewer()->getIdentity(), 'type' => 'general' ), 'user_profile', true) ?>">
                                   <div class="d-flex align-items-center justify-content-start">
                                     <div class="pr-2"> 
                                       <i class="fa fa-cog" aria-hidden="true"></i> 
                                     </div>
-                                    <div class="text-dark"> Profile Settings </div>
+                                    <div class="text-dark"> 
+                                      <?php echo $this->translate('Profile Settings '); ?>
+                                    </div>
                                   </div>
                                 </a>
                               </li>
@@ -112,18 +114,22 @@
                                     <div class="pr-2"> 
                                       <i class="fa fa-filter" aria-hidden="true"></i>
                                     </div>
-                                    <div class="text-dark"> User Preferences </div>
+                                    <div class="text-dark">
+                                      <?php echo $this->translate('User Preferences'); ?>
+                                    </div>
                                   </div>
                                 </a>
                               </li>
-                              <?php if($this->viewer->isAdmin()):?>
-                              <li class="list-inline pb-3 border-bottom">
+                              <?php if( $this->viewer->isAdmin() ):?>
+                              <li class="list-inline pb-3">
                                 <a href="<?php echo $this->baseUrl() ;?>/admin">
                                   <div class="d-flex align-items-center justify-content-start">
                                     <div class="pr-2"> 
                                     <i class="fa fa-database" aria-hidden="true"></i>
                                     </div>
-                                    <div class="text-dark"> Admin </div>
+                                    <div class="text-dark"> 
+                                      <?php echo $this->translate('Admin'); ?> 
+                                    </div>
                                   </div>
                                 </a>
                               </li>

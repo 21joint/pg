@@ -4128,6 +4128,8 @@ header.extfox-header .container .row div.mini-menu ul li.name .item-profile-drop
     border-radius: 10px 10px 0 0; }
     header.extfox-header .container .row div.mini-menu ul li.name .item-profile-dropdown ul div.items-profile-info h4 {
       border: none; }
+  header.extfox-header .container .row div.mini-menu ul li.name .item-profile-dropdown ul div.profile-items li:last-child {
+    border-bottom: 1px solid #dee2e6 !important; }
 header.extfox-header .bottom-menu .container ul li a {
   padding-top: 1rem;
   padding-bottom: 1rem;

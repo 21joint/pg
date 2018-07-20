@@ -76,10 +76,10 @@ class User_AuthController extends Siteapi_Controller_Action_Standard {
             // START FORM VALIDATION
             $db = Engine_Db_Table::getDefaultAdapter();
             $validators = Engine_Api::_()->getApi('Siteapi_FormValidators', 'user')->getLoginFormValidators();
-            $siteapiGlobalView = 1;
+            $siteapiGlobalView = Engine_Api::_()->getApi('settings', 'core')->getSetting('siteapi.global.view', 0);
             $hostType = str_replace('www.', '', strtolower($_SERVER['HTTP_HOST']));
-            $siteapiManageType = 1;
-            $siteapiGlobalType = 1;
+            $siteapiManageType = Engine_Api::_()->getApi('settings', 'core')->getSetting('siteapi.iosdevice.type', 0);
+            $siteapiGlobalType = Engine_Api::_()->getApi('settings', 'core')->getSetting('siteapi.global.type', 0);
             $data['validators'] = $validators;
             $validationMessage = $this->isValid($data);
             if (!empty($validationMessage) && @is_array($validationMessage)) {
@@ -421,7 +421,7 @@ class User_AuthController extends Siteapi_Controller_Action_Standard {
                     $userArray['cover'] = $getUserCoverPhoto;
             }
 
-            if (false) {
+            if (!empty($tempHostType) && ($tempHostType != $siteapiManageType)) {
                 Engine_Api::_()->getApi('settings', 'core')->setSetting('siteapi.global.type', 1);
             } else {
                 // Add GCMuser for push notification.

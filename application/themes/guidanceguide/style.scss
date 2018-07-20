@@ -390,6 +390,11 @@ header.extfox-header {
                                             border: none;
                                         }
                                     }
+                                    div.profile-items {
+                                        li:last-child {
+                                            border-bottom: 1px solid #dee2e6 !important;
+                                        }
+                                    }
                                 }
                             }
                         }

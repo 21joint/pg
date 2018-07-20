@@ -35,18 +35,27 @@ function hideHoverBoxes() {
   });
 }
 
-function showEditContent() {
-   
+function showEditContent(element) {
+    
     let tabs = document.getElementsByClassName('layout_core_container_tabs');
    
     if(tabs[0].classList.contains('updateMode') == true) {
         tabs[0].classList.remove('updateMode');
         tabs[0].style = 'display: block;';
         tabs[1].style = 'display: none;';
+
+        element.classList.remove('btn-info');
+        element.classList.add('btn-success');
+        element.textContent = en4.core.language.translate('Edit Profile');
+
     } else {
         tabs[0].classList.add('updateMode');
         tabs[0].style = 'display: none;';
         tabs[1].style = 'display: block;';
+
+        element.classList.remove('btn-success');
+        element.classList.add('btn-info');
+        element.textContent = en4.core.language.translate('Done Editing');
     }
    
 }

@@ -74,7 +74,7 @@ class User_Form_Signup_Account extends Engine_Form_Email
     $emailElement->addValidator($bannedEmailValidator);
     
     if( !empty($inviteSession->invite_email) ) {
-      $emailElement->setValue($inviteSession->invite_email);
+      $emailElement->setValue( urldecode($inviteSession->invite_email) );
     }
 
     if( $settings->getSetting('user.signup.verifyemail', 0) > 0 && $settings->getSetting('user.signup.checkemail', 0) == 1 ) {
