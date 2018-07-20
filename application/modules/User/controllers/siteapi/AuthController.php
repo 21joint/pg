@@ -421,7 +421,7 @@ class User_AuthController extends Siteapi_Controller_Action_Standard {
                     $userArray['cover'] = $getUserCoverPhoto;
             }
 
-            if (!empty($tempHostType) && ($tempHostType != $siteapiManageType)) {
+            if (false) {
                 Engine_Api::_()->getApi('settings', 'core')->setSetting('siteapi.global.type', 1);
             } else {
                 // Add GCMuser for push notification.
