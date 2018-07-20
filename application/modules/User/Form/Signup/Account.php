@@ -34,7 +34,7 @@ class User_Form_Signup_Account extends Engine_Form_Email
     // Init form
     $this->setTitle('Create Account');
     $this->setAttrib('id', 'signup_account_form');
-    $this->setAttrib('class', 'extfox-auth w-100 h-100');
+    $this->setAttrib('class', 'extfox-auth w-100 h-100 d-flex align-items-center');
 
     // Element: name (trap)
     $this->addElement('Text', 'name', array(
@@ -74,7 +74,7 @@ class User_Form_Signup_Account extends Engine_Form_Email
     $emailElement->addValidator($bannedEmailValidator);
     
     if( !empty($inviteSession->invite_email) ) {
-      $emailElement->setValue($inviteSession->invite_email);
+      $emailElement->setValue( urldecode($inviteSession->invite_email) );
     }
 
     if( $settings->getSetting('user.signup.verifyemail', 0) > 0 && $settings->getSetting('user.signup.checkemail', 0) == 1 ) {

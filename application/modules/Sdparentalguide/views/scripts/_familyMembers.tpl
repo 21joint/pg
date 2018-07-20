@@ -271,6 +271,11 @@ rightSidePreferences.classList.add('col-xl-10', 'col-lg-10','col-12','px-0',);
 var lastItem = 0;
 localStorage.removeItem('update');
 
+function getMonth(month) {
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    return months[month];
+}
+
 function editFamily(el) {
 
     let memberHolder = el.getParent('div.row');
@@ -410,15 +415,18 @@ function displayFinalDate(type, e) {
 function setupFamilyMember() {
 
     let familyHolder = document.getElementById('family-information');
+    let familyInputField = document.getElementById('family');
     var genderImage;
     var genderType;
     var gender = localStorage.getItem('gender');
-    var birthdayDate = localStorage.getItem('final-year') + '-' + localStorage.getItem('month');
+    var birthdayDate = getMonth(localStorage.getItem('month')) + ' ' + localStorage.getItem('final-year');
     var editMember;
 
     lastItem = lastItem + 1;
 
-    var htmlInputFields = '<input type="hidden" name="family_'+ lastItem +'[gender]" id="field-gender" value="'+gender+'"><input type="hidden" name="family_'+ lastItem +'[birthday]" id="field-birthday" value="'+birthdayDate+'">';
+    var htmlInputFields = '<input type="hidden" name="family[gender]" id="field-gender" value="'+gender+'"><input type="hidden" name="family[birthday]" id="field-birthday" value="'+birthdayDate+'">';
+
+    familyInputField.value += gender + '-' + localStorage.getItem('month') + '-' + localStorage.getItem('final-year') + ',';
 
     if(gender == 3) {
         genderImage = '<div class="unknown d-flex align-items-center justify-content-center text-white">X</div>';
@@ -436,7 +444,7 @@ function setupFamilyMember() {
     let item = new Element('div', {
         'class': 'row d-flex align-items-center my-4 mx-0',
         'id': lastItem,
-        'html': '<div class="col-2 p-0 family-item-holder">'+genderImage+'</div><div class="col-6 family-item p-0"> <span class="text-muted"> '+birthdayDate+' </span><p class="desc text-muted small">'+genderType+'</p>'+htmlInputFields+'</div>' + editMember
+        'html': '<div class="col-2 p-0 family-item-holder">'+genderImage+'</div><div class="col-6 family-item p-0"> <span class="text-muted"> '+birthdayDate+' </span><p class="desc text-muted small">'+genderType+'</p></div>' + editMember
     });
 
     let updateItem = document.getElementById(localStorage.getItem('update'));
@@ -445,7 +453,7 @@ function setupFamilyMember() {
         updateItem.remove();
         localStorage.removeItem('update');
     }
-        
+
     familyHolder.insertBefore(item, familyHolder.childNodes[0]);
 
     displayFamilySelector('month');

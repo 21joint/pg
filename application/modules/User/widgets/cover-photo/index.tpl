@@ -54,7 +54,7 @@
             <?php endif; ?>
             <?php if($this->user->isSelf($this->viewer())): ?>
             <div class="item d-sm-block px-sm-0 px-5 d-flex justify-content-end mt-sm-0 mt-3">
-              <a class="btn btn-success text-white  py-2 px-sm-5 px-3 " href="javascript:void(0);" onclick="showEditContent()">
+              <a class="btn btn-success text-white px-5 py-2 " href="javascript:void(0);" onclick="showEditContent(this)">
                 <?php echo $this->translate('Edit Profile');?>
               </a>
             </div>

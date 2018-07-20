@@ -131,7 +131,7 @@ $routes['pgservicelayer'] = array(
         )
     ),
     'pgservicelayer_apifollow' => array(
-        'route' => 'api/:version/follow/*',
+        'route' => 'api/:version/follow/:action/*',
         'defaults' => array(
           'module' => 'pgservicelayer',
           'controller' => 'membership',
@@ -139,7 +139,7 @@ $routes['pgservicelayer'] = array(
           'version' => 'v1'
         ),
         'reqs' => array(
-          'action' => '\D+',
+          'action' => '(confirm|reject|index)',
         )
     ),
     'pgservicelayer_apisearch' => array(
@@ -171,6 +171,18 @@ $routes['pgservicelayer'] = array(
         'defaults' => array(
           'module' => 'pgservicelayer',
           'controller' => 'rating',
+          'action' => 'index',
+          'version' => 'v1'
+        ),
+        'reqs' => array(
+          'action' => '\D+',
+        )
+    ),
+    'pgservicelayer_apiviews' => array(
+        'route' => 'api/:version/action/*',
+        'defaults' => array(
+          'module' => 'pgservicelayer',
+          'controller' => 'action',
           'action' => 'index',
           'version' => 'v1'
         ),

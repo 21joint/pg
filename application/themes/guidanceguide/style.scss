@@ -390,6 +390,11 @@ header.extfox-header {
                                             border: none;
                                         }
                                     }
+                                    div.profile-items {
+                                        li:last-child {
+                                            border-bottom: 1px solid #dee2e6 !important;
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -2099,9 +2104,6 @@ form.preference-holder {
 
 // For auth page
 .full-height-auth #global_wrapper_extfox,.full-height-auth #global_wrapper_extfox #global_content_extfox,.layout_page_user_auth_forgot,.full-height-auth .layout_core_content,.full-height-auth .layout_main,.full-height-auth .layout_middle,.full-height-auth .layout_core_content,.layout_page_user_auth_login,.layout_page_user_signup_index,.layout_page_user_auth_reset,.layout_page_core_error_requireuser,.full-height-auth.layout_main {
-    height: 100%;
-} 
-.height-vh {
     height: 100%;
 }
 
