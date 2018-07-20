@@ -47,14 +47,14 @@
               </div>
             <?php else: ?>
               <div class="item pr-sm-2  d-sm-block px-sm-0 px-5 d-flex justify-content-end" id="user-friendship-cover">
-                <a class="btn btn-success text-white px-5 py-2 " href="javascript:void(0);" onclick="en4.gg.ggAjax('user', <?php echo $this->user->getIdentity(); ?>, 'user-privacy', this)">
+                <a class="btn btn-success text-white py-2 px-sm-5 px-3" href="javascript:void(0);" onclick="en4.gg.ggAjax('user', <?php echo $this->user->getIdentity(); ?>, 'user-privacy', this)">
                   <?php echo ($this->user->search == 1) ? $this->translate('Make Private') : $this->translate('Make Public'); ?>
                 </a>
               </div>
             <?php endif; ?>
             <?php if($this->user->isSelf($this->viewer())): ?>
             <div class="item d-sm-block px-sm-0 px-5 d-flex justify-content-end mt-sm-0 mt-3">
-              <a class="btn btn-success text-white px-5 py-2 " href="javascript:void(0);" onclick="showEditContent()">
+              <a class="btn btn-success text-white  py-2 px-sm-5 px-3 " href="javascript:void(0);" onclick="showEditContent()">
                 <?php echo $this->translate('Edit Profile');?>
               </a>
             </div>

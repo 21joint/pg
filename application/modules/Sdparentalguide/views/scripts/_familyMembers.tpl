@@ -456,6 +456,7 @@ function setupFamilyMember() {
 }
 
 function setupFieldValue(type, value) {
+        
     if (typeof(Storage) !== "undefined") {
         localStorage.setItem(type, value);
     }
@@ -463,6 +464,7 @@ function setupFieldValue(type, value) {
 
 function displayFamilySelector(type) {
     
+
     var monthsHolder = document.getElementById('months');
     var yearsRangeHolder = document.getElementById('years-range');
     var yearsHolder = document.getElementById('years');

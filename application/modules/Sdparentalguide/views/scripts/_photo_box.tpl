@@ -40,13 +40,8 @@
                             </div>
                             <i class="fa fa-circle pl-2"></i>
                             <div class="holder-followers pl-2">
-<<<<<<< HEAD
-                                <?php echo $this->translate('Followers'); ?> 
-                                <?php echo $subject->gg_followers_count;?>
-=======
                             <?php 
                                 echo $this->translate(array("%s Follower", "%s Followers", $subject->gg_followers_count), $this->locale()->toNumber($subject->gg_followers_count)) ?>
->>>>>>> 02fd98dec249685b48df027011d7cd01cce898af
                             </div>
                         </div>
                     </div>

@@ -90,7 +90,9 @@
 
 <?php if(($this->show_title && $this->sitetitle_location == 'header') || ($this->show_icon && $this->sitelogo_location == 'header') || ($this->show_tagline && $this->tagline_location == 'header')):?> 
 	<?php $headerContent .= '<tr><td style="background-color:' .$this->header_bgcol. ';padding:' .$this->header_outpadding. 'px;vertical-align:middle;text-align:center"> ' .$siteTitle. '</td></tr>' ;?>
+	
 <?php endif;?>
+
 
 
 
