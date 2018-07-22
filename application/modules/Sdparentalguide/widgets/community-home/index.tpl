@@ -30,7 +30,7 @@
             <a id="go_to_leaderboard"><?php echo $this->translate('More...'); ?></a>
         </h3>
     </div>
-    <div id="sd-response" class="mvps_content p-5 d-flex justify-content-between align-items-center">
+    <div id="sd-response-mvps" class="mvps_content p-5 d-flex align-items-center">
         <!-- Loader goes here -->
         <!-- Content of ajax call goes here -->
     </div>
@@ -44,7 +44,7 @@
         <div class="d-flex"><?php echo $this->translate('Leader'); ?></div>
         <div id="community_home_contribution" class="d-flex justify-content-center align-items-center"><?php echo $this->translate('Contribution'); ?></div>
     </div>
-    <div id="sd-response-mvps" class="container d-flex justify-content-center align-items-center">
+    <div id="sd-response" class="container d-flex justify-content-center align-items-center">
         <!-- Loader goes here -->
     </div>
     <div class="leaderboard_content">
@@ -263,16 +263,16 @@ var disp_experts;
 document.getElementById("meet_mvps").addEventListener('click', function(){
     this.addClass("mvps_main_active");
     document.getElementById("meet_experts").removeClass("mvps_main_active");
-    // disp_mvps = 1;
-    // disp_experts = 0;
-    // loadMvpExpertResults(disp_mvps, disp_experts);
+    disp_mvps = 1;
+    disp_experts = null;
+    loadMvpExpertResults(disp_mvps, disp_experts);
 });
 document.getElementById("meet_experts").addEventListener('click', function(){
     this.addClass("mvps_main_active");
     document.getElementById("meet_mvps").removeClass("mvps_main_active");
-    // disp_mvps = 0;
-    // disp_experts = 1;
-    // loadMvpExpertResults(disp_mvps, disp_experts);
+    disp_mvps = null;
+    disp_experts = 1;
+    loadMvpExpertResults(disp_mvps, disp_experts);
 });
 
 // Go to Community Leaderboard Page
@@ -303,7 +303,7 @@ document.getElementById("mvps_left").addEventListener('click', function(){
 
 // MVPs and Experts Results Ajax Function -> start
 // Arguments disp_mvps = 1, disp_experts = 0 When everything get wired
-function loadMvpExpertResults(){
+function loadMvpExpertResults(disp_mvps = 1, disp_experts = null){
     //Request data can be linked to form inputs
     var requestData = {};
     requestData.mvp = null; //Possible values 1 or 0 -> disp_mvps from arguments

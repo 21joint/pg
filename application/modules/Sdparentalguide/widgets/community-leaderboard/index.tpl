@@ -13,11 +13,11 @@
 <div class="leaderboard">
     <div class="leaderboard_title d-flex justify-content-between align-items-center">
         <h3><?php echo $this->translate('Leaderboard'); ?></h3>
-        <!-- <ul class="d-flex align">
+        <ul class="d-flex align">
             <li class="leaderboard_nav">Overall</li>
             <li class="leaderboard_nav">Week</li>
             <li class="leaderboard_nav">Month</li>
-        </ul> --><!-- Add back in when the service is provided -->
+        </ul><!-- Add back in when the service is provided -->
     </div>
     <div class="leaderboard_main d-flex justify-content-between">
         <div class="d-flex justify-content-center"><?php echo $this->translate('Rank'); ?></div>
@@ -95,7 +95,7 @@ document.querySelectorAll('.leaderboard_nav').forEach(function(nav) {
         pageNum = 1;
         // Using null and leaving out the previous sorting results
         // Better to always start from contributionPoints on any timeFrame
-        loadLeaderboardResults(timeFrame, categoryValue, currentCategory);       
+        loadLeaderboardResults(timeFrame, orderBy, currentCategory, pageNum);       
     });
 });
 
@@ -164,7 +164,7 @@ document.getElementById('leaderboard_next').addEventListener('click', function()
 });
 // Pagination Number Change End
 
-function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints", disp = 0, page = 1) {
+function loadLeaderboardResults(tm, ord, disp = 0, page = 1) {
     //Request data can be linked to form inputs
     var requestData = {};
     requestData.contributionRangeType = tm; //Possible values "Overall", "Week", "Month"
@@ -175,6 +175,9 @@ function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints", disp
     var loader = en4.core.loader.clone();
     loader.addClass("sd_loader my-5");
     var url = en4.core.baseUrl+"api/v1/ranking";
+
+    // Testing... Delete after done
+    // console.log(tm, ord, disp, page);
 
     var request = new Request.JSON({
         url: url,
