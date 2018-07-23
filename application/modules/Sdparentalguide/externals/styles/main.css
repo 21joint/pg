@@ -1,5 +1,4 @@
-/* Find a proper place for this -> start */
-
+/* General Main and Wrapper styling start */
 #global_wrapper{
   width: 100%;
   background-color: #f7fcfc;
@@ -327,8 +326,36 @@
 /* Community Home Page FAQ -> end */
 /* Community Home Page jumbotron, carousel, list, faq, other items -> end */
 
-/* Find a proper place for this -> end */
-
+/* Profile Page Components -> start */
+.struggle_owner_name{
+  margin-right: 10px;
+}
+.list-inline{
+  margin-right: 10px;
+}
+.list-inline a{
+  color: #93a4a6!important;
+  transition: color 0.2s ease-in-out;
+}
+.list-inline a:hover{
+  color: #5cc7ce!important;
+}
+.count_info{
+  color: #5cc7ce;
+  font-weight: 700;
+  border: 2px solid #fff;
+  border-radius: 5px;
+}
+.count_title{
+  font-size: 12px;
+  font-family: 'Nunito', sans-serif;
+  color: #93a4a6;
+  font-weight: 400;
+}
+.answered_question{
+  border: 2px solid #5cc7ce;
+}
+/* Profile Page Components -> end */
 
 .layout_sdparentalguide_listing_search .sd_listing_search{
      background-color: #fff !important;
@@ -644,6 +671,13 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
         float: none;
         display: inline-block;
     }
+}
+
+@media screen and (max-width: 991px){
+  /* Profile Latest Struggles */
+  .answered_question{
+    border: 2px solid #fff;
+  }
 }
 
 @media screen and (max-width: 768px){
