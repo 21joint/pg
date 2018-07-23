@@ -17,7 +17,7 @@
             </svg>
           </a>
         </div> <!-- end of logo -->
-        <div class="col-auto col-md-4 col-sm search search-bar" id="search-bar">
+        <div class="col-auto col-sm col-md-4  search search-bar" id="search-bar">
 
           <form class="d-block w-100"
                 action="<?= $this->url(array('controller' => 'search'), 'default', true) ?>"
@@ -27,7 +27,7 @@
                    class="form-control form-control-rounded px-3 px-md-4 w-100"
                    name="query"
                    id="global_search_field" alt="<?= $this->translate('Type to search...') ?>"
-                   placeholder="<?= $this->translate('Type to search...') ?>"/>
+                   placeholder="<?= $this->translate('Type to search...') ?>" />
             <button class="bg-transparent rounded-circle d-sm-none d-block btn-close--search text-asphalt"
                     type="button"
                     id="close_icon">
@@ -38,7 +38,7 @@
         </div> <!-- search -->
         <div class="col-auto col-md-4 mini-menu" id="core_menu_mini_menu_extfox">
 
-          <ul class="list-unstyled list-inline profile-items w-100 d-flex justify-content-sm-end justify-content-center align-items-center my-0">
+          <ul class="list-unstyled profile-items w-100 d-flex justify-content-sm-end justify-content-center align-items-center my-0">
 
             <li class="list-inline-item align-middle search d-sm-none mr-sm-2">
               <a class="d-flex align-items-center p-1 p-sm-2"
@@ -154,7 +154,7 @@
                     </ul>
                   </div>
                 </li> <!-- name -->
-              <?php else: ?>
+              <?php else : ?>
                 <li class="list-inline-item align-middle d-none d-sm-inline-block">
                     <?= $this->htmlLink($this->url(array('action' => 'login'), 'user_login'), $this->translate('Sign In'), array('class' => 'btn btn-link font-weight-bold text-uppercase px-2')); ?>
                 </li>

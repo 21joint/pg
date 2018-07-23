@@ -2,13 +2,16 @@ import '../../themes/guidanceguide/scss/styles.scss';
 import './widgets/header/index';
 
 
-(function ($) {
-  $(document).ready(function () {
-    $('select').each(function (i, sl) {
-      $(sl).select2({
+(function (jQuery) {
+  jQuery(document).ready(function () {
+    jQuery('select').each(function (i, sl) {
+      jQuery(sl).select2({
         minimumResultsForSearch: -1,
-        placeholder: $(sl).attr('placeholder')
+        placeholder: jQuery(sl).attr('placeholder')
       });
     })
   });
+  jQuery('#prgAuthModal').on('hide.bs.modal', function (e) {
+    window.location.href = jQuery(e.relatedTarget).attr('href');
+  }).modal();
 })(jQuery);

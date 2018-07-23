@@ -1,3 +1,4 @@
+import pkg from '../../../../package';
 import jQuery from "jquery";
 
 module.exports = (function ($) {
@@ -6,7 +7,8 @@ module.exports = (function ($) {
   Reviews = function () {
 
     let _self = this;
-    const url = en4.core.baseUrl + 'api/v1/review';
+
+    const url = pkg.config.API_PROXY + '/review?' + pkg.config.OAUTH;
 
     this.get = get;
     this.buildCard = buildCard;
@@ -18,10 +20,9 @@ module.exports = (function ($) {
       $.ajax({
         method: 'GET',
         url: url,
-        beforeSend: function () {
-          $(options.container).addClass('loading');
-        },
+        dataType: 'json',
         success: function (res) {
+          console.log(res);
           _reviews.data = res.body.Results;
           _reviews.html = '';
           _reviews.cards = [];
@@ -37,7 +38,7 @@ module.exports = (function ($) {
           console.error(error.message);
         },
         complete: function () {
-          $(options.container).removeClass('loading');
+          $(options.container).addClass('loaded');
         }
       })
     }
@@ -156,10 +157,8 @@ module.exports = (function ($) {
       if (options.id) {
         $.ajax({
           method: 'GET',
-          url: url + '?reviewID=' + options.id,
-          beforeSend: function () {
-            $(options.container).addClass('loading');
-          },
+          dataType: 'json',
+          url: url + '&reviewID=' + options.id,
           success: function (res) {
             callback(res.body.Results[0]);
           },
@@ -167,7 +166,7 @@ module.exports = (function ($) {
             console.error(error);
           },
           complete: function () {
-            $('[data-load]').removeClass('loading');
+            $(options.container).addClass('loaded');
           }
         });
       }

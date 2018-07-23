@@ -11,7 +11,8 @@
 
 <!-- SINGLE REVIEW LAYOUT -->
 <div class="prg-review--single" data-load>
-  <!--  hero-->
+
+  <!-- SINGLE REVIEW HERO -->
   <div class="prg-review--single---hero position-relative">
     <!-- SINGLE REVIEW HERO IMAGE -->
     <div class="prg-review--single---heroimage"
@@ -218,7 +219,8 @@
     </div>
     <!-- SINGLE REVIEW HERO INNER /// -->
   </div>
-  <!--  hero ///-->
+  <!--  SINGLE REVIEW HERO ///-->
+
   <!--  BREADCRUMB-->
   <div class="prg-review--single---breadcrumb">
     <div class="container-fluid">
@@ -236,6 +238,7 @@
     </div>
   </div>
   <!--  BREADCRUMB ///-->
+
   <!--  SINGLE REVIEW DESCRIPTION -->
   <div class="prg-review--single---content">
     <div class="container-fluid">
@@ -277,7 +280,7 @@
                   </p>
                 </div>
                 <!-- REVIEW GALLERY-->
-                <div class="prg-review--single---gallery">
+                <div class="prg-review--single---gallery my-3">
                   <ul class="d-flex flex-wrap list-unstyled">
                     <li class="col-4 p-1">
                       <div class="embed-responsive embed-responsive-1by1"
@@ -717,7 +720,6 @@
               </div>
             </div>
           </div>
-
         </div>
         <div class="col-lg-4 col-xl-3">
           <aside class="prg-aside">
@@ -807,5 +809,6 @@
     </div>
   </div>
   <!--  SINGLE REVIEW DESCRIPTION ///-->
+
 </div>
 <!-- SINGLE REVIEW LAYOUT /// -->

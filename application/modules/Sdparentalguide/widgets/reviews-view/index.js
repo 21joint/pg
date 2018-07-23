@@ -2,8 +2,8 @@ import Reviews from '../../services/reviews.service';
 import jQuery from 'jquery';
 
 
-(function ($) {
-  $(document).ready(function () {
+(function (jQuery) {
+  jQuery(document).ready(function () {
     let revId = window.location.search.split('=')[1];
 
     Reviews.loadSingle({
@@ -11,10 +11,10 @@ import jQuery from 'jquery';
       container: '.prg-review--single'
     }, function (data) {
       console.log(data);
-      $('.prg-review--single---descr').html(data.longDescription);
-      $('.prg-review--single---title').text(data.title);
-      $('.prg-review--single---heroimage').css('background-image', 'url(' + data.coverPhoto.photoURL + ')');
-      $('.prg-review--single---gallery').html(function () {
+      jQuery('.prg-review--single---descr').html(data.longDescription);
+      jQuery('.prg-review--single---title').text(data.title);
+      jQuery('.prg-review--single---heroimage').css('background-image', 'url(' + data.coverPhoto.photoURL + ')');
+      jQuery('.prg-review--single---gallery').html(function () {
         let _html = '';
 
         _html += '<ul class="d-flex flex-wrap list-unstyled">\n';

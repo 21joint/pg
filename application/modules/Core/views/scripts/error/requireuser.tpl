@@ -10,37 +10,26 @@
  * @author     John
  */
 ?>
-<div class="modal modal-auth fade"
-     tabindex="-1"
-     role="dialog"
-     id="prgAuthModal"
-     aria-labelledby="prgAuthModal"
-     aria-hidden="true">
-  <div class="modal-dialog w-100 h-100 mw-100 m-0">
-    <div class="modal-content h-100 rounded-0 border-0">
-      <div class="prg-auth">
-        <div class="holder-form holder-forgot d-flex w-100 h-100">
-          <!-- place for partial  -->
-          <div class="col-sm-6 d-none d-sm-block p-0 left-side">
-              <?php echo $this->partial('login_partial/_left-side.tpl', 'sdparentalguide'); ?>
-          </div>
-          <!-- form  and tip message-->
-          <div class="col-sm-6 position-relative right-side">
+<div class="prg-auth">
+  <div class="holder-form holder-forgot d-flex w-100 h-100">
+    <!-- place for partial  -->
+    <div class="col-sm-6 d-none d-sm-block p-0 left-side">
+        <?php echo $this->partial('login_partial/_left-side.tpl', 'sdparentalguide'); ?>
+    </div>
+    <!-- form  and tip message-->
+    <div class="col-sm-6 position-relative right-side">
 
-            <!-- close btn -->
-            <a class="d-flex position-absolute prg-auth--close align-items-center justify-content-center p-0 close"
-               href="<?php echo $this->baseUrl(); ?>" data-dismiss="modal">
-              <i aria-hidden="true" class="fa fa-times"></i>
-            </a>
-            <div class="d-flex align-items-center mx-auto h-100 p-4 p-md-5">
-                <?php if ($this->form): ?>
-                    <?php echo $this->form->render($this); ?>
-                <?php else: ?>
-                    <?php echo $this->translate('Please sign in to continue.'); ?>
-                <?php endif; ?>
-            </div>
-          </div>
-        </div>
+      <!-- close btn -->
+      <a class="d-flex position-absolute prg-auth--close align-items-center justify-content-center p-0 close"
+         href="<?php echo $this->baseUrl(); ?>" data-dismiss="modal">
+        <i aria-hidden="true" class="fa fa-times"></i>
+      </a>
+      <div class="d-flex align-items-center mx-auto h-100 p-4 p-md-5">
+          <?php if ($this->form): ?>
+              <?php echo $this->form->render($this); ?>
+          <?php else: ?>
+              <?php echo $this->translate('Please sign in to continue.'); ?>
+          <?php endif; ?>
       </div>
     </div>
   </div>

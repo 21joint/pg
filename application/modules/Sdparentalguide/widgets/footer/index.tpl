@@ -239,7 +239,7 @@
     </div> <!-- end of container -->
   </div> <!-- end of footer-bottom-->
 </footer> <!-- end of parental-footer -->
-<div style="position: absolute; width: 0; height: 0;top: 0;">
+<div style="position: absolute; width: 0; height: 0;top: -9999px;">
   <svg class="align-middle"
        xmlns="http://www.w3.org/2000/svg">
     <defs>

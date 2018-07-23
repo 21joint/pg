@@ -15,16 +15,12 @@ module.exports = merge(webpackConfig, {
     },
     before: function (app) {
 
-      app.use('^/parentalguidance/api', proxyMiddleware({
-        target: pkg.config.API_PROXY,
+      app.use('^/api/v1', proxyMiddleware({
+        target: pkg.config.API_PROXY + '/api/v1',
         changeOrigin: true,
         pathRewrite: {
-          '^/parentalguidance/api': '/api'
+          '^/api/v1': '/'
         },
-        logLevel: 'debug'
-      }));
-      app.use('^/parentalguidance', proxyMiddleware({
-        target: 'http://localhost:8888/',
         logLevel: 'debug'
       }));
     }

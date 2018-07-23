@@ -14,11 +14,11 @@
 <h2><?php echo $this->translate('Private Page') ?></h2>
 
 <p>
-  <?php echo $this->translate('You do not have permission to view this private page.') ?>
+    <?php echo $this->translate('You do not have permission to view this private page.') ?>
 </p>
 
-<br />
+<br/>
 
 <a class='buttonlink icon_back' href='javascript:void(0);' onClick='history.go(-1);'>
-  <?php echo $this->translate('Go Back') ?>
+    <?php echo $this->translate('Go Back') ?>
 </a>

@@ -1,9 +1,16 @@
 [data-load] {
-  &.loading {
-    background-image: url('../images/loader.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 48px;
-    min-height: 50vh;
+  background-image: url('../images/loader.svg');
+  background-repeat: no-repeat;
+  background-position: calc(100% - 15px) 15px;
+  background-size: 32px;
+  min-height: 50vh;
+  > * {
+    opacity: 0;
+  }
+  &.loaded {
+    background-image: none;
+    > * {
+      opacity: 1;
+    }
   }
 }

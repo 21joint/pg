@@ -1,4 +1,6 @@
+.idea/
 .vscode
+.DS_Store
 application/settings/cache.php
 application/settings/database.php
 application/settings/general.php
@@ -18,5 +20,5 @@ temporary/session
 <<<<<<< HEAD
 node_modules/
 bower_components/
-.DS_Store
-.idea
+
+

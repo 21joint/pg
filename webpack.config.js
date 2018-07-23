@@ -116,15 +116,15 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './application/modules/Sdparentalguide/widgets/header/index.tpl'
     }),
-    // new HtmlWebpackPlugin({
-    //   template: './application/modules/Sdparentalguide/widgets/reviews-view/index.tpl'
-    // }),
-    // new HtmlWebpackPlugin({
-    //   template: './application/modules/Sdparentalguide/widgets/reviews-create/index.tpl'
-    // }),
-    // new HtmlWebpackPlugin({
-    //   template: './application/modules/Sdparentalguide/widgets/featured-reviews/index.tpl'
-    // }),
+    new HtmlWebpackPlugin({
+      template: './application/modules/Sdparentalguide/widgets/reviews-view/index.tpl'
+    }),
+    new HtmlWebpackPlugin({
+      template: './application/modules/Sdparentalguide/widgets/reviews-create/index.tpl'
+    }),
+    new HtmlWebpackPlugin({
+      template: './application/modules/Sdparentalguide/widgets/featured-reviews/index.tpl'
+    }),
     new ExtractTextPlugin({
       filename: 'styles/[name].bundle.css'
     })

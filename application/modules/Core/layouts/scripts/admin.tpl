@@ -11,17 +11,21 @@
  */
 ?>
 <?php echo $this->doctype()->__toString() ?>
-<?php $locale = $this->locale()->getLocale()->__toString(); $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr'); ?>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $locale ?>" lang="<?php echo $locale ?>" dir="<?php echo $orientation ?>">
+<?php $locale = $this->locale()->getLocale()->__toString();
+$orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr'); ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="<?php echo $locale ?>"
+      lang="<?php echo $locale ?>"
+      dir="<?php echo $orientation ?>">
 <head>
-    <base href="<?php echo rtrim('//' . $_SERVER['HTTP_HOST'] . $this->baseUrl(), '/'). '/' ?>" />
+  <base href="<?php echo rtrim('//' . $_SERVER['HTTP_HOST'] . $this->baseUrl(), '/') . '/' ?>"/>
 
     <?php // ALLOW HOOKS INTO META?>
     <?php echo $this->hooks('onRenderLayoutAdmin', $this) ?>
 
     <?php // TITLE/META?>
     <?php
-    $counter = (int) $this->layout()->counter;
+    $counter = (int)$this->layout()->counter;
     $staticBaseUrl = $this->layout()->staticBaseUrl;
 
     $request = Zend_Controller_Front::getInstance()->getRequest();
@@ -35,8 +39,7 @@
             ->headTitle($pageTitle, Zend_View_Helper_Placeholder_Container_Abstract::PREPEND);
     }
     $this
-        ->headTitle($this->translate("Control Panel"))
-    ;
+        ->headTitle($this->translate("Control Panel"));
     $this->headMeta()
         ->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8')
         ->appendHttpEquiv('Content-Language', $this->locale()->getLocale()->__toString());
@@ -55,8 +58,8 @@
             $request->getActionName();
     }
     ?>
-    <?php echo $this->headTitle()->toString()."\n" ?>
-    <?php echo $this->headMeta()->toString()."\n" ?>
+    <?php echo $this->headTitle()->toString() . "\n" ?>
+    <?php echo $this->headMeta()->toString() . "\n" ?>
 
     <?php // LINK/STYLES?>
     <?php
@@ -83,45 +86,45 @@
         }
     }
     ?>
-    <?php echo $this->headLink()->toString()."\n" ?>
-    <?php echo $this->headStyle()->toString()."\n" ?>
+    <?php echo $this->headLink()->toString() . "\n" ?>
+    <?php echo $this->headStyle()->toString() . "\n" ?>
 
     <?php // TRANSLATE?>
     <?php $this->headScript()->prependScript($this->headTranslate()->toString()) ?>
 
     <?php // SCRIPTS?>
-    <script type="text/javascript">
-        <?php echo $this->headScript()->captureStart(Zend_View_Helper_Placeholder_Container_Abstract::PREPEND) ?>
+  <script type="text/javascript">
+      <?php echo $this->headScript()->captureStart(Zend_View_Helper_Placeholder_Container_Abstract::PREPEND) ?>
 
-        Date.setServerOffset('<?php echo date('D, j M Y G:i:s O', time()) ?>');
+      Date.setServerOffset('<?php echo date('D, j M Y G:i:s O', time()) ?>');
 
-        en4.orientation = '<?php echo $orientation ?>';
-        en4.core.environment = '<?php echo APPLICATION_ENV ?>';
-        en4.core.language.setLocale('<?php echo $this->locale()->getLocale()->__toString() ?>');
-        en4.core.setBaseUrl('<?php echo $this->url(array(), 'default', true) ?>');
-        en4.core.staticBaseUrl = '<?php echo $this->escape($staticBaseUrl) ?>';
-        en4.core.loader = new Element('img', {src: en4.core.staticBaseUrl + 'application/modules/Core/externals/images/loading.gif'});
+      en4.orientation = '<?php echo $orientation ?>';
+      en4.core.environment = '<?php echo APPLICATION_ENV ?>';
+      en4.core.language.setLocale('<?php echo $this->locale()->getLocale()->__toString() ?>');
+      en4.core.setBaseUrl('<?php echo $this->url(array(), 'default', true) ?>');
+      en4.core.staticBaseUrl = '<?php echo $this->escape($staticBaseUrl) ?>';
+      en4.core.loader = new Element('img', {src: en4.core.staticBaseUrl + 'application/modules/Core/externals/images/loading.gif'});
 
-        <?php if ($this->subject()): ?>
-        en4.core.subject = {
-            type : '<?php echo $this->subject()->getType(); ?>',
-            id : <?php echo $this->subject()->getIdentity(); ?>,
-            guid : '<?php echo $this->subject()->getGuid(); ?>'
-        };
-        <?php endif; ?>
-        <?php if ($this->viewer()->getIdentity()): ?>
-        en4.user.viewer = {
-            type : '<?php echo $this->viewer()->getType(); ?>',
-            id : <?php echo $this->viewer()->getIdentity(); ?>,
-            guid : '<?php echo $this->viewer()->getGuid(); ?>'
-        };
-        <?php endif; ?>
-        if( <?php echo(Zend_Controller_Front::getInstance()->getRequest()->getParam('ajax', false) ? 'true' : 'false') ?> ) {
-            en4.core.dloader.attach();
-        }
-        <?php echo $this->headScript()->captureEnd(Zend_View_Helper_Placeholder_Container_Abstract::PREPEND) ?>
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+      <?php if ($this->subject()): ?>
+      en4.core.subject = {
+        type: '<?php echo $this->subject()->getType(); ?>',
+        id: <?php echo $this->subject()->getIdentity(); ?>,
+        guid: '<?php echo $this->subject()->getGuid(); ?>'
+      };
+      <?php endif; ?>
+      <?php if ($this->viewer()->getIdentity()): ?>
+      en4.user.viewer = {
+        type: '<?php echo $this->viewer()->getType(); ?>',
+        id: <?php echo $this->viewer()->getIdentity(); ?>,
+        guid: '<?php echo $this->viewer()->getGuid(); ?>'
+      };
+      <?php endif; ?>
+      if ( <?php echo(Zend_Controller_Front::getInstance()->getRequest()->getParam('ajax', false) ? 'true' : 'false') ?> ) {
+        en4.core.dloader.attach();
+      }
+      <?php echo $this->headScript()->captureEnd(Zend_View_Helper_Placeholder_Container_Abstract::PREPEND) ?>
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
     <?php
     $this->headScript()
         ->prependFile($staticBaseUrl . 'externals/smoothbox/smoothbox4.js')
@@ -141,62 +144,64 @@
         }
     }
     ?>
-    <?php echo $this->headScript()->toString()."\n" ?>
+    <?php echo $this->headScript()->toString() . "\n" ?>
 
-    <script type="text/javascript">
-        //<![CDATA[
-        var changeEnvironmentMode = function(mode, btn) {
-            if( btn ) {
-                btn.set('class', '');
-            }
-            if( $$('div.admin_home_environment button') ) {
-                $$('div.admin_home_environment button').set('class', 'button_disabled');
-            }
-            if( $$('div.admin_home_environment_description') ) {
-                $$('div.admin_home_environment_description').set('text', 'Changing mode - please wait...');
-            }
-            new Request.JSON({
-                url: '<?php echo $this->url(array('action'=>'change-environment-mode'), 'admin_default', true) ?>',
-                method: 'post',
-                onSuccess: function(responseJSON){
-                    if ($type(responseJSON) == 'object') {
-                        if (responseJSON.success || !$type(responseJSON.error))
-                            window.location.href = window.location.href;
-                        else
-                            alert(responseJSON.error);
-                    } else
-                        alert('An unknown error occurred; changes have not been saved.');
-                }
-            }).send('format=json&environment_mode='+mode);
+  <script type="text/javascript">
+    //<![CDATA[
+    var changeEnvironmentMode = function (mode, btn) {
+      if (btn) {
+        btn.set('class', '');
+      }
+      if ($$('div.admin_home_environment button')) {
+        $$('div.admin_home_environment button').set('class', 'button_disabled');
+      }
+      if ($$('div.admin_home_environment_description')) {
+        $$('div.admin_home_environment_description').set('text', 'Changing mode - please wait...');
+      }
+      new Request.JSON({
+        url: '<?php echo $this->url(array('action' => 'change-environment-mode'), 'admin_default', true) ?>',
+        method: 'post',
+        onSuccess: function (responseJSON) {
+          if ($type(responseJSON) == 'object') {
+            if (responseJSON.success || !$type(responseJSON.error))
+              window.location.href = window.location.href;
+            else
+              alert(responseJSON.error);
+          } else
+            alert('An unknown error occurred; changes have not been saved.');
         }
-        //]]>
-    </script>=
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+      }).send('format=json&environment_mode=' + mode);
+    }
+    //]]>
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 </head>
 <body id="global_page_<?php echo $identity ?>">
 
 <?php if ('development' == APPLICATION_ENV): ?>
-    <div class="development_mode_warning">
-        Your site is currently in development mode (which may decrease performance).
-        When you've finished changing your settings, remember to
-        <a href="javascript:void(0)" onclick="changeEnvironmentMode('production', this);this.blur();this.getParent('.development_mode_warning').set('html', '<img src=\'application/modules/Core/externals/images/loading.gif\'>')">return to production mode</a>.
-    </div>
+  <div class="development_mode_warning">
+    Your site is currently in development mode (which may decrease performance).
+    When you've finished changing your settings, remember to
+    <a href="javascript:void(0)"
+       onclick="changeEnvironmentMode('production', this);this.blur();this.getParent('.development_mode_warning').set('html', '<img src=\'application/modules/Core/externals/images/loading.gif\'>')">return
+      to production mode</a>.
+  </div>
 <?php endif ?>
 
 <!-- TOP HEADER BAR -->
 <div id='global_header_wrapper'>
-    <div id='global_header'>
-        <?php echo $this->content()->renderWidget('core.admin-menu-mini') ?>
-        <?php echo $this->content()->renderWidget('core.admin-menu-logo') ?>
-        <?php echo $this->content()->renderWidget('core.admin-menu-main') ?>
-    </div>
+  <div id='global_header'>
+      <?php echo $this->content()->renderWidget('core.admin-menu-mini') ?>
+      <?php echo $this->content()->renderWidget('core.admin-menu-logo') ?>
+      <?php echo $this->content()->renderWidget('core.admin-menu-main') ?>
+  </div>
 </div>
 
 <!-- BEGIN CONTENT -->
 <div id='global_content_wrapper'>
-    <div id='global_content'>
-        <?php echo $this->layout()->content ?>
-    </div>
+  <div id='global_content'>
+      <?php echo $this->layout()->content ?>
+  </div>
 </div>
 
 </body>

@@ -11,7 +11,7 @@ class Sdparentalguide_Bootstrap extends Engine_Application_Bootstrap_Abstract
         $headLink = new Zend_View_Helper_HeadLink();
         $headScript = new Zend_View_Helper_HeadScript();
 
-        $headLink->appendStylesheet('/styles/prg.bundle.css');
-        $headScript->appendFile('/scripts/prg.bundle.js');
+        $headLink->appendStylesheet($staticBaseUrl.'application/modules/Sdparentalguide/externals/build/styles/prg.bundle.css');
+        $headScript->appendFile($staticBaseUrl.'application/modules/Sdparentalguide/externals/build/scripts/prg.bundle.js');
     }
 }

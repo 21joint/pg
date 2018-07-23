@@ -1,7 +1,5 @@
-(function($) {
-  $(document).ready(function () {
-    $('.prg-hamburger--btn').on('click', function(e) {
-      $('body').toggleClass('prg-nav--open');
-    })
-  });
-})(jQuery);
+jQuery(document).ready(function () {
+  jQuery('.prg-hamburger--btn').on('click', function (e) {
+    jQuery('body').toggleClass('prg-nav--open');
+  })
+});

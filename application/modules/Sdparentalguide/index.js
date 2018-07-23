@@ -13,4 +13,3 @@ import '../Sitelogin/index';
 import './widgets/reviews-home/index';
 import './widgets/reviews-view/index';
 import './widgets/listing-rating/index';
-import './views/scripts/auth';
