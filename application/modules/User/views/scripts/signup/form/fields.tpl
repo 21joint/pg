@@ -11,6 +11,20 @@
  */
 ?>
 
+<style>
+
+  form.extfox-auth {
+    max-height: 900px;
+    overflow-y: scroll !important;
+  }
+
+  form.extfox-auth::-webkit-scrollbar {
+    display:block;
+  }
+</style>
+
+
+
 <?php
   /* Include the common user-end field switching javascript */
   echo $this->partial('_jsSwitch.tpl', 'fields', array(
@@ -19,4 +33,23 @@
   ));
 ?>
 
+
 <?php echo $this->form->render($this) ?>
+
+
+<script>
+
+  document.getElementsByClassName('right-side')[0].classList.add('pl-0');
+  let holderForm = document.getElementsByClassName('right-side')[0].children[1];
+
+  holderForm.classList.add('col-xl-12','col-lg-12');
+  holderForm.classList.remove('col-xl-7','col-lg-7');
+
+  // form 
+  holderForm.children[2].classList.remove('w-100');
+  holderForm.children[2].classList.add('col-xl-12','col-lg-12','pl-0');
+  let formChilder = holderForm.children[2];
+  formChilder.children[0].classList.add('col-xl-7','col-lg-7','ml-auto','mr-auto');
+ 
+
+</script>

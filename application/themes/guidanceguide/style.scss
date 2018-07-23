@@ -1193,7 +1193,7 @@ form#user_form_login {
 
         &::-webkit-scrollbar {
             display: none;
-           }
+        }
         h3 {
             padding-bottom: 20px;
             margin-top: 20px;
@@ -1424,9 +1424,11 @@ form.preference-holder {
                 top: 28px!important;
                 left: 17px!important;
             }
+            input[type=checkbox] + label:before {
+                margin-left: 0px;
+            }
             input[type=checkbox] + label:after {
-                left: 17px!important;
-                top:29px;
+                top: 38px;
             }
             label {
                 border:none;
@@ -1438,9 +1440,9 @@ form.preference-holder {
         width: 68%;
         margin:0 auto;
         #fieldset-buttons {
-            margin-bottom: 2rem;
+            margin-bottom: 0;
             float: right;
-            width: 32%;
+            width: 45%;
             button {
                 width: 45%;
                 margin-right: 20px;
