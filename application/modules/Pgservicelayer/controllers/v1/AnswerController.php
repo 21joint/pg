@@ -173,16 +173,37 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
             
             $answerChosen = $this->getParam("answerChosen");
             if(!empty($answerChosen) && ($subject->user_id = $viewer->getIdentity() || $viewer->isAdminOnly())){
+                $choosenAnswer = $subject->getChoosenAnswer();
                 $table->update(array('accepted' => 0),array('parent_id = ?' => $subject->getIdentity(),'parent_type = ?' => $subject->getType()));
                 $answer->accepted = 1;
                 $answer->save();
                 
                 $subject->accepted_answer = 1;
                 $subject->save();
+                
+                if(!empty($choosenAnswer)){
+                    $choosenAction = $choosenAnswer->getChoosenActivity();
+                    if(!empty($choosenAction)){
+                        $choosenAction->delete();
+                    }
+                }
+                
+                $action = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($viewer, $subject, "question_answer_chosen",array(
+                    'owner' => $subject->getOwner()->getGuid(),
+                    'body' => $body,
+                ));
+                if(!empty($action)){
+                    Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($action, $answer);
+                }
             }
             
             $subject->answer_count = $subject->answer_count+1;
             $subject->save();
+            
+            $action = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($viewer, $answer, "question_answer");
+            if(!empty($action)){
+                Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($action, $answer);
+            }
             
             $db->commit();            
             $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");

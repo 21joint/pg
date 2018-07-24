@@ -203,6 +203,12 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
             $question->setFromArray($values);
             $question->save();
             
+            if($question->approved){
+                $action = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($viewer, $question, "question_create");
+                if(!empty($action)){
+                    Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($action, $question);
+                }
+            }
             $db->commit();
             
             $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
@@ -293,7 +299,6 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
         if(!$viewer->getIdentity() && $this->isApiRequest()){
             $this->respondWithError('unauthorized');
         }
-        echo Zend_Registry::get("Zend_View")->baseUrl();exit;
         $id = $this->getParam("questionID");
         $idsArray = (array)$id;
         if(is_string($id) && !empty($id)){

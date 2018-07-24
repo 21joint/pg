@@ -194,8 +194,13 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             'mvp' => (bool)$user->gg_mvp,
             'expert' => (bool)$expert,
             'memberSinceDateTime' => $this->getFormatedDateTime($user->creation_date),
-            'coverPhoto' => $coverPhotos
+            'coverPhoto' => $coverPhotos,
+            'href' => $user->getHref()
         );
+        $view = Zend_Registry::get("Zend_View");
+        $badgeHelper = new Sdparentalguide_View_Helper_ItemPhotoBadgeColor();
+        $badgeHelper->setView($view);
+        $userArray['badgeInfo'] = (array)$badgeHelper->ItemPhotoBadgeColor($user);
         return $userArray;
     }
     

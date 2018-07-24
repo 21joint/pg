@@ -139,4 +139,9 @@ class Ggcommunity_Model_Question extends Core_Model_Item_Abstract
   {
     return new Engine_ProxyObject($this, Engine_Api::_()->getDbtable('comments', 'core'));
   }
+  
+  public function getChoosenAnswer(){
+      $table = Engine_Api::_()->getDbTable('answers', 'ggcommunity');
+      return $table->fetchRow($table->select()->where('accepted = ?',1));
+  }
 }

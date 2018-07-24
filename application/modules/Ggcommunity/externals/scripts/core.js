@@ -262,17 +262,25 @@ en4.ggcommunity.comment = {
         var comments_only = comment_holder.getElementById('comments_box_'+ id);
 
 
-        en4.core.request.send(new Request.HTML({
-            url : 'ggcommunity/comment-index/create',
+        en4.core.request.send(new Request.JSON({
+            url : en4.core.baseUrl+'api/v1/comment/',
             data : {
-                format : 'html',
-                parent_type : parent_type,
-                parent_id : id,
+                contentType : parent_type,
+                contentID : id,
                 body : body,    
             },
-            onComplete: function(responseHTML) {
+            onComplete: function(responseJSON) {
                 // hide form
                 form.reset();
+                var container = $("comments_box").getElement(".comments_container");
+                if(responseJSON.status_code == 200){
+                    var comments = responseJSON.body.Results;
+                    comments.each(function(comment){
+                        var commentElement = getCommentElement(comment);
+                        commentElement.inject(container,"top");
+                    });
+                    Smoothbox.bind(container); 
+                }
 
                 // increase countner for question_comments
                 var comment_counter = document.getElementById('count_question_comments');
@@ -287,10 +295,7 @@ en4.ggcommunity.comment = {
                     var comments = parseInt(counter.substr(counter.indexOf("| ")+2));
                     var increment = comments+1;
                     comment_counter.innerHTML = 'Comments | ' + increment ;
-                }
-                 
-                comments_only.insertBefore(responseHTML[0], comments_only.children[0]);
-                Smoothbox.bind(comment_holder);             
+                }                           
             }
             
         }));

@@ -146,6 +146,40 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
                 $comment->parent_comment_id = $parentCommentId;
                 $comment->save();
             }
+            if($subject->getType() == "ggcommunity_answer" && $subject->getOwner()){
+                $actionOwner = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($subject->getOwner(), $subject, "question_answer_comment",array(
+                    'owner' => $subject->getOwner()->getGuid(),
+                    'body' => $body,
+                ));
+                if(!empty($actionOwner)){
+                    Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($actionOwner, $comment);
+                }
+                
+                $action = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($viewer, $subject, "question_answer_author_comment",array(
+                    'owner' => $subject->getOwner()->getGuid(),
+                    'body' => $body,
+                ));
+                if(!empty($action)){
+                    Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($action, $comment);
+                }
+            }
+            if($subject->getType() == "ggcommunity_question" && $subject->getOwner()){
+                $actionOwner = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($subject->getOwner(), $subject, "question_comment",array(
+                    'owner' => $subject->getOwner()->getGuid(),
+                    'body' => $body,
+                ));
+                if(!empty($actionOwner)){
+                    Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($actionOwner, $comment);
+                }
+                
+                $action = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($viewer, $subject, "question_author_comment",array(
+                    'owner' => $subject->getOwner()->getGuid(),
+                    'body' => $body,
+                ));
+                if(!empty($action)){
+                    Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($action, $comment);
+                }
+            }
             Engine_Api::_()->getDbtable('statistics', 'core')->increment('core.comments');
             if (!empty($comment)) {
                 $db->commit();
