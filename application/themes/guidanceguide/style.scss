@@ -1186,6 +1186,7 @@ form#user_form_login {
     }
     form {
         &.family-form {
+            
             div.form-wrapper-heading {
                 font-size: 16px;
             }
@@ -2475,7 +2476,13 @@ form.preference-holder {
     }
     // ExtfoxForm Settings
     #extfox-settings{
-
+        &.family-form {
+            .form-wrapper {
+                .form-element {
+                    margin:0!important;
+                }
+            } 
+        }
         .form-wrapper {
             padding-left: 0!important;
             h3 {
@@ -2541,7 +2548,7 @@ form.preference-holder {
                 }
                 #add-birthday {
                    
-                    .col-12.d-flex, .col-12.years-range, .col-12.years, .col-12.final-date {
+                    #months > div,#months > div > div,.col-12.years-range, .col-12.years .years-first, .col-12.final-date,#years-first ,#years-second{
                         display: grid !important;
                         grid-template-columns: repeat(3, 1fr);
                         grid-gap: 10px;
@@ -2767,9 +2774,9 @@ form.preference-holder {
         }
             
         #add-birthday {
-            .col-12.d-flex, .col-12.years-range, .col-12.years, .col-12.final-date  {
+            .col-12.d-flex, .col-12.years-range, .col-12.years #years-first,.col-12.years #years-second, .col-12.final-date  {
                 display: grid !important;
-                grid-template-columns: repeat(1, 1fr);
+                grid-template-columns: repeat(3, 1fr);
                 grid-gap: 10px;
                 grid-auto-rows: minmax(60px, auto);
                 &.d-none {
@@ -2791,7 +2798,7 @@ form.preference-holder {
             padding-left: 0px!important;
         }
         form {
-            max-height: 550px;
+            max-height: 500px;
 
             p.hint {
                 #profile_address{
@@ -2809,47 +2816,74 @@ form.preference-holder {
     }
 
     // Preference Holder 
-    form.preference-holder {
-        h3,p {
-            width: 90%;
-            margin-top: 30px!important;
-            padding: 0px!important;
+    #global_page_user-signup-index{
+        form.preference-holder  {
+            #show_all-wrapper {
+                width: 100%!important;
+                #show_all-element {
+                    width: 100%!important;
+                    label {
+                        left: 32px;   
+                        top:-55px;
+                    }
+                    input[type=checkbox] + label:after {
+                        top:30px;
+                    }
+                }
+                
+            }
         }
-    
-        .holder-image {
-            .holder-category-title {
-                left: 30px;
+    }
+        form.preference-holder {
+            h3,p {
+                width: 90%;
+                margin-top: 30px!important;
+                padding: 0px!important;
             }
-            .holder-select-all {
-                right:30px;
-            }
-        } 
+        
+            .holder-image {
+                .holder-category-title {
+                    left: 30px;
+                }
+                .holder-select-all {
+                    right:30px;
+                }
+            } 
 
-        .sd_listing_categories{
-            grid-template-columns: repeat(auto-fill, minmax(52%, 1fr));
-        } 
-        #show_all-wrapper {
-            width: 100%!important;
-            #show_all-element {
+            .sd_listing_categories{
+                grid-template-columns: repeat(auto-fill, minmax(52%, 1fr));
+            } 
+            #show_all-wrapper {
                 width: 100%!important;
+                #show_all-element {
+                    width: 100%!important;
+                    label {
+                        left: 29px;   
+                        
+                    }
+                    input[type=checkbox] + label:after {
+                        left:2px;
+                    }
+                }
+                
             }
-        }
-        #buttons-wrapper {
-            width: 100%!important;
-            #fieldset-buttons {
+            #buttons-wrapper {
                 width: 100%!important;
-                float: none!important;
-                button,a {
-                    width: 45%;
-                    margin:0 auto;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
+                #fieldset-buttons {
+                    width: 100%!important;
+                    float: none!important;
+                    text-align: center;
+                    margin:0;
+                    padding: 0;
+                    button,a{
+                        margin: 0 auto 10px;
+                        width: 85%;
+                    }
                 }
             }
-        }
 
-    }
+        }
+    
     // Border Gear
     .border-gear {
         ~ img {
