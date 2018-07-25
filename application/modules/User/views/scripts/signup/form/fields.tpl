@@ -39,7 +39,7 @@
 
 <script>
 
-  document.getElementsByClassName('right-side')[0].classList.add('pl-0');
+ 
   let holderForm = document.getElementsByClassName('right-side')[0].children[1];
 
   holderForm.classList.add('col-xl-12','col-lg-12');
@@ -47,9 +47,9 @@
 
   // form 
   holderForm.children[2].classList.remove('w-100');
-  holderForm.children[2].classList.add('col-xl-12','col-lg-12','pl-0');
+  holderForm.children[2].classList.add('col-xl-12','col-lg-12','px-0');
   let formChilder = holderForm.children[2];
-  formChilder.children[0].classList.add('col-xl-7','col-lg-7','ml-auto','mr-auto');
+  formChilder.children[0].classList.add('col-xl-7','col-lg-7','ml-auto','mr-auto','px-0');
  
 
 </script>

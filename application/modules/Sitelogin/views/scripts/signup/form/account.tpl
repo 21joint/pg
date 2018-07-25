@@ -25,8 +25,13 @@ form > div {
     height:100%;
     display:flex;
     align-items: center;
+    width:100%;
 }
-
+@media only screen and (max-width: 768px) {
+    form {
+        max-height:995px!important;
+    }
+}
 
 </style>
 <script type="text/javascript">
