@@ -27,7 +27,7 @@
         <div id="reviews" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="reviewCount"><?php echo $this->translate('Reviews'); ?></div>
         <!-- <div class="d-none d-md-flex justify-content-center align-items-center">Answers --><!-- Sort By Answer not supported yet by the service layer --><!-- </div> -->
         <div id="questions" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="questionCount"><?php echo $this->translate('Questions'); ?></div>
-        <div id="followers" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="followers"><?php echo $this->translate('Followers'); ?></div>
+        <!-- <div id="followers" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="followers"><?php echo $this->translate('Followers'); ?></div> -->
         <!-- Categories End -->
         <div class="d-flex d-md-none justify-content-center align-items-center">
             <button id="order_btn" class="btn-primary rounded-circle">></button>
@@ -62,21 +62,23 @@ var currentCategory = 0;
 var categoryValue;
 document.getElementById('order_btn').addEventListener('click', function(){
     if(currentCategory == 0){
-        categoryValue = document.getElementById('followers').getAttribute('data-order');
+        categoryValue = document.getElementById('questions').getAttribute('data-order');
         currentCategory = 1;
         pageNum = 1;
         loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum); 
     }else if(currentCategory == 1){
-        categoryValue = document.getElementById('questions').getAttribute('data-order');
+        categoryValue = document.getElementById('reviews').getAttribute('data-order');
         currentCategory = 2;
         pageNum = 1;
         loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
-    }else if(currentCategory == 2){
-        categoryValue = document.getElementById('reviews').getAttribute('data-order');
-        currentCategory = 3;
-        pageNum = 1;
-        loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
-    }else{
+    }
+    // else if(currentCategory == 2){
+    //     categoryValue = document.getElementById('followers').getAttribute('data-order');
+    //     currentCategory = 3;
+    //     pageNum = 1;
+    //     loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
+    // }
+    else{
         categoryValue = document.getElementById('points').getAttribute('data-order');
         currentCategory = 0;
         pageNum = 1;
@@ -139,18 +141,18 @@ var activeCategory = 0;
 document.getElementById('points').addEventListener('click', function(){
     activeCategory = 0;
 });
-// Being ordered by Followers
-document.getElementById('followers').addEventListener('click', function(){
-    activeCategory = 1;
-});
 // Being ordered by Questions
 document.getElementById('questions').addEventListener('click', function(){
-    activeCategory = 2;
+    activeCategory = 1;
 });
 // Being ordered by Reviews
 document.getElementById('reviews').addEventListener('click', function(){
-    activeCategory = 3;
+    activeCategory = 2;
 });
+// Being ordered by Followers
+// document.getElementById('followers').addEventListener('click', function(){
+//     activeCategory = 3;
+// });
 // Styling for Order By Category End
 
 // Pagionation Number Change Start
@@ -198,7 +200,7 @@ function loadLeaderboardResults(tm, ord, disp = 0, page = 1) {
     var url = en4.core.baseUrl+"api/v1/ranking";
 
     // Testing... Delete after done
-    // console.log(tm, ord, disp, page);
+    console.log(tm, ord, disp, page);
 
     var request = new Request.JSON({
         url: url,
@@ -240,9 +242,9 @@ function loadLeaderboardResults(tm, ord, disp = 0, page = 1) {
                                 '<div class="questions d-none d-md-flex align-items-center justify-content-center">'+
                                     results[i].questionCount+
                                 '</div>'+
-                                '<div class="followers d-none d-md-flex align-items-center justify-content-center">'+
+                                '<!-- <div class="followers d-none d-md-flex align-items-center justify-content-center">'+
                                     results[i].followersCount+
-                                '</div>'+
+                                '</div> -->'+
                             '</div>';
                 }
                 leaderboardContent.innerHTML = html;
@@ -308,36 +310,21 @@ function loadLeaderboardResults(tm, ord, disp = 0, page = 1) {
                             points.addClass('d-flex').removeClass('d-none');
                         }); 
                         break;
-                // Displaying Number of Followers
+                // Displaying Number of Questions
                     case 1:
                         document.getElementById('points').addClass('d-none').removeClass('d-flex');
                         document.querySelectorAll('.points').forEach(function(points){
                             points.addClass('d-none').removeClass('d-flex');
                         });
-                        document.getElementById('followers').addClass('d-flex').removeClass('d-none');
-                        document.querySelectorAll('.followers').forEach(function(followers){
+                        document.getElementById('questions').addClass('d-flex').removeClass('d-none');
+                        document.querySelectorAll('.questions').forEach(function(followers){
                             followers.addClass('d-flex').removeClass('d-none');
                         });
                         break;
-                // Displaying Number of Questions
-                    case 2:
-                        document.getElementById('followers').addClass('d-none').removeClass('d-flex');
-                        document.querySelectorAll('.followers').forEach(function(followers){
-                            followers.addClass('d-none').removeClass('d-flex');
-                        });
-                        document.getElementById('points').addClass('d-none').removeClass('d-flex');
-                        document.querySelectorAll('.points').forEach(function(points){
-                            points.addClass('d-none').removeClass('d-flex');
-                        });
-                        document.getElementById('questions').addClass('d-flex').removeClass('d-none');
-                        document.querySelectorAll('.questions').forEach(function(questions){
-                            questions.addClass('d-flex').removeClass('d-none');
-                        });
-                        break;
                 // Displaying Number of Reviews
-                    case 3:
+                    case 2:
                         document.getElementById('questions').addClass('d-none').removeClass('d-flex');
-                        document.querySelectorAll('.questions').forEach(function(questions){
+                        document.querySelectorAll('.questions').forEach(function(followers){
                             followers.addClass('d-none').removeClass('d-flex');
                         });
                         document.getElementById('points').addClass('d-none').removeClass('d-flex');
@@ -345,41 +332,56 @@ function loadLeaderboardResults(tm, ord, disp = 0, page = 1) {
                             points.addClass('d-none').removeClass('d-flex');
                         });
                         document.getElementById('reviews').addClass('d-flex').removeClass('d-none');
-                        document.querySelectorAll('.reviews').forEach(function(reviews){
-                            reviews.addClass('d-flex').removeClass('d-none');
+                        document.querySelectorAll('.reviews').forEach(function(questions){
+                            questions.addClass('d-flex').removeClass('d-none');
                         });
                         break;
+                // Displaying Number of Reviews
+                    // case 3:
+                    //     document.getElementById('questions').addClass('d-none').removeClass('d-flex');
+                    //     document.querySelectorAll('.questions').forEach(function(questions){
+                    //         followers.addClass('d-none').removeClass('d-flex');
+                    //     });
+                    //     document.getElementById('points').addClass('d-none').removeClass('d-flex');
+                    //     document.querySelectorAll('.points').forEach(function(points){
+                    //         points.addClass('d-none').removeClass('d-flex');
+                    //     });
+                    //     document.getElementById('reviews').addClass('d-flex').removeClass('d-none');
+                    //     document.querySelectorAll('.reviews').forEach(function(reviews){
+                    //         reviews.addClass('d-flex').removeClass('d-none');
+                    //     });
+                    //     break;
                 }
                 // Displays Highlighted Order By Main Category
                 switch(activeCategory){
                     // Highlight Contribution
                     case 0:
                         document.getElementById('points').addClass('active_category');
-                        document.getElementById('followers').removeClass('active_category');
-                        document.getElementById('questions').removeClass('active_category');
-                        document.getElementById('reviews').removeClass('active_category');
-                        break;
-                    // Highlight Followers
-                    case 1:
-                        document.getElementById('points').removeClass('active_category');
-                        document.getElementById('followers').addClass('active_category');
+                        // document.getElementById('followers').removeClass('active_category');
                         document.getElementById('questions').removeClass('active_category');
                         document.getElementById('reviews').removeClass('active_category');
                         break;
                     // Highlight Questions
-                    case 2:
+                    case 1:
                         document.getElementById('points').removeClass('active_category');
-                        document.getElementById('followers').removeClass('active_category');
+                        // document.getElementById('followers').addClass('active_category');
                         document.getElementById('questions').addClass('active_category');
                         document.getElementById('reviews').removeClass('active_category');
                         break;
                     // Highlight Reviews
-                    case 3:
+                    case 2:
                         document.getElementById('points').removeClass('active_category');
-                        document.getElementById('followers').removeClass('active_category');
+                        // document.getElementById('followers').removeClass('active_category');
                         document.getElementById('questions').removeClass('active_category');
                         document.getElementById('reviews').addClass('active_category');
                         break;
+                    // Highlight Followers
+                    // case 3:
+                    //     document.getElementById('points').removeClass('active_category');
+                    //     document.getElementById('followers').removeClass('active_category');
+                    //     document.getElementById('questions').removeClass('active_category');
+                    //     document.getElementById('reviews').addClass('active_category');
+                    //     break;
                 }
             }else{
                 leaderboardContent.innerHTML = responseJSON.message;
