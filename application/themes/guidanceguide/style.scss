@@ -1190,6 +1190,7 @@ form#user_form_login {
             div.form-wrapper-heading {
                 font-size: 16px;
             }
+            
         }
 
         &::-webkit-scrollbar {
@@ -2118,7 +2119,7 @@ form.preference-holder {
 @media only screen and (max-width: 768px) {
 
 
-    
+
     // Classes
     .grib-grab-two {
         grid-template-columns: repeat(1, 1fr);
@@ -2725,7 +2726,6 @@ form.preference-holder {
     } 
 
     .extfox-auth {
-
         input[type='text'],
         input[type='number'],
         textarea {
@@ -2803,7 +2803,7 @@ form.preference-holder {
             
     }
     
-    // SignUp Page
+    // SignUp Page 
     #global_page_user-signup-index {
         .form-wrapper{
             padding-left: 0px!important;
@@ -2822,79 +2822,97 @@ form.preference-holder {
                     }
                 }
             }
+
+            &.preference-holder  {
+                #show_all-wrapper {
+                    width: 100%!important;
+                    #show_all-element {
+                        width: 100%!important;
+                        label {
+                            left: 32px;   
+                            top:-55px;
+                        }
+                        input[type=checkbox] + label:after {
+                            top:30px;
+                        }
+                    }
+                    
+                }
+            }
+
+            &.family-form {
+                .form-wrapper {
+                    .form-element {
+                        #family-information {
+                            .row.add-child-form {
+                                .add-birthday {
+                                    .selector-holder {
+                                        .selector-item {
+                                            min-width: 0;
+                                        }
+                                    }
+                                }
+                            }
+                        } 
+                    } 
+                }
+            }
             
         }
+       
     }
 
-    // Preference Holder 
-    #global_page_user-signup-index{
-        form.preference-holder  {
-            #show_all-wrapper {
-                width: 100%!important;
-                #show_all-element {
-                    width: 100%!important;
-                    label {
-                        left: 32px;   
-                        top:-55px;
-                    }
-                    input[type=checkbox] + label:after {
-                        top:30px;
-                    }
-                }
-                
-            }
-        }
-    }
-        form.preference-holder {
-            h3,p {
-                width: 90%;
-                margin-top: 30px!important;
-                padding: 0px!important;
-            }
-        
-            .holder-image {
-                .holder-category-title {
-                    left: 30px;
-                }
-                .holder-select-all {
-                    right:30px;
-                }
-            } 
-
-            .sd_listing_categories{
-                grid-template-columns: repeat(auto-fill, minmax(52%, 1fr));
-            } 
-            #show_all-wrapper {
-                width: 100%!important;
-                #show_all-element {
-                    width: 100%!important;
-                    label {
-                        left: 29px;   
-                        
-                    }
-                    input[type=checkbox] + label:after {
-                        left:2px;
-                    }
-                }
-                
-            }
-            #buttons-wrapper {
-                width: 100%!important;
-                #fieldset-buttons {
-                    width: 100%!important;
-                    float: none!important;
-                    text-align: center;
-                    margin:0;
-                    padding: 0;
-                    button,a{
-                        margin: 0 auto 10px;
-                        width: 85%;
-                    }
-                }
-            }
-
+    // Global Preference Holder
+    form.preference-holder {
+        h3,p {
+            width: 90%;
+            margin-top: 30px!important;
+            padding: 0px!important;
         }
     
+        .holder-image {
+            .holder-category-title {
+                left: 30px;
+            }
+            .holder-select-all {
+                right:30px;
+            }
+        } 
+
+        .sd_listing_categories{
+            grid-template-columns: repeat(auto-fill, minmax(52%, 1fr));
+        } 
+        #show_all-wrapper {
+            width: 100%!important;
+            #show_all-element {
+                width: 100%!important;
+                label {
+                    left: 29px;   
+                    
+                }
+                input[type=checkbox] + label:after {
+                    left:2px;
+                }
+            }
+            
+        }
+        #buttons-wrapper {
+            width: 100%!important;
+            #fieldset-buttons {
+                width: 100%!important;
+                float: none!important;
+                text-align: center;
+                margin:0;
+                padding: 0;
+                button,a{
+                    margin: 0 auto 10px;
+                    width: 85%;
+                }
+            }
+        }
+
+    }
+
     // Border Gear
     .border-gear {
         ~ img {
