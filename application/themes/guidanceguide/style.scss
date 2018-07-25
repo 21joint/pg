@@ -653,8 +653,10 @@ body#global_page_user-profile-index {
 .layout_sdparentalguide_ajax_badges {
     background-color: #F6FCFC!important;
     padding-top: 1rem!important;
+        
+    
     .holder-my-badges {
-       
+        
         ul {
             grid-auto-rows: minmax(130px, auto);
             li {
@@ -1178,7 +1180,7 @@ form#user_form_login {
 }
 
 // SignUp Page
-#global_page_user-signup-index {
+#global_page_user-signup-index,#global_page_sitequicksignup-signup-index {
     .right-side {
         > div {
             width: 100%;
@@ -2751,11 +2753,15 @@ form.preference-holder {
         }
     }
     // Login Page
-    form#user_form_login {
+    form#user_form_login,form#signup_account_form {
         h3 {
             margin-top:100px;
         }
+        #facebook-wrapper,#twitter-wrapper {
+            display: none;
+        }
         #facebookbutton-wrapper{
+            display: none;
             #twitter-wrapper {
                 a{
                     background-color: #1DA1F2;
