@@ -300,7 +300,7 @@
                 if(responseJSON.status_code == 200){
                     var html = "";
                     var results = responseJSON.body.Results;
-                    for(var i = 0; i < results.length; i++) {
+                    for(var i = 0; i < 5; i++) {
                         html += '<div class="struggle_holder my-3 d-flex flex-wrap">'+
                                     '<div class="struggle_box_left d-flex align-items-center large-12 medium-12 small-12">'+
                                         '<div class="struggle_left_side d-inline-block">'+

@@ -14,9 +14,9 @@
     <div class="leaderboard_title d-flex justify-content-between align-items-center">
         <h3><?php echo $this->translate('Leaderboard'); ?></h3>
         <ul class="d-flex align">
-            <li class="leaderboard_nav">Overall</li>
-            <li class="leaderboard_nav">Week</li>
-            <li class="leaderboard_nav">Month</li>
+            <li id="leaderboard_nav_ovl" class="leaderboard_nav leaderboard_title_active">Overall</li>
+            <li id="leaderboard_nav_mth" class="leaderboard_nav">Month</li>
+            <li id="leaderboard_nav_wek" class="leaderboard_nav">Week</li>
         </ul><!-- Add back in when the service is provided -->
     </div>
     <div class="leaderboard_main d-flex justify-content-between">
@@ -43,7 +43,7 @@
     <div class="leaderboard_pagination d-flex justify-content-end align-items-center mt-5 mr-5">
         <!-- Content Pagination -->
         <span id="leaderboard_previous" class="pagination_button"><</span>
-        <span id="leaderboard_pageNum" class="mx-5">
+        <span id="leaderboard_pageNum" class="mx-3">
             <!-- Displays the current page of Leaderboard Results -->
         </span>
         <span id="leaderboard_next" class="pagination_button">></span>
@@ -95,8 +95,29 @@ document.querySelectorAll('.leaderboard_nav').forEach(function(nav) {
         pageNum = 1;
         // Using null and leaving out the previous sorting results
         // Better to always start from contributionPoints on any timeFrame
-        loadLeaderboardResults(timeFrame, orderBy, currentCategory, pageNum);       
+        if(checkSize > 768){
+            loadLeaderboardResults(timeFrame, orderBy, currentCategory, pageNum);
+        }
+        else{
+            loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
+        }      
     });
+});
+// Choosen TimeFrame Styling (needs refactor, hard coded solution)
+document.getElementById('leaderboard_nav_ovl').addEventListener('click', function(){
+    this.addClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_mth').removeClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_wek').removeClass('leaderboard_title_active');
+});
+document.getElementById('leaderboard_nav_mth').addEventListener('click', function(){
+    this.addClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_ovl').removeClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_wek').removeClass('leaderboard_title_active');
+});
+document.getElementById('leaderboard_nav_wek').addEventListener('click', function(){
+    this.addClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_mth').removeClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_ovl').removeClass('leaderboard_title_active');
 });
 
 // Orders by each category which is clicked on using ajax
@@ -225,8 +246,54 @@ function loadLeaderboardResults(tm, ord, disp = 0, page = 1) {
                             '</div>';
                 }
                 leaderboardContent.innerHTML = html;
-                // Showing current page in pagination section
-                document.getElementById('leaderboard_pageNum').innerText = page;
+                // Showing current pages in pagination section
+                var lastpage = 10;
+                // First 4 Pages You can Skip to
+                if(pageNum <= 3){
+                    document.getElementById('leaderboard_pageNum').innerHTML = '<span class="skip_page mx-2">1</span>' +
+                                                                            '<span class="mx-2 d-none">...</span>'+
+                                                                            '<span class="skip_page mx-2">2</span>'+
+                                                                            '<span class="skip_page mx-2">3</span>'+
+                                                                            '<span class="skip_page mx-2">4</span>'+
+                                                                            '<span class="mx-2">...</span>'+
+                                                                            '<span class="skip_page mx-2">'+ lastpage +'</span>';
+                }else if(pageNum > 3 && pageNum < 8){
+                    document.getElementById('leaderboard_pageNum').innerHTML = '<span class="skip_page mx-2">'+(pageNum-3)+'</span>'+
+                                                                            '<span class="skip_page mx-2">'+
+                                                                                (pageNum-2)+
+                                                                            '</span>'+
+                                                                            '<span class="skip_page mx-2">'+
+                                                                                (pageNum-1)+
+                                                                            '</span>'+
+                                                                            '<span class="skip_page mx-2">'+
+                                                                                pageNum+
+                                                                            '</span>'+
+                                                                            '<span class="mx-2">...</span>'+
+                                                                            '<span class="skip_page mx-2">'+ lastpage +'</span>';
+                }else{
+                    document.getElementById('leaderboard_pageNum').innerHTML = '<span class="skip_page mx-2">1</span>'+
+                                                                            '<span class="mx-2">...</span>'+
+                                                                            '<span class="skip_page mx-2">'+
+                                                                                (lastpage-3)+
+                                                                            '</span>'+
+                                                                            '<span class="skip_page mx-2">'+
+                                                                                (lastpage-2)+
+                                                                            '</span>'+
+                                                                            '<span class="skip_page mx-2">'+
+                                                                                (lastpage-1)+
+                                                                            '</span>'+
+                                                                            '<span class="skip_page mx-2">'+ lastpage +'</span>';
+                }
+                // Skipping Pages Functionality
+                document.querySelectorAll('.skip_page').forEach(function(page){
+                    if(page.innerText == pageNum){
+                        page.addClass("current_pagination");
+                    }
+                    page.addEventListener('click', function(){
+                        pageNum = Number(this.innerText);
+                        loadLeaderboardResults(timeFrame, orderBy, currentCategory, pageNum);
+                    });
+                });
                 // Adding and Removing Categories in which the items are ordered
                 // Displaying Categories on Mobile
                 switch(disp){
