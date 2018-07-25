@@ -14,6 +14,20 @@
 #signup_account_form #name-wrapper {
   display: none;
 }
+form {
+    max-height:995px;
+    overflow-y:scroll;
+}
+form > div {
+    width:100%;
+}
+.social-signup-layout-right {
+    height:100%;
+    display:flex;
+    align-items: center;
+}
+
+
 </style>
 <script type="text/javascript">
 //<![CDATA[
@@ -111,7 +125,7 @@ if ($siteloginSignupPopUp) {
     
 ?>
 <?php $layoutPos = array(1=> 'left', 2 => 'right', 3 => 'top', 4 => 'bottom')?>
-<div id="<?php echo $siteloginSignupPopUp ? 'sociallogin_signup_popup' : 'sociallogin_signup_page w-100 h-100' ?>">
+<div id="<?php echo $siteloginSignupPopUp ? 'sociallogin_signup_popup' : 'sociallogin_signup_page'?>" class="<?php echo $siteloginSignupPopUp ? '' : 'w-100 h-100 d-flex align-items-center'?>">
 <div class="social-signup-layout-<?php echo $layoutPos[$position] ?>">
 
 <?php if( $isEnableSocialAccount && $enable ): ?>

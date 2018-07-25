@@ -436,12 +436,6 @@
         activateProfileItem('notifications');
       }
       
-      if(e.target.id !== 'bar'){
-        mobileHolder.classList.remove('active');
-        barMe.classList.remove('active');
-      }
-      
-
   }
    
 </script>

@@ -10,5 +10,11 @@
  * @author     John
  */
 ?>
-
+<style>
+    .right-side {
+        padding:0;
+        width:95%;
+        margin:0 auto;
+    }
+</style>
 <?php echo $this->form->render($this); ?>
