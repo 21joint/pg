@@ -200,7 +200,7 @@ function loadLeaderboardResults(tm, ord, disp = 0, page = 1) {
     var url = en4.core.baseUrl+"api/v1/ranking";
 
     // Testing... Delete after done
-    console.log(tm, ord, disp, page);
+    // console.log(tm, ord, disp, page);
 
     var request = new Request.JSON({
         url: url,
