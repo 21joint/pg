@@ -21,19 +21,44 @@ en4.ggcommunity = {
     },
     vote : function(parent_type, parent_id, vote_type) {
         var main_holder = document.getElementById('vote_'+ parent_type + '_' + parent_id);
+        var that = $(event.target);
+        if(that.tagName != 'A'){
+            that  = $(that).getParent();
+        }
+        if(that.hasClass("primary")){
+            return;
+        }        
         var first_child = main_holder.parentNode.firstElementChild;
-
-        en4.core.request.send(new Request.HTML({
-            url : 'ggcommunity/vote/vote',
+        var reactionType = 'upvote';
+        if(!vote_type){
+            reactionType = 'downvote';
+        }
+        en4.core.request.send(new Request.JSON({
+            url : en4.core.baseUrl+'api/v1/reaction',
             data : {
-                format : 'html',
-                parent_type : parent_type,
-                parent_id : parent_id,
-                vote_type : vote_type,
+                contentType : parent_type,
+                contentID : parent_id,
+                reactionType : reactionType,
             },
-            onComplete: function(responseHTML) {
-                main_holder.remove();
-                first_child.parentNode.insertBefore(responseHTML[3], first_child.nextSibling);
+            onComplete: function(responseJSON) {
+                if(responseJSON.status_code == 204){
+                    if(!main_holder){
+                        return;
+                    }
+                    var voteCountElement = main_holder.getElement(".question-vote");
+                    var currentVoteCount = voteCountElement.get("html").toInt();
+                    main_holder.getElements("a").removeClass("primary").set("disabled","disabled");
+                    if(vote_type){
+                        currentVoteCount++;
+                        main_holder.getElement(".vote-up").addClass("primary").set("disabled","disabled");
+                    }else{
+                        currentVoteCount--;
+                        main_holder.getElement(".vote-down").addClass("primary").set("disabled","disabled");
+                    }
+                    voteCountElement.set("html",currentVoteCount);                    
+                }else{
+                    alert(responseJSON.message);
+                }
             }
         }));
      
@@ -184,12 +209,8 @@ en4.ggcommunity.answer = {
 
         // get comment holder
         var comment_holder = document.getElementById('comment_holder_'+ parent_type + '_' + parent_id);
-
-        if(comment_holder.classList.contains('none')) {
-            comment_holder.classList.remove('none');
-        } else {
-            comment_holder.classList.add('none');
-        }
+        
+        $(comment_holder).toggleClass("none");
 
         // get comment form and if has class none delete this class
         var comment_form = comment_holder.getElementById('comment_holder_form');
