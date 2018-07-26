@@ -4470,6 +4470,9 @@ body#global_page_user-profile-index {
     .holder-familyMember .form-wrapper-heading h6 p {
       color: #B7C3C4; }
 
+form#signup_account_form #facebook-wrapper, form#signup_account_form #twitter-wrapper {
+  display: none; }
+
 form#user_form_login #fieldset-buttons {
   padding: 0px;
   margin: 0px; }
@@ -4509,20 +4512,22 @@ form#user_form_login #fieldset-buttonsfileds {
         font-size: 14px;
         font-weight: 400;
         font-family: 'Open Sans', sans-serif; }
-form#user_form_login #fieldset-facebookbutton #twitter-wrapper {
-  width: 48%;
-  float: right;
-  margin-left: 5px;
-  margin-bottom: 0px; }
-  form#user_form_login #fieldset-facebookbutton #twitter-wrapper #twitter-label {
-    display: none; }
-form#user_form_login #fieldset-facebookbutton #facebook-wrapper {
-  width: 48%;
-  float: left;
-  margin-right: 5px;
-  margin-bottom: 0px; }
-  form#user_form_login #fieldset-facebookbutton #facebook-wrapper #facebook-label {
-    display: none; }
+form#user_form_login #fieldset-facebookbutton {
+  display: none; }
+  form#user_form_login #fieldset-facebookbutton #twitter-wrapper {
+    width: 48%;
+    float: right;
+    margin-left: 5px;
+    margin-bottom: 0px; }
+    form#user_form_login #fieldset-facebookbutton #twitter-wrapper #twitter-label {
+      display: none; }
+  form#user_form_login #fieldset-facebookbutton #facebook-wrapper {
+    width: 48%;
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 0px; }
+    form#user_form_login #fieldset-facebookbutton #facebook-wrapper #facebook-label {
+      display: none; }
 form#user_form_login #facebook-element a:hover, form#user_form_login #facebook-element a:active {
   background-color: #3C5A99;
   color: #fff;
@@ -4576,7 +4581,13 @@ form#user_form_login #twitter-element a:hover, form#user_form_login #twitter-ele
   color: #fff;
   padding: 0.5rem 0 !important;
   width: 100%;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2 ease-in-out; }
+#global_page_user-signup-index form button:hover {
+  background-color: #5CC7CE;
+  color: #fff;
+  border-color: #5CC7CE; }
 #global_page_user-signup-index form #terms-element label a {
   padding-left: 10px; }
 #global_page_user-signup-index div.form-wrapper-heading span {
@@ -5530,16 +5541,18 @@ form.preference-holder {
   #global_page_user-auth-forgot button, #global_page_user-auth-reset button {
     width: 100% !important; }
 
-  form#user_form_login h3 {
+  form#user_form_login h3, form#signup_account_form h3 {
     margin-top: 100px; }
-  form#user_form_login #facebookbutton-wrapper #twitter-wrapper a {
-    background-color: #1DA1F2;
-    color: #fff;
-    border-color: #1DA1F2; }
-  form#user_form_login #facebookbutton-wrapper #facebook-element a {
-    background-color: #3C5A99;
-    color: #fff;
-    border-color: #3C5A99; }
+  form#user_form_login #facebookbutton-wrapper, form#signup_account_form #facebookbutton-wrapper {
+    display: none; }
+    form#user_form_login #facebookbutton-wrapper #twitter-wrapper a, form#signup_account_form #facebookbutton-wrapper #twitter-wrapper a {
+      background-color: #1DA1F2;
+      color: #fff;
+      border-color: #1DA1F2; }
+    form#user_form_login #facebookbutton-wrapper #facebook-element a, form#signup_account_form #facebookbutton-wrapper #facebook-element a {
+      background-color: #3C5A99;
+      color: #fff;
+      border-color: #3C5A99; }
 
   .holder-familyMember .holder {
     padding: 2rem !important; }
@@ -5612,7 +5625,7 @@ form.preference-holder {
     border-width: 4px 4px 4px 4px !important; }
 
   .close-btn-x {
-    right: 10px;
+    right: 19px;
     top: 5px;
     color: #B9CFD1; }
     .close-btn-x svg {
