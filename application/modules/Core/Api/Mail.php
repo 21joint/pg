@@ -275,9 +275,6 @@ class Core_Api_Mail extends Core_Api_Abstract
   public function sendSystemRaw($recipient, $type, array $params = array())
   {
 
-    echo 'Hello from official email system';
-    exit;
-
     // Verify mail template type
     $mailTemplateTable = Engine_Api::_()->getDbtable('MailTemplates', 'core');
     $mailTemplate = $mailTemplateTable->fetchRow($mailTemplateTable->select()->where('type = ?', $type));

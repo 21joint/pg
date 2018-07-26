@@ -18,9 +18,6 @@ class Sitemailtemplates_Loader extends Engine_Loader {
 
   public static function hook() {
 
-    echo 'Hello Core_Api_Mail Hook';
-    exit;
-
     if (self::$_hooked) {
       return;
     }
