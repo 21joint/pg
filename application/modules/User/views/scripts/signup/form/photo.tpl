@@ -10,5 +10,20 @@
  * @author     John
  */
 ?>
+<style>
+    .right-side {
+        padding:0;
+        width:95%;
+        margin:0 auto;
+    }
+
+@media only screen and (max-width: 768px) {
+    form {
+        max-height:100%!important;
+        padding: 90px 0px 50px;
+    }
+}
+  
+</style>
 
 <?php echo $this->form->render($this); ?>
