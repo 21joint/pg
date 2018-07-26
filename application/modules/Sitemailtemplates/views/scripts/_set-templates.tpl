@@ -10,14 +10,6 @@
  * @author     SocialEngineAddOns
  */
 ?>
-<style>
-
-
-
-
-
-</style>
-
 <?php 
   	$siteTitle = '';
 	$bodyContent = '';
@@ -91,14 +83,7 @@
 	
 <?php endif;?>
 
-
-
-
-
-
-
 <?php $html = $bodyContent.$this->bodyHtmlTemplate;?>
-
 
 <?php echo $bodyHtmlTemplate = '
 
