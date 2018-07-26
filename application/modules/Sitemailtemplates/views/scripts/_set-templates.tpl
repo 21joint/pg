@@ -11,9 +11,6 @@
  */
 ?>
 <?php 
-
-	echo 'wow';
-	exit;
 	
   	$siteTitle = '';
 	$bodyContent = '';
