@@ -74,12 +74,9 @@
                                 // select special badges
                                 $select = $table->select()
                                     ->where('topic_id = ?', $topic->topic_id)
-                                    ->order( 'name ASC' )
                                     ->order('level DESC')
                                     ->limit(5)
                                 ;
-                                echo $select;
-                                
                                 $badges = $table->fetchAll($select);
 
                             ?>
