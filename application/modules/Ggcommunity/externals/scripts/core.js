@@ -74,12 +74,11 @@ en4.ggcommunity.answer = {
         var counter_answer = document.getElementById('count_answers');
         var form = document.getElementById('create_answer_form');
 
-        en4.core.request.send(new Request.HTML({
-            url : 'ggcommunity/answer-index/create',
+        en4.core.request.send(new Request.JSON({
+            url : en4.core.baseUrl+'api/v1/answer',
             data : {
-                format : 'html',
-                question_id : question_id,
-                body_create : body,
+                questionID : question_id,
+                body : body,
             },
             onComplete: function(responseHTML) {
                 // empty body from tinymce
@@ -103,10 +102,10 @@ en4.ggcommunity.answer = {
                 
                 if(last_answer_id > 0) {
                     counter_answer.innerHTML = 'Theories | ' + increment ;
-                    last.parentNode.insertBefore(responseHTML[0], last.nextSibling);
+//                    last.parentNode.insertBefore(responseHTML[0], last.nextSibling);
                 } else {
                     counter_answer.innerHTML = 'Theory | ' + increment ;
-                    responseHTML[0].inject( answer_box );
+//                    responseHTML[0].inject( answer_box );
                 }
         
                 Smoothbox.bind(answer_box);

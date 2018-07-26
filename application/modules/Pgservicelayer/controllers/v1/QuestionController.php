@@ -175,9 +175,15 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
         $db->beginTransaction();
         try{
             
+            $oldTz = date_default_timezone_get();
+            date_default_timezone_set($viewer->timezone);
+            $creationDate = time();
+            date_default_timezone_set($oldTz);
+            $currentDate = date('Y-m-d H:i:s', $creationDate);
+            
             if($can_approve == 1) {
                 $values['approved'] = 1;
-                $values['approved_date'] = date('Y-m-d H:i:s');
+                $values['approved_date'] = $currentDate;
             } else {
                 $values['approved'] = 0;
             }
@@ -202,6 +208,10 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
             $question = $table->createRow(); 
             $question->setFromArray($values);
             $question->save();
+            
+            $question->creation_date = $currentDate;
+            $question->save();
+            
             
             if($question->approved){
                 $action = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($viewer, $question, "question_create");
@@ -271,7 +281,8 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
             'topic_id' => $this->getParam("topicID",$question->topic_id),
             'body' => $this->getParam("body",$question->body),
             'photo_id' => $this->getParam("photoID",$question->photo_id),
-            'draft' => 0
+            'draft' => (int)$this->getParam("draft",$question->draft),
+            'approved' => (int)$this->getParam("approved",$question->approved)
         );
         $table = Engine_Api::_()->getDbTable('questions','ggcommunity');
         $db = $table->getAdapter();
@@ -279,7 +290,14 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
         try{
             
             $question->setFromArray($values);
-            $question->save();            
+            $question->save();
+            
+            $api = Engine_Api::_()->getApi("V1_Reaction","pgservicelayer");
+            if(!$question->approved || $question->draft){
+                if(($action = $api->hasActivity($question,'question_create',$question->getOwner()))){
+                    $action->delete();
+                }
+            }
             $db->commit();
             
             $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
@@ -313,6 +331,7 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
         $db = $table->getAdapter();
         $db->beginTransaction();
         try {
+            $api = Engine_Api::_()->getApi("V1_Reaction","pgservicelayer");
             foreach($questions as $question){
                 $poster = Engine_Api::_()->getItem("user", $question->user_id);
                 if(!$poster->isSelf($viewer)){
@@ -320,18 +339,33 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
                 }
                 $question->gg_deleted = 1;
                 $question->save();
+                if(($action = $api->hasActivity($question,'question_create',$question->getOwner()))){
+                    $action->delete();
+                }
             }
             $answers = $answersTable->fetchAll($answersTable->select()->where('parent_id IN (?)',$idsArray));
             if(!empty($answers)){
                 foreach($answers as $answer){
                     $answer->gg_deleted = 1;
                     $answer->save();
+                    
+                    if(($actionOwner = $api->hasActivity($question,'question_author_answer',$question->getOwner()))){
+                        $actionOwner->delete();
+                    }
+                    
+                    if(($action = $api->hasActivity($question,'question_answer',$viewer))){
+                        $action->delete();
+                    }
+                    
+                    if(($actionOwner = $api->hasActivity($answer,'question_answer_chosen',$subject->getOwner()))){
+                        $actionOwner->delete();
+                    }
                 }
             }
             $db->commit();
         } catch (Exception $e) {
             $db->rollBack();
-            $this->respondWithServerError($ex);
+            $this->respondWithServerError($e);
         }
         $this->successResponseNoContent('no_content');
     }

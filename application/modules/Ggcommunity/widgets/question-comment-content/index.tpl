@@ -1,4 +1,4 @@
-<?php $this->headScript()->appendFile($this->layout()->staticBaseUrl."application/modules/Pgservicelayer/externals/scripts/author.js"); ?>
+<?php $this->headScript()->appendFile($this->layout()->staticBaseUrl."application/modules/Pgservicelayer/externals/scripts/core.js"); ?>
 
 <!-- Comment Box -->
 <div class="comment_full_box none large-11 medium-11 large-offset-1 medium-offset-1 comments-holder" id="comments_holder_box_<?php echo $this->subject->getIdentity();?>">
@@ -163,7 +163,7 @@ function getCommentElement(comment){
                 '<div class="question-main-top-holder "><div class="question-main-top-info display-flex">'+
                 '<div class="question-main-top-box large-10 medium-10 small-10 flex-start"><div class="question-owner-name m-r-10">'+
                 "<a href='"+author.href+"' class='owner-name'>"+author.displayName+"</a></div>"+
-                '<div class="question-approve-time m-r-10"><p class="approve-time">'+author.memberSinceDateTime+"</p></div>";
+                '<div class="question-approve-time m-r-10"><p class="approve-time">'+comment.createdDateTime+"</p></div>";
     <?php if($this->subject->getType() == 'ggcommunity_answer'): ?>
         <?php if($this->subject->accepted): ?>
             html += '<p class="best_answer"><svg xmlns="http://www.w3.org/2000/svg" style="margin-right:5px;" width="13px" height="13px" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40 38"><defs><linearGradient id="z" x1="-173.22" y1="1009.42" x2="-172.4" y2="1010.06" gradientTransform="matrix(13.72, 0, 0, -11.03, 2403.25, 11146.77)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2b3336"/><stop offset="1" stop-color="#333d40"/></linearGradient><linearGradient id="x" x1="-304.1" y1="1050.64" x2="-303.1" y2="1050.64" gradientTransform="matrix(16.54, 0, 0, -10.11, 5029.61, 10635.32)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#333d40"/><stop offset="1" stop-color="#2b3336"/></linearGradient></defs><title>dark_star</title><path d="M38.29,8.11l-7.17,9.44L25,9.36,36.9,6.64C38.65,6.23,39.15,6.93,38.29,8.11Z" fill="url(#z)"/><path d="M16.54,11.4.87,15.33c-1,.23-1.22,1.29-.3,1.7L15.86,21.5Z" fill="url(#x)"/><path d="M14.56,36.53l2-35.61c0-1,1-1.25,1.68-.43L39.58,27.06c.79,1,.57,2.58-1.63,1.72L25.08,23.86,17,37.19a1.3,1.3,0,0,1-2.49-.66Z" fill="#333d40"/></svg></p>'+

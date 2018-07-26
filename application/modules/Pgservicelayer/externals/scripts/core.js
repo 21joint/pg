@@ -15,6 +15,6 @@ en4.core.pgservicelayer = {
         }
         var authorHtml = hoverHtml+"<div class='item-photo-guidance position-relative'>"+authorBadge+"<img src='"+author.avatarPhoto.photoURLIcon+"' class='thumb_icon item_photo_user bronze'/></div>";
         return authorHtml;
-    }
+    },
 };
 })();
