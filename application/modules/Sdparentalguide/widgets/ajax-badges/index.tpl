@@ -78,6 +78,8 @@
                                     ->order('level DESC')
                                     ->limit(5)
                                 ;
+                                echo $select;
+                                
                                 $badges = $table->fetchAll($select);
 
                             ?>
