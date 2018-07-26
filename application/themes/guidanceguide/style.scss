@@ -1071,7 +1071,11 @@ body#global_page_user-profile-index {
     }
     
 } 
-
+form#signup_account_form{
+    #facebook-wrapper,#twitter-wrapper{
+        display: none;
+    }
+}
 
 // Login Page
 form#user_form_login {
@@ -1137,6 +1141,7 @@ form#user_form_login {
         }
     }
     #fieldset-facebookbutton{
+        display: none;
         #twitter-wrapper {
             #twitter-label {
                 display: none;
@@ -1180,7 +1185,7 @@ form#user_form_login {
 }
 
 // SignUp Page
-#global_page_user-signup-index,#global_page_sitequicksignup-signup-index {
+#global_page_user-signup-index {
     .right-side {
         > div {
             width: 100%;
@@ -1245,6 +1250,13 @@ form#user_form_login {
             padding: 0.5rem 0!important;
             width: 100%;
             text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2 ease-in-out;
+        }
+        button:hover {
+            background-color: #5CC7CE;
+            color:#fff;
+            border-color: #5CC7CE;
         }
         #terms-element {
             label {
@@ -2757,9 +2769,7 @@ form.preference-holder {
         h3 {
             margin-top:100px;
         }
-        #facebook-wrapper,#twitter-wrapper {
-            display: none;
-        }
+        
         #facebookbutton-wrapper{
             display: none;
             #twitter-wrapper {
@@ -2931,7 +2941,7 @@ form.preference-holder {
 
     // Close Button 
     .close-btn-x{
-        right: 10px;
+        right: 19px;
         top: 5px;
         color: #B9CFD1;
         svg {

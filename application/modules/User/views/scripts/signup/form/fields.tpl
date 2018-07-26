@@ -17,7 +17,7 @@
     max-height: 900px;
     overflow-y: scroll !important;
   }
-
+ 
   form.extfox-auth::-webkit-scrollbar {
     display:block;
   }
