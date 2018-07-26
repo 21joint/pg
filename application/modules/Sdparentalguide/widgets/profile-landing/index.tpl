@@ -41,7 +41,7 @@
                         </div> -->
                         <div class="col-sm col-5 col-xl-3 col-lg-3 text-center border-left">
                             <h5 class="text-primary font-weight-bold"> 
-                                <?php echo $this->subject->gg_guide_count; ?>
+                                <?php echo $this->subject->gg_question_count; ?>
                             </h5>
                             <p class="desc text-dark">
                                 <?php echo $this->translate('Struggles'); ?>
