@@ -14,9 +14,9 @@
     <div class="leaderboard_title d-flex justify-content-between align-items-center">
         <h3><?php echo $this->translate('Leaderboard'); ?></h3>
         <ul class="d-flex align">
-            <li class="leaderboard_nav">Overall</li>
-            <li class="leaderboard_nav">Week</li>
-            <li class="leaderboard_nav">Month</li>
+            <li id="leaderboard_nav_ovl" class="leaderboard_nav leaderboard_title_active">Overall</li>
+            <li id="leaderboard_nav_mth" class="leaderboard_nav">Month</li>
+            <li id="leaderboard_nav_wek" class="leaderboard_nav">Week</li>
         </ul><!-- Add back in when the service is provided -->
     </div>
     <div class="leaderboard_main d-flex justify-content-between">
@@ -27,7 +27,7 @@
         <div id="reviews" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="reviewCount"><?php echo $this->translate('Reviews'); ?></div>
         <!-- <div class="d-none d-md-flex justify-content-center align-items-center">Answers --><!-- Sort By Answer not supported yet by the service layer --><!-- </div> -->
         <div id="questions" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="questionCount"><?php echo $this->translate('Questions'); ?></div>
-        <div id="followers" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="followers"><?php echo $this->translate('Followers'); ?></div>
+        <!-- <div id="followers" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="followers"><?php echo $this->translate('Followers'); ?></div> -->
         <!-- Categories End -->
         <div class="d-flex d-md-none justify-content-center align-items-center">
             <button id="order_btn" class="btn-primary rounded-circle">></button>
@@ -43,7 +43,7 @@
     <div class="leaderboard_pagination d-flex justify-content-end align-items-center mt-5 mr-5">
         <!-- Content Pagination -->
         <span id="leaderboard_previous" class="pagination_button"><</span>
-        <span id="leaderboard_pageNum" class="mx-5">
+        <span id="leaderboard_pageNum" class="mx-3">
             <!-- Displays the current page of Leaderboard Results -->
         </span>
         <span id="leaderboard_next" class="pagination_button">></span>
@@ -62,21 +62,23 @@ var currentCategory = 0;
 var categoryValue;
 document.getElementById('order_btn').addEventListener('click', function(){
     if(currentCategory == 0){
-        categoryValue = document.getElementById('followers').getAttribute('data-order');
+        categoryValue = document.getElementById('questions').getAttribute('data-order');
         currentCategory = 1;
         pageNum = 1;
         loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum); 
     }else if(currentCategory == 1){
-        categoryValue = document.getElementById('questions').getAttribute('data-order');
+        categoryValue = document.getElementById('reviews').getAttribute('data-order');
         currentCategory = 2;
         pageNum = 1;
         loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
-    }else if(currentCategory == 2){
-        categoryValue = document.getElementById('reviews').getAttribute('data-order');
-        currentCategory = 3;
-        pageNum = 1;
-        loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
-    }else{
+    }
+    // else if(currentCategory == 2){
+    //     categoryValue = document.getElementById('followers').getAttribute('data-order');
+    //     currentCategory = 3;
+    //     pageNum = 1;
+    //     loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
+    // }
+    else{
         categoryValue = document.getElementById('points').getAttribute('data-order');
         currentCategory = 0;
         pageNum = 1;
@@ -95,8 +97,29 @@ document.querySelectorAll('.leaderboard_nav').forEach(function(nav) {
         pageNum = 1;
         // Using null and leaving out the previous sorting results
         // Better to always start from contributionPoints on any timeFrame
-        loadLeaderboardResults(timeFrame, orderBy, currentCategory, pageNum);       
+        if(checkSize > 768){
+            loadLeaderboardResults(timeFrame, orderBy, currentCategory, pageNum);
+        }
+        else{
+            loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
+        }      
     });
+});
+// Choosen TimeFrame Styling (needs refactor, hard coded solution)
+document.getElementById('leaderboard_nav_ovl').addEventListener('click', function(){
+    this.addClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_mth').removeClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_wek').removeClass('leaderboard_title_active');
+});
+document.getElementById('leaderboard_nav_mth').addEventListener('click', function(){
+    this.addClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_ovl').removeClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_wek').removeClass('leaderboard_title_active');
+});
+document.getElementById('leaderboard_nav_wek').addEventListener('click', function(){
+    this.addClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_mth').removeClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_ovl').removeClass('leaderboard_title_active');
 });
 
 // Orders by each category which is clicked on using ajax
@@ -118,18 +141,18 @@ var activeCategory = 0;
 document.getElementById('points').addEventListener('click', function(){
     activeCategory = 0;
 });
-// Being ordered by Followers
-document.getElementById('followers').addEventListener('click', function(){
-    activeCategory = 1;
-});
 // Being ordered by Questions
 document.getElementById('questions').addEventListener('click', function(){
-    activeCategory = 2;
+    activeCategory = 1;
 });
 // Being ordered by Reviews
 document.getElementById('reviews').addEventListener('click', function(){
-    activeCategory = 3;
+    activeCategory = 2;
 });
+// Being ordered by Followers
+// document.getElementById('followers').addEventListener('click', function(){
+//     activeCategory = 3;
+// });
 // Styling for Order By Category End
 
 // Pagionation Number Change Start
@@ -219,14 +242,60 @@ function loadLeaderboardResults(tm, ord, disp = 0, page = 1) {
                                 '<div class="questions d-none d-md-flex align-items-center justify-content-center">'+
                                     results[i].questionCount+
                                 '</div>'+
-                                '<div class="followers d-none d-md-flex align-items-center justify-content-center">'+
+                                '<!-- <div class="followers d-none d-md-flex align-items-center justify-content-center">'+
                                     results[i].followersCount+
-                                '</div>'+
+                                '</div> -->'+
                             '</div>';
                 }
                 leaderboardContent.innerHTML = html;
-                // Showing current page in pagination section
-                document.getElementById('leaderboard_pageNum').innerText = page;
+                // Showing current pages in pagination section
+                var lastpage = 10;
+                // First 4 Pages You can Skip to
+                if(pageNum <= 3){
+                    document.getElementById('leaderboard_pageNum').innerHTML = '<span class="skip_page mx-2">1</span>' +
+                                                                            '<span class="mx-2 d-none">...</span>'+
+                                                                            '<span class="skip_page mx-2">2</span>'+
+                                                                            '<span class="skip_page mx-2">3</span>'+
+                                                                            '<span class="skip_page mx-2">4</span>'+
+                                                                            '<span class="mx-2">...</span>'+
+                                                                            '<span class="skip_page mx-2">'+ lastpage +'</span>';
+                }else if(pageNum > 3 && pageNum < 8){
+                    document.getElementById('leaderboard_pageNum').innerHTML = '<span class="skip_page mx-2">'+(pageNum-3)+'</span>'+
+                                                                            '<span class="skip_page mx-2">'+
+                                                                                (pageNum-2)+
+                                                                            '</span>'+
+                                                                            '<span class="skip_page mx-2">'+
+                                                                                (pageNum-1)+
+                                                                            '</span>'+
+                                                                            '<span class="skip_page mx-2">'+
+                                                                                pageNum+
+                                                                            '</span>'+
+                                                                            '<span class="mx-2">...</span>'+
+                                                                            '<span class="skip_page mx-2">'+ lastpage +'</span>';
+                }else{
+                    document.getElementById('leaderboard_pageNum').innerHTML = '<span class="skip_page mx-2">1</span>'+
+                                                                            '<span class="mx-2">...</span>'+
+                                                                            '<span class="skip_page mx-2">'+
+                                                                                (lastpage-3)+
+                                                                            '</span>'+
+                                                                            '<span class="skip_page mx-2">'+
+                                                                                (lastpage-2)+
+                                                                            '</span>'+
+                                                                            '<span class="skip_page mx-2">'+
+                                                                                (lastpage-1)+
+                                                                            '</span>'+
+                                                                            '<span class="skip_page mx-2">'+ lastpage +'</span>';
+                }
+                // Skipping Pages Functionality
+                document.querySelectorAll('.skip_page').forEach(function(page){
+                    if(page.innerText == pageNum){
+                        page.addClass("current_pagination");
+                    }
+                    page.addEventListener('click', function(){
+                        pageNum = Number(this.innerText);
+                        loadLeaderboardResults(timeFrame, orderBy, currentCategory, pageNum);
+                    });
+                });
                 // Adding and Removing Categories in which the items are ordered
                 // Displaying Categories on Mobile
                 switch(disp){
@@ -241,36 +310,21 @@ function loadLeaderboardResults(tm, ord, disp = 0, page = 1) {
                             points.addClass('d-flex').removeClass('d-none');
                         }); 
                         break;
-                // Displaying Number of Followers
+                // Displaying Number of Questions
                     case 1:
                         document.getElementById('points').addClass('d-none').removeClass('d-flex');
                         document.querySelectorAll('.points').forEach(function(points){
                             points.addClass('d-none').removeClass('d-flex');
                         });
-                        document.getElementById('followers').addClass('d-flex').removeClass('d-none');
-                        document.querySelectorAll('.followers').forEach(function(followers){
+                        document.getElementById('questions').addClass('d-flex').removeClass('d-none');
+                        document.querySelectorAll('.questions').forEach(function(followers){
                             followers.addClass('d-flex').removeClass('d-none');
                         });
                         break;
-                // Displaying Number of Questions
-                    case 2:
-                        document.getElementById('followers').addClass('d-none').removeClass('d-flex');
-                        document.querySelectorAll('.followers').forEach(function(followers){
-                            followers.addClass('d-none').removeClass('d-flex');
-                        });
-                        document.getElementById('points').addClass('d-none').removeClass('d-flex');
-                        document.querySelectorAll('.points').forEach(function(points){
-                            points.addClass('d-none').removeClass('d-flex');
-                        });
-                        document.getElementById('questions').addClass('d-flex').removeClass('d-none');
-                        document.querySelectorAll('.questions').forEach(function(questions){
-                            questions.addClass('d-flex').removeClass('d-none');
-                        });
-                        break;
                 // Displaying Number of Reviews
-                    case 3:
+                    case 2:
                         document.getElementById('questions').addClass('d-none').removeClass('d-flex');
-                        document.querySelectorAll('.questions').forEach(function(questions){
+                        document.querySelectorAll('.questions').forEach(function(followers){
                             followers.addClass('d-none').removeClass('d-flex');
                         });
                         document.getElementById('points').addClass('d-none').removeClass('d-flex');
@@ -278,41 +332,56 @@ function loadLeaderboardResults(tm, ord, disp = 0, page = 1) {
                             points.addClass('d-none').removeClass('d-flex');
                         });
                         document.getElementById('reviews').addClass('d-flex').removeClass('d-none');
-                        document.querySelectorAll('.reviews').forEach(function(reviews){
-                            reviews.addClass('d-flex').removeClass('d-none');
+                        document.querySelectorAll('.reviews').forEach(function(questions){
+                            questions.addClass('d-flex').removeClass('d-none');
                         });
                         break;
+                // Displaying Number of Reviews
+                    // case 3:
+                    //     document.getElementById('questions').addClass('d-none').removeClass('d-flex');
+                    //     document.querySelectorAll('.questions').forEach(function(questions){
+                    //         followers.addClass('d-none').removeClass('d-flex');
+                    //     });
+                    //     document.getElementById('points').addClass('d-none').removeClass('d-flex');
+                    //     document.querySelectorAll('.points').forEach(function(points){
+                    //         points.addClass('d-none').removeClass('d-flex');
+                    //     });
+                    //     document.getElementById('reviews').addClass('d-flex').removeClass('d-none');
+                    //     document.querySelectorAll('.reviews').forEach(function(reviews){
+                    //         reviews.addClass('d-flex').removeClass('d-none');
+                    //     });
+                    //     break;
                 }
                 // Displays Highlighted Order By Main Category
                 switch(activeCategory){
                     // Highlight Contribution
                     case 0:
                         document.getElementById('points').addClass('active_category');
-                        document.getElementById('followers').removeClass('active_category');
-                        document.getElementById('questions').removeClass('active_category');
-                        document.getElementById('reviews').removeClass('active_category');
-                        break;
-                    // Highlight Followers
-                    case 1:
-                        document.getElementById('points').removeClass('active_category');
-                        document.getElementById('followers').addClass('active_category');
+                        // document.getElementById('followers').removeClass('active_category');
                         document.getElementById('questions').removeClass('active_category');
                         document.getElementById('reviews').removeClass('active_category');
                         break;
                     // Highlight Questions
-                    case 2:
+                    case 1:
                         document.getElementById('points').removeClass('active_category');
-                        document.getElementById('followers').removeClass('active_category');
+                        // document.getElementById('followers').addClass('active_category');
                         document.getElementById('questions').addClass('active_category');
                         document.getElementById('reviews').removeClass('active_category');
                         break;
                     // Highlight Reviews
-                    case 3:
+                    case 2:
                         document.getElementById('points').removeClass('active_category');
-                        document.getElementById('followers').removeClass('active_category');
+                        // document.getElementById('followers').removeClass('active_category');
                         document.getElementById('questions').removeClass('active_category');
                         document.getElementById('reviews').addClass('active_category');
                         break;
+                    // Highlight Followers
+                    // case 3:
+                    //     document.getElementById('points').removeClass('active_category');
+                    //     document.getElementById('followers').removeClass('active_category');
+                    //     document.getElementById('questions').removeClass('active_category');
+                    //     document.getElementById('reviews').addClass('active_category');
+                    //     break;
                 }
             }else{
                 leaderboardContent.innerHTML = responseJSON.message;

@@ -27,7 +27,7 @@
             <span class="d-md-none d-block"><?php echo $this->translate('Experts'); ?></span>
         </h3>
         <h3 class="py-3 d-flex justify-content-center">
-            <a id="go_to_leaderboard"><?php echo $this->translate('More...'); ?></a>
+            <a id="go_to_leaderboard"><?php echo $this->translate('Leaderboard'); ?></a>
         </h3>
     </div>
     <div id="sd-response-mvps" class="mvps_content p-5 d-flex align-items-center">
@@ -42,7 +42,7 @@
     <div class="leaderboard_main d-flex justify-content-between">
         <div class="d-flex justify-content-center"><?php echo $this->translate('Rank'); ?></div>
         <div class="d-flex"><?php echo $this->translate('Leader'); ?></div>
-        <div id="community_home_contribution" class="d-flex justify-content-center align-items-center"><?php echo $this->translate('Contribution'); ?></div>
+        <div id="none_click" class="d-flex justify-content-center align-items-center"><?php echo $this->translate('Contribution'); ?></div>
     </div>
     <div id="sd-response" class="container d-flex justify-content-center align-items-center">
         <!-- Loader goes here -->
@@ -50,14 +50,15 @@
     <div class="leaderboard_content">
         <!-- Content of ajax call goes here -->
     </div>
-    <div class="leaderboard_pagination d-flex justify-content-end align-items-center mt-5 mr-5">
+    <!-- Pagination for Leaderboard Component -->
+    <!-- <div class="leaderboard_pagination d-flex justify-content-end align-items-center mt-5 mr-5"> -->
         <!-- Content Pagination -->
-        <span id="leaderboard_previous" class="pagination_button"><</span>
-        <span id="leaderboard_pageNum" class="mx-5">
+        <!-- <span id="leaderboard_previous" class="pagination_button"><</span> -->
+        <!-- <span id="leaderboard_pageNum" class="mx-5"> -->
             <!-- Displays the current page of Leaderboard Results -->
-        </span>
-        <span id="leaderboard_next" class="pagination_button">></span>
-    </div>
+        <!-- </span> -->
+        <!-- <span id="leaderboard_next" class="pagination_button">></span> -->
+    <!-- </div> -->
 </div>
 <div id="findExpert" class="find_expert_main container-fluid py-5 mt-5">
     <div class="row d-flex align-items-center">
@@ -176,27 +177,27 @@ document.querySelectorAll(".faq_toggle").forEach(function(toggle){
 });
 
 // Pagionation Number Change Start
-var pageNum = 1;
-document.getElementById('leaderboard_previous').addEventListener('click', function(){
-    if(pageNum >= 2){
-        pageNum--;
-        document.getElementById('leaderboard_previous').removeClass('pagination_button_diss');
-        document.getElementById('leaderboard_next').removeClass('pagination_button_diss');
-        loadLeaderboardResults(pageNum);
-    }else{
-        document.getElementById('leaderboard_previous').addClass('pagination_button_diss');
-    }
-});
-document.getElementById('leaderboard_next').addEventListener('click', function(){
-    if(pageNum <= 2){
-        pageNum++;
-        document.getElementById('leaderboard_next').removeClass('pagination_button_diss');
-        document.getElementById('leaderboard_previous').removeClass('pagination_button_diss');
-        loadLeaderboardResults(pageNum);
-    }else{
-        document.getElementById('leaderboard_next').addClass('pagination_button_diss');
-    }
-});
+// var pageNum = 1;
+// document.getElementById('leaderboard_previous').addEventListener('click', function(){
+//     if(pageNum >= 2){
+//         pageNum--;
+//         document.getElementById('leaderboard_previous').removeClass('pagination_button_diss');
+//         document.getElementById('leaderboard_next').removeClass('pagination_button_diss');
+//         loadLeaderboardResults(pageNum);
+//     }else{
+//         document.getElementById('leaderboard_previous').addClass('pagination_button_diss');
+//     }
+// });
+// document.getElementById('leaderboard_next').addEventListener('click', function(){
+//     if(pageNum <= 2){
+//         pageNum++;
+//         document.getElementById('leaderboard_next').removeClass('pagination_button_diss');
+//         document.getElementById('leaderboard_previous').removeClass('pagination_button_diss');
+//         loadLeaderboardResults(pageNum);
+//     }else{
+//         document.getElementById('leaderboard_next').addClass('pagination_button_diss');
+//     }
+// });
 // Pagination Number Change End
 
 // Leaderboard Results Ajax Function -> start
@@ -247,7 +248,7 @@ function loadLeaderboardResults(page = 1) {
                 }
                 leaderboardContent.innerHTML = html;
                 // Showing current page in pagination section
-                document.getElementById('leaderboard_pageNum').innerText = page;
+                // document.getElementById('leaderboard_pageNum').innerText = page;
             }else{
                 leaderboardContent.innerHTML = responseJSON.message;
             }
@@ -264,13 +265,13 @@ document.getElementById("meet_mvps").addEventListener('click', function(){
     this.addClass("mvps_main_active");
     document.getElementById("meet_experts").removeClass("mvps_main_active");
     disp_mvps = 1;
-    disp_experts = null;
+    disp_experts = 0;
     loadMvpExpertResults(disp_mvps, disp_experts);
 });
 document.getElementById("meet_experts").addEventListener('click', function(){
     this.addClass("mvps_main_active");
     document.getElementById("meet_mvps").removeClass("mvps_main_active");
-    disp_mvps = null;
+    disp_mvps = 0;
     disp_experts = 1;
     loadMvpExpertResults(disp_mvps, disp_experts);
 });
@@ -303,11 +304,11 @@ document.getElementById("mvps_left").addEventListener('click', function(){
 
 // MVPs and Experts Results Ajax Function -> start
 // Arguments disp_mvps = 1, disp_experts = 0 When everything get wired
-function loadMvpExpertResults(disp_mvps = 1, disp_experts = null){
+function loadMvpExpertResults(disp_mvps = 1, disp_experts = 0){
     //Request data can be linked to form inputs
     var requestData = {};
-    requestData.mvp = null; //Possible values 1 or 0 -> disp_mvps from arguments
-    requestData.expert = null; //Possible values 1 or 0 -> disp_experts from arguments
+    requestData.mvp = disp_mvps; //Possible values 1 or 0 -> disp_mvps from arguments
+    requestData.expert = disp_experts; //Possible values 1 or 0 -> disp_experts from arguments
     requestData.limit = 20; // Limit to 20 People per Page
     requestData.page = 1;// Limit to 3 Pages
     

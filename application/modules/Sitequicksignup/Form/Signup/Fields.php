@@ -368,24 +368,25 @@ class Sitequicksignup_Form_Signup_Fields extends Sitequicksignup_Form_Signup_Sta
             'tabindex' => $tabIndex++,
         ));
 
-        // if (empty($_SESSION['facebook_signup'])) {
-        // Init facebook login link
-//        if (Engine_Api::_()->getApi('settings', 'core')->getSetting('sitequicksignup.show.facebook', 1) && 'none' != $settings->getSetting('core_facebook_enable', 'none') && $settings->core_facebook_secret) {
-//            $this->addElement('Dummy', 'facebook', array(
-//                'content' => User_Model_DbTable_Facebook::loginButton(),
-//                'order' => 1000000001,
-//            ));
-//        }
-//        // }
-//        //  if (empty($_SESSION['twitter_signup'])) {
-//        // Init twitter login link
-//        if (Engine_Api::_()->getApi('settings', 'core')->getSetting('sitequicksignup.show.twitter', 1) && 'none' != $settings->getSetting('core_twitter_enable', 'none') && $settings->core_twitter_secret) {
-//            $this->addElement('Dummy', 'twitter', array(
-//                'content' => User_Model_DbTable_Twitter::loginButton(),
-//                'order' => 1000000002,
-//            ));
-//        }
-        // }
+        if (empty($_SESSION['facebook_signup'])) {
+        //Init facebook login link
+       if (Engine_Api::_()->getApi('settings', 'core')->getSetting('sitequicksignup.show.facebook', 1) && 'none' != $settings->getSetting('core_facebook_enable', 'none') && $settings->core_facebook_secret) {
+           $this->addElement('Dummy', 'facebook', array(
+               'content' => User_Model_DbTable_Facebook::loginButton(),
+               'order' => 1000000001,
+           ));
+       }
+       // }
+        if (empty($_SESSION['twitter_signup'])) {
+       // Init twitter login link
+       if (Engine_Api::_()->getApi('settings', 'core')->getSetting('sitequicksignup.show.twitter', 1) && 'none' != $settings->getSetting('core_twitter_enable', 'none') && $settings->core_twitter_secret) {
+           $this->addElement('Dummy', 'twitter', array(
+               'content' => User_Model_DbTable_Twitter::loginButton(),
+               'order' => 1000000002,
+           ));
+       }
+        }
+    }
         // Set default action
         $this->setAction(Zend_Controller_Front::getInstance()->getRouter()->assemble(array(), 'user_signup', true));
     }

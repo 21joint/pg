@@ -3897,6 +3897,29 @@ mark,
   .blockquote-footer::before {
     content: "\2014 \00A0"; }
 
+.body-maintenance .row-maintenance {
+  color: #333D40;
+  height: 100vh; }
+  .body-maintenance .row-maintenance .pic-one p {
+    font-family: 'Nunito', sans-serif; }
+  .body-maintenance .row-maintenance .pic-one .image-holder img {
+    height: 70px; }
+  .body-maintenance .row-maintenance .pic-one nav form .form-control {
+    border-radius: 30px; }
+  .body-maintenance .row-maintenance .pic-one nav form button {
+    border-radius: 30px; }
+  .body-maintenance .row-maintenance .pic-one nav .form-inline input {
+    width: 357px;
+    background-color: #F5F5F5;
+    border: 2px solid #F5F5F5; }
+  .body-maintenance .row-maintenance .pic-one nav .form-inline ::-webkit-input-placeholder {
+    color: #93A4A6;
+    padding-left: 1rem; }
+  .body-maintenance .row-maintenance .pic-two {
+    height: 100%; }
+    .body-maintenance .row-maintenance .pic-two .image-holder img {
+      height: 738px; }
+
 .seaocore_up_button .seaocore_up_button {
   background: #fff;
   border: none; }
@@ -3911,6 +3934,16 @@ mark,
   height: 20px;
   font-size: 12px;
   border: 2px solid #fff; }
+  .item-photo-guidance .statistic.primary {
+    background: linear-gradient(to bottom right, #5CC7CE, #5CC7CE); }
+  .item-photo-guidance .statistic.bronze {
+    background: linear-gradient(to bottom right, #E5B8A8, #D7947C); }
+  .item-photo-guidance .statistic.silver {
+    background: linear-gradient(to bottom right, #DBDADA, #B8B8B8); }
+  .item-photo-guidance .statistic.gold {
+    background: linear-gradient(to bottom right, #F1D37F, #D9BB66); }
+  .item-photo-guidance .statistic.platinum {
+    background: linear-gradient(to bottom right, #EFF1F8, #ACBED5); }
 
 .grib-grab-two {
   display: grid;
@@ -3940,10 +3973,17 @@ mark,
         *   Badges Proile
         *   Notification Profile
         *   My Info Profile
+        *   My Theories
+        
+
     * Core
+        *   Login Page
+        *   SignUp Page
         *   ExtfoxForm Settings
-        *   CheckBox
+        *   CheckBox 
         *   RadioButton
+        
+        
 */
 .extfox-widgets.active .row .box-hover-member {
   display: block; }
@@ -3964,7 +4004,8 @@ mark,
     .extfox-widgets .row .box-hover-member .header .close svg path {
       fill: #b9cfd1; }
   .extfox-widgets .row .box-hover-member .header .photo-image img {
-    max-width: 55px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     object-fit: cover; }
   .extfox-widgets .row .box-hover-member .header .right-side i {
@@ -4187,6 +4228,10 @@ body#global_page_user-profile-index {
             padding-bottom: 2rem; }
             body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .layout_core_container_tabs:not(.profile_cover_photo_tabs) > .generic_layout_container > h3 {
               border: none; }
+  body#global_page_user-profile-index .badges-earned div.bottom div div.col-sm .badge-holder {
+    min-width: 100%; }
+  body#global_page_user-profile-index .badges-slide .contributor .swiper-container .swiper-slide {
+    height: 282px !important; }
 
 .layout_sdparentalguide_ajax_struggles li.struggle_holder {
   border-bottom: 1px solid #F5F5F5; }
@@ -4201,6 +4246,10 @@ body#global_page_user-profile-index {
 .layout_sdparentalguide_ajax_badges {
   background-color: #F6FCFC !important;
   padding-top: 1rem !important; }
+  .layout_sdparentalguide_ajax_badges .holder-my-badges ul {
+    grid-auto-rows: minmax(130px, auto); }
+    .layout_sdparentalguide_ajax_badges .holder-my-badges ul li .left-side {
+      height: 90px; }
   .layout_sdparentalguide_ajax_badges .holder-my-badges h4, .layout_sdparentalguide_ajax_badges .holder-my-badges h5 {
     font-size: 18px;
     color: #3E4A4D;
@@ -4215,8 +4264,40 @@ body#global_page_user-profile-index {
     color: #93A4A6; }
   .layout_sdparentalguide_ajax_badges .holder-my-badges p.hide-description {
     color: #B9CFD1; }
-  .layout_sdparentalguide_ajax_badges .holder-my-badges .contributor-badges-holder .bottom-holder div:nth-child(n+2) img {
+  .layout_sdparentalguide_ajax_badges .holder-my-badges .thumbnail-photo img {
+    width: 100%;
+    display: block;
+    height: 100%;
+    object-fit: cover; }
+  .layout_sdparentalguide_ajax_badges .holder-my-badges .contributor-badges-holder .badge-image:hover img {
+    opacity: 1 !important; }
+  .layout_sdparentalguide_ajax_badges .holder-my-badges .contributor-badges-holder .badge-image.inactive img {
     opacity: 0.4; }
+  .layout_sdparentalguide_ajax_badges .holder-my-badges .contributor-badges-holder .badge-image img {
+    border: none;
+    max-height: 80px;
+    min-height: 80px;
+    max-width: 80px;
+    min-width: 80px;
+    object-fit: cover; }
+
+.layout_sdparentalguide_ajax_profile #extfox-settings div.form-wrapper-heading span {
+  padding: 10px 0px !important; }
+.layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper {
+  margin-bottom: 1.3rem !important; }
+  .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper .form-element {
+    margin-bottom: 0px !important; }
+  .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper .form-label {
+    width: 100% !important; }
+    .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper .form-label label {
+      color: #333D40;
+      font-size: 16px; }
+  .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper input[type=checkbox] + label {
+    left: -10px; }
+.layout_sdparentalguide_ajax_profile #extfox-settings [id="1_1_21-wrapper"] .form-label, .layout_sdparentalguide_ajax_profile #extfox-settings [id="1_1_22-wrapper"] .form-label, .layout_sdparentalguide_ajax_profile #extfox-settings [id="1_1_23-wrapper"] .form-label {
+  display: none !important; }
+.layout_sdparentalguide_ajax_profile #extfox-settings [id="1_1_13-wrapper"] ul.form-options-wrapper li input[type=checkbox] + label {
+  margin-bottom: 1.3rem !important; }
 
 .layout_sdparentalguide_ajax_notifications #extfox-settings .form-elements .form-label {
   color: #333D40;
@@ -4334,20 +4415,400 @@ body#global_page_user-profile-index {
   width: 40%; }
   .layout_sdparentalguide_ajax_theories .holder-my-theories .bottom-holder .right-side ul.topic_holder li.struggle_holder {
     border-bottom: 1px solid transparent !important; }
+.layout_sdparentalguide_ajax_theories .holder-my-theories .bottom-holder li.struggle_holder {
+  border-bottom: 1px solid transparent !important; }
+  .layout_sdparentalguide_ajax_theories .holder-my-theories .bottom-holder li.struggle_holder .struggle_info .bottom-holder-comments .vote svg, .layout_sdparentalguide_ajax_theories .holder-my-theories .bottom-holder li.struggle_holder .struggle_info .bottom-holder-comments .comment svg {
+    color: #5CC7CE !important;
+    fill: #5CC7CE !important; }
+.layout_sdparentalguide_ajax_theories .holder-my-theories .bottom-holder li.struggle_holder.chosen_theory {
+  background-color: #C1EEC5 !important; }
+  .layout_sdparentalguide_ajax_theories .holder-my-theories .bottom-holder li.struggle_holder.chosen_theory .struggle_info .bottom-holder-comments .vote svg, .layout_sdparentalguide_ajax_theories .holder-my-theories .bottom-holder li.struggle_holder.chosen_theory .struggle_info .bottom-holder-comments .comment svg {
+    color: #333D40 !important;
+    fill: #333D40 !important; }
+
+.layout_sdparentalguide_ajax_preferences h3 {
+  font-size: 20px !important;
+  color: #333D40 !important;
+  width: 88% !important;
+  padding: 4rem 0 1rem 0 !important; }
+.layout_sdparentalguide_ajax_preferences p {
+  max-width: 88% !important;
+  width: 88% !important;
+  font-size: 16px;
+  padding-bottom: 0 !important;
+  padding: 0 0 1rem !important; }
+.layout_sdparentalguide_ajax_preferences .sd_signup_interests {
+  max-width: 100%;
+  padding: 0 !important;
+  margin: 0; }
+  .layout_sdparentalguide_ajax_preferences .sd_signup_interests li {
+    width: 100% !important; }
+.layout_sdparentalguide_ajax_preferences .sd_listing_categories {
+  grid-template-columns: repeat(auto-fill, minmax(34%, 1fr)) !important; }
+.layout_sdparentalguide_ajax_preferences input[type=checkbox] + label:after {
+  top: 28px !important; }
+.layout_sdparentalguide_ajax_preferences input[type=checkbox] {
+  top: 28px !important;
+  left: 35px !important; }
+.layout_sdparentalguide_ajax_preferences #show_all-wrapper {
+  width: 91% !important; }
+.layout_sdparentalguide_ajax_preferences #buttons-wrapper #fieldset-buttons a {
+  display: none !important; }
+
+.holder-familyMember #add-birthday {
+  overflow: hidden; }
+.holder-familyMember h5 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333D40; }
+.holder-familyMember .form-wrapper-heading {
+  border: none !important; }
+  .holder-familyMember .form-wrapper-heading h6 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333D40; }
+    .holder-familyMember .form-wrapper-heading h6 p {
+      color: #B7C3C4; }
+
+form#signup_account_form #facebook-wrapper, form#signup_account_form #twitter-wrapper {
+  display: none; }
+
+form#user_form_login #fieldset-buttons {
+  padding: 0px;
+  margin: 0px; }
+  form#user_form_login #fieldset-buttons .form-label {
+    display: none; }
+  form#user_form_login #fieldset-buttons #submit-wrapper {
+    width: 48%;
+    float: left;
+    margin: 0px; }
+    form#user_form_login #fieldset-buttons #submit-wrapper #submit-element {
+      float: right;
+      width: 100%; }
+      form#user_form_login #fieldset-buttons #submit-wrapper #submit-element button:hover, form#user_form_login #fieldset-buttons #submit-wrapper #submit-element button:active {
+        color: #fff; }
+  form#user_form_login #fieldset-buttons #cancel-wrapper {
+    float: right;
+    width: 48%;
+    margin: 0px; }
+    form#user_form_login #fieldset-buttons #cancel-wrapper a:hover, form#user_form_login #fieldset-buttons #cancel-wrapper a:active {
+      color: #fff; }
+form#user_form_login #fieldset-buttonsfileds {
+  padding: 0px; }
+  form#user_form_login #fieldset-buttonsfileds .form-wrapper {
+    margin-bottom: 0px; }
+  form#user_form_login #fieldset-buttonsfileds #remember-wrapper #remember-label, form#user_form_login #fieldset-buttonsfileds #remember-wrapper #forgot-label, form#user_form_login #fieldset-buttonsfileds #forgot-wrapper #remember-label, form#user_form_login #fieldset-buttonsfileds #forgot-wrapper #forgot-label {
+    display: none; }
+  form#user_form_login #fieldset-buttonsfileds #remember-wrapper {
+    display: inline-block;
+    float: left; }
+  form#user_form_login #fieldset-buttonsfileds #forgot-wrapper {
+    display: inline-block;
+    float: right; }
+    form#user_form_login #fieldset-buttonsfileds #forgot-wrapper #forgot-element p {
+      margin: 0px; }
+      form#user_form_login #fieldset-buttonsfileds #forgot-wrapper #forgot-element p a {
+        color: #93A4A6;
+        font-size: 14px;
+        font-weight: 400;
+        font-family: 'Open Sans', sans-serif; }
+form#user_form_login #fieldset-facebookbutton {
+  display: none; }
+  form#user_form_login #fieldset-facebookbutton #twitter-wrapper {
+    width: 48%;
+    float: right;
+    margin-left: 5px;
+    margin-bottom: 0px; }
+    form#user_form_login #fieldset-facebookbutton #twitter-wrapper #twitter-label {
+      display: none; }
+  form#user_form_login #fieldset-facebookbutton #facebook-wrapper {
+    width: 48%;
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 0px; }
+    form#user_form_login #fieldset-facebookbutton #facebook-wrapper #facebook-label {
+      display: none; }
+form#user_form_login #facebook-element a:hover, form#user_form_login #facebook-element a:active {
+  background-color: #3C5A99;
+  color: #fff;
+  border-color: #3C5A99; }
+form#user_form_login #twitter-element a:hover, form#user_form_login #twitter-element a:active {
+  background-color: #1DA1F2;
+  color: #fff;
+  border-color: #1DA1F2; }
+
+#global_page_user-signup-index .right-side > div {
+  width: 100%; }
+#global_page_user-signup-index form.family-form div.form-wrapper-heading {
+  font-size: 16px; }
+#global_page_user-signup-index form::-webkit-scrollbar {
+  display: none; }
+#global_page_user-signup-index form h3 {
+  padding-bottom: 20px;
+  margin-top: 20px; }
+#global_page_user-signup-index form ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column; }
+  #global_page_user-signup-index form ul li {
+    position: relative;
+    margin-bottom: 10px; }
+    #global_page_user-signup-index form ul li input[type=checkbox] {
+      position: absolute;
+      top: 3px;
+      left: 2px;
+      width: 14px; }
+#global_page_user-signup-index form [id='1_1_5'], #global_page_user-signup-index form [id='1_1_16'] {
+  width: 40%; }
+#global_page_user-signup-index form [id='1_1_6-element'] {
+  display: flex;
+  justify-content: space-between;
+  width: 45%; }
+#global_page_user-signup-index form button {
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  background-color: #8AE693;
+  border-color: #8AE693;
+  color: #fff;
+  padding: 0.5rem 0 !important;
+  width: 100%;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2 ease-in-out; }
+#global_page_user-signup-index form button:hover {
+  background-color: #5CC7CE;
+  color: #fff;
+  border-color: #5CC7CE; }
+#global_page_user-signup-index form #terms-element label a {
+  padding-left: 10px; }
+#global_page_user-signup-index div.form-wrapper-heading span {
+  color: #5CC7CE;
+  font-size: 16px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #F5F5F5;
+  margin-bottom: 20px;
+  display: block; }
+#global_page_user-signup-index form.third-step #current-wrapper, #global_page_user-signup-index form.third-step #Filedata-wrapper {
+  padding-left: 0px; }
+  #global_page_user-signup-index form.third-step #current-wrapper #current-label, #global_page_user-signup-index form.third-step #Filedata-wrapper #current-label {
+    margin-bottom: 10px; }
+#global_page_user-signup-index form.third-step #Filedata-element input {
+  border-bottom: none; }
+#global_page_user-signup-index form.third-step button, #global_page_user-signup-index form.third-step a {
+  width: 44%; }
+
+form.preference-holder {
+  max-height: 100% !important;
+  overflow-y: visible !important; }
+  form.preference-holder input[type=checkbox] {
+    z-index: 1;
+    opacity: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 30px !important;
+    left: 18px !important;
+    margin: 0 !important;
+    width: 14px; }
+  form.preference-holder input[type=checkbox]:checked + label:after {
+    opacity: 1; }
+  form.preference-holder input[type=checkbox]:checked:hover + label:after {
+    opacity: 1; }
+  form.preference-holder input[type=checkbox]:hover + label:after {
+    opacity: 0.3; }
+  form.preference-holder input[type=checkbox] + label {
+    position: relative;
+    float: left;
+    left: 0;
+    width: auto;
+    cursor: pointer;
+    display: flex !important;
+    align-items: center;
+    color: #333D40;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Nunito', sans-serif;
+    border: 1px solid #F5F5F5;
+    width: 100%;
+    padding: 1.5rem 0;
+    margin: 0; }
+  form.preference-holder input[type=checkbox] + label:before {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    content: '';
+    border-radius: 2px;
+    border: 1px solid #B9CFD1 !important;
+    margin: 0px 15px; }
+  form.preference-holder input[type=checkbox] + label:after {
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    display: block;
+    position: absolute;
+    left: 17px;
+    top: 30px;
+    width: 11px;
+    height: 5px;
+    opacity: 0;
+    text-align: center !important;
+    background: transparent;
+    border-left: 2px solid #8AE693 !important;
+    border-bottom: 2px solid #8AE693 !important;
+    content: ''; }
+  form.preference-holder input[type="checkbox"]:checked ~ label {
+    border: 1px solid #8AE693; }
+  form.preference-holder h3 {
+    color: #5CC7CE;
+    font-size: 40px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    padding: 4rem 3rem  0rem;
+    margin-top: 0px !important;
+    width: 60%;
+    margin: 0 auto !important; }
+  form.preference-holder p {
+    font-size: 16px;
+    margin-top: 0px;
+    padding: 0 3rem 4rem;
+    width: 60%;
+    margin: 0 auto !important; }
+  form.preference-holder .holder-image {
+    height: 265px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 15px; }
+    form.preference-holder .holder-image .holder-category-title {
+      top: 0;
+      left: 60px;
+      width: 200px !important;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      text-align: center; }
+      form.preference-holder .holder-image .holder-category-title span {
+        font-family: 'Nunito', sans-serif;
+        font-size: 18px;
+        font-weight: bold; }
+    form.preference-holder .holder-image .holder-select-all {
+      bottom: 0;
+      right: 60px;
+      width: 170px !important; }
+      form.preference-holder .holder-image .holder-select-all a {
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px; }
+  form.preference-holder .sd_listing_categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(32%, 1fr));
+    grid-column-gap: 15px;
+    grid-row-gap: 15px; }
+  form.preference-holder #show_all-wrapper {
+    width: 70%;
+    padding: 0 !important;
+    margin: 0 auto; }
+    form.preference-holder #show_all-wrapper #show_all-element {
+      float: left;
+      position: relative;
+      width: 30%;
+      margin: 0 auto; }
+      form.preference-holder #show_all-wrapper #show_all-element input[type=checkbox] {
+        top: 28px !important;
+        left: 17px !important; }
+      form.preference-holder #show_all-wrapper #show_all-element input[type=checkbox] + label:before {
+        margin-left: 0px; }
+      form.preference-holder #show_all-wrapper #show_all-element input[type=checkbox] + label:after {
+        top: 38px; }
+      form.preference-holder #show_all-wrapper #show_all-element label {
+        border: none; }
+  form.preference-holder #buttons-wrapper {
+    width: 68%;
+    margin: 0 auto; }
+    form.preference-holder #buttons-wrapper #fieldset-buttons {
+      margin-bottom: 0;
+      float: right;
+      width: 45%; }
+      form.preference-holder #buttons-wrapper #fieldset-buttons button {
+        width: 45%;
+        margin-right: 20px; }
+      form.preference-holder #buttons-wrapper #fieldset-buttons a {
+        width: 45%; }
+
+.border-gear ~ img {
+  border-style: solid !important;
+  border-width: 5px 6px 5px 6px !important;
+  -moz-border-image: url("../images/border.png") 20 20 20 20 round !important;
+  -webkit-border-image: url("../images/border.png") 20 20 20 20 round !important;
+  -o-border-image: url("../images/border.png") 20 20 20 20 round !important;
+  border-image: url(../images/border.png) 20 20 20 20 fill !important; }
+
+.left-side-partial .image-holder {
+  background-image: url("../images/mother_and_baby.jpg");
+  background-size: cover;
+  background-repeat: no-repeat; }
+  .left-side-partial .image-holder .background-holder {
+    opacity: 0.9;
+    background-color: #5CC7CE; }
+    .left-side-partial .image-holder .background-holder .border-holder {
+      border: 10px solid #fff;
+      height: 86.5%;
+      width: 86.5%; }
+
+.close-btn-x {
+  right: 45px;
+  top: 15px;
+  color: #B9CFD1; }
+
+.tip-message {
+  width: 50%; }
+  .tip-message span {
+    background-color: #EBFEFF;
+    font-size: 14px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    padding: 1rem;
+    border-radius: 25px;
+    display: flex;
+    align-items: center; }
+    .tip-message span:before {
+      content: '\f0eb';
+      font-family: fontawesome;
+      margin-right: 10px;
+      font-size: 23px; }
 
 #extfox-settings#delete button {
   background-color: #E15A5A !important; }
-#extfox-settings h3, #extfox-settings div.form-wrapper-heading span {
+#extfox-settings.family-form .family-buttons-action button {
+  border: none; }
+  #extfox-settings.family-form .family-buttons-action button:hover {
+    background: rgba(92, 199, 206, 0.66) !important; }
+#extfox-settings h3, #extfox-settings div.form-wrapper-heading {
   font-size: 20px;
   color: #333D40;
   border-bottom: 1px solid #F5F5F5;
-  font-weight: bold; }
+  font-weight: 700;
+  height: auto; }
+  #extfox-settings h3 span, #extfox-settings div.form-wrapper-heading span {
+    display: flex !important;
+    position: unset !important; }
 #extfox-settings p {
   color: #333D40;
   font-size: 16px;
   font-weight: 400; }
 #extfox-settings .form-wrapper {
-  padding-left: 4rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start; }
@@ -4364,58 +4825,79 @@ body#global_page_user-profile-index {
     width: 100%; }
     #extfox-settings .form-wrapper .form-element input[type="password"]::-webkit-input-placeholder, #extfox-settings .form-wrapper .form-element input[type="text"]::-webkit-input-placeholder {
       color: #B9CFD1 !important; }
-  #extfox-settings .form-wrapper .form-element #family-information {
-    color: red; }
-    #extfox-settings .form-wrapper .form-element #family-information .family-item-holder > div {
+  #extfox-settings .form-wrapper .form-element #family-information > .row:hover .actions .btn-danger, #extfox-settings .form-wrapper .form-element #age-range > .row:hover .actions .btn-danger, #extfox-settings .form-wrapper .form-element #gender > .row:hover .actions .btn-danger {
+    visibility: visible; }
+  #extfox-settings .form-wrapper .form-element #family-information .family-item-holder > div, #extfox-settings .form-wrapper .form-element #age-range .family-item-holder > div, #extfox-settings .form-wrapper .form-element #gender .family-item-holder > div {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px; }
+    #extfox-settings .form-wrapper .form-element #family-information .family-item-holder > div.male, #extfox-settings .form-wrapper .form-element #age-range .family-item-holder > div.male, #extfox-settings .form-wrapper .form-element #gender .family-item-holder > div.male {
+      background-color: #86B3E1; }
+    #extfox-settings .form-wrapper .form-element #family-information .family-item-holder > div.female, #extfox-settings .form-wrapper .form-element #age-range .family-item-holder > div.female, #extfox-settings .form-wrapper .form-element #gender .family-item-holder > div.female {
+      background-color: #E186C0; }
+    #extfox-settings .form-wrapper .form-element #family-information .family-item-holder > div.unknown, #extfox-settings .form-wrapper .form-element #age-range .family-item-holder > div.unknown, #extfox-settings .form-wrapper .form-element #gender .family-item-holder > div.unknown {
+      background-color: #8AE693; }
+  #extfox-settings .form-wrapper .form-element #family-information .family-item p, #extfox-settings .form-wrapper .form-element #age-range .family-item p, #extfox-settings .form-wrapper .form-element #gender .family-item p {
+    font-size: 80% !important; }
+  #extfox-settings .form-wrapper .form-element #family-information .actions .btn-danger, #extfox-settings .form-wrapper .form-element #age-range .actions .btn-danger, #extfox-settings .form-wrapper .form-element #gender .actions .btn-danger {
+    visibility: hidden; }
+  #extfox-settings .form-wrapper .form-element #family-information .row.add-another-child, #extfox-settings .form-wrapper .form-element #age-range .row.add-another-child, #extfox-settings .form-wrapper .form-element #gender .row.add-another-child {
+    border-top: 4px solid #f7fcfc;
+    border-bottom: 4px solid #f7fcfc; }
+  #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form, #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form, #extfox-settings .form-wrapper .form-element #gender .row.add-child-form {
+    display: none; }
+    #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form.active, #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form.active, #extfox-settings .form-wrapper .form-element #gender .row.add-child-form.active {
+      display: flex; }
+    #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .close-form a, #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form .close-form a, #extfox-settings .form-wrapper .form-element #gender .row.add-child-form .close-form a {
+      background-color: #B9CFD1;
       border-radius: 50%;
-      width: 50px;
-      height: 50px; }
-      #extfox-settings .form-wrapper .form-element #family-information .family-item-holder > div.female {
+      width: 25px;
+      height: 25px;
+      transition: 0.2s ease-in background-color; }
+      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .close-form a:hover, #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form .close-form a:hover, #extfox-settings .form-wrapper .form-element #gender .row.add-child-form .close-form a:hover {
         background-color: #E186C0; }
-    #extfox-settings .form-wrapper .form-element #family-information .family-item p {
-      font-size: 80% !important; }
-    #extfox-settings .form-wrapper .form-element #family-information .row.add-another-child {
-      border-top: 4px solid #f7fcfc;
-      border-bottom: 4px solid #f7fcfc; }
-    #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form {
-      display: none; }
-      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form.active {
-        display: flex; }
-      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .close-form a {
-        background-color: #B9CFD1;
-        border-radius: 50%;
-        width: 25px;
-        height: 25px;
-        transition: 0.2s ease-in background-color; }
-        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .close-form a:hover {
-          background-color: #E186C0; }
-      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div {
-        border-radius: 10px;
-        border: 2px solid #F5F5F5;
-        cursor: pointer; }
-        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div:hover a, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.selected a {
-          color: #fff !important; }
-        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div:hover svg path:nth-child(2), #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.selected svg path:nth-child(2) {
-          fill: #fff; }
-        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.male:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.male.selected {
-          background: #86B3E1;
-          border-color: #86B3E1; }
-        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.female:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.female.selected {
-          background: #E186C0;
-          border-color: #E186C0; }
-        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.not-to-answer:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.not-to-answer.selected {
-          background: #8AE693;
-          border-color: #8AE693; }
-      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .months .month-select {
-        border-radius: 10px;
-        border: 2px solid #F5F5F5;
-        cursor: pointer;
-        min-width: 92px; }
-        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .months .month-select:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .months .month-select .active {
-          border-color: #8AE693;
-          background: #8AE693; }
-          #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .months .month-select:hover a, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .months .month-select .active a {
-            color: #fff; }
+    #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .age-range, #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form .age-range, #extfox-settings .form-wrapper .form-element #gender .row.add-child-form .age-range {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-gap: 10px;
+      grid-auto-rows: minmax(60px, auto); }
+    #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div, #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form .add-gender > div, #extfox-settings .form-wrapper .form-element #gender .row.add-child-form .add-gender > div {
+      border-radius: 10px;
+      border: 2px solid #F5F5F5;
+      cursor: pointer; }
+      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div:hover a, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.selected a, #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form .add-gender > div:hover a, #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form .add-gender > div.selected a, #extfox-settings .form-wrapper .form-element #gender .row.add-child-form .add-gender > div:hover a, #extfox-settings .form-wrapper .form-element #gender .row.add-child-form .add-gender > div.selected a {
+        color: #fff !important; }
+      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div:hover svg path:nth-child(2), #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.selected svg path:nth-child(2), #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form .add-gender > div:hover svg path:nth-child(2), #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form .add-gender > div.selected svg path:nth-child(2), #extfox-settings .form-wrapper .form-element #gender .row.add-child-form .add-gender > div:hover svg path:nth-child(2), #extfox-settings .form-wrapper .form-element #gender .row.add-child-form .add-gender > div.selected svg path:nth-child(2) {
+        fill: #fff; }
+      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.male:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.male.selected, #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form .add-gender > div.male:hover, #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form .add-gender > div.male.selected, #extfox-settings .form-wrapper .form-element #gender .row.add-child-form .add-gender > div.male:hover, #extfox-settings .form-wrapper .form-element #gender .row.add-child-form .add-gender > div.male.selected {
+        background: #86B3E1;
+        border-color: #86B3E1; }
+      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.female:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.female.selected, #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form .add-gender > div.female:hover, #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form .add-gender > div.female.selected, #extfox-settings .form-wrapper .form-element #gender .row.add-child-form .add-gender > div.female:hover, #extfox-settings .form-wrapper .form-element #gender .row.add-child-form .add-gender > div.female.selected {
+        background: #E186C0;
+        border-color: #E186C0; }
+      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.not-to-answer:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender > div.not-to-answer.selected, #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form .add-gender > div.not-to-answer:hover, #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form .add-gender > div.not-to-answer.selected, #extfox-settings .form-wrapper .form-element #gender .row.add-child-form .add-gender > div.not-to-answer:hover, #extfox-settings .form-wrapper .form-element #gender .row.add-child-form .add-gender > div.not-to-answer.selected {
+        background: #8AE693;
+        border-color: #8AE693; }
+    #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender .age, #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form .add-gender .age, #extfox-settings .form-wrapper .form-element #gender .row.add-child-form .add-gender .age {
+      font-size: 14px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 600;
+      color: #333D40; }
+      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender .age:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender .age.selected-age, #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form .add-gender .age:hover, #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form .add-gender .age.selected-age, #extfox-settings .form-wrapper .form-element #gender .row.add-child-form .add-gender .age:hover, #extfox-settings .form-wrapper .form-element #gender .row.add-child-form .add-gender .age.selected-age {
+        background-color: #5CC7CE !important;
+        color: #fff !important; }
+        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender .age:hover a, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-gender .age.selected-age a, #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form .add-gender .age:hover a, #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form .add-gender .age.selected-age a, #extfox-settings .form-wrapper .form-element #gender .row.add-child-form .add-gender .age:hover a, #extfox-settings .form-wrapper .form-element #gender .row.add-child-form .add-gender .age.selected-age a {
+          color: #fff; }
+    #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .selector-holder .selector-item, #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form .add-birthday .selector-holder .selector-item, #extfox-settings .form-wrapper .form-element #gender .row.add-child-form .add-birthday .selector-holder .selector-item {
+      border-radius: 10px;
+      border: 2px solid #F5F5F5;
+      cursor: pointer;
+      min-width: 92px; }
+      #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .selector-holder .selector-item:hover, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .selector-holder .selector-item .active, #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form .add-birthday .selector-holder .selector-item:hover, #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form .add-birthday .selector-holder .selector-item .active, #extfox-settings .form-wrapper .form-element #gender .row.add-child-form .add-birthday .selector-holder .selector-item:hover, #extfox-settings .form-wrapper .form-element #gender .row.add-child-form .add-birthday .selector-holder .selector-item .active {
+        border-color: #8AE693;
+        background: #8AE693; }
+        #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .selector-holder .selector-item:hover a, #extfox-settings .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .selector-holder .selector-item .active a, #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form .add-birthday .selector-holder .selector-item:hover a, #extfox-settings .form-wrapper .form-element #age-range .row.add-child-form .add-birthday .selector-holder .selector-item .active a, #extfox-settings .form-wrapper .form-element #gender .row.add-child-form .add-birthday .selector-holder .selector-item:hover a, #extfox-settings .form-wrapper .form-element #gender .row.add-child-form .add-birthday .selector-holder .selector-item .active a {
+          color: #fff; }
   #extfox-settings .form-wrapper button {
     color: #fff;
     background-color: #5CC7CE;
@@ -4494,7 +4976,7 @@ body#global_page_user-profile-index {
   padding-left: 1.5em !important;
   margin-right: 2em !important;
   cursor: pointer !important;
-  line-height: 1em !important;
+  line-height: 1.3em !important;
   -webkit-transition: all 0.3s ease-in-out !important;
   transition: all 0.3s ease-in-out !important; }
 #extfox-settings input[type="radio"] + label:before,
@@ -4525,8 +5007,206 @@ body#global_page_user-profile-index {
   transition: all 0.3s ease !important;
   box-shadow: inset 0 0 0 0.2em white, inset 0 0 0 1em #5CC7CE !important; }
 
+.extfox-auth ul.form-errors {
+  padding: 0;
+  margin: 0 0 1.5rem; }
+  .extfox-auth ul.form-errors li {
+    padding: 0.8rem 2.5rem;
+    background-color: #EBFEFF;
+    list-style-type: none;
+    border-radius: 50px;
+    margin-bottom: 0.5rem;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif; }
+    .extfox-auth ul.form-errors li ul.errors {
+      padding-left: 0px;
+      list-style-type: none;
+      font-size: 12px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 600; }
+      .extfox-auth ul.form-errors li ul.errors li {
+        padding: 0;
+        margin-bottom: 0 !important; }
+.extfox-auth h3 {
+  color: #333D40;
+  font-size: 32px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  margin: 0px;
+  padding: 0px; }
+.extfox-auth p {
+  color: #333D40;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  padding-bottom: 40px;
+  font-weight: 400;
+  margin: 15px 0px 0px; }
+.extfox-auth .form-elements .form-wrapper {
+  margin-bottom: 20px; }
+  .extfox-auth .form-elements .form-wrapper #fieldset-buttons {
+    border: none !important; }
+  .extfox-auth .form-elements .form-wrapper .form-element {
+    position: relative; }
+    .extfox-auth .form-elements .form-wrapper .form-element p {
+      padding: 0px !important; }
+    .extfox-auth .form-elements .form-wrapper .form-element input {
+      border: 0;
+      width: 100%;
+      padding: 0.8rem 0rem;
+      border-bottom: 2px solid #F5F5F5; }
+      .extfox-auth .form-elements .form-wrapper .form-element input::-webkit-input-placeholder {
+        /* Chrome/Opera/Safari */
+        color: #333D40;
+        font-size: 14px; }
+      .extfox-auth .form-elements .form-wrapper .form-element input:focus {
+        background-color: #fff;
+        border-left: none;
+        border-right: none;
+        border-top: none;
+        border-bottom: 2px solid #5CC7CE;
+        outline: none; }
+      .extfox-auth .form-elements .form-wrapper .form-element input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 30px white inset; }
+    .extfox-auth .form-elements .form-wrapper .form-element p {
+      color: #93A4A6;
+      font-size: 12px;
+      font-family: 'Open Sans', sans-serif; }
+    .extfox-auth .form-elements .form-wrapper .form-element input[type=checkbox] {
+      z-index: 1;
+      opacity: 0;
+      cursor: pointer;
+      position: absolute;
+      top: 3px;
+      left: 2px;
+      margin: 0 !important;
+      width: 14px; }
+    .extfox-auth .form-elements .form-wrapper .form-element input[type=checkbox]:checked + label:after {
+      opacity: 1; }
+    .extfox-auth .form-elements .form-wrapper .form-element input[type=checkbox]:checked:hover + label:after {
+      opacity: 1; }
+    .extfox-auth .form-elements .form-wrapper .form-element input[type=checkbox]:hover + label:after {
+      opacity: 0.3; }
+    .extfox-auth .form-elements .form-wrapper .form-element input[type=checkbox] + label {
+      position: relative;
+      float: left;
+      left: 0;
+      width: auto;
+      cursor: pointer;
+      display: flex !important;
+      align-items: center;
+      color: #333D40;
+      font-size: 14px; }
+    .extfox-auth .form-elements .form-wrapper .form-element input[type=checkbox] + label:before {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background: #fff;
+      content: '';
+      border-radius: 2px;
+      border: 1px solid #B9CFD1 !important;
+      margin-right: 10px; }
+    .extfox-auth .form-elements .form-wrapper .form-element input[type=checkbox] + label:after {
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      display: block;
+      position: absolute;
+      left: 3px;
+      top: 5px;
+      width: 11px;
+      height: 5px;
+      opacity: 0;
+      text-align: center !important;
+      background: transparent;
+      border-left: 2px solid #5CC7CE !important;
+      border-bottom: 2px solid #5CC7CE !important;
+      content: ''; }
+    .extfox-auth .form-elements .form-wrapper .form-element input[type=radio] {
+      border: none !important;
+      padding: 0px !important;
+      margin: 2px 5px 0px 0px !important;
+      width: auto !important;
+      display: block !important;
+      float: left !important; }
+    .extfox-auth .form-elements .form-wrapper .form-element html[dir="rtl"] input[type=radio] {
+      margin: 2px 0px 0px 5px !important;
+      float: right !important; }
+    .extfox-auth .form-elements .form-wrapper .form-element input[type=radio] + label {
+      display: block !important;
+      cursor: pointer !important; }
+    .extfox-auth .form-elements .form-wrapper .form-element input[type="radio"] {
+      display: none !important; }
+    .extfox-auth .form-elements .form-wrapper .form-element input[type="radio"] + label {
+      position: relative !important;
+      display: inline-block !important;
+      padding-left: 1.5em !important;
+      margin-right: 2em !important;
+      cursor: pointer !important;
+      line-height: 1em !important;
+      -webkit-transition: all 0.3s ease-in-out !important;
+      transition: all 0.3s ease-in-out !important; }
+    .extfox-auth .form-elements .form-wrapper .form-element input[type="radio"] + label:before,
+    .extfox-auth .form-elements .form-wrapper .form-element input[type="radio"] + label:after {
+      content: "" !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 1em !important;
+      height: 1em !important;
+      text-align: center !important;
+      color: white !important;
+      font-family: Times !important;
+      border-radius: 50% !important;
+      -webkit-transition: all 0.3s ease !important;
+      transition: all 0.3s ease !important; }
+    .extfox-auth .form-elements .form-wrapper .form-element input[type="radio"] + label:before {
+      -webkit-transition: all 0.3s ease !important;
+      transition: all 0.3s ease !important;
+      box-shadow: inset 0 0 0 0.2em white, inset 0 0 0 1em white !important;
+      border: 1px solid #ebebeb !important; }
+    .extfox-auth .form-elements .form-wrapper .form-element input[type="radio"] + label:hover:before {
+      -webkit-transition: all 0.3s ease !important;
+      transition: all 0.3s ease !important;
+      box-shadow: inset 0 0 0 0.3em white, inset 0 0 0 1em #c6c6c6 !important; }
+    .extfox-auth .form-elements .form-wrapper .form-element input[type="radio"]:checked + label:before {
+      -webkit-transition: all 0.3s ease !important;
+      transition: all 0.3s ease !important;
+      box-shadow: inset 0 0 0 0.2em white, inset 0 0 0 1em #5CC7CE !important; }
+  .extfox-auth .form-elements .form-wrapper label {
+    color: #333D40;
+    font-size: 14px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700; }
+  .extfox-auth .form-elements .form-wrapper select {
+    border: 0;
+    border-bottom: 2px solid #F5F5F5;
+    background-color: #fff;
+    color: #93A4A6;
+    padding: 0.5rem 0; }
+    .extfox-auth .form-elements .form-wrapper select:focus {
+      border: 0;
+      border-bottom: 2px solid #F5F5F5;
+      outline: none; }
+    .extfox-auth .form-elements .form-wrapper select option {
+      color: #333D40;
+      background-color: #fff;
+      transition: all 0.2 ease-in-out; }
+      .extfox-auth .form-elements .form-wrapper select option:hover {
+        background-color: #E4FAFA !important; }
+.extfox-auth button, .extfox-auth a {
+  text-decoration: unset;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  padding-left: 0px;
+  padding-right: 0px; }
+
 .pagination-holder-narrow a {
   color: #5CC7CE; }
+
+.full-height-auth #global_wrapper_extfox, .full-height-auth #global_wrapper_extfox #global_content_extfox, .layout_page_user_auth_forgot, .full-height-auth .layout_core_content, .full-height-auth .layout_main, .full-height-auth .layout_middle, .full-height-auth .layout_core_content, .layout_page_user_auth_login, .layout_page_user_signup_index, .layout_page_user_auth_reset, .layout_page_core_error_requireuser, .full-height-auth.layout_main {
+  height: 100%; }
 
 @media only screen and (max-width: 768px) {
   .grib-grab-two {
@@ -4541,11 +5221,9 @@ body#global_page_user-profile-index {
       display: block;
       margin-top: -.5rem;
       transition: all 150ms linear; }
-      header.extfox-header .container .hamburger-menu:not(.acitve):hover .bar, header.extfox-header .container .hamburger-menu:not(.acitve).hover .bar {
-        width: 31px; }
-      header.extfox-header .container .hamburger-menu:not(.active):hover .bar:before, header.extfox-header .container .hamburger-menu:not(.active).hover .bar:before {
+      header.extfox-header .container .hamburger-menu .bar.active::before {
         width: 17px; }
-      header.extfox-header .container .hamburger-menu:not(.active):hover .bar:after, header.extfox-header .container .hamburger-menu:not(.active).hover .bar:after {
+      header.extfox-header .container .hamburger-menu .bar.active::after {
         width: 20px; }
       header.extfox-header .container .hamburger-menu .bar {
         position: relative;
@@ -4574,6 +5252,8 @@ body#global_page_user-profile-index {
           transition: top 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1), width 150ms linear, background 150ms linear;
           width: 27px;
           height: 3px; }
+    header.extfox-header .container .logo svg {
+      height: 30px !important; }
     header.extfox-header .container .mini-menu ul li.profile-img a img {
       height: 32px !important;
       width: 32px !important;
@@ -4588,6 +5268,9 @@ body#global_page_user-profile-index {
       padding-top: 0px !important; }
       header.extfox-header .container .mini-menu ul li.notifications a i {
         font-size: 18px; }
+    header.extfox-header .container .mini-menu ul li.notifications span.updates_pulldown_active .pulldown_contents_wrapper {
+      right: -3rem !important;
+      width: 300px !important; }
     header.extfox-header .container .search-bar {
       z-index: 1;
       transition: .2s ease transform;
@@ -4609,31 +5292,31 @@ body#global_page_user-profile-index {
         top: 1.8rem;
         color: #333D40 !important;
         cursor: pointer; }
-  header.extfox-header .prg-mobile-menu-holder {
+  header.extfox-header .parental-mobile-menu-holder {
     border: none !important;
     display: block !important;
     position: relative;
     z-index: 9;
     transition: transform 0.5s cubic-bezier(0.86, 0, 0.07, 1);
     transform: translateX(-90%); }
-    header.extfox-header .prg-mobile-menu-holder.active {
+    header.extfox-header .parental-mobile-menu-holder.active {
       transform: translateX(0%); }
-    header.extfox-header .prg-mobile-menu-holder .container {
+    header.extfox-header .parental-mobile-menu-holder .container {
       position: absolute;
       width: 80%;
       height: 100vh;
       background: #fff;
       z-index: 9;
       box-shadow: 20px 0px 40px rgba(0, 0, 0, 0.16); }
-      header.extfox-header .prg-mobile-menu-holder .container .row {
+      header.extfox-header .parental-mobile-menu-holder .container .row {
         margin: 0; }
-        header.extfox-header .prg-mobile-menu-holder .container .row ul li {
+        header.extfox-header .parental-mobile-menu-holder .container .row ul li {
           width: 100%;
           margin-right: 0 !important;
           border-bottom: 1px solid whitesmoke; }
-          header.extfox-header .prg-mobile-menu-holder .container .row ul li:hover a {
+          header.extfox-header .parental-mobile-menu-holder .container .row ul li:hover a {
             border: none !important; }
-          header.extfox-header .prg-mobile-menu-holder .container .row ul li a {
+          header.extfox-header .parental-mobile-menu-holder .container .row ul li a {
             display: block;
             font-weight: bold;
             padding-left: 2rem; }
@@ -4647,11 +5330,28 @@ body#global_page_user-profile-index {
       *   Following
       *   Struggles Profile
       *   Badges Proile
+      *   Password
+      *   My Theories
   * Core
       *   ExtfoxForm Settings
+      *   Auth Page and Forogot Page
+      *   Login Page
+      *   SignUp Page
   */
   body#global_page_user-profile-index #global_wrapper #global_content {
     padding: 0; }
+    body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .layout_core_container_tabs:not(.profile_cover_photo_tabs) > .tabs_alt ul {
+      padding: 0 !important;
+      width: 93%;
+      margin: 0 auto; }
+      body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .layout_core_container_tabs:not(.profile_cover_photo_tabs) > .tabs_alt ul li a {
+        text-transform: none;
+        color: #333D40;
+        font-weight: 400;
+        font-size: .9em;
+        padding: 1.2rem; }
+      body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .layout_core_container_tabs:not(.profile_cover_photo_tabs) > .tabs_alt ul li.active a {
+        border: none; }
     body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .profile_cover_photo_tabs {
       margin-top: 40px; }
       body#global_page_user-profile-index #global_wrapper #global_content .layout_top + .layout_main .profile_cover_photo_tabs .tabs_alt {
@@ -4709,21 +5409,58 @@ body#global_page_user-profile-index {
   .layout_sdparentalguide_ajax_struggles li .struggle-box_right-mobile ul.left-side li.count_info.primary div.holder-counter-number {
     color: #5CC7CE; }
 
+  #extfox-settings.family-form .form-wrapper .form-element {
+    margin: 0 !important; }
   #extfox-settings .form-wrapper {
     padding-left: 0 !important; }
     #extfox-settings .form-wrapper h3 {
       padding-left: 10px; }
     #extfox-settings .form-wrapper .form-element {
       max-width: 100% !important; }
+    #extfox-settings .form-wrapper .form-element.family-wrapper {
+      min-width: 100% !important; }
   #extfox-settings input[type=checkbox] + label {
     display: block !important; }
   #extfox-settings input[type=checkbox] {
     float: none !important; }
+  #extfox-settings .age-range {
+    grid-template-columns: repeat(3, 1fr) !important; }
+
+  .layout_sdparentalguide_ajax_profile #extfox-settings [id='1_1_24-wrapper'] input[type=checkbox] + label:before {
+    width: 17px !important;
+    height: 17px !important; }
+  .layout_sdparentalguide_ajax_profile #extfox-settings [id='1_1_24-wrapper'] input[type=checkbox] + label:after {
+    top: 14px; }
+  .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper input[type=checkbox] {
+    display: none; }
+    .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper input[type=checkbox] + label {
+      left: 0;
+      display: flex !important;
+      align-items: center; }
+  .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper .form-options-wrapper {
+    display: block;
+    float: left; }
+    .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper .form-options-wrapper li {
+      width: 100%; }
+  .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #family-information .btn-danger {
+    visibility: visible !important; }
+  .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday #months > div, .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday #months > div > div, .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday .col-12.years-range, .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday .col-12.years .years-first, .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday .col-12.final-date, .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday #years-first, .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday #years-second {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(60px, auto); }
+    .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday #months > div.d-none, .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday #months > div > div.d-none, .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday .col-12.years-range.d-none, .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday .col-12.years .years-first.d-none, .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday .col-12.final-date.d-none, .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday #years-first.d-none, .layout_sdparentalguide_ajax_profile #extfox-settings .form-wrapper #add-birthday #years-second.d-none {
+      display: none !important; }
 
   .layout_sdparentalguide_ajax_badges .container {
     width: 100% !important; }
     .layout_sdparentalguide_ajax_badges .container .holder-special-badges, .layout_sdparentalguide_ajax_badges .container .contributor-badges-holder {
       padding: 15px 10px !important; }
+    .layout_sdparentalguide_ajax_badges .container ul li .bottom-holder {
+      flex-wrap: wrap; }
+      .layout_sdparentalguide_ajax_badges .container ul li .bottom-holder .badge-image {
+        padding: 0;
+        text-align: center; }
 
   .layout_sdparentalguide_ajax_info .container {
     width: 100% !important; }
@@ -4735,8 +5472,20 @@ body#global_page_user-profile-index {
       .layout_sdparentalguide_ajax_info .container .wrapper .left-side .profile_fields ul {
         padding: 0px !important; }
 
-  .layout_sdparentalguide_ajax_password .container {
-    width: 95% !important; }
+  .layout_sdparentalguide_ajax_password .container, .layout_sdparentalguide_ajax_privacy .container, .layout_sdparentalguide_ajax_notifications .container {
+    width: 100% !important;
+    padding: 0px !important; }
+    .layout_sdparentalguide_ajax_password .container #extfox-settings, .layout_sdparentalguide_ajax_privacy .container #extfox-settings, .layout_sdparentalguide_ajax_notifications .container #extfox-settings {
+      width: 89%;
+      margin: 0 auto; }
+
+  .layout_sdparentalguide_ajax_preferences .sd_signup_interests {
+    max-width: 100%;
+    padding-left: 0; }
+  .layout_sdparentalguide_ajax_preferences .holder-listing-categories {
+    padding: 0px !important; }
+    .layout_sdparentalguide_ajax_preferences .holder-listing-categories .sd_listing_categories {
+      grid-template-columns: repeat(auto-fill, minmax(70%, 1fr)) !important; }
 
   .layout_sdparentalguide_ajax_theories .container {
     width: 100% !important; }
@@ -4756,6 +5505,130 @@ body#global_page_user-profile-index {
           .layout_sdparentalguide_ajax_theories .container .holder-my-theories .bottom-holder ul.topic_holder li.struggle_holder .struggle_right-side .struggle_info li {
             margin: 0 !important; }
     .layout_sdparentalguide_ajax_theories .container .holder-my-theories .struggle-box_right-mobile .count_info.svg-icons-one .first-icon {
-      display: none; } }
+      display: none; }
+
+  .layout_sdparentalguide_ajax_delete .container {
+    padding: 0; }
+    .layout_sdparentalguide_ajax_delete .container form {
+      margin: 0 auto;
+      width: 85%; }
+
+  .layout_user_cover_photo .holder .profile_cover_head_section .profile_main_photo_wrapper .profile_main_photo {
+    bottom: -7em !important; }
+  .layout_user_cover_photo .holder .profile_cover_head_section .profile_main_photo_wrapper .profile_cover_options .edit-button {
+    top: 10px !important; }
+  .layout_user_cover_photo .profile_cover_options .save-button {
+    top: 20px !important;
+    right: 15px; }
+  .layout_user_cover_photo .profile_cover_photo_wrapper {
+    height: 349px; }
+  .layout_user_cover_photo #cover_photo_options {
+    display: block; }
+
+  .extfox-auth input[type='text'],
+  .extfox-auth input[type='number'],
+  .extfox-auth textarea {
+    font-size: 16px !important;
+    border-radius: 0;
+    -webkit-appearance: none; }
+  .extfox-auth h3 {
+    text-align: center;
+    font-family: "Nunito", sans-serif !important;
+    font-size: 26px !important; }
+  .extfox-auth p {
+    text-align: center; }
+
+  #global_page_user-auth-forgot button, #global_page_user-auth-reset button {
+    width: 100% !important; }
+
+  form#user_form_login h3, form#signup_account_form h3 {
+    margin-top: 100px; }
+  form#user_form_login #facebookbutton-wrapper, form#signup_account_form #facebookbutton-wrapper {
+    display: none; }
+    form#user_form_login #facebookbutton-wrapper #twitter-wrapper a, form#signup_account_form #facebookbutton-wrapper #twitter-wrapper a {
+      background-color: #1DA1F2;
+      color: #fff;
+      border-color: #1DA1F2; }
+    form#user_form_login #facebookbutton-wrapper #facebook-element a, form#signup_account_form #facebookbutton-wrapper #facebook-element a {
+      background-color: #3C5A99;
+      color: #fff;
+      border-color: #3C5A99; }
+
+  .holder-familyMember .holder {
+    padding: 2rem !important; }
+  .holder-familyMember .form-wrapper {
+    padding-right: 0px !important; }
+    .holder-familyMember .form-wrapper .form-element {
+      padding: 0px !important; }
+  .holder-familyMember #add-birthday .col-12.d-flex, .holder-familyMember #add-birthday .col-12.years-range, .holder-familyMember #add-birthday .col-12.years #years-first, .holder-familyMember #add-birthday .col-12.years #years-second, .holder-familyMember #add-birthday .col-12.final-date {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(60px, auto); }
+    .holder-familyMember #add-birthday .col-12.d-flex.d-none, .holder-familyMember #add-birthday .col-12.years-range.d-none, .holder-familyMember #add-birthday .col-12.years #years-first.d-none, .holder-familyMember #add-birthday .col-12.years #years-second.d-none, .holder-familyMember #add-birthday .col-12.final-date.d-none {
+      display: none !important; }
+  .holder-familyMember #family-information .btn-danger {
+    visibility: visible !important; }
+
+  #global_page_user-signup-index .form-wrapper {
+    padding-left: 0px !important; }
+  #global_page_user-signup-index form {
+    max-height: 500px; }
+    #global_page_user-signup-index form p.hint #profile_address #profile_address_text {
+      word-wrap: break-word;
+      width: 90%;
+      margin: 0 auto;
+      display: block; }
+    #global_page_user-signup-index form.preference-holder #show_all-wrapper {
+      width: 100% !important; }
+      #global_page_user-signup-index form.preference-holder #show_all-wrapper #show_all-element {
+        width: 100% !important; }
+        #global_page_user-signup-index form.preference-holder #show_all-wrapper #show_all-element label {
+          left: 32px;
+          top: -55px; }
+        #global_page_user-signup-index form.preference-holder #show_all-wrapper #show_all-element input[type=checkbox] + label:after {
+          top: 30px; }
+    #global_page_user-signup-index form.family-form .form-wrapper .form-element #family-information .row.add-child-form .add-birthday .selector-holder .selector-item {
+      min-width: 0; }
+
+  form.preference-holder h3, form.preference-holder p {
+    width: 90%;
+    margin-top: 30px !important;
+    padding: 0px !important; }
+  form.preference-holder .holder-image .holder-category-title {
+    left: 30px; }
+  form.preference-holder .holder-image .holder-select-all {
+    right: 30px; }
+  form.preference-holder .sd_listing_categories {
+    grid-template-columns: repeat(auto-fill, minmax(52%, 1fr)); }
+  form.preference-holder #show_all-wrapper {
+    width: 100% !important; }
+    form.preference-holder #show_all-wrapper #show_all-element {
+      width: 100% !important; }
+      form.preference-holder #show_all-wrapper #show_all-element label {
+        left: 29px; }
+      form.preference-holder #show_all-wrapper #show_all-element input[type=checkbox] + label:after {
+        left: 2px; }
+  form.preference-holder #buttons-wrapper {
+    width: 100% !important; }
+    form.preference-holder #buttons-wrapper #fieldset-buttons {
+      width: 100% !important;
+      float: none !important;
+      text-align: center;
+      margin: 0;
+      padding: 0; }
+      form.preference-holder #buttons-wrapper #fieldset-buttons button, form.preference-holder #buttons-wrapper #fieldset-buttons a {
+        margin: 0 auto 10px;
+        width: 85%; }
+
+  .border-gear ~ img {
+    border-width: 4px 4px 4px 4px !important; }
+
+  .close-btn-x {
+    right: 19px;
+    top: 5px;
+    color: #B9CFD1; }
+    .close-btn-x svg {
+      width: 15px; } }
 
 /*# sourceMappingURL=root.css.map */

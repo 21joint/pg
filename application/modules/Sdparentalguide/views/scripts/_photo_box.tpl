@@ -30,11 +30,6 @@
                                 </div>
                                 <span class="text-primary pl-2"><?= $subject->gg_contribution; ?> </span>
                             </div>
-                            <i class="fa fa-circle pl-2"></i>
-                            <div class="holder-followers pl-2">
-                            <?php 
-                                echo $this->translate(array("%s Follower", "%s Followers", $subject->gg_followers_count), $this->locale()->toNumber($subject->gg_followers_count)) ?>
-                            </div>
                         </div>
                     </div>
                 </div>

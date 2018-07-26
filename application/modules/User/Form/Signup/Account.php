@@ -82,20 +82,20 @@ class User_Form_Signup_Account extends Engine_Form_Email
      $this->email->getValidator('Identical')->setMessage('Your email address must match the address that was invited.', 'notSame');
     }
     
-    //Element: code
-    if( $settings->getSetting('user.signup.inviteonly') > 0 ) {
-      $codeValidator = new Engine_Validate_Callback(array($this, 'checkInviteCode'), $emailElement);
-      $codeValidator->setMessage("This invite code is invalid or does not match the selected email address");
-      $this->addElement('Text', 'code', array(
-        'label' => 'Invite Code',
-        'required' => true
-      ));
-      $this->code->addValidator($codeValidator);
+    // //Element: code
+    // if( $settings->getSetting('user.signup.inviteonly') > 0 ) {
+    //   $codeValidator = new Engine_Validate_Callback(array($this, 'checkInviteCode'), $emailElement);
+    //   $codeValidator->setMessage("This invite code is invalid or does not match the selected email address");
+    //   $this->addElement('Text', 'code', array(
+    //     'label' => 'Invite Code',
+    //     'required' => true
+    //   ));
+    //   $this->code->addValidator($codeValidator);
 
-      if( !empty($inviteSession->invite_code) ) {
-        $this->code->setValue($inviteSession->invite_code);
-      }
-    }
+    //   if( !empty($inviteSession->invite_code) ) {
+    //     $this->code->setValue($inviteSession->invite_code);
+    //   }
+    // }
 
     if( $settings->getSetting('user.signup.random', 0) == 0 && 
         empty($_SESSION['facebook_signup']) && 
@@ -328,24 +328,24 @@ class User_Form_Signup_Account extends Engine_Form_Email
     ));
     
     if( empty($_SESSION['facebook_signup']) ){
-      // Init facebook login link
-//      if( 'none' != $settings->getSetting('core_facebook_enable', 'none')
-//          && $settings->core_facebook_secret ) {
-//        $this->addElement('Dummy', 'facebook', array(
-//          'content' => User_Model_DbTable_Facebook::loginButton(),
-//        ));
-//      }
+      //Init facebook login link
+     if( 'none' != $settings->getSetting('core_facebook_enable', 'none')
+         && $settings->core_facebook_secret ) {
+       $this->addElement('Dummy', 'facebook', array(
+         'content' => User_Model_DbTable_Facebook::loginButton(),
+       ));
+     }
     }
     
-    if( empty($_SESSION['twitter_signup']) ){
-      // Init twitter login link
-//      if( 'none' != $settings->getSetting('core_twitter_enable', 'none')
-//          && $settings->core_twitter_secret ) {
-//        $this->addElement('Dummy', 'twitter', array(
-//          'content' => User_Model_DbTable_Twitter::loginButton(),
-//        ));
-//      }
-    } 
+    // if( empty($_SESSION['twitter_signup']) ){
+      //Init twitter login link
+    //  if( 'none' != $settings->getSetting('core_twitter_enable', 'none')
+    //      && $settings->core_twitter_secret ) {
+       $this->addElement('Dummy', 'twitter', array(
+         'content' => User_Model_DbTable_Twitter::loginButton(),
+       ));
+    //  }
+    // } 
     // Set default action
     $this->setAction(Zend_Controller_Front::getInstance()->getRouter()->assemble(array(), 'user_signup', true));
   }

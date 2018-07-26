@@ -43,6 +43,11 @@
   cursor: pointer;
   color: #5cc7ce;
 }
+.leaderboard_title_active{
+  border: 1px solid #f5f5f5!important;
+  border-bottom: 0!important;
+  color: #5cc7ce;
+}
 /* Leaderboard Title styling end */
 
 .leaderboard_main{
@@ -60,6 +65,9 @@
   text-align: center;
   flex: 2;
   cursor: pointer;
+}
+#none_click{
+  cursor: default;
 }
 .leaderboard_main div:nth-child(2){
   flex: 7;
@@ -124,6 +132,15 @@
 }
 .pagination_button_diss{
   color: #e2e4e6;
+}
+.current_pagination{
+  padding: 2px 6px;
+  background-color: #5cc7ce;
+  color: #fff;
+  border-radius: 3px;
+}
+.skip_page{
+  cursor: pointer;
 }
 /* Leaderboard Item styling end */
 /* Community Leaderboard title, main cateogires, list of items -> end */
