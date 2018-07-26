@@ -133,7 +133,7 @@ $this->headScript()
           
           <div class="seaocore_board_list_btm">
             <?php if ($this->postedby): ?>
-              <?php echo $this->htmlLink($sitereview->getOwner()->getHref(), $this->itemPhoto($sitereview->getOwner(), 'thumb.icon', '', array())) ?>
+              <?php echo $this->htmlLink($sitereview->getOwner()->getHref(), $this->itemPhoto($sitereview->getOwner(), 'thumb.icon', '', array()), array('class' => 'd-inline-block')) ?>
               <?php endif; ?>  
             <div class="o_hidden seaocore_stats seaocore_txt_light">
               <?php if ($this->postedby): ?>
