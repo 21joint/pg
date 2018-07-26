@@ -13,6 +13,10 @@
 class Sitemailtemplates_Plugin_Loader extends Zend_Controller_Plugin_Abstract {
 
   public function preDispatch(Zend_Controller_Request_Abstract $request) {
+
+    echo "<pre>";
+    print_r($request);
+    exit;
     $loader = Engine_Loader::getInstance();
     if (get_class($loader) == 'Engine_Loader') {
       Sitemailtemplates_Loader::hook();
