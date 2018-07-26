@@ -75,6 +75,7 @@
                                 $select = $table->select()
                                     ->where('topic_id = ?', $topic->topic_id)
                                     ->order( 'name ASC' )
+                                    ->order('level DESC')
                                     ->limit(5)
                                 ;
                                 $badges = $table->fetchAll($select);
