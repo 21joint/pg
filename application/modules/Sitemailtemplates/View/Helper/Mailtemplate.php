@@ -13,8 +13,6 @@ class Sitemailtemplates_View_Helper_Mailtemplate extends Zend_View_Helper_Abstra
 
   public function mailtemplate($data = array()) {
 
-    echo 'WOW From Mail Template';
-    exit;
     $template_id = 0;
     if(isset($data['template_id'])) {
 			$template_id = $data['template_id'];

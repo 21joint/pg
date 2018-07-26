@@ -118,9 +118,7 @@ class Sitemailtemplates_Api_Mail extends Core_Api_Mail {
     //SYSTEM
     public function sendSystemRaw($recipient, $type, array $params = array()) {
 
-        echo ' send me a email now';
-        exit;
-        
+
         //VERIFY MAIL TEMPLATE TYPE
         $mailTemplateTable = Engine_Api::_()->getDbtable('MailTemplates', 'core');
         $mailTemplate = $mailTemplateTable->fetchRow($mailTemplateTable->select()->where('type = ?', $type));
