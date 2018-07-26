@@ -653,8 +653,10 @@ body#global_page_user-profile-index {
 .layout_sdparentalguide_ajax_badges {
     background-color: #F6FCFC!important;
     padding-top: 1rem!important;
+        
+    
     .holder-my-badges {
-       
+        
         ul {
             grid-auto-rows: minmax(130px, auto);
             li {
@@ -1069,7 +1071,11 @@ body#global_page_user-profile-index {
     }
     
 } 
-
+form#signup_account_form{
+    #facebook-wrapper,#twitter-wrapper{
+        display: none;
+    }
+}
 
 // Login Page
 form#user_form_login {
@@ -1135,6 +1141,7 @@ form#user_form_login {
         }
     }
     #fieldset-facebookbutton{
+        display: none;
         #twitter-wrapper {
             #twitter-label {
                 display: none;
@@ -1243,6 +1250,13 @@ form#user_form_login {
             padding: 0.5rem 0!important;
             width: 100%;
             text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.2 ease-in-out;
+        }
+        button:hover {
+            background-color: #5CC7CE;
+            color:#fff;
+            border-color: #5CC7CE;
         }
         #terms-element {
             label {
@@ -2751,11 +2765,13 @@ form.preference-holder {
         }
     }
     // Login Page
-    form#user_form_login {
+    form#user_form_login,form#signup_account_form {
         h3 {
             margin-top:100px;
         }
+        
         #facebookbutton-wrapper{
+            display: none;
             #twitter-wrapper {
                 a{
                     background-color: #1DA1F2;
@@ -2925,7 +2941,7 @@ form.preference-holder {
 
     // Close Button 
     .close-btn-x{
-        right: 10px;
+        right: 19px;
         top: 5px;
         color: #B9CFD1;
         svg {

@@ -327,25 +327,25 @@ class User_Form_Signup_Account extends Engine_Form_Email
       'tabindex' => $tabIndex++,
     ));
     
-    //if( empty($_SESSION['facebook_signup']) ){
-      // Init facebook login link
-//      if( 'none' != $settings->getSetting('core_facebook_enable', 'none')
-//          && $settings->core_facebook_secret ) {
-//        $this->addElement('Dummy', 'facebook', array(
-//          'content' => User_Model_DbTable_Facebook::loginButton(),
-//        ));
-//      }
-    //}
+    if( empty($_SESSION['facebook_signup']) ){
+      //Init facebook login link
+     if( 'none' != $settings->getSetting('core_facebook_enable', 'none')
+         && $settings->core_facebook_secret ) {
+       $this->addElement('Dummy', 'facebook', array(
+         'content' => User_Model_DbTable_Facebook::loginButton(),
+       ));
+     }
+    }
     
-    //if( empty($_SESSION['twitter_signup']) ){
-      // Init twitter login link
-//      if( 'none' != $settings->getSetting('core_twitter_enable', 'none')
-//          && $settings->core_twitter_secret ) {
-//        $this->addElement('Dummy', 'twitter', array(
-//          'content' => User_Model_DbTable_Twitter::loginButton(),
-//        ));
-//      }
-    //} 
+    // if( empty($_SESSION['twitter_signup']) ){
+      //Init twitter login link
+    //  if( 'none' != $settings->getSetting('core_twitter_enable', 'none')
+    //      && $settings->core_twitter_secret ) {
+       $this->addElement('Dummy', 'twitter', array(
+         'content' => User_Model_DbTable_Twitter::loginButton(),
+       ));
+    //  }
+    // } 
     // Set default action
     $this->setAction(Zend_Controller_Front::getInstance()->getRouter()->assemble(array(), 'user_signup', true));
   }
