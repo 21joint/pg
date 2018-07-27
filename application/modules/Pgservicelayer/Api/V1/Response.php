@@ -283,6 +283,25 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $questionArray['publishedDateTime'] = $this->getFormatedDateTime($question->approved_date);
         $questionArray['lastModifiedDateTime'] = $this->getFormatedDateTime($question->modified_date);
         $questionArray['author'] = $this->getUserData($question->getOwner());
+        $questionArray["canDelete"] = false;
+        $viewer = Engine_Api::_()->user()->getViewer();
+        $vote = Engine_Api::_()->ggcommunity()->getVote($question, $viewer);
+        $voteType = '';
+        $status = 0;
+        if(!empty($vote)){
+            $voteType = 'upvote';
+            if(!$vote->vote_type){
+                $voteType = 'downvote';
+            }
+            $status = 1;
+        }
+        $questionArray["userVote"] = array(
+            'voteType' => $voteType,
+            'status' => $status
+        );
+        if ($question->getOwner()->isSelf($viewer) || $viewer->isAdmin()) {
+            $questionArray["canDelete"] = true;
+        }
         return $questionArray;
     }
     
@@ -320,7 +339,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             'voteType' => $voteType,
             'status' => $status
         );
-        if ($answer->getOwner()->isSelf($viewer)) {
+        if ($answer->getOwner()->isSelf($viewer) || $viewer->isAdmin()) {
             $answerArray["canDelete"] = true;
         }
         return $answerArray;

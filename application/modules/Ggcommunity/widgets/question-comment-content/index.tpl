@@ -125,7 +125,7 @@ function loadComments(){
     requestData.contentType = "Question";
     requestData.contentID = "<?php echo $this->subject->getIdentity(); ?>";
     
-    var loader = en4.core.loader.clone();
+    var loader = en4.pgservicelayer.loader.clone();
     loader.addClass("sd_loader");
     var url = en4.core.baseUrl+"api/v1/comment";
     var container = $("comments_box").getElement(".comments_container");
@@ -146,6 +146,7 @@ function loadComments(){
                     commentElement.inject(container,"bottom");
                 });
                 Smoothbox.bind(container); 
+                hoverBoxImage();
             }else{
                 container.set("html",responseJSON.message);
             }
@@ -157,7 +158,7 @@ function getCommentElement(comment){
     var author = comment.author;
     var html = "<div class='question-main-description display-flex'>"+
                 '<div class="question-main-left large-1 columns medium-1 small-2">'+
-                '<div class="question-owner-photo">'+en4.core.pgservicelayer.authorPhoto(author)+
+                '<div class="question-owner-photo">'+en4.pgservicelayer.authorPhoto(author)+
                 "</div></div>"+
                 '<div class="question-main-right large-11 medium-11 small-9">'+
                 '<div class="question-main-top-holder "><div class="question-main-top-info display-flex">'+

@@ -275,7 +275,7 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
             $answer->save();
             
             $answerChosen = $this->getParam("answerChosen");
-            if(!empty($answerChosen) && ($subject->user_id = $viewer->getIdentity() || $viewer->isAdminOnly())){
+            if(!empty($answerChosen) && ($answer->user_id == $viewer->getIdentity() || $viewer->isAdmin())){
                 $table->update(array('accepted' => 0),array('parent_id = ?' => $subject->getIdentity(),'parent_type = ?' => $subject->getType()));
                 $answer->accepted = 1;
                 $answer->save();

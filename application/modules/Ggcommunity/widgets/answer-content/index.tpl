@@ -110,7 +110,7 @@
         </div>
         
         <?php if($this->permissions['answer_question'] != 0):?>
-            <div class="answer_form">
+            <div class="answer_form" style="display:none;">
                 <div class="holder-title-textarea">
                     <h5><?php echo $this->translate('Your New Theory');?></h5>
                 </div>
@@ -181,7 +181,7 @@ function loadAnswers(){
     requestData.page = 1;
     requestData.questionID = "<?php echo $this->subject->getIdentity(); ?>";
     
-    var loader = en4.core.loader.clone();
+    var loader = en4.pgservicelayer.loader.clone();
     loader.addClass("sd_loader");
     var url = en4.core.baseUrl+"api/v1/answer";
     var container = $("answers_box");
@@ -202,9 +202,13 @@ function loadAnswers(){
                     answerElement.inject(container,"bottom");
                 });
                 initTinyMce();
-                Smoothbox.bind(container); 
+                Smoothbox.bind(container);
+                hoverBoxImage();
             }else{
                 container.set("html",responseJSON.message);
+            }
+            if($("create-answer-form")){
+                $("create-answer-form").getParent(".answer_form").setStyle("display","block");
             }
         }
     });
@@ -221,16 +225,31 @@ function getAnswerElement(answer){
         var answerChosenhtml = '<p class="best_answer"><svg xmlns="http://www.w3.org/2000/svg" style="margin-right:5px;" width="13px" height="13px" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40 38"><defs><linearGradient id="z" x1="-173.22" y1="1009.42" x2="-172.4" y2="1010.06" gradientTransform="matrix(13.72, 0, 0, -11.03, 2403.25, 11146.77)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#2b3336"/><stop offset="1" stop-color="#333d40"/></linearGradient><linearGradient id="x" x1="-304.1" y1="1050.64" x2="-303.1" y2="1050.64" gradientTransform="matrix(16.54, 0, 0, -10.11, 5029.61, 10635.32)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#333d40"/><stop offset="1" stop-color="#2b3336"/></linearGradient></defs><title>dark_star</title><path d="M38.29,8.11l-7.17,9.44L25,9.36,36.9,6.64C38.65,6.23,39.15,6.93,38.29,8.11Z" fill="url(#z)"/><path d="M16.54,11.4.87,15.33c-1,.23-1.22,1.29-.3,1.7L15.86,21.5Z" fill="url(#x)"/><path d="M14.56,36.53l2-35.61c0-1,1-1.25,1.68-.43L39.58,27.06c.79,1,.57,2.58-1.63,1.72L25.08,23.86,17,37.19a1.3,1.3,0,0,1-2.49-.66Z" fill="#333d40"/></svg>'+
                 "<?php echo $this->translate('Chose Theory'); ?></p>";
     }else{
-        var answerChosenhtml = '<p class="best_answer"><a href="javascript:void(0);"><svg style="margin-right:5px" width="13px" height="13px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 42.03 39.91"><defs><linearGradient id="a" x1="26.26" y1="12.68" x2="40.67" y2="12.68" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#51b2b6"/><stop offset="1" stop-color="#5bc6cd"/></linearGradient><linearGradient id="b" y1="17.32" x2="17.39" y2="17.32" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5bc6cd"/><stop offset="1" stop-color="#51b2b6"/></linearGradient></defs><title>star_pg</title><path d="M40.23,8.55,32.7,18.46l-6.44-8.6L38.77,7C40.61,6.57,41.14,7.31,40.23,8.55Z" fill="url(#a)"/><path d="M17.39,12,.93,16.13c-1,.24-1.28,1.35-.32,1.79l16.06,4.7Z" fill="url(#b)"/><path d="M15.31,38.4,17.42,1c0-1.06,1.1-1.31,1.76-.45L41.59,28.45c.83,1,.6,2.71-1.71,1.81L26.36,25.09l-8.44,14A1.36,1.36,0,0,1,15.31,38.4Z" fill="#5bc6cd"/></svg>'+
+        var choseUrl = 'ggcommunity/answer-profile/best/answer_id/'+answer.answerID;
+        var answerChosenhtml = '<p class="best_answer"><a href="'+choseUrl+'" class="smoothbox"><svg style="margin-right:5px" width="13px" height="13px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 42.03 39.91"><defs><linearGradient id="a" x1="26.26" y1="12.68" x2="40.67" y2="12.68" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#51b2b6"/><stop offset="1" stop-color="#5bc6cd"/></linearGradient><linearGradient id="b" y1="17.32" x2="17.39" y2="17.32" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5bc6cd"/><stop offset="1" stop-color="#51b2b6"/></linearGradient></defs><title>star_pg</title><path d="M40.23,8.55,32.7,18.46l-6.44-8.6L38.77,7C40.61,6.57,41.14,7.31,40.23,8.55Z" fill="url(#a)"/><path d="M17.39,12,.93,16.13c-1,.24-1.28,1.35-.32,1.79l16.06,4.7Z" fill="url(#b)"/><path d="M15.31,38.4,17.42,1c0-1.06,1.1-1.31,1.76-.45L41.59,28.45c.83,1,.6,2.71-1.71,1.81L26.36,25.09l-8.44,14A1.36,1.36,0,0,1,15.31,38.4Z" fill="#5bc6cd"/></svg>'+
                 "<?php echo $this->translate('Chose Theory'); ?></a></p>";
     }
     
     var questionOptions = '<ul class="options-list">';
     if(answer.canDelete){
-        questionOptions += '<li class="list-inline edit-list-item"><a href="javascript:void(0);" class="edit-item option-item display-flex" onclick="en4.ggcommunity.comment.edit(\<?php echo $this->subject->getType(); ?>\',<?php echo $this->subject->getIdentity(); ?>);">'+
+        var deleteUrl = en4.core.baseUrl+"ggcommunity/answer-profile/delete/answer_id/"+answer.answerID;
+        questionOptions += '<li class="list-inline edit-list-item"><a href="'+deleteUrl+'" class="edit-item option-item display-flex smoothbox">'+
                 '<svg aria-hidden="true" data-prefix="fal" data-icon="edit" role="img" xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 576 512"><path fill="currentColor" d="M417.8 315.5l20-20c3.8-3.8 10.2-1.1 10.2 4.2V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h292.3c5.3 0 8 6.5 4.2 10.2l-20 20c-1.1 1.1-2.7 1.8-4.2 1.8H48c-8.8 0-16 7.2-16 16v352c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V319.7c0-1.6.6-3.1 1.8-4.2zm145.9-191.2L251.2 436.8l-99.9 11.1c-13.4 1.5-24.7-9.8-23.2-23.2l11.1-99.9L451.7 12.3c16.4-16.4 43-16.4 59.4 0l52.6 52.6c16.4 16.4 16.4 43 0 59.4zm-93.6 48.4L403.4 106 169.8 339.5l-8.3 75.1 75.1-8.3 233.5-233.6zm71-85.2l-52.6-52.6c-3.8-3.8-10.2-4-14.1 0L426 83.3l66.7 66.7 48.4-48.4c3.9-3.8 3.9-10.2 0-14.1z"></path></svg>'+
-                '</a></li>';
+                '<?php echo $this->translate("Delete"); ?></a></li>';
     }
+    
+    <?php if($this->viewer()->getIdentity()): ?>
+    var reportUrl = en4.core.baseUrl+"report/create/subject/user_"+author.memberID+"/format/smoothbox";
+    questionOptions += '<li class="list-inline edit-list-item"><a href="'+reportUrl+'" class="report-item option-item display-flex smoothbox">'+
+                '<svg width="18" aria-hidden="true" data-prefix="fal" data-icon="flag" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#5CC7CE" d="M344.348 74.667C287.742 74.667 242.446 40 172.522 40c-28.487 0-53.675 5.322-76.965 14.449C99.553 24.713 75.808-1.127 46.071.038 21.532.999 1.433 20.75.076 45.271-1.146 67.34 12.553 86.382 32 93.258V500c0 6.627 5.373 12 12 12h8c6.627 0 12-5.373 12-12V378.398c31.423-14.539 72.066-29.064 135.652-29.064 56.606 0 101.902 34.667 171.826 34.667 51.31 0 91.933-17.238 130.008-42.953 6.589-4.45 10.514-11.909 10.514-19.86V59.521c0-17.549-18.206-29.152-34.122-21.76-36.78 17.084-86.263 36.906-133.53 36.906zM48 28c11.028 0 20 8.972 20 20s-8.972 20-20 20-20-8.972-20-20 8.972-20 20-20zm432 289.333C456.883 334.03 415.452 352 371.478 352c-63.615 0-108.247-34.667-171.826-34.667-46.016 0-102.279 10.186-135.652 26V106.667C87.117 89.971 128.548 72 172.522 72c63.615 0 108.247 34.667 171.826 34.667 45.92 0 102.217-18.813 135.652-34.667v245.333z"></path></svg>'+
+                '<?php echo $this->translate("Report"); ?></a></li>';
+    if(!answer.canDelete){
+        var blockUrl = en4.core.baseUrl+"user/block/add/user_id/"+author.memberID+"/format/smoothbox";
+        questionOptions += '<li class="list-inline edit-list-item"><a href="'+blockUrl+'" class="block-item option-item display-flex smoothbox">'+
+                '<svg aria-hidden="true" data-prefix="fas" data-icon="ban" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="20"><path fill="#5CC7CE" d="M256 8C119.034 8 8 119.033 8 256s111.034 248 248 248 248-111.034 248-248S392.967 8 256 8zm130.108 117.892c65.448 65.448 70 165.481 20.677 235.637L150.47 105.216c70.204-49.356 170.226-44.735 235.638 20.676zM125.892 386.108c-65.448-65.448-70-165.481-20.677-235.637L361.53 406.784c-70.203 49.356-170.226 44.736-235.638-20.676z" class=""></path></svg>'+
+                '<?php echo $this->translate("Block"); ?></a></li>';
+    }
+    <?php endif; ?>
     questionOptions += '</ul>';
     
     var voteHtml = '';
@@ -251,7 +270,7 @@ function getAnswerElement(answer){
     var html = "<div class='holder-box "+acceptedClass+"' id='item_main_box_"+answer.answerID+"'>"+'<div class="item-main-description">'+   
                     "<div class='question-main-description display-flex'>"+
                         '<div class="question-main-left large-1 columns medium-1 small-2">'+
-                            '<div class="question-owner-photo">'+en4.core.pgservicelayer.authorPhoto(author)+'</div>'+
+                            '<div class="question-owner-photo">'+en4.pgservicelayer.authorPhoto(author)+'</div>'+
                             '<div class="question_votes_holder" id="vote_ggcommunity_answer_'+answer.answerID+'">'+
                                 '<div class="vote-options">'+
                                     voteHtml+
@@ -298,11 +317,11 @@ function getEditForm(type,id,body){
     var editUrl = en4.core.baseUrl+"ggcommunity/answer/edit";
     var formHtml = '<div class="edit_item_'+id+'">'+
             '<div class="item_edit_content" id="edit_item_content_'+id+'" style="display:none;">'+
-                '<form id="form_edit_'+type+'_'+id+'" enctype="application/x-www-form-urlencoded" class="global_form_edit_item" action="'+editUrl+'" method="post">'+
+                '<form id="form_edit_'+type+'_'+id+'" enctype="application/x-www-form-urlencoded" class="global_form_edit_item" action="'+editUrl+'" method="post" data-id="'+id+'">'+
                     '<div>'+
                         '<div>'+
                             '<div class="form-elements">'+
-                                '<textarea rows="24," cols="80," style="width:553px;" name="body" id="body" class="mceEditor">'+body+'</textarea>'+
+                                '<textarea rows="24," cols="80," style="width:553px;" name="body" id="tinymce_'+type+id+'" class="mceEditor">'+body+'</textarea>'+
                                 '<div class="form-wrapper" id="buttons-wrapper">'+
                                     '<fieldset id="fieldset-buttons">'+
                                         '<button name="submit" id="submit" type="submit" class="btn small"><?php echo $this->translate("Edit"); ?></button>'+

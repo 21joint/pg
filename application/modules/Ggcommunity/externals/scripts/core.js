@@ -22,8 +22,8 @@ en4.ggcommunity = {
     vote : function(parent_type, parent_id, vote_type) {
         var main_holder = document.getElementById('vote_'+ parent_type + '_' + parent_id);
         var that = $(event.target);
-        if(that.tagName != 'A'){
-            that  = $(that).getParent();
+        if(that.tagName != 'A' || that.tagName != 'a'){
+            that  = $(that).getParent("a");
         }
         if(that.hasClass("primary")){
             return;
@@ -33,6 +33,17 @@ en4.ggcommunity = {
         if(!vote_type){
             reactionType = 'downvote';
         }
+        var voteCountElement = main_holder.getElement(".question-vote");
+        var currentVoteCount = voteCountElement.get("html").toInt();
+        main_holder.getElements("a").removeClass("primary").set("disabled",null);
+        if(vote_type){
+            currentVoteCount++;
+            main_holder.getElement(".vote-up").addClass("primary").set("disabled","disabled");
+        }else{
+            currentVoteCount--;
+            main_holder.getElement(".vote-down").addClass("primary").set("disabled","disabled");
+        }
+        voteCountElement.set("html",currentVoteCount);
         en4.core.request.send(new Request.JSON({
             url : en4.core.baseUrl+'api/v1/reaction',
             data : {
@@ -41,22 +52,17 @@ en4.ggcommunity = {
                 reactionType : reactionType,
             },
             onComplete: function(responseJSON) {
-                if(responseJSON.status_code == 204){
-                    if(!main_holder){
-                        return;
-                    }
-                    var voteCountElement = main_holder.getElement(".question-vote");
-                    var currentVoteCount = voteCountElement.get("html").toInt();
+                if(responseJSON.status_code == 204){                                 
+                }else{
                     main_holder.getElements("a").removeClass("primary").set("disabled","disabled");
                     if(vote_type){
-                        currentVoteCount++;
-                        main_holder.getElement(".vote-up").addClass("primary").set("disabled","disabled");
-                    }else{
                         currentVoteCount--;
-                        main_holder.getElement(".vote-down").addClass("primary").set("disabled","disabled");
+                        main_holder.getElement(".vote-up").removeClass("primary").set("disabled",null);
+                    }else{
+                        currentVoteCount++;
+                        main_holder.getElement(".vote-down").removeClass("primary").set("disabled",null);
                     }
-                    voteCountElement.set("html",currentVoteCount);                    
-                }else{
+                    voteCountElement.set("html",currentVoteCount);
                     alert(responseJSON.message);
                 }
             }
@@ -98,6 +104,10 @@ en4.ggcommunity.answer = {
         var holder = document.getElementById('answer_full_box');
         var counter_answer = document.getElementById('count_answers');
         var form = document.getElementById('create_answer_form');
+        if(!form){
+            form = document.getElementById('create-answer-form');
+        }
+        var loader = en4.pgservicelayer.loader.clone();
 
         en4.core.request.send(new Request.JSON({
             url : en4.core.baseUrl+'api/v1/answer',
@@ -105,12 +115,17 @@ en4.ggcommunity.answer = {
                 questionID : question_id,
                 body : body,
             },
-            onComplete: function(responseHTML) {
+            onRequest: function(){
+                try{
+                    loader.inject(form,"after");
+                }catch(e){ }
+            },
+            onComplete: function(responseJSON) {
                 // empty body from tinymce
                 var body_editor = document.querySelector('#body_create');
                 // var body_editor = document.getElementById('create-answer-form').getElementById('body');
                 var mce_editor = document.getElementById('create-answer-form').getElementsByClassName('mce-tinymce mce-container mce-panel');
-
+                loader.destroy();
                 if(mce_editor.length > 0) {
                     var body = tinymce.get('body_create').setContent('');
                 } else {
@@ -132,9 +147,16 @@ en4.ggcommunity.answer = {
                     counter_answer.innerHTML = 'Theory | ' + increment ;
 //                    responseHTML[0].inject( answer_box );
                 }
-        
-                Smoothbox.bind(answer_box);
-               
+                
+                if(responseJSON.status_code == 200){
+                    var items = responseJSON.body.Results;
+                    items.each(function(answer){
+                        var answerElement = getAnswerElement(answer);
+                        answerElement.inject(answer_box,"bottom");
+                    });
+                    initTinyMce();
+                    Smoothbox.bind(answer_box); 
+                }               
             }
         
         }));
@@ -170,27 +192,28 @@ en4.ggcommunity.answer = {
         form.addEventListener("submit", function(e){
 
             e.preventDefault();
-            var body = form.getElementById('edit_'+type+'_body_'+id).value;
+            try{
+                var editor = tinymce.get("tinymce_ggcommunity_answer"+id);
+                var body = editor.getContent();
+            }catch(e){  }
             var answer_holder_box = document.getElementById('item_main_box_'+id);
             if(!body) return;
+            $("ggcommunity_answer_"+id).getElement(".item_body").set("html",body);
+            $("ggcommunity_answer_"+id).getElement(".item_body").removeClass('none');
+            form_holder.setAttribute("style","display:none");
             
-            en4.core.request.send(new Request.HTML({
-                url : 'ggcommunity/answer-profile/edit',
+            en4.core.request.send(new Request.JSON({
+                url : en4.core.baseUrl+'api/v1/answer',
                 data : {
-                    format : 'html',
-                    answer_id : id,
-                    body : tinymce.get('edit_'+type+'_body_'+id).getContent(),
+                    answerID : id,
+                    questionID:en4.core.subject.id,
+                    body : body
                 },
-                onComplete: function(responseHTML) {
+                onComplete: function(responseJSON) {
                     
-                    // hide form
-                    form_holder.setAttribute("style","display:none");
                 }
                 
-            }), {
-                // return holder with new answer in it
-                'element' : answer_holder_box
-            });
+            }));
                 
         });
 
