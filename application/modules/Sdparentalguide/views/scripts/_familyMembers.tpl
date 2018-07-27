@@ -250,10 +250,10 @@ div.layout_page_user_signup_index .left-side {
         <div class="form-wrapper">
 
             <div class="d-flex justify-content-end family-buttons-action">
-                <button type="skip" name="skip" class="btn btn-light mr-2">
+                <button type="skip" name="skip" class="btn btn-light mr-2 w-25">
                     <?php echo $this->translate('Skip'); ?>
                 </button>
-                <button type="submit" name="submit" class="btn btn-success">
+                <button type="submit" name="submit" class="btn btn-success w-25">
                     <?php echo $this->translate('Continue'); ?>
                 </button>
             </div>
@@ -277,16 +277,8 @@ function getMonth(month) {
 }
 
 function editFamily(el) {
-
-    let memberHolder = el.getParent('div.row');
-    let memberID = memberHolder.getAttribute('id');
-    let gender = memberHolder.getElement('input').getAttribute('value');
-    
-    localStorage.setItem('update', memberID);
-
-    selectChildGender(gender);
+    localStorage.setItem('update', el.getParent('div.row').getAttribute('id') );
     addChild(0);
-   
 }
 
 function removeFamily(el) {
@@ -448,7 +440,6 @@ function setupFamilyMember() {
     });
 
     let updateItem = document.getElementById(localStorage.getItem('update'));
-    console.log(localStorage.getItem('update'));
     if(updateItem) {
         updateItem.remove();
         localStorage.removeItem('update');
@@ -464,6 +455,7 @@ function setupFamilyMember() {
 }
 
 function setupFieldValue(type, value) {
+        
     if (typeof(Storage) !== "undefined") {
         localStorage.setItem(type, value);
     }
@@ -471,6 +463,7 @@ function setupFieldValue(type, value) {
 
 function displayFamilySelector(type) {
     
+
     var monthsHolder = document.getElementById('months');
     var yearsRangeHolder = document.getElementById('years-range');
     var yearsHolder = document.getElementById('years');

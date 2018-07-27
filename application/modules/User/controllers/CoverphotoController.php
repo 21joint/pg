@@ -126,6 +126,8 @@ class User_CoverphotoController extends Core_Controller_Action_Standard {
   }
 
   public function uploadCoverPhotoAction() {
+
+   
     if (!$this->_helper->requireUser()->isValid()) {
       return;
     }
