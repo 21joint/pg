@@ -4,7 +4,7 @@
     </span>
 </div>
 
-<div class="container p-0 col-12 col-sm-12" id="family-information">
+<div class="container p-0 col-12 col-sm-12 family-members-box" id="family-information">
     
     <?php 
 
@@ -21,7 +21,6 @@
         (count($families) > 0) ? $last_item = end($families->toArray())['family_member_id'] : $last_item = 0;
 
     ?>
-
     <?php if(count($families) > 0): ?>
     <?php foreach($families as $item): ?>
         <div class="row d-flex align-items-center my-4 mx-0" id="<?php echo $item->getIdentity(); ?>">
@@ -43,7 +42,7 @@
             </div>
 
             <div class="col-6 family-item p-0">
-                <span class="text-muted"> 
+                <span class="text-muted">
                     <?php echo date($item->dob); ?>
                 </span>
                 <p class="desc text-muted small">
@@ -159,7 +158,7 @@
 var lastItem = <?php echo $last_item; ?>;
 
 en4.core.runonce.add(function() {
-    let familyHolder = document.getElementById('family-information');
+    let familyHolder = document.getElementsByClassName('family-members-box')[0];
     let familyWrapper = familyHolder.getParent();
     
     // add style modifications
@@ -310,7 +309,7 @@ function displayFinalDate(type, e) {
 
 function setupFamilyMember() {
 
-    let familyHolder = document.getElementById('family-information');
+    let familyHolder = document.getElementsByClassName('family-members-box')[0];
     var genderImage;
     var genderType;
     var gender = localStorage.getItem('gender');
@@ -336,13 +335,14 @@ function setupFamilyMember() {
 
     let item = new Element('div', {
         'class': 'row d-flex align-items-center my-4 mx-0',
+        'id': lastItem,
         'html': '<div class="col-2 p-0 family-item-holder">'+genderImage+'</div><div class="col-6 family-item p-0"> <span class="text-muted"> '+birthdayDate+' </span><p class="desc text-muted small">'+genderType+'</p>'+htmlInputFields+'</div>' + editMember
     });
 
     let updateItem = document.getElementById(localStorage.getItem('update'));
     if(updateItem) {
         updateItem.remove();
-        localStorage.removeItem('update')
+        localStorage.removeItem('update');
     }
         
     familyHolder.insertBefore(item, familyHolder.childNodes[0]);
