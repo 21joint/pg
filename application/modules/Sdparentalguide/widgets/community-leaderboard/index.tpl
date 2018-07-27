@@ -17,6 +17,7 @@
             <li id="leaderboard_nav_ovl" class="leaderboard_nav leaderboard_title_active">Overall</li>
             <li id="leaderboard_nav_mth" class="leaderboard_nav">Month</li>
             <li id="leaderboard_nav_wek" class="leaderboard_nav">Week</li>
+            <li id="leaderboard_nav_day" class="leaderboard_nav">Day</li>
         </ul><!-- Add back in when the service is provided -->
     </div>
     <div class="leaderboard_main d-flex justify-content-between">
@@ -110,16 +111,25 @@ document.getElementById('leaderboard_nav_ovl').addEventListener('click', functio
     this.addClass('leaderboard_title_active');
     document.getElementById('leaderboard_nav_mth').removeClass('leaderboard_title_active');
     document.getElementById('leaderboard_nav_wek').removeClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_day').removeClass('leaderboard_title_active');
 });
 document.getElementById('leaderboard_nav_mth').addEventListener('click', function(){
     this.addClass('leaderboard_title_active');
     document.getElementById('leaderboard_nav_ovl').removeClass('leaderboard_title_active');
     document.getElementById('leaderboard_nav_wek').removeClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_day').removeClass('leaderboard_title_active');
 });
 document.getElementById('leaderboard_nav_wek').addEventListener('click', function(){
     this.addClass('leaderboard_title_active');
     document.getElementById('leaderboard_nav_mth').removeClass('leaderboard_title_active');
     document.getElementById('leaderboard_nav_ovl').removeClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_day').removeClass('leaderboard_title_active');
+});
+document.getElementById('leaderboard_nav_day').addEventListener('click', function(){
+    this.addClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_mth').removeClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_ovl').removeClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_wek').removeClass('leaderboard_title_active');
 });
 
 // Orders by each category which is clicked on using ajax
@@ -220,7 +230,7 @@ function loadLeaderboardResults(tm, ord, disp = 0, page = 1) {
                 var results = responseJSON.body.Results;
 
                 // Testing... Delete after done
-                // console.log(results);
+                console.log(results);
 
                 for(var i = 0; i < results.length; i++) {
                     // Matching Contribution Level to Contribution Award (Bronze, Silver, Gold, Platinum) 
