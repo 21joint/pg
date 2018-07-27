@@ -230,14 +230,41 @@ function loadLeaderboardResults(page = 1) {
                 var html = "";
                 var results = responseJSON.body.Results;
                 for(var i = 0; i < results.length; i++) {
+                    // Matching Contribution Level to Contribution Award (Bronze, Silver, Gold, Platinum) 
+                    var adjust_award = String(results[i].expertPlatinumCount)+
+                                        String(results[i].expertGoldCount)+
+                                        String(results[i].expertSilverCount)+
+                                        String(results[i].expertBronzeCount);
+                    // Number that Will be Displayed
+                    var adjust_count;
+                    if(adjust_award >= 1000){
+                        adjust_count = results[i].expertPlatinumCount;
+                    }else if(adjust_award >= 100){
+                        adjust_count = results[i].expertGoldCount;
+                    }else if(adjust_award >= 10){
+                        adjust_count = results[i].expertSilverCount;
+                    }else if(adjust_award >= 1){
+                        adjust_count = results[i].expertBronzeCount;
+                    }else{
+                        adjust_count = results[i].contributionLevel;
+                    }
+
                     html += '<div class="leaderboard_item d-flex justify-content-between">'+
                                 '<div class="d-flex justify-content-center align-items-center">'+
                                     ((page-1)*20+(i+1))+
                                 '</div>'+
                                 '<div class="d-flex align-items-center leader position-relative">'+
-                                    '<img src="'+results[i].avatarPhoto.photoURLIcon+'"/>'+
-                                    '<span class="cont_level position-absolute">'+
-                                        results[i].contributionLevel+'</span>'+
+                                    '<img class="avatar_halo" src="'+
+                                        results[i].avatarPhoto.photoURLIcon+
+                                    '" data-halo="'+ results[i].mvp +'"/>'+
+                                    '<span class="cont_level position-absolute rounded-circle" data-cont="'+
+                                        results[i].expertPlatinumCount+
+                                        results[i].expertGoldCount+
+                                        results[i].expertSilverCount+
+                                        results[i].expertBronzeCount+
+                                    '">'+
+                                        adjust_count+
+                                    '</span>'+
                                     '<h4>'+results[i].displayName+'</h4>'+
                                 '</div>'+
                                 '<div class="points d-flex align-items-center justify-content-center">'+
@@ -247,6 +274,28 @@ function loadLeaderboardResults(page = 1) {
                             '</div>';
                 }
                 leaderboardContent.innerHTML = html;
+                // Avatar Styling
+                // Check the Data Attribute for Mvp Status
+                // If Item has Mvp Status Put Halo Around Avatar Change Contribution Level Color
+                document.querySelectorAll('.avatar_halo').forEach(function(avatar_halo){
+                    if(avatar_halo.dataset.halo == "true"){
+                        avatar_halo.addClass('avatar_halo_disp');
+                        avatar_halo.style.borderImage = "url('<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/border.png') 20 20 20 20 fill";
+                    }
+                });
+                document.querySelectorAll('.cont_level').forEach(function(avatar_cont){
+                    if(avatar_cont.dataset.cont >= 1000){
+                        avatar_cont.addClass('cont_level_platinum');
+                    }else if(avatar_cont.dataset.cont >= 100){
+                        avatar_cont.addClass('cont_level_gold');
+                    }else if(avatar_cont.dataset.cont >= 10){
+                        avatar_cont.addClass('cont_level_silver');
+                    }else if(avatar_cont.dataset.cont >= 1){
+                        avatar_cont.addClass('cont_level_bronze');
+                    }else{
+                        avatar_cont.addClass('cont_level_default');
+                    }
+                });
                 // Showing current page in pagination section
                 // document.getElementById('leaderboard_pageNum').innerText = page;
             }else{
@@ -333,10 +382,37 @@ function loadMvpExpertResults(disp_mvps = 1, disp_experts = 0){
                 var html = "";
                 var results = responseJSON.body.Results;
                 for(var i = 0; i < results.length; i++){
+                    // Matching Contribution Level to Contribution Award (Bronze, Silver, Gold, Platinum) 
+                    var adjust_award = String(results[i].expertPlatinumCount)+
+                                        String(results[i].expertGoldCount)+
+                                        String(results[i].expertSilverCount)+
+                                        String(results[i].expertBronzeCount);
+                    // Number that Will be Displayed
+                    var adjust_count;
+                    if(adjust_award >= 1000){
+                        adjust_count = results[i].expertPlatinumCount;
+                    }else if(adjust_award >= 100){
+                        adjust_count = results[i].expertGoldCount;
+                    }else if(adjust_award >= 10){
+                        adjust_count = results[i].expertSilverCount;
+                    }else if(adjust_award >= 1){
+                        adjust_count = results[i].expertBronzeCount;
+                    }else{
+                        adjust_count = results[i].contributionLevel;
+                    }
+
                     html += '<div class="mvps_item d-flex flex-column align-items-center justify-content-center position-relative mr-5">'+
-                                '<img src="'+results[i].avatarPhoto.photoURLIcon+'"/>'+
-                                '<span class="cont_level position-absolute">'+
-                                        results[i].contributionLevel+'</span>'+
+                                '<img class="mvp_halo" src="'+
+                                    results[i].avatarPhoto.photoURLProfile+
+                                '" data-halo="'+ results[i].mvp +'"/>'+
+                                '<span class="cont_level position-absolute rounded-circle" data-cont="'+
+                                    results[i].expertPlatinumCount+
+                                    results[i].expertGoldCount+
+                                    results[i].expertSilverCount+
+                                    results[i].expertBronzeCount+
+                                '">'+
+                                    adjust_count+
+                                '</span>'+
                                 '<h4 class="text-center mt-1 mb-5">'+results[i].displayName+'</h4>'+
                                 '<div class="mvps_contribution d-flex justify-content-center align-items-center w-100 py-2">'+
                                     '<svg style="margin: 3px 5px 0px 0px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px" viewBox="0 0 42.03 39.91"><defs><linearGradient id="a" x1="26.26" y1="12.68" x2="40.67" y2="12.68" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#51b2b6"></stop><stop offset="1" stop-color="#5bc6cd"></stop></linearGradient><linearGradient id="b" y1="17.32" x2="17.39" y2="17.32" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5bc6cd"></stop><stop offset="1" stop-color="#51b2b6"></stop></linearGradient></defs><title>star_pg</title><path d="M40.23,8.55,32.7,18.46l-6.44-8.6L38.77,7C40.61,6.57,41.14,7.31,40.23,8.55Z" fill="url(#a)"></path><path d="M17.39,12,.93,16.13c-1,.24-1.28,1.35-.32,1.79l16.06,4.7Z" fill="url(#b)"></path><path d="M15.31,38.4,17.42,1c0-1.06,1.1-1.31,1.76-.45L41.59,28.45c.83,1,.6,2.71-1.71,1.81L26.36,25.09l-8.44,14A1.36,1.36,0,0,1,15.31,38.4Z" fill="#5bc6cd"></path></svg>'+
@@ -344,7 +420,29 @@ function loadMvpExpertResults(disp_mvps = 1, disp_experts = 0){
                                 '</div>'+
                             '</div>';
                 }
-                leaderboardContent.innerHTML = html;                       
+                leaderboardContent.innerHTML = html;
+                // Avatar Styling
+                // Check the Data Attribute for Mvp Status
+                // If Item has Mvp Status Put Halo Around Avatar Change Contribution Level Color
+                document.querySelectorAll('.mvp_halo').forEach(function(mvp_halo){
+                    if(mvp_halo.dataset.halo == "true"){
+                        mvp_halo.addClass('avatar_halo_disp');
+                        mvp_halo.style.borderImage = "url('<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/border.png') 10 10 10 10 fill";
+                    }
+                });
+                document.querySelectorAll('.cont_level').forEach(function(avatar_cont){
+                    if(avatar_cont.dataset.cont >= 1000){
+                        avatar_cont.addClass('cont_level_platinum');
+                    }else if(avatar_cont.dataset.cont >= 100){
+                        avatar_cont.addClass('cont_level_gold');
+                    }else if(avatar_cont.dataset.cont >= 10){
+                        avatar_cont.addClass('cont_level_silver');
+                    }else if(avatar_cont.dataset.cont >= 1){
+                        avatar_cont.addClass('cont_level_bronze');
+                    }else{
+                        avatar_cont.addClass('cont_level_default');
+                    }
+                });                      
             }else{
                 leaderboardContent.innerHTML = responseJSON.message;
             }
