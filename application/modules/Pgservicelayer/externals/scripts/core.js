@@ -105,6 +105,21 @@ en4.pgservicelayer = {
             '</div>';
         return hoverHtml;
     },
+    handleResponseError: function(responseJSON,container,appendType){
+        if($("sd_response_error")){
+            $("sd_response_error").destroy();
+        }
+        var errorElement = new Element('div',{
+            'class': 'sd_response_error',
+            'id' : 'sd_response_error'
+        });
+        if($type(responseJSON.message) == 'array'){
+            
+        }else{
+            errorElement.set("hmtl",responseJSON.message);
+        }
+        errorElement.inject(container,appendType);
+    }
 };
 var loader = new Element('div', {
   'class': 'container col-1 m-auto sd_loader',

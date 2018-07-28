@@ -307,6 +307,7 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
         $db = $subject->comments()->getCommentTable()->getAdapter();
         $db->beginTransaction();
         try {
+            $api = Engine_Api::_()->getApi("V1_Reaction","pgservicelayer");
             foreach($comments as $comment){
                 $poster = Engine_Api::_()->getItem($comment->poster_type, $comment->poster_id);                
                 if(!$poster->isSelf($viewer)){

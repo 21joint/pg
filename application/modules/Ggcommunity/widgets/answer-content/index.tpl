@@ -266,11 +266,19 @@ function getAnswerElement(answer){
         voteHtml += '<a href="javascript:void(0)" class="vote-down" onclick="en4.ggcommunity.vote(\'ggcommunity_answer\','+answer.answerID+' ,0)"><svg aria-hidden="true" data-prefix="fas" data-icon="arrow-circle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-143.6-28.9L288 302.6V120c0-13.3-10.7-24-24-24h-16c-13.3 0-24 10.7-24 24v182.6l-72.4-75.5c-9.3-9.7-24.8-9.9-34.3-.4l-10.9 11c-9.4 9.4-9.4 24.6 0 33.9L239 404.3c9.4 9.4 24.6 9.4 33.9 0l132.7-132.7c9.4-9.4 9.4-24.6 0-33.9l-10.9-11c-9.5-9.5-25-9.3-34.3.4z"></path></svg></a>';
     }
     
+    var authorPhoto = en4.pgservicelayer.authorPhoto(author);
     var editFormHtml = getEditForm('ggcommunity_answer',answer.answerID,answer.body);
+    var commentCountHtml = '<?php echo $this->translate("Comment"); ?>';
+    if(answer.commentsCount == 1){
+        commentCountHtml += " | "+answer.commentsCount;
+    }
+    if(answer.commentsCount > 1){
+        commentCountHtml = '<?php echo $this->translate("Comment"); ?> | '+answer.commentsCount;
+    }
     var html = "<div class='holder-box "+acceptedClass+"' id='item_main_box_"+answer.answerID+"'>"+'<div class="item-main-description">'+   
                     "<div class='question-main-description display-flex'>"+
                         '<div class="question-main-left large-1 columns medium-1 small-2">'+
-                            '<div class="question-owner-photo">'+en4.pgservicelayer.authorPhoto(author)+'</div>'+
+                            '<div class="question-owner-photo">'+authorPhoto+'</div>'+
                             '<div class="question_votes_holder" id="vote_ggcommunity_answer_'+answer.answerID+'">'+
                                 '<div class="vote-options">'+
                                     voteHtml+
@@ -299,12 +307,20 @@ function getAnswerElement(answer){
                         '</div>'+
                         '<div class="question-full-options"><div class="right-options">'+
                             '<a href="javascript:void(0)" class="btn answer small black" onclick="en4.ggcommunity.answer.edit(\'ggcommunity_answer\','+answer.answerID+')"><?php echo $this->translate("Edit"); ?></a>'+
-                            '<a href="javascript:void(0)" class="btn answer small black" id="comment_counter_'+answer.answerID+'" onclick="en4.ggcommunity.answer.comment(\'ggcommunity_answer\','+answer.answerID+')"><?php echo $this->translate("Comment"); ?> | '+answer.commentsCount+'</a>'+
+                            '<a href="javascript:void(0)" class="btn answer small black" id="comment_counter_'+answer.answerID+'" onclick="en4.ggcommunity.answer.comment(\'ggcommunity_answer\','+answer.answerID+')">'+
+                            commentCountHtml+
                         '</div>'+
                     '</div>'+
-                '</div>';
+                '</div>'+
+            '</div>'+
+        '</div>'+'</div>'+'</div>';
     
-    html += '<div class="holder-box holder-width-two white large-11 medium-11 large-offset-1 medium-offset-1 comments-holder none" id="comment_holder_ggcommunity_answer_'+answer.answerID+'"></div>';
+    var commentForm = getCommentForm('ggcommunity_answer',answer.answerID,author,authorPhoto);
+    html += '<div class="holder-box holder-width-two white large-11 medium-11 large-offset-1 medium-offset-1 comments-holder none" id="comment_holder_ggcommunity_answer_'+answer.answerID+'">'+
+        commentForm+
+        '<div class="comments_container" id="comments_box_'+answer.answerID+'">'+
+        '</div>'+
+        '</div>';
     
     var answerElement = new Element("div",{
         'class': 'answer_holder_box',
@@ -334,6 +350,33 @@ function getEditForm(type,id,body){
                 '</form>'+
             '</div>'+
         '</div>';
+    return formHtml;
+}
+function getCommentForm(type,id,author,authorPhoto){
+    if(!authorPhoto){
+        authorPhoto = en4.pgservicelayer.authorPhoto(author);
+    }
+    var editUrl = en4.core.baseUrl+"ggcommunity/answer/edit";
+    var formHtml = '<div class="comment_form border-bottom" class="comment_holder_form">'+
+                '<form id="create_comment_form" enctype="application/x-www-form-urlencoded" class="global_form_front extfox-form" action="'+editUrl+'" method="post" data-id="'+id+'">'+
+                    '<div>'+
+                        '<div>'+
+                            '<div class="form-elements">'+
+                                '<div class="holder-owner-photo d-inline-block">'+
+                                authorPhoto+
+                                '</div>'+
+                                '<div class="form-wrapper" id="body-wrapper">'+
+                                    '<div id="body-label" class="form-label">&nbsp;</div>'+
+                                    '<div id="body-element" class="form-element">'+
+                                        '<textarea name="body" id="comment_body" cols="45" rows="1" class="comment_text" placeholder="Leave a comment..." autofocus="autofocus"></textarea>'+
+                                    '</div>'+                                    
+                                '</div>'+
+                                '<button name="submit" id="add_comment" type="submit" class="submit-comment  btn primary small active"><?php echo $this->translate("Comment"); ?></button>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>'+
+                '</form>'+
+            '</div>';
     return formHtml;
 }
 function initTinyMce(){

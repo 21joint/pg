@@ -156,13 +156,27 @@ function getQuestionElement(question){
                 '</div>'+
             '</div>';
         
+    var commentCountHtml = '<?php echo $this->translate("Comment"); ?>';
+    if(question.commentsCount == 1){
+        commentCountHtml += " | "+question.commentsCount;
+    }
+    if(question.commentsCount > 1){
+        commentCountHtml = '<?php echo $this->translate("Comments"); ?> | '+question.commentsCount;
+    }
+    var answerCountHtml = '<?php echo $this->translate("Theory"); ?>';
+    if(question.answerCount == 1){
+        answerCountHtml += " | "+question.answerCount;
+    }
+    if(question.answerCount > 1){
+        answerCountHtml = '<?php echo $this->translate("Theories"); ?> | '+question.answerCount;
+    }
     var questionOptions = '<div class="question-full-options large-11 medium-12 columns large-offset-1 medium-offset-1">'+
             '<div class="left-options  large-6 medium-6 small-11 large-offset-0 medium-offset-0 small-offset-1">'+
                 '<a href="javascript:void(0)" id="count_answers" class="active btn small primary " onclick="switchTab(\'answer\',<?php echo $this->subject->getIdentity();?>)">'+
-                (question.answerCount == 1?'<?php echo $this->translate('Theory | '); ?>':'<?php echo $this->translate('Theories | '); ?>')+question.answerCount+
+                answerCountHtml+
                 '</a>'+
                 '<a href="javascript:void(0)" id="count_question_comments" class="btn answer small blue" onclick="switchTab(\'comment\',<?php echo $this->subject->getIdentity();?>)">'+
-                (question.commentsCount == 1?'<?php echo $this->translate('Comment | '); ?>':'<?php echo $this->translate('Comments | '); ?>')+question.commentsCount+
+                commentCountHtml+
                 '</a>'+
                 editQuestion+
             '</div>'+

@@ -241,34 +241,46 @@ en4.ggcommunity.answer = {
             comment_form.classList.remove('none');
         }
     
-        var form = comment_holder.firstElementChild.firstElementChild;
+        var form = comment_holder.getElement("#create_comment_form");
         var form_holder = form.parentNode;
        
         var comments_only = comment_holder.getElementById('comments_box_'+parent_id);
+        var container = $("comments_box_"+parent_id);
+        if(!$(comment_holder).hasClass('none')){            
+            loadComments('Answer',parent_id,container);
+        }
         
         form.addEventListener("submit", function(e){
             
             e.preventDefault();  
-            if(comment_form!=null) {
+            if(form != null) {
                 var body = form.getElementById('comment_body').value;
                 if(!body) return;
             }
 
-            en4.core.request.send(new Request.HTML({
-                url : 'ggcommunity/comment-index/create',
+            en4.core.request.send(new Request.JSON({
+                url : en4.core.baseUrl+'api/v1/comment',
                 data : {
-                    format : 'html',
-                    parent_type : parent_type,
-                    parent_id : parent_id,
+                    contentType : 'Answer',
+                    contentID : parent_id,
                     body : body,    
                 },
-                onComplete: function(responseHTML) {
-   
+                onComplete: function(responseJSON) {                    
+                   if(responseJSON.status_code != 200){
+                       return;
+                   }
                    form.reset();
                     
                     // increase countner for comments
                     var comment_counter = document.getElementById('comment_counter_'+parent_id);
                     var counter = comment_counter.innerHTML.trim();
+                    
+                    var comments = responseJSON.body.Results;
+                    comments.each(function(comment){
+                        var commentElement = getCommentElement(comment);
+                        commentElement.inject(container,"top");
+                    });
+                    Smoothbox.bind(container); 
                 
                     if(counter == 'Comment') {
                         var tip_msg = comment_holder.getElementById('no_comments_tip');
@@ -282,7 +294,6 @@ en4.ggcommunity.answer = {
                         
                     }
                     
-                    comments_only.insertBefore(responseHTML[0], comments_only.children[0]);
                     Smoothbox.bind(comment_holder);
                     
                 }

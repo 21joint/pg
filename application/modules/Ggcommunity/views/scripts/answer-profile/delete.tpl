@@ -27,6 +27,21 @@ en4.core.runonce.add(function(){
                     if(window.parent.$("answer_holder_box_<?php echo $this->subject->getIdentity(); ?>")){
                         window.parent.$("answer_holder_box_<?php echo $this->subject->getIdentity(); ?>").destroy();
                     }
+                    try{
+                        var comment_counter = window.parent.$('count_answers');
+                        var counter = comment_counter.innerHTML.trim();
+                        var comments = parseInt(counter.substr(counter.indexOf("| ")+2));
+                        var increment = comments-1;
+                        if(increment == 1){
+                            comment_counter.innerHTML = 'Theory | ' + increment ;
+                        }else{
+                            comment_counter.innerHTML = 'Theories | ' + increment ;
+                        }
+                        if(increment == 1){
+                            comment_counter.innerHTML = 'Theory';
+                        }
+                        
+                    }catch(e){ console.log(e); }                    
                     window.parent.Smoothbox.close();
                 }else{
                     alert(responseJSON.message);

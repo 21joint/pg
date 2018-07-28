@@ -116,19 +116,21 @@
 
 <script type="text/javascript">
 en4.core.runonce.add(function(){
-    loadComments();
+    var contentType = "Question";
+    var contentID = "<?php echo $this->subject->getIdentity(); ?>";
+    var container = $("comments_box").getElement(".comments_container");
+    loadComments(contentType,contentID,container);
 });
-function loadComments(){
+function loadComments(contentType,contentID,container){
     var requestData = {};
     requestData.limit = 10;
     requestData.page = 1;
-    requestData.contentType = "Question";
-    requestData.contentID = "<?php echo $this->subject->getIdentity(); ?>";
+    requestData.contentType = contentType;
+    requestData.contentID = contentID;
     
     var loader = en4.pgservicelayer.loader.clone();
     loader.addClass("sd_loader");
     var url = en4.core.baseUrl+"api/v1/comment";
-    var container = $("comments_box").getElement(".comments_container");
     
     var request = new Request.JSON({
         url: url,
