@@ -17,6 +17,7 @@
             <li id="leaderboard_nav_ovl" class="leaderboard_nav leaderboard_title_active">Overall</li>
             <li id="leaderboard_nav_mth" class="leaderboard_nav">Month</li>
             <li id="leaderboard_nav_wek" class="leaderboard_nav">Week</li>
+            <li id="leaderboard_nav_day" class="leaderboard_nav">Day</li>
         </ul><!-- Add back in when the service is provided -->
     </div>
     <div class="leaderboard_main d-flex justify-content-between">
@@ -26,7 +27,7 @@
         <div id="points" class="order_by d-flex justify-content-center align-items-center" data-order="contributionPoints"><?php echo $this->translate('Contribution'); ?></div>
         <div id="reviews" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="reviewCount"><?php echo $this->translate('Reviews'); ?></div>
         <!-- <div class="d-none d-md-flex justify-content-center align-items-center">Answers --><!-- Sort By Answer not supported yet by the service layer --><!-- </div> -->
-        <div id="questions" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="questionCount"><?php echo $this->translate('Questions'); ?></div>
+        <div id="questions" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="questionCount"><?php echo $this->translate('Struggles'); ?></div>
         <!-- <div id="followers" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="followers"><?php echo $this->translate('Followers'); ?></div> -->
         <!-- Categories End -->
         <div class="d-flex d-md-none justify-content-center align-items-center">
@@ -110,16 +111,25 @@ document.getElementById('leaderboard_nav_ovl').addEventListener('click', functio
     this.addClass('leaderboard_title_active');
     document.getElementById('leaderboard_nav_mth').removeClass('leaderboard_title_active');
     document.getElementById('leaderboard_nav_wek').removeClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_day').removeClass('leaderboard_title_active');
 });
 document.getElementById('leaderboard_nav_mth').addEventListener('click', function(){
     this.addClass('leaderboard_title_active');
     document.getElementById('leaderboard_nav_ovl').removeClass('leaderboard_title_active');
     document.getElementById('leaderboard_nav_wek').removeClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_day').removeClass('leaderboard_title_active');
 });
 document.getElementById('leaderboard_nav_wek').addEventListener('click', function(){
     this.addClass('leaderboard_title_active');
     document.getElementById('leaderboard_nav_mth').removeClass('leaderboard_title_active');
     document.getElementById('leaderboard_nav_ovl').removeClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_day').removeClass('leaderboard_title_active');
+});
+document.getElementById('leaderboard_nav_day').addEventListener('click', function(){
+    this.addClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_mth').removeClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_ovl').removeClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_wek').removeClass('leaderboard_title_active');
 });
 
 // Orders by each category which is clicked on using ajax
@@ -200,7 +210,7 @@ function loadLeaderboardResults(tm, ord, disp = 0, page = 1) {
     var url = en4.core.baseUrl+"api/v1/ranking";
 
     // Testing... Delete after done
-    // console.log(tm, ord, disp, page);
+    console.log(tm, ord, disp, page);
 
     var request = new Request.JSON({
         url: url,
@@ -218,15 +228,49 @@ function loadLeaderboardResults(tm, ord, disp = 0, page = 1) {
 
                 var html = "";
                 var results = responseJSON.body.Results;
+
+                // Testing... Delete after done
+                console.log(results);
+
                 for(var i = 0; i < results.length; i++) {
+                    // Matching Contribution Level to Contribution Award (Bronze, Silver, Gold, Platinum) 
+                    var adjust_award = String(results[i].expertPlatinumCount)+
+                                        String(results[i].expertGoldCount)+
+                                        String(results[i].expertSilverCount)+
+                                        String(results[i].expertBronzeCount);
+                    // Number that Will be Displayed
+                    var adjust_count;
+                    if(adjust_award >= 1000){
+                        adjust_count = results[i].expertPlatinumCount;
+                    }else if(adjust_award >= 100){
+                        adjust_count = results[i].expertGoldCount;
+                    }else if(adjust_award >= 10){
+                        adjust_count = results[i].expertSilverCount;
+                    }else if(adjust_award >= 1){
+                        adjust_count = results[i].expertBronzeCount;
+                    }else{
+                        adjust_count = results[i].contributionLevel;
+                    }
+
                     html += '<div class="leaderboard_item d-flex justify-content-between">'+
                                 '<div class="d-flex justify-content-center align-items-center">'+
                                     ((page-1)*20+(i+1))+
                                 '</div>'+
                                 '<div class="d-flex align-items-center leader position-relative">'+
-                                    '<img src="'+results[i].avatarPhoto.photoURLIcon+'"/>'+
-                                    '<span class="cont_level position-absolute">'+
-                                        results[i].contributionLevel+'</span>'+
+                                    '<div class="avatar_popup position-absolute d-none bg-white">'+
+                                        ''+
+                                    '</div>'+
+                                    '<img class="avatar_halo" src="'+
+                                        results[i].avatarPhoto.photoURLIcon+
+                                    '" data-halo="'+ results[i].mvp +'"/>'+
+                                    '<span class="cont_level position-absolute rounded-circle" data-cont="'+
+                                        results[i].expertPlatinumCount+
+                                        results[i].expertGoldCount+
+                                        results[i].expertSilverCount+
+                                        results[i].expertBronzeCount+
+                                    '">'+
+                                        adjust_count+
+                                    '</span>'+
                                     '<h4>'+results[i].displayName+'</h4>'+
                                 '</div>'+
                                 '<div class="points d-flex align-items-center justify-content-center">'+
@@ -248,6 +292,30 @@ function loadLeaderboardResults(tm, ord, disp = 0, page = 1) {
                             '</div>';
                 }
                 leaderboardContent.innerHTML = html;
+                // Avatar Styling
+                // Check the Data Attribute for Mvp Status
+                // If Item has Mvp Status Put Halo Around Avatar Change Contribution Level Color
+                document.querySelectorAll('.avatar_halo').forEach(function(avatar_halo){
+                    if(avatar_halo.dataset.halo == "true"){
+                        avatar_halo.addClass('avatar_halo_disp');
+                        avatar_halo.style.borderImage = "url('<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/border.png') 20 20 20 20 fill";
+                    }
+                });
+                document.querySelectorAll('.cont_level').forEach(function(avatar_cont){
+                    if(avatar_cont.dataset.cont >= 1000){
+                        avatar_cont.addClass('cont_level_platinum');
+                    }else if(avatar_cont.dataset.cont >= 100){
+                        avatar_cont.addClass('cont_level_gold');
+                    }else if(avatar_cont.dataset.cont >= 10){
+                        avatar_cont.addClass('cont_level_silver');
+                    }else if(avatar_cont.dataset.cont >= 1){
+                        avatar_cont.addClass('cont_level_bronze');
+                    }else{
+                        avatar_cont.addClass('cont_level_default');
+                    }
+                });
+                // Displaying Avatar Popup
+                
                 // Showing current pages in pagination section
                 var lastpage = 10;
                 // First 4 Pages You can Skip to

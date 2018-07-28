@@ -90,16 +90,46 @@
   border-radius: 50%;
   margin-right: 16px;
 }
-.leader .cont_level{
-  top: 25px;
-  left: 28px;
+.cont_level{
+  top: 28px;
+  left: 34px;
   font-size: 11px;
   font-weight: bold;
-  border: 2px solid #e4fafa;
-  border-radius: 50%;
-  padding: 2px 6px;
-  background-color: #5cc7ce;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
+  border: 2px solid #fff;
+}
+.cont_level_default{
+  background-color: #5cc7ce;
+}
+.cont_level_bronze{
+  background: linear-gradient(to bottom right, #E5B8A8, #D7947C);
+}
+.cont_level_silver{
+  background: linear-gradient(to bottom right, #D9D8D8, #BDBDBD);
+}
+.cont_level_gold{
+  background: linear-gradient(to bottom right, #F1D37F, #D9BB66);
+}
+.cont_level_platinum{
+  background: linear-gradient(to bottom right, #EBEEF6, #B3C3D9);
+}
+.avatar_halo_disp{
+  border-style: solid;
+  border-width: 5px 6px 5px 6px;
+}
+
+.avatar_popup{
+  top: 40px;
+  left: 40px;
+  width: 300px;
+  height: 300px;
+  background-color: red;
+  z-index: 999;
 }
 /* -> For testing .leaderboard_item div{
   border: 1px solid red;
@@ -221,6 +251,7 @@
 }
 .mvps_item img{
   width: 100px;
+  height: 100px;
   border-radius: 50%;
 }
 .mvps_item h4{
@@ -232,9 +263,13 @@
   left: 96px;
   font-size: 16px;
   font-weight: bold;
-  border: 2px solid #e4fafa;
+  border: 2px solid #fff;
   border-radius: 50%;
-  padding: 3px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 28px!important;
+  width: 28px!important;
   background-color: #5cc7ce;
   color: white;
 }
