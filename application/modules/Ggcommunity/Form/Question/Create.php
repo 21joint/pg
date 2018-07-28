@@ -13,7 +13,7 @@ class Ggcommunity_Form_Question_Create extends Engine_Form
     $viewer = Engine_Api::_()->user()->getViewer();
     $can_change = Engine_Api::_()->authorization()->isAllowed('ggcommunity', null, 'edit_close_date');
 
-    $this->setAttrib('id', 'global_form_front extfox_create')
+    $this->setAttrib('id', 'global_form_front') // id should include spaces 'global_form_front extfox_create'
       ->setAttrib('class','extfox_form')
     ;
          
@@ -49,6 +49,9 @@ class Ggcommunity_Form_Question_Create extends Engine_Form
     ),
   ));
   $this->tags->getDecorator("Description")->setOption("placement", "append");
+  $this->addElement("Hidden",'topic_id',array(
+      'order' => 033393,
+  ));
         
   //Create Tinymce textarea(with this way you allow using default textareas on the same page)
   $this->addElement('TinyMce', 'body', array(
@@ -73,10 +76,15 @@ class Ggcommunity_Form_Question_Create extends Engine_Form
     ),
   ));
 
-  $this->addElement('File', 'photo', array(
-    'label' => 'Include Photo'
+  $this->addElement('PGHTMLUpload', 'Filedata', array(
+    'label' => 'Include Photo',
+    'form' => '#form-upload',
+    'url' => $this->getView()->baseUrl()."/api/v1/photo",
+    'accept' => 'image/*',
   ));
-  $this->photo->addValidator('Extension', false, 'jpg,png,gif,jpeg');
+  $this->addElement("Hidden",'photo_id',array(
+      'order' => 55998,
+  ));
 
   if($can_change == 1) {
     // $this->addElement('CalendarDateTime', 'date_closed', array(

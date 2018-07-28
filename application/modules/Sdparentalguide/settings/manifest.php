@@ -73,6 +73,10 @@
             'resource' => 'Sdparentalguide_Plugin_Core',
             'priority' => '1000'
         ),
+        array(
+            'event' => 'onCreditCreateAfter',
+            'resource' => 'Sdparentalguide_Plugin_Core',
+        ),
   ),
   'items' => array(
       'sdparentalguide_badge',
