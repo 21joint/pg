@@ -35,6 +35,15 @@ class Pgservicelayer_ConflictThirdPartySemodsLoader extends Semods_Loader {
     if ($class == 'Core_Api_Search') {
       $class = "Pgservicelayer_Api_Search";
     }
+    if ($class == 'Siteadvsearch_Api_Search') {
+      $class = "Pgservicelayer_Api_Search";
+    }
+    if ($class == 'Core_Api_Mail') {
+      $class = "Sitemailtemplates_Api_Mail";
+    }
+    if ($class == 'User_Model_DbTable_Membership') {
+      $class = "Pgservicelayer_Model_DbTable_Membership";
+    }
 
     return parent::load($class);
   }
