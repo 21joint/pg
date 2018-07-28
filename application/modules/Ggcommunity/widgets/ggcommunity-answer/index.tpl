@@ -36,8 +36,7 @@
 
 <script>
     function scrollBottom(time) {
-        $("count_answers").click();
-        window.scrollTo(0,$("create-answer-form").getPosition().y-70);        
+        window.scrollTo(0,document.body.scrollHeight);
     }
 
 </script>

@@ -20,7 +20,7 @@ class Ggcommunity_Widget_GgcommunityRelatedController extends Engine_Content_Wid
     // get topic for this subject
     $topics = json_decode($subject->topic, true);
 
-    $ids = array(0);
+    $ids = [];
     foreach($topics as $topic) {
       $ids[]= $topic['topic_id'];
     };
