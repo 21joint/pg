@@ -8,4 +8,4 @@
  */
 ?>
 
-Index Skelton
+Index Skeleton

@@ -7,3 +7,5 @@
  * @author     Stars Developer
  */
 ?>
+
+Index Skeleton

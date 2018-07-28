@@ -527,7 +527,7 @@ function block_sort($array1, $array2)
 
 
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!doctype html>
 <!-- <html>
 <head> -->
   <title>APC INFO <?php echo $host ?></title>

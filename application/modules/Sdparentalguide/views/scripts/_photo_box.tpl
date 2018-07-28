@@ -1,8 +1,6 @@
 <?php $subject = $this->subject; ?>
 <div class="extfox-widgets" id="extfox-widgets">
-    
     <div class="row">
-    
         <div id="box-hover-member" class="box-hover-member bg-white position-absolute">
             <div class="box-holder">
 
@@ -98,6 +96,5 @@
 
             </div>
         </div>
-
     </div>
 </div>

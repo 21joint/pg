@@ -27,7 +27,7 @@ $this->headLink()
 
 <div class="prg-stars">
   <h6 class="font-weight-bold small"><?= $this->translate("Rate this review:") ?></h6>
-  <ul class="list-inline my-0 sr_ug_rating <?= $reviewRatingClass; ?>"
+  <ul class="list-inline m-0 sr_ug_rating <?= $reviewRatingClass; ?>"
       title="<?= $reviewRatingHtml; ?>"
       data-type="review_rating">
     <li id="1" class="rate one"><a href="javascript:void(0);" onclick="doDefaultRating(this," 1", "onestar");"

@@ -1,5 +1,4 @@
 import '../../themes/guidanceguide/scss/styles.scss';
-import './widgets/header/index';
 
 
 (function (jQuery) {
@@ -9,9 +8,10 @@ import './widgets/header/index';
         minimumResultsForSearch: -1,
         placeholder: jQuery(sl).attr('placeholder')
       });
-    })
+    });
+    jQuery('.prg-hamburger--btn').on('click', function (e) {
+      jQuery('body').toggleClass('prg-nav--open');
+    });
   });
-  jQuery('#prgAuthModal').on('hide.bs.modal', function (e) {
-    window.location.href = jQuery(e.relatedTarget).attr('href');
-  }).modal();
+
 })(jQuery);

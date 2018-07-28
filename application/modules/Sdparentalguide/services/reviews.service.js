@@ -95,8 +95,7 @@ module.exports = (function ($) {
         '                          <img class="invisible w-100 h-100 position-absolute" src="' + review.coverPhoto.photoURL + '" alt="' + review.title + '"/>\n' +
         '                        </a>\n' +
         '                        <div class="prg-stars">\n' +
-        '                          <ul class="list-inline my-0">\n' +
-        _self.buildRating(review.authorRating, 5) +
+        '                          <ul class="list-inline m-0">\n' + _self.buildRating(review.authorRating, 5) +
         '                          </ul>\n' +
         '                        </div>\n' +
         '                      </div>\n' +
