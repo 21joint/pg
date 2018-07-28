@@ -57,9 +57,13 @@ class Ggcommunity_QuestionProfileController extends Core_Controller_Action_Stand
     $old_topics = json_decode($subject->topic, true);
  
     $topics_name = [];
-    $topic = $subject->getTopic();
-    if(!empty($topic)){
-        $topics_name[] = $topic->getTitle();
+    foreach($old_topics as $topic) {
+      
+      $table = Engine_Api::_()->getDbtable('topics', 'sdparentalguide');
+      $select = $table->select()->where('topic_id = ?', $topic['topic_id']);
+      $row = $table->fetchRow($select);
+      $topics_name[] = $row->name;
+     
     }
     $topics_name = implode(', ', $topics_name);
 
@@ -73,11 +77,11 @@ class Ggcommunity_QuestionProfileController extends Core_Controller_Action_Stand
     $question_closed_date = $values['date_closed'];
 
     if($question_closed_date !== '0000-00-00 00:00:00') {
-      $values['date_closed'] = $closed_date = date('Y-m-d', strtotime($question_closed_date));
-//      $form->getElement('date_closed')->setValue($closed_date); 
+      $closed_date = date('Y-m-d', strtotime($question_closed_date));
+      $form->getElement('date_closed')->setValue($closed_date); 
     }
     
-    $form->populate($values);
+    $form->populate($subject->toArray());
     $form->getElement('tags')->setValue($topics_name);
     
     $translate = Zend_Registry::get('Zend_Translate');

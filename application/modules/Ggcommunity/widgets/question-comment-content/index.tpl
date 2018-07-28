@@ -147,9 +147,6 @@ function loadComments(contentType,contentID,container){
                     var commentElement = getCommentElement(comment);
                     commentElement.inject(container,"bottom");
                 });
-                if(comments.length <= 0){
-                    container.set("html",'<p class="tip_msg" id="no_comments_tip"><?php echo $this->translate("There are no comments to show for this answer"); ?></p>');
-                }
                 Smoothbox.bind(container); 
                 hoverBoxImage();
             }else{

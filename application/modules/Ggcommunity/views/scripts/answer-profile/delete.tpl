@@ -28,17 +28,17 @@ en4.core.runonce.add(function(){
                         window.parent.$("answer_holder_box_<?php echo $this->subject->getIdentity(); ?>").destroy();
                     }
                     try{
-                        var answer_counter = window.parent.$('count_answers');
-                        var counter = answer_counter.innerHTML.trim();
-                        var answers = parseInt(counter.substr(counter.indexOf("| ")+2));
-                        var increment = answers-1;
+                        var comment_counter = window.parent.$('count_answers');
+                        var counter = comment_counter.innerHTML.trim();
+                        var comments = parseInt(counter.substr(counter.indexOf("| ")+2));
+                        var increment = comments-1;
                         if(increment == 1){
-                            answer_counter.innerHTML = 'Theory | ' + increment ;
+                            comment_counter.innerHTML = 'Theory | ' + increment ;
                         }else{
-                            answer_counter.innerHTML = 'Theories | ' + increment ;
+                            comment_counter.innerHTML = 'Theories | ' + increment ;
                         }
-                        if(increment == 0){
-                            answer_counter.innerHTML = 'Theory';
+                        if(increment == 1){
+                            comment_counter.innerHTML = 'Theory';
                         }
                         
                     }catch(e){ console.log(e); }                    

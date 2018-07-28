@@ -144,7 +144,4 @@ class Ggcommunity_Model_Question extends Core_Model_Item_Abstract
       $table = Engine_Api::_()->getDbTable('answers', 'ggcommunity');
       return $table->fetchRow($table->select()->where('accepted = ?',1));
   }
-  public function getTopic(){
-      return Engine_Api::_()->getItem('sdparentalguide_topic', $this->topic_id);
-  }
 }

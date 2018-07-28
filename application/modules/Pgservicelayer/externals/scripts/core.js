@@ -113,18 +113,10 @@ en4.pgservicelayer = {
             'class': 'sd_response_error',
             'id' : 'sd_response_error'
         });
-        if($type(responseJSON.message) == 'array' || $type(responseJSON.message) == 'object'){
-            var errorsElement = new Element("ul",{ class: 'form-errors' });
-            var li = new Element("li",{
-                'html': 'Error <ul class="errors"><li>Please fill required fields.</li></ul>'
-            });
-            li.inject(errorsElement,"bottom");
-            errorsElement.inject(errorElement,"bottom");
-//            responseJSON.message.each(function(error){
-//                
-//            });
+        if($type(responseJSON.message) == 'array'){
+            
         }else{
-            errorElement.set("html",responseJSON.message);
+            errorElement.set("hmtl",responseJSON.message);
         }
         errorElement.inject(container,appendType);
     }
