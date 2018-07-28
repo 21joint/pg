@@ -140,6 +140,9 @@
 en4.core.runonce.add(function(){
     $$(".extfox_form").addEvent("submit",function(event){
         event.preventDefault();
+        if($("sd_response_error")){
+            $("sd_response_error").destroy();
+        }
         var formValid = true;
         var title = $("title").value.trim();
         var topicID = $("topic_id").value;
@@ -150,31 +153,43 @@ en4.core.runonce.add(function(){
             formValid = false;
         }
         if(!formValid){
-            return;
+            //return;
+        }
+        var closeDate = null;
+        if($("date_closed-day").get("value") != '0' && $("date_closed-month").get("value") != '0' && $("date_closed-year").get("value") != '0'){
+            closeDate = $("date_closed-year").get("value")+"-"+$("date_closed-month").get("value")+"-"+$("date_closed-day").get("value");
         }
         
+        var form = $(this);
         var loader = en4.pgservicelayer.loader.clone();
         new Request.JSON({
-            'url' : en4.core.baseUrl+'api/v1/photo',
+            'url' : en4.core.baseUrl+'api/v1/question',
             emulation: false,
-            method: 'delete',
+            method: 'post',
             data: {
               'photoID': $("fancyuploadfileids").value.trim(),
               'title': title,
               'topicID':topicID,
-              'body': tinymce.get("body").getContent()
+              'body': tinymce.get("body").getContent(),
+              'closedDateTime': closeDate
             },
             onRequest: function(){
                 loader.inject($("global_form_front"),"after");
             },
-            'onSuccess' : function(responseJSON) {
-                loader.destroy();
+            'onSuccess' : function(responseJSON) {                
                 if(responseJSON.status_code == 200){
-                    responseJSON.body.results.each(function(question){
+                    responseJSON.body.Results.each(function(question){
                         window.location.href = en4.core.baseUrl+"struggles/question/"+question.questionID;
                     });
                 }else{
-                    
+                    loader.destroy();
+                    en4.pgservicelayer.handleResponseError(responseJSON,form.getElement(".form-elements"),"before");
+                    var myFx = new Fx.Scroll($(document.body), {
+                        offset: {
+                            x: 0,
+                            y: form.getPosition().y
+                        }
+                    }).toTop();
                 }
             }
         }).send();

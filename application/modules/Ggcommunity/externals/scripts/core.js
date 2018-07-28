@@ -139,8 +139,11 @@ en4.ggcommunity.answer = {
                 var counter = counter_answer.innerHTML.trim();
                 var answers = parseInt(counter.substr(counter.indexOf("| ")+2));
                 var increment = answers+1;
+                if(counter.indexOf("|") < 0){
+                    increment = 1;
+                }
                 
-                if(last_answer_id > 0) {
+                if(increment > 1) {
                     counter_answer.innerHTML = 'Theories | ' + increment ;
 //                    last.parentNode.insertBefore(responseHTML[0], last.nextSibling);
                 } else {

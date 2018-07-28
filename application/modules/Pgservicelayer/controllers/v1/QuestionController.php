@@ -168,7 +168,8 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
             'topic_id' => $this->getParam("topicID"),
             'body' => $this->getParam("body"),
             'photo_id' => (int)$this->getParam("photoID"),
-            'draft' => 0
+            'draft' => 0,
+            'date_closed' => $this->getParam("closedDateTime")
         );
         $table = Engine_Api::_()->getDbTable('questions','ggcommunity');
         $db = $table->getAdapter();

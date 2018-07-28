@@ -142,6 +142,9 @@ Uploader = new Class ({
     var fancyUploadFileds = $('fancyuploadfileids');
     var currentValue = fancyUploadFileds.get('value');
     currentValue += response['id'] + ' ';
+    if(self.options.singleUpload){
+        currentValue = response['id'];
+    }
 
     fancyUploadFileds.set('value', currentValue);
     this.uploadedFileArray[response['id']] = response['fileName'];
