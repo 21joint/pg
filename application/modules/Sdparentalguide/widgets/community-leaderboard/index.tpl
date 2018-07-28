@@ -13,11 +13,12 @@
 <div class="leaderboard">
     <div class="leaderboard_title d-flex justify-content-between align-items-center">
         <h3><?php echo $this->translate('Leaderboard'); ?></h3>
-        <!-- <ul class="d-flex align">
-            <li class="leaderboard_nav">Overall</li>
-            <li class="leaderboard_nav">Week</li>
-            <li class="leaderboard_nav">Month</li>
-        </ul> --><!-- Add back in when the service is provided -->
+        <ul class="d-flex align">
+            <li id="leaderboard_nav_ovl" class="leaderboard_nav leaderboard_title_active">Overall</li>
+            <li id="leaderboard_nav_mth" class="leaderboard_nav">Month</li>
+            <li id="leaderboard_nav_wek" class="leaderboard_nav">Week</li>
+            <li id="leaderboard_nav_day" class="leaderboard_nav">Day</li>
+        </ul><!-- Add back in when the service is provided -->
     </div>
     <div class="leaderboard_main d-flex justify-content-between">
         <div class="d-flex justify-content-center"><?php echo $this->translate('Rank'); ?></div>
@@ -26,8 +27,8 @@
         <div id="points" class="order_by d-flex justify-content-center align-items-center" data-order="contributionPoints"><?php echo $this->translate('Contribution'); ?></div>
         <div id="reviews" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="reviewCount"><?php echo $this->translate('Reviews'); ?></div>
         <!-- <div class="d-none d-md-flex justify-content-center align-items-center">Answers --><!-- Sort By Answer not supported yet by the service layer --><!-- </div> -->
-        <div id="questions" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="questionCount"><?php echo $this->translate('Questions'); ?></div>
-        <div id="followers" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="followers"><?php echo $this->translate('Followers'); ?></div>
+        <div id="questions" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="questionCount"><?php echo $this->translate('Struggles'); ?></div>
+        <!-- <div id="followers" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="followers"><?php echo $this->translate('Followers'); ?></div> -->
         <!-- Categories End -->
         <div class="d-flex d-md-none justify-content-center align-items-center">
             <button id="order_btn" class="btn-primary rounded-circle">></button>
@@ -43,7 +44,7 @@
     <div class="leaderboard_pagination d-flex justify-content-end align-items-center mt-5 mr-5">
         <!-- Content Pagination -->
         <span id="leaderboard_previous" class="pagination_button"><</span>
-        <span id="leaderboard_pageNum" class="mx-5">
+        <span id="leaderboard_pageNum" class="mx-3">
             <!-- Displays the current page of Leaderboard Results -->
         </span>
         <span id="leaderboard_next" class="pagination_button">></span>
@@ -62,21 +63,23 @@ var currentCategory = 0;
 var categoryValue;
 document.getElementById('order_btn').addEventListener('click', function(){
     if(currentCategory == 0){
-        categoryValue = document.getElementById('followers').getAttribute('data-order');
+        categoryValue = document.getElementById('questions').getAttribute('data-order');
         currentCategory = 1;
         pageNum = 1;
         loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum); 
     }else if(currentCategory == 1){
-        categoryValue = document.getElementById('questions').getAttribute('data-order');
+        categoryValue = document.getElementById('reviews').getAttribute('data-order');
         currentCategory = 2;
         pageNum = 1;
         loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
-    }else if(currentCategory == 2){
-        categoryValue = document.getElementById('reviews').getAttribute('data-order');
-        currentCategory = 3;
-        pageNum = 1;
-        loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
-    }else{
+    }
+    // else if(currentCategory == 2){
+    //     categoryValue = document.getElementById('followers').getAttribute('data-order');
+    //     currentCategory = 3;
+    //     pageNum = 1;
+    //     loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
+    // }
+    else{
         categoryValue = document.getElementById('points').getAttribute('data-order');
         currentCategory = 0;
         pageNum = 1;
@@ -95,8 +98,38 @@ document.querySelectorAll('.leaderboard_nav').forEach(function(nav) {
         pageNum = 1;
         // Using null and leaving out the previous sorting results
         // Better to always start from contributionPoints on any timeFrame
-        loadLeaderboardResults(timeFrame, categoryValue, currentCategory);       
+        if(checkSize > 768){
+            loadLeaderboardResults(timeFrame, orderBy, currentCategory, pageNum);
+        }
+        else{
+            loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
+        }      
     });
+});
+// Choosen TimeFrame Styling (needs refactor, hard coded solution)
+document.getElementById('leaderboard_nav_ovl').addEventListener('click', function(){
+    this.addClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_mth').removeClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_wek').removeClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_day').removeClass('leaderboard_title_active');
+});
+document.getElementById('leaderboard_nav_mth').addEventListener('click', function(){
+    this.addClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_ovl').removeClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_wek').removeClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_day').removeClass('leaderboard_title_active');
+});
+document.getElementById('leaderboard_nav_wek').addEventListener('click', function(){
+    this.addClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_mth').removeClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_ovl').removeClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_day').removeClass('leaderboard_title_active');
+});
+document.getElementById('leaderboard_nav_day').addEventListener('click', function(){
+    this.addClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_mth').removeClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_ovl').removeClass('leaderboard_title_active');
+    document.getElementById('leaderboard_nav_wek').removeClass('leaderboard_title_active');
 });
 
 // Orders by each category which is clicked on using ajax
@@ -118,18 +151,18 @@ var activeCategory = 0;
 document.getElementById('points').addEventListener('click', function(){
     activeCategory = 0;
 });
-// Being ordered by Followers
-document.getElementById('followers').addEventListener('click', function(){
-    activeCategory = 1;
-});
 // Being ordered by Questions
 document.getElementById('questions').addEventListener('click', function(){
-    activeCategory = 2;
+    activeCategory = 1;
 });
 // Being ordered by Reviews
 document.getElementById('reviews').addEventListener('click', function(){
-    activeCategory = 3;
+    activeCategory = 2;
 });
+// Being ordered by Followers
+// document.getElementById('followers').addEventListener('click', function(){
+//     activeCategory = 3;
+// });
 // Styling for Order By Category End
 
 // Pagionation Number Change Start
@@ -164,7 +197,7 @@ document.getElementById('leaderboard_next').addEventListener('click', function()
 });
 // Pagination Number Change End
 
-function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints", disp = 0, page = 1) {
+function loadLeaderboardResults(tm, ord, disp = 0, page = 1) {
     //Request data can be linked to form inputs
     var requestData = {};
     requestData.contributionRangeType = tm; //Possible values "Overall", "Week", "Month"
@@ -175,6 +208,9 @@ function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints", disp
     var loader = en4.core.loader.clone();
     loader.addClass("sd_loader my-5");
     var url = en4.core.baseUrl+"api/v1/ranking";
+
+    // Testing... Delete after done
+    console.log(tm, ord, disp, page);
 
     var request = new Request.JSON({
         url: url,
@@ -192,15 +228,49 @@ function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints", disp
 
                 var html = "";
                 var results = responseJSON.body.Results;
+
+                // Testing... Delete after done
+                console.log(results);
+
                 for(var i = 0; i < results.length; i++) {
+                    // Matching Contribution Level to Contribution Award (Bronze, Silver, Gold, Platinum) 
+                    var adjust_award = String(results[i].expertPlatinumCount)+
+                                        String(results[i].expertGoldCount)+
+                                        String(results[i].expertSilverCount)+
+                                        String(results[i].expertBronzeCount);
+                    // Number that Will be Displayed
+                    var adjust_count;
+                    if(adjust_award >= 1000){
+                        adjust_count = results[i].expertPlatinumCount;
+                    }else if(adjust_award >= 100){
+                        adjust_count = results[i].expertGoldCount;
+                    }else if(adjust_award >= 10){
+                        adjust_count = results[i].expertSilverCount;
+                    }else if(adjust_award >= 1){
+                        adjust_count = results[i].expertBronzeCount;
+                    }else{
+                        adjust_count = results[i].contributionLevel;
+                    }
+
                     html += '<div class="leaderboard_item d-flex justify-content-between">'+
                                 '<div class="d-flex justify-content-center align-items-center">'+
                                     ((page-1)*20+(i+1))+
                                 '</div>'+
                                 '<div class="d-flex align-items-center leader position-relative">'+
-                                    '<img src="'+results[i].avatarPhoto.photoURLIcon+'"/>'+
-                                    '<span class="cont_level position-absolute">'+
-                                        results[i].contributionLevel+'</span>'+
+                                    '<div class="avatar_popup position-absolute d-none bg-white">'+
+                                        ''+
+                                    '</div>'+
+                                    '<img class="avatar_halo" src="'+
+                                        results[i].avatarPhoto.photoURLIcon+
+                                    '" data-halo="'+ results[i].mvp +'"/>'+
+                                    '<span class="cont_level position-absolute rounded-circle" data-cont="'+
+                                        results[i].expertPlatinumCount+
+                                        results[i].expertGoldCount+
+                                        results[i].expertSilverCount+
+                                        results[i].expertBronzeCount+
+                                    '">'+
+                                        adjust_count+
+                                    '</span>'+
                                     '<h4>'+results[i].displayName+'</h4>'+
                                 '</div>'+
                                 '<div class="points d-flex align-items-center justify-content-center">'+
@@ -216,14 +286,84 @@ function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints", disp
                                 '<div class="questions d-none d-md-flex align-items-center justify-content-center">'+
                                     results[i].questionCount+
                                 '</div>'+
-                                '<div class="followers d-none d-md-flex align-items-center justify-content-center">'+
+                                '<!-- <div class="followers d-none d-md-flex align-items-center justify-content-center">'+
                                     results[i].followersCount+
-                                '</div>'+
+                                '</div> -->'+
                             '</div>';
                 }
                 leaderboardContent.innerHTML = html;
-                // Showing current page in pagination section
-                document.getElementById('leaderboard_pageNum').innerText = page;
+                // Avatar Styling
+                // Check the Data Attribute for Mvp Status
+                // If Item has Mvp Status Put Halo Around Avatar Change Contribution Level Color
+                document.querySelectorAll('.avatar_halo').forEach(function(avatar_halo){
+                    if(avatar_halo.dataset.halo == "true"){
+                        avatar_halo.addClass('avatar_halo_disp');
+                        avatar_halo.style.borderImage = "url('<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/border.png') 20 20 20 20 fill";
+                    }
+                });
+                document.querySelectorAll('.cont_level').forEach(function(avatar_cont){
+                    if(avatar_cont.dataset.cont >= 1000){
+                        avatar_cont.addClass('cont_level_platinum');
+                    }else if(avatar_cont.dataset.cont >= 100){
+                        avatar_cont.addClass('cont_level_gold');
+                    }else if(avatar_cont.dataset.cont >= 10){
+                        avatar_cont.addClass('cont_level_silver');
+                    }else if(avatar_cont.dataset.cont >= 1){
+                        avatar_cont.addClass('cont_level_bronze');
+                    }else{
+                        avatar_cont.addClass('cont_level_default');
+                    }
+                });
+                // Displaying Avatar Popup
+                
+                // Showing current pages in pagination section
+                var lastpage = 10;
+                // First 4 Pages You can Skip to
+                if(pageNum <= 3){
+                    document.getElementById('leaderboard_pageNum').innerHTML = '<span class="skip_page mx-2">1</span>' +
+                                                                            '<span class="mx-2 d-none">...</span>'+
+                                                                            '<span class="skip_page mx-2">2</span>'+
+                                                                            '<span class="skip_page mx-2">3</span>'+
+                                                                            '<span class="skip_page mx-2">4</span>'+
+                                                                            '<span class="mx-2">...</span>'+
+                                                                            '<span class="skip_page mx-2">'+ lastpage +'</span>';
+                }else if(pageNum > 3 && pageNum < 8){
+                    document.getElementById('leaderboard_pageNum').innerHTML = '<span class="skip_page mx-2">'+(pageNum-3)+'</span>'+
+                                                                            '<span class="skip_page mx-2">'+
+                                                                                (pageNum-2)+
+                                                                            '</span>'+
+                                                                            '<span class="skip_page mx-2">'+
+                                                                                (pageNum-1)+
+                                                                            '</span>'+
+                                                                            '<span class="skip_page mx-2">'+
+                                                                                pageNum+
+                                                                            '</span>'+
+                                                                            '<span class="mx-2">...</span>'+
+                                                                            '<span class="skip_page mx-2">'+ lastpage +'</span>';
+                }else{
+                    document.getElementById('leaderboard_pageNum').innerHTML = '<span class="skip_page mx-2">1</span>'+
+                                                                            '<span class="mx-2">...</span>'+
+                                                                            '<span class="skip_page mx-2">'+
+                                                                                (lastpage-3)+
+                                                                            '</span>'+
+                                                                            '<span class="skip_page mx-2">'+
+                                                                                (lastpage-2)+
+                                                                            '</span>'+
+                                                                            '<span class="skip_page mx-2">'+
+                                                                                (lastpage-1)+
+                                                                            '</span>'+
+                                                                            '<span class="skip_page mx-2">'+ lastpage +'</span>';
+                }
+                // Skipping Pages Functionality
+                document.querySelectorAll('.skip_page').forEach(function(page){
+                    if(page.innerText == pageNum){
+                        page.addClass("current_pagination");
+                    }
+                    page.addEventListener('click', function(){
+                        pageNum = Number(this.innerText);
+                        loadLeaderboardResults(timeFrame, orderBy, currentCategory, pageNum);
+                    });
+                });
                 // Adding and Removing Categories in which the items are ordered
                 // Displaying Categories on Mobile
                 switch(disp){
@@ -238,36 +378,21 @@ function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints", disp
                             points.addClass('d-flex').removeClass('d-none');
                         }); 
                         break;
-                // Displaying Number of Followers
+                // Displaying Number of Questions
                     case 1:
                         document.getElementById('points').addClass('d-none').removeClass('d-flex');
                         document.querySelectorAll('.points').forEach(function(points){
                             points.addClass('d-none').removeClass('d-flex');
                         });
-                        document.getElementById('followers').addClass('d-flex').removeClass('d-none');
-                        document.querySelectorAll('.followers').forEach(function(followers){
+                        document.getElementById('questions').addClass('d-flex').removeClass('d-none');
+                        document.querySelectorAll('.questions').forEach(function(followers){
                             followers.addClass('d-flex').removeClass('d-none');
                         });
                         break;
-                // Displaying Number of Questions
-                    case 2:
-                        document.getElementById('followers').addClass('d-none').removeClass('d-flex');
-                        document.querySelectorAll('.followers').forEach(function(followers){
-                            followers.addClass('d-none').removeClass('d-flex');
-                        });
-                        document.getElementById('points').addClass('d-none').removeClass('d-flex');
-                        document.querySelectorAll('.points').forEach(function(points){
-                            points.addClass('d-none').removeClass('d-flex');
-                        });
-                        document.getElementById('questions').addClass('d-flex').removeClass('d-none');
-                        document.querySelectorAll('.questions').forEach(function(questions){
-                            questions.addClass('d-flex').removeClass('d-none');
-                        });
-                        break;
                 // Displaying Number of Reviews
-                    case 3:
+                    case 2:
                         document.getElementById('questions').addClass('d-none').removeClass('d-flex');
-                        document.querySelectorAll('.questions').forEach(function(questions){
+                        document.querySelectorAll('.questions').forEach(function(followers){
                             followers.addClass('d-none').removeClass('d-flex');
                         });
                         document.getElementById('points').addClass('d-none').removeClass('d-flex');
@@ -275,41 +400,56 @@ function loadLeaderboardResults(tm = "Overall", ord = "contributionPoints", disp
                             points.addClass('d-none').removeClass('d-flex');
                         });
                         document.getElementById('reviews').addClass('d-flex').removeClass('d-none');
-                        document.querySelectorAll('.reviews').forEach(function(reviews){
-                            reviews.addClass('d-flex').removeClass('d-none');
+                        document.querySelectorAll('.reviews').forEach(function(questions){
+                            questions.addClass('d-flex').removeClass('d-none');
                         });
                         break;
+                // Displaying Number of Reviews
+                    // case 3:
+                    //     document.getElementById('questions').addClass('d-none').removeClass('d-flex');
+                    //     document.querySelectorAll('.questions').forEach(function(questions){
+                    //         followers.addClass('d-none').removeClass('d-flex');
+                    //     });
+                    //     document.getElementById('points').addClass('d-none').removeClass('d-flex');
+                    //     document.querySelectorAll('.points').forEach(function(points){
+                    //         points.addClass('d-none').removeClass('d-flex');
+                    //     });
+                    //     document.getElementById('reviews').addClass('d-flex').removeClass('d-none');
+                    //     document.querySelectorAll('.reviews').forEach(function(reviews){
+                    //         reviews.addClass('d-flex').removeClass('d-none');
+                    //     });
+                    //     break;
                 }
                 // Displays Highlighted Order By Main Category
                 switch(activeCategory){
                     // Highlight Contribution
                     case 0:
                         document.getElementById('points').addClass('active_category');
-                        document.getElementById('followers').removeClass('active_category');
-                        document.getElementById('questions').removeClass('active_category');
-                        document.getElementById('reviews').removeClass('active_category');
-                        break;
-                    // Highlight Followers
-                    case 1:
-                        document.getElementById('points').removeClass('active_category');
-                        document.getElementById('followers').addClass('active_category');
+                        // document.getElementById('followers').removeClass('active_category');
                         document.getElementById('questions').removeClass('active_category');
                         document.getElementById('reviews').removeClass('active_category');
                         break;
                     // Highlight Questions
-                    case 2:
+                    case 1:
                         document.getElementById('points').removeClass('active_category');
-                        document.getElementById('followers').removeClass('active_category');
+                        // document.getElementById('followers').addClass('active_category');
                         document.getElementById('questions').addClass('active_category');
                         document.getElementById('reviews').removeClass('active_category');
                         break;
                     // Highlight Reviews
-                    case 3:
+                    case 2:
                         document.getElementById('points').removeClass('active_category');
-                        document.getElementById('followers').removeClass('active_category');
+                        // document.getElementById('followers').removeClass('active_category');
                         document.getElementById('questions').removeClass('active_category');
                         document.getElementById('reviews').addClass('active_category');
                         break;
+                    // Highlight Followers
+                    // case 3:
+                    //     document.getElementById('points').removeClass('active_category');
+                    //     document.getElementById('followers').removeClass('active_category');
+                    //     document.getElementById('questions').removeClass('active_category');
+                    //     document.getElementById('reviews').addClass('active_category');
+                    //     break;
                 }
             }else{
                 leaderboardContent.innerHTML = responseJSON.message;
