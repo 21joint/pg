@@ -19,7 +19,7 @@
             <?php endif;?>
         <?php else:?>
             <?php  if($this->permissions['create_question'] != 0):?>
-                <a href="<?php echo $this->url(array(),'create_struggles', true);?>" class="new_struggle_link active_button">
+                <a href="<?php echo $this->url(array('module'=>'ggcommunity', 'controller'=>'question-index', 'action'=>'create'),'default', true);?>" class="new_struggle_link active_button">
                     <?php echo $this->translate('Post a New Struggle');?>
                 </a>
             <?php else: ?>
