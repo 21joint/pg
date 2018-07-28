@@ -97,13 +97,13 @@ class User_AuthController extends Siteapi_Controller_Action_Standard {
             }else {
                 $this->respondWithError('ip_not_found');
             }
-            
-//            if (empty($siteapiGlobalType)) {
-//                for ($check = 0; $check < strlen($hostType); $check++) {
-//                    $tempHostType += @ord($hostType[$check]);
-//                }
-//                $tempHostType = $tempHostType + $siteapiGlobalView;
-//            }
+
+            if (empty($siteapiGlobalType)) {
+                for ($check = 0; $check < strlen($hostType); $check++) {
+                    $tempHostType += @ord($hostType[$check]);
+                }
+                $tempHostType = $tempHostType + $siteapiGlobalView;
+            }
 
             // Getting the posted email address.
             if (isset($values['email']) && !empty($values['email']))
@@ -421,7 +421,7 @@ class User_AuthController extends Siteapi_Controller_Action_Standard {
                     $userArray['cover'] = $getUserCoverPhoto;
             }
 
-            if (false) {
+            if (!empty($tempHostType) && ($tempHostType != $siteapiManageType)) {
                 Engine_Api::_()->getApi('settings', 'core')->setSetting('siteapi.global.type', 1);
             } else {
                 // Add GCMuser for push notification.

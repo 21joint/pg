@@ -9,7 +9,7 @@ class Ggcommunity_CommentProfileController extends Core_Controller_Action_Standa
         $subject = null; 
         if( !Engine_Api::_()->core()->hasSubject() && ($id = $this->_getParam('comment_id')) ) {
      
-            $subject = Engine_Api::_()->getItem('ggcommunity_comment', $id);
+            $subject = Engine_Api::_()->getItem('core_comment', $id);
         
             if( $subject && $subject->getIdentity() ) {
                 Engine_Api::_()->core()->setSubject($subject);
@@ -54,7 +54,7 @@ class Ggcommunity_CommentProfileController extends Core_Controller_Action_Standa
         // get viewer and subject
         $this->view->viewer = $viewer = Engine_Api::_()->user()->getViewer(); 
         $this->view->subject = $subject = Engine_Api::_()->core()->getSubject();
-        $this->view->type = $type = $subject->parent_type;
+        $this->view->type = $type = $subject->resource_type;
         $this->view->object = $object = $subject->getParent();
 
         //if this post is not from this vieweer or viewer is not self admin don't allow deleting

@@ -514,4 +514,27 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             }
         }
     }
+    
+    public function onCreditCreateAfter($event){
+        $payload = $event->getPayload();
+        $user = Engine_Api::_()->user()->getUser($payload->user_id);
+        $user->gg_activities = $user->gg_activities + 1;
+        $user->gg_contribution = $user->gg_contribution + $payload->credit_point;
+        
+        $data = array();
+        $data['gg_activities'] = $user->gg_activities + 1;
+        $data['gg_contribution'] = $user->gg_contribution + $payload->credit_point;
+        $api = Engine_Api::_()->sdparentalguide();
+        $badge = $api->getUserBadge($payload->gg_contribution);
+        if(!empty($badge)){
+            $payload->gg_contribution_level = $badge->gg_contribution_level;
+            $data['gg_contribution_level'] = $badge->gg_contribution_level;
+            if(!$payload->isAdminOnly() && $badge->gg_level_id > 0){
+                $payload->level_id = $badge->gg_level_id;
+                $data['level_id'] = $badge->gg_level_id;
+            }
+            Zend_Registry::set("ContributionLevel_Saved",1);
+        }
+        Engine_Api::_()->getDbTable("users","user")->update($data,array('user_id = ?' => (int)$payload->user_id));        
+    }
 }
