@@ -21,50 +21,19 @@ en4.ggcommunity = {
     },
     vote : function(parent_type, parent_id, vote_type) {
         var main_holder = document.getElementById('vote_'+ parent_type + '_' + parent_id);
-        var that = $(event.target);
-        if(that.tagName != 'A' || that.tagName != 'a'){
-            that  = $(that).getParent("a");
-        }
-        if(that.hasClass("primary")){
-            return;
-        }        
         var first_child = main_holder.parentNode.firstElementChild;
-        var reactionType = 'upvote';
-        if(!vote_type){
-            reactionType = 'downvote';
-        }
-        var voteCountElement = main_holder.getElement(".question-vote");
-        var currentVoteCount = voteCountElement.get("html").toInt();
-        main_holder.getElements("a").removeClass("primary").set("disabled",null);
-        if(vote_type){
-            currentVoteCount++;
-            main_holder.getElement(".vote-up").addClass("primary").set("disabled","disabled");
-        }else{
-            currentVoteCount--;
-            main_holder.getElement(".vote-down").addClass("primary").set("disabled","disabled");
-        }
-        voteCountElement.set("html",currentVoteCount);
-        en4.core.request.send(new Request.JSON({
-            url : en4.core.baseUrl+'api/v1/reaction',
+
+        en4.core.request.send(new Request.HTML({
+            url : 'ggcommunity/vote/vote',
             data : {
-                contentType : parent_type,
-                contentID : parent_id,
-                reactionType : reactionType,
+                format : 'html',
+                parent_type : parent_type,
+                parent_id : parent_id,
+                vote_type : vote_type,
             },
-            onComplete: function(responseJSON) {
-                if(responseJSON.status_code == 204){                                 
-                }else{
-                    main_holder.getElements("a").removeClass("primary").set("disabled","disabled");
-                    if(vote_type){
-                        currentVoteCount--;
-                        main_holder.getElement(".vote-up").removeClass("primary").set("disabled",null);
-                    }else{
-                        currentVoteCount++;
-                        main_holder.getElement(".vote-down").removeClass("primary").set("disabled",null);
-                    }
-                    voteCountElement.set("html",currentVoteCount);
-                    alert(responseJSON.message);
-                }
+            onComplete: function(responseHTML) {
+                main_holder.remove();
+                first_child.parentNode.insertBefore(responseHTML[3], first_child.nextSibling);
             }
         }));
      
@@ -104,28 +73,20 @@ en4.ggcommunity.answer = {
         var holder = document.getElementById('answer_full_box');
         var counter_answer = document.getElementById('count_answers');
         var form = document.getElementById('create_answer_form');
-        if(!form){
-            form = document.getElementById('create-answer-form');
-        }
-        var loader = en4.pgservicelayer.loader.clone();
 
-        en4.core.request.send(new Request.JSON({
-            url : en4.core.baseUrl+'api/v1/answer',
+        en4.core.request.send(new Request.HTML({
+            url : 'ggcommunity/answer-index/create',
             data : {
-                questionID : question_id,
-                body : body,
+                format : 'html',
+                question_id : question_id,
+                body_create : body,
             },
-            onRequest: function(){
-                try{
-                    loader.inject(form,"after");
-                }catch(e){ }
-            },
-            onComplete: function(responseJSON) {
+            onComplete: function(responseHTML) {
                 // empty body from tinymce
                 var body_editor = document.querySelector('#body_create');
                 // var body_editor = document.getElementById('create-answer-form').getElementById('body');
                 var mce_editor = document.getElementById('create-answer-form').getElementsByClassName('mce-tinymce mce-container mce-panel');
-                loader.destroy();
+
                 if(mce_editor.length > 0) {
                     var body = tinymce.get('body_create').setContent('');
                 } else {
@@ -142,21 +103,14 @@ en4.ggcommunity.answer = {
                 
                 if(last_answer_id > 0) {
                     counter_answer.innerHTML = 'Theories | ' + increment ;
-//                    last.parentNode.insertBefore(responseHTML[0], last.nextSibling);
+                    last.parentNode.insertBefore(responseHTML[0], last.nextSibling);
                 } else {
                     counter_answer.innerHTML = 'Theory | ' + increment ;
-//                    responseHTML[0].inject( answer_box );
+                    responseHTML[0].inject( answer_box );
                 }
-                
-                if(responseJSON.status_code == 200){
-                    var items = responseJSON.body.Results;
-                    items.each(function(answer){
-                        var answerElement = getAnswerElement(answer);
-                        answerElement.inject(answer_box,"bottom");
-                    });
-                    initTinyMce();
-                    Smoothbox.bind(answer_box); 
-                }               
+        
+                Smoothbox.bind(answer_box);
+               
             }
         
         }));
@@ -192,28 +146,27 @@ en4.ggcommunity.answer = {
         form.addEventListener("submit", function(e){
 
             e.preventDefault();
-            try{
-                var editor = tinymce.get("tinymce_ggcommunity_answer"+id);
-                var body = editor.getContent();
-            }catch(e){  }
+            var body = form.getElementById('edit_'+type+'_body_'+id).value;
             var answer_holder_box = document.getElementById('item_main_box_'+id);
             if(!body) return;
-            $("ggcommunity_answer_"+id).getElement(".item_body").set("html",body);
-            $("ggcommunity_answer_"+id).getElement(".item_body").removeClass('none');
-            form_holder.setAttribute("style","display:none");
             
-            en4.core.request.send(new Request.JSON({
-                url : en4.core.baseUrl+'api/v1/answer',
+            en4.core.request.send(new Request.HTML({
+                url : 'ggcommunity/answer-profile/edit',
                 data : {
-                    answerID : id,
-                    questionID:en4.core.subject.id,
-                    body : body
+                    format : 'html',
+                    answer_id : id,
+                    body : tinymce.get('edit_'+type+'_body_'+id).getContent(),
                 },
-                onComplete: function(responseJSON) {
+                onComplete: function(responseHTML) {
                     
+                    // hide form
+                    form_holder.setAttribute("style","display:none");
                 }
                 
-            }));
+            }), {
+                // return holder with new answer in it
+                'element' : answer_holder_box
+            });
                 
         });
 
@@ -232,8 +185,12 @@ en4.ggcommunity.answer = {
 
         // get comment holder
         var comment_holder = document.getElementById('comment_holder_'+ parent_type + '_' + parent_id);
-        
-        $(comment_holder).toggleClass("none");
+
+        if(comment_holder.classList.contains('none')) {
+            comment_holder.classList.remove('none');
+        } else {
+            comment_holder.classList.add('none');
+        }
 
         // get comment form and if has class none delete this class
         var comment_form = comment_holder.getElementById('comment_holder_form');
@@ -241,46 +198,34 @@ en4.ggcommunity.answer = {
             comment_form.classList.remove('none');
         }
     
-        var form = comment_holder.getElement("#create_comment_form");
+        var form = comment_holder.firstElementChild.firstElementChild;
         var form_holder = form.parentNode;
        
         var comments_only = comment_holder.getElementById('comments_box_'+parent_id);
-        var container = $("comments_box_"+parent_id);
-        if(!$(comment_holder).hasClass('none')){            
-            loadComments('Answer',parent_id,container);
-        }
         
         form.addEventListener("submit", function(e){
             
             e.preventDefault();  
-            if(form != null) {
+            if(comment_form!=null) {
                 var body = form.getElementById('comment_body').value;
                 if(!body) return;
             }
 
-            en4.core.request.send(new Request.JSON({
-                url : en4.core.baseUrl+'api/v1/comment',
+            en4.core.request.send(new Request.HTML({
+                url : 'ggcommunity/comment-index/create',
                 data : {
-                    contentType : 'Answer',
-                    contentID : parent_id,
+                    format : 'html',
+                    parent_type : parent_type,
+                    parent_id : parent_id,
                     body : body,    
                 },
-                onComplete: function(responseJSON) {                    
-                   if(responseJSON.status_code != 200){
-                       return;
-                   }
+                onComplete: function(responseHTML) {
+   
                    form.reset();
                     
                     // increase countner for comments
                     var comment_counter = document.getElementById('comment_counter_'+parent_id);
                     var counter = comment_counter.innerHTML.trim();
-                    
-                    var comments = responseJSON.body.Results;
-                    comments.each(function(comment){
-                        var commentElement = getCommentElement(comment);
-                        commentElement.inject(container,"top");
-                    });
-                    Smoothbox.bind(container); 
                 
                     if(counter == 'Comment') {
                         var tip_msg = comment_holder.getElementById('no_comments_tip');
@@ -294,6 +239,7 @@ en4.ggcommunity.answer = {
                         
                     }
                     
+                    comments_only.insertBefore(responseHTML[0], comments_only.children[0]);
                     Smoothbox.bind(comment_holder);
                     
                 }
@@ -316,25 +262,17 @@ en4.ggcommunity.comment = {
         var comments_only = comment_holder.getElementById('comments_box_'+ id);
 
 
-        en4.core.request.send(new Request.JSON({
-            url : en4.core.baseUrl+'api/v1/comment/',
+        en4.core.request.send(new Request.HTML({
+            url : 'ggcommunity/comment-index/create',
             data : {
-                contentType : parent_type,
-                contentID : id,
+                format : 'html',
+                parent_type : parent_type,
+                parent_id : id,
                 body : body,    
             },
-            onComplete: function(responseJSON) {
+            onComplete: function(responseHTML) {
                 // hide form
                 form.reset();
-                var container = $("comments_box").getElement(".comments_container");
-                if(responseJSON.status_code == 200){
-                    var comments = responseJSON.body.Results;
-                    comments.each(function(comment){
-                        var commentElement = getCommentElement(comment);
-                        commentElement.inject(container,"top");
-                    });
-                    Smoothbox.bind(container); 
-                }
 
                 // increase countner for question_comments
                 var comment_counter = document.getElementById('count_question_comments');
@@ -349,7 +287,10 @@ en4.ggcommunity.comment = {
                     var comments = parseInt(counter.substr(counter.indexOf("| ")+2));
                     var increment = comments+1;
                     comment_counter.innerHTML = 'Comments | ' + increment ;
-                }                           
+                }
+                 
+                comments_only.insertBefore(responseHTML[0], comments_only.children[0]);
+                Smoothbox.bind(comment_holder);             
             }
             
         }));
