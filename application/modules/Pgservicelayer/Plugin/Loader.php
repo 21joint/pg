@@ -13,7 +13,6 @@ class Pgservicelayer_Plugin_Loader extends Zend_Controller_Plugin_Abstract {
     $loader = Engine_Loader::getInstance();
     if (get_class($loader) == 'Engine_Loader') {
       Pgservicelayer_Loader::hook();
-      Sitemailtemplates_Loader::hook();
     } else if (get_class($loader) == 'Semods_Loader') {
       Pgservicelayer_ConflictThirdPartySemodsLoader::hook();
     }
