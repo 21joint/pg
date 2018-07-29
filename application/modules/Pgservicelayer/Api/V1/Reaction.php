@@ -63,27 +63,11 @@ class Pgservicelayer_Api_V1_Reaction extends Sdparentalguide_Api_Core {
                     if(!$proxyObject->isVote($viewer,$negativeVoteType)){
                         $proxyObject->addVote($viewer,$negativeVoteType);
                     }
-                    
-                    if($negativeVoteType == 1){
-                        $this->addVoteActivity($subject);
-                    }
-                    
-                    if($reactionType == 1){
-                        $this->removeVoteActivity($subject);
-                    }
-                    
                 }else{
                     if($proxyObject->isVote($viewer,$negativeVoteType)){
                         $proxyObject->removeVote($viewer,$negativeVoteType);
                     }
-                    $proxyObject->addVote($viewer,$reactionType);
-                    if($reactionType == 1){
-                        $this->addVoteActivity($subject);
-                    }
-                    
-                    if($negativeVoteType == 1){
-                        $this->removeVoteActivity($subject);
-                    }
+                    $proxyObject->addVote($viewer,$reactionType);                    
                 }
                 break;
             
@@ -121,71 +105,11 @@ class Pgservicelayer_Api_V1_Reaction extends Sdparentalguide_Api_Core {
                 $proxyObject = Engine_Api::_()->getDbTable("votes","pgservicelayer")->votes($subject);
                 if($proxyObject->isVote($viewer,1)){
                     $proxyObject->removeVote($viewer,1);
-                    $this->removeVoteActivity($subject);
                 }
                 if($proxyObject->isVote($viewer,0)){
                     $proxyObject->removeVote($viewer,0);
                 }
                 break;            
-        }
-    }
-    
-    public function hasActivity(Core_Model_Item_Abstract $object,$actionType = "question_answer_vote",Core_Model_Item_Abstract $subject = null){
-        if(empty($subject)){
-            $subject = Engine_Api::_()->user()->getViewer();
-        }
-        $table = Engine_Api::_()->getDbtable('actions', 'activity');
-        $select = $table->select()
-                ->where('type = ?',$actionType)
-                ->where("object_type = ?",$object->getType())
-                ->where("object_id = ?",$object->getIdentity())
-                ->where("subject_type = ?",$subject->getType())
-                ->where("subject_id = ?",$subject->getIdentity());
-        return $table->fetchRow($select);
-    }
-    public function addVoteActivity(Core_Model_Item_Abstract $object){
-        $mainActionType = "question_vote";
-        $authorActionType = "question_author_vote";
-        if($object->getType() == "ggcommunity_answer"){
-            $mainActionType = "question_answer_vote";
-            $authorActionType = "question_answer_author_vote";
-        }
-        $viewer = Engine_Api::_()->user()->getViewer();
-        if($viewer->isSelf($object->getOwner())){
-            return;
-        }
-        if($this->hasActivity($object,$mainActionType)){
-            return;
-        }
-        
-        $actionOwner = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($object->getOwner(), $object, $authorActionType,array(
-            'owner' => $object->getOwner()->getGuid(),
-        ));
-        if(!empty($actionOwner)){
-            Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($actionOwner, $object);
-        }
-        
-        $action = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($viewer, $object, $mainActionType,array(
-            'owner' => $object->getOwner()->getGuid(),
-        ));
-        if(!empty($action)){
-            Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($action, $object);
-        }
-    }
-    
-    public function removeVoteActivity(Core_Model_Item_Abstract $object){
-        $mainActionType = "question_vote";
-        $authorActionType = "question_author_vote";
-        if($object->getType() == "ggcommunity_answer"){
-            $mainActionType = "question_answer_vote";
-            $authorActionType = "question_answer_author_vote";
-        }
-        if(($action = $this->hasActivity($object,$mainActionType))){
-            $action->delete();
-        }
-        
-        if(($actionOwner = $this->hasActivity($object,$authorActionType,$object->getOwner()))){
-            $actionOwner->delete();
         }
     }
 }

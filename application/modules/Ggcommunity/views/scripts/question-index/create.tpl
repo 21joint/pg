@@ -10,88 +10,30 @@
       ->appendFile($this->layout()->staticBaseUrl . 'externals/autocompleter/Autocompleter.Local.js')
       ->appendFile($this->layout()->staticBaseUrl . 'externals/autocompleter/Autocompleter.Request.js');
 ?>
-<style type='text/css'>
-#tags-element .sd_loader {
-    float: right;
-    position: absolute;
-    margin: 17px 0px 0px -26px;    
-}    
-</style>
+
 <script type="text/javascript">
- en4.core.runonce.add(function(){
-    var topicSuggest = en4.core.baseUrl+"api/v1/topic";
-    var loader = en4.core.loader.clone();
-    loader.addClass("sd_loader");
-    var topicAutoCompleter = new Autocompleter.Request.JSON('tags', topicSuggest, {
-      'postVar' : 'topicName',
+  en4.core.runonce.add(function(){
+
+    new Autocompleter.Request.JSON('tags', '<?php echo $this->url(array('module' => 'ggcommunity', 'controller' => 'question-index', 'action' => 'topic'), 'default', true) ?>', {
+      'postVar' : 'text',
       'customChoices' : true,
-      'ajaxOptions' : {
-          method: 'get'
-      },
       'minLength': 1,
       'maxChoices': 10,// Max value of displayed items in suggested list
       'selectMode': 'pick',
-      'autocompleteType': 'message',
+      'autocompleteType': 'tag',
       'className': 'tag-autosuggest',
-      'filterSubset' : false,
-      'selectFirst': false,
+      'filterSubset' : true,
       'multiple' : false,// Only one topic choice
-      'tokenValueKey' : 'topicName',
-      'tokenIdKey' : 'topicID',
-      'onChoiceSelect' : function(choice){
-          setTimeout(function(){ $("tags").set("value",choice.get("data-value")); },100);
-      },
-      onComplete: function(){
-            loader.destroy();
-      },
-      onCancel: function(){
-            loader.destroy();
-      },
-      onRequest: function(){
-            loader.inject($("tags"),"after");
-      },
-      onCommand: function(e){
-            if(!e){
-                return;
-            }
-            if(e.control || e.shift || e.alt || e.meta){
-                return;
-            }
-            if(e.key == 'enter' || e.key == 'tab' || e.key == 'capslock'){
-                return;
-            }
-            $("topic_id").value = '';
-      },
+      'injectChoice': function(token){
+        var choice = new Element('li', {'class': 'autocompleter-choices', 'value':token.label, 'id':token.id});
+        new Element('div', {'html': this.markQueryValue(token.label),'class': 'autocompleter-choice'}).inject(choice);
+        choice.inputValue = token;
+        this.addChoiceEvents(choice).inject(this.choices);
+        choice.store('autocompleteChoice', token);
+      }
     });
-    topicAutoCompleter.doPushSpan = function(name, toID, newItem, hideLoc, list){
-        //doPushSpan;
-    };
-    topicAutoCompleter.doAddValueToHidden = function(name, toID, hideLoc, newItem, list){
-        $("topic_id").value = name;
-    };
-    topicAutoCompleter.update = function(tokens){
-        $(this.choices).empty();
-        this.cached = tokens;
-        var dataTokens = tokens.body.Results;
-        this.cachedQueryValue = this.queryValue;
-        var type = dataTokens && $type(dataTokens);
-        if (!type || (type == 'array' && !dataTokens.length) || (type == 'hash' && !dataTokens.getLength())) {
-            (this.options.emptyChoices || this.hideChoices).call(this);
-        } else {
-            if (this.options.maxChoices < dataTokens.length && !this.options.overflow) dataTokens.length = this.options.maxChoices;
-            var that = this;
-            dataTokens.each(function(token){
-                var choice = new Element('li', {'class': 'autocompleter-choices', 'value':token.topicName, 'id':token.topicID});
-                choice.set("data-value",token.topicName);
-                new Element('div', {'html': that.markQueryValue(token.topicName),'class': 'autocompleter-choice'}).inject(choice);
-                choice.inputValue = token.topicID;
-                this.addChoiceEvents(choice).inject(this.choices);
-                choice.store('autocompleteChoice', token);
-            }, this);
-            this.showChoices();
-        }
-    };
-});
+
+  });
 </script>
 
 <div class="holder-back-btn">
@@ -99,7 +41,7 @@
 </div>
 
 <?php echo $this->form->render($this); ?>
-<?php $this->headScript()->appendFile($this->layout()->staticBaseUrl."application/modules/Pgservicelayer/externals/scripts/core.js"); ?>
+
 <script>
   var textarea = document.getElementById("title");
   textarea.addEventListener('keyup',function() {
@@ -136,79 +78,10 @@
     document.getElementById("date_closed-year").appendChild(opt);
   }
 </script>
-<script type='text/javascript'>
-en4.core.runonce.add(function(){
-    $$(".extfox_form").addEvent("submit",function(event){
-        event.preventDefault();
-        var formValid = true;
-        var title = $("title").value.trim();
-        var topicID = $("topic_id").value;
-        if(title.length <= 0){
-            formValid = false;
-        }
-        if(topicID.length <= 0){
-            formValid = false;
-        }
-        if(!formValid){
-            return;
-        }
-        
-        var loader = en4.pgservicelayer.loader.clone();
-        new Request.JSON({
-            'url' : en4.core.baseUrl+'api/v1/photo',
-            emulation: false,
-            method: 'delete',
-            data: {
-              'photoID': $("fancyuploadfileids").value.trim(),
-              'title': title,
-              'topicID':topicID,
-              'body': tinymce.get("body").getContent()
-            },
-            onRequest: function(){
-                loader.inject($("global_form_front"),"after");
-            },
-            'onSuccess' : function(responseJSON) {
-                loader.destroy();
-                if(responseJSON.status_code == 200){
-                    responseJSON.body.results.each(function(question){
-                        window.location.href = en4.core.baseUrl+"struggles/question/"+question.questionID;
-                    });
-                }else{
-                    
-                }
-            }
-        }).send();
-        
-    });
-});    
-</script>
 
-<script type="text/javascript">
-var uploaderInstance = null;
-en4.core.runonce.add(function () {
-    uploaderInstance = new Uploader('upload_file', {
-      uploadLinkClass : 'buttonlink icon_photos_new',
-      uploadLinkTitle : '<?php echo $this->translate("Add Photos");?>',
-      uploadLinkDesc : '',
-      singleUpload: true,
-      uploadLimit: 1
-    });
-});
 
- var deleteFile = function (el) {
-    var photo_id = el.get('data-file_id');
-    $("upload_file_link").setStyle("display","");
-    el.getParent('li').destroy();
-    new Request.JSON({
-      'url' : en4.core.baseUrl+'api/v1/photo',
-      emulation: false,
-      method: 'delete',
-      data: {
-        'photoID': photo_id,
-      },
-      'onSuccess' : function(responseJSON) {
-          
-      }
-    }).send();
-}
-</script>
+
+
+
+
+	
