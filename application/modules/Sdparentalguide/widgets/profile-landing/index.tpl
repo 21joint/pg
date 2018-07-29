@@ -273,7 +273,7 @@
     function loadQuestionResults(){
         // Request data can be linked to form inputs
         var requestData = {};
-        requestData.limit = 20;// Display limit for users
+        requestData.limit = 5;// Display limit for users
         requestData.page = 1;// Place for pagination
 
         // For user profile
@@ -300,7 +300,7 @@
                 if(responseJSON.status_code == 200){
                     var html = "";
                     var results = responseJSON.body.Results;
-                    for(var i = 0; i < 5; i++) {
+                    for(var i = 0; i < results.length ; i++) {
                         html += '<div class="struggle_holder my-3 d-flex flex-wrap">'+
                                     '<div class="struggle_box_left d-flex align-items-center large-12 medium-12 small-12">'+
                                         '<div class="struggle_left_side d-inline-block">'+
@@ -366,6 +366,7 @@
                                 '</div>';
                     }
                     strugglesContent.innerHTML = html;
+                    // Testing...Delete when Finished
                     console.log(responseJSON);
                     // Adding Styles to Answered Struggles
                     document.querySelectorAll('.answered_true').forEach(function(answered_true){
