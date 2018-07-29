@@ -1,16 +1,18 @@
 import '../../themes/guidanceguide/scss/styles.scss';
 
 
-(function (jQuery) {
-  jQuery(document).ready(function () {
-    jQuery('select').each(function (i, sl) {
-      jQuery(sl).select2({
+
+(function ($) {
+  $(document).ready(function () {
+    $('select').each(function () {
+      let $self = $(this);
+      $self.select2({
         minimumResultsForSearch: -1,
-        placeholder: jQuery(sl).attr('placeholder')
+        placeholder: $self.attr('placeholder')
       });
     });
-    jQuery('.prg-hamburger--btn').on('click', function (e) {
-      jQuery('body').toggleClass('prg-nav--open');
+    $('.prg-hamburger--btn').on('click', function (e) {
+      $('body').toggleClass('prg-nav--open');
     });
   });
 

@@ -8,8 +8,7 @@ module.exports = {
   modules: {
     prg: {
       path: path.resolve(__dirname, 'application/modules/Sdparentalguide'),
-      dist: path.resolve(__dirname, 'application/modules/Sdparentalguide/externals/build'),
-      main: 'index.js'
+      dist: path.resolve(__dirname, 'application/modules/Sdparentalguide/externals/build')
     }
   },
 };

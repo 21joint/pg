@@ -1,8 +1,8 @@
 import pkg from '../../../../package';
 import jQuery from "jquery";
 
-module.exports = (function ($) {
-  var Reviews;
+const Reviews = (function ($) {
+  let Reviews;
 
   Reviews = function () {
 
@@ -112,7 +112,7 @@ module.exports = (function ($) {
         '                                <div class="col-auto d-none d-sm-block">\n' +
         '                                  <div class="position-relative card-author--thumbnail">\n' +
         '                                    <img class="rounded-circle"\n' +
-        '                                         src="http://dzhywv9htu615.cloudfront.net/public/user/b3/03/03b0_84cd.png"\n' +
+        '                                         src="'+ review.author.avatarPhoto.photoURLProfile +'"\n' +
         '                                         alt="Generic placeholder image">\n' +
         '                                    <b class="position-absolute d-flex justify-content-center align-items-center text-white bagde badge-primary rounded-circle ff-open--sans card-author--rank">' + review.author.contributionLevel + '</b>\n' +
         '                                  </div>\n' +
@@ -177,3 +177,7 @@ module.exports = (function ($) {
   return new Reviews();
 
 })(jQuery);
+
+
+
+export default Reviews;

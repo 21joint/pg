@@ -12,6 +12,8 @@ const Modules = Conf.modules;
 
 const IS_DEV = (process.env.NODE_ENV === 'dev');
 
+console.log(IS_DEV);
+
 /**
  * Webpack Configuration
  */
@@ -23,7 +25,7 @@ module.exports = {
     ]
   },
   output: {
-    filename: 'scripts/[name].bundle.js',
+    filename: '[name].[chunkhash].js',
     publicPath: '/',
     path: Modules.prg.dist
   },
@@ -32,11 +34,12 @@ module.exports = {
       // JS
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        include: /Sdparentalguide/,
         use: [
           'babel-loader'
         ]
       },
+
       //CSS
       {
         test: /\.css$/,
@@ -87,7 +90,7 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              limit: 1024,
+              limit: 10000,
               name(file) {
                 if (file.indexOf('fonts') > -1) {
                   return 'fonts/[name].[ext]';

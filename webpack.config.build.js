@@ -9,7 +9,6 @@ const Modules = require('./conf').modules;
 
 
 module.exports = merge(webpackConfig, {
-  target: 'web',
   output: {
     filename: 'scripts/[name].bundle.js',
     publicPath: '../'
