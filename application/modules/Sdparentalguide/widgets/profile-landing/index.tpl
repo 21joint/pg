@@ -201,7 +201,9 @@
                             </p>
                         </div>
                         <div class="holder text-right">
-                            <a class="text-primary" href="javascript:void(0)"><?php echo $this->translate('view all'); ?></a>
+                            <a class="text-primary" href="javascript:void(0)" onclick="showStruggle()">
+                                <?php echo $this->translate('view all'); ?>
+                            </a>
                         </div>
                     </div>
 
@@ -264,6 +266,16 @@
             });
        });
     });
+
+    function showStruggle() {
+        $$('.tabs_alt ').each(function(elements){
+            elements.getElements('ul > li').each(function(el){
+                if(el.classList[1] === 'tab_layout_sdparentalguide_ajax_struggles'){
+                    el.getChildren()[0].click(); 
+                }
+            });
+       });
+    }
 
     // Latest Struggles Component Ajax Call
     en4.core.runonce.add(function () {
