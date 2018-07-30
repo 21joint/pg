@@ -335,28 +335,16 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
         $db = $table->getAdapter();
         $db->beginTransaction();
         try {
-            $api = Engine_Api::_()->getApi("V1_Reaction","pgservicelayer");
             foreach($answers as $answer){
                 $poster = Engine_Api::_()->getItem("user", $answer->user_id);
-                if(!$poster->isSelf($viewer)){
+                if(!$poster->isSelf($viewer) && !$viewer->isAdmin()){
                     $this->respondWithError('unauthorized');
                 }
                 $answer->gg_deleted = 1;
                 $answer->save();
                 
                 $subject->answer_count = $subject->answer_count - 1;
-                
-                if(($actionOwner = $api->hasActivity($answer,'question_author_answer',$subject->getOwner()))){
-                    $actionOwner->delete();
-                }
-
-                if(($action = $api->hasActivity($answer,'question_answer',$viewer))){
-                    $action->delete();
-                }
-                
-                if(($actionOwner = $api->hasActivity($answer,'question_answer_chosen',$subject->getOwner()))){
-                    $actionOwner->delete();
-                }
+                $answer->deletePoints();
             }
             $subject->save();
             $db->commit();

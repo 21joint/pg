@@ -22,7 +22,7 @@
                         e.preventDefault(); 
                         var body = comment_form.getElementById('comment_body').value;
                         if(!body) return;
-                        en4.ggcommunity.comment.create(parent_type, parent_id, body);
+                        en4.pgservicelayer.comment.create(parent_type, parent_id, body);
                     });
 
                 </script>
@@ -148,7 +148,11 @@ function loadComments(contentType,contentID,container){
                     commentElement.inject(container,"bottom");
                 });
                 if(comments.length <= 0){
-                    container.set("html",'<p class="tip_msg" id="no_comments_tip"><?php echo $this->translate("There are no comments to show for this answer"); ?></p>');
+                    if(contentType == "Question"){
+                        container.set("html",'<p class="tip_msg" id="no_comments_tip"><?php echo $this->translate("There are no comments to show for this question"); ?></p>');
+                    }else{
+                        container.set("html",'<p class="tip_msg" id="no_comments_tip"><?php echo $this->translate("There are no comments to show for this answer"); ?></p>');
+                    }
                 }
                 Smoothbox.bind(container); 
                 hoverBoxImage();
@@ -172,12 +176,12 @@ function getCommentElement(comment){
                 '<div class="question-approve-time m-r-10"><p class="approve-time">'+comment.createdDateTime+"</p></div>";
     
     html += "</div><div class='question-main-top large-2 medium-2 small-2 flex-end' id='hide'>"+
-        '<a href="javascript:void(0)" id="dot-options" class="dot-options relative" onclick="en4.ggcommunity.open_options(\'core_comment\', '+comment.commentID+')">'+
+        '<a href="javascript:void(0)" id="dot-options" class="dot-options relative" onclick="en4.pgservicelayer.open_options(event,\'core_comment\', '+comment.commentID+')">'+
         '<svg aria-hidden="true" width="16px" data-prefix="fal" data-icon="ellipsis-h" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path  d="M192 256c0 17.7-14.3 32-32 32s-32-14.3-32-32 14.3-32 32-32 32 14.3 32 32zm88-32c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32zm-240 0c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32z" class=""></path></svg>'+
         '</a><div class="holder-options-box hidden absolute" id="hidden_options_core_comment_'+comment.commentID+'"><ul class="options-list">';
     
     if(comment.canDelete){
-        html += '<li class="list-inline edit-list-item"><a href="javascript:void(0);" class="edit-item option-item display-flex" onclick="en4.ggcommunity.comment.edit(\'core_comment\','+comment.commentID+');">'+
+        html += '<li class="list-inline edit-list-item"><a href="javascript:void(0);" class="edit-item option-item display-flex" onclick="en4.pgservicelayer.comment.edit(\''+comment.contentType+'\','+comment.contentID+','+comment.commentID+');">'+
                 '<svg aria-hidden="true" data-prefix="fal" data-icon="edit" role="img" xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 576 512"><path fill="currentColor" d="M417.8 315.5l20-20c3.8-3.8 10.2-1.1 10.2 4.2V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h292.3c5.3 0 8 6.5 4.2 10.2l-20 20c-1.1 1.1-2.7 1.8-4.2 1.8H48c-8.8 0-16 7.2-16 16v352c0 8.8 7.2 16 16 16h352c8.8 0 16-7.2 16-16V319.7c0-1.6.6-3.1 1.8-4.2zm145.9-191.2L251.2 436.8l-99.9 11.1c-13.4 1.5-24.7-9.8-23.2-23.2l11.1-99.9L451.7 12.3c16.4-16.4 43-16.4 59.4 0l52.6 52.6c16.4 16.4 16.4 43 0 59.4zm-93.6 48.4L403.4 106 169.8 339.5l-8.3 75.1 75.1-8.3 233.5-233.6zm71-85.2l-52.6-52.6c-3.8-3.8-10.2-4-14.1 0L426 83.3l66.7 66.7 48.4-48.4c3.9-3.8 3.9-10.2 0-14.1z"></path></svg>'+
                 '<?php echo $this->translate("Edit"); ?></a></li>';
         var deleteUrl = en4.core.baseUrl+"ggcommunity/comment-profile/delete/comment_id/"+comment.commentID;
@@ -199,10 +203,10 @@ function getCommentElement(comment){
     }
     <?php endif; ?>
     
-    var editFormHtml = getEditForm('core_comment',comment.commentID,comment.body);
+    var editFormHtml = getEditCommentForm('core_comment',comment.commentID,comment.body);
     html += "</ul></div></div></div>"+"<div class='question-main-middle'>"+
-        "<div class='question-body core_comment' id='core_comment_'"+comment.commentID+">"+
-        "<div class='item_body' id='item_body_'"+comment.commentID+">"+comment.body+"</div>"+editFormHtml;    
+        "<div class='question-body core_comment' id='core_comment_"+comment.commentID+"'>"+
+        "<div class='item_body' id='item_body_"+comment.commentID+"'>"+comment.body+"</div>"+editFormHtml;    
     html += "</div></div>";
     
     var commentElement = new Element("div",{
@@ -211,5 +215,33 @@ function getCommentElement(comment){
         'html': html
     });
     return commentElement;
+}
+function getEditCommentForm(type,id,body){
+    var editUrl = en4.core.baseUrl+"ggcommunity/comment/edit";
+    var formHtml = '<div class="edit_item_'+id+'">'+
+                '<div class="item_edit_content" id="edit_item_content_'+id+'" style="display:none;">'+
+                '<form id="form_edit_'+type+'_'+id+'" enctype="application/x-www-form-urlencoded" class="global_form_front extfox-form" action="'+editUrl+'" method="post" data-id="'+id+'">'+
+                    '<div>'+
+                        '<div>'+
+                            '<div class="form-elements">'+
+                                '<div class="form-wrapper" id="body-wrapper">'+
+                                    '<div id="body-label" class="form-label">&nbsp;</div>'+
+                                    '<div id="body-element" class="form-element">'+
+                                        '<textarea name="body" id="edit_'+type+'_body_'+id+'" cols="45" rows="1" class="comment_text" placeholder="Leave a comment..." autofocus="autofocus">'+body+'</textarea>'+
+                                    '</div>'+                                    
+                                '</div>'+
+                                '<div class="form-wrapper" id="buttons-wrapper">'+
+                                    '<fieldset id="fieldset-buttons">'+
+                                        '<button name="submit" id="add_comment" type="submit" class="submit-comment  btn primary small active"><?php echo $this->translate("Comment"); ?></button>'+
+                                        '<a name="cancel" id="cancel" style="display:none;" type="button" class="feed-edit-content-cancel" style="margin-left: .5rem; font-size: 12px; color: #93A4A6;" href="javascript:void(0);"><?php echo $this->translate("Cancel"); ?></a>'+
+                                    '</fieldset>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>'+
+                '</form>'+
+            '</div>'+
+        '</div>';
+    return formHtml;
 }
 </script>

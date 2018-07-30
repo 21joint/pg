@@ -50,7 +50,7 @@ class Ggcommunity_Form_Question_Create extends Engine_Form
   ));
   $this->tags->getDecorator("Description")->setOption("placement", "append");
   $this->addElement("Hidden",'topic_id',array(
-      'order' => 033393,
+      'order' => 33393,
   ));
         
   //Create Tinymce textarea(with this way you allow using default textareas on the same page)

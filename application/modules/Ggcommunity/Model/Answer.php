@@ -129,5 +129,14 @@ class Ggcommunity_Model_Answer extends Core_Model_Item_Abstract
               ->where("object_id = ?",$this->parent_id);
       return $table->fetchRow($select);
   }
+  
+  public function deletePoints(){
+    $actions = Engine_Api::_()->getDbtable('actions', 'activity')->getActionsByObject($this);
+    if(!empty($actions)){
+        foreach($actions as $action){
+              $action->delete();
+        }
+    }
+  }
 
 }

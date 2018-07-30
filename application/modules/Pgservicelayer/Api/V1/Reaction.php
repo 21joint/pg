@@ -158,14 +158,14 @@ class Pgservicelayer_Api_V1_Reaction extends Sdparentalguide_Api_Core {
             return;
         }
         
-        $actionOwner = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($object->getOwner(), $object, $authorActionType,array(
+        $actionOwner = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($object->getOwner(), $object, $authorActionType,null,array(
             'owner' => $object->getOwner()->getGuid(),
         ));
         if(!empty($actionOwner)){
             Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($actionOwner, $object);
         }
         
-        $action = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($viewer, $object, $mainActionType,array(
+        $action = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($viewer, $object, $mainActionType,null,array(
             'owner' => $object->getOwner()->getGuid(),
         ));
         if(!empty($action)){
@@ -180,12 +180,15 @@ class Pgservicelayer_Api_V1_Reaction extends Sdparentalguide_Api_Core {
             $mainActionType = "question_answer_vote";
             $authorActionType = "question_answer_author_vote";
         }
-        if(($action = $this->hasActivity($object,$mainActionType))){
-            $action->delete();
-        }
         
         if(($actionOwner = $this->hasActivity($object,$authorActionType,$object->getOwner()))){
             $actionOwner->delete();
         }
+        
+        if(($action = $this->hasActivity($object,$mainActionType))){
+            $action->delete();
+        }
+        
+        
     }
 }

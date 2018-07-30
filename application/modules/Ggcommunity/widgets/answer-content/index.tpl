@@ -158,7 +158,7 @@
                     } 
 
                     if(!body) return;
-                    en4.ggcommunity.answer.create(<?php echo $this->subject->getIdentity() ?>, body, last_answer_id);
+                    en4.pgservicelayer.answer.create(<?php echo $this->subject->getIdentity() ?>, body, last_answer_id);
                 });
 
                 
@@ -200,8 +200,8 @@ function loadAnswers(){
                 items.each(function(answer){
                     var answerElement = getAnswerElement(answer);
                     answerElement.inject(container,"bottom");
-                });
-                initTinyMce();
+                    initTinyMce("tinymce_ggcommunity_answer"+answer.answerID);
+                });                
                 Smoothbox.bind(container);
                 hoverBoxImage();
             }else{
@@ -254,16 +254,16 @@ function getAnswerElement(answer){
     
     var voteHtml = '';
     if(answer.userVote.status && answer.userVote.voteType == 'upvote'){
-        voteHtml += '<a href="javascript:void(0)" class="vote-up primary" disabled="disabled" onclick="en4.ggcommunity.vote(\'ggcommunity_answer\','+answer.answerID+' ,1)"><svg aria-hidden="true" data-prefix="fas" data-icon="arrow-circle-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm143.6 28.9l72.4-75.5V392c0 13.3 10.7 24 24 24h16c13.3 0 24-10.7 24-24V209.4l72.4 75.5c9.3 9.7 24.8 9.9 34.3.4l10.9-11c9.4-9.4 9.4-24.6 0-33.9L273 107.7c-9.4-9.4-24.6-9.4-33.9 0L106.3 240.4c-9.4 9.4-9.4 24.6 0 33.9l10.9 11c9.6 9.5 25.1 9.3 34.4-.4z"></path></svg></a>';
+        voteHtml += '<a href="javascript:void(0)" class="vote-up primary" disabled="disabled" onclick="en4.pgservicelayer.vote(event,\'ggcommunity_answer\','+answer.answerID+' ,1)"><svg aria-hidden="true" data-prefix="fas" data-icon="arrow-circle-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm143.6 28.9l72.4-75.5V392c0 13.3 10.7 24 24 24h16c13.3 0 24-10.7 24-24V209.4l72.4 75.5c9.3 9.7 24.8 9.9 34.3.4l10.9-11c9.4-9.4 9.4-24.6 0-33.9L273 107.7c-9.4-9.4-24.6-9.4-33.9 0L106.3 240.4c-9.4 9.4-9.4 24.6 0 33.9l10.9 11c9.6 9.5 25.1 9.3 34.4-.4z"></path></svg></a>';
     }else{
-        voteHtml += '<a href="javascript:void(0)" class="vote-up" onclick="en4.ggcommunity.vote(\'ggcommunity_answer\','+answer.answerID+' ,1)"><svg aria-hidden="true" data-prefix="fas" data-icon="arrow-circle-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm143.6 28.9l72.4-75.5V392c0 13.3 10.7 24 24 24h16c13.3 0 24-10.7 24-24V209.4l72.4 75.5c9.3 9.7 24.8 9.9 34.3.4l10.9-11c9.4-9.4 9.4-24.6 0-33.9L273 107.7c-9.4-9.4-24.6-9.4-33.9 0L106.3 240.4c-9.4 9.4-9.4 24.6 0 33.9l10.9 11c9.6 9.5 25.1 9.3 34.4-.4z"></path></svg></a>';
+        voteHtml += '<a href="javascript:void(0)" class="vote-up" onclick="en4.pgservicelayer.vote(event,\'ggcommunity_answer\','+answer.answerID+' ,1)"><svg aria-hidden="true" data-prefix="fas" data-icon="arrow-circle-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm143.6 28.9l72.4-75.5V392c0 13.3 10.7 24 24 24h16c13.3 0 24-10.7 24-24V209.4l72.4 75.5c9.3 9.7 24.8 9.9 34.3.4l10.9-11c9.4-9.4 9.4-24.6 0-33.9L273 107.7c-9.4-9.4-24.6-9.4-33.9 0L106.3 240.4c-9.4 9.4-9.4 24.6 0 33.9l10.9 11c9.6 9.5 25.1 9.3 34.4-.4z"></path></svg></a>';
     }
     
     voteHtml += '<p class="question-vote">'+answer.totalVoteCount+'</p>';
     if(answer.userVote.status && answer.userVote.voteType == 'downvote'){
-        voteHtml += '<a href="javascript:void(0)" class="vote-down primary" disabled="disabled" onclick="en4.ggcommunity.vote(\'ggcommunity_answer\','+answer.answerID+' ,0)"><svg aria-hidden="true" data-prefix="fas" data-icon="arrow-circle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-143.6-28.9L288 302.6V120c0-13.3-10.7-24-24-24h-16c-13.3 0-24 10.7-24 24v182.6l-72.4-75.5c-9.3-9.7-24.8-9.9-34.3-.4l-10.9 11c-9.4 9.4-9.4 24.6 0 33.9L239 404.3c9.4 9.4 24.6 9.4 33.9 0l132.7-132.7c9.4-9.4 9.4-24.6 0-33.9l-10.9-11c-9.5-9.5-25-9.3-34.3.4z"></path></svg></a>';
+        voteHtml += '<a href="javascript:void(0)" class="vote-down primary" disabled="disabled" onclick="en4.pgservicelayer.vote(event,\'ggcommunity_answer\','+answer.answerID+' ,0)"><svg aria-hidden="true" data-prefix="fas" data-icon="arrow-circle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-143.6-28.9L288 302.6V120c0-13.3-10.7-24-24-24h-16c-13.3 0-24 10.7-24 24v182.6l-72.4-75.5c-9.3-9.7-24.8-9.9-34.3-.4l-10.9 11c-9.4 9.4-9.4 24.6 0 33.9L239 404.3c9.4 9.4 24.6 9.4 33.9 0l132.7-132.7c9.4-9.4 9.4-24.6 0-33.9l-10.9-11c-9.5-9.5-25-9.3-34.3.4z"></path></svg></a>';
     }else{
-        voteHtml += '<a href="javascript:void(0)" class="vote-down" onclick="en4.ggcommunity.vote(\'ggcommunity_answer\','+answer.answerID+' ,0)"><svg aria-hidden="true" data-prefix="fas" data-icon="arrow-circle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-143.6-28.9L288 302.6V120c0-13.3-10.7-24-24-24h-16c-13.3 0-24 10.7-24 24v182.6l-72.4-75.5c-9.3-9.7-24.8-9.9-34.3-.4l-10.9 11c-9.4 9.4-9.4 24.6 0 33.9L239 404.3c9.4 9.4 24.6 9.4 33.9 0l132.7-132.7c9.4-9.4 9.4-24.6 0-33.9l-10.9-11c-9.5-9.5-25-9.3-34.3.4z"></path></svg></a>';
+        voteHtml += '<a href="javascript:void(0)" class="vote-down" onclick="en4.pgservicelayer.vote(event,\'ggcommunity_answer\','+answer.answerID+' ,0)"><svg aria-hidden="true" data-prefix="fas" data-icon="arrow-circle-down" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-143.6-28.9L288 302.6V120c0-13.3-10.7-24-24-24h-16c-13.3 0-24 10.7-24 24v182.6l-72.4-75.5c-9.3-9.7-24.8-9.9-34.3-.4l-10.9 11c-9.4 9.4-9.4 24.6 0 33.9L239 404.3c9.4 9.4 24.6 9.4 33.9 0l132.7-132.7c9.4-9.4 9.4-24.6 0-33.9l-10.9-11c-9.5-9.5-25-9.3-34.3.4z"></path></svg></a>';
     }
     
     var authorPhoto = en4.pgservicelayer.authorPhoto(author);
@@ -294,7 +294,7 @@ function getAnswerElement(answer){
                                     answerChosenhtml+
                                 '</div>'+
                                 "<div class='question-main-top large-2 medium-2 small-2 flex-end' id='hide'>"+
-                                    '<a href="javascript:void(0)" id="dot-options" class="dot-options relative" onclick="en4.ggcommunity.open_options(\'ggcommunity_answer\', '+answer.answerID+')">'+
+                                    '<a href="javascript:void(0)" id="dot-options" class="dot-options relative" onclick="en4.pgservicelayer.open_options(event,\'ggcommunity_answer\', '+answer.answerID+')">'+
                                     '<svg aria-hidden="true" width="16px" data-prefix="fal" data-icon="ellipsis-h" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path  d="M192 256c0 17.7-14.3 32-32 32s-32-14.3-32-32 14.3-32 32-32 32 14.3 32 32zm88-32c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32zm-240 0c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32z" class=""></path></svg>'+
                                     '</a>'+
                                     '<div class="holder-options-box hidden absolute" id="hidden_options_ggcommunity_answer_'+answer.answerID+'">'+questionOptions+'</div>'+
@@ -306,8 +306,8 @@ function getAnswerElement(answer){
                             '</div>'+
                         '</div>'+
                         '<div class="question-full-options"><div class="right-options">'+
-                            '<a href="javascript:void(0)" class="btn answer small black" onclick="en4.ggcommunity.answer.edit(\'ggcommunity_answer\','+answer.answerID+')"><?php echo $this->translate("Edit"); ?></a>'+
-                            '<a href="javascript:void(0)" class="btn answer small black" id="comment_counter_'+answer.answerID+'" onclick="en4.ggcommunity.answer.comment(\'ggcommunity_answer\','+answer.answerID+')">'+
+                            '<a href="javascript:void(0)" class="btn answer small black" onclick="en4.pgservicelayer.answer.edit(\'ggcommunity_answer\','+answer.answerID+')"><?php echo $this->translate("Edit"); ?></a>'+
+                            '<a href="javascript:void(0)" class="btn answer small black" id="comment_counter_'+answer.answerID+'" onclick="en4.pgservicelayer.answer.comment(\'ggcommunity_answer\','+answer.answerID+')">'+
                             commentCountHtml+
                         '</div>'+
                     '</div>'+
@@ -379,9 +379,10 @@ function getCommentForm(type,id,author,authorPhoto){
             '</div>';
     return formHtml;
 }
-function initTinyMce(){
+function initTinyMce(element){
     tinymce.init({
-        mode: "textareas",
+        mode: "exact",
+        'elements': element,
         plugins: "table,fullscreen,media,preview,paste,code,image,textcolor,link,lists,autosave,colorpicker,imagetools,advlist,searchreplace,emoticons",
         theme: "modern",
         menubar: false,

@@ -84,9 +84,16 @@ class Pgservicelayer_ReactionController extends Pgservicelayer_Controller_Action
                 }
             }
             
-            Engine_Api::_()->getApi("V1_Reaction","pgservicelayer")->toggleReaction($subject,$reactionType);
+            Engine_Api::_()->getApi("V1_Reaction","pgservicelayer")->toggleReaction($subject,$reactionType);            
             $db->commit();
-            $this->successResponseNoContent('no_content');            
+            $totalCount = 1;
+            if(strtolower($reactionType) == "like" || strtolower($reactionType) == "dislike"){
+                $dislikesTable = Engine_Api::_()->getDbTable("dislikes","nestedcomment");
+                $totalCount = $subject->likes()->getLikeCount() - $dislikesTable->dislikes($subject)->getDislikeCount();
+            }else if(strtolower($reactionType) == "upvote" || strtolower($reactionType) == "downvote"){
+                $totalCount = $subject->up_vote_count - $subject->down_vote_count;
+            }
+            $this->respondWithSuccess(array('totalCount' => $totalCount));            
         } catch (Exception $e) {
             $db->rollBack();
             $this->respondWithValidationError('internal_server_error', $e->getMessage());
