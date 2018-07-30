@@ -280,7 +280,7 @@ function loadLeaderboardResults(page = 1) {
                 document.querySelectorAll('.avatar_halo').forEach(function(avatar_halo){
                     if(avatar_halo.dataset.halo == "true"){
                         avatar_halo.addClass('avatar_halo_disp');
-                        avatar_halo.style.borderImage = "url('<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/border.png') 20 20 20 20 fill";
+                        avatar_halo.style.borderImage = "url('<?php echo $this->baseUrl(); ?>/application/themes/parentalguidance/assets/images/border.png') 20 20 20 20 fill";
                     }
                 });
                 document.querySelectorAll('.cont_level').forEach(function(avatar_cont){
@@ -427,7 +427,7 @@ function loadMvpExpertResults(disp_mvps = 1, disp_experts = 0){
                 document.querySelectorAll('.mvp_halo').forEach(function(mvp_halo){
                     if(mvp_halo.dataset.halo == "true"){
                         mvp_halo.addClass('avatar_halo_disp');
-                        mvp_halo.style.borderImage = "url('<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/border.png') 10 10 10 10 fill";
+                        mvp_halo.style.borderImage = "url('<?php echo $this->baseUrl(); ?>/application/themes/parentalguidance/assets/images/border.png') 10 10 10 10 fill";
                     }
                 });
                 document.querySelectorAll('.cont_level').forEach(function(avatar_cont){

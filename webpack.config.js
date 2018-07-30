@@ -1,32 +1,30 @@
-const path = require('path');
-const pkg = require('./package');
-const Conf = require('./conf');
-const args = require('yargs').argv;
-const glob = require('glob');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require("path");
+const pkg = require("./package");
+const Conf = require("./conf");
+const args = require("yargs").argv;
+const glob = require("glob");
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 // const CopyWebpackPlugin = require("copy-webpack-plugin");
 const Modules = Conf.modules;
 
 
-const IS_DEV = (process.env.NODE_ENV === 'dev');
+const IS_DEV = (process.env.NODE_ENV === "dev");
 
-console.log(IS_DEV);
+console.info("Project is running in " + (IS_DEV ? "development" : "production") + " mode");
 
 /**
  * Webpack Configuration
  */
 
 module.exports = {
+  context: path.resolve(__dirname, "application/themes/parentalguidance"),
   entry: {
-    prg: [
-      './application/modules/Sdparentalguide/index.js'
-    ]
+    index: "./index.js"
   },
   output: {
-    filename: '[name].[chunkhash].js',
-    publicPath: '/',
+    filename: "scripts/[name].bundle.js",
     path: Modules.prg.dist
   },
   module: {
@@ -34,49 +32,43 @@ module.exports = {
       // JS
       {
         test: /\.js$/,
-        include: /Sdparentalguide/,
+        exclude: /node_modules/,
         use: [
-          'babel-loader'
+          "babel-loader"
         ]
-      },
-
-      //CSS
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
       },
       // SCSS
       {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
+          fallback: "style-loader",
           use: [
             {
-              loader: 'css-loader',
+              loader: "css-loader",
               options: {
                 minimize: !IS_DEV,
                 sourceMap: IS_DEV,
-                publicPath: '/'
+                publicPath: "/"
               }
             },
             {
-              loader: 'postcss-loader',
+              loader: "postcss-loader",
               options: {
                 sourceMap: IS_DEV,
-                publicPath: '/',
+                publicPath: "/",
                 plugins: [
-                  require('postcss-flexbugs-fixes'),
-                  require('autoprefixer')({
-                    browsers: ['last 3 versions']
+                  require("postcss-flexbugs-fixes"),
+                  require("autoprefixer")({
+                    browsers: ["last 3 versions"]
                   })
                 ]
               }
             },
             {
-              loader: 'sass-loader',
+              loader: "sass-loader",
               options: {
                 sourceMap: IS_DEV,
-                data: "$prefix: " + require('./conf').prefix + ";"
+                data: "$prefix: " + require("./conf").prefix + ";"
               }
             }
           ]
@@ -88,48 +80,54 @@ module.exports = {
         test: /\.(woff|woff2|ttf|eot|otf|svg|gif|png|jpe?g)$/i,
         use: [
           {
-            loader: 'url-loader',
+            loader: "url-loader",
             options: {
               limit: 10000,
               name(file) {
-                if (file.indexOf('fonts') > -1) {
-                  return 'fonts/[name].[ext]';
+                if (file.indexOf("fonts") > -1) {
+                  return "fonts/[name].[ext]";
                 }
                 else {
-                  return 'images/[name].[ext]';
+                  return "images/[name].[ext]";
                 }
               },
-              fallback: 'file-loader',
-              outputPath: './'
-            }
+              fallback: "file-loader",
+              outputPath: "./"
+            },
           }
         ]
       }
     ]
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          enforce: true,
+          chunks: "all"
+        }
+      }
+    }
   },
   plugins: [
     new webpack.DefinePlugin({
       IS_DEV
     }),
     new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery'
-    }),
-    new HtmlWebpackPlugin({
-      template: './application/modules/Sdparentalguide/widgets/header/index.tpl'
-    }),
-    new HtmlWebpackPlugin({
-      template: './application/modules/Sdparentalguide/widgets/reviews-view/index.tpl'
-    }),
-    new HtmlWebpackPlugin({
-      template: './application/modules/Sdparentalguide/widgets/reviews-create/index.tpl'
-    }),
-    new HtmlWebpackPlugin({
-      template: './application/modules/Sdparentalguide/widgets/featured-reviews/index.tpl'
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery"
     }),
     new ExtractTextPlugin({
-      filename: 'styles/[name].bundle.css'
-    })
-  ]
+      filename: "styles/[name].css"
+    }),
+    new HtmlWebpackPlugin({
+      template: "./head.tpl",
+      title: "Head",
+      filename: "head.tpl"
+    }),
+  ],
+  devtool: "inline-source-map"
 };

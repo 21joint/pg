@@ -1,1 +1,1 @@
-import '../../themes/guidanceguide/scss/auth/login.scss';
+import '../../themes/parentalguidance/scss/auth/login.scss';

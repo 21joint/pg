@@ -1,1 +1,1 @@
-import '../../../../themes/guidanceguide/scss/widgets/stars.scss';
+import '../../../../themes/parentalguidance/scss/widgets/stars.scss';

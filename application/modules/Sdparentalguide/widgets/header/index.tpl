@@ -357,158 +357,160 @@
 </header>
 
 <script type="text/javascript">
-  //var notificationUpdater;
-  //en4.core.runonce.add(function (e) {
-  //  if ($('notifications_markread_link')) {
-  //    $('notifications_markread_link').addEvent('click', function () {
-  //      //$('notifications_markread').setStyle('display', 'none');
-  //      en4.activity.hideNotifications('<?//= $this->string()->escapeJavascript($this->translate("0 Updates"));?>//');
-  //    });
-  //  }
-  //    <?php //if ($this->updateSettings && $this->viewer->getIdentity()): ?>
-  //  notificationUpdater = new NotificationUpdateHandler({
-  //    'delay': <?//= $this->updateSettings;?>
-  //  });
-  //  notificationUpdater.start();
-  //  window._notificationUpdater = notificationUpdater;
-  //    <?php //endif;?>
-  //});
-  ////var updateElement = $('core_menu_mini_menu').getElement('.core_mini_update');
-  //var updateElement = $('core_menu_mini_menu_extfox').getElement('.core_mini_update');
-  //if (updateElement) {
-  //  updateElement.set('id', 'updates_toggle');
-  //  $('core_mini_updates_pulldown').setStyle('display', 'inline-block').inject(updateElement.getParent().set('id', 'core_menu_mini_menu_update'));
-  //  updateElement.inject($('core_mini_updates_pulldown'));
-  //  $('core_mini_updates_pulldown').addEvent('click', function () {
-  //    var element = $(this);
-  //    if (element.className == 'updates_pulldown') {
-  //      element.className = 'updates_pulldown_active';
-  //      showNotifications();
-  //      activateProfileItem('notifications');
-  //    } else {
-  //      element.className = 'updates_pulldown';
-  //    }
-  //  });
-  //}
-  //var showNotifications = function () {
-  //  en4.activity.updateNotifications();
-  //  new Request.HTML({
-  //    'url': en4.core.baseUrl + 'activity/notifications/pulldown',
-  //    'data': {
-  //      'format': 'html',
-  //      'page': 1
-  //    },
-  //    'onComplete': function (responseTree, responseElements, responseHTML, responseJavaScript) {
-  //      if (responseHTML) {
-  //        // hide loading icon
-  //        if ($('notifications_loading')) $('notifications_loading').setStyle('display', 'none');
-  //        $('notifications_menu').innerHTML = responseHTML;
-  //        $('notifications_menu').addEvent('click', function (event) {
-  //          event.stop(); //Prevents the browser from following the link.
-  //          var current_link = event.target;
-  //          var notification_li = $(current_link).getParent('li');
-  //          // if this is true, then the user clicked on the li element itself
-  //          if (notification_li.id == 'core_menu_mini_menu_update') {
-  //            notification_li = current_link;
-  //          }
-  //          var forward_link;
-  //          if (current_link.get('href')) {
-  //            forward_link = current_link.get('href');
-  //          } else {
-  //            forward_link = $(current_link).getElements('a:last-child').get('href');
-  //          }
-  //          if (notification_li.get('class') == 'notifications_unread') {
-  //            notification_li.removeClass('notifications_unread');
-  //            en4.core.request.send(new Request.JSON({
-  //              url: en4.core.baseUrl + 'activity/notifications/markread',
-  //              data: {
-  //                format: 'json',
-  //                'actionid': notification_li.get('value')
-  //              },
-  //              onSuccess: function () {
-  //                window.location = forward_link;
-  //              }
-  //            }));
-  //          } else {
-  //            window.location = forward_link;
-  //          }
-  //        });
-  //      } else {
-  //        $('notifications_loading').innerHTML = '<?//= $this->string()->escapeJavascript($this->translate("You have no new updates."));?>//';
-  //      }
-  //    }
-  //  }).send();
-  //};
-  //// search box header
-  //let search_holder = document.getElementById('search-bar');
-  //let search_icon = document.getElementById('search-icon');
-  //let close_icon = document.getElementById('close_icon');
-  //search_icon.addEventListener('click', function () {
-  //  showDropdownItem(search_holder);
-  //  search_holder.children[0].children[0].focus();
-  //});
-  //close_icon.addEventListener('click', function () {
-  //  showDropdownItem(search_holder);
-  //});
-  //
-  ////take element and check if you want to display active or inactive
-  //function showDropdownItem(element) {
-  //  let isActive = element.classList.value.search('active');
-  //  ((isActive < 1) ? element.className += ' active' : element.classList.remove('active'));
-  //}
-  //
-  //function displayMenu() {
-  //  let mobileHolder = document.getElementById('parental-mobile-menu-holder');
-  //  if (mobileHolder.classList.contains('active') == false) {
-  //    mobileHolder.classList.add('active');
-  //    document.getElementsByTagName("body")[0].style = 'overflow: hidden';
-  //  } else {
-  //    mobileHolder.classList.remove('active');
-  //    document.getElementsByTagName("body")[0].style = 'overflow-x: hidden';
-  //  }
-  //}
-  //
-  //function activateProfileItem(type) {
-  //  let notificationBar = $('core_mini_updates_pulldown');
-  //  let dropdownHolder = document.getElementById('profile-dropdown-menu');
-  //  // hide notifications and hover
-  //  if (type == 'profile-dropdown-menu') {
-  //    notificationBar.classList.remove('updates_pulldown_active');
-  //    notificationBar.classList.add('updates_pulldown');
-  //    hideProfileHover();
-  //  }
-  //  // hide dropdown and notifications
-  //  if (type == 'notifications') {
-  //    dropdownHolder.classList.remove('active');
-  //    hideProfileHover();
-  //  }
-  //  if (type == 'profile-hover') {
-  //    dropdownHolder.classList.remove('active');
-  //    notificationBar.classList.remove('updates_pulldown_active');
-  //    notificationBar.classList.add('updates_pulldown');
-  //  }
-  //  if (type == 'all') {
-  //    hideProfileHover();
-  //    dropdownHolder.classList.remove('active');
-  //    notificationBar.classList.remove('updates_pulldown_active');
-  //    notificationBar.classList.add('updates_pulldown');
-  //  }
-  //}
-  //function hideProfileHover() {
-  //  let profileHovers = $$('.item_photo_user').getParent().getParent().getParent().getElement('.extfox-widgets');
-  //  profileHovers.each(function (element) {
-  //    element.classList.remove('active');
-  //  });
-  //}
-  //// hide search items
-  //document.onclick = function (e) {
-  //  e.stopPropagation();
-  //  // Notification hide
-  //  if (e.target.id !== 'close_icon') {
-  //    activateProfileItem('profile-dropdown-menu');
-  //  }
-  //  if (e.target.id !== 'btn-drop') {
-  //    activateProfileItem('notifications');
-  //  }
-  //}
+  var notificationUpdater;
+  en4.core.runonce.add(function (e) {
+    if ($('notifications_markread_link')) {
+      $('notifications_markread_link').addEvent('click', function () {
+        //$('notifications_markread').setStyle('display', 'none');
+        en4.activity.hideNotifications('<?= $this->string()->escapeJavascript($this->translate("0 Updates"));?>');
+      });
+    }
+      <?php if ($this->updateSettings && $this->viewer->getIdentity()): ?>
+    notificationUpdater = new NotificationUpdateHandler({
+      'delay': <?= $this->updateSettings;?>
+    });
+    notificationUpdater.start();
+    window._notificationUpdater = notificationUpdater;
+      <?php endif;?>
+  });
+  //var updateElement = $('core_menu_mini_menu').getElement('.core_mini_update');
+  var updateElement = $('core_menu_mini_menu_extfox').getElement('.core_mini_update');
+  if (updateElement) {
+    updateElement.set('id', 'updates_toggle');
+    $('core_mini_updates_pulldown').setStyle('display', 'inline-block').inject(updateElement.getParent().set('id', 'core_menu_mini_menu_update'));
+    updateElement.inject($('core_mini_updates_pulldown'));
+    $('core_mini_updates_pulldown').addEvent('click', function () {
+      var element = $(this);
+      if (element.className == 'updates_pulldown') {
+        element.className = 'updates_pulldown_active';
+        showNotifications();
+        activateProfileItem('notifications');
+      } else {
+        element.className = 'updates_pulldown';
+      }
+    });
+  }
+  var showNotifications = function () {
+    en4.activity.updateNotifications();
+    new Request.HTML({
+      'url': en4.core.baseUrl + 'activity/notifications/pulldown',
+      'data': {
+        'format': 'html',
+        'page': 1
+      },
+      'onComplete': function (responseTree, responseElements, responseHTML, responseJavaScript) {
+        if (responseHTML) {
+          // hide loading icon
+          if ($('notifications_loading')) $('notifications_loading').setStyle('display', 'none');
+          $('notifications_menu').innerHTML = responseHTML;
+          $('notifications_menu').addEvent('click', function (event) {
+            event.stop(); //Prevents the browser from following the link.
+            var current_link = event.target;
+            var notification_li = $(current_link).getParent('li');
+            // if this is true, then the user clicked on the li element itself
+            if (notification_li.id == 'core_menu_mini_menu_update') {
+              notification_li = current_link;
+            }
+            var forward_link;
+            if (current_link.get('href')) {
+              forward_link = current_link.get('href');
+            } else {
+              forward_link = $(current_link).getElements('a:last-child').get('href');
+            }
+            if (notification_li.get('class') == 'notifications_unread') {
+              notification_li.removeClass('notifications_unread');
+              en4.core.request.send(new Request.JSON({
+                url: en4.core.baseUrl + 'activity/notifications/markread',
+                data: {
+                  format: 'json',
+                  'actionid': notification_li.get('value')
+                },
+                onSuccess: function () {
+                  window.location = forward_link;
+                }
+              }));
+            } else {
+              window.location = forward_link;
+            }
+          });
+        } else {
+          $('notifications_loading').innerHTML = '<?= $this->string()->escapeJavascript($this->translate("You have no new updates."));?>';
+        }
+      }
+    }).send();
+  };
+  // search box header
+  let search_holder = document.getElementById('search-bar');
+  let search_icon = document.getElementById('search-icon');
+  let close_icon = document.getElementById('close_icon');
+  search_icon.addEventListener('click', function () {
+    showDropdownItem(search_holder);
+    search_holder.children[0].children[0].focus();
+  });
+  close_icon.addEventListener('click', function () {
+    showDropdownItem(search_holder);
+  });
+
+  //take element and check if you want to display active or inactive
+  function showDropdownItem(element) {
+    let isActive = element.classList.value.search('active');
+    ((isActive < 1) ? element.className += ' active' : element.classList.remove('active'));
+  }
+
+  function displayMenu() {
+    let mobileHolder = document.getElementById('parental-mobile-menu-holder');
+    if (mobileHolder.classList.contains('active') == false) {
+      mobileHolder.classList.add('active');
+      document.getElementsByTagName("body")[0].style = 'overflow: hidden';
+    } else {
+      mobileHolder.classList.remove('active');
+      document.getElementsByTagName("body")[0].style = 'overflow-x: hidden';
+    }
+  }
+
+  function activateProfileItem(type) {
+    let notificationBar = $('core_mini_updates_pulldown');
+    let dropdownHolder = document.getElementById('profile-dropdown-menu');
+    // hide notifications and hover
+    if (type == 'profile-dropdown-menu') {
+      notificationBar.classList.remove('updates_pulldown_active');
+      notificationBar.classList.add('updates_pulldown');
+      hideProfileHover();
+    }
+    // hide dropdown and notifications
+    if (type == 'notifications') {
+      dropdownHolder.classList.remove('active');
+      hideProfileHover();
+    }
+    if (type == 'profile-hover') {
+      dropdownHolder.classList.remove('active');
+      notificationBar.classList.remove('updates_pulldown_active');
+      notificationBar.classList.add('updates_pulldown');
+    }
+    if (type == 'all') {
+      hideProfileHover();
+      dropdownHolder.classList.remove('active');
+      notificationBar.classList.remove('updates_pulldown_active');
+      notificationBar.classList.add('updates_pulldown');
+    }
+  }
+
+  function hideProfileHover() {
+    let profileHovers = $$('.item_photo_user').getParent().getParent().getParent().getElement('.extfox-widgets');
+    profileHovers.each(function (element) {
+      element.classList.remove('active');
+    });
+  }
+
+  // hide search items
+  document.onclick = function (e) {
+    e.stopPropagation();
+    // Notification hide
+    if (e.target.id !== 'close_icon') {
+      activateProfileItem('profile-dropdown-menu');
+    }
+    if (e.target.id !== 'btn-drop') {
+      activateProfileItem('notifications');
+    }
+  }
 </script>

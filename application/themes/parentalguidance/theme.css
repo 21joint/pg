@@ -2,7 +2,6 @@
 @include "~/application/modules/Core/externals/styles/main.css";
 @scan "application/modules" "externals/styles/main.css" "Core";
 
-
 /*
 GLOBAL STYLES, FONTS & RESETS
 */

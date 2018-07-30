@@ -5,7 +5,7 @@ application/settings/cache.php
 application/settings/database.php
 application/settings/general.php
 application/settings/mail.php
-application/themes/guidanceguide/.sass-cache
+application/themes/parentalguidance/.sass-cache
 
 appspec.yml
 public/temporary

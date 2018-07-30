@@ -1,13 +1,18 @@
 const pkg = require('./package');
+const conf = require('./conf');
+const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const webpackConfig = require('./webpack.config');
 const proxyMiddleware = require('http-proxy-middleware');
 
+console.log(__dirname);
 
 module.exports = merge(webpackConfig, {
   devServer: {
-    port: 4000,
+    port: 2121,
+    open: true,
+    hot: true,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'DELETE, HEAD, GET, OPTIONS, POST, PUT',
@@ -21,13 +26,16 @@ module.exports = merge(webpackConfig, {
           changeOrigin: true,
           pathRewrite: {
             '^/api/v1': '/'
-          },
-          logLevel: 'debug'
+          }
         }))
-        .use('*', proxyMiddleware({
+        .use('**', proxyMiddleware({
           target: 'http://localhost:8888',
           changeOrigin: false
         }))
     }
-  }
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin()
+  ]
 });

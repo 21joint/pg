@@ -9,82 +9,82 @@
 ?>
 
 <?php
-  // Parse query and remove page
-  if( !empty($this->query) && ( is_string($this->query) || is_array($this->query)) ) {
+// Parse query and remove page
+if (!empty($this->query) && (is_string($this->query) || is_array($this->query))) {
     $query = $this->query;
-    if( is_string($query) ) $query = parse_str(trim($query, '?'));
+    if (is_string($query)) $query = parse_str(trim($query, '?'));
     unset($query['page']);
     $query = http_build_query($query);
-    if( $query ) $query = '?' . $query;
-  } else {
+    if ($query) $query = '?' . $query;
+} else {
     $query = '';
-  }
-  // Add params
-  $params = ( !empty($this->params) && is_array($this->params) ? $this->params : array() );
-  unset($params['page']);
+}
+// Add params
+$params = (!empty($this->params) && is_array($this->params) ? $this->params : array());
+unset($params['page']);
 ?>
 
 
-<?php if( $this->pageCount > 1 ): ?>
+<?php if ($this->pageCount > 1): ?>
   <div class="pages">
     <ul class="paginationControl">
-      <?php if( isset($this->previous) ): ?>
-        <li>
-          <?= $this->htmlLink(array_merge($params, array(
-            'reset' => true,
-            'route' => 'sdparentalguide_general',
-            'action' => 'listings',
-            'page' => ( $this->pageAsQuery ? null : $this->first ),
-            'QUERY' => $query . ( $this->pageAsQuery ? '&page=' . $this->first : '' ),
-          )), $this->translate('&#171; First')) ?>
-        </li>
-        <li>
-          <?= $this->htmlLink(array_merge($params, array(
-            'reset' => true,
-            'route' => 'sdparentalguide_general',
-            'action' => 'listings',
-            'page' => ( $this->pageAsQuery ? null : $this->previous ),
-            'QUERY' => $query . ( $this->pageAsQuery ? '&page=' . $this->previous : '' ),
-          )), $this->translate('&#171; Previous')) ?>
-        </li>
-      <?php endif; ?>
-      <?php foreach ($this->pagesInRange as $page): ?>
-        <?php if ($page != $this->current): ?>
+        <?php if (isset($this->previous)): ?>
           <li>
-            <?= $this->htmlLink(array_merge($params, array(
-              'reset' => true,
-              'route' => 'sdparentalguide_general',
-              'action' => 'listings',
-              'page' => ( $this->pageAsQuery ? null : $page ),
-              'QUERY' => $query . ( $this->pageAsQuery ? '&page=' . $page : '' ),
-            )), $page) ?>
+              <?= $this->htmlLink(array_merge($params, array(
+                  'reset' => true,
+                  'route' => 'sdparentalguide_general',
+                  'action' => 'listings',
+                  'page' => ($this->pageAsQuery ? null : $this->first),
+                  'QUERY' => $query . ($this->pageAsQuery ? '&page=' . $this->first : ''),
+              )), $this->translate('&#171; First')) ?>
           </li>
-        <?php else: ?>
-          <li class="selected">
-            <a href='<?= $this->escape($this->url()) ?>'><?= $page; ?></a>
+          <li>
+              <?= $this->htmlLink(array_merge($params, array(
+                  'reset' => true,
+                  'route' => 'sdparentalguide_general',
+                  'action' => 'listings',
+                  'page' => ($this->pageAsQuery ? null : $this->previous),
+                  'QUERY' => $query . ($this->pageAsQuery ? '&page=' . $this->previous : ''),
+              )), $this->translate('&#171; Previous')) ?>
           </li>
         <?php endif; ?>
-      <?php endforeach; ?>
-      <?php if (isset($this->next)): ?>
-        <li>
-          <?= $this->htmlLink(array_merge($params, array(
-            'reset' => true,
-            'route' => 'sdparentalguide_general',
-            'action' => 'listings',
-            'page' => ( $this->pageAsQuery ? null : $this->next ),
-            'QUERY' => $query . ( $this->pageAsQuery ? '&page=' . $this->next : '' ),
-          )), $this->translate('Next &#187;')) ?>
-        </li>
-        <li>
-          <?= $this->htmlLink(array_merge($params, array(
-            'reset' => true,
-            'route' => 'sdparentalguide_general',
-            'action' => 'listings',
-            'page' => ( $this->pageAsQuery ? null : $this->last ),
-            'QUERY' => $query . ( $this->pageAsQuery ? '&page=' . $this->last : '' ),
-          )), $this->translate('Last &#187;')) ?>
-        </li>
-      <?php endif; ?>
+        <?php foreach ($this->pagesInRange as $page): ?>
+            <?php if ($page != $this->current): ?>
+            <li>
+                <?= $this->htmlLink(array_merge($params, array(
+                    'reset' => true,
+                    'route' => 'sdparentalguide_general',
+                    'action' => 'listings',
+                    'page' => ($this->pageAsQuery ? null : $page),
+                    'QUERY' => $query . ($this->pageAsQuery ? '&page=' . $page : ''),
+                )), $page) ?>
+            </li>
+            <?php else: ?>
+            <li class="selected">
+              <a href='<?= $this->escape($this->url()) ?>'><?= $page; ?></a>
+            </li>
+            <?php endif; ?>
+        <?php endforeach; ?>
+        <?php if (isset($this->next)): ?>
+          <li>
+              <?= $this->htmlLink(array_merge($params, array(
+                  'reset' => true,
+                  'route' => 'sdparentalguide_general',
+                  'action' => 'listings',
+                  'page' => ($this->pageAsQuery ? null : $this->next),
+                  'QUERY' => $query . ($this->pageAsQuery ? '&page=' . $this->next : ''),
+              )), $this->translate('Next &#187;')) ?>
+          </li>
+          <li>
+              <?= $this->htmlLink(array_merge($params, array(
+                  'reset' => true,
+                  'route' => 'sdparentalguide_general',
+                  'action' => 'listings',
+                  'page' => ($this->pageAsQuery ? null : $this->last),
+                  'QUERY' => $query . ($this->pageAsQuery ? '&page=' . $this->last : ''),
+              )), $this->translate('Last &#187;')) ?>
+          </li>
+        <?php endif; ?>
     </ul>
   </div>
 <?php endif; ?>

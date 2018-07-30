@@ -10,14 +10,11 @@ const Modules = require('./conf').modules;
 
 module.exports = merge(webpackConfig, {
   output: {
-    filename: 'scripts/[name].bundle.js',
-    publicPath: '../'
+    filename: 'scripts/[name].[contenthash].js',
+    path: Modules.prg.dist
   },
   plugins: [
     new CleanWebpackPlugin([Modules.prg.dist]),
-    new ExtractTextPlugin({
-      filename: 'styles/[name].bundle.css'
-    })
   ],
   devtool: 'source-map'
 });

@@ -126,7 +126,7 @@
     en4.core.language.setLocale('<?php echo $this->locale()->getLocale()->__toString() ?>');
     en4.core.setBaseUrl('<?php echo $this->url(array(), 'default', true) ?>');
     en4.core.staticBaseUrl = '<?php echo $this->escape($staticBaseUrl) ?>';
-    en4.core.loader = new Element('img', {src: en4.core.baseUrl + 'application/themes/guidanceguide/images/loader.svg'});
+    en4.core.loader = new Element('img', {src: en4.core.baseUrl + 'application/themes/parentalguidance/images/loader.svg'});
 
     <?php if( $this->subject() ): ?>
       en4.core.subject = {
