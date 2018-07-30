@@ -43,7 +43,10 @@
 
             <div class="col-6 family-item p-0">
                 <span class="text-muted">
-                    <?php echo date($item->dob); ?>
+                    <?php 
+                        $date = strtotime( $item->dob );
+                        echo $date = date( 'F Y', $date  );
+                    ?>
                 </span>
                 <p class="desc text-muted small">
                     <?php if(!$item->gender || $item->gender == 3): ?>
@@ -318,7 +321,7 @@ function setupFamilyMember() {
 
     lastItem = lastItem + 1;
 
-    var htmlInputFields = '<input type="hidden" name="family_'+ lastItem +'[gender]" id="field-gender" value="'+gender+'"><input type="hidden" name="family_'+ lastItem +'[birthday]" id="field-birthday" value="'+birthdayDate+'">';
+    var htmlInputFields = '<input type="hidden" name="family_'+ lastItem +'[gender]" id="field-gender" value="'+gender+'"><input type="hidden" name="family_'+ lastItem +'[birthday]" id="field-birthday" value="'+localStorage.getItem('year') + '-' +localStorage.getItem('month')+'">';
 
     if(gender == 3) {
         genderImage = '<div class="unknown d-flex align-items-center justify-content-center text-white">X</div>';
