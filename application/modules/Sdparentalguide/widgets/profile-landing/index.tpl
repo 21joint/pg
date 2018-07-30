@@ -227,7 +227,7 @@
       pagination: {
         el: '.swiper-pagination',
       },
-      loop: true,
+      loop: false,
     });
 
     en4.core.runonce.add(function () {
