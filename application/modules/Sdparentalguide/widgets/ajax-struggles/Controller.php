@@ -41,13 +41,14 @@ class Sdparentalguide_Widget_AjaxStrugglesController extends Engine_Content_Widg
         }
 
         $page = $this->_getParam('page', 1);
-        $limit = Engine_Api::_()->getApi('settings', 'core')->getSetting('ggcommunity.question.page');
+        $limit = Engine_Api::_()->getApi('settings', 'core')->getSetting('ggcommunity.answer.page');
         
+        
+        $table = Engine_Api::_()->getDbtable('questions', 'ggcommunity');
 
-        $questionTable = Engine_Api::_()->getDbtable('questions', 'ggcommunity');
-
-        $select = $questionTable->select()
-          ->where('user_id = ?', $subject->user_id);
+        $select = $table->select()
+          ->where('user_id = ?', $subject->user_id)
+          ->order('question_id DESC')
         ;
 
         $this->view->paginator = $paginator = Zend_Paginator::factory($select);

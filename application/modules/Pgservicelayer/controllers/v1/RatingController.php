@@ -48,6 +48,30 @@ class Pgservicelayer_RatingController extends Pgservicelayer_Controller_Action_A
             $subject = Engine_Api::_()->core()->getSubject();
         }
         
+        $page = $this->getParam("page",1);
+        $limit = $this->getParam("limit",50);
+        $table = Engine_Api::_()->getDbTable("listingRatings","sdparentalguide");
+        $select = $table->select();
+        
+        $contentType = $this->getParam("contentType");
+        $contentType = Engine_Api::_()->sdparentalguide()->mapPGGResourceTypes($contentType);
+        if(!empty($contentType)){
+            $select->where("listing_type = ?",$contentType);
+        }
+        
+        $contentID = $this->getParam("contentID");
+        if(!empty($contentID)){
+            $select->where("listing_id = ?",$contentID);
+        }
+        $ratingID = $this->getParam("ratingID");
+        if(!empty($ratingID)){
+            $select->where("listingrating_id = ?",$ratingID);
+        }
+        
+        $paginator = Zend_Paginator::factory($select);
+        $paginator->setCurrentPageNumber($page);
+        $paginator->setItemCountPerPage($limit);
+        
         $response['ResultCount'] = 0;
         $response['Results'] = array();
         $this->respondWithSuccess($response);

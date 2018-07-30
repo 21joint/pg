@@ -208,6 +208,18 @@ $routes['pgservicelayer'] = array(
           'version' => 'v1'
         ),
     ),
+    'pgservicelayer_apiviews' => array(
+        'route' => 'api/:version/login/*',
+        'defaults' => array(
+          'module' => 'pgservicelayer',
+          'controller' => 'auth',
+          'action' => 'login',
+          'version' => 'v1'
+        ),
+        'reqs' => array(
+          'action' => '\D+',
+        )
+    ),
 );
 
 return $routes;

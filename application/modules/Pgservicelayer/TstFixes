@@ -1,0 +1,5 @@
+1. Install PGServicelayer module for package manager.
+2. License keys fix for Sitereview and Siteapi plugins.
+3. Directory not writeable or exists public/temporary. Throws error on add topic.
+4. Install SEAO Email Templates plugin.
+5. Update Member Profile Layout.

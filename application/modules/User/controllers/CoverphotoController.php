@@ -126,6 +126,8 @@ class User_CoverphotoController extends Core_Controller_Action_Standard {
   }
 
   public function uploadCoverPhotoAction() {
+
+   
     if (!$this->_helper->requireUser()->isValid()) {
       return;
     }
@@ -382,7 +384,7 @@ class User_CoverphotoController extends Core_Controller_Action_Standard {
     $coverPath = $path . DIRECTORY_SEPARATOR . $base . '_c.' . $extension;
     $image = Engine_Image::factory();
     $image->open($file)
-      ->resize(1500, 1500)
+      ->resize($normalWidth, $normalHeight)
       ->write($coverPath)
       ->destroy();
 
