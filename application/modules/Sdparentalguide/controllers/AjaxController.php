@@ -232,7 +232,7 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
                 $viewer->save();
             }
 
-            if($key == 'profile_age_range') {
+            if($key == 'profile_age_range_set') {
                 $viewer->gg_age_range = $value;
                 $viewer->gg_age_range_set = date('Y-m-d H:i:s');
                 $viewer->save();
