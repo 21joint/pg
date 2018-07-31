@@ -313,17 +313,105 @@
                     var html = "";
                     var results = responseJSON.body.Results;
                     for(var i = 0; i < results.length ; i++) {
+                        // Matching Contribution Level to Contribution Award (Bronze, Silver, Gold, Platinum) 
+                        var adjust_award = String(results[i].author.expertPlatinumCount)+
+                                            String(results[i].author.expertGoldCount)+
+                                            String(results[i].author.expertSilverCount)+
+                                            String(results[i].author.expertBronzeCount);
+                        // Number that Will be Displayed
+                        var adjust_count;
+                        if(adjust_award >= 1000){
+                            adjust_count = results[i].author.expertPlatinumCount;
+                        }else if(adjust_award >= 100){
+                            adjust_count = results[i].author.expertGoldCount;
+                        }else if(adjust_award >= 10){
+                            adjust_count = results[i].author.expertSilverCount;
+                        }else if(adjust_award >= 1){
+                            adjust_count = results[i].author.expertBronzeCount;
+                        }else{
+                            adjust_count = results[i].author.contributionLevel;
+                        }
+
                         html += '<div class="struggle_holder my-3 d-flex flex-wrap">'+
                                     '<div class="struggle_box_left d-flex align-items-center large-12 medium-12 small-12">'+
                                         '<div class="struggle_left_side d-inline-block">'+
-                                            '<div class="extfox-widgets" id="extfox-widgets">'+
-
-                                            '</div>'+
                                             '<div class="item-photo-guidance position-relative">'+
-                                                '<div class="statistic circle-badge position-absolute thumb_icon item_photo_user primary d-flex justify-content-center align-items-center text-white">'+
-                                                    results[i].author.contributionLevel+
+                                                '<div class="avatar_popup position-absolute bg-white d-none">'+
+                                                    '<div class="avatar_header d-flex mx-3 mt-3 px-2 pt-2">'+
+                                                        '<img src="'+
+                                                            results[i].author.avatarPhoto.photoURLIcon+
+                                                        '" alt="avatar photo"/>'+
+                                                        '<div class="avatar_info d-flex flex-column">'+
+                                                            '<a class="font-weight-bold" href="'+
+                                                                en4.core.baseUrl+"profile/"+results[i].author.memberName+
+                                                            '">'+ 
+                                                                results[i].author.displayName+
+                                                            '</a>'+
+                                                            '<div class="d-flex justify-content-start align-items-center">'+
+                                                                '<svg style="margin: 3px 5px 0px 0px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0 0 42.03 39.91"><defs><linearGradient id="a" x1="26.26" y1="12.68" x2="40.67" y2="12.68" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#51b2b6"></stop><stop offset="1" stop-color="#5bc6cd"></stop></linearGradient><linearGradient id="b" y1="17.32" x2="17.39" y2="17.32" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5bc6cd"></stop><stop offset="1" stop-color="#51b2b6"></stop></linearGradient></defs><title>star_pg</title><path d="M40.23,8.55,32.7,18.46l-6.44-8.6L38.77,7C40.61,6.57,41.14,7.31,40.23,8.55Z" fill="url(#a)"></path><path d="M17.39,12,.93,16.13c-1,.24-1.28,1.35-.32,1.79l16.06,4.7Z" fill="url(#b)"></path><path d="M15.31,38.4,17.42,1c0-1.06,1.1-1.31,1.76-.45L41.59,28.45c.83,1,.6,2.71-1.71,1.81L26.36,25.09l-8.44,14A1.36,1.36,0,0,1,15.31,38.4Z" fill="#5bc6cd"></path></svg>'+
+                                                                results[i].author.contribution+
+                                                            '</div>'+
+                                                        '</div>'+
+                                                        '<span class="avatar_close">'+
+                                                            '<svg width="14px" aria-hidden="true" data-prefix="fal" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-times fa-w-10 fa-2x"><path fill="currentColor" d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z" class=""></path></svg>'+
+                                                        '</span>'+
+                                                    '</div>'+
+                                                    '<div class="avatar_badges d-flex justify-content-around align-items-center my-2 px-3">'+
+                                                        '<div class="avatar_badges_popup badge_bronze position-relative d-flex flex-column justify-content-center align-items-center">'+
+                                                            '<img src="<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/badges/Bronze.svg"/>'+
+                                                            '<span class="number_badges position-absolute text-white font-weight-bold">'+
+                                                                results[i].author.bronzeCount+
+                                                            '</span>'+
+                                                            '<span class="badge_name">Bronze</span>'+
+                                                        '</div>'+
+                                                        '<div class="avatar_badges_popup badge_silver position-relative d-flex flex-column justify-content-center align-items-center">'+
+                                                            '<img src="<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/badges/Silver.svg"/>'+
+                                                            '<span class="number_badges position-absolute text-white font-weight-bold">'+
+                                                                results[i].author.silverCount+
+                                                            '</span>'+
+                                                            '<span class="badge_name">Silver</span>'+
+                                                        '</div>'+
+                                                        '<div class="avatar_badges_popup badge_gold position-relative d-flex flex-column justify-content-center align-items-center">'+
+                                                            '<img src="<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/badges/Gold.svg"/>'+
+                                                            '<span class="number_badges position-absolute text-white font-weight-bold">'+
+                                                                results[i].author.goldCount+
+                                                            '</span>'+
+                                                            '<span class="badge_name">Gold</span>'+
+                                                        '</div>'+
+                                                        '<div class="avatar_badges_popup badge_platinum position-relative d-flex flex-column justify-content-center align-items-center">'+
+                                                            '<img src="<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/badges/Platinum.svg"/>'+
+                                                            '<span class="number_badges position-absolute text-white font-weight-bold">'+
+                                                                results[i].author.platinumCount+
+                                                            '</span>'+
+                                                            '<span class="badge_name">Platinum</span>'+
+                                                        '</div>'+
+                                                    '</div>'+
+                                                    '<div class="avatar_footer d-flex justify-content-center align-items-center border-top">'+
+                                                        '<div class="d-flex justify-content-center p-3 border-right">'+
+                                                            'Reviews '+
+                                                            '<span class="text-primary font-weight-bold ml-1">'+
+                                                            results[i].author.reviewCount+
+                                                            '</span>'+
+                                                        '</div>'+
+                                                        '<div class="d-flex justify-content-center p-3">'+
+                                                            'Answers '+ 
+                                                            '<span class="text-primary font-weight-bold ml-1">'+
+                                                            results[i].author.answerCount+
+                                                            '</span>'+
+                                                        '</div>'+
+                                                    '</div>'+
                                                 '</div>'+
-                                                '<img src="'+ results[i].author.avatarPhoto.photoURLIcon +'" alt="owner_thumb" class="thumb_icon item_photo_user primary" count="" gear=""/>'+
+                                                '<img class="avatar_halo rounded-circle" src="'+
+                                                    results[i].author.avatarPhoto.photoURLIcon+
+                                                '" data-halo="'+ results[i].author.mvp +'"/>'+
+                                                '<span class="cont_level position-absolute rounded-circle" data-cont="'+
+                                                    results[i].author.expertPlatinumCount+
+                                                    results[i].author.expertGoldCount+
+                                                    results[i].author.expertSilverCount+
+                                                    results[i].author.expertBronzeCount+
+                                                '">'+
+                                                    adjust_count+
+                                                '</span>'+
                                             '</div>'+
                                         '</div>'+
                                         '<div class="struggle_right-side d-inline-block">'+
@@ -388,6 +476,38 @@
                         }else{
                            answered_true.querySelector('.answer_star').innerHTML = '<svg class="d-lg-none" viewBox="0 0 42 40" style="margin-right:3px;" width="13px" height="13px" preserveAspectRatio="xMidYMid meet" x="0" y="0" xmlns="http://www.w3.org/2000/svg"><path d="M32.52 18.024l8.06 10.036c.79 1 .57 2.58-1.63 1.72l-12.87-4.92L18 38.19a1.3 1.3 0 0 1-2.49-.66h.05l.852-15.161L1.57 18.03c-.92-.41-.7-1.47.3-1.7l15.093-3.785.597-10.625c0-1 1-1.25 1.68-.43l7.068 8.8L37.9 7.64c1.75-.41 2.25.29 1.39 1.47l-6.77 8.914z" fill-rule="nonzero" stroke="#5BC7CE" stroke-width="4" fill="none"></path></svg>'; 
                         }
+                    });
+                    // Avatar Styling
+                    // Check the Data Attribute for Mvp Status
+                    // If Item has Mvp Status Put Halo Around Avatar Change Contribution Level Color
+                    document.querySelectorAll('.avatar_halo').forEach(function(avatar_halo){
+                        if(avatar_halo.dataset.halo == "true"){
+                            avatar_halo.addClass('avatar_halo_disp');
+                            avatar_halo.style.borderImage = "url('<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/border.png') 20 20 20 20 fill";
+                        }
+                    });
+                    // Checking Contribution Level on Avatar
+                    document.querySelectorAll('.cont_level').forEach(function(avatar_cont){
+                        if(avatar_cont.dataset.cont >= 1000){
+                            avatar_cont.addClass('cont_level_platinum');
+                        }else if(avatar_cont.dataset.cont >= 100){
+                            avatar_cont.addClass('cont_level_gold');
+                        }else if(avatar_cont.dataset.cont >= 10){
+                            avatar_cont.addClass('cont_level_silver');
+                        }else if(avatar_cont.dataset.cont >= 1){
+                            avatar_cont.addClass('cont_level_bronze');
+                        }else{
+                            avatar_cont.addClass('cont_level_default');
+                        }
+                    });
+                    // Displaying Avatar Popup
+                    document.querySelectorAll('.avatar_halo').forEach(function(popup_func){
+                        popup_func.addEventListener('click', function(){
+                            this.previousSibling.toggleClass('d-none');
+                        });
+                        popup_func.previousSibling.firstChild.lastChild.addEventListener('click', function(){
+                            popup_func.previousSibling.toggleClass('d-none');
+                        });
                     });
                 }else{
                     strugglesContent.innerHTML = responseJSON.message;
