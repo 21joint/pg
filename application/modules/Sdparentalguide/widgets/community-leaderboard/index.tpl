@@ -277,8 +277,35 @@ function loadLeaderboardResults(tm, ord, disp = 0, page = 1) {
                                                 '<svg width="14px" aria-hidden="true" data-prefix="fal" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-times fa-w-10 fa-2x"><path fill="currentColor" d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z" class=""></path></svg>'+
                                             '</span>'+
                                         '</div>'+
-                                        '<div class="avatar_badges mb-2">'+
-                                            ''+
+                                        '<div class="avatar_badges d-flex justify-content-around align-items-center my-2 px-3">'+
+                                            '<div class="avatar_badges_popup badge_bronze position-relative d-flex flex-column justify-content-center align-items-center">'+
+                                                '<img src="<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/badges/Bronze.svg"/>'+
+                                                '<span class="number_badges position-absolute text-white font-weight-bold">'+
+                                                    results[i].bronzeCount+
+                                                '</span>'+
+                                                '<span class="badge_name">Bronze</span>'+
+                                            '</div>'+
+                                            '<div class="avatar_badges_popup badge_silver position-relative d-flex flex-column justify-content-center align-items-center">'+
+                                                '<img src="<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/badges/Silver.svg"/>'+
+                                                '<span class="number_badges position-absolute text-white font-weight-bold">'+
+                                                    results[i].silverCount+
+                                                '</span>'+
+                                                '<span class="badge_name">Silver</span>'+
+                                            '</div>'+
+                                            '<div class="avatar_badges_popup badge_gold position-relative d-flex flex-column justify-content-center align-items-center">'+
+                                                '<img src="<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/badges/Gold.svg"/>'+
+                                                '<span class="number_badges position-absolute text-white font-weight-bold">'+
+                                                    results[i].goldCount+
+                                                '</span>'+
+                                                '<span class="badge_name">Gold</span>'+
+                                            '</div>'+
+                                            '<div class="avatar_badges_popup badge_platinum position-relative d-flex flex-column justify-content-center align-items-center">'+
+                                                '<img src="<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/badges/Platinum.svg"/>'+
+                                                '<span class="number_badges position-absolute text-white font-weight-bold">'+
+                                                    results[i].platinumCount+
+                                                '</span>'+
+                                                '<span class="badge_name">Platinum</span>'+
+                                            '</div>'+
                                         '</div>'+
                                         '<div class="avatar_footer d-flex justify-content-center align-items-center border-top">'+
                                             '<div class="d-flex justify-content-center p-3 border-right">'+
