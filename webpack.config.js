@@ -1,133 +1,135 @@
-const path = require("path");
-const pkg = require("./package");
-const Conf = require("./conf");
-const args = require("yargs").argv;
-const glob = require("glob");
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-// const CopyWebpackPlugin = require("copy-webpack-plugin");
+const path = require('path');
+const pkg = require('./package');
+const Conf = require('./conf');
+const args = require('yargs').argv;
+const glob = require('glob');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
 const Modules = Conf.modules;
 
 
-const IS_DEV = (process.env.NODE_ENV === "dev");
+let environment = process.env.NODE_ENV === 'dev' ? 'development' : 'production';
 
-console.info("Project is running in " + (IS_DEV ? "development" : "production") + " mode");
+let BUILD_DIR = path.resolve(__dirname, './public');
+let APP_DIR = path.resolve(__dirname, 'application');
 
 /**
  * Webpack Configuration
  */
 
-module.exports = {
-  context: path.resolve(__dirname, "application/themes/parentalguidance"),
+const config = {
   entry: {
-    index: "./index.js"
+    index: APP_DIR + '/themes/parentalguidance/index.js'
   },
   output: {
-    filename: "scripts/[name].bundle.js",
-    path: Modules.prg.dist
+    filename: 'scripts/[name].build.js',
+    path: __dirname + '/application/themes/parentalguidance'
   },
   module: {
     rules: [
       // JS
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: [
-          "babel-loader"
-        ]
+        test: /\.(js|jsx)$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader'
+      },
+      // IMAGES
+      {
+        test: /\.(png|jpg|gif|svg|ico)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]?[hash]'
+        }
       },
       // SCSS
       {
         test: /\.(scss|css)$/,
         use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
+          fallback: 'style-loader',
           use: [
             {
-              loader: "css-loader",
+              loader: 'css-loader',
               options: {
-                minimize: !IS_DEV,
-                sourceMap: IS_DEV,
-                publicPath: "/"
+                minimize: !environment,
+                sourceMap: environment,
+                publicPath: '/'
               }
             },
             {
-              loader: "postcss-loader",
+              loader: 'postcss-loader',
               options: {
-                sourceMap: IS_DEV,
-                publicPath: "/",
+                sourceMap: environment,
+                publicPath: '/',
                 plugins: [
-                  require("postcss-flexbugs-fixes"),
-                  require("autoprefixer")({
-                    browsers: ["last 3 versions"]
+                  require('postcss-flexbugs-fixes'),
+                  require('autoprefixer')({
+                    browsers: ['last 3 versions']
                   })
                 ]
               }
             },
             {
-              loader: "sass-loader",
+              loader: 'sass-loader',
               options: {
-                sourceMap: IS_DEV,
-                data: "$prefix: " + require("./conf").prefix + ";"
+                sourceMap: environment,
+                data: '$prefix: ' + require('./conf').prefix + ';'
               }
             }
           ]
         })
       },
-
-      // FONTS/IMAGES
       {
-        test: /\.(woff|woff2|ttf|eot|otf|svg|gif|png|jpe?g)$/i,
-        use: [
-          {
-            loader: "url-loader",
-            options: {
-              limit: 10000,
-              name(file) {
-                if (file.indexOf("fonts") > -1) {
-                  return "fonts/[name].[ext]";
-                }
-                else {
-                  return "images/[name].[ext]";
-                }
-              },
-              fallback: "file-loader",
-              outputPath: "./"
-            },
-          }
-        ]
+        test: /\.(svg|ttf|woff|woff2|eot)$/,
+        loader: 'url-loader?limit=5000',
+        options: {
+          name: 'fonts/[name].[ext]?[hash]'
+        }
       }
     ]
   },
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        vendors: {
-          test: /[\\/]node_modules[\\/]/,
-          name: "vendors",
-          enforce: true,
-          chunks: "all"
-        }
-      }
-    }
-  },
+  // optimization: {
+  //   splitChunks: {
+  //     cacheGroups: {
+  //       vendors: {
+  //         test: /[\\/]node_modules[\\/]/,
+  //         name: 'vendors',
+  //         enforce: true,
+  //         chunks: 'all'
+  //       }
+  //     }
+  //   }
+  // },
   plugins: [
     new webpack.DefinePlugin({
-      IS_DEV
+      IS_DEV: environment,
+      'process.env': {
+        NODE_ENV: JSON.stringify(environment)
+      }
     }),
     new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      "window.jQuery": "jquery"
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery'
     }),
     new ExtractTextPlugin({
-      filename: "styles/[name].css"
+      filename: '/styles/[name].css'
     }),
     new HtmlWebpackPlugin({
-      template: "./head.tpl",
-      title: "Head",
-      filename: "head.tpl"
+      template: __dirname + '/application/themes/parentalguidance/head.tpl',
+      title: 'Head',
+      filename: 'head.tpl'
     }),
-  ],
-  devtool: "inline-source-map"
+  ]
 };
+
+if (environment === 'production') {
+  config.plugins.push(new webpack.optimize.UglifyJsPlugin());
+  config.devtool = 'cheap-module-source-map'; // source-map
+} else {
+  config.devtool = 'source-map'; // cheap-module-source-map
+}
+console.dir('Running: ' + environment + ' mode.');
+
+module.exports = config;

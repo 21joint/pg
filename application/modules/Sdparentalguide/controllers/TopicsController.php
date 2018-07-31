@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SocialEngine
  *
@@ -8,8 +9,9 @@
  */
 class Sdparentalguide_TopicsController extends Core_Controller_Action_Standard
 {
-    public function homeAction(){
-        Engine_Api::_()->getApi("install","sdparentalguide")->addTopicsHomePage();
+    public function homeAction()
+    {
+        Engine_Api::_()->getApi("install", "sdparentalguide")->addTopicsHomePage();
         $this->_helper->content->setEnabled();
     }
 }
