@@ -89,7 +89,7 @@ function loadAnswers(page){
         }
     }catch(e){  }
     var requestData = {};
-    requestData.limit = 1;
+    requestData.limit = 10;
     requestData.page = page;
     requestData.questionID = "<?php echo $this->subject->getIdentity(); ?>";
     
