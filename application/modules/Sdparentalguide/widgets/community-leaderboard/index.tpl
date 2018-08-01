@@ -381,15 +381,12 @@ function loadLeaderboardResults(tm, ord, disp = 0, page = 1) {
                     }
                 });
                 // Displaying Avatar Popup
-                var remove_item = 1;
                 document.querySelectorAll('.avatar_halo').forEach(function(popup_func){
                     popup_func.addEventListener('click', function(){
                         this.previousSibling.addClass('d-block').removeClass('d-none');
-                        console.log(remove_item);
-                        remove_item++;
                     });
                 });
-                if(remove_item % 2 != 0){
+                if(true){
                     window.addEventListener('mousedown', function(){
                         document.querySelectorAll('.avatar_popup').forEach(function(removed){
                             if(removed.hasClass('d-block')){
