@@ -33,6 +33,8 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
         Engine_Api::_()->getApi('Core', 'siteapi')->setView();
         Engine_Api::_()->getApi('Core', 'siteapi')->setTranslate();
         Engine_Api::_()->getApi('Core', 'siteapi')->setLocal();
+        $view = Zend_Registry::get("Zend_View");
+        $view->addHelperPath(APPLICATION_PATH . '/application/modules/Sitemailtemplates/View/Helper', 'Sitemailtemplates_View_Helper');
         
         if (!$viewer->getIdentity() && !$this->isConsumerValid()) {
             $this->validateOrigin();
