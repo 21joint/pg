@@ -31,17 +31,20 @@ class Sdparentalguide_Widget_ProfileLandingController extends Engine_Content_Wid
 
     // select special badges
     $selectSpecialBadges = $table->select()
-      ->where( 'owner_id = ?', $subject->getIdentity() )
-      ->where( 'profile_display = ?', 1 )
-      ->where( 'active = ?', 1 )
-      ->order( 'gg_dt_created DESC' )
+    ->setIntegrityCheck(false)
+      ->from($table)
+      ->joinLeft( $uName, "$bName.badge_id = $uName.badge_id" )
+      ->where( $uName.'.user_id = ?', $subject->getIdentity() )
+      ->where( $bName.'.type = ?', 1 )
+      ->where( $uName.'.profile_display = ?', 1 )
+      ->where( $bName.'.active = ?', 1 )
+      ->where( $bName.'.profile_display = ?', 1 )
+      ->order( $uName.'.gg_dt_created DESC' )
     ;
-    
+
     $this->view->specialBadges = $specialBadges = Zend_Paginator::factory($selectSpecialBadges);
-
-    $specialBadges->setItemCountPerPage(4);
-    $specialBadges->setCurrentPageNumber(1);
-
+    $specialBadges->setItemCountPerPage($this->_getParam('itemCountPerPage', 4));
+    $specialBadges->setCurrentPageNumber($this->_getParam('page', 1));
 
   }
 

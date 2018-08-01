@@ -171,52 +171,18 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
 
             $answer->save();
             
-            $oldTz = date_default_timezone_get();
-            date_default_timezone_set($viewer->timezone);
-            $creationDate = time();
-            date_default_timezone_set($oldTz);
-            $currentDate = date('Y-m-d H:i:s', $creationDate);
-            $answer->creation_date = $currentDate;
-            $answer->save();
-            
             $answerChosen = $this->getParam("answerChosen");
             if(!empty($answerChosen) && ($subject->user_id = $viewer->getIdentity() || $viewer->isAdminOnly())){
-                $choosenAnswer = $subject->getChoosenAnswer();
                 $table->update(array('accepted' => 0),array('parent_id = ?' => $subject->getIdentity(),'parent_type = ?' => $subject->getType()));
                 $answer->accepted = 1;
                 $answer->save();
                 
                 $subject->accepted_answer = 1;
                 $subject->save();
-                
-                if(!empty($choosenAnswer)){
-                    $choosenAction = $choosenAnswer->getChoosenActivity();
-                    if(!empty($choosenAction)){
-                        $choosenAction->delete();
-                    }
-                }
             }
             
             $subject->answer_count = $subject->answer_count+1;
             $subject->save();
-            
-            if(!$viewer->isSelf($subject->getOwner())){
-                $action = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($viewer, $answer, "question_answer",null,array(
-                    'owner' => $subject->getOwner()->getGuid(),
-                    'body' => $body,
-                ));
-                if(!empty($action)){
-                    Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($action, $answer);
-                }
-                
-                $actionOwner = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($subject->getOwner(), $answer, "question_author_answer",null,array(
-                    'owner' => $subject->getOwner()->getGuid(),
-                    'body' => $body,
-                ));
-                if(!empty($actionOwner)){
-                    Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($actionOwner, $answer);
-                }
-            }
             
             $db->commit();            
             $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
@@ -268,30 +234,20 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
 
         try {
            
-//            $answer->user_id = $viewer->getIdentity();
+            $answer->user_id = $viewer->getIdentity();
             $answer->parent_type = $subject->getType();
             $answer->parent_id = $subject->getIdentity();
             $answer->body = $body;
             $answer->save();
             
             $answerChosen = $this->getParam("answerChosen");
-            if(!empty($answerChosen) && ($answer->user_id == $viewer->getIdentity() || $viewer->isAdmin())){
+            if(!empty($answerChosen) && ($subject->user_id = $viewer->getIdentity() || $viewer->isAdminOnly())){
                 $table->update(array('accepted' => 0),array('parent_id = ?' => $subject->getIdentity(),'parent_type = ?' => $subject->getType()));
                 $answer->accepted = 1;
                 $answer->save();
                 
                 $subject->accepted_answer = 1;
                 $subject->save();
-                
-                if(!$viewer->isSelf($answer->getOwner())){
-                    $action = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($answer->getOwner(), $answer, "question_answer_chosen",array(
-                        'owner' => $subject->getOwner()->getGuid(),
-                        'body' => $body,
-                    ));
-                    if(!empty($action)){
-                        Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($action, $answer);
-                    }
-                }
             }
             
             $db->commit();
@@ -343,14 +299,18 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
                 $answer->gg_deleted = 1;
                 $answer->save();
                 
+<<<<<<< HEAD
                 $subject->answer_count = $subject->answer_count - 1;
                 $answer->deletePoints();
+=======
+                $subject->answer_count = $subject->answer_count - 1;                
+>>>>>>> int
             }
             $subject->save();
             $db->commit();
         } catch (Exception $e) {
             $db->rollBack();
-            $this->respondWithServerError($e);
+            $this->respondWithServerError($ex);
         }
         $this->successResponseNoContent('no_content');
     }

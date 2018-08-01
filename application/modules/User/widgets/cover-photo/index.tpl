@@ -42,9 +42,6 @@
           <div class="p-0 col-sm-6 col-xl-6 col-lg-6 d-flex align-items-end  flex-sm-row flex-column justify-content-end user-options">
 
             <?php if(!$this->user->isSelf($this->viewer())): ?>
-              <div class="item pr-sm-2 px-3 px-sm-5 d-sm-block d-flex justify-content-sm-end" id="user-friendship-cover">
-                <?php echo $this->userFriendshipAjax($this->user) ?>
-              </div>
             <?php else: ?>
               <div class="item pr-sm-2  d-sm-block px-sm-0 px-5 d-flex justify-content-end" id="user-friendship-cover">
                 <a class="btn btn-success text-white py-sm-2 px-3 px-3" href="javascript:void(0);" onclick="en4.gg.ggAjax('user', <?php echo $this->user->getIdentity(); ?>, 'user-privacy', this)">
