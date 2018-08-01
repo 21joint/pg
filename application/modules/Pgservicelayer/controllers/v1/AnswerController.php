@@ -293,13 +293,18 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
         try {
             foreach($answers as $answer){
                 $poster = Engine_Api::_()->getItem("user", $answer->user_id);
-                if(!$poster->isSelf($viewer)){
+                if(!$poster->isSelf($viewer) && !$viewer->isAdmin()){
                     $this->respondWithError('unauthorized');
                 }
                 $answer->gg_deleted = 1;
                 $answer->save();
                 
+<<<<<<< HEAD
+                $subject->answer_count = $subject->answer_count - 1;
+                $answer->deletePoints();
+=======
                 $subject->answer_count = $subject->answer_count - 1;                
+>>>>>>> int
             }
             $subject->save();
             $db->commit();

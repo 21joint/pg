@@ -139,4 +139,41 @@ class Ggcommunity_Model_Question extends Core_Model_Item_Abstract
   {
     return new Engine_ProxyObject($this, Engine_Api::_()->getDbtable('comments', 'core'));
   }
+<<<<<<< HEAD
+  
+  public function getChoosenAnswer(){
+      $table = Engine_Api::_()->getDbTable('answers', 'ggcommunity');
+      return $table->fetchRow($table->select()->where('accepted = ?',1));
+  }
+  public function getTopic(){
+      return Engine_Api::_()->getItem('sdparentalguide_topic', $this->topic_id);
+  }
+  
+  public function getAnswers(){
+      $answersTable = Engine_Api::_()->getItemTable('ggcommunity_answer');
+      return $answersTable->fetchAll($answersTable->select()->where('parent_id = ?',$this->getIdentity()));
+  }
+  public function deletePoints($deleteAnswers = 1){
+      $question = $this;
+      $actions = Engine_Api::_()->getDbtable('actions', 'activity')->getActionsByObject($question);
+      if(!empty($actions)){
+          foreach($actions as $action){
+              $action->delete();
+          }
+      }
+      
+      $answers = $this->getAnswers();      
+      if(!empty($answers)){
+        foreach($answers as $answer){
+            if($deleteAnswers){
+                $answer->gg_deleted = 1;
+                $answer->save();
+            }
+            
+            $answer->deletePoints();
+        }
+      }
+  }
+=======
+>>>>>>> int
 }
