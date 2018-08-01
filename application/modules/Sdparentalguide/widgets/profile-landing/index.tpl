@@ -501,14 +501,21 @@
                         }
                     });
                     // Displaying Avatar Popup
+                    var remove_item = 1;
                     document.querySelectorAll('.avatar_halo').forEach(function(popup_func){
                         popup_func.addEventListener('click', function(){
-                            this.previousSibling.toggleClass('d-none');
-                        });
-                        popup_func.previousSibling.firstChild.lastChild.addEventListener('click', function(){
-                            popup_func.previousSibling.toggleClass('d-none');
+                            this.previousSibling.addClass('d-block').removeClass('d-none');
                         });
                     });
+                    if(remove_item % 2 != 0){
+                        window.addEventListener('mousedown', function(){
+                            document.querySelectorAll('.avatar_popup').forEach(function(removed){
+                                if(removed.hasClass('d-block')){
+                                    removed.addClass('d-none').removeClass('d-block');
+                                }
+                            });
+                        });
+                    } 
                 }else{
                     strugglesContent.innerHTML = responseJSON.message;
                 }
