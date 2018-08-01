@@ -80,7 +80,7 @@ function loadComments(contentType,contentID,container,page){
         }
     }catch(e){  }
     var requestData = {};
-    requestData.limit = 1;
+    requestData.limit = 10;
     requestData.page = page;
     requestData.contentType = contentType;
     requestData.contentID = contentID;
