@@ -168,21 +168,23 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
             'topic_id' => $this->getParam("topicID"),
             'body' => $this->getParam("body"),
             'photo_id' => (int)$this->getParam("photoID"),
-<<<<<<< HEAD
             'draft' => (int)$this->getParam("draft",0),
             'date_closed' => $this->getParam("closedDateTime")
-=======
-            'draft' => 0
->>>>>>> int
         );
         $table = Engine_Api::_()->getDbTable('questions','ggcommunity');
         $db = $table->getAdapter();
         $db->beginTransaction();
         try{
             
+            $oldTz = date_default_timezone_get();
+            date_default_timezone_set($viewer->timezone);
+            $creationDate = time();
+            date_default_timezone_set($oldTz);
+            $currentDate = date('Y-m-d H:i:s', $creationDate);
+            
             if($can_approve == 1) {
                 $values['approved'] = 1;
-                $values['approved_date'] = date('Y-m-d H:i:s');
+                $values['approved_date'] = $currentDate;
             } else {
                 $values['approved'] = 0;
             }
@@ -208,7 +210,6 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
             $question->setFromArray($values);
             $question->save();
             
-<<<<<<< HEAD
             $question->creation_date = $currentDate;
             $question->save();
             
@@ -219,8 +220,6 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
                     Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($action, $question);
                 }
             }
-=======
->>>>>>> int
             $db->commit();
             
             $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
@@ -283,13 +282,9 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
             'topic_id' => $this->getParam("topicID",$question->topic_id),
             'body' => $this->getParam("body",$question->body),
             'photo_id' => $this->getParam("photoID",$question->photo_id),
-<<<<<<< HEAD
             'draft' => (int)$this->getParam("draft",$question->draft),
             'approved' => (int)$this->getParam("approved",$question->approved),
             'date_closed' => $this->getParam("closedDateTime")
-=======
-            'draft' => 0
->>>>>>> int
         );
         $table = Engine_Api::_()->getDbTable('questions','ggcommunity');
         $db = $table->getAdapter();
@@ -324,7 +319,6 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
                 $values['open'] = 1;
             }
             $question->setFromArray($values);
-<<<<<<< HEAD
             $question->save();
             
             $api = Engine_Api::_()->getApi("V1_Reaction","pgservicelayer");
@@ -339,9 +333,6 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
                 }
             }
             
-=======
-            $question->save();            
->>>>>>> int
             $db->commit();
             
             $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
@@ -361,7 +352,6 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
         if(!$viewer->getIdentity() && $this->isApiRequest()){
             $this->respondWithError('unauthorized');
         }
-        echo Zend_Registry::get("Zend_View")->baseUrl();exit;
         $id = $this->getParam("questionID");
         $idsArray = (array)$id;
         if(is_string($id) && !empty($id)){
@@ -382,24 +372,13 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
                 }
                 $question->gg_deleted = 1;
                 $question->save();
-<<<<<<< HEAD
                 
                 $question->deletePoints();
             }            
-=======
-            }
-            $answers = $answersTable->fetchAll($answersTable->select()->where('parent_id IN (?)',$idsArray));
-            if(!empty($answers)){
-                foreach($answers as $answer){
-                    $answer->gg_deleted = 1;
-                    $answer->save();
-                }
-            }
->>>>>>> int
             $db->commit();
         } catch (Exception $e) {
             $db->rollBack();
-            $this->respondWithServerError($ex);
+            $this->respondWithServerError($e);
         }
         $this->successResponseNoContent('no_content');
     }

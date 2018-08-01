@@ -63,7 +63,6 @@ class Pgservicelayer_Api_V1_Reaction extends Sdparentalguide_Api_Core {
                     if(!$proxyObject->isVote($viewer,$negativeVoteType)){
                         $proxyObject->addVote($viewer,$negativeVoteType);
                     }
-<<<<<<< HEAD
                     
                     //Code for vote points
                     if($negativeVoteType == 1){
@@ -74,13 +73,10 @@ class Pgservicelayer_Api_V1_Reaction extends Sdparentalguide_Api_Core {
                         $this->removeVoteActivity($subject);
                     }
                     
-=======
->>>>>>> int
                 }else{
                     if($proxyObject->isVote($viewer,$negativeVoteType)){
                         $proxyObject->removeVote($viewer,$negativeVoteType);
                     }
-<<<<<<< HEAD
                     $proxyObject->addVote($viewer,$reactionType);
                     
                     //Code for vote points
@@ -91,9 +87,6 @@ class Pgservicelayer_Api_V1_Reaction extends Sdparentalguide_Api_Core {
                     if($negativeVoteType == 1){
                         $this->removeVoteActivity($subject);
                     }
-=======
-                    $proxyObject->addVote($viewer,$reactionType);                    
->>>>>>> int
                 }
                 break;
             
@@ -131,6 +124,7 @@ class Pgservicelayer_Api_V1_Reaction extends Sdparentalguide_Api_Core {
                 $proxyObject = Engine_Api::_()->getDbTable("votes","pgservicelayer")->votes($subject);
                 if($proxyObject->isVote($viewer,1)){
                     $proxyObject->removeVote($viewer,1);
+                    $this->removeVoteActivity($subject);
                 }
                 if($proxyObject->isVote($viewer,0)){
                     $proxyObject->removeVote($viewer,0);
@@ -138,7 +132,6 @@ class Pgservicelayer_Api_V1_Reaction extends Sdparentalguide_Api_Core {
                 break;            
         }
     }
-<<<<<<< HEAD
     
     public function hasActivity(Core_Model_Item_Abstract $object,$actionType = "question_answer_vote",Core_Model_Item_Abstract $subject = null){
         if(empty($subject)){
@@ -201,6 +194,4 @@ class Pgservicelayer_Api_V1_Reaction extends Sdparentalguide_Api_Core {
         
         
     }
-=======
->>>>>>> int
 }

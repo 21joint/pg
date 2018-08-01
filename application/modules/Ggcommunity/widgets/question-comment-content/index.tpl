@@ -1,3 +1,5 @@
+<?php $this->headScript()->appendFile($this->layout()->staticBaseUrl."application/modules/Pgservicelayer/externals/scripts/core.js"); ?>
+
 <!-- Comment Box -->
 <div class="comment_full_box none large-11 medium-11 large-offset-1 medium-offset-1 comments-holder" id="comments_holder_box_<?php echo $this->subject->getIdentity();?>">
 
@@ -9,7 +11,7 @@
                 <div class="comment_form border-bottom" id="comment_holder_form">
                     <?php echo $this->form_comment->render($this) ?>
                 </div>
-                <script>
+                <script type="text/javascript">
                     var parent_type = '<?php echo $this->subject->getType();?>';
                     var parent_id = <?php echo $this->subject->getIdentity();?>;
                     var main_holder = document.getElementById('comment_holder_'+ parent_type + '_' + parent_id);
@@ -104,44 +106,12 @@
         
             </script>
             <div class="comments_container" id="comments_box_<?php echo $this->subject->getIdentity();?>">
-                <?php if(count($this->paginator) > 0):?>
                 
-                    <!-- Display all comments one by one for this answer-->
-                    <?php foreach($this->paginator as $item):?>
-                        <div class="item-main-description border-bottom p-10 comment_holder_box" id="comment_<?php echo $item->getIdentity(); ?>">
-                            <?php echo $this->partial('_ggcommunity_box.tpl', 'ggcommunity', array(
-                                    'item' => $item,
-                                    'viewer' =>$this->viewer,
-                            )); ?>
-                            <div class="item_edit_content large-9 medium-9 large-offset-2 medium-offset-2 columns none" id="edit_item_<?php echo $item->getIdentity();?>">
-                                <?php echo $this->form_answer_edit->render($this) ?>
-                            </div>
-                        </div>
-                    <?php endforeach; ?> <!-- end of comments fro this answer-->
-                    <div id="ajax_responses" style="display:none;">
-                        <script type="text/javascript" id="response"></script>
-                    </div>
-                
-                    <div class="comment_viewmore none" id="comment_viewmore_<?php echo $this->subject->getType() . '_' . $this->subject->getIdentity();?>">
-                        <?php echo $this->htmlLink('javascript:void(0);', $this->translate('View More'), array(
-                            'id' => 'comment_viewmore_link_' . $this->subject->getType() . '_' .$this->subject->getIdentity() ,
-                            'class' => 'buttonlink icon_viewmore'
-                        )) ?>
-                    </div> 
-
-                    <div class="comment_viewmore none" id="comment_loading_<?php echo $this->subject->getType() . '_' . $this->subject->getIdentity();?>">
-                        <i class="fa-spinner fa-spin fa"></i>
-                        <?php echo $this->translate("Loading ...") ?>
-                    </div>
-                <?php else: ?>
-                    <p class="tip_msg" id="no_comments_tip"> There are no comments to show for this answer</p>
-                <?php endif; ?>
             </div>
         </div> <!-- End of single comment box-->  
 
     </div><!--End of comments box including comment form-->
 
-<<<<<<< HEAD
 </div> <!-- End of comment full box-->  
 
 <script type="text/javascript">
@@ -275,6 +245,3 @@ function getEditCommentForm(type,id,body){
     return formHtml;
 }
 </script>
-=======
-</div> <!-- End of comment full box-->  
->>>>>>> int
