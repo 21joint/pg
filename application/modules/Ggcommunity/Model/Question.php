@@ -139,7 +139,6 @@ class Ggcommunity_Model_Question extends Core_Model_Item_Abstract
   {
     return new Engine_ProxyObject($this, Engine_Api::_()->getDbtable('comments', 'core'));
   }
-<<<<<<< HEAD
   
   public function getChoosenAnswer(){
       $table = Engine_Api::_()->getDbTable('answers', 'ggcommunity');
@@ -174,6 +173,4 @@ class Ggcommunity_Model_Question extends Core_Model_Item_Abstract
         }
       }
   }
-=======
->>>>>>> int
 }
