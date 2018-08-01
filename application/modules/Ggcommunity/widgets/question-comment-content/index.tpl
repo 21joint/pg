@@ -12,101 +12,32 @@
                     <?php echo $this->form_comment->render($this) ?>
                 </div>
                 <script type="text/javascript">
-                    var parent_type = '<?php echo $this->subject->getType();?>';
-                    var parent_id = <?php echo $this->subject->getIdentity();?>;
-                    var main_holder = document.getElementById('comment_holder_'+ parent_type + '_' + parent_id);
-                        
+                var parent_type = '<?php echo $this->subject->getType();?>';
+                var parent_id = <?php echo $this->subject->getIdentity();?>;
+                en4.core.runonce.add(function(){    
+                    var main_holder = document.getElementById('comment_holder_'+ parent_type + '_' + parent_id);                        
                     var comment_form = main_holder.getElementById('comment_holder_form').firstElementChild;
-
                     comment_form.addEventListener("submit", function(e) {
                         e.preventDefault(); 
                         var body = comment_form.getElementById('comment_body').value;
                         if(!body) return;
                         en4.pgservicelayer.comment.create(parent_type, parent_id, body);
                     });
-
+                });
                 </script>
             <?php endif; ?><!-- End of comment form -->
-            <script type="text/javascript" id="question_comments">
-                en4.core.runonce.add(function() {
-                    
-                    var subject_id = <?php echo sprintf('%d', $this->subject->getIdentity()); ?>;
-                    var subject_type = '<?php echo $this->subject->getType(); ?>';
-                    var next_id = <?php echo sprintf('%d', $this->nextid) ?>;
-                    var subject_guid = '<?php echo $this->subjectGuid ?>';
-                    var endOfComment = <?php echo ( $this->endOfComment ? 'true' : 'false' ) ?>;
-                    var anchor = document.getElementById('comments_box_'+ subject_id);
+            <div class="comments_container" id="comments_box_<?php echo $this->subject->getIdentity();?>">                
 
-                 
-
-                    var comment_viewmore = document.getElementById('comment_viewmore_' + subject_type + '_' + subject_id);
-                    var comment_loading = document.getElementById('comment_loading_' + subject_type + '_' + subject_id);
-                    var comment_viewmore_link = document.getElementById('comment_viewmore_link_' + subject_type + '_' + subject_id);
-                    
-                    
-                    var ViewMore = window.ViewMore = function(next_id, subject_guid) {
-
-
-                        var url = '<?php echo $this->url(array('module' => 'ggcommunity', 'controller' => 'comment-index', 'action' => 'index','comment_id' => $this->nextid, 'subject_id' => $this->subject->getIdentity(), 'subject_type'=>$this->subject->getType()), 'default', true) ?>';    
-
-                        if(!comment_viewmore.classList.contains('none')) {
-                            comment_viewmore.classList.add('none');
-                        }
-                        if(comment_loading.classList.contains('none')) {
-                            comment_loading.classList.remove('none');
-                            comment_loading.classList.add('block');
-                        }
-                    
-                        en4.core.request.send(new Request.HTML({
-                            url : url,
-                            data : {
-                                format : 'html',
-                                'maxid' : next_id,
-                                'subject' : subject_guid
-                            },
-                            onComplete: function(responseHTML) {
-                              
-                                var all = $$('div#comment_holder_' + subject_type + '_'+ subject_id + ' div.comment_holder_box');
-                                var last = all[all.length -1];
-                                last.parentNode.insertBefore(responseHTML[1], last.nextSibling);
-                                Smoothbox.bind(anchor);
-                            }
-                        }) )
- 
-                    }
-
-                    if( next_id > 0 && !endOfComment ) {
-                        
-                        if(comment_viewmore.classList.contains('none')) {
-                            comment_viewmore.classList.remove('none');
-                        }
-
-                        if(!comment_loading.classList.contains('none')) {
-                            comment_loading.classList.add('none');
-                        }
-
-                        comment_viewmore_link.removeEvents('click').addEvent('click', function(){
-                    
-                            ViewMore(next_id, subject_guid);
-                        });
-                    } else {
-
-                        if(!comment_viewmore.classList.contains('none')) {
-                            comment_viewmore.classList.add('none');
-                        }
-
-                        if(!comment_loading.classList.contains('none')) {
-                            comment_loading.classList.add('none');
-                        }
-                    
-                    }
-                
-                });
-            
-        
-            </script>
-            <div class="comments_container" id="comments_box_<?php echo $this->subject->getIdentity();?>">
-                
+            </div>
+            <div class="comment_viewmore none" id="comment_viewmore_<?php echo $this->subject->getType() . '_' . $this->subject->getIdentity();?>" data-page="1">
+                <?php echo $this->htmlLink('javascript:void(0);', $this->translate('View More'), array(
+                    'id' => 'comment_viewmore_link_' . $this->subject->getType() . '_' .$this->subject->getIdentity() ,
+                    'class' => 'buttonlink icon_viewmore'
+                )) ?>
+            </div> 
+            <div class="comment_viewmore none" id="comment_loading_<?php echo $this->subject->getType() . '_' . $this->subject->getIdentity();?>">
+                <i class="fa-spinner fa-spin fa"></i>
+                <?php echo $this->translate("Loading ...") ?>
             </div>
         </div> <!-- End of single comment box-->  
 
@@ -120,17 +51,49 @@ en4.core.runonce.add(function(){
     var contentID = "<?php echo $this->subject->getIdentity(); ?>";
     var container = $("comments_box").getElement(".comments_container");
     loadComments(contentType,contentID,container);
+    
+    try{
+    var subject_id = <?php echo sprintf('%d', $this->subject->getIdentity()); ?>;
+    var subject_type = '<?php echo $this->subject->getType(); ?>';
+    var next_id = <?php echo sprintf('%d', $this->nextid) ?>;
+    var subject_guid = '<?php echo $this->subjectGuid ?>';
+    var endOfComment = <?php echo ( $this->endOfComment ? 'true' : 'false' ) ?>;
+    var anchor = document.getElementById('comments_box_'+ subject_id);
+
+
+
+    var comment_viewmore = document.getElementById('comment_viewmore_' + subject_type + '_' + subject_id);
+    var comment_loading = document.getElementById('comment_loading_' + subject_type + '_' + subject_id);
+    var comment_viewmore_link = document.getElementById('comment_viewmore_link_' + subject_type + '_' + subject_id);
+    comment_viewmore_link.removeEvents('click').addEvent('click', function(){
+        var nextPage = $(this).getParent().get("data-page").toInt()+1;
+        loadComments(contentType,contentID,container,nextPage);
+        $(this).getParent().addClass("none");
+        $(this).getParent().set("data-page",nextPage);
+    });
+    }catch(e){ console.log(e); }
 });
-function loadComments(contentType,contentID,container){
+function loadComments(contentType,contentID,container,page){
+    try{
+        if(!page){
+            page = 1;
+        }
+    }catch(e){  }
     var requestData = {};
-    requestData.limit = 10;
-    requestData.page = 1;
+    requestData.limit = 1;
+    requestData.page = page;
     requestData.contentType = contentType;
     requestData.contentID = contentID;
     
     var loader = en4.pgservicelayer.loader.clone();
     loader.addClass("sd_loader");
     var url = en4.core.baseUrl+"api/v1/comment";
+    
+    if(contentType == "Question"){
+        var viewMore = $('comment_viewmore_<?php echo $this->subject->getType(); ?>_<?php echo $this->subject->getIdentity(); ?>');
+    }else{
+        var viewMore = $('comment_viewmore_ggcommunity_answer_'+contentID);
+    }
     
     var request = new Request.JSON({
         url: url,
@@ -147,7 +110,7 @@ function loadComments(contentType,contentID,container){
                     var commentElement = getCommentElement(comment);
                     commentElement.inject(container,"bottom");
                 });
-                if(comments.length <= 0){
+                if(comments.length <= 0 && page == 1){
                     if(contentType == "Question"){
                         container.set("html",'<p class="tip_msg" id="no_comments_tip"><?php echo $this->translate("There are no comments to show for this question"); ?></p>');
                     }else{
@@ -156,6 +119,11 @@ function loadComments(contentType,contentID,container){
                 }
                 Smoothbox.bind(container); 
                 hoverBoxImage();
+                if(comments.length <= 0 || requestData.page >= responseJSON.body.PageCount){
+                    viewMore.addClass("none");
+                }else{
+                    viewMore.removeClass("none");
+                }
             }else{
                 container.set("html",responseJSON.message);
             }
