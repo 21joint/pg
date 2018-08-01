@@ -10,94 +10,13 @@
     </div> <!-- End of sorting box-->
     
     <!-- Answer/Comment Box -->
-    <div class="answer_full_box" id="answer-full-box">
-        <!-- <?php echo $this->nextid;?> -->
-        <script type="text/javascript" id="first" >
-            en4.core.runonce.add(function() {
-
-                var answer_viewmore = document.getElementById('answer_viewmore');
-                var answer_loading = document.getElementById('answer_loading');
-                var answer_viewmore_link = document.getElementById('answer_viewmore_link');
-
-                var subject_id = <?php echo sprintf('%d', $this->subject->getIdentity()) ?>;
-                var next_id = <?php echo sprintf('%d', $this->nextid) ?>;
-                var subject_guid = '<?php echo $this->subjectGuid ?>';
-                var endOfAnswer = <?php echo ( $this->endOfAnswer ? 'true' : 'false' ) ?>;
-                var anchor = document.getElementById('answers_box');
-                
-                var ViewMore = window.ViewMore = function(next_id, subject_guid) {
-
-
-                    var url = '<?php echo $this->url(array('module' => 'ggcommunity', 'controller' => 'answer-index', 'action' => 'index','answer_id' => $this->nextid, 'subject_id' => $this->subject->getIdentity(), 'shown_ids'=>$this->shown_ids), 'default', true) ?>';    
-
-                    if(!answer_viewmore.classList.contains('none')) {
-                        answer_viewmore.classList.add('none');
-                    }
-                    if(answer_loading.classList.contains('none')) {
-                        answer_loading.classList.remove('none');
-                        answer_loading.classList.add('block');
-                    }
-                    
-                    en4.core.request.send(new Request.HTML({
-                        url : url,
-                        data : {
-                            format : 'html',
-                            'maxid' : next_id,
-                            'subject' : subject_guid
-                        },
-                        onComplete: function(responseHTML) {
-                         
-                            var all = $$('div.answer_holder_box');
-                            var last = all[all.length -1];
-                            last.parentNode.insertBefore(responseHTML[1], last.nextSibling);
-                            Smoothbox.bind(anchor);
-                        }
-                    }) )
- 
-                }
-
-                
-
-                if( next_id > 0 && !endOfAnswer ) {
-                    
-                    if(answer_viewmore.classList.contains('none')) {
-                        answer_viewmore.classList.remove('none');
-                    }
-
-                    if(!answer_loading.classList.contains('none')) {
-                        answer_loading.classList.add('none');
-                    }
-                    
-                
-                    answer_viewmore_link.removeEvents('click').addEvent('click', function(){
-                
-                        ViewMore(next_id, subject_guid);
-                    });
-                } else {
-
-                    if(!answer_viewmore.classList.contains('none')) {
-                        answer_viewmore.classList.add('none');
-                    }
-
-                    if(!answer_loading.classList.contains('none')) {
-                        answer_loading.classList.add('none');
-                    }
-                
-                }
-            
-            });
-            
-        
-        </script>
-
-
-        
+    <div class="answer_full_box" id="answer-full-box">        
         <div id="answers_box"></div>
         <div id="ajax_responses" style="display:none;">
             <script type="text/javascript" id="response"></script>
         </div>
        
-        <div class="answer_viewmore none" id="answer_viewmore">
+        <div class="answer_viewmore none" id="answer_viewmore" data-page="1">
             <?php echo $this->htmlLink('javascript:void(0);', $this->translate('View More'), array(
                 'id' => 'answer_viewmore_link',
                 'class' => 'buttonlink icon_viewmore'
@@ -116,34 +35,12 @@
                 </div>
                 <?php echo $this->form_answer->render($this) ?>
             </div>
-            <?php 
-                // this should be function getAnswers
-                $answer_table = Engine_Api::_()->getDbTable('answers', 'ggcommunity');
-                $select = $answer_table->select()
-                ->where('parent_type = ?', $this->subject->getType())
-                ->where('parent_id = ?', $this->subject->getIdentity())
-                ;
-                $answers = $answer_table->fetchAll($select);
-                if(count($answers) > 0)
-                {
-                    $last_answer = count($answers);
-                    $last_answer_id = $answers[$last_answer-1]->getIdentity();
-                } else {
-                    $last_answer_id = 0;
-                }
-            ?>
-            <script>
-               
-                
-
-                
-                var last_answer_id = <?php echo $last_answer_id;?>;
-                var form = document.getElementById('create-answer-form');
-               
+            <script type="text/javascript">
+            var last_answer_id = 0;
+            en4.core.runonce.add(function(){
+                var form = document.getElementById('create-answer-form');               
                 form.addEventListener("submit", function(e) {
-
                     e.preventDefault();
-
                     var body_editor = document.querySelector("#body_create");
                     // var body_editor = document.getElementById('create-answer-form').getElementById('body');
                     var mce_editor = document.getElementById('create-answer-form').getElementsByClassName('mce-tinymce mce-container mce-panel');
@@ -161,7 +58,7 @@
                     en4.pgservicelayer.answer.create(<?php echo $this->subject->getIdentity() ?>, body, last_answer_id);
                 });
 
-                
+            });    
             </script>
 
         <?php endif; ?> 
@@ -174,11 +71,26 @@
 <script type="text/javascript">
 en4.core.runonce.add(function(){
     loadAnswers();
+    var answer_viewmore = document.getElementById('answer_viewmore');
+    var answer_loading = document.getElementById('answer_loading');
+    var answer_viewmore_link = document.getElementById('answer_viewmore_link');
+    answer_viewmore_link.removeEvents("click").addEvent("click",function(){
+        var nextPage = $(this).getParent().get("data-page").toInt()+1;
+        loadAnswers(nextPage);
+        $(this).getParent().addClass("none");
+        $(this).getParent().set("data-page",nextPage);
+    });
+
 });
-function loadAnswers(){
+function loadAnswers(page){
+    try{
+        if(!page){
+            page = 1;
+        }
+    }catch(e){  }
     var requestData = {};
     requestData.limit = 10;
-    requestData.page = 1;
+    requestData.page = page;
     requestData.questionID = "<?php echo $this->subject->getIdentity(); ?>";
     
     var loader = en4.pgservicelayer.loader.clone();
@@ -201,9 +113,23 @@ function loadAnswers(){
                     var answerElement = getAnswerElement(answer);
                     answerElement.inject(container,"bottom");
                     initTinyMce("tinymce_ggcommunity_answer"+answer.answerID);
+                    if($("comment_viewmore_link_ggcommunity_answer_"+answer.answerID)){
+                        $("comment_viewmore_link_ggcommunity_answer_"+answer.answerID).removeEvents("click").addEvent("click",function(){
+                            var nextPage = $(this).getParent().get("data-page").toInt()+1;
+                            var commentsContainer = $("comments_box_"+answer.answerID);
+                            loadComments('Answer',answer.answerID,commentsContainer,nextPage);
+                            $(this).getParent().addClass("none");
+                            $(this).getParent().set("data-page",nextPage);
+                        });
+                    }
                 });                
                 Smoothbox.bind(container);
                 hoverBoxImage();
+                if(items.length <= 0 || requestData.page >= responseJSON.body.PageCount){
+                    $("answer_viewmore").addClass("none");
+                }else{
+                    $("answer_viewmore").removeClass("none");
+                }
             }else{
                 container.set("html",responseJSON.message);
             }
@@ -319,6 +245,12 @@ function getAnswerElement(answer){
     html += '<div class="holder-box holder-width-two white large-11 medium-11 large-offset-1 medium-offset-1 comments-holder none" id="comment_holder_ggcommunity_answer_'+answer.answerID+'">'+
         commentForm+
         '<div class="comments_container" id="comments_box_'+answer.answerID+'">'+
+        '</div>'+
+        '<div class="comment_viewmore none" id="comment_viewmore_ggcommunity_answer_'+answer.answerID+'" data-page="1">'+
+            '<a href="javascript:void(0);" id="comment_viewmore_link_ggcommunity_answer_'+answer.answerID+'" class="buttonlink icon_viewmore"><?php echo $this->translate("View More"); ?></a>'+
+        '</div>'+
+        '<div class="comment_viewmore none" id="comment_loading_ggcommunity_answer_'+answer.answerID+'">'+
+            '<i class="fa-spinner fa-spin fa"></i> <?php echo $this->translate("Loading ..."); ?>'+
         '</div>'+
         '</div>';
     

@@ -253,6 +253,7 @@ en4.pgservicelayer.answer = {
                     items.each(function(answer){
                         var answerElement = getAnswerElement(answer);
                         answerElement.inject(answer_box,"bottom");
+                        initTinyMce("tinymce_ggcommunity_answer"+answer.answerID);
                     });
                     initTinyMce();
                     Smoothbox.bind(answer_box); 

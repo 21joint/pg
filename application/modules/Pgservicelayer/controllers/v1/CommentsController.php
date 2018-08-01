@@ -90,6 +90,7 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
         $comments->setItemCountPerPage($limit);
         
         $response['ResultCount'] = 0;
+        $response['PageCount'] = $comments->count();
         $response['Results'] = array();
         $response['isLike'] = (bool)(!empty($isLike) ? 1 : 0);
         $response['canComment'] = (bool)$canComment;

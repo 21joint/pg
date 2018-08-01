@@ -121,6 +121,7 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage($limit);
         $response['ResultCount'] = 0;
+        $response['PageCount'] = $paginator->count();
         $response['Results'] = array();
         if($page > $paginator->count()){
             $this->respondWithSuccess($response);
