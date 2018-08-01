@@ -1,12 +1,15 @@
 
 Uploader = new Class ({
   uploadedFileArray : [],
+  uploadedFileCount : 0,
   Implements : [Options],
 
   options : {
     uploadLinkClass : '',
     uploadLinkTitle : '',
     uploadLinkDesc : '',
+    singleUpload: false,
+    uploadLimit: 100
   },
 
   initialize : function (uploadElement, options) {
@@ -38,11 +41,18 @@ Uploader = new Class ({
       for(var i = 0; i < files.length; i++) {
         iteration++;
         self.uploadFile(self.uploadElement, this.files[i], iteration, total);
+        if(self.options.singleUpload || iteration >= self.options.uploadLimit){
+            $("upload_file_link").setStyle("display","none");
+            break;
+        }
       }
     });
     this.uploadElement.addEvent('click', function () {
       this.value = '';
     });
+    if(self.options.singleUpload){
+        this.uploadElement.set("multiple",null);
+    }
     $('remove_all_files').addEvent('click', function () {
       $$('.file-remove').each(function (el) {
         self.removeFile(el);
@@ -57,6 +67,10 @@ Uploader = new Class ({
 
   uploadFile: function (obj, file, iteration, total) {
     var self = this;
+    if(this.uploadedFileCount >= self.options.uploadLimit){
+        $("upload_file_link").setStyle("display","none");
+        return;
+    }
     if (this.alreadyUploaded(file)) {
       return self.processUploadError(file['name'] + ' already added.');
     }
@@ -86,12 +100,20 @@ Uploader = new Class ({
           self.processUploadError('An error occurred.');
           return false;
         }
-
-        if (res['error'] !== undefined) {
-          self.processUploadError('FAILED (' + res['name'] + ') : ' + res['error']);
-          return false;
+        
+        if(res.status_code != 200){
+            self.processUploadError('FAILED (' + file['name'] + ') : ' + res['message']);
+            return false;
         }
-        self.processResponseData(res);
+        
+        var body = res.body;
+        var response = {
+            'id' : body.photoID,
+            'photo_url' : body.photoURL,
+            'fileName' : file['name']
+        };
+
+        self.processResponseData(response);
         if (typeof self.processCustomResponse !== "undefined") {
           self.processCustomResponse(res);
         }
@@ -107,7 +129,7 @@ Uploader = new Class ({
   },
 
   alreadyUploaded: function (file) {
-    if (this.uploadedFileArray.length === 0) {
+    if (this.uploadedFileArray.length === 0 || this.uploadedFileCount === 0) {
       return false;
     }
     return this.uploadedFileArray.every(function (uploadedFile) {
@@ -120,9 +142,13 @@ Uploader = new Class ({
     var fancyUploadFileds = $('fancyuploadfileids');
     var currentValue = fancyUploadFileds.get('value');
     currentValue += response['id'] + ' ';
+    if(self.options.singleUpload){
+        currentValue = response['id'];
+    }
 
     fancyUploadFileds.set('value', currentValue);
     this.uploadedFileArray[response['id']] = response['fileName'];
+    this.uploadedFileCount++;
     var uploadedFileList = document.getElementById("uploaded-file-list");
     var uploadedFile = new Element('li', {
       'class': 'file file-success',
@@ -164,7 +190,7 @@ Uploader = new Class ({
         click: function() {
           this.destroy();
           if ($$('ul#uploaded-file-list li').length === 0) {
-            $('submit-wrapper').setStyle('display', 'none');
+            //$('submit-wrapper').setStyle('display', 'none');
             $('remove_all_files').setStyle('display', 'none');
             $('uploaded-file-list').setStyle('display', 'none');
           }
@@ -180,13 +206,14 @@ Uploader = new Class ({
   },
 
   showButton: function () {
-    document.getElementById("submit-wrapper").style.display = "block";
+    //document.getElementById("submit-wrapper").style.display = "block";
     $('files-status-overall').setStyle('display', 'none');
   },
 
   removeFile: function (el) {
     var file_id = el.get('data-file_id');
     delete this.uploadedFileArray[file_id];
+    this.uploadedFileCount--;
     var fancyUploadFileds = $('fancyuploadfileids');
     var currentValue = fancyUploadFileds.get('value');
     currentValue = currentValue.replace(file_id + ' ', '');
@@ -199,7 +226,7 @@ Uploader = new Class ({
     if ($$('ul#uploaded-file-list li').length === 0) {
       $('remove_all_files').setStyle('display', 'none');
       $('uploaded-file-list').setStyle('display', 'none');
-      document.getElementById("submit-wrapper").style.display = "none";
+      //document.getElementById("submit-wrapper").style.display = "none";
     }
   },
 });
