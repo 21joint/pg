@@ -182,6 +182,8 @@ class Pgservicelayer_Controller_Front extends Zend_Controller_Front {
                         }
                         $dispatcher->setControllerDirectory($moduleDir, $this->_request->getModuleName());
                     }
+                    
+                    $this->_initFrontControllerModules();
 
                     $dispatcher->dispatch($this->_request, $this->_response);
                 } catch (Exception $e) {
@@ -218,6 +220,23 @@ class Pgservicelayer_Controller_Front extends Zend_Controller_Front {
         }
 
         return $this->_response;
+    }
+    
+    protected function _initFrontControllerModules()
+    {
+        $frontController = Zend_Controller_Front::getInstance();
+        $path = APPLICATION_PATH . DIRECTORY_SEPARATOR . "application" . DIRECTORY_SEPARATOR ."modules";
+
+//        $enabledModuleNames = Engine_Api::_()->getDbtable('modules', 'core')->getEnabledModuleNames();
+        $enabledModuleNames = array('sitemailtemplates');
+        foreach ($enabledModuleNames as $module) {
+            $moduleInflected = Engine_Api::inflect($module);
+            $moduleDir = $path . DIRECTORY_SEPARATOR . $moduleInflected;
+            if (is_dir($moduleDir)) {
+                $moduleDir .= DIRECTORY_SEPARATOR . "controllers";
+                $frontController->addControllerDirectory($moduleDir, $module);
+            }
+        }
     }
 
 }
