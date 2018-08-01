@@ -506,15 +506,13 @@
                             this.previousSibling.addClass('d-block').removeClass('d-none');
                         });
                     });
-                    if(true){
-                        window.addEventListener('mousedown', function(){
-                            document.querySelectorAll('.avatar_popup').forEach(function(removed){
-                                if(removed.hasClass('d-block')){
-                                    removed.addClass('d-none').removeClass('d-block');
-                                }
-                            });
+                    window.addEventListener('mousedown', function(){
+                        document.querySelectorAll('.avatar_popup').forEach(function(removed){
+                            if(removed.hasClass('d-block')){
+                                removed.addClass('d-none').removeClass('d-block');
+                            }
                         });
-                    } 
+                    });
                 }else{
                     strugglesContent.innerHTML = responseJSON.message;
                 }

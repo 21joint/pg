@@ -134,6 +134,7 @@
 .avatar_close{
   color: #b4c0c1;
   cursor: pointer;
+  margin-left: auto;
 }
 .avatar_close:hover{
   color: #5f727f;
@@ -322,9 +323,6 @@
 .mvps_item .avatar_popup img{
   width: 48px;
   height: 48px;
-}
-.mvps_item .avatar_popup .avatar_close{
-  margin-left: auto;
 }
 .mvps_contribution{
   border-top: 1px solid #e2e4e6;
