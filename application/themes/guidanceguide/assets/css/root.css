@@ -5007,6 +5007,14 @@ form.preference-holder {
   transition: all 0.3s ease !important;
   box-shadow: inset 0 0 0 0.2em white, inset 0 0 0 1em #5CC7CE !important; }
 
+.holder-form .tip span {
+  color: #333D40;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+  padding-bottom: 40px;
+  font-weight: 400;
+  margin: 15px 0px 0px; }
+
 .extfox-auth ul.form-errors {
   padding: 0;
   margin: 0 0 1.5rem; }
