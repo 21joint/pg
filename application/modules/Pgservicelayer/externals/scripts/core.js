@@ -304,9 +304,11 @@ en4.pgservicelayer.answer = {
             
             en4.core.request.send(new Request.JSON({
                 url : en4.core.baseUrl+'api/v1/answer',
+                method: 'put',
+                emulation: false,
                 data : {
                     answerID : id,
-                    questionID:en4.core.subject.id,
+                    questionID: en4.core.subject.id,
                     body : body
                 },
                 onComplete: function(responseJSON) {
@@ -346,7 +348,7 @@ en4.pgservicelayer.answer = {
        
         var comments_only = comment_holder.getElementById('comments_box_'+parent_id);
         var container = $("comments_box_"+parent_id);
-        if(!$(comment_holder).hasClass('none')){            
+        if(!$(comment_holder).hasClass('none') && !comments_only.getElement(".item-main-description")){
             loadComments('Answer',parent_id,container);
         }
         
@@ -495,12 +497,14 @@ en4.pgservicelayer.comment = {
                 },
                 onComplete: function(responseJSON) {
                     // hide form
-                    form_holder.className += ' none';
-                    $("core_comment_"+id).getElement(".item_body").set("html",body);
-                    $("core_comment_"+id).getElement(".item_body").removeClass("none");
+                    
                 }
                 
             }));
+            
+            form_holder.className += ' none';
+            $("core_comment_"+id).getElement(".item_body").set("html",body);
+            $("core_comment_"+id).getElement(".item_body").removeClass("none");
                 
         });
 

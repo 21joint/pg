@@ -64,6 +64,7 @@ class Pgservicelayer_Api_V1_Reaction extends Sdparentalguide_Api_Core {
                         $proxyObject->addVote($viewer,$negativeVoteType);
                     }
                     
+                    //Code for vote points
                     if($negativeVoteType == 1){
                         $this->addVoteActivity($subject);
                     }
@@ -77,6 +78,8 @@ class Pgservicelayer_Api_V1_Reaction extends Sdparentalguide_Api_Core {
                         $proxyObject->removeVote($viewer,$negativeVoteType);
                     }
                     $proxyObject->addVote($viewer,$reactionType);
+                    
+                    //Code for vote points
                     if($reactionType == 1){
                         $this->addVoteActivity($subject);
                     }

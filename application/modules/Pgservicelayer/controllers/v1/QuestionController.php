@@ -323,9 +323,7 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
             
             $api = Engine_Api::_()->getApi("V1_Reaction","pgservicelayer");
             if(!$question->approved || $question->draft){
-                if(($action = $api->hasActivity($question,'question_create',$question->getOwner()))){
-                    $action->delete();
-                }
+                $question->deletePoints(0); //Delete points but keep answers.
             }
             
             if($question->approved && !$question->draft && !$api->hasActivity($question,'question_create',$question->getOwner())){

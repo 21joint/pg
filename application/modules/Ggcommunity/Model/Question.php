@@ -152,7 +152,7 @@ class Ggcommunity_Model_Question extends Core_Model_Item_Abstract
       $answersTable = Engine_Api::_()->getItemTable('ggcommunity_answer');
       return $answersTable->fetchAll($answersTable->select()->where('parent_id = ?',$this->getIdentity()));
   }
-  public function deletePoints(){
+  public function deletePoints($deleteAnswers = 1){
       $question = $this;
       $actions = Engine_Api::_()->getDbtable('actions', 'activity')->getActionsByObject($question);
       if(!empty($actions)){
@@ -164,8 +164,10 @@ class Ggcommunity_Model_Question extends Core_Model_Item_Abstract
       $answers = $this->getAnswers();      
       if(!empty($answers)){
         foreach($answers as $answer){
-            $answer->gg_deleted = 1;
-            $answer->save();
+            if($deleteAnswers){
+                $answer->gg_deleted = 1;
+                $answer->save();
+            }
             
             $answer->deletePoints();
         }

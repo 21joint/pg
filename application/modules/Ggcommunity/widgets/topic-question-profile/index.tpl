@@ -1,4 +1,8 @@
-
+<style type="text/css">
+.question-main-photo img {
+    max-width: 300px;
+}    
+</style>
 <div class="question-box" id='sd-question-box'>
    
 </div> <!-- End of Question Box-->
@@ -40,7 +44,9 @@ function switchTab(tab, id) {
     }
 }
 en4.core.runonce.add(function(){
-    loadQuestionProfile();
+    try{
+        loadQuestionProfile();
+    }catch(e){ console.log(e); }
 });
 function loadQuestionProfile(){
     var requestData = {};
@@ -132,6 +138,12 @@ function getQuestionElement(question){
                 '<a id="go_to_topic" href="'+topicUrl+'" class="btn tags small">'+question.questionTopic.topicName+'</div>';
     }
     
+    var mainPhoto = '';
+    if(question.coverPhoto.photoID != "0"){
+        mainPhoto += '<div class="question-main-photo">'+
+                    '<img src="'+question.coverPhoto.photoURL+'" alt=""/>'+
+                '</div>'
+    }
     var communityBox = "<div class='question-main-description display-flex'>"+
                         '<div class="question-main-left large-1 columns medium-1 small-2">'+
                             '<div class="question-owner-photo">'+en4.pgservicelayer.authorPhoto(author)+'</div>'+
@@ -159,7 +171,8 @@ function getQuestionElement(question){
                             "<div class='question-body ggcommunity_question' id='ggcommunity_question_"+question.questionID+"'>"+
                                 "<div class='item_body' id='item_body_+question.questionID+'>"+question.body+"</div>"+
                             '</div>'+
-                        '</div>'+ 
+                        '</div>'+
+                        mainPhoto+
                     '</div>'+  
                 '</div>'+
             '</div>';
