@@ -149,14 +149,21 @@ class Pgservicelayer_Api_V1_Reaction extends Sdparentalguide_Api_Core {
     public function addVoteActivity(Core_Model_Item_Abstract $object){
         $mainActionType = "question_vote";
         $authorActionType = "question_author_vote";
+        $question = $object;
         if($object->getType() == "ggcommunity_answer"){
             $mainActionType = "question_answer_vote";
             $authorActionType = "question_answer_author_vote";
+            $question = $object->getParent();
         }
         $viewer = Engine_Api::_()->user()->getViewer();
         if($viewer->isSelf($object->getOwner())){
             return;
         }
+        
+        if(!$question->approved || $question->draft){
+            return;
+        }
+        
         if($this->hasActivity($object,$mainActionType)){
             return;
         }

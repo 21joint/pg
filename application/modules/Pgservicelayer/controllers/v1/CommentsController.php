@@ -317,6 +317,11 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
                 $comment->gg_deleted = 1;
                 $comment->save();
                 
+                if( isset($subject->comment_count) && $subject->comment_count > 0 ) {
+                    $subject->comment_count--;
+                    $subject->save();
+                }
+                
                 if($subject->getType() == "ggcommunity_answer"){
                     if(($action = $api->hasActivity($subject,'question_answer_comment',$subject->getOwner()))){
                         $action->delete();

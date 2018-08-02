@@ -256,6 +256,9 @@ en4.pgservicelayer.answer = {
                         initTinyMce("tinymce_ggcommunity_answer"+answer.answerID);
                     });
                     initTinyMce();
+                    try{
+                        hoverBoxImage();
+                    }catch(e){}
                     Smoothbox.bind(answer_box); 
                 }               
             }
@@ -383,6 +386,9 @@ en4.pgservicelayer.answer = {
                         var commentElement = getCommentElement(comment);
                         commentElement.inject(container,"top");
                     });
+                    try{
+                        hoverBoxImage();
+                    }catch(e){}
                     Smoothbox.bind(container); 
                 
                     if(counter == 'Comment') {
@@ -436,6 +442,9 @@ en4.pgservicelayer.comment = {
                         commentElement.inject(container,"top");
                     });
                     Smoothbox.bind(container); 
+                    try{
+                        hoverBoxImage();
+                    }catch(e){}
                 }
 
                 // increase countner for question_comments

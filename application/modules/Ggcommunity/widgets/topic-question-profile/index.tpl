@@ -44,9 +44,7 @@ function switchTab(tab, id) {
     }
 }
 en4.core.runonce.add(function(){
-    try{
-        loadQuestionProfile();
-    }catch(e){ console.log(e); }
+    loadQuestionProfile();
 });
 function loadQuestionProfile(){
     var requestData = {};

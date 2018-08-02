@@ -172,6 +172,10 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
 
             $answer->save();
             
+            if( isset($subject->answer_count) && $subject->answer_count > 0 ) {
+                $subject->answer_count++;
+            }
+            
             $oldTz = date_default_timezone_get();
             date_default_timezone_set($viewer->timezone);
             $creationDate = time();
@@ -191,10 +195,7 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
                 $subject->save();
                 
                 if(!empty($choosenAnswer)){
-                    $choosenAction = $choosenAnswer->getChoosenActivity();
-                    if(!empty($choosenAction)){
-                        $choosenAction->delete();
-                    }
+                    $choosenAnswer->deleteChosenActivity();
                 }
             }
             
@@ -276,16 +277,21 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
             $answer->save();
             
             $answerChosen = $this->getParam("answerChosen");
-            if(!empty($answerChosen) && ($answer->user_id == $viewer->getIdentity() || $viewer->isAdmin())){
+            if(!empty($answerChosen) && ($answer->user_id == $viewer->getIdentity() || $viewer->isAdmin())){                
+                $chosenAnswer = $subject->getChoosenAnswer();           
                 $table->update(array('accepted' => 0),array('parent_id = ?' => $subject->getIdentity(),'parent_type = ?' => $subject->getType()));
                 $answer->accepted = 1;
                 $answer->save();
-                
+                                
                 $subject->accepted_answer = 1;
                 $subject->save();
                 
+                if(!empty($chosenAnswer)){
+                    $chosenAnswer->deleteChosenActivity();
+                }
+                
                 if(!$viewer->isSelf($answer->getOwner())){
-                    $action = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($answer->getOwner(), $answer, "question_answer_chosen",array(
+                    $action = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($answer->getOwner(), $answer, "question_answer_chosen",null,array(
                         'owner' => $subject->getOwner()->getGuid(),
                         'body' => $body,
                     ));
