@@ -142,7 +142,7 @@ class Ggcommunity_Model_Question extends Core_Model_Item_Abstract
   
   public function getChoosenAnswer(){
       $table = Engine_Api::_()->getDbTable('answers', 'ggcommunity');
-      return $table->fetchRow($table->select()->where('accepted = ?',1));
+      return $table->fetchRow($table->select()->where('accepted = ?',1)->where('parent_id = ?',$this->getIdentity()));
   }
   public function getTopic(){
       return Engine_Api::_()->getItem('sdparentalguide_topic', $this->topic_id);
@@ -167,6 +167,10 @@ class Ggcommunity_Model_Question extends Core_Model_Item_Abstract
             if($deleteAnswers){
                 $answer->gg_deleted = 1;
                 $answer->save();
+                if( isset($question->answer_count) && $question->answer_count > 0 ) {
+                    $question->answer_count--;
+                    $question->save();
+                }
             }
             
             $answer->deletePoints();

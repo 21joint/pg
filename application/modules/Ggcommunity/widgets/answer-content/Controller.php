@@ -31,54 +31,54 @@ class Ggcommunity_Widget_AnswerContentController extends Engine_Content_Widget_A
       $this->view->subjectGuid = $subject->getGuid(false);
     }
 
-    $table = Engine_Api::_()->getDbtable('answers', 'ggcommunity');
-    $limit = Engine_Api::_()->getApi('settings', 'core')->getSetting('ggcommunity.answer.page');
+//    $table = Engine_Api::_()->getDbtable('answers', 'ggcommunity');
+//    $limit = Engine_Api::_()->getApi('settings', 'core')->getSetting('ggcommunity.answer.page');
+//
+//    $select_best = $table->select()
+//      ->where('parent_type = ?', $subject->getType())
+//      ->where('parent_id = ?', $subject->getIdentity())
+//      ->where('accepted = ?', 1)
+//      ->limit(1)
+//    ;
+//    $this->view->best = $best = $table->fetchRow($select_best);
 
-    $select_best = $table->select()
-      ->where('parent_type = ?', $subject->getType())
-      ->where('parent_id = ?', $subject->getIdentity())
-      ->where('accepted = ?', 1)
-      ->limit(1)
-    ;
-    $this->view->best = $best = $table->fetchRow($select_best);
-
-    $select = $table->select()
-      ->where('parent_type = ?', $subject->getType())
-      ->where('parent_id = ?', $subject->getIdentity())
-      ->where('accepted != ?', 1)
-      //->order('answer_id DESC')
-      ->order('up_vote_count DESC')
-      ->limit($limit)
-    ;
-
-    $this->view->paginator = $answers = $table->fetchAll($select);
-
-    $shown_ids = [];
-    foreach($answers as $answer) {
-      $shown_ids[] = $answer->getIdentity();
-    }
-    $this->view->shown_ids = $shown_ids;
-
-    // Parametars for view more
-    $nextid = null;
-    $endOfAnswer = false;
-
-    // Are we at the end?
-    if( count($answers) < $limit ) {
-      $endOfAnswer = true;
-      $nextid = 0;
-    } else {
-      $nextid =  $answers[$limit-1]->answer_id;  
-      
-    }
-    
-    if($subject->answer_count - $limit < 1) {
-      $nextid = 0;
-    }
-
-    
-    $this->view->nextid = $nextid;
-    $this->view->endOfAnswer = $endOfAnswer;
+//    $select = $table->select()
+//      ->where('parent_type = ?', $subject->getType())
+//      ->where('parent_id = ?', $subject->getIdentity())
+//      ->where('accepted != ?', 1)
+//      //->order('answer_id DESC')
+//      ->order('up_vote_count DESC')
+//      ->limit($limit)
+//    ;
+//
+//    $this->view->paginator = $answers = $table->fetchAll($select);
+//
+//    $shown_ids = [];
+//    foreach($answers as $answer) {
+//      $shown_ids[] = $answer->getIdentity();
+//    }
+//    $this->view->shown_ids = $shown_ids;
+//
+//    // Parametars for view more
+//    $nextid = null;
+//    $endOfAnswer = false;
+//
+//    // Are we at the end?
+//    if( count($answers) < $limit ) {
+//      $endOfAnswer = true;
+//      $nextid = 0;
+//    } else {
+//      $nextid =  $answers[$limit-1]->answer_id;  
+//      
+//    }
+//    
+//    if($subject->answer_count - $limit < 1) {
+//      $nextid = 0;
+//    }
+//
+//    
+//    $this->view->nextid = $nextid;
+//    $this->view->endOfAnswer = $endOfAnswer;
 
     //If this viewer has no permission for answering question don't render this form
     if($permissions['answer_question'] != 0) {
