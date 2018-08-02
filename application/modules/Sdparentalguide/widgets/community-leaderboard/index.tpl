@@ -17,7 +17,7 @@
             <li id="leaderboard_nav_ovl" class="leaderboard_nav leaderboard_title_active">Overall</li>
             <li id="leaderboard_nav_mth" class="leaderboard_nav">Month</li>
             <li id="leaderboard_nav_wek" class="leaderboard_nav">Week</li>
-            <li id="leaderboard_nav_day" class="leaderboard_nav">Day</li>
+            <li id="leaderboard_nav_day" class="leaderboard_nav">Today</li>
         </ul><!-- Add back in when the service is provided -->
     </div>
     <div class="leaderboard_main d-flex justify-content-between">

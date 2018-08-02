@@ -445,9 +445,8 @@
 }
 .count_info{
   color: #5cc7ce;
-  font-weight: 700;
-  border: 2px solid #fff;
-  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 400;
 }
 .count_title{
   font-size: 12px;
@@ -456,7 +455,10 @@
   font-weight: 400;
 }
 .answered_question{
-  border: 2px solid #5cc7ce;
+  background: #5CC7CE;
+  color: #fff;
+  padding: 0px 20px;
+  border-radius: 20px;
 }
 /* Profile Page Components -> end */
 
@@ -778,8 +780,15 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
 
 @media screen and (max-width: 991px){
   /* Profile Latest Struggles */
+  .count_info{
+    font-weight: 700;
+    font-size: 16px;
+  }
   .answered_question{
-    border: 2px solid #fff;
+    background: #fff;
+    color: #5CC7CE;
+    padding: 0px;
+    border-radius: 0px;
   }
 }
 
@@ -833,6 +842,11 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
       color: #5cc7ce;
     }
     /* Community Home Page End */
+    .avatar_popup{
+      top: 0px;
+      left: 0px;
+      width: 320px;
+    }
 }
 
 @media screen and (max-width: 486px){
@@ -857,6 +871,11 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
       color: #5cc7ce;
     }
     /* Community Home Page End */
+    .avatar_popup{
+      top: 0px;
+      left: -25px;
+      width: 290px;
+    }
 }
 
 @media screen and (max-width: 368px){
