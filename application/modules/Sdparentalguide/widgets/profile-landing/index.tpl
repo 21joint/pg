@@ -524,7 +524,7 @@
                             this.previousSibling.addClass('d-block').removeClass('d-none');
                         });
                     });
-                    window.addEventListener('mousedown', function(){
+                    window.addEventListener('mouseup', function(){
                         document.querySelectorAll('.avatar_popup').forEach(function(removed){
                             if(removed.hasClass('d-block')){
                                 removed.addClass('d-none').removeClass('d-block');
