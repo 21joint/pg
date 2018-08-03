@@ -60,7 +60,7 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
         $auditingSaved = Zend_Registry::isRegistered("Auditing_Created");
         try{
             //This will fix max level error
-            if($auditingSaved && Zend_Registry::get("Auditing_Created") > 20){
+            if($auditingSaved && Zend_Registry::get("Auditing_Created") > 40){
                 return;
             }
             if($this->isAllowedAuditing($payload)){
@@ -70,7 +70,7 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             }
             
             if( $payload instanceof Sitecredit_Model_Credit ) {
-                $this->updateUserCredits($payload);
+//                $this->updateUserCredits($payload);
                 $this->updateTransactionTopic($payload);
             }
             
@@ -99,7 +99,7 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
         $auditingSaved = Zend_Registry::isRegistered("Auditing_Created");
         try{
             //This will fix max level error
-            if($auditingSaved && Zend_Registry::get("Auditing_Created") > 20){
+            if($auditingSaved && Zend_Registry::get("Auditing_Created") > 40){
                 return;
             }
             
@@ -115,22 +115,23 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             }
             
             if( $payload instanceof Sitecredit_Model_Credit) {
-                $creditsTable = Engine_Api::_()->getDbtable('credits','sdparentalguide');
-                $row = $creditsTable->getUserActivityCount($viewer);
-                $userCredits = 0;
-                $userActivities = 0;
-                if(!empty($row)){
-                    $userCredits = $row->credit;
-                    $userActivities = $row->activities;
-                }
-                $viewer->gg_contribution = $userCredits;
-                $viewer->gg_activities = $userActivities;
-                $viewer->save();
+//                $creditsTable = Engine_Api::_()->getDbtable('credits','sdparentalguide');
+//                $row = $creditsTable->getUserActivityCount($viewer);
+//                $userCredits = 0;
+//                $userActivities = 0;
+//                if(!empty($row)){
+//                    $userCredits = $row->credit;
+//                    $userActivities = $row->activities;
+//                }
+//                $viewer->gg_contribution = $userCredits;
+//                $viewer->gg_activities = $userActivities;
+//                $viewer->save();
+                $this->updateUserCredits($payload);
             }
             
         } catch (Exception $ex) {
             //Silent
-//            throw $ex;
+            throw $ex;
         }
         if($auditingSaved){
             Zend_Registry::set("Auditing_Created", Zend_Registry::get("Auditing_Created")+1);
@@ -141,9 +142,9 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
     public function updateUserCredits($payload){
         try{
             $user = Engine_Api::_()->user()->getUser($payload->user_id);
-            if(!$user->getIdentity()){
-                return;
-            }
+//            if(!$user->getIdentity()){
+//                return;
+//            }
             $creditsTable = Engine_Api::_()->getDbtable('credits','sdparentalguide');
             $row = $creditsTable->getUserActivityCount($user);
             $userCredits = 0;
@@ -159,6 +160,7 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             
         } catch (Exception $ex) {
             //Silent
+            throw $ex;
         }
     }
     public function onItemUpdateAfter($event){
@@ -264,7 +266,7 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                     $payload->gg_contribution_level = $badge->gg_contribution_level;
                     if(!$payload->isAdminOnly() && $badge->gg_level_id > 0){
                         $payload->level_id = $badge->gg_level_id;
-                    }            
+                    }
                     $payload->save();
                     Zend_Registry::set("ContributionLevel_Saved",1);
                 }
@@ -484,5 +486,28 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
         
         $payload->gg_topic_id = $listingType->gg_topic_id;
 //        $payload->save();
+    }
+    
+    public function onCreditCreateAfter($event){
+        $payload = $event->getPayload();
+        $user = Engine_Api::_()->user()->getUser($payload->user_id);
+        $user->gg_activities = $user->gg_activities + 1;
+        $user->gg_contribution = $user->gg_contribution + $payload->credit_point;
+        
+        $data = array();
+        $data['gg_activities'] = $user->gg_activities + 1;
+        $data['gg_contribution'] = $user->gg_contribution + $payload->credit_point;
+        $api = Engine_Api::_()->sdparentalguide();
+        $badge = $api->getUserBadge($payload->gg_contribution);
+        if(!empty($badge)){
+            $payload->gg_contribution_level = $badge->gg_contribution_level;
+            $data['gg_contribution_level'] = $badge->gg_contribution_level;
+            if(!$payload->isAdminOnly() && $badge->gg_level_id > 0){
+                $payload->level_id = $badge->gg_level_id;
+                $data['level_id'] = $badge->gg_level_id;
+            }
+            Zend_Registry::set("ContributionLevel_Saved",1);
+        }
+        Engine_Api::_()->getDbTable("users","user")->update($data,array('user_id = ?' => (int)$payload->user_id));        
     }
 }

@@ -90,6 +90,7 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
         $comments->setItemCountPerPage($limit);
         
         $response['ResultCount'] = 0;
+        $response['PageCount'] = $comments->count();
         $response['Results'] = array();
         $response['isLike'] = (bool)(!empty($isLike) ? 1 : 0);
         $response['canComment'] = (bool)$canComment;
@@ -142,9 +143,50 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
 
         try {
             $comment = $subject->comments()->addComment($viewer, $body);
+            $oldTz = date_default_timezone_get();
+            date_default_timezone_set($viewer->timezone);
+            $creationDate = time();
+            date_default_timezone_set($oldTz);
+            $commentData = array();
+            $commentData['creation_date'] = date('Y-m-d H:i:s', $creationDate);
             if(!empty($parentCommentId) && isset($comment->parent_comment_id)){
-                $comment->parent_comment_id = $parentCommentId;
-                $comment->save();
+                $commentData['parent_comment_id'] = $parentCommentId;                
+            }
+            $comment->getTable()->update($commentData,array('comment_id = ?' => $comment->getIdentity()));
+            
+            if($subject->getType() == "ggcommunity_answer" && $subject->getOwner() && !$viewer->isSelf($subject->getOwner())){
+                $actionOwner = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($subject->getOwner(), $subject, "question_answer_comment",null,array(
+                    'owner' => $subject->getOwner()->getGuid(),
+                    'body' => $body,
+                ));
+                if(!empty($actionOwner)){
+                    Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($actionOwner, $comment);
+                }
+                
+                $action = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($viewer, $subject, "question_answer_author_comment",null,array(
+                    'owner' => $subject->getOwner()->getGuid(),
+                    'body' => $body,
+                ));
+                if(!empty($action)){
+                    Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($action, $comment);
+                }
+            }
+            if($subject->getType() == "ggcommunity_question" && $subject->getOwner() && !$viewer->isSelf($subject->getOwner())){
+                $actionOwner = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($subject->getOwner(), $subject, "question_comment",null,array(
+                    'owner' => $subject->getOwner()->getGuid(),
+                    'body' => $body,
+                ));
+                if(!empty($actionOwner)){
+                    Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($actionOwner, $comment);
+                }
+                
+                $action = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($viewer, $subject, "question_author_comment",null,array(
+                    'owner' => $subject->getOwner()->getGuid(),
+                    'body' => $body,
+                ));
+                if(!empty($action)){
+                    Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity($action, $comment);
+                }
             }
             Engine_Api::_()->getDbtable('statistics', 'core')->increment('core.comments');
             if (!empty($comment)) {
@@ -240,6 +282,11 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
         if(Engine_Api::_()->core()->hasSubject()){
             $subject = Engine_Api::_()->core()->getSubject();
         }
+        $parentCommentId = null;
+        if($subject->getType() == "core_comment"){
+            $subject = Engine_Api::_()->getItem($subject->resource_type,$subject->resource_id);
+            $parentCommentId = $this->getParam("contentID");
+        }
         if (!($subject instanceof Core_Model_Item_Abstract) ||
                 !$subject->getIdentity() ||
                 (!method_exists($subject, 'comments') && !method_exists($subject, 'likes')))
@@ -261,6 +308,7 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
         $db = $subject->comments()->getCommentTable()->getAdapter();
         $db->beginTransaction();
         try {
+            $api = Engine_Api::_()->getApi("V1_Reaction","pgservicelayer");
             foreach($comments as $comment){
                 $poster = Engine_Api::_()->getItem($comment->poster_type, $comment->poster_id);                
                 if(!$poster->isSelf($viewer)){
@@ -268,6 +316,32 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
                 }
                 $comment->gg_deleted = 1;
                 $comment->save();
+                
+                if( isset($subject->comment_count) && $subject->comment_count > 0 ) {
+                    $subject->comment_count--;
+                    $subject->save();
+                }
+                
+                if($subject->getType() == "ggcommunity_answer"){
+                    if(($action = $api->hasActivity($subject,'question_answer_comment',$subject->getOwner()))){
+                        $action->delete();
+                    }
+                    
+                    if(($action = $api->hasActivity($subject,'question_answer_author_comment',$viewer))){
+                        $action->delete();
+                    }
+                }
+                
+                if($subject->getType() == "ggcommunity_question"){
+                    if(($action = $api->hasActivity($subject,'question_comment',$subject->getOwner()))){
+                        $action->delete();
+                    }
+                    
+                    if(($action = $api->hasActivity($subject,'question_author_comment',$viewer))){
+                        $action->delete();
+                    }
+                }
+                
             }
             $db->commit();
         } catch (Exception $e) {

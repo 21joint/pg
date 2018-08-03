@@ -120,5 +120,33 @@ class Ggcommunity_Model_Answer extends Core_Model_Item_Abstract
   {
     return new Engine_ProxyObject($this, Engine_Api::_()->getDbtable('comments', 'core'));
   }
+  
+  public function getChoosenActivity(){
+      $table = Engine_Api::_()->getDbtable('actions', 'activity');
+      $select = $table->select()
+              ->where('type = ?','question_answer_chosen')
+              ->where("object_type = ?","ggcommunity_answer")
+              ->where("object_id = ?",$this->getIdentity());
+      return $table->fetchAll($select);
+  }
+  
+  public function deleteChosenActivity(){
+      $actions = $this->getChoosenActivity();
+      if(empty($actions)){
+          return;
+      }
+      foreach($actions as $action){
+          $action->delete();
+      }
+  }
+  
+  public function deletePoints(){
+    $actions = Engine_Api::_()->getDbtable('actions', 'activity')->getActionsByObject($this);
+    if(!empty($actions)){
+        foreach($actions as $action){
+              $action->delete();
+        }
+    }
+  }
 
 }
