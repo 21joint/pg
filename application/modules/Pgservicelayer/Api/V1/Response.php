@@ -15,6 +15,9 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $view = Zend_Registry::get("Zend_View");
         return $view->locale()->toDateTime($datetime,array('format' => 'YYYY-MM-d HH:MM:ss'));
     }
+    private function translate($message = ''){
+        return Engine_Api::_()->getApi('Core', 'siteapi')->translate($message);
+    }
     public function getListingOverview(Sitereview_Model_Listing $sitereview){
         $tableOtherinfo = Engine_Api::_()->getDbTable('otherinfo', 'sitereview');
         $overview = $tableOtherinfo->getColumnValue($sitereview->getIdentity(), 'overview');
@@ -461,5 +464,31 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             'contentType' => Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($rating->listing_type),
             'contentID' => (string)$rating->listing_id,
         );
+    }
+    
+    public function getContributionData(Sitecredit_Model_Credit $credit){
+        $topic = Engine_Api::_()->getItem("sdparentalguide_topic",$credit->gg_topic_id);
+        $activityCredit = Engine_Api::_()->getItem("activitycredit",$credit->type_id);
+        $contributionData = array(
+            'contributionID' => (string)$credit->getIdentity(),
+            'memberID' => '',
+            'contributionPoints' => (int)$credit->credit_point,
+            'contributionDateTime' => $this->getFormatedDateTime($credit->creation_date),
+            'contributionDetail' => '',
+            'topic' => $this->getTopicData($topic)
+        );
+        $viewer = Engine_Api::_()->user()->getViewer();
+        if($viewer->isAdmin()){
+            $contributionData['memberID'] = (string)$credit->user_id;
+        }
+        if(!empty($activityCredit) && empty($activityCredit->language_en)){
+            $activity_type = $this->translate('ADMIN_ACTIVITY_TYPE_' . strtoupper($activityCredit->activity_type));
+            $activity_type = str_replace("(subject)","",$activity_type);
+            $activity_type = str_replace("(object)","",$activity_type);
+            $contributionData['contributionDetail'] = $activity_type;
+        }else if(!empty($activityCredit)) {
+            $contributionData['contributionDetail'] = $activityCredit->language_en;
+        }
+        return $contributionData;
     }
 }

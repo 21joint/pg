@@ -28,6 +28,10 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
 
         if ($viewer->getIdentity()) {
             $timezone = $viewer->timezone;
+            if($viewer->locale == 'English'){
+                $viewer->locale = 'en';
+                $viewer->save();
+            }
         }
         Zend_Registry::set('timezone', $timezone);
         Engine_Api::_()->getApi('Core', 'siteapi')->setView();
