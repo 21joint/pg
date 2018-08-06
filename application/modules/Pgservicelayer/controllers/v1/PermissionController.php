@@ -67,8 +67,8 @@ class Pgservicelayer_PermissionController extends Pgservicelayer_Controller_Acti
             $this->respondWithSuccess($response);
         }
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
-        foreach($paginator as $credit){
-            $response['Results'][] = $responseApi->getPermissionData($credit);
+        foreach($paginator as $user){
+            $response['Results'][] = $responseApi->getPermissionData($user);
             $response['ResultCount']++;
         }
         $this->respondWithSuccess($response);

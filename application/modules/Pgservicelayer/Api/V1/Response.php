@@ -554,7 +554,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             'canFlagAnswer' => (bool)$permissionsTable->getAllowed('ggcommunity', $level_id, 'flag_answer'),          
         );
         if (APPLICATION_ENV === 'production') {
-            $cache->setLifetime(25000);
+            $cache->setLifetime(300); //300 seconds
             $cache->save($permissionData, $cacheName);
         }
         return $permissionData;

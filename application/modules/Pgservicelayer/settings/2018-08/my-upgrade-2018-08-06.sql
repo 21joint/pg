@@ -10,3 +10,7 @@
 
 INSERT INTO `engine4_core_menuitems` (`name`, `module`, `label`, `plugin`, `params`, `menu`, `submenu`, `enabled`, `custom`, `order`) VALUES
 ('sdparentalguide_admin_main_permission',	'sdparentalguide',	'Permission',	'',	'{\"route\":\"admin_default\",\"module\":\"sdparentalguide\",\"controller\":\"permission\",\"action\":\"index\"}',	'sdparentalguide_admin_main',	'',	1,	0,	10);
+
+INSERT INTO `engine4_core_menuitems` (`name`, `module`, `label`, `plugin`, `params`, `menu`, `submenu`, `enabled`, `custom`, `order`) VALUES
+('sdparentalguide_admin_permission_custom',	'sdparentalguide',	'Custom',	'',	'{\"route\":\"admin_default\",\"module\":\"sdparentalguide\",\"controller\":\"permission\",\"action\":\"custom\"}',	'sdparentalguide_admin_permission',	'',	1,	0,	2),
+('sdparentalguide_admin_permission_reviews',	'sdparentalguide',	'Reviews',	'',	'{\"route\":\"admin_default\",\"module\":\"sdparentalguide\",\"controller\":\"permission\",\"action\":\"index\"}',	'sdparentalguide_admin_permission',	'',	1,	0,	1);
