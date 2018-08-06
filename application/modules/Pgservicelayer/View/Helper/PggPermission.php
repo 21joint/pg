@@ -9,7 +9,7 @@
 class Pgservicelayer_View_Helper_PggPermission extends Zend_View_Helper_Abstract
 {
 
-    public function pggPermission($permission, $viewer = null,$subject = null) {       
+    public function pggPermission($permission, $viewer = null,$subject = null) {
         if( null === $viewer ) {
             $viewer = Engine_Api::_()->user()->getViewer();
         }
