@@ -254,6 +254,71 @@ function loadLeaderboardResults(page = 1) {
                                     ((page-1)*20+(i+1))+
                                 '</div>'+
                                 '<div class="d-flex align-items-center leader position-relative">'+
+                                    '<div class="avatar_popup position-absolute bg-white d-none">'+
+                                        '<div class="avatar_header d-flex mx-3 mt-3 px-2 pt-2">'+
+                                            '<img src="'+
+                                                results[i].avatarPhoto.photoURLIcon+
+                                            '" alt="avatar photo"/>'+
+                                            '<div class="avatar_info d-flex flex-column">'+
+                                                '<a class="font-weight-bold" href="'+
+                                                    en4.core.baseUrl+"profile/"+results[i].memberName+
+                                                '">'+ 
+                                                    results[i].displayName+
+                                                '</a>'+
+                                                '<div class="d-flex justify-content-start align-items-center">'+
+                                                    '<svg style="margin: 3px 5px 0px 0px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0 0 42.03 39.91"><defs><linearGradient id="a" x1="26.26" y1="12.68" x2="40.67" y2="12.68" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#51b2b6"></stop><stop offset="1" stop-color="#5bc6cd"></stop></linearGradient><linearGradient id="b" y1="17.32" x2="17.39" y2="17.32" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5bc6cd"></stop><stop offset="1" stop-color="#51b2b6"></stop></linearGradient></defs><title>star_pg</title><path d="M40.23,8.55,32.7,18.46l-6.44-8.6L38.77,7C40.61,6.57,41.14,7.31,40.23,8.55Z" fill="#5bc6cd"></path><path d="M17.39,12,.93,16.13c-1,.24-1.28,1.35-.32,1.79l16.06,4.7Z" fill="#5bc6cd"></path><path d="M15.31,38.4,17.42,1c0-1.06,1.1-1.31,1.76-.45L41.59,28.45c.83,1,.6,2.71-1.71,1.81L26.36,25.09l-8.44,14A1.36,1.36,0,0,1,15.31,38.4Z" fill="#5bc6cd"></path></svg>'+
+                                                    results[i].contribution+
+                                                '</div>'+
+                                            '</div>'+
+                                            '<span class="avatar_close">'+
+                                                '<svg width="14px" aria-hidden="true" data-prefix="fal" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-times fa-w-10 fa-2x"><path fill="currentColor" d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z" class=""></path></svg>'+
+                                            '</span>'+
+                                        '</div>'+
+                                        '<div class="avatar_badges d-flex justify-content-around align-items-center my-2 px-3">'+
+                                            '<div class="avatar_badges_popup badge_bronze position-relative d-flex flex-column justify-content-center align-items-center">'+
+                                                '<img src="<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/badges/Bronze.svg"/>'+
+                                                '<span class="number_badges position-absolute text-white font-weight-bold">'+
+                                                    results[i].bronzeCount+
+                                                '</span>'+
+                                                '<span class="badge_name">Bronze</span>'+
+                                            '</div>'+
+                                            '<div class="avatar_badges_popup badge_silver position-relative d-flex flex-column justify-content-center align-items-center">'+
+                                                '<img src="<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/badges/Silver.svg"/>'+
+                                                '<span class="number_badges position-absolute text-white font-weight-bold">'+
+                                                    results[i].silverCount+
+                                                '</span>'+
+                                                '<span class="badge_name">Silver</span>'+
+                                            '</div>'+
+                                            '<div class="avatar_badges_popup badge_gold position-relative d-flex flex-column justify-content-center align-items-center">'+
+                                                '<img src="<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/badges/Gold.svg"/>'+
+                                                '<span class="number_badges position-absolute text-white font-weight-bold">'+
+                                                    results[i].goldCount+
+                                                '</span>'+
+                                                '<span class="badge_name">Gold</span>'+
+                                            '</div>'+
+                                            '<div class="avatar_badges_popup badge_platinum position-relative d-flex flex-column justify-content-center align-items-center">'+
+                                                '<img src="<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/badges/Platinum.svg"/>'+
+                                                '<span class="number_badges position-absolute text-white font-weight-bold">'+
+                                                    results[i].platinumCount+
+                                                '</span>'+
+                                                '<span class="badge_name">Platinum</span>'+
+                                            '</div>'+
+                                        '</div>'+
+                                        '<div class="avatar_footer d-flex justify-content-center align-items-center border-top">'+
+                                            '<div class="d-flex justify-content-center p-3 border-right">'+
+                                                'Reviews '+
+                                                '<span class="text-primary font-weight-bold ml-1">'+
+                                                results[i].reviewCount+
+                                                '</span>'+
+                                            '</div>'+
+                                            '<div class="d-flex justify-content-center p-3">'+
+                                                'Answers '+ 
+                                                '<span class="text-primary font-weight-bold ml-1">'+
+                                                results[i].answerCount+
+                                                '</span>'+
+                                            '</div>'+
+                                        '</div>'+
+                                    '</div>'+
                                     '<img class="avatar_halo" src="'+
                                         results[i].avatarPhoto.photoURLIcon+
                                     '" data-halo="'+ results[i].mvp +'"/>'+
@@ -265,10 +330,13 @@ function loadLeaderboardResults(page = 1) {
                                     '">'+
                                         adjust_count+
                                     '</span>'+
-                                    '<h4>'+results[i].displayName+'</h4>'+
+                                    '<h4 class="font-weight-bold"><a href="'+
+                                            en4.core.baseUrl+"profile/"+results[i].memberName+
+                                        '">'+results[i].displayName+'</a>'+
+                                    '</h4>'+
                                 '</div>'+
                                 '<div class="points d-flex align-items-center justify-content-center">'+
-                                    '<svg style="margin: 3px 5px 0px 0px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px" viewBox="0 0 42.03 39.91"><defs><linearGradient id="a" x1="26.26" y1="12.68" x2="40.67" y2="12.68" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#51b2b6"></stop><stop offset="1" stop-color="#5bc6cd"></stop></linearGradient><linearGradient id="b" y1="17.32" x2="17.39" y2="17.32" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5bc6cd"></stop><stop offset="1" stop-color="#51b2b6"></stop></linearGradient></defs><title>star_pg</title><path d="M40.23,8.55,32.7,18.46l-6.44-8.6L38.77,7C40.61,6.57,41.14,7.31,40.23,8.55Z" fill="url(#a)"></path><path d="M17.39,12,.93,16.13c-1,.24-1.28,1.35-.32,1.79l16.06,4.7Z" fill="url(#b)"></path><path d="M15.31,38.4,17.42,1c0-1.06,1.1-1.31,1.76-.45L41.59,28.45c.83,1,.6,2.71-1.71,1.81L26.36,25.09l-8.44,14A1.36,1.36,0,0,1,15.31,38.4Z" fill="#5bc6cd"></path></svg>'+
+                                    '<svg style="margin: 3px 5px 0px 0px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px" viewBox="0 0 42.03 39.91"><defs><linearGradient id="a" x1="26.26" y1="12.68" x2="40.67" y2="12.68" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#51b2b6"></stop><stop offset="1" stop-color="#5bc6cd"></stop></linearGradient><linearGradient id="b" y1="17.32" x2="17.39" y2="17.32" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5bc6cd"></stop><stop offset="1" stop-color="#51b2b6"></stop></linearGradient></defs><title>star_pg</title><path d="M40.23,8.55,32.7,18.46l-6.44-8.6L38.77,7C40.61,6.57,41.14,7.31,40.23,8.55Z" fill="#5bc6cd"></path><path d="M17.39,12,.93,16.13c-1,.24-1.28,1.35-.32,1.79l16.06,4.7Z" fill="#5bc6cd"></path><path d="M15.31,38.4,17.42,1c0-1.06,1.1-1.31,1.76-.45L41.59,28.45c.83,1,.6,2.71-1.71,1.81L26.36,25.09l-8.44,14A1.36,1.36,0,0,1,15.31,38.4Z" fill="#5bc6cd"></path></svg>'+
                                     results[i].contribution+
                                 '</div>'+
                             '</div>';
@@ -283,6 +351,7 @@ function loadLeaderboardResults(page = 1) {
                         avatar_halo.style.borderImage = "url('<?php echo $this->baseUrl(); ?>/application/themes/parentalguidance/assets/images/border.png') 20 20 20 20 fill";
                     }
                 });
+                // Checking Contribution Level on Avatar
                 document.querySelectorAll('.cont_level').forEach(function(avatar_cont){
                     if(avatar_cont.dataset.cont >= 1000){
                         avatar_cont.addClass('cont_level_platinum');
@@ -296,6 +365,20 @@ function loadLeaderboardResults(page = 1) {
                         avatar_cont.addClass('cont_level_default');
                     }
                 });
+                // Displaying Avatar Popup
+                document.querySelectorAll('.avatar_halo').forEach(function(popup_func){
+                    popup_func.addEventListener('click', function(){
+                        this.previousSibling.addClass('d-block').removeClass('d-none');
+                    });
+                });
+                window.addEventListener('mouseup', function(){
+                    document.querySelectorAll('.avatar_popup').forEach(function(removed){
+                        if(removed.hasClass('d-block')){
+                            removed.addClass('d-none').removeClass('d-block');
+                        }
+                    });
+                });
+                
                 // Showing current page in pagination section
                 // document.getElementById('leaderboard_pageNum').innerText = page;
             }else{
@@ -402,6 +485,71 @@ function loadMvpExpertResults(disp_mvps = 1, disp_experts = 0){
                     }
 
                     html += '<div class="mvps_item d-flex flex-column align-items-center justify-content-center position-relative mr-5">'+
+                                '<div class="avatar_popup position-absolute bg-white d-none">'+
+                                    '<div class="avatar_header d-flex mx-3 mt-3 px-2 pt-2">'+
+                                        '<img src="'+
+                                            results[i].avatarPhoto.photoURLIcon+
+                                        '" alt="avatar photo"/>'+
+                                        '<div class="avatar_info d-flex flex-column justify-content-start align-items-start ml-3">'+
+                                            '<a class="font-weight-bold" href="'+
+                                                en4.core.baseUrl+"profile/"+results[i].memberName+
+                                            '">'+ 
+                                                results[i].displayName+
+                                            '</a>'+
+                                            '<div class="d-flex justify-content-start align-items-center">'+
+                                                '<svg style="margin: 3px 5px 0px 0px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0 0 42.03 39.91"><defs><linearGradient id="a" x1="26.26" y1="12.68" x2="40.67" y2="12.68" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#51b2b6"></stop><stop offset="1" stop-color="#5bc6cd"></stop></linearGradient><linearGradient id="b" y1="17.32" x2="17.39" y2="17.32" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5bc6cd"></stop><stop offset="1" stop-color="#51b2b6"></stop></linearGradient></defs><title>star_pg</title><path d="M40.23,8.55,32.7,18.46l-6.44-8.6L38.77,7C40.61,6.57,41.14,7.31,40.23,8.55Z" fill="#5bc6cd"></path><path d="M17.39,12,.93,16.13c-1,.24-1.28,1.35-.32,1.79l16.06,4.7Z" fill="#5bc6cd"></path><path d="M15.31,38.4,17.42,1c0-1.06,1.1-1.31,1.76-.45L41.59,28.45c.83,1,.6,2.71-1.71,1.81L26.36,25.09l-8.44,14A1.36,1.36,0,0,1,15.31,38.4Z" fill="#5bc6cd"></path></svg>'+
+                                                results[i].contribution+
+                                            '</div>'+
+                                        '</div>'+
+                                        '<span class="avatar_close">'+
+                                            '<svg width="14px" aria-hidden="true" data-prefix="fal" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-times fa-w-10 fa-2x"><path fill="currentColor" d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z" class=""></path></svg>'+
+                                        '</span>'+
+                                    '</div>'+
+                                    '<div class="avatar_badges d-flex justify-content-around align-items-center my-2 px-3">'+
+                                        '<div class="avatar_badges_popup badge_bronze position-relative d-flex flex-column justify-content-center align-items-center">'+
+                                            '<img src="<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/badges/Bronze.svg"/>'+
+                                            '<span class="number_badges position-absolute text-white font-weight-bold">'+
+                                                results[i].bronzeCount+
+                                            '</span>'+
+                                            '<span class="badge_name">Bronze</span>'+
+                                        '</div>'+
+                                        '<div class="avatar_badges_popup badge_silver position-relative d-flex flex-column justify-content-center align-items-center">'+
+                                            '<img src="<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/badges/Silver.svg"/>'+
+                                            '<span class="number_badges position-absolute text-white font-weight-bold">'+
+                                                results[i].silverCount+
+                                            '</span>'+
+                                            '<span class="badge_name">Silver</span>'+
+                                        '</div>'+
+                                        '<div class="avatar_badges_popup badge_gold position-relative d-flex flex-column justify-content-center align-items-center">'+
+                                            '<img src="<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/badges/Gold.svg"/>'+
+                                            '<span class="number_badges position-absolute text-white font-weight-bold">'+
+                                                results[i].goldCount+
+                                            '</span>'+
+                                            '<span class="badge_name">Gold</span>'+
+                                        '</div>'+
+                                        '<div class="avatar_badges_popup badge_platinum position-relative d-flex flex-column justify-content-center align-items-center">'+
+                                            '<img src="<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/badges/Platinum.svg"/>'+
+                                            '<span class="number_badges position-absolute text-white font-weight-bold">'+
+                                                results[i].platinumCount+
+                                            '</span>'+
+                                            '<span class="badge_name">Platinum</span>'+
+                                        '</div>'+
+                                    '</div>'+
+                                    '<div class="avatar_footer d-flex justify-content-center align-items-center border-top">'+
+                                        '<div class="d-flex justify-content-center align-items-center p-3 border-right">'+
+                                            'Reviews '+
+                                            '<span class="text-primary font-weight-bold ml-1">'+
+                                            results[i].reviewCount+
+                                            '</span>'+
+                                        '</div>'+
+                                        '<div class="d-flex justify-content-center align-items-center p-3">'+
+                                            'Answers '+ 
+                                            '<span class="text-primary font-weight-bold ml-1">'+
+                                            results[i].answerCount+
+                                            '</span>'+
+                                        '</div>'+
+                                    '</div>'+
+                                '</div>'+
                                 '<img class="mvp_halo" src="'+
                                     results[i].avatarPhoto.photoURLProfile+
                                 '" data-halo="'+ results[i].mvp +'"/>'+
@@ -413,9 +561,12 @@ function loadMvpExpertResults(disp_mvps = 1, disp_experts = 0){
                                 '">'+
                                     adjust_count+
                                 '</span>'+
-                                '<h4 class="text-center mt-1 mb-5">'+results[i].displayName+'</h4>'+
+                                '<h4 class="font-weight-bold text-center"><a href="'+
+                                        en4.core.baseUrl+"profile/"+results[i].memberName+
+                                    '">'+results[i].displayName+'</a>'+
+                                '</h4>'+
                                 '<div class="mvps_contribution d-flex justify-content-center align-items-center w-100 py-2">'+
-                                    '<svg style="margin: 3px 5px 0px 0px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px" viewBox="0 0 42.03 39.91"><defs><linearGradient id="a" x1="26.26" y1="12.68" x2="40.67" y2="12.68" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#51b2b6"></stop><stop offset="1" stop-color="#5bc6cd"></stop></linearGradient><linearGradient id="b" y1="17.32" x2="17.39" y2="17.32" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5bc6cd"></stop><stop offset="1" stop-color="#51b2b6"></stop></linearGradient></defs><title>star_pg</title><path d="M40.23,8.55,32.7,18.46l-6.44-8.6L38.77,7C40.61,6.57,41.14,7.31,40.23,8.55Z" fill="url(#a)"></path><path d="M17.39,12,.93,16.13c-1,.24-1.28,1.35-.32,1.79l16.06,4.7Z" fill="url(#b)"></path><path d="M15.31,38.4,17.42,1c0-1.06,1.1-1.31,1.76-.45L41.59,28.45c.83,1,.6,2.71-1.71,1.81L26.36,25.09l-8.44,14A1.36,1.36,0,0,1,15.31,38.4Z" fill="#5bc6cd"></path></svg>'+
+                                    '<svg style="margin: 3px 5px 0px 0px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px" viewBox="0 0 42.03 39.91"><defs><linearGradient id="a" x1="26.26" y1="12.68" x2="40.67" y2="12.68" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#51b2b6"></stop><stop offset="1" stop-color="#5bc6cd"></stop></linearGradient><linearGradient id="b" y1="17.32" x2="17.39" y2="17.32" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5bc6cd"></stop><stop offset="1" stop-color="#51b2b6"></stop></linearGradient></defs><title>star_pg</title><path d="M40.23,8.55,32.7,18.46l-6.44-8.6L38.77,7C40.61,6.57,41.14,7.31,40.23,8.55Z" fill="#5bc6cd"></path><path d="M17.39,12,.93,16.13c-1,.24-1.28,1.35-.32,1.79l16.06,4.7Z" fill="#5bc6cd"></path><path d="M15.31,38.4,17.42,1c0-1.06,1.1-1.31,1.76-.45L41.59,28.45c.83,1,.6,2.71-1.71,1.81L26.36,25.09l-8.44,14A1.36,1.36,0,0,1,15.31,38.4Z" fill="#5bc6cd"></path></svg>'+
                                     results[i].contribution+
                                 '</div>'+
                             '</div>';
@@ -430,6 +581,7 @@ function loadMvpExpertResults(disp_mvps = 1, disp_experts = 0){
                         mvp_halo.style.borderImage = "url('<?php echo $this->baseUrl(); ?>/application/themes/parentalguidance/assets/images/border.png') 10 10 10 10 fill";
                     }
                 });
+                // Checking Contribution Level on Avatar
                 document.querySelectorAll('.cont_level').forEach(function(avatar_cont){
                     if(avatar_cont.dataset.cont >= 1000){
                         avatar_cont.addClass('cont_level_platinum');
@@ -442,7 +594,20 @@ function loadMvpExpertResults(disp_mvps = 1, disp_experts = 0){
                     }else{
                         avatar_cont.addClass('cont_level_default');
                     }
-                });                      
+                });  
+                // Displaying Avatar Popup
+                document.querySelectorAll('.mvp_halo').forEach(function(popup_func){
+                    popup_func.addEventListener('click', function(){
+                        this.previousSibling.addClass('d-block').removeClass('d-none');
+                    });
+                });
+                window.addEventListener('mouseup', function(){
+                    document.querySelectorAll('.avatar_popup').forEach(function(removed){
+                        if(removed.hasClass('d-block')){
+                            removed.addClass('d-none').removeClass('d-block');
+                        }
+                    });
+                });                 
             }else{
                 leaderboardContent.innerHTML = responseJSON.message;
             }
