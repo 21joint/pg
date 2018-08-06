@@ -21,6 +21,8 @@ defined('APPLICATION_PATH_COR') ||
   define('APPLICATION_PATH_COR', realpath(dirname(__FILE__)));
 defined('APPLICATION_PATH_LIB') ||
   define('APPLICATION_PATH_LIB', APPLICATION_PATH_COR . DS . 'libraries');
+defined('APPLICATION_PATH_SET') ||
+    define('APPLICATION_PATH_SET', APPLICATION_PATH_COR . DS . 'settings');
 defined('_ENGINE') || define('_ENGINE', true);
 
 defined('APPLICATION_PATH') ||
@@ -63,6 +65,12 @@ elseif ((!empty($_REQUEST['_IOS_VERSION']) && empty($_REQUEST['_ANDROID_VERSION'
   $type = 'ios';
 define('_CLIENT_TYPE', $type);
 
+// get general config
+if (file_exists(APPLICATION_PATH_SET . DS . 'general.php')) {
+    $generalConfig = include APPLICATION_PATH_SET . DS . 'general.php';
+} else {
+    $generalConfig = array('environment_mode' => 'production');
+}
 
 // development mode
 $application_env = @$generalConfig['environment_mode'];

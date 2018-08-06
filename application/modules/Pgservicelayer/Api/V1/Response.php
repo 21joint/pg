@@ -491,4 +491,72 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         }
         return $contributionData;
     }
+    
+    public function getPermissionData(User_Model_User $user){
+        $user_id = $user->getIdentity();
+        if (APPLICATION_ENV === 'production') {
+            $cache = Zend_Registry::get('Zend_Cache');
+            $cacheName = 'member_permission_'.(int)$user_id;
+            $data = $cache->load($cacheName);
+            if (!empty($data)) {
+                return $data;
+            }
+        }
+        $level_id = !empty($user_id) ? $user->level_id : Engine_Api::_()->getDbtable('levels', 'authorization')->fetchRow(array('type = ?' => "public"))->level_id;
+        $listingtype_id = '0';
+        $level = Engine_Api::_()->getItem("authorization_level",$level_id);
+        $permissionsTable = Engine_Api::_()->getDbtable('permissions', 'authorization');
+        $editListings = $permissionsTable->getAllowed('sitereview_listing', $level_id, "edit_listtype_$listingtype_id");
+        $deleteListings = $permissionsTable->getAllowed('sitereview_listing', $level_id, "delete_listtype_$listingtype_id");
+        $editQuestions = $permissionsTable->getAllowed('ggcommunity', $level_id, 'edit_question');
+        $deleteQuestions = $permissionsTable->getAllowed('ggcommunity', $level_id, 'delete_question');
+        $canSelectAnswer = $permissionsTable->getAllowed('ggcommunity', $level_id, 'best_answer');
+        $permissionData = array(
+            'memberID' => (string)$user->getIdentity(),
+            'isAdmin' => (bool)$user->isAdminOnly(),
+            'isModerator' => (bool)($level->type == 'moderator'),
+            'canCommentOnComments' => (bool)$permissionsTable->getAllowed('sdparentalguide_custom', $level_id, "comment_comment"),
+            'canLikeComments' => (bool)$permissionsTable->getAllowed('sdparentalguide_custom', $level_id, "like_comment"),
+            
+            //Reviews
+            'canViewReview' => (bool)$permissionsTable->getAllowed('sitereview_listing', $level_id, "view_listtype_$listingtype_id"),
+            'canCreateReview' => (bool)$permissionsTable->getAllowed('sitereview_listing', $level_id, "create_listtype_$listingtype_id"),
+            'canEditReview' => (bool)$editListings,
+            'canDeleteReview' => (bool)$deleteListings,
+            'canEditOthersReview' => (bool)($editListings == 2),
+            'canDeleteOthersReview' => (bool)($deleteListings == 2),
+            'canLikeReview' => (bool)$permissionsTable->getAllowed('sitereview_listing', $level_id, "comment_listtype_$listingtype_id"),
+            'canRateProductReview' => (bool)$permissionsTable->getAllowed('sitereview_listing', $level_id, "rate_product_listtype_$listingtype_id"),
+            'canRateAuthorReview' => (bool)$permissionsTable->getAllowed('sitereview_listing', $level_id, "rate_author_listtype_$listingtype_id"),
+            'canCommentReview' => (bool)$permissionsTable->getAllowed('sitereview_listing', $level_id, "comment_listtype_$listingtype_id"),
+            'canApproveReview' => (bool)$permissionsTable->getAllowed('sitereview_listing', $level_id, "approved_listtype_$listingtype_id"),
+            'canFlagReview' => (bool)$permissionsTable->getAllowed('sitereview_listing', $level_id, "flag_listtype_$listingtype_id"),
+            
+            //Questions
+            'canViewQuestion' => (bool)$permissionsTable->getAllowed('ggcommunity', $level_id, 'view_question'),
+            'canCreateQuestion' => (bool)$permissionsTable->getAllowed('ggcommunity', $level_id, 'create_question'),
+            'canEditQuestion' => (bool)$editQuestions,
+            'canDeleteQuestion' => (bool)$deleteQuestions,
+            'canEditOthersQuestion' => (bool)($editQuestions == 2),
+            'canDeleteOthersQuestion' => (bool)($deleteQuestions == 2),
+            'canVoteQuestion' => (bool)$permissionsTable->getAllowed('ggcommunity', $level_id, 'vote_question'),
+            'canCommentQuestion' => (bool)$permissionsTable->getAllowed('ggcommunity', $level_id, 'comment_question'),
+            'canAnswerQuestion' => (bool)$permissionsTable->getAllowed('ggcommunity', $level_id, 'answer_question'),
+            'canVoteAnswer' => (bool)$permissionsTable->getAllowed('ggcommunity', $level_id, 'vote_answer'),
+            'canCommentAnswer' => (bool)$permissionsTable->getAllowed('ggcommunity', $level_id, 'comment_answer'),
+            'canSelectAnswer' => (bool)$canSelectAnswer,
+            'canChangeSelectedAnswer' => (bool)($canSelectAnswer == 2),
+            'canSelectOthersAnswer' => (bool)($canSelectAnswer == 3),
+            'canChangeOthersSelectedAnswer' => (bool)($canSelectAnswer == 4),
+            'canApproveQuestion' => (bool)$permissionsTable->getAllowed('ggcommunity', $level_id, 'approve_question'),
+            'canChangeCloseDate' => (bool)$permissionsTable->getAllowed('ggcommunity', $level_id, 'edit_close_date'),
+            'canFlagQuestion' => (bool)$permissionsTable->getAllowed('ggcommunity', $level_id, 'flag_question'),
+            'canFlagAnswer' => (bool)$permissionsTable->getAllowed('ggcommunity', $level_id, 'flag_answer'),          
+        );
+        if (APPLICATION_ENV === 'production') {
+            $cache->setLifetime(25000);
+            $cache->save($permissionData, $cacheName);
+        }
+        return $permissionData;
+    }
 }
