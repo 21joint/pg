@@ -206,7 +206,7 @@ function loadLeaderboardResults(tm, ord, disp = 0, page = 1) {
     requestData.page = page; // Place for pagination
 
     var loader = en4.core.loader.clone();
-    loader.addClass("sd_loader my-5");
+    loader.addClass("sd_loader mt-5");
     var url = en4.core.baseUrl+"api/v1/ranking";
 
     // Testing... Delete after done

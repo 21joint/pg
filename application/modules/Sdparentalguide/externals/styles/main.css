@@ -12,6 +12,43 @@
   margin-bottom: 20px;
 }
 /* General Main and Wrapper styling end */
+/* Reviews Home Page Components -> start*/
+.reviews_component{
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 20px;
+}
+.reviews_component_title h3{
+  font-family: 'Nunito', sans-serif;
+}
+.review_card{
+  border-radius: 10px;
+}
+.review_card_cover{
+  height: 200px;
+  overflow: hidden;
+  border-radius: 10px 10px 0px 0px;
+}
+.review_card_info{
+  font-family: 'Nunito', sans-serif;
+}
+.review_card_topic{
+  font-size: 12px;
+}
+.review_card_title{
+  font-size: 18px;
+  font-family: 'Nunito', sans-serif;
+}
+.review_card_author{
+  bottom: 0px!important;
+  left: 0px;
+  height: 50px;
+}
+.review_card_author .cont_level{
+  top: 32px;
+  left: 38px;
+}
+/* Reviews Home Page Components -> end */
 /* Community Leaderboard title, main cateogires, list of items -> start */
 .leaderboard_title{
   padding: 0px 20px;

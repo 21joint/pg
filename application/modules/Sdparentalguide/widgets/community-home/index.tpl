@@ -210,7 +210,7 @@ function loadLeaderboardResults(page = 1) {
     requestData.page = page;//Place for pagination
 
     var loader = en4.core.loader.clone();
-    loader.addClass("sd_loader my-5");
+    loader.addClass("sd_loader mt-5");
     var url = en4.core.baseUrl+"api/v1/ranking";
 
     var request = new Request.JSON({
@@ -445,7 +445,7 @@ function loadMvpExpertResults(disp_mvps = 1, disp_experts = 0){
     requestData.page = 1;// Limit to 3 Pages
     
     var loader = en4.core.loader.clone();
-    loader.addClass("sd_loader");
+    loader.addClass("sd_loader mt-5");
     var url = en4.core.baseUrl+"api/v1/member";
     
     var request = new Request.JSON({
