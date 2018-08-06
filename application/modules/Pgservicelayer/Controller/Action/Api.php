@@ -324,4 +324,20 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
             $this->respondWithError("invalid_parameters",sprintf($this->translate("Extra parameters detected. %s"),implode(", ",$invalidParams)));
         }
     }
+    
+    public function validatePermission($permission, $viewer = null,$subject = null){
+        if( null === $viewer ) {
+            $viewer = Engine_Api::_()->user()->getViewer();
+        }
+        
+        if($subject == null && Engine_Api::_()->core()->hasSubject()){
+            $subject = Engine_Api::_()->core()->getSubject();
+        }
+        
+        $permissions = Engine_Api::_()->pgservicelayer()->getPermissions($viewer);
+        if(isset($permissions[$permission])){
+            return $permissions[$permission];
+        }
+        return false;
+    }
 }
