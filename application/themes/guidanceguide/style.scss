@@ -2824,6 +2824,13 @@ form.preference-holder {
         .form-wrapper{
             padding-left: 0px!important;
         }
+
+        form.third-step {
+            button,a{
+                width: 43%;
+                margin-bottom: 30px;
+            }
+        }
         form {
             max-height: 500px;
 
@@ -2855,6 +2862,7 @@ form.preference-holder {
                     
                 }
             }
+            
 
             &.family-form {
                 .form-wrapper {
