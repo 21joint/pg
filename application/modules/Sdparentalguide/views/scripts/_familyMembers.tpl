@@ -160,7 +160,7 @@ div.layout_page_user_signup_index .left-side {
 
                     <div class="row add-child-form add-another-child my-5 mx-0 py-4" id="add-child-form">
 
-                        <div class="col-6 p-0">
+                        <div class="col-9 col-xl-6 col-lg-6 p-0">
                             <p class="font-weight-normal">
                                 <?php echo $this->translate('Tell us their gender'); ?>
                             </p>
