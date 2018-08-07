@@ -40,48 +40,26 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
         $listingTypes = $listingTypesTable->fetchAll($listingTypeSelect);
         try {
           if ( count( $listingTypes ) > 0 ) {
+            $types = array();
             foreach ( $listingTypes as $type ) {
-                // Get Topics
-                $topicSelect = $topicsTable->select()->where("topic_id != ?", $type->gg_topic_id);
-                $topics = $topicsTable->fetchAll($topicSelect);
-                if ( count( $topics ) > 0 ) {
-                    foreach ($topics as $topic) {
-                        // Delete Question Answer Topics
-                        $topic->delete();
-                    }
-                }
+                $types[$type->gg_topic_id] = $type->gg_topic_id;
+            }
+            if ( count($types) > 0 ) {
+                // Delete Topics
+                $topicsTable->delete(array(
+                    "topic_id NOT IN(?)" => $types,
+                ));
             }
           }
         } catch (Exception $e) {
           echo"<pre>";print_r($e);echo"</pre>";
         }
 
-        // Get Categories except for strollers and car seats
-        $categorySelect = $categoriesTable->select()->where("listingtype_id NOT IN(?)", array(9, 10));
-        $categories = $categoriesTable->fetchAll($categorySelect);
         try {
-          if ( count( $categories ) > 0 ) {
-            foreach ($categories as $category) {
-                // Delete Sitereviews Category
-                $category->delete();
-            }
-          }
-        } catch (Exception $e) {
-          echo"<pre>";print_r($e);echo"</pre>";
-        }
-
-        // Get Search Alias
-        $aliasSelect = $aliassTable->select();
-        $aliasPaginator = Zend_Paginator::factory($aliasSelect);
-        $aliasPaginator->setCurrentPageNumber($page);
-        $aliasPaginator->setItemCountPerPage($this->_task->per_page);
-        try {
-          if ( count( $aliasPaginator ) > 0 ) {
-            foreach ( $aliasPaginator->getIterator() as $alias ) {
-                // Delete Search Term Alias
-                $alias->delete();
-            }
-          }
+          // Delete Categories except for strollers and car seats
+          $categoriesTable->delete(array(
+            "listingtype_id NOT IN(?)" => array(9, 10),
+          ));
         } catch (Exception $e) {
           echo"<pre>";print_r($e);echo"</pre>";
         }
@@ -97,104 +75,71 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
         try {
           if ( count( $userPaginator ) > 0 ) {
             foreach ( $userPaginator->getIterator() as $user ) {
-                // Get Activity Actions
+                // Get User Activity Actions
                 $userActionSelect = $actionsTable->select()->where("subject_id = ?", $user->getIdentity());
                 $userActions = $actionsTable->fetchAll($userActionSelect);
                 if ( count( $userActions ) > 0 ) {
                     foreach ( $userActions as $action ) {
-                        // Get Activity Action's Attachments
-                        $userAttachmentSelect = $attachmentsTable->select()->where("action_id = ?", $action->getIdentity());
-                        $userAttachments = $attachmentsTable->fetchAll($userAttachmentSelect);
-                        if ( count( $userAttachments ) > 0 ) {
-                            foreach ( $userAttachments as $attachment ) {
-                                // Delete Attachment
-                                $attachment->delete();
-                            }
-                        }
+                        // Delete User Activity Action's Attachments
+                        $attachmentsTable->delete(array(
+                            "action_id = ?" => $action->getIdentity()
+                        ));
 
-                        // Get Activity Action's Stream
-                        $userStreamSelect = $streamsTable->select()->where("action_id = ?", $action->getIdentity());
-                        $userStreams = $streamsTable->fetchAll($userStreamSelect);
-                        if ( count( $userStreams ) > 0 ) {
-                            foreach ( $userStreams as $stream ) {
-                                // Delete Stream
-                                $stream->delete();
-                            }
-                        }
-                        // Delete Action
-                        $action->delete();
+                        // Delete User Activity Action's Stream
+                        $streamsTable->delete(array(
+                            "action_id = ?" => $action->getIdentity()
+                        ));
                     }
                 }
 
-                // Get Notifications
-                $userNotificationSelect = $notificationsTable->select()->where("user_id = ?", $user->getIdentity());
-                $userNotifications = $notificationsTable->fetchAll($userNotificationSelect);
-                if ( count( $userNotifications ) > 0 ) {
-                    foreach ( $userNotifications as $notification ) {
-                        // Delete Notification
-                        $notification->delete();
-                    }
-                }
+                // Delete User Activity Actions
+                $actionsTable->delete(array(
+                    "subject_id = ?" => $user->getIdentity()
+                ));
 
-                // Get Notification Settings
-                $userNotifySettingSelect = $notificationsettingsTable->select()->where("user_id = ?", $user->getIdentity());
-                $userNotifySettings = $notificationsettingsTable->fetchAll($userNotifySettingSelect);
-                if ( count( $userNotifySettings ) > 0 ) {
-                    foreach ( $userNotifySettings as $setting ) {
-                        // Delete notification settings
-                        $setting->delete();
-                    }
-                }
+                // Delete User Notifications
+                $notificationsTable->delete(array(
+                    "user_id = ?" => $user->getIdentity()
+                ));
 
-                // Get Search
-                $searchSelect = $searchsTable->select()->where("gg_user_created = ?", $user->getIdentity());
-                $searchs = $searchsTable->fetchAll($searchSelect);
-                if ( count( $searchs ) > 0 ) {
-                    foreach ( $searchs as $search ) {
-                        // Delete search
-                        $search->delete();
-                    }
-                }
+                // Delete User Notification Settings
+                $notificationsettingsTable->delete(array(
+                    "user_id = ?" => $user->getIdentity()
+                ));
 
-                // Get Activity Comments
-                $commentSelect = $commentsTable->select()->where("poster_id = ?", $user->getIdentity())->where("poster_type = ?", "user");
-                $comments = $commentsTable->fetchAll($commentSelect);
-                if ( count( $comments ) > 0 ) {
-                    foreach ( $comments as $comment ) {
-                        // Delete Activity Comment of user
-                        $comment->delete();
-                    }
-                }
+                // Delete User Search
+                $searchsTable->delete(array(
+                    "gg_user_created = ?" => $user->getIdentity()
+                ));
 
-                // Get Activity Likes
-                $likeSelect = $likesTable->select()->where("poster_id = ?", $user->getIdentity())->where("poster_type = ?", "user");
-                $likes = $likesTable->fetchAll($likeSelect);
-                if ( count( $likes ) > 0 ) {
-                    foreach ( $likes as $like ) {
-                        //Delete Activity Like of user
-                        $like->delete();
-                    }
-                }
+                // Delete User Search Alias
+                $aliassTable->delete(array(
+                    "gg_user_created = ?" => $user->getIdentity()
+                ));
 
-                // Get Core Comments
-                $coreCommentSelect = $coreCommentsTable->select()->where("poster_id = ?", $user->getIdentity())->where("poster_type = ?", "user");
-                $coreComments = $coreCommentsTable->fetchAll($coreCommentSelect);
-                if ( count( $coreComments ) > 0 ) {
-                    foreach ( $coreComments as $coreComment ) {
-                        // Delete User Comment
-                        $coreComment->delete();
-                    }
-                }
+                // Delete User Activity Comments
+                $commentsTable->delete(array(
+                    "poster_id = ?" => $user->getIdentity(),
+                    "poster_type = ?" => "user"
+                ));
 
-                // Get Core Likes
-                $coreLikeSelect = $coreLikesTable->select()->where("poster_id = ?", $user->getIdentity())->where("poster_type = ?", "user");
-                $coreLikes = $coreLikesTable->fetchAll($coreLikeSelect);
-                if ( count( $coreLikes ) > 0 ) {
-                    foreach ( $coreLikes as $coreLike ) {
-                        // Delete User Like
-                        $coreLike->delete();
-                    }
-                }
+                // Delete User Activity Likes
+                $likesTable->delete(array(
+                    "poster_id = ?" => $user->getIdentity(),
+                    "poster_type = ?" => "user"
+                ));
+
+                // Delete User Core Comments
+                $coreCommentsTable->delete(array(
+                    "poster_id = ?" => $user->getIdentity(),
+                    "poster_type = ?" => "user"
+                ));
+
+                // Delete User Core Likes
+                $coreLikesTable->delete(array(
+                    "poster_id = ?" => $user->getIdentity(),
+                    "poster_type = ?" => "user"
+                ));
 
                 // Get Questions
                 $questionSelect = $questionsTable->select()->where("user_id = ?", $user->getIdentity());
@@ -206,85 +151,72 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
                         $answers = $answersTable->fetchAll($answerSelect);
                         if ( count( $answers ) > 0 ) {
                             foreach ( $answers as $answer ) {
-                                // Get Question's Comments
-                                $aCommentSelect = $qCommentsTable->select()->where("parent_id = ?", $question->question_id)->where("parent_type = ?", "ggcommunity_question");
-                                $aComments = $answersTable->fetchAll($aCommentSelect);
-                                if ( count( $aComments ) > 0 ) {
-                                    foreach ( $aComments as $comment ) {
-                                        //Delete Question Comment
-                                        $comment->delete();
-                                    }
-                                }
-                                // Delete Answer
-                                $answer->delete();
+                                // Delete User Answer's Comments
+                                $qCommentsTable->delete(array(
+                                    "parent_id = ?" => $answer->answer_id,
+                                    "parent_type = ?" => "ggcommunity_answer"
+                                ));
                             }
                         }
 
-                        // Get Question's Comments
-                        $qCommentSelect = $qCommentsTable->select()->where("parent_id = ?", $question->question_id)->where("parent_type = ?", "ggcommunity_question");
-                        $qComments = $answersTable->fetchAll($qCommentSelect);
-                        if ( count( $qComments ) > 0 ) {
-                            foreach ( $qComments as $comment ) {
-                                //Delete Question Comment
-                                $comment->delete();
-                            }
-                        }
-                        //Delete Question
-                        $question->delete();
+                        // Delete User Question's Answers
+                        $answersTable->delete(array(
+                            "parent_id = ?" => $question->question_id,
+                            "parent_type = ?" => "ggcommunity_question"
+                        ));
+
+                        // Delete User Question's Comments
+                        $qCommentsTable->delete(array(
+                            "parent_id = ?" => $question->question_id,
+                            "parent_type = ?" => "ggcommunity_question"
+                        ));
                     }
                 }
+                // Delete User Questions
+                $questionsTable->delete(array(
+                    "user_id = ?" => $user->getIdentity()
+                ));
 
-                // Get Badges
+                // Get User Badges
                 $badgeSelect = $badgesTable->select()->where("owner_id = ?", $user->getIdentity());
                 $badges = $badgesTable->fetchAll($badgeSelect);
                 if ( count( $badges ) > 0 ) {
                     foreach ( $badges as $badge ) {
-                        $assignedSelect = $assignedTable->select()->where("badge_id = ?", $badge->badge_id);
-                        $assignedBadges = $assignedTable->fetchAll($assignedSelect);
-                        if ( count( $assignedBadges ) > 0 ) {
-                            foreach ( $assignedBadges as $ab ) {
-                                // Delete User Assigned Badges
-                                $ab->delete();
-                            }
-                        }
-                        // Delete User Badges
-                        $badge->delete();
+                        // Delete User Assigned Badges
+                        $assignedTable->delete(array(
+                            "badge_id = ?" => $badge->badge_id
+                        ));
                     }
                 }
+                // Delete User Badges
+                $badgesTable->delete(array(
+                    "owner_id = ?" => $user->getIdentity()
+                ));
 
-                // Get Credits
-                $creditSelect = $creditsTable->select()->where("user_id = ?", $user->getIdentity());
-                $credits = $creditsTable->fetchAll($creditSelect);
-                if ( count( $credits ) > 0 ) {
-                    foreach ( $credits as $credit ) {
-                        //Delete User Credit
-                        $credit->delete();
-                    }
-                }
+                // Delete User Credits
+                $creditsTable->delete(array(
+                    "user_id = ?" => $user->getIdentity()
+                ));
 
-                // Get Reviews
-                $reviewSelect = $reviewsTable->select()->where("owner_id = ?", $user->getIdentity());
-                $reviews = $reviewsTable->fetchAll($reviewSelect);
-                if ( count( $reviews ) > 0 ) {
-                    foreach ( $reviews as $review ) {
-                        // Delete user review
-                        $review->delete();
-                    }
-                }
+                // Delete User Reviews
+                $reviewsTable->delete(array(
+                    "owner_id = ?" => $user->getIdentity()
+                ));
 
-                // Get Followers
-                $followerSelect = $followersTable->select()->where("user_id = ".$user->getIdentity()." OR resource_id = ".$user->getIdentity());
-                $followers = $followersTable->fetchAll($followerSelect);
-                if ( count( $followers ) > 0 ) {
-                    foreach ( $followers as $follower ) {
-                        // Delete user follower
-                        $follower->delete();
-                    }
-                }
-
-                // Delete User
-                $user->delete();
+                // Delete User Followers
+                $followersTable->delete(array(
+                    "user_id = ?" => $user->getIdentity()
+                ));
+                $followersTable->delete(array(
+                    "resource_id = ?" => $user->getIdentity()
+                ));
             }
+          }
+          if( !empty( $job_user ) ){
+            // Delete User
+            $usersTable->delete(array(
+              "user_id = ?" => $job_user
+            ));
           }
         } catch (Exception $e) {
           echo"<pre>";print_r($e);echo"</pre>";
