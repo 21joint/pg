@@ -29,6 +29,14 @@
   overflow: hidden;
   border-radius: 10px 10px 0px 0px;
 }
+.review_card_cover img:hover{
+  opacity: 0.8;
+}
+.review_star_ranking{
+  bottom: 0;
+  left: 20px;
+  border-radius: 8px 8px 0px 0px;
+}
 .review_card_info{
   font-family: 'Nunito', sans-serif;
 }
@@ -47,6 +55,13 @@
 .review_card_author .cont_level{
   top: 32px;
   left: 38px;
+}
+.review_card_dots{
+  font-size: 24px;
+  cursor: pointer;
+}
+.review_card_dots_popup{
+  z-index: 666;
 }
 /* Reviews Home Page Components -> end */
 /* Community Leaderboard title, main cateogires, list of items -> start */
@@ -856,6 +871,9 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
       color: #5cc7ce;
     }
     /* Community Home Page End */
+    .review_star_ranking{
+      left: auto;
+    }
 }
 
 @media screen and (max-width: 576px){

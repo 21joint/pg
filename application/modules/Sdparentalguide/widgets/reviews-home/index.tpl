@@ -63,7 +63,10 @@ function loadLeaderboardResults(){
                 var j = 0;
                 for(var i = 0; i < results.length; i++) {
                 // Build out logic for Rating Stars
-
+                    var star_rating = "";
+                    for(var k = 0; k < results[i].authorRating; k++){
+                        star_rating += '<svg height="20px" style="margin: 3px 5px 0px 5px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68.137 80"><defs><style>.b_box_hover{fill:#D4A144;}.c_box_hover{fill:#EBC451;}</style></defs><g transform="translate(13961.751 6200.271)"><g transform="translate(-13961.75 -6200.271)"><path class="b_box_hover" d="M108.85,27,96.662,43.071,86.2,29.121l20.283-4.571C109.459,23.8,110.323,24.992,108.85,27Z" transform="translate(-43.623 -13.136)"></path><path class="b_box_hover" d="M30.556,40.68,3.864,47.338c-1.7.386-2.077,2.189-.508,2.9l26.032,7.618Z" transform="translate(-2.361 -21.186)"></path><path class="c_box_hover" d="M51.227,64.559l3.438-60.7c0-1.717,1.772-2.118,2.834-.731l36.336,45.3c1.346,1.59.975,4.4-2.773,2.93L69.148,42.97,55.462,65.625C54.076,68.017,51.11,67.042,51.227,64.559Z" transform="translate(-26.41 -2.293)"></path></g></g></svg>';
+                    }
                 // Matching Contribution Level to Contribution Award (Bronze, Silver, Gold, Platinum) 
                 var adjust_award = String(results[i].author.expertPlatinumCount)+
                                     String(results[i].author.expertGoldCount)+
@@ -93,13 +96,20 @@ function loadLeaderboardResults(){
                                         '<img class="w-100" src="'+
                                             results[i].coverPhoto.photoURL+
                                         '"/>'+
+                                        '<div class="review_star_ranking position-absolute bg-white d-flex justify-content-around px-2 py-1">'+
+                                            star_rating+
+                                        '</div>'+
                                     '</div>'+
                                     '<div class="review_card_info p-2">'+
-                                        '<a class="review_card_topic text-primary font-weight-bold" href="#">'+
+                                        '<a class="review_card_topic text-primary font-weight-bold" href="'+
+                                            en4.core.baseUrl+"review?id="+results[i].reviewID+
+                                        '">'+
                                             results[i].reviewCategorization.category+
                                         '</a>'+
                                         '<h2 class="review_card_title font-weight-bold">'+
-                                            results[i].title+
+                                            '<a href="'+
+                                                en4.core.baseUrl+"review?id="+results[i].reviewID+
+                                            '">'+results[i].title+'</a>'+
                                         '</h2>'+
                                         '<p class="review_card_description d-none d-md-block">'+
                                             results[i].shortDescription+
@@ -202,7 +212,14 @@ function loadLeaderboardResults(){
                                         results[i].commentsCount+
                                         '</span>'+
                                     '</div>'+
-                                    
+                                    '<span class="review_card_dots ml-auto pb-3 d-inline d-md-none font-weight-bold">...</span>'+
+                                    '<div class="review_card_dots_popup d-none flex-column justify-content-around align-items-center border rounded ml-auto p-1 bg-primary text-white">'+
+                                       '<svg aria-hidden="true" data-prefix="fas" width="13px" style="margin-right:3px;" data-icon="arrow-circle-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#fff" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm143.6 28.9l72.4-75.5V392c0 13.3 10.7 24 24 24h16c13.3 0 24-10.7 24-24V209.4l72.4 75.5c9.3 9.7 24.8 9.9 34.3.4l10.9-11c9.4-9.4 9.4-24.6 0-33.9L273 107.7c-9.4-9.4-24.6-9.4-33.9 0L106.3 240.4c-9.4 9.4-9.4 24.6 0 33.9l10.9 11c9.6 9.5 25.1 9.3 34.4-.4z"></path></svg>'+
+                                        results[i].likesCount+'123'+
+                                        '</span>'+
+                                        '<svg aria-hidden="true" width="13px" style="margin-right:3px;" data-prefix="fas" data-icon="comments" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="svg-inline--fa fa-comments fa-w-18 fa-9x"><path fill="#fff" d="M224 358.857c-37.599 0-73.027-6.763-104.143-18.7-31.375 24.549-69.869 39.508-110.764 43.796a8.632 8.632 0 0 1-.89.047c-3.736 0-7.111-2.498-8.017-6.061-.98-3.961 2.088-6.399 5.126-9.305 15.017-14.439 33.222-25.79 40.342-74.297C17.015 266.886 0 232.622 0 195.429 0 105.16 100.297 32 224 32s224 73.159 224 163.429c-.001 90.332-100.297 163.428-224 163.428zm347.067 107.174c-13.944-13.127-30.849-23.446-37.46-67.543 68.808-64.568 52.171-156.935-37.674-207.065.031 1.334.066 2.667.066 4.006 0 122.493-129.583 216.394-284.252 211.222 38.121 30.961 93.989 50.492 156.252 50.492 34.914 0 67.811-6.148 96.704-17 29.134 22.317 64.878 35.916 102.853 39.814 3.786.395 7.363-1.973 8.27-5.467.911-3.601-1.938-5.817-4.759-8.459z" class=""></path></svg>'+
+                                        results[i].commentsCount+'123'+
+                                    '</div>'+
                                 '</div>'+
                             '</div>';
                     // Checking Screen Size and Display Structure
@@ -216,11 +233,12 @@ function loadLeaderboardResults(){
                             html += '</div>'+
                                     '<div class="d-flex justify-content-between my-5">';
                         } 
-                    } 
+                    }
                 }
                 html += '</div>';
                 reviewsContent.innerHTML = html;
                 // Currently Categories are being Displayed instead of Topics, change the Call accordingly
+                // If the Load Time of the page is too slow, lower resolution of pics can be chosen
                 
                 // Avatar Styling
                 // Check the Data Attribute for Mvp Status
@@ -257,7 +275,22 @@ function loadLeaderboardResults(){
                             removed.addClass('d-none').removeClass('d-block');
                         }
                     });
-                });            
+                }); 
+                // Displaying Comments and Likes on "..." click
+                document.querySelectorAll('.review_card_dots').forEach(function(dots){
+                    dots.addEventListener('click', function(){
+                        this.nextSibling.removeClass('d-none').addClass('d-flex');
+                        this.removeClass('d-inline').addClass('d-none');
+                    });
+                });
+                window.addEventListener('mouseup', function(){
+                    document.querySelectorAll('.review_card_dots_popup').forEach(function(removed){
+                        if(removed.hasClass('d-flex')){
+                            removed.addClass('d-none').removeClass('d-flex');
+                            removed.previousSibling.addClass('d-inline').removeClass('d-none');
+                        }
+                    });
+                });          
             }else{
                 reviewsContent.innerHTML = responseJSON.message;
             }
