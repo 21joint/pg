@@ -65,6 +65,14 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
         }
         
         try{
+            $reviewsTable->delete(array(
+                "listingtype_id NOT IN(?)" => array(9, 10),
+            ));
+        } catch (Exception $ex) {
+
+        }
+        
+        try{
             $qCommentsTable->delete();
         } catch (Exception $ex) {
 
@@ -210,9 +218,9 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
                 ));
 
                 // Delete User Reviews
-                $reviewsTable->delete(array(
-                    "owner_id = ?" => $user->getIdentity()
-                ));
+//                $reviewsTable->delete(array(
+//                    "owner_id = ?" => $user->getIdentity()
+//                ));
 
                 // Delete User Followers
                 $followersTable->delete(array(
