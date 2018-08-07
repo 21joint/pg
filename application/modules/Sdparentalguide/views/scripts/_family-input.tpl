@@ -4,7 +4,7 @@
     </span>
 </div>
 
-<div class="container p-0 col-12 col-sm-12" id="family-information">
+<div class="container p-0 col-12 col-sm-12 family-members-box" id="family-information">
     
     <?php 
 
@@ -21,7 +21,6 @@
         (count($families) > 0) ? $last_item = end($families->toArray())['family_member_id'] : $last_item = 0;
 
     ?>
-
     <?php if(count($families) > 0): ?>
     <?php foreach($families as $item): ?>
         <div class="row d-flex align-items-center my-4 mx-0" id="<?php echo $item->getIdentity(); ?>">
@@ -43,8 +42,11 @@
             </div>
 
             <div class="col-6 family-item p-0">
-                <span class="text-muted"> 
-                    <?php echo date($item->dob); ?>
+                <span class="text-muted">
+                    <?php 
+                        $date = strtotime( $item->dob );
+                        echo $date = date( 'F Y', $date  );
+                    ?>
                 </span>
                 <p class="desc text-muted small">
                     <?php if(!$item->gender || $item->gender == 3): ?>
@@ -159,7 +161,7 @@
 var lastItem = <?php echo $last_item; ?>;
 
 en4.core.runonce.add(function() {
-    let familyHolder = document.getElementById('family-information');
+    let familyHolder = document.getElementsByClassName('family-members-box')[0];
     let familyWrapper = familyHolder.getParent();
     
     // add style modifications
@@ -276,7 +278,7 @@ function selectYearRange(type, e) {
         new Element('div', {
             'class' : 'mr-1 mt-2 p-0 text-center d-flex align-items-center small years-range-select selector-item',
             'html': '<a href="javascript:void(0)" onclick="displayFinalDate('+i+')" class="d-block px-3 py-4 w-100">'+i+'</a>',
-        }).inject( (count < 6) ? years[0] : years[1]  );
+        }).inject( (count < 5) ? years[0] : years[1]  );
         count++;
     }
 
@@ -309,8 +311,8 @@ function displayFinalDate(type, e) {
 }
 
 function setupFamilyMember() {
-
-    let familyHolder = document.getElementById('family-information');
+    
+    let familyHolder = document.getElementsByClassName('family-members-box')[0];
     var genderImage;
     var genderType;
     var gender = localStorage.getItem('gender');
@@ -319,7 +321,7 @@ function setupFamilyMember() {
 
     lastItem = lastItem + 1;
 
-    var htmlInputFields = '<input type="hidden" name="family_'+ lastItem +'[gender]" id="field-gender" value="'+gender+'"><input type="hidden" name="family_'+ lastItem +'[birthday]" id="field-birthday" value="'+birthdayDate+'">';
+    var htmlInputFields = '<input type="hidden" name="family_'+ lastItem +'[gender]" id="field-gender" value="'+gender+'"><input type="hidden" name="family_'+ lastItem +'[birthday]" id="field-birthday" value="'+localStorage.getItem('final-year')+'-'+localStorage.getItem('month')+'">';
 
     if(gender == 3) {
         genderImage = '<div class="unknown d-flex align-items-center justify-content-center text-white">X</div>';
@@ -332,17 +334,19 @@ function setupFamilyMember() {
         genderType = '<?php echo $this->translate("Female"); ?>';
     }
 
+
     editMember = '<div class="col-4 p-0 actions d-flex justify-content-end"><a href="javascript:void(0)" onclick="editFamily(this)" class="btn btn-light small p-3 mr-1">Edit</a><a href="javascript:void(0)" onclick="removeFamily(this)" class="btn btn-danger text-white small p-3">Delete</a></div>';
 
     let item = new Element('div', {
         'class': 'row d-flex align-items-center my-4 mx-0',
+        'id': lastItem,
         'html': '<div class="col-2 p-0 family-item-holder">'+genderImage+'</div><div class="col-6 family-item p-0"> <span class="text-muted"> '+birthdayDate+' </span><p class="desc text-muted small">'+genderType+'</p>'+htmlInputFields+'</div>' + editMember
     });
 
     let updateItem = document.getElementById(localStorage.getItem('update'));
     if(updateItem) {
         updateItem.remove();
-        localStorage.removeItem('update')
+        localStorage.removeItem('update');
     }
         
     familyHolder.insertBefore(item, familyHolder.childNodes[0]);

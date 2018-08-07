@@ -9,44 +9,56 @@
 
 ?>
 
+<!-- Title Component -->
 <div class="leaderboard d-flex flex-column justify-content-center align-items-center">
-    <h1 class="mt-5 text-uppercase">Our Community</h1>
-    <h5>You can trust our community of real parents</h5>
-    <a id="seeMore" class="btn-large btn-success text-white text-capitalize font-weight-bold mt-5 mb-4 px-5 py-3">See More</a>
+    <h1 class="mt-5 text-uppercase"><?php echo $this->translate('Our Community'); ?></h1>
+    <h5><?php echo $this->translate('You can trust our community of real parents'); ?></h5>
+    <a id="seeMore" class="btn-large btn-success text-white text-capitalize font-weight-bold mt-5 mb-4 px-5 py-3"><?php echo $this->translate('See More'); ?></a>
 </div>
-<div class="mvps">
+<!-- MVPs and Experts Component -->
+<div class="mvps position-relative">
     <div class="mvps_main d-flex justify-content-around align-items-center">
-        <h3 id="meet_mvps" class="py-3 d-flex justify-content-center mvps_main_active">Meet our MVP's</h3>
-        <h3 id="meet_experts" class="py-3 d-flex justify-content-center">Meet our Experts</h3>
-        <h3 class="py-3 d-flex justify-content-center"><a id="go_to_leaderboard" href="">More...</a></h3>
+        <h3 id="meet_mvps" class="py-3 d-flex justify-content-center mvps_main_active">
+            <span class="d-md-block d-none"><?php echo $this->translate("Meet our MVP's"); ?></span>
+            <span class="d-md-none d-block"><?php echo $this->translate("MVP's"); ?></span>
+        </h3>
+        <h3 id="meet_experts" class="py-3 d-flex justify-content-center">
+            <span class="d-md-block d-none"><?php echo $this->translate('Meet our Experts'); ?></span>
+            <span class="d-md-none d-block"><?php echo $this->translate('Experts'); ?></span>
+        </h3>
+        <h3 class="py-3 d-flex justify-content-center">
+            <a id="go_to_leaderboard"><?php echo $this->translate('Leaderboard'); ?></a>
+        </h3>
     </div>
-    <div id="sd-response" class="container d-flex justify-content-center align-items-center">
+    <div id="sd-response-mvps" class="mvps_content p-5 d-flex align-items-center">
         <!-- Loader goes here -->
-    </div>
-    <div class="mvps_content p-5 d-flex justify-content-between align-items-center">
         <!-- Content of ajax call goes here -->
-    </div> 
+    </div>
+    <button id="mvps_left" class="btn-lg text-primary rounded-circle position-absolute d-none"><</button>
+    <button id="mvps_right" class="btn-lg text-primary rounded-circle position-absolute">></button>
 </div>
+<!-- Leaderboard Component -->
 <div class="leaderboard">
     <div class="leaderboard_main d-flex justify-content-between">
-        <div class="d-flex justify-content-center">Rank</div>
-        <div class="d-flex">Leader</div>
-        <div id="community_home_contribution" class="d-flex justify-content-center align-items-center">Contribution</div>
+        <div class="d-flex justify-content-center"><?php echo $this->translate('Rank'); ?></div>
+        <div class="d-flex"><?php echo $this->translate('Leader'); ?></div>
+        <div id="none_click" class="d-flex justify-content-center align-items-center"><?php echo $this->translate('Contribution'); ?></div>
     </div>
-    <div id="sd-response-mvps" class="container d-flex justify-content-center align-items-center">
+    <div id="sd-response" class="container d-flex justify-content-center align-items-center">
         <!-- Loader goes here -->
     </div>
     <div class="leaderboard_content">
         <!-- Content of ajax call goes here -->
     </div>
-    <div class="leaderboard_pagination d-flex justify-content-end align-items-center mt-5 mr-5">
+    <!-- Pagination for Leaderboard Component -->
+    <!-- <div class="leaderboard_pagination d-flex justify-content-end align-items-center mt-5 mr-5"> -->
         <!-- Content Pagination -->
-        <span id="leaderboard_previous" class="pagination_button"><</span>
-        <span id="leaderboard_pageNum" class="mx-5">
+        <!-- <span id="leaderboard_previous" class="pagination_button"><</span> -->
+        <!-- <span id="leaderboard_pageNum" class="mx-5"> -->
             <!-- Displays the current page of Leaderboard Results -->
-        </span>
-        <span id="leaderboard_next" class="pagination_button">></span>
-    </div>
+        <!-- </span> -->
+        <!-- <span id="leaderboard_next" class="pagination_button">></span> -->
+    <!-- </div> -->
 </div>
 <div id="findExpert" class="find_expert_main container-fluid py-5 mt-5">
     <div class="row d-flex align-items-center">
@@ -165,27 +177,27 @@ document.querySelectorAll(".faq_toggle").forEach(function(toggle){
 });
 
 // Pagionation Number Change Start
-var pageNum = 1;
-document.getElementById('leaderboard_previous').addEventListener('click', function(){
-    if(pageNum >= 2){
-        pageNum--;
-        document.getElementById('leaderboard_previous').removeClass('pagination_button_diss');
-        document.getElementById('leaderboard_next').removeClass('pagination_button_diss');
-        loadLeaderboardResults(pageNum);
-    }else{
-        document.getElementById('leaderboard_previous').addClass('pagination_button_diss');
-    }
-});
-document.getElementById('leaderboard_next').addEventListener('click', function(){
-    if(pageNum <= 2){
-        pageNum++;
-        document.getElementById('leaderboard_next').removeClass('pagination_button_diss');
-        document.getElementById('leaderboard_previous').removeClass('pagination_button_diss');
-        loadLeaderboardResults(pageNum);
-    }else{
-        document.getElementById('leaderboard_next').addClass('pagination_button_diss');
-    }
-});
+// var pageNum = 1;
+// document.getElementById('leaderboard_previous').addEventListener('click', function(){
+//     if(pageNum >= 2){
+//         pageNum--;
+//         document.getElementById('leaderboard_previous').removeClass('pagination_button_diss');
+//         document.getElementById('leaderboard_next').removeClass('pagination_button_diss');
+//         loadLeaderboardResults(pageNum);
+//     }else{
+//         document.getElementById('leaderboard_previous').addClass('pagination_button_diss');
+//     }
+// });
+// document.getElementById('leaderboard_next').addEventListener('click', function(){
+//     if(pageNum <= 2){
+//         pageNum++;
+//         document.getElementById('leaderboard_next').removeClass('pagination_button_diss');
+//         document.getElementById('leaderboard_previous').removeClass('pagination_button_diss');
+//         loadLeaderboardResults(pageNum);
+//     }else{
+//         document.getElementById('leaderboard_next').addClass('pagination_button_diss');
+//     }
+// });
 // Pagination Number Change End
 
 // Leaderboard Results Ajax Function -> start
@@ -218,14 +230,41 @@ function loadLeaderboardResults(page = 1) {
                 var html = "";
                 var results = responseJSON.body.Results;
                 for(var i = 0; i < results.length; i++) {
+                    // Matching Contribution Level to Contribution Award (Bronze, Silver, Gold, Platinum) 
+                    var adjust_award = String(results[i].expertPlatinumCount)+
+                                        String(results[i].expertGoldCount)+
+                                        String(results[i].expertSilverCount)+
+                                        String(results[i].expertBronzeCount);
+                    // Number that Will be Displayed
+                    var adjust_count;
+                    if(adjust_award >= 1000){
+                        adjust_count = results[i].expertPlatinumCount;
+                    }else if(adjust_award >= 100){
+                        adjust_count = results[i].expertGoldCount;
+                    }else if(adjust_award >= 10){
+                        adjust_count = results[i].expertSilverCount;
+                    }else if(adjust_award >= 1){
+                        adjust_count = results[i].expertBronzeCount;
+                    }else{
+                        adjust_count = results[i].contributionLevel;
+                    }
+
                     html += '<div class="leaderboard_item d-flex justify-content-between">'+
                                 '<div class="d-flex justify-content-center align-items-center">'+
                                     ((page-1)*20+(i+1))+
                                 '</div>'+
                                 '<div class="d-flex align-items-center leader position-relative">'+
-                                    '<img src="'+results[i].avatarPhoto.photoURLIcon+'"/>'+
-                                    '<span class="cont_level position-absolute">'+
-                                        results[i].contributionLevel+'</span>'+
+                                    '<img class="avatar_halo" src="'+
+                                        results[i].avatarPhoto.photoURLIcon+
+                                    '" data-halo="'+ results[i].mvp +'"/>'+
+                                    '<span class="cont_level position-absolute rounded-circle" data-cont="'+
+                                        results[i].expertPlatinumCount+
+                                        results[i].expertGoldCount+
+                                        results[i].expertSilverCount+
+                                        results[i].expertBronzeCount+
+                                    '">'+
+                                        adjust_count+
+                                    '</span>'+
                                     '<h4>'+results[i].displayName+'</h4>'+
                                 '</div>'+
                                 '<div class="points d-flex align-items-center justify-content-center">'+
@@ -235,8 +274,30 @@ function loadLeaderboardResults(page = 1) {
                             '</div>';
                 }
                 leaderboardContent.innerHTML = html;
+                // Avatar Styling
+                // Check the Data Attribute for Mvp Status
+                // If Item has Mvp Status Put Halo Around Avatar Change Contribution Level Color
+                document.querySelectorAll('.avatar_halo').forEach(function(avatar_halo){
+                    if(avatar_halo.dataset.halo == "true"){
+                        avatar_halo.addClass('avatar_halo_disp');
+                        avatar_halo.style.borderImage = "url('<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/border.png') 20 20 20 20 fill";
+                    }
+                });
+                document.querySelectorAll('.cont_level').forEach(function(avatar_cont){
+                    if(avatar_cont.dataset.cont >= 1000){
+                        avatar_cont.addClass('cont_level_platinum');
+                    }else if(avatar_cont.dataset.cont >= 100){
+                        avatar_cont.addClass('cont_level_gold');
+                    }else if(avatar_cont.dataset.cont >= 10){
+                        avatar_cont.addClass('cont_level_silver');
+                    }else if(avatar_cont.dataset.cont >= 1){
+                        avatar_cont.addClass('cont_level_bronze');
+                    }else{
+                        avatar_cont.addClass('cont_level_default');
+                    }
+                });
                 // Showing current page in pagination section
-                document.getElementById('leaderboard_pageNum').innerText = page;
+                // document.getElementById('leaderboard_pageNum').innerText = page;
             }else{
                 leaderboardContent.innerHTML = responseJSON.message;
             }
@@ -246,34 +307,57 @@ function loadLeaderboardResults(page = 1) {
 }
 // Leaderboard Results Ajax Function -> end
 
-// Toggle Between Mvps and Experts
+// Toggle Between MVPs and Experts
 var disp_mvps;
 var disp_experts;
 document.getElementById("meet_mvps").addEventListener('click', function(){
     this.addClass("mvps_main_active");
     document.getElementById("meet_experts").removeClass("mvps_main_active");
-    // disp_mvps = 1;
-    // disp_experts = 0;
-    // loadMvpExpertResults(disp_mvps, disp_experts);
+    disp_mvps = 1;
+    disp_experts = 0;
+    loadMvpExpertResults(disp_mvps, disp_experts);
 });
 document.getElementById("meet_experts").addEventListener('click', function(){
     this.addClass("mvps_main_active");
     document.getElementById("meet_mvps").removeClass("mvps_main_active");
-    // disp_mvps = 0;
-    // disp_experts = 1;
-    // loadMvpExpertResults(disp_mvps, disp_experts);
+    disp_mvps = 0;
+    disp_experts = 1;
+    loadMvpExpertResults(disp_mvps, disp_experts);
 });
 
 // Go to Community Leaderboard Page
 document.getElementById("go_to_leaderboard").href = en4.core.baseUrl+"community/leaderboard";
 
-// MVPS and Experts Results Ajax Function -> start
+// Go Left and Right to Browse MVPs and Experts
+var current_mvp = 0;
+document.getElementById("mvps_right").addEventListener('click', function(){
+    if(current_mvp <= 16){
+        this.addClass("d-block").removeClass("d-none");
+        document.querySelector(".mvps_content").childNodes[current_mvp].addClass("d-none").removeClass("d-flex");
+        document.getElementById("mvps_left").addClass("d-block").removeClass("d-none");
+        current_mvp++;  
+    }else{
+        this.addClass("d-none").removeClass("d-block");
+    }  
+});
+document.getElementById("mvps_left").addEventListener('click', function(){
+    if(current_mvp >= 1){
+        current_mvp--;
+        this.addClass("d-block").removeClass("d-none");
+        document.querySelector(".mvps_content").childNodes[current_mvp].addClass("d-flex").removeClass("d-none");
+        document.getElementById("mvps_right").addClass("d-block").removeClass("d-none"); 
+    }else{
+        this.addClass("d-none").removeClass("d-block");
+    }
+});
+
+// MVPs and Experts Results Ajax Function -> start
 // Arguments disp_mvps = 1, disp_experts = 0 When everything get wired
-function loadMvpExpertResults(){
+function loadMvpExpertResults(disp_mvps = 1, disp_experts = 0){
     //Request data can be linked to form inputs
     var requestData = {};
-    requestData.mvp = null; //Possible values 1 or 0 -> disp_mvps from arguments
-    requestData.expert = null; //Possible values 1 or 0 -> disp_experts from arguments
+    requestData.mvp = disp_mvps; //Possible values 1 or 0 -> disp_mvps from arguments
+    requestData.expert = disp_experts; //Possible values 1 or 0 -> disp_experts from arguments
     requestData.limit = 20; // Limit to 20 People per Page
     requestData.page = 1;// Limit to 3 Pages
     
@@ -298,10 +382,37 @@ function loadMvpExpertResults(){
                 var html = "";
                 var results = responseJSON.body.Results;
                 for(var i = 0; i < results.length; i++){
+                    // Matching Contribution Level to Contribution Award (Bronze, Silver, Gold, Platinum) 
+                    var adjust_award = String(results[i].expertPlatinumCount)+
+                                        String(results[i].expertGoldCount)+
+                                        String(results[i].expertSilverCount)+
+                                        String(results[i].expertBronzeCount);
+                    // Number that Will be Displayed
+                    var adjust_count;
+                    if(adjust_award >= 1000){
+                        adjust_count = results[i].expertPlatinumCount;
+                    }else if(adjust_award >= 100){
+                        adjust_count = results[i].expertGoldCount;
+                    }else if(adjust_award >= 10){
+                        adjust_count = results[i].expertSilverCount;
+                    }else if(adjust_award >= 1){
+                        adjust_count = results[i].expertBronzeCount;
+                    }else{
+                        adjust_count = results[i].contributionLevel;
+                    }
+
                     html += '<div class="mvps_item d-flex flex-column align-items-center justify-content-center position-relative mr-5">'+
-                                '<img src="'+results[i].avatarPhoto.photoURLIcon+'"/>'+
-                                '<span class="cont_level position-absolute">'+
-                                        results[i].contributionLevel+'</span>'+
+                                '<img class="mvp_halo" src="'+
+                                    results[i].avatarPhoto.photoURLProfile+
+                                '" data-halo="'+ results[i].mvp +'"/>'+
+                                '<span class="cont_level position-absolute rounded-circle" data-cont="'+
+                                    results[i].expertPlatinumCount+
+                                    results[i].expertGoldCount+
+                                    results[i].expertSilverCount+
+                                    results[i].expertBronzeCount+
+                                '">'+
+                                    adjust_count+
+                                '</span>'+
                                 '<h4 class="text-center mt-1 mb-5">'+results[i].displayName+'</h4>'+
                                 '<div class="mvps_contribution d-flex justify-content-center align-items-center w-100 py-2">'+
                                     '<svg style="margin: 3px 5px 0px 0px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px" viewBox="0 0 42.03 39.91"><defs><linearGradient id="a" x1="26.26" y1="12.68" x2="40.67" y2="12.68" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#51b2b6"></stop><stop offset="1" stop-color="#5bc6cd"></stop></linearGradient><linearGradient id="b" y1="17.32" x2="17.39" y2="17.32" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5bc6cd"></stop><stop offset="1" stop-color="#51b2b6"></stop></linearGradient></defs><title>star_pg</title><path d="M40.23,8.55,32.7,18.46l-6.44-8.6L38.77,7C40.61,6.57,41.14,7.31,40.23,8.55Z" fill="url(#a)"></path><path d="M17.39,12,.93,16.13c-1,.24-1.28,1.35-.32,1.79l16.06,4.7Z" fill="url(#b)"></path><path d="M15.31,38.4,17.42,1c0-1.06,1.1-1.31,1.76-.45L41.59,28.45c.83,1,.6,2.71-1.71,1.81L26.36,25.09l-8.44,14A1.36,1.36,0,0,1,15.31,38.4Z" fill="#5bc6cd"></path></svg>'+
@@ -309,7 +420,29 @@ function loadMvpExpertResults(){
                                 '</div>'+
                             '</div>';
                 }
-                leaderboardContent.innerHTML = html;                        
+                leaderboardContent.innerHTML = html;
+                // Avatar Styling
+                // Check the Data Attribute for Mvp Status
+                // If Item has Mvp Status Put Halo Around Avatar Change Contribution Level Color
+                document.querySelectorAll('.mvp_halo').forEach(function(mvp_halo){
+                    if(mvp_halo.dataset.halo == "true"){
+                        mvp_halo.addClass('avatar_halo_disp');
+                        mvp_halo.style.borderImage = "url('<?php echo $this->baseUrl(); ?>/application/themes/guidanceguide/assets/images/border.png') 10 10 10 10 fill";
+                    }
+                });
+                document.querySelectorAll('.cont_level').forEach(function(avatar_cont){
+                    if(avatar_cont.dataset.cont >= 1000){
+                        avatar_cont.addClass('cont_level_platinum');
+                    }else if(avatar_cont.dataset.cont >= 100){
+                        avatar_cont.addClass('cont_level_gold');
+                    }else if(avatar_cont.dataset.cont >= 10){
+                        avatar_cont.addClass('cont_level_silver');
+                    }else if(avatar_cont.dataset.cont >= 1){
+                        avatar_cont.addClass('cont_level_bronze');
+                    }else{
+                        avatar_cont.addClass('cont_level_default');
+                    }
+                });                      
             }else{
                 leaderboardContent.innerHTML = responseJSON.message;
             }

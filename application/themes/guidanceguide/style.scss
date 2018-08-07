@@ -1864,9 +1864,24 @@ form.preference-holder {
         box-shadow: inset 0 0 0 0.2em white, inset 0 0 0 1em #5CC7CE!important;
     }
 }
+
+
+.holder-form {
+    .tip {
+        span {
+            color:#333D40;
+            font-size: 14px;
+            font-family: 'Open Sans', sans-serif;
+            padding-bottom: 40px;
+            font-weight: 400;
+            margin: 15px 0px 0px;
+        }
+    }
+}
+
 .extfox-auth {
     // tip message
-    ul.form-errors{
+    ul.form-errors {
         padding: 0;
         margin:0 0 1.5rem;
         li {
@@ -1878,7 +1893,7 @@ form.preference-holder {
             font-size: 14px;
             font-weight: 700;
             font-family: 'Nunito', sans-serif;
-            ul.errors{
+            ul.errors {
                 padding-left: 0px;
                 list-style-type: none;
                 font-size: 12px;

@@ -12,7 +12,7 @@ defined('_ENGINE') or die('Access Denied'); return array(
     'host' => "127.0.0.1",
     'username' => "root",
     'password' => "",
-    'dbname'   => "pg_dev_20180622",
+    'dbname'   => "pg_dev_20180729",
     'charset'  => 'UTF-8',
     'adapterNamespace' => 'Zend_Db_Adapter',
   ),

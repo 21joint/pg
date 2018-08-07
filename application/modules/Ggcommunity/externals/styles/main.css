@@ -698,6 +698,9 @@
     font-size: 14px;
     font-weight: 400;
 }
+.ftw_title:hover{
+    color: #5CC7CE;
+}
 /* Draft widget  and Earn Points and Ask same strucutres like draft*/
 .layout_ggcommunity_draft_question {
     padding: 0 !important;
@@ -876,6 +879,8 @@ div.draft_main_holder ul li:before {
 .layout_ggcommunity_featured_topics {
     margin:20px auto 20px;
     border-radius: 20px;
+    /* Display: none; -> Removed from view for testing */
+    display: none;
 }
 .layout_ggcommunity_featured_topics .featured_widget{
     background-color:#fff;
@@ -1234,6 +1239,7 @@ div.draft_main_holder ul li:before {
 .layout_page_ggcommunity_question-index_browse .browse_main_holder,
 .layout_page_ggcommunity_question-index_manage .browse_main_holder {
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .browse_top_holder .search_description p{
@@ -1294,7 +1300,7 @@ div.draft_main_holder ul li:before {
 }
 .browse_main_holder .struggle_box_right ul.struggle_count_info.count_close_closed li span.count.votes.counter.count_close,.browse_main_holder .struggle_box_right ul.struggle_count_info.count_close_closed li span.count.answers.counter.count_close,.browse_main_holder .struggle_box_right ul.struggle_count_info.count_close_closed li span.count.comments.counter.count_close{
     color:#B9CFD1!important;
-} 
+}
 .browse_main_holder .struggle_box_right ul.struggle_count_info  li span.count.answers.counter.count_close.closed_accepted_answer,.browse_main_holder .struggle_box_right ul.struggle_count_info  li span.count.answers.counter.count_close.closed_accepted_answer{
     color:#fff!important;
 }
@@ -1456,6 +1462,8 @@ div.draft_main_holder ul li:before {
     position: relative;
     height: 330px;
     border-radius: 10px;
+    /* Display: none; -> for testing, until service becomes available */
+    display: none;
 } 
 .layout_ggcommunity_review_product .review_product_widget {
     height: 100%;

@@ -63,9 +63,10 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
         );
         $api = Engine_Api::_()->sdparentalguide();
         $responseApi = Engine_Api::_()->getApi("V2_Response","pgservicelayer");
-        $response['ResultCount'] = $paginator->getTotalItemCount();
+        $response['ResultCount'] = 0;
         foreach($paginator as $user){
-            $response['contentType'] = $user->getType();
+            $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($user->getType());
+            ++$response['ResultCount'];
             $response['Results'][] = $responseApi->getUserData($user);
         }
         $this->respondWithSuccess($response);
@@ -105,11 +106,12 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
         $paginator->setItemCountPerPage($this->getParam("limit",10));
         $paginator->setCurrentPageNumber($this->getParam("page",1));
         
-        $response['ResultCount'] = $paginator->getTotalItemCount();
+        $response['ResultCount'] = 0;
         $response['ApiVersion'] = "v2";
         $response['Results'] = array();
         foreach($paginator as $user){
-            $response['contentType'] = $user->getType();
+            $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($user->getType());
+            ++$response['ResultCount'];
             $response['Results'][] = $responseApi->getUserData($user);
         }
         $this->respondWithSuccess($response);

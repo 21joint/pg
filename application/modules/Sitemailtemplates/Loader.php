@@ -17,6 +17,7 @@ class Sitemailtemplates_Loader extends Engine_Loader {
   var $_loader;
 
   public static function hook() {
+
     if (self::$_hooked) {
       return;
     }
