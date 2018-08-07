@@ -488,6 +488,11 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
         if(empty($resource)){
             return;
         }
+        
+        //Don't attach topic if
+        if($resource->getType() == "core_comment" || $resource->getType() == "core_like" || $resource->getType() == "nestedcomment_dislike" || $resource->getType() == "ggcommunity_vote"){
+            return;
+        }
         if($resource->getType() == "ggcommunity_answer"){
             $question = $resource->getParent();
             if(empty($question)){
@@ -512,7 +517,11 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
 //        $payload->save();
     }
     
-    public function updateExistingTransactionTopic($resource){    
+    public function updateExistingTransactionTopic($resource){
+        //Don't attach topic if
+        if($resource->getType() == "core_comment" || $resource->getType() == "core_like" || $resource->getType() == "nestedcomment_dislike" || $resource->getType() == "ggcommunity_vote"){
+            return;
+        }
         $topic_id = 0;
         if($resource->getType() == "sitereview_listing"){
             $listingType = $resource->getListingType();
