@@ -51,10 +51,11 @@ class Pgservicelayer_PermissionController extends Pgservicelayer_Controller_Acti
         if(!$viewer->isAdmin()){
             $select->where("$userTableName.user_id = ?",(int)$viewer->getIdentity());
         }else{
-            $memberID = $this->getParam("memberID",-1);
-            if(!empty($memberID) && $memberID != -1){
-                $select->where("$userTableName.user_id = ?",(int)$memberID);
-            }
+//            $memberID = $this->getParam("memberID",-1);
+//            if(!empty($memberID) && $memberID != -1){
+//                $select->where("$userTableName.user_id = ?",(int)$memberID);
+//            }
+            $select->where("$userTableName.user_id = ?",(int)$viewer->getIdentity());
         }
         $select->order("$userTableName.user_id DESC");
         
