@@ -125,9 +125,19 @@ class Ggcommunity_Model_Answer extends Core_Model_Item_Abstract
       $table = Engine_Api::_()->getDbtable('actions', 'activity');
       $select = $table->select()
               ->where('type = ?','question_answer_chosen')
-              ->where("object_type = ?","ggcommunity_question")
-              ->where("object_id = ?",$this->parent_id);
-      return $table->fetchRow($select);
+              ->where("object_type = ?","ggcommunity_answer")
+              ->where("object_id = ?",$this->getIdentity());
+      return $table->fetchAll($select);
+  }
+  
+  public function deleteChosenActivity(){
+      $actions = $this->getChoosenActivity();
+      if(empty($actions)){
+          return;
+      }
+      foreach($actions as $action){
+          $action->delete();
+      }
   }
   
   public function deletePoints(){

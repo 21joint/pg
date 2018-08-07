@@ -10,3 +10,8 @@
 
 ALTER TABLE `engine4_core_search`
 ADD FULLTEXT `title_keywords_hidden` (`title`, `keywords`, `hidden`);
+
+ALTER TABLE `engine4_core_search`
+ADD `topic_id` int NULL DEFAULT '0',
+ADD `creation_date` datetime NULL AFTER `topic_id`,
+ADD `modified_date` datetime NULL AFTER `creation_date`;

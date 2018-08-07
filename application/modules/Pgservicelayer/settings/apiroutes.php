@@ -208,12 +208,36 @@ $routes['pgservicelayer'] = array(
           'version' => 'v1'
         ),
     ),
-    'pgservicelayer_apiviews' => array(
+    'pgservicelayer_apilogin' => array(
         'route' => 'api/:version/login/*',
         'defaults' => array(
           'module' => 'pgservicelayer',
           'controller' => 'auth',
           'action' => 'login',
+          'version' => 'v1'
+        ),
+        'reqs' => array(
+          'action' => '\D+',
+        )
+    ),
+    'pgservicelayer_apicontribution' => array(
+        'route' => 'api/:version/contribution/*',
+        'defaults' => array(
+          'module' => 'pgservicelayer',
+          'controller' => 'contribution',
+          'action' => 'index',
+          'version' => 'v1'
+        ),
+        'reqs' => array(
+          'action' => '\D+',
+        )
+    ),
+    'pgservicelayer_apipermission' => array(
+        'route' => 'api/:version/permission/*',
+        'defaults' => array(
+          'module' => 'pgservicelayer',
+          'controller' => 'permission',
+          'action' => 'index',
           'version' => 'v1'
         ),
         'reqs' => array(

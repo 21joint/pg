@@ -40,7 +40,7 @@ class Sdparentalguide_View_Helper_ItemPhotoBadgeColor extends Zend_View_Helper_A
         $class = 'primary';
         $count = $subject->gg_contribution_level;
       }
-        
+      $bordergear = ''; //Define before using in conditions
       if($subject->gg_mvp === 1){
           $bordergear = 'border-gear';
       }
