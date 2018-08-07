@@ -1,399 +1,357 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="https://parental.guidanceguide.com/application/modules/Siteseo/externals/styles/sitemap.xsl"?>
+<?xml-stylesheet type="text/xsl" href="http://www.int-pg.guidanceguide.com/parentalguidance/application/modules/Siteseo/externals/styles/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://parental.guidanceguide.com/</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/mt-mealtime</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/bf-breastfeeding</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/bw-babywearing</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/bt-bottlefeeding</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/bf-breastfeeding</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/hc-highchairs</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/db-diaperbags</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/ac-actcenters</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/ac-actcenters</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/db-diaperbags</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/dp-diapering</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/mt-mealtime</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/bt-bottlefeeding</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/bw-babywearing</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/hc-highchairs</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/st-strollers</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/st-strollers</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/ex-reviews</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/cs-carseats</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/cs-carseats</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/events/upcoming</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/pageitems</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/blogs</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/stories</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/review-videos</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/polls</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/music</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/music</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/events/upcoming</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/stories</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/blogs</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/review-videos</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/dp-diapering</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/ex-reviews</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/tc-techored</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/tc-techored</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/messages/inbox</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/mp-menstrual</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/ft-fertility</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/hs-health</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/credibility</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/ft-fertility</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/hh-household</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/ns-nursery</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/ty-toysbooksrec</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/ty-toysbooksrec</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/ns-nursery</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/sp-spneeds</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/mp-menstrual</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/credibility</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/hs-health</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/hh-household</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/ga-other</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/ga-other</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/bh-bath</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/cl-clothing</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/cl-clothing</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/pl-pottylearning</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/bd-birth</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/sk-skincare</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/pr-pregs</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/bh-bath</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/te-teething</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/sl-sleep</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/sl-sleep</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/te-teething</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/pl-pottylearning</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/bd-birth</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/sk-skincare</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/pr-pregs</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/classifieds</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/messages/inbox</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/polls</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/classifieds</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/sp-spneeds</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/messages/outbox</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/pageitems/index</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/group/by-locations</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/messages/outbox</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/events/past</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/credibility/transaction</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/credibility/transaction</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/group/by-locations</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/event/by-locations</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/events/past</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/channels</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/pageitems/pinboard-browse</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/messages/compose</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/channels</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/credibility/earncredit</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/event/by-locations</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/channels/browse</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/messages/compose</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/channels/categories</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/credibility/earncredit</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://parental.guidanceguide.com/channels/browse</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://parental.guidanceguide.com/pageitems/map</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://parental.guidanceguide.com/channels/categories</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/channels/channel/pinboard</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://parental.guidanceguide.com/members/home</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://parental.guidanceguide.com/channels/channel/pinboard</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://parental.guidanceguide.com/static/about-us</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/search</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/search</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/wishlists</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://parental.guidanceguide.com/pageitems/claim</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://parental.guidanceguide.com/group-albums/home</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/wishlists</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>http://parental.guidanceguide.com/pages/community-feed</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/page-albums/home</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/pages/featured</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/page-videos/home</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/credibility</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://parental.guidanceguide.com/pages/featured</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
-    <changefreq>always</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://parental.guidanceguide.com/group-members/home</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/struggles/home</loc>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://parental.guidanceguide.com/static/mvp-bios</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <lastmod>2018-08-06T09:38:01+00:00</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>

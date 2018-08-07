@@ -1,11 +1,9 @@
-.idea/
 .vscode
-.DS_Store
 application/settings/cache.php
 application/settings/database.php
 application/settings/general.php
 application/settings/mail.php
-application/themes/parentalguidance/.sass-cache
+application/themes/guidanceguide/.sass-cache
 
 appspec.yml
 public/temporary
@@ -17,8 +15,9 @@ temporary/package/
 temporary/scaffold
 temporary/scaffold/
 temporary/session
+
+/nbproject/private/
+nbproject/project.xml
+nbproject/project.properties
 node_modules/
-bower_components/
-
-
-application/modules/Sdparentalguide/externals/build/
+.idea/

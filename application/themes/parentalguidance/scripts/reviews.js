@@ -14,7 +14,7 @@ en4.prg = en4.prg || {};
   en4.prg.getReviews = getReviews;
 
   en4.core.runonce.add(function () {
-    getReviews({
+    en4.prg.getReviews({
       container: '#featuredReviewsGrid'
     }, function (res) {
       $.each(res.cards, function (i, card) {
@@ -29,8 +29,8 @@ en4.prg = en4.prg || {};
   });
 
   function buildRating(rating, max) {
-    const _self = this;
-    var html = '';
+    let _self = this;
+    let html = '';
     for (var i = 0; i < rating; i++) {
       html +=
         '<li class="list-inline-item align-middle">\n' +
@@ -52,9 +52,9 @@ en4.prg = en4.prg || {};
 
     const _self = this;
 
-    var createdDt = new Date(review.createdDateTime).toString().split(' ');
-    var createdMonth = createdDt[1];
-    var createdDay = createdDt[2].charAt(0) == 0 ? createdDt[2].split('')[1] : createdDt[2];
+    let createdDt = new Date(review.createdDateTime).toString().split(' ');
+    let createdMonth = createdDt[1];
+    let createdDay = createdDt[2].charAt(0) == 0 ? createdDt[2].split('')[1] : createdDt[2];
 
     return '<div class="col-6 col-lg-4 p-2">\n' +
       '                    <!--single review card-->\n' +

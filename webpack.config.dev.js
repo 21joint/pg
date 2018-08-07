@@ -1,21 +1,16 @@
-const {API_PROXY, OAUTH} = require('./package');
-const conf = require('./conf');
-const path = require('path');
+const {API_PROXY} = require('./package');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const webpackConfig = require('./webpack.config');
-const proxyMiddleware = require('http-proxy-middleware');
 
 console.log(__dirname);
 
 module.exports = merge(webpackConfig, {
   devServer: {
-    contentBase: './dist',
     proxy: {
       '*': {
-        target: 'http://127.0.0.1:8888',
-        secure: false,
-        changeOrigin: true
+        target: 'http://localhost:8888',
+        secure: false
       },
       '/api/v1': {
         target: API_PROXY,

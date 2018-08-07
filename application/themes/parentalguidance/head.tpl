@@ -1,4 +1,3 @@
-<head>
-  <link rel="stylesheet" href="/styles/index.css">
+<link rel="stylesheet" href="/styles/index.css" />
+<script src="/scripts/index.build.js"></script>
 
-</head>

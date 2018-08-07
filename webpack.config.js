@@ -10,7 +10,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const Modules = Conf.modules;
 
 
-let environment = process.env.NODE_ENV === 'dev' ? 'development' : 'production';
+let IS_DEV = (process.env.NODE_ENV === 'dev' ? true : false);
 
 let BUILD_DIR = path.resolve(__dirname, './public');
 let APP_DIR = path.resolve(__dirname, 'application');
@@ -25,19 +25,19 @@ const config = {
   },
   output: {
     filename: 'scripts/[name].build.js',
-    path: __dirname + '/application/themes/parentalguidance'
+    path: __dirname + '/dist'
   },
   module: {
     rules: [
       // JS
       {
         test: /\.(js|jsx)$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /node_modules/,
         loader: 'babel-loader'
       },
       // IMAGES
       {
-        test: /\.(png|jpg|gif|svg|ico)$/,
+        test: /\.(png|jpg|jpeg|gif|svg|ico)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]'
@@ -45,23 +45,21 @@ const config = {
       },
       // SCSS
       {
-        test: /\.(scss|css)$/,
+        test: /\.s?css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
             {
               loader: 'css-loader',
               options: {
-                minimize: !environment,
-                sourceMap: environment,
+                minimize: !IS_DEV,
+                sourceMap: IS_DEV,
                 publicPath: '/'
               }
             },
             {
               loader: 'postcss-loader',
               options: {
-                sourceMap: environment,
-                publicPath: '/',
                 plugins: [
                   require('postcss-flexbugs-fixes'),
                   require('autoprefixer')({
@@ -73,7 +71,7 @@ const config = {
             {
               loader: 'sass-loader',
               options: {
-                sourceMap: environment,
+                sourceMap: IS_DEV,
                 data: '$prefix: ' + require('./conf').prefix + ';'
               }
             }
@@ -89,24 +87,22 @@ const config = {
       }
     ]
   },
-  // optimization: {
-  //   splitChunks: {
-  //     cacheGroups: {
-  //       vendors: {
-  //         test: /[\\/]node_modules[\\/]/,
-  //         name: 'vendors',
-  //         enforce: true,
-  //         chunks: 'all'
-  //       }
-  //     }
-  //   }
-  // },
+  optimization: {
+    minimize: !IS_DEV,
+    // splitChunks: {
+    //   cacheGroups: {
+    //     vendors: {
+    //       test: /[\\/]node_modules[\\/]/,
+    //       name: 'vendors',
+    //       enforce: true,
+    //       chunks: 'all'
+    //     }
+    //   }
+    // }
+  },
   plugins: [
     new webpack.DefinePlugin({
-      IS_DEV: environment,
-      'process.env': {
-        NODE_ENV: JSON.stringify(environment)
-      }
+      IS_DEV: IS_DEV
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',
@@ -114,22 +110,16 @@ const config = {
       'window.jQuery': 'jquery'
     }),
     new ExtractTextPlugin({
-      filename: '/styles/[name].css'
-    }),
-    new HtmlWebpackPlugin({
-      template: __dirname + '/application/themes/parentalguidance/head.tpl',
-      title: 'Head',
-      filename: 'head.tpl'
-    }),
+      filename: 'styles/[name].css'
+    })
   ]
 };
 
-if (environment === 'production') {
-  config.plugins.push(new webpack.optimize.UglifyJsPlugin());
+if (IS_DEV) {
   config.devtool = 'cheap-module-source-map'; // source-map
 } else {
   config.devtool = 'source-map'; // cheap-module-source-map
 }
-console.dir('Running: ' + environment + ' mode.');
+console.dir('Running: ' + IS_DEV + ' mode.');
 
 module.exports = config;
