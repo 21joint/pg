@@ -42,7 +42,7 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
           if ( count( $listingTypes ) > 0 ) {
             $types = array();
             foreach ( $listingTypes as $type ) {
-                $types[$type->gg_topic_id] = $type->gg_topic_id;
+                $types[] = $type->gg_topic_id;
             }
             if ( count($types) > 0 ) {
                 // Delete Topics
@@ -52,7 +52,7 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
             }
           }
         } catch (Exception $e) {
-          echo"<pre>";print_r($e);echo"</pre>";
+          //Silent
         }
 
         try {
@@ -61,10 +61,16 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
             "listingtype_id NOT IN(?)" => array(9, 10),
           ));
         } catch (Exception $e) {
-          echo"<pre>";print_r($e);echo"</pre>";
+          //Silent
+        }
+        
+        try{
+            $qCommentsTable->delete();
+        } catch (Exception $ex) {
+
         }
 
-        // Get Users except from admins
+        // Get Users except from super admins, admins and moderator
         $userSelect = $usersTable->select()->where("level_id NOT IN(?)", array(1, 2, 3));
         if( !empty( $job_user ) ){
             $userSelect->where("user_id = ?", $job_user);
@@ -74,7 +80,7 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
         $userPaginator->setItemCountPerPage($this->_task->per_page);
         try {
           if ( count( $userPaginator ) > 0 ) {
-            foreach ( $userPaginator->getIterator() as $user ) {
+            foreach ( $userPaginator as $user ) {
                 // Get User Activity Actions
                 $userActionSelect = $actionsTable->select()->where("subject_id = ?", $user->getIdentity());
                 $userActions = $actionsTable->fetchAll($userActionSelect);
@@ -152,9 +158,9 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
                         if ( count( $answers ) > 0 ) {
                             foreach ( $answers as $answer ) {
                                 // Delete User Answer's Comments
-                                $qCommentsTable->delete(array(
-                                    "parent_id = ?" => $answer->answer_id,
-                                    "parent_type = ?" => "ggcommunity_answer"
+                                $coreCommentsTable->delete(array(
+                                    "resource_id = ?" => $answer->answer_id,
+                                    "resource_type = ?" => "ggcommunity_answer"
                                 ));
                             }
                         }
@@ -166,14 +172,19 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
                         ));
 
                         // Delete User Question's Comments
-                        $qCommentsTable->delete(array(
-                            "parent_id = ?" => $question->question_id,
-                            "parent_type = ?" => "ggcommunity_question"
+                        $coreCommentsTable->delete(array(
+                            "resource_id = ?" => $question->question_id,
+                            "resource_type = ?" => "ggcommunity_question"
                         ));
                     }
                 }
                 // Delete User Questions
                 $questionsTable->delete(array(
+                    "user_id = ?" => $user->getIdentity()
+                ));
+                
+                // Delete User Answers
+                $answersTable->delete(array(
                     "user_id = ?" => $user->getIdentity()
                 ));
 
@@ -219,7 +230,7 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
             ));
           }
         } catch (Exception $e) {
-          echo"<pre>";print_r($e);echo"</pre>";
+          //Silent
         }
 
         return $userPaginator;
