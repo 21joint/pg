@@ -19,19 +19,18 @@
     <div class="reviews_component_content mt-3 p-0">
         <!-- Content of ajax call goes here -->
     </div>
-    <pre id="sd-response"></pre>
 </div>
 
 <script type="text/javascript">
 // Dom ready
 en4.core.runonce.add(function(){
-    loadLeaderboardResults();
+    loadReviewResults();
 });
 
 // Checking how many Review Cards to Display
 var checkWidth = window.innerWidth;
 
-function loadLeaderboardResults(){
+function loadReviewResults(){
     // Request data can be linked to form inputs
     var requestData = {};
     requestData.limit = 10;
@@ -95,25 +94,49 @@ function loadLeaderboardResults(){
                     if (interval > 1) {
                         return interval + " years ago";
                     }
+                    interval = Math.floor(seconds / 31536000);
+                    if (interval >= 1) {
+                        return interval + " year ago";
+                    }
                     interval = Math.floor(seconds / 2592000);
                     if (interval > 1) {
                         return interval + " months ago";
                     }
+                    interval = Math.floor(seconds / 2592000);
+                    if (interval >= 1) {
+                        return interval + " month ago";
+                    }
                     interval = Math.floor(seconds / 604800);
                     if (interval > 1) {
+                        return interval + " weeks ago";
+                    }
+                    interval = Math.floor(seconds / 604800);
+                    if (interval >= 1) {
                         return interval + " weeks ago";
                     }
                     interval = Math.floor(seconds / 86400);
                     if (interval > 1) {
                         return interval + " days ago";
                     }
+                    interval = Math.floor(seconds / 86400);
+                    if (interval >= 1) {
+                        return interval + " days ago";
+                    }
                     interval = Math.floor(seconds / 3600);
                     if (interval > 1) {
                         return interval + " hours ago";
                     }
+                     interval = Math.floor(seconds / 3600);
+                    if (interval >= 1) {
+                        return interval + " hour ago";
+                    }
                     interval = Math.floor(seconds / 60);
                     if (interval > 1) {
                         return interval + " minutes ago";
+                    }
+                    interval = Math.floor(seconds / 60);
+                    if (interval >= 1) {
+                        return interval + " minute ago";
                     }
                     return Math.floor(seconds) + " seconds ago";
                 }
@@ -148,6 +171,9 @@ function loadLeaderboardResults(){
                                                 en4.core.baseUrl+"reviews/view/"+results[i].reviewID+
                                             '">'+results[i].title+'</a>'+
                                         '</h2>'+
+                                        '<span class="d-block d-md-none">'+
+                                            timeSince(how_old)+
+                                        '</span>'+
                                         '<p class="review_card_description d-none d-md-block">'+
                                             results[i].shortDescription+
                                         '</p>'+
@@ -230,7 +256,7 @@ function loadLeaderboardResults(){
                                     '">'+
                                         adjust_count+
                                     '</span>'+
-                                    '<div class="d-flex flex-column justify-content-start ml-2">'+
+                                    '<div class="d-none d-md-flex flex-column justify-content-start ml-2">'+
                                         '<h4 class="font-weight-bold p-0 m-0 border-0"><a href="'+
                                                 en4.core.baseUrl+"profile/"+results[i].author.memberName+
                                             '">'+results[i].author.displayName+'</a>'+
@@ -239,7 +265,7 @@ function loadLeaderboardResults(){
                                             timeSince(how_old)+
                                         '</span>'+
                                     '</div>'+
-                                    '<div class="d-none d-md-flex justify-content-start align-items-center ml-auto">'+
+                                    '<div class="d-flex justify-content-start align-items-center ml-auto">'+
                                         '<span class="mr-1">'+
                                         '<svg aria-hidden="true" data-prefix="fas" width="13px" style="margin-right:3px;" data-icon="arrow-circle-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#B9CFD1" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm143.6 28.9l72.4-75.5V392c0 13.3 10.7 24 24 24h16c13.3 0 24-10.7 24-24V209.4l72.4 75.5c9.3 9.7 24.8 9.9 34.3.4l10.9-11c9.4-9.4 9.4-24.6 0-33.9L273 107.7c-9.4-9.4-24.6-9.4-33.9 0L106.3 240.4c-9.4 9.4-9.4 24.6 0 33.9l10.9 11c9.6 9.5 25.1 9.3 34.4-.4z"></path></svg>'+
                                         results[i].likesCount+
@@ -248,14 +274,6 @@ function loadLeaderboardResults(){
                                         '<svg aria-hidden="true" width="13px" style="margin-right:3px;" data-prefix="fas" data-icon="comments" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="svg-inline--fa fa-comments fa-w-18 fa-9x"><path fill="#B9CFD1" d="M224 358.857c-37.599 0-73.027-6.763-104.143-18.7-31.375 24.549-69.869 39.508-110.764 43.796a8.632 8.632 0 0 1-.89.047c-3.736 0-7.111-2.498-8.017-6.061-.98-3.961 2.088-6.399 5.126-9.305 15.017-14.439 33.222-25.79 40.342-74.297C17.015 266.886 0 232.622 0 195.429 0 105.16 100.297 32 224 32s224 73.159 224 163.429c-.001 90.332-100.297 163.428-224 163.428zm347.067 107.174c-13.944-13.127-30.849-23.446-37.46-67.543 68.808-64.568 52.171-156.935-37.674-207.065.031 1.334.066 2.667.066 4.006 0 122.493-129.583 216.394-284.252 211.222 38.121 30.961 93.989 50.492 156.252 50.492 34.914 0 67.811-6.148 96.704-17 29.134 22.317 64.878 35.916 102.853 39.814 3.786.395 7.363-1.973 8.27-5.467.911-3.601-1.938-5.817-4.759-8.459z" class=""></path></svg>'+
                                         results[i].commentsCount+
                                         '</span>'+
-                                    '</div>'+
-                                    '<span class="review_card_dots ml-auto pb-3 d-inline d-md-none font-weight-bold">...</span>'+
-                                    '<div class="review_card_dots_popup d-none flex-column justify-content-around align-items-center border rounded ml-auto p-1 bg-primary text-white">'+
-                                       '<svg aria-hidden="true" data-prefix="fas" width="13px" style="margin-right:3px;" data-icon="arrow-circle-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#fff" d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm143.6 28.9l72.4-75.5V392c0 13.3 10.7 24 24 24h16c13.3 0 24-10.7 24-24V209.4l72.4 75.5c9.3 9.7 24.8 9.9 34.3.4l10.9-11c9.4-9.4 9.4-24.6 0-33.9L273 107.7c-9.4-9.4-24.6-9.4-33.9 0L106.3 240.4c-9.4 9.4-9.4 24.6 0 33.9l10.9 11c9.6 9.5 25.1 9.3 34.4-.4z"></path></svg>'+
-                                        results[i].likesCount+'123'+
-                                        '</span>'+
-                                        '<svg aria-hidden="true" width="13px" style="margin-right:3px;" data-prefix="fas" data-icon="comments" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="svg-inline--fa fa-comments fa-w-18 fa-9x"><path fill="#fff" d="M224 358.857c-37.599 0-73.027-6.763-104.143-18.7-31.375 24.549-69.869 39.508-110.764 43.796a8.632 8.632 0 0 1-.89.047c-3.736 0-7.111-2.498-8.017-6.061-.98-3.961 2.088-6.399 5.126-9.305 15.017-14.439 33.222-25.79 40.342-74.297C17.015 266.886 0 232.622 0 195.429 0 105.16 100.297 32 224 32s224 73.159 224 163.429c-.001 90.332-100.297 163.428-224 163.428zm347.067 107.174c-13.944-13.127-30.849-23.446-37.46-67.543 68.808-64.568 52.171-156.935-37.674-207.065.031 1.334.066 2.667.066 4.006 0 122.493-129.583 216.394-284.252 211.222 38.121 30.961 93.989 50.492 156.252 50.492 34.914 0 67.811-6.148 96.704-17 29.134 22.317 64.878 35.916 102.853 39.814 3.786.395 7.363-1.973 8.27-5.467.911-3.601-1.938-5.817-4.759-8.459z" class=""></path></svg>'+
-                                        results[i].commentsCount+'123'+
                                     '</div>'+
                                 '</div>'+
                             '</div>';
