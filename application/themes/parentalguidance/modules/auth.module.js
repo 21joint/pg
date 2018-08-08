@@ -1,2 +1,1 @@
-import './scss/auth/login.scss';
-import './common';
+import '../scss/auth/login.scss';

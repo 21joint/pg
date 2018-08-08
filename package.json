@@ -6,10 +6,8 @@
   "authors": [
     "levon@21joint.com"
   ],
-  "config": {
-    "OAUTH": "oauth_token=jet6u8z8zbjb1234s0b6u7ygp3v1ien&oauth_secret=r63xeerxhkgy3oxbh2h46785abjm4tfo&oauth_consumer_key=el0fpnlzzcjnh0s8aowtmnpkluk64cnn&oauth_consumer_secret=88tpfkretevr8qh21ut1bdxh3c6bd82x",
-    "API_PROXY": "https://cors.io/?https://int-pg.guidanceguide.com/api/v1"
-  },
+  "OAUTH": "oauth_token=jet6u8z8zbjb1234s0b6u7ygp3v1ien&oauth_secret=r63xeerxhkgy3oxbh2h46785abjm4tfo&oauth_consumer_key=el0fpnlzzcjnh0s8aowtmnpkluk64cnn&oauth_consumer_secret=88tpfkretevr8qh21ut1bdxh3c6bd82x",
+  "API_PROXY": "https://cors.io/?https://int-pg.guidanceguide.com/api/v1",
   "scripts": {
     "dev": "cross-env NODE_ENV=dev webpack-dev-server --progress --mode development --config webpack.config.dev.js",
     "build": "webpack -p --progress --mode production --config webpack.config.build.js"
@@ -38,6 +36,7 @@
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.56",
     "@babel/plugin-proposal-class-properties": "^7.0.0-beta.56",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.56",
     "@babel/plugin-transform-runtime": "^7.0.0-beta.56",
     "@babel/plugin-transform-template-literals": "^7.0.0-beta.56",
     "@babel/preset-env": "^7.0.0-beta.56",

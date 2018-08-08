@@ -83,7 +83,8 @@
                                         y2="-0.026"
                                         xlink:href="#linear-gradient"></linearGradient>
                       </defs>
-                      <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">
+                      <g id="Symbol_583_1" data-name="Symbol 583 – 1"
+                         transform="translate(-435 -1135)">
                         <path id="Path_1811"
                               data-name="Path 1811"
                               class="cls-1"
@@ -108,7 +109,8 @@
                     <svg xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink"
                          viewBox="0 0 21.059 20">
-                      <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">
+                      <g id="Symbol_583_1" data-name="Symbol 583 – 1"
+                         transform="translate(-435 -1135)">
                         <path id="Path_1811"
                               data-name="Path 1811"
                               class="cls-1"
@@ -133,7 +135,8 @@
                     <svg xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink"
                          viewBox="0 0 21.059 20">
-                      <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">
+                      <g id="Symbol_583_1" data-name="Symbol 583 – 1"
+                         transform="translate(-435 -1135)">
                         <path id="Path_1811"
                               data-name="Path 1811"
                               class="cls-1"
@@ -158,7 +161,8 @@
                     <svg xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink"
                          viewBox="0 0 21.059 20">
-                      <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">
+                      <g id="Symbol_583_1" data-name="Symbol 583 – 1"
+                         transform="translate(-435 -1135)">
                         <path id="Path_1811"
                               data-name="Path 1811"
                               class="cls-1"
@@ -183,7 +187,8 @@
                     <svg xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink"
                          viewBox="0 0 21.059 20">
-                      <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">
+                      <g id="Symbol_583_1" data-name="Symbol 583 – 1"
+                         transform="translate(-435 -1135)">
                         <path id="Path_1811"
                               data-name="Path 1811"
                               class="cls-1"
@@ -208,7 +213,8 @@
             <!-- CARD STARS /// -->
             <!-- CARD ACTION  -->
             <div class="prg-review--single---action">
-              <button type="button" class="btn btn-block bg-white rounded-circle p-0">
+              <button type="button"
+                      class="btn btn-block bg-white rounded-circle p-0">
                 <i class="fa fa-ellipsis-h"></i>
               </button>
             </div>
@@ -229,8 +235,11 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-transparent border-0 px-0">
               <li class="breadcrumb-item align-middle"><a href="#">Home</a></li>
-              <li class="breadcrumb-item align-middle"><a href="#">Library</a></li>
-              <li class="breadcrumb-item align-middle active" aria-current="page">Data</li>
+              <li class="breadcrumb-item align-middle"><a href="#">Library</a>
+              </li>
+              <li class="breadcrumb-item align-middle active"
+                  aria-current="page">Data
+              </li>
             </ol>
           </nav>
         </div>
@@ -247,34 +256,48 @@
           <div class="row">
             <div class="col-12">
               <div class="content-box">
-                <h2 class="prg-review--single---title text-primary font-weight-bold mb-3 mb-md-4 mb-lg-5">Twisted
+                <h2
+                  class="prg-review--single---title text-primary font-weight-bold mb-3 mb-md-4 mb-lg-5">
+                  Twisted
                   Mustard
                   Seed
                   Heartbreaker
                   Bag</h2>
                 <div class="prg-review--single---descr">
-                  <p>We love our gorgeous Twisted Mustard Seed Diaper Bag! It is absolutely beautiful. The pop of color
+                  <p>We love our gorgeous Twisted Mustard Seed Diaper Bag! It is
+                    absolutely beautiful. The pop of color
                     is
                     so
-                    fun and adds a lot to your everyday wardrobe. :) What I love most is how it is functional but
+                    fun and adds a lot to your everyday wardrobe. :) What I love
+                    most is how it is functional but
                     doesn't
                     even
-                    look like a diaper bag because it is so pretty. This bag truly is designed for moms!</p>
-                  <p>I love that it is simple in design. There's not too many pockets and not too much going on on the
+                    look like a diaper bag because it is so pretty. This bag
+                    truly is designed for moms!</p>
+                  <p>I love that it is simple in design. There's not too many
+                    pockets and not too much going on on the
                     outside
-                    either. It does what it needs to and is gorgeous. It is definitely a timeless diaper bag!</p>
-                  <p>The exterior is made from genuine cowhide leather in a super gorgeous turquoise blue color. The
+                    either. It does what it needs to and is gorgeous. It is
+                    definitely a timeless diaper bag!</p>
+                  <p>The exterior is made from genuine cowhide leather in a
+                    super gorgeous turquoise blue color. The
                     inside
                     is
-                    black with white polka dots and is such a fun contrast! I always love getting out my changing pad.
+                    black with white polka dots and is such a fun contrast! I
+                    always love getting out my changing pad.
                     This
-                    diaper bag is just soo classy and pretty with some gold accents on the lettering and feet. <3</p>
-                  <p>Probably the greatest part about it is the way it looks because it means that even after you are
+                    diaper bag is just soo classy and pretty with some gold
+                    accents on the lettering and feet. <3</p>
+                  <p>Probably the greatest part about it is the way it looks
+                    because it means that even after you are
                     finished
-                    with needing a diaper bag, you can continue to use this as a purse. Yay for a versatile bag!</p>
-                  <p>The Heartbreaker diaper bag can be carried as a typical tote diaper bag or you can use the
+                    with needing a diaper bag, you can continue to use this as a
+                    purse. Yay for a versatile bag!</p>
+                  <p>The Heartbreaker diaper bag can be carried as a typical
+                    tote diaper bag or you can use the
                     messenger
-                    strap. I personally love using messenger straps so that is always what I do! It also came with a
+                    strap. I personally love using messenger straps so that is
+                    always what I do! It also came with a
                     changing
                     pad and stroller straps.
                   </p>
@@ -331,7 +354,8 @@
               <div class="row">
                 <div class="col-6 py-3 border-bottom">
                   <h6 class="font-weight-bold small py-3">Rate This Review</h6>
-                  <ul class="prg-stars list-inline my-0 bg-transparent position-static px-0">
+                  <ul
+                    class="prg-stars list-inline my-0 bg-transparent position-static px-0">
                     <li class="list-inline-item align-middle">
                       <a href="#">
                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -384,7 +408,8 @@
                                             y2="-0.026"
                                             xlink:href="#linear-gradient"></linearGradient>
                           </defs>
-                          <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">
+                          <g id="Symbol_583_1" data-name="Symbol 583 – 1"
+                             transform="translate(-435 -1135)">
                             <path id="Path_1811"
                                   data-name="Path 1811"
                                   class="cls-1"
@@ -409,7 +434,8 @@
                         <svg xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 21.059 20">
-                          <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">
+                          <g id="Symbol_583_1" data-name="Symbol 583 – 1"
+                             transform="translate(-435 -1135)">
                             <path id="Path_1811"
                                   data-name="Path 1811"
                                   class="cls-1"
@@ -434,7 +460,8 @@
                         <svg xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 21.059 20">
-                          <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">
+                          <g id="Symbol_583_1" data-name="Symbol 583 – 1"
+                             transform="translate(-435 -1135)">
                             <path id="Path_1811"
                                   data-name="Path 1811"
                                   class="cls-1"
@@ -459,7 +486,8 @@
                         <svg xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 21.059 20">
-                          <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">
+                          <g id="Symbol_583_1" data-name="Symbol 583 – 1"
+                             transform="translate(-435 -1135)">
                             <path id="Path_1811"
                                   data-name="Path 1811"
                                   class="cls-1"
@@ -484,7 +512,8 @@
                         <svg xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 21.059 20">
-                          <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">
+                          <g id="Symbol_583_1" data-name="Symbol 583 – 1"
+                             transform="translate(-435 -1135)">
                             <path id="Path_1811"
                                   data-name="Path 1811"
                                   class="cls-1"
@@ -508,7 +537,8 @@
                 </div>
                 <div class="col-6 py-3 border-bottom">
                   <h6 class="font-weight-bold small py-3">Rate This Product</h6>
-                  <ul class="prg-stars list-inline my-0 bg-transparent position-static px-0">
+                  <ul
+                    class="prg-stars list-inline my-0 bg-transparent position-static px-0">
                     <li class="list-inline-item align-middle">
                       <a href="#">
                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -561,7 +591,8 @@
                                             y2="-0.026"
                                             xlink:href="#linear-gradient"></linearGradient>
                           </defs>
-                          <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">
+                          <g id="Symbol_583_1" data-name="Symbol 583 – 1"
+                             transform="translate(-435 -1135)">
                             <path id="Path_1811"
                                   data-name="Path 1811"
                                   class="cls-1"
@@ -586,7 +617,8 @@
                         <svg xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 21.059 20">
-                          <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">
+                          <g id="Symbol_583_1" data-name="Symbol 583 – 1"
+                             transform="translate(-435 -1135)">
                             <path id="Path_1811"
                                   data-name="Path 1811"
                                   class="cls-1"
@@ -611,7 +643,8 @@
                         <svg xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 21.059 20">
-                          <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">
+                          <g id="Symbol_583_1" data-name="Symbol 583 – 1"
+                             transform="translate(-435 -1135)">
                             <path id="Path_1811"
                                   data-name="Path 1811"
                                   class="cls-1"
@@ -636,7 +669,8 @@
                         <svg xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 21.059 20">
-                          <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">
+                          <g id="Symbol_583_1" data-name="Symbol 583 – 1"
+                             transform="translate(-435 -1135)">
                             <path id="Path_1811"
                                   data-name="Path 1811"
                                   class="cls-1"
@@ -661,7 +695,8 @@
                         <svg xmlns="http://www.w3.org/2000/svg"
                              xmlns:xlink="http://www.w3.org/1999/xlink"
                              viewBox="0 0 21.059 20">
-                          <g id="Symbol_583_1" data-name="Symbol 583 – 1" transform="translate(-435 -1135)">
+                          <g id="Symbol_583_1" data-name="Symbol 583 – 1"
+                             transform="translate(-435 -1135)">
                             <path id="Path_1811"
                                   data-name="Path 1811"
                                   class="cls-1"
@@ -692,17 +727,26 @@
                 </div>
                 <div class="col-auto">
                   <div>Sorted By:
-                    <button class="font-weight-bold dropdown-toggle bg-transparent border-0 align-middle"
-                            type="button"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                            data-toggle="dropdown">Newest
+                    <button
+                      class="font-weight-bold dropdown-toggle bg-transparent border-0 align-middle"
+                      type="button"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      data-toggle="dropdown">Newest
                     </button>
-                    <div style="overflow: hidden" class="dropdown-menu dropdown-menu-right">
+                    <div style="overflow: hidden"
+                         class="dropdown-menu dropdown-menu-right">
                       <ul class="list-unstyled p-0 m-0">
-                        <li class="dropdown-item"><a role="button" class="dropdown-link" href="#">Newest</a></li>
-                        <li class="dropdown-item"><a role="button" class="dropdown-link" href="#">Oldest</a></li>
-                        <li class="dropdown-item"><a role="button" class="dropdown-link" href="#">Most Liked</a></li>
+                        <li class="dropdown-item"><a role="button"
+                                                     class="dropdown-link"
+                                                     href="#">Newest</a></li>
+                        <li class="dropdown-item"><a role="button"
+                                                     class="dropdown-link"
+                                                     href="#">Oldest</a></li>
+                        <li class="dropdown-item"><a role="button"
+                                                     class="dropdown-link"
+                                                     href="#">Most Liked</a>
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -712,10 +756,13 @@
             <div class="col-12 py-3">
               <div class="row">
                 <div class="col-auto">
-                  
+
                 </div>
                 <div class="col">
-                  <textarea title="Join Discussion" class="form-control border bg-white py-2 px-3" id="prgJoinDiscussion" rows="4" placeholder="Join the discussion..."></textarea>
+                  <textarea title="Join Discussion"
+                            class="form-control border bg-white py-2 px-3"
+                            id="prgJoinDiscussion" rows="4"
+                            placeholder="Join the discussion..."></textarea>
                 </div>
               </div>
             </div>
@@ -731,12 +778,17 @@
                     <div class="card card-aside row no-gutters flex-row">
                       <div class="col-auto">
                         <div class="card-aside--img">
-                          <img class="img-fluid" src="https://via.placeholder.com/100x70" alt=" ">
+                          <img class="img-fluid"
+                               src="https://via.placeholder.com/100x70" alt=" ">
                         </div>
                       </div>
                       <div class="col px-2 py-1">
-                        <h6 class="card-aside--title font-weight-bold mb-0 small">Gummee Molar Mallet</h6>
-                        <p class="card-aside--category small m-0 text-primary font-weight-bold">Category</p>
+                        <h6
+                          class="card-aside--title font-weight-bold mb-0 small">
+                          Gummee Molar Mallet</h6>
+                        <p
+                          class="card-aside--category small m-0 text-primary font-weight-bold">
+                          Category</p>
                       </div>
                     </div>
                   </a>
@@ -746,12 +798,17 @@
                     <div class="card card-aside row no-gutters flex-row">
                       <div class="col-auto">
                         <div class="card-aside--img">
-                          <img class="img-fluid" src="https://via.placeholder.com/100x70" alt=" ">
+                          <img class="img-fluid"
+                               src="https://via.placeholder.com/100x70" alt=" ">
                         </div>
                       </div>
                       <div class="col px-2 py-1">
-                        <h6 class="card-aside--title font-weight-bold mb-0 small">Gummee Molar Mallet</h6>
-                        <p class="card-aside--category small m-0 text-primary font-weight-bold">Category</p>
+                        <h6
+                          class="card-aside--title font-weight-bold mb-0 small">
+                          Gummee Molar Mallet</h6>
+                        <p
+                          class="card-aside--category small m-0 text-primary font-weight-bold">
+                          Category</p>
                       </div>
                     </div>
                   </a>
@@ -761,12 +818,17 @@
                     <div class="card card-aside row no-gutters flex-row">
                       <div class="col-auto">
                         <div class="card-aside--img">
-                          <img class="img-fluid" src="https://via.placeholder.com/100x70" alt=" ">
+                          <img class="img-fluid"
+                               src="https://via.placeholder.com/100x70" alt=" ">
                         </div>
                       </div>
                       <div class="col px-2 py-1">
-                        <h6 class="card-aside--title font-weight-bold mb-0 small">Gummee Molar Mallet</h6>
-                        <p class="card-aside--category small m-0 text-primary font-weight-bold">Category</p>
+                        <h6
+                          class="card-aside--title font-weight-bold mb-0 small">
+                          Gummee Molar Mallet</h6>
+                        <p
+                          class="card-aside--category small m-0 text-primary font-weight-bold">
+                          Category</p>
                       </div>
                     </div>
                   </a>
@@ -776,12 +838,17 @@
                     <div class="card card-aside row no-gutters flex-row">
                       <div class="col-auto">
                         <div class="card-aside--img">
-                          <img class="img-fluid" src="https://via.placeholder.com/100x70" alt=" ">
+                          <img class="img-fluid"
+                               src="https://via.placeholder.com/100x70" alt=" ">
                         </div>
                       </div>
                       <div class="col px-2 py-1">
-                        <h6 class="card-aside--title font-weight-bold mb-0 small">Gummee Molar Mallet</h6>
-                        <p class="card-aside--category small m-0 text-primary font-weight-bold">Category</p>
+                        <h6
+                          class="card-aside--title font-weight-bold mb-0 small">
+                          Gummee Molar Mallet</h6>
+                        <p
+                          class="card-aside--category small m-0 text-primary font-weight-bold">
+                          Category</p>
                       </div>
                     </div>
                   </a>
@@ -791,12 +858,17 @@
                     <div class="card card-aside row no-gutters flex-row">
                       <div class="col-auto">
                         <div class="card-aside--img">
-                          <img class="img-fluid" src="https://via.placeholder.com/100x70" alt=" ">
+                          <img class="img-fluid"
+                               src="https://via.placeholder.com/100x70" alt=" ">
                         </div>
                       </div>
                       <div class="col px-2 py-1">
-                        <h6 class="card-aside--title font-weight-bold mb-0 small">Gummee Molar Mallet</h6>
-                        <p class="card-aside--category small m-0 text-primary font-weight-bold">Category</p>
+                        <h6
+                          class="card-aside--title font-weight-bold mb-0 small">
+                          Gummee Molar Mallet</h6>
+                        <p
+                          class="card-aside--category small m-0 text-primary font-weight-bold">
+                          Category</p>
                       </div>
                     </div>
                   </a>
@@ -812,3 +884,5 @@
 
 </div>
 <!-- SINGLE REVIEW LAYOUT /// -->
+
+<script src="/scripts/reviews_view.bundle.js"></script>

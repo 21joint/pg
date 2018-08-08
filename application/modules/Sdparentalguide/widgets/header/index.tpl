@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/styles/header.bundle.css">
+
 <header class="prg-header bg-white">
   <div class="prg-header--top position-relative border-bottom py-3">
     <div class="container-fluid">
@@ -438,7 +440,7 @@
   </div> <!-- header-bottom -->
 </header>
 
-<script type="text/javascript">
+<script>
   var notificationUpdater;
   en4.core.runonce.add(function (e) {
     if ($('notifications_markread_link')) {
@@ -590,14 +592,14 @@
   }
 
   // hide search items
-  document.onclick = function (e) {
-    e.stopPropagation();
-    // Notification hide
-    if (e.target.id !== 'close_icon') {
-      activateProfileItem('profile-dropdown-menu');
-    }
-    if (e.target.id !== 'btn-drop') {
-      activateProfileItem('notifications');
-    }
-  }
+  // document.onclick = function (e) {
+  //   e.stopPropagation();
+  //   // Notification hide
+  //   if (e.target.id !== 'close_icon') {
+  //     activateProfileItem('profile-dropdown-menu');
+  //   }
+  //   if (e.target.id !== 'btn-drop') {
+  //     activateProfileItem('notifications');
+  //   }
+  // }
 </script>

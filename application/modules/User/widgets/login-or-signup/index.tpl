@@ -11,21 +11,26 @@
  */
 ?>
 
-<?php if( !$this->noForm ): ?>
+<?php if (!$this->noForm): ?>
 
   <h3>
-    <?php echo $this->translate('Sign In or %1$sJoin%2$s', '<a href="'.$this->url(array(), "user_signup").'" class="user_signup_link">', '</a>'); ?>
+    <?php echo $this->translate(
+      'Sign In or %1$sJoin%2$s', '<a href="'.$this->url(array(), "user_signup")
+      .'" class="user_signup_link">', '</a>'
+    ); ?>
   </h3>
 
-  <?php echo $this->form->setAttrib('class', 'global_form_box')->render($this) ?>
+  <?php echo $this->form->setAttrib('class', 'global_form_box')->render(
+    $this
+  ) ?>
 
-  <?php if( !empty($this->fbUrl) ): ?>
+  <?php if (!empty($this->fbUrl)): ?>
 
     <script type="text/javascript">
-      var openFbLogin = function() {
+      var openFbLogin = function () {
         Smoothbox.open('<?php echo $this->fbUrl ?>');
       }
-      var redirectPostFbLogin = function() {
+      var redirectPostFbLogin = function () {
         window.location.href = window.location;
         Smoothbox.close();
       }
@@ -36,13 +41,19 @@
   <?php endif; ?>
 
 <?php else: ?>
-    
+
   <h3 style="margin-bottom: 0px;">
-    <?php echo $this->htmlLink(array('route' => 'user_login'), $this->translate('Sign In')) ?>
+    <?php echo $this->htmlLink(
+      array('route' => 'user_login'), $this->translate('Sign In')
+    ) ?>
     <?php echo $this->translate('or') ?>
-    <?php echo $this->htmlLink(array('route' => 'user_signup'), $this->translate('Join')) ?>
+    <?php echo $this->htmlLink(
+      array('route' => 'user_signup'), $this->translate('Join')
+    ) ?>
   </h3>
 
-  <?php echo $this->form->setAttrib('class', 'global_form_box no_form')->render($this) ?>
-    
+  <?php echo $this->form->setAttrib('class', 'global_form_box no_form')->render(
+    $this
+  ) ?>
+
 <?php endif; ?>

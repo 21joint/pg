@@ -1,3 +1,5 @@
+@import "../variables";
+
 .prg-auth {
   height: 100%;
   // tip message
@@ -145,10 +147,12 @@
   }
 
 }
+
 .prg-auth--form {
   max-width: 365px;
   margin: auto;
 }
+
 .prg-auth--close {
   font-size: 24px;
   color: #93A4A6;

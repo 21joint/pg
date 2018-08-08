@@ -1,3 +1,6 @@
+@import "../../../../../node_modules/bootstrap/scss/mixins";
+@import "../../../../../node_modules/bootstrap/scss/bootstrap-grid";
+
 .card {
   transition: .3s .3s opacity ease;
   opacity: 1;
@@ -5,6 +8,7 @@
     opacity: 0;
   }
 }
+
 .card-review {
   border-color: rgb(245, 245, 245);
   border-radius: 10px;
@@ -86,7 +90,7 @@
   width: 11px;
   height: 11px;
   display: block;
-  background-image: url('../images/gold_star.svg');
+  background-image: url('../../images/gold_star.svg');
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;

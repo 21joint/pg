@@ -16,7 +16,8 @@
     <div class="row justify-content-center">
       <div class="col-10 text-center">
         <h1 class="text-primary text-uppercase page-hero--title">Reviews</h1>
-        <p class="text-primary page-hero--caption">Share Your Struggle, Provide Your Theories, and Gain Advice</p>
+        <p class="text-primary page-hero--caption">Share Your Struggle, Provide
+          Your Theories, and Gain Advice</p>
       </div>
       <div class="w-100 mb-sm-5"></div>
       <div class="col-md-10">
@@ -29,7 +30,8 @@
             </div>
             <div class="form-group col-auto col-sm-4 col-lg-3 mb-0">
               <button class="btn btn-lg btn-block btn-success text-white px-0">
-                <i class="fa fa-search d-sm-none"></i><span class="d-none d-sm-inline">Search now</span></button>
+                <i class="fa fa-search d-sm-none"></i><span
+                  class="d-none d-sm-inline">Search now</span></button>
             </div>
           </div>
         </form>
@@ -69,11 +71,16 @@
                           <span class="sr-only">Previous</span>
                         </a>
                       </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item active"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item"><a class="page-link" href="#">...</a></li>
-                      <li class="page-item"><a class="page-link" href="#">386</a></li>
+                      <li class="page-item"><a class="page-link" href="#">1</a>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">2</a>
+                      </li>
+                      <li class="page-item active"><a class="page-link"
+                                                      href="#">3</a></li>
+                      <li class="page-item"><a class="page-link"
+                                               href="#">...</a></li>
+                      <li class="page-item"><a class="page-link"
+                                               href="#">386</a></li>
                       <li class="page-item pagination-nav">
                         <a class="page-link" href="#" aria-label="Next">
                           <i aria-hidden="true" class="fa fa-chevron-right"></i>
@@ -92,3 +99,5 @@
   </div>
 </div>
 <!--PAGE SECTION  ///-->
+
+<script src="/scripts/reviews_home.bundle.js"></script>

@@ -7,13 +7,9 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // const CopyWebpackPlugin = require('copy-webpack-plugin');
-const Modules = Conf.modules;
-
+const APP_DIR = path.resolve(__dirname, 'application');
 
 let IS_DEV = (process.env.NODE_ENV === 'dev' ? true : false);
-
-let BUILD_DIR = path.resolve(__dirname, './public');
-let APP_DIR = path.resolve(__dirname, 'application');
 
 /**
  * Webpack Configuration
@@ -21,10 +17,15 @@ let APP_DIR = path.resolve(__dirname, 'application');
 
 const config = {
   entry: {
-    index: APP_DIR + '/themes/parentalguidance/index.js'
+    header: APP_DIR + '/themes/parentalguidance/modules/header/header.module.js',
+    auth: APP_DIR + '/themes/parentalguidance/modules/auth.module.js',
+    reviews_home: APP_DIR + '/themes/parentalguidance/modules/reviews/home.module.js',
+    reviews_view: APP_DIR + '/themes/parentalguidance/modules/reviews/view.module.js',
+    reviews_create: APP_DIR + '/themes/parentalguidance/modules/reviews/create.module.js',
+    footer: APP_DIR + '/themes/parentalguidance/modules/footer/footer.module.js'
   },
   output: {
-    filename: 'scripts/[name].build.js',
+    filename: 'scripts/[name].bundle.js',
     path: __dirname + '/dist'
   },
   module: {
@@ -32,20 +33,12 @@ const config = {
       // JS
       {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
+        include: /(module\.js)$/,
         loader: 'babel-loader'
-      },
-      // IMAGES
-      {
-        test: /\.(png|jpg|jpeg|gif|svg|ico)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]?[hash]'
-        }
       },
       // SCSS
       {
-        test: /\.s?css$/,
+        test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
@@ -78,27 +71,30 @@ const config = {
           ]
         })
       },
+      // FONTS/IMAGES
       {
-        test: /\.(svg|ttf|woff|woff2|eot)$/,
-        loader: 'url-loader?limit=5000',
-        options: {
-          name: 'fonts/[name].[ext]?[hash]'
-        }
+        test: /\.(woff|woff2|ttf|eot|otf|svg|gif|png|jp(e?)g)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 1024,
+              name(file) {
+                if (file.indexOf('fonts') > -1) {
+                  return 'fonts/[name].[ext]';
+                }
+                else {
+                  return 'images/[name].[ext]';
+                }
+              },
+              fallback: 'file-loader',
+              outputPath: './',
+              publicPath: args.git ? '/gs-webpack/' : '/'
+            }
+          }
+        ]
       }
     ]
-  },
-  optimization: {
-    minimize: !IS_DEV,
-    // splitChunks: {
-    //   cacheGroups: {
-    //     vendors: {
-    //       test: /[\\/]node_modules[\\/]/,
-    //       name: 'vendors',
-    //       enforce: true,
-    //       chunks: 'all'
-    //     }
-    //   }
-    // }
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -110,7 +106,7 @@ const config = {
       'window.jQuery': 'jquery'
     }),
     new ExtractTextPlugin({
-      filename: 'styles/[name].css'
+      filename: 'styles/[name].bundle.css'
     })
   ]
 };
