@@ -62,10 +62,10 @@ function loadLeaderboardResults(){
 
                 var j = 0;
                 for(var i = 0; i < results.length; i++) {
-                // Build out logic for Rating Stars
+                // Rating Stars Functionality
                     var star_rating = "";
                     for(var k = 0; k < results[i].authorRating; k++){
-                        star_rating += '<svg height="20px" style="margin: 3px 5px 0px 5px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68.137 80"><defs><style>.b_box_hover{fill:#D4A144;}.c_box_hover{fill:#EBC451;}</style></defs><g transform="translate(13961.751 6200.271)"><g transform="translate(-13961.75 -6200.271)"><path class="b_box_hover" d="M108.85,27,96.662,43.071,86.2,29.121l20.283-4.571C109.459,23.8,110.323,24.992,108.85,27Z" transform="translate(-43.623 -13.136)"></path><path class="b_box_hover" d="M30.556,40.68,3.864,47.338c-1.7.386-2.077,2.189-.508,2.9l26.032,7.618Z" transform="translate(-2.361 -21.186)"></path><path class="c_box_hover" d="M51.227,64.559l3.438-60.7c0-1.717,1.772-2.118,2.834-.731l36.336,45.3c1.346,1.59.975,4.4-2.773,2.93L69.148,42.97,55.462,65.625C54.076,68.017,51.11,67.042,51.227,64.559Z" transform="translate(-26.41 -2.293)"></path></g></g></svg>';
+                        star_rating += '<svg style="margin: 3px 5px 0px 0px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="20px" viewBox="0 0 42.03 39.91"><defs><linearGradient id="a" x1="26.26" y1="12.68" x2="40.67" y2="12.68" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#D4A144"></stop><stop offset="1" stop-color="#D4A144"></stop></linearGradient><linearGradient id="b" y1="17.32" x2="17.39" y2="17.32" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#D4A144"></stop><stop offset="1" stop-color="#D4A144"></stop></linearGradient></defs><title>star_pg</title><path d="M40.23,8.55,32.7,18.46l-6.44-8.6L38.77,7C40.61,6.57,41.14,7.31,40.23,8.55Z" fill="#D4A144"></path><path d="M17.39,12,.93,16.13c-1,.24-1.28,1.35-.32,1.79l16.06,4.7Z" fill="#D4A144"></path><path d="M15.31,38.4,17.42,1c0-1.06,1.1-1.31,1.76-.45L41.59,28.45c.83,1,.6,2.71-1.71,1.81L26.36,25.09l-8.44,14A1.36,1.36,0,0,1,15.31,38.4Z" fill="#EBC451"></path></svg>';
                     }
                 // Matching Contribution Level to Contribution Award (Bronze, Silver, Gold, Platinum) 
                 var adjust_award = String(results[i].author.expertPlatinumCount)+
@@ -85,6 +85,39 @@ function loadLeaderboardResults(){
                 }else{
                     adjust_count = results[i].author.contributionLevel;
                 }
+                // Time Since Posted Functionality -> start
+                var conv_date = "";
+                conv_date = results[i].createdDateTime;
+                var how_old = new Date(conv_date);
+                function timeSince(how_old) {
+                    var seconds = Math.floor((new Date() - how_old) / 1000);
+                    var interval = Math.floor(seconds / 31536000);
+                    if (interval > 1) {
+                        return interval + " years ago";
+                    }
+                    interval = Math.floor(seconds / 2592000);
+                    if (interval > 1) {
+                        return interval + " months ago";
+                    }
+                    interval = Math.floor(seconds / 604800);
+                    if (interval > 1) {
+                        return interval + " weeks ago";
+                    }
+                    interval = Math.floor(seconds / 86400);
+                    if (interval > 1) {
+                        return interval + " days ago";
+                    }
+                    interval = Math.floor(seconds / 3600);
+                    if (interval > 1) {
+                        return interval + " hours ago";
+                    }
+                    interval = Math.floor(seconds / 60);
+                    if (interval > 1) {
+                        return interval + " minutes ago";
+                    }
+                    return Math.floor(seconds) + " seconds ago";
+                }
+                // Time Since Posted Functionality -> end
 
                 j = i + 1;
                     if(j == 1){
@@ -93,22 +126,26 @@ function loadLeaderboardResults(){
                     html += '<div class="review_card d-flex flex-column justify-content-between col-lg-3 col-md-5 col-sm-5 col-xs-6 px-0 border">'+
                                 '<div>'+
                                     '<div class="review_card_cover bg-primary position-relative d-flex justify-content-center align-items-center">'+
-                                        '<img class="w-100" src="'+
-                                            results[i].coverPhoto.photoURL+
-                                        '"/>'+
+                                        '<a class="w-100" href="'+
+                                            en4.core.baseUrl+"reviews/view/"+results[i].reviewID+
+                                        '">'+
+                                            '<img class="w-100" src="'+
+                                                results[i].coverPhoto.photoURL+
+                                            '"/>'+
+                                        '</a>'+
                                         '<div class="review_star_ranking position-absolute bg-white d-flex justify-content-around px-2 py-1">'+
                                             star_rating+
                                         '</div>'+
                                     '</div>'+
                                     '<div class="review_card_info p-2">'+
                                         '<a class="review_card_topic text-primary font-weight-bold" href="'+
-                                            en4.core.baseUrl+"review?id="+results[i].reviewID+
+                                            en4.core.baseUrl+"reviews/view/"+results[i].reviewID+
                                         '">'+
                                             results[i].reviewCategorization.category+
                                         '</a>'+
                                         '<h2 class="review_card_title font-weight-bold">'+
                                             '<a href="'+
-                                                en4.core.baseUrl+"review?id="+results[i].reviewID+
+                                                en4.core.baseUrl+"reviews/view/"+results[i].reviewID+
                                             '">'+results[i].title+'</a>'+
                                         '</h2>'+
                                         '<p class="review_card_description d-none d-md-block">'+
@@ -199,7 +236,7 @@ function loadLeaderboardResults(){
                                             '">'+results[i].author.displayName+'</a>'+
                                         '</h4>'+
                                         '<span>'+
-                                            results[i].status+
+                                            timeSince(how_old)+
                                         '</span>'+
                                     '</div>'+
                                     '<div class="d-none d-md-flex justify-content-start align-items-center ml-auto">'+

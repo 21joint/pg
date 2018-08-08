@@ -331,6 +331,39 @@
                         }else{
                             adjust_count = results[i].author.contributionLevel;
                         }
+                        // Time Since Posted Functionality -> start
+                        var conv_date = "";
+                        conv_date = results[i].createdDateTime;
+                        var how_old = new Date(conv_date);
+                        function timeSince(how_old) {
+                            var seconds = Math.floor((new Date() - how_old) / 1000);
+                            var interval = Math.floor(seconds / 31536000);
+                            if (interval > 1) {
+                                return interval + " years ago";
+                            }
+                            interval = Math.floor(seconds / 2592000);
+                            if (interval > 1) {
+                                return interval + " months ago";
+                            }
+                            interval = Math.floor(seconds / 604800);
+                            if (interval > 1) {
+                                return interval + " weeks ago";
+                            }
+                            interval = Math.floor(seconds / 86400);
+                            if (interval > 1) {
+                                return interval + " days ago";
+                            }
+                            interval = Math.floor(seconds / 3600);
+                            if (interval > 1) {
+                                return interval + " hours ago";
+                            }
+                            interval = Math.floor(seconds / 60);
+                            if (interval > 1) {
+                                return interval + " minutes ago";
+                            }
+                            return Math.floor(seconds) + " seconds ago";
+                        }
+                        // Time Since Posted Functionality -> end
 
                         html += '<div class="struggle_holder my-3 d-flex flex-wrap border-bottom pb-3">'+
                                     '<div class="struggle_box_left d-flex align-items-center large-9 medium-12 small-12">'+
@@ -422,7 +455,7 @@
                                             '</a>'+
                                             '<ul class="struggle_info d-flex">'+
                                                 '<li class="struggle_time_created">'+
-                                                results[i].createdDateTime+
+                                                timeSince(how_old)+
                                                 '</li>'+
                                                 '<li>᛫</li>'+
                                                 '<li class="struggle_owner_name">'+
