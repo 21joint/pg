@@ -374,9 +374,10 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
                 }else{
                     $params[$key] = $this->cleanVar($data);
                 }
+                $this->setParam($key,$params[$key]);
                 $request->setParam($key,$params[$key]);
             }
-        }        
+        }
     }
     public function cleanVar($var){
         if(empty($var) || is_array($var)){
@@ -385,8 +386,9 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
         
         //Remove Tags
         $var = html_entity_decode($var, ENT_COMPAT, 'UTF-8');
-        $var = strip_tags($var);
-        $var = filter_var($var, FILTER_SANITIZE_STRING);        
+        $var = strip_tags($var,'<strong><b><em><i><u><strike><sub><sup><p>');
+//        $var = filter_var($var, FILTER_SANITIZE_STRING); //It filters all tags. May not be useful for some tags.
+        $var = $this->xss_clean($var);
         return $var;
     }
     
