@@ -1,6 +1,8 @@
-import '../../themes/parentalguidance/scss/styles.scss';
-
 (function ($) {
+
+  en4.prg = !!en4.prg ? en4.prg : {};
+
+
   $(document).ready(function () {
     $('select').each(function () {
       let $self = $(this);

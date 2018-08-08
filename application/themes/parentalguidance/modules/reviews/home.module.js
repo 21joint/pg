@@ -1,47 +1,79 @@
-import {API, OAUTH} from '../../../../package.json';
+import {config} from '../../../../../package.json';
 
+const url = config.API_PROXY + '/review?' + config.OAUTH;
 
-const url = API + '/review?' + OAUTH;
-
-en4.prg = en4.prg || {};
+en4.prg = en4.prg ? en4.prg : {};
 
 (function ($) {
 
+  en4.core.runonce.add([
+    function () {
+      en4.prg.getReviews({
+        container: '#featuredReviewsGrid'
+      }, function (res) {
+        $.each(res.cards, function (i, card) {
+          $('#featuredReviewsGrid').append(card.$html);
+          let _cEl = card.$html.find('.card');
+          _cEl.addClass('card-loading');
+          setTimeout(function () {
+            _cEl.removeClass('card-loading');
+          }, i * 100);
+        })
+      });
+    }
+  ]);
 
   en4.prg.buildCard = buildCard;
   en4.prg.buildRating = buildRating;
   en4.prg.loadSingle = loadSingle;
   en4.prg.getReviews = getReviews;
 
-  en4.core.runonce.add(function () {
-    en4.prg.getReviews({
-      container: '#featuredReviewsGrid'
-    }, function (res) {
-      $.each(res.cards, function (i, card) {
-        $('#featuredReviewsGrid').append(card.$html);
-        let _cEl = card.$html.find('.card');
-        _cEl.addClass('card-loading');
-        setTimeout(function () {
-          _cEl.removeClass('card-loading');
-        }, i * 100);
-      })
-    });
-  });
+  function getReviews(options, callback) {
+    const _self = this;
+    let _reviews = {};
+    $.ajax({
+      method: 'GET',
+      url: url,
+      dataType: 'json',
+      success: function (res) {
+        console.log(res);
+        _reviews.data = res.body.Results;
+        _reviews.html = '';
+        _reviews.cards = [];
+        for (let j = 0; j < _reviews.data.length; j++) {
+          _reviews.cards.push({
+            $html: $(en4.prg.buildCard(_reviews.data[j]))
+          });
+          _reviews.html += en4.prg.buildCard(_reviews.data[j]);
+        }
+        callback(_reviews);
+      },
+      error: function (error) {
+        console.error(error);
+      },
+      complete: function () {
+        $(options.container).addClass('loaded');
+      }
+    })
+  }
 
   function buildRating(rating, max) {
-    let _self = this;
     let html = '';
     for (var i = 0; i < rating; i++) {
       html +=
         '<li class="list-inline-item align-middle">\n' +
-        '<span class="card-star--icon"></span>\n' +
+        '<svg class="card-star--icon">\n' +
+        '<use href="#prgStarIcon"></use>\n' +
+        '</svg>\n' +
         '</li>'
     }
     if (max - rating > 0) {
       for (var j = 0; j < max - rating; j++) {
         html +=
           '<li class="list-inline-item align-middle">\n' +
-          '<span style="opacity: .4" class="card-star--icon"></span>\n' +
+          '<svg style="opacity: .4" class="card-star--icon">\n' +
+          '<use href="#prgStarIcon"></use>\n' +
+          '</svg>\n' +
           '</li>'
       }
     }
@@ -83,7 +115,7 @@ en4.prg = en4.prg || {};
       '                          <img class="invisible w-100 h-100 position-absolute" src="' + review.coverPhoto.photoURL + '" alt="' + review.title + '"/>\n' +
       '                        </a>\n' +
       '                        <div class="prg-stars">\n' +
-      '                          <ul class="list-inline m-0">\n' + _self.buildRating(review.authorRating, 5) +
+      '                          <ul class="list-inline m-0">\n' + en4.prg.buildRating(parseInt(review.averageReviewRating, 10), 5) +
       '                          </ul>\n' +
       '                        </div>\n' +
       '                      </div>\n' +
@@ -159,35 +191,6 @@ en4.prg = en4.prg || {};
         }
       });
     }
-  }
-
-  function getReviews(options, callback) {
-    const _self = this;
-    let _reviews = {};
-    $.ajax({
-      method: 'GET',
-      url: url,
-      dataType: 'json',
-      success: function (res) {
-        console.log(res);
-        _reviews.data = res.body.Results;
-        _reviews.html = '';
-        _reviews.cards = [];
-        for (let j = 0; j < _reviews.data.length; j++) {
-          _reviews.cards.push({
-            $html: $(_self.buildCard(_reviews.data[j]))
-          });
-          _reviews.html += _self.buildCard(_reviews.data[j]);
-        }
-        callback(_reviews);
-      },
-      error: function (error) {
-        console.error(error.message);
-      },
-      complete: function () {
-        $(options.container).addClass('loaded');
-      }
-    })
   }
 
 
