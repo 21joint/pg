@@ -26,7 +26,7 @@
         <!-- Categories Start -->
         <div id="points" class="order_by d-flex justify-content-center align-items-center" data-order="contributionPoints"><?php echo $this->translate('Contribution'); ?></div>
         <div id="reviews" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="reviewCount"><?php echo $this->translate('Reviews'); ?></div>
-        <!-- <div class="d-none d-md-flex justify-content-center align-items-center">Answers --><!-- Sort By Answer not supported yet by the service layer --><!-- </div> -->
+        <div id="answers" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="answerCount"><?php echo $this->translate('Theories'); ?></div>
         <div id="questions" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="questionCount"><?php echo $this->translate('Struggles'); ?></div>
         <!-- <div id="followers" class="order_by d-none d-md-flex justify-content-center align-items-center" data-order="followers"><?php echo $this->translate('Followers'); ?></div> -->
         <!-- Categories End -->
@@ -73,12 +73,12 @@ document.getElementById('order_btn').addEventListener('click', function(){
         pageNum = 1;
         loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
     }
-    // else if(currentCategory == 2){
-    //     categoryValue = document.getElementById('followers').getAttribute('data-order');
-    //     currentCategory = 3;
-    //     pageNum = 1;
-    //     loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
-    // }
+    else if(currentCategory == 2){
+        categoryValue = document.getElementById('answers').getAttribute('data-order');
+        currentCategory = 3;
+        pageNum = 1;
+        loadLeaderboardResults(timeFrame, categoryValue, currentCategory, pageNum);
+    }
     else{
         categoryValue = document.getElementById('points').getAttribute('data-order');
         currentCategory = 0;
@@ -159,10 +159,10 @@ document.getElementById('questions').addEventListener('click', function(){
 document.getElementById('reviews').addEventListener('click', function(){
     activeCategory = 2;
 });
-// Being ordered by Followers
-// document.getElementById('followers').addEventListener('click', function(){
-//     activeCategory = 3;
-// });
+// Being ordered by Answers
+document.getElementById('answers').addEventListener('click', function(){
+    activeCategory = 3;
+});
 // Styling for Order By Category End
 
 // Pagionation Number Change Start
@@ -201,7 +201,7 @@ function loadLeaderboardResults(tm, ord, disp = 0, page = 1) {
     // Request data can be linked to form inputs
     var requestData = {};
     requestData.contributionRangeType = tm; // Possible values "Overall", "Week", "Month"
-    requestData.orderBy = ord; // Possible values "contributionPoints", "questionCount", "reviewCount", "followers"
+    requestData.orderBy = ord; // Possible values "contributionPoints", "questionCount", "reviewCount", "answerCount"
     requestData.limit = 20; // Display limit for users
     requestData.page = page; // Place for pagination
 
@@ -345,9 +345,9 @@ function loadLeaderboardResults(tm, ord, disp = 0, page = 1) {
                                 '<div class="reviews d-none d-md-flex align-items-center justify-content-center">'+
                                     results[i].reviewCount+
                                 '</div>'+
-                                '<!-- <div class="d-none d-md-flex align-items-center justify-content-center">'+
+                                '<div class="answers d-none d-md-flex align-items-center justify-content-center">'+
                                     results[i].answerCount+
-                                '</div> -->'+
+                                '</div>'+
                                 '<div class="questions d-none d-md-flex align-items-center justify-content-center">'+
                                     results[i].questionCount+
                                 '</div>'+
@@ -451,6 +451,14 @@ function loadLeaderboardResults(tm, ord, disp = 0, page = 1) {
                         document.querySelectorAll('.reviews').forEach(function(reviews){
                             reviews.addClass('d-none').removeClass('d-flex');
                         });
+                        document.getElementById('answers').addClass('d-none').removeClass('d-flex');
+                        document.querySelectorAll('.answers').forEach(function(answers){
+                            answers.addClass('d-none').removeClass('d-flex');
+                        });
+                        document.getElementById('questions').addClass('d-none').removeClass('d-flex');
+                        document.querySelectorAll('.questions').forEach(function(questions){
+                            questions.addClass('d-none').removeClass('d-flex');
+                        });
                         document.getElementById('points').addClass('d-flex').removeClass('d-none');
                         document.querySelectorAll('.points').forEach(function(points){
                             points.addClass('d-flex').removeClass('d-none');
@@ -462,72 +470,88 @@ function loadLeaderboardResults(tm, ord, disp = 0, page = 1) {
                         document.querySelectorAll('.points').forEach(function(points){
                             points.addClass('d-none').removeClass('d-flex');
                         });
+                        document.getElementById('reviews').addClass('d-none').removeClass('d-flex');
+                        document.querySelectorAll('.reviews').forEach(function(reviews){
+                            reviews.addClass('d-none').removeClass('d-flex');
+                        });
+                        document.getElementById('questions').addClass('d-none').removeClass('d-flex');
+                        document.querySelectorAll('.questions').forEach(function(questions){
+                            questions.addClass('d-none').removeClass('d-flex');
+                        });
                         document.getElementById('questions').addClass('d-flex').removeClass('d-none');
-                        document.querySelectorAll('.questions').forEach(function(followers){
-                            followers.addClass('d-flex').removeClass('d-none');
+                        document.querySelectorAll('.questions').forEach(function(questions){
+                            questions.addClass('d-flex').removeClass('d-none');
                         });
                         break;
                 // Displaying Number of Reviews
                     case 2:
                         document.getElementById('questions').addClass('d-none').removeClass('d-flex');
-                        document.querySelectorAll('.questions').forEach(function(followers){
-                            followers.addClass('d-none').removeClass('d-flex');
+                        document.querySelectorAll('.questions').forEach(function(questions){
+                            questions.addClass('d-none').removeClass('d-flex');
                         });
                         document.getElementById('points').addClass('d-none').removeClass('d-flex');
                         document.querySelectorAll('.points').forEach(function(points){
                             points.addClass('d-none').removeClass('d-flex');
                         });
+                        document.getElementById('answers').addClass('d-none').removeClass('d-flex');
+                        document.querySelectorAll('.answers').forEach(function(answers){
+                            answers.addClass('d-none').removeClass('d-flex');
+                        });
                         document.getElementById('reviews').addClass('d-flex').removeClass('d-none');
-                        document.querySelectorAll('.reviews').forEach(function(questions){
-                            questions.addClass('d-flex').removeClass('d-none');
+                        document.querySelectorAll('.reviews').forEach(function(reviews){
+                            reviews.addClass('d-flex').removeClass('d-none');
                         });
                         break;
-                // Displaying Number of Reviews
-                    // case 3:
-                    //     document.getElementById('questions').addClass('d-none').removeClass('d-flex');
-                    //     document.querySelectorAll('.questions').forEach(function(questions){
-                    //         followers.addClass('d-none').removeClass('d-flex');
-                    //     });
-                    //     document.getElementById('points').addClass('d-none').removeClass('d-flex');
-                    //     document.querySelectorAll('.points').forEach(function(points){
-                    //         points.addClass('d-none').removeClass('d-flex');
-                    //     });
-                    //     document.getElementById('reviews').addClass('d-flex').removeClass('d-none');
-                    //     document.querySelectorAll('.reviews').forEach(function(reviews){
-                    //         reviews.addClass('d-flex').removeClass('d-none');
-                    //     });
-                    //     break;
+                // Displaying Number of Answers
+                    case 3:
+                        document.getElementById('questions').addClass('d-none').removeClass('d-flex');
+                        document.querySelectorAll('.questions').forEach(function(questions){
+                            questions.addClass('d-none').removeClass('d-flex');
+                        });
+                        document.getElementById('points').addClass('d-none').removeClass('d-flex');
+                        document.querySelectorAll('.points').forEach(function(points){
+                            points.addClass('d-none').removeClass('d-flex');
+                        });
+                        document.getElementById('reviews').addClass('d-none').removeClass('d-flex');
+                        document.querySelectorAll('.reviews').forEach(function(reviews){
+                            reviews.addClass('d-none').removeClass('d-flex');
+                        });
+                        document.getElementById('answers').addClass('d-flex').removeClass('d-none');
+                        document.querySelectorAll('.answers').forEach(function(answers){
+                            answers.addClass('d-flex').removeClass('d-none');
+                        });
+                        break;
                 }
                 // Displays Highlighted Order By Main Category
                 switch(activeCategory){
                     // Highlight Contribution
                     case 0:
                         document.getElementById('points').addClass('active_category');
-                        // document.getElementById('followers').removeClass('active_category');
+                        document.getElementById('answers').removeClass('active_category');
                         document.getElementById('questions').removeClass('active_category');
                         document.getElementById('reviews').removeClass('active_category');
                         break;
                     // Highlight Questions
                     case 1:
                         document.getElementById('points').removeClass('active_category');
-                        // document.getElementById('followers').addClass('active_category');
+                        document.getElementById('answers').removeClass('active_category');
                         document.getElementById('questions').addClass('active_category');
                         document.getElementById('reviews').removeClass('active_category');
                         break;
                     // Highlight Reviews
                     case 2:
                         document.getElementById('points').removeClass('active_category');
-                        // document.getElementById('followers').removeClass('active_category');
+                        document.getElementById('answers').removeClass('active_category');
                         document.getElementById('questions').removeClass('active_category');
                         document.getElementById('reviews').addClass('active_category');
                         break;
-                    // Highlight Followers
-                    // case 3:
-                    //     document.getElementById('points').removeClass('active_category');
-                    //     document.getElementById('followers').removeClass('active_category');
-                    //     document.getElementById('questions').removeClass('active_category');
-                    //     document.getElementById('reviews').addClass('active_category');
-                    //     break;
+                    // Highlight Answers
+                    case 3:
+                        document.getElementById('points').removeClass('active_category');
+                        document.getElementById('answers').addClass('active_category');
+                        document.getElementById('questions').removeClass('active_category');
+                        document.getElementById('reviews').removeClass('active_category');
+                        break;
                 }
             }else{
                 leaderboardContent.innerHTML = responseJSON.message;
