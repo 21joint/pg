@@ -1,7 +1,9 @@
 /* $Id: core.js 2012-26-01 00:00:00Z SocialEngineAddOns Copyright 2011-2012 BigStep Technologies Pvt. Ltd. $
  */
 
-var adfShare = 0, Share_Translate = en4.core.language.translate('ADVADV_SHARE'), maxAutoScrollAAF = 0, countScrollAAFSocial = 0, countScrollAAFFB = 0, countScrollAAFTweet = 0, countScrollAAFLinkedin = 0, countScrollAAFInstagram = 0;
+var adfShare = 0, Share_Translate = en4.core.language.translate('ADVADV_SHARE'), maxAutoScrollAAF = 0,
+  countScrollAAFSocial = 0, countScrollAAFFB = 0, countScrollAAFTweet = 0, countScrollAAFLinkedin = 0,
+  countScrollAAFInstagram = 0;
 en4.advancedactivity = {
   bindEditFeed: function (action_id, composerOptions) {
     var editComposeInstance = new Composer('edit-body-' + action_id, {
@@ -173,8 +175,7 @@ en4.advancedactivity = {
     });
   },
   comment: function (action_id, body, extendClass) {
-    if (body.trim() == '')
-    {
+    if (body.trim() == '') {
       return;
     }
     var show_all_comments_value = 0;
@@ -222,8 +223,7 @@ en4.advancedactivity = {
         if (event.shift && event.key == 'enter') {
         } else if (event.key == 'enter') {
           event.stop();
-          if (formElement.body.value.trim() == '' || formElement.retrieve('sendReq', false))
-          {
+          if (formElement.body.value.trim() == '' || formElement.retrieve('sendReq', false)) {
             return;
           }
           bind.comment(formElement.action_id.value, formElement.body.value, extendClass);
@@ -246,8 +246,7 @@ en4.advancedactivity = {
     }
     formElement.addEvent('submit', function (event) {
       event.stop();
-      if (formElement.body.value.trim() == '' || formElement.retrieve('sendReq', false))
-      {
+      if (formElement.body.value.trim() == '' || formElement.retrieve('sendReq', false)) {
         return;
       }
       bind.comment(formElement.action_id.value, formElement.body.value, extendClass);
@@ -491,9 +490,9 @@ en4.advancedactivity = {
       $(idPrefix + 'seaocore_emoji_category_' + el.get('data-target')).addClass('active');
       var scrollbarContent = $(idPrefix + 'seaocore_emoji_category').getElement('.scrollbar-content');
       scrollbarContent.scrollTo(
-              scrollbarContent.getScroll().x,
-              $(idPrefix + 'seaocore_emoji_category_' + el.get('data-target')).getOffsets().y - scrollbarContent.getPosition().y
-              );
+        scrollbarContent.getScroll().x,
+        $(idPrefix + 'seaocore_emoji_category_' + el.get('data-target')).getOffsets().y - scrollbarContent.getPosition().y
+      );
     });
 
     $(idPrefix + 'seaocore_emoji_category').scrollbars({
@@ -648,8 +647,7 @@ var AdvancedactivityUpdateHandler = new Class({
           return;
         }
 
-        var newUl = document.createElement('ul', {
-        });
+        var newUl = document.createElement('ul', {});
         newUl.className = "feed";
         Elements.from(htmlBody).reverse().inject(newUl, 'top');
         $('activity-feed').getParent().insertBefore(newUl, $('activity-feed'));
@@ -748,7 +746,6 @@ var Call_aafcheckUpdate = function () {
       // advancedactivityUpdateHandler.start();
 
       window._advancedactivityUpdateHandler = advancedactivityUpdateHandler;
-
 
 
     } catch (e) {
@@ -1400,7 +1397,6 @@ var editPostStatusPrivacy = function (el, privacy) {
       $('show_aaf_edit_privacy').innerHTML = '<i class="' + iconClass + ' "></i><span>' + el.getElement('div').get('html') + '</span><i class="aaf_privacy_pulldown_arrow"></i>';
 
 
-
       $("adv_edit_privacy_lable_tip").innerHTML = el.getElement('div').get('title');
       $('aaf_edit_auth_view').set('value', privacy);
   }
@@ -1438,32 +1434,32 @@ window.addEvent('domready', function () {
 
 
 function aafWebcam(web_class, type) {
-    if (!document.getElementById('compose-webcam-body') && $(web_class)) {
-        var activator = $(web_class).getParent();
-        var composePhotoMenu = null;
-        if(web_class !== 'compose-tray' && activator) {
-            composePhotoMenu = activator.getFirst('div');
-        }else if(web_class === 'compose-tray') {
-            composePhotoMenu = $(web_class).getFirst('div');
-        }else{
-            return;
-        }
-    
-        composePhotoMenu.querySelectorAll("a")[0].destroy();
-        var webcamURL = "'" + en4.core.baseUrl + 'advancedactivity/index/webcamimage?webcam_type=album_photo&aaf_type=' + type + '&subject_id=' + _subject_id + '' + "'";
-        var insertWebcam = new Element('div', {
-          'id': 'compose-webcam-body',
-          'class': 'compose-webcam-body aaf-compose-menu_align'
-        });
-        insertWebcam.innerHTML = '<span class="aaf_media_sep"> ' + en4.core.language.translate("OR") + '</span><a class="aaf_icon_webcam" href="javascript: void(0);" onClick="uploadImage(' + webcamURL + ')"> ' + en4.core.language.translate("Use Webcam") + ' </a>';
-        insertWebcam.inject($(web_class));
-        $('compose-webcam-body').inject(composePhotoMenu, 'bottom');
-        new Element('a', {
-          'class': 'aaf-composer-cancel-menu',
-          'href': 'javascript:void(0)',
-          'onclick': 'resetAAFTextarea()',
-          'html': en4.core.language.translate("cancel")
-        }).inject(composePhotoMenu, 'bottom');
+  if (!document.getElementById('compose-webcam-body') && $(web_class)) {
+    var activator = $(web_class).getParent();
+    var composePhotoMenu = null;
+    if (web_class !== 'compose-tray' && activator) {
+      composePhotoMenu = activator.getFirst('div');
+    } else if (web_class === 'compose-tray') {
+      composePhotoMenu = $(web_class).getFirst('div');
+    } else {
+      return;
+    }
+
+    composePhotoMenu.querySelectorAll("a")[0].destroy();
+    var webcamURL = "'" + en4.core.baseUrl + 'advancedactivity/index/webcamimage?webcam_type=album_photo&aaf_type=' + type + '&subject_id=' + _subject_id + '' + "'";
+    var insertWebcam = new Element('div', {
+      'id': 'compose-webcam-body',
+      'class': 'compose-webcam-body aaf-compose-menu_align'
+    });
+    insertWebcam.innerHTML = '<span class="aaf_media_sep"> ' + en4.core.language.translate("OR") + '</span><a class="aaf_icon_webcam" href="javascript: void(0);" onClick="uploadImage(' + webcamURL + ')"> ' + en4.core.language.translate("Use Webcam") + ' </a>';
+    insertWebcam.inject($(web_class));
+    $('compose-webcam-body').inject(composePhotoMenu, 'bottom');
+    new Element('a', {
+      'class': 'aaf-composer-cancel-menu',
+      'href': 'javascript:void(0)',
+      'onclick': 'resetAAFTextarea()',
+      'html': en4.core.language.translate("cancel")
+    }).inject(composePhotoMenu, 'bottom');
   }
 }
 
@@ -1476,6 +1472,7 @@ function basicAafActivator(menu_name) {
   $$('.compose-menu').removeClass('active');
   $('compose-' + menu_name + '-menu-link').addClass('active');
 }
+
 function showAafPhotoActivator() {
   basicAafActivator('photo');
   composeInstance.getPlugin('photo').activate();
@@ -1495,6 +1492,7 @@ function showAafDefaultActivator() {
     $$('.compose-container')[0].getElement('.overTxtLabel').innerHTML = en4.core.language.translate('Post Something...');
   }
 }
+
 window.onbeforeunload = function (event) {
   if (DetectMobileQuick() || (activity_type == 1 && postbyAjax == 0)) {
     return;

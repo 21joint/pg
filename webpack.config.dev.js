@@ -9,7 +9,7 @@ module.exports = merge(webpackConfig, {
   devServer: {
     proxy: {
       '*': {
-        target: 'http://localhost:8888',
+        target: 'http://0.0.0.0:8888',
         secure: false,
         changeOrigin: false
       },
@@ -24,6 +24,7 @@ module.exports = merge(webpackConfig, {
     historyApiFallback: true,
     port: 2121,
     open: true,
+    host: '0.0.0.0',
     hot: true,
     headers: {
       'Access-Control-Allow-Origin': '*',

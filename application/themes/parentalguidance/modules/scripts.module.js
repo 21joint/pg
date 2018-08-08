@@ -1,7 +1,5 @@
 (function ($) {
 
-  en4.prg = !!en4.prg ? en4.prg : {};
-
 
   $('select').each(function () {
     let $self = $(this);
@@ -10,6 +8,8 @@
       placeholder: $self.attr('placeholder')
     });
   });
+
+
   $('.prg-hamburger--btn').on('click', function (e) {
     $('body').toggleClass('prg-nav--open');
   });

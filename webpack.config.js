@@ -22,7 +22,8 @@ const config = {
     reviews_home: APP_DIR + '/themes/parentalguidance/modules/reviews/home.module.js',
     reviews_view: APP_DIR + '/themes/parentalguidance/modules/reviews/view.module.js',
     reviews_create: APP_DIR + '/themes/parentalguidance/modules/reviews/create.module.js',
-    footer: APP_DIR + '/themes/parentalguidance/modules/footer/footer.module.js'
+    footer: APP_DIR + '/themes/parentalguidance/modules/footer/footer.module.js',
+    guides_home: APP_DIR + '/themes/parentalguidance/modules/guides/home.module.js'
   },
   output: {
     filename: 'scripts/[name].bundle.js',

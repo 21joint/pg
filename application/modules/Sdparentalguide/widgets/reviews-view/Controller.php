@@ -13,6 +13,8 @@ class Sdparentalguide_Widget_ReviewsViewController
 
   public function indexAction()
   {
+    $this->view->viewer = $viewer = Engine_Api::_()->user()->getViewer();
+
     $headLink = new Zend_View_Helper_HeadLink();
     $headLink->appendStylesheet('/styles/reviews_view.bundle.css');
   }
