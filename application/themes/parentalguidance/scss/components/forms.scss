@@ -11,6 +11,7 @@ label {
   resize: none;
   border-radius: 0;
   background-color: transparent;
+  font-size: 14px;
   &:before {
     content: ' ';
     position: absolute;
@@ -34,9 +35,8 @@ label {
     border-radius: 100px;
     border-width: 2px;
   }
-  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    color: #333D40;
-    font-size: 14px;
+  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #B3B3B3;
   }
   &:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 30px white inset;

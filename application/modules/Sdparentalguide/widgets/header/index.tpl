@@ -409,6 +409,12 @@
             </li>
             <li class="col-12 col-md-auto">
               <a class="nav-link"
+                 href="<?= $this->baseUrl(); ?>/guides/home">
+                <b><?= $this->translate('Guides'); ?></b>
+              </a>
+            </li>
+            <li class="col-12 col-md-auto">
+              <a class="nav-link"
                  href="<?= $this->url(array(), 'listing_struggles', true); ?>">
                 <b><?= $this->translate('Struggles & Theories'); ?></b>
               </a>

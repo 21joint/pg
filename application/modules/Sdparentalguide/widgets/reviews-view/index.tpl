@@ -300,16 +300,19 @@
                   <span>2 Comments</span>
                 </div>
                 <div class="col-auto">
-                  <div>Sorted By:
-                    <button
-                      class="font-weight-bold dropdown-toggle bg-transparent border-0 align-middle"
-                      type="button"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                      data-toggle="dropdown">Newest
-                    </button>
+                  <div class="dropdown">Sorted By:
+                    <a role="button"
+                       id="commentsSortedBy"
+                       class="text-asphalt font-weight-bold bg-transparent border-0 align-middle"
+                       type="button"
+                       aria-haspopup="true"
+                       aria-expanded="false"
+                       data-toggle="dropdown">Newest <i
+                        class="fa fa-caret-down text-primary ml-2"></i>
+                    </a>
                     <div style="overflow: hidden"
-                         class="dropdown-menu dropdown-menu-right">
+                         class="dropdown-menu dropdown-menu-right"
+                         aria-labelledby="commentsSortedBy">
                       <ul class="list-unstyled p-0 m-0">
                         <li class="dropdown-item"><a role="button"
                                                      class="dropdown-link"
@@ -336,11 +339,22 @@
                   ); ?>
                 </div>
                 <div class="col">
-                  <textarea title="Join Discussion"
+                  <textarea title="<?= $this->translate('Join Discussion') ?>"
                             class="form-control border bg-white py-2 px-3"
-                            id="prgJoinDiscussion" rows="4"
+                            id="prgJoinDiscussion" rows="3"
                             placeholder="Join the discussion..."></textarea>
                 </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="prg-comments">
+                <ul>
+                  <li class="row prg-comment--single">
+                    <div class="col-auto">
+
+                    </div>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

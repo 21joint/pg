@@ -23,7 +23,6 @@ class Sdparentalguide_Widget_HeaderController
     $this->view->updateSettings = Engine_Api::_()->getApi('settings', 'core')
       ->getSetting('core.general.notificationupdate');
 
-
   }
 
 }

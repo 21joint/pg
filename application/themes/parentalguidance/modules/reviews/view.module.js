@@ -1,5 +1,6 @@
 import Api from '../../services/api.service';
 
+import 'bootstrap/js/src/dropdown';
 
 (function ($) {
   let revId = window.location.search.split('=')[1];

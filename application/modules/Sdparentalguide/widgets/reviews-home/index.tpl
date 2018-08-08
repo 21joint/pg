@@ -100,4 +100,4 @@
 </div>
 <!--PAGE SECTION  ///-->
 
-<script src="/scripts/reviews_home.bundle.js"></script>
+<script src="/scripts/reviews_home.bundle.js"></script> 

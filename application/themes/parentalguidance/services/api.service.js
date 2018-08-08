@@ -11,7 +11,7 @@ Api.getReviews = getReviews;
 Api.getReview = getReview;
 
 
-// Get 50 reviews : @params: (options: { container: @selector }, callback : @function)
+/*Get 50 reviews : @params: (options: { container: @selector }, callback : @function)*/
 function getReviews(options, callback) {
   let _reviews = {};
 
