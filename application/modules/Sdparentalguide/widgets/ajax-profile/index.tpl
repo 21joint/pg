@@ -27,7 +27,6 @@
             element.addClass('active');
           }
         });
-
       }
       var moreTabSwitch = window.moreTabSwitch = function (el) {
         el.toggleClass('tab_open');
@@ -52,9 +51,9 @@
       /* Include the common user-end field switching javascript */
       echo $this->partial(
         '_jsSwitch.tpl', 'fields', array(
-        'topLevelId' => (int)@$this->topLevelId,
-        'topLevelValue' => (int)@$this->topLevelValue,
-      )
+          'topLevelId'    => (int)@$this->topLevelId,
+          'topLevelValue' => (int)@$this->topLevelValue,
+        )
       )
       ?>
       <?php
