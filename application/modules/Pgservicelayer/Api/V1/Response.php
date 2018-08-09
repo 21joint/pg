@@ -514,7 +514,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $permissionData = array(
             'memberID' => (string)$user->getIdentity(),
             'isAdmin' => (bool)$user->isAdminOnly(),
-            'isModerator' => (bool)($level->type == 'moderator'),
+            'isModerator' => (bool)$user->isAdmin(),
             'canCommentOnComments' => (bool)$permissionsTable->getAllowed('sdparentalguide_custom', $level_id, "comment_comment"),
             'canLikeComments' => (bool)$permissionsTable->getAllowed('sdparentalguide_custom', $level_id, "like_comment"),
             
@@ -545,8 +545,8 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             'canVoteAnswer' => (bool)$permissionsTable->getAllowed('ggcommunity', $level_id, 'vote_answer'),
             'canCommentAnswer' => (bool)$permissionsTable->getAllowed('ggcommunity', $level_id, 'comment_answer'),
             'canSelectAnswer' => (bool)$canSelectAnswer,
-            'canChangeSelectedAnswer' => (bool)($canSelectAnswer == 2),
-            'canSelectOthersAnswer' => (bool)($canSelectAnswer == 3),
+            'canChangeSelectedAnswer' => (bool)($canSelectAnswer == 2 || $canSelectAnswer == 3 || $canSelectAnswer == 4),
+            'canSelectOthersAnswer' => (bool)($canSelectAnswer == 3 || $canSelectAnswer == 4),
             'canChangeOthersSelectedAnswer' => (bool)($canSelectAnswer == 4),
             'canApproveQuestion' => (bool)$permissionsTable->getAllowed('ggcommunity', $level_id, 'approve_question'),
             'canChangeCloseDate' => (bool)$permissionsTable->getAllowed('ggcommunity', $level_id, 'edit_close_date'),
