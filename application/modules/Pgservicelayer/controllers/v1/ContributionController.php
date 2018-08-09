@@ -71,6 +71,12 @@ class Pgservicelayer_ContributionController extends Pgservicelayer_Controller_Ac
                 $select->where("$creditTableName.user_id = ?",(int)$memberID);
             }
         }
+        $topicID = $this->getParam("topicID");
+        if(is_string($topicID) && !empty($topicID)){
+            $select->where("$creditTableName.gg_topic_id = ?",$topicID);
+        }else if(is_array($topicID) && !empty ($topicID)){
+            $select->where("$creditTableName.gg_topic_id IN (?)",$topicID);
+        }
         $select->order("$creditTableName.credit_id DESC");
         
         $paginator = Zend_Paginator::factory($select);
