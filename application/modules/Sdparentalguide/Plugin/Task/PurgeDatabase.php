@@ -231,12 +231,12 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
                 ));
             }
           }
-          if( !empty( $job_user ) ){
+//          if( !empty( $job_user ) ){
             // Delete User
             $usersTable->delete(array(
-              "user_id = ?" => $job_user
+              "user_id = ?" => $user->getIdentity()
             ));
-          }
+//          }
         } catch (Exception $e) {
           //Silent
         }
