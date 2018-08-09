@@ -3934,7 +3934,7 @@ mark,
   height: 20px;
   font-size: 12px;
   border: 2px solid #fff; }
-  .item-photo-guidance .statistic.primary {
+  .item-photo-guidance .statistic.default {
     background: linear-gradient(to bottom right, #5CC7CE, #5CC7CE); }
   .item-photo-guidance .statistic.bronze {
     background: linear-gradient(to bottom right, #E5B8A8, #D7947C); }
@@ -4747,7 +4747,7 @@ form.preference-holder {
       form.preference-holder #buttons-wrapper #fieldset-buttons a {
         width: 45%; }
 
-.border-gear ~ img {
+.mvp-border ~ img {
   border-style: solid !important;
   border-width: 5px 6px 5px 6px !important;
   -moz-border-image: url("../images/border.png") 20 20 20 20 round !important;

@@ -26,6 +26,13 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             case 'Sdparentalguide_Model_SearchTermsAlias':
             case 'Sdparentalguide_Model_ListingRating':
             case 'Sdparentalguide_Model_SearchAnalytic':
+            case 'Ggcommunity_Model_Question':
+            case 'Ggcommunity_Model_Answer':
+            case 'Core_Model_Comment':
+            case 'Ggcommunity_Model_Vote':
+            case 'Core_Model_Like':
+            case 'Nestedcomment_Model_Dislike':
+            case 'Pgservicelayer_Model_View':
                 $allowed = true;
                 break;
             default:
@@ -578,6 +585,14 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
         if(empty($data) || empty($user)){
             return;
         }
+        $viewer = Engine_Api::_()->user()->getViewer();
+        $data['gg_user_lastmodified'] = $viewer->getIdentity();
+        $data['gg_dt_lastmodified'] = date("Y-m-d H:i:s");
+        $db = Engine_Db_Table::getDefaultAdapter();
+        $ipObj = new Engine_IP();
+        $ipExpr = new Zend_Db_Expr($db->quoteInto('UNHEX(?)', bin2hex($ipObj->toBinary())));
+        $data['gg_ip_lastmodified'] = $ipExpr;
+        $data['gg_guid'] = $user->getGuid();
         $table = Engine_Api::_()->getDbtable('users','user');
         $table->update($data,array('user_id = ?' => (int)$user->getIdentity()));
     }
