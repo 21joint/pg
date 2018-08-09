@@ -93,21 +93,26 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
           if ( $userPaginator->getTotalItemCount() > 0 ) {
             foreach ( $userPaginator as $user ) {
                 // Get User Activity Actions
-                $userActionSelect = $actionsTable->select()->where("subject_id = ?", $user->getIdentity());
-                $userActions = $actionsTable->fetchAll($userActionSelect);
-                if ( count( $userActions ) > 0 ) {
-                    foreach ( $userActions as $action ) {
-                        // Delete User Activity Action's Attachments
-                        $attachmentsTable->delete(array(
-                            "action_id = ?" => $action->getIdentity()
-                        ));
-
-                        // Delete User Activity Action's Stream
-                        $streamsTable->delete(array(
-                            "action_id = ?" => $action->getIdentity()
-                        ));
-                    }
-                }
+//                $userActionSelect = $actionsTable->select()->where("subject_id = ?", $user->getIdentity());
+//                $userActions = $actionsTable->fetchAll($userActionSelect);
+//                if ( count( $userActions ) > 0 ) {
+//                    foreach ( $userActions as $action ) {
+//                        // Delete User Activity Action's Attachments
+//                        $attachmentsTable->delete(array(
+//                            "action_id = ?" => $action->getIdentity()
+//                        ));
+//
+//                        // Delete User Activity Action's Stream
+//                        $streamsTable->delete(array(
+//                            "action_id = ?" => $action->getIdentity()
+//                        ));
+//                    }
+//                }
+                
+                $streamsTable->delete(array(
+                    "subject_id = ?" => $user->getIdentity(),
+                    'subject_type' => 'user'
+                ));
 
                 // Delete User Activity Actions
                 $actionsTable->delete(array(
