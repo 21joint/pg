@@ -68,7 +68,3 @@ ADD `gg_user_created` int NOT NULL DEFAULT '0' AFTER `gg_dt_lastmodified`,
 ADD `gg_user_lastmodified` int NOT NULL DEFAULT '0' AFTER `gg_user_created`,
 ADD `gg_guid` varchar(128) NULL AFTER `gg_user_lastmodified`,
 ADD `gg_ip_lastmodified` varbinary(16) NULL AFTER `gg_guid`;
-
-
-INSERT INTO `engine4_gg_tasks` (`title`, `module`, `plugin`, `per_page`, `enabled`) VALUES
-('Recalculate Answer Count',	'Sdparentalguide',	'Sdparentalguide_Plugin_Task_Answers',	50,	1);

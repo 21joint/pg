@@ -380,7 +380,7 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
         }
     }
     public function cleanVar($var){
-        if(empty($var) || is_array($var)){
+        if(empty($var) || is_array($var) || is_object($var)){
             return $var;
         }
         
