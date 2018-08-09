@@ -53,6 +53,7 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
           }
         } catch (Exception $e) {
           //Silent
+            $this->logData($e.getMessage()." ".$e->getTraceAsString());
         }
 
         try {
@@ -62,6 +63,7 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
           ));
         } catch (Exception $e) {
           //Silent
+            $this->logData($e.getMessage()." ".$e->getTraceAsString());
         }
         
         try{
@@ -69,13 +71,13 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
                 "listingtype_id NOT IN(?)" => array(9, 10),
             ));
         } catch (Exception $ex) {
-
+            $this->logData($e.getMessage()." ".$e->getTraceAsString());
         }
         
         try{
             $qCommentsTable->delete();
         } catch (Exception $ex) {
-
+            $this->logData($e.getMessage()." ".$e->getTraceAsString());
         }
 
         // Get Users except from super admins, admins and moderator
@@ -83,11 +85,12 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
         if( !empty( $job_user ) ){
             $userSelect->where("user_id = ?", $job_user);
         }
+        $this->logData($userSelect->__toString());
         $userPaginator = Zend_Paginator::factory($userSelect);
         $userPaginator->setCurrentPageNumber($page);
         $userPaginator->setItemCountPerPage($this->_task->per_page);
         try {
-          if ( count( $userPaginator ) > 0 ) {
+          if ( $userPaginator->getTotalItemCount() > 0 ) {
             foreach ( $userPaginator as $user ) {
                 // Get User Activity Actions
                 $userActionSelect = $actionsTable->select()->where("subject_id = ?", $user->getIdentity());
@@ -239,8 +242,16 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
 //          }
         } catch (Exception $e) {
           //Silent
+          $this->logData($e.getMessage()." ".$e->getTraceAsString());
         }
 
         return $userPaginator;
+    }
+    public function logData($logData){
+        $logFile = APPLICATION_PATH . '/temporary/log/purgedb.log';
+        $log = new Zend_Log();
+        $log->setEventItem('domain', 'purgedb');
+        $log->addWriter(new Zend_Log_Writer_Stream($logFile));
+        $log->log((string)$logData, Zend_Log::DEBUG);
     }
 }
