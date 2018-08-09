@@ -9,7 +9,7 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
         $commentsTable = Engine_Api::_()->getDbtable("comments", "activity");
         $likesTable = Engine_Api::_()->getDbtable("likes", "activity");
         $notificationsTable = Engine_Api::_()->getDbtable("notifications", "activity");
-        $notificationsettingsTable = Engine_Api::_()->getDbtable("notificationsettings", "activity");
+        $notificationsettingsTable = Engine_Api::_()->getDbtable("notificationSettings", "activity");
         $streamsTable = Engine_Api::_()->getDbtable("stream", "activity");
 
         $questionsTable = Engine_Api::_()->getDbtable("questions", "ggcommunity");
