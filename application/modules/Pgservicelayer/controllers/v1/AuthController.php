@@ -38,8 +38,9 @@ class Pgservicelayer_AuthController extends Pgservicelayer_Controller_Action_Api
         // Already logged in
         $siteapiUserLoginAuthentication = 1;
         $viewer = Engine_Api::_()->user()->getViewer();
-        if ($viewer->getIdentity())
-            $this->respondWithError('user_login_default');
+        if ($viewer->getIdentity()){
+            Engine_Api::_()->user()->getAuth()->clearIdentity();
+        }
 
         Engine_Api::_()->getApi('Core', 'siteapi')->setView();
 

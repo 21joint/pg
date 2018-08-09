@@ -653,9 +653,26 @@ UPDATE `engine4_core_pages`
 SET `layout` = 'default-auth' WHERE `engine4_core_pages`.`page_id` = 13;
 
 
+/***************my-upgrade-2018-07-13*****************/
+
+ALTER TABLE `engine4_core_search`
+ADD FULLTEXT `title_keywords_hidden` (`title`, `keywords`, `hidden`);
+
+ALTER TABLE `engine4_core_search`
+ADD `topic_id` int NULL DEFAULT '0',
+ADD `creation_date` datetime NULL AFTER `topic_id`,
+ADD `modified_date` datetime NULL AFTER `creation_date`;
+
+
 /***************my-upgrade-2018-07-18*****************/
 
-INSERT INTO `engine4_gg_tasks` (`task_id`, `title`, `module`, `plugin`, `per_page`, `enabled`) VALUES (NULL, 'Recalculate Answers Count', 'Sdparentalguide', 'Sdparentalguide_Plugin_Task_Answers', '50', '1');
+
+
+UPDATE engine4_user_membership SET creation_date = "2018-07-16 00:00:00";
+
+
+/***************my-upgrade-2018-07-18*****************/
+
 
 ALTER TABLE `engine4_users`
 ADD `gg_answer_count` int NOT NULL DEFAULT 0 AFTER `gg_guide_count`;

@@ -52,7 +52,7 @@ class Pgservicelayer_Model_DbTable_Votes extends Engine_Db_Table {
             $resource->down_vote_count++;
             $resource->save();
         }
-
+        $row->save();
         return $row;
     }
 

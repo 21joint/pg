@@ -26,6 +26,13 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             case 'Sdparentalguide_Model_SearchTermsAlias':
             case 'Sdparentalguide_Model_ListingRating':
             case 'Sdparentalguide_Model_SearchAnalytic':
+            case 'Ggcommunity_Model_Question':
+            case 'Ggcommunity_Model_Answer':
+            case 'Core_Model_Comment':
+            case 'Ggcommunity_Model_Vote':
+            case 'Core_Model_Like':
+            case 'Nestedcomment_Model_Dislike':
+            case 'Pgservicelayer_Model_View':
                 $allowed = true;
                 break;
             default:
@@ -37,10 +44,10 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
     public function onActivityActionCreateAfter($event){
         $payload = $event->getPayload();
         $viewer = Engine_Api::_()->user()->getViewer();
-        $auditingSaved = Zend_Registry::isRegistered("Auditing_Created");
+        $auditingSaved = Zend_Registry::isRegistered("Auditing_Created_Activity");
         try{
             //This will fix max level error
-            if($auditingSaved && Zend_Registry::get("Auditing_Created") > 20){
+            if($auditingSaved && Zend_Registry::get("Auditing_Created_Activity") > 20){
                 return;
             }
             
@@ -49,9 +56,9 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
 //            throw $ex;
         }
         if($auditingSaved){
-            Zend_Registry::set("Auditing_Created", Zend_Registry::get("Auditing_Created")+1);
+            Zend_Registry::set("Auditing_Created_Activity", Zend_Registry::get("Auditing_Created_Activity")+1);
         }else{
-            Zend_Registry::set("Auditing_Created",1);
+            Zend_Registry::set("Auditing_Created_Activity",1);
         }
     }
     public function onItemCreateBefore($event){
@@ -96,36 +103,27 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
     public function onItemCreateAfter($event){
         $payload = $event->getPayload();
         $viewer = Engine_Api::_()->user()->getViewer();
-        $auditingSaved = Zend_Registry::isRegistered("Auditing_Created");
+        $auditingSaved = Zend_Registry::isRegistered("Auditing_Created_After");
         try{
             //This will fix max level error
-            if($auditingSaved && Zend_Registry::get("Auditing_Created") > 40){
+            if($auditingSaved && Zend_Registry::get("Auditing_Created_After") > 40){
                 return;
             }
             
             if( $payload instanceof Sitereview_Model_Listing && $payload->approved) {
-                $viewer->gg_review_count++;
-                $viewer->save();
+                $this->updateUserData($viewer,array('gg_review_count' => (++$viewer->gg_review_count)));
             }
             
             
             if( $payload instanceof Ggcommunity_Model_Question && $payload->approved && !$payload->draft) {
-                $viewer->gg_question_count++;
-                $viewer->save();
+                $this->updateUserData($viewer,array('gg_question_count' => (++$viewer->gg_question_count)));
+            }
+            
+            if( $payload instanceof Ggcommunity_Model_Answer) {
+                $this->updateUserData($viewer,array('gg_answer_count' => (++$viewer->gg_answer_count)));
             }
             
             if( $payload instanceof Sitecredit_Model_Credit) {
-//                $creditsTable = Engine_Api::_()->getDbtable('credits','sdparentalguide');
-//                $row = $creditsTable->getUserActivityCount($viewer);
-//                $userCredits = 0;
-//                $userActivities = 0;
-//                if(!empty($row)){
-//                    $userCredits = $row->credit;
-//                    $userActivities = $row->activities;
-//                }
-//                $viewer->gg_contribution = $userCredits;
-//                $viewer->gg_activities = $userActivities;
-//                $viewer->save();
                 $this->updateUserCredits($payload);
             }
             
@@ -134,9 +132,9 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             throw $ex;
         }
         if($auditingSaved){
-            Zend_Registry::set("Auditing_Created", Zend_Registry::get("Auditing_Created")+1);
+            Zend_Registry::set("Auditing_Created_After", Zend_Registry::get("Auditing_Created_After")+1);
         }else{
-            Zend_Registry::set("Auditing_Created",1);
+            Zend_Registry::set("Auditing_Created_After",1);
         }
     }
     public function updateUserCredits($payload){
@@ -149,14 +147,26 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             $row = $creditsTable->getUserActivityCount($user);
             $userCredits = 0;
             $userActivities = 0;
+            $level_id = $user->level_id;
             if(!empty($row)){
                 $userCredits = $row->credit;
                 $userActivities = $row->activities;
             }
-            $user->gg_contribution = $userCredits;
-            $user->gg_activities = $userActivities;
-            $user->gg_contribution_updated = 1;
-            $user->save();
+            $data = array('gg_contribution' => $userCredits,'gg_activities' => $userActivities,'gg_contribution_updated' => 1,'level_id' => $level_id);
+            $table = Engine_Api::_()->getDbtable('users','user');
+            $api = Engine_Api::_()->sdparentalguide();
+            $badge = $api->getUserBadge($userCredits);
+            if(!empty($badge)){
+                $data['gg_contribution_level'] = $badge->gg_contribution_level;
+                if(!$user->isAdmin() && $badge->gg_level_id > 0){
+                    $data['level_id'] = $badge->gg_level_id;
+                }
+            }
+            $table->update($data,array('user_id = ?' => $payload->user_id));
+//            $user->gg_contribution = $userCredits;
+//            $user->gg_activities = $userActivities;
+//            $user->gg_contribution_updated = 1;
+//            $user->save();
             
         } catch (Exception $ex) {
             //Silent
@@ -164,13 +174,17 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
         }
     }
     public function onItemUpdateAfter($event){
+        $auditingSaved = Zend_Registry::isRegistered("Auditing_Updated");
         try{
             $payload = $event->getPayload();
             $viewer = Engine_Api::_()->user()->getViewer();
-            $auditingSaved = Zend_Registry::isRegistered("Auditing_Saved");
-            if(!empty($auditingSaved)){
+            if($auditingSaved && Zend_Registry::get("Auditing_Updated") > 10){
                 return;
             }
+            if($payload->getType() != "user" && $payload->getType() != "credit"){
+                $this->updateExistingTransactionTopic($payload);
+            }
+            
             //This will fix max level error by saving data mannually.
             if($this->isAllowedAuditing($payload)) {
                 $params = $this->getAuditingParams($payload);
@@ -190,20 +204,24 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                     if(!empty($where)){
                         $table->update($params,$where);
                     }
-                    Zend_Registry::set("Auditing_Saved",1);
+                    Zend_Registry::set("Auditing_Updated",1);
                 }                
             }
         } catch (Exception $ex) {
             //Silent
         }
-        Zend_Registry::set("Auditing_Saved",1);
+        if($auditingSaved){
+            Zend_Registry::set("Auditing_Updated", Zend_Registry::get("Auditing_Updated")+1);
+        }else{
+            Zend_Registry::set("Auditing_Updated",1);
+        }
     }
     public function onItemUpdateBefore($event){
+        $auditingSaved = Zend_Registry::isRegistered("Auditing_Updated_Before");
         try{
             $payload = $event->getPayload();
-            $viewer = Engine_Api::_()->user()->getViewer();
-            $auditingSaved = Zend_Registry::isRegistered("Auditing_Saved");
-            if(!empty($auditingSaved)){
+            $viewer = Engine_Api::_()->user()->getViewer();            
+            if($auditingSaved && Zend_Registry::get("Auditing_Updated_Before") > 10){
                 return;
             }
             //This will fix max level error by saving data mannually.
@@ -225,7 +243,7 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                     if(!empty($where)){
                         $table->update($params,$where);
                     }
-                    Zend_Registry::set("Auditing_Saved",1);
+                    Zend_Registry::set("Auditing_Updated_Before",1);
                 }
                 
             }
@@ -233,27 +251,23 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             $modifiedFields = $payload->getModifiedFields();
                         
             if( $payload instanceof Sitereview_Model_Listing && $payload->approved && isset($modifiedFields['approved'])) {
-                $payload->getOwner()->gg_review_count++;
-                $payload->getOwner()->save();
+                $this->updateUserData($payload->getOwner(),array('gg_review_count' => (++$payload->getOwner()->gg_review_count)));
             }
             
             if( $payload instanceof Sitereview_Model_Listing && !$payload->approved && isset($modifiedFields['approved'])) {
-                $payload->getOwner()->gg_review_count--;
-                $payload->getOwner()->save();
+                $this->updateUserData($payload->getOwner(),array('gg_review_count' => (--$payload->getOwner()->gg_review_count)));
             }
             
             if( $payload instanceof Ggcommunity_Model_Question && (isset($modifiedFields['approved']) || isset($modifiedFields['draft']))) {
                 if($payload->approved && !$payload->draft){
                     $payloadUser = Engine_Api::_()->user()->getUser($payload->user_id);
-                    $payloadUser->gg_question_count++;
-                    $payloadUser->save();
+                    $this->updateUserData($payloadUser,array('gg_question_count' => (++$payloadUser->gg_question_count)));
                 }
             }            
             if( $payload instanceof Ggcommunity_Model_Question && (isset($modifiedFields['approved']) || isset($modifiedFields['draft']))) {
                 if((!$payload->approved || $payload->draft)){
                     $payloadUser = Engine_Api::_()->user()->getUser($payload->user_id);
-                    $payloadUser->gg_question_count--;
-                    $payloadUser->save();
+                    $this->updateUserData($payloadUser,array('gg_question_count' => (--$payloadUser->gg_question_count)));
                 }
             }
             
@@ -264,7 +278,7 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                 $badge = $api->getUserBadge($payload->gg_contribution);
                 if(!empty($badge)){
                     $payload->gg_contribution_level = $badge->gg_contribution_level;
-                    if(!$payload->isAdminOnly() && $badge->gg_level_id > 0){
+                    if(!$payload->isAdmin() && $badge->gg_level_id > 0){
                         $payload->level_id = $badge->gg_level_id;
                     }
                     $payload->save();
@@ -276,7 +290,11 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
         } catch (Exception $ex) {
             //Silent
         }
-        Zend_Registry::set("Auditing_Saved",1);
+        if($auditingSaved){
+            Zend_Registry::set("Auditing_Updated_Before", Zend_Registry::get("Auditing_Updated_Before")+1);
+        }else{
+            Zend_Registry::set("Auditing_Updated_Before",1);
+        }
     }
     public function updateAuditing($listing){
         $db = Engine_Db_Table::getDefaultAdapter();
@@ -407,14 +425,18 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                 $assignedTable = Engine_Api::_()->getDbtable('assignedBadges', 'sdparentalguide');
                 $assignedTable->delete(array('user_id = ?' => $item->getIdentity()));
           }
-          if( $item instanceof Ggcommunity_Model_Question && $item->approved && !$item->draft) {
-                $item->getOwner()->gg_question_count--;
-                $item->getOwner()->save();
-          }
-          
-          if( $item instanceof Sitereview_Model_Listing && $item->approved) {
-                $item->getOwner()->gg_review_count--;
-                $item->getOwner()->save();
+          if(isset($item->gg_deleted) && !$item->gg_deleted){
+                if( $item instanceof Ggcommunity_Model_Question && $item->approved && !$item->draft) {
+                     $this->updateUserData($item->getOwner(),array('gg_question_count' => (--$item->getOwner()->gg_question_count)));
+                }
+
+                if( $item instanceof Ggcommunity_Model_Answer) {
+                      $this->updateUserData($item->getOwner(),array('gg_answer_count' => (--$item->getOwner()->gg_answer_count)));
+                }
+
+                if( $item instanceof Sitereview_Model_Listing && $item->approved) {
+                      $this->updateUserData($item->getOwner(),array('gg_review_count' => (--$item->getOwner()->gg_review_count)));
+                }
           }
       } catch (Exception $ex) {
           //Silent
@@ -471,21 +493,110 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
     }    
 
     public function updateTransactionTopic($payload){
-        if($payload->resource_type != "sitereview_listing"){
+        $resource = Engine_Api::_()->getItem($payload->resource_type,$payload->resource_id);
+        if(empty($resource)){
             return;
         }
         
-        $listing = Engine_Api::_()->getItem($payload->resource_type,$payload->resource_id);
-        if(empty($listing)){
+        //Don't attach topic if
+        if($resource->getType() == "core_comment" || $resource->getType() == "core_like" || $resource->getType() == "nestedcomment_dislike" || $resource->getType() == "ggcommunity_vote"){
             return;
         }
-        $listingType = $listing->getListingType();
-        if(empty($listingType)){
-            return;
+        if($resource->getType() == "ggcommunity_answer"){
+            $question = $resource->getParent();
+            if(empty($question)){
+                return;
+            }
+            $payload->gg_topic_id = $question->topic_id;
         }
-        
-        $payload->gg_topic_id = $listingType->gg_topic_id;
+        if($payload->resource_type == "sitereview_listing"){
+            $listingType = $resource->getListingType();
+            if(empty($listingType)){
+                return;
+            }
+
+            $payload->gg_topic_id = $listingType->gg_topic_id;
+        }
+        if(isset($resource->topic_id)){
+            $payload->gg_topic_id = $resource->topic_id;
+        }
+        if(isset($resource->gg_topic_id)){
+            $payload->gg_topic_id = $resource->gg_topic_id;
+        }
 //        $payload->save();
+    }
+    
+    public function updateExistingTransactionTopic($resource){
+        //Don't attach topic if
+        if($resource->getType() == "core_comment" || $resource->getType() == "core_like" || $resource->getType() == "nestedcomment_dislike" || $resource->getType() == "ggcommunity_vote"){
+            return;
+        }
+        $topic_id = 0;
+        if($resource->getType() == "sitereview_listing"){
+            $listingType = $resource->getListingType();
+            if(empty($listingType)){
+                return;
+            }
+
+            $topic_id = $listingType->gg_topic_id;
+        }
+        if($resource->getType() == "ggcommunity_answer"){
+            $question = $resource->getParent();
+            if(empty($question)){
+                return;
+            }
+            $topic_id = $question->topic_id;
+        }
+        if(isset($resource->topic_id)){
+            $topic_id = $resource->topic_id;
+        }
+        if(isset($resource->gg_topic_id)){
+            $topic_id = $resource->gg_topic_id;
+        }
+        if(empty($topic_id)){
+            return;
+        }
+        $creditTable = Engine_Api::_()->getItemTable('credit');
+        $creditTable->update(array('gg_topic_id' => $topic_id),array('resource_type = ?' => $resource->getType(),'resource_id = ?' => $resource->getIdentity()));
+    }
+    
+    public function onCreditCreateAfter($event){
+        $payload = $event->getPayload();
+        $user = Engine_Api::_()->user()->getUser($payload->user_id);
+        $user->gg_activities = $user->gg_activities + 1;
+        $user->gg_contribution = $user->gg_contribution + $payload->credit_point;
+        
+        $data = array();
+        $data['gg_activities'] = $user->gg_activities + 1;
+        $data['gg_contribution'] = $user->gg_contribution + $payload->credit_point;
+        $api = Engine_Api::_()->sdparentalguide();
+        $badge = $api->getUserBadge($payload->gg_contribution);
+        if(!empty($badge)){
+            $payload->gg_contribution_level = $badge->gg_contribution_level;
+            $data['gg_contribution_level'] = $badge->gg_contribution_level;
+            if(!$payload->isAdminOnly() && $badge->gg_level_id > 0){
+                $payload->level_id = $badge->gg_level_id;
+                $data['level_id'] = $badge->gg_level_id;
+            }
+            Zend_Registry::set("ContributionLevel_Saved",1);
+        }
+        Engine_Api::_()->getDbTable("users","user")->update($data,array('user_id = ?' => (int)$payload->user_id));        
+    }
+    
+    public function updateUserData($user,$data){
+        if(empty($data) || empty($user)){
+            return;
+        }
+        $viewer = Engine_Api::_()->user()->getViewer();
+        $data['gg_user_lastmodified'] = $viewer->getIdentity();
+        $data['gg_dt_lastmodified'] = date("Y-m-d H:i:s");
+        $db = Engine_Db_Table::getDefaultAdapter();
+        $ipObj = new Engine_IP();
+        $ipExpr = new Zend_Db_Expr($db->quoteInto('UNHEX(?)', bin2hex($ipObj->toBinary())));
+        $data['gg_ip_lastmodified'] = $ipExpr;
+        $data['gg_guid'] = $user->getGuid();
+        $table = Engine_Api::_()->getDbtable('users','user');
+        $table->update($data,array('user_id = ?' => (int)$user->getIdentity()));
     }
     
     public function onCreditCreateAfter($event){

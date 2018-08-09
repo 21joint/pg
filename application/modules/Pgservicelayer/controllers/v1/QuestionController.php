@@ -372,7 +372,9 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
                 }
                 $question->gg_deleted = 1;
                 $question->save();
-                
+                if($question->approved && !$question->draft) {
+                    Engine_Api::_()->pgservicelayer()->updateUserCount(array('gg_question_count' => (--$poster->gg_question_count)),$question->user_id);                    
+                }
                 $question->deletePoints();
             }            
             $db->commit();
