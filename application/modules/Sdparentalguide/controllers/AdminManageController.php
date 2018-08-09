@@ -561,6 +561,8 @@ class Sdparentalguide_AdminManageController extends Core_Controller_Action_Admin
           if($page == 1){
               $task->log(sprintf($this->view->translate("Batch Job Starting: %s"),$task->getTitle()));
           }
+          set_time_limit(0);
+          ini_set('memory_limit', '2048M');
           $paginator = $task->run($page,$job_user);
           $this->view->nextPage = 0;
           if($paginator->count() > $paginator->getCurrentPageNumber()){
