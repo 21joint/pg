@@ -152,7 +152,8 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
             if(!empty($parentCommentId) && isset($comment->parent_comment_id)){
                 $commentData['parent_comment_id'] = $parentCommentId;                
             }
-            $comment->getTable()->update($commentData,array('comment_id = ?' => $comment->getIdentity()));
+            $commentData['gg_guid'] = sprintf('%s_%d', $comment->getType(), $comment->comment_id);
+            $comment->getTable()->update($commentData,array('comment_id = ?' => $comment->comment_id));
             
             if($subject->getType() == "ggcommunity_answer" && $subject->getOwner() && !$viewer->isSelf($subject->getOwner())){
                 $actionOwner = Engine_Api::_()->getDbtable('actions', 'activity')->addActivity($subject->getOwner(), $subject, "question_answer_comment",null,array(

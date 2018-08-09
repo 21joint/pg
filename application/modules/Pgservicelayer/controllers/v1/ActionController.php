@@ -112,6 +112,7 @@ class Pgservicelayer_ActionController extends Pgservicelayer_Controller_Action_A
                 $this->respondWithError('unauthorized',$this->translate("Invalid actionType passed."));
             }
             $view = $table->addView($subject,$actionType);
+            $view->save();
             $db->commit();
             
             $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");

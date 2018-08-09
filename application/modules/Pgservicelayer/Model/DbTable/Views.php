@@ -10,6 +10,8 @@
 class Pgservicelayer_Model_DbTable_Views extends Engine_Db_Table {
     protected $_name = 'gg_views';
     protected $_viewRow = null;
+    protected $_rowClass = 'Pgservicelayer_Model_View';
+    
     public function getView($subject,$actionType = "click"){
         if($this->_viewRow != null){
             return $this->_viewRow;

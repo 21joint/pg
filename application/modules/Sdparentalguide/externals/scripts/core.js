@@ -247,23 +247,48 @@ en4.gg.ajaxTab = {
       if (params.requestUrl)
           url = params.requestUrl;
       
-      var request = new Request.HTML({
-          url: url,
-          data: $merge(params.requestParams, {
-              format: 'html',
-              subject: en4.core.subject.guid,
-              is_ajax_load: true
-          }),
-          evalScripts: true,
-          onSuccess: function( responseTree, responseElements, responseHTML, responseJavaScript ) {
-              params.responseContainer.each(function (container) {
-                  container.empty();
-                  Elements.from(responseHTML).inject(container);
-                  en4.core.runonce.trigger();
-                  Smoothbox.bind(container);
-              });
+      var format = 'html';
+      var method = 'post';
+      try{
+          if(params.requestParams.hasOwnProperty("format")){
+              format = params.requestParams.format;
           }
-      });
+          if(params.requestParams.hasOwnProperty("method")){
+              method = params.requestParams.method;
+          }
+      }catch(e){}
+      
+      if(format == 'json'){      
+            var request = new Request.JSON({
+                url: url,
+                method: 'get',
+                data: $merge(params.requestParams, {
+                    format: 'json',
+                    subject: en4.core.subject.guid,
+                    is_ajax_load: true
+                }),
+                onSuccess: params.successHandler
+            });            
+        }else{
+            var request = new Request.HTML({
+                url: url,
+                method: 'get',
+                data: $merge(params.requestParams, {
+                    format: 'html',
+                    subject: en4.core.subject.guid,
+                    is_ajax_load: true
+                }),
+                evalScripts: true,
+                onSuccess: function( responseTree, responseElements, responseHTML, responseJavaScript ) {
+                    params.responseContainer.each(function (container) {
+                        container.empty();
+                        Elements.from(responseHTML).inject(container);
+                        en4.core.runonce.trigger();
+                        Smoothbox.bind(container);
+                    });
+                }
+            });
+        }
       
       // send request
       request.send();
