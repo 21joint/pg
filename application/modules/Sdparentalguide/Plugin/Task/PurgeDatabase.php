@@ -75,7 +75,7 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
         }
         
         try{
-            $qCommentsTable->delete();
+            $qCommentsTable->delete(array());
         } catch (Exception $ex) {
             $this->logData($e.getMessage()." ".$e->getTraceAsString());
         }
