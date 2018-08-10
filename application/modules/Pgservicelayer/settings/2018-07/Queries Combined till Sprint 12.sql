@@ -631,3 +631,67 @@ ALTER TABLE `engine4_ggcommunity_questions` ADD `gg_deleted` tinyint NOT NULL DE
 ALTER TABLE `engine4_storage_files` ADD `gg_deleted` tinyint NOT NULL DEFAULT '0';
 
 ALTER TABLE `engine4_ggcommunity_answers` ADD `gg_deleted` tinyint NOT NULL DEFAULT '0';
+
+
+/***************my-upgrade-2018-07-04*****************/
+
+ALTER TABLE `engine4_users`
+ADD `gg_gender` int NOT NULL DEFAULT '3' AFTER `gg_following_count`,
+ADD `gg_age_range` text NULL AFTER `gg_gender`,
+ADD `gg_age_range_set` datetime NULL AFTER `gg_age_range`;
+
+UPDATE `engine4_core_pages` 
+SET `layout` = 'default-auth' WHERE `engine4_core_pages`.`page_id` = 9;
+
+UPDATE `engine4_core_pages` 
+SET `layout` = 'default-auth' WHERE `engine4_core_pages`.`page_id` = 11;
+
+UPDATE `engine4_core_pages` 
+SET `layout` = 'default-auth' WHERE `engine4_core_pages`.`page_id` = 12;
+
+UPDATE `engine4_core_pages` 
+SET `layout` = 'default-auth' WHERE `engine4_core_pages`.`page_id` = 13;
+
+
+/***************my-upgrade-2018-07-13*****************/
+
+ALTER TABLE `engine4_core_search`
+ADD FULLTEXT `title_keywords_hidden` (`title`, `keywords`, `hidden`);
+
+ALTER TABLE `engine4_core_search`
+ADD `topic_id` int NULL DEFAULT '0',
+ADD `creation_date` datetime NULL AFTER `topic_id`,
+ADD `modified_date` datetime NULL AFTER `creation_date`;
+
+
+/***************my-upgrade-2018-07-18*****************/
+
+
+
+UPDATE engine4_user_membership SET creation_date = "2018-07-16 00:00:00";
+
+
+/***************my-upgrade-2018-07-18*****************/
+
+
+ALTER TABLE `engine4_users`
+ADD `gg_answer_count` int NOT NULL DEFAULT 0 AFTER `gg_guide_count`;
+
+
+
+/***************my-upgrade-2018-07-24*****************/
+
+
+INSERT INTO `engine4_activity_actiontypes` (`type`, `module`, `body`, `enabled`, `displayable`, `attachable`, `commentable`, `shareable`, `is_generated`, `is_grouped`, `is_object_thumb`, `editable`) VALUES
+('question_answer',	'ggcommunity',	'{item:$subject} answered a question {item:$object}:',	1,	5,	1,	3,	1,	1,	0,	0,	0),
+('question_answer_author_comment',	'ggcommunity',	'{item:$subject} commented on {item:$owner}\'s answer {item:$object}:',	1,	5,	1,	3,	1,	1,	0,	0,	0),
+('question_answer_author_vote',	'ggcommunity',	'{item:$subject} voted for {item:$owner}\'s answer {item:$object}:',	1,	5,	1,	3,	1,	1,	0,	0,	0),
+('question_answer_chosen',	'ggcommunity',	'{item:$subject} chosen {item:$owner}\'s answer  {item:$object}:',	1,	5,	1,	3,	1,	1,	0,	0,	0),
+('question_answer_comment',	'ggcommunity',	'{item:$subject} commented on an answer {item:$object}:',	1,	5,	1,	3,	1,	1,	0,	0,	0),
+('question_answer_vote',	'ggcommunity',	'{item:$subject} voted for an answer {item:$object}:',	1,	5,	1,	3,	1,	1,	0,	0,	0),
+('question_author_answer',	'ggcommunity',	'{item:$subject} answered {item:$owner}\'s question {item:$object}:',	1,	5,	1,	3,	1,	1,	0,	0,	0),
+('question_author_comment',	'ggcommunity',	'{item:$subject} commented on {item:$owner}\'s question {item:$object}:',	1,	5,	1,	3,	1,	1,	0,	0,	0),
+('question_author_vote',	'ggcommunity',	'{item:$subject} voted for {item:$owner}\'s question {item:$object}:',	1,	5,	1,	3,	1,	1,	0,	0,	0),
+('question_comment',	'ggcommunity',	'{item:$subject} commented on a question {item:$object}:',	1,	5,	1,	3,	1,	1,	0,	0,	0),
+('question_create',	'ggcommunity',	'{item:$subject} asked a new question {item:$object}:',	1,	5,	1,	3,	1,	1,	0,	0,	0),
+('question_vote',	'ggcommunity',	'{item:$subject} voted for a question {item:$object}:',	1,	5,	1,	3,	1,	1,	0,	0,	0);

@@ -240,6 +240,11 @@ public function onActivityActionCreateAfter($event) {
     {  
       Engine_Api::_()->getDbtable('validities','sitecredit')->insertvalidity();
     } else {
+        
+      //Fix for validity strtotime("+$checkValidity months", strtotime($validityuser->start_date)) returns invalid date.
+      if($checkValidity > 200){
+          $checkValidity = 200;
+      }
       $validityDate = date('Y-m-d', strtotime("+$checkValidity months", strtotime($validityuser->start_date)));
       while($validityDate < date('Y-m-d h:m:s')) {
         Engine_Api::_()->getDbtable('validities','sitecredit')->updateValidity($validityDate);

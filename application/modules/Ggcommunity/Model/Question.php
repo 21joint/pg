@@ -139,4 +139,46 @@ class Ggcommunity_Model_Question extends Core_Model_Item_Abstract
   {
     return new Engine_ProxyObject($this, Engine_Api::_()->getDbtable('comments', 'core'));
   }
+  
+  public function getChoosenAnswer(){
+      $table = Engine_Api::_()->getDbTable('answers', 'ggcommunity');
+      return $table->fetchRow($table->select()->where('accepted = ?',1)->where('parent_id = ?',$this->getIdentity()));
+  }
+  public function getTopic(){
+      return Engine_Api::_()->getItem('sdparentalguide_topic', $this->topic_id);
+  }
+  
+  public function getAnswers($deleted = 0){
+      $answersTable = Engine_Api::_()->getItemTable('ggcommunity_answer');
+      $select = $answersTable->select()->where('parent_id = ?',$this->getIdentity());
+      $select->where('gg_deleted = ?',(int)$deleted);
+      return $answersTable->fetchAll($select);
+  }
+  public function deletePoints($deleteAnswers = 1){
+      $question = $this;
+      $actions = Engine_Api::_()->getDbtable('actions', 'activity')->getActionsByObject($question);
+      if(!empty($actions)){
+          foreach($actions as $action){
+              $action->delete();
+          }
+      }
+      
+      $answers = $this->getAnswers();      
+      if(!empty($answers)){
+        foreach($answers as $answer){
+            if($deleteAnswers){
+                $answer->gg_deleted = 1;
+                $answer->save();
+                if( isset($question->answer_count) && $question->answer_count > 0 ) {
+                    $question->answer_count--;
+                    $question->save();
+                }                
+                $poster = Engine_Api::_()->getItem("user", $answer->user_id);
+                Engine_Api::_()->pgservicelayer()->updateUserCount(array('gg_answer_count' => (--$poster->gg_answer_count)),$answer->user_id);
+            }
+            
+            $answer->deletePoints();
+        }
+      }
+  }
 }
