@@ -10,8 +10,6 @@
 @import "./common";
 @import "./header";
 @import "./widgets/pagination";
-//AUTH
-@import "./auth/login";
 @import "./reviews/create";
 @import "./reviews/single";
 @import "./footer";
@@ -471,7 +469,7 @@ body#global_page_user-profile-index {
         font-size: 20px;
         font-weight: 700;
         width: 100%;
-        margin: 0px 0px 10px;
+        margin: 0 0px 10px;
         padding: 0px 0px 10px;
         border-bottom: 1px solid #F5F5F5;
       }
