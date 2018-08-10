@@ -1,2 +1,3 @@
-import './styles.module';
-// import '../scss/auth/login.scss';
+import '../styles.module';
+import 'bootstrap/scss/bootstrap-grid.scss';
+import '../../scss/auth/login.scss';
