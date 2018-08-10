@@ -918,5 +918,15 @@ return array(
         ),
     ),
     
+    array(
+        'title' => $view->translate('AJAX My Reviews'),
+        'description' => $view->translate('AJAX AJAX My Reviews'),
+        'category' => 'Guidance Guide Custom Features',
+        'type' => 'widget',
+        'name' => 'sdparentalguide.ajax-my-reviews',
+        'defaultParams' => array(
+            'title' => 'My Reviews',
+        ),
+    ),
 
 ) ?>

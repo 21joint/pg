@@ -201,7 +201,7 @@ class Ggcommunity_Form_Admin_Settings_Level extends Authorization_Form_Admin_Lev
         'description' => 'Can this member level declare an answer as the best?',
         'multiOptions' => array(
           4 => 'Yes, allow members re-declare all Answers.',
-          3 => 'Yes, allow members declare all Answers.',
+          6 => 'Yes, allow members declare all Answers.',
           2 => 'Yes, allow members re-declare their own Answer.',
           1 => 'Yes, allow members declare their own Answer.',
           0 => 'No, do not allow declare Answer.',

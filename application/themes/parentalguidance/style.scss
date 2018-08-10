@@ -62,7 +62,7 @@
         height: 20px;
         font-size: 12px;
         border: 2px solid #fff;
-        &.primary {
+        &.default {
             background: linear-gradient(to bottom right, $primary, $primary);
         }
         &.bronze{
@@ -1474,7 +1474,7 @@ form.preference-holder {
 
 
 // Border Gear
-.border-gear {
+.mvp-border {
     ~ img {
         border-style: solid!important;
         border-width: 5px 6px 5px 6px!important;
