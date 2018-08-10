@@ -21,3 +21,4 @@ nbproject/project.xml
 nbproject/project.properties
 node_modules/
 .idea/
+.DS_Store
