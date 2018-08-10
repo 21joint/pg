@@ -65,7 +65,7 @@
 
     $this->headMeta()->appendName('description', trim($description));
     $this->headMeta()->appendName('keywords', trim($keywords));
-    $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
+    $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
 
     //Adding open graph meta tag for video thumbnail
     if( $this->subject() && $this->subject()->getPhotoUrl() ) {

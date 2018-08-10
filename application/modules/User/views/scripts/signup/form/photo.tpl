@@ -19,6 +19,10 @@
     .holder-form {
         height:100%;
     }
+    form{
+        max-height: 650px!important;
+        overflow-y:scroll;
+    }
 
 @media only screen and (max-width: 768px) {
     form {
