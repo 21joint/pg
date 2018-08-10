@@ -3,13 +3,15 @@
 ### Whats Included ###
 
 
-- Bootstrap (latest) [official docs](https://getbootstrap.com/)
-- SCSS stylesheets [official docs](https://sass-lang.com/) 
-- Webpack (latest) [official website](https://webpack.js.org/)
-  - webpack-dev-server:  [docs](https://webpack.js.org/configuration/dev-server/)
-  - webpack-dev-server:  [docs](https://webpack.js.org/configuration/dev-server/)
-  - webpack-dev-server:  [docs](https://webpack.js.org/configuration/dev-server/)
-  
+- Bootstrap 4 (latest) *<small> ([official website](https://getbootstrap.com/)) </small>*
+- SCSS stylesheets *<small> ([docs](https://sass-lang.com/)) </small>* 
+- Webpack (latest) *<small> ([official website](https://webpack.js.org/)) </small>*
+    - *<small>[core concept](https://webpack.js.org/concepts/)</small>*
+    - *<small> [webpack-dev-server](https://webpack.js.org/configuration/dev-server/) </small>*
+    - *<small> [webpack-loaders](https://webpack.js.org/loaders/) </small>*
+    - *<small> [webpack-configuration](https://webpack.js.org/configuration/) </small>*
+      - *<small> *[<br> mainConfiguration: &nbsp; `./webpack.config.js`, <br>developmentConfiguration: `./webpack.config.dev.js` <br>]*</small>*
+    
 <br>
 
 ### Quick start ###
