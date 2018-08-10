@@ -1,2 +1,2 @@
-import './styles.module';
-// import '../scss/auth/login.scss';
+import '../styles.module';
+import '../../scss/auth/login.scss';
