@@ -1,16 +1,22 @@
-# Parental Guidance #
-<br><br>
+# Parental Guidance
+
+<br>
+
 ### Whats Included ###
 
 
 - Bootstrap 4 (latest) *<small> ([official website](https://getbootstrap.com/)) </small>*
 - SCSS stylesheets *<small> ([docs](https://sass-lang.com/)) </small>* 
 - Webpack (latest) *<small> ([official website](https://webpack.js.org/)) </small>*
-    - *<small>[core concept](https://webpack.js.org/concepts/)</small>*
+    - *<small>[concept](https://webpack.js.org/concepts/)</small>*
+      - *<small> [entries](https://webpack.js.org/concepts/entry-points/) ( in our case **[{module_title}.module.js]** ) </small>*
+      - *<small> [output](https://webpack.js.org/concepts/output/) ( in our case **[{module_title}.bundle.js] / [{module_title}.bundle.js]** ) </small>*
+      - *<small> [loaders](https://webpack.js.org/concepts/loaders/) (using loaders we are able to import everything in our ***modules***) </small>*
+      - *<small> [plugins](https://webpack.js.org/concepts/plugins/)</small>* 
     - *<small> [webpack-dev-server](https://webpack.js.org/configuration/dev-server/) </small>*
-    - *<small> [webpack-loaders](https://webpack.js.org/loaders/) </small>*
     - *<small> [webpack-configuration](https://webpack.js.org/configuration/) </small>*
-      - *<small> *[<br> mainConfiguration: &nbsp; `./webpack.config.js`, <br>developmentConfiguration: `./webpack.config.dev.js` <br>]*</small>*
+      - *<small> *[<br> &nbsp;&nbsp;&nbsp;mainConfiguration: &nbsp; `webpack.config.js`, <br> &nbsp;&nbsp;&nbsp;developmentConfiguration: `webpack.config.dev.js` <br>]*</small>*
+      - *<small>proxy options like `apache` server **(XAMPP/MAMPP)** `host` / `port`</small>*
     
 <br>
 
@@ -38,7 +44,10 @@ You can check *`NodeJS`* presence by running `node -v` in your terminal
     
     -   once we have the `development` server running, all the bundled js/css files are available using url:  <br>
 
-            '/{scripts|styles}/{module_title.bundle.{js | css}}'
+            '/scripts/{module_title}.bundle.js'
+            '/styles/{module_title}.bundle.css'
+          
+          so accordingly we can reference them in our `.tpl` or `Controller.php`
 
 4. `npm run build` is building `{ js | css }` bundles
 
@@ -50,7 +59,7 @@ You can check *`NodeJS`* presence by running `node -v` in your terminal
 
 <div>
  
- <span>The **[socialengine](socialengine.org)** platform has its frontend layer based in the *active* theme folder.Accordingly we have ./application/themes"**/current_theme**) folder, which has the following structure:</span>
+ <span>The **[socialengine](socialengine.org)** platform has its frontend layer based in the *active* theme folder.Accordingly we have ./application/themes **/current_theme**) folder, which has the following structure:</span>
 
 </div>
 
@@ -130,7 +139,7 @@ theme_directory
     - all the vendor code always up to date with the best JS package manager - [`npm`](https://www.npmjs.com/) 
     - any `package` can be installed doing simply `npm install package-name` and can be updated via `npm update` ([`find packages`](https://www.npmjs.com/))
     - with the latest vendor codes (plugins, libraries like `jquery`, `bootstrap`)
-    - most of our *javascript* will be out of `php` (`.tpl` files)
+    - most of our *javascript* will be out of templates (`.tpl` files )
     - everything related to a <small> ***[ module ]*** </small> is imported in its <small> ***[ *.module.js ]*** </small>
     - ability to import only some parts of vendor code, for every particular `module` / `widget`
     - ability to use modern javascript - `ES6` techniques [template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) 
