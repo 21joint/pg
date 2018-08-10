@@ -93,5 +93,11 @@ class User_Form_Signup_Photo extends Engine_Form
         ),
       ));
     }
+
+    // DisplayGroup: buttons
+    $this->addDisplayGroup(array('done', 'skip-link'), 'buttons', array(
+       'class' => 'p-0',
+    ));
+
   }
 }

@@ -12,7 +12,11 @@
 ?>
 
 
-
+<style>
+  form{
+    max-height:100%!important;
+  }
+</style>
 <script type="text/javascript">
   function skipForm() {
     document.getElementById("skip").value = "skipForm";
@@ -46,3 +50,16 @@
 </div>
 
 </div>
+<script>
+var height = window.screen.width;
+
+var holder =  document.getElementsByClassName('holder-form')[0];
+
+
+if(height <  768){
+  holder.classList.remove('h-100');
+}
+
+
+
+</script>

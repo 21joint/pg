@@ -144,6 +144,7 @@ class User_Form_Login extends Engine_Form_Email
 
     // Init facebook login link
     if( 'none' != $settings->getSetting('core_facebook_enable', 'none')
+     
         && $settings->core_facebook_secret ) {
       $this->addElement('Dummy', 'facebook', array(
         'content' => User_Model_DbTable_Facebook::loginButton(),
@@ -151,12 +152,12 @@ class User_Form_Login extends Engine_Form_Email
     }
 
     // Init twitter login link
-    //if( 'none' != $settings->getSetting('core_twitter_enable', 'none')
-        //&& $settings->core_twitter_secret ) {
+    // if( 'none' != $settings->getSetting('core_twitter_enable', 'none')
+    //     && $settings->core_twitter_secret ) {
       $this->addElement('Dummy', 'twitter', array(
         'content' => User_Model_DbTable_Twitter::loginButton(),
       ));
-   // }
+    // }
     
     // Init janrain login link
     if( 'none' != $settings->getSetting('core_janrain_enable', 'none')
