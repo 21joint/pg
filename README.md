@@ -3,10 +3,13 @@
 ### Whats Included ###
 
 
-- Bootstrap (latest) [official docs](https://getbootstrap.com)
-- SCSS stylesheets [official docs](https://scsslang.com) 
-- Webpack (latest) [official docs](https://webpack.js.org)
-
+- Bootstrap (latest) [official docs](https://getbootstrap.com/)
+- SCSS stylesheets [official docs](https://sass-lang.com/) 
+- Webpack (latest) [official website](https://webpack.js.org/)
+  - webpack-dev-server:  [docs](https://webpack.js.org/configuration/dev-server/)
+  - webpack-dev-server:  [docs](https://webpack.js.org/configuration/dev-server/)
+  - webpack-dev-server:  [docs](https://webpack.js.org/configuration/dev-server/)
+  
 <br>
 
 ### Quick start ###
