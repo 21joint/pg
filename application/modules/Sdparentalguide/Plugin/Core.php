@@ -425,16 +425,18 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
                 $assignedTable = Engine_Api::_()->getDbtable('assignedBadges', 'sdparentalguide');
                 $assignedTable->delete(array('user_id = ?' => $item->getIdentity()));
           }
-          if( $item instanceof Ggcommunity_Model_Question && $item->approved && !$item->draft) {
-               $this->updateUserData($item->getOwner(),array('gg_question_count' => (--$item->getOwner()->gg_question_count)));
-          }
-          
-          if( $item instanceof Ggcommunity_Model_Answer) {
-                $this->updateUserData($item->getOwner(),array('gg_answer_count' => (--$item->getOwner()->gg_answer_count)));
-          }
-          
-          if( $item instanceof Sitereview_Model_Listing && $item->approved) {
-                $this->updateUserData($item->getOwner(),array('gg_review_count' => (--$item->getOwner()->gg_review_count)));
+          if(isset($item->gg_deleted) && !$item->gg_deleted){
+                if( $item instanceof Ggcommunity_Model_Question && $item->approved && !$item->draft) {
+                     $this->updateUserData($item->getOwner(),array('gg_question_count' => (--$item->getOwner()->gg_question_count)));
+                }
+
+                if( $item instanceof Ggcommunity_Model_Answer) {
+                      $this->updateUserData($item->getOwner(),array('gg_answer_count' => (--$item->getOwner()->gg_answer_count)));
+                }
+
+                if( $item instanceof Sitereview_Model_Listing && $item->approved) {
+                      $this->updateUserData($item->getOwner(),array('gg_review_count' => (--$item->getOwner()->gg_review_count)));
+                }
           }
       } catch (Exception $ex) {
           //Silent
@@ -596,4 +598,5 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
         $table = Engine_Api::_()->getDbtable('users','user');
         $table->update($data,array('user_id = ?' => (int)$user->getIdentity()));
     }
+    
 }

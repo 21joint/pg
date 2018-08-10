@@ -9,7 +9,7 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
         $commentsTable = Engine_Api::_()->getDbtable("comments", "activity");
         $likesTable = Engine_Api::_()->getDbtable("likes", "activity");
         $notificationsTable = Engine_Api::_()->getDbtable("notifications", "activity");
-        $notificationsettingsTable = Engine_Api::_()->getDbtable("notificationsettings", "activity");
+        $notificationsettingsTable = Engine_Api::_()->getDbtable("notificationSettings", "activity");
         $streamsTable = Engine_Api::_()->getDbtable("stream", "activity");
 
         $questionsTable = Engine_Api::_()->getDbtable("questions", "ggcommunity");
@@ -53,6 +53,7 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
           }
         } catch (Exception $e) {
           //Silent
+            $this->logData($e.getMessage()." ".$e->getTraceAsString());
         }
 
         try {
@@ -62,6 +63,7 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
           ));
         } catch (Exception $e) {
           //Silent
+            $this->logData($e.getMessage()." ".$e->getTraceAsString());
         }
         
         try{
@@ -69,13 +71,13 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
                 "listingtype_id NOT IN(?)" => array(9, 10),
             ));
         } catch (Exception $ex) {
-
+            $this->logData($e.getMessage()." ".$e->getTraceAsString());
         }
         
         try{
-            $qCommentsTable->delete();
+            $qCommentsTable->delete(array());
         } catch (Exception $ex) {
-
+            $this->logData($e.getMessage()." ".$e->getTraceAsString());
         }
 
         // Get Users except from super admins, admins and moderator
@@ -83,28 +85,34 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
         if( !empty( $job_user ) ){
             $userSelect->where("user_id = ?", $job_user);
         }
+        $this->logData($userSelect->__toString());
         $userPaginator = Zend_Paginator::factory($userSelect);
         $userPaginator->setCurrentPageNumber($page);
         $userPaginator->setItemCountPerPage($this->_task->per_page);
         try {
-          if ( count( $userPaginator ) > 0 ) {
+          if ( $userPaginator->getTotalItemCount() > 0 ) {
             foreach ( $userPaginator as $user ) {
                 // Get User Activity Actions
-                $userActionSelect = $actionsTable->select()->where("subject_id = ?", $user->getIdentity());
-                $userActions = $actionsTable->fetchAll($userActionSelect);
-                if ( count( $userActions ) > 0 ) {
-                    foreach ( $userActions as $action ) {
-                        // Delete User Activity Action's Attachments
-                        $attachmentsTable->delete(array(
-                            "action_id = ?" => $action->getIdentity()
-                        ));
-
-                        // Delete User Activity Action's Stream
-                        $streamsTable->delete(array(
-                            "action_id = ?" => $action->getIdentity()
-                        ));
-                    }
-                }
+//                $userActionSelect = $actionsTable->select()->where("subject_id = ?", $user->getIdentity());
+//                $userActions = $actionsTable->fetchAll($userActionSelect);
+//                if ( count( $userActions ) > 0 ) {
+//                    foreach ( $userActions as $action ) {
+//                        // Delete User Activity Action's Attachments
+//                        $attachmentsTable->delete(array(
+//                            "action_id = ?" => $action->getIdentity()
+//                        ));
+//
+//                        // Delete User Activity Action's Stream
+//                        $streamsTable->delete(array(
+//                            "action_id = ?" => $action->getIdentity()
+//                        ));
+//                    }
+//                }
+                
+                $streamsTable->delete(array(
+                    "subject_id = ?" => $user->getIdentity(),
+                    'subject_type' => 'user'
+                ));
 
                 // Delete User Activity Actions
                 $actionsTable->delete(array(
@@ -231,16 +239,24 @@ class Sdparentalguide_Plugin_Task_PurgeDatabase extends Sdparentalguide_Plugin_T
                 ));
             }
           }
-          if( !empty( $job_user ) ){
+//          if( !empty( $job_user ) ){
             // Delete User
             $usersTable->delete(array(
-              "user_id = ?" => $job_user
+              "user_id = ?" => $user->getIdentity()
             ));
-          }
+//          }
         } catch (Exception $e) {
           //Silent
+          $this->logData($e.getMessage()." ".$e->getTraceAsString());
         }
 
         return $userPaginator;
+    }
+    public function logData($logData){
+        $logFile = APPLICATION_PATH . '/temporary/log/purgedb.log';
+        $log = new Zend_Log();
+        $log->setEventItem('domain', 'purgedb');
+        $log->addWriter(new Zend_Log_Writer_Stream($logFile));
+        $log->log((string)$logData, Zend_Log::DEBUG);
     }
 }

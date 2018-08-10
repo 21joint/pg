@@ -352,6 +352,7 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
                 
                 $subject->answer_count = $subject->answer_count - 1;
                 $answer->deletePoints();
+                Engine_Api::_()->pgservicelayer()->updateUserCount(array('gg_answer_count' => (--$poster->gg_answer_count)),$answer->user_id);
             }
             $subject->save();
             $db->commit();

@@ -386,9 +386,10 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
         
         //Remove Tags
         $var = html_entity_decode($var, ENT_COMPAT, 'UTF-8');
-        $var = strip_tags($var); //,'<strong><b><em><i><u><strike><sub><sup><p>'
-        $var = filter_var($var, FILTER_SANITIZE_STRING); //It filters all tags. May not be useful for some tags.
-//        $var = $this->xss_clean($var); //Extra cleaning
+        $var = preg_replace('/<script\b[^>]*>(.*?)<\/script>/is', "", $var);
+        $var = strip_tags($var,'<strong><b><em><i><u><strike><sub><sup><p><div><blockquote>');
+//        $var = filter_var($var, FILTER_SANITIZE_STRING); //It filters all tags. May not be useful for some tags.
+        $var = $this->xss_clean($var); //Extra cleaning
         return $var;
     }
     
