@@ -14,7 +14,6 @@ class Sitelogin_Controller_Action_Helper_Sociallogins  extends Zend_Controller_A
     if ($module == 'user' && $action == 'login') {
         $view = $this->getActionController()->view;
         $view->addScriptPath(APPLICATION_PATH . '/application/modules/Sitelogin/views/scripts');
-        
     }
   }
  
