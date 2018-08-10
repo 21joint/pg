@@ -1,15 +1,15 @@
 const path = require('path');
-const pkg = require('./package');
-const Conf = require('./conf');
+// const pkg = require('./package');
+// const Conf = require('./conf');
 const args = require('yargs').argv;
-const glob = require('glob');
+// const glob = require('glob');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // const CopyWebpackPlugin = require('copy-webpack-plugin');
 const APP_DIR = path.resolve(__dirname, 'application');
 
-let IS_DEV = (process.env.NODE_ENV === 'dev' ? true : false);
+let IS_DEV = process.env.NODE_ENV === 'dev';
 
 /**
  * Webpack Configuration
@@ -19,17 +19,16 @@ let IS_DEV = (process.env.NODE_ENV === 'dev' ? true : false);
 const config = {
   entry: {
     header: APP_DIR + '/themes/parentalguidance/modules/header/header.module.js',
-    auth: APP_DIR + '/themes/parentalguidance/modules/auth.module.js',
+    auth: APP_DIR + '/themes/parentalguidance/modules/auth/auth.module.js',
     reviews_home: APP_DIR + '/themes/parentalguidance/modules/reviews/home.module.js',
     reviews_view: APP_DIR + '/themes/parentalguidance/modules/reviews/view.module.js',
     reviews_create: APP_DIR + '/themes/parentalguidance/modules/reviews/create.module.js',
     footer: APP_DIR + '/themes/parentalguidance/modules/footer/footer.module.js',
     guides_home: APP_DIR + '/themes/parentalguidance/modules/guides/home.module.js',
-    // Here is new module
     browse_listing: APP_DIR + '/themes/parentalguidance/modules/browse-listing/home.module.js'
   },
   output: {
-    filename: 'scripts/[name].bundle.js',
+    filename: 'scripts/[name].bundle.js?[chunkhash]',
     path: __dirname + '/dist'
   },
   module: {
@@ -110,7 +109,7 @@ const config = {
       'window.jQuery': 'jquery'
     }),
     new ExtractTextPlugin({
-      filename: 'styles/[name].bundle.css'
+      filename: 'styles/[name].bundle.css?[chunkhash]'
     })
   ]
 };

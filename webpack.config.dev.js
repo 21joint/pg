@@ -9,8 +9,7 @@ module.exports = merge(webpackConfig, {
   devServer: {
     proxy: {
       '*': {
-        target: 'http://0.0.0.0:8888',
-        secure: false,
+        target: 'http://localhost:8888',
         changeOrigin: false
       },
       '/api/v1': {
@@ -22,28 +21,13 @@ module.exports = merge(webpackConfig, {
       }
     },
     historyApiFallback: true,
-    port: 2112,
+    port: 2121,
     open: true,
-    host: '0.0.0.0',
+    host: 'localhost',
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'DELETE, HEAD, GET, OPTIONS, POST, PUT',
       'Access-Control-Allow-Headers': 'Content-Type, Content-Range, Content-Disposition, Content-Description'
     },
-    // before: function (app) {
-    //
-    //   app
-    //     .use('^/api/v1', proxyMiddleware({
-    //       target: pkg.config.API_PROXY,
-    //       changeOrigin: true,
-    //       pathRewrite: {
-    //         '^/api/v1': '/'
-    //       }
-    //     }))
-    //     .use('**', proxyMiddleware({
-    //       target: 'http://localhost:8888',
-    //       changeOrigin: false
-    //     }))
-    // }
   }
 });
