@@ -159,7 +159,7 @@ class Pgservicelayer_Model_DbTable_Files extends Storage_Model_DbTable_Files
       $iIconNormal = $filesTable->createFile($normalPath, $params);
       $iMain->bridge($iIconNormal, 'thumb.normal');
       $iIconNormalLarge = $filesTable->createFile($normalLargePath, $params);
-      $iMain->bridge($iIconNormalLarge, 'thumb.large');
+      $iMain->bridge($iIconNormalLarge, 'thumb.profile');
       $iSquare = $filesTable->createFile($iSquarePath, $params);
       $iMain->bridge($iSquare, 'thumb.icon');
     } catch (Exception $e) {

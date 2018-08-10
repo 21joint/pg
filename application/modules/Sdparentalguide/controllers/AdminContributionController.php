@@ -44,21 +44,22 @@ class Sdparentalguide_AdminContributionController extends Core_Controller_Action
 
         $userTable = Engine_Api::_()->getDbTable('users', 'user');
         $userTableName = $userTable->info('name');
-
-        $validity = Engine_Api::_()->getDbtable('credits', 'sitecredit')->validityCheck();
-
         $validityTable = Engine_Api::_()->getDbtable('validities', 'sitecredit');
         $validityTableName = $validityTable->info('name');
 
         $select = $creditTable->select()->setIntegrityCheck(false);
-        $select->from($creditTableName)
-                ->join($validityTableName, $validityTableName . '.user_id = ' . $creditTableName . '.user_id', array("$validityTableName.start_date"));
+        $select->from($creditTableName);
         $select->join($userTableName, $userTableName . '.user_id = ' . $creditTableName . '.user_id', array("$userTableName.displayname","$userTableName.username","$userTableName.email"
                 ,"$userTableName.level_id"));
         
-        $select->where('DATE_ADD(start_date, INTERVAL ' . $validity . ' MONTH) >' . $creditTableName . '.creation_date')
-                ->where($creditTableName . '.creation_date > start_date');
-        
+        //Calculate only when validity is enabled. It would increase speed.
+        $coreSettings = Engine_Api::_()->getApi('settings', 'core');
+        if($coreSettings->getSetting('sitecredit.validity',0)){
+            $validity = Engine_Api::_()->getDbtable('credits', 'sitecredit')->validityCheck();
+            $select->join($validityTableName, $validityTableName . '.user_id = ' . $creditTableName . '.user_id', array("$validityTableName.start_date"));
+            $select->where('DATE_ADD(start_date, INTERVAL ' . $validity . ' MONTH) >' . $creditTableName . '.creation_date')
+                    ->where($creditTableName . '.creation_date > start_date');
+        }
         if (!empty($_POST['show_time'])) {
             $show_time = $_POST['show_time'];
         } elseif (!empty($_GET['show_time']) && !isset($_POST['post_search'])) {

@@ -16,3 +16,6 @@ temporary/scaffold
 temporary/scaffold/
 temporary/session
 
+/nbproject/private/
+nbproject/project.xml
+nbproject/project.properties

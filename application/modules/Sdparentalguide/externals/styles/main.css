@@ -124,12 +124,54 @@
 }
 
 .avatar_popup{
+  z-index: 999;
   top: 40px;
   left: 40px;
-  width: 300px;
-  height: 300px;
-  background-color: red;
-  z-index: 999;
+  width: 360px;
+  box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+.avatar_close{
+  color: #b4c0c1;
+  cursor: pointer;
+  margin-left: auto;
+}
+.avatar_close:hover{
+  color: #5f727f;
+}
+.avatar_badges{
+  height: 100px;
+}
+.avatar_badges_popup{
+  flex: none!important;
+  text-align: center!important;
+}
+.avatar_badges_popup img{
+  width: 48px;
+  height: 48px;
+  margin-right: 0px;
+}
+.avatar_badges_popup .number_badges{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  margin: auto;
+  border: 0px solid #fff;
+}
+.avatar_badges_popup .badge_name{
+  height: 20px!important;
+  border: 0px solid #fff;
+  font-weight: normal;
+  color: #93a4a6;
+  font-size: 12px;
+}
+.avatar_footer div{
+  flex: 1!important;
 }
 /* -> For testing .leaderboard_item div{
   border: 1px solid red;
@@ -273,6 +315,15 @@
   background-color: #5cc7ce;
   color: white;
 }
+.mvps_item .avatar_popup span{
+  background-color: transparent;
+  color: #b4c0c1;
+  width: auto;
+}
+.mvps_item .avatar_popup img{
+  width: 48px;
+  height: 48px;
+}
 .mvps_contribution{
   border-top: 1px solid #e2e4e6;
 }
@@ -394,9 +445,8 @@
 }
 .count_info{
   color: #5cc7ce;
-  font-weight: 700;
-  border: 2px solid #fff;
-  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 400;
 }
 .count_title{
   font-size: 12px;
@@ -405,7 +455,10 @@
   font-weight: 400;
 }
 .answered_question{
-  border: 2px solid #5cc7ce;
+  background: #5CC7CE;
+  color: #fff;
+  padding: 0px 20px;
+  border-radius: 20px;
 }
 /* Profile Page Components -> end */
 
@@ -727,8 +780,15 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
 
 @media screen and (max-width: 991px){
   /* Profile Latest Struggles */
+  .count_info{
+    font-weight: 700;
+    font-size: 16px;
+  }
   .answered_question{
-    border: 2px solid #fff;
+    background: #fff;
+    color: #5CC7CE;
+    padding: 0px;
+    border-radius: 0px;
   }
 }
 
@@ -782,6 +842,11 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
       color: #5cc7ce;
     }
     /* Community Home Page End */
+    .avatar_popup{
+      top: 0px;
+      left: 0px;
+      width: 320px;
+    }
 }
 
 @media screen and (max-width: 486px){
@@ -806,6 +871,11 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
       color: #5cc7ce;
     }
     /* Community Home Page End */
+    .avatar_popup{
+      top: 0px;
+      left: -25px;
+      width: 290px;
+    }
 }
 
 @media screen and (max-width: 368px){

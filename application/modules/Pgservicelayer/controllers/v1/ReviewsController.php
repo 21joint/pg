@@ -692,6 +692,10 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
                 }
                 $sitereview->gg_deleted = 1;
                 $sitereview->save();
+                if($sitereview->approved){
+                    $owner = $sitereview->getOwner();
+                    Engine_Api::_()->pgservicelayer()->updateUserCount(array('gg_review_count' => (--$owner->gg_review_count)),$owner->user_id);
+                }
             }
             $db->commit();
         } catch (Exception $e) {

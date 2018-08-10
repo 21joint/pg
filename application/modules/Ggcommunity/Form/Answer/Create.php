@@ -69,7 +69,7 @@ class Ggcommunity_Form_Answer_Create extends Engine_Form
             'link' => true,
             'class' => 'btn large ghost blue',
             'href' => '',
-            'onclick' => 'en4.ggcommunity.answer.cancel();',
+            'onclick' => 'en4.pgservicelayer.answer.cancel();',
             'decorators' => array(
               'ViewHelper'
             )

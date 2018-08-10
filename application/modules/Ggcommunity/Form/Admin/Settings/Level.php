@@ -111,6 +111,20 @@ class Ggcommunity_Form_Admin_Settings_Level extends Authorization_Form_Admin_Lev
       if( !$this->isModerator() ) {
         unset($this->edit->options[2]);
       }
+      
+      $this->addElement('Radio', 'delete_question', array(
+        'label' => 'Allow Deletion of Question?',
+        'description' => 'Can this member level delete the question.',
+        'multiOptions' => array(
+          2 => 'Yes, allow members to delete all questions.',
+          1 => 'Yes, allow members to delete their own questions.',
+          0 => 'No, do not allow members to delete their question.',
+        ),
+        'value' => ( $this->isModerator() ? 2 : 1 ),
+      ));
+      if( !$this->isModerator() ) {
+        unset($this->edit->options[2]);
+      }
 
       // Element: featured question
       $this->addElement('Radio', 'featured_question', array(
@@ -134,8 +148,18 @@ class Ggcommunity_Form_Admin_Settings_Level extends Authorization_Form_Admin_Lev
         ),
         'value' => 1,
       ));
+      
+      $this->addElement('Radio', 'flag_question', array(
+        'label' => 'Allow Flag Question?',
+        'description' => 'Can this member level flag an question?',
+        'multiOptions' => array(
+          1 => 'Yes, allow members flag Question.',
+          0 => 'No, do not allow flag Question.',
+        ),
+        'value' => 1,
+      ));
 
-      $this->addDisplayGroup(array('create_question','comment_question','approve_question', 'vote_question', 'edit_close_date', 'edit_question',  'featured_question', 'sponsored_question' ), 'question', array('legend' => 'Question Features'));
+      $this->addDisplayGroup(array('create_question','comment_question','approve_question', 'vote_question', 'edit_close_date', 'edit_question',  'featured_question', 'sponsored_question','flag_question' ), 'question', array('legend' => 'Question Features'));
 
 
       // Element: answer question
@@ -176,13 +200,27 @@ class Ggcommunity_Form_Admin_Settings_Level extends Authorization_Form_Admin_Lev
         'label' => 'Declare an answer the best one?',
         'description' => 'Can this member level declare an answer as the best?',
         'multiOptions' => array(
-          1 => 'Yes, allow members declare Answer.',
+          4 => 'Yes, allow members re-declare all Answers.',
+          6 => 'Yes, allow members declare all Answers.',
+          2 => 'Yes, allow members re-declare their own Answer.',
+          1 => 'Yes, allow members declare their own Answer.',
           0 => 'No, do not allow declare Answer.',
         ),
         'value' => 1,
       ));
+      
+      
+      $this->addElement('Radio', 'flag_answer', array(
+        'label' => 'Allow Flag Answer?',
+        'description' => 'Can this member level flag an answer?',
+        'multiOptions' => array(
+          1 => 'Yes, allow members flag Answer.',
+          0 => 'No, do not allow flag Answer.',
+        ),
+        'value' => 1,
+      ));
 
-      $this->addDisplayGroup(array('answer_question','comment_answer','vote_answer', 'best_answer' ), 'answer', array('legend' => 'Answer Features'));
+      $this->addDisplayGroup(array('answer_question','comment_answer','vote_answer', 'best_answer','flag_answer' ), 'answer', array('legend' => 'Answer Features'));
       
     }
   }

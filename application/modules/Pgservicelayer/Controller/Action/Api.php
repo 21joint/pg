@@ -28,11 +28,17 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
 
         if ($viewer->getIdentity()) {
             $timezone = $viewer->timezone;
+            if($viewer->locale == 'English'){
+                $viewer->locale = 'en';
+                $viewer->save();
+            }
         }
         Zend_Registry::set('timezone', $timezone);
         Engine_Api::_()->getApi('Core', 'siteapi')->setView();
         Engine_Api::_()->getApi('Core', 'siteapi')->setTranslate();
         Engine_Api::_()->getApi('Core', 'siteapi')->setLocal();
+        $view = Zend_Registry::get("Zend_View");
+        $view->addHelperPath(APPLICATION_PATH . '/application/modules/Sitemailtemplates/View/Helper', 'Sitemailtemplates_View_Helper');
         
         if (!$viewer->getIdentity() && !$this->isConsumerValid()) {
             $this->validateOrigin();
@@ -54,6 +60,8 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
                 }
             }
         }
+        
+        $this->filterApiData();
     }
     public function getInputStream(){
         if($this->_inputStream == null){
@@ -317,5 +325,107 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
         if(!empty($invalidParams)){
             $this->respondWithError("invalid_parameters",sprintf($this->translate("Extra parameters detected. %s"),implode(", ",$invalidParams)));
         }
+    }
+    
+    public function validatePermission($permission, $viewer = null,$subject = null){
+        if( null === $viewer ) {
+            $viewer = Engine_Api::_()->user()->getViewer();
+        }
+        
+        if($subject == null && Engine_Api::_()->core()->hasSubject()){
+            $subject = Engine_Api::_()->core()->getSubject();
+        }
+        
+        $permissions = Engine_Api::_()->pgservicelayer()->getPermissions($viewer);
+        if(isset($permissions[$permission])){
+            return $permissions[$permission];
+        }
+        return false;
+    }
+    
+    public function filterApiData(){
+        if(!empty($_REQUEST) && is_array($_REQUEST)){
+            foreach($_REQUEST as $key => $data){
+                if(is_array($data)){
+                    foreach($data as $key2 => $data){
+                        $_REQUEST[$key][$key2] = $this->cleanVar($data);
+                    }
+                }else{
+                    $_REQUEST[$key] = $this->cleanVar($data);
+                }
+            }
+            $this->getRequestAllParams = !empty($_REQUEST) ? $_REQUEST : array();
+        }
+        
+        $request = Zend_Controller_Front::getInstance()->getRequest();
+        $params = $request->getParams();
+        unset($params['module']);
+        unset($params['controller']);
+        unset($params['action']);
+        unset($params['rewrite']);
+        unset($params['version']);
+        
+        if(!empty($params) && is_array($params)){
+            foreach($params as $key => $data){
+                if(is_array($data)){
+                    foreach($data as $key2 => $data){
+                        $params[$key][$key2] = $this->cleanVar($data);
+                    }
+                }else{
+                    $params[$key] = $this->cleanVar($data);
+                }
+                $this->setParam($key,$params[$key]);
+                $request->setParam($key,$params[$key]);
+            }
+        }
+    }
+    public function cleanVar($var){
+        if(empty($var) || is_array($var) || is_object($var)){
+            return $var;
+        }
+        
+        //Remove Tags
+        $var = html_entity_decode($var, ENT_COMPAT, 'UTF-8');
+        $var = preg_replace('/<script\b[^>]*>(.*?)<\/script>/is', "", $var);
+        $var = strip_tags($var,'<strong><b><em><i><u><strike><sub><sup><p><div><blockquote>');
+//        $var = filter_var($var, FILTER_SANITIZE_STRING); //It filters all tags. May not be useful for some tags.
+        $var = $this->xss_clean($var); //Extra cleaning
+        return $var;
+    }
+    
+    function xss_clean($data)
+    {
+        // Fix &entity\n;
+        $data = str_replace(array('&amp;','&lt;','&gt;'), array('&amp;amp;','&amp;lt;','&amp;gt;'), $data);
+        $data = preg_replace('/(&#*\w+)[\x00-\x20]+;/u', '$1;', $data);
+        $data = preg_replace('/(&#x*[0-9A-F]+);*/iu', '$1;', $data);
+        
+
+        // Remove any attribute starting with "on" or xmlns
+        $data = preg_replace('#(<[^>]+?[\x00-\x20"\'])(?:on|xmlns)[^>]*+>#iu', '$1>', $data);
+
+        // Remove javascript: and vbscript: protocols
+        $data = preg_replace('#([a-z]*)[\x00-\x20]*=[\x00-\x20]*([`\'"]*)[\x00-\x20]*j[\x00-\x20]*a[\x00-\x20]*v[\x00-\x20]*a[\x00-\x20]*s[\x00-\x20]*c[\x00-\x20]*r[\x00-\x20]*i[\x00-\x20]*p[\x00-\x20]*t[\x00-\x20]*:#iu', '$1=$2nojavascript...', $data);
+        $data = preg_replace('#([a-z]*)[\x00-\x20]*=([\'"]*)[\x00-\x20]*v[\x00-\x20]*b[\x00-\x20]*s[\x00-\x20]*c[\x00-\x20]*r[\x00-\x20]*i[\x00-\x20]*p[\x00-\x20]*t[\x00-\x20]*:#iu', '$1=$2novbscript...', $data);
+        $data = preg_replace('#([a-z]*)[\x00-\x20]*=([\'"]*)[\x00-\x20]*-moz-binding[\x00-\x20]*:#u', '$1=$2nomozbinding...', $data);
+
+        // Only works in IE: <span style="width: expression(alert('Ping!'));"></span>
+        $data = preg_replace('#(<[^>]+?)style[\x00-\x20]*=[\x00-\x20]*[`\'"]*.*?expression[\x00-\x20]*\([^>]*+>#i', '$1>', $data);
+        $data = preg_replace('#(<[^>]+?)style[\x00-\x20]*=[\x00-\x20]*[`\'"]*.*?behaviour[\x00-\x20]*\([^>]*+>#i', '$1>', $data);
+        $data = preg_replace('#(<[^>]+?)style[\x00-\x20]*=[\x00-\x20]*[`\'"]*.*?s[\x00-\x20]*c[\x00-\x20]*r[\x00-\x20]*i[\x00-\x20]*p[\x00-\x20]*t[\x00-\x20]*:*[^>]*+>#iu', '$1>', $data);
+
+        // Remove namespaced elements (we do not need them)
+        $data = preg_replace('#</*\w+:\w[^>]*+>#i', '', $data);
+
+        do
+        {
+            // Remove really unwanted tags
+            $old_data = $data;
+            $data = preg_replace('#</*(?:applet|b(?:ase|gsound|link)|embed|frame(?:set)?|i(?:frame|layer)|l(?:ayer|ink)|meta|object|s(?:cript|tyle)|title|xml)[^>]*+>#i', '', $data);
+        }
+        while ($old_data !== $data);
+
+        // we are done...
+        return $data;
     }
 }

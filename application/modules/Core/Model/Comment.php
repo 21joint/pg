@@ -88,8 +88,8 @@ class Core_Model_Comment extends Core_Model_Item_Abstract
   {
     $resource = Engine_Api::_()->getItem($this->resource_type, $this->resource_id);
     if( isset($resource->comment_count) && $resource->comment_count > 0 ) {
-      $resource->comment_count--;
-      $resource->save();
+//      $resource->comment_count--;
+//      $resource->save();
     }
     parent::_delete();
   }

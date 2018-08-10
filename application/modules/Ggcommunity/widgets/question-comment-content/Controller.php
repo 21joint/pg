@@ -39,36 +39,36 @@ class Ggcommunity_Widget_QuestionCommentContentController extends Engine_Content
       $this->view->subjectGuid = $subject->getGuid(false);
     }
 
-    $table = Engine_Api::_()->getDbtable('comments', 'ggcommunity');
-    $limit = Engine_Api::_()->getApi('settings', 'core')->getSetting('ggcommunity.answer.page');
-
-    $select = $table->select()
-      ->where('parent_type = ?', $subject->getType())
-      ->where('parent_id = ?', $subject->getIdentity())
-      ->order('comment_id DESC')
-      ->limit($limit)
-    ;
-    $this->view->paginator = $comments = $table->fetchAll($select);
-
-    // Parametars for view more
-    $nextid = null;
-    $endOfComment = false;
-
-    // Are we at the end?
-    if( count($comments) < $limit ) {
-      $endOfComment = true;
-      $nextid = 0;
-    } else {
-      $nextid =  $comments[$limit-1]->comment_id;  
-      
-    }
-    
-    if($subject->comment_count - $limit < 1) {
-      $nextid = 0;
-    }
-  
-    $this->view->nextid = $nextid;
-    $this->view->endOfComment = $endOfComment;
+//    $table = Engine_Api::_()->getDbtable('comments', 'ggcommunity');
+//    $limit = Engine_Api::_()->getApi('settings', 'core')->getSetting('ggcommunity.answer.page');
+//
+//    $select = $table->select()
+//      ->where('parent_type = ?', $subject->getType())
+//      ->where('parent_id = ?', $subject->getIdentity())
+//      ->order('comment_id DESC')
+//      ->limit($limit)
+//    ;
+//    $this->view->paginator = $comments = $table->fetchAll($select);
+//
+//    // Parametars for view more
+//    $nextid = null;
+//    $endOfComment = false;
+//
+//    // Are we at the end?
+//    if( count($comments) < $limit ) {
+//      $endOfComment = true;
+//      $nextid = 0;
+//    } else {
+//      $nextid =  $comments[$limit-1]->comment_id;  
+//      
+//    }
+//    
+//    if($subject->comment_count - $limit < 1) {
+//      $nextid = 0;
+//    }
+//  
+//    $this->view->nextid = $nextid;
+//    $this->view->endOfComment = $endOfComment;
     
   }
 
