@@ -1,10 +1,12 @@
-import Api from '../../services/api.service';
+import {getReviews} from '../../services/api.service';
+import '../../components/card/card.scss';
 
 
 (function ($) {
 
-  Api.getReviews({
-    container: '#featuredReviewsGrid'
+  getReviews({
+    container: '#featuredReviewsGrid',
+    type: 'review'
   }, function (res) {
     $.each(res.cards, function (i, card) {
       $('#featuredReviewsGrid').append(card.$html);

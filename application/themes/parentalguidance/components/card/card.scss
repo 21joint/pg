@@ -1,9 +1,15 @@
-@import "../../../../../node_modules/bootstrap/scss/mixins";
-@import "../../../../../node_modules/bootstrap/scss/bootstrap-grid";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/bootstrap-grid";
 
 .card {
   transition: .3s .3s opacity ease;
   opacity: 1;
+  overflow: hidden;
+  &:hover {
+    .card-actions {
+      top: 0;
+    }
+  }
   &.card-loading {
     opacity: 0;
   }
@@ -12,18 +18,31 @@
 .card-review {
   border-color: rgb(245, 245, 245);
   border-radius: 10px;
-  overflow: hidden;
+  .card-title{
+    @include media-breakpoint-up(md) {
+      min-height: 77px;
+    }
+
+  }
+
   .fa, .far {
     color: #B9CFD1;
-  }
-  &:hover {
-    .card-actions {
-      top: 0;
-    }
   }
   @include media-breakpoint-up(sm) {
     margin: 15px 0;
   }
+}
+.card-guide{
+  .card-body{
+    padding: 3rem 1rem;
+  }
+  .card-title{
+    @include media-breakpoint-up(md) {
+      min-height: 38px;
+    }
+    margin-bottom: 1rem;
+  }
+
 }
 
 .card-actions {
@@ -119,7 +138,6 @@
   @include media-breakpoint-up(md) {
     font-size: 25px;
     line-height: 34px;
-    min-height: 77px;
   }
 }
 

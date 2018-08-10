@@ -16,7 +16,7 @@
       <div class="row">
         <div class="col-md-9">
           <form action="">
-            <div class="row">
+            <div class="form-row">
               <div class="col-12">
                 <label class="text-primary font-weight-600" for="rv_title">Review
                   Title</label>
@@ -25,21 +25,17 @@
               <textarea name="rv_title"
                         id="rv_title"
                         rows="2"
-                        class="form-control py-1 px-0 ff-open--sans"></textarea>
+                        class="form-control py-1 px-0 ff-open--sans">What are the most dangerous trends or practices in parenting that most parents do without</textarea>
                 <div class="text-asphalt text-right mt-1 prg-chars--left"><span>112 / 120</span>
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="form-row mt-4">
               <div class="col-md-4">
                 <label class="text-primary font-weight-600" for="rv_category">Review
                   Category</label>
                 <select style="width: 100%;" name="rv_category"
-                        id="rv_category">
-                  <option>Parenting</option>
-                  <option value="Category 1">Category 1</option>
-                  <option value="Category 2">Category 2</option>
-                  <option value="Category 3">Category 3</option>
+                        id="rv_category" data-url="/categorization">
                 </select>
               </div>
               <div class="col-md-4">
@@ -66,16 +62,28 @@
                 </select>
               </div>
             </div>
-            <div class="row">
+            <div class="form-row mt-4">
               <div class="col-12">
                 <label class="text-primary font-weight-600"
                        for="rv_description">Description</label>
-                <input type="text" id="rv_description"/>
+                <textarea id="rv_description" type="text"
+                          class="froala-editor"></textarea>
               </div>
-              <div class="col-12">
+              <div class="col-12 mt-2">
                 <input type="checkbox" id="rv_show_diaper__bag"/>
-                <label class="text-primary font-weight-600"
-                       for="rv_show_diaper__bag"></label>
+                <label class="font-weight-600 align-middle"
+                       for="rv_show_diaper__bag">Show this diaper bag on browse
+                  page and in varios blocks.</label>
+              </div>
+            </div>
+            <div class="form-row mt-4">
+              <div class="col-12">
+                <div class="label text-primary font-weight-600">Rate this
+                  product
+                </div>
+                <div class="prg-input--stars" data-input="rate">
+
+                </div>
               </div>
             </div>
           </form>
@@ -85,3 +93,5 @@
     </div>
   </div>
 </div>
+
+<script src="/scripts/reviews_create.bundle.js"></script>

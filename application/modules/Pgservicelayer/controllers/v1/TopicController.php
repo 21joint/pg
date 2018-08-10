@@ -12,6 +12,7 @@ class Pgservicelayer_TopicController extends Pgservicelayer_Controller_Action_Ap
     public function init(){
         parent::init();
     }
+
     public function indexAction(){
         try{
             $method = strtolower($this->getRequest()->getMethod());

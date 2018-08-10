@@ -102,136 +102,137 @@ en4.core.runonce.add(function(){
     });
 });  
 </script>
-
 <script type="text/javascript">
-function searchListings(element){
-    var loader = en4.core.loader.clone();
-    loader.addClass("sd_loader");
-    var url = '<?= $this->url(array('module' => 'core', 'controller' => 'widget', 'action' => 'index', 'content_id' => $this->identity), 'default', true) ?>';
-    var form = $(element).getParent("form"); 
-    var data = form.toQueryString().parseQueryString();
-    data.format = 'html';
-    var req = new Request.HTML({
-        url: url,
-        data : data,
-        onRequest: function(){
-            loader.inject($(element),"after");
-        },
-        evalScripts: true,
-        onSuccess: function(responseTree, responseElements, responseHTML, responseJavaScript){
-            loader.destroy();
-            var div = new Element("div",{
-                html: responseHTML
-            });
-            var newContainer = div.getElement(".layout_sdparentalguide_browse_listings");
-            var container = $$(".layout_sdparentalguide_browse_listings")[0];
-            if(!newContainer){
-                return;
-            }
-            newContainer.inject(container,"after");
-            container.destroy();
-            tinymce.remove();
-            en4.core.runonce.trigger();
-        }
-    });
-    req.send();
-}
-function saveNSearchListings(element){
-    var loader = en4.core.loader.clone();
-    loader.addClass("sd_loader");
-    var url = '<?= $this->url(array('module' => 'core', 'controller' => 'widget', 'action' => 'index', 'content_id' => $this->identity), 'default', true) ?>';
-    var form = $(element).getParent("form"); 
-    var data = form.toQueryString().parseQueryString();
-    data.format = 'html';
-    data.forms = getFormsData();
-    
-    var req = new Request.HTML({
-        url: url,
-        data : data,
-        onRequest: function(){
-            loader.inject($(element),"after");
-        },
-        evalScripts: true,
-        onSuccess: function(responseTree, responseElements, responseHTML, responseJavaScript){
-            loader.destroy();
-            var div = new Element("div",{
-                html: responseHTML
-            });
-            var newContainer = div.getElement(".layout_sdparentalguide_browse_listings");
-            var container = $$(".layout_sdparentalguide_browse_listings")[0];
-            if(!newContainer){
-                return;
-            }
-            newContainer.inject(container,"after");
-            container.destroy();
-            tinymce.remove();
-            en4.core.runonce.trigger();
-        }
-    });
-    req.send();
-}
-function getFormsData(){
-    var forms = $$(".sd_browse_listings form");
-    if(forms.length <= 0){
-        return [];
-    }
-    var formsData = [];
-    forms.each(function(form,i){
-        var data = getFormData(form);
-        try{
-            data.notes = tinymce.editors[i].getContent();
-        }catch(e){ console.log(e); }
-        
-        formsData.push(data);
-    });
-    return formsData;
-}
-function getFormData(form){
-    var fields = form.getElements(".sd_inline_field");
-    var formData = form.toQueryString().parseQueryString();
-    fields.each(function(field){
-        var checkbox = field.getElement("input:checked");
-        if(checkbox){
-            var name = checkbox.name;
-            formData[name] = 1;
-        }
-    });
-    return formData;
-}
-function showLargeImage(element){
-    var imgSrc = $(element).get("data-thumb");
-    var loaderImg = en4.core.loader.src;
-    var content = new Element("div",{
-        'html': '<img src="'+loaderImg+'"/>',
-        'class': 'sd_large_image',
-    });
-    Smoothbox.open(content,{
-        mode: 'Inline',
-    });
-    var myImage = Asset.image(imgSrc, {
-        id: 'myImage',
-        title: 'myImage',
-        onLoad: function(){
-            if($$(".sd_large_image").length > 0){
-                $$(".sd_large_image").getElement("img")[0].src = imgSrc;
-                Smoothbox.instance.doAutoResize();
-            }
-        }
-    });
-}
-function markAllGrading(element){
-    var parent = $(element).getParent(".form-group");
-    if(!parent){
-        return;
-    }
-    var checkboxes = parent.getElements("input[type=checkbox]");
-    if(checkboxes.length <= 0){
-        return;
-    }
-    if($(element).checked){
-        checkboxes.set("checked","checked");
-    }else{
-        checkboxes.set("checked",null);
-    }
-}
+  function searchListings(element){
+      var loader = en4.core.loader.clone();
+      loader.addClass("sd_loader");
+      var url = '<?= $this->url(array('module' => 'core', 'controller' => 'widget', 'action' => 'index', 'content_id' => $this->identity), 'default', true) ?>';
+      var form = $(element).getParent("form");
+      var data = form.toQueryString().parseQueryString();
+      data.format = 'html';
+      var req = new Request.HTML({
+          url: url,
+          data : data,
+          onRequest: function(){
+              loader.inject($(element),"after");
+          },
+          evalScripts: true,
+          onSuccess: function(responseTree, responseElements, responseHTML, responseJavaScript){
+              loader.destroy();
+              var div = new Element("div",{
+                  html: responseHTML
+              });
+              var newContainer = div.getElement(".layout_sdparentalguide_browse_listings");
+              var container = $$(".layout_sdparentalguide_browse_listings")[0];
+              if(!newContainer){
+                  return;
+              }
+              newContainer.inject(container,"after");
+              container.destroy();
+              tinymce.remove();
+              en4.core.runonce.trigger();
+          }
+      });
+      req.send();
+  }
+  function saveNSearchListings(element){
+      var loader = en4.core.loader.clone();
+      loader.addClass("sd_loader");
+      var url = '<?= $this->url(array('module' => 'core', 'controller' => 'widget', 'action' => 'index', 'content_id' => $this->identity), 'default', true) ?>';
+      var form = $(element).getParent("form");
+      var data = form.toQueryString().parseQueryString();
+      data.format = 'html';
+      data.forms = getFormsData();
+
+      var req = new Request.HTML({
+          url: url,
+          data : data,
+          onRequest: function(){
+              loader.inject($(element),"after");
+          },
+          evalScripts: true,
+          onSuccess: function(responseTree, responseElements, responseHTML, responseJavaScript){
+              loader.destroy();
+              var div = new Element("div",{
+                  html: responseHTML
+              });
+              var newContainer = div.getElement(".layout_sdparentalguide_browse_listings");
+              var container = $$(".layout_sdparentalguide_browse_listings")[0];
+              if(!newContainer){
+                  return;
+              }
+              newContainer.inject(container,"after");
+              container.destroy();
+              tinymce.remove();
+              en4.core.runonce.trigger();
+          }
+      });
+      req.send();
+  }
+  function getFormsData(){
+      var forms = $$(".sd_browse_listings form");
+      if(forms.length <= 0){
+          return [];
+      }
+      var formsData = [];
+      forms.each(function(form,i){
+          var data = getFormData(form);
+          try{
+              data.notes = tinymce.editors[i].getContent();
+          }catch(e){ console.log(e); }
+
+          formsData.push(data);
+      });
+      return formsData;
+  }
+  function getFormData(form){
+      var fields = form.getElements(".sd_inline_field");
+      var formData = form.toQueryString().parseQueryString();
+      fields.each(function(field){
+          var checkbox = field.getElement("input:checked");
+          if(checkbox){
+              var name = checkbox.name;
+              formData[name] = 1;
+          }
+      });
+      return formData;
+  }
+  function showLargeImage(element){
+      var imgSrc = $(element).get("data-thumb");
+      var loaderImg = en4.core.loader.src;
+      var content = new Element("div",{
+          'html': '<img src="'+loaderImg+'"/>',
+          'class': 'sd_large_image',
+      });
+      Smoothbox.open(content,{
+          mode: 'Inline',
+      });
+      var myImage = Asset.image(imgSrc, {
+          id: 'myImage',
+          title: 'myImage',
+          onLoad: function(){
+              if($$(".sd_large_image").length > 0){
+                  $$(".sd_large_image").getElement("img")[0].src = imgSrc;
+                  Smoothbox.instance.doAutoResize();
+              }
+          }
+      });
+  }
+  function markAllGrading(element){
+      var parent = $(element).getParent(".form-group");
+      if(!parent){
+          return;
+      }
+      var checkboxes = parent.getElements("input[type=checkbox]");
+      if(checkboxes.length <= 0){
+          return;
+      }
+      if($(element).checked){
+          checkboxes.set("checked","checked");
+      }else{
+          checkboxes.set("checked",null);
+      }
+  }
 </script>
+
+<script src="/scripts/browse_listing.bundle.js"></script>

@@ -222,32 +222,32 @@ class Pgservicelayer_ReviewsController
       if (!Engine_Api::_()->sitereview()->hasPackageEnable()) {
         $values = array_merge(
           $values, array(
-          'listingtype_id' => $listingtype_id,
-          'owner_type'     => $viewer->getType(),
-          'owner_id'       => $viewer_id,
-          'featured'       => Engine_Api::_()->authorization()->getPermission(
-            $user_level, 'sitereview_listing',
-            "featured_listtype_$listingtype_id"
-          ),
-          'sponsored'      => Engine_Api::_()->authorization()->getPermission(
-            $user_level, 'sitereview_listing',
-            "sponsored_listtype_$listingtype_id"
-          ),
-          'approved'       => Engine_Api::_()->authorization()->getPermission(
-            $user_level, 'sitereview_listing',
-            "approved_listtype_$listingtype_id"
-          ),
-        )
+            'listingtype_id' => $listingtype_id,
+            'owner_type'     => $viewer->getType(),
+            'owner_id'       => $viewer_id,
+            'featured'       => Engine_Api::_()->authorization()->getPermission(
+              $user_level, 'sitereview_listing',
+              "featured_listtype_$listingtype_id"
+            ),
+            'sponsored'      => Engine_Api::_()->authorization()->getPermission(
+              $user_level, 'sitereview_listing',
+              "sponsored_listtype_$listingtype_id"
+            ),
+            'approved'       => Engine_Api::_()->authorization()->getPermission(
+              $user_level, 'sitereview_listing',
+              "approved_listtype_$listingtype_id"
+            ),
+          )
         );
       } else {
         $values = array_merge(
           $values, array(
-          'listingtype_id' => $listingtype_id,
-          'owner_type'     => $viewer->getType(),
-          'owner_id'       => $viewer_id,
-          'featured'       => 0,
-          'sponsored'      => 0,
-        )
+            'listingtype_id' => $listingtype_id,
+            'owner_type'     => $viewer->getType(),
+            'owner_id'       => $viewer_id,
+            'featured'       => 0,
+            'sponsored'      => 0,
+          )
         );
 
         $values['approved'] = 0;
@@ -499,12 +499,12 @@ class Pgservicelayer_ReviewsController
 
         Engine_Api::_()->getApi('mail', 'core')->sendSystem(
           $subjectOwner->email, 'SITEREVIEW_LISTING_CREATION_EDITOR', array(
-          'listing_type'       => strtolower($listingType->title_singular),
-          'object_link'        => $object_link,
-          'object_title'       => $sitereview->getTitle(),
-          'object_description' => $sitereview->getDescription(),
-          'queue'              => true,
-        )
+            'listing_type'       => strtolower($listingType->title_singular),
+            'object_link'        => $object_link,
+            'object_title'       => $sitereview->getTitle(),
+            'object_description' => $sitereview->getDescription(),
+            'queue'              => true,
+          )
         );
       }
 
@@ -646,32 +646,32 @@ class Pgservicelayer_ReviewsController
       if (!Engine_Api::_()->sitereview()->hasPackageEnable()) {
         $values = array_merge(
           $values, array(
-          'listingtype_id' => $listingtype_id,
-          'owner_type'     => $viewer->getType(),
-          'owner_id'       => $viewer_id,
-          'featured'       => Engine_Api::_()->authorization()->getPermission(
-            $user_level, 'sitereview_listing',
-            "featured_listtype_$listingtype_id"
-          ),
-          'sponsored'      => Engine_Api::_()->authorization()->getPermission(
-            $user_level, 'sitereview_listing',
-            "sponsored_listtype_$listingtype_id"
-          ),
-          'approved'       => Engine_Api::_()->authorization()->getPermission(
-            $user_level, 'sitereview_listing',
-            "approved_listtype_$listingtype_id"
-          ),
-        )
+            'listingtype_id' => $listingtype_id,
+            'owner_type'     => $viewer->getType(),
+            'owner_id'       => $viewer_id,
+            'featured'       => Engine_Api::_()->authorization()->getPermission(
+              $user_level, 'sitereview_listing',
+              "featured_listtype_$listingtype_id"
+            ),
+            'sponsored'      => Engine_Api::_()->authorization()->getPermission(
+              $user_level, 'sitereview_listing',
+              "sponsored_listtype_$listingtype_id"
+            ),
+            'approved'       => Engine_Api::_()->authorization()->getPermission(
+              $user_level, 'sitereview_listing',
+              "approved_listtype_$listingtype_id"
+            ),
+          )
         );
       } else {
         $values = array_merge(
           $values, array(
-          'listingtype_id' => $listingtype_id,
-          'owner_type'     => $viewer->getType(),
-          'owner_id'       => $viewer_id,
-          'featured'       => 0,
-          'sponsored'      => 0,
-        )
+            'listingtype_id' => $listingtype_id,
+            'owner_type'     => $viewer->getType(),
+            'owner_id'       => $viewer_id,
+            'featured'       => 0,
+            'sponsored'      => 0,
+          )
         );
 
         $values['approved'] = 0;

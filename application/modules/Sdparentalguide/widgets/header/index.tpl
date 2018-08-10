@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="/styles/header.bundle.css">
-
 <header class="prg-header bg-white">
   <div class="prg-header--top position-relative border-bottom py-3">
     <div class="container-fluid">

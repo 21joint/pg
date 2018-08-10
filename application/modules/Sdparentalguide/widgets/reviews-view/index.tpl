@@ -13,7 +13,7 @@
 <div class="prg-review--single" data-load>
 
   <!-- SINGLE REVIEW HERO -->
-  <div class="prg-review--single---hero position-relative">
+  <div class="page-hero prg-review--single---hero position-relative pt-0">
     <!-- SINGLE REVIEW HERO IMAGE -->
     <div class="prg-review--single---heroimage"
          style="background-color: #eeeeee;">
@@ -69,42 +69,13 @@
               </ul>
             </div>
             <!-- CARD STARS /// -->
-            <!-- CARD ACTION  -->
-            <div class="prg-review--single---action">
-              <button type="button"
-                      class="btn btn-block bg-white rounded-circle p-0">
-                <i class="fa fa-ellipsis-h"></i>
-              </button>
-            </div>
-            <!-- CARD ACTION /// -->
           </div>
         </div>
       </div>
     </div>
-    <!-- SINGLE REVIEW HERO INNER /// -->
-  </div>
-  <!--  SINGLE REVIEW HERO ///-->
+    <!-- SINGLE REVIEW HERO INNER /// -->.
 
-  <!--  BREADCRUMB-->
-  <div class="prg-review--single---breadcrumb">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb bg-transparent border-0 px-0">
-              <li class="breadcrumb-item align-middle"><a href="#">Home</a></li>
-              <li class="breadcrumb-item align-middle"><a href="#">Library</a>
-              </li>
-              <li class="breadcrumb-item align-middle active"
-                  aria-current="page">Data
-              </li>
-            </ol>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--  BREADCRUMB ///-->
+  <!--  SINGLE REVIEW HERO ///-->
 
   <!--  SINGLE REVIEW DESCRIPTION -->
   <div class="prg-review--single---content">
@@ -114,13 +85,51 @@
           <div class="row">
             <div class="col-12">
               <div class="content-box">
-                <h2
-                  class="prg-review--single---title text-primary font-weight-bold mb-3 mb-md-4 mb-lg-5">
-                  Twisted
-                  Mustard
-                  Seed
-                  Heartbreaker
-                  Bag</h2>
+                <!-- CARD ACTION  -->
+                <div class="prg-review--single---action">
+                  <button type="button"
+                          class="btn btn-block bg-white rounded-circle p-0">
+                    <i class="fa fa-ellipsis-h"></i>
+                  </button>
+                </div>
+                <!-- CARD ACTION /// -->
+                <!--  BREADCRUMB-->
+                <div class="prg-review--single---breadcrumb">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-12">
+                        <nav aria-label="breadcrumb">
+                          <ol class="breadcrumb bg-transparent border-0 px-0">
+                            <li class="breadcrumb-item align-middle"><a
+                                href="#">Home</a></li>
+                            <li class="breadcrumb-item align-middle"><a
+                                href="#">Library</a>
+                            </li>
+                            <li class="breadcrumb-item align-middle active"
+                                aria-current="page">Data
+                            </li>
+                          </ol>
+                        </nav>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--  BREADCRUMB ///-->
+                <!-- TITLE -->
+                <header class="prg-review--single---header">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-12">
+                        <h2 class="prg-review--single---title text-primary font-weight-bold mb-3 mb-md-4 mb-lg-5">
+                          Twisted
+                          Mustard
+                          Seed
+                          Heartbreaker
+                          Bag</h2>
+                      </div>
+                    </div>
+                  </div>
+                </header>
                 <div class="prg-review--single---descr">
                   <p>We love our gorgeous Twisted Mustard Seed Diaper Bag! It is
                     absolutely beautiful. The pop of color
@@ -132,33 +141,6 @@
                     even
                     look like a diaper bag because it is so pretty. This bag
                     truly is designed for moms!</p>
-                  <p>I love that it is simple in design. There's not too many
-                    pockets and not too much going on on the
-                    outside
-                    either. It does what it needs to and is gorgeous. It is
-                    definitely a timeless diaper bag!</p>
-                  <p>The exterior is made from genuine cowhide leather in a
-                    super gorgeous turquoise blue color. The
-                    inside
-                    is
-                    black with white polka dots and is such a fun contrast! I
-                    always love getting out my changing pad.
-                    This
-                    diaper bag is just soo classy and pretty with some gold
-                    accents on the lettering and feet. <3</p>
-                  <p>Probably the greatest part about it is the way it looks
-                    because it means that even after you are
-                    finished
-                    with needing a diaper bag, you can continue to use this as a
-                    purse. Yay for a versatile bag!</p>
-                  <p>The Heartbreaker diaper bag can be carried as a typical
-                    tote diaper bag or you can use the
-                    messenger
-                    strap. I personally love using messenger straps so that is
-                    always what I do! It also came with a
-                    changing
-                    pad and stroller straps.
-                  </p>
                 </div>
                 <!-- REVIEW GALLERY-->
                 <div class="prg-review--single---gallery my-3">

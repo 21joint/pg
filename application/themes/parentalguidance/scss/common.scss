@@ -157,3 +157,13 @@ img.thumb_icon, .suggestion_list .item_photo img {
     font-size: 14px;
   }
 }
+
+.star-icon {
+  width: 11px;
+  height: 11px;
+  display: block;
+  @include media-breakpoint-up(md) {
+    width: 22px;
+    height: 22px;
+  }
+}

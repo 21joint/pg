@@ -104,3 +104,17 @@ input[type=checkbox] {
     }
   }
 }
+
+.prg-input--stars {
+  [type=radio] {
+    display: none;
+    &:checked {
+      + label {
+        opacity: 1;
+      }
+    }
+  }
+  label {
+    opacity: .4;
+  }
+}

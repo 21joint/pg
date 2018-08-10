@@ -22,12 +22,11 @@ module.exports = merge(webpackConfig, {
       }
     },
     historyApiFallback: true,
-    port: 2121,
+    port: 2112,
     open: true,
     host: '0.0.0.0',
-    hot: true,
     headers: {
-        'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'DELETE, HEAD, GET, OPTIONS, POST, PUT',
       'Access-Control-Allow-Headers': 'Content-Type, Content-Range, Content-Disposition, Content-Description'
     },
@@ -46,8 +45,5 @@ module.exports = merge(webpackConfig, {
     //       changeOrigin: false
     //     }))
     // }
-  },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ]
+  }
 });

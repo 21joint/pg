@@ -261,6 +261,32 @@
   <svg class="align-middle"
        xmlns="http://www.w3.org/2000/svg">
     <defs>
+      <style> .star-cls--1 {
+          fill: url(#linear-gradient);
+        }.star-cls--2 {fill: url(#linear-gradient-2);}  .star-cls--3 {fill: url(#linear-gradient-3);}</style>
+      <linearGradient id="linear-gradient" x1="-0.222" y1="0.952" x2="0.971"
+                      y2="-0.34" gradientUnits="objectBoundingBox">
+        <stop offset="0" stop-color="#ce8f2a"></stop>
+        <stop offset="0.17" stop-color="#cf9330"></stop>
+        <stop offset="0.38" stop-color="#d39d3f"></stop>
+        <stop offset="0.62" stop-color="#d8ae59"></stop>
+        <stop offset="0.67" stop-color="#dab360"></stop>
+        <stop offset="0.92" stop-color="#edc64f"></stop>
+        <stop offset="1" stop-color="#edc64f"></stop>
+      </linearGradient>
+      <linearGradient id="linear-gradient-2" x1="1.543" y1="1.119" x2="0.162"
+                      y2="-0.102" gradientUnits="objectBoundingBox">
+        <stop offset="0" stop-color="#ce8f2a"></stop>
+        <stop offset="0.17" stop-color="#a28f70"></stop>
+        <stop offset="0.38" stop-color="#d39d3f"></stop>
+        <stop offset="0.62" stop-color="#d8ae59"></stop>
+        <stop offset="0.67" stop-color="#dab360"></stop>
+        <stop offset="0.92" stop-color="#edc64f"></stop>
+        <stop offset="1" stop-color="#edc64f"></stop>
+      </linearGradient>
+      <linearGradient id="linear-gradient-3" x1="1.616" y1="1.474" x2="0.258"
+                      y2="-0.026"
+                      xlink:href="#linear-gradient"></linearGradient>
       <symbol id="prgLogo" viewBox="0 0 480.81 171.45">
         <path
           d="M897.82,523.2h-8.69V479.79h17.38a17,17,0,0,1,4.6.62,17.29,17.29,0,0,1,4.13,1.76,17.63,17.63,0,0,1,3.51,2.72,17.46,17.46,0,0,1,4.48,7.67,17.35,17.35,0,0,1-.74,11.34,17.43,17.43,0,0,1-9.25,9.25,16.85,16.85,0,0,1-6.74,1.36h-8.69Zm0-34.72v17.38h8.69a8.37,8.37,0,0,0,3.36-.68,8.71,8.71,0,0,0,4.62-4.63,8.7,8.7,0,0,0,0-6.75,8.71,8.71,0,0,0-4.62-4.63,8.37,8.37,0,0,0-3.36-.68Z"
@@ -283,8 +309,7 @@
           d="M1162.26,523.2h-8.69v-8.69h-17.38v8.69h-8.66v-26a16.93,16.93,0,0,1,1.36-6.77,17.67,17.67,0,0,1,3.71-5.52,17.35,17.35,0,0,1,5.51-3.72,17.48,17.48,0,0,1,13.53,0,17.42,17.42,0,0,1,9.25,9.25,16.93,16.93,0,0,1,1.36,6.77Zm-8.69-17.35v-8.69a8.5,8.5,0,0,0-.68-3.38,8.67,8.67,0,0,0-4.63-4.63,8.7,8.7,0,0,0-6.75,0,8.67,8.67,0,0,0-4.63,4.63,8.5,8.5,0,0,0-.68,3.38v8.69Z"
           transform="translate(-720 -453.29)" fill="#5cc7ce"></path>
         <path d="M1200.81,523.2h-30.39V479.79h8.69v34.72h21.71Z"
-              transform="translate(-720 -453.29)"
-              fill="#5cc7ce"></path>
+              transform="translate(-720 -453.29)" fill="#5cc7ce"></path>
         <path
           d="M923.68,579.63a22.32,22.32,0,0,1-14.5,5.33,22,22,0,0,1-5.95-.8,22.23,22.23,0,0,1-5.34-2.27,23.09,23.09,0,0,1-4.54-3.51,21.81,21.81,0,0,1-3.51-4.54,22.8,22.8,0,0,1-2.26-5.37,22.08,22.08,0,0,1-.8-6,21.75,21.75,0,0,1,.8-5.93,23,23,0,0,1,2.26-5.34,21.81,21.81,0,0,1,3.51-4.54,22.5,22.5,0,0,1,9.88-5.75,21.92,21.92,0,0,1,5.95-.8,22.3,22.3,0,0,1,14.5,5.33L919.13,553a14.56,14.56,0,0,0-4.54-3.13,13.57,13.57,0,0,0-10.76,0,14.21,14.21,0,0,0-4.37,3,13.89,13.89,0,0,0-3,4.36,13.21,13.21,0,0,0-1.09,5.34,13.39,13.39,0,0,0,1.09,5.39,14,14,0,0,0,7.34,7.36,13.21,13.21,0,0,0,5.34,1.09,12.8,12.8,0,0,0,3.18-.39,14.55,14.55,0,0,0,2.94-1.09V562.49h8.39Z"
           transform="translate(-720 -453.29)" fill="#90847a"></path>
@@ -323,77 +348,24 @@
       <symbol id="prgBlueStar" viewBox="0 0 180 180">
         <path
           d="M852.24,597.25a18.41,18.41,0,1,1-35,11.51l0-.13a18.75,18.75,0,0,1,0-11.23,15.76,15.76,0,0,1,2.08-4.39,18.62,18.62,0,0,1,22.26-7.23l1.5,4.61a14.84,14.84,0,0,0-12.84-1.66,15.32,15.32,0,0,0-9.42,8.89,14.59,14.59,0,0,0-.27,10,15,15,0,0,0,28.59-9.29L833.58,550.6,829.44,549c.08.21.15.41.22.62L840.17,582a21.82,21.82,0,0,0-12.19.35,20.89,20.89,0,0,0-10,6.85l-10.54-32.43c-.12-.37-.21-.73-.29-1.1l-2.32,3.84,10.76,33.12a22.66,22.66,0,0,0-2,5l-11.12-34.23-2.28,3.77,13.82,42.53a21.74,21.74,0,0,0,41.39-13.34l-13.86-42.66-4-1.53Zm-6.43,2.09h0a11.65,11.65,0,1,1-14.65-7.54A11.71,11.71,0,0,1,845.81,599.34Z"
-          transform="translate(-720 -453.29)"
-          fill="#d8d2cb"></path>
+          transform="translate(-720 -453.29)" fill="#d8d2cb"></path>
         <path
           d="M869.26,555.42l-30.35-37.84-23.41-29.19-26.67-33.25c-2.35-3.07-6.27-2.18-6.27,1.62L780.27,497l-2.1,37-3.24,57.15c-.26,5.5,6.31,7.66,9.38,2.36l15.92-26.35,2.28-3.77,2.35-3.88,2.32-3.84,7.44-12.31L829.44,549l4.14,1.58,4,1.53,4,1.53,21.54,8.25C871.42,565.16,872.24,558.94,869.26,555.42Z"
-          transform="translate(-720 -453.29)"
-          fill="#5cc7cd"></path>
+          transform="translate(-720 -453.29)" fill="#5cc7cd"></path>
         <path d="M723.33,511.18c-3.77.85-4.6,4.85-1.12,6.42l56,16.38,2.1-37Z"
-              transform="translate(-720 -453.29)"
-              fill="#52b1b8"></path>
+              transform="translate(-720 -453.29)" fill="#52b1b8"></path>
         <path d="M723.33,511.18c-3.77.85-4.6,4.85-1.12,6.42l56,16.38,2.1-37Z"
-              transform="translate(-720 -453.29)"
-              fill="#52b1b8"></path>
+              transform="translate(-720 -453.29)" fill="#52b1b8"></path>
         <path
           d="M864.39,484c3.26-4.45,1.35-7.09-5.24-5.43l-43.66,9.84,23.41,29.19Z"
-          transform="translate(-720 -453.29)"
-          fill="#52b1b8"></path>
+          transform="translate(-720 -453.29)" fill="#52b1b8"></path>
       </symbol>
       <symbol id="prgSearch" viewBox="0 0 22 22">
         <path
           d="M20.855,19.231l-4.979-4.979a.487.487,0,0,0-.349-.144h-.541a8.529,8.529,0,1,0-.878.878v.541a.5.5,0,0,0,.144.349l4.979,4.979a.493.493,0,0,0,.7,0l.927-.927A.493.493,0,0,0,20.855,19.231ZM8.531,15.093a6.562,6.562,0,1,1,6.562-6.562A6.56,6.56,0,0,1,8.531,15.093Z"></path>
       </symbol>
       <symbol id="prgRateStar">
-        <defs>
-          <style> .star-cls--1 {
-              fill: url(#linear-gradient);
-            }
-
-            .star-cls--2 {
-              fill: url(#linear-gradient-2);
-            }
-
-            .star-cls--3 {
-              fill: url(#linear-gradient-3);
-            }</style>
-          <linearGradient id="linear-gradient"
-                          x1="-0.222"
-                          y1="0.952"
-                          x2="0.971"
-                          y2="-0.34"
-                          gradientUnits="objectBoundingBox">
-            <stop offset="0" stop-color="#ce8f2a"></stop>
-            <stop offset="0.17" stop-color="#cf9330"></stop>
-            <stop offset="0.38" stop-color="#d39d3f"></stop>
-            <stop offset="0.62" stop-color="#d8ae59"></stop>
-            <stop offset="0.67" stop-color="#dab360"></stop>
-            <stop offset="0.92" stop-color="#edc64f"></stop>
-            <stop offset="1" stop-color="#edc64f"></stop>
-          </linearGradient>
-          <linearGradient id="linear-gradient-2"
-                          x1="1.543"
-                          y1="1.119"
-                          x2="0.162"
-                          y2="-0.102"
-                          gradientUnits="objectBoundingBox">
-            <stop offset="0" stop-color="#ce8f2a"></stop>
-            <stop offset="0.17" stop-color="#a28f70"></stop>
-            <stop offset="0.38" stop-color="#d39d3f"></stop>
-            <stop offset="0.62" stop-color="#d8ae59"></stop>
-            <stop offset="0.67" stop-color="#dab360"></stop>
-            <stop offset="0.92" stop-color="#edc64f"></stop>
-            <stop offset="1" stop-color="#edc64f"></stop>
-          </linearGradient>
-          <linearGradient id="linear-gradient-3"
-                          x1="1.616"
-                          y1="1.474"
-                          x2="0.258"
-                          y2="-0.026"
-                          xlink:href="#linear-gradient"></linearGradient>
-        </defs>
-        <g
-          transform="translate(-435 -1135)">
+        <g transform="translate(-435 -1135)">
           <path class="star-cls--1"
                 d="M173.963,249.27l-3.757,4.959L167,249.922l6.261-1.4C174.163,248.269,174.463,248.619,173.963,249.27Z"
                 transform="translate(281.182 890.03)"></path>

@@ -162,10 +162,10 @@ class Pgservicelayer_CommentsController
     if (empty($body)) {
       $this->respondWithValidationError(
         'validation_fail', array(
-        'body' => $this->translate(
-          "Please complete this field - it is required."
-        ),
-      )
+          'body' => $this->translate(
+            "Please complete this field - it is required."
+          ),
+        )
       );
     }
 
@@ -207,9 +207,9 @@ class Pgservicelayer_CommentsController
         $action = Engine_Api::_()->getDbtable('actions', 'activity')
           ->addActivity(
             $viewer, $subject, "question_answer_author_comment", null, array(
-            'owner' => $subject->getOwner()->getGuid(),
-            'body'  => $body,
-          )
+              'owner' => $subject->getOwner()->getGuid(),
+              'body'  => $body,
+            )
           );
         if (!empty($action)) {
           Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity(
@@ -223,9 +223,9 @@ class Pgservicelayer_CommentsController
         $actionOwner = Engine_Api::_()->getDbtable('actions', 'activity')
           ->addActivity(
             $subject->getOwner(), $subject, "question_comment", null, array(
-            'owner' => $subject->getOwner()->getGuid(),
-            'body'  => $body,
-          )
+              'owner' => $subject->getOwner()->getGuid(),
+              'body'  => $body,
+            )
           );
         if (!empty($actionOwner)) {
           Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity(
@@ -236,9 +236,9 @@ class Pgservicelayer_CommentsController
         $action = Engine_Api::_()->getDbtable('actions', 'activity')
           ->addActivity(
             $viewer, $subject, "question_author_comment", null, array(
-            'owner' => $subject->getOwner()->getGuid(),
-            'body'  => $body,
-          )
+              'owner' => $subject->getOwner()->getGuid(),
+              'body'  => $body,
+            )
           );
         if (!empty($action)) {
           Engine_Api::_()->getDbtable('actions', 'activity')->attachActivity(
@@ -319,10 +319,10 @@ class Pgservicelayer_CommentsController
     if (empty($body)) {
       $this->respondWithValidationError(
         'validation_fail', array(
-        'body' => $this->translate(
-          "Please complete this field - it is required."
-        ),
-      )
+          'body' => $this->translate(
+            "Please complete this field - it is required."
+          ),
+        )
       );
     }
 

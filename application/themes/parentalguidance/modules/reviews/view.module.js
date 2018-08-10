@@ -1,11 +1,10 @@
-import Api from '../../services/api.service';
-
-import 'bootstrap/js/src/dropdown';
+// import 'bootstrap/js/src/dropdown';
+import {getReview} from '../../services/api.service';
 
 (function ($) {
   let revId = window.location.search.split('=')[1];
 
-  Api.getReview({
+  getReview({
     id: revId,
     container: '.prg-review--single'
   }, function (data) {
@@ -25,6 +24,6 @@ import 'bootstrap/js/src/dropdown';
       _html += '</ul>\n';
       return _html;
     })
-  })
+  });
 
 })(jQuery);

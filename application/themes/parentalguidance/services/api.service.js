@@ -1,21 +1,30 @@
 import {API_PROXY, OAUTH} from "../../../../package";
-import Card from '../components/card/card';
-
-const url = API_PROXY + '/review?' + OAUTH;
+import {renderCard} from '../components/card/card';
 
 
-let Api = {};
+function getCategories(opts, callback) {
+  const url = API_PROXY + '/categorization?' + (!!opts.type && opts.type ? 'typeID=' + opts.type : '') + OAUTH;
+  // let _reviews = {};
 
-// Reviews
-Api.getReviews = getReviews;
-Api.getReview = getReview;
+  jQuery.ajax({
+    method: 'GET',
+    url: url,
+    dataType: 'json',
+    success: function (res) {
+      callback(res.body.Results);
+    },
+    error: function (error) {
+      console.error(error);
+    }
+  })
+}
 
-
-/*Get 50 reviews : @params: (options: { container: @selector }, callback : @function)*/
-function getReviews(options, callback) {
+// Get all reviews
+function getReviews(opts, callback) {
+  const url = API_PROXY + '/review?' + OAUTH;
   let _reviews = {};
 
-  $.ajax({
+  jQuery.ajax({
     method: 'GET',
     url: url,
     dataType: 'json',
@@ -26,9 +35,14 @@ function getReviews(options, callback) {
       _reviews.cards = [];
       for (let j = 0; j < _reviews.data.length; j++) {
         _reviews.cards.push({
-          $html: $(Card.render(_reviews.data[j]))
+          $html: $(renderCard(_reviews.data[j], {
+              type: 'review'
+            })
+          )
         });
-        _reviews.html += Card.render(_reviews.data[j]);
+        _reviews.html += renderCard(_reviews.data[j], {
+          type: 'review'
+        });
       }
       callback(_reviews);
     },
@@ -36,19 +50,57 @@ function getReviews(options, callback) {
       console.error(error);
     },
     complete: function () {
-      $(options.container).addClass('loaded');
+      $(opts.container).addClass('loaded');
+    }
+  })
+}
+
+// Get all guides
+function getGuides(opts, callback) {
+  // @TODO should be guide
+  const url = API_PROXY + '/review?' + OAUTH;
+  let _guides = {};
+
+  jQuery.ajax({
+    method: 'GET',
+    url: url,
+    dataType: 'json',
+    success: function (res) {
+      console.log(res);
+      _guides.data = res.body.Results;
+      _guides.html = '';
+      _guides.cards = [];
+      for (let j = 0; j < _guides.data.length; j++) {
+        _guides.cards.push({
+          $html: $(renderCard(_guides.data[j], {
+              type: 'guide'
+            })
+          )
+        });
+        _guides.html += renderCard(_guides.data[j], {
+          type: 'guide'
+        });
+      }
+      callback(_guides);
+    },
+    error: function (error) {
+      console.error(error);
+    },
+    complete: function () {
+      $(opts.container).addClass('loaded');
     }
   })
 }
 
 // Get single review
-function getReview(options, callback) {
+function getReview(opts, callback) {
+  const url = API_PROXY + '/review?' + OAUTH;
 
-  if (options.id) {
-    $.ajax({
+  if (opts.id) {
+    jQuery.ajax({
       method: 'GET',
       dataType: 'json',
-      url: url + '&reviewID=' + options.id,
+      url: url + '&reviewID=' + opts.id,
       success: function (res) {
         callback(res.body.Results[0]);
       },
@@ -56,11 +108,11 @@ function getReview(options, callback) {
         console.error(error);
       },
       complete: function () {
-        $(options.container).addClass('loaded');
+        $(opts.container).addClass('loaded');
       }
     });
   }
 }
 
 
-export default Api;
+export {getReviews, getReview, getGuides, getCategories};

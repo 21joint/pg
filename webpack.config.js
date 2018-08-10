@@ -13,7 +13,8 @@ let IS_DEV = (process.env.NODE_ENV === 'dev' ? true : false);
 
 /**
  * Webpack Configuration
- */
+ *
+ **/
 
 const config = {
   entry: {
@@ -23,7 +24,9 @@ const config = {
     reviews_view: APP_DIR + '/themes/parentalguidance/modules/reviews/view.module.js',
     reviews_create: APP_DIR + '/themes/parentalguidance/modules/reviews/create.module.js',
     footer: APP_DIR + '/themes/parentalguidance/modules/footer/footer.module.js',
-    guides_home: APP_DIR + '/themes/parentalguidance/modules/guides/home.module.js'
+    guides_home: APP_DIR + '/themes/parentalguidance/modules/guides/home.module.js',
+    // Here is new module
+    browse_listing: APP_DIR + '/themes/parentalguidance/modules/browse-listing/home.module.js'
   },
   output: {
     filename: 'scripts/[name].bundle.js',
@@ -34,7 +37,7 @@ const config = {
       // JS
       {
         test: /\.(js|jsx)$/,
-        include: /(module\.js)$/,
+        include: /.module.js$/,
         loader: 'babel-loader'
       },
       // SCSS
@@ -113,7 +116,7 @@ const config = {
 };
 
 if (IS_DEV) {
-  config.devtool = 'cheap-module-source-map'; // source-map
+  config.devtool = 'inline-source-map'; // source-map
 } else {
   config.devtool = 'source-map'; // cheap-module-source-map
 }

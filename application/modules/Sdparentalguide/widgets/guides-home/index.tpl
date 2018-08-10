@@ -43,10 +43,12 @@
         <div class="content-box bg-sm-white">
           <div class="row">
             <div class="col-12 px-0 px-sm-3">
-              <div class="row no-gutters cards-grid reviews"
-                   id="featuredReviewsGrid"
+              <div class="row no-gutters cards-grid guides"
+                   id="guidesGrid"
                    data-load=".card"
-                   data-url="review"></div>
+                   data-url="guide">
+
+              </div>
             </div>
           </div>
         </div>
