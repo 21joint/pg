@@ -273,3 +273,10 @@ if(empty($this->inwidget)){
     </div>
 </div>
 </div>
+<script>
+  var node = document.createElement("p");
+  var textnode = document.createTextNode("Join Parental Guidance today.");
+  node.appendChild(textnode);
+  var titleElement = document.getElementsByTagName('h3')[0].appendChild(node); ;
+
+</script>
