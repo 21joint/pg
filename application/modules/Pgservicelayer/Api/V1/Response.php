@@ -161,13 +161,16 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $request = Zend_Controller_Front::getInstance()->getRequest();
         $avatarPhoto = ucfirst($request->getParam("photoType","icon"));
         $contentImages = $this->getContentImage($user);
-        $contentImages['photoID'] = (string)$user->photo_id;
+        $contentImages['avatarPhotoID'] = (string)$user->photo_id;
 //        $contentImages['photoURL'] = isset($userPhotos['photoURL'.$avatarPhoto])?$userPhotos['photoURL'.$avatarPhoto]:$userPhotos['photoURLIcon'];
         $coverPhotos = array();
-        if(!empty($user->user_cover)){
-            $fileObject = Engine_Api::_()->storage()->get($user->user_cover);
+        if(!empty($user->coverphoto)){
+            $fileObject = Engine_Api::_()->storage()->get($user->coverphoto);
             $coverPhotos = $this->getContentImage($fileObject);
-            $coverPhotos['photoID'] = (string)$user->user_cover;
+            $coverPhotos['coverPhotoID'] = (string)$user->coverphoto;
+            $coverPhotoPosition = (array)@json_decode($user->coverphotoparams);
+            $coverPhotos['coverPhotoPosition']['top'] = (int)isset($coverPhotoPosition['top'])?$coverPhotoPosition['top']:0;
+            $coverPhotos['coverPhotoPosition']['left'] = (int)isset($coverPhotoPosition['left'])?$coverPhotoPosition['left']:0;
         }
         
         $expert = ($user->gg_expert_bronze_count || $user->gg_expert_silver_count || $user->gg_expert_gold_count || $user->gg_expert_platinum_count);
@@ -198,7 +201,9 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             'expert' => (bool)$expert,
             'memberSinceDateTime' => $this->getFormatedDateTime($user->creation_date),
             'coverPhoto' => $coverPhotos,
-            'href' => $user->getHref()
+            'href' => $user->getHref(),
+            'isPrivate' => (bool)(!$user->search),
+            'isInfluencer' => (bool)$user->gg_is_influencer
         );
         $view = Zend_Registry::get("Zend_View");
         $badgeHelper = new Sdparentalguide_View_Helper_ItemPhotoBadgeColor();
