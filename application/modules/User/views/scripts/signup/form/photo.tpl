@@ -29,6 +29,9 @@
         max-height:100%!important;
         padding: 90px 0px 50px;
     }
+    #current-element div img#lassoImg {
+        width:100%;
+    }
 }
   
 </style>

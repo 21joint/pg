@@ -10,6 +10,19 @@
  * @author     John
  */
 ?>
+<style>
+    .right-side {
+        display:flex;
+        align-items:center;
+    }
+    @media only screen and (max-width: 768px) {
+    .right-side {
+        display:block;
+    }
+}
+
+</style>
+
 <?php 
     $this->form->setDescription(''); 
 ?>
@@ -92,9 +105,9 @@ if(empty($this->inwidget)){
         <?php echo $this->partial('login_partial/_left-side.tpl', 'sdparentalguide'); ?>
     </div>
    <!-- form  and tip message-->
-    <div class="right-side col-xl-6 col-lg-6 ">
-        <div id="sociallogin_signin_popup" class="<?php echo empty($this->inwidget)  ? '' : 'sociallogin_signin_popup' ?> h-100">
-        <div class="social-signin-layout-<?php echo $layoutPos[$position] ?> h-100">
+    <div class="right-side col-xl-6 col-lg-6">
+        <div id="sociallogin_signin_popup" class="<?php echo empty($this->inwidget)  ? '' : 'sociallogin_signin_popup' ?>">
+        <div class="social-signin-layout-<?php echo $layoutPos[$position] ?>">
         <?php if(!empty($isEnableSocialAccount) && $enable): ?>
             <div class="signin_page_heading"><h2><?php echo $this->form->getTitle(); ?></h2></div>
             <?php if(empty($this->inwidget)): ?>
@@ -251,7 +264,7 @@ if(empty($this->inwidget)){
             <?php endif; ?>
         <?php else : ?>    
 
-            <div class="col-xl-6 col-lg-6 mx-auto h-100 w-100 d-flex align-items-center pl-0">
+            <div class="col-xl-6 col-lg-6 mx-auto w-100 d-flex align-items-center pl-0">
                 <?php echo $this->form->render($this) ?>
             </div>
 
