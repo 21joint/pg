@@ -273,5 +273,3 @@ if(empty($this->inwidget)){
     </div>
 </div>
 </div>
-
-   

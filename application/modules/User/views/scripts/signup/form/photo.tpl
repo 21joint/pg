@@ -23,28 +23,11 @@
         max-height: 650px!important;
         overflow-y:scroll;
     }
-    #preview-thumbnail {
-        float: left;
-        display: inline-block;
-        width:20%;
-    }
+
     #preview-thumbnail img {
         border-radius:50%;
     }
-    #thumbnail-controller {
-        float: right;
-        display: inline-block;
-        width:80%;
-    }
-    #thumbnail-controller a {
-        border:1px solid #F5F5F5;
-        color:#333D40;
-        padding:13px 0px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width:100%!important;
-    }
+
     .extfox-auth .form-elements .form-wrapper label {
         font-weight:600;
     }
