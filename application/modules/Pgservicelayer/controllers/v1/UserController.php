@@ -121,6 +121,29 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
     }
     
     public function indexAction(){
+        try{
+            $method = strtolower($this->getRequest()->getMethod());
+            if($method == 'get'){
+                $this->getAction();
+            }
+            else if($method == 'post'){
+                $this->respondWithError('invalid_method');
+            }
+            else if($method == 'put'){
+                $this->putAction();
+            }
+            else if($method == 'delete'){
+                $this->respondWithError('invalid_method');
+            }
+            else{
+                $this->respondWithError('invalid_method');
+            }
+        } catch (Exception $ex) {
+            $this->respondWithServerError($ex);
+        }
+    }
+    
+    public function getAction(){
         $viewer = Engine_Api::_()->user()->getViewer();
         if(!$viewer->getIdentity() && $this->isApiRequest()){
             $this->respondWithError('unauthorized');
@@ -166,6 +189,48 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
             ++$response['ResultCount'];
             $response['Results'][] = $responseApi->getUserData($user);
         }
+        $this->respondWithSuccess($response);
+    }
+    
+    public function putAction(){
+        $id = $this->getParam("memberID");
+        $user = Engine_Api::_()->user()->getUser($id);
+        if(!$user->getIdentity()){
+            $this->respondWithError('no_record');
+        }
+        
+        $db = Engine_Db_Table::getDefaultAdapter();
+        $db->beginTransaction();
+        try{
+            $isPrivate = $this->getParam("isPrivate",-1);
+            if($isPrivate == -1){
+                $isPrivate = $user->search;
+            }else{
+                $isPrivate = !$isPrivate;
+            }
+            $user->setFromArray(array(
+                'search' => (int)$isPrivate,
+                'coverphoto' => (int)$this->getParam("coverPhotoID",$user->coverphoto),
+                'photo_id' => (int)$this->getParam("avatarPhotoID",$user->photo_id)
+            ));
+            $coverPhotoId = $this->getParam("coverPhotoID");
+            $coverPhotoPosition = $this->getParam("coverPhotoPosition");
+            if(!empty($coverPhotoId) || !empty($coverPhotoPosition)){
+                $user->coverphotoparams = Zend_Json_Encoder::encode($this->getParam('coverPhotoPosition', array('top' => '0', 'left' => 0)));
+            }
+            $user->save();
+            
+            $db->commit();
+        } catch (Exception $ex) {
+            $db->rollBack();
+            $this->respondWithServerError($ex);
+        }
+        
+        $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
+        $response['ResultCount'] = 1;
+        $response['Results'] = array();
+        $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($user->getType());
+        $response['Results'][] = $responseApi->getUserData($user);
         $this->respondWithSuccess($response);
     }
 }
