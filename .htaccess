@@ -32,6 +32,6 @@
 # @todo This may not be effective in some cases
 FileETag Size
 
-<IfModule mod_filter.c>
+<IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript
 </IfModule>
