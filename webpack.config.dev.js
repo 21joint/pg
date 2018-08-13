@@ -10,7 +10,7 @@ module.exports = merge(webpackConfig, {
     proxy: {
       '*': {
         target: 'http://localhost:8888',
-        changeOrigin: false
+        secure: false
       },
       '/api/v1': {
         target: API_PROXY,
@@ -21,13 +21,12 @@ module.exports = merge(webpackConfig, {
       }
     },
     historyApiFallback: true,
+    publicPath: 'http://localhost:8888/',
     port: 2121,
+    hot: true,
     open: true,
-    host: 'localhost',
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'DELETE, HEAD, GET, OPTIONS, POST, PUT',
-      'Access-Control-Allow-Headers': 'Content-Type, Content-Range, Content-Disposition, Content-Description'
-    },
-  }
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ]
 });

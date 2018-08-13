@@ -608,7 +608,6 @@ Styles most tabular data in the admin panel.
 */
 table.admin_table thead tr th
 {
-  +foreground;
   padding: 10px;
   border-bottom: 1px solid #aaa;
   font-weight: bold;

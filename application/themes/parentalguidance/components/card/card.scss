@@ -1,5 +1,7 @@
+@import "../../scss/variables";
 @import "~bootstrap/scss/mixins";
-@import "~bootstrap/scss/bootstrap-grid";
+// @nikola let's have these 2 rows upper in every component
+// so we can use all the bootstrap mixins
 
 .card {
   transition: .3s .3s opacity ease;
@@ -18,7 +20,7 @@
 .card-review {
   border-color: rgb(245, 245, 245);
   border-radius: 10px;
-  .card-title{
+  .card-title {
     @include media-breakpoint-up(md) {
       min-height: 77px;
     }
@@ -32,11 +34,12 @@
     margin: 15px 0;
   }
 }
-.card-guide{
-  .card-body{
+
+.card-guide {
+  .card-body {
     padding: 3rem 1rem;
   }
-  .card-title{
+  .card-title {
     @include media-breakpoint-up(md) {
       min-height: 38px;
     }
@@ -109,10 +112,6 @@
   width: 11px;
   height: 11px;
   display: block;
-  background-image: url('../../images/gold_star.svg');
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-position: center;
   @include media-breakpoint-up(md) {
     width: 22px;
     height: 22px;

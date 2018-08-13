@@ -2,7 +2,7 @@
 
 
 
-### Quick Start ###
+### Quick Start
 
 
 At first please make sure you have Node.js stable installed on your local machine. <br>
@@ -35,7 +35,7 @@ You can check *`NodeJS`* presence by running `node -v` in your terminal
 
 <br>
 
-### Whats Included ###
+### Whats Included
 
 
 - Bootstrap 4 (latest) *<small> ([official website](https://getbootstrap.com/)) </small>*
@@ -53,7 +53,7 @@ You can check *`NodeJS`* presence by running `node -v` in your terminal
     
 <br>
 
-### Moving Around ###
+### Moving Around
 
 
 <div>
@@ -77,7 +77,9 @@ You can check *`NodeJS`* presence by running `node -v` in your terminal
 
 <div>
 
-##### Modules
+### Modules
+
+Modules are 
  
 ```markdown
 theme_directory

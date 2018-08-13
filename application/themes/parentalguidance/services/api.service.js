@@ -1,5 +1,4 @@
 import {API_PROXY, OAUTH} from "../../../../package";
-import {renderCard} from '../components/card/card';
 
 
 function getCategories(opts, callback) {
@@ -22,29 +21,16 @@ function getCategories(opts, callback) {
 // Get all reviews
 function getReviews(opts, callback) {
   const url = API_PROXY + '/review?' + OAUTH;
-  let _reviews = {};
+  let _reviews = [];
 
   jQuery.ajax({
     method: 'GET',
     url: url,
     dataType: 'json',
     success: function (res) {
-      console.log(res);
-      _reviews.data = res.body.Results;
-      _reviews.html = '';
-      _reviews.cards = [];
-      for (let j = 0; j < _reviews.data.length; j++) {
-        _reviews.cards.push({
-          $html: $(renderCard(_reviews.data[j], {
-              type: 'review'
-            })
-          )
-        });
-        _reviews.html += renderCard(_reviews.data[j], {
-          type: 'review'
-        });
-      }
+      _reviews = res.body.Results;
       callback(_reviews);
+      console.info('Got Reviews: ', _reviews);
     },
     error: function (error) {
       console.error(error);
@@ -114,5 +100,27 @@ function getReview(opts, callback) {
   }
 }
 
+// Get Leaders
+function getLeaders(opts, callback) {
+  const url = API_PROXY + '/ranking?' + OAUTH;
 
-export {getReviews, getReview, getGuides, getCategories};
+  let _leaders = [];
+
+  jQuery.ajax({
+    method: 'GET',
+    dataType: 'json',
+    url: url,
+    success: function (res) {
+      _leaders = res.body.Results;
+      callback(_leaders);
+    },
+    error: function (error) {
+      console.error(error);
+    },
+    complete: function () {
+      $(opts.container).addClass('loaded');
+    }
+  });
+}
+
+export {getReviews, getReview, getGuides, getCategories, getLeaders};

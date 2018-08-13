@@ -2,7 +2,7 @@ const path = require('path');
 // const pkg = require('./package');
 // const Conf = require('./conf');
 const args = require('yargs').argv;
-// const glob = require('glob');
+const glob = require('glob');
 const webpack = require('webpack');
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -16,19 +16,29 @@ let IS_DEV = process.env.NODE_ENV === 'dev';
  *
  **/
 
-const config = {
+let config = {
   entry: {
-    header: APP_DIR + '/themes/parentalguidance/modules/header/header.module.js',
-    auth: APP_DIR + '/themes/parentalguidance/modules/auth/auth.module.js',
-    reviews_home: APP_DIR + '/themes/parentalguidance/modules/reviews/home.module.js',
-    reviews_view: APP_DIR + '/themes/parentalguidance/modules/reviews/view.module.js',
-    reviews_create: APP_DIR + '/themes/parentalguidance/modules/reviews/create.module.js',
-    footer: APP_DIR + '/themes/parentalguidance/modules/footer/footer.module.js',
-    guides_home: APP_DIR + '/themes/parentalguidance/modules/guides/home.module.js',
-    browse_listing: APP_DIR + '/themes/parentalguidance/modules/browse-listing/home.module.js'
-  },
+
+  }
+};
+
+
+const getEntries = () =>
+  glob.sync('application/themes/parentalguidance/**/*.module.js')
+    .map(dir => new Promise(resolve => {
+      resolve({
+        dir.indexOf('/modules/') > -1 ?
+        path.basename(dir).split('.')[0] :
+        dir.slice(dir.lastIndexOf('/'))+ '_' + path.basename(dir).split('.')[0] : dir
+      })
+    }));
+
+
+config.entry = getEntries();
+
+config = {
   output: {
-    filename: 'scripts/[name].bundle.js?[chunkhash]',
+    filename: 'scripts/[name].bundle.js?[hash]',
     path: __dirname + '/dist'
   },
   module: {
@@ -37,6 +47,7 @@ const config = {
       {
         test: /\.(js|jsx)$/,
         include: /.module.js$/,
+        exclude: /node_modules/,
         loader: 'babel-loader'
       },
       // SCSS
@@ -109,12 +120,12 @@ const config = {
       'window.jQuery': 'jquery'
     }),
     new ExtractTextPlugin({
-      filename: 'styles/[name].bundle.css?[chunkhash]'
+      filename: 'styles/[name].bundle.css?[hash]'
     })
   ]
 };
 
-if (IS_DEV) {
+if (!IS_DEV) {
   config.devtool = 'inline-source-map'; // source-map
 } else {
   config.devtool = 'source-map'; // cheap-module-source-map

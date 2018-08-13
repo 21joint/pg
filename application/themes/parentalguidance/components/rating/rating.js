@@ -1,19 +1,19 @@
 import './rating.scss';
 
 const renderRate = function (rating, maxRate) {
-  let html = '<div class="prg-stars"><ul class="list-inline m-0">';
-  for (let j = 0; j < maxRate; j++) {
-    html += `<li class="list-inline-item align-middle">
-        <svg style="opacity: ${ maxRate - rating >= j + 1 ? '0.4' : '1'}" class="card-star--icon">
-          <use href="#prgRateStar"></use>
-        </svg>
-      </li>`
+  let html = '<div class="prg-stars"><ul class="row no-gutters align-items-center flex-nowrap p-0 m-0">';
+  for (let j = 0; j < rating; j++) {
+    html += `<li>
+              <svg class="card-star--icon">
+                <use href="#prgRateStar"></use>
+              </svg>
+            </li>`
   }
   html += '</ul></div>';
   return html
 };
 
-const renderRateInput = function (maxRate) {
+const renderRateInput = function () {
   const _token = new Date().getTime();
   return `<ul class="row no-gutters align-items-center">
               <li class="col-auto">

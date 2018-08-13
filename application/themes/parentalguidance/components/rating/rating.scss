@@ -1,4 +1,6 @@
-@import "~bootstrap/scss/bootstrap-grid";
+@import "../../scss/variables";
+@import "~bootstrap/scss/mixins";
+
 
 .prg-stars {
   position: absolute;
@@ -6,12 +8,14 @@
   z-index: 100;
   left: 50%;
   transform: translate(-50%, 0);
-  padding: .25rem 0.75rem;
   background-color: #ffffff;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   white-space: nowrap;
   line-height: 1;
+  li {
+    padding: .25rem 0.75rem;
+  }
   img, svg {
     width: 11px;
     height: 11px;
@@ -22,7 +26,9 @@
     }
   }
   @include media-breakpoint-up(sm) {
-    padding: .625rem .9rem;
+    li {
+      padding: .625rem .9rem;
+    }
   }
   @include media-breakpoint-up(md) {
     left: 20px;
@@ -30,7 +36,7 @@
   }
 }
 
-.prg-card--thumbs{
+.prg-card--thumbs {
   position: absolute;
   left: 10px;
   right: 10px;
@@ -39,10 +45,10 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   padding: 10px;
-  .list-inline-item + .list-inline-item{
-    margin-left: 0px;
+  .list-inline-item + .list-inline-item {
+    margin-left: 0;
   }
-  img{
+  img {
     width: 52px;
     height: 52px;
   }
