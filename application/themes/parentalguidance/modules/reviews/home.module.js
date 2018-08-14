@@ -1,3 +1,4 @@
+import 'jquery-lazy';
 import {getReviews} from '../../services/api.service';
 import {renderCard} from "../../components/card/card";
 
@@ -23,7 +24,19 @@ import {renderCard} from "../../components/card/card";
       setTimeout(function () {
         _cEl.removeClass('card-loading');
       }, i * 100);
-    })
+    });
+    $('.lazy').Lazy({
+      effect: 'fadeIn',
+      asyncLoader: function (element, response) {
+        console.log(element);
+        setTimeout(function () {
+          element.css({
+            'background-image': 'url(' + element.data('lazyImage') + ')',
+          });
+          response(true);
+        }, 300);
+      }
+    });
   });
 
 })(jQuery);

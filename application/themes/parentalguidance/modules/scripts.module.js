@@ -1,5 +1,5 @@
 import {API_PROXY, OAUTH} from '../../../../package';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
+import 'bootstrap/js/src/dropdown';
 import 'select2';
 
 $(document).ready(function () {
@@ -30,6 +30,7 @@ $(document).ready(function () {
         console.log(e);
       });
   });
+
   $('.prg-hamburger--btn').on('click', function (e) {
     $('body').toggleClass('prg-nav--open');
   });

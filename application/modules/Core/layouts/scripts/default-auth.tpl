@@ -12,7 +12,7 @@
 ?>
 <?php echo $this->doctype()->__toString() ?>
 <?php $locale = $this->locale()->getLocale()->__toString(); $orientation = ( $this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr' ); ?>
-<html class="h-100" style="overflow-x: hidden;" id="smoothbox_window" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $locale ?>" lang="<?php echo $locale ?>" dir="<?php echo $orientation ?>">
+<html class="h-100" style="overflow-x: hidden;" id="smoothbox_window" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $locale ?>" dir="<?php echo $orientation ?>">
 <head>
   <base href="<?php echo rtrim($this->serverUrl($this->baseUrl()), '/'). '/' ?>" />
 
@@ -64,7 +64,7 @@
 
     $this->headMeta()->appendName('description', trim($description));
     $this->headMeta()->appendName('keywords', trim($keywords));
-    $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
+    $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no');
 
     //Adding open graph meta tag for video thumbnail
     if( $this->subject() && $this->subject()->getPhotoUrl() ) {

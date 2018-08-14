@@ -15,7 +15,7 @@
 $locale = $this->locale()->getLocale()->__toString();
 $orientation = ( $this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr' );
 ?>
-<html id="smoothbox_window" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $locale ?>" lang="<?php echo $locale ?>" dir="<?php echo $orientation ?>">
+<html id="smoothbox_window" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $locale ?>" dir="<?php echo $orientation ?>">
     <head>
         <base href="<?php echo rtrim('//' . $_SERVER['HTTP_HOST'] . $this->baseUrl(), '/') . '/' ?>" />
 

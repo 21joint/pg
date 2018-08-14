@@ -10,7 +10,7 @@
  */
 ?>
 <?php echo $this->doctype()->__toString() ?>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html lang="en" lang="en">
   <head>
     <base href="<?php echo rtrim('//' . $_SERVER['HTTP_HOST'] . $this->baseUrl(), '/'). '/' ?>" />
 

@@ -9,20 +9,31 @@
 
 ?>
 
-<!-- Title Component -->
-<div
-  class="leaderboard d-flex flex-column justify-content-center align-items-center">
-  <h1 class="mt-5 text-uppercase"><?php echo $this->translate(
-      'Our Community'
-    ); ?></h1>
-  <h5><?php echo $this->translate(
-      'You can trust our community of real parents'
-    ); ?></h5>
-  <a id="seeMore"
-     class="btn-large btn-success text-white text-capitalize font-weight-bold mt-5 mb-4 px-5 py-3"><?php echo $this->translate(
-      'See More'
-    ); ?></a>
+
+<!-- PAGE HERO -->
+<div class="page-hero community-hero bg-white">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-10 text-center">
+        <h1
+          class="text-primary text-uppercase page-hero--title"><?php echo $this->translate(
+            'Our Community'
+          ); ?></h1>
+        <p class="text-primary page-hero--caption"><?php echo $this->translate(
+            'You can trust our community of real parents'
+          ); ?></p>
+      </div>
+      <div class="w-100"></div>
+      <div class="col-12">
+        <a id="seeMore"
+           class="btn btn-lg btn-block btn-success text-white px-0">
+          <?php echo $this->translate('See More'); ?></a>
+      </div>
+    </div>
+  </div>
 </div>
+<!-- PAGE HERO ///-->
+
 <!-- MVPs and Experts Component -->
 <div class="mvps position-relative">
   <div class="mvps_main d-flex justify-content-around align-items-center">
@@ -248,11 +259,11 @@
   });
 
   // See More Button linking to Find an Expert Part of the Page
-  document.getElementById("seeMore").href = en4.core.baseUrl + "community/home#findExpert";
+  $("#seeMore").href = en4.core.baseUrl + "community/home#findExpert";
 
   // FAQ on click display question and transform plus to close
-  document.querySelectorAll(".faq_toggle").forEach(function (toggle) {
-    toggle.addEventListener('click', function (event) {
+  $(".faq_toggle").eeach(function (index, toggle) {
+    $(toggle).on('click', function (event) {
       event.target.parentNode.parentNode.querySelector(".faq_text").toggleClass("faq_text_disp");
       event.target.parentNode.toggleClass("mb-3");
       event.target.toggleClass("faq_transform");
@@ -261,24 +272,24 @@
 
   // Pagionation Number Change Start
   // var pageNum = 1;
-  // document.getElementById('leaderboard_previous').addEventListener('click', function(){
+  // $('#leaderboard_previous$(').)aon('click', function(){
   //     if(pageNum >= 2){
   //         pageNum--;
-  //         document.getElementById('leaderboard_previous').removeClass('pagination_button_diss');
-  //         document.getElementById('leaderboard_next').removeClass('pagination_button_diss');
+  //         $('#leaderboard_previous').removeClass('pagination_button_diss');
+  //         $('#leaderboard_next').removeClass('pagination_button_diss');
   //         loadLeaderboardResults(pageNum);
   //     }else{
-  //         document.getElementById('leaderboard_previous').addClass('pagination_button_diss');
+  //         $('#leaderboard_previous').addClass('pagination_button_diss');
   //     }
   // });
-  // document.getElementById('leaderboard_next').addEventListener('click', function(){
+  // $('#leaderboard_next$(').)aon('click', function(){
   //     if(pageNum <= 2){
   //         pageNum++;
-  //         document.getElementById('leaderboard_next').removeClass('pagination_button_diss');
-  //         document.getElementById('leaderboard_previous').removeClass('pagination_button_diss');
+  //         $('#leaderboard_next').removeClass('pagination_button_diss');
+  //         $('#leaderboard_previous').removeClass('pagination_button_diss');
   //         loadLeaderboardResults(pageNum);
   //     }else{
-  //         document.getElementById('leaderboard_next').addClass('pagination_button_diss');
+  //         $('#leaderboard_next').addClass('pagination_button_diss');
   //     }
   // });
   // Pagination Number Change End
@@ -312,10 +323,9 @@
       onSuccess: function (responseJSON) { //When request is succeeded.
         loader.destroy();
 
-        var leaderboardContent = document.querySelector('.leaderboard_content');
+        var leaderboardContent = $('.leaderboard_content');
 
         if (responseJSON.status_code == 200) {
-
           var html = "";
           var results = responseJSON.body.Results;
           for (var i = 0; i < results.length; i++) {
@@ -366,7 +376,7 @@
               '<div class="avatar_badges d-flex justify-content-around align-items-center my-2 px-3">' +
               '<div class="avatar_badges_popup badge_bronze position-relative d-flex flex-column justify-content-center align-items-center">' +
               '<img src="<?php echo $this->baseUrl(
-              ); ?>/application/themes/guidanceguide/assets/images/badges/Bronze.svg"/>' +
+              ); ?>/images/Bronze.svg"/>' +
               '<span class="number_badges position-absolute text-white font-weight-bold">' +
               results[i].bronzeCount +
               '</span>' +
@@ -374,7 +384,7 @@
               '</div>' +
               '<div class="avatar_badges_popup badge_silver position-relative d-flex flex-column justify-content-center align-items-center">' +
               '<img src="<?php echo $this->baseUrl(
-              ); ?>/application/themes/guidanceguide/assets/images/badges/Silver.svg"/>' +
+              ); ?>/images/Silver.svg"/>' +
               '<span class="number_badges position-absolute text-white font-weight-bold">' +
               results[i].silverCount +
               '</span>' +
@@ -382,7 +392,7 @@
               '</div>' +
               '<div class="avatar_badges_popup badge_gold position-relative d-flex flex-column justify-content-center align-items-center">' +
               '<img src="<?php echo $this->baseUrl(
-              ); ?>/application/themes/guidanceguide/assets/images/badges/Gold.svg"/>' +
+              ); ?>/images/Gold.svg"/>' +
               '<span class="number_badges position-absolute text-white font-weight-bold">' +
               results[i].goldCount +
               '</span>' +
@@ -390,7 +400,7 @@
               '</div>' +
               '<div class="avatar_badges_popup badge_platinum position-relative d-flex flex-column justify-content-center align-items-center">' +
               '<img src="<?php echo $this->baseUrl(
-              ); ?>/application/themes/guidanceguide/assets/images/badges/Platinum.svg"/>' +
+              ); ?>/images/Platinum.svg"/>' +
               '<span class="number_badges position-absolute text-white font-weight-bold">' +
               results[i].platinumCount +
               '</span>' +
@@ -438,7 +448,7 @@
           // Avatar Styling
           // Check the Data Attribute for Mvp Status
           // If Item has Mvp Status Put Halo Around Avatar Change Contribution Level Color
-          document.querySelectorAll('.avatar_halo').forEach(function (avatar_halo) {
+          $('.avatar_halo').each(function (index, avatar_halo) {
             if (avatar_halo.dataset.halo == "true") {
               avatar_halo.addClass('avatar_halo_disp');
               avatar_halo.style.borderImage = "url('<?php echo $this->baseUrl(
@@ -446,7 +456,7 @@
             }
           });
           // Checking Contribution Level on Avatar
-          document.querySelectorAll('.cont_level').forEach(function (avatar_cont) {
+          $('.cont_level').each(function (index, avatar_cont) {
             if (avatar_cont.dataset.cont >= 1000) {
               avatar_cont.addClass('cont_level_platinum');
             } else if (avatar_cont.dataset.cont >= 100) {
@@ -460,13 +470,13 @@
             }
           });
           // Displaying Avatar Popup
-          document.querySelectorAll('.avatar_halo').forEach(function (popup_func) {
-            popup_func.addEventListener('click', function () {
+          $('.avatar_halo').each(function (index, popup_func) {
+            $(popup_func).on('click', function () {
               this.previousSibling.addClass('d-block').removeClass('d-none');
             });
           });
-          window.addEventListener('mouseup', function () {
-            document.querySelectorAll('.avatar_popup').forEach(function (removed) {
+          $(window).on('mouseup', function () {
+            $('.avatar_popup').each(function (index, removed) {
               if (removed.hasClass('d-block')) {
                 removed.addClass('d-none').removeClass('d-block');
               }
@@ -474,7 +484,7 @@
           });
 
           // Showing current page in pagination section
-          // document.getElementById('leaderboard_pageNum').innerText = page;
+          // $('#leaderboard_pageNum').innerText = page;
         } else {
           leaderboardContent.innerHTML = responseJSON.message;
         }
@@ -488,46 +498,23 @@
   // Toggle Between MVPs and Experts
   var disp_mvps;
   var disp_experts;
-  document.getElementById("meet_mvps").addEventListener('click', function () {
-    this.addClass("mvps_main_active");
-    document.getElementById("meet_experts").removeClass("mvps_main_active");
+  $("#meet_mvps").on('click', function () {
+    $(this).addClass("mvps_main_active");
+    $("#meet_experts").removeClass("mvps_main_active");
     disp_mvps = 1;
     disp_experts = 0;
     loadMvpExpertResults(disp_mvps, disp_experts);
   });
-  document.getElementById("meet_experts").addEventListener('click', function () {
-    this.addClass("mvps_main_active");
-    document.getElementById("meet_mvps").removeClass("mvps_main_active");
+  $("#meet_experts").on('click', function () {
+    $(this).addClass("mvps_main_active");
+    $("#meet_mvps").removeClass("mvps_main_active");
     disp_mvps = 0;
     disp_experts = 1;
     loadMvpExpertResults(disp_mvps, disp_experts);
   });
 
   // Go to Community Leaderboard Page
-  document.getElementById("go_to_leaderboard").href = en4.core.baseUrl + "community/leaderboard";
-
-  // Go Left and Right to Browse MVPs and Experts
-  var current_mvp = 0;
-  document.getElementById("mvps_right").addEventListener('click', function () {
-    if (current_mvp <= 16) {
-      this.addClass("d-block").removeClass("d-none");
-      document.querySelector(".mvps_content").childNodes[current_mvp].addClass("d-none").removeClass("d-flex");
-      document.getElementById("mvps_left").addClass("d-block").removeClass("d-none");
-      current_mvp++;
-    } else {
-      this.addClass("d-none").removeClass("d-block");
-    }
-  });
-  document.getElementById("mvps_left").addEventListener('click', function () {
-    if (current_mvp >= 1) {
-      current_mvp--;
-      this.addClass("d-block").removeClass("d-none");
-      document.querySelector(".mvps_content").childNodes[current_mvp].addClass("d-flex").removeClass("d-none");
-      document.getElementById("mvps_right").addClass("d-block").removeClass("d-none");
-    } else {
-      this.addClass("d-none").removeClass("d-block");
-    }
-  });
+  $("#go_to_leaderboard").href = en4.core.baseUrl + "community/leaderboard";
 
   // MVPs and Experts Results Ajax Function -> start
   // Arguments disp_mvps = 1, disp_experts = 0 When everything get wired
@@ -559,10 +546,8 @@
       onSuccess: function (responseJSON) { //When request is succeeded.
         loader.destroy();
 
-        var leaderboardContent = document.querySelector('.mvps_content');
-
+        var leaderboardContent = document.$('.mvps_content');
         if (responseJSON.status_code == 200) {
-
           var html = "";
           var results = responseJSON.body.Results;
           for (var i = 0; i < results.length; i++) {
@@ -608,24 +593,21 @@
               '</div>' +
               '<div class="avatar_badges d-flex justify-content-around align-items-center my-2 px-3">' +
               '<div class="avatar_badges_popup badge_bronze position-relative d-flex flex-column justify-content-center align-items-center">' +
-              '<img src="<?php echo $this->baseUrl(
-              ); ?>/images/Bronze.svg"/>' +
+              '<img src="<?php echo $this->baseUrl(); ?>/images/Bronze.svg"/>' +
               '<span class="number_badges position-absolute text-white font-weight-bold">' +
               results[i].bronzeCount +
               '</span>' +
               '<span class="badge_name">Bronze</span>' +
               '</div>' +
               '<div class="avatar_badges_popup badge_silver position-relative d-flex flex-column justify-content-center align-items-center">' +
-              '<img src="<?php echo $this->baseUrl(
-              ); ?>/images/Silver.svg"/>' +
+              '<img src="<?php echo $this->baseUrl(); ?>/images/Silver.svg"/>' +
               '<span class="number_badges position-absolute text-white font-weight-bold">' +
               results[i].silverCount +
               '</span>' +
               '<span class="badge_name">Silver</span>' +
               '</div>' +
               '<div class="avatar_badges_popup badge_gold position-relative d-flex flex-column justify-content-center align-items-center">' +
-              '<img src="<?php echo $this->baseUrl(
-              ); ?>/images/Gold.svg"/>' +
+              '<img src="<?php echo $this->baseUrl(); ?>/images/Gold.svg"/>' +
               '<span class="number_badges position-absolute text-white font-weight-bold">' +
               results[i].goldCount +
               '</span>' +
@@ -680,14 +662,14 @@
           // Avatar Styling
           // Check the Data Attribute for Mvp Status
           // If Item has Mvp Status Put Halo Around Avatar Change Contribution Level Color
-          document.querySelectorAll('.mvp_halo').forEach(function (mvp_halo) {
+          $('.mvp_halo').each(function (index, mvp_halo) {
             if (mvp_halo.dataset.halo == "true") {
               mvp_halo.addClass('avatar_halo_disp');
               mvp_halo.style.borderImage = "url(/images/border.png) 10 10 10 10 fill";
             }
           });
           // Checking Contribution Level on Avatar
-          document.querySelectorAll('.cont_level').forEach(function (avatar_cont) {
+          $('.cont_level').each(function (index, avatar_cont) {
             if (avatar_cont.dataset.cont >= 1000) {
               avatar_cont.addClass('cont_level_platinum');
             } else if (avatar_cont.dataset.cont >= 100) {
@@ -701,13 +683,13 @@
             }
           });
           // Displaying Avatar Popup
-          document.querySelectorAll('.mvp_halo').forEach(function (popup_func) {
-            popup_func.addEventListener('click', function () {
+          $('.mvp_halo').each(function (index, popup_func) {
+            $(popup_func).on('click', function () {
               this.previousSibling.addClass('d-block').removeClass('d-none');
             });
           });
-          window.addEventListener('mouseup', function () {
-            document.querySelectorAll('.avatar_popup').forEach(function (removed) {
+          $(window).on('mouseup', function () {
+            $('.avatar_popup').each(function (index, removed) {
               if (removed.hasClass('d-block')) {
                 removed.addClass('d-none').removeClass('d-block');
               }

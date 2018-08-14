@@ -9,45 +9,72 @@
  * @version    $Id: create.tpl 6590 2013-04-01 00:00:00Z SocialEngineAddOns $
  * @author     SocialEngineAddOns
  */
- ?>
+?>
 <?php $apiKey = Engine_Api::_()->seaocore()->getGoogleMapApiKey();
-$this->headScript()->appendFile("https://maps.googleapis.com/maps/api/js?libraries=places&key=$apiKey");
+$this->headScript()->appendFile(
+  "https://maps.googleapis.com/maps/api/js?libraries=places&key=$apiKey"
+);
 ?>
 <?php
 $this->headScript()
-        ->appendFile($this->layout()->staticBaseUrl . 'externals/autocompleter/Observer.js')
-        ->appendFile($this->layout()->staticBaseUrl . 'externals/autocompleter/Autocompleter.js')
-        ->appendFile($this->layout()->staticBaseUrl . 'externals/autocompleter/Autocompleter.Local.js')
-        ->appendFile($this->layout()->staticBaseUrl . 'externals/autocompleter/Autocompleter.Request.js');
-?> 
+  ->appendFile(
+    $this->layout()->staticBaseUrl.'externals/autocompleter/Observer.js'
+  )
+  ->appendFile(
+    $this->layout()->staticBaseUrl.'externals/autocompleter/Autocompleter.js'
+  )
+  ->appendFile(
+    $this->layout()->staticBaseUrl
+    .'externals/autocompleter/Autocompleter.Local.js'
+  )
+  ->appendFile(
+    $this->layout()->staticBaseUrl
+    .'externals/autocompleter/Autocompleter.Request.js'
+  );
+?>
 
-<?php if (Engine_Api::_()->sitereview()->hasPackageEnable()):?>
-  <?php 
-   $this->headLink()
-          ->prependStylesheet($this->layout()->staticBaseUrl . 'application/modules/Sitereviewpaidlisting/externals/styles/style_sitereview_package.css');
+<?php if (Engine_Api::_()->sitereview()->hasPackageEnable()): ?>
+  <?php
+  $this->headLink()
+    ->prependStylesheet(
+      $this->layout()->staticBaseUrl
+      .'application/modules/Sitereviewpaidlisting/externals/styles/style_sitereview_package.css'
+    );
   ?>
-  <?php $this->PackageCount = Engine_Api::_()->getDbTable('packages', 'sitereviewpaidlisting')->getPackageCount($this->listingtype_id);?>
-<?php endif;?>
+  <?php $this->PackageCount = Engine_Api::_()->getDbTable(
+    'packages', 'sitereviewpaidlisting'
+  )->getPackageCount($this->listingtype_id); ?>
+<?php endif; ?>
 
 <!--WE ARE NOT USING STATIC BASE URL BECAUSE SOCIAL ENGINE ALSO NOT USE FOR THIS JS-->
 <!--CHECK HERE Engine_View_Helper_TinyMce => protected function _renderScript()-->
-<?php $this->tinyMCESEAO()->addJS();?>
+<?php $this->tinyMCESEAO()->addJS(); ?>
 
 <script type="text/javascript">
-  en4.core.runonce.add(function()
-  {
-    new Autocompleter.Request.JSON('tags', '<?= $this->url(array('module' => 'seaocore', 'controller' => 'index', 'action' => 'tag-suggest', 'resourceType' => 'sitereview_listing'), 'default', true) ?>', {
-      'postVar' : 'text',
+  en4.core.runonce.add(function () {
+    new Autocompleter.Request.JSON('tags', '<?= $this->url(
+      array('module' => 'seaocore', 'controller' => 'index',
+            'action' => 'tag-suggest', 'resourceType' => 'sitereview_listing'),
+      'default', true
+    ) ?>', {
+      'postVar': 'text',
       'minLength': 1,
       'selectMode': 'pick',
       'autocompleteType': 'tag',
       'className': 'tag-autosuggest',
-      'customChoices' : true,
-      'filterSubset' : true,
-      'multiple' : true,
-      'injectChoice': function(token){
-        var choice = new Element('li', {'class': 'autocompleter-choices', 'value':token.label, 'id':token.id});
-        new Element('div', {'html': this.markQueryValue(token.label),'class': 'autocompleter-choice'}).inject(choice);
+      'customChoices': true,
+      'filterSubset': true,
+      'multiple': true,
+      'injectChoice': function (token) {
+        var choice = new Element('li', {
+          'class': 'autocompleter-choices',
+          'value': token.label,
+          'id': token.id
+        });
+        new Element('div', {
+          'html': this.markQueryValue(token.label),
+          'class': 'autocompleter-choice'
+        }).inject(choice);
         choice.inputValue = token;
         this.addChoiceEvents(choice).inject(this.choices);
         choice.store('autocompleteChoice', token);
@@ -55,63 +82,68 @@ $this->headScript()
     });
   });
 
-	window.addEvent('domready', function() { 
-  
-		if(document.getElementById('location')  && (('<?= !Engine_Api::_()->getApi('settings', 'core')->getSetting('seaocore.locationspecific', 0);?>') || ('<?= Engine_Api::_()->getApi('settings', 'core')->getSetting('seaocore.locationspecific', 0);?>' && '<?= !Engine_Api::_()->getApi('settings', 'core')->getSetting('seaocore.locationspecificcontent', 0); ?>'))) {
-			var autocompleteSECreateLocation = new google.maps.places.Autocomplete(document.getElementById('location'));
-			<?php include APPLICATION_PATH . '/application/modules/Seaocore/views/scripts/location.tpl'; ?>
-		}
-    
-		checkDraft();
-	});
+  $(document).ready(function () {
 
-	function checkDraft(){
-		if($('draft')){
-			if($('draft').value==1) {
-				$("search-wrapper").style.display="none";
-				$("search").checked= false;
-        
-        if($("creation_date-wrapper")) {
-            $("creation_date-wrapper").style.display="none";   
-        }    
-        
-			} else{
-				$("search-wrapper").style.display="block";
-				$("search").checked= true;
-        
-        if($("creation_date-wrapper")) {
-            $("creation_date-wrapper").style.display="block";   
-        }            
-			}
-		}
-	}
+    if (document.getElementById('location') && (('<?= !Engine_Api::_()->getApi(
+      'settings', 'core'
+    )->getSetting('seaocore.locationspecific', 0);?>') || ('<?= Engine_Api::_()
+      ->getApi('settings', 'core')->getSetting(
+      'seaocore.locationspecific', 0
+    );?>' && '<?= !Engine_Api::_()->getApi('settings', 'core')->getSetting(
+      'seaocore.locationspecificcontent', 0
+    ); ?>'))) {
+      var autocompleteSECreateLocation = new google.maps.places.Autocomplete(document.getElementById('location'));
+      <?php include APPLICATION_PATH
+      .'/application/modules/Seaocore/views/scripts/location.tpl'; ?>
+    }
 
-  en4.core.runonce.add(function(){
-     if('<?= $this->expiry_setting; ?>' !=1){
-       document.getElementById("end_date_enable-wrapper").style.display = "none";
-     }
-    if($('end_date-date')){
+    checkDraft();
+  });
+
+  function checkDraft() {
+    if ($('draft')) {
+      if ($('draft').value == 1) {
+        $("search-wrapper").style.display = "none";
+        $("search").checked = false;
+
+        if ($("creation_date-wrapper")) {
+          $("creation_date-wrapper").style.display = "none";
+        }
+
+      } else {
+        $("search-wrapper").style.display = "block";
+        $("search").checked = true;
+
+        if ($("creation_date-wrapper")) {
+          $("creation_date-wrapper").style.display = "block";
+        }
+      }
+    }
+  }
+
+  en4.core.runonce.add(function () {
+    if ('<?= $this->expiry_setting; ?>' != 1) {
+      document.getElementById("end_date_enable-wrapper").style.display = "none";
+    }
+    if ($('end_date-date')) {
       // check end date and make it the same date if it's too
-      cal_end_date.calendars[0].start = new Date( $('end_date-date').value );
+      cal_end_date.calendars[0].start = new Date($('end_date-date').value);
       // redraw calendar
       cal_end_date.navigate(cal_end_date.calendars[0], 'm', 1);
       cal_end_date.navigate(cal_end_date.calendars[0], 'm', -1);
     }
 
   });
-  var updateTextFields = function(endsettings)
-  {
+  var updateTextFields = function (endsettings) {
     var endtime_element = document.getElementById("end_date-wrapper");
     endtime_element.style.display = "none";
 
-    if (endsettings.value == 0)
-    {
+    if (endsettings.value == 0) {
       endtime_element.style.display = "none";
       return;
     }
 
-    if (endsettings.value == 1)
-    {
+    if (endsettings.value == 1) {
       endtime_element.style.display = "block";
       return;
     }
@@ -121,215 +153,287 @@ $this->headScript()
 </script>
 <?php
 /* Include the common user-end field switching javascript */
-echo $this->partial('_jsSwitch.tpl', 'fields', array(
-        //'topLevelId' => (int) @$this->topLevelId,
-        //'topLevelValue' => (int) @$this->topLevelValue
-))
+echo $this->partial(
+  '_jsSwitch.tpl', 'fields', array(
+  //'topLevelId' => (int) @$this->topLevelId,
+  //'topLevelValue' => (int) @$this->topLevelValue
+)
+)
 ?>
- <?php //include_once APPLICATION_PATH . '/application/modules/Sitereview/views/scripts/navigation_views.tpl'; ?>
+<?php //include_once APPLICATION_PATH . '/application/modules/Sitereview/views/scripts/navigation_views.tpl'; ?>
 <?php if ($this->category_count <= 0): ?>
-    <div class="tip"> 
+  <div class="tip">
       <span>
-				<?php if($this->level_id == 1): ?>
-					<?= $this->translate("Note: Users will not be able to create listings in '%s', until you have created atleast one category. Please create some categories from the Admin Panel for this listing type to enable users to create listings.", $this->listing_plural_lc); ?>
-				<?php else: ?>
-					<?= $this->translate("Sorry, you can not post a new listing right now. Please try again after sometime or contact us by filling the 'Contact Us' form using the 'Contact' link available in the footer of our site."); ?>
-				<?php endif; ?>	
+				<?php if ($this->level_id == 1): ?>
+          <?= $this->translate(
+            "Note: Users will not be able to create listings in '%s', until you have created atleast one category. Please create some categories from the Admin Panel for this listing type to enable users to create listings.",
+            $this->listing_plural_lc
+          ); ?>
+        <?php else: ?>
+          <?= $this->translate(
+            "Sorry, you can not post a new listing right now. Please try again after sometime or contact us by filling the 'Contact Us' form using the 'Contact' link available in the footer of our site."
+          ); ?>
+        <?php endif; ?>
       </span>
-    </div>
+  </div>
 <?php endif; ?>
 <div class='layout_middle sr_create_list_form'>
   <?php if ($this->current_count >= $this->quota && !empty($this->quota)): ?>
     <div class="tip"> 
       <span>
-        <?= $this->translate("You have already created the maximum number of $this->listing_singular_lc allowed."); ?>
+        <?= $this->translate(
+          "You have already created the maximum number of $this->listing_singular_lc allowed."
+        ); ?>
       </span>
     </div>
     <br/>
-  <?php elseif($this->category_count > 0): ?>
-    <?php if ($this->sitereview_render == 'sitereview_form'):?>
-  <?php if (Engine_Api::_()->sitereview()->hasPackageEnable() && $this->PackageCount > 0):?>
-	<h3><?= $this->translate("Post New $this->listing_singular_uc") ?></h3>
-	<p><?= $this->translate("Create a $this->listing_singular_lc using these quick, easy steps and get going.");?></p>	
-    <h4 class="sitereview_create_step"><?= $this->translate("2. Configure your $this->listing_singular_lc based on the package you have chosen."); ?></h4>
-	  <div class='sitereviewpage_layout_right'>      
-    	<div class="sitereview_package_page p5">          
-        <ul class="sitereview_package_list">
-        	<li class="p5">
-          	<div class="sitereview_package_list_title">
-              <h3><?= $this->translate('Package Details'); ?>: <?= $this->translate(ucfirst($this->package->title)); ?></h3>
-            </div>           
-            <div class="sitereview_package_stat"> 
+  <?php elseif ($this->category_count > 0): ?>
+    <?php if ($this->sitereview_render == 'sitereview_form'): ?>
+      <?php if (Engine_Api::_()->sitereview()->hasPackageEnable()
+        && $this->PackageCount > 0
+      ): ?>
+        <h3><?= $this->translate("Post New $this->listing_singular_uc") ?></h3>
+        <p><?= $this->translate(
+            "Create a $this->listing_singular_lc using these quick, easy steps and get going."
+          ); ?></p>
+        <h4 class="sitereview_create_step"><?= $this->translate(
+            "2. Configure your $this->listing_singular_lc based on the package you have chosen."
+          ); ?></h4>
+        <div class='sitereviewpage_layout_right'>
+          <div class="sitereview_package_page p5">
+            <ul class="sitereview_package_list">
+              <li class="p5">
+                <div class="sitereview_package_list_title">
+                  <h3><?= $this->translate('Package Details'); ?>
+                    : <?= $this->translate(
+                      ucfirst($this->package->title)
+                    ); ?></h3>
+                </div>
+                <div class="sitereview_package_stat">
               <span>
-								<b><?= $this->translate("Price"). ": "; ?> </b>
-        <?php if(isset ($this->package->price)):?>
-          <?php if($this->package->price > 0):echo Engine_Api::_()->sitereview()->getPriceWithCurrency($this->package->price); else: echo $this->translate('FREE'); endif; ?>
-        <?php endif;?>
+								<b><?= $this->translate("Price").": "; ?> </b>
+                <?php if (isset ($this->package->price)): ?>
+                  <?php if ($this->package->price > 0):echo Engine_Api::_()
+                    ->sitereview()->getPriceWithCurrency(
+                    $this->package->price
+                  ); else: echo $this->translate('FREE'); endif; ?>
+                <?php endif; ?>
              	</span>
-             	<span>
-                <b><?= $this->translate("Billing Cycle"). ": "; ?> </b>
-                <?= $this->package->getBillingCycle() ?>
+                  <span>
+                <b><?= $this->translate("Billing Cycle").": "; ?> </b>
+                    <?= $this->package->getBillingCycle() ?>
               </span>
-              <span style="width: auto;">
-              	<b><?= ($this->package->price > 0 && $this->package->recurrence > 0 && $this->package->recurrence_type != 'forever' ) ? $this->translate("Billing Duration"). ": ": $this->translate("Duration"). ": "; ?> </b>
-               	<?= $this->package->getPackageQuantity() ; ?>
+                  <span style="width: auto;">
+              	<b><?= ($this->package->price > 0
+                    && $this->package->recurrence > 0
+                    && $this->package->recurrence_type != 'forever')
+                    ? $this->translate("Billing Duration").": "
+                    : $this->translate("Duration").": "; ?> </b>
+                    <?= $this->package->getPackageQuantity(); ?>
              	</span>
-              <br />
-              <span>
-              	<b><?= $this->translate("Featured"). ": "; ?> </b>
-               	<?php
-                	if ($this->package->featured == 1)
-                		echo $this->translate("Yes");
-                	else
-                  	echo $this->translate("No");
-                ?>
+                  <br/>
+                  <span>
+              	<b><?= $this->translate("Featured").": "; ?> </b>
+                    <?php
+                    if ($this->package->featured == 1) {
+                      echo $this->translate("Yes");
+                    } else {
+                      echo $this->translate("No");
+                    }
+                    ?>
              	</span>
-              <span>
-              	<b><?= $this->translate("Sponsored"). ": "; ?> </b>
-               	<?php
-                	if ($this->package->sponsored == 1)
-                  	echo $this->translate("Yes");
-                	else
-                  	echo $this->translate("No");
-             	 	?>
+                  <span>
+              	<b><?= $this->translate("Sponsored").": "; ?> </b>
+                    <?php
+                    if ($this->package->sponsored == 1) {
+                      echo $this->translate("Yes");
+                    } else {
+                      echo $this->translate("No");
+                    }
+                    ?>
              	</span>
-              <?php if($this->overview && Engine_Api::_()->authorization()->getPermission($this->viewer->level_id, 'sitereview_listing', "overview_listtype_"."$this->listingtype_id")):?>
-                <span>
-                 <b><?= $this->translate("Rich Overview"). ": "; ?> </b>
-                 <?php
-                  if ($this->package->overview == 1)
-                    echo $this->translate("Yes");
-                  else
-                    echo $this->translate("No");
-                 ?>
+                  <?php if ($this->overview
+                    && Engine_Api::_()->authorization()->getPermission(
+                      $this->viewer->level_id, 'sitereview_listing',
+                      "overview_listtype_"."$this->listingtype_id"
+                    )
+                  ): ?>
+                    <span>
+                 <b><?= $this->translate("Rich Overview").": "; ?> </b>
+                      <?php
+                      if ($this->package->overview == 1) {
+                        echo $this->translate("Yes");
+                      } else {
+                        echo $this->translate("No");
+                      }
+                      ?>
                 </span>
-              <?php endif;?>
-              <?php if($this->location):?>
-                <span>
-                 <b><?= $this->translate("Map"). ": "; ?> </b>
-                  <?php
-                  if ($this->package->map == 1)
-                    echo $this->translate("Yes");
-                  else
-                    echo $this->translate("No");
-                 ?>
+                  <?php endif; ?>
+                  <?php if ($this->location): ?>
+                    <span>
+                 <b><?= $this->translate("Map").": "; ?> </b>
+                      <?php
+                      if ($this->package->map == 1) {
+                        echo $this->translate("Yes");
+                      } else {
+                        echo $this->translate("No");
+                      }
+                      ?>
                 </span>
-              <?php endif;?>
-              <?php if(Engine_Api::_()->authorization()->getPermission($this->viewer->level_id, 'sitereview_listing', "video_listtype_"."$this->listingtype_id")):?>
-                <span>
-                 <b><?= $this->translate("Videos"). ": "; ?> </b>
-                  <?php
-                  if ($this->package->video == 1)
-                    if ($this->package->video_count)
-                      echo $this->package->video_count;
-                    else
-                      echo $this->translate("Unlimited");
-                  else
-                    echo $this->translate("No");
-                 ?>
+                  <?php endif; ?>
+                  <?php if (Engine_Api::_()->authorization()->getPermission(
+                    $this->viewer->level_id, 'sitereview_listing',
+                    "video_listtype_"."$this->listingtype_id"
+                  )
+                  ): ?>
+                    <span>
+                 <b><?= $this->translate("Videos").": "; ?> </b>
+                      <?php
+                      if ($this->package->video == 1) {
+                        if ($this->package->video_count) {
+                          echo $this->package->video_count;
+                        } else {
+                          echo $this->translate("Unlimited");
+                        }
+                      } else {
+                        echo $this->translate("No");
+                      }
+                      ?>
                 </span>
-              <?php endif;?>
-              <?php if(Engine_Api::_()->authorization()->getPermission($this->viewer->level_id, 'sitereview_listing', "photo_listtype_"."$this->listingtype_id")):?>
-                <span>
-                 <b><?= $this->translate("Photos"). ": "; ?> </b>
-                  <?php
-                  if ($this->package->photo == 1)
-                    if ($this->package->photo_count)
-                      echo $this->package->photo_count;
-                    else
-                      echo $this->translate("Unlimited");
-                  else
-                    echo $this->translate("No");
-                 ?>
+                  <?php endif; ?>
+                  <?php if (Engine_Api::_()->authorization()->getPermission(
+                    $this->viewer->level_id, 'sitereview_listing',
+                    "photo_listtype_"."$this->listingtype_id"
+                  )
+                  ): ?>
+                    <span>
+                 <b><?= $this->translate("Photos").": "; ?> </b>
+                      <?php
+                      if ($this->package->photo == 1) {
+                        if ($this->package->photo_count) {
+                          echo $this->package->photo_count;
+                        } else {
+                          echo $this->translate("Unlimited");
+                        }
+                      } else {
+                        echo $this->translate("No");
+                      }
+                      ?>
                 </span>
-              <?php endif;?>
-              <?php if(!empty($this->allow_review) && $this->allow_review != 1 && Engine_Api::_()->authorization()->getPermission($this->viewer->level_id, 'sitereview_listing', "review_create_listtype_"."$this->listingtype_id")):?>
-                <span>
-                 <b><?= $this->translate("User Review"). ": "; ?> </b>
-                  <?php
-                  if ($this->package->user_review == 1)
-                    echo $this->translate("Yes");
-                  else
-                    echo $this->translate("No");
-                 ?>
+                  <?php endif; ?>
+                  <?php if (!empty($this->allow_review)
+                    && $this->allow_review != 1
+                    && Engine_Api::_()->authorization()->getPermission(
+                      $this->viewer->level_id, 'sitereview_listing',
+                      "review_create_listtype_"."$this->listingtype_id"
+                    )
+                  ): ?>
+                    <span>
+                 <b><?= $this->translate("User Review").": "; ?> </b>
+                      <?php
+                      if ($this->package->user_review == 1) {
+                        echo $this->translate("Yes");
+                      } else {
+                        echo $this->translate("No");
+                      }
+                      ?>
                 </span>
-              <?php endif;?>
-              <?php if($this->wishlist):?>
-                <span>
-                 <?php if(Engine_Api::_()->getApi('settings', 'core')->getSetting('sitereview.favourite')):?>
-      <b><?= $this->translate("Favourite"). ": "; ?> </b>
-      <?php else:?>
-      <b><?= $this->translate("Wishlist"). ": "; ?> </b>
-      <?php endif;?>
-                  <?php
-                  if ($this->package->wishlist == 1)
-                    echo $this->translate("Yes");
-                  else
-                    echo $this->translate("No");
-                 ?>
+                  <?php endif; ?>
+                  <?php if ($this->wishlist): ?>
+                    <span>
+                 <?php if (Engine_Api::_()->getApi('settings', 'core')
+                   ->getSetting('sitereview.favourite')
+                 ): ?>
+                   <b><?= $this->translate("Favourite").": "; ?> </b>
+                 <?php else: ?>
+                   <b><?= $this->translate("Wishlist").": "; ?> </b>
+                 <?php endif; ?>
+                      <?php
+                      if ($this->package->wishlist == 1) {
+                        echo $this->translate("Yes");
+                      } else {
+                        echo $this->translate("No");
+                      }
+                      ?>
                 </span>
-              <?php endif;?>
-						</div>
-						<div class="sitereview_list_details">
-							<?= $this->translate($this->package->description); ?>
-		        </div>
-           <?php if($this->PackageCount > 1):?>
-          	<div class="sitereview_create_link mtop10 clr">
-           		<a href="<?= $this->url(array('action'=>'index'), "sitereview_package_listtype_$this->listingtype_id", true) ?>">&laquo; <?= $this->translate("Choose a different package"); ?></a>
-          	</div>
-           <?php endif;?>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="sitereview_layout_left">
-  <?php endif; ?>
-      <?= $this->form->setAttrib('class', 'global_form sr_create_list_form')->render($this);?>
-        <?php if (Engine_Api::_()->sitereview()->hasPackageEnable() && $this->PackageCount > 0):?>
-					</div>
-  	   <?php endif;?>
-    <?php  else:?>
-      <?= $this->translate($this->sitereview_formrender);?>
-    <?php endif;?>
+                  <?php endif; ?>
+                </div>
+                <div class="sitereview_list_details">
+                  <?= $this->translate($this->package->description); ?>
+                </div>
+                <?php if ($this->PackageCount > 1): ?>
+                  <div class="sitereview_create_link mtop10 clr">
+                    <a href="<?= $this->url(
+                      array('action' => 'index'),
+                      "sitereview_package_listtype_$this->listingtype_id", true
+                    ) ?>">&laquo; <?= $this->translate(
+                        "Choose a different package"
+                      ); ?></a>
+                  </div>
+                <?php endif; ?>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="sitereview_layout_left">
+      <?php endif; ?>
+      <?= $this->form->setAttrib('class', 'global_form sr_create_list_form')
+        ->render($this); ?>
+      <?php if (Engine_Api::_()->sitereview()->hasPackageEnable()
+        && $this->PackageCount > 0
+      ): ?>
+        </div>
+      <?php endif; ?>
+    <?php else: ?>
+      <?= $this->translate($this->sitereview_formrender); ?>
+    <?php endif; ?>
   <?php endif; ?>
 </div>
 
 <script type="text/javascript">
-  if($('subcategory_id'))
+  if ($('subcategory_id'))
     $('subcategory_id').style.display = 'none';
 </script>
 
 <script type="text/javascript">
 
-  var getProfileType = function(category_id) {
-    var mapping = <?= Zend_Json_Encoder::encode(Engine_Api::_()->getDbTable('categories', 'sitereview')->getMapping($this->listingtype_id, 'profile_type')); ?>;
-    for(i = 0; i < mapping.length; i++) {
-      if(mapping[i].category_id == category_id)
+  var getProfileType = function (category_id) {
+    var mapping = <?= Zend_Json_Encoder::encode(
+      Engine_Api::_()->getDbTable('categories', 'sitereview')->getMapping(
+        $this->listingtype_id, 'profile_type'
+      )
+    ); ?>;
+    for (i = 0; i < mapping.length; i++) {
+      if (mapping[i].category_id == category_id)
         return mapping[i].profile_type;
     }
     return 0;
   }
 
-  var defaultProfileId = '<?= '0_0_' . $this->defaultProfileId ?>'+'-wrapper';
-  if($type($(defaultProfileId)) && typeof $(defaultProfileId) != 'undefined') {
+  var defaultProfileId = '<?= '0_0_'.$this->defaultProfileId ?>' + '-wrapper';
+  if ($type($(defaultProfileId)) && typeof $(defaultProfileId) != 'undefined') {
     $(defaultProfileId).setStyle('display', 'none');
   }
 
-	if($('overview-wrapper')) {
-		<?php
-  echo $this->tinyMCESEAO()->render(array('element_id'=>'"overview"',
-      'language' => $this->language,
-      'upload_url' => $this->upload_url,
-      'directionality' => $this->directionality));
-  ?>
-	}
-	var show_editor = '<?= $this->show_editor;?>';
-  if($('body-wrapper') && show_editor == 1) {
-		<?php
-  echo $this->tinyMCESEAO()->render(array('element_id'=>'"body"',
-      'language' => $this->language,
-      'upload_url' => $this->upload_url,
-      'directionality' => $this->directionality));
-  ?>
-	}
+  if ($('overview-wrapper')) {
+    <?php
+    echo $this->tinyMCESEAO()->render(
+      array('element_id'     => '"overview"',
+            'language'       => $this->language,
+            'upload_url'     => $this->upload_url,
+            'directionality' => $this->directionality)
+    );
+    ?>
+  }
+  var show_editor = '<?= $this->show_editor;?>';
+  if ($('body-wrapper') && show_editor == 1) {
+    <?php
+    echo $this->tinyMCESEAO()->render(
+      array('element_id'     => '"body"',
+            'language'       => $this->language,
+            'upload_url'     => $this->upload_url,
+            'directionality' => $this->directionality)
+    );
+    ?>
+  }
 </script>

@@ -69,8 +69,10 @@
                     class="notifications-count bg-primary text-white font-weight-bold position-absolute d-flex align-items-center justify-content-center"><?= $this->notificationCount; ?></span>
                 </a>
                 <div class="updates_pulldown" id="core_mini_updates_pulldown">
-                  <div class="dropdown-menu dropdown-menu-right pulldown_contents_wrapper py-0">
-                    <div class="text-right px-3 py-2 d-flex align-items-center justify-content-end mark-all">
+                  <div
+                    class="dropdown-menu dropdown-menu-right pulldown_contents_wrapper py-0">
+                    <div
+                      class="text-right px-3 py-2 d-flex align-items-center justify-content-end mark-all">
                       <?= $this->htmlLink(
                         'javascript:void(0);',
                         $this->translate('Mark All Read'),
@@ -79,7 +81,8 @@
                       ) ?>
                     </div>
                     <div class="pulldown_contents">
-                      <ul class="notifications_menu p-0 m-0" id="notifications_menu">
+                      <ul class="notifications_menu p-0 m-0"
+                          id="notifications_menu">
                         <li
                           class="notifications_loading d-flex justify-content-center align-items-center font-weight-light small py-4"
                           id="notifications_loading">
@@ -123,23 +126,24 @@
                   $this->itemPhoto($this->viewer, 'thumb.icon')
                 ); ?>
               </li>
-              <li
-                class="list-inline-item align-middle name d-none d-sm-inline-block dropdown ml-3">
+              <li class="list-inline-item align-middle name d-none d-sm-inline-block dropdown ml-3">
                 <?= $this->htmlLink(
                   $this->viewer->getHref(), substr(
                   $this->viewer->getTitle(), 0,
                   strrpos($this->viewer->getTitle(), ' ')
                 ), array('class' => 'font-weight-bold align-middle')
                 ); ?>
-                <a role="button"
+                <a href="#"
+                   role="button"
+                   id="authProfileDropdown"
                    data-toggle="dropdown"
                    aria-haspopup="true"
                    class="text-primary align-middle p-1 fa fa-caret-down"
                    aria-expanded="false">
                 </a>
-                <div
-                  class="dropdown-menu dropdown-menu-right shadow p-0 border-0 dropdown-menu--profile"
-                  style="overflow: hidden">
+                <div class="dropdown-menu dropdown-menu-right shadow p-0 border-0 dropdown-menu--profile"
+                  style="overflow: hidden"
+                  aria-labelledby="authProfileDropdown">
                   <ul class="list-unstyled">
                     <li>
                       <div class="dropdown-item bg-light p-3">

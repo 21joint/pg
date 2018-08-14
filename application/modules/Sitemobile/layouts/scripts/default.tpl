@@ -84,7 +84,7 @@ if (empty($formatType)):
   $locale = $this->locale()->getLocale()->__toString();
   $orientation = ( $this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr' );
   ?>
-  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $locale ?>" lang="<?php echo $locale ?>" dir="<?php echo $orientation ?>">
+  <html lang="<?php echo $locale ?>" dir="<?php echo $orientation ?>">
     <head>
       <base href="<?php echo rtrim('//' . $_SERVER['HTTP_HOST'] . $this->baseUrl(), '/'). '/' ?>" />
       <?php // ALLOW HOOKS INTO META ?>
@@ -101,7 +101,7 @@ if (empty($formatType)):
               ->appendHttpEquiv('Content-Language', $locale);
 
       $this->headMeta()
-              ->appendName('viewport', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0')
+              ->appendName('viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no')
               ->appendName('environment', APPLICATION_ENV);
       ?>
       <meta name="apple-mobile-web-app-capable" content="yes" />

@@ -68,6 +68,7 @@ html [type="button"],
     .btn {
       width: 100%;
       height: 50px;
+      max-width: 180px;
     }
   }
   @include media-breakpoint-up(md) {

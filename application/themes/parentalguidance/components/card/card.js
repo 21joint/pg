@@ -1,4 +1,5 @@
 import './card.scss';
+import {renderAvatar} from '../avatar/avatar';
 import {renderRate} from '../rating/rating';
 
 function renderCard(type, options) {
@@ -28,11 +29,9 @@ function renderCard(type, options) {
                              role="button"><span class="fas fa-link"></span></a></li>
         </ul>
       </div>
-      <a
-          href="${en4.core.baseUrl}reviews/view?reviewID=${type.reviewID}"
-          class="d-block card-img--wrapper"
-          style="background-image: url(${type.coverPhoto.photoURL})">
-        <img class="invisible w-100 h-100 position-absolute" src="${type.coverPhoto.photoURL}" alt="${type.title}"/>
+      <a href="${en4.core.baseUrl}reviews/view?reviewID=${type.reviewID}"
+          class="d-block card-img--wrapper lazy"
+          data-loader="asyncLoader" data-lazy-image="${type.coverPhoto.photoURL}">
       </a>
       ${options.type == 'review' ? renderRate(type.averageReviewRating, 5) : ''}
       ${options.type == 'guide' ? `<div class="prg-card--thumbs">
@@ -58,12 +57,7 @@ function renderCard(type, options) {
           <div class="card-author">
             <div class="row no-gutters flex-nowrap align-items-center">
               <div class="col-auto d-none d-sm-block">
-                <div class="position-relative card-author--thumbnail">
-                  <img class="rounded-circle"
-                       src="${type.author.avatarPhoto.photoURLProfile}"
-                       alt="Generic placeholder image">
-                  <b class="position-absolute d-flex justify-content-center align-items-center text-white bagde badge-primary rounded-circle ff-open--sans card-author--rank">${type.author.contributionLevel}</b>
-                </div>
+                <div class="card-author--avatar">${renderAvatar(type.author)}</div>
               </div>
               <div class="col">
                 <a href="${en4.core.baseUrl}profile/${type.author.memberName}">

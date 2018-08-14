@@ -40,7 +40,7 @@
 </div>
 
 <script type="text/javascript">
-    window.addEvent('domready',function () {
+    $(document).ready(function () {
 
   if ($("sitecredit_badge_enable-0").checked) {
    if ($("sitecredit_ranking-wrapper")) {

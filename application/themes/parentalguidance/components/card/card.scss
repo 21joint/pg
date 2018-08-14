@@ -6,7 +6,6 @@
 .card {
   transition: .3s .3s opacity ease;
   opacity: 1;
-  overflow: hidden;
   &:hover {
     .card-actions {
       top: 0;
@@ -75,6 +74,7 @@
 
 .card-header {
   position: relative;
+  overflow: hidden;
 }
 
 .card-body {
@@ -152,7 +152,7 @@
 
 }
 
-.card-author--thumbnail {
+.card-author--avatar {
   margin-right: 16px;
   img {
     width: 40px;
@@ -189,4 +189,23 @@
   height: 30px;
   padding: 0px;
   line-height: 1;
+}
+
+[data-lazy-image] {
+  position: relative;
+  &:not([style]) {
+    background-color: #f7f7f7;
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: 10;
+      left: 50%;
+      top: 50%;
+      width: 34px;
+      height: 34px;
+      margin: -17px 0 0 -17px;
+      background-image: url(../../images/loader.svg);
+      background-size: 100%;
+    }
+  }
 }

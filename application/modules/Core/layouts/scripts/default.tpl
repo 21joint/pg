@@ -14,7 +14,7 @@
 <?php $locale = $this->locale()->getLocale()->__toString(); $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr'); ?>
 <?php $headerContent = $this->content('header'); ?>
 <?php $footerContent = $this->content('footer'); ?>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $locale ?>" lang="<?php echo $locale ?>" dir="<?php echo $orientation ?>">
+<html lang="<?php echo $locale ?>" dir="<?php echo $orientation ?>">
 <head>
     <base href="<?php echo rtrim($this->serverUrl($this->baseUrl()), '/'). '/' ?>" />
 
@@ -66,7 +66,7 @@
 
     $this->headMeta()->appendName('description', trim($description));
     $this->headMeta()->appendName('keywords', trim($keywords));
-    $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
+    $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no');
 
     //Adding open graph meta tag for video thumbnail
     if ($this->subject() && $this->subject()->getPhotoUrl()) {
@@ -171,9 +171,7 @@
         ->prependFile($staticBaseUrl . 'externals/smoothbox/smoothbox4.js')
         ->prependFile($staticBaseUrl . 'application/modules/User/externals/scripts/core.js')
         ->prependFile($staticBaseUrl . 'application/modules/Core/externals/scripts/core.js')
-        ->prependFile($staticBaseUrl . 'externals/chootools/chootools.js')
-        ->prependFile($staticBaseUrl . 'externals/mootools/mootools-more-1.4.0.1-full-compat-' . (APPLICATION_ENV == 'development' ? 'nc' : 'yc') . '.js')
-        ->prependFile($staticBaseUrl . 'externals/mootools/mootools-core-1.4.5-full-compat-' . (APPLICATION_ENV == 'development' ? 'nc' : 'yc') . '.js');
+        ->prependFile($staticBaseUrl . 'externals/chootools/chootools.js');
     // Process
     foreach ($this->headScript()->getContainer() as $dat) {
         if (!empty($dat->attributes['src'])) {

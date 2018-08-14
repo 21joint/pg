@@ -133,7 +133,7 @@
             element.options[ i ] = null;
         }
     }
-    window.addEvent('domready', function() {
+    $(document).ready( function() {
         $('hidden_category_id-wrapper').style.display = 'none';
         $('hidden_subcategory_id-wrapper').style.display = 'none';
         $('hidden_subsubcategory_id-wrapper').style.display = 'none';

@@ -292,7 +292,7 @@ $this->headScript()
   </div>
 </div>
   <script type="text/javascript">
-    window.addEvent('domready',function () {    
+    $(document).ready(function () {
         if(<?= empty($this->credit_type)?0:1;?>) {
            $('<?= $this->credit_type ?>').selected=true;
         }       
@@ -355,7 +355,7 @@ $this->headScript()
         cal_endtime_onHideStart();
       });
 
-      window.addEvent('domready', function() {
+      $(document).ready( function() {
         if ($('starttime-minute') && $('endtime-minute')) {
           $('starttime-minute').destroy();
           $('endtime-minute').destroy();

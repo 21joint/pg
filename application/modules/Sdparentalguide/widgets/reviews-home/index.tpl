@@ -8,8 +8,6 @@
  */
 
 ?>
-
-
 <!-- PAGE HERO -->
 <div class="page-hero bg-white">
   <div class="container-fluid">
@@ -53,10 +51,8 @@
               <hr>
             </div>
             <div class="col-12 px-0 px-sm-3">
-              <div class="row no-gutters cards-grid reviews"
-                   id="featuredReviewsGrid"
-                   data-load=".card"
-                   data-url="review">
+              <div class="row no-gutters cards-grid reviews" id="featuredReviewsGrid">
+                <!-- Reviews gonna be here-->
               </div>
             </div>
             <div class="col-12 px-0">

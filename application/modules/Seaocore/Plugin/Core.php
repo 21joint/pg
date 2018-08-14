@@ -41,7 +41,7 @@ class Seaocore_Plugin_Core extends Zend_Controller_Plugin_Abstract {
         }
 
         if ($theme == 'shoppinghub' || $theme == 'clear' || $theme == 'demotheme' || $theme == 'luminous' || $theme == 'spectacular' || $theme == 'captivate') {
-            $view->headMeta()->setName('viewport', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
+            $view->headMeta()->setName('viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no');
         }
         if( strpos($theme, 'insignia') !== false ) {
           $view->headLink()->appendStylesheet($view->layout()->staticBaseUrl

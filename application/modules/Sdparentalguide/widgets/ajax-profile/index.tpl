@@ -69,7 +69,7 @@
   </div>
 
   <script>
-    window.addEvent('domready', function () {
+    $(document).ready( function () {
       en4.user.buildFieldPrivacySelector($$('.global_form *[data-field-id]'));
     });
     en4.core.runonce.add(function () {

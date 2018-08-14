@@ -171,7 +171,7 @@ var prefieldForm = function() {
 ?>
   }
 
-    window.addEvent('domready', function() {
+    $(document).ready( function() {
       <?php if ($this->profileType): ?>			
         $('<?= '0_0_' . $this->defaultProfileId ?>').value= <?= $this->profileType ?>;
         changeFields($('<?= '0_0_' . $this->defaultProfileId ?>'));
