@@ -1,6 +1,3 @@
-import 'popper.js';
-import '../styles.module';
-
 (function ($) {
   $(document).ready(function () {
     var notificationUpdater;

@@ -357,12 +357,12 @@ $this->headLink()->appendStylesheet(
               '<div class="struggle_box_left d-flex align-items-center large-9 medium-12 small-12">' +
               '<div class="struggle_left_side d-inline-block">' +
               '<div class="item-photo-guidance position-relative">' +
-              '<div class="avatar_popup position-absolute bg-white d-none">' +
-              '<div class="avatar_header d-flex mx-3 mt-3 px-2 pt-2">' +
+              '<div class="avatar-popup position-absolute bg-white d-none">' +
+              '<div class="avatar-header d-flex mx-3 mt-3 px-2 pt-2">' +
               '<img class="rounded-circle" src="' +
               results[i].author.avatarPhoto.photoURLIcon +
               '" alt="avatar photo"/>' +
-              '<div class="avatar_info d-flex flex-column">' +
+              '<div class="avatar-popup--info d-flex flex-column">' +
               '<a class="font-weight-bold" href="' +
               en4.core.baseUrl + "profile/" + results[i].author.memberName +
               '">' +
@@ -377,8 +377,8 @@ $this->headLink()->appendStylesheet(
               '<svg width="14px" aria-hidden="true" data-prefix="fal" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-times fa-w-10 fa-2x"><path fill="currentColor" d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z" class=""></path></svg>' +
               '</span>' +
               '</div>' +
-              '<div class="avatar_badges d-flex justify-content-around align-items-center my-2 px-3">' +
-              '<div class="avatar_badges_popup badge_bronze position-relative d-flex flex-column justify-content-center align-items-center">' +
+              '<div class="prg-badges d-flex justify-content-around align-items-center my-2 px-3">' +
+              '<div class="avatar-badge badge_bronze position-relative d-flex flex-column justify-content-center align-items-center">' +
               '<img src="<?php echo $this->baseUrl(
               ); ?>/application/themes/guidanceguide/assets/images/badges/Bronze.svg"/>' +
               '<span class="number_badges position-absolute text-white font-weight-bold">' +
@@ -386,7 +386,7 @@ $this->headLink()->appendStylesheet(
               '</span>' +
               '<span class="badge_name">Bronze</span>' +
               '</div>' +
-              '<div class="avatar_badges_popup badge_silver position-relative d-flex flex-column justify-content-center align-items-center">' +
+              '<div class="avatar-badge badge_silver position-relative d-flex flex-column justify-content-center align-items-center">' +
               '<img src="<?php echo $this->baseUrl(
               ); ?>/application/themes/guidanceguide/assets/images/badges/Silver.svg"/>' +
               '<span class="number_badges position-absolute text-white font-weight-bold">' +
@@ -394,7 +394,7 @@ $this->headLink()->appendStylesheet(
               '</span>' +
               '<span class="badge_name">Silver</span>' +
               '</div>' +
-              '<div class="avatar_badges_popup badge_gold position-relative d-flex flex-column justify-content-center align-items-center">' +
+              '<div class="avatar-badge badge_gold position-relative d-flex flex-column justify-content-center align-items-center">' +
               '<img src="<?php echo $this->baseUrl(
               ); ?>/application/themes/guidanceguide/assets/images/badges/Gold.svg"/>' +
               '<span class="number_badges position-absolute text-white font-weight-bold">' +
@@ -402,7 +402,7 @@ $this->headLink()->appendStylesheet(
               '</span>' +
               '<span class="badge_name">Gold</span>' +
               '</div>' +
-              '<div class="avatar_badges_popup badge_platinum position-relative d-flex flex-column justify-content-center align-items-center">' +
+              '<div class="avatar-badge badge_platinum position-relative d-flex flex-column justify-content-center align-items-center">' +
               '<img src="<?php echo $this->baseUrl(
               ); ?>/application/themes/guidanceguide/assets/images/badges/Platinum.svg"/>' +
               '<span class="number_badges position-absolute text-white font-weight-bold">' +
@@ -411,7 +411,7 @@ $this->headLink()->appendStylesheet(
               '<span class="badge_name">Platinum</span>' +
               '</div>' +
               '</div>' +
-              '<div class="avatar_footer d-flex justify-content-center align-items-center border-top">' +
+              '<div class="avatar-popup--footer d-flex justify-content-center align-items-center border-top">' +
               '<div class="d-flex justify-content-center p-3 border-right">' +
               'Reviews ' +
               '<span class="text-primary font-weight-bold ml-1">' +
@@ -551,7 +551,7 @@ $this->headLink()->appendStylesheet(
             });
           });
           window.addEventListener('mouseup', function () {
-            document.querySelectorAll('.avatar_popup').forEach(function (removed) {
+            document.querySelectorAll('.avatar-popup').forEach(function (removed) {
               if (removed.hasClass('d-block')) {
                 removed.addClass('d-none').removeClass('d-block');
               }

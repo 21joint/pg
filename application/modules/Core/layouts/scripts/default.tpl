@@ -166,12 +166,10 @@
         <?php echo $this->headScript()->captureEnd(Zend_View_Helper_Placeholder_Container_Abstract::PREPEND) ?>
     </script>
     <?php
-    $this->headScript()
-        ->prependFile($staticBaseUrl . 'externals/scrollbars/scrollbars.min.js')
-        ->prependFile($staticBaseUrl . 'externals/smoothbox/smoothbox4.js')
-        ->prependFile($staticBaseUrl . 'application/modules/User/externals/scripts/core.js')
-        ->prependFile($staticBaseUrl . 'application/modules/Core/externals/scripts/core.js')
-        ->prependFile($staticBaseUrl . 'externals/chootools/chootools.js');
+
+//        ->prependFile($staticBaseUrl . 'application/modules/User/externals/scripts/core.js')
+//        ->prependFile($staticBaseUrl . 'application/modules/Core/externals/scripts/core.js');
+//        ->prependFile($staticBaseUrl . 'externals/chootools/chootools.js');
     // Process
     foreach ($this->headScript()->getContainer() as $dat) {
         if (!empty($dat->attributes['src'])) {

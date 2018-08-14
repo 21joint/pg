@@ -1,17 +1,21 @@
 @import "./vendors";
 @import "./nikola";
 @import "./helpers";
+@import "./header";
+@import "./common";
+@import "./layout";
+
+@import "./widgets/pagination";
+@import "./reviews/create";
+@import "./reviews/single";
+
 @import "./components/loading";
 @import "./components/breadcrumb";
 @import "./components/forms";
 @import "./components/select2";
 @import "./components/hover-dropdown";
 @import "./components/modal";
-@import "./common";
-@import "./header";
-@import "./widgets/pagination";
-@import "./reviews/create";
-@import "./reviews/single";
+
 @import "./footer";
 
 // CORE

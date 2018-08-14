@@ -353,12 +353,12 @@
               ((page - 1) * 20 + (i + 1)) +
               '</div>' +
               '<div class="d-flex align-items-center leader position-relative">' +
-              '<div class="avatar_popup position-absolute bg-white d-none">' +
-              '<div class="avatar_header d-flex mx-3 mt-3 px-2 pt-2">' +
+              '<div class="avatar-popup position-absolute bg-white d-none">' +
+              '<div class="avatar-header d-flex mx-3 mt-3 px-2 pt-2">' +
               '<img src="' +
               results[i].avatarPhoto.photoURLIcon +
               '" alt="avatar photo"/>' +
-              '<div class="avatar_info d-flex flex-column">' +
+              '<div class="avatar-popup--info d-flex flex-column">' +
               '<a class="font-weight-bold" href="' +
               en4.core.baseUrl + "profile/" + results[i].memberName +
               '">' +
@@ -373,8 +373,8 @@
               '<svg width="14px" aria-hidden="true" data-prefix="fal" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-times fa-w-10 fa-2x"><path fill="currentColor" d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z" class=""></path></svg>' +
               '</span>' +
               '</div>' +
-              '<div class="avatar_badges d-flex justify-content-around align-items-center my-2 px-3">' +
-              '<div class="avatar_badges_popup badge_bronze position-relative d-flex flex-column justify-content-center align-items-center">' +
+              '<div class="prg-badges d-flex justify-content-around align-items-center my-2 px-3">' +
+              '<div class="avatar-badge badge_bronze position-relative d-flex flex-column justify-content-center align-items-center">' +
               '<img src="<?php echo $this->baseUrl(
               ); ?>/images/Bronze.svg"/>' +
               '<span class="number_badges position-absolute text-white font-weight-bold">' +
@@ -382,7 +382,7 @@
               '</span>' +
               '<span class="badge_name">Bronze</span>' +
               '</div>' +
-              '<div class="avatar_badges_popup badge_silver position-relative d-flex flex-column justify-content-center align-items-center">' +
+              '<div class="avatar-badge badge_silver position-relative d-flex flex-column justify-content-center align-items-center">' +
               '<img src="<?php echo $this->baseUrl(
               ); ?>/images/Silver.svg"/>' +
               '<span class="number_badges position-absolute text-white font-weight-bold">' +
@@ -390,7 +390,7 @@
               '</span>' +
               '<span class="badge_name">Silver</span>' +
               '</div>' +
-              '<div class="avatar_badges_popup badge_gold position-relative d-flex flex-column justify-content-center align-items-center">' +
+              '<div class="avatar-badge badge_gold position-relative d-flex flex-column justify-content-center align-items-center">' +
               '<img src="<?php echo $this->baseUrl(
               ); ?>/images/Gold.svg"/>' +
               '<span class="number_badges position-absolute text-white font-weight-bold">' +
@@ -398,7 +398,7 @@
               '</span>' +
               '<span class="badge_name">Gold</span>' +
               '</div>' +
-              '<div class="avatar_badges_popup badge_platinum position-relative d-flex flex-column justify-content-center align-items-center">' +
+              '<div class="avatar-badge badge_platinum position-relative d-flex flex-column justify-content-center align-items-center">' +
               '<img src="<?php echo $this->baseUrl(
               ); ?>/images/Platinum.svg"/>' +
               '<span class="number_badges position-absolute text-white font-weight-bold">' +
@@ -407,7 +407,7 @@
               '<span class="badge_name">Platinum</span>' +
               '</div>' +
               '</div>' +
-              '<div class="avatar_footer d-flex justify-content-center align-items-center border-top">' +
+              '<div class="avatar-popup--footer d-flex justify-content-center align-items-center border-top">' +
               '<div class="d-flex justify-content-center p-3 border-right">' +
               'Reviews ' +
               '<span class="text-primary font-weight-bold ml-1">' +
@@ -476,7 +476,7 @@
             });
           });
           $(window).on('mouseup', function () {
-            $('.avatar_popup').each(function (index, removed) {
+            $('.avatar-popup').each(function (index, removed) {
               if (removed.hasClass('d-block')) {
                 removed.addClass('d-none').removeClass('d-block');
               }
@@ -571,12 +571,12 @@
             }
 
             html += '<div class="mvps_item d-flex flex-column align-items-center justify-content-center position-relative mr-5">' +
-              '<div class="avatar_popup position-absolute bg-white d-none">' +
-              '<div class="avatar_header d-flex mx-3 mt-3 px-2 pt-2">' +
+              '<div class="avatar-popup position-absolute bg-white d-none">' +
+              '<div class="avatar-header d-flex mx-3 mt-3 px-2 pt-2">' +
               '<img src="' +
               results[i].avatarPhoto.photoURLIcon +
               '" alt="avatar photo"/>' +
-              '<div class="avatar_info d-flex flex-column justify-content-start align-items-start ml-3">' +
+              '<div class="avatar-popup--info d-flex flex-column justify-content-start align-items-start ml-3">' +
               '<a class="font-weight-bold" href="' +
               en4.core.baseUrl + "profile/" + results[i].memberName +
               '">' +
@@ -591,29 +591,29 @@
               '<svg width="14px" aria-hidden="true" data-prefix="fal" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-times fa-w-10 fa-2x"><path fill="currentColor" d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z" class=""></path></svg>' +
               '</span>' +
               '</div>' +
-              '<div class="avatar_badges d-flex justify-content-around align-items-center my-2 px-3">' +
-              '<div class="avatar_badges_popup badge_bronze position-relative d-flex flex-column justify-content-center align-items-center">' +
+              '<div class="prg-badges d-flex justify-content-around align-items-center my-2 px-3">' +
+              '<div class="avatar-badge badge_bronze position-relative d-flex flex-column justify-content-center align-items-center">' +
               '<img src="<?php echo $this->baseUrl(); ?>/images/Bronze.svg"/>' +
               '<span class="number_badges position-absolute text-white font-weight-bold">' +
               results[i].bronzeCount +
               '</span>' +
               '<span class="badge_name">Bronze</span>' +
               '</div>' +
-              '<div class="avatar_badges_popup badge_silver position-relative d-flex flex-column justify-content-center align-items-center">' +
+              '<div class="avatar-badge badge_silver position-relative d-flex flex-column justify-content-center align-items-center">' +
               '<img src="<?php echo $this->baseUrl(); ?>/images/Silver.svg"/>' +
               '<span class="number_badges position-absolute text-white font-weight-bold">' +
               results[i].silverCount +
               '</span>' +
               '<span class="badge_name">Silver</span>' +
               '</div>' +
-              '<div class="avatar_badges_popup badge_gold position-relative d-flex flex-column justify-content-center align-items-center">' +
+              '<div class="avatar-badge badge_gold position-relative d-flex flex-column justify-content-center align-items-center">' +
               '<img src="<?php echo $this->baseUrl(); ?>/images/Gold.svg"/>' +
               '<span class="number_badges position-absolute text-white font-weight-bold">' +
               results[i].goldCount +
               '</span>' +
               '<span class="badge_name">Gold</span>' +
               '</div>' +
-              '<div class="avatar_badges_popup badge_platinum position-relative d-flex flex-column justify-content-center align-items-center">' +
+              '<div class="avatar-badge badge_platinum position-relative d-flex flex-column justify-content-center align-items-center">' +
               '<img src="<?php echo $this->baseUrl(
               ); ?>/images/Platinum.svg"/>' +
               '<span class="number_badges position-absolute text-white font-weight-bold">' +
@@ -622,7 +622,7 @@
               '<span class="badge_name">Platinum</span>' +
               '</div>' +
               '</div>' +
-              '<div class="avatar_footer d-flex justify-content-center align-items-center border-top">' +
+              '<div class="avatar-popup--footer d-flex justify-content-center align-items-center border-top">' +
               '<div class="d-flex justify-content-center align-items-center p-3 border-right">' +
               'Reviews ' +
               '<span class="text-primary font-weight-bold ml-1">' +
@@ -689,7 +689,7 @@
             });
           });
           $(window).on('mouseup', function () {
-            $('.avatar_popup').each(function (index, removed) {
+            $('.avatar-popup').each(function (index, removed) {
               if (removed.hasClass('d-block')) {
                 removed.addClass('d-none').removeClass('d-block');
               }

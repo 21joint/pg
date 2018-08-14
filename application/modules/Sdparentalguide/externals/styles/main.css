@@ -260,12 +260,12 @@
   background-color: #5cc7ce;
   color: white;
 }
-.mvps_item .avatar_popup span{
+.mvps_item .avatar-popup span{
   background-color: transparent;
   color: #b4c0c1;
   width: auto;
 }
-.mvps_item .avatar_popup img{
+.mvps_item .avatar-popup img{
   width: 48px;
   height: 48px;
 }
@@ -786,7 +786,7 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
       color: #5cc7ce;
     }
     /* Community Home Page End */
-    .avatar_popup{
+    .avatar-popup{
       top: 0px;
       left: 0px;
       width: 320px;
@@ -815,7 +815,7 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
       color: #5cc7ce;
     }
     /* Community Home Page End */
-    .avatar_popup{
+    .avatar-popup{
       top: 0px;
       left: -25px;
       width: 290px;

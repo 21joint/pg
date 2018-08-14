@@ -1,13 +1,4 @@
-.author-avatar {
-
-}
-
-.avatar_halo_disp {
-  border-style: solid;
-  border-width: 5px 6px 5px 6px;
-}
-
-.avatar_popup {
+.avatar-popup {
   z-index: 999;
   /*top: 40px;*/
   /*left: 40px;*/
@@ -16,10 +7,22 @@
   border-radius: 10px;
 }
 
-.avatar_info {
+.avatar-popup--header {
+
+}
+
+.avatar_halo_disp {
+  border-style: solid;
+  border-width: 5px 6px 5px 6px;
+}
+
+.avatar-popup--info {
   //padding: 10px;
 }
 
+.avatar-contribution {
+  font-size: 14px;
+}
 .avatar_close {
   color: #b4c0c1;
   cursor: pointer;
@@ -33,22 +36,22 @@
   color: #5f727f;
 }
 
-.avatar_badges {
+.prg-badges {
   height: 100px;
 }
 
-.avatar_badges_popup {
+.prg-badge--single {
   flex: none !important;
   text-align: center !important;
 }
 
-.avatar_badges_popup img {
+.prg-badge--single img {
   width: 48px;
   height: 48px;
   margin-right: 0px;
 }
 
-.avatar_badges_popup .number_badges {
+.prg-badge--single .number_badges {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -61,7 +64,7 @@
   border: 0px solid #fff;
 }
 
-.avatar_badges_popup .badge_name {
+.prg-badge--single .badge_name {
   height: 20px !important;
   border: 0px solid #fff;
   font-weight: normal;
@@ -69,7 +72,7 @@
   font-size: 12px;
 }
 
-.avatar_footer div {
+.avatar-popup--footer div {
   flex: 1 !important;
   font-size: 12px;
   font-weight: 500;

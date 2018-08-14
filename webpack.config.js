@@ -18,6 +18,7 @@ let IS_DEV = process.env.NODE_ENV === 'dev';
 
 const config = {
   entry: {
+    core: APP_DIR + '/themes/parentalguidance/modules/core/core.module.js',
     header: APP_DIR + '/themes/parentalguidance/modules/header/header.module.js',
     auth: APP_DIR + '/themes/parentalguidance/modules/auth/auth.module.js',
     reviews_home: APP_DIR + '/themes/parentalguidance/modules/reviews/home.module.js',
