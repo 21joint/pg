@@ -26,7 +26,8 @@
     
     // add fontawesome
     $this->headLink()
-    ->prependStylesheet($cssBaseUrl . 'externals/font-awesome/css/font-awesome.min.css');
+    ->prependStylesheet($cssBaseUrl . 'externals/font-awesome/css/font-awesome.min.css')
+    ->prependStylesheet($staticBaseUrl . 'application/modules/User/externals/styles/main.css');
     
     $request = Zend_Controller_Front::getInstance()->getRequest();
     $this->headTitle()
@@ -99,6 +100,8 @@
       $themes = array('default');
     }
     
+
+    
     // Process
     foreach( $this->headLink()->getContainer() as $dat ) {
       if( !empty($dat->href) ) {
@@ -151,6 +154,7 @@
   </script>
   <?php
     $this->headScript()
+      ->prependFile($staticBaseUrl . 'externals/scrollbars/scrollbars.min.js')
       ->prependFile($staticBaseUrl . 'externals/smoothbox/smoothbox4.js')
       ->prependFile($staticBaseUrl . 'application/modules/User/externals/scripts/core.js')
       ->prependFile($staticBaseUrl . 'application/modules/Core/externals/scripts/core.js')

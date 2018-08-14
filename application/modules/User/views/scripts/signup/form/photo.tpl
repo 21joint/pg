@@ -24,10 +24,6 @@
         overflow-y:scroll;
     }
 
-    #preview-thumbnail img {
-        border-radius:50%;
-    }
-
     .extfox-auth .form-elements .form-wrapper label {
         font-weight:600;
     }
