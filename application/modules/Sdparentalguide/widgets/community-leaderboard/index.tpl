@@ -307,15 +307,27 @@ function loadLeaderboardResults(tm, ord, disp = 0, page = 1) {
                                                 '<span class="badge_name">Platinum</span>'+
                                             '</div>'+
                                         '</div>'+
-                                        '<div class="avatar_footer d-flex justify-content-center align-items-center border-top">'+
-                                            '<div class="d-flex justify-content-center p-3 border-right">'+
+                                        '<div class="avatar_footer d-flex justify-content-center align-items-center border-top px-1">'+
+                                            '<div class="d-flex flex-column-reverse align-items-center justify-content-center py-2 px-0">'+
                                                 'Reviews '+
                                                 '<span class="text-primary font-weight-bold ml-1">'+
                                                 results[i].reviewCount+
                                                 '</span>'+
                                             '</div>'+
-                                            '<div class="d-flex justify-content-center p-3">'+
-                                                'Answers '+ 
+                                            '<div class="d-flex flex-column-reverse align-items-center justify-content-center py-2 px-0">'+
+                                                'Guides '+
+                                                '<span class="text-primary font-weight-bold ml-1">'+
+                                                results[i].guideCount+
+                                                '</span>'+
+                                            '</div>'+
+                                            '<div class="d-flex flex-column-reverse align-items-center justify-content-center py-2 px-0">'+
+                                                'Struggles '+
+                                                '<span class="text-primary font-weight-bold ml-1">'+
+                                                results[i].questionCount+
+                                                '</span>'+
+                                            '</div>'+
+                                            '<div class="d-flex flex-column-reverse align-items-center justify-content-center px-0 py-2">'+
+                                                'Theories '+ 
                                                 '<span class="text-primary font-weight-bold ml-1">'+
                                                 results[i].answerCount+
                                                 '</span>'+

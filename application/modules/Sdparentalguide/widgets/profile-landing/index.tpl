@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="bottom row pt-4">
-                        <div class="col-sm col-5 col-xl-3 col-lg-3  text-center border-right">
+                        <div class="col-2  text-center">
                             <h5 class="text-primary font-weight-bold"> 
                                 <?php echo $this->subject->gg_review_count;?>
                             </h5>
@@ -31,20 +31,28 @@
                                 <?php echo $this->translate('Reviews'); ?>
                             </p>
                         </div>
-                        <!-- <div class="col-sm col-3 text-center">
+                        <div class="col-2 text-center">
                             <h5 class="text-primary font-weight-bold"> 
-                                5
+                                <?php echo $this->subject->gg_guide_count;?>
                             </h5>
                             <p class="desc text-dark">
                                 <?php echo $this->translate('Guides'); ?>
                             </p>
-                        </div> -->
-                        <div class="col-sm col-5 col-xl-3 col-lg-3 text-center border-left">
+                        </div>
+                        <div class="col-2 text-center">
                             <h5 class="text-primary font-weight-bold"> 
                                 <?php echo $this->subject->gg_question_count; ?>
                             </h5>
                             <p class="desc text-dark">
                                 <?php echo $this->translate('Struggles'); ?>
+                            </p>
+                        </div>
+                        <div class="col-2 text-center">
+                            <h5 class="text-primary font-weight-bold"> 
+                                <?php echo $this->subject->gg_answer_count;?>
+                            </h5>
+                            <p class="desc text-dark">
+                                <?php echo $this->translate('Theories'); ?>
                             </p>
                         </div>
                     </div>
@@ -495,19 +503,31 @@
                                                     '<span class="badge_name">Platinum</span>'+
                                                 '</div>'+
                                             '</div>'+
-                                            '<div class="avatar_footer d-flex justify-content-center align-items-center border-top">'+
-                                                '<div class="d-flex justify-content-center p-3 border-right">'+
+                                            '<div class="avatar_footer d-flex justify-content-center align-items-center border-top px-1">'+
+                                                '<div class="d-flex flex-column-reverse align-items-center justify-content-center py-2 px-0">'+
                                                     'Reviews '+
                                                     '<span class="text-primary font-weight-bold ml-1">'+
                                                     results[i].author.reviewCount+
                                                     '</span>'+
                                                 '</div>'+
-                                                '<div class="d-flex justify-content-center p-3">'+
-                                                    'Answers '+ 
+                                                '<div class="d-flex flex-column-reverse align-items-center justify-content-center py-2 px-0">'+
+                                                    'Guides '+
+                                                    '<span class="text-primary font-weight-bold ml-1">'+
+                                                    results[i].author.guideCount+
+                                                    '</span>'+
+                                                '</div>'+
+                                                '<div class="d-flex flex-column-reverse align-items-center justify-content-center py-2 px-0">'+
+                                                    'Struggles '+
+                                                    '<span class="text-primary font-weight-bold ml-1">'+
+                                                    results[i].author.questionCount+
+                                                    '</span>'+
+                                                '</div>'+
+                                                '<div class="d-flex flex-column-reverse align-items-center justify-content-center px-0 py-2">'+
+                                                    'Theories '+ 
                                                     '<span class="text-primary font-weight-bold ml-1">'+
                                                     results[i].author.answerCount+
                                                     '</span>'+
-                                                '</div>'+
+                                                '</div>'+ 
                                             '</div>'+
                                         '</div>'+
                                         '<img class="avatar_halo rounded-circle" src="'+
@@ -782,19 +802,31 @@
                                                             '<span class="badge_name">Platinum</span>'+
                                                         '</div>'+
                                                     '</div>'+
-                                                    '<div class="avatar_footer d-flex justify-content-center align-items-center border-top">'+
-                                                        '<div class="d-flex justify-content-center p-3 border-right">'+
+                                                    '<div class="avatar_footer d-flex justify-content-center align-items-center border-top px-1">'+
+                                                        '<div class="d-flex flex-column-reverse align-items-center justify-content-center py-2 px-0">'+
                                                             'Reviews '+
                                                             '<span class="text-primary font-weight-bold ml-1">'+
                                                             results[i].author.reviewCount+
                                                             '</span>'+
                                                         '</div>'+
-                                                        '<div class="d-flex justify-content-center p-3">'+
-                                                            'Answers '+ 
+                                                        '<div class="d-flex flex-column-reverse align-items-center justify-content-center py-2 px-0">'+
+                                                            'Guides '+
+                                                            '<span class="text-primary font-weight-bold ml-1">'+
+                                                            results[i].author.guideCount+
+                                                            '</span>'+
+                                                        '</div>'+
+                                                        '<div class="d-flex flex-column-reverse align-items-center justify-content-center py-2 px-0">'+
+                                                            'Struggles '+
+                                                            '<span class="text-primary font-weight-bold ml-1">'+
+                                                            results[i].author.questionCount+
+                                                            '</span>'+
+                                                        '</div>'+
+                                                        '<div class="d-flex flex-column-reverse align-items-center justify-content-center px-0 py-2">'+
+                                                            'Theories '+ 
                                                             '<span class="text-primary font-weight-bold ml-1">'+
                                                             results[i].author.answerCount+
                                                             '</span>'+
-                                                        '</div>'+
+                                                        '</div>'+ 
                                                     '</div>'+
                                                 '</div>'+
                                                 '<img class="avatar_halo rounded-circle" src="'+
