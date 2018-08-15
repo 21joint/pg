@@ -300,6 +300,7 @@
 
 // HEADER
 header.extfox-header {
+    background-color:$white;
     .container {
         .list-inline-item.search {
           display: none;
@@ -554,7 +555,48 @@ body#global_page_user-profile-index {
                                             font-size: .9em;
                                             padding: 1.2rem;
                                         }
+                                        
+                                        .tab_pulldown_contents_wrapper {
+                                            margin-top: 60px;
+                                            padding: 0;
+                                            box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.05);
+                                            .tab_pulldown_contents {
+                                                
+                                                ul {
+                                                    padding: 0;
+                                                    li {
+                                                        text-transform: none;
+                                                        color: #333D40;
+                                                        font-weight: 400;
+                                                        font-size: .9em;
+                                                        padding: 1.2rem;
+                                                        border-bottom: 2px solid transparent;
+                                                        &.active {
+                                                            background-color: #fff;
+                                                            border-bottom: 2px solid #1BC1D6;
+                                                        }
+                                                        &:hover {
+                                                            background-color: #fff;
+                                                        }
+                                                        + li {
+                                                            border-top: 1px solid  #dee2e6; 
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                   
+                                        
                                     }
+
+                                    & > li.tab_open {
+                                        & > a {
+                                            border:none;
+                                            background-color:transparent;
+                                            top:0;
+                                        }
+                                    }
+
                                 }
                             }
                         } // profile tabs
@@ -1199,6 +1241,11 @@ form#user_form_login {
 #global_page_user-signup-index {
     .right-side {
         > div {
+            width: 100%;
+        }
+    }
+    .sd_signup_interests {
+        > li {
             width: 100%;
         }
     }
@@ -2190,7 +2237,7 @@ form.preference-holder {
 
     // HEADER
     header.extfox-header {
-
+        
         .list-inline-item.search{
             display:block!important;
             margin-right: 0px;

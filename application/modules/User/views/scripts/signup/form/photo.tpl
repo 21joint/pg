@@ -16,12 +16,16 @@
         width:95%;
         margin:0 auto;
     }
+    .right-side > div {
+        align-items: center;
+    }
     .holder-form {
         height:100%;
     }
     form{
-        max-height: 650px!important;
+        align-items: center;
         overflow-y:scroll;
+        
     }
 
     .extfox-auth .form-elements .form-wrapper label {

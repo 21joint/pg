@@ -129,7 +129,7 @@ if ($siteloginSignupPopUp) {
     
 ?>
 <?php $layoutPos = array(1=> 'left', 2 => 'right', 3 => 'top', 4 => 'bottom')?>
-<div id="<?php echo $siteloginSignupPopUp ? 'sociallogin_signup_popup' : 'sociallogin_signup_page'?>" class="<?php echo $siteloginSignupPopUp ? '' : 'w-100 d-flex align-items-center'?>">
+<div id="<?php echo $siteloginSignupPopUp ? 'sociallogin_signup_popup' : 'sociallogin_signup_page'?>" class="<?php echo $siteloginSignupPopUp ? '' : 'w-100 d-flex'?>">
 <div class="w-100 social-signup-layout-<?php echo $layoutPos[$position] ?>">
 
 <?php if( $isEnableSocialAccount && $enable ): ?>
