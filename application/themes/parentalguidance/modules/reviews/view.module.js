@@ -1,4 +1,3 @@
-// import 'bootstrap/js/src/dropdown';
 import {getReview} from '../../services/api.service';
 
 (function ($) {

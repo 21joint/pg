@@ -61,6 +61,7 @@
     "copy-webpack-plugin": "^4.5.2",
     "cors": "^2.8.4",
     "cross-env": "^5.2.0",
+    "css-hot-loader": "^1.4.1",
     "css-loader": "^0.28.11",
     "dot-tpl-loader": "^1.2.1",
     "eslint": "^4.19.1",

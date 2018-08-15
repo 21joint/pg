@@ -22,9 +22,11 @@ module.exports = merge(webpackConfig, {
     },
     historyApiFallback: true,
     publicPath: 'http://localhost:8888/',
-    port: 2121,
-    hot: true,
+    port: 3030,
     open: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    }
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()

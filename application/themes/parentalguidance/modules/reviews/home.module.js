@@ -2,11 +2,6 @@ import 'jquery-lazy';
 import {getReviews} from '../../services/api.service';
 import {renderCard} from "../../components/card/card";
 
-// _reviews.data = res.body.Results;
-// _reviews.html = '';
-// _reviews.cards = [];
-//
-
 (function ($) {
 
   getReviews({
@@ -14,7 +9,6 @@ import {renderCard} from "../../components/card/card";
     type: 'review'
   }, function (reviews) {
     $.each(reviews, function (i, review) {
-      console.info(`Review :${i}.`, review);
       let _cardHtml = renderCard(review, {
         type: 'review'
       });

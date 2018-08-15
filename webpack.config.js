@@ -2,7 +2,7 @@ const path = require('path');
 // const pkg = require('./package');
 // const Conf = require('./conf');
 const args = require('yargs').argv;
-const glob = require('glob');
+// const glob = require('glob');
 const webpack = require('webpack');
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -18,7 +18,6 @@ let IS_DEV = process.env.NODE_ENV === 'dev';
 
 const config = {
   entry: {
-    core: APP_DIR + '/themes/parentalguidance/modules/core/core.module.js',
     header: APP_DIR + '/themes/parentalguidance/modules/header/header.module.js',
     auth: APP_DIR + '/themes/parentalguidance/modules/auth/auth.module.js',
     reviews_home: APP_DIR + '/themes/parentalguidance/modules/reviews/home.module.js',
@@ -41,9 +40,17 @@ const config = {
         include: /.module.js$/,
         loader: 'babel-loader'
       },
+      {
+        test: /\.css$/,
+        use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader'
+        })),
+      },
       // SCSS
       {
         test: /\.scss$/,
+        exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
@@ -58,6 +65,7 @@ const config = {
             {
               loader: 'postcss-loader',
               options: {
+                sourceMap: IS_DEV,
                 plugins: [
                   require('postcss-flexbugs-fixes'),
                   require('autoprefixer')({
@@ -116,10 +124,10 @@ const config = {
   ]
 };
 
-if (!IS_DEV) {
-  config.devtool = 'inline-source-map'; // source-map
+if (IS_DEV) {
+  config.devtool = 'source-map'; // source-map
 } else {
-  config.devtool = 'source-map'; // cheap-module-source-map
+  config.devtool = 'cheap-module-source-map'; // cheap-module-source-map
 }
 console.dir('Running: ' + IS_DEV + ' mode.');
 

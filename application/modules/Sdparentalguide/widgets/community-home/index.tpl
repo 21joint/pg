@@ -155,8 +155,7 @@
     <div class="col-lg"><!-- Keeping up space --></div>
   </div>
 </div>
-<div
-  class="faq_main my-5 py-5 d-flex flex-column align-items-center justify-content-center ">
+<div class="faq_main my-5 py-5 d-flex flex-column align-items-center justify-content-center ">
   <h2 class="w-100 text-center">FAQ's</h2>
   <div class="faq_content w-100">
     <div class="faq_item mt-4 pb-4">
@@ -259,14 +258,15 @@
   });
 
   // See More Button linking to Find an Expert Part of the Page
-  $("#seeMore").href = en4.core.baseUrl + "community/home#findExpert";
+  $("#seeMore").attr('href',  en4.core.baseUrl + "community/home#findExpert");
 
   // FAQ on click display question and transform plus to close
-  $(".faq_toggle").eeach(function (index, toggle) {
+  $(".faq_toggle").each(function (index, toggle) {
     $(toggle).on('click', function (event) {
-      event.target.parentNode.parentNode.querySelector(".faq_text").toggleClass("faq_text_disp");
-      event.target.parentNode.toggleClass("mb-3");
-      event.target.toggleClass("faq_transform");
+      $(event.target).parent().find('h4').toggleClass('text-primary');
+      $(event.target).parent().parent().find(".faq_text").toggleClass("faq_text_disp");
+      $(event.target).parent().toggleClass("mb-3");
+      $(event.target).toggleClass("faq_transform");
     });
   });
 
@@ -303,7 +303,7 @@
     requestData.limit = 20;//Display limit for users
     requestData.page = page;//Place for pagination
 
-    var loader = en4.core.loader.clone();
+    var loader = $(en4.core.loader.clone());
     loader.addClass("sd_loader my-5");
     var url = en4.core.baseUrl + "api/v1/ranking";
 
@@ -546,7 +546,7 @@
       onSuccess: function (responseJSON) { //When request is succeeded.
         loader.destroy();
 
-        var leaderboardContent = document.$('.mvps_content');
+        var leaderboardContent = $('.mvps_content');
         if (responseJSON.status_code == 200) {
           var html = "";
           var results = responseJSON.body.Results;

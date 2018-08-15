@@ -6,6 +6,7 @@
 .card {
   transition: .3s .3s opacity ease;
   opacity: 1;
+  border: none;
   &:hover {
     .card-actions {
       top: 0;
@@ -75,6 +76,7 @@
 .card-header {
   position: relative;
   overflow: hidden;
+  border-radius: 10px 10px 0 0;
 }
 
 .card-body {
@@ -87,6 +89,7 @@
 .card-footer {
   border-color: rgb(245, 245, 245);
   padding: 0.5rem .875rem;
+  border-radius: 0 0 10px 10px;
   .list-inline-item {
     font-size: 0.875rem;
   }

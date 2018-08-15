@@ -9,36 +9,36 @@
 ?>
 <?php $this->headLink()->prependStylesheet(
   $this->layout()->staticBaseUrl
-  .'application/modules/Seaocore/externals/styles/style_board.css'
+  . 'application/modules/Seaocore/externals/styles/style_board.css'
 ); ?>
 <?php
 $this->headScript()
   ->appendFile(
     $this->layout()->staticBaseUrl
-    .'application/modules/Sdparentalguide/externals/scripts/core.js'
+    . 'application/modules/Sdparentalguide/externals/scripts/core.js'
   )
   ->appendFile(
     $this->layout()->staticBaseUrl
-    .'application/modules/Sdparentalguide/externals/scripts/pinboard/pinboard.js'
+    . 'application/modules/Sdparentalguide/externals/scripts/pinboard/pinboard.js'
   )
   ->appendFile(
     $this->layout()->staticBaseUrl
-    .'application/modules/Sdparentalguide/externals/scripts/pinboard/mooMasonry.js'
+    . 'application/modules/Sdparentalguide/externals/scripts/pinboard/mooMasonry.js'
   );
 ?>
 <?php $this->headLink()->prependStylesheet(
   $this->layout()->staticBaseUrl
-  .'application/modules/Sdparentalguide/externals/styles/style_board.css'
+  . 'application/modules/Sdparentalguide/externals/styles/style_board.css'
 ); ?>
 <?php $this->headLink()->prependStylesheet(
   $this->layout()->staticBaseUrl
-  .'application/modules/Sdparentalguide/externals/styles/style_sdparentalguide.css'
+  . 'application/modules/Sdparentalguide/externals/styles/style_sdparentalguide.css'
 ); ?>
 <?php
 $this->headLink()
   ->appendStylesheet(
     $this->layout()->staticBaseUrl
-    .'application/modules/Sdparentalguide/externals/styles/style_ratingcustom.css'
+    . 'application/modules/Sdparentalguide/externals/styles/style_ratingcustom.css'
   );
 ?>
 
@@ -187,7 +187,7 @@ $this->headLink()
       $sitereview->listingtype_id
     );
     $listingType = Zend_Registry::get(
-      'listingtypeArray'.$sitereview->listingtype_id
+      'listingtypeArray' . $sitereview->listingtype_id
     ); ?>
 
     <?php
@@ -205,7 +205,7 @@ $this->headLink()
             'like', $this->show_buttons
           ))
         && $sitereview->authorization()->isAllowed(
-          $this->viewer(), "comment_listtype_".$sitereview->listingtype_id
+          $this->viewer(), "comment_listtype_" . $sitereview->listingtype_id
         );
       if (in_array('comment', $this->show_buttons) && !$alllowComment) {
         $noOfButtons--;
@@ -215,7 +215,7 @@ $this->headLink()
       }
       if (in_array('wishlist', $this->show_buttons)
         && !Zend_Registry::get(
-          'listingtypeArray'.$sitereview->listingtype_id
+          'listingtypeArray' . $sitereview->listingtype_id
         )->wishlist
       ):
         $noOfButtons--;
@@ -249,7 +249,7 @@ $this->headLink()
                       && $this->params['withoutStretch']
                     ):
                       $options['style'] = 'width:auto; max-width:'
-                        .($this->params['itemWidth'] - 18).'px;';
+                        . ($this->params['itemWidth'] - 18) . 'px;';
                     endif; ?>
                     <?= $this->itemPhoto(
                       $sitereview,
@@ -314,7 +314,7 @@ $this->headLink()
             <?php endif; ?>
             <?php if (!empty($sitereview->price) && $sitereview->price > 0
               && Zend_Registry::get(
-                'listingtypeArray'.$sitereview->listingtype_id
+                'listingtypeArray' . $sitereview->listingtype_id
               )->price
               && isset($this->params['price'])
               && $this->params['price']
@@ -329,7 +329,7 @@ $this->headLink()
             <?php if (isset($this->params['location'])
               && $this->params['location']
               && Zend_Registry::get(
-                'listingtypeArray'.$sitereview->listingtype_id
+                'listingtypeArray' . $sitereview->listingtype_id
               )->location
               && !empty($sitereview->location)
             ): ?>
@@ -338,9 +338,9 @@ $this->headLink()
                 <span><?= $sitereview->location ?>&nbsp; -
               <b>
                 <?= $this->htmlLink(
-                  array('route'        => 'seaocore_viewmap',
-                        "id"           => $sitereview->listing_id,
-                        'resouce_type' => 'sitereview_listing'),
+                  array('route' => 'seaocore_viewmap',
+                    "id" => $sitereview->listing_id,
+                    'resouce_type' => 'sitereview_listing'),
                   $this->translate("Get Directions"),
                   array('class' => 'smoothbox')
                 ); ?>
@@ -352,7 +352,7 @@ $this->headLink()
             <div class="seaocore_stats seaocore_txt_light mtop5">
             	<span class="fright">
                      <?php $listingtypeArray = Zend_Registry::get(
-                       'listingtypeArray'.$sitereview->listingtype_id
+                       'listingtypeArray' . $sitereview->listingtype_id
                      );
                      if ($this->statistics
                        && in_array(
@@ -367,7 +367,7 @@ $this->headLink()
                            '_showReview.tpl', 'sitereview',
                            array('sitereview' => $sitereview)
                          )
-                         ).'';
+                         ) . '';
 
                      endif;
                      ?>
@@ -387,23 +387,23 @@ $this->headLink()
                   echo $this->translate(
                       array('%s view', '%s views', $sitereview->view_count),
                       $this->locale()->toNumber($sitereview->view_count)
-                    ).'&nbsp;&nbsp;&nbsp;&nbsp;';
+                    ) . '&nbsp;&nbsp;&nbsp;&nbsp;';
                 }
 
                 if (in_array('likeCount', $this->statistics)) {
-                  echo '<span class="pin_like_st_'.$sitereview->getGuid().'">'
-                    .$this->translate(
+                  echo '<span class="pin_like_st_' . $sitereview->getGuid() . '">'
+                    . $this->translate(
                       array('%s like', '%s likes', $sitereview->like_count),
                       $this->locale()->toNumber($sitereview->like_count)
-                    ).'</span>&nbsp;&nbsp;&nbsp;&nbsp;';
+                    ) . '</span>&nbsp;&nbsp;&nbsp;&nbsp;';
                 }
                 if (in_array('commentCount', $this->statistics)) {
-                  echo '<span id="pin_comment_st_'.$sitereview->getGuid().'_'
-                    .$this->identity.'">'.$this->translate(
+                  echo '<span id="pin_comment_st_' . $sitereview->getGuid() . '_'
+                    . $this->identity . '">' . $this->translate(
                       array('%s comment', '%s comments',
-                            $sitereview->comment_count),
+                        $sitereview->comment_count),
                       $this->locale()->toNumber($sitereview->comment_count)
-                    ).'</span>';
+                    ) . '</span>';
                 }
 
                 ?>
@@ -416,9 +416,9 @@ $this->headLink()
             <div class="seaocore_board_list_comments o_hidden">
               <?= $this->action(
                 "list", "pin-board-comment", "seaocore",
-                array("type"      => $sitereview->getType(),
-                      "id"        => $sitereview->listing_id,
-                      'widget_id' => $this->identity)
+                array("type" => $sitereview->getType(),
+                  "id" => $sitereview->listing_id,
+                  'widget_id' => $this->identity)
               ); ?>
             </div>
           <?php endif; ?>
@@ -426,19 +426,19 @@ $this->headLink()
             <div class="seaocore_board_list_action_links">
               <?php $urlencode = urlencode(
                 ((!empty($_ENV["HTTPS"]) && 'on' == strtolower($_ENV["HTTPS"]))
-                  ? "https://" : "http://").$_SERVER['HTTP_HOST']
-                .$sitereview->getHref()
+                  ? "https://" : "http://") . $_SERVER['HTTP_HOST']
+                . $sitereview->getHref()
               ); ?>
               <?php if (in_array('wishlist', $this->show_buttons)
                 && Zend_Registry::get(
-                  'listingtypeArray'.$sitereview->listingtype_id
+                  'listingtypeArray' . $sitereview->listingtype_id
                 )->wishlist
               ): ?>
                 <?= $this->addToWishlist(
                   $sitereview, array('classIcon' => 'seaocore_board_icon',
-                                     'classLink' => 'wishlist_icon',
-                                     'text'      => $this->translate(''),
-                                     'title'     => 'Wishlist')
+                    'classLink' => 'wishlist_icon',
+                    'text' => $this->translate(''),
+                    'title' => 'Wishlist')
                 ); ?>
               <?php endif; ?>
 
@@ -451,67 +451,60 @@ $this->headLink()
               ): ?>
                 <?php if (in_array('comment', $this->show_buttons)): ?>
                   <a href='javascript:void(0);'
-                     onclick="en4.seaocorepinboard.comments.addComment('<?= $sitereview->getGuid(
-                     )."_".$this->identity ?>')"
+                     onclick="en4.seaocorepinboard.comments.addComment('<?= $sitereview->getGuid() . "_" . $this->identity ?>')"
                      class="seaocore_board_icon comment_icon" title="Comment">
                     <!--<?= $this->translate('Comment'); ?>--></a>
                 <?php endif; ?>
                 <?php if (in_array('like', $this->show_buttons)): ?>
                   <a href="javascript:void(0)" title="Like"
-                     class="seaocore_board_icon like_icon <?= $sitereview->getGuid(
-                     ) ?>like_link"
-                     id="<?= $sitereview->getType(
-                     ) ?>_<?= $sitereview->getIdentity() ?>like_link"
+                     class="seaocore_board_icon like_icon <?= $sitereview->getGuid() ?>like_link"
+                     id="<?= $sitereview->getType() ?>_<?= $sitereview->getIdentity() ?>like_link"
                      <?php if ($sitereview->likes()->isLike(
                        $this->viewer()
                      )): ?>style="display: none;"
-                     <?php endif; ?>onclick="en4.seaocorepinboard.likes.like('<?= $sitereview->getType(
-                     ) ?>', '<?= $sitereview->getIdentity() ?>');">
+                     <?php endif; ?>onclick="en4.seaocorepinboard.likes.like('<?= $sitereview->getType() ?>', '<?= $sitereview->getIdentity() ?>');">
                     <!--<?= $this->translate('Like'); ?>--></a>
 
                   <a href="javascript:void(0)" title="Unlike"
-                     class="seaocore_board_icon unlike_icon <?= $sitereview->getGuid(
-                     ) ?>unlike_link"
-                     id="<?= $sitereview->getType(
-                     ) ?>_<?= $sitereview->getIdentity() ?>unlike_link"
+                     class="seaocore_board_icon unlike_icon <?= $sitereview->getGuid() ?>unlike_link"
+                     id="<?= $sitereview->getType() ?>_<?= $sitereview->getIdentity() ?>unlike_link"
                      <?php if (!$sitereview->likes()->isLike(
                        $this->viewer()
                      )): ?>style="display:none;" <?php endif; ?>
-                     onclick="en4.seaocorepinboard.likes.unlike('<?= $sitereview->getType(
-                     ) ?>', '<?= $sitereview->getIdentity() ?>');">
+                     onclick="en4.seaocorepinboard.likes.unlike('<?= $sitereview->getType() ?>', '<?= $sitereview->getIdentity() ?>');">
                     <!--<?= $this->translate('Unlike'); ?>--></a>
                 <?php endif; ?>
               <?php endif; ?>
 
               <?php if (in_array('share', $this->show_buttons)): ?>
                 <?= $this->htmlLink(
-                  array('module'             => 'seaocore',
-                        'controller'         => 'activity', 'action' => 'share',
-                        'route'              => 'default',
-                        'type'               => $sitereview->getType(),
-                        'id'                 => $sitereview->getIdentity(),
-                        'not_parent_refresh' => '1', 'format' => 'smoothbox'),
+                  array('module' => 'seaocore',
+                    'controller' => 'activity', 'action' => 'share',
+                    'route' => 'default',
+                    'type' => $sitereview->getType(),
+                    'id' => $sitereview->getIdentity(),
+                    'not_parent_refresh' => '1', 'format' => 'smoothbox'),
                   $this->translate(''),
                   array('class' => 'smoothbox seaocore_board_icon share_icon',
-                        'title' => 'Share')
+                    'title' => 'Share')
                 ); ?>
               <?php endif; ?>
 
               <?php if (in_array('facebook', $this->show_buttons)): ?>
                 <?= $this->htmlLink(
-                  'http://www.facebook.com/share.php?u='.$urlencode.'&t='
-                  .$sitereview->getTitle(), $this->translate(''),
+                  'http://www.facebook.com/share.php?u=' . $urlencode . '&t='
+                  . $sitereview->getTitle(), $this->translate(''),
                   array('class' => 'pb_ch_wd seaocore_board_icon fb_icon',
-                        'title' => 'Facebook')
+                    'title' => 'Facebook')
                 ) ?>
               <?php endif; ?>
 
               <?php if (in_array('twitter', $this->show_buttons)): ?>
                 <?= $this->htmlLink(
-                  'http://twitter.com/share?url='.$urlencode.'&text='
-                  .$sitereview->getTitle(), $this->translate(''),
+                  'http://twitter.com/share?url=' . $urlencode . '&text='
+                  . $sitereview->getTitle(), $this->translate(''),
                   array('class' => 'pb_ch_wd seaocore_board_icon tt_icon',
-                        'title' => 'Twitter')
+                    'title' => 'Twitter')
                 ) ?>
               <?php endif; ?>
 
@@ -524,8 +517,8 @@ $this->headLink()
                     ) ? (((!empty($_ENV["HTTPS"])
                         && 'on' == strtolower(
                           $_ENV["HTTPS"]
-                        )) ? "https://" : "http://").$_SERVER['HTTP_HOST'])
-                      : '').$sitereview->getPhotoUrl('thumb.profile')
+                        )) ? "https://" : "http://") . $_SERVER['HTTP_HOST'])
+                      : '') . $sitereview->getPhotoUrl('thumb.profile')
                   ); ?>&description=<?= $sitereview->getTitle(); ?>"
                   class="pb_ch_wd seaocore_board_icon pin_icon" title="Pin It">
                   <!--<?= $this->translate('Pin It') ?>--></a>
@@ -533,27 +526,27 @@ $this->headLink()
 
               <?php if (in_array('tellAFriend', $this->show_buttons)): ?>
                 <?= $this->htmlLink(
-                  array('action'     => 'tellafriend',
-                        'route'      => 'sitereview_specific_listtype_'
-                          .$sitereview->listingtype_id,
-                        'type'       => $sitereview->getType(),
-                        'listing_id' => $sitereview->getIdentity()),
+                  array('action' => 'tellafriend',
+                    'route' => 'sitereview_specific_listtype_'
+                      . $sitereview->listingtype_id,
+                    'type' => $sitereview->getType(),
+                    'listing_id' => $sitereview->getIdentity()),
                   $this->translate(''),
                   array('class' => 'smoothbox seaocore_board_icon taf_icon',
-                        'title' => 'Tell a Friend')
+                    'title' => 'Tell a Friend')
                 ); ?>
               <?php endif; ?>
 
               <?php if (in_array('print', $this->show_buttons)): ?>
                 <?= $this->htmlLink(
-                  array('action'     => 'print',
-                        'route'      => 'sitereview_specific_listtype_'
-                          .$sitereview->listingtype_id,
-                        'type'       => $sitereview->getType(),
-                        'listing_id' => $sitereview->getIdentity()),
+                  array('action' => 'print',
+                    'route' => 'sitereview_specific_listtype_'
+                      . $sitereview->listingtype_id,
+                    'type' => $sitereview->getType(),
+                    'listing_id' => $sitereview->getIdentity()),
                   $this->translate(''),
                   array('class' => 'pb_ch_wd seaocore_board_icon print_icon',
-                        'title' => 'Print')
+                    'title' => 'Print')
                 ); ?>
               <?php endif; ?>
               <?php if ($compareButton): ?>
@@ -578,8 +571,7 @@ $this->headLink()
     </div>
     <div class="seaocore_loading dnone"
          id="seaocore_loading_<?= $this->identity ?>">
-      <img src="<?= $this->layout(
-      )->staticBaseUrl; ?>application/modules/Seaocore/externals/images/core/loading.gif"
+      <img src="<?= $this->layout()->staticBaseUrl; ?>application/modules/Seaocore/externals/images/core/loading.gif"
            style="margin-right: 5px;">
       <?= $this->translate('Loading ...') ?>
     </div>

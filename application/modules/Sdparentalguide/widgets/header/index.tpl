@@ -76,8 +76,8 @@
                       <?= $this->htmlLink(
                         'javascript:void(0);',
                         $this->translate('Mark All Read'),
-                        array('id'    => 'notifications_markread_link',
-                              'class' => 'font-weight-light small')
+                        array('id' => 'notifications_markread_link',
+                          'class' => 'font-weight-light small')
                       ) ?>
                     </div>
                     <div class="pulldown_contents">
@@ -95,11 +95,11 @@
                     <div
                       class="pulldown_options bg-primary text-center py-2 my-0">
                       <?= $this->htmlLink(
-                        array('route'      => 'default', 'module' => 'activity',
-                              'controller' => 'notifications'),
+                        array('route' => 'default', 'module' => 'activity',
+                          'controller' => 'notifications'),
                         $this->translate('View All Notifications'),
-                        array('id'    => 'notifications_viewall_link',
-                              'class' => 'text-white font-weight-bold')
+                        array('id' => 'notifications_viewall_link',
+                          'class' => 'text-white font-weight-bold')
                       ) ?>
                     </div>
                   </div>
@@ -142,8 +142,8 @@
                    aria-expanded="false">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right shadow p-0 border-0 dropdown-menu--profile"
-                  style="overflow: hidden"
-                  aria-labelledby="authProfileDropdown">
+                     style="overflow: hidden"
+                     aria-labelledby="authProfileDropdown">
                   <ul class="list-unstyled">
                     <li>
                       <div class="dropdown-item bg-light p-3">
@@ -158,7 +158,7 @@
                       <a class="dropdown-item"
                          href="<?= $this->url(
                            array('controller' => 'settings',
-                                 'action'     => 'general'), 'user_extended'
+                             'action' => 'general'), 'user_extended'
                          ); ?>">
                         <div
                           class="d-flex align-items-center justify-content-start">

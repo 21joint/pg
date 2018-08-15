@@ -11,8 +11,8 @@ class Sdparentalguide_Widget_HeaderController
 
   public function indexAction()
   {
-    $headLink = new Zend_View_Helper_HeadLink();
-    $headLink->appendStylesheet('/styles/header.bundle.css');
+//    $headLink = new Zend_View_Helper_HeadLink();
+//    $headLink->appendStylesheet('/styles/header.bundle.css');
 
     $this->view->viewer = $viewer = Engine_Api::_()->user()->getViewer();
 

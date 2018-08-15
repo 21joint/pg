@@ -9,58 +9,66 @@
 
 class Sdparentalguide_Model_Topic extends Core_Model_Item_Abstract
 {
-  public function getTitle(){
-      return $this->name;
+  public function getTitle()
+  {
+    return $this->name;
   }
-  public function getListingType(){
-      return Engine_Api::_()->getItem('sitereview_listingtype', $this->listingtype_id);
+
+  public function getListingType()
+  {
+    return Engine_Api::_()->getItem('sitereview_listingtype', $this->listingtype_id);
   }
-  public function getCategory(){
-      return Engine_Api::_()->getItem('sitereview_category', $this->category_id);
+
+  public function getCategory()
+  {
+    return Engine_Api::_()->getItem('sitereview_category', $this->category_id);
   }
-  public function getSubCategory(){
-      return Engine_Api::_()->getItem('sitereview_category', $this->subcategory_id);
+
+  public function getSubCategory()
+  {
+    return Engine_Api::_()->getItem('sitereview_category', $this->subcategory_id);
   }
-  
-  public function getAllListings(){
-      if(empty($this->listingtype_id)){
-          return;
-      }
-      $table = Engine_Api::_()->getDbTable("listings","sitereview");
-      $select = $table->select()->where('listingtype_id = ?',$this->listingtype_id);
-      if(!empty($this->category_id)){
-          $select->where("category_id = ?",$this->category_id);
-      }
-      if(!empty($this->subcategory_id)){
-          $select->where("subcategory_id = ?",$this->subcategory_id);
-      }
-      
-      return $table->fetchAll($select);
+
+  public function getAllListings()
+  {
+    if (empty($this->listingtype_id)) {
+      return;
+    }
+    $table = Engine_Api::_()->getDbTable("listings", "sitereview");
+    $select = $table->select()->where('listingtype_id = ?', $this->listingtype_id);
+    if (!empty($this->category_id)) {
+      $select->where("category_id = ?", $this->category_id);
+    }
+    if (!empty($this->subcategory_id)) {
+      $select->where("subcategory_id = ?", $this->subcategory_id);
+    }
+
+    return $table->fetchAll($select);
   }
-  
+
   public function setPhoto($photo)
   {
-    if( $photo instanceof Zend_Form_Element_File ) {
+    if ($photo instanceof Zend_Form_Element_File) {
       $file = $photo->getFileName();
       $fileName = $file;
-    } else if( $photo instanceof Storage_Model_File ) {
+    } else if ($photo instanceof Storage_Model_File) {
       $file = $photo->temporary();
       $fileName = $photo->name;
-    } else if( $photo instanceof Core_Model_Item_Abstract && !empty($photo->file_id) ) {
+    } else if ($photo instanceof Core_Model_Item_Abstract && !empty($photo->file_id)) {
       $tmpRow = Engine_Api::_()->getItem('storage_file', $photo->file_id);
       $file = $tmpRow->temporary();
       $fileName = $tmpRow->name;
-    } else if( is_array($photo) && !empty($photo['tmp_name']) ) {
+    } else if (is_array($photo) && !empty($photo['tmp_name'])) {
       $file = $photo['tmp_name'];
       $fileName = $photo['name'];
-    } else if( is_string($photo) && file_exists($photo) ) {
+    } else if (is_string($photo) && file_exists($photo)) {
       $file = $photo;
       $fileName = $photo;
     } else {
       throw new Core_Model_Exception('invalid argument passed to setPhoto');
     }
 
-    if( !$fileName ) {
+    if (!$fileName) {
       $fileName = $file;
     }
 

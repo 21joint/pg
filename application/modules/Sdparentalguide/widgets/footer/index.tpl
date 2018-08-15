@@ -1,3 +1,4 @@
+<!--FOOTER-->
 <footer class="prg-footer">
   <div class="bg-white border-top prg-footer--top">
     <div class="container">
@@ -256,7 +257,8 @@
       </div>
     </div> <!-- end of container -->
   </div> <!-- end of footer-bottom-->
-</footer> <!-- end of prg-footer -->
+</footer>
+<!--FOOTER ends -->
 <div style="position: absolute; width: 0; height: 0;top: -9999px;">
   <svg class="align-middle"
        xmlns="http://www.w3.org/2000/svg">

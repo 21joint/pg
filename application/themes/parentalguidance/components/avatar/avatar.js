@@ -8,9 +8,7 @@ function renderAvatar(author, options) {
 
   _html = `<div class="position-relative dropdown">
   <a href="#" role="button" id="avatar__${author.memberName}"
-     data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
-    <img class="rounded-circle" src="${author.avatarPhoto.photoURLProfile}"><b
-    class="position-absolute d-flex justify-content-center align-items-center text-white bagde badge-primary rounded-circle ff-open--sans card-author--rank">${author.contributionLevel}</b></a>
+     data-toggle="dropdown" aria-expanded="false" aria-haspopup="true"><img class="rounded-circle" src="${author.avatarPhoto.photoURLProfile}" /><b class="position-absolute d-flex justify-content-center align-items-center text-white bagde badge-primary rounded-circle ff-open--sans card-author--rank">${author.contributionLevel}</b></a>
   <div class="dropdown-menu" aria-labelledby="avatar__${author.memberName}">
     <div class="avatar-popup bg-white d-block">
       <div class="avatar-popup--header p-2 p-md-3 d-flex align-items-center">

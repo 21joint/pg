@@ -11,26 +11,26 @@
  */
 
 // Sanity check
-if( version_compare(PHP_VERSION, '5.2.11', '<') ) {
+if (version_compare(PHP_VERSION, '5.2.11', '<')) {
   echo 'SocialEngine requires at least PHP 5.2.11';
   exit();
 }
 
 // Redirect to index.php if rewrite not enabled
 $target = null;
-if( empty($_GET['rewrite']) && 0 !== strpos($_SERVER['REQUEST_URI'], $_SERVER['PHP_SELF']) ) {
+if (empty($_GET['rewrite']) && 0 !== strpos($_SERVER['REQUEST_URI'], $_SERVER['PHP_SELF'])) {
   // Redirect to index if rewrite not enabled
   $target = $_SERVER['PHP_SELF'];
   $params = $_GET;
   unset($params['rewrite']);
-  if( !empty($params) ) {
+  if (!empty($params)) {
     $target .= '?' . http_build_query($params);
   }
-} else if( isset($_GET['rewrite']) && $_GET['rewrite'] == 2 ) {
+} else if (isset($_GET['rewrite']) && $_GET['rewrite'] == 2) {
   // Redirect to virtual index if rewrite enabled
   $target = str_replace($_SERVER['PHP_SELF'], dirname($_SERVER['PHP_SELF']), $_SERVER['REQUEST_URI']);
 }
-if( null !== $target ) {
+if (null !== $target) {
   header('Location: ' . $target);
   exit();
 }
@@ -45,13 +45,13 @@ define('_ENGINE_REQUEST_START', microtime(true));
 defined('APPLICATION_PATH') || define('APPLICATION_PATH', realpath(dirname(dirname(__FILE__))));
 
 defined('APPLICATION_ENV') || (
-  !empty($_SERVER['_ENGINE_ENVIRONMENT']) && in_array($_SERVER['_ENGINE_ENVIRONMENT'], array('development', 'staging', 'production')) ?
+!empty($_SERVER['_ENGINE_ENVIRONMENT']) && in_array($_SERVER['_ENGINE_ENVIRONMENT'], array('development', 'staging', 'production')) ?
   define('APPLICATION_ENV', $_SERVER['_ENGINE_ENVIRONMENT']) :
   define('APPLICATION_ENV', 'production')
 );
 
 defined('_ENGINE_NO_AUTH') || (
-  !empty($_SERVER['_ENGINE_NOAUTH']) && $_SERVER['_ENGINE_NOAUTH'] == '1' ?
+!empty($_SERVER['_ENGINE_NOAUTH']) && $_SERVER['_ENGINE_NOAUTH'] == '1' ?
   define('_ENGINE_NO_AUTH', true) :
   define('_ENGINE_NO_AUTH', false)
 );
@@ -99,6 +99,6 @@ try {
 }
 
 // Debug
-if( !empty($_SERVER['_ENGINE_TRACE_ALLOW']) && extension_loaded('xdebug') ) {
+if (!empty($_SERVER['_ENGINE_TRACE_ALLOW']) && extension_loaded('xdebug')) {
   xdebug_stop_trace();
 }

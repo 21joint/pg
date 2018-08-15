@@ -2,16 +2,16 @@ import './card.scss';
 import {renderAvatar} from '../avatar/avatar';
 import {renderRate} from '../rating/rating';
 
-function renderCard(type, options) {
+function renderCard(review, options) {
   let _html = '';
 
-  let createdDt = new Date(type.createdDateTime).toString().split(' ');
+  let createdDt = new Date(review.createdDateTime).toString().split(' ');
   let createdMonth = createdDt[1];
   let createdDay = createdDt[2].charAt(0) == 0 ? createdDt[2].split('')[1] : createdDt[2];
 
   _html = `<div class="col-6 col-lg-4 p-2">
   <!--single card-->
-  <div class="card card-${options.type} h-100 d-flex flex-column" data-id="${type.reviewID}">
+  <div class="card card-${options.review} h-100 d-flex flex-column" data-id="${review.reviewID}">
     <div class="card-header p-0 overflow-hidden">
       <div class="card-actions">
         <ul class="row list-unstyled no-gutters mb-0">
@@ -29,27 +29,27 @@ function renderCard(type, options) {
                              role="button"><span class="fas fa-link"></span></a></li>
         </ul>
       </div>
-      <a href="${en4.core.baseUrl}reviews/view?reviewID=${type.reviewID}"
+      <a href="/reviews/view/${review.reviewID}"
           class="d-block card-img--wrapper lazy"
-          data-loader="asyncLoader" data-lazy-image="${type.coverPhoto.photoURL}">
+          data-loader="asyncLoader" data-lazy-image="${review.coverPhoto.photoURL}">
       </a>
-      ${options.type == 'review' ? renderRate(type.averageReviewRating, 5) : ''}
-      ${options.type == 'guide' ? `<div class="prg-card--thumbs">
+      ${options.review == 'review' ? renderRate(review.averageReviewRating, 5) : ''}
+      ${options.review == 'guide' ? `<div class="prg-card--thumbs">
                                        <ul class="list-inline m-0 d-flex no-gutters justify-content-between">
-                                        <li class="col-auto"><img class="" src="${type.coverPhoto.photoURL}" alt="${type.title}"/></li>
-                                        <li class="col-auto"><img class="" src="${type.coverPhoto.photoURL}" alt="${type.title}"/></li>
-                                        <li class="col-auto"><img class="" src="${type.coverPhoto.photoURL}" alt="${type.title}"/></li>
-                                        <li class="col-auto"><img class="" src="${type.coverPhoto.photoURL}" alt="${type.title}"/></li>
-                                        <li class="col-auto"><img class="" src="${type.coverPhoto.photoURL}" alt="${type.title}"/></li>
-                                        <li class="col-auto"><img class="" src="${type.coverPhoto.photoURL}" alt="${type.title}"/></li>
+                                        <li class="col-auto"><img class="" src="${review.coverPhoto.photoURL}" alt="${review.title}"/></li>
+                                        <li class="col-auto"><img class="" src="${review.coverPhoto.photoURL}" alt="${review.title}"/></li>
+                                        <li class="col-auto"><img class="" src="${review.coverPhoto.photoURL}" alt="${review.title}"/></li>
+                                        <li class="col-auto"><img class="" src="${review.coverPhoto.photoURL}" alt="${review.title}"/></li>
+                                        <li class="col-auto"><img class="" src="${review.coverPhoto.photoURL}" alt="${review.title}"/></li>
+                                        <li class="col-auto"><img class="" src="${review.coverPhoto.photoURL}" alt="${review.title}"/></li>
                                        </ul>
                                     </div>` : ''}
     </div>
     <div class="card-body">
-      <h6 class="card-subtitle my-1 text-primary font-weight-bold">${type.reviewCategorization.category}</h6>
-      <a href="${en4.core.baseUrl}reviews/view?reviewID=${type.reviewID}"><h5 class="card-title font-weight-bold">
-        ${type.title}</h5></a>
-      <p class="card-text mb-0 d-none d-sm-block">${type.shortDescription}</p>
+      <h6 class="card-subtitle my-1 text-primary font-weight-bold">${review.reviewCategorization.category}</h6>
+      <a href="/reviews/view/${review.reviewID}"><h5 class="card-title font-weight-bold">
+        ${review.title}</h5></a>
+      <p class="card-text mb-0 d-none d-sm-block">${review.shortDescription}</p>
     </div>
     <div class="card-footer bg-white">
       <div class="row align-items-center justify-content-between flex-nowrap">
@@ -57,11 +57,11 @@ function renderCard(type, options) {
           <div class="card-author">
             <div class="row no-gutters flex-nowrap align-items-center">
               <div class="col-auto d-none d-sm-block">
-                <div class="card-author--avatar">${renderAvatar(type.author)}</div>
+                <div class="card-author--avatar">${renderAvatar(review.author)}</div>
               </div>
               <div class="col">
-                <a href="${en4.core.baseUrl}profile/${type.author.memberName}">
-                  <h6 class="card-author--title mb-0"><b>${type.author.displayName}</b></h6>
+                <a href="/profile/${review.author.memberName}">
+                  <h6 class="card-author--title mb-0"><b>${review.author.displayName}</b></h6>
                 </a>
                 <div class="card-date">
                   <span class="ff-open--sans text-asphalt small">${createdMonth} ${createdDay}</span>
@@ -74,11 +74,11 @@ function renderCard(type, options) {
           <ul class="list-inline my-0">
             <li class="flex-row align-items-center list-inline-item">
               <span class="fas fa-heart"></span>
-              <span class="text-asphalt">${type.likesCount}</span>
+              <span class="text-asphalt">${review.likesCount}</span>
             </li>
             <li class="flex-row align-items-center list-inline-item">
               <span class="fas fa-comments"></span>
-              <span class="text-asphalt">${type.commentsCount}</span>
+              <span class="text-asphalt">${review.commentsCount}</span>
             </li>
           </ul>
         </div>
