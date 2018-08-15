@@ -1910,7 +1910,7 @@ div.seaocore_replies_comment_likes_tip{
     filter:alpha(opacity=0);
 }
 .seaocore_up_button span{
-    background:url(~/application/themes/parentalguidance/assets/images/arrow_up.svg) no-repeat scroll center center #fff;
+    /*background:url(/images/arrow_up.svg) no-repeat scroll center center #fff;*/
     background-size: 35%;
     border-radius: 50%;
     float:left;
@@ -3086,4 +3086,3 @@ ul.feed > li{
 button.seaocore_event_calendar{
       z-index: 10 !important;
 }
- 

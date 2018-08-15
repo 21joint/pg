@@ -24,8 +24,7 @@
     $headIncludes = $this->layout()->headIncludes;
     
     // add fontawesome
-    $this->headLink()
-    ->prependStylesheet($cssBaseUrl . 'externals/font-awesome/css/font-awesome.min.css');
+    $this->headLink()->prependStylesheet($staticBaseUrl . 'externals/font-awesome/css/font-awesome.min.css');
     
     $request = Zend_Controller_Front::getInstance()->getRequest();
     $this->headTitle()
@@ -150,9 +149,9 @@
   </script>
   <?php
     $this->headScript()
-//      ->prependFile($staticBaseUrl . 'externals/smoothbox/smoothbox4.js')
-//      ->prependFile($staticBaseUrl . 'application/modules/User/externals/scripts/core.js')
-//      ->prependFile($staticBaseUrl . 'application/modules/Core/externals/scripts/core.js')
+      ->prependFile($staticBaseUrl . 'externals/smoothbox/smoothbox4.js')
+      ->prependFile($staticBaseUrl . 'application/modules/User/externals/scripts/core.js')
+      ->prependFile($staticBaseUrl . 'application/modules/Core/externals/scripts/core.js')
       ->prependFile($staticBaseUrl . 'externals/chootools/chootools.js')
       ->prependFile($staticBaseUrl . 'externals/mootools/mootools-more-1.4.0.1-full-compat-' . (APPLICATION_ENV == 'development' ? 'nc' : 'yc') . '.js')
       ->prependFile($staticBaseUrl . 'externals/mootools/mootools-core-1.4.5-full-compat-' . (APPLICATION_ENV == 'development' ? 'nc' : 'yc') . '.js');

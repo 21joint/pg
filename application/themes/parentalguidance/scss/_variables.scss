@@ -169,11 +169,11 @@ $link-color: #333D40;
 //// adapting to different screen sizes, for use in media queries.
 //
 $grid-breakpoints: (
-        xs: 0,
-        sm: 576px,
-        md: 768px,
-        lg: 992px,
-        xl: 1200px
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
 );
 //
 //@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
@@ -185,10 +185,10 @@ $grid-breakpoints: (
 //// Define the maximum width of `.container` for different screen sizes.
 //
 $container-max-widths: (
-        sm: 540px,
-        md: 720px,
-        lg: 960px,
-        xl: 1250px
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1250px
 );
 //
 //@include _assert-ascending($container-max-widths, "$container-max-widths");
@@ -259,7 +259,7 @@ $font-weight-bold: 700;
 //
 //$headings-margin-bottom:      ($spacer / 2) !default;
 //$headings-font-family:        inherit !default;
-$headings-font-weight:        600;
+$headings-font-weight: 600;
 //$headings-line-height:        1.2 !default;
 //$headings-color:              inherit !default;
 //
@@ -405,7 +405,7 @@ $input-padding-x: 0;
 //$input-padding-x-lg:                    $input-btn-padding-x-lg !default;
 //$input-line-height-lg:                  $input-btn-line-height-lg !default;
 //
-$input-bg:                              transparent;
+$input-bg: transparent;
 //$input-disabled-bg:                     $gray-200 !default;
 //
 //$input-color:                           $gray-700 !default;
@@ -693,8 +693,8 @@ $pagination-border-width: 0;
 $card-spacer-y: .5rem;
 $card-spacer-x: 1rem;
 //$card-border-width:                 $border-width !default;
-//$card-border-radius:                $border-radius !default;
-//$card-border-color:                 rgba($black, .125) !default;
+$card-border-radius: 10px;
+$card-border-color: #F5F5F5;
 //$card-inner-border-radius:          calc(#{$card-border-radius} - #{$card-border-width}) !default;
 //$card-cap-bg:                       rgba($black, .03) !default;
 //$card-bg:                           $white !default;

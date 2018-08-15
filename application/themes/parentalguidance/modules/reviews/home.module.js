@@ -22,14 +22,16 @@ import {renderCard} from "../../components/card/card";
     $('.lazy').Lazy({
       effect: 'fadeIn',
       asyncLoader: function (element, response) {
-        console.log(element);
         setTimeout(function () {
           element.css({
             'background-image': 'url(' + element.data('lazyImage') + ')',
           });
           response(true);
         }, 300);
-      }
+      },
+      customLoaderName: function(element) {
+        console.log(element)
+      },
     });
   });
 

@@ -17,7 +17,7 @@
             </svg>
           </a>
         </div> <!-- end of logo -->
-        <div class="col-auto col-sm col-md-4  search search-bar"
+        <div class="col-auto col-sm col-md-4 search search-bar"
              id="search-bar">
 
           <form class="d-block w-100"
@@ -41,11 +41,9 @@
           </form>
 
         </div> <!-- search -->
-        <div class="col-auto col-md-4 mini-menu"
-             id="core_menu_mini_menu_extfox">
+        <div class="col-auto col-md-4 mini-menu" id="core_menu_mini_menu_extfox">
 
-          <ul
-            class="list-unstyled profile-items w-100 d-flex justify-content-sm-end justify-content-center align-items-center my-0">
+          <ul class="list-unstyled profile-items w-100 d-flex justify-content-sm-end justify-content-center align-items-center my-0">
 
             <li class="list-inline-item align-middle search d-sm-none mr-sm-2">
               <a class="d-flex align-items-center p-1 p-sm-2"
@@ -106,21 +104,6 @@
                 </div>
               </li>
               <li class="list-inline-item align-middle profile-img mr-0">
-                <?php
-
-                $color = null;
-                if ($this->viewer->gg_expert_platinum_count > 0) {
-                  $color = '#ACBED5';
-                } elseif ($this->viewer->gg_expert_gold_count > 0) {
-                  $color = '#D9BB66';
-                } elseif ($this->viewer->gg_expert_silver_count > 0) {
-                  $color = '#B8B8B8';
-                } elseif ($this->viewer->gg_expert_bronze_count > 0) {
-                  $color = '#D7947C';
-                } else {
-                  $color = '#fff';
-                }
-                ?>
                 <?= $this->htmlLink(
                   $this->viewer->getHref(),
                   $this->itemPhoto($this->viewer, 'thumb.icon')
@@ -142,7 +125,6 @@
                    aria-expanded="false">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right shadow p-0 border-0 dropdown-menu--profile"
-                     style="overflow: hidden"
                      aria-labelledby="authProfileDropdown">
                   <ul class="list-unstyled">
                     <li>

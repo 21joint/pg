@@ -44,31 +44,31 @@ class User_Api_Core extends Core_Api_Abstract
   protected $_authAdapter;
 
 
+
   // Users
 
   /**
    * Gets an instance of a user
    *
    * @param mixed $identity An id, username, or email
-   *
    * @return User_Model_User
    */
   public function getUser($identity)
   {
     // Identity is already a user!
-    if ($identity instanceof User_Model_User) {
+    if( $identity instanceof User_Model_User ) {
       return $identity;
     }
 
     // Lookup in index
     $user = $this->_lookupUser($identity);
-    if ($user instanceof User_Model_User) {
+    if( $user instanceof User_Model_User ) {
       return $user;
     }
 
     // Create new instance
     $user = $this->_getUser($identity);
-    if (null === $user) {
+    if( null === $user ) {
       $user = new User_Model_User(array());
     } else {
       $this->_indexUser($user);
@@ -76,156 +76,45 @@ class User_Api_Core extends Core_Api_Abstract
 
     return $user;
   }
-
-  /**
-   * Looks up a user by id, username, email
-   *
-   * @param mixed $identity
-   *
-   * @return integer|false
-   */
-  protected function _lookupUser($identity)
-  {
-    $index = null;
-    if (is_scalar($identity) && isset($this->_indexes[$identity])) {
-      $index = $identity;
-    } else {
-      if ($identity instanceof Zend_Db_Table_Row_Abstract
-        && isset($identity->user_id)
-      ) {
-        $index = $identity->user_id;
-      } else {
-        if (is_array($identity) && is_string($identity[0])
-          && is_numeric(
-            $identity[1]
-          )
-        ) {
-          $index = $identity[1];
-        }
-      }
-    }
-
-    if (isset($this->_indexes[$index])
-      && isset($this->_users[$this->_indexes[$index]])
-    ) {
-      return $this->_users[$this->_indexes[$index]];
-    }
-
-    return null;
-  }
-
-
-
-  // Viewer
-
-  protected function _getUser($identity)
-  {
-    if (!$identity) {
-      $user = new User_Model_User(
-        array(
-          'table' => Engine_Api::_()->getItemTable('user'),
-        )
-      );
-    } else {
-      if ($identity instanceof User_Model_User) {
-        $user = $identity;
-      } else {
-        if (is_numeric($identity)) {
-          $user = Engine_Api::_()->getItemTable('user')->find($identity)
-            ->current();
-        } else {
-          if (is_string($identity) && strpos($identity, '@') !== false) {
-            $user = Engine_Api::_()->getItemTable('user')->fetchRow(
-              array(
-                'email = ?' => $identity,
-              )
-            );
-          } else /* if( is_string($identity) ) */ {
-            $user = Engine_Api::_()->getItemTable('user')->fetchRow(
-              array(
-                'username = ?' => $identity,
-              )
-            );
-          }
-        }
-      }
-    }
-
-    // Empty user?
-    if (null === $user) {
-      return new User_Model_User(array());
-    }
-
-    return $user;
-  }
-
-  /**
-   * Indexes a user object internally by id, username, email
-   *
-   * @param User_Model_User $user A user object
-   *
-   * @return void
-   */
-  protected function _indexUser(User_Model_User $user)
-  {
-    // Ignore if not an actual user or user is already set
-    if (!empty($user->user_id) && !isset($this->_users[$user->user_id])) {
-      $this->_indexes[$user->user_id] = $user->user_id;
-
-      if (!empty($user->email)) {
-        $this->_indexes[$user->email] = $user->user_id;
-      }
-
-      if (!empty($user->username)) {
-        $this->_indexes[$user->username] = $user->user_id;
-      }
-
-      $this->_users[$user->user_id] = $user;
-    }
-  }
-
-
-
-  // Authentication
-
   /**
    * Gets an instance of multiple users
    *
    * @param array $ids
-   *
    * @return array An array of Core_Model_Item_Abstract
    */
   public function getUserMulti(array $ids)
   {
     // Remove any non-numeric values and already retv rows
     $getIds = array();
-    foreach ($ids as $index => $value) {
-      if (!is_numeric($value)) {
+    foreach( $ids as $index => $value ) {
+      if( !is_numeric($value) ) {
         unset($ids[$index]);
-      } else {
-        if (!isset($this->_users[$value])) {
-          $getIds[] = $value;
-        }
+      } else if( !isset($this->_users[$value]) ) {
+        $getIds[] = $value;
       }
     }
 
     // Now get any remaining rows, if necessary
-    if (!empty($getIds)) {
-      foreach (Engine_Api::_()->getItemTable('user')->find($getIds) as $row) {
+    if( !empty($getIds) ) {
+      foreach( Engine_Api::_()->getItemTable('user')->find($getIds) as $row ) {
         $this->_indexUser($this->_getUser($row));
       }
     }
 
     // Now build the return data
     $users = array();
-    foreach ($ids as $id) {
-      if (isset($this->_users[$id])) {
+    foreach( $ids as $id ) {
+      if( isset($this->_users[$id]) ) {
         $users[] = $this->_users[$id];
       }
     }
 
     return $users;
   }
+
+
+
+  // Viewer
 
   /**
    * Gets the current viewer instance using the authentication storage
@@ -234,7 +123,7 @@ class User_Api_Core extends Core_Api_Abstract
    */
   public function getViewer()
   {
-    if (null === $this->_viewer) {
+    if( null === $this->_viewer ){
       $identity = $this->getAuth()->getIdentity();
       $this->_viewer = $this->_getUser($identity);
     }
@@ -245,47 +134,18 @@ class User_Api_Core extends Core_Api_Abstract
   public function setViewer(User_Model_User $viewer = null)
   {
     $this->_viewer = $viewer;
-
     return $this;
   }
 
-  /**
-   * Get the authentication object
-   *
-   * @return Zend_Auth
-   */
-  public function getAuth()
-  {
-    if (null === $this->_auth) {
-      $this->_auth = Zend_Auth::getInstance();
-      if (_ENGINE_NO_AUTH && !$this->_auth->getIdentity()) {
-        $this->_auth->getStorage()->write(1);
-      }
-    }
 
-    return $this->_auth;
-  }
 
-  /**
-   * Set the authentication object
-   *
-   * @param Zend_Auth $auth
-   *
-   * @return User_Api_Core
-   */
-  public function setAuth(Zend_Auth $auth)
-  {
-    $this->_auth = $auth;
-
-    return $this;
-  }
+  // Authentication
 
   /**
    * Authenticate user
    *
-   * @param string $identity   Email
+   * @param string $identity Email
    * @param string $credential Password
-   *
    * @return Zend_Auth_Result
    */
   public function authenticate($identity, $credential)
@@ -297,7 +157,8 @@ class User_Api_Core extends Core_Api_Abstract
       ->where('`email` = ?', $identity)
       ->limit(1)
       ->query()
-      ->fetchColumn(0);
+      ->fetchColumn(0)
+      ;
 
     $authAdapter = $this->getAuthAdapter()
       ->setIdentity($userIdentity)
@@ -306,7 +167,33 @@ class User_Api_Core extends Core_Api_Abstract
     return $this->getAuth()->authenticate($authAdapter);
   }
 
-  /* Utility */
+  /**
+   * Get the authentication object
+   *
+   * @return Zend_Auth
+   */
+  public function getAuth()
+  {
+    if( null === $this->_auth ) {
+      $this->_auth = Zend_Auth::getInstance();
+      if( _ENGINE_NO_AUTH && !$this->_auth->getIdentity() ) {
+        $this->_auth->getStorage()->write(1);
+      }
+    }
+    return $this->_auth;
+  }
+
+  /**
+   * Set the authentication object
+   *
+   * @param Zend_Auth $auth
+   * @return User_Api_Core
+   */
+  public function setAuth(Zend_Auth $auth)
+  {
+    $this->_auth = $auth;
+    return $this;
+  }
 
   /**
    * Get the authentication adapter
@@ -315,12 +202,10 @@ class User_Api_Core extends Core_Api_Abstract
    */
   public function getAuthAdapter()
   {
-    if (null === $this->_authAdapter) {
+    if( null === $this->_authAdapter ) {
       $db = Engine_Db_Table::getDefaultAdapter();
       $tablePrefix = Engine_Db_Table::getTablePrefix();
-      $salt = Engine_Api::_()->getApi('settings', 'core')->getSetting(
-        'core.secret', 'staticSalt'
-      );
+      $salt = Engine_Api::_()->getApi('settings', 'core')->getSetting('core.secret', 'staticSalt');
 
       $this->_authAdapter = new Zend_Auth_Adapter_DbTable(
         $db,
@@ -330,7 +215,6 @@ class User_Api_Core extends Core_Api_Abstract
         "MD5(CONCAT('".$salt."', ?, salt))"
       );
     }
-
     return $this->_authAdapter;
   }
 
@@ -338,22 +222,20 @@ class User_Api_Core extends Core_Api_Abstract
    * Set the authentication adapter object
    *
    * @param Zend_Auth_Adapter_Interface $authAdapter
-   *
    * @return Zend_Auth
    */
   public function setAuthAdapter(Zend_Auth_Adapter_Interface $authAdapter)
   {
     $this->_authAdapter = $authAdapter;
-
     return $this;
   }
+
 
   /**
    * Check user Credential
    *
-   * @param integer $identity   user id
-   * @param string  $credential Password
-   *
+   * @param integer $identity user id
+   * @param string $credential Password
    * @return bool
    */
   public function checkCredential($identity, $credential)
@@ -363,6 +245,84 @@ class User_Api_Core extends Core_Api_Abstract
       ->setCredential($credential)
       ->authenticate()
       ->isValid();
+  }
+
+  /* Utility */
+
+  /**
+   * Indexes a user object internally by id, username, email
+   *
+   * @param User_Model_User $user A user object
+   * @return void
+   */
+  protected function _indexUser(User_Model_User $user)
+  {
+    // Ignore if not an actual user or user is already set
+    if( !empty($user->user_id) && !isset($this->_users[$user->user_id]) ) {
+      $this->_indexes[$user->user_id] = $user->user_id;
+
+      if ( !empty($user->email)){
+        $this->_indexes[$user->email] = $user->user_id;
+      }
+
+      if ( !empty($user->username)){
+        $this->_indexes[$user->username] = $user->user_id;
+      }
+
+      $this->_users[$user->user_id] = $user;
+    }
+  }
+
+  /**
+   * Looks up a user by id, username, email
+   *
+    * @param mixed $identity
+   * @return integer|false
+   */
+  protected function _lookupUser($identity)
+  {
+    $index = null;
+    if( is_scalar($identity) && isset($this->_indexes[$identity]) ) {
+      $index = $identity;
+    } else if( $identity instanceof Zend_Db_Table_Row_Abstract && isset($identity->user_id) ) {
+      $index = $identity->user_id;
+    } else if( is_array($identity) && is_string($identity[0]) && is_numeric($identity[1]) ) {
+      $index = $identity[1];
+    }
+
+    if( isset($this->_indexes[$index]) && isset($this->_users[$this->_indexes[$index]]) ) {
+      return $this->_users[$this->_indexes[$index]];
+    }
+
+    return null;
+  }
+
+  protected function _getUser($identity)
+  {
+    if( !$identity ) {
+      $user = new User_Model_User(array(
+        'table' => Engine_Api::_()->getItemTable('user'),
+      ));
+    } else if( $identity instanceof User_Model_User ) {
+      $user = $identity;
+    } else if( is_numeric($identity) ) {
+      $user = Engine_Api::_()->getItemTable('user')->find($identity)->current();
+    } else if( is_string($identity) && strpos($identity, '@') !== false ) {
+      $user = Engine_Api::_()->getItemTable('user')->fetchRow(array(
+        'email = ?' => $identity,
+      ));
+    } else /* if( is_string($identity) ) */ {
+      $user = Engine_Api::_()->getItemTable('user')->fetchRow(array(
+        'username = ?' => $identity,
+      ));
+    }
+
+    // Empty user?
+    if( null === $user ) {
+      return new User_Model_User(array());
+    }
+
+    return $user;
   }
 
   public function randomPass($len)
@@ -377,21 +337,17 @@ class User_Api_Core extends Core_Api_Abstract
       ->where('level_id = ?', 1);
 
     $superadmins = $table->fetchAll($select);
-
     return $superadmins;
   }
 
-  public function getVerifyToken($userId)
-  {
-    return base64_encode(time().":".$userId);
+  public function getVerifyToken($userId) {
+    return base64_encode(time() . ":" . $userId);
   }
 
-  public function getUserIdFromToken($token)
-  {
+  public function getUserIdFromToken($token) {
     $decodedToken = base64_decode($token);
     $decodedToken = explode(':', $decodedToken);
     $userId = $decodedToken[1];
-
     return $userId;
   }
 }

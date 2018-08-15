@@ -42,6 +42,7 @@ const config = {
       },
       {
         test: /\.css$/,
+        exclude: /node_modules/,
         use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: 'css-loader'

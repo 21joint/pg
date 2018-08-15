@@ -25,12 +25,15 @@ class User_Bootstrap extends Engine_Application_Bootstrap_Abstract
     // Add view helper and action helper paths
     $this->initViewHelperPath();
     $this->initActionHelperPath();
-    // Add main user javascript
-    $staticBaseUrl = Zend_Registry::get('StaticBaseUrl');
-    $headLink = new Zend_View_Helper_HeadLink();
-    $headScript = new Zend_View_Helper_HeadScript();
 
-    $headScript->appendFile($staticBaseUrl.'scripts/auth.bundle.js');
+    $staticBaseUrl = Zend_Registry::get('StaticBaseUrl');
+    // Add main user javascript
+//    $headScript = new Zend_View_Helper_HeadScript();
+//    $headScript->appendFile($staticBaseUrl.'application/modules/User/externals/scripts/core.js');
+
+    $headLink = new Zend_View_Helper_HeadLink();
+
+//    $headScript->appendFile($staticBaseUrl.'scripts/auth.bundle.js');
     $headLink->appendStylesheet($staticBaseUrl.'styles/auth.bundle.css');
     // Get viewer
     $viewer = Engine_Api::_()->user()->getViewer();

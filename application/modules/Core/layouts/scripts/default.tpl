@@ -166,10 +166,14 @@
         <?php echo $this->headScript()->captureEnd(Zend_View_Helper_Placeholder_Container_Abstract::PREPEND) ?>
     </script>
     <?php
-
-//        ->prependFile($staticBaseUrl . 'application/modules/User/externals/scripts/core.js')
-//        ->prependFile($staticBaseUrl . 'application/modules/Core/externals/scripts/core.js');
-//        ->prependFile($staticBaseUrl . 'externals/chootools/chootools.js');
+        $this->headScript()
+          ->prependFile($staticBaseUrl . 'externals/scrollbars/scrollbars.min.js')
+          ->prependFile($staticBaseUrl . 'externals/smoothbox/smoothbox4.js')
+          ->prependFile($staticBaseUrl . 'application/modules/User/externals/scripts/core.js')
+          ->prependFile($staticBaseUrl . 'application/modules/Core/externals/scripts/core.js')
+          ->prependFile($staticBaseUrl . 'externals/chootools/chootools.js')
+          ->prependFile($staticBaseUrl . 'externals/mootools/mootools-more-1.4.0.1-full-compat-' . (APPLICATION_ENV == 'development' ? 'nc' : 'yc') . '.js')
+          ->prependFile($staticBaseUrl . 'externals/mootools/mootools-core-1.4.5-full-compat-' . (APPLICATION_ENV == 'development' ? 'nc' : 'yc') . '.js');
     // Process
     foreach ($this->headScript()->getContainer() as $dat) {
         if (!empty($dat->attributes['src'])) {

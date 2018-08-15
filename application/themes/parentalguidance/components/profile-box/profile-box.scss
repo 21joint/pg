@@ -1,0 +1,50 @@
+@import "../../scss/variables";
+
+.avatar-popup {
+  z-index: 999;
+  width: 360px;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+.avatar-popup--header {
+  line-height: 22px;
+  font-size: 14px;
+}
+
+.avatar-popup--info {
+  //padding: 10px;
+}
+
+.avatar-popup--contribution {
+  font-size: 14px;
+}
+
+.avatar-popup--close {
+  color: #b4c0c1;
+  cursor: pointer;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    color: #5f727f;
+  }
+}
+
+.avatar-popup--footer {
+  font-size: 14px;
+  font-weight: 600;
+  > div {
+    & + div {
+      border-left: 1px solid $border-color;
+    }
+  }
+}
+
+.avatar_halo_disp {
+  border-style: solid;
+  border-width: 5px 6px 5px 6px;
+}

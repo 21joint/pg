@@ -13,7 +13,5 @@ class Sdparentalguide_Bootstrap extends Engine_Application_Bootstrap_Abstract
 //    $staticBaseUrl = Zend_Registry::get('StaticBaseUrl');
 //    $headLink = new Zend_View_Helper_HeadLink();
 //    $headLink->appendStylesheet($staticBaseUrl.'styles/header.bundle.css');
-
-
   }
 }

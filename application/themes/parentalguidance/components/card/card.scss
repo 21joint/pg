@@ -6,7 +6,7 @@
 .card {
   transition: .3s .3s opacity ease;
   opacity: 1;
-  border: none;
+  //border: none;
   &:hover {
     .card-actions {
       top: 0;
@@ -18,15 +18,12 @@
 }
 
 .card-review {
-  border-color: rgb(245, 245, 245);
-  border-radius: 10px;
   .card-title {
     @include media-breakpoint-up(md) {
       min-height: 77px;
     }
 
   }
-
   .fa, .far {
     color: #B9CFD1;
   }
@@ -77,6 +74,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 10px 10px 0 0;
+  line-height: 1;
 }
 
 .card-body {
@@ -90,6 +88,11 @@
   border-color: rgb(245, 245, 245);
   padding: 0.5rem .875rem;
   border-radius: 0 0 10px 10px;
+  [data-lazy-image] {
+    background-size: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
   .list-inline-item {
     font-size: 0.875rem;
   }
