@@ -52,7 +52,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         $params['category_id'] = $this->getParam("categoryID");
         $params['subcategory_id'] = $this->getParam("subCategoryID");
         $params['show'] = null;
-        $listingTable = Engine_Api::_()->getDbTable('listings', 'sitereview');
+        $listingTable = Engine_Api::_()->getDbTable('listings', 'sdparentalguide');
         $listingTableName = $listingTable->info("name");
         $listingTypeTable = Engine_Api::_()->getDbtable('locations', 'sitereview');
         $listingTypeTableName = $listingTypeTable->info('name');
@@ -112,6 +112,22 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
             $select->order("creation_date $orderByDirection");
         }
         
+        $filterPreferences = $this->getParam("filterPreferences",false);
+        if($filterPreferences){
+            $userCategories = Engine_Api::_()->getDbtable('preferences', 'sdparentalguide')->getUserCategories();
+            if(!empty($userCategories)){
+                $select->where("$listingTableName.category_id IN (?)",$userCategories);
+            }
+        }
+        
+        $filterInfluencers = $this->getParam("filterInfluencers",false);
+        if($filterInfluencers){
+            $influencers = Engine_Api::_()->pgservicelayer()->getInfluencers();
+            if(!empty($influencers)){
+                $select->where("$listingTableName.owner_id IN (?)",$influencers);
+            }
+        }
+                
         $paginator = Zend_Paginator::factory($select);
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage($limit);
