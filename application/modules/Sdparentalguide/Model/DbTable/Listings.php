@@ -460,6 +460,296 @@ class Sdparentalguide_Model_DbTable_Listings extends Sitereview_Model_DbTable_Li
     //RETURN RESULTS
     return $this->fetchAll($select);
   }
+  
+  
+  public function getSitereviewsSelect($params = array(), $customParams = null) {
+
+    //GET LISTING TABLE NAME
+    $sitereviewTableName = $this->info('name');
+    $tempSelect = array();
+    global $sitereviewSelectQuery;
+
+    //GET TAGMAP TABLE NAME
+    $tagMapTableName = Engine_Api::_()->getDbtable('TagMaps', 'core')->info('name');
+
+    //GET SEARCH TABLE
+    $searchTable = Engine_Api::_()->fields()->getTable('sitereview_listing', 'search')->info('name');
+
+    //GET LOCATION TABLE
+    $locationTable = Engine_Api::_()->getDbtable('locations', 'sitereview');
+    $locationTableName = $locationTable->info('name');
+
+    //GET API
+    $settings = Engine_Api::_()->getApi('settings', 'core');
+
+    //MAKE QUERY
+    $select = $this->select();
+
+    $select = $select
+            ->setIntegrityCheck(false)
+            ->from($sitereviewTableName)
+            //->joinLeft($locationTableName, "$sitereviewTableName.listing_id = $locationTableName.listing_id   ", array())
+            ->group($sitereviewTableName . '.listing_id');
+
+    if (isset($params['type']) && !empty($params['type'])) {
+      $listingtype_id = (isset($params['listingtype_id']) && !empty($params['listingtype_id']) && $params['listingtype_id'] != -1) ? $params['listingtype_id'] : -1;
+      if ($params['type'] == 'browse' || $params['type'] == 'home') {
+        $select = $select
+                ->where($sitereviewTableName . '.approved = ?', '1')
+                ->where($sitereviewTableName . '.draft = ?', '0')
+                ->where($sitereviewTableName . '.creation_date <= ?', date('Y-m-d H:i:s'));
+        $showExpiry = (isset($params['show']) && $params['show'] == 'only_expiry') ? 1 : 0;
+        $select = $this->expirySQL($select, $listingtype_id, $showExpiry);
+
+        if ($params['type'] == 'browse' && isset($params['showClosed']) && !$params['showClosed']) {
+          $select = $select->where($sitereviewTableName . '.closed = ?', '0');
+        }
+      } elseif ($params['type'] == 'browse_home_zero') {
+        $select = $select
+                ->where($sitereviewTableName . '.closed = ?', '0')
+                ->where($sitereviewTableName . '.approved = ?', '1')
+                ->where($sitereviewTableName . '.draft = ?', '0')
+                ->where($sitereviewTableName . '.creation_date <= ?', date('Y-m-d H:i:s'));
+
+        $select = $this->expirySQL($select, $listingtype_id);
+      }
+      if ($params['type'] != 'manage') {
+        $select->where($sitereviewTableName . ".search = ?", 1);
+      }
+    }
+
+    if (isset($customParams) && !empty($customParams)) {
+
+      //PROCESS OPTIONS
+      $tmp = array();
+      foreach ($customParams as $k => $v) {
+        if (null == $v || '' == $v || (is_array($v) && count(array_filter($v)) == 0)) {
+          continue;
+        } else if (false !== strpos($k, '_field_')) {
+          list($null, $field) = explode('_field_', $k);
+          $tmp['field_' . $field] = $v;
+        } else if (false !== strpos($k, '_alias_')) {
+          list($null, $alias) = explode('_alias_', $k);
+          $tmp[$alias] = $v;
+        } else {
+          $tmp[$k] = $v;
+        }
+      }
+      $customParams = $tmp;
+
+      $select = $select
+              ->setIntegrityCheck(false)
+              ->joinLeft($searchTable, "$searchTable.item_id = $sitereviewTableName.listing_id", null);
+
+      $searchParts = Engine_Api::_()->fields()->getSearchQuery('sitereview_listing', $customParams);
+      foreach ($searchParts as $k => $v) {
+        $select->where("`{$searchTable}`.{$k}", $v);
+      }
+    }
+
+    $addGroupBy = 1;
+    if (!isset($params['location']) && (isset($params['detactLocation']) && $params['detactLocation'] && isset($params['latitude']) && $params['latitude'] && isset($params['longitude']) && $params['longitude'] && isset($params['defaultLocationDistance']) && $params['defaultLocationDistance'])) {
+
+      $locationsTable = Engine_Api::_()->getDbtable('locations', 'sitereview');
+      $locationTableName = $locationsTable->info('name');
+      $radius = $params['defaultLocationDistance']; //in miles
+      $latitude = $params['latitude'];
+      $longitude = $params['longitude'];
+      $flage = Engine_Api::_()->getApi('settings', 'core')->getSetting('sitereview.proximity.search.kilometer', 0);
+      if (!empty($flage)) {
+        $radius = $radius * (0.621371192);
+      }
+    //  $latitudeRadians = deg2rad($latitude);
+      $latitudeSin = "sin(radians($latitude))"; //sin($latitudeRadians);
+      $latitudeCos = "cos(radians($latitude))";// cos($latitudeRadians);
+
+      $select->join($locationTableName, "$sitereviewTableName.listing_id = $locationTableName.listing_id", array("(degrees(acos($latitudeSin * sin(radians($locationTableName.latitude)) + $latitudeCos * cos(radians($locationTableName.latitude)) * cos(radians($longitude - $locationTableName.longitude)))) * 69.172) AS distance", $locationTableName.'.location AS locationName'));
+      $sqlstring = "(degrees(acos($latitudeSin * sin(radians($locationTableName.latitude)) + $latitudeCos * cos(radians($locationTableName.latitude)) * cos(radians($longitude - $locationTableName.longitude)))) * 69.172 <= " . "'" . $radius . "'";
+      $sqlstring .= ")";
+      $select->where($sqlstring);
+      $select->order("distance");
+      $select->group("$sitereviewTableName.listing_id");
+      $addGroupBy = 0;
+    }    
+
+    if (isset($params['sitereview_street']) && !empty($params['sitereview_street']) || isset($params['sitereview_city']) && !empty($params['sitereview_city']) || isset($params['sitereview_state']) && !empty($params['sitereview_state']) || isset($params['sitereview_country']) && !empty($params['sitereview_country'])) {
+      $select->join($locationTableName, "$sitereviewTableName.listing_id = $locationTableName.listing_id   ", null);
+    }
+
+    if (isset($params['sitereview_street']) && !empty($params['sitereview_street'])) {
+      $select->where($locationTableName . '.address   LIKE ? ', '%' . $params['sitereview_street'] . '%');
+    } if (isset($params['sitereview_city']) && !empty($params['sitereview_city'])) {
+      $select->where($locationTableName . '.city = ?', $params['sitereview_city']);
+    } if (isset($params['sitereview_state']) && !empty($params['sitereview_state'])) {
+      $select->where($locationTableName . '.state = ?', $params['sitereview_state']);
+    } if (isset($params['sitereview_country']) && !empty($params['sitereview_country'])) {
+      $select->where($locationTableName . '.country = ?', $params['sitereview_country']);
+    }
+
+    if ((isset($params['location']) && !empty($params['location'])) || (!empty($params['Latitude']) && !empty($params['Longitude']))) {
+      $enable = $settings->getSetting('sitereview.proximitysearch', 1);
+      if (isset($params['locationmiles']) && (!empty($params['locationmiles']) && !empty($enable))) {
+        $longitude = 0;
+        $latitude = 0;
+        $selectLocQuery = $locationTable->select()->where('location = ?', $params['location']);
+        $locationValue = $locationTable->fetchRow($selectLocQuery);
+
+        //check for zip code in location search.
+        if (empty($params['Latitude']) && empty($params['Longitude'])) {
+          if (empty($locationValue)) {
+            $locationResults = Engine_Api::_()->getApi('geoLocation', 'seaocore')->getLatLong(array('location' => $params['location'], 'module' => 'Multiple Listing Types'));
+            if(!empty($locationResults['latitude']) && !empty($locationResults['longitude'])) {
+                $latitude = $locationResults['latitude'];
+                $longitude = $locationResults['longitude'];
+            }
+          } else {
+            $latitude = (float) $locationValue->latitude;
+            $longitude = (float) $locationValue->longitude;
+          }
+        } else {
+          $latitude = (float) $params['Latitude'];
+          $longitude = (float) $params['Longitude'];
+        }
+
+        $radius = $params['locationmiles'];
+
+        $flage = $settings->getSetting('sitereview.proximity.search.kilometer', 0);
+        if (!empty($flage)) {
+          $radius = $radius * (0.621371192);
+        }
+        //  $latitudeRadians = deg2rad($latitude);
+      $latitudeSin = "sin(radians($latitude))"; //sin($latitudeRadians);
+      $latitudeCos = "cos(radians($latitude))";// cos($latitudeRadians);
+        $select->join($locationTableName, "$sitereviewTableName.listing_id = $locationTableName.listing_id", array("(degrees(acos($latitudeSin * sin(radians($locationTableName.latitude)) + $latitudeCos * cos(radians($locationTableName.latitude)) * cos(radians($longitude - $locationTableName.longitude)))) * 69.172) AS distance"));
+        $sqlstring = "(degrees(acos($latitudeSin * sin(radians($locationTableName.latitude)) + $latitudeCos * cos(radians($locationTableName.latitude)) * cos(radians($longitude - $locationTableName.longitude)))) * 69.172 <= " . "'" . $radius . "'";
+        $sqlstring .= ")";
+        $select->where($sqlstring);
+        $select->order("distance");
+      } else {
+        $select->join($locationTableName, "$sitereviewTableName.listing_id = $locationTableName.listing_id", null);
+        $select->where("`{$locationTableName}`.formatted_address LIKE ? or `{$locationTableName}`.location LIKE ? or `{$locationTableName}`.city LIKE ? or `{$locationTableName}`.state LIKE ?", "%" . $params['location'] . "%");
+      }
+    }
+
+    if (isset($params['type']) && !empty($params['type']) && ($params['type'] == 'browse' || $params['type'] == 'home')) { 
+      if($addGroupBy) { 
+        $select = $this->getNetworkBaseSql($select, array('show' => $params['show']));
+      }
+      else {
+        $select = $this->getNetworkBaseSql($select, array('not_groupBy' => 1, 'show' => $params['show']));
+      } 
+    }
+    $api = Engine_Api::_()->sitereview();
+    if (isset($params['price']['min']) && !empty($params['price']['min'])) {
+      $select->where($sitereviewTableName . '.price >= ?', $api->getPriceWithCurrency($params['price']['min'], 1, 1));
+    }
+
+    if (isset($params['price']['max']) && !empty($params['price']['max'])) {
+      $select->where($sitereviewTableName . '.price <= ?', $api->getPriceWithCurrency($params['price']['max'], 1, 1));
+    }
+
+    if (!empty($params['user_id']) && is_numeric($params['user_id'])) {
+      $select->where($sitereviewTableName . '.owner_id = ?', $params['user_id']);
+    }
+
+    if (!empty($params['user']) && $params['user'] instanceof User_Model_User) {
+      $select->where($sitereviewTableName . '.owner_id = ?', $params['user_id']->getIdentity());
+    }
+
+    if (!empty($params['users'])) {
+      $str = (string) ( is_array($params['users']) ? "'" . join("', '", $params['users']) . "'" : $params['users'] );
+      $select->where($sitereviewTableName . '.owner_id in (?)', new Zend_Db_Expr($str));
+    }
+
+    if (empty($params['users']) && isset($params['show']) && $params['show'] == '2') {
+      $select->where($sitereviewTableName . '.owner_id = ?', '0');
+    }
+
+    if ((isset($params['show']) && $params['show'] == "4")) {
+      $likeTableName = Engine_Api::_()->getDbtable('likes', 'core')->info('name');
+      $viewer_id = Engine_Api::_()->user()->getViewer()->getIdentity();
+      $select->setIntegrityCheck(false)
+              ->join($likeTableName, "$likeTableName.resource_id = $sitereviewTableName.listing_id")
+              ->where($likeTableName . '.poster_type = ?', 'user')
+              ->where($likeTableName . '.poster_id = ?', $viewer_id)
+              ->where($likeTableName . '.resource_type = ?', 'sitereview_listing');
+    }
+
+    if (!empty($params['tag_id'])) {
+      $select
+              ->setIntegrityCheck(false)
+              ->joinLeft($tagMapTableName, "$tagMapTableName.resource_id = $sitereviewTableName.listing_id", array('tagmap_id', 'resource_type', 'resource_id', 'tag_id'))
+              ->where($tagMapTableName . '.resource_type = ?', 'sitereview_listing')
+              ->where($tagMapTableName . '.tag_id = ?', $params['tag_id']);
+    }
+
+    if (isset($params['listingtype_id']) && !empty($params['listingtype_id']) && $params['listingtype_id'] != -1) {
+      $select->where($sitereviewTableName . '.listingtype_id = ?', $params['listingtype_id']);
+    }
+
+    if (isset($params['category_id']) && !empty($params['category_id'])) {
+      $select->where($sitereviewTableName . '.category_id = ?', $params['category_id']);
+    }
+
+    if (isset($params['subcategory_id']) && !empty($params['subcategory_id'])) {
+      $select->where($sitereviewTableName . '.subcategory_id = ?', $params['subcategory_id']);
+    }
+
+    if (isset($params['subsubcategory_id']) && !empty($params['subsubcategory_id'])) {
+      $select->where($sitereviewTableName . '.subsubcategory_id = ?', $params['subsubcategory_id']);
+    }
+
+    if (isset($params['closed']) && $params['closed'] != "") {
+      $select->where($sitereviewTableName . '.closed = ?', $params['closed']);
+    }
+
+    // Could we use the search indexer for this?
+    if (!empty($params['search'])) {
+
+      $tagName = Engine_Api::_()->getDbtable('Tags', 'core')->info('name');
+      $select
+              ->setIntegrityCheck(false)
+              ->joinLeft($tagMapTableName, "$tagMapTableName.resource_id = $sitereviewTableName.listing_id and " . $tagMapTableName . ".resource_type = 'sitereview_listing'", array('tagmap_id', 'resource_type', 'resource_id', 'tag_id'))
+              ->joinLeft($tagName, "$tagName.tag_id = $tagMapTableName.tag_id");
+
+      $select->where($sitereviewTableName . ".title LIKE ? OR " . $sitereviewTableName . ".body LIKE ? OR " . $tagName . ".text LIKE ? ", '%' . $params['search'] . '%');
+    }
+
+    if (!empty($params['start_date'])) {
+      $select->where($sitereviewTableName . ".creation_date > ?", date('Y-m-d', $params['start_date']));
+    }
+
+    if (!empty($params['end_date'])) {
+      $select->where($sitereviewTableName . ".creation_date < ?", date('Y-m-d', $params['end_date']));
+    }
+
+    if (!empty($params['has_photo'])) {
+      $select->where($sitereviewTableName . ".photo_id > ?", 0);
+    }
+
+    if (!empty($params['has_review'])) {
+      $has_review = $params['has_review'];
+      $select->where($sitereviewTableName . ".$has_review > ?", 0);
+    }
+
+    if(isset($params['most_rated'])) {
+      $select->order($sitereviewTableName . '.' . 'rating_avg'. ' DESC');
+    }
+      
+    if (!empty($params['orderby']) && $params['orderby'] == "title") {
+      $select->order($sitereviewTableName . '.' . $params['orderby']);
+    } else if (!empty($params['orderby']) && $params['orderby'] == "fespfe") {
+      $select->order($sitereviewTableName . '.sponsored' . ' DESC')
+              ->order($sitereviewTableName . '.featured' . ' DESC');
+    } else if (!empty($params['orderby']) && $params['orderby'] == "spfesp") {
+      $select->order($sitereviewTableName . '.featured' . ' DESC')
+              ->order($sitereviewTableName . '.sponsored' . ' DESC');
+    } else if (!empty($params['orderby']) && $params['orderby'] != 'creation_date') {
+      $select->order($sitereviewTableName . '.' . $params['orderby'] . ' DESC');
+    }
+    $select->order($sitereviewTableName . '.creation_date DESC');
+    return $select;
+  }
 } 
 
 

@@ -116,6 +116,14 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
             $select->order("answer_id $orderByDirection");
         }
         
+        $filterInfluencers = $this->getParam("filterInfluencers",false);
+        if($filterInfluencers){
+            $influencers = Engine_Api::_()->pgservicelayer()->getInfluencers();
+            if(!empty($influencers)){
+                $select->where("$tableName.user_id IN (?)",$influencers);
+            }
+        }
+        
         $select->where("$tableName.gg_deleted = ?",0);
         $paginator = Zend_Paginator::factory($select);
         $paginator->setCurrentPageNumber($page);
