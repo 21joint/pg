@@ -63,7 +63,13 @@ function loadReviewResults(){
                 for(var i = 0; i < results.length; i++) {
                 // Rating Stars Functionality
                     var star_rating = "";
+                    var star_background = "";
                     for(var k = 0; k < results[i].authorRating; k++){
+                        if(k > 0){
+                            star_background = "bg-white";
+                        }else{
+                            star_background = "";
+                        }
                         star_rating += '<svg width="20px" height="15px" style="margin: 3px 5px 0px 0px;" id="986bffda-3f05-4b93-986d-19fb19c532ee" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 21.06 20"><defs><linearGradient id="7f161091-907f-4bc3-958f-efd13f35ea8f" x1="-246.44" y1="358.88" x2="-245.25" y2="360.17" gradientTransform="matrix(7.2, 0, 0, -5.79, 1787.47, 2087.17)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ce8f2a"></stop><stop offset="0.17" stop-color="#cf9330"></stop><stop offset="0.38" stop-color="#d39d3f"></stop><stop offset="0.62" stop-color="#d8ae59"></stop><stop offset="0.67" stop-color="#dab360"></stop><stop offset="0.92" stop-color="#edc64f"></stop><stop offset="1" stop-color="#edc64f"></stop></linearGradient><linearGradient id="63fb0eb1-e930-4084-8c62-b5b435aecd0c" x1="-251.71" y1="352.3" x2="-253.09" y2="353.52" gradientTransform="matrix(8.72, 0, 0, -5.31, 2208.99, 1882.17)" xlink:href="#7f161091-907f-4bc3-958f-efd13f35ea8f"></linearGradient><linearGradient id="9dca70f9-c700-4386-bb6d-2ac754ed7336" x1="-263.32" y1="408.59" x2="-264.68" y2="410.09" gradientTransform="matrix(13.39, 0, 0, -20, 3550.34, 8207.19)" xlink:href="#7f161091-907f-4bc3-958f-efd13f35ea8f"></linearGradient></defs><title>golden_star</title><path d="M20.15,4.3l-3.76,5L13.18,5l6.26-1.4C20.35,3.3,20.65,3.65,20.15,4.3Z" transform="translate(0 0)" fill="url(#7f161091-907f-4bc3-958f-efd13f35ea8f)"></path><path d="M8.72,6,.46,8.06c-.5.1-.65.7-.15.9l8.07,2.35Z" transform="translate(0 0)" fill="url(#63fb0eb1-e930-4084-8c62-b5b435aecd0c)"></path><path d="M7.67,19.23,8.73.49c0-.55.55-.65.9-.25l11.22,14c.4.5.3,1.35-.85.9l-6.76-2.6L9,19.53C8.57,20.33,7.62,20,7.67,19.23Z" transform="translate(0 0)" fill="url(#9dca70f9-c700-4386-bb6d-2ac754ed7336)"></path></svg>';
                     }
                 // Matching Contribution Level to Contribution Award (Bronze, Silver, Gold, Platinum) 
@@ -156,7 +162,7 @@ function loadReviewResults(){
                                                 results[i].coverPhoto.photoURL+
                                             '"/>'+
                                         '</a>'+
-                                        '<div class="review_star_ranking position-absolute bg-white d-flex justify-content-around px-2 py-1">'+
+                                        '<div class="review_star_ranking position-absolute '+ star_background +' d-flex justify-content-around px-2 py-1">'+
                                             star_rating+
                                         '</div>'+
                                     '</div>'+
