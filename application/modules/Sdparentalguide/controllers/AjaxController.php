@@ -182,7 +182,7 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
         }
 
         $request = Zend_Controller_Front::getInstance()->getRequest();
-        
+
         // General form w/o profile type
         $aliasedFields = $viewer->fields()->getFieldsObjectsByAlias();
         $this->view->topLevelId = $topLevelId = 0;
@@ -214,27 +214,32 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
         // setup values
         $values = $request->getParam('values', null);
         foreach($values as $key => $value) {
-            
+
             if($key != 'submit') {
                 $element = $form->getElement($key);
                 if($element) {
                     $element->setValue($value);
                 }
             }
-            
+
             if (strpos($key, 'family') !== false) {
                 $i = preg_replace('/[^0-9]/', '', $key);
                 $family[$i][] = $value;
             }
-            
+
             if($key == 'profile_gender') {
                 $viewer->gg_gender = $value;
                 $viewer->save();
             }
 
             if($key == 'profile_age_range_set') {
+                $oldTz = date_default_timezone_get();
+                date_default_timezone_set($viewer->timezone);
+                $time = time();
+                date_default_timezone_set($oldTz);
+
                 $viewer->gg_age_range = $value;
-                $viewer->gg_age_range_set = date('Y-m-d H:i:s');
+                $viewer->gg_age_range_set = date('Y-m-d H:i:s', $time);
                 $viewer->save();
             }
 
@@ -253,7 +258,7 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
                     'gender' => $item[0],
                     'dob' => $item[1] . '-01'
                 );
-                $prefRow = $table->createRow();   
+                $prefRow = $table->createRow();
                 $prefRow->setFromArray($prefParams);
                 $prefRow->save();
             }
@@ -261,7 +266,7 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
 
 
         if ( $form->isValid($values) ) {
-            
+
             $form->saveValues();
 
             // Update display name
@@ -275,7 +280,7 @@ class Sdparentalguide_AjaxController extends Core_Controller_Action_Standard
             $this->view->status = true;
             $this->view->message = Zend_Registry::get('Zend_Translate')->_('Profile have been updated.');
             return;
-            
+
         }
 
         $this->view->status = false;
