@@ -13,7 +13,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             return "";
         }
         $view = Zend_Registry::get("Zend_View");
-        return $view->locale()->toDateTime($datetime,array('format' => 'YYYY-MM-d HH:MM:ss'));
+        return $view->locale()->toDateTime($datetime,array('format' => 'YYYY-MM-d HH:mm:ss'));
     }
     private function translate($message = ''){
         return Engine_Api::_()->getApi('Core', 'siteapi')->translate($message);
@@ -161,13 +161,16 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $request = Zend_Controller_Front::getInstance()->getRequest();
         $avatarPhoto = ucfirst($request->getParam("photoType","icon"));
         $contentImages = $this->getContentImage($user);
-        $contentImages['photoID'] = (string)$user->photo_id;
+        $contentImages['avatarPhotoID'] = (string)$user->photo_id;
 //        $contentImages['photoURL'] = isset($userPhotos['photoURL'.$avatarPhoto])?$userPhotos['photoURL'.$avatarPhoto]:$userPhotos['photoURLIcon'];
         $coverPhotos = array();
-        if(!empty($user->user_cover)){
-            $fileObject = Engine_Api::_()->storage()->get($user->user_cover);
+        if(!empty($user->coverphoto)){
+            $fileObject = Engine_Api::_()->storage()->get($user->coverphoto);
             $coverPhotos = $this->getContentImage($fileObject);
-            $coverPhotos['photoID'] = (string)$user->user_cover;
+            $coverPhotos['coverPhotoID'] = (string)$user->coverphoto;
+            $coverPhotoPosition = (array)@json_decode($user->coverphotoparams);
+            $coverPhotos['coverPhotoPosition']['top'] = (int)isset($coverPhotoPosition['top'])?$coverPhotoPosition['top']:0;
+            $coverPhotos['coverPhotoPosition']['left'] = (int)isset($coverPhotoPosition['left'])?$coverPhotoPosition['left']:0;
         }
         
         $expert = ($user->gg_expert_bronze_count || $user->gg_expert_silver_count || $user->gg_expert_gold_count || $user->gg_expert_platinum_count);
@@ -198,7 +201,9 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             'expert' => (bool)$expert,
             'memberSinceDateTime' => $this->getFormatedDateTime($user->creation_date),
             'coverPhoto' => $coverPhotos,
-            'href' => $user->getHref()
+            'href' => $user->getHref(),
+            'isPrivate' => (bool)(!$user->search),
+            'isInfluencer' => (bool)$user->gg_is_influencer
         );
         $view = Zend_Registry::get("Zend_View");
         $badgeHelper = new Sdparentalguide_View_Helper_ItemPhotoBadgeColor();
@@ -558,5 +563,60 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             $cache->save($permissionData, $cacheName);
         }
         return $permissionData;
+    }
+    
+    public function getGuideStatus(Sdparentalguide_Model_Guide $guide){
+        if($guide->gg_deleted){
+            return "Deleted";
+        }
+        
+        if(!$guide->approved){
+            return "Pending Approval";
+        }
+        return ucfirst($guide->status);
+    }
+    public function getGuideData(Sdparentalguide_Model_Guide $guide){
+        $tmpBody = strip_tags($guide->description);
+        $shortDesc = ( Engine_String::strlen($tmpBody) > 100 ? Engine_String::substr($tmpBody, 0, 100) . '...' : $tmpBody );
+        $topic = Engine_Api::_()->getItem("sdparentalguide_topic",$guide->topic_id);
+        $owner = $guide->getOwner();
+        $contentImages = $this->getContentImage($guide);
+        $contentImages['photoID'] = (string)$guide->photo_id;
+        $guideData = array(
+            'guideID' => (string)$guide->getIdentity(),
+            'title' => (string)$guide->title,
+            'shortDescription' => (string)$shortDesc,
+            'longDescription' => (string)$tmpBody,
+            'guideTopic' => $this->getTopicData($topic),
+            'guideItems' => array(),
+            'createdDateTime' => (string)$this->getFormatedDateTime($guide->creation_date),
+            'author' => $owner->getIdentity()?$this->getUserData($owner):array(),
+            'lastModifiedDateTime' => (string)$this->getFormatedDateTime($guide->modified_date),
+            'status' => (string)$this->getGuideStatus($guide),
+            'approved' => (bool)$guide->approved,
+            'featured' => (bool)$guide->featured,
+            'publishedDateTime' => $guide->approved?$this->getFormatedDateTime($guide->published_date):'',
+            'sponsored' => (bool)$guide->sponsored,
+            'new' => (bool)$guide->new,
+            'guideItemCount' => $guide->guide_item_count,
+            'coverPhoto' => $contentImages,
+            'commentsCount' => $guide->comment_count,
+            'likesCount' => $guide->like_count,
+            'viewCount' => $guide->view_count,
+            'clickCount' => $guide->click_count,
+            'averageRating' => $guide->average_rating,
+            'privacySettings' => array(),
+        );
+        $auth = Engine_Api::_()->authorization()->context;
+        $roles = array('owner', 'owner_member', 'owner_member_member', 'owner_network', 'registered', 'everyone');
+        foreach ($roles as $role) {
+            if (1 == $auth->isAllowed($guide, $role, "view")) {
+                $guideData['privacySettings']['authView'] = $role;
+            }
+            if (1 == $auth->isAllowed($guide, $role, "comment")) {
+                $guideData['privacySettings']['authComment'] = $role;
+            }
+        }
+        return $guideData;
     }
 }
