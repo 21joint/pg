@@ -26,7 +26,8 @@
     
     // add fontawesome
     $this->headLink()
-    ->prependStylesheet($cssBaseUrl . 'externals/font-awesome/css/font-awesome.min.css');
+    ->prependStylesheet($cssBaseUrl . 'externals/font-awesome/css/font-awesome.min.css')
+    ->prependStylesheet($staticBaseUrl . 'application/modules/User/externals/styles/main.css');
     
     $request = Zend_Controller_Front::getInstance()->getRequest();
     $this->headTitle()
@@ -65,7 +66,7 @@
 
     $this->headMeta()->appendName('description', trim($description));
     $this->headMeta()->appendName('keywords', trim($keywords));
-    $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
+    $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
 
     //Adding open graph meta tag for video thumbnail
     if( $this->subject() && $this->subject()->getPhotoUrl() ) {
@@ -98,6 +99,8 @@
     } else {
       $themes = array('default');
     }
+    
+
     
     // Process
     foreach( $this->headLink()->getContainer() as $dat ) {
@@ -151,6 +154,7 @@
   </script>
   <?php
     $this->headScript()
+      ->prependFile($staticBaseUrl . 'externals/scrollbars/scrollbars.min.js')
       ->prependFile($staticBaseUrl . 'externals/smoothbox/smoothbox4.js')
       ->prependFile($staticBaseUrl . 'application/modules/User/externals/scripts/core.js')
       ->prependFile($staticBaseUrl . 'application/modules/Core/externals/scripts/core.js')

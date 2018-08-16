@@ -300,6 +300,7 @@
 
 // HEADER
 header.extfox-header {
+    background-color:$white;
     .container {
         .list-inline-item.search {
           display: none;
@@ -554,7 +555,48 @@ body#global_page_user-profile-index {
                                             font-size: .9em;
                                             padding: 1.2rem;
                                         }
+                                        
+                                        .tab_pulldown_contents_wrapper {
+                                            margin-top: 60px;
+                                            padding: 0;
+                                            box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.05);
+                                            .tab_pulldown_contents {
+                                                
+                                                ul {
+                                                    padding: 0;
+                                                    li {
+                                                        text-transform: none;
+                                                        color: #333D40;
+                                                        font-weight: 400;
+                                                        font-size: .9em;
+                                                        padding: 1.2rem;
+                                                        border-bottom: 2px solid transparent;
+                                                        &.active {
+                                                            background-color: #fff;
+                                                            border-bottom: 2px solid #1BC1D6;
+                                                        }
+                                                        &:hover {
+                                                            background-color: #fff;
+                                                        }
+                                                        + li {
+                                                            border-top: 1px solid  #dee2e6; 
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                   
+                                        
                                     }
+
+                                    & > li.tab_open {
+                                        & > a {
+                                            border:none;
+                                            background-color:transparent;
+                                            top:0;
+                                        }
+                                    }
+
                                 }
                             }
                         } // profile tabs
@@ -1028,20 +1070,31 @@ body#global_page_user-profile-index {
     .sd_listing_categories {
         grid-template-columns: repeat(auto-fill, minmax(34%, 1fr))!important;
     }
-    input[type=checkbox] + label:after {
-        top: 28px!important;
-    }
+    
     input[type=checkbox] {
         top: 28px !important;
         left: 35px !important;
     }
     #show_all-wrapper {
-        width: 91%!important;
+        input[type=checkbox]:checked + label:after {
+            left: 2px;
+            top: 5px;
+        }
+        width: 48%!important;
+        float: none!important;
+        #show_all-element {
+            position: relative;
+        }
     }
     #buttons-wrapper {
         #fieldset-buttons{
             a{
                 display:none!important;
+            }
+            button:hover {
+                background-color: #5CC7CE;
+                color: #fff!important;
+                border-color: #5CC7CE;
             }
         } 
     } 
@@ -1188,6 +1241,11 @@ form#user_form_login {
 #global_page_user-signup-index {
     .right-side {
         > div {
+            width: 100%;
+        }
+    }
+    .sd_signup_interests {
+        > li {
             width: 100%;
         }
     }
@@ -1355,8 +1413,8 @@ form.preference-holder {
         transform: rotate(-45deg);
         display: block;
         position: absolute;
-        left: 17px;
-        top: 30px;
+        left: 17.5px;
+        top: 28px;
         width: 11px;
         height: 5px;
         opacity: 0;
@@ -1428,43 +1486,49 @@ form.preference-holder {
     } 
     // Bottom
     #show_all-wrapper {
-        width: 70%;
-        padding: 0!important;
-        margin: 0 auto;
+        width: 50%;
+        float: left;
+        display: inline-block;
+        margin-bottom: 0;
+        #show_all-label {
+            display: none;
+        }
         #show_all-element {
-            float: left;
-            position: relative;
-            width: 30%;
-            margin: 0 auto;
-            input[type=checkbox] {
-                top: 28px!important;
-                left: 17px!important;
-            }
+            padding-left: 45px;
             input[type=checkbox] + label:before {
                 margin-left: 0px;
             }
             input[type=checkbox] + label:after {
-                top: 38px;
+                border-left: 2px solid #8AE693 !important;
+                border-bottom: 2px solid #8AE693 !important;
+            }
+            input[type=checkbox] {
+                left: 47px!important;
+                top:4px!important;
             }
             label {
                 border:none;
+                padding: 0;
             }
         }
         
     }
     #buttons-wrapper {
-        width: 68%;
-        margin:0 auto;
+        width: 50%;
+        float: right;
+        display: inline-block;
         #fieldset-buttons {
-            margin-bottom: 0;
-            float: right;
-            width: 45%;
+            text-align: right;
+            margin:0;
+            padding:0px 45px 0px 0px;
             button {
-                width: 45%;
-                margin-right: 20px;
+                width: 34.5%;
+                border-radius: 25px;
             }
             a {
-                width: 45%;
+                width: 34.5%;
+                margin-right: 20px;
+                border-radius: 25px;
             }
         }
 
@@ -1511,6 +1575,7 @@ form.preference-holder {
     right: 45px;
     top: 15px;
     color:#B9CFD1;
+    z-index: 10;
 }
 .tip-message {
     width: 50%;
@@ -1543,6 +1608,7 @@ form.preference-holder {
     &.family-form {
         .family-buttons-action {
             button {
+                width: 25%;
                 border: none;
                 &:hover {
                     background: rgba(92, 199, 206, 0.66) !important;
@@ -1881,6 +1947,22 @@ form.preference-holder {
 
 .extfox-auth {
     // tip message
+    .loading-text {
+        font-family: 'Nunito', sans-serif!important;
+        font-weight: 600!important;
+        font-size:14px!important;
+        color:#333D40!important;
+        margin-left: 5px;
+
+    }
+    
+    input,
+    input[type=password],
+    input[type=number],
+    input[type=text],
+    textarea {
+        -webkit-appearance: none;
+    }
     ul.form-errors {
         padding: 0;
         margin:0 0 1.5rem;
@@ -2156,7 +2238,7 @@ form.preference-holder {
 
     // HEADER
     header.extfox-header {
-
+        
         .list-inline-item.search{
             display:block!important;
             margin-right: 0px;
@@ -2510,8 +2592,12 @@ form.preference-holder {
     #extfox-settings{
         &.family-form {
             .form-wrapper {
+                button {
+                    width:50%;
+                }
                 .form-element {
                     margin:0!important;
+                   
                 }
             } 
         }
@@ -2662,6 +2748,11 @@ form.preference-holder {
                 grid-template-columns: repeat(auto-fill, minmax(70%, 1fr)) !important;
             }
         }
+        #show_all-wrapper {
+            #show_all-element{
+                padding-left: 0px!important;
+            }
+        }
 
     } 
     // My Theories
@@ -2760,7 +2851,6 @@ form.preference-holder {
         textarea {
             font-size: 16px !important;
             border-radius: 0;
-            -webkit-appearance: none;
         }
 
         h3 {
@@ -2781,10 +2871,7 @@ form.preference-holder {
     }
     // Login Page
     form#user_form_login,form#signup_account_form {
-        h3 {
-            margin-top:100px;
-        }
-        
+
         #facebookbutton-wrapper{
             display: none;
             #twitter-wrapper {
@@ -2843,11 +2930,10 @@ form.preference-holder {
         form.third-step {
             button,a{
                 width: 43%;
-                margin-bottom: 30px;
             }
         }
         form {
-            max-height: 500px;
+            max-height: 100%!important;
 
             p.hint {
                 #profile_address{
@@ -2864,14 +2950,19 @@ form.preference-holder {
             &.preference-holder  {
                 #show_all-wrapper {
                     width: 100%!important;
+                    input[type=checkbox] {
+                        left: 35px !important;
+                        top: -16px !important;
+                    }
                     #show_all-element {
-                        width: 100%!important;
+                        
                         label {
-                            left: 32px;   
-                            top:-55px;
+                            left: -13px;
+                            top: -18px;
                         }
+                        width: 100%!important;
                         input[type=checkbox] + label:after {
-                            top:30px;
+                            top:6px;
                         }
                     }
                     

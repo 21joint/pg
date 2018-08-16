@@ -14,7 +14,7 @@
 <style>
 
   form.extfox-auth {
-    max-height: 900px;
+    max-height:100%;
     overflow-y: scroll !important;
   }
  
@@ -33,13 +33,12 @@
   ));
 ?>
 
-
 <?php echo $this->form->render($this) ?>
 
 
 <script>
 
- 
+
   let holderForm = document.getElementsByClassName('right-side')[0].children[1];
 
   holderForm.classList.add('col-xl-12','col-lg-12');

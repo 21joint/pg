@@ -101,7 +101,7 @@
 
     var uploadSignupPhoto =function(){
       $('uploadPhoto').value = true;
-      $('thumbnail-controller').innerHTML = "<div><img class='loading_icon' src='application/modules/Core/externals/images/loading.gif'/><?php echo $this->translate('Loading...');?></div>";
+      $('thumbnail-controller').innerHTML = "<div class='d-flex align-items'><img class='loading_icon' src='application/modules/Core/externals/images/loading.gif'/><span class='loading-text'><?php echo $this->translate('Loading...');?></span></div>";
       $('SignupForm').submit();
       $('Filedata-wrapper').innerHTML = "";
     }
