@@ -620,4 +620,5 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
         $table = Engine_Api::_()->getDbtable('users','user');
         $table->update($data,array('user_id = ?' => (int)$user->getIdentity()));
     }
+    
 }

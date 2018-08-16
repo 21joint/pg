@@ -170,6 +170,7 @@ document.getElementById("seeMore").href = en4.core.baseUrl+"community/home#findE
 // FAQ on click display question and transform plus to close
 document.querySelectorAll(".faq_toggle").forEach(function(toggle){
     toggle.addEventListener('click', function(event){
+        event.target.parentNode.querySelector("h4").toggleClass('text-primary');
         event.target.parentNode.parentNode.querySelector(".faq_text").toggleClass("faq_text_disp");
         event.target.parentNode.toggleClass("mb-3");
         event.target.toggleClass("faq_transform");
@@ -210,7 +211,7 @@ function loadLeaderboardResults(page = 1) {
     requestData.page = page;//Place for pagination
 
     var loader = en4.core.loader.clone();
-    loader.addClass("sd_loader my-5");
+    loader.addClass("sd_loader mt-5");
     var url = en4.core.baseUrl+"api/v1/ranking";
 
     var request = new Request.JSON({
@@ -304,15 +305,27 @@ function loadLeaderboardResults(page = 1) {
                                                 '<span class="badge_name">Platinum</span>'+
                                             '</div>'+
                                         '</div>'+
-                                        '<div class="avatar_footer d-flex justify-content-center align-items-center border-top">'+
-                                            '<div class="d-flex justify-content-center p-3 border-right">'+
+                                        '<div class="avatar_footer d-flex justify-content-center align-items-center border-top px-1">'+
+                                            '<div class="d-flex flex-column-reverse align-items-center justify-content-center py-2 px-0">'+
                                                 'Reviews '+
                                                 '<span class="text-primary font-weight-bold ml-1">'+
                                                 results[i].reviewCount+
                                                 '</span>'+
                                             '</div>'+
-                                            '<div class="d-flex justify-content-center p-3">'+
-                                                'Answers '+ 
+                                            '<div class="d-flex flex-column-reverse align-items-center justify-content-center py-2 px-0">'+
+                                                'Guides '+
+                                                '<span class="text-primary font-weight-bold ml-1">'+
+                                                results[i].guideCount+
+                                                '</span>'+
+                                            '</div>'+
+                                            '<div class="d-flex flex-column-reverse align-items-center justify-content-center py-2 px-0">'+
+                                                'Struggles '+
+                                                '<span class="text-primary font-weight-bold ml-1">'+
+                                                results[i].questionCount+
+                                                '</span>'+
+                                            '</div>'+
+                                            '<div class="d-flex flex-column-reverse align-items-center justify-content-center px-0 py-2">'+
+                                                'Theories '+ 
                                                 '<span class="text-primary font-weight-bold ml-1">'+
                                                 results[i].answerCount+
                                                 '</span>'+
@@ -445,7 +458,7 @@ function loadMvpExpertResults(disp_mvps = 1, disp_experts = 0){
     requestData.page = 1;// Limit to 3 Pages
     
     var loader = en4.core.loader.clone();
-    loader.addClass("sd_loader");
+    loader.addClass("sd_loader mt-5");
     var url = en4.core.baseUrl+"api/v1/member";
     
     var request = new Request.JSON({
@@ -535,15 +548,27 @@ function loadMvpExpertResults(disp_mvps = 1, disp_experts = 0){
                                             '<span class="badge_name">Platinum</span>'+
                                         '</div>'+
                                     '</div>'+
-                                    '<div class="avatar_footer d-flex justify-content-center align-items-center border-top">'+
-                                        '<div class="d-flex justify-content-center align-items-center p-3 border-right">'+
+                                    '<div class="avatar_footer d-flex justify-content-center align-items-center border-top px-1">'+
+                                        '<div class="d-flex flex-column-reverse align-items-center justify-content-center py-2 px-0">'+
                                             'Reviews '+
                                             '<span class="text-primary font-weight-bold ml-1">'+
                                             results[i].reviewCount+
                                             '</span>'+
                                         '</div>'+
-                                        '<div class="d-flex justify-content-center align-items-center p-3">'+
-                                            'Answers '+ 
+                                        '<div class="d-flex flex-column-reverse align-items-center justify-content-center py-2 px-0">'+
+                                            'Guides '+
+                                            '<span class="text-primary font-weight-bold ml-1">'+
+                                            results[i].guideCount+
+                                            '</span>'+
+                                        '</div>'+
+                                        '<div class="d-flex flex-column-reverse align-items-center justify-content-center py-2 px-0">'+
+                                            'Struggles '+
+                                            '<span class="text-primary font-weight-bold ml-1">'+
+                                            results[i].questionCount+
+                                            '</span>'+
+                                        '</div>'+
+                                        '<div class="d-flex flex-column-reverse align-items-center justify-content-center px-0 py-2">'+
+                                            'Theories '+ 
                                             '<span class="text-primary font-weight-bold ml-1">'+
                                             results[i].answerCount+
                                             '</span>'+
