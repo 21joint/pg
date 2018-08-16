@@ -35,6 +35,7 @@ CREATE TABLE `engine4_gg_guides` (
   `click_count` int(11) NOT NULL,
   `average_rating` double NOT NULL DEFAULT '0',
   `dislike_count` int(11) NOT NULL,
+  `gg_deleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`guide_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
