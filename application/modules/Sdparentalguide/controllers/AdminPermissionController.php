@@ -201,4 +201,70 @@ class Sdparentalguide_AdminPermissionController extends Core_Controller_Action_A
       throw $e;
     }
   }
+  
+  public function guidesAction() {
+
+    //GET NAVIGATION
+    $this->view->navigation = $navigation = Engine_Api::_()->getApi('menus', 'core')
+                ->getNavigation('sdparentalguide_admin_main', array(), 'sdparentalguide_admin_main_permission');
+    
+    $this->view->navigation2 = $navigation = Engine_Api::_()->getApi('menus', 'core')
+                ->getNavigation('sdparentalguide_admin_permission', array(), 'sdparentalguide_admin_permission_guides');
+
+    $this->view->tab_type = 'levelType';
+
+
+    //GET LEVEL ID
+    if (null != ($id = $this->_getParam('id'))) {
+      $level = Engine_Api::_()->getItem('authorization_level', $id);
+    } else {
+      $level = Engine_Api::_()->getItemTable('authorization_level')->getDefaultLevel();
+    }
+
+    if (!$level instanceof Authorization_Model_Level) {
+      throw new Engine_Exception('missing level');
+    }
+
+    $id = $level->level_id;
+
+    //MAKE FORM
+    $this->view->form = $form = new Sdparentalguide_Form_Admin_Permission_Guide(array(
+                'public' => ( in_array($level->type, array('public')) ),
+                'moderator' => ( in_array($level->type, array('admin', 'moderator')) ),
+            ));
+    $form->level_id->setValue($id);
+
+    //POPULATE DATA
+    $permissionsTable = Engine_Api::_()->getDbtable('permissions', 'authorization');
+    $prefieldValues = $permissionsTable->getAllowed('sdparentalguide_guide', $id, array_keys($form->getValues()));
+    $form->populate($prefieldValues);
+
+    //CHECK POST
+    if (!$this->getRequest()->isPost()) {
+      return;
+    }
+
+    //CHECK VALIDITY
+    if (!$form->isValid($this->getRequest()->getPost())) {
+      return;
+    }
+
+    //PROCESS
+    $values = $form->getValues();
+
+    $db = $permissionsTable->getAdapter();
+    $db->beginTransaction();
+    try {
+
+      //SET PERMISSION
+      $permissionsTable->setAllowed('sdparentalguide_guide', $id, $values);
+      $form->addNotice('Your changes have been saved.');
+
+      //COMMIT
+      $db->commit();
+    } catch (Exception $e) {
+      $db->rollBack();
+      throw $e;
+    }
+  }
 }
