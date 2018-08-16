@@ -1,56 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="https://parental.guidanceguide.com/application/modules/Siteseo/externals/styles/sitemap.xsl"?>
+<?xml-stylesheet type="text/xsl" href="http://www.int-pg.guidanceguide.com/parentalguidance/application/modules/Siteseo/externals/styles/sitemap.xsl"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
-    <loc>https://parental.guidanceguide.com/public/siteseo/sitemap_menu_urls.xml.gz</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/public/siteseo/sitemap_menu_urls.xml.gz</loc>
+    <lastmod>2018-08-14T23:32:11+00:00</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://parental.guidanceguide.com/public/siteseo/sitemap_custom_pages.xml.gz</loc>
-    <lastmod>2018-04-30T09:28:13+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/public/siteseo/sitemap_custom_pages.xml.gz</loc>
+    <lastmod>2018-08-14T23:32:11+00:00</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://parental.guidanceguide.com/public/siteseo/sitemap_core_link.xml.gz</loc>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/public/siteseo/sitemap_core_link.xml.gz</loc>
+    <lastmod>2018-08-14T23:32:14+00:00</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/public/siteseo/sitemap_sitepage_page.xml.gz</loc>
     <lastmod>2018-04-30T09:28:20+00:00</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://parental.guidanceguide.com/public/siteseo/sitemap_sitepage_page.xml.gz</loc>
-    <lastmod>2018-04-30T09:28:20+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/public/siteseo/sitemap_sitereview_listing_1.xml.gz</loc>
+    <lastmod>2018-08-14T23:32:54+00:00</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://parental.guidanceguide.com/public/siteseo/sitemap_sitereview_listing_1.xml.gz</loc>
-    <lastmod>2018-04-30T09:29:09+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/public/siteseo/sitemap_sitereview_listing_2.xml.gz</loc>
+    <lastmod>2018-08-14T23:32:54+00:00</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://parental.guidanceguide.com/public/siteseo/sitemap_sitereview_listing_2.xml.gz</loc>
-    <lastmod>2018-04-30T09:29:09+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/public/siteseo/sitemap_sitereview_listing_3.xml.gz</loc>
+    <lastmod>2018-08-14T23:32:54+00:00</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://parental.guidanceguide.com/public/siteseo/sitemap_sitereview_listing_3.xml.gz</loc>
-    <lastmod>2018-04-30T09:29:09+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/public/siteseo/sitemap_sitereview_listing_4.xml.gz</loc>
+    <lastmod>2018-08-14T23:32:54+00:00</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://parental.guidanceguide.com/public/siteseo/sitemap_sitereview_listing_4.xml.gz</loc>
-    <lastmod>2018-04-30T09:29:09+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/public/siteseo/sitemap_sitereview_listing_5.xml.gz</loc>
+    <lastmod>2018-08-14T23:32:54+00:00</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://parental.guidanceguide.com/public/siteseo/sitemap_sitereview_listing_5.xml.gz</loc>
-    <lastmod>2018-04-30T09:29:09+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/public/siteseo/sitemap_sitereview_listing_6.xml.gz</loc>
+    <lastmod>2018-08-14T23:32:54+00:00</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://parental.guidanceguide.com/public/siteseo/sitemap_sitereview_listing_6.xml.gz</loc>
-    <lastmod>2018-04-30T09:29:09+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/public/siteseo/sitemap_sitereview_listing_7.xml.gz</loc>
+    <lastmod>2018-08-14T23:32:54+00:00</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://parental.guidanceguide.com/public/siteseo/sitemap_sitereview_listing_7.xml.gz</loc>
-    <lastmod>2018-04-30T09:29:09+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/public/siteseo/sitemap_sitereview_listing_8.xml.gz</loc>
+    <lastmod>2018-08-14T23:32:54+00:00</lastmod>
   </sitemap>
   <sitemap>
-    <loc>https://parental.guidanceguide.com/public/siteseo/sitemap_sitereview_listing_8.xml.gz</loc>
-    <lastmod>2018-04-30T09:29:09+00:00</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>https://parental.guidanceguide.com/public/siteseo/sitemap_sitevideo_channel.xml.gz</loc>
-    <lastmod>2018-04-30T09:29:09+00:00</lastmod>
+    <loc>http://www.int-pg.guidanceguide.com/parentalguidance/public/siteseo/sitemap_sitevideo_channel.xml.gz</loc>
+    <lastmod>2018-08-14T23:32:54+00:00</lastmod>
   </sitemap>
 </sitemapindex>

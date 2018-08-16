@@ -52,7 +52,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         $params['category_id'] = $this->getParam("categoryID");
         $params['subcategory_id'] = $this->getParam("subCategoryID");
         $params['show'] = null;
-        $listingTable = Engine_Api::_()->getDbTable('listings', 'sitereview');
+        $listingTable = Engine_Api::_()->getDbTable('listings', 'sdparentalguide');
         $listingTableName = $listingTable->info("name");
         $listingTypeTable = Engine_Api::_()->getDbtable('locations', 'sitereview');
         $listingTypeTableName = $listingTypeTable->info('name');
@@ -112,6 +112,22 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
             $select->order("creation_date $orderByDirection");
         }
         
+        $filterPreferences = $this->getParam("filterPreferences",false);
+        if($filterPreferences){
+            $userCategories = Engine_Api::_()->getDbtable('preferences', 'sdparentalguide')->getUserCategories();
+            if(!empty($userCategories)){
+                $select->where("$listingTableName.category_id IN (?)",$userCategories);
+            }
+        }
+        
+        $filterInfluencers = $this->getParam("filterInfluencers",false);
+        if($filterInfluencers){
+            $influencers = Engine_Api::_()->pgservicelayer()->getInfluencers();
+            if(!empty($influencers)){
+                $select->where("$listingTableName.owner_id IN (?)",$influencers);
+            }
+        }
+                
         $paginator = Zend_Paginator::factory($select);
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage($limit);
@@ -230,14 +246,22 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
             $sitereview->setFromArray($values);
 
             if ($sitereview->approved) {
-                $sitereview->approved_date = date('Y-m-d H:i:s');
+                $oldTz = date_default_timezone_get();
+                date_default_timezone_set($viewer->timezone);
+                $approveTime = time();
+                date_default_timezone_set($oldTz);
+                $sitereview->approved_date = date('Y-m-d H:i:s', $approveTime);
             }
-            
+
             //START PACKAGE WORK
             if (!empty($sitereview->approved)) {
                 if (isset($sitereview->pending))
                     $sitereview->pending = 0;
-                $sitereview->approved_date = date('Y-m-d H:i:s');
+                $oldTz = date_default_timezone_get();
+                date_default_timezone_set($viewer->timezone);
+                $approveTime = time();
+                date_default_timezone_set($oldTz);
+                $sitereview->approved_date = date('Y-m-d H:i:s', $approveTime);
                 if (Engine_Api::_()->sitereview()->hasPackageEnable()) {
                     $sitereview->expiration_date = '2250-01-01 00:00:00';
                 }
@@ -245,11 +269,11 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
             //END PACKAGE WORK
 
             $sitereview->save();
-            
+
             if(!empty($sitereview->photo_id)){
                 Engine_Api::_()->getDbTable('files', 'pgservicelayer')->updatePhotoParent($sitereview->photo_id,$sitereview);
             }
-            
+
             $categoryIds = array();
             $categoryIds[] = $sitereview->category_id;
             $categoryIds[] = $sitereview->subcategory_id;
@@ -262,7 +286,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
             }
 
             $sitereview->save();
-            
+
             $auth = Engine_Api::_()->authorization()->context;
             $roles = array('owner', 'owner_member', 'owner_member_member', 'owner_network', 'registered', 'everyone');
 

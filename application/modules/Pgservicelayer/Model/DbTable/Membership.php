@@ -127,8 +127,11 @@ class Pgservicelayer_Model_DbTable_Membership extends Core_Model_DbTable_Members
     return $this;
   }
   
-  public function isUserApprovalRequired(Core_Model_Item_Abstract $resource, User_Model_User $user)
+  public function isUserApprovalRequired(Core_Model_Item_Abstract $resource, $user = null)
   {
+    if(empty($user)){
+        $user = Engine_Api::_()->user()->getViewer();
+    }
     if($this->_userApprovalRequired !== null){
         return $this->_userApprovalRequired;
     }
@@ -192,6 +195,13 @@ class Pgservicelayer_Model_DbTable_Membership extends Core_Model_DbTable_Members
   
     if( $this->isReciprocal() ) {
       parent::addMember($user, $resource);
+    }
+    
+    $row = $this->getRow($resource,$user);
+    if(!empty($row)){
+        $row->gg_guid = $resource->getGuid()."-".$user->getGuid();
+        $row->creation_date = date("Y-m-d H:i:s");
+        $row->save();
     }
     
 //    parent::setResourceApproved($resource, $user);

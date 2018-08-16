@@ -120,16 +120,21 @@ class Ggcommunity_Model_Question extends Core_Model_Item_Abstract
         throw $e;
       }
     }
-    
 
     // Update row
-    $this->modified_date = date('Y-m-d H:i:s');
+    $viewer = Engine_Api::_()->user()->getViewer();
+    $oldTz = date_default_timezone_get();
+    date_default_timezone_set($viewer->timezone);
+    $time = time();
+    date_default_timezone_set($oldTz);
+
+    $this->modified_date = date('Y-m-d H:i:s', $time);
     $this->photo_id = $iMain->file_id;
     $this->save();
-    
+
     return $this;
   }
-  
+
   public function likes()
   {
     return new Engine_ProxyObject($this, Engine_Api::_()->getDbtable('likes', 'core'));
