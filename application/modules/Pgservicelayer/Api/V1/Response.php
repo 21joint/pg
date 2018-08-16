@@ -13,7 +13,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             return "";
         }
         $view = Zend_Registry::get("Zend_View");
-        return $view->locale()->toDateTime($datetime,array('format' => 'YYYY-MM-d HH:MM:ss'));
+        return $view->locale()->toDateTime($datetime,array('format' => 'YYYY-MM-d HH:mm:ss'));
     }
     private function translate($message = ''){
         return Engine_Api::_()->getApi('Core', 'siteapi')->translate($message);
