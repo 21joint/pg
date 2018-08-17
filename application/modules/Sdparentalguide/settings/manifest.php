@@ -88,6 +88,8 @@
       'sdparentalguide_search_terms_alias',
       'sdparentalguide_listing_rating',
       'sdparentalguide_search_analytic',
+      'sdparentalguide_guide',
+      'sdparentalguide_guide_item',
   ),
   'routes' => array(
     //Extended Route
