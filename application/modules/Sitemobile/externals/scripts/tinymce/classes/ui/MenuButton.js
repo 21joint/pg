@@ -88,8 +88,8 @@ define("tinymce/ui/MenuButton", [
 
 			if (self.menu) {
 				self.menu.items().each(function(item) {
-					if (item.hideMenu) {
-						item.hideMenu();
+					if (Friends.hideMenu) {
+						Friends.hideMenu();
 					}
 				});
 
@@ -137,12 +137,12 @@ define("tinymce/ui/MenuButton", [
 
 				if (overCtrl && parent && overCtrl instanceof MenuButton && overCtrl.parent() == parent) {
 					parent.items().filter('MenuButton').each(function(ctrl) {
-						if (ctrl.hideMenu && ctrl != overCtrl) {
+						if (Friends.hideMenu && ctrl != overCtrl) {
 							if (ctrl.menu && ctrl.menu.visible()) {
 								hasVisibleSiblingMenu = true;
 							}
 
-							ctrl.hideMenu();
+							Friends.hideMenu();
 						}
 					});
 

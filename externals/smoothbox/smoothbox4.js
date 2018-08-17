@@ -1,4 +1,4 @@
-import {Class, Events, Options, en4} from "../../application/themes/parentalguidance/modules/en4.module";
+import {Class}
 
 
 var Smoothbox = {

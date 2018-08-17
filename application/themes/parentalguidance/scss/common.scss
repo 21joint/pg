@@ -30,6 +30,7 @@ a[role=button], a.btn {
   cursor: pointer;
   text-decoration: none !important;
 }
+
 button,
 html [type="button"],
 [type="reset"],
@@ -59,7 +60,7 @@ html [type="button"],
 
 [data-hover="dropdown"]:hover > .dropdown-menu {
   opacity: 1;
-  transform: translate(0,0);
+  transform: translate(0, 0);
   visibility: visible;
 }
 

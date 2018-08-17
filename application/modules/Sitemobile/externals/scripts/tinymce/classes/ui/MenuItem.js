@@ -88,7 +88,7 @@ define("tinymce/ui/MenuItem", [
 
 			self.parent().items().each(function(ctrl) {
 				if (ctrl !== self) {
-					ctrl.hideMenu();
+					Friends.hideMenu();
 				}
 			});
 
@@ -136,8 +136,8 @@ define("tinymce/ui/MenuItem", [
 
 			if (self.menu) {
 				self.menu.items().each(function(item) {
-					if (item.hideMenu) {
-						item.hideMenu();
+					if (Friends.hideMenu) {
+						Friends.hideMenu();
 					}
 				});
 
