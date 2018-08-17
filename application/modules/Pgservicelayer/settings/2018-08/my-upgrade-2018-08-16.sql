@@ -51,6 +51,7 @@ CREATE TABLE `engine4_gg_guide_items` (
   `content_id` int(11) NOT NULL DEFAULT '0',
   `creation_date` datetime NOT NULL,
   `modified_date` datetime NOT NULL,
+  `gg_deleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`item_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
