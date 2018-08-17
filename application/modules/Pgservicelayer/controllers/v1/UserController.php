@@ -90,7 +90,7 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
                         ->group("$questionsTableName.user_id");
             }
         }
-        if ( !$checkFilter ) {
+        if ( !$checkFilter && !empty( $topicID )) {
             $select->joinLeft($creditsTableName,"$creditsTableName.user_id = $usersTableName.user_id OR $creditsTableName.user_id IS NULL",array(new Zend_Db_Expr("SUM($creditsTableName.credit_point) as gg_contribution",
                     new Zend_Db_Expr("COUNT($creditsTableName.credit_id) as gg_activities"))))
                     ->group("$creditsTableName.user_id");            
