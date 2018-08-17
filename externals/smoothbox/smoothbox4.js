@@ -1,4 +1,4 @@
-import {Class}
+import {C}
 
 
 var Smoothbox = {

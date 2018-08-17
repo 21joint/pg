@@ -26,7 +26,7 @@ CREATE TABLE `engine4_gg_guides` (
   `featured` tinyint(4) NOT NULL DEFAULT '0',
   `published_date` datetime NOT NULL,
   `sponsored` tinyint(4) NOT NULL DEFAULT '0',
-  `new` tinyint(4) NOT NULL DEFAULT '0',
+  `newlabel` tinyint(4) NOT NULL DEFAULT '0',
   `guide_item_count` int(11) NOT NULL DEFAULT '0',
   `photo_id` int(11) NOT NULL DEFAULT '0',
   `comment_count` int(11) NOT NULL DEFAULT '0',
@@ -36,6 +36,7 @@ CREATE TABLE `engine4_gg_guides` (
   `average_rating` double NOT NULL DEFAULT '0',
   `dislike_count` int(11) NOT NULL,
   `gg_deleted` tinyint(4) NOT NULL DEFAULT '0',
+  `closed` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`guide_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -50,5 +51,10 @@ CREATE TABLE `engine4_gg_guide_items` (
   `content_id` int(11) NOT NULL DEFAULT '0',
   `creation_date` datetime NOT NULL,
   `modified_date` datetime NOT NULL,
+  `gg_deleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`item_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+INSERT INTO `engine4_core_menuitems` (`name`, `module`, `label`, `plugin`, `params`, `menu`, `submenu`, `enabled`, `custom`, `order`) VALUES
+('sdparentalguide_admin_main_guides',	'sdparentalguide',	'Guides',	'',	'{\"route\":\"admin_default\",\"module\":\"sdparentalguide\",\"controller\":\"guides\",\"action\":\"index\"}',	'sdparentalguide_admin_main',	'',	1,	0,	11);
