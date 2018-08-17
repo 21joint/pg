@@ -336,7 +336,7 @@ class Services_Weather_Ejse extends Services_Weather_Common {
 
         if (!isset($compass)) {
             // Yes, NNE and the likes are multiples of 22.5, but as the other
-            // services return integers for this value, these directions are
+            // middleware return integers for this value, these directions are
             // rounded up
             $compass = array(
                 "north"             => array("N",     0),

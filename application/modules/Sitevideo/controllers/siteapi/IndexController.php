@@ -2105,7 +2105,7 @@ class Sitevideo_IndexController extends Siteapi_Controller_Action_Standard {
     }
 
     private function _checkDailymotion($code) {
-        $path = "http://www.dailymotion.com/services/oembed?url=http://www.dailymotion.com/video/" . $code;
+        $path = "http://www.dailymotion.com/middleware/oembed?url=http://www.dailymotion.com/video/" . $code;
         $data = @file_get_contents($path);
         return ((is_string($data) &&
                 (is_object(json_decode($data)) ||
@@ -2186,7 +2186,7 @@ class Sitevideo_IndexController extends Siteapi_Controller_Action_Standard {
                 return $information;
             //dailymotion
             case "4":
-                $path = "http://www.dailymotion.com/services/oembed?url=http://www.dailymotion.com/video/" . $code;
+                $path = "http://www.dailymotion.com/middleware/oembed?url=http://www.dailymotion.com/video/" . $code;
 
                 $data = @file_get_contents($path);
                 $information = array();

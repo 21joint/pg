@@ -96,8 +96,8 @@ class Zend_Service_WindowsAzure_Management_Client
 	 * Operations
 	 */
 	const OP_OPERATIONS                = "operations";
-	const OP_STORAGE_ACCOUNTS          = "services/storageservices";
-	const OP_HOSTED_SERVICES           = "services/hostedservices";
+	const OP_STORAGE_ACCOUNTS          = "middleware/storageservices";
+	const OP_HOSTED_SERVICES           = "middleware/hostedservices";
 	const OP_AFFINITYGROUPS            = "affinitygroups";
 	const OP_LOCATIONS                 = "locations";
 	const OP_OPERATINGSYSTEMS          = "operatingsystems";
@@ -132,7 +132,7 @@ class Zend_Service_WindowsAzure_Management_Client
 	protected $_certificatePassphrase = '';
 	
 	/**
-	 * Zend_Http_Client channel used for communication with REST services
+	 * Zend_Http_Client channel used for communication with REST middleware
 	 * 
 	 * @var Zend_Http_Client
 	 */
@@ -766,7 +766,7 @@ class Zend_Service_WindowsAzure_Management_Client
     }
     
     /**
-     * The List Hosted Services operation lists the hosted services available
+     * The List Hosted Services operation lists the hosted middleware available
      * under the current subscription.
      *
      * @return array An array of Zend_Service_WindowsAzure_Management_HostedServiceInstance
@@ -2212,7 +2212,7 @@ class Zend_Service_WindowsAzure_Management_Client
 				(string)$result->Location
 			);
 
-			// Hosted services
+			// Hosted middleware
 			if (count($result->HostedServices->HostedService) > 1) {
 		    	$xmlService = $result->HostedServices->HostedService;
 		    } else {
@@ -2230,7 +2230,7 @@ class Zend_Service_WindowsAzure_Management_Client
 			}
 			$affinityGroup->HostedServices = $services;
 			
-			// Storage services
+			// Storage middleware
 			if (count($result->StorageServices->StorageService) > 1) {
 		    	$xmlService = $result->StorageServices->StorageService;
 		    } else {

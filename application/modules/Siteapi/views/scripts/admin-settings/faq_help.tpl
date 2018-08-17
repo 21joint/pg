@@ -60,7 +60,7 @@
             <a href="javascript:void(0);" onClick="faq_show('faq_<?php echo $i; ?>');"><?php echo $this->translate('What should be done to ensure that API calls for my website are secure?'); ?></a>
             <div class='faq' style='display: none;' id='faq_<?php echo $i++; ?>'>
                 <div class="code">
-                    <?php echo $this->translate('We strongly recommend all API requests to be sent on SSL (https://) for security reasons. Plain HTTP requests are insecure because API access credentials (Consumer Key and Consumer Secret) in them are prone to phishing.<br />If you need help in enabling HTTPS for your website, then you may purchase our "<a href=\'http://www.socialengineaddons.com/services/ssl-certification-installation\' target="_blank">SSL Certificate Installation Service</a>".'); ?>
+                    <?php echo $this->translate('We strongly recommend all API requests to be sent on SSL (https://) for security reasons. Plain HTTP requests are insecure because API access credentials (Consumer Key and Consumer Secret) in them are prone to phishing.<br />If you need help in enabling HTTPS for your website, then you may purchase our "<a href=\'http://www.socialengineaddons.com/middleware/ssl-certification-installation\' target="_blank">SSL Certificate Installation Service</a>".'); ?>
                 </div>
             </div>
         </li>

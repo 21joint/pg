@@ -1,5 +1,5 @@
 import '../../components/leader/leader.scss';
-import {getLeaders} from '../../services/api.service';
+import {getLeaders} from '../../middleware/api.service';
 import {renderLeader} from "../../components/leader/leader";
 
 (function ($) {

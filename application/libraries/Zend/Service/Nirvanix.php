@@ -58,7 +58,7 @@ class Zend_Service_Nirvanix
         // merge options with default options
         $defaultOptions = array('defaults'   => array(),
                                 'httpClient' => new Zend_Http_Client(),
-                                'host'       => 'http://services.nirvanix.com');
+                                'host'       => 'http://middleware.nirvanix.com');
         $this->_options = array_merge($defaultOptions, $options);
 
         // login and save sessionToken to default POST params

@@ -65,7 +65,7 @@ class Sdparentalguide_Widget_AjaxNotificationsController
       $notificationSettingsAssoc = array();
       foreach ($notificationTypes as $type) {
         if (isset($modules[$type->module])) {
-          $category = 'ACTIVITY_CATEGORY_TYPE_'.strtoupper($type->module);
+          $category = 'ACTIVITY_CATEGORY_TYPE_' . strtoupper($type->module);
           $translateCategory = Zend_Registry::get('Zend_Translate')->_(
             $category
           );
@@ -84,7 +84,7 @@ class Sdparentalguide_Widget_AjaxNotificationsController
 
         $notificationTypesAssoc[$elementName]['category'] = $category;
         $notificationTypesAssoc[$elementName]['types'][$type->type]
-          = 'ACTIVITY_TYPE_'.strtoupper($type->type);
+          = 'ACTIVITY_TYPE_' . strtoupper($type->type);
 
         if (in_array($type->type, $notificationSettings)) {
           $notificationSettingsAssoc[$elementName][] = $type->type;
@@ -97,7 +97,7 @@ class Sdparentalguide_Widget_AjaxNotificationsController
         array_merge(
           array(
             'general' => array(),
-            'misc'    => array(),
+            'misc' => array(),
           ), $notificationTypesAssoc
         )
       );
@@ -105,29 +105,29 @@ class Sdparentalguide_Widget_AjaxNotificationsController
       // Make form
       $this->view->form = $form = new Engine_Form(
         array(
-          'title'       => 'Notification Settings',
+          'title' => 'Notification Settings',
           'description' => 'Which of the these do you want to receive email alerts about?',
         )
       );
-      $form->setAttrib('class', 'global_form ajax-form-'.$content_id);
+      $form->setAttrib('class', 'global_form ajax-form-' . $content_id);
       $form->setAttrib('id', 'extfox-settings');
 
       foreach ($notificationTypesAssoc as $elementName => $info) {
         $form->addElement(
           'MultiCheckbox', $elementName, array(
-          'label'        => $info['category'],
-          'multiOptions' => $info['types'],
-          'value'        => (array)@$notificationSettingsAssoc[$elementName],
-        )
+            'label' => $info['category'],
+            'multiOptions' => $info['types'],
+            'value' => (array)@$notificationSettingsAssoc[$elementName],
+          )
         );
       }
 
       $form->addElement(
         'Button', 'execute', array(
-        'label' => 'Save Changes',
-        'class' => 'button primary border-radius-25',
-        'type'  => 'submit',
-      )
+          'label' => 'Save Changes',
+          'class' => 'button primary border-radius-25',
+          'type' => 'submit',
+        )
       );
 
 

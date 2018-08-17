@@ -21,7 +21,7 @@ class Storage_Plugin_Job_Transfer extends Core_Plugin_Job_Abstract
   protected function _execute()
   {
     // Prepare tables
-    $servicesTable = Engine_Api::_()->getDbTable('services', 'storage');
+    $servicesTable = Engine_Api::_()->getDbTable('middleware', 'storage');
     $filesTable = Engine_Api::_()->getDbTable('files', 'storage');
 
 

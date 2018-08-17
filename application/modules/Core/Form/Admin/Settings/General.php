@@ -156,7 +156,7 @@ class Core_Form_Admin_Settings_General extends Engine_Form
       'label' => 'Static File Base URL',
       'description' => sprintf($translate->translate('The base URL for ' .
           'static files (such as JavaScript and CSS files). Used to ' .
-          'implement CDN hosting of static files through services such ' .
+          'implement CDN hosting of static files through middleware such ' .
           'as Cloudfront.')),
       'filters' => array(
         'StringTrim',

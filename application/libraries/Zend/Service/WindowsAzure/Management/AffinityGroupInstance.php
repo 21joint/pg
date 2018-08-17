@@ -36,8 +36,8 @@
  * @property string $Label             A label for the affinity group.
  * @property string $Description       A description for the affinity group.
  * @property string $Location          The location of the affinity group.
- * @property array  $HostedServices    A list of hosted services in this affinity gtoup.
- * @property array  $StorageServices   A list of storage services in this affinity gtoup.
+ * @property array  $HostedServices    A list of hosted middleware in this affinity gtoup.
+ * @property array  $StorageServices   A list of storage middleware in this affinity gtoup.
  */
 class Zend_Service_WindowsAzure_Management_AffinityGroupInstance
 	extends Zend_Service_WindowsAzure_Management_ServiceEntityAbstract
@@ -49,8 +49,8 @@ class Zend_Service_WindowsAzure_Management_AffinityGroupInstance
      * @property string $label             A label for the affinity group.
      * @property string $description       A description for the affinity group.
      * @property string $location          The location of the affinity group.
-     * @property array  $hostedServices    A list of hosted services in this affinity gtoup.
-     * @property array  $storageServices   A list of storage services in this affinity gtoup.
+     * @property array  $hostedServices    A list of hosted middleware in this affinity gtoup.
+     * @property array  $storageServices   A list of storage middleware in this affinity gtoup.
 	 */
     public function __construct($name, $label, $description, $location, $hostedServices = array(), $storageServices = array()) 
     {	        

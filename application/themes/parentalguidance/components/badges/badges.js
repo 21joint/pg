@@ -28,4 +28,5 @@ function renderBadges(user) {
             </li>
           </ul>`
 }
+
 export {renderBadges}

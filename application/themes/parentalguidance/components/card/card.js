@@ -2,14 +2,16 @@ import './card.scss';
 import {renderProfileBox} from '../profile-box/profile-box';
 import {renderRate} from '../rating/rating';
 
-function renderCard(review, options) {
-  let _html = '';
 
-  let createdDt = new Date(review.createdDateTime).toString().split(' ');
-  let createdMonth = createdDt[1];
-  let createdDay = createdDt[2].charAt(0) == 0 ? createdDt[2].split('')[1] : createdDt[2];
+export default class {
+  renderCard(review, options) {
+    let _html = '';
 
-  _html = `<div class="col-6 col-lg-4 p-2">
+    let createdDt = new Date(review.createdDateTime).toString().split(' ');
+    let createdMonth = createdDt[1];
+    let createdDay = createdDt[2].charAt(0) == 0 ? createdDt[2].split('')[1] : createdDt[2];
+
+    _html = `<div class="col-6 col-lg-4 p-2">
   <!--single card-->
   <div class="card card-${options.type} h-100 d-flex flex-column" data-id="${review.reviewID}">
     <div class="card-header p-0 overflow-hidden">
@@ -33,7 +35,7 @@ function renderCard(review, options) {
           class="d-block card-img--wrapper lazy"
           data-loader="asyncLoader" data-lazy-image="${review.coverPhoto.photoURL}">
       </a>
-      ${options.review == 'review' ? renderRate(review.averageReviewRating, 5) : ''}
+      ${options.review == 'review' ? renderRate(review.averageReviewRating + 1) : ''}
       ${options.review == 'guide' ? `<div class="prg-card--thumbs">
                                        <ul class="list-inline m-0 d-flex no-gutters justify-content-between">
                                         <li class="col-auto"><img class="" src="${review.coverPhoto.photoURL}" alt="${review.title}"/></li>
@@ -45,9 +47,11 @@ function renderCard(review, options) {
                                        </ul>
                                     </div>` : ''}
     </div>
-    <div class="card-content d-flex flex-column h-100">
-      <div class="card-body">
-        <h6 class="card-subtitle my-1 text-primary font-weight-bold">${review.reviewCategorization.category}</h6>
+    <div class="card-content d-flex flex-column">
+      <div class="card-body"> 
+        <a href="/topic/${review.reviewTopic.topicID}">
+          <h6 class="card-subtitle my-1 text-primary font-weight-bold">${review.reviewCategorization.category}</h6>
+        </a>
         <a href="/reviews/view/${review.reviewID}"><h5 class="card-title font-weight-bold">
           ${review.title}</h5></a>
         <p class="card-text mb-0 d-none d-sm-block">${review.shortDescription}</p>
@@ -58,7 +62,7 @@ function renderCard(review, options) {
             <div class="card-author">
               <div class="row no-gutters flex-nowrap align-items-center">
                 <div class="col-auto d-none d-sm-block">
-                  <div class="card-author--avatar">${renderProfileBox(review.author, {width: 50,height:50})}</div>
+                  <div class="card-author--avatar">${renderProfileBox(review.author, {width: 50, height: 50})}</div>
                 </div>
                 <div class="col">
                   <a href="/profile/${review.author.memberName}">
@@ -94,7 +98,6 @@ function renderCard(review, options) {
   </div>
 </div>`;
 
-  return _html;
-}
-
-export {renderCard};
+    return _html;
+  }
+};

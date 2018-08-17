@@ -104,7 +104,7 @@ class Zend_Service_Flickr
         // now search for photos
         $restClient = $this->getRestClient();
         $restClient->getHttpClient()->resetParameters();
-        $response = $restClient->restGet('/services/rest/', $options);
+        $response = $restClient->restGet('/middleware/rest/', $options);
 
         if ($response->isError()) {
             /**
@@ -167,7 +167,7 @@ class Zend_Service_Flickr
         // now search for photos
         $restClient = $this->getRestClient();
         $restClient->getHttpClient()->resetParameters();
-        $response = $restClient->restGet('/services/rest/', $options);
+        $response = $restClient->restGet('/middleware/rest/', $options);
 
         if ($response->isError()) {
             /**
@@ -221,7 +221,7 @@ class Zend_Service_Flickr
         // now search for photos
         $restClient = $this->getRestClient();
         $restClient->getHttpClient()->resetParameters();
-        $response = $restClient->restGet('/services/rest/', $options);
+        $response = $restClient->restGet('/middleware/rest/', $options);
 
         if ($response->isError()) {
             /**
@@ -270,7 +270,7 @@ class Zend_Service_Flickr
 
         $restClient = $this->getRestClient();
         $restClient->getHttpClient()->resetParameters();
-        $response = $restClient->restGet('/services/rest/', $options);
+        $response = $restClient->restGet('/middleware/rest/', $options);
 
         if ($response->isError()) {
             /**
@@ -314,7 +314,7 @@ class Zend_Service_Flickr
 
         $restClient = $this->getRestClient();
         $restClient->getHttpClient()->resetParameters();
-        $response = $restClient->restGet('/services/rest/', $options);
+        $response = $restClient->restGet('/middleware/rest/', $options);
 
         if ($response->isError()) {
             /**
@@ -356,7 +356,7 @@ class Zend_Service_Flickr
 
         $restClient = $this->getRestClient();
         $restClient->getHttpClient()->resetParameters();
-        $response = $restClient->restGet('/services/rest/', $options);
+        $response = $restClient->restGet('/middleware/rest/', $options);
 
         $dom = new DOMDocument();
         $dom = Zend_Xml_Security::scan($response->getBody(), $dom);

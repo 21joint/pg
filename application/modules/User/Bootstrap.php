@@ -28,19 +28,18 @@ class User_Bootstrap extends Engine_Application_Bootstrap_Abstract
 
     $staticBaseUrl = Zend_Registry::get('StaticBaseUrl');
     // Add main user javascript
-//    $headScript = new Zend_View_Helper_HeadScript();
-//    $headScript->appendFile($staticBaseUrl.'application/modules/User/externals/scripts/core.js');
-
+    $headScript = new Zend_View_Helper_HeadScript();
     $headLink = new Zend_View_Helper_HeadLink();
 
-//    $headScript->appendFile($staticBaseUrl.'scripts/auth.bundle.js');
-    $headLink->appendStylesheet($staticBaseUrl.'styles/auth.bundle.css');
+
     // Get viewer
     $viewer = Engine_Api::_()->user()->getViewer();
     // Check if they were disabled
     if ($viewer->getIdentity() && !$viewer->enabled) {
       Engine_Api::_()->user()->getAuth()->clearIdentity();
       Engine_Api::_()->user()->setViewer(null);
+      $headLink->appendStylesheet('/auth.bundle.css');
+      $headScript->appendFile('/scripts/auth.bundle.js');
     }
 
     // Check user online state

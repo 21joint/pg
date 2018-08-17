@@ -252,8 +252,8 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
         $staticBaseUrl = Engine_Api::_()->getApi('settings', 'core')->getSetting('core.static.baseurl', null);
         $tempHost = $serverHost = $this->getHost();
 
-        $getDefaultStorageId = Engine_Api::_()->getDbtable('services', 'storage')->getDefaultServiceIdentity();
-        $getDefaultStorageType = Engine_Api::_()->getDbtable('services', 'storage')->getService($getDefaultStorageId)->getType();
+        $getDefaultStorageId = Engine_Api::_()->getDbtable('middleware', 'storage')->getDefaultServiceIdentity();
+        $getDefaultStorageType = Engine_Api::_()->getDbtable('middleware', 'storage')->getService($getDefaultStorageId)->getType();
         $getHost = $getPhotoHost = $this->getHost();
         if ($getDefaultStorageType == 'local'){
             $getPhotoHost = $getHost = !empty($staticBaseUrl) ? $staticBaseUrl : $serverHost;

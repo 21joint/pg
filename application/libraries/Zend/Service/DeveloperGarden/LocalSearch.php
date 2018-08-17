@@ -61,7 +61,7 @@ class Zend_Service_DeveloperGarden_LocalSearch
      *
      * @var string
      */
-    protected $_wsdlFile = 'https://gateway.developer.telekom.com/p3gw-mod-odg-localsearch/services/localsearch?wsdl';
+    protected $_wsdlFile = 'https://gateway.developer.telekom.com/p3gw-mod-odg-localsearch/middleware/localsearch?wsdl';
 
     /**
      * wsdl file local

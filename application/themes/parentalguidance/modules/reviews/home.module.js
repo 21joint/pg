@@ -1,5 +1,5 @@
 import 'jquery-lazy';
-import {getReviews} from '../../services/api.service';
+import {getReviews} from '../../middleware/api.service';
 import {renderCard} from "../../components/card/card";
 
 (function ($) {
@@ -19,8 +19,9 @@ import {renderCard} from "../../components/card/card";
         _cEl.removeClass('card-loading');
       }, i * 100);
     });
-    $('.lazy').Lazy({
+    $('[data-lazy-image]').Lazy({
       effect: 'fadeIn',
+      visibleOnly: false,
       asyncLoader: function (element, response) {
         setTimeout(function () {
           element.css({
@@ -29,7 +30,7 @@ import {renderCard} from "../../components/card/card";
           response(true);
         }, 300);
       },
-      customLoaderName: function(element) {
+      customLoaderName: function (element) {
         console.log(element)
       },
     });

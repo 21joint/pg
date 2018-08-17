@@ -60,11 +60,11 @@ class Zend_Gdata_AuthSub
       * @param string $next (required) URL identifying the service to be
       *                     accessed.
       *  The resulting token will enable access to the specified service only.
-      *  Some services may limit scope further, such as read-only access.
+      *  Some middleware may limit scope further, such as read-only access.
       * @param string $scope (required) URL identifying the service to be
       *                      accessed.  The resulting token will enable
       *                      access to the specified service only.
-      *                      Some services may limit scope further, such
+      *                      Some middleware may limit scope further, such
       *                      as read-only access.
       * @param int $secure (optional) Boolean flag indicating whether the
       *                    authentication transaction should issue a secure

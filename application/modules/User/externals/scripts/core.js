@@ -1,8 +1,7 @@
-/* $Id: core.js 9984 2013-03-20 00:00:04Z john $ */
+import {en4} from "../../../../themes/parentalguidance/modules/en4.module";
 
 
 (function () { // START NAMESPACE
-  var $ = 'id' in document ? document.id : window.$;
 
   en4.user = {
 
@@ -13,7 +12,7 @@
 
     attachEmailTaken: function (element, callback) {
       var bind = this;
-      element.addEvent('blur', function () {
+      $(element).on('blur', function () {
         bind.checkEmailTaken(element.value, callback);
       });
 
@@ -31,7 +30,7 @@
 
     attachUsernameTaken: function (element, callback) {
       var bind = this;
-      element.addEvent('blur', function () {
+      $(element).on('blur', function () {
         bind.checkUsernameTaken(element.value, callback);
       });
 
@@ -100,7 +99,7 @@
       var idEx = {};
       privacyExemptFields = typeof (privacyExemptFields) !== 'object' ? {} : privacyExemptFields;
       // Clear when body click, if not inside selector
-      document.addEvent('click', function (event) {
+      $(document).on('click', function (event) {
         if (event.target.hasClass('field-privacy-selector')) {
           return;
         } else if (event.target.getParent('.field-privacy-selector')) {
@@ -150,14 +149,14 @@
                   <input type="hidden" name="privacy[' + fuid + ']" />'
         });
         selector.inject(wrapperEl);
-        selector.addEvent('click', function (event) {
+        $(selector).on('click', function (event) {
           var prevState = selector.hasClass('active');
           $$('.field-privacy-selector').removeClass('active');
           if (!prevState) {
             selector.addClass('active');
           }
         });
-        selector.getElements('li').addEvent('click', function (event) {
+        $(selector.getElements('li')).on('click', function (event) {
           var el = event.target;
           if (el.get('tag') != 'li') {
             el = el.getParent();

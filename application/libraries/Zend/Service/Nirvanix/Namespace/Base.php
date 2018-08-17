@@ -31,7 +31,7 @@
 // // require_once 'Zend/Service/Nirvanix/Response.php';
 
 /**
- * The Nirvanix web services are split into namespaces.  This is a proxy class
+ * The Nirvanix web middleware are split into namespaces.  This is a proxy class
  * representing one namespace.  It allows calls to the namespace to be made by
  * PHP object calls rather than by having to construct HTTP client requests.
  *
@@ -45,7 +45,7 @@ class Zend_Service_Nirvanix_Namespace_Base
 {
     /**
      * HTTP client instance that will be used to make calls to
-     * the Nirvanix web services.
+     * the Nirvanix web middleware.
      * @var Zend_Http_Client
      */
     protected $_httpClient;
@@ -55,7 +55,7 @@ class Zend_Service_Nirvanix_Namespace_Base
      * that the user will wish to use different hosts for different namespaces.
      * @var string
      */
-    protected $_host = 'http://services.nirvanix.com';
+    protected $_host = 'http://middleware.nirvanix.com';
 
     /**
      * Name of this namespace as used in the URL.

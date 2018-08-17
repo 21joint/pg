@@ -14,7 +14,7 @@ class Sdparentalguide_Widget_BrowseListingsController
   {
 
     $headLink = new Zend_View_Helper_HeadLink();
-    $headLink->appendStylesheet('/styles/reviews_home.bundle.css');
+//    $headLink->appendStylesheet('/styles/reviews_home.bundle.css');
 
     $params = array();
     $this->view->truncation

@@ -53,11 +53,11 @@ class Storage_Installer extends Engine_Package_Installer_Module
       if( !$exists ) {
         $db->query("
           INSERT IGNORE INTO `engine4_core_menuitems` (`name`, `module`, `label`, `plugin`, `params`, `menu`, `submenu`, `order`) VALUES
-          ('core_admin_main_settings_storage', 'core', 'Storage System', '', '{\"route\":\"admin_default\",\"module\":\"storage\",\"controller\":\"services\",\"action\":\"index\"}', 'core_admin_main_settings', '', 11)
+          ('core_admin_main_settings_storage', 'core', 'Storage System', '', middleware, 'core_admin_main_settings', '', 11)
         ");
       }
 
-    } catch( Exception $e ) {
+ middlewarech( Exception $e ) {
       $this->_error('Query failed with error: ' . $e->getMessage());
     }
   }

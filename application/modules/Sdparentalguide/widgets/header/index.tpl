@@ -11,8 +11,7 @@
         </div>
         <div class="col-auto col-md-4 d-flex align-items-center mr-auto logo">
           <a href="<?= $this->baseUrl(); ?>" class="d-md-block w-100 text-left">
-            <svg class="align-middle prg-logo--image"
-                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480.81 171.45">
+            <svg class="align-middle prg-logo--image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480.81 171.45">
               <use href="#prgLogo"></use>
             </svg>
           </a>
@@ -66,11 +65,9 @@
                      id="close_icon"></i><span
                     class="notifications-count bg-primary text-white font-weight-bold position-absolute d-flex align-items-center justify-content-center"><?= $this->notificationCount; ?></span>
                 </a>
-                <div class="updates_pulldown" id="core_mini_updates_pulldown">
-                  <div
-                    class="dropdown-menu dropdown-menu-right pulldown_contents_wrapper py-0">
-                    <div
-                      class="text-right px-3 py-2 d-flex align-items-center justify-content-end mark-all">
+                <div class="dropdown-menu dropdown-menu-right updates_pulldown" id="core_mini_updates_pulldown">
+                  <div class="pulldown_contents_wrapper py-0">
+                    <div class="text-right px-3 py-2 d-flex align-items-center justify-content-end mark-all">
                       <?= $this->htmlLink(
                         'javascript:void(0);',
                         $this->translate('Mark All Read'),
@@ -79,13 +76,12 @@
                       ) ?>
                     </div>
                     <div class="pulldown_contents">
-                      <ul class="notifications_menu p-0 m-0"
-                          id="notifications_menu">
-                        <li
-                          class="notifications_loading d-flex justify-content-center align-items-center font-weight-light small py-4"
-                          id="notifications_loading">
-                          <i class="fa fa-spin fa-spinner"
-                             style="margin-right: 5px;"></i>
+                      <ul class="prg-header--notifications notifications_menu p-0 m-0" id="notifications_menu">
+                        <li class="notifications_loading d-flex justify-content-center align-items-center font-weight-light small py-4"
+                            id="notifications_loading">
+                          <svg>
+                            <use href="#prgLoader"></use>
+                          </svg>
                           <?= $this->translate("Loading ...") ?>
                         </li>
                       </ul>
@@ -103,11 +99,8 @@
                   </div>
                 </div>
               </li>
-              <li class="list-inline-item align-middle profile-img mr-0">
-                <?= $this->htmlLink(
-                  $this->viewer->getHref(),
-                  $this->itemPhoto($this->viewer, 'thumb.icon')
-                ); ?>
+              <li class="list-inline-item align-middle mr-0">
+                <div data-render="renderProfileBox"></div>
               </li>
               <li class="list-inline-item align-middle name d-none d-sm-inline-block dropdown ml-3">
                 <?= $this->htmlLink(
@@ -124,63 +117,6 @@
                    class="text-primary align-middle p-1 fa fa-caret-down"
                    aria-expanded="false">
                 </a>
-                <div class="dropdown-menu dropdown-menu-right shadow p-0 border-0 dropdown-menu--profile"
-                     aria-labelledby="authProfileDropdown">
-                  <ul class="list-unstyled">
-                    <li>
-                      <div class="dropdown-item bg-light p-3">
-                        <h6 class="text-dark m-0 p-0">
-                          <b><?= $this->viewer->getTitle(); ?></b></h6>
-                        <p class="desc text-muted small m-0">
-                          <?= $this->viewer->email; ?>
-                        </p>
-                      </div>
-                    </li>
-                    <li>
-                      <a class="dropdown-item"
-                         href="<?= $this->url(
-                           array('controller' => 'settings',
-                             'action' => 'general'), 'user_extended'
-                         ); ?>">
-                        <div
-                          class="d-flex align-items-center justify-content-start">
-                          <i class="fa fa-cog mr-3" aria-hidden="true"></i>
-                          <b>Profile Settings</b>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <div
-                          class="d-flex align-items-center justify-content-start">
-                          <i class="fa fa-filter mr-3" aria-hidden="true"></i>
-                          <b>User Preferences</b>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item"
-                         href="<?= $this->baseUrl(); ?>/admin">
-                        <div
-                          class="d-flex align-items-center justify-content-start">
-                          <i class="fa fa-database mr-3" aria-hidden="true"></i>
-                          <b>Admin</b>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item border-top py-3"
-                         href="<?= $this->baseUrl(); ?>/logout">
-                        <div
-                          class="d-flex align-items-center justify-content-start">
-                          <i class="fas fa-sign-out-alt mr-3"
-                             aria-hidden="true"></i>
-                          <b>Sign Out</b>
-                        </div>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
               </li> <!-- name -->
             <?php else : ?>
               <li

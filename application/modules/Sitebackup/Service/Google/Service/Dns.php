@@ -19,7 +19,7 @@
  * Service definition for Dns (v1).
  *
  * <p>
- * The Google Cloud DNS API provides services for configuring and serving
+ * The Google Cloud DNS API provides middleware for configuring and serving
  * authoritative DNS records.</p>
  *
  * <p>
@@ -32,7 +32,7 @@
 class Google_Service_Dns extends Google_Service
 {
 
-  /** View and manage your data across Google Cloud Platform services. */
+  /** View and manage your data across Google Cloud Platform middleware. */
   const CLOUD_PLATFORM = "https://www.googleapis.com/auth/cloud-platform";
 
   /** View your DNS records hosted by Google Cloud DNS. */

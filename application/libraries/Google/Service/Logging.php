@@ -31,7 +31,7 @@
  */
 class Google_Service_Logging extends Google_Service
 {
-  /** View and manage your data across Google Cloud Platform services. */
+  /** View and manage your data across Google Cloud Platform middleware. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
 
@@ -437,19 +437,19 @@ class Google_Service_Logging_ProjectsLogServices_Resource extends Google_Service
 {
 
   /**
-   * Lists log services associated with log entries ingested for a project.
+   * Lists log middleware associated with log entries ingested for a project.
    * (logServices.listProjectsLogServices)
    *
    * @param string $projectsId Part of `projectName`. The project resource whose
-   * services are to be listed.
+   * middleware are to be listed.
    * @param array $optParams Optional parameters.
    *
    * @opt_param string pageToken An opaque token, returned as `nextPageToken` by a
    * prior `ListLogServices` operation. If `pageToken` is supplied, then the other
    * fields of this request are ignored, and instead the previous
    * `ListLogServices` operation is continued.
-   * @opt_param string log The name of the log resource whose services are to be
-   * listed. log for which to list services. When empty, all services are listed.
+   * @opt_param string log The name of the log resource whose middleware are to be
+   * listed. log for which to list middleware. When empty, all middleware are listed.
    * @opt_param int pageSize The maximum number of `LogService` objects to return
    * in one operation.
    * @return Google_Service_Logging_ListLogServicesResponse

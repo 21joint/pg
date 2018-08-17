@@ -75,7 +75,7 @@ package com.adobe.webapis
 		[Event(name="securityError", type="flash.events.SecurityErrorEvent")]	
 	
 	/**
-	*	Base class for services that utilize URLLoader
+	*	Base class for middleware that utilize URLLoader
 	*	to communicate with remote APIs / Services.
 	* 
 	* @langversion ActionScript 3.0

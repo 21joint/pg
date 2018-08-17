@@ -40,7 +40,7 @@ package com.adobe.webapis.events
 	import flash.events.Event;
 
 	/**
-	* Event class that contains data loaded from remote services.
+	* Event class that contains data loaded from remote middleware.
 	*
 	* @author Mike Chambers
 	*/

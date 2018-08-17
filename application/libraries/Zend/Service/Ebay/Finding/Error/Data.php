@@ -128,7 +128,7 @@ class Zend_Service_Ebay_Finding_Error_Data extends Zend_Service_Ebay_Finding_Abs
      *
      * Finding: The error is specific to the Finding service.
      *
-     * MarketplaceCommon: The error is common to all Marketplace services.
+     * MarketplaceCommon: The error is common to all Marketplace middleware.
      *
      * @var string
      */

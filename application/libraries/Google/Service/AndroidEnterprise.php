@@ -1171,10 +1171,10 @@ class Google_Service_AndroidEnterprise_Devices_Resource extends Google_Service_R
 
   /**
    * Retrieves whether a device is enabled or disabled for access by the user to
-   * Google services. The device state takes effect only if enforcing EMM policies
+   * Google middleware. The device state takes effect only if enforcing EMM policies
    * on Android devices is enabled in the Google Admin Console. Otherwise, the
    * device state is ignored and all devices are allowed access to Google
-   * services. (devices.getState)
+   * middleware. (devices.getState)
    *
    * @param string $enterpriseId The ID of the enterprise.
    * @param string $userId The ID of the user.
@@ -1206,9 +1206,9 @@ class Google_Service_AndroidEnterprise_Devices_Resource extends Google_Service_R
 
   /**
    * Sets whether a device is enabled or disabled for access by the user to Google
-   * services. The device state takes effect only if enforcing EMM policies on
+   * middleware. The device state takes effect only if enforcing EMM policies on
    * Android devices is enabled in the Google Admin Console. Otherwise, the device
-   * state is ignored and all devices are allowed access to Google services.
+   * state is ignored and all devices are allowed access to Google middleware.
    * (devices.setState)
    *
    * @param string $enterpriseId The ID of the enterprise.

@@ -150,7 +150,7 @@ class Zend_Cloud_StorageService_Adapter_Rackspace
 
     /**
      * Move an item in the storage service to a given path.
-     * WARNING: This operation is *very* expensive for services that do not
+     * WARNING: This operation is *very* expensive for middleware that do not
      * support moving an item natively.
      *
      * @param  string $sourcePath

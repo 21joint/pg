@@ -51,7 +51,7 @@
       /* Include the common user-end field switching javascript */
       echo $this->partial(
         '_jsSwitch.tpl', 'fields', array(
-          'topLevelId'    => (int)@$this->topLevelId,
+          'topLevelId' => (int)@$this->topLevelId,
           'topLevelValue' => (int)@$this->topLevelValue,
         )
       )
@@ -69,7 +69,7 @@
   </div>
 
   <script>
-    $(document).ready( function () {
+    $(document).ready(function () {
       en4.user.buildFieldPrivacySelector($$('.global_form *[data-field-id]'));
     });
     en4.core.runonce.add(function () {

@@ -41,7 +41,7 @@ class Zend_Tool_Project_Context_Zf_ServicesDirectory extends Zend_Tool_Project_C
     /**
      * @var string
      */
-    protected $_filesystemName = 'services';
+    protected $_filesystemName = 'middleware';
 
     /**
      * Defined by Zend_Tool_Project_Context_Interface

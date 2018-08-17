@@ -77,7 +77,7 @@ class Storage_Model_File extends Core_Model_Item_Abstract
   public function getStorageService($type = null)
   {
     $type = $type ? $type : $this->service_id;
-    return Engine_Api::_()->getDbtable('services', 'storage')
+    return Engine_Api::_()->getDbtable('middleware', 'storage')
         ->getService($type);
   }
 

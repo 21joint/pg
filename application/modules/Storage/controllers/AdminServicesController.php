@@ -21,7 +21,7 @@ class Storage_AdminServicesController extends Core_Controller_Action_Admin
   public function indexAction()
   {
     // Initialize select
-    $table = Engine_Api::_()->getDbtable('services', 'storage');
+    $table = Engine_Api::_()->getDbtable('middleware', 'storage');
     $select = $table->select();
 
     // Get paginator
@@ -75,7 +75,7 @@ class Storage_AdminServicesController extends Core_Controller_Action_Admin
     $values = $form->getValues();
 
     // Process
-    $serviceTable = Engine_Api::_()->getDbtable('services', 'storage');
+    $serviceTable = Engine_Api::_()->getDbtable('middleware', 'storage');
     $serviceTable->insert(array(
       'servicetype_id' => $values['servicetype_id'],
       'enabled' => false,
@@ -99,7 +99,7 @@ class Storage_AdminServicesController extends Core_Controller_Action_Admin
           'service_id' => null, 'justCreated' => null));
     }
 
-    $serviceTable = Engine_Api::_()->getDbtable('services', 'storage');
+    $serviceTable = Engine_Api::_()->getDbtable('middleware', 'storage');
     $service = $serviceTable->find($serviceIdentity)->current();
     if( !$service ) {
       return $this->_helper->redirector->gotoRoute(array('action' => 'index',
@@ -205,7 +205,7 @@ class Storage_AdminServicesController extends Core_Controller_Action_Admin
 
 
     // Process
-    $serviceTable = Engine_Api::_()->getDbtable('services', 'storage');
+    $serviceTable = Engine_Api::_()->getDbtable('middleware', 'storage');
 
     $db = $serviceTable->getAdapter();
     $db->beginTransaction();
@@ -235,7 +235,7 @@ class Storage_AdminServicesController extends Core_Controller_Action_Admin
           'service_id' => null, 'justCreated' => null));
     }
 
-    $serviceTable = Engine_Api::_()->getDbtable('services', 'storage');
+    $serviceTable = Engine_Api::_()->getDbtable('middleware', 'storage');
     $service = $serviceTable->find($serviceIdentity)->current();
     if( !$service ) {
       return $this->_helper->redirector->gotoRoute(array('action' => 'index',
@@ -285,7 +285,7 @@ class Storage_AdminServicesController extends Core_Controller_Action_Admin
     $this->view->form = $form = new Core_Form_Confirm(array(
       'title' => 'Transfer Files?',
       'description' => 'This will begin transferring stored files from other ' .
-          'services to this storage service.',
+          'middleware to this storage service.',
       'submitLabel' => 'Transfer',
       'cancelHref' => $this->view->url(array('action' => 'index', 'service_id' => null)),
     ));

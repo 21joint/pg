@@ -23,7 +23,7 @@ use Monolog\Handler\Slack\SlackRecord;
  */
 class SlackWebhookHandlerTest extends TestCase
 {
-    const WEBHOOK_URL = 'https://hooks.slack.com/services/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E';
+    const WEBHOOK_URL = 'https://hooks.slack.com/middleware/T0B3CJQMR/B385JAMBF/gUhHoBREI8uja7eKXslTaAj4E';
 
     /**
      * @covers ::__construct

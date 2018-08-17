@@ -388,8 +388,8 @@ class Advancedactivity_Api_Siteapi_Feed extends Core_Api_Abstract {
         $staticBaseUrl = Engine_Api::_()->getApi('settings', 'core')->getSetting('core.static.baseurl', null);
         $tempHost = $serverHost = Engine_Api::_()->getApi('Core', 'siteapi')->getHost();
 
-        $getDefaultStorageId = Engine_Api::_()->getDbtable('services', 'storage')->getDefaultServiceIdentity();
-        $getDefaultStorageType = Engine_Api::_()->getDbtable('services', 'storage')->getService($getDefaultStorageId)->getType();
+        $getDefaultStorageId = Engine_Api::_()->getDbtable('middleware', 'storage')->getDefaultServiceIdentity();
+        $getDefaultStorageType = Engine_Api::_()->getDbtable('middleware', 'storage')->getService($getDefaultStorageId)->getType();
         $getHost = $getPhotoHost = '';
         if ($getDefaultStorageType == 'local')
             $getPhotoHost = $getHost = !empty($staticBaseUrl) ? $staticBaseUrl : $serverHost;
@@ -1866,8 +1866,8 @@ class Advancedactivity_Api_Siteapi_Feed extends Core_Api_Abstract {
             $staticBaseUrl = Engine_Api::_()->getApi('settings', 'core')->getSetting('core.static.baseurl', null);
 
             $getHost = Engine_Api::_()->getApi('Core', 'siteapi')->getHost();
-            $getDefaultStorageId = Engine_Api::_()->getDbtable('services', 'storage')->getDefaultServiceIdentity();
-            $getDefaultStorageType = Engine_Api::_()->getDbtable('services', 'storage')->getService($getDefaultStorageId)->getType();
+            $getDefaultStorageId = Engine_Api::_()->getDbtable('middleware', 'storage')->getDefaultServiceIdentity();
+            $getDefaultStorageType = Engine_Api::_()->getDbtable('middleware', 'storage')->getService($getDefaultStorageId)->getType();
 
             $host = '';
             if ($getDefaultStorageType == 'local')

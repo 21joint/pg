@@ -316,7 +316,7 @@ class Zend_Json_Server_Smd
     }
 
     /**
-     * Add many services
+     * Add many middleware
      *
      * @param  array $services
      * @return Zend_Json_Server_Smd
@@ -330,7 +330,7 @@ class Zend_Json_Server_Smd
     }
 
     /**
-     * Overwrite existing services with new ones
+     * Overwrite existing middleware with new ones
      *
      * @param  array $services
      * @return Zend_Json_Server_Smd
@@ -356,7 +356,7 @@ class Zend_Json_Server_Smd
     }
 
     /**
-     * Return services
+     * Return middleware
      *
      * @return array
      */
@@ -406,12 +406,12 @@ class Zend_Json_Server_Smd
 
         $services = $this->getServices();
         if (!empty($services)) {
-            $service['services'] = array();
+            $service['middleware'] = array();
             foreach ($services as $name => $svc) {
                 $svc->setEnvelope($envelope);
-                $service['services'][$name] = $svc->toArray();
+                $service['middleware'][$name] = $svc->toArray();
             }
-            $service['methods'] = $service['services'];
+            $service['methods'] = $service['middleware'];
         }
 
         return $service;

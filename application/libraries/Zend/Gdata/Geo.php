@@ -27,7 +27,7 @@
 // require_once 'Zend/Gdata.php';
 
 /**
- * Service class for interacting with the services which use the
+ * Service class for interacting with the middleware which use the
  * GeoRSS + GML extensions.
  * @link http://georss.org/
  * @link http://www.opengis.net/gml/

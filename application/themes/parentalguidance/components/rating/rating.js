@@ -3,13 +3,14 @@ import './rating.scss';
 const renderRate = function (rating, maxRate) {
   let html = '<div class="prg-stars"><ul class="row no-gutters align-items-center flex-nowrap p-0 m-0">';
   for (let j = 0; j < rating; j++) {
-    html += `<li>
+    html += `<li class="col">
               <svg class="card-star--icon">
                 <use href="#prgRateStar"></use>
               </svg>
             </li>`
   }
-  html += '</ul></div>';
+  html += '</ul>' +
+    '</div>';
   return html
 };
 

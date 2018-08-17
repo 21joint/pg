@@ -217,7 +217,7 @@ class Sitemobile_Api_Modules extends Core_Api_Abstract {
 
   public function addCorePages() {
 
-    //Contact,privacy & terms of services pages.
+    //Contact,privacy & terms of middleware pages.
     $this->addContactPage();
     $this->addPrivacyPage();
     $this->addTermsOfServicePage();

@@ -34,7 +34,7 @@ class Google_Service_Manager extends Google_Service
   /** View and manage your applications deployed on Google App Engine. */
   const APPENGINE_ADMIN =
       "https://www.googleapis.com/auth/appengine.admin";
-  /** View and manage your data across Google Cloud Platform services. */
+  /** View and manage your data across Google Cloud Platform middleware. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
   /** View and manage your Google Compute Engine resources. */

@@ -31,7 +31,7 @@
  */
 class Google_Service_Replicapool extends Google_Service
 {
-  /** View and manage your data across Google Cloud Platform services. */
+  /** View and manage your data across Google Cloud Platform middleware. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
   /** View and manage your Google Compute Engine resources. */

@@ -1,11 +1,12 @@
 <?php
+
 class Engine_Form_Decorator_FormSex extends Zend_Form_Decorator_Abstract
 {
   public function render($content)
   {
-    
+
     $data = $this->getElement()->getAttrib('data');
-    if( $data ) {
+    if ($data) {
       $this->getElement()->setAttrib('data', null);
     }
 

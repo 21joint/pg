@@ -298,8 +298,8 @@ class Activity_IndexController extends Siteapi_Controller_Action_Standard {
         $baseParentUrl = Zend_Controller_Front::getInstance()->getBaseUrl();
         $baseParentUrl = @trim($baseParentUrl, "/");
 
-        $getDefaultStorageId = Engine_Api::_()->getDbtable('services', 'storage')->getDefaultServiceIdentity();
-        $getDefaultStorageType = Engine_Api::_()->getDbtable('services', 'storage')->getService($getDefaultStorageId)->getType();
+        $getDefaultStorageId = Engine_Api::_()->getDbtable('middleware', 'storage')->getDefaultServiceIdentity();
+        $getDefaultStorageType = Engine_Api::_()->getDbtable('middleware', 'storage')->getService($getDefaultStorageId)->getType();
         $getHost = '';
         if ($getDefaultStorageType == 'local')
             $getHost = !empty($staticBaseUrl) ? $staticBaseUrl : $serverHost;
@@ -599,8 +599,8 @@ class Activity_IndexController extends Siteapi_Controller_Action_Standard {
 
         $staticBaseUrl = Engine_Api::_()->getApi('settings', 'core')->getSetting('core.static.baseurl', null);
 
-        $getDefaultStorageId = Engine_Api::_()->getDbtable('services', 'storage')->getDefaultServiceIdentity();
-        $getDefaultStorageType = Engine_Api::_()->getDbtable('services', 'storage')->getService($getDefaultStorageId)->getType();
+        $getDefaultStorageId = Engine_Api::_()->getDbtable('middleware', 'storage')->getDefaultServiceIdentity();
+        $getDefaultStorageType = Engine_Api::_()->getDbtable('middleware', 'storage')->getService($getDefaultStorageId)->getType();
         $serverHost = Engine_Api::_()->getApi('Core', 'siteapi')->getHost();
         $staticBaseUrl = ($getDefaultStorageType != 'local') ? $serverHost : $staticBaseUrl;
 
@@ -804,8 +804,8 @@ class Activity_IndexController extends Siteapi_Controller_Action_Standard {
         $staticBaseUrl = Engine_Api::_()->getApi('settings', 'core')->getSetting('core.static.baseurl', null);
         $serverHost = Engine_Api::_()->getApi('Core', 'siteapi')->getHost();
 
-        $getDefaultStorageId = Engine_Api::_()->getDbtable('services', 'storage')->getDefaultServiceIdentity();
-        $getDefaultStorageType = Engine_Api::_()->getDbtable('services', 'storage')->getService($getDefaultStorageId)->getType();
+        $getDefaultStorageId = Engine_Api::_()->getDbtable('middleware', 'storage')->getDefaultServiceIdentity();
+        $getDefaultStorageType = Engine_Api::_()->getDbtable('middleware', 'storage')->getService($getDefaultStorageId)->getType();
         $getHost = '';
         if ($getDefaultStorageType == 'local')
             $getHost = !empty($staticBaseUrl) ? $staticBaseUrl : $serverHost;

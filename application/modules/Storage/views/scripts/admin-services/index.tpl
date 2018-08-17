@@ -60,7 +60,7 @@ if( $settings->getSetting('user.support.links', 0) == 1 ) {
   <div>
     <?php $count = $this->paginator->getTotalItemCount() ?>
     <?php echo $this->translate(array("%s service found",
-        "%s services found", $count), $this->locale()->toNumber($count)) ?>
+        "%s middleware found", $count), $this->locale()->toNumber($count)) ?>
   </div>
   <?php echo $this->paginationControl($this->paginator, null, null, array(
     'query' => $this->filterValues,

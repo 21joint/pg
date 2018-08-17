@@ -22,7 +22,7 @@ class Storage_Api_Core extends Core_Api_Abstract
   
   public function getService($serviceIdentity = null)
   {
-    return Engine_Api::_()->getDbtable('services', 'storage')
+    return Engine_Api::_()->getDbtable('middleware', 'storage')
       ->getService($serviceIdentity);
   }
 

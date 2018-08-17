@@ -86,7 +86,7 @@ class Zend_Service_DeveloperGarden_VoiceCall
      *
      * @var string
      */
-    protected $_wsdlFile = 'https://gateway.developer.telekom.com/p3gw-mod-odg-voicebutler/services/VoiceButlerService?wsdl';
+    protected $_wsdlFile = 'https://gateway.developer.telekom.com/p3gw-mod-odg-voicebutler/middleware/VoiceButlerService?wsdl';
 
     /**
      * wsdl file local

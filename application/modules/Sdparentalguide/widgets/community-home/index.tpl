@@ -104,12 +104,12 @@
   <div class="row d-flex align-items-center">
     <div
       class="find_expert_badges col-lg position-relative d-flex justify-content-around align-items-center">
-      <img class="front_image" src="<?php echo $this->baseUrl(
-      ); ?>/application/modules/Sdparentalguide/externals/images/mvp_badge.png"/>
-      <img class="back_image" src="<?php echo $this->baseUrl(
-      ); ?>/application/modules/Sdparentalguide/externals/images/badge_baby.png"/>
-      <img class="back_image" src="<?php echo $this->baseUrl(
-      ); ?>/application/modules/Sdparentalguide/externals/images/badge_baby.png"/>
+      <img class="front_image"
+           src="<?php echo $this->baseUrl(); ?>/application/modules/Sdparentalguide/externals/images/mvp_badge.png"/>
+      <img class="back_image"
+           src="<?php echo $this->baseUrl(); ?>/application/modules/Sdparentalguide/externals/images/badge_baby.png"/>
+      <img class="back_image"
+           src="<?php echo $this->baseUrl(); ?>/application/modules/Sdparentalguide/externals/images/badge_baby.png"/>
     </div>
     <div class="find_expert_text col-lg">
       <h2>Find an expert. Become an expert.</h2>
@@ -258,17 +258,7 @@
   });
 
   // See More Button linking to Find an Expert Part of the Page
-  $("#seeMore").attr('href',  en4.core.baseUrl + "community/home#findExpert");
-
-  // FAQ on click display question and transform plus to close
-  $(".faq_toggle").each(function (index, toggle) {
-    $(toggle).on('click', function (event) {
-      $(event.target).parent().find('h4').toggleClass('text-primary');
-      $(event.target).parent().parent().find(".faq_text").toggleClass("faq_text_disp");
-      $(event.target).parent().toggleClass("mb-3");
-      $(event.target).toggleClass("faq_transform");
-    });
-  });
+  // $(".seeMore").attr('href',  en4.core.baseUrl + "community/home#findExpert");
 
   // Pagionation Number Change Start
   // var pageNum = 1;
@@ -353,12 +343,12 @@
               ((page - 1) * 20 + (i + 1)) +
               '</div>' +
               '<div class="d-flex align-items-center leader position-relative">' +
-              '<div class="avatar-popup position-absolute bg-white d-none">' +
+              '<div class="profile-popup position-absolute bg-white d-none">' +
               '<div class="avatar-header d-flex mx-3 mt-3 px-2 pt-2">' +
               '<img src="' +
               results[i].avatarPhoto.photoURLIcon +
               '" alt="avatar photo"/>' +
-              '<div class="avatar-popup--info d-flex flex-column">' +
+              '<div class="profile-popup--info d-flex flex-column">' +
               '<a class="font-weight-bold" href="' +
               en4.core.baseUrl + "profile/" + results[i].memberName +
               '">' +
@@ -375,39 +365,35 @@
               '</div>' +
               '<div class="prg-badges d-flex justify-content-around align-items-center my-2 px-3">' +
               '<div class="avatar-badge badge_bronze position-relative d-flex flex-column justify-content-center align-items-center">' +
-              '<img src="<?php echo $this->baseUrl(
-              ); ?>/images/Bronze.svg"/>' +
+              '<img src="<?php echo $this->baseUrl(); ?>/images/Bronze.svg"/>' +
               '<span class="number_badges position-absolute text-white font-weight-bold">' +
               results[i].bronzeCount +
               '</span>' +
               '<span class="badge_name">Bronze</span>' +
               '</div>' +
               '<div class="avatar-badge badge_silver position-relative d-flex flex-column justify-content-center align-items-center">' +
-              '<img src="<?php echo $this->baseUrl(
-              ); ?>/images/Silver.svg"/>' +
+              '<img src="<?php echo $this->baseUrl(); ?>/images/Silver.svg"/>' +
               '<span class="number_badges position-absolute text-white font-weight-bold">' +
               results[i].silverCount +
               '</span>' +
               '<span class="badge_name">Silver</span>' +
               '</div>' +
               '<div class="avatar-badge badge_gold position-relative d-flex flex-column justify-content-center align-items-center">' +
-              '<img src="<?php echo $this->baseUrl(
-              ); ?>/images/Gold.svg"/>' +
+              '<img src="<?php echo $this->baseUrl(); ?>/images/Gold.svg"/>' +
               '<span class="number_badges position-absolute text-white font-weight-bold">' +
               results[i].goldCount +
               '</span>' +
               '<span class="badge_name">Gold</span>' +
               '</div>' +
               '<div class="avatar-badge badge_platinum position-relative d-flex flex-column justify-content-center align-items-center">' +
-              '<img src="<?php echo $this->baseUrl(
-              ); ?>/images/Platinum.svg"/>' +
+              '<img src="<?php echo $this->baseUrl(); ?>/images/Platinum.svg"/>' +
               '<span class="number_badges position-absolute text-white font-weight-bold">' +
               results[i].platinumCount +
               '</span>' +
               '<span class="badge_name">Platinum</span>' +
               '</div>' +
               '</div>' +
-              '<div class="avatar-popup--footer d-flex justify-content-center align-items-center border-top">' +
+              '<div class="profile-popup--footer d-flex justify-content-center align-items-center border-top">' +
               '<div class="d-flex justify-content-center p-3 border-right">' +
               'Reviews ' +
               '<span class="text-primary font-weight-bold ml-1">' +
@@ -444,15 +430,14 @@
               '</div>' +
               '</div>';
           }
-          leaderboardContent.innerHTML = html;
+          leaderboardContent.html(html);
           // Avatar Styling
           // Check the Data Attribute for Mvp Status
           // If Item has Mvp Status Put Halo Around Avatar Change Contribution Level Color
           $('.avatar_halo').each(function (index, avatar_halo) {
             if (avatar_halo.dataset.halo == "true") {
               avatar_halo.addClass('avatar_halo_disp');
-              avatar_halo.style.borderImage = "url('<?php echo $this->baseUrl(
-              ); ?>/application/themes/parentalguidance/assets/images/border.png') 20 20 20 20 fill";
+              avatar_halo.style.borderImage = "url('/images/gear.svg') 20 20 20 20 fill";
             }
           });
           // Checking Contribution Level on Avatar
@@ -472,11 +457,11 @@
           // Displaying Avatar Popup
           $('.avatar_halo').each(function (index, popup_func) {
             $(popup_func).on('click', function () {
-              this.previousSibling.addClass('d-block').removeClass('d-none');
+              $(popup_func).prev().addClass('d-block').removeClass('d-none');
             });
           });
           $(window).on('mouseup', function () {
-            $('.avatar-popup').each(function (index, removed) {
+            $('.profile-popup').each(function (index, removed) {
               if (removed.hasClass('d-block')) {
                 removed.addClass('d-none').removeClass('d-block');
               }
@@ -486,7 +471,7 @@
           // Showing current page in pagination section
           // $('#leaderboard_pageNum').innerText = page;
         } else {
-          leaderboardContent.innerHTML = responseJSON.message;
+          leaderboardContent.html(responseJSON.message);
         }
       }
     });
@@ -571,12 +556,12 @@
             }
 
             html += '<div class="mvps_item d-flex flex-column align-items-center justify-content-center position-relative mr-5">' +
-              '<div class="avatar-popup position-absolute bg-white d-none">' +
+              '<div class="profile-popup position-absolute bg-white d-none">' +
               '<div class="avatar-header d-flex mx-3 mt-3 px-2 pt-2">' +
               '<img src="' +
               results[i].avatarPhoto.photoURLIcon +
               '" alt="avatar photo"/>' +
-              '<div class="avatar-popup--info d-flex flex-column justify-content-start align-items-start ml-3">' +
+              '<div class="profile-popup--info d-flex flex-column justify-content-start align-items-start ml-3">' +
               '<a class="font-weight-bold" href="' +
               en4.core.baseUrl + "profile/" + results[i].memberName +
               '">' +
@@ -614,8 +599,7 @@
               '<span class="badge_name">Gold</span>' +
               '</div>' +
               '<div class="avatar-badge badge_platinum position-relative d-flex flex-column justify-content-center align-items-center">' +
-              '<img src="<?php echo $this->baseUrl(
-              ); ?>/images/Platinum.svg"/>' +
+              '<img src="<?php echo $this->baseUrl(); ?>/images/Platinum.svg"/>' +
               '<span class="number_badges position-absolute text-white font-weight-bold">' +
               results[i].platinumCount +
               '</span>' +
@@ -658,7 +642,7 @@
               '</div>' +
               '</div>';
           }
-          leaderboardContent.innerHTML = html;
+          leaderboardContent.html(html);
           // Avatar Styling
           // Check the Data Attribute for Mvp Status
           // If Item has Mvp Status Put Halo Around Avatar Change Contribution Level Color
@@ -696,7 +680,7 @@
             });
           });
         } else {
-          leaderboardContent.innerHTML = responseJSON.message;
+          leaderboardContent.html(responseJSON.message);
         }
       }
     });

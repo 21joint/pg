@@ -148,7 +148,7 @@
 			<?php } ?>
 			</div>        
 			<div class="sub-txt">
-			<?php echo $this->translate("Click on one of the above services to search from your Web Account."); ?>
+			<?php echo $this->translate("Click on one of the above middleware to search from your Web Account."); ?>
 			<br />
 			<?php echo $this->htmlImage($this->layout()->staticBaseUrl . 'application/modules/Sitepageinvite/externals/images/lock.gif', '') ?>
 			<?php echo Engine_Api::_()->getApi('settings', 'core')->getSetting('core.general.site.title');?>
@@ -374,7 +374,7 @@ if(isset($this->message))
 				<a href='javascript: toggle("id_othermail")'><?php echo $this->translate('For Other'); ?></a>
 				<ul style="display:none" id="id_othermail">
 					<li>
-							<?php echo $this->translate('Many email services, email applications, address book management applications allow contacts to be imported to a file. We support .CSV and .TXT types of contact files'); ?>
+							<?php echo $this->translate('Many email middleware, email applications, address book management applications allow contacts to be imported to a file. We support .CSV and .TXT types of contact files'); ?>
 						
 					</li>	
 				</ul>

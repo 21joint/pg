@@ -497,7 +497,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
         // Get the object encoding of the request.
         $objectEncoding = $request->getObjectEncoding();
 
-        // create a response object to place the output from the services.
+        // create a response object to place the output from the middleware.
         $response = $this->getResponse();
 
         // set response encoding
@@ -825,7 +825,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
 
 
     /**
-     * Creates an array of directories in which services can reside.
+     * Creates an array of directories in which middleware can reside.
      * TODO: add support for prefixes?
      *
      * @param string $dir
@@ -836,7 +836,7 @@ class Zend_Amf_Server implements Zend_Server_Interface
     }
 
     /**
-     * Returns an array of directories that can hold services.
+     * Returns an array of directories that can hold middleware.
      *
      * @return array
      */

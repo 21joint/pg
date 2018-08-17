@@ -520,7 +520,7 @@ class Siteandroidapp_Form_Admin_AppBuilder_Settings extends Engine_Form {
                 ));
 
                 $this->addElement('Dummy', 'graphic_assets', array(
-                    'label' => Zend_Registry::get('Zend_Translate')->_('<center><h3>Graphic Assets</h3><br />[NOTE: You can download sample Graphic Assets for your reference from here: <a href="http://www.socialengineaddons.com/sites/default/files/Sample_Graphics_Assets_Android_App.tar">http://www.socialengineaddons.com/sites/default/files/Sample_Graphics_Assets_Android_App.tar</a>. If you would like us to build the required graphic assets for your iOS and Android apps, then please order our service: "<a href="http://www.socialengineaddons.com/services/building-graphic-assets-ios-android-mobile-apps" target="_blank">Building Graphic Assets for Mobile Apps</a>".]</center>'),
+                    'label' => Zend_Registry::get('Zend_Translate')->_('<center><h3>Graphic Assets</h3><br />[NOTE: You can download sample Graphic Assets for your reference from here: <a href="http://www.socialengineaddons.com/sites/default/files/Sample_Graphics_Assets_Android_App.tar">http://www.socialengineaddons.com/sites/default/files/Sample_Graphics_Assets_Android_App.tar</a>. If you would like us to build the required graphic assets for your iOS and Android apps, then please order our service: "<a href="http://www.socialengineaddons.com/middleware/building-graphic-assets-ios-android-mobile-apps" target="_blank">Building Graphic Assets for Mobile Apps</a>".]</center>'),
                 ));
                 $this->graphic_assets->getDecorator('Label')->setOptions(array('escape' => false));
 

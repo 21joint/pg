@@ -63,7 +63,7 @@ class SlackbotHandler extends AbstractProcessingHandler
     protected function write(array $record)
     {
         $slackbotUrl = sprintf(
-            'https://%s.slack.com/services/hooks/slackbot?token=%s&channel=%s',
+            'https://%s.slack.com/middleware/hooks/slackbot?token=%s&channel=%s',
             $this->slackTeam,
             $this->token,
             $this->channel

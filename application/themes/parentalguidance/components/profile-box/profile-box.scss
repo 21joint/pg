@@ -1,26 +1,39 @@
 @import "../../scss/variables";
 
-.avatar-popup {
+.profile-popup {
   z-index: 999;
   width: 360px;
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
+  img {
+    width: 40px;
+    height: 40px;
+  }
 }
 
-.avatar-popup--header {
-  line-height: 22px;
+.profile-box--level {
+  font-size: 10px;
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  bottom: 0;
+  right: 0;
+  box-shadow: 0 0 0 2px #ffffff;
+}
+
+.profile-popup--header {
   font-size: 14px;
 }
 
-.avatar-popup--info {
+.profile-popup--info {
   //padding: 10px;
 }
 
-.avatar-popup--contribution {
+.profile-popup--contribution {
   font-size: 14px;
 }
 
-.avatar-popup--close {
+.profile-popup--close {
   color: #b4c0c1;
   cursor: pointer;
   z-index: 10;
@@ -34,12 +47,14 @@
   }
 }
 
-.avatar-popup--footer {
+.profile-popup--footer {
   font-size: 14px;
   font-weight: 600;
-  > div {
-    & + div {
-      border-left: 1px solid $border-color;
+  .row {
+    > div {
+      + div {
+        border-left: 1px solid $border-color;
+      }
     }
   }
 }

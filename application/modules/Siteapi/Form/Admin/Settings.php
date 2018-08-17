@@ -67,7 +67,7 @@ class Siteapi_Form_Admin_Settings extends Engine_Form {
 
         $this->addElement('Radio', 'siteapi_ssl_verification', array(
             'label' => 'API communication on SSL',
-            'description' => 'Do you want to allow API requests and responses only on SSL (https://)? [Note: Before enabling this setting, please ensure that your website supports SSL. We strongly recommend all API requests to be sent on SSL for security reasons. Plain HTTP API requests are unsecure. If you need help in enabling HTTPS for your website, then you may purchase our "<a href="http://www.socialengineaddons.com/services/ssl-certification-installation" target="_blank">SSL Certificate Installation Service</a>"]',
+            'description' => 'Do you want to allow API requests and responses only on SSL (https://)? [Note: Before enabling this setting, please ensure that your website supports SSL. We strongly recommend all API requests to be sent on SSL for security reasons. Plain HTTP API requests are unsecure. If you need help in enabling HTTPS for your website, then you may purchase our "<a href="http://www.socialengineaddons.com/middleware/ssl-certification-installation" target="_blank">SSL Certificate Installation Service</a>"]',
             'multiOptions' => array(
                 1 => 'Yes, allow API communication only on SSL.',
                 0 => 'No, allow plain HTTP API requests too.'

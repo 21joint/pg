@@ -38,7 +38,7 @@ class Advancedactivity_Form_Admin_WelcomeSettings extends Engine_Form {
     if (Engine_Api::_()->getDbtable('modules', 'core')->isModuleEnabled('suggestion') || Engine_Api::_()->getDbtable('modules', 'core')->isModuleEnabled('peopleyoumayknow')) {
       $this->addElement('Text', 'welcome_invite_friend_limit', array(
           'label' => 'Invite Friends',
-          'description' => "Enter the number of friends till which users should be shown the Invite Friends block in the Welcome Tab (This block enables users to invite their contacts to become members of the site and their friends on it, by importing contacts from various services or manually entering email IDs. Those who are already site members get friend request. Users can thus quickly and easily grow their network on your site. Note that for this to be visible, you must place the 'Invite Friends' widget in this page from the Layout Editor. If you do not want this widget to be available in the Welcome Tab, then enter 0 below. This block will no more be visible to users in the Welcome Tab after their number of friends reaches the limit set by you.)",           'value' => $settings->getSetting('welcome.invite.friend.limit', 30),
+          'description' => "Enter the number of friends till which users should be shown the Invite Friends block in the Welcome Tab (This block enables users to invite their contacts to become members of the site and their friends on it, by importing contacts from various middleware or manually entering email IDs. Those who are already site members get friend request. Users can thus quickly and easily grow their network on your site. Note that for this to be visible, you must place the 'Invite Friends' widget in this page from the Layout Editor. If you do not want this widget to be available in the Welcome Tab, then enter 0 below. This block will no more be visible to users in the Welcome Tab after their number of friends reaches the limit set by you.)",           'value' => $settings->getSetting('welcome.invite.friend.limit', 30),
           'maxlength' => '10',
           'validators' => array(
               array('Int', true),
@@ -52,7 +52,7 @@ target="blank">Suggestions / Recommendations / People you may know & Inviter</a>
 $peopleLink1 = '<a
 href="http://www.socialengineaddons.com/socialengine-people-you-may-know-friend-suggestions-inviter"
 target="blank">People you may know / Friend Suggestions & Inviter</a>';
-      $suggestionLink = sprintf('The Invite Friends block in the Welcome Tab requires either the "%s" or the "%s" plugin installed or enabled on your site. This block enables users to invite their contacts to become members of the site and their friends on it, by importing contacts from various services or manually entering email IDs. Those who are already site members get friend request. Users can thus quickly and easily grow their network on your site.', $suggestionLink1, $peopleLink1);
+      $suggestionLink = sprintf('The Invite Friends block in the Welcome Tab requires either the "%s" or the "%s" plugin installed or enabled on your site. This block enables users to invite their contacts to become members of the site and their friends on it, by importing contacts from various middleware or manually entering email IDs. Those who are already site members get friend request. Users can thus quickly and easily grow their network on your site.', $suggestionLink1, $peopleLink1);
 
       $this->addElement('Dummy', 'welcome_invite_friend_limit', array(
           'label' => 'Invite Friends',

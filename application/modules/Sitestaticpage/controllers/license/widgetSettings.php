@@ -12,7 +12,7 @@ $staticPageTable = Engine_Api::_()->getDbtable('pages', 'sitestaticpage');
 
 $body = '<p><span style="font-size: 14pt;"><strong>Terms of Service</strong></span></p>
 <p><span style="font-size: 10pt;"><strong>&nbsp;</strong></span></p>
-<p style="text-align: justify;"><span style="font-size: 10pt;">These Terms of Service ("Terms") govern your access to and use of our website, products, and services ("Products"). Please read these Terms carefully, and contact us if you have any questions. By accessing or using our Products, you agree to be bound by these Terms and by our Privacy Policy.</span></p>
+<p style="text-align: justify;"><span style="font-size: 10pt;">These Terms of Service ("Terms") govern your access to and use of our website, products, and middleware ("Products"). Please read these Terms carefully, and contact us if you have any questions. By accessing or using our Products, you agree to be bound by these Terms and by our Privacy Policy.</span></p>
 <p><span style="font-size: 10pt;"><strong>&nbsp;</strong></span></p>
 <p><strong><span style="font-size: 12pt;">1. Using This Website</span></strong></p>
 <p><span style="font-size: 10pt;"><strong>&nbsp;</strong></span></p>
@@ -96,7 +96,7 @@ $body = '<h3><span style="font-size: 14pt;"><strong>Privacy Policy</strong></spa
 <p style="padding-left: 30px; text-align: justify;"><strong><span style="font-size: 10pt;">1. When you give it to us or give us permission to obtain it.</span></strong></p>
 <p style="text-align: justify;"><span style="font-size: 10pt;"><strong>&nbsp;</strong></span></p>
 <p style="padding-left: 30px; text-align: justify;"><span style="font-size: 10pt;">When you sign up for or use our products, you voluntarily give us certain information. This can include your name, profile photo, comments, likes, email address you used to sign up, and any other information you provide us. If you&rsquo;re using this site on your mobile device, you can also choose to provide us with location data.</span></p>
-<p style="padding-left: 30px; text-align: justify;"><span style="font-size: 10pt;">You also may give us permission to access your information in other services. For example, you may link your Facebook or Twitter account, which allows us to obtain information from those accounts (e.g., your friends or contacts). The information we obtain from those services often depends on your settings or their privacy policies, so be sure to check what those are.</span></p>
+<p style="padding-left: 30px; text-align: justify;"><span style="font-size: 10pt;">You also may give us permission to access your information in other middleware. For example, you may link your Facebook or Twitter account, which allows us to obtain information from those accounts (e.g., your friends or contacts). The information we obtain from those middleware often depends on your settings or their privacy policies, so be sure to check what those are.</span></p>
 <p style="padding-left: 30px; text-align: justify;">&nbsp;</p>
 <h4 style="text-align: justify; padding-left: 30px;"><span style="font-size: 10pt;">2. We also get technical information when you use our products or use websites or apps that have features from this site.</span></h4>
 <p>&nbsp;</p>
@@ -133,7 +133,7 @@ $body = '<h3><span style="font-size: 14pt;"><strong>Privacy Policy</strong></spa
 <p style="text-align: justify; padding-left: 30px;">&nbsp;</p>
 <p style="text-align: justify; padding-left: 30px;"><span style="font-size: 10pt;"><strong>a.</strong> Access and change information in your profile page at any time.</span></p>
 <p style="text-align: justify; padding-left: 30px;">&nbsp;</p>
-<p style="text-align: justify; padding-left: 30px;"><span style="font-size: 10pt;"><strong>b.</strong> Link or unlink your account from an account on another service (e.g., Facebook or Twitter). For some services (like Facebook), you can also choose whether or not to publish your activity on to that service.</span></p>
+<p style="text-align: justify; padding-left: 30px;"><span style="font-size: 10pt;"><strong>b.</strong> Link or unlink your account from an account on another service (e.g., Facebook or Twitter). For some middleware (like Facebook), you can also choose whether or not to publish your activity on to that service.</span></p>
 <p style="text-align: justify; padding-left: 30px;">&nbsp;</p>
 <p style="text-align: justify; padding-left: 30px;"><span style="font-size: 10pt;"><strong>c.</strong> Delete your account at any time.</span></p>
 <p style="text-align: justify;"><span style="font-size: 10pt;"><strong>&nbsp;</strong></span></p>
@@ -149,7 +149,7 @@ $body = '<h3><span style="font-size: 14pt;"><strong>Privacy Policy</strong></spa
 <p>&nbsp;</p>
 <p style="text-align: justify; padding-left: 30px;"><span style="font-size: 10pt;">People use this website to find their inspirations, make them a reality, and inspire others in the process. When you post public updates, anyone can view them. You may also provide us with profile page information that anyone can view. The other limited instances where we may share your personal information include:</span></p>
 <p style="text-align: justify; padding-left: 30px;">&nbsp;</p>
-<p style="text-align: justify; padding-left: 30px;"><span style="font-size: 10pt;"><strong>a.</strong> When we have your consent. This includes sharing information with other services (like Facebook or Twitter) when you&rsquo;ve chosen to link to your account to those services or publish your activity to them. For example, you can choose to publish your posts to Facebook or Twitter.</span></p>
+<p style="text-align: justify; padding-left: 30px;"><span style="font-size: 10pt;"><strong>a.</strong> When we have your consent. This includes sharing information with other middleware (like Facebook or Twitter) when you&rsquo;ve chosen to link to your account to those middleware or publish your activity to them. For example, you can choose to publish your posts to Facebook or Twitter.</span></p>
 <p style="text-align: justify; padding-left: 30px;">&nbsp;</p>
 <p style="text-align: justify; padding-left: 30px;"><span style="font-size: 10pt;"><strong>b.</strong> If we believe that disclosure is reasonably necessary to comply with a law, regulation or legal request; to protect the safety, rights, or property of the public, any person; or to detect, prevent, or otherwise address fraud, security or technical issues.</span></p>
 <p style="text-align: justify; padding-left: 30px;">&nbsp;</p>

@@ -43,7 +43,7 @@
 				$longint=$output;		//here's the magic long integer to be sent to the Windows Live service
 				
 		//*******************CURL THE REQUEST ***************************************
-				$uri = "https://livecontacts.services.live.com/users/@C@".$output."/LiveContacts";
+				$uri = "https://livecontacts.middleware.live.com/users/@C@".$output."/LiveContacts";
 				$session = curl_init($uri);
 				
 				curl_setopt($session, CURLOPT_HEADER, true);

@@ -1786,7 +1786,7 @@ class Sitevideo_VideoController extends Seaocore_Controller_Action_Standard
 
   public function checkDailymotion($code)
   {
-    $path = "http://www.dailymotion.com/services/oembed?url=http://www.dailymotion.com/video/" . $code;
+    $path = "http://www.dailymotion.com/middleware/oembed?url=http://www.dailymotion.com/video/" . $code;
     $data = @file_get_contents($path);
     return ((is_string($data) &&
       (is_object(json_decode($data)) ||
@@ -1899,7 +1899,7 @@ class Sitevideo_VideoController extends Seaocore_Controller_Action_Standard
         return $information;
       //dailymotion
       case "dailymotion":
-        $path = "http://www.dailymotion.com/services/oembed?url=http://www.dailymotion.com/video/" . $code;
+        $path = "http://www.dailymotion.com/middleware/oembed?url=http://www.dailymotion.com/video/" . $code;
 
         $data = @file_get_contents($path);
         $information = array();

@@ -11,8 +11,8 @@
  */
 ?>
 
-<?php foreach( $this->notifications as $notification ): ?>
-  <li<?php if( !$notification->read ): ?> class="notifications_unread"<?php endif; ?> value="<?php echo $notification->getIdentity();?>">
+<?php foreach ($this->notifications as $notification): ?>
+  <li<?php if (!$notification->read): ?> class="prg-notification--item notifications_unread"<?php endif; ?> value="<?php echo $notification->getIdentity(); ?>">
     <span class="notification_item_general notification_type_<?php echo $notification->type ?>">
       <?php echo $notification->__toString() ?>
     </span>

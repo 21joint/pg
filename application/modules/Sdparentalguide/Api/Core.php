@@ -312,9 +312,9 @@ class Sdparentalguide_Api_Core extends Core_Api_Abstract
     );
 
     // Check IF default service "Local Storage" or not.
-    $getDefaultStorageId = Engine_Api::_()->getDbtable('services', 'storage')
+    $getDefaultStorageId = Engine_Api::_()->getDbtable('middleware', 'storage')
       ->getDefaultServiceIdentity();
-    $getDefaultStorageType = Engine_Api::_()->getDbtable('services', 'storage')
+    $getDefaultStorageType = Engine_Api::_()->getDbtable('middleware', 'storage')
       ->getService($getDefaultStorageId)->getType();
     $host = '';
     if ($getDefaultStorageType == 'local') {

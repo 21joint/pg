@@ -97,7 +97,7 @@ class Storage_AdminManageController extends Core_Controller_Action_Admin
         // Silence
       }
       if( empty($serviceTypes[$file->service_id]) ) {
-        $serviceInfo = Engine_Api::_()->getDbtable('services', 'storage')
+        $serviceInfo = Engine_Api::_()->getDbtable('middleware', 'storage')
           ->select()
           ->where('service_id = ?', $file->service_id)
           ->query()

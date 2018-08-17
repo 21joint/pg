@@ -128,7 +128,7 @@ class Zend_Service_WindowsAzure_Storage
 	protected $_retryPolicy = null;
 	
 	/**
-	 * Zend_Http_Client channel used for communication with REST services
+	 * Zend_Http_Client channel used for communication with REST middleware
 	 * 
 	 * @var Zend_Http_Client
 	 */

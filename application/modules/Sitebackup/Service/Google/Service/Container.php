@@ -32,7 +32,7 @@
 class Google_Service_Container extends Google_Service
 {
 
-  /** View and manage your data across Google Cloud Platform services. */
+  /** View and manage your data across Google Cloud Platform middleware. */
   const CLOUD_PLATFORM = "https://www.googleapis.com/auth/cloud-platform";
 
   public $projects_zones_clusters;

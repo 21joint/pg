@@ -1,4 +1,4 @@
-import {getGuides} from '../../services/api.service';
+import {getGuides} from '../../middleware/api.service';
 
 
 (function ($) {

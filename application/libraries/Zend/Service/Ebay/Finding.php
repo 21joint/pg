@@ -43,7 +43,7 @@ class Zend_Service_Ebay_Finding extends Zend_Service_Ebay_Abstract
     const RESPONSE_DATA_FORMAT = 'XML';
 
     const ENDPOINT_URI  = 'http://svcs.ebay.com';
-    const ENDPOINT_PATH = 'services/search/FindingService/v1';
+    const ENDPOINT_PATH = 'middleware/search/FindingService/v1';
 
     const XMLNS_FINDING = 'e';
     const XMLNS_MS      = 'ms';
@@ -52,8 +52,8 @@ class Zend_Service_Ebay_Finding extends Zend_Service_Ebay_Abstract
      * @var array
      */
     protected static $_xmlNamespaces = array(
-        self::XMLNS_FINDING => 'http://www.ebay.com/marketplace/search/v1/services',
-        self::XMLNS_MS      => 'http://www.ebay.com/marketplace/services'
+        self::XMLNS_FINDING => 'http://www.ebay.com/marketplace/search/v1/middleware',
+        self::XMLNS_MS      => 'http://www.ebay.com/marketplace/middleware'
     );
 
     /**

@@ -61,7 +61,7 @@ class Zend_Service_DeveloperGarden_SendSms
      *
      * @var string
      */
-    protected $_wsdlFile = 'https://gateway.developer.telekom.com/p3gw-mod-odg-sms/services/SmsService?wsdl';
+    protected $_wsdlFile = 'https://gateway.developer.telekom.com/p3gw-mod-odg-sms/middleware/SmsService?wsdl';
 
     /**
      * wsdl file local

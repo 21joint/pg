@@ -8089,7 +8089,7 @@ sm4.activity.composer = {
 
       this.elements.stchekinerrorlocatoin = $('<div />', {
         'class': 'tip',
-        'html': sm4.core.language.translate('There was an error detecting your current location.<br />Please make sure location services are enabled in your browser,and this site has permission to use them. You can still search for a place, but the search will not be as accurate.'),
+        'html': sm4.core.language.translate('There was an error detecting your current location.<br />Please make sure location middleware are enabled in your browser,and this site has permission to use them. You can still search for a place, but the search will not be as accurate.'),
         'id': 'place-errorlocation',
         'css': {
           'display': 'none'

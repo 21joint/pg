@@ -67,7 +67,7 @@ class Sitepageform_Widget_SitepageViewformController extends Seaocore_Content_Wi
             'medi' => 'Medical / Dental / Veterinary / Fitness',
             'nonp' => 'Nonprofit / Volunteer / Activist',
             'poli' => 'Political / Govt / Civil Service / Military',
-            'retl' => 'Retail / Food services',
+            'retl' => 'Retail / Food middleware',
             'retr' => 'Retired',
             'sale' => 'Sales / Marketing',
             'self' => 'Self-Employed / Entrepreneur',

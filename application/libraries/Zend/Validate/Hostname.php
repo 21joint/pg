@@ -901,7 +901,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
         'security',
         'seek',
         'sener',
-        'services',
+        'middleware',
         'seven',
         'sew',
         'sex',

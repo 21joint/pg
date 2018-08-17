@@ -61,10 +61,10 @@ class Google_Client
   // Scopes requested by the client
   protected $requestedScopes = array();
 
-  // definitions of services that are discovered.
+  // definitions of middleware that are discovered.
   protected $services = array();
 
-  // Used to track authenticated state, can't discover services after doing authenticate()
+  // Used to track authenticated state, can't discover middleware after doing authenticate()
   private $authenticated = false;
 
   /**

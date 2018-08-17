@@ -11,7 +11,7 @@ ALTER TABLE `engine4_storage_files`
   DROP COLUMN `storage_type` ;
 
 
-/* storage services */
+/* storage middleware */
 DROP TABLE IF EXISTS `engine4_storage_services`;
 CREATE TABLE IF NOT EXISTS `engine4_storage_services` (
   `service_id` int(10) unsigned NOT NULL auto_increment,

@@ -93,7 +93,7 @@ class Zend_Service_SqlAzure_Management_Client
 	protected $_certificatePassphrase = '';
 	
 	/**
-	 * Zend_Http_Client channel used for communication with REST services
+	 * Zend_Http_Client channel used for communication with REST middleware
 	 * 
 	 * @var Zend_Http_Client
 	 */
@@ -594,7 +594,7 @@ class Zend_Service_SqlAzure_Management_Client
 	}
 	
 	/**
-	 * Creates a firewall rule for Microsoft Services. This is required if access to SQL Azure is required from other services like Windows Azure.
+	 * Creates a firewall rule for Microsoft Services. This is required if access to SQL Azure is required from other middleware like Windows Azure.
 	 * 
 	 * @param string $serverName Server name.
 	 * @param boolean $allowAccess Allow access from other Microsoft Services?

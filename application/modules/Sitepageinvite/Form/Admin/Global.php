@@ -84,8 +84,8 @@ class Sitepageinvite_Form_Admin_Global extends Engine_Form {
       $webmail_values = unserialize($webmail_values);
     }
     $this->addElement('MultiCheckbox', 'pageinvite_show_webmail', array(
-        'label' => 'Web Account services',
-        'description' => "Select the web account services that you want to be available to users of your site for inviting their friends.",
+        'label' => 'Web Account middleware',
+        'description' => "Select the web account middleware that you want to be available to users of your site for inviting their friends.",
         'multiOptions' => array(
             'gmail' => 'Gmail',
             'yahoo' => 'Yahoo',

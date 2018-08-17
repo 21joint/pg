@@ -954,7 +954,7 @@ class Sitebackup_AdminBackupsettingsController extends Core_Controller_Action_Ad
         }
       }
       if( $destination_id != 0 ) {
-        //Get the configuration data for services
+        //Get the configuration data for middleware
         $config = Engine_Api::_()->getDbtable('destinations', 'sitebackup')->getConfigData($destination_id);
         $tableObject = Engine_Api::_()->getDbTable('backups', 'sitebackup');
         if( $fetch['destination_mode'] == 1 ) {

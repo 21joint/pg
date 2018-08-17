@@ -35,7 +35,7 @@
 abstract class Zend_Service_Abstract
 {
     /**
-     * HTTP Client used to query all web services
+     * HTTP Client used to query all web middleware
      *
      * @var Zend_Http_Client
      */

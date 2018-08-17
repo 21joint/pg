@@ -24,11 +24,11 @@ class Storage_Service_RoundRobin extends Storage_Service_Abstract
   
   public function  __construct(array $config = array())
   {
-    // Get services
-    if( !empty($config['services']) ) {
-      $this->_services = $config['services'];
+    // Get middleware
+    if( !empty($config['middleware']) ) {
+      $this->_services = $config['middleware'];
     } else {
-      $serviceTable = Engine_Api::_()->getDbtable('services', 'storage');
+      $serviceTable = Engine_Api::_()->getDbtable('middleware', 'storage');
       $this->_services = $serviceTable->select()
         ->from($serviceTable, 'service_id')
         ->where('enabled = ?', true)
@@ -37,9 +37,9 @@ class Storage_Service_RoundRobin extends Storage_Service_Abstract
     }
     // Do not allow self
     $this->_services = array_diff($this->_services, (array) $config['service_id']);
-    // Whoops, no services
+    // Whoops, no middleware
     if( empty($this->_services) ) {
-      throw new Storage_Service_Exception('No services available.');
+      throw new Storage_Service_Exception('No middleware available.');
     }
     
     parent::__construct($config);
@@ -66,7 +66,7 @@ class Storage_Service_RoundRobin extends Storage_Service_Abstract
     list($service_id, $path) = explode('-|-', $path, 2);
 
     // Get the other serice
-    $serviceTable = Engine_Api::_()->getDbtable('services', 'storage');
+    $serviceTable = Engine_Api::_()->getDbtable('middleware', 'storage');
     $otherService = $serviceTable->getService($service_id);
 
     // Blegh
@@ -94,7 +94,7 @@ class Storage_Service_RoundRobin extends Storage_Service_Abstract
     $service_id = $this->_services[$index];
 
     // Get the other serice
-    $serviceTable = Engine_Api::_()->getDbtable('services', 'storage');
+    $serviceTable = Engine_Api::_()->getDbtable('middleware', 'storage');
     $otherService = $serviceTable->getService($service_id);
 
     $path = $otherService->store($model, $file);
@@ -117,7 +117,7 @@ class Storage_Service_RoundRobin extends Storage_Service_Abstract
     list($service_id, $path) = explode('-|-', $path, 2);
 
     // Get the other serice
-    $serviceTable = Engine_Api::_()->getDbtable('services', 'storage');
+    $serviceTable = Engine_Api::_()->getDbtable('middleware', 'storage');
     $otherService = $serviceTable->getService($service_id);
 
     // Blegh
@@ -144,7 +144,7 @@ class Storage_Service_RoundRobin extends Storage_Service_Abstract
     $service_id = $this->_services[$index];
 
     // Get the other serice
-    $serviceTable = Engine_Api::_()->getDbtable('services', 'storage');
+    $serviceTable = Engine_Api::_()->getDbtable('middleware', 'storage');
     $otherService = $serviceTable->getService($service_id);
 
     $path = $otherService->write($model, $data);
@@ -167,7 +167,7 @@ class Storage_Service_RoundRobin extends Storage_Service_Abstract
       list($service_id, $path) = explode('-|-', $path, 2);
 
       // Get the other serice
-      $serviceTable = Engine_Api::_()->getDbtable('services', 'storage');
+      $serviceTable = Engine_Api::_()->getDbtable('middleware', 'storage');
       $otherService = $serviceTable->getService($service_id);
 
       // Blegh
@@ -189,7 +189,7 @@ class Storage_Service_RoundRobin extends Storage_Service_Abstract
     list($service_id, $path) = explode('-|-', $path, 2);
 
     // Get the other serice
-    $serviceTable = Engine_Api::_()->getDbtable('services', 'storage');
+    $serviceTable = Engine_Api::_()->getDbtable('middleware', 'storage');
     $otherService = $serviceTable->getService($service_id);
 
     // Blegh

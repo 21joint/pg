@@ -1,148 +1,92 @@
 <?php $subject = $this->subject; ?>
-<div class="dropdown-menu extfox-widgets" id="extfox-widgets">
-  <div class="row">
-    <div id="box-hover-member"
-         class="box-hover-member bg-white position-absolute">
-      <div class="box-holder">
 
-        <div class="header d-flex mx-3 mt-3 p-relative pl-2 pt-2">
-
-          <div class="close position-absolute">
-            <a href="javascript:void(0)">
-              <svg width="14px" aria-hidden="true" data-prefix="fal"
-                   data-icon="times" role="img"
-                   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"
+<div class="dropdown-menu" aria-labelledby="prgProfilePopup">
+  <div class="profile-popup bg-white text-asphalt">
+    <div class="profile-popup--header">
+      <div class="container-fluid">
+        <div class="row align-items-center">
+          <div class="col-auto py-2 py-md-3">
+            <div class="profile-popup--author position-relative">
+              <span style="width:50px;height:50px"
+                    data-loader="asyncLoader"
+                    class="d-block rounded-circle lazy"
+                    data-lazy-image="<?= $subject->getPhotoUrl(); ?>"></span><b class="bagde badge-primary text-white d-flex justify-content-center align-items-center rounded-circle ff-open--sans position-absolute profile-box--level"><?= $subject->gg_contribution_level; ?></b>
+            </div>
+          </div>
+          <div class="col py-2 py-md-3 pl-0">
+            <div class="row">
+              <div class="col-12">
+                <a href="<?= $subject->getHref() ?>">
+                  <h6 class="avatar-author--displayName mb-1"><?= $subject->getTitle() ?></h6>
+                </a>
+              </div>
+            </div>
+            <div class="row align-items-center">
+              <div class="col-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px">
+                  <use href="#prgBlueStarOnly"></use>
+                </svg>
+                <strong class="avatar-contribution align-middle smaller ml-1 text-primary"><?= $subject->gg_contribution; ?></strong>
+              </div>
+              <div class="col-auto pl-0">Followers
+                <span class="ml-1 text-primary"><?= $subject->gg_followers_count; ?></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-auto align-self-start p-0">
+            <a role="button" class="profile-popup--close">
+              <svg width="14px"
+                   xmlns="http://www.w3.org/2000/svg"
+                   viewBox="0 0 320 512"
                    class="svg-inline--fa fa-times fa-w-10 fa-2x">
                 <path fill="currentColor"
-                      d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"
-                      class=""></path>
+                      d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z"></path>
               </svg>
             </a>
           </div>
-
-          <div class="photo-image">
-            <a href="<?= $subject->getHref(); ?>">
-              <img src="<?= $subject->getPhotoUrl(); ?>"/>
-            </a>
-          </div>
-          <div class="right-side pl-3">
-            <div class="text-dark font-weight-bold pb-1">
-              <?= $this->htmlLink($subject->getHref(), $subject->getTitle()); ?>
-            </div>
-            <div class="header-star d-flex align-items-center">
-              <div class="holder-rate d-flex align-items-center">
-                <div class="d-flex align-items-center">
-                  <svg height="20px" style="margin-top: 3px"
-                       xmlns="http://www.w3.org/2000/svg"
-                       viewBox="0 0 68.137 80">
-                    <defs>
-                      <style>.b_box_hover {
-                          fill: #52b1b8;
-                        }
-
-                        .c_box_hover {
-                          fill: #5cc7cd;
-                        }</style>
-                    </defs>
-                    <g transform="translate(13961.751 6200.271)">
-                      <g transform="translate(-13961.75 -6200.271)">
-                        <path class="b_box_hover"
-                              d="M108.85,27,96.662,43.071,86.2,29.121l20.283-4.571C109.459,23.8,110.323,24.992,108.85,27Z"
-                              transform="translate(-43.623 -13.136)"/>
-                        <path class="b_box_hover"
-                              d="M30.556,40.68,3.864,47.338c-1.7.386-2.077,2.189-.508,2.9l26.032,7.618Z"
-                              transform="translate(-2.361 -21.186)"/>
-                        <path class="c_box_hover"
-                              d="M51.227,64.559l3.438-60.7c0-1.717,1.772-2.118,2.834-.731l36.336,45.3c1.346,1.59.975,4.4-2.773,2.93L69.148,42.97,55.462,65.625C54.076,68.017,51.11,67.042,51.227,64.559Z"
-                              transform="translate(-26.41 -2.293)"/>
-                      </g>
-                    </g>
-                  </svg>
+        </div>
+      </div>
+    </div>
+    <div class="profile-popup--body py-2 py-md-3">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <ul class="prg-badges d-flex justify-content-center align-items-center p-0 m-0">
+              <li class="position-relative d-flex flex-column justify-content-center align-items-center mx-2 mx-md-3">
+                <div class="d-flex align-items-center justify-content-center prg-badge prg-badge--bronze mb-2">
+                  <span class="number_badges position-absolute text-white font-weight-bold"> <?= $subject->gg_bronze_count; ?></span>
                 </div>
-                <span
-                  class="text-primary pl-2"><?= $subject->gg_contribution; ?> </span>
-              </div>
-            </div>
+                <div class="prg-badge--title text-asphalt"><?= $this->translate('Bronze') ?></div>
+              </li>
+              <li class="position-relative d-flex flex-column justify-content-center align-items-center mx-2 mx-md-3">
+                <div class="d-flex align-items-center justify-content-center prg-badge prg-badge--silver mb-2">
+                  <span class="number_badges position-absolute text-white font-weight-bold"> <?= $subject->gg_silver_count; ?></span>
+                </div>
+                <div class="prg-badge--title text-asphalt"><?= $this->translate('Silver') ?></div>
+              </li>
+              <li class="position-relative d-flex flex-column justify-content-center align-items-center mx-2 mx-md-3">
+                <div class="d-flex align-items-center justify-content-center prg-badge prg-badge--gold mb-2">
+                  <span class="number_badges position-absolute text-white font-weight-bold"> <?= $subject->gg_gold_count; ?></span>
+                </div>
+                <div class="prg-badge--title text-asphalt"><?= $this->translate('Gold') ?></div>
+              </li>
+              <li class="position-relative d-flex flex-column justify-content-center align-items-center mx-2 mx-md-3">
+                <div class="d-flex align-items-center justify-content-center prg-badge prg-badge--platinum mb-2">
+                  <span class="number_badges position-absolute text-white font-weight-bold"> <?= $subject->gg_platinum_count; ?></span>
+                </div>
+                <div class="prg-badge--title text-asphalt"><?= $this->translate('Platinum') ?></div>
+              </li>
+            </ul>
           </div>
         </div>
-
-        <div class="badges-earned bg-white mb-2 widget">
-          <div class="holder p-2">
-            <div class="bottom row d-flex justify-content-center m-0">
-              <div class="col-sm bronze">
-                <div
-                  class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
-                  <?= $subject->gg_bronze_count; ?>
-                </div>
-                <span class="text-muted small">
-                                    <?= $this->translate('Bronze'); ?>
-                                </span>
-              </div>
-              <div class="col-sm silver">
-                <div
-                  class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
-                  <?= $subject->gg_silver_count; ?>
-                </div>
-                <span class="text-muted small">
-                                    <?= $this->translate('Silver'); ?>
-                                </span>
-              </div>
-              <div class="col-sm gold">
-                <div
-                  class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
-                  <?= $subject->gg_gold_count; ?>
-                </div>
-                <span class="text-muted small">
-                                    <?= $this->translate('Gold'); ?>
-                                </span>
-              </div>
-              <div class="col-sm platinium">
-                <div
-                  class="badge-holder d-flex align-items-center justify-content-center font-weight-bold text-white">
-                  <?= $subject->gg_platinum_count; ?>
-                </div>
-                <span class="text-muted small">
-                                    <?= $this->translate('Platinium'); ?>
-                                </span>
-              </div>
-            </div>
-          </div>
-        </div> <!-- end of badges-earned -->
-
-        <div
-          class="footer border-top border-gray d-flex justify-content-between align-items-center">
-
-          <div class="col-sm text-center border-right py-3">
-            <?php
-            echo $this->translate(
-              array("Review <span class='text-primary font-weight-bold'>%s</span>",
-                    "Reviews <span class='text-primary font-weight-bold'>%s</span>",
-                    $subject->gg_review_count),
-              $this->locale()->toNumber($subject->gg_review_count)
-            )
-            ?>
-            <?= $this->translate('Reviews'); ?>
-            <span class="text-primary font-weight-bold">
-                            <?= $subject->gg_review_count; ?>
-                        </span>
-          </div>
-
-          <div class="col-sm text-center py-3">
-            <?php
-            echo $this->translate(
-              array("Answer <span class='text-primary font-weight-bold'>%s</span>",
-                    "Answers <span class='text-primary font-weight-bold'>%s</span>",
-                    $subject->gg_answer_count),
-              $this->locale()->toNumber($subject->gg_answer_count)
-            )
-            ?>
-            <?= $this->translate('Answers'); ?>
-            <span class="text-primary font-weight-bold">
-                           <?= count($answer); ?>
-                        </span>
-          </div>
-        </div>
-
+      </div>
+    </div>
+    <div class="profile-popup--footer">
+      <div class="row no-gutters border-top text-asphalt">
+        <div class="col p-2 p-md-3 text-center">Reviews
+          <b class="text-primary ml-1"><?= $subject->gg_review_count; ?></b></div>
+        <div class="col p-2 p-md-3 text-center">Answers
+          <b class="text-primary ml-1"><?= $subject->gg_answer_count; ?></b></div>
       </div>
     </div>
   </div>

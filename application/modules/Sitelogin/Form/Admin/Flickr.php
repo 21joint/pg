@@ -21,7 +21,7 @@ class Sitelogin_Form_Admin_Flickr extends Engine_Form {
                 ->setMethod("POST");
         
 
-        $description = $this->getTranslator()->translate('You can now Login to SocialEngine based website using Flickr Apps. To do so, create an application through the <a href="https://www.flickr.com/services/developer/api/" target="_blank">Flickr Developers</a> page and put the needful credentials here.');
+        $description = $this->getTranslator()->translate('You can now Login to SocialEngine based website using Flickr Apps. To do so, create an application through the <a href="https://www.flickr.com/middleware/developer/api/" target="_blank">Flickr Developers</a> page and put the needful credentials here.');
         $this->setDescription($description);
 
         $this->loadDefaultDecorators();

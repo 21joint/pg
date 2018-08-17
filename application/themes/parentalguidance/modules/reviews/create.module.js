@@ -1,4 +1,4 @@
-import {getCategories} from '../../services/api.service';
+import {getCategories} from '../../middleware/api.service';
 import {renderRateInput} from '../../components/rating/rating';
 import 'froala-editor';
 

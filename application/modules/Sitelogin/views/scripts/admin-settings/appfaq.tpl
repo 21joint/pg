@@ -157,7 +157,7 @@
             <a href="javascript:void(0);" onClick="faq_show('faq_8');"><?php echo $this->translate("How do I generate my Flickr API Key?"); ?></a>
             <div class='faq' style='display: none;' id='faq_8'>
                 <?php echo $this->translate("Ans:Follow the below steps:<br />
-                - Go to <a href='https://www.flickr.com/services/developer/api/' target='_blank'>https://www.flickr.com/services/developer/api/</a> and login with your account details.<br />
+                - Go to <a href='https://www.flickr.com/middleware/developer/api/' target='_blank'>https://www.flickr.com/middleware/developer/api/</a> and login with your account details.<br />
                 - Click on ‘API’ in the main menu and then ‘Request an api key’.<br />
                 - Read the instructions and again click on ‘Request an api key’.<br />
                 - Choose whether you are going to create a commercial or non-commercial app.<br />

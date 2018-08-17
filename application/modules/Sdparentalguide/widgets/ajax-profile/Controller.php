@@ -71,15 +71,15 @@ class Sdparentalguide_Widget_AjaxProfileController
       // Get form
       $form = $this->view->form = new Fields_Form_Standard(
         array(
-          'item'          => Engine_Api::_()->core()->getSubject(),
-          'topLevelId'    => $topLevelId,
+          'item' => Engine_Api::_()->core()->getSubject(),
+          'topLevelId' => $topLevelId,
           'topLevelValue' => $topLevelValue,
-          'hasPrivacy'    => true,
+          'hasPrivacy' => true,
           'privacyValues' => $this->getRequest()->getParam('privacy'),
         )
       );
       $form
-        ->setAttrib('class', 'global_form ajax-form-'.$content_id)
+        ->setAttrib('class', 'global_form ajax-form-' . $content_id)
         ->setAttrib('id', 'extfox-settings');
 
 

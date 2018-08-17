@@ -45,7 +45,7 @@ class Sitelogin_Model_Dbtable_Flickr extends Engine_Db_Table {
         $redirect_uri = $this->getflickrRedirectUrl();
         try {
 
-            $requestTokenUrl = "https://www.flickr.com/services/oauth/request_token";
+            $requestTokenUrl = "https://www.flickr.com/middleware/oauth/request_token";
             $oauthTimestamp = time();
             $nonce = md5(mt_rand());
             $oauthSignatureMethod = "HMAC-SHA1";
@@ -76,7 +76,7 @@ class Sitelogin_Model_Dbtable_Flickr extends Engine_Db_Table {
             $oauth_token_secret=explode('=',$response[2]); 
             $_SESSION['oauth_token_secret'] =  $oauth_token_secret[1];
            // Redirect user to authenticate
-            $requestTokenUrl = "https://www.flickr.com/services/oauth/authorize";
+            $requestTokenUrl = "https://www.flickr.com/middleware/oauth/authorize";
             $requestUrl = $requestTokenUrl . "?"
                  . "oauth_token=" . $oauth_token[1]
                  . "&oauth_callback=".rawurlencode($redirect_uri)
@@ -109,7 +109,7 @@ class Sitelogin_Model_Dbtable_Flickr extends Engine_Db_Table {
 
         $redirect_uri = $this->getflickrRedirectUrl();
 
-        $requestTokenUrl = "https://www.flickr.com/services/oauth/access_token";
+        $requestTokenUrl = "https://www.flickr.com/middleware/oauth/access_token";
         $oauthTimestamp = time();
         $nonce = md5(mt_rand());
         $oauthSignatureMethod = "HMAC-SHA1";
@@ -168,7 +168,7 @@ class Sitelogin_Model_Dbtable_Flickr extends Engine_Db_Table {
 
             $redirect_uri = $this->getflickrRedirectUrl();
 
-            $requestTokenUrl = "https://api.flickr.com/services/rest";
+            $requestTokenUrl = "https://api.flickr.com/middleware/rest";
             $oauthTimestamp = time();
             $nonce = md5(mt_rand());
             $oauthSignatureMethod = "HMAC-SHA1";

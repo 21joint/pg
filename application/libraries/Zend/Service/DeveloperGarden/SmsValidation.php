@@ -86,7 +86,7 @@ class Zend_Service_DeveloperGarden_SmsValidation extends Zend_Service_DeveloperG
      *
      * @var string
      */
-    protected $_wsdlFile = 'https://gateway.developer.telekom.com/p3gw-mod-odg-sms-validation/services/SmsValidationUserService?wsdl';
+    protected $_wsdlFile = 'https://gateway.developer.telekom.com/p3gw-mod-odg-sms-validation/middleware/SmsValidationUserService?wsdl';
 
     /**
      * wsdl file local

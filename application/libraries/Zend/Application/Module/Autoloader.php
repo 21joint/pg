@@ -78,7 +78,7 @@ class Zend_Application_Module_Autoloader extends Zend_Loader_Autoloader_Resource
                 ),
                 'service'    => array(
                     'namespace' => 'Service',
-                    'path'      => 'services',
+                    'path'      => 'middleware',
                 ),
                 'viewhelper' => array(
                     'namespace' => 'View_Helper',

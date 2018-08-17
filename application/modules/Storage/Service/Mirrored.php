@@ -26,11 +26,11 @@ class Storage_Service_Mirrored extends Storage_Service_Abstract
 
   public function  __construct(array $config = array())
   {
-    // Get services
-    if( !empty($config['services']) ) {
-      $this->_services = $config['services'];
+    // Get middleware
+    if( !empty($config['middleware']) ) {
+      $this->_services = $config['middleware'];
     } else {
-      $serviceTable = Engine_Api::_()->getDbtable('services', 'storage');
+      $serviceTable = Engine_Api::_()->getDbtable('middleware', 'storage');
       $this->_services = $serviceTable->select()
         ->from($serviceTable, 'service_id')
         ->where('enabled = ?', true)
@@ -39,9 +39,9 @@ class Storage_Service_Mirrored extends Storage_Service_Abstract
     }
     // Do not allow self
     $this->_services = array_diff($this->_services, (array) $config['service_id']);
-    // Whoops, no services
+    // Whoops, no middleware
     if( empty($this->_services) ) {
-      throw new Storage_Service_Exception('No services available.');
+      throw new Storage_Service_Exception('No middleware available.');
     }
 
     parent::__construct($config);
@@ -68,7 +68,7 @@ class Storage_Service_Mirrored extends Storage_Service_Abstract
     $mirrors = $this->_getFileMirrors($model);
     $index = array_rand($mirrors);
     $service_id = $mirrors[$index];
-    $serviceTable = Engine_Api::_()->getDbtable('services', 'storage');
+    $serviceTable = Engine_Api::_()->getDbtable('middleware', 'storage');
     $otherService = $serviceTable->getService($service_id);
 
     return $otherService->map($model);
@@ -87,7 +87,7 @@ class Storage_Service_Mirrored extends Storage_Service_Abstract
       throw new Storage_Service_Exception('Unable to get storage service.');
     }
 
-    $serviceTable = Engine_Api::_()->getDbtable('services', 'storage');
+    $serviceTable = Engine_Api::_()->getDbtable('middleware', 'storage');
     $mirrorsTable = Engine_Api::_()->getDbtable('mirrors', 'storage');
     $path = null;
     
@@ -139,7 +139,7 @@ class Storage_Service_Mirrored extends Storage_Service_Abstract
     $mirrors = $this->_getFileMirrors($model);
     $index = array_rand($mirrors);
     $service_id = $mirrors[$index];
-    $serviceTable = Engine_Api::_()->getDbtable('services', 'storage');
+    $serviceTable = Engine_Api::_()->getDbtable('middleware', 'storage');
     $otherService = $serviceTable->getService($service_id);
 
     return $otherService->read($model);
@@ -157,7 +157,7 @@ class Storage_Service_Mirrored extends Storage_Service_Abstract
       throw new Storage_Service_Exception('Unable to get storage service.');
     }
 
-    $serviceTable = Engine_Api::_()->getDbtable('services', 'storage');
+    $serviceTable = Engine_Api::_()->getDbtable('middleware', 'storage');
     $mirrorsTable = Engine_Api::_()->getDbtable('mirrors', 'storage');
     $path = null;
 
@@ -205,7 +205,7 @@ class Storage_Service_Mirrored extends Storage_Service_Abstract
   public function remove(Storage_Model_File $model)
   {
     if( !empty($model->storage_path) ) {
-      $serviceTable = Engine_Api::_()->getDbtable('services', 'storage');
+      $serviceTable = Engine_Api::_()->getDbtable('middleware', 'storage');
       $mirrors = $this->_getFileMirrors($model);
       foreach( $mirrors as $mirrorServiceId ) {
         $otherService = $serviceTable->getService($mirrorServiceId);
@@ -225,7 +225,7 @@ class Storage_Service_Mirrored extends Storage_Service_Abstract
     $mirrors = $this->_getFileMirrors($model);
     $index = array_rand($mirrors);
     $service_id = $mirrors[$index];
-    $serviceTable = Engine_Api::_()->getDbtable('services', 'storage');
+    $serviceTable = Engine_Api::_()->getDbtable('middleware', 'storage');
     $otherService = $serviceTable->getService($service_id);
 
     return $otherService->temporary($model);
@@ -233,7 +233,7 @@ class Storage_Service_Mirrored extends Storage_Service_Abstract
 
   public function removeFile($path)
   {
-    $serviceTable = Engine_Api::_()->getDbtable('services', 'storage');
+    $serviceTable = Engine_Api::_()->getDbtable('middleware', 'storage');
     $mirrors = $this->_getFileMirrors($model);
     foreach( $mirrors as $mirrorServiceId ) {
       $otherService = $serviceTable->getService($mirrorServiceId);

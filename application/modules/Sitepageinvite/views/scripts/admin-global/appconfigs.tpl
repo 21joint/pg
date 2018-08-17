@@ -46,7 +46,7 @@
 
                 <div class="bold"><?php echo $this->translate("Security &amp; Privacy:-"); ?></div>
                 <?php echo $this->translate("a) In the 'Application Domain' field, write your site's domain (example : http://www.mysite.com)."); ?><br />
-                <?php echo $this->translate("b) Choose the 'Access Scopes' field to : 'This app requires access to private user data.'. Selecting this option will give you a list of Yahoo services. Among them, choose 'Yahoo! Contacts' in 'Read' mode."); ?><br />
+                <?php echo $this->translate("b) Choose the 'Access Scopes' field to : 'This app requires access to private user data.'. Selecting this option will give you a list of Yahoo middleware. Among them, choose 'Yahoo! Contacts' in 'Read' mode."); ?><br />
                 <?php echo $this->translate("c) Check on the 'Terms of Use' checkbox."); ?><br />
                 <?php echo $this->translate("d) Now click on the 'Get API Key' button. After clicking on this button you will be redirected to a page where it would ask you to verify your domain. So, verify your domain."); ?><br />
 

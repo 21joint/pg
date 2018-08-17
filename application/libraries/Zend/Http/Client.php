@@ -828,7 +828,7 @@ class Zend_Http_Client
      * becomes
      * foo=a&foo=b
      *
-     * This is usefull for some services
+     * This is usefull for some middleware
      *
      * @param boolean $status
      * @return Zend_Http_Client
@@ -1046,7 +1046,7 @@ class Zend_Http_Client
                     $query = str_replace('+', '%20', $query);
                 }
 
-                // @see ZF-11671 to unmask for some services to foo=val1&foo=val2
+                // @see ZF-11671 to unmask for some middleware to foo=val1&foo=val2
                 if ($this->getUnmaskStatus()) {
                     if ($this->_queryBracketsEscaped) {
                         $query = preg_replace('/%5B(?:[0-9]|[1-9][0-9]+)%5D=/', '=', $query);

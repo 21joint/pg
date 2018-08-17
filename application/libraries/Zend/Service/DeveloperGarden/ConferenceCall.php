@@ -331,7 +331,7 @@ class Zend_Service_DeveloperGarden_ConferenceCall
      *
      * @var string
      */
-    protected $_wsdlFile = 'https://gateway.developer.telekom.com/p3gw-mod-odg-ccs/services/ccsPort?wsdl';
+    protected $_wsdlFile = 'https://gateway.developer.telekom.com/p3gw-mod-odg-ccs/middleware/ccsPort?wsdl';
 
     /**
      * the local WSDL file

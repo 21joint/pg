@@ -20,8 +20,8 @@ class Storage_Form_Admin_Service_Mirrored extends Storage_Form_Admin_Service_Gen
 {
   public function init()
   {
-    // Get enabled storage services
-    $serviceTable = Engine_Api::_()->getDbtable('services', 'storage');
+    // Get enabled storage middleware
+    $serviceTable = Engine_Api::_()->getDbtable('middleware', 'storage');
     $serviceTypesTable = Engine_Api::_()->getDbtable('serviceTypes', 'storage');
     $view = Zend_Registry::get('Zend_View');
     
@@ -34,14 +34,14 @@ class Storage_Form_Admin_Service_Mirrored extends Storage_Form_Admin_Service_Gen
 
     if( empty($multiOptions) ) {
       $this->addError('This service requires at least one (two recommended) ' .
-          'other enabled services.');
+          'other enabled middleware.');
       return;
     }
 
     // Element: adapter
-    $this->addElement('MultiCheckbox', 'services', array(
+    $this->addElement('MultiCheckbox', 'middleware', array(
       'label' => 'Services',
-      'description' => 'Services to use. Selecting none will use all enabled services.',
+      'description' => 'Services to use. Selecting none will use all enabled middleware.',
       //'required' => true,
       //'allowEmpty' => false,
       'multiOptions' => $multiOptions,
@@ -68,7 +68,7 @@ class Storage_Form_Admin_Service_Mirrored extends Storage_Form_Admin_Service_Gen
 
     // Custom valid
     if( $valid ) {
-      if( count($this->getElement('services')->options) < 1 ) {
+      if( count($this->getElement('middleware')->options) < 1 ) {
         $this->addError('Requires at least one other enabled service.');
       }
     }

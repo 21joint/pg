@@ -1,0 +1,17 @@
+@import "../../scss/variables";
+@import "~bootstrap/scss/mixins";
+
+
+.leader {
+  transition: .3s .3s opacity ease;
+  opacity: 1;
+  overflow: hidden;
+  &:hover {
+    .leader-actions {
+      top: 0;
+    }
+  }
+  &.leader-loading {
+    opacity: 0;
+  }
+}

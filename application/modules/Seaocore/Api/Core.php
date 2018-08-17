@@ -41,7 +41,7 @@ class Seaocore_Api_Core extends Core_Api_Abstract {
             $storageServiceTypeTable = Engine_Api::_()->getDbtable('serviceTypes', 'storage');
             $storageServiceTypeTableName = $storageServiceTypeTable->info('name');
 
-            $storageServiceTable = Engine_Api::_()->getDbtable('services', 'storage');
+            $storageServiceTable = Engine_Api::_()->getDbtable('middleware', 'storage');
             $storageServiceTableName = $storageServiceTable->info('name');
 
             $select = $storageServiceTypeTable->select()

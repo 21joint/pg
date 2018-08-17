@@ -814,7 +814,7 @@ class Siteandroidapp_AdminAppBuilderController extends Core_Controller_Action_Ad
             $form->populate($appBuilderParams);
         }
 
-        if (@file_exists(APPLICATION_PATH . DIRECTORY_SEPARATOR . $this->_getAPPBuilderBaseURL . DIRECTORY_SEPARATOR . $values['directoryName'] . '/' . 'google-services.json')) {
+        if (@file_exists(APPLICATION_PATH . DIRECTORY_SEPARATOR . $this->_getAPPBuilderBaseURL . DIRECTORY_SEPARATOR . $values['directoryName'] . '/' . 'google-middleware.json')) {
             $baseUrl = Zend_Controller_Front::getInstance()->getBaseUrl();
             $baseUrl = @trim($baseUrl, "/");
             $getHost = _ENGINE_SSL ? 'https://' . $_SERVER['HTTP_HOST'] . DIRECTORY_SEPARATOR . $baseUrl : 'http://' . $_SERVER['HTTP_HOST'] . DIRECTORY_SEPARATOR . $baseUrl;
@@ -824,7 +824,7 @@ class Siteandroidapp_AdminAppBuilderController extends Core_Controller_Action_Ad
             $filePath = $getHost . DIRECTORY_SEPARATOR
                     . $this->_getAPPBuilderBaseURL . DIRECTORY_SEPARATOR
                     . $values['directoryName'] . DIRECTORY_SEPARATOR
-                    . 'google-services.json';
+                    . 'google-middleware.json';
             $description = "This file is required for Push Notifications, Google ads etc. To check uploaded file. Please <a href='" . $filePath . "' target='_blank'>click here</a>.";
             if (isset($form->firebase_google_services)) {
                 $form->firebase_google_services->setDescription($description);
@@ -972,15 +972,15 @@ class Siteandroidapp_AdminAppBuilderController extends Core_Controller_Action_Ad
             }
 
             if (isset($_FILES['firebase_google_services']["tmp_name"]) && !empty($_FILES['firebase_google_services']["tmp_name"])) {
-                $firebaseFileName = APPLICATION_PATH . DIRECTORY_SEPARATOR . $this->_getAPPBuilderBaseURL . DIRECTORY_SEPARATOR . 'google-services.json';
+                $firebaseFileName = APPLICATION_PATH . DIRECTORY_SEPARATOR . $this->_getAPPBuilderBaseURL . DIRECTORY_SEPARATOR . 'google-middleware.json';
                 $jsonFileType = @pathinfo($firebaseFileName, PATHINFO_EXTENSION);
                 if ($jsonFileType != "json") {
                     $errors[] = 'Google Services File : Sorry, only json files are allowed.';
                 }
-                $isFileUpload = @move_uploaded_file($_FILES['firebase_google_services']["tmp_name"], APPLICATION_PATH . DIRECTORY_SEPARATOR . $this->_getAPPBuilderBaseURL . DIRECTORY_SEPARATOR . 'google-services.json');
+                $isFileUpload = @move_uploaded_file($_FILES['firebase_google_services']["tmp_name"], APPLICATION_PATH . DIRECTORY_SEPARATOR . $this->_getAPPBuilderBaseURL . DIRECTORY_SEPARATOR . 'google-middleware.json');
                 @chmod($firebaseFileName, 0777);
             }
-            if (!@file_exists(APPLICATION_PATH . DIRECTORY_SEPARATOR . $this->_getAPPBuilderBaseURL . DIRECTORY_SEPARATOR . $values['directoryName'] . '/' . 'google-services.json')) {
+            if (!@file_exists(APPLICATION_PATH . DIRECTORY_SEPARATOR . $this->_getAPPBuilderBaseURL . DIRECTORY_SEPARATOR . $values['directoryName'] . '/' . 'google-middleware.json')) {
                 $formError[] = 'Google Services File - File  is required';
             }
             if (($package == 'pro') && empty($values['provide_google_play_account_details']) && empty($values['gmail_permission_done'])) {
@@ -1785,7 +1785,7 @@ class Siteandroidapp_AdminAppBuilderController extends Core_Controller_Action_Ad
                     if (!is_dir($temp_doc_file))
                         mkdir($temp_doc_file, 0777, true);
 
-                    $fileName = $temp_doc_file . '/' . 'google-services.json';
+                    $fileName = $temp_doc_file . '/' . 'google-middleware.json';
                     file_put_contents($fileName, $content);
                 }
             }

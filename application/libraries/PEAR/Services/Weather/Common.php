@@ -62,7 +62,7 @@ define("SERVICES_WEATHER_SUNFUNCS_SUNSET_ZENITH",     90.83);
 
 // {{{ class Services_Weather_Common
 /**
- * Parent class for weather-services. Defines common functions for unit
+ * Parent class for weather-middleware. Defines common functions for unit
  * conversions, checks for cache enabling and does other miscellaneous
  * things.
  *

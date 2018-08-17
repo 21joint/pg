@@ -145,7 +145,7 @@ class Zend_Service_Amazon_Ec2_CloudWatch extends Zend_Service_Amazon_Ec2_Abstrac
      * Aggregate data is generally available from the service within one minute from the end of the
      * aggregation period. Delays in data propagation might cause late or partially late data in
      * some cases. If your data is delayed, you should check the service’s Health Dashboard for
-     * any current operational issues with either Amazon CloudWatch or the services collecting
+     * any current operational issues with either Amazon CloudWatch or the middleware collecting
      * the data, such as EC2 or Elastic Load Balancing.
      *
      * @var array

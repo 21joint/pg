@@ -123,4 +123,24 @@ function getLeaders(opts, callback) {
   });
 }
 
-export {getReviews, getReview, getGuides, getCategories, getLeaders};
+// Get Member by id
+function getMember(opts, callback) {
+  const url = API_PROXY + '/member?' + (opts.memberID ? 'memberID=' + opts.memberID : '') + OAUTH;
+
+  jQuery.ajax({
+    method: 'GET',
+    dataType: 'json',
+    url: url,
+    success: function (res) {
+      callback(res);
+    },
+    error: function (error) {
+      console.error(error);
+    },
+    complete: function () {
+      $(opts.container).addClass('loaded');
+    }
+  });
+}
+
+export {getReviews, getReview, getGuides, getCategories, getLeaders, getMember};

@@ -46,21 +46,21 @@ class Zend_Service_Ebay_Finding_ShippingInfo extends Zend_Service_Ebay_Finding_A
      * The shipping method that was used for determining the cost of shipping.
      *
      * For example: flat rate, calculated, or free. The seller specifies the
-     * available shipping services when they list the item.
+     * available shipping middleware when they list the item.
      *
      * Applicable values:
      *
      *     Calculated
      *     The calculated shipping model: The posted cost of shipping is based
      *     on the buyer-selected shipping service, chosen by the buyer from the
-     *     different shipping services offered by the seller. The shipping costs
+     *     different shipping middleware offered by the seller. The shipping costs
      *     are calculated by eBay and the shipping carrier, based on the buyer's
      *     address. Any packaging and handling costs established by the seller
      *     are automatically rolled into the total.
      *
      *     CalculatedDomesticFlatInternational
      *     The seller specified one or more calculated domestic shipping
-     *     services and one or more flat international shipping services.
+     *     middleware and one or more flat international shipping middleware.
      *
      *     Flat
      *     The flat-rate shipping model: The seller establishes the cost of
@@ -68,8 +68,8 @@ class Zend_Service_Ebay_Finding_ShippingInfo extends Zend_Service_Ebay_Finding_A
      *     buyer-selected shipping service might charge the seller.
      *
      *     FlatDomesticCalculatedInternational
-     *     The seller specified one or more flat domestic shipping services and
-     *     one or more calculated international shipping services.
+     *     The seller specified one or more flat domestic shipping middleware and
+     *     one or more calculated international shipping middleware.
      *
      *     Free
      *     Free is used when the seller has declared that shipping is free for

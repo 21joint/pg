@@ -76,7 +76,7 @@ class Zend_Service_DeveloperGarden_IpLocation
      *
      * @var string
      */
-    protected $_wsdlFile = 'https://gateway.developer.telekom.com/p3gw-mod-odg-iplocation/services/IPLocation?wsdl';
+    protected $_wsdlFile = 'https://gateway.developer.telekom.com/p3gw-mod-odg-iplocation/middleware/IPLocation?wsdl';
 
     /**
      * wsdl file local
