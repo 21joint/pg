@@ -13,6 +13,9 @@
 }
 /* General Main and Wrapper styling end */
 /* Reviews Home Page Components -> start*/
+.reviews_search_component{
+  border-radius: 20px;
+}
 .reviews_component{
   background-color: #fff;
   border-radius: 20px;

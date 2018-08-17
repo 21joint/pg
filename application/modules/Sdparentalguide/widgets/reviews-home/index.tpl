@@ -9,6 +9,20 @@
 
 ?>
 
+<!-- Search Banner Component -->
+<div class="reviews_search_component bg-white d-flex flex-column justify-content-center aling-items-center">
+    <h1 class="text-center">Reviews</h1>
+    <div class="reviews_search_input d-flex justify-content-center">
+        <form action="<?php echo $this->baseUrl(); ?>/search" method="GET">
+            <input type="text" name="query" placeholder="Search" />
+            <button class="btn btn-lg btn-success text-white px-0">
+                    <i class="fa fa-search d-sm-none"></i>
+                    <span class="d-none d-sm-inline">Search now</span>
+            </button>
+        </form>
+    </div>
+</div>
+<!-- Featured Reviews Component -->
 <div class="reviews_component my-3">
     <div class="reviews_component_title border-bottom">
         <h3 class="font-weight-bold m-0"><?php echo $this->translate('Featured Reviews'); ?></h3>

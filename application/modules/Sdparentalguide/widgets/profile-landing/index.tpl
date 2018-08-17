@@ -167,7 +167,7 @@
                             </p>
                         </div>
                         <div class="holder text-right">
-                            <a href="javascript:void(0)" class="text-primary"> <?php echo $this->translate('view all'); ?> </a>
+                            <a class="text-primary" href="javascript:void(0)" onclick="showReview()"> <?php echo $this->translate('view all'); ?> </a>
                         </div>
                     </div>
 
@@ -282,6 +282,16 @@
         $$('.tabs_alt ').each(function(elements){
             elements.getElements('ul > li').each(function(el){
                 if(el.classList[1] === 'tab_layout_sdparentalguide_ajax_struggles'){
+                    el.getChildren()[0].click(); 
+                }
+            });
+        });
+    }
+
+    function showReview() {
+        $$('.tabs_alt ').each(function(elements){
+            elements.getElements('ul > li').each(function(el){
+                if(el.classList[1] === 'tab_layout_sdparentalguide_ajax_my_reviews'){
                     el.getChildren()[0].click(); 
                 }
             });
