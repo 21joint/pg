@@ -615,6 +615,7 @@ class Sdparentalguide_Api_Core extends Core_Api_Abstract{
     
     public function mapPGGResourceTypes($resourceType){
         $mappedResourceType = $resourceType;
+        $resourceType = str_replace(" ","",$resourceType);
         switch(strtolower($resourceType)){
             case "review":
                 $mappedResourceType = "sitereview_listing";
@@ -639,6 +640,12 @@ class Sdparentalguide_Api_Core extends Core_Api_Abstract{
                 break;
             case "rating":
                 $mappedResourceType = "sdparentalguide_listing_rating";
+                break;
+            case "guide":
+                $mappedResourceType = "sdparentalguide_guide";
+                break;
+            case "guideitem":
+                $mappedResourceType = "sdparentalguide_guide_item";
                 break;
             default:
                 break;
@@ -672,6 +679,12 @@ class Sdparentalguide_Api_Core extends Core_Api_Abstract{
                 break;
             case "sdparentalguide_listing_rating":
                 $mappedResourceType = "Rating";
+                break;
+            case "sdparentalguide_guide":
+                $mappedResourceType = "Guide";
+                break;
+            case "sdparentalguide_guide_item":
+                $mappedResourceType = "Guide Item";
                 break;
             default:
                 break;

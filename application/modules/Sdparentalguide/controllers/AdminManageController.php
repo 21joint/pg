@@ -384,12 +384,16 @@ class Sdparentalguide_AdminManageController extends Core_Controller_Action_Admin
         $data = array();
         if(count($users) > 0){
             foreach($users as $user){
+                $photoUrl = $user->getPhotoUrl('thumb.icon');
+                if(empty($photoUrl)){
+                    $photoUrl = $this->view->baseUrl()."/application/modules/User/externals/images/nophoto_user_thumb_icon.png";
+                }
                 $data[] = array(
                     'type'  => 'user',
                     'id'    => $user->getIdentity(),
                     'guid'  => $user->getGuid(),
                     'label' => $user->username,
-                    'photo' => $this->view->itemPhoto($user, 'thumb.icon'),
+                    'photo' => "<img src='$photoUrl' alt=''/>", //Item photo not working due to extfox code.
                     'url'   => $user->getHref(),
                 );
             }
@@ -601,6 +605,9 @@ class Sdparentalguide_AdminManageController extends Core_Controller_Action_Admin
     if( null !== ($text = $this->getParam('username')) ) {
       $select->where("username LIKE ?", '%'. $text .'%');
     }
+    if( null !== ($text = $this->getParam('displayname')) ) {
+      $select->where("displayname LIKE ?", '%'. $text .'%');
+    }
     if( null !== ($text = $this->getParam('email')) ) {
       $select->where("email LIKE ?", '%'. $text .'%');
     }
@@ -621,6 +628,9 @@ class Sdparentalguide_AdminManageController extends Core_Controller_Action_Admin
           $lastName = isset($displaynameArray[1])?$displaynameArray[1]:'';
           if($type == 'last_name'){
               $label = $lastName;
+          }
+          if($type == 'displayname'){
+              $label = $user->displayname;
           }
           $data[] = array(
             'type'  => 'user',

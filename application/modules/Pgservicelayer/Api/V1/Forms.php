@@ -118,4 +118,62 @@ class Pgservicelayer_Api_V1_Forms extends Sitereview_Api_Siteapi_Core
         );        
         return $form;
     }
+    
+    public function getGuideForm(){
+        $form = array();
+        $form[] = array(
+            'type' => 'Text',
+            'name' => 'title',
+            'label' => $this->translate('Title'),
+            'hasValidator' => 'true'
+        );
+        $form[] = array(
+            'type' => 'Text',
+            'name' => 'topicID',
+            'label' => $this->translate('Topic'),
+            'hasValidator' => 'true'
+        );
+        $form[] = array(
+            'type' => 'Textarea',
+            'name' => 'longDescription',
+            'label' => $this->translate('Description'),
+            'hasValidator' => 'true'
+        );
+        $form[] = array(
+            'type' => 'Text',
+            'name' => 'coverPhotoID',
+            'label' => $this->translate('Cover Photo'),
+//            'hasValidator' => 'true'
+        );        
+        return $form;
+    }
+    
+    public function getGuideItemForm(){
+        $form = array();
+        $form[] = array(
+            'type' => 'Text',
+            'name' => 'description',
+            'label' => $this->translate('Description'),
+            'hasValidator' => 'true'
+        );
+        $form[] = array(
+            'type' => 'Text',
+            'name' => 'sequence',
+            'label' => $this->translate('Sequence'),
+//            'hasValidator' => 'true'
+        );
+        $form[] = array(
+            'type' => 'Textarea',
+            'name' => 'contentType',
+            'label' => $this->translate('Content Type'),
+            'hasValidator' => 'true'
+        );
+        $form[] = array(
+            'type' => 'Text',
+            'name' => 'contentID',
+            'label' => $this->translate('Content ID'),
+            'hasValidator' => 'true'
+        );        
+        return $form;
+    }
 }

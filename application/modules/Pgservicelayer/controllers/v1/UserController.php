@@ -20,9 +20,11 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
         }
         $contributionRangeType = $this->getParam("contributionRangeType","Overall");
         $orderBy = $this->getParam("orderBy","contributionPoints");
-        
+
         $usersTable = Engine_Api::_()->getDbTable("users","user");
         $usersTableName = $usersTable->info("name");
+        $creditsTable = Engine_Api::_()->getDbtable('credits','sitecredit');
+        $creditsTableName = $creditsTable->info("name");
         $select = $usersTable->select()
             ->from($usersTable)
             ->setIntegrityCheck(false)
@@ -37,10 +39,13 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
         if(!empty($expert)){
             $select->where("gg_expert_bronze_count > ? OR gg_expert_silver_count > ? OR gg_expert_gold_count > ? OR gg_expert_platinum_count > ?",0);
         }
-        
+
         $page = $this->getParam("page",1);
         $limit = $this->getParam("limit",10);
-        
+
+        $topicID = $this->getParam("topicID", 0);
+        $checkFilter = false;
+
         //Contribution Range
         if(strtolower($contributionRangeType) == "week" || strtolower($contributionRangeType) == "month" || strtolower($contributionRangeType) == "today"){
             $maxDate = date("Y-m-d H:i:s",strtotime("-1 months"));
@@ -52,12 +57,14 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
                 $maxDate = date("Y-m-d H:i:s",strtotime("-1 day"));
             }
             if($orderBy == "contributionPoints"){
-                $creditsTable = Engine_Api::_()->getDbtable('credits','sitecredit');
-                $creditsTableName = $creditsTable->info("name");
                 $select->joinLeft($creditsTableName,"$creditsTableName.user_id = $usersTableName.user_id OR $creditsTableName.user_id IS NULL",array(new Zend_Db_Expr("SUM($creditsTableName.credit_point) as gg_contribution",
                         new Zend_Db_Expr("COUNT($creditsTableName.credit_id) as gg_activities"))))
-                        ->group("$creditsTableName.user_id");                
+                        ->group("$creditsTableName.user_id");
                 $select->where("$creditsTableName.creation_date BETWEEN '$maxDate' AND '$currentDate'");
+                if ( !empty( $topicID ) ) {
+                    $select->where("$creditsTableName.gg_topic_id = ?", $topicID);
+                }
+                $checkFilter = true;
             }elseif($orderBy == 'reviewCount' || strtolower($orderBy) == 'reviews'){
                 $listingTable = Engine_Api::_()->getDbtable('listings','sitereview');
                 $listingTableName = $listingTable->info("name");
@@ -81,8 +88,17 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
                         ->where("$questionsTableName.approved = ?",1)
                         ->where("$questionsTableName.draft = ?",0)
                         ->group("$questionsTableName.user_id");
-            }            
+            }
         }
+        if ( !$checkFilter && !empty( $topicID )) {
+            $select->joinLeft($creditsTableName,"$creditsTableName.user_id = $usersTableName.user_id OR $creditsTableName.user_id IS NULL",array(new Zend_Db_Expr("SUM($creditsTableName.credit_point) as gg_contribution",
+                    new Zend_Db_Expr("COUNT($creditsTableName.credit_id) as gg_activities"))))
+                    ->group("$creditsTableName.user_id");            
+        }
+        if(!empty( $topicID )){
+            $select->where("$creditsTableName.gg_topic_id = ?", $topicID);
+        }
+        
         //Sort data
         //Possible values "contributionPoints", "questionCount", "reviewCount", "followers"
         if($orderBy == 'contributionPoints'){

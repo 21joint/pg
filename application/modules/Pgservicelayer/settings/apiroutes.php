@@ -244,6 +244,30 @@ $routes['pgservicelayer'] = array(
           'action' => '\D+',
         )
     ),
+    'pgservicelayer_apiguide' => array(
+        'route' => 'api/:version/guide/*',
+        'defaults' => array(
+          'module' => 'pgservicelayer',
+          'controller' => 'guide',
+          'action' => 'index',
+          'version' => 'v1'
+        ),
+        'reqs' => array(
+          'action' => '\D+',
+        )
+    ),
+    'pgservicelayer_apiguideitem' => array(
+        'route' => 'api/:version/guideitem/*',
+        'defaults' => array(
+          'module' => 'pgservicelayer',
+          'controller' => 'guideitem',
+          'action' => 'index',
+          'version' => 'v1'
+        ),
+        'reqs' => array(
+          'action' => '\D+',
+        )
+    ),
 );
 
 return $routes;

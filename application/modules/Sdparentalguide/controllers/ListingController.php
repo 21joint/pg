@@ -317,14 +317,25 @@ class Sdparentalguide_ListingController extends Core_Controller_Action_Standard
             $sitereview->setFromArray($values);
 
             if ($sitereview->approved) {
-                $sitereview->approved_date = date('Y-m-d H:i:s');
+                $oldTz = date_default_timezone_get();
+                date_default_timezone_set($viewer->timezone);
+                $time = time();
+                date_default_timezone_set($oldTz);
+
+                $sitereview->approved_date = date('Y-m-d H:i:s', $time);
             }
 
             //START PACKAGE WORK
             if (!empty($sitereview->approved)) {
                 if (isset($sitereview->pending))
                     $sitereview->pending = 0;
-                $sitereview->approved_date = date('Y-m-d H:i:s');
+
+                $oldTz = date_default_timezone_get();
+                date_default_timezone_set($viewer->timezone);
+                $time = time();
+                date_default_timezone_set($oldTz);
+
+                $sitereview->approved_date = date('Y-m-d H:i:s', $time);
                 if (Engine_Api::_()->sitereview()->hasPackageEnable()) {
 //            $sitereview->pending = 0;
                     $expirationDate = $package->getExpirationDate();
