@@ -621,4 +621,52 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         }
         return $guideData;
     }
+    
+    public function getGuideItemData(Sdparentalguide_Model_GuideItem $guideItem){
+        $tmpBody = strip_tags($guideItem->description);
+        $shortDesc = ( Engine_String::strlen($tmpBody) > 100 ? Engine_String::substr($tmpBody, 0, 100) . '...' : $tmpBody );
+        
+        $guideData = array(
+            'guideItemID' => (string)$guideItem->getIdentity(),
+            'description' => (string)$tmpBody,
+            'sequence' => (int)$guideItem->sequence,
+            'contentType' => Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($guideItem->content_type),
+            'contentObject' => $this->getGuideItemContentData($guideItem),
+            'createdDateTime' => (string)$this->getFormatedDateTime($guideItem->creation_date),
+            'lastModifiedDateTime' => (string)$this->getFormatedDateTime($guideItem->modified_date),
+            'guideID' => (bool)$guideItem->guide_id,
+            
+        );
+        return $guideData;
+    }
+    public function getGuideItemContentData(Sdparentalguide_Model_GuideItem $guideItem){
+        $itemObject = $guideItem->getContent();
+        if(empty($itemObject)){
+            return array();
+        }
+        $itemArray = array();
+        switch($guideItem->content_type){
+            case 'sitereview_listing':
+                $itemArray = $this->getReviewData($itemObject);
+                break;
+            case 'user':
+                $itemArray = $this->getUserData($itemObject);
+                break;
+            case 'sdparentalguide_topic':
+                $itemArray = $this->getTopicData($itemObject);
+                break;
+            case 'ggcommunity_question':
+                $itemArray = $this->getQuestionData($itemObject);
+                break;
+            case 'ggcommunity_answer':
+                $itemArray = $this->getAnswerData($itemObject);
+                break;
+            case 'sdparentalguide_badge':
+                $itemArray = $this->getBadgeData($itemObject);
+                break;
+            default:
+                break;
+        }
+        return $itemArray;
+    }
 }

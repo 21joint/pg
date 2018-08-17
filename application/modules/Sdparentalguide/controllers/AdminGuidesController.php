@@ -11,7 +11,7 @@ class Sdparentalguide_AdminGuidesController extends Core_Controller_Action_Admin
 {
   public function indexAction(){
       $this->view->navigation = $navigation = Engine_Api::_()->getApi('menus', 'core')
-                ->getNavigation('sdparentalguide_admin_main', array(), 'sdparentalguide_admin_main_listings');
+                ->getNavigation('sdparentalguide_admin_main', array(), 'sdparentalguide_admin_main_guides');
       
       $this->view->formFilter = $formFilter = new Sdparentalguide_Form_Admin_Guide_Filter();
       $page = $this->_getParam('page', 1);
