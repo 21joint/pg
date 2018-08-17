@@ -103,10 +103,10 @@ class Pgservicelayer_GuideController extends Pgservicelayer_Controller_Action_Ap
             'auth_view' => $this->getParam("authView","everyone"),
             'auth_comment' => $this->getParam("authComment","everyone"),
             'owner_id' => (int)$viewer->getIdentity(),
-            'approved' => $this->getParam("status",0),
-            'featured' => $this->getParam("status",0),
-            'sponsored' => $this->getParam("status",0),
-            'new' => $this->getParam("status",0),
+            'approved' => $this->getParam("approved",0),
+            'featured' => $this->getParam("featured",0),
+            'sponsored' => $this->getParam("sponsored",0),
+            'newlabel' => $this->getParam("new",0),
         );
         
         $table = Engine_Api::_()->getDbTable("guides","sdparentalguide");
@@ -186,10 +186,10 @@ class Pgservicelayer_GuideController extends Pgservicelayer_Controller_Action_Ap
             'status' => $this->getParam("status",$guide->status),
             'description' => $this->getParam("longDescription",$guide->description),
             'photo_id' => (int)$this->getParam("coverPhotoID",$guide->photo_id),
-            'approved' => $this->getParam("status",$guide->approved),
-            'featured' => $this->getParam("status",$guide->featured),
-            'sponsored' => $this->getParam("status",$guide->sponsored),
-            'new' => $this->getParam("status",$guide->new),
+            'approved' => $this->getParam("approved",$guide->approved),
+            'featured' => $this->getParam("featured",$guide->featured),
+            'sponsored' => $this->getParam("sponsored",$guide->sponsored),
+            'newlabel' => $this->getParam("new",$guide->newlabel),
             'auth_view' => $this->getParam("authView","everyone"),
             'auth_comment' => $this->getParam("authComment","everyone"),
             'owner_id' => (int)$viewer->getIdentity()

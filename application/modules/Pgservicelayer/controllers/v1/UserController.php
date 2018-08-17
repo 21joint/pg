@@ -23,6 +23,8 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
 
         $usersTable = Engine_Api::_()->getDbTable("users","user");
         $usersTableName = $usersTable->info("name");
+        $creditsTable = Engine_Api::_()->getDbtable('credits','sitecredit');
+        $creditsTableName = $creditsTable->info("name");
         $select = $usersTable->select()
             ->from($usersTable)
             ->setIntegrityCheck(false)
@@ -55,8 +57,6 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
                 $maxDate = date("Y-m-d H:i:s",strtotime("-1 day"));
             }
             if($orderBy == "contributionPoints"){
-                $creditsTable = Engine_Api::_()->getDbtable('credits','sitecredit');
-                $creditsTableName = $creditsTable->info("name");
                 $select->joinLeft($creditsTableName,"$creditsTableName.user_id = $usersTableName.user_id OR $creditsTableName.user_id IS NULL",array(new Zend_Db_Expr("SUM($creditsTableName.credit_point) as gg_contribution",
                         new Zend_Db_Expr("COUNT($creditsTableName.credit_id) as gg_activities"))))
                         ->group("$creditsTableName.user_id");
@@ -90,14 +90,15 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
                         ->group("$questionsTableName.user_id");
             }
         }
-        if ( !$checkFilter && !empty( $topicID ) ) {
-            $creditsTable = Engine_Api::_()->getDbtable('credits','sitecredit');
-            $creditsTableName = $creditsTable->info("name");
+        if ( !$checkFilter ) {
             $select->joinLeft($creditsTableName,"$creditsTableName.user_id = $usersTableName.user_id OR $creditsTableName.user_id IS NULL",array(new Zend_Db_Expr("SUM($creditsTableName.credit_point) as gg_contribution",
                     new Zend_Db_Expr("COUNT($creditsTableName.credit_id) as gg_activities"))))
-                    ->group("$creditsTableName.user_id");
+                    ->group("$creditsTableName.user_id");            
+        }
+        if(!empty( $topicID )){
             $select->where("$creditsTableName.gg_topic_id = ?", $topicID);
         }
+        
         //Sort data
         //Possible values "contributionPoints", "questionCount", "reviewCount", "followers"
         if($orderBy == 'contributionPoints'){

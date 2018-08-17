@@ -565,15 +565,17 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         return $permissionData;
     }
     
-    public function getGuideStatus(Sdparentalguide_Model_Guide $guide){
+    public function getGuideStatus(Sdparentalguide_Model_Guide $guide){        
         if($guide->gg_deleted){
             return "Deleted";
         }
-        
+        if($guide->closed){
+            return "Closed";
+        }
         if(!$guide->approved){
             return "Pending Approval";
-        }
-        return ucfirst($guide->status);
+        }        
+        return "Published";
     }
     public function getGuideData(Sdparentalguide_Model_Guide $guide){
         $tmpBody = strip_tags($guide->description);
@@ -597,7 +599,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             'featured' => (bool)$guide->featured,
             'publishedDateTime' => $guide->approved?$this->getFormatedDateTime($guide->published_date):'',
             'sponsored' => (bool)$guide->sponsored,
-            'new' => (bool)$guide->new,
+            'new' => (bool)$guide->newlabel,
             'guideItemCount' => $guide->guide_item_count,
             'coverPhoto' => $contentImages,
             'commentsCount' => $guide->comment_count,
