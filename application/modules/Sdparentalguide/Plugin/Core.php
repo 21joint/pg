@@ -33,6 +33,7 @@ class Sdparentalguide_Plugin_Core extends Zend_Controller_Plugin_Abstract
             case 'Core_Model_Like':
             case 'Nestedcomment_Model_Dislike':
             case 'Pgservicelayer_Model_View':
+            case 'Sdparentalguide_Model_Guide':
                 $allowed = true;
                 break;
             default:

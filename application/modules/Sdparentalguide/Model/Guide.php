@@ -27,4 +27,9 @@ class Sdparentalguide_Model_Guide extends Core_Model_Item_Abstract
     public function getTopic(){
         return Engine_Api::_()->getItem('sdparentalguide_topic', $this->topic_id);
     }
+    
+    public function getItems(){
+        $table = Engine_Api::_()->getDbTable("guideItems","sdparentalguide");
+        return $table->fetchAll($table->select()->where('guide_id = ?',$this->getIdentity()));
+    }
 } 

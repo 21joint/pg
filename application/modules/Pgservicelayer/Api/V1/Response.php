@@ -572,18 +572,21 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         if($guide->closed){
             return "Closed";
         }
+        if($guide->draft){
+            return "Draft";
+        }
         if(!$guide->approved){
             return "Pending Approval";
         }        
         return "Published";
     }
-    public function getGuideData(Sdparentalguide_Model_Guide $guide){
+    public function getGuideData(Sdparentalguide_Model_Guide $guide,$includeGuideItems = true){
         $tmpBody = strip_tags($guide->description);
         $shortDesc = ( Engine_String::strlen($tmpBody) > 100 ? Engine_String::substr($tmpBody, 0, 100) . '...' : $tmpBody );
         $topic = Engine_Api::_()->getItem("sdparentalguide_topic",$guide->topic_id);
         $owner = $guide->getOwner();
         $contentImages = $this->getContentImage($guide);
-        $contentImages['photoID'] = (string)$guide->photo_id;
+        $contentImages['coverPhotoID'] = (string)$guide->photo_id;
         $guideData = array(
             'guideID' => (string)$guide->getIdentity(),
             'title' => (string)$guide->title,
@@ -617,6 +620,12 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             }
             if (1 == $auth->isAllowed($guide, $role, "comment")) {
                 $guideData['privacySettings']['authComment'] = $role;
+            }
+        }
+        if($includeGuideItems){
+            $guideItems = $guide->getItems();
+            foreach($guideItems as $guideItem){
+                $guideData['guideItems'][] = $this->getGuideItemData($guideItem);
             }
         }
         return $guideData;
