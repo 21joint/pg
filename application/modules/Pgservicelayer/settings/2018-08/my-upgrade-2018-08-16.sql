@@ -21,7 +21,6 @@ CREATE TABLE `engine4_gg_guides` (
   `topic_id` int(11) NOT NULL DEFAULT '0',
   `creation_date` datetime NOT NULL,
   `modified_date` datetime NOT NULL,
-  `status` varchar(32) NOT NULL,
   `approved` tinyint(4) NOT NULL DEFAULT '0',
   `featured` tinyint(4) NOT NULL DEFAULT '0',
   `published_date` datetime NOT NULL,
@@ -33,10 +32,16 @@ CREATE TABLE `engine4_gg_guides` (
   `like_count` int(11) NOT NULL DEFAULT '0',
   `view_count` int(11) NOT NULL DEFAULT '0',
   `click_count` int(11) NOT NULL,
-  `average_rating` double NOT NULL DEFAULT '0',
   `dislike_count` int(11) NOT NULL,
   `gg_deleted` tinyint(4) NOT NULL DEFAULT '0',
   `closed` tinyint(4) NOT NULL DEFAULT '0',
+  `draft` tinyint(4) NOT NULL DEFAULT '0',
+  `gg_dt_created` datetime DEFAULT NULL,
+  `gg_dt_lastmodified` datetime DEFAULT NULL,
+  `gg_user_created` int(11) NOT NULL DEFAULT '0',
+  `gg_user_lastmodified` int(11) NOT NULL DEFAULT '0',
+  `gg_guid` varchar(128) DEFAULT NULL,
+  `gg_ip_lastmodified` varbinary(16) DEFAULT NULL,
   PRIMARY KEY (`guide_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

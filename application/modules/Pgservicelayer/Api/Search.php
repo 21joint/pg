@@ -62,7 +62,7 @@ class Pgservicelayer_Api_Search extends Core_Api_Search
         if(!empty($listingType)){
             $topic_id = $listingType->gg_topic_id;
         }        
-    }else if($type == "sdparentalguide_badge" || $type == "ggcommunity_question"){
+    }else if($type == "sdparentalguide_badge" || $type == "ggcommunity_question" || $type == "sdparentalguide_guide"){
         $topic_id = $itemObject->topic_id;
     }
     if(!empty($topic_id)){
