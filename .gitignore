@@ -20,5 +20,11 @@ temporary/session
 nbproject/project.xml
 nbproject/project.properties
 node_modules/
-.idea/
+.idea
 .DS_Store
+dist
+node_modules
+server/log/*.log
+server/.env
+npm-debug.log
+coverage

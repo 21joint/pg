@@ -1,9 +1,8 @@
 import _ from 'lodash';
-import {en4} from '../../../../../application/modules/Core/externals/scripts/core';
+import {en4} from '../../../../../application/themes/parentalguidance/modules/en4.module';
 
 
-en4
-  .user = {
+en4.user = {
 
   viewer: {
     type: false,
@@ -174,9 +173,7 @@ en4
 
 };
 
-en4
-  .user
-  .friends = {
+en4.user.friends = {
 
   refreshLists: function () {
 
@@ -302,3 +299,6 @@ en4
   }
 
 };
+
+
+export {en4};

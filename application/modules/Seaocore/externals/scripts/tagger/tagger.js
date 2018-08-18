@@ -658,8 +658,6 @@ SEAOLasso.Crop = new Class({
 
 });
 
-
-
 var SEAOTagger = new Class({
 
   Implements : [Events, Options],

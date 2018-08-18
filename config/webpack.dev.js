@@ -22,11 +22,9 @@ const config = merge(webpackConfig, {
         }
       }
     },
-    contentBase: path.resolve(__dirname,'../dist'),
-    publicPath: 'http://localhost:3030/',
+    contentBase: path.resolve(__dirname, '../dist'),
+    publicPath: '/',
     port: 3030,
-    host: 'localhost',
-    hot: true,
     open: true,
     headers: {
       'Access-Control-Allow-Origin': '*',
@@ -39,11 +37,7 @@ const config = merge(webpackConfig, {
       }));
       app.use(require("webpack-hot-middleware")(compiler));
     },
-  },
-  plugins: [
-    new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
-  ]
+  }
 });
 
 

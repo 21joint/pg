@@ -6,8 +6,8 @@ import 'bootstrap/js/dist/dropdown';
 import '../../scss/styles.scss';
 
 
-
 (function ($, renderProfileBox) {
+
 
   let notificationUpdater;
 

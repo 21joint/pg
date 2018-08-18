@@ -1,36 +1,39 @@
-import {C}
-
 
 var Smoothbox = {
 
-  instance: false,
+  instance : false,
 
-  bind: function (selector) {
+  bind : function(selector)
+  {
     // All children of element
     var elements;
-    if ($type(selector) == 'element') {
+    if( $type(selector) == 'element' ){
       elements = selector.getElements('a.smoothbox');
-    } else if ($type(selector) == 'string') {
+    } else if( $type(selector) == 'string' ){
       elements = $$(selector);
     } else {
       elements = $$("a.smoothbox");
     }
 
-    elements.each(function (el) {
-      if (el.get('tag') != 'a' || el.retrieve('smoothboxed', false)) {
+    elements.each(function(el)
+    {
+      if( el.get('tag') != 'a' || el.retrieve('smoothboxed', false) )
+      {
         return;
       }
 
-      var params = Function.attempt(function () {
+      var params = Function.attempt(function(){
         var ret = JSON.decode(el.title);
-        if ($type(ret.title)) {
+        if( $type(ret.title) )
+        {
           el.title = ret.title;
         }
-        else {
+        else
+        {
           el.title = '';
         }
         return ret;
-      }, function () {
+      }, function(){
         return {};
       });
 
@@ -39,23 +42,29 @@ var Smoothbox = {
       el.store('smoothboxed', true);
 
       //el.href = 'javascript:void(0);';
-      $(el).on('click', function (event) {
+      el.addEvent('click', function(event)
+      {
         event.stop(); // Maybe move this to after next line when done debugging
         Smoothbox.open(el);
       });
     });
   },
 
-  close: function () {
-    if (this.instance) {
+  close : function()
+  {
+    if( this.instance )
+    {
       this.instance.close();
     }
   },
 
-  open: function (spec, options) {
-    if (this.instance) {
+  open : function(spec, options)
+  {
+    if( this.instance )
+    {
       var bind = this;
-      $(this).on.addEvent('closeafter', function () {
+      this.instance.addEvent('closeafter', function()
+      {
         bind.open(spec);
       });
       this.instance.close();
@@ -63,61 +72,61 @@ var Smoothbox = {
     }
 
     // Check the options array
-    if ($type(options) == 'object') {
+    if( $type(options) == 'object' ) {
       options = new Hash(options);
-    } else if ($type(options) != 'hash') {
+    } else if( $type(options) != 'hash' ) {
       options = new Hash();
     }
 
     // Check the arguments
 
     // Spec as element
-    if ($type(spec) == 'element') {
+    if( $type(spec) == 'element' ) {
       // This is a link
-      if (spec.get('tag').toLowerCase() == 'a') {
+      if( spec.get('tag').toLowerCase() == 'a' ) {
         spec = new Hash({
-          'mode': 'Iframe',
-          'link': spec,
-          'element': spec,
-          'url': spec.get('href'),
-          'title': spec.get('title')
+          'mode' : 'Iframe',
+          'link' : spec,
+          'element' : spec,
+          'url' : spec.get('href'),
+          'title' : spec.get('title')
         });
       }
       // This is some other element
       else {
         spec = new Hash({
-          'mode': 'Inline',
-          'title': spec.get('title'),
-          'element': spec
+          'mode' : 'Inline',
+          'title' : spec.get('title'),
+          'element' : spec
         });
       }
     }
 
     // Spec as string
-    else if ($type(spec) == 'string') {
+    else if( $type(spec) == 'string' ) {
       // Spec is url
-      if (spec.length < 4000 && (spec.substring(0, 1) == '/' ||
-        spec.substring(0, 1) == '.' ||
-        spec.substring(0, 4) == 'http' ||
-        !spec.match(/[ <>"'{}|^~\[\]`]/)
-      )
+      if( spec.length < 4000 && (spec.substring(0, 1) == '/' ||
+          spec.substring(0, 1) == '.' ||
+          spec.substring(0, 4) == 'http' ||
+          !spec.match(/[ <>"'{}|^~\[\]`]/)
+        )
       ) {
         spec = new Hash({
-          'mode': 'Iframe',
-          'url': spec
+          'mode' : 'Iframe',
+          'url' : spec
         });
       }
       // Spec is a string
       else {
         spec = new Hash({
-          'mode': 'String',
-          'bodyText': spec
+          'mode' : 'String',
+          'bodyText' : spec
         });
       }
     }
 
     // Spec as object or hash
-    else if ($type(spec) == 'object' || $type(spec) == 'hash') {
+    else if( $type(spec) == 'object' || $type(spec) == 'hash' ) {
       // Don't do anything?
     }
 
@@ -127,24 +136,26 @@ var Smoothbox = {
     }
 
 
+
+
     // Now lets start the fun stuff
     spec.extend(options);
 
     var mode = spec.get('mode');
     spec.erase('mode');
 
-    if (!mode) {
-      if (spec.has('url')) {
+    if( !mode ) {
+      if( spec.has('url') ) {
         //if( spec.get('url').match(/\.(jpe?g|png|gif|bmp)/gi) ) {
-        //mode = 'Image';
+          //mode = 'Image';
         //} else {
-        mode = 'Iframe';
+          mode = 'Iframe';
         //}
       }
-      else if (spec.has('element')) {
+      else if( spec.has('element') ) {
         mode = 'Inline';
       }
-      else if (spec.has('bodyText')) {
+      else if( spec.has('bodyText') ) {
         mode = 'String';
       }
       else {
@@ -152,7 +163,8 @@ var Smoothbox = {
       }
     }
 
-    if (!$type(Smoothbox.Modal[mode])) {
+    if( !$type(Smoothbox.Modal[mode]) )
+    {
       //mode = 'Iframe';
       return;
     }
@@ -164,37 +176,38 @@ var Smoothbox = {
 
 Smoothbox.Modal = new Class({
 
-  Implements: [Events, Options],
+  Implements : [Events, Options],
 
-  options: {
-    url: null,
-    width: 480,
-    height: 320,
+  options : {
+    url : null,
+    width : 480,
+    height : 320,
 
     // Do or do not
-    transitions: false,
-    overlay: true,
-    loading: true,
+    transitions : false,
+    overlay : true,
+    loading : true,
 
-    noOverlayClose: false,
+    noOverlayClose : false,
 
-    autoResize: true,
-    autoFormat: 'smoothbox'
+    autoResize : true,
+    autoFormat : 'smoothbox'
 
     //useFixed : false
   },
 
-  eventProto: {},
+  eventProto : {},
 
-  overlay: false,
+  overlay : false,
 
-  window: false,
+  window : false,
 
-  content: false,
+  content : false,
 
-  loading: false,
+  loading : false,
 
-  initialize: function (options) {
+  initialize : function(options)
+  {
     this.setOptions(options);
 
     /*
@@ -210,45 +223,48 @@ Smoothbox.Modal = new Class({
     this.load();
   },
 
-  close: function () {
+  close : function()
+  {
     this.onClose();
 
     window.removeEvent('scroll', this.eventProto.scroll);
     window.removeEvent('resize', this.eventProto.resize);
 
-    if (this.options.transitions) {
-      $(this).on('closeafter', function () {
-        if (this.window) this.window.destroy();
-        if (this.overlay) this.overlay.destroy();
-        if (this.loading) this.loading.destroy();
+    if( this.options.transitions ) {
+      this.addEvent('closeafter', function() {
+        if( this.window ) this.window.destroy();
+        if( this.overlay ) this.overlay.destroy();
+        if( this.loading ) this.loading.destroy();
       }.bind(this));
       this.hide();
     } else {
-      if (this.window) this.window.destroy();
-      if (this.overlay) this.overlay.destroy();
-      if (this.loading) this.loading.destroy();
+      if( this.window ) this.window.destroy();
+      if( this.overlay ) this.overlay.destroy();
+      if( this.loading ) this.loading.destroy();
     }
 
     Smoothbox.instance = false;
   },
 
-  load: function () {
+  load : function()
+  {
     this.create();
 
     // Add Events
     var bind = this;
-    this.eventProto.resize = function () {
+    this.eventProto.resize = function() {
+      bind.positionOverlay();
+      bind.positionWindow();
+    }
+
+    this.eventProto.scroll = function()
+    {
       bind.positionOverlay();
       bind.positionWindow();
     };
 
-    this.eventProto.scroll = function () {
-      bind.positionOverlay();
-      bind.positionWindow();
-    };
-
-    $(window).on('resize', this.eventProto.resize);
-    $(window).on('scroll', this.eventProto.scroll);
+    window.addEvent('resize', this.eventProto.resize);
+    window.addEvent('scroll', this.eventProto.scroll);
 
 
     this.position();
@@ -256,21 +272,23 @@ Smoothbox.Modal = new Class({
     this.showLoading();
   },
 
-  create: function () {
+  create : function()
+  {
     this.createOverlay();
     this.createLoading();
     this.createWindow();
   },
 
-  createLoading: function () {
-    if (this.loading || !this.options.loading) {
+  createLoading : function()
+  {
+    if( this.loading || !this.options.loading ) {
       return;
     }
 
     var bind = this;
 
     this.loading = new Element('div', {
-      id: 'TB_load'
+      id : 'TB_load'
     });
     this.loading.inject(document.body);
 
@@ -281,204 +299,224 @@ Smoothbox.Modal = new Class({
     loadingImg.inject(this.loading);
   },
 
-  createOverlay: function () {
-    if (this.overlay || !this.options.overlay) {
+  createOverlay : function()
+  {
+    if( this.overlay || !this.options.overlay ) {
       return;
     }
 
     this.overlay = new Element('div', {
-      'id': 'TB_overlay',
-      'styles': {
-        'position': 'absolute',
-        'top': '0px',
-        'left': '0px',
-        'visibility': 'visible'
+      'id' : 'TB_overlay',
+      'styles' : {
+        'position' : 'absolute',
+        'top' : '0px',
+        'left' : '0px',
+        'visibility' : 'visible'
       },
-      'opacity': 0
+      'opacity' : 0
     });
     this.overlay.inject(document.body);
 
-    if (!this.options.noOverlayClose) {
-      $(this).on.addEvent('click', function () {
+    if( !this.options.noOverlayClose ) {
+      this.overlay.addEvent('click', function() {
         this.close();
       }.bind(this));
     }
   },
 
-  createWindow: function () {
-    if (this.window) {
+  createWindow : function()
+  {
+    if( this.window ) {
       return;
     }
 
     var bind = this;
 
     this.window = new Element('div', {
-      'id': 'TB_window',
-      'opacity': 0
+      'id' : 'TB_window',
+      'opacity' : 0
     });
     this.window.inject(document.body);
 
     var title = new Element('div', {
-      id: 'TB_title'
+      id : 'TB_title'
     });
     title.inject(this.window);
 
     var titleText = new Element('div', {
-      id: 'TB_ajaxWindowTitle',
-      html: this.options.title
+      id : 'TB_ajaxWindowTitle',
+      html : this.options.title
     });
     titleText.inject(title);
 
     var titleClose = new Element('div', {
-      id: 'TB_closeAjaxWindow',
-      events: {
-        click: function () {
-          bind.close();
+      id : 'TB_closeAjaxWindow',
+      events : {
+        click : function() {
+         bind.close();
         }
       }
     });
     titleClose.inject(title);
 
     var titleCloseLink = new Element('a', {
-      id: 'TB_title',
-      href: 'javascript:void(0);',
-      title: 'close',
-      html: '<svg style="height:21px;width:12px;" xmlns="http://www.w3.org/2000/svg" viewBox="-8603 1924.68 11.641 11.641"><defs><style>.a{fill:#2B1D19;}</style></defs><path class="a" d="M11.641-12.148,6.992-7.5l4.648,4.648L10.469-1.68,5.82-6.328,1.172-1.68,0-2.852,4.648-7.5,0-12.148,1.172-13.32,5.82-8.672l4.648-4.648Z" transform="translate(-8603 1938)"/></svg>',
-      events: {
-        click: function () {
+      id : 'TB_title',
+      href : 'javascript:void(0);',
+      title : 'close',
+      html : '<svg style="height:21px;width:12px;" xmlns="http://www.w3.org/2000/svg" viewBox="-8603 1924.68 11.641 11.641"><defs><style>.a{fill:#2B1D19;}</style></defs><path class="a" d="M11.641-12.148,6.992-7.5l4.648,4.648L10.469-1.68,5.82-6.328,1.172-1.68,0-2.852,4.648-7.5,0-12.148,1.172-13.32,5.82-8.672l4.648-4.648Z" transform="translate(-8603 1938)"/></svg>',
+      events : {
+        click : function() {
           bind.close();
         }
       }
-    });
+    })
     titleCloseLink.inject(titleClose);
   },
 
-  position: function () {
+  position : function()
+  {
     this.positionOverlay();
     this.positionWindow();
     this.positionLoading();
   },
 
-  positionLoading: function () {
-    if (!this.loading) {
+  positionLoading : function()
+  {
+    if( !this.loading )
+    {
       return;
     }
 
-    if (Browser.Engine.trident /*&& this.loading.style.display == 'none'*/) {
+    if( Browser.Engine.trident /*&& this.loading.style.display == 'none'*/ ){
       //this.loading.style.visibility = 'hidden';
       //this.loading.style.display = '';
       this.loading.style.display = '';
     }
 
     this.loading.setStyles({
-      left: (window.getScroll().x + (window.getSize().x - 56) / 2) + 'px',
-      top: (window.getScroll().y + ((window.getSize().y - 20) / 2)) + 'px',
-      display: "block"
+        left: (window.getScroll().x + (window.getSize().x - 56) / 2) + 'px',
+        top: (window.getScroll().y + ((window.getSize().y - 20) / 2)) + 'px',
+        display: "block"
     });
   },
 
-  positionOverlay: function () {
-    if (!this.overlay) {
+  positionOverlay : function()
+  {
+    if( !this.overlay )
+    {
       return;
     }
 
-    if (Browser.Engine.trident /*&& this.overlay.style.display == 'none'*/) {
+    if( Browser.Engine.trident /*&& this.overlay.style.display == 'none'*/ ){
       //this.overlay.style.visibility = 'hidden';
       //this.overlay.style.display = '';
       this.overlay.style.display = '';
     }
 
     this.overlay.setStyles({
-      "height": '0px',
-      "width": '0px'
+        "height" : '0px',
+        "width" : '0px'
     });
 
-    if (!this.options.noOverlay) {
+    if( !this.options.noOverlay )
+    {
       this.overlay.setStyles({
-        "height": window.getScrollHeight() + 'px',
-        "width": window.getScrollWidth() + 'px'
+          "height" : window.getScrollHeight() + 'px',
+          "width" : window.getScrollWidth() + 'px'
       });
     }
   },
 
-  positionWindow: function () {
-    if (!this.window) {
+  positionWindow : function()
+  {
+    if( !this.window ) {
       return;
     }
 
-    if (Browser.ie) {
+    if( Browser.ie ) {
       //this.window.style.visibility = 'hidden';
       //this.window.style.display = '';
       this.window.style.display = '';
     }
 
     this.window.setStyles({
-      "width": this.options.width + 'px',
-      "left": (window.getScroll().x + (window.getSize().x - this.options.width) / 2) + 'px',
-      "top": (window.getScroll().y + (window.getSize().y - this.options.height) / 2) + 'px'
+      "width" : this.options.width + 'px',
+      "left" : (window.getScroll().x + (window.getSize().x - this.options.width) / 2) + 'px',
+      "top" : (window.getScroll().y + (window.getSize().y - this.options.height) / 2) + 'px'
     });
   },
 
-  show: function () {
+  show : function()
+  {
     this.showOverlay();
     this.showLoading();
     this.showWindow();
   },
 
-  showLoading: function () {
-    if (!this.loading) {
+  showLoading : function()
+  {
+    if( !this.loading )
+    {
       return;
     }
 
-    if (Browser.Engine.trident /*&& this.loading.style.visibility == 'hidden'*/) {
+    if( Browser.Engine.trident /*&& this.loading.style.visibility == 'hidden'*/ ){
       //this.loading.style.visibility = 'visible';
       this.loading.style.display = '';
     }
 
-    if (this.options.transitions) {
+    if( this.options.transitions )
+    {
       this.loading.tween('opacity', [0, 1]);
     }
-    else {
+    else
+    {
       this.loading.setStyle('opacity', 1);
       this.loading.setStyle('visibility', 'visible');
     }
   },
 
-  showOverlay: function () {
-    if (!this.overlay) {
+  showOverlay : function()
+  {
+    if( !this.overlay ) {
       return;
     }
 
-    if (Browser.Engine.trident /*&& this.overlay.style.visibility == 'hidden'*/) {
+    if( Browser.Engine.trident /*&& this.overlay.style.visibility == 'hidden'*/ ){
       //this.overlay.style.visibility = 'visible';
       this.overlay.style.display = '';
     }
 
-    if (this.options.transitions) {
+    if( this.options.transitions )
+    {
       this.overlay.tween('opacity', [0, 0.6]);
     }
-    else {
+    else
+    {
       this.overlay.setStyle('opacity', 0.8);
       this.overlay.setStyle('visibility', 'visible');
     }
   },
 
-  showWindow: function () {
-    if (!this.window) {
+  showWindow : function()
+  {
+    if( !this.window )
+    {
       return;
     }
 
-    if (Browser.Engine.trident /* && this.window.style.visibility == 'hidden'*/) {
+    if( Browser.Engine.trident /* && this.window.style.visibility == 'hidden'*/ ){
       //this.window.style.visibility = 'visible';
       this.window.style.display = '';
     }
 
     // Try to autoresize the window
-    if (typeof(this.doAutoResize) == 'function') {
+    if( typeof(this.doAutoResize) == 'function' )
+    {
       this.doAutoResize();
     }
 
-    if (this.options.transitions) {
+    if( this.options.transitions ) {
       this.window.tween('opacity', [0, 1]);
     } else {
       this.window.setStyle('opacity', 1);
@@ -486,37 +524,42 @@ Smoothbox.Modal = new Class({
     }
   },
 
-  hide: function () {
+  hide : function()
+  {
     this.hideLoading();
     this.hideOverlay();
     this.hideWindow();
   },
 
-  hideLoading: function () {
-    if (!this.loading) {
+  hideLoading : function()
+  {
+    if( !this.loading ) {
       return;
     }
 
-    if (this.options.transitions) {
+    if( this.options.transitions ) {
       this.loading.tween('opacity', [1, 0]);
     } else {
       this.loading.setStyle('opacity', 0);
     }
   },
 
-  hideOverlay: function () {
-    if (!this.overlay) {
+  hideOverlay : function()
+  {
+    if( !this.overlay )
+    {
       return;
     }
 
-    if (this.options.transitions) {
+    if( this.options.transitions ) {
       this.overlay.tween('opacity', [0.6, 0]);
     } else {
       this.overlay.setStyle('opacity', 0);
     }
   },
 
-  hideWindow: function () {
+  hideWindow : function()
+  {
     /*
     if( !this.window )
     {
@@ -524,42 +567,45 @@ Smoothbox.Modal = new Class({
     }
     */
 
-    if (this.options.transitions) {
+    if( this.options.transitions ) {
       var bind = this;
       this.window.tween('opacity', [1, 0]);
-      $(this).on.get('tween').addEvent('complete', function () {
+      this.window.get('tween').addEvent('complete', function() {
         bind.fireEvent('closeafter');
       });
     }
-    else {
+    else
+    {
       this.window.setStyle('opacity', 0);
     }
   },
 
 
-  doAutoResize: function (element) {
-    if (!element || !this.options.autoResize) {
+  doAutoResize : function(element)
+  {
+    if( !element || !this.options.autoResize )
+    {
       return;
     }
 
-    var size = Function.attempt(function () {
+    var size = Function.attempt(function(){
       return element.getScrollSize();
-    }, function () {
+    }, function(){
       return element.getSize();
-    }, function () {
+    }, function(){
       return {
-        x: element.scrollWidth,
-        y: element.scrollHeight
+        x : element.scrollWidth,
+        y : element.scrollHeight
       }
     });
 
     var winSize = window.getSize();
-    if (size.x + 70 > winSize.x) size.x = winSize.x - 70;
-    if (size.y + 70 > winSize.y) size.y = winSize.y - 70;
+    if( size.x + 70 > winSize.x ) size.x = winSize.x - 70;
+    if( size.y + 70 > winSize.y ) size.y = winSize.y - 70;
 
     this.content.setStyles({
-      'width': (size.x + 20) + 'px',
-      'height': (size.y + 20) + 'px'
+      'width' : (size.x + 20) + 'px',
+      'height' : (size.y + 20) + 'px'
     });
 
     this.options.width = this.content.getCoordinates().width;
@@ -570,19 +616,23 @@ Smoothbox.Modal = new Class({
 
 
   // events
-  onLoad: function () {
+  onLoad : function()
+  {
     this.fireEvent('load', this);
   },
 
-  onOpen: function () {
+  onOpen : function()
+  {
     this.fireEvent('open', this);
   },
 
-  onClose: function () {
+  onClose : function()
+  {
     this.fireEvent('close', this);
   },
 
-  onCloseAfter: function () {
+  onCloseAfter : function()
+  {
     this.fireEvent('closeafter', this);
   }
 
@@ -590,10 +640,11 @@ Smoothbox.Modal = new Class({
 
 Smoothbox.Modal.Iframe = new Class({
 
-  Extends: Smoothbox.Modal,
+  Extends : Smoothbox.Modal,
 
-  load: function () {
-    if (this.content) {
+  load : function()
+  {
+    if( this.content ) {
       return;
     }
 
@@ -603,20 +654,20 @@ Smoothbox.Modal.Iframe = new Class({
     var loadIsOkay = true;
 
     var uriSrc = new URI(this.options.url);
-    if (this.options.autoFormat) {
-      uriSrc.setData({'format': this.options.autoFormat}, true, 'query');
+    if( this.options.autoFormat ) {
+      uriSrc.setData({'format' : this.options.autoFormat}, true, 'query');
     }
 
     this.content = new IFrame({
-      src: uriSrc,
-      id: 'TB_iframeContent',
-      name: 'TB_iframeContent',
-      frameborder: '0',
-      width: this.options.width,
-      height: this.options.height,
-      events: {
-        load: function () {
-          if (loadIsOkay) {
+      src : uriSrc,
+      id : 'TB_iframeContent',
+      name : 'TB_iframeContent',
+      frameborder : '0',
+      width : this.options.width,
+      height : this.options.height,
+      events : {
+        load : function() {
+          if( loadIsOkay ) {
             loadIsOkay = false;
             this.hideLoading();
             this.showWindow();
@@ -631,37 +682,39 @@ Smoothbox.Modal.Iframe = new Class({
     this.content.inject(this.window);
   },
 
-  doAutoResize: function () {
-    if (!this.options.autoResize) {
+  doAutoResize : function()
+  {
+    if( !this.options.autoResize ) {
       return;
     }
 
     // Check if from same host
     var iframe = this.content;
-    var host = Function.attempt(function () {
+    var host = Function.attempt(function(){
       return iframe.contentWindow.location.host;
     });
 
-    if (!host || host != window.location.host) {
+    if( !host || host != window.location.host ) {
       return;
     }
 
     // Try to get element
-    if (this.options.autoResize == true) {
+    if( this.options.autoResize == true ) {
       var self = this;
-      var element = Function.attempt(function () {
+      var element = Function.attempt(function(){
         return iframe.contentWindow.document.body.getChildren()[0];
-      }, function () {
+      }, function(){
         return iframe.contentWindow.document.body;
-      }, function () {
+      }, function(){
         return iframe.contentWindow.document.documentElement;
       });
 
-      return this.parent(element);
+      return this.parent( element );
     }
 
-    else if ($type(this.options.autoResize) == 'element') {
-      return this.parent(iframe.contentWindow.$(this.options.autoResize));
+    else if( $type(this.options.autoResize) == 'element' )
+    {
+      return this.parent( iframe.contentWindow.$(this.options.autoResize) );
     }
   }
 
@@ -669,10 +722,12 @@ Smoothbox.Modal.Iframe = new Class({
 
 Smoothbox.Modal.Request = new Class({
 
-  Extends: Smoothbox.Modal,
+  Extends : Smoothbox.Modal,
 
-  load: function () {
-    if (this.content) {
+  load : function()
+  {
+    if( this.content )
+    {
       return;
     }
 
@@ -681,20 +736,21 @@ Smoothbox.Modal.Request = new Class({
     var bind = this;
     var data = (this.options.requestData || {});
 
-    if (this.autoFormat) {
+    if( this.autoFormat ) {
       data.format = this.autoFormat;
     }
 
     (new Request.HTML({
-      url: this.options.url,
-      method: (this.options.requestMethod || 'get'),
-      data: data,
-      onSuccess: function (responseTree, responseElements, responseHTML, responseJavaScript) {
+      url : this.options.url,
+      method : (this.options.requestMethod || 'get'),
+      data : data,
+      onSuccess : function(responseTree, responseElements, responseHTML, responseJavaScript)
+      {
         bind.content = new Element('div', {
-          id: 'TB_ajaxContent',
-          width: bind.options.width,
-          height: bind.options.height,
-          html: responseHTML
+          id : 'TB_ajaxContent',
+          width : bind.options.width,
+          height : bind.options.height,
+          html : responseHTML
         });
         bind.content.inject(bind.window);
         //responseTree.inject(bind.content);
@@ -711,22 +767,24 @@ Smoothbox.Modal.Request = new Class({
 
 Smoothbox.Modal.Inline = new Class({
 
-  Extends: Smoothbox.Modal,
+  Extends : Smoothbox.Modal,
 
-  element: false,
+  element : false,
   cloneElement: false,
 
-  load: function () {
-    if (this.content) {
+  load : function()
+  {
+    if( this.content )
+    {
       return;
     }
 
     this.parent();
 
     this.content = new Element('div', {
-      id: 'TB_ajaxContent',
-      width: this.options.width,
-      height: this.options.height
+      id : 'TB_ajaxContent',
+      width : this.options.width,
+      height : this.options.height
     });
     this.content.inject(this.window);
     this.cloneElement = this.element.clone();
@@ -737,12 +795,14 @@ Smoothbox.Modal.Inline = new Class({
     this.onLoad();
   },
 
-  setOptions: function (options) {
+  setOptions : function(options)
+  {
     this.element = $(options.element);
     this.parent(options);
   },
 
-  doAutoResize: function () {
+  doAutoResize : function()
+  {
     this.parent(this.cloneElement);
   }
 
@@ -750,20 +810,22 @@ Smoothbox.Modal.Inline = new Class({
 
 Smoothbox.Modal.String = new Class({
 
-  Extends: Smoothbox.Modal,
+  Extends : Smoothbox.Modal,
 
-  load: function () {
-    if (this.content) {
+  load : function()
+  {
+    if( this.content )
+    {
       return;
     }
 
     this.parent();
 
     this.content = new Element('div', {
-      id: 'TB_ajaxContent',
-      width: this.options.width,
-      height: this.options.height,
-      html: '<div>' + this.options.bodyText + '</div>'
+      id : 'TB_ajaxContent',
+      width : this.options.width,
+      height : this.options.height,
+      html : '<div>' + this.options.bodyText + '</div>'
     });
     this.content.inject(this.window);
 
@@ -772,31 +834,35 @@ Smoothbox.Modal.String = new Class({
     this.onLoad();
   },
 
-  doAutoResize: function () {
-    if (!this.options.autoResize) {
+  doAutoResize : function()
+  {
+    if( !this.options.autoResize )
+    {
       return;
     }
 
     var bind = this;
-    var element = Function.attempt(function () {
+    var element = Function.attempt(function(){
       return bind.content.getChildren()[0];
     });
 
-    return this.parent(element);
+    return this.parent( element );
   }
 
 });
 
 Smoothbox.Modal.Image = new Class({
 
-  Extends: Smoothbox.Modal
+  Extends : Smoothbox.Modal
 
 });
 
-$(window).on('domready', function () {
+window.addEvent('domready', function()
+{
   Smoothbox.bind();
-});
+})
 
-$(window).on('load', function () {
+window.addEvent('load', function()
+{
   Smoothbox.bind();
-});
+})

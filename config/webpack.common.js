@@ -8,7 +8,6 @@ const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&t
 const args = require('yargs').argv;
 // const glob = require('glob');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // const CopyWebpackPlugin = require('copy-webpack-plugin');
 const APP_DIR = path.resolve(__dirname, '../application');
@@ -21,36 +20,28 @@ let APP_PREFIX = require('../conf').prefix;
  *
  **/
 const config = {
-  context: path.resolve(__dirname, '../application'),
+  context: path.resolve(__dirname, '../'),
   mode: 'development',
-  entry: {
-    core: [APP_DIR + '/themes/parentalguidance/modules/core.module.js', hotMiddlewareScript],
-    header: [APP_DIR + '/themes/parentalguidance/modules/header/header.module.js', hotMiddlewareScript],
-    auth: [APP_DIR + '/themes/parentalguidance/modules/auth/auth.module.js', hotMiddlewareScript],
-    reviews_home: [APP_DIR + '/themes/parentalguidance/modules/reviews/home.module.js', hotMiddlewareScript],
-    reviews_view: [APP_DIR + '/themes/parentalguidance/modules/reviews/view.module.js', hotMiddlewareScript],
-    reviews_create: [APP_DIR + '/themes/parentalguidance/modules/reviews/create.module.js', hotMiddlewareScript],
-    footer: [APP_DIR + '/themes/parentalguidance/modules/footer/footer.module.js', hotMiddlewareScript],
-    guides_home: [APP_DIR + '/themes/parentalguidance/modules/guides/home.module.js', hotMiddlewareScript],
-    browse_listing: [APP_DIR + '/themes/parentalguidance/modules/browse-listing/home.module.js', hotMiddlewareScript],
-    community_leaderboard: [APP_DIR + '/themes/parentalguidance/modules/community/leaderboard.module.js', hotMiddlewareScript],
-  },
   output: {
     filename: 'scripts/[name].bundle.js',
     path: path.resolve(__dirname, '/application/themes/parentalguidance/dist'),
-    publicPath: 'http://localhost:3030/'
+    publicPath: '/'
   },
   module: {
     rules: [
       // JS
       {
+        test: /core/,
+        use: 'imports-loader?this=>window'
+      },
+      {
         test: /\.(js|jsx)$/,
-        include: /application/,
+        exclude: /node_modules/,
         loader: 'babel-loader'
       },
       // SCSS / CSS
       {
-        test: /\.s?css$/,
+        test: /\.(s)?css$/,
         use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
@@ -112,6 +103,11 @@ const config = {
   optimization: {
     splitChunks: {
       cacheGroups: {
+        cores: {
+          test: /core/,
+          priority: -15,
+          reuseExistingChunk: true,
+        },
         vendors: {
           test: /[\\/]node_modules[\\/]/,
           priority: -10,
@@ -129,21 +125,13 @@ const config = {
         uglifyOptions: {
           exclude: /node_modules/,
           sourceMap: IS_DEV,
-          mangle: {
-            except: ['$super', '$', 'exports', 'require']
-          },
           compress: {
             warnings: false
           }
         }
       }),
     ],
-  },
-  resolve: {
-    modules: [
-      'node_modules',
-      path.resolve(__dirname, 'src')
-    ]
+
   },
   plugins: [
     new webpack.DefinePlugin({

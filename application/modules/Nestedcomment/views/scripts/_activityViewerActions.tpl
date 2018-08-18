@@ -42,7 +42,7 @@
                 el.removeClass('seao_icons_toolbar_right');
             }
         });
-        en4.core.language.addData({
+        ``({
             "Stories from %s are hidden now and will not appear in your Activity Feed anymore.": "<?php echo $this->string()->escapeJavascript($this->translate("Stories from %s are hidden now and will not appear in your Activity Feed anymore.")); ?>"
         });
         // Add hover event to get likes

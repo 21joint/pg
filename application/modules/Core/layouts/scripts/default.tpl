@@ -132,7 +132,7 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr')
   <?php // SCRIPTS?>
   <script type="text/javascript">if (window.location.hash == '#_=_') window.location.hash = '';</script>
   <script type="text/javascript">
-    <?php echo $this->headScript()->captureStart(Zend_View_Helper_Placeholder_Container_Abstract::PREPEND) ?>
+    <?php echo $this->headScript()->captureStart(Zend_View_Helper_Placeholder_Container_Abstract::APPEND) ?>
 
     Date.setServerOffset('<?php echo date('D, j M Y G:i:s O', time()) ?>');
 
@@ -163,7 +163,7 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr')
       });
     }
 
-    <?php echo $this->headScript()->captureEnd(Zend_View_Helper_Placeholder_Container_Abstract::PREPEND) ?>
+    <?php echo $this->headScript()->captureEnd(Zend_View_Helper_Placeholder_Container_Abstract::APPEND) ?>
   </script>
   <?php $this->headScript()->prependFile('/scripts/core.bundle.js');
   // Process
@@ -178,11 +178,7 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr')
   }
   ?>
   <?php echo $this->headScript()->toString() . "\n" ?>
-
-
-
   <?php echo $headIncludes ?>
-
   <?php
   if (file_exists($currentThemeHeader)) {
     require($currentThemeHeader);
@@ -197,6 +193,8 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr')
       $$('a.album_quick_upload').setStyle('display', 'none');
       $$('a.icon_photos_new').setStyle('display', 'none');
     }
+
+
 
 
 </script>
