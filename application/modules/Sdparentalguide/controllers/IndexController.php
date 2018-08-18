@@ -340,6 +340,9 @@ class Sdparentalguide_IndexController extends Core_Controller_Action_Standard
             'owner_id' => $viewer->getIdentity(),
         ));
         $row->save();
+        if($badge->active){
+            $badge->updateUserCounts($user_id);
+        }
         
         $this->view->status = true;        
     }
@@ -367,6 +370,10 @@ class Sdparentalguide_IndexController extends Core_Controller_Action_Standard
                 'active' => 1
             ));
             $row->save();
+            
+            if($badge->active){
+                $badge->updateUserCounts($user_id);
+            }
         }
         
         
@@ -384,6 +391,14 @@ class Sdparentalguide_IndexController extends Core_Controller_Action_Standard
             $where['user_id = ?'] = $user_id;
         }
         $assignedTable = Engine_Api::_()->getDbtable('assignedBadges', 'sdparentalguide');
+        $select = $assignedTable->select()->where('user_id = ?',$user_id)->where('badge_id = ?',$badge->getIdentity());
+        $assignedRow = $assignedTable->fetchRow($select);
+        if($badge->active && $assignedRow->active && !$status){
+            $badge->remvoeUserCounts($user_id);
+        }
+        if($badge->active && !$assignedRow->active && $status){
+            $badge->updateUserCounts($user_id);
+        }
         $assignedTable->update(array('active' => $status),$where);
         
         $this->view->status = true;        
