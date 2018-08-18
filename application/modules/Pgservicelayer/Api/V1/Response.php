@@ -378,6 +378,9 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             case 'sdparentalguide_badge':
                 $itemArray = $this->getBadgeData($itemObject);
                 break;
+            case 'sdparentalguide_guide':
+                $itemArray = $this->getGuideData($itemObject);
+                break;
             default:
                 break;
         }
