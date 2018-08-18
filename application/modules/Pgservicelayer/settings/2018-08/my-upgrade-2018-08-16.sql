@@ -32,7 +32,6 @@ CREATE TABLE `engine4_gg_guides` (
   `like_count` int(11) NOT NULL DEFAULT '0',
   `view_count` int(11) NOT NULL DEFAULT '0',
   `click_count` int(11) NOT NULL,
-  `average_rating` double NOT NULL DEFAULT '0',
   `dislike_count` int(11) NOT NULL,
   `gg_deleted` tinyint(4) NOT NULL DEFAULT '0',
   `closed` tinyint(4) NOT NULL DEFAULT '0',

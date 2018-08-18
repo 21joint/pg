@@ -32,4 +32,14 @@ class Sdparentalguide_Model_Guide extends Core_Model_Item_Abstract
         $table = Engine_Api::_()->getDbTable("guideItems","sdparentalguide");
         return $table->fetchAll($table->select()->where('guide_id = ?',$this->getIdentity()));
     }
+    
+    public function likes()
+    {
+        return new Engine_ProxyObject($this, Engine_Api::_()->getDbtable('likes', 'core'));
+    }
+  
+    public function comments()
+    {
+        return new Engine_ProxyObject($this, Engine_Api::_()->getDbtable('comments', 'core'));
+    }
 } 

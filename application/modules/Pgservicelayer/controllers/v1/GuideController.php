@@ -121,7 +121,7 @@ class Pgservicelayer_GuideController extends Pgservicelayer_Controller_Action_Ap
         $values = array(
             'title' => $this->getParam("title"),
             'topic_id' => $this->getParam("topicID"),
-            'draft' => $this->getParam("draft",0),
+            'draft' => $this->getParam("draft",1),
             'description' => $this->getParam("longDescription"),
             'photo_id' => (int)$this->getParam("coverPhotoID",0),
             'auth_view' => $this->getParam("authView","everyone"),

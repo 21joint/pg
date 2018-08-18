@@ -127,7 +127,7 @@ class Pgservicelayer_Api_V2_Response extends Sdparentalguide_Api_Core {
             'reviewTopic' => $this->getListingTopic($sitereview),
             'privacySettings' => array(),
             'reviewPhotos' => $this->getListingPhotos($sitereview),
-            'averageReviewRating' => sprintf("%.1f",$listingRating['review_rating']),
+            'averageReviewRating' => sprintf("%.1f",$listingRating['author_rating']),
             'averageProductRating' => sprintf("%.1f",$listingRating['product_rating']),
         );
         
