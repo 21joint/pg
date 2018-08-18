@@ -200,8 +200,13 @@ class Sdparentalguide_IndexController extends Core_Controller_Action_Standard
     $this->view->categories = $categories;
   }
   public function assignbadgesAction(){
-    $this->view->formFilter = $formFilter = new Sdparentalguide_Form_Admin_Badge_FilterUsers();
+    if (!$this->_helper->requireUser()->isValid())
+        return;
     $viewer = Engine_Api::_()->user()->getViewer();
+    if(!$viewer->isAdmin()){
+        return $this->_forward('requireauth', 'error', 'core');
+    }
+    $this->view->formFilter = $formFilter = new Sdparentalguide_Form_Admin_Badge_FilterUsers();
     $formFilter->removeElement("level_id");
     
     $page = $this->_getParam('page', 1);
@@ -249,7 +254,12 @@ class Sdparentalguide_IndexController extends Core_Controller_Action_Standard
   }
   
   public function assignUserAction(){
+      if (!$this->_helper->requireUser()->isValid())
+        return;
         $viewer = Engine_Api::_()->user()->getViewer();
+        if(!$viewer->isAdmin()){
+            return $this->_forward('requireauth', 'error', 'core');
+        }
         $this->view->viewer_id = $viewer_id = $viewer->getIdentity();
         $this->_helper->requireSubject('user');
         $this->view->formFilter = $formFilter = new Sdparentalguide_Form_Admin_Badge_FilterBadges();
@@ -340,6 +350,9 @@ class Sdparentalguide_IndexController extends Core_Controller_Action_Standard
             'owner_id' => $viewer->getIdentity(),
         ));
         $row->save();
+        if($badge->active){
+            $badge->updateUserCounts($user_id);
+        }
         
         $this->view->status = true;        
     }
@@ -367,6 +380,10 @@ class Sdparentalguide_IndexController extends Core_Controller_Action_Standard
                 'active' => 1
             ));
             $row->save();
+            
+            if($badge->active){
+                $badge->updateUserCounts($user_id);
+            }
         }
         
         
@@ -384,6 +401,14 @@ class Sdparentalguide_IndexController extends Core_Controller_Action_Standard
             $where['user_id = ?'] = $user_id;
         }
         $assignedTable = Engine_Api::_()->getDbtable('assignedBadges', 'sdparentalguide');
+        $select = $assignedTable->select()->where('user_id = ?',$user_id)->where('badge_id = ?',$badge->getIdentity());
+        $assignedRow = $assignedTable->fetchRow($select);
+        if($badge->active && $assignedRow->active && !$status){
+            $badge->remvoeUserCounts($user_id);
+        }
+        if($badge->active && !$assignedRow->active && $status){
+            $badge->updateUserCounts($user_id);
+        }
         $assignedTable->update(array('active' => $status),$where);
         
         $this->view->status = true;        

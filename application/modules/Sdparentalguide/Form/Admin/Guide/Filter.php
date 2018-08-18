@@ -66,6 +66,18 @@ class Sdparentalguide_Form_Admin_Guide_Filter extends Engine_Form
       ->addDecorator('HtmlTag', array('tag' => 'div'))
       ->setMultiOptions($levelOptions);
     
+    $enabled = new Zend_Form_Element_Select('enabled');
+    $enabled
+      ->setLabel('User Approved')
+      ->clearDecorators()
+      ->addDecorator('ViewHelper')
+      ->addDecorator('Label', array('tag' => null, 'placement' => 'PREPEND'))
+      ->addDecorator('HtmlTag', array('tag' => 'div'))
+      ->setMultiOptions(array(
+        '-1' => 'Select',
+        '0' => 'Not Approved',
+        '1' => 'Approved',
+      ));
     
     $guide_title = new Zend_Form_Element_Text('guide_title');
     $guide_title
@@ -186,6 +198,7 @@ class Sdparentalguide_Form_Admin_Guide_Filter extends Engine_Form
         $displayname,
         $email,
         $level,
+        $enabled,
         $guide_title,
         $topic,
         $featured,
@@ -197,10 +210,10 @@ class Sdparentalguide_Form_Admin_Guide_Filter extends Engine_Form
     ));
     
     
-    $this->addDisplayGroup(array('username','displayname','email'),'grp1');
-    $this->addDisplayGroup(array('level','guide_title','topic'),'grp2');
-    $this->addDisplayGroup(array('featured','sponsored','newlabel'),'grp3');
-    $this->addDisplayGroup(array('approved','status','order'),'grp4');
+    $this->addDisplayGroup(array('username','displayname','email','level',),'grp1');
+    $this->addDisplayGroup(array('enabled','guide_title','topic','featured'),'grp2');
+    $this->addDisplayGroup(array('sponsored','newlabel','approved','status'),'grp3');
+    $this->addDisplayGroup(array('order'),'grp4');
 
     // Set default action without URL-specified params
     $params = array();
