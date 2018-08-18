@@ -32,10 +32,11 @@ provides: [Core, MooTools, Type, typeOf, instanceOf, Native]
 
 ...
 */
+let Core, MooTools, Type, typof, instanceOf, Native;
 
 (function () {
 
-  this.MooTools = {
+  this.MooTools = MooTools = {
     version: '1.4.5',
     build: 'ab8ea8824dc3b24b6666867a2c4ed58ebb762cf0'
   };
@@ -57,7 +58,7 @@ provides: [Core, MooTools, Type, typeOf, instanceOf, Native]
     return typeof item;
   };
 
-  var instanceOf = this.instanceOf = function (item, object) {
+  instanceOf = this.instanceOf = function (item, object) {
     if (item == null) return false;
     var constructor = item.$constructor || item.constructor;
     while (constructor) {
@@ -162,7 +163,7 @@ provides: [Core, MooTools, Type, typeOf, instanceOf, Native]
 
 // Type
 
-  var Type = this.Type = function (name, object) {
+  Type = this.Type = function (name, object) {
     if (name) {
       var lower = name.toLowerCase();
       var typeCheck = function (item) {
@@ -2195,7 +2196,6 @@ requires: Slick.Parser
         starSelectsClosed = (selected && !!selected.length && selected[0].nodeName.charAt(0) == '/');
       } catch (e) {
       }
-      ;
 
       features.brokenStarGEBTN = starSelectsComments || starSelectsClosed;
 
@@ -2205,7 +2205,6 @@ requires: Slick.Parser
         features.idGetsName = document.getElementById(id) === testNode.firstChild;
       } catch (e) {
       }
-      ;
 
       if (testNode.getElementsByClassName) {
 
@@ -2217,7 +2216,6 @@ requires: Slick.Parser
           cachedGetElementsByClassName = (testNode.getElementsByClassName('b').length != 2);
         } catch (e) {
         }
-        ;
 
         // Opera 9.6 getElementsByClassName doesnt detects the class if its not the first one
         try {
@@ -2225,7 +2223,6 @@ requires: Slick.Parser
           brokenSecondClassNameGEBCN = (testNode.getElementsByClassName('a').length != 2);
         } catch (e) {
         }
-        ;
 
         features.brokenGEBCN = cachedGetElementsByClassName || brokenSecondClassNameGEBCN;
       }
@@ -2238,7 +2235,6 @@ requires: Slick.Parser
           features.starSelectsClosedQSA = (selected && !!selected.length && selected[0].nodeName.charAt(0) == '/');
         } catch (e) {
         }
-        ;
 
         // Safari 3.2 querySelectorAll doesnt work with mixedcase on quirksmode
         try {
@@ -2246,7 +2242,6 @@ requires: Slick.Parser
           features.brokenMixedCaseQSA = !testNode.querySelectorAll('.MiX').length;
         } catch (e) {
         }
-        ;
 
         // Webkit and Opera dont return selected options on querySelectorAll
         try {
@@ -2254,7 +2249,6 @@ requires: Slick.Parser
           features.brokenCheckedQSA = (testNode.querySelectorAll(':checked').length == 0);
         } catch (e) {
         }
-        ;
 
         // IE returns incorrect results for attr[*^$]="" selectors on querySelectorAll
         try {
@@ -2262,7 +2256,6 @@ requires: Slick.Parser
           features.brokenEmptyAttributeQSA = (testNode.querySelectorAll('[class*=""]').length != 0);
         } catch (e) {
         }
-        ;
 
       }
 
@@ -2272,7 +2265,6 @@ requires: Slick.Parser
         brokenFormAttributeGetter = (testNode.firstChild.getAttribute('action') != 's');
       } catch (e) {
       }
-      ;
 
       // native matchesSelector function
 
@@ -2283,7 +2275,6 @@ requires: Slick.Parser
         features.nativeMatchesSelector = null;
       } catch (e) {
       }
-      ;
 
     }
 
@@ -3453,7 +3444,7 @@ provides: [Element, Elements, $, $$, Iframe, Selectors]
     return this !== element && this.contains(element);
   });
 
-  (function () {
+  (function (search, find, match) {
 
     this.Selectors = {};
     var pseudos = this.Selectors.Pseudo = new Hash();
@@ -3480,7 +3471,7 @@ provides: [Element, Elements, $, $$, Iframe, Selectors]
       return match.call(this, node, selector);
     };
 
-  }).call(Slick);
+  }).call(window, Slick.search, Slick.find, Slick.match);
 
 //</1.2compat>
 
@@ -6166,7 +6157,8 @@ Element.implement({
 });
 
 
-/*
+(function () {
+  /*
 ---
 
 name: JSON
@@ -6184,14 +6176,15 @@ provides: JSON
 ...
 */
 
-if (typeof JSON == 'undefined') this.JSON = {};
-
-//<1.2compat>
-
-JSON = new Hash({
-  stringify: JSON.stringify,
-  parse: JSON.parse
-});
+  if (typeof JSON == 'undefined') this.JSON = JSON;
+//
+// //<1.2compat>
+//
+  JSON = new Hash({
+    stringify: JSON.stringify,
+    parse: JSON.parse
+  });
+}).call(window);
 
 //</1.2compat>
 
@@ -6597,3 +6590,4 @@ provides: Swiff
 
 }).call(window, document);
 
+export {Core, MooTools, Type, typof, instanceOf, Native}

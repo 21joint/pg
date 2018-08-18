@@ -1,4 +1,4 @@
-import MooTools from './mootools-core-1.4.5-full-compat-nc';
+import {MooTools, Cookie} from './mootools-core-1.4.5-full-compat-nc';
 
 (function () {
   // MooTools: the javascript framework.
@@ -2928,7 +2928,7 @@ provides: [Element.Pin]
     });
 
 //<1.2compat>
-    Element.alias('togglepin', 'togglePin');
+//     Element.alias('togglepin', 'togglePin');
 //</1.2compat>
 
   }).call(window);
