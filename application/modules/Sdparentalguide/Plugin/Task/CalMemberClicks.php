@@ -15,7 +15,7 @@ class Sdparentalguide_Plugin_Task_CalMemberClicks extends Sdparentalguide_Plugin
             if(!empty($job_user)){
                 $where['user_id = ?'] = $job_user;
             }
-            $table->update(array('view_count' => 0),$where);
+            $table->update(array('click_count' => 0),$where);
         }
         
         

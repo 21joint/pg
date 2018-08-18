@@ -45,8 +45,34 @@ class Pgservicelayer_GuideitemController extends Pgservicelayer_Controller_Actio
         $page = $this->getParam("page",1);
         $limit = $this->getParam("limit",50);
         $table = Engine_Api::_()->getDbTable("guideItems","sdparentalguide");
+        $tableName = $table->info("name");
         $select = $table->select();
+        $select->where("$tableName.gg_deleted = ?",0);
+        $select->order("sequence ASC")->order("item_id DESC");
         
+        $guideID = $this->getParam("guideID","-1");
+        if($guideID != -1){
+            $select->where("$tableName.guide_id = ?",(int)$guideID);
+        }
+        
+        $guideItemID = $this->getParam("guideItemID","-1");
+        if($guideItemID != -1){
+            $select->where("$tableName.item_id = ?",(int)$guideItemID);
+        }
+        
+        $contentType = $this->getParam("contentType");
+        if(!empty($contentType)){
+            if(is_array($contentType)){
+                $contentTypes = array();
+                foreach($contentType as $type){
+                    $contentTypes[] = Engine_Api::_()->sdparentalguide()->mapPGGResourceTypes($type);
+                }
+                $select->where($tableName.'.content_type IN(?)', $contentTypes);
+            }else{
+                $contentType = Engine_Api::_()->sdparentalguide()->mapPGGResourceTypes($contentType);
+                $select->where($tableName.'.content_type = ?', $contentType);
+            }            
+        }
         
         $paginator = Zend_Paginator::factory($select);
         $paginator->setCurrentPageNumber($page);

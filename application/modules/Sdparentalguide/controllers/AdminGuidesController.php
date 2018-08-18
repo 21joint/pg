@@ -101,6 +101,14 @@ class Sdparentalguide_AdminGuidesController extends Core_Controller_Action_Admin
       $guide->save();
       $this->view->status = true;
       
+      if($updateKey == "approved" && !$guide->draft){
+          $owner = $guide->getOwner();
+          if($status == 0){            
+              Engine_Api::_()->pgservicelayer()->updateUserCount(array('gg_guide_count' => (--$owner->gg_guide_count)),$owner->user_id);
+          }else{
+              Engine_Api::_()->pgservicelayer()->updateUserCount(array('gg_guide_count' => (++$owner->gg_guide_count)),$owner->user_id);
+          }
+      }
   }
   
   public function changeOwnerAction() {
@@ -130,8 +138,16 @@ class Sdparentalguide_AdminGuidesController extends Core_Controller_Action_Admin
       $db = Engine_Db_Table::getDefaultAdapter();
       $db->beginTransaction();
       try {
+          $oldOwner = $guide->owner_id;
+          $owner = $guide->getOwner();
           $guide->owner_id = $changeuserid;
           $guide->save();
+          $newOwner = Engine_Api::_()->user()->getUser($changeuserid);
+          
+          if($oldOwner != $changeuserid && !$guide->draft && $guide->approved){
+              Engine_Api::_()->pgservicelayer()->updateUserCount(array('gg_guide_count' => (--$owner->gg_guide_count)),$owner->user_id);
+              Engine_Api::_()->pgservicelayer()->updateUserCount(array('gg_guide_count' => (++$newOwner->gg_guide_count)),$newOwner->user_id);
+          }
           
           $db->commit();
       } catch (Exception $e) {
@@ -231,6 +247,10 @@ class Sdparentalguide_AdminGuidesController extends Core_Controller_Action_Admin
       foreach($guides as $guide){
           $guide->approved = 0;
           $guide->save();
+          if(!$guide->draft){
+            $owner = $guide->getOwner();
+            Engine_Api::_()->pgservicelayer()->updateUserCount(array('gg_guide_count' => (--$owner->gg_guide_count)),$owner->user_id);
+          }
       }
       
       $this->_forward('index');
@@ -247,6 +267,11 @@ class Sdparentalguide_AdminGuidesController extends Core_Controller_Action_Admin
       foreach($guides as $guide){
           $guide->approved = 1;
           $guide->save();
+          
+          if(!$guide->draft){
+            $owner = $guide->getOwner();
+            Engine_Api::_()->pgservicelayer()->updateUserCount(array('gg_guide_count' => (++$owner->gg_guide_count)),$owner->user_id);
+          }
       }
       
       $this->_forward('index');

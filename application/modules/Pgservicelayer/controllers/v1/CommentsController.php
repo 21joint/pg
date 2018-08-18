@@ -203,7 +203,7 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
             }
         } catch (Exception $e) {
             $db->rollBack();
-            $this->respondWithValidationError('internal_server_error', $e->getMessage());
+            $this->respondWithServerError($e);
         }
         
     }
