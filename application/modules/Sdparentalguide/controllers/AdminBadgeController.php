@@ -477,9 +477,12 @@ class Sdparentalguide_AdminBadgeController extends Core_Controller_Action_Admin
             $where['user_id = ?'] = $user_id;
         }
         $assignedTable = Engine_Api::_()->getDbtable('assignedBadges', 'sdparentalguide');
-        $assignedTable->delete($where);
-        
-        $badge->remvoeUserCounts($user_id);
+        $select = $assignedTable->select()->where('user_id = ?',$user_id)->where('badge_id = ?',$badge->getIdentity());
+        $assignedRow = $assignedTable->fetchRow($select);
+        if($badge->active && $assignedRow->active){
+            $badge->remvoeUserCounts($user_id);
+        }
+        $assignedTable->delete($where);        
         
         $this->view->status = true;        
     }
@@ -494,9 +497,13 @@ class Sdparentalguide_AdminBadgeController extends Core_Controller_Action_Admin
         }
         
         $assignedTable = Engine_Api::_()->getDbtable('assignedBadges', 'sdparentalguide');
-        foreach($user_ids as $user_id){
-             $assignedTable->delete(array('user_id = ?' => $user_id,'badge_id = ?' => $badge_id));
-             $badge->remvoeUserCounts($user_id);
+        foreach($user_ids as $user_id){             
+            $select = $assignedTable->select()->where('user_id = ?',$user_id)->where('badge_id = ?',$badge->getIdentity());
+            $assignedRow = $assignedTable->fetchRow($select);
+            if($badge->active && $assignedRow->active){
+                $badge->remvoeUserCounts($user_id);
+            }
+            $assignedTable->delete(array('user_id = ?' => $user_id,'badge_id = ?' => $badge_id));
         }
         
         $this->view->status = true;        

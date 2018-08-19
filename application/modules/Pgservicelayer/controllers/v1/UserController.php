@@ -88,6 +88,14 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
                         ->where("$questionsTableName.approved = ?",1)
                         ->where("$questionsTableName.draft = ?",0)
                         ->group("$questionsTableName.user_id");
+            }elseif($orderBy == 'guideCount' || strtolower($orderBy) == 'guides'){
+                $guidesTable = Engine_Api::_()->getDbtable('guides','sdparentalguide');
+                $guidesTableName = $guidesTable->info("name");
+                $select->joinLeft($guidesTableName,"$guidesTableName.owner_id = $usersTableName.user_id",array(new Zend_Db_Expr("COUNT($guidesTableName.guide_id) as gg_guide_count")));
+                $select->where("$guidesTableName.creation_date BETWEEN '$maxDate' AND '$currentDate'")
+                        ->where("$guidesTableName.approved = ?",1)
+                        ->where("$guidesTableName.draft = ?",0)
+                        ->group("$guidesTableName.owner_id");
             }
         }
         if ( !$checkFilter && !empty( $topicID )) {
@@ -107,15 +115,21 @@ class Pgservicelayer_UserController extends Pgservicelayer_Controller_Action_Api
             $select->order("gg_review_count DESC");
         }elseif($orderBy == 'questionCount' || strtolower($orderBy) == 'questions'){
             $select->order("gg_question_count DESC");
+        }elseif($orderBy == 'guideCount' || strtolower($orderBy) == 'guides'){
+            $select->order("gg_question_count DESC");
         }elseif($orderBy == 'followers'){
             $select->order("gg_followers_count DESC");
         }else{
             $select->order("gg_contribution DESC");
         }
         
-        $paginator = Zend_Paginator::factory($select);
-        $paginator->setCurrentPageNumber($page);
-        $paginator->setItemCountPerPage($limit);
+        try{
+            $paginator = Zend_Paginator::factory($select);
+            $paginator->setCurrentPageNumber($page);
+            $paginator->setItemCountPerPage($limit);
+        } catch (Exception $ex) {
+            $this->respondWithServerError($ex);
+        }
         
         $response = array(
             'contributionRangeType' => $contributionRangeType,

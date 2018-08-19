@@ -199,7 +199,6 @@ function assignBadge(element,badgeId,userId){
               return;
           }
           var row = $(element).getParent("tr").clone();
-          row.getElement(".nowrap").destroy();
           row.getElement(".table_options").destroy();
           
           $(element).getParent("tr").destroy();

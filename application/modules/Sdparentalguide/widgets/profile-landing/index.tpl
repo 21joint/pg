@@ -191,7 +191,7 @@
                             </p>
                         </div>
                         <div class="holder text-right">
-                            <a href="javascript:void(0)" class="text-primary"> <?php echo $this->translate('view all'); ?> </a>
+                            <a href="javascript:void(0)" class="text-primary" onclick="viewAllGuides(this);"> <?php echo $this->translate('view all'); ?> </a>
                         </div>
                     </div>
 
@@ -972,5 +972,10 @@
         });
         request.send();
     }
-
+function viewAllGuides(element){
+    try{
+        $$(".tab_layout_sdparentalguide_ajax_my_guides")[0].click();
+        $$(".more_tab.tab_open").removeClass("tab_open");
+    }catch(e){  }
+}
 </script>

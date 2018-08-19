@@ -19,15 +19,11 @@ class Sdparentalguide_Form_Admin_Permission_Guide extends Authorization_Form_Adm
             'label' => 'Allow Viewing of Guides?',
             'description' => 'Do you want to let members view guides? If set to no, some other settings on this page may not apply.',
             'multiOptions' => array(
-                2 => 'Yes, allow viewing of all guides, even private ones.',
                 1 => 'Yes, allow viewing of guides.',
                 0 => 'No, do not allow guides to be viewed.',
             ),
-            'value' => ( $this->isModerator() ? 2 : 1 ),
+            'value' => 1,
         ));
-        if (!$this->isModerator()) {
-            unset($this->view->options[2]);
-        }
         
         if (!$this->isPublic()) {
             $this->addElement('Radio', "create", array(
@@ -72,15 +68,11 @@ class Sdparentalguide_Form_Admin_Permission_Guide extends Authorization_Form_Adm
                 'label' => 'Allow Like on Guides?',
                 'description' => 'Do you want to let members of this level like on guides?',
                 'multiOptions' => array(
-                    2 => 'Yes, allow members to like on all guides, including private ones.',
                     1 => 'Yes, allow members to like on guides.',
                     0 => 'No, do not allow members to like on guides.',
                 ),
-                'value' => ( $this->isModerator() ? 2 : 1 ),
+                'value' => 1,
             ));
-            if (!$this->isModerator()) {
-                unset($this->like->options[2]);
-            }
             
             $this->addElement('Radio', "rate", array(
                 'label' => 'Allow Rating of Guides?',
@@ -96,15 +88,11 @@ class Sdparentalguide_Form_Admin_Permission_Guide extends Authorization_Form_Adm
                 'label' => 'Allow Commenting on Guides?',
                 'description' => 'Do you want to let members of this level comment on guides?',
                 'multiOptions' => array(
-                    2 => 'Yes, allow members to comment on all guides, including private ones.',
                     1 => 'Yes, allow members to comment on guides.',
                     0 => 'No, do not allow members to comment on guides.',
                 ),
-                'value' => ( $this->isModerator() ? 2 : 1 ),
+                'value' => 1,
             ));
-            if (!$this->isModerator()) {
-                unset($this->comment->options[2]);
-            }
             
             $this->addElement('Radio', "approve", array(
                 'label' => 'Guides Approval?',

@@ -15,7 +15,7 @@ class Sdparentalguide_Plugin_Task_CalReviewClicks extends Sdparentalguide_Plugin
             if(!empty($job_user)){
                 $where['owner_id = ?'] = $job_user;
             }
-            $table->update(array('view_count' => 0),$where);
+            $table->update(array('click_count' => 0),$where);
         }
         
         

@@ -95,7 +95,7 @@ class Pgservicelayer_SearchController extends Pgservicelayer_Controller_Action_A
             $topicsTable = Engine_Api::_()->getDbtable('topics', 'sdparentalguide');
             $topicsTableName = $topicsTable->info("name");
             
-            if(!empty($contentType) && is_string($contentType) && ($contentType == "sitereview_listing" || $contentType == "ggcommunity_question")){
+            if(!empty($contentType) && is_string($contentType) && ($contentType == "sitereview_listing" || $contentType == "ggcommunity_question" || $contentType == "sdparentalguide_guide")){
                 $select->from($searchTableName)->setIntegrityCheck(false)
                         ->joinLeft($topicsTableName,"$topicsTableName.topic_id = $searchTableName.topic_id OR $topicsTableName.topic_id IS NULL",array())
                         ->where("$searchTableName.title LIKE ? OR $searchTableName.description LIKE ? OR $searchTableName.keywords LIKE ? OR $searchTableName.hidden LIKE ?"

@@ -20,6 +20,7 @@ class Pgservicelayer_Api_V1_Reaction extends Sdparentalguide_Api_Core {
             //Like/Dislike
             case "sitereview_listing":
             case "core_comment":
+            case "sdparentalguide_guide":
                 $proxyObject = $subject->likes();
                 $dislikesTable = Engine_Api::_()->getDbTable("dislikes","nestedcomment");
                 //Handle Like
