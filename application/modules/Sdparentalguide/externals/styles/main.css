@@ -16,6 +16,17 @@
 .reviews_search_component{
   border-radius: 20px;
 }
+.reviews_search_component p{
+  font-family: 'Nunito', sans-serif;
+}
+.reviews_search_input form input, .reviews_search_input button{
+  font-family: 'Nunito', sans-serif;
+  border-radius: 50px;
+}
+.reviews_search_input button span{
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+}
 .reviews_component{
   background-color: #fff;
   border-radius: 20px;
@@ -881,6 +892,12 @@ div .seaocore_board_list_action_links.sd_listingview_action_links a {
     /* Community Home Page End */
     .review_star_ranking{
       left: auto;
+    }
+    .reviews_search_input button{
+      padding: 0;
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
     }
 }
 

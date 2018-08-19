@@ -10,14 +10,15 @@
 ?>
 
 <!-- Search Banner Component -->
-<div class="reviews_search_component bg-white d-flex flex-column justify-content-center aling-items-center">
-    <h1 class="text-center">Reviews</h1>
-    <div class="reviews_search_input d-flex justify-content-center">
-        <form action="<?php echo $this->baseUrl(); ?>/search" method="GET">
-            <input type="text" name="query" placeholder="Search" />
-            <button class="btn btn-lg btn-success text-white px-0">
-                    <i class="fa fa-search d-sm-none"></i>
-                    <span class="d-none d-sm-inline">Search now</span>
+<div class="reviews_search_component bg-primary text-white py-5 px-1">
+    <h1 class="text-center text-uppercase mt-5">Parental Guidance</h1>
+    <p class="text-center mb-5">Share Your Struggle, Provide Your Theories and Gain Advice</p>
+    <div class="reviews_search_input w-75 mx-auto my-5">
+        <form class="row justify-content-between align-items-center" action="<?php echo $this->baseUrl(); ?>/search" method="GET">
+            <input class="col-10" type="text" name="query" placeholder="Search" />
+            <button class="btn btn-success text-white">
+                    <i class="fa fa-search d-md-none"></i>
+                    <span class="d-none d-md-inline text-capitalize font-weight-bold">Search Now</span>
             </button>
         </form>
     </div>
