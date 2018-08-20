@@ -7,9 +7,12 @@
  */
 
 class Pgservicelayer_Api_Core extends Core_Api_Abstract {
+    protected $_responseApi = null;
     public function getPermissions(User_Model_User $user){
-        $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
-        return $responseApi->getPermissionData($user);
+        if($this->_responseApi == null){
+            $this->_responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
+        }
+        return $this->_responseApi->getPermissionData($user);
     }
     public function updateUserCount($data,$user_id){
         $usersTable = Engine_Api::_()->getDbTable("users","user");

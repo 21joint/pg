@@ -21,7 +21,7 @@ class Sdparentalguide_Model_DbTable_Statistics extends Engine_Db_Table
         $siteActivity->url = $url;
 //        $siteActivity->title = $this->getPageTitle($view);
         $siteActivity->is_member = $viewer->getIdentity()?1:0;
-        $siteActivity->userID = $viewer->getIdentity()?$viewer->getIdentity():0;
+        $siteActivity->user_id = (int)$viewer->getIdentity();
         $siteActivity->save();
     }
     

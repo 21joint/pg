@@ -41,6 +41,9 @@ class Pgservicelayer_GuideController extends Pgservicelayer_Controller_Action_Ap
         if(!$viewer->getIdentity() && $this->isApiRequest()){
             $this->respondWithError('unauthorized');
         }
+        if(!$this->pggPermission('canViewGuide')){
+            $this->respondWithError('unauthorized');
+        }
         
         $page = $this->getParam("page",1);
         $limit = $this->getParam("limit",50);
@@ -92,13 +95,11 @@ class Pgservicelayer_GuideController extends Pgservicelayer_Controller_Action_Ap
     }
     
     public function postAction(){
-        $viewer = Engine_Api::_()->user()->getViewer();
-        
+        $viewer = Engine_Api::_()->user()->getViewer();        
         if(!$viewer->getIdentity()){
             $this->respondWithError('unauthorized');
         }
-        $canCreate = Engine_Api::_()->authorization()->getPermission($viewer->level_id, 'sdparentalguide_guide', "create");
-        if (!$canCreate) {
+        if(!$this->pggPermission('canCreateGuide')){
             $this->respondWithError('unauthorized');
         }
         
@@ -144,7 +145,7 @@ class Pgservicelayer_GuideController extends Pgservicelayer_Controller_Action_Ap
                 unset($values['sponsored']);
                 unset($values['newlabel']);
             }
-            if(Engine_Api::_()->authorization()->getPermission($viewer->level_id, 'sdparentalguide_guide', "approve")){
+            if($this->pggPermission('canApproveGuide')){
                 $values['approved'] = 1;                
             }
             $oldTz = date_default_timezone_get();
@@ -204,8 +205,10 @@ class Pgservicelayer_GuideController extends Pgservicelayer_Controller_Action_Ap
         if(empty($guide)){
             $this->respondWithError('no_record');
         }
-        $canCreate = Engine_Api::_()->authorization()->getPermission($viewer->level_id, 'sdparentalguide_guide', "edit");
-        if (!$canCreate) {
+        if(!$this->pggPermission('canEditGuide')){
+            $this->respondWithError('unauthorized');
+        }
+        if(!$guide->isOwner($viewer) && !$this->pggPermission('canEditOthersGuide')){
             $this->respondWithError('unauthorized');
         }
                 
@@ -236,7 +239,7 @@ class Pgservicelayer_GuideController extends Pgservicelayer_Controller_Action_Ap
                 unset($values['sponsored']);
                 unset($values['newlabel']);
             }
-            if(Engine_Api::_()->authorization()->getPermission($viewer->level_id, 'sdparentalguide_guide', "approve")){
+            if($this->pggPermission('canApproveGuide')){
                 $values['approved'] = 1;                
             }
             if(!$guide->approved && !empty($values['approved'])){
@@ -308,10 +311,13 @@ class Pgservicelayer_GuideController extends Pgservicelayer_Controller_Action_Ap
         $db->beginTransaction();
         try {
             foreach($guides as $guide){
-                $canDelete = Engine_Api::_()->authorization()->getPermission($level_id, 'sdparentalguide_guide', "delete");
-                if (!$canDelete) {
+                if(!$this->pggPermission('canDeleteGuide')){
                     $this->respondWithError('unauthorized');
                 }
+                if(!$guide->isOwner($viewer) && !$this->pggPermission('canDeleteOthersGuide')){
+                    $this->respondWithError('unauthorized');
+                }
+                
                 $guide->gg_deleted = 1;
                 $guide->save();
                 Engine_Api::_()->getDbTable("guideItems","sdparentalguide")->update(array('gg_deleted' => 1),array('guide_id = ?' => $guide->getIdentity()));

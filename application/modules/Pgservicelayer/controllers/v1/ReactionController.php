@@ -84,6 +84,34 @@ class Pgservicelayer_ReactionController extends Pgservicelayer_Controller_Action
                 }
             }
             
+            //Permissions
+            if(strtolower($reactionType) == "like" || strtolower($reactionType) == "dislike"){
+                if($subject->getType() == "sitereview_listing"){
+                    if(!$this->pggPermission('canLikeReview')){
+                        $this->respondWithError('unauthorized');
+                    }
+                }
+                
+                if($subject->getType() == "sdparentalguide_guide"){
+                    if(!$this->pggPermission('canLikeGuide')){
+                        $this->respondWithError('unauthorized');
+                    }
+                }
+            }
+            
+            if(strtolower($reactionType) == "upvote" || strtolower($reactionType) == "downvote"){
+                if($subject->getType() == "ggcommunity_question"){
+                    if(!$this->pggPermission('canVoteQuestion')){
+                        $this->respondWithError('unauthorized');
+                    }
+                }
+                if($subject->getType() == "ggcommunity_answer"){
+                    if(!$this->pggPermission('canVoteAnswer')){
+                        $this->respondWithError('unauthorized');
+                    }
+                }
+            }
+            
             Engine_Api::_()->getApi("V1_Reaction","pgservicelayer")->toggleReaction($subject,$reactionType);            
             $db->commit();
             $totalCount = 1;

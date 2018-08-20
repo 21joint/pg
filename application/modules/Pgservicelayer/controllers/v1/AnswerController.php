@@ -67,6 +67,10 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
             $this->respondWithError('no_record');
         }
         
+        if(!$this->pggPermission('canViewQuestion')){
+            $this->respondWithError('unauthorized');
+        }
+        
         $id = $this->getParam("questionID");
         $answerID = $this->getParam("answerID");
         $search = $this->getParam("topicName");
@@ -112,6 +116,10 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
             $select->order("total_vote_count $orderByDirection");
         }else if($orderBy == "commentsCount"){
             $select->order("comment_count $orderByDirection");
+        }else if($orderBy == "bestAnswer"){
+            $select->order("accepted $orderByDirection");
+            $select->order("total_vote_count $orderByDirection");
+            $select->order("answer_id $orderByDirection");
         }else{
             $select->order("answer_id $orderByDirection");
         }
@@ -155,7 +163,7 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
             $this->respondWithError('no_record');
         }
         
-        if(!Engine_Api::_()->authorization()->isAllowed('ggcommunity', null, 'answer_question')){
+        if(!$this->pggPermission('canAnswerQuestion')){
             $this->respondWithError('unauthorized');
         }
         
@@ -193,6 +201,9 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
             $answer->save();
             
             $answerChosen = $this->getParam("answerChosen");
+            if(!$this->pggPermission('canSelectAnswer')){
+                $answerChosen = null;
+            }
             if(!empty($answerChosen) && ($subject->user_id = $viewer->getIdentity() || $viewer->isAdminOnly())){
                 $choosenAnswer = $subject->getChoosenAnswer();
                 $table->update(array('accepted' => 0),array('parent_id = ?' => $subject->getIdentity(),'parent_type = ?' => $subject->getType()));
@@ -255,10 +266,10 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
             $this->respondWithError('no_record');
         }
         
-        if(!Engine_Api::_()->authorization()->isAllowed('ggcommunity', null, 'answer_question')){
+        if(!$this->pggPermission('canAnswerQuestion')){
             $this->respondWithError('unauthorized');
         }
-        
+                
         $answerID = $this->getParam("answerID");
         $answer = Engine_Api::_()->getItem("ggcommunity_answer",$answerID);
         if(empty($answer)){
@@ -285,8 +296,27 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
             $answer->save();
             
             $answerChosen = $this->getParam("answerChosen");
-            if(!empty($answerChosen) && ($answer->user_id == $viewer->getIdentity() || $viewer->isAdmin())){                
-                $chosenAnswer = $subject->getChoosenAnswer();           
+            if(!$this->pggPermission('canSelectAnswer')){
+                $answerChosen = null;
+            }
+            $chosenAnswer = $subject->getChoosenAnswer();
+            
+            //Check if user can change selected answer
+            if(!empty($chosenAnswer) && !$this->pggPermission('canChangeSelectedAnswer')){
+                $answerChosen = null;
+            }
+            
+            //Check if user can change other's selected answer
+            if(!empty($chosenAnswer) && !$chosenAnswer->isOwner($viewer) && !$this->pggPermission('canChangeOthersSelectedAnswer')){
+                $answerChosen = null;
+            }
+            
+            //Check if user can select other's answer as chosen
+            if(empty($chosenAnswer) && !$answer->isOwner($viewer) && !$this->pggPermission('canSelectOthersAnswer')){
+                $answerChosen = null;
+            }
+            
+            if(!empty($answerChosen) && ($answer->user_id == $viewer->getIdentity() || $viewer->isAdmin())){
                 $table->update(array('accepted' => 0),array('parent_id = ?' => $subject->getIdentity(),'parent_type = ?' => $subject->getType()));
                 $answer->accepted = 1;
                 $answer->save();

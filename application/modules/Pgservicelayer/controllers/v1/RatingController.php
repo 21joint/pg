@@ -94,6 +94,12 @@ class Pgservicelayer_RatingController extends Pgservicelayer_Controller_Action_A
         $db->beginTransaction();
 
         try {
+            //Permissions
+            if($subject->getType() == "sitereview_listing"){
+                if(!$this->pggPermission('canRateProductReview') || !$this->pggPermission('canRateAuthorReview')){
+                    $this->respondWithError('unauthorized');
+                }
+            }
             
             $table = Engine_Api::_()->getDbTable("listingRatings","sdparentalguide");
             $userRating = $table->getRating($subject,$viewer);

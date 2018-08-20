@@ -35,6 +35,16 @@ class Sdparentalguide_Form_Admin_Permission_Custom extends Authorization_Form_Ad
                 ),
                 'value' => 1,
             ));
+            
+            $this->addElement('Radio', "assign_badge", array(
+                'label' => 'Allow Badge Assignment?',
+                'description' => 'Do you want to let members to assign badges?',
+                'multiOptions' => array(
+                    1 => 'Yes, allow badge assignment.',
+                    0 => 'No, do not allow badge assignment.',
+                ),
+                'value' => 1,
+            ));
         
         }
     }
