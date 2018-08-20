@@ -42,6 +42,10 @@ class Pgservicelayer_GuideitemController extends Pgservicelayer_Controller_Actio
             $this->respondWithError('unauthorized');
         }
         
+//        if(!$this->pggPermission('canViewGuide')){
+//            $this->respondWithError('unauthorized');
+//        }
+        
         $page = $this->getParam("page",1);
         $limit = $this->getParam("limit",50);
         $table = Engine_Api::_()->getDbTable("guideItems","sdparentalguide");
@@ -99,10 +103,9 @@ class Pgservicelayer_GuideitemController extends Pgservicelayer_Controller_Actio
         if(!$viewer->getIdentity()){
             $this->respondWithError('unauthorized');
         }
-        $canCreate = Engine_Api::_()->authorization()->getPermission($viewer->level_id, 'sdparentalguide_guide', "create");
-        if (!$canCreate) {
-            $this->respondWithError('unauthorized');
-        }
+//        if(!$this->pggPermission('canCreateGuide')){
+//            $this->respondWithError('unauthorized');
+//        }
         
         $form = Engine_Api::_()->getApi("V1_Forms","pgservicelayer")->getGuideItemForm();
         $validators = Engine_Api::_()->getApi("V1_Validators","pgservicelayer")->getGuideItemValidators();
@@ -171,8 +174,7 @@ class Pgservicelayer_GuideitemController extends Pgservicelayer_Controller_Actio
         if(empty($guideItem) || $guideItem->gg_deleted){
             $this->respondWithError('no_record');
         }
-        $canCreate = Engine_Api::_()->authorization()->getPermission($viewer->level_id, 'sdparentalguide_guide', "edit");
-        if (!$canCreate) {
+        if(!$this->pggPermission('canEditGuide')){
             $this->respondWithError('unauthorized');
         }
                 
@@ -259,8 +261,7 @@ class Pgservicelayer_GuideitemController extends Pgservicelayer_Controller_Actio
         $db->beginTransaction();
         try {
             foreach($guideItems as $guideItem){
-                $canDelete = Engine_Api::_()->authorization()->getPermission($level_id, 'sdparentalguide_guide', "delete");
-                if (!$canDelete) {
+                if(!$this->pggPermission('canDeleteGuide')){
                     $this->respondWithError('unauthorized');
                 }
                 $guideItem->gg_deleted = 1;

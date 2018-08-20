@@ -100,6 +100,12 @@ class Pgservicelayer_ReactionController extends Pgservicelayer_Controller_Action
                         $this->respondWithError('unauthorized');
                     }
                 }
+                
+                if($subject->getType() == "core_comment"){
+                    if(!$this->pggPermission('canLikeComments')){
+                        $this->respondWithError('unauthorized');
+                    }
+                }
             }
             
             if(strtolower($reactionType) == "upvote" || strtolower($reactionType) == "downvote"){

@@ -112,6 +112,9 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
             $subject = Engine_Api::_()->core()->getSubject();
         }
         $parentCommentId = null;
+        if($subject->getType() == "core_comment" && !$this->pggPermission('canCommentOnComments')){
+            $this->respondWithError('unauthorized');
+        }
         if($subject->getType() == "core_comment"){
             $subject = Engine_Api::_()->getItem($subject->resource_type,$subject->resource_id);
             $parentCommentId = $this->getParam("contentID");
