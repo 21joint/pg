@@ -112,6 +112,9 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
             $subject = Engine_Api::_()->core()->getSubject();
         }
         $parentCommentId = null;
+        if($subject->getType() == "core_comment" && !$this->pggPermission('canCommentOnComments')){
+            $this->respondWithError('unauthorized');
+        }
         if($subject->getType() == "core_comment"){
             $subject = Engine_Api::_()->getItem($subject->resource_type,$subject->resource_id);
             $parentCommentId = $this->getParam("contentID");
@@ -121,8 +124,24 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
                 (!method_exists($subject, 'comments') && !method_exists($subject, 'likes')))
             $this->respondWithError('no_record');
         $viewer = Engine_Api::_()->user()->getViewer();
+        
+        //Permissions
+        if($subject->getType() == "sitereview_listing" && !$this->pggPermission('canCommentReview')){
+            $this->respondWithError('unauthorized');
+        }
+        if($subject->getType() == "ggcommunity_question" && !$this->pggPermission('canCommentQuestion')){
+            $this->respondWithError('unauthorized');
+        }
+        if($subject->getType() == "ggcommunity_answer" && !$this->pggPermission('canCommentAnswer')){
+            $this->respondWithError('unauthorized');
+        }
+        
+        if($subject->getType() == "sdparentalguide_guide" && !$this->pggPermission('canCommentGuide')){
+            $this->respondWithError('unauthorized');
+        }
+        
         $canComment = $subject->authorization()->isAllowed($viewer, 'comment');
-        if (!$viewer->getIdentity() && !$canComment)
+        if (!$viewer->getIdentity())
             $this->respondWithError('unauthorized');
         
         // Filter HTML
@@ -220,11 +239,27 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
         }
         if (!($subject instanceof Core_Model_Item_Abstract) ||
                 !$subject->getIdentity() ||
-                (!method_exists($subject, 'comments') && !method_exists($subject, 'likes')))
+                (!method_exists($subject, 'comments') && !method_exists($subject, 'likes')) || $subject->gg_deleted)
             $this->respondWithError('no_record');
         $viewer = Engine_Api::_()->user()->getViewer();
+        
+        //Permissions
+        if($subject->getType() == "sitereview_listing" && !$this->pggPermission('canCommentReview')){
+            $this->respondWithError('unauthorized');
+        }
+        if($subject->getType() == "ggcommunity_question" && !$this->pggPermission('canCommentQuestion')){
+            $this->respondWithError('unauthorized');
+        }
+        if($subject->getType() == "ggcommunity_answer" && !$this->pggPermission('canCommentAnswer')){
+            $this->respondWithError('unauthorized');
+        }
+        
+        if($subject->getType() == "sdparentalguide_guide" && !$this->pggPermission('canCommentGuide')){
+            $this->respondWithError('unauthorized');
+        }
+        
         $canComment = $subject->authorization()->isAllowed($viewer, 'comment');
-        if (!$viewer->getIdentity() && !$canComment)
+        if (!$viewer->getIdentity())
             $this->respondWithError('unauthorized');
         
         $comment_id = $this->getParam('commentID');
@@ -232,7 +267,7 @@ class Pgservicelayer_CommentsController extends Pgservicelayer_Controller_Action
             $this->respondWithError('no_record');
         }
         $comment = $subject->comments()->getComment($comment_id);   
-        if(empty($comment)){
+        if(empty($comment) || $comment->gg_deleted){
             $this->respondWithError('no_record');
         }
         

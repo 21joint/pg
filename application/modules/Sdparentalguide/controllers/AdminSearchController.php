@@ -147,7 +147,55 @@ class Sdparentalguide_AdminSearchController extends Core_Controller_Action_Admin
         $this->view->paginator = $paginator->setCurrentPageNumber($this->getParam('page', 1));
         $paginator->setItemCountPerPage(10);
     }
-    
+
+    public function customactivityAction(){
+        $this->view->navigation = $navigation = Engine_Api::_()->getApi('menus', 'core')
+                ->getNavigation('sdparentalguide_admin_main', array(), 'sdparentalguide_admin_main_search');
+        $this->view->navigation2 = $navigation2 = Engine_Api::_()->getApi('menus', 'core')
+                ->getNavigation('sdparentalguide_admin_main_search', array(), 'sdparentalguide_admin_search_customactivity');
+
+        $request = Zend_Controller_Front::getInstance()->getRequest();
+        $this->view->order_column = $column_name = $request->getParam('column_name','site_activity_id');
+        $this->view->order = $order = $request->getParam('order', 'ASC');
+        $table = Engine_Api::_()->getDbtable('statistics', 'sdparentalguide');
+        $tableName = $table->info("name");
+        $usertable = Engine_Api::_()->getDbtable('users', 'user');
+        $usertableName = $usertable->info("name");
+//        $clear = $request->getParam("clear");
+//        if(!empty($clear)){
+//            $db = $table->getDefaultAdapter();
+//            $db->query("TRUNCATE TABLE engine4_gg_search_activity");
+//            return $this->_helper->redirector->gotoRoute(array('clear' => 0));
+//        }
+
+        $select = $table->select()->setIntegrityCheck(false);
+        $select->from($tableName, array("*"))->join($usertableName, $usertableName . ".user_id = " . $tableName . ".gg_user_created", array("username", "email"));
+
+        $username = $request->getParam("username");
+        if(!empty($username)){
+            $select->where("username LIKE ?","%".$username."%");
+        }
+        $email = $request->getParam("email");
+        if(!empty($email)){
+            $select->where("email LIKE ?","%".$email."%");
+        }
+        $url = $request->getParam("url");
+        if(!empty($url)){
+            $select->where("url LIKE ?","%".$url."%");
+        }
+        $is_member = $request->getParam("is_member");
+        if(isset($is_member) && $is_member != -1){
+            $select->where("is_member = ?", $is_member);
+        }
+        if(!empty($column_name)){
+            $select->order("$column_name $order");
+        }
+
+        $this->view->paginator = $paginator = Zend_Paginator::factory($select);
+        $this->view->paginator = $paginator->setCurrentPageNumber($this->getParam('page', 1));
+        $paginator->setItemCountPerPage(10);
+    }
+
     public function analyticsAction(){
         $this->view->navigation = $navigation = Engine_Api::_()->getApi('menus', 'core')
                 ->getNavigation('sdparentalguide_admin_main', array(), 'sdparentalguide_admin_main_search');

@@ -60,7 +60,7 @@ class Pgservicelayer_ReactionController extends Pgservicelayer_Controller_Action
         }
         if (!($subject instanceof Core_Model_Item_Abstract) ||
                 !$subject->getIdentity() ||
-                (!method_exists($subject, 'likes')))
+                (!method_exists($subject, 'likes')) || $subject->gg_deleted)
             $this->respondWithError('no_record');
         
         $viewer = Engine_Api::_()->user()->getViewer();
@@ -73,7 +73,10 @@ class Pgservicelayer_ReactionController extends Pgservicelayer_Controller_Action
 
         try {
             //1 for positive reaction and 0 for negative reaction
-            $reactionType = $this->getParam("reactionType",1);            
+            $reactionType = $this->getParam("reactionType");
+            if(empty($reactionType) || ($reactionType != "upvote" && $reactionType != "downvote" && $reactionType != "like" && $reactionType != "dislike")){
+                $this->respondWithError('unauthorized',$this->translate("Invalid reaction type."));
+            }
             if(strtolower($reactionType) == "like" || strtolower($reactionType) == "dislike"){
                 if($subject->getType() == "ggcommunity_answer" || $subject->getType() == "ggcommunity_question"){
                     $this->respondWithError('unauthorized',$this->translate("You cannot like/dislike this entity."));
@@ -81,6 +84,40 @@ class Pgservicelayer_ReactionController extends Pgservicelayer_Controller_Action
             }else if(strtolower($reactionType) == "upvote" || strtolower($reactionType) == "downvote"){
                 if($subject->getType() != "ggcommunity_answer" && $subject->getType() != "ggcommunity_question"){
                     $this->respondWithError('unauthorized',$this->translate("You cannot vote this entity."));
+                }
+            }
+            
+            //Permissions
+            if(strtolower($reactionType) == "like" || strtolower($reactionType) == "dislike"){
+                if($subject->getType() == "sitereview_listing"){
+                    if(!$this->pggPermission('canLikeReview')){
+                        $this->respondWithError('unauthorized');
+                    }
+                }
+                
+                if($subject->getType() == "sdparentalguide_guide"){
+                    if(!$this->pggPermission('canLikeGuide')){
+                        $this->respondWithError('unauthorized');
+                    }
+                }
+                
+                if($subject->getType() == "core_comment"){
+                    if(!$this->pggPermission('canLikeComments')){
+                        $this->respondWithError('unauthorized');
+                    }
+                }
+            }
+            
+            if(strtolower($reactionType) == "upvote" || strtolower($reactionType) == "downvote"){
+                if($subject->getType() == "ggcommunity_question"){
+                    if(!$this->pggPermission('canVoteQuestion')){
+                        $this->respondWithError('unauthorized');
+                    }
+                }
+                if($subject->getType() == "ggcommunity_answer"){
+                    if(!$this->pggPermission('canVoteAnswer')){
+                        $this->respondWithError('unauthorized');
+                    }
                 }
             }
             
@@ -96,7 +133,7 @@ class Pgservicelayer_ReactionController extends Pgservicelayer_Controller_Action
             $this->respondWithSuccess(array('totalCount' => $totalCount));            
         } catch (Exception $e) {
             $db->rollBack();
-            $this->respondWithValidationError('internal_server_error', $e->getMessage());
+            $this->respondWithServerError($e);
         }
         
     }

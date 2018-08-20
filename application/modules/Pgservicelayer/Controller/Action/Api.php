@@ -10,6 +10,7 @@
 abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_Action_Standard
 {
     protected $_inputStream = null;
+    protected $_permissionHelper = null;
     public function init(){
         if($this->isApiRequest()){
             header("Content-Type: application/json");
@@ -427,5 +428,14 @@ abstract class Pgservicelayer_Controller_Action_Api extends Siteapi_Controller_A
 
         // we are done...
         return $data;
+    }
+    
+    public function pggPermission($permission, $viewer = null,$subject = null) {
+        if($this->_permissionHelper == null){
+            $this->_permissionHelper = new Pgservicelayer_View_Helper_PggPermission();
+        }
+        $view = Zend_Registry::get("Zend_View");
+        $this->_permissionHelper->setView($view);
+        return $this->_permissionHelper->pggPermission($permission,$viewer,$subject);
     }
 }
