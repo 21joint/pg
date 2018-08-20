@@ -9,3 +9,4 @@ hooks:
     - location: scripts/restart_apache.sh
       timeout: 60
       runas: root
+
