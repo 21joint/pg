@@ -256,7 +256,7 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
         
         $questionID = $this->getParam("questionID");
         $question = Engine_Api::_()->getItem("ggcommunity_question",$questionID);
-        if(empty($question)){
+        if(empty($question) || $question->gg_deleted){
             $this->respondWithError('no_record');
         }
         if(!$this->pggPermission('canEditQuestion')){

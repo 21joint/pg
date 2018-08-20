@@ -272,7 +272,7 @@ class Pgservicelayer_AnswerController extends Pgservicelayer_Controller_Action_A
                 
         $answerID = $this->getParam("answerID");
         $answer = Engine_Api::_()->getItem("ggcommunity_answer",$answerID);
-        if(empty($answer)){
+        if(empty($answer) || $answer->gg_deleted){
             $this->respondWithError('no_record');
         }
         

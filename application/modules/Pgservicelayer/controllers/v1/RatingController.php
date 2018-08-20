@@ -82,7 +82,7 @@ class Pgservicelayer_RatingController extends Pgservicelayer_Controller_Action_A
         if(Engine_Api::_()->core()->hasSubject()){
             $subject = Engine_Api::_()->core()->getSubject();
         }
-        if (!($subject instanceof Core_Model_Item_Abstract) || !$subject->getIdentity())
+        if (!($subject instanceof Core_Model_Item_Abstract) || !$subject->getIdentity() || $subject->gg_deleted)
             $this->respondWithError('no_record');
         
         $viewer = Engine_Api::_()->user()->getViewer();

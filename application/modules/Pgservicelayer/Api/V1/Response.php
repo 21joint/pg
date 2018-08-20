@@ -10,7 +10,7 @@
 class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
     protected $_permissionsData = null;
     public function getFormatedDateTime($datetime){
-        if(empty($datetime)){
+        if(empty($datetime) || $datetime == "0000-00-00 00:00:00"){
             return "";
         }
         $view = Zend_Registry::get("Zend_View");

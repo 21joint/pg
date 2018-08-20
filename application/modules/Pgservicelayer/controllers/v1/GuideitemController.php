@@ -168,7 +168,7 @@ class Pgservicelayer_GuideitemController extends Pgservicelayer_Controller_Actio
         }
         $id = $this->getParam("guideItemID");
         $guideItem = Engine_Api::_()->getItem("sdparentalguide_guide_item",$id);
-        if(empty($guideItem)){
+        if(empty($guideItem) || $guideItem->gg_deleted){
             $this->respondWithError('no_record');
         }
         $canCreate = Engine_Api::_()->authorization()->getPermission($viewer->level_id, 'sdparentalguide_guide', "edit");

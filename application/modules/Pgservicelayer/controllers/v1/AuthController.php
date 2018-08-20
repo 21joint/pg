@@ -403,18 +403,18 @@ class Pgservicelayer_AuthController extends Pgservicelayer_Controller_Action_Api
                 $user->save();
             }
 
-            $userArray = Engine_Api::_()->getApi('Core', 'siteapi')->validateUserArray($user, array('email'));
+            $userArray = Engine_Api::_()->getApi("V1_Response","pgservicelayer")->getUserData($user);
 
             // Add images
-            $getContentImages = Engine_Api::_()->getApi('core', 'siteapi')->getContentImage($user);
-            $userArray = array_merge($userArray, $getContentImages);
+//            $getContentImages = Engine_Api::_()->getApi('core', 'siteapi')->getContentImage($user);
+//            $userArray = array_merge($userArray, $getContentImages);
 
-            $userArray['cover'] = $userArray['image'];
-            if (Engine_Api::_()->getDbtable('modules', 'core')->isModuleEnabled('siteusercoverphoto')) {
-                $getUserCoverPhoto = Engine_Api::_()->getApi('Siteapi_Core', 'siteusercoverphoto')->getCoverPhoto($user);
-                if (!empty($getUserCoverPhoto))
-                    $userArray['cover'] = $getUserCoverPhoto;
-            }
+//            $userArray['cover'] = $userArray['image'];
+//            if (Engine_Api::_()->getDbtable('modules', 'core')->isModuleEnabled('siteusercoverphoto')) {
+//                $getUserCoverPhoto = Engine_Api::_()->getApi('Siteapi_Core', 'siteusercoverphoto')->getCoverPhoto($user);
+//                if (!empty($getUserCoverPhoto))
+//                    $userArray['cover'] = $getUserCoverPhoto;
+//            }
 
             
 //            if (false) {

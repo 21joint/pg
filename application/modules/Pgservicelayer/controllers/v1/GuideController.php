@@ -75,6 +75,21 @@ class Pgservicelayer_GuideController extends Pgservicelayer_Controller_Action_Ap
         }
         $select->where("$tableName.gg_deleted = ?",0);
         
+        $orderByDirection = $this->getParam("orderByDirection","descending");
+        $orderBy = $this->getParam("orderBy","createdDateTime");
+        $orderByDirection = ($orderByDirection == "descending")?"DESC":"ASC";
+        if($orderBy == "createdDateTime"){
+            $select->order("creation_date $orderByDirection");
+        }else if($orderBy == "likesCount"){
+            $select->order("like_count $orderByDirection");
+        }else if($orderBy == "commentsCount"){
+            $select->order("comment_count $orderByDirection");
+        }else if($orderBy == "lastModifiedDateTime"){
+            $select->order("modified_date $orderByDirection");
+        }else{
+            $select->order("creation_date $orderByDirection");
+        }
+        
         $paginator = Zend_Paginator::factory($select);
         $paginator->setCurrentPageNumber($page);
         $paginator->setItemCountPerPage($limit);
@@ -202,7 +217,7 @@ class Pgservicelayer_GuideController extends Pgservicelayer_Controller_Action_Ap
         }
         $id = $this->getParam("guideID");
         $guide = Engine_Api::_()->getItem("sdparentalguide_guide",$id);
-        if(empty($guide)){
+        if(empty($guide) || $guide->gg_deleted){
             $this->respondWithError('no_record');
         }
         if(!$this->pggPermission('canEditGuide')){
