@@ -142,31 +142,50 @@ function startSearch(element){
     <table class='admin_table'>
         <thead>
             <tr>
-                <th><a href="javascript:void(0);" class="<?php echo $this->order_column == 'site_activity_id'?'sort_active '.strtolower($this->order):''; ?>" onclick="changeOrder(this, 'site_activity_id','<?php echo $this->order ;?>')"><?php echo $this->translate("Id") ?></a></th>
-                <th><a href="javascript:void(0);" class="<?php echo $this->order_column == 'gg_user_created'?'sort_active '.strtolower($this->order):''; ?>" onclick="changeOrder(this, 'gg_user_created', '<?php echo $this->order ;?>')"><?php echo $this->translate("User") ?></a></th>
-                <th><a href="javascript:void(0);" class="<?php echo $this->order_column == 'url'?'sort_active '.strtolower($this->order):''; ?>" onclick="changeOrder(this, 'url', '<?php echo $this->order ;?>')"><?php echo $this->translate("Url") ?></a></th>
-                <th><a href="javascript:void(0);" class="<?php echo $this->order_column == 'is_member'?'sort_active '.strtolower($this->order):''; ?>" onclick="changeOrder(this, 'is_member', '<?php echo $this->order ;?>')"><?php echo $this->translate("Member?") ?></a></th>
+                <th style="width: 1%;"><a href="javascript:void(0);" class="<?php echo $this->order_column == 'site_activity_id'?'sort_active '.strtolower($this->order):''; ?>" onclick="changeOrder(this, 'site_activity_id','<?php echo $this->order ;?>')"><?php echo $this->translate("Id") ?></a></th>
+                <th><a href="javascript:void(0);" class="<?php echo $this->order_column == 'user_id'?'sort_active '.strtolower($this->order):''; ?>" onclick="changeOrder(this, 'user_id', '<?php echo $this->order ;?>')"><?php echo $this->translate("User") ?></a></th>
+                <th><a href="javascript:void(0);" class="<?php echo $this->order_column == 'gg_dt_created'?'sort_active '.strtolower($this->order):''; ?>" onclick="changeOrder(this, 'gg_dt_created', '<?php echo $this->order ;?>')">
+                    <?php echo $this->translate("Date Created") ?></a>
+                </th>
+                <th><a href="javascript:void(0);" class="<?php echo $this->order_column == 'gg_ip_lastmodified'?'sort_active '.strtolower($this->order):''; ?>" onclick="changeOrder(this, 'gg_ip_lastmodified', '<?php echo $this->order ;?>')">
+                    <?php echo $this->translate("IP Address") ?></a>
+                </th>
+                <th style="width: 40%;"><a href="javascript:void(0);" class="<?php echo $this->order_column == 'url'?'sort_active '.strtolower($this->order):''; ?>" onclick="changeOrder(this, 'url', '<?php echo $this->order ;?>')"><?php echo $this->translate("Url") ?></a></th>
+                <th style="width: 10%;"><a href="javascript:void(0);" class="<?php echo $this->order_column == 'is_member'?'sort_active '.strtolower($this->order):''; ?>" onclick="changeOrder(this, 'is_member', '<?php echo $this->order ;?>')"><?php echo $this->translate("Member?") ?></a></th>
             </tr>
         </thead>
         <tbody>
             <?php if( count($this->paginator) ): ?>
                 <?php foreach( $this->paginator as $item ):
-                    if ( !empty($item->userID) )
-                        $user = $this->item('user', $item->userID);
+                    if ( !empty($item->user_id) )
+                        $user = $this->item('user', $item->user_id);
                     else
                         $user = $this->item('user', $item->gg_user_created);
                 ?>
                     <tr>
                         <td><?php echo $item->site_activity_id; ?></td>
                         <td class='admin_table_bold'>
-                            <?php echo $this->string()->truncate($user->getTitle(), 20); ?>
+                            <?php echo $this->htmlLink($user->getHref(),$this->string()->truncate($user->getTitle(), 20),array('target' => '_blank')); ?>
+                        </td>
+                        <td>
+                            <?php if(!empty($item->gg_dt_created)): ?>
+                                <?php echo $this->locale()->toDateTime($item->gg_dt_created,array('size' => 'short')); ?>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <?php if(!empty($item->gg_ip_lastmodified)): ?>
+                                <?php
+                                    $ipObj = new Engine_IP($item->gg_ip_lastmodified);
+                                    echo $ipObj->toString()
+                                ?>
+                            <?php endif; ?>
                         </td>
                         <td><?php echo $item->url; ?></td>
                         <td><input type="radio" name="is_member[<?php echo $item->site_activity_id; ?>]" <?php if($item->is_member){ ?> checked <?php } ?> value="<?php echo $item->is_member; ?>" /></td>
                     </tr>
                 <?php endforeach; ?>
             <?php else: ?>
-            <tr><td colspan="3"><div class="tip"><span><?php echo $this->translate("No search activities found."); ?></span></td></tr>
+            <tr><td colspan="3"><div class="tip"><span><?php echo $this->translate("No site activities found."); ?></span></td></tr>
             <?php endif; ?>
         </tbody>
     </table>

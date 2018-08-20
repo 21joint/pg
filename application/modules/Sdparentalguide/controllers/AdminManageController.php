@@ -548,6 +548,9 @@ class Sdparentalguide_AdminManageController extends Core_Controller_Action_Admin
   public function jobsAction(){
       $this->view->navigation = $navigation = Engine_Api::_()->getApi('menus', 'core')
                 ->getNavigation('sdparentalguide_admin_main', array(), 'sdparentalguide_admin_main_jobs');
+      $jobType = $this->getParam("job_type","user");
+      $this->view->navigation2 = $navigation2 = Engine_Api::_()->getApi('menus', 'core')
+                ->getNavigation('sdparentalguide_admin_main_jobs', array(), 'sdparentalguide_admin_main_jobs_'.$jobType);
       
       $this->view->formFilterJobs = $formFilterJobs = new Sdparentalguide_Form_Admin_Manage_FilterJobs();
       
@@ -577,8 +580,35 @@ class Sdparentalguide_AdminManageController extends Core_Controller_Action_Admin
           $this->view->totalPages = $paginator->count();
           $this->view->status = true;
           
-      }else{       
-        $this->view->tasks = $tasksTable->fetchAll($tasksTable->select());
+      }else{
+        $select = $tasksTable->select();
+        if($jobType == 'database'){
+            $select->where('plugin IN (?)',array(
+                'Sdparentalguide_Plugin_Task_SearchAnalytics',
+                
+            ));
+        }else if($jobType == 'content'){
+            $select->where('plugin IN (?)',array(
+                'Sdparentalguide_Plugin_Task_CalGuideViews',
+                'Sdparentalguide_Plugin_Task_CalGuideClicks',
+                'Sdparentalguide_Plugin_Task_CalQuestionClicks',
+                'Sdparentalguide_Plugin_Task_CalQuestionViews',
+                'Sdparentalguide_Plugin_Task_CalReviewClicks',
+                'Sdparentalguide_Plugin_Task_CalReviewViews',
+                
+            ));
+        }else{
+            $select->where('plugin NOT IN (?)',array(
+                'Sdparentalguide_Plugin_Task_CalGuideViews',
+                'Sdparentalguide_Plugin_Task_CalGuideClicks',
+                'Sdparentalguide_Plugin_Task_CalQuestionClicks',
+                'Sdparentalguide_Plugin_Task_CalQuestionViews',
+                'Sdparentalguide_Plugin_Task_CalReviewClicks',
+                'Sdparentalguide_Plugin_Task_CalReviewViews',
+                'Sdparentalguide_Plugin_Task_SearchAnalytics',
+            ));
+        }
+        $this->view->tasks = $tasksTable->fetchAll($select);
       }
 
   }
