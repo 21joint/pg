@@ -40,6 +40,10 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
         if(!$viewer->getIdentity() && $this->isApiRequest()){
             $this->respondWithError('unauthorized');
         }
+        if(!$this->pggPermission('canViewQuestion')){
+            $this->respondWithError('unauthorized');
+        }
+        
         $id = $this->getParam("questionID");
         $search = $this->getParam("topicName");
         $orderBy = $this->getParam("orderBy","createdDateTime");
@@ -148,11 +152,11 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
             $this->respondWithError('unauthorized');
         }
         
-        if(!Engine_Api::_()->authorization()->isAllowed('ggcommunity', null, 'create_question')){
+        if(!$this->pggPermission('canCreateQuestion')){
             $this->respondWithError('unauthorized');
         }
-        $can_approve = Engine_Api::_()->authorization()->isAllowed('ggcommunity', null, 'approve_question');
-        $can_change = Engine_Api::_()->authorization()->isAllowed('ggcommunity', null, 'edit_close_date');
+        $can_approve = (int)$this->pggPermission('canApproveQuestion');
+        $can_change = (int)$this->pggPermission('canChangeCloseDate');
         
         $form = Engine_Api::_()->getApi("V1_Forms","pgservicelayer")->getQuestionForm();
         $validators = Engine_Api::_()->getApi("V1_Validators","pgservicelayer")->getQuestionValidators();
@@ -250,17 +254,20 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
             $this->respondWithError('unauthorized');
         }
         
-        if(!Engine_Api::_()->authorization()->isAllowed('ggcommunity', null, 'create_question')){
+        $questionID = $this->getParam("questionID");
+        $question = Engine_Api::_()->getItem("ggcommunity_question",$questionID);
+        if(empty($question) || $question->gg_deleted){
+            $this->respondWithError('no_record');
+        }
+        if(!$this->pggPermission('canEditQuestion')){
+            $this->respondWithError('unauthorized');
+        }
+        if(!$question->isOwner($viewer) && !$this->pggPermission('canEditOthersQuestion')){
             $this->respondWithError('unauthorized');
         }
         
-        $questionID = $this->getParam("questionID");
-        $question = Engine_Api::_()->getItem("ggcommunity_question",$questionID);
-        if(empty($question)){
-            $this->respondWithError('no_record');
-        }
-        $can_approve = Engine_Api::_()->authorization()->isAllowed('ggcommunity', null, 'approve_question');
-        $can_change = Engine_Api::_()->authorization()->isAllowed('ggcommunity', null, 'edit_close_date');
+        $can_approve = (int)$this->pggPermission('canApproveQuestion');
+        $can_change = (int)$this->pggPermission('canChangeCloseDate');
         
         $form = Engine_Api::_()->getApi("V1_Forms","pgservicelayer")->getQuestionForm();
         $validators = Engine_Api::_()->getApi("V1_Validators","pgservicelayer")->getQuestionValidators();
@@ -375,7 +382,11 @@ class Pgservicelayer_QuestionController extends Pgservicelayer_Controller_Action
         try {
             foreach($questions as $question){
                 $poster = Engine_Api::_()->getItem("user", $question->user_id);
-                if(!$poster->isSelf($viewer) && !$viewer->isAdmin()){
+                if(!$this->pggPermission('canDeleteQuestion')){
+                    $this->respondWithError('unauthorized');
+                }
+
+                if(!$question->isOwner($viewer) && !$this->pggPermission('canDeleteOthersQuestion')){
                     $this->respondWithError('unauthorized');
                 }
                 $question->gg_deleted = 1;

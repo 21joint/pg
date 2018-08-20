@@ -40,6 +40,10 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
             $this->respondWithError('unauthorized');
         }
         
+        if(!$this->pggPermission('canViewReview')){
+            $this->respondWithError('unauthorized');
+        }
+        
         $id = $this->getParam("reviewID");   
         $responseApi = Engine_Api::_()->getApi("V1_Response","pgservicelayer");
         $params = array();
@@ -152,8 +156,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         if(empty($listingType)){
             $this->respondWithError('no_record',$this->translate("Review category not specified"));
         }
-        $canCreate = Engine_Api::_()->authorization()->getPermission($level_id, 'sitereview_listing', "create_listtype_$listingtype_id");
-        if (!$canCreate) {
+        if(!$this->pggPermission('canCreateReview')){
             $this->respondWithError('unauthorized');
         }
         
@@ -179,7 +182,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
             'category_id' => $this->getParam("categoryID"),
             'subcategory_id' => $this->getParam("subCategoryID"),
             'body' => $this->getParam("longDescription"),
-            'gg_author_product_rating' => (int)$this->getParam("authorRating",0),
+            'gg_author_product_rating' => (float)$this->getParam("authorRating",0),
             'photo_id' => (int)$this->getParam("photoID",0),
             'search' => (int)$this->getParam("search",0),
             'auth_view' => $this->getParam("authView","everyone"),
@@ -199,9 +202,9 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
                     'listingtype_id' => $listingtype_id,
                     'owner_type' => $viewer->getType(),
                     'owner_id' => $viewer_id,
-                    'featured' => Engine_Api::_()->authorization()->getPermission($user_level, 'sitereview_listing', "featured_listtype_$listingtype_id"),
-                    'sponsored' => Engine_Api::_()->authorization()->getPermission($user_level, 'sitereview_listing', "sponsored_listtype_$listingtype_id"),
-                    'approved' => Engine_Api::_()->authorization()->getPermission($user_level, 'sitereview_listing', "approved_listtype_$listingtype_id")
+                    'featured' => Engine_Api::_()->authorization()->getPermission($user_level, 'sitereview_listing', "featured_listtype_0"),
+                    'sponsored' => Engine_Api::_()->authorization()->getPermission($user_level, 'sitereview_listing', "sponsored_listtype_0"),
+                    'approved' => (int)$this->pggPermission('canApproveReview')
                 ));
             } else {
                 $values = array_merge($values, array(
@@ -212,7 +215,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
                     'sponsored' => 0
                 ));
 
-                $values['approved'] = 0;                    
+                $values['approved'] = (int)$this->pggPermission('canApproveReview');                    
             }
             
             if (empty($values['subcategory_id'])) {
@@ -447,7 +450,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         $level_id = !empty($viewer_id) ? $viewer->level_id : Engine_Api::_()->getDbtable('levels', 'authorization')->fetchRow(array('type = ?' => "public"))->level_id;
         $id = $this->getParam("reviewID");
         $sitereview = Engine_Api::_()->getItem("sitereview_listing",$id);
-        if(empty($sitereview)){
+        if(empty($sitereview) || $sitereview->gg_deleted){
             $this->respondWithError('no_record');
         }
         $listingtype_id = $sitereview->listingtype_id;
@@ -455,12 +458,13 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         if(empty($listingType)){
             $this->respondWithError('no_record',$this->translate("Review category not specified"));
         }
-        $canCreate = Engine_Api::_()->authorization()->getPermission($level_id, 'sitereview_listing', "create_listtype_$listingtype_id");
-        if (!$canCreate) {
+        if(!$this->pggPermission('canEditReview')){
             $this->respondWithError('unauthorized');
         }
         
-        
+        if(!$sitereview->isOwner($viewer) && !$this->pggPermission('canEditOthersReview')){
+            $this->respondWithError('unauthorized');
+        }
         
         $form = Engine_Api::_()->getApi("V1_Forms","pgservicelayer")->getReviewForm();
         $validators = Engine_Api::_()->getApi("V1_Validators","pgservicelayer")->getReviewValidators();
@@ -470,7 +474,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
             'categoryID' => $this->getParam("categoryID",$sitereview->category_id),
             'subCategoryID' => $this->getParam("subCategoryID",$sitereview->subcategory_id),
             'longDescription' => $this->getParam("longDescription",$sitereview->body),
-            'authorRating' => (int)$this->getParam("authorRating",$sitereview->gg_author_product_rating),
+            'authorRating' => (float)$this->getParam("authorRating",$sitereview->gg_author_product_rating),
             'photoID' => (int)$this->getParam("photoID",$sitereview->photo_id),
             'search' => (int)$this->getParam("search",$sitereview->search),
             'authView' => $this->getParam("authView","everyone"),
@@ -499,7 +503,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
             'category_id' => $this->getParam("categoryID",$sitereview->category_id),
             'subcategory_id' => $this->getParam("subCategoryID",$sitereview->subcategory_id),
             'body' => $this->getParam("longDescription",$sitereview->body),
-            'gg_author_product_rating' => (int)$this->getParam("authorRating",$sitereview->gg_author_product_rating),
+            'gg_author_product_rating' => (float)$this->getParam("authorRating",$sitereview->gg_author_product_rating),
             'photo_id' => (int)$this->getParam("photoID",$sitereview->photo_id),
             'search' => (int)$this->getParam("search",$sitereview->search),
             'auth_view' => $this->getParam("authView","everyone"),
@@ -512,16 +516,16 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         $db = $table->getAdapter();
         $db->beginTransaction();
         $user_level = $viewer->level_id;
-        try{
+        try{            
             //Create sitereview
             if (!Engine_Api::_()->sitereview()->hasPackageEnable()) {
                 $values = array_merge($values, array(
                     'listingtype_id' => $listingtype_id,
                     'owner_type' => $viewer->getType(),
                     'owner_id' => $viewer_id,
-                    'featured' => Engine_Api::_()->authorization()->getPermission($user_level, 'sitereview_listing', "featured_listtype_$listingtype_id"),
-                    'sponsored' => Engine_Api::_()->authorization()->getPermission($user_level, 'sitereview_listing', "sponsored_listtype_$listingtype_id"),
-                    'approved' => Engine_Api::_()->authorization()->getPermission($user_level, 'sitereview_listing', "approved_listtype_$listingtype_id")
+                    'featured' => Engine_Api::_()->authorization()->getPermission($user_level, 'sitereview_listing', "featured_listtype_0"),
+                    'sponsored' => Engine_Api::_()->authorization()->getPermission($user_level, 'sitereview_listing', "sponsored_listtype_0"),
+                    'approved' => (int)$this->pggPermission('canApproveReview')
                 ));
             } else {
                 $values = array_merge($values, array(
@@ -532,7 +536,7 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
                     'sponsored' => 0
                 ));
 
-                $values['approved'] = 0;                    
+                $values['approved'] = (int)$this->pggPermission('canApproveReview');                    
             }
             
             if (empty($values['subcategory_id'])) {
@@ -710,8 +714,11 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         $db->beginTransaction();
         try {
             foreach($sitereviews as $sitereview){
-                $canDelete = Engine_Api::_()->authorization()->getPermission($level_id, 'sitereview_listing', "delete_listtype_".$sitereview->listingtype_id);
-                if (!$canDelete) {
+                if(!$this->pggPermission('canDeleteReview')){
+                    $this->respondWithError('unauthorized');
+                }
+
+                if(!$sitereview->isOwner($viewer) && !$this->pggPermission('canDeleteOthersReview')){
                     $this->respondWithError('unauthorized');
                 }
                 $sitereview->gg_deleted = 1;
