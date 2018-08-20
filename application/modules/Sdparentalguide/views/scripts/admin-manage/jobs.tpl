@@ -51,6 +51,18 @@
   <br />
 </form>
 </div>
+<div class="tabs">
+  <ul class="navigation sd_tasks_navigation">
+    <li class="active job_tab"><a href="javascript:void(0);" onclick="changeTabs('job');">User Jobs</a></li>
+    <li class=" content_tab"><a href="javascript:void(0);" onclick="changeTabs('content');">Content Jobs</a></li>
+    <li class=" database_tab"><a href="javascript:void(0);" onclick="changeTabs('database');">Database Operations</a></li>
+  </ul>
+</div>
+<?php
+  $jobsArray = array('Contribution', 'Following', 'ContributionLevel', 'Reviews', 'Questions', 'Answers', 'Guide', 'Badges', 'CalMemberViews', 'CalMemberClicks');
+  $contentArray = array('CalGuideViews', 'CalGuideClicks', 'CalReviewViews', 'CalReviewClicks', 'CalQuestionViews', 'CalQuestionClicks');
+  $databaseArray = array('SearchAnalytics');
+?>
 
 <div class='clear'>
     <div class='search'>
@@ -63,7 +75,8 @@
                     </ul>
                 </li>
                 <?php foreach($this->tasks as $task): ?>
-                    <li class="sd_tasks">
+                    <?php $exp = explode("Sdparentalguide_Plugin_Task_", $task["plugin"]); ?>
+                    <li class="sd_tasks <?php if(in_array($exp[1], $jobsArray)){ echo 'job'; }elseif(in_array($exp[1], $contentArray)){ echo 'content'; }elseif(in_array($exp[1], $databaseArray)){ echo 'database'; } ?>">
                         <ul>
                             <li><?php echo $task->getTitle(); ?></li>
                             <li><button type="button" <?php echo $task->enabled?'':'disabled="disabled"'; ?> onclick="runCustomTask(this,'<?php echo $task->getIdentity(); ?>','1');"><?php echo $this->translate("Run"); ?></button></li>
@@ -75,6 +88,12 @@
     </div>
 </div>
 <script type='text/javascript'>
+  function changeTabs(tab){
+    $$(".sd_tasks_navigation li").removeClass("active");
+    $$(".sd_tasks_navigation li." + tab + "_tab").addClass("active");
+    $$(".sd_tasks").hide();
+    $$(".sd_tasks." + tab).show();
+  }
 function runCustomTask(element,taskId,page){
     if(page == '1' && $("job_user").get("value").length <= 0){
         var confirm = window.confirm("<?php echo $this->translate('Are you sure you want to process for All Users?'); ?>");
@@ -457,14 +476,20 @@ function loadUserData(toID){
     display: block;
     float: left;
     width: 300px;
-}    
+}
 .sd_jobs_list li.sd_jobs_header li{
     font-weight: bold;
 }
 .sd_jobs_list button:disabled {
-    cursor: no-drop;    
+    cursor: no-drop;
 }
 .sd_clear_filter {
     margin-top: 15px;
+}
+.sd_tasks {
+    display: none;
+}
+.sd_tasks.job {
+    display: block;
 }
 </style>
