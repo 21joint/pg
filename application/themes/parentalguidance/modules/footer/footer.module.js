@@ -1,1 +1,1 @@
-import '../scripts.module';
+import '../scripts';

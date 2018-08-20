@@ -1,17 +1,16 @@
 import './card.scss';
 import {renderProfileBox} from '../profile-box/profile-box';
-import {renderRate} from '../rating/rating';
+import {renderRate} from '../rating';
 
 
-export default class {
-  renderCard(review, options) {
-    let _html = '';
+const renderCard = (review, options) =>  {
+  let _html = '';
 
-    let createdDt = new Date(review.createdDateTime).toString().split(' ');
-    let createdMonth = createdDt[1];
-    let createdDay = createdDt[2].charAt(0) == 0 ? createdDt[2].split('')[1] : createdDt[2];
+  let createdDt = new Date(review.createdDateTime).toString().split(' ');
+  let createdMonth = createdDt[1];
+  let createdDay = createdDt[2].charAt(0) == 0 ? createdDt[2].split('')[1] : createdDt[2];
 
-    _html = `<div class="col-6 col-lg-4 p-2">
+  _html = `<div class="col-6 col-lg-4 p-2">
   <!--single card-->
   <div class="card card-${options.type} h-100 d-flex flex-column" data-id="${review.reviewID}">
     <div class="card-header p-0 overflow-hidden">
@@ -98,6 +97,7 @@ export default class {
   </div>
 </div>`;
 
-    return _html;
-  }
-};
+  return _html;
+}
+
+export {renderCard};

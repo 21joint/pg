@@ -1,6 +1,6 @@
 import 'jquery-lazy';
 import {getReviews} from '../../middleware/api.service';
-import {renderCard} from "../../components/card/card";
+import {renderCard} from "../../components/card";
 
 (function ($) {
 

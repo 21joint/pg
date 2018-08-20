@@ -1,4 +1,4 @@
-import {API_PROXY, OAUTH} from '../../../../package';
+import {API_PROXY, OAUTH} from '../../../../../package';
 
 import 'bootstrap/js/dist/util';
 import 'bootstrap/js/dist/dropdown';
@@ -46,9 +46,8 @@ function init() {
   });
 }
 
-
 init();
 
 if (module.hot) {
-  module.hot.accept(init)
+  module.hot.accept()
 }

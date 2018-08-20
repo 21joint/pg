@@ -165,7 +165,7 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr')
 
     <?php echo $this->headScript()->captureEnd(Zend_View_Helper_Placeholder_Container_Abstract::APPEND) ?>
   </script>
-  <?php $this->headScript()->prependFile('/scripts/core.bundle.js');
+  <?php $this->headScript()->prependFile('/scripts/cores.bundle.js');
   // Process
   foreach ($this->headScript()->getContainer() as $dat) {
     if (!empty($dat->attributes['src'])) {

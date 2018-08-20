@@ -2,7 +2,7 @@
 var Smoothbox = {
 
   instance : false,
-
+  
   bind : function(selector)
   {
     // All children of element
@@ -14,14 +14,14 @@ var Smoothbox = {
     } else {
       elements = $$("a.smoothbox");
     }
-
+    
     elements.each(function(el)
     {
       if( el.get('tag') != 'a' || el.retrieve('smoothboxed', false) )
       {
         return;
       }
-
+      
       var params = Function.attempt(function(){
         var ret = JSON.decode(el.title);
         if( $type(ret.title) )
@@ -36,7 +36,7 @@ var Smoothbox = {
       }, function(){
         return {};
       });
-
+      
       params.url = el.href;
       el.store('smoothbox', params);
       el.store('smoothboxed', true);
@@ -168,7 +168,7 @@ var Smoothbox = {
       //mode = 'Iframe';
       return;
     }
-
+    
     this.instance = new Smoothbox.Modal[mode](spec.getClean());
   }
 
@@ -187,7 +187,7 @@ Smoothbox.Modal = new Class({
     transitions : false,
     overlay : true,
     loading : true,
-
+    
     noOverlayClose : false,
 
     autoResize : true,
@@ -222,7 +222,7 @@ Smoothbox.Modal = new Class({
 
     this.load();
   },
-
+  
   close : function()
   {
     this.onClose();
@@ -249,7 +249,7 @@ Smoothbox.Modal = new Class({
   load : function()
   {
     this.create();
-
+    
     // Add Events
     var bind = this;
     this.eventProto.resize = function() {
@@ -266,7 +266,7 @@ Smoothbox.Modal = new Class({
     window.addEvent('resize', this.eventProto.resize);
     window.addEvent('scroll', this.eventProto.scroll);
 
-
+    
     this.position();
     this.showOverlay();
     this.showLoading();
@@ -286,7 +286,7 @@ Smoothbox.Modal = new Class({
     }
 
     var bind = this;
-
+    
     this.loading = new Element('div', {
       id : 'TB_load'
     });
@@ -304,7 +304,7 @@ Smoothbox.Modal = new Class({
     if( this.overlay || !this.options.overlay ) {
       return;
     }
-
+    
     this.overlay = new Element('div', {
       'id' : 'TB_overlay',
       'styles' : {
@@ -331,7 +331,7 @@ Smoothbox.Modal = new Class({
     }
 
     var bind = this;
-
+    
     this.window = new Element('div', {
       'id' : 'TB_window',
       'opacity' : 0
@@ -412,12 +412,12 @@ Smoothbox.Modal = new Class({
       //this.overlay.style.display = '';
       this.overlay.style.display = '';
     }
-
+    
     this.overlay.setStyles({
         "height" : '0px',
         "width" : '0px'
     });
-
+    
     if( !this.options.noOverlay )
     {
       this.overlay.setStyles({
@@ -475,7 +475,7 @@ Smoothbox.Modal = new Class({
       this.loading.setStyle('visibility', 'visible');
     }
   },
-
+  
   showOverlay : function()
   {
     if( !this.overlay ) {
@@ -550,7 +550,7 @@ Smoothbox.Modal = new Class({
     {
       return;
     }
-
+    
     if( this.options.transitions ) {
       this.overlay.tween('opacity', [0.6, 0]);
     } else {
@@ -566,7 +566,7 @@ Smoothbox.Modal = new Class({
       return;
     }
     */
-
+    
     if( this.options.transitions ) {
       var bind = this;
       this.window.tween('opacity', [1, 0]);
@@ -693,7 +693,7 @@ Smoothbox.Modal.Iframe = new Class({
     var host = Function.attempt(function(){
       return iframe.contentWindow.location.host;
     });
-
+    
     if( !host || host != window.location.host ) {
       return;
     }
@@ -789,7 +789,7 @@ Smoothbox.Modal.Inline = new Class({
     this.content.inject(this.window);
     this.cloneElement = this.element.clone();
     this.cloneElement.inject(this.content);
-
+        
     this.hideLoading();
     this.showWindow();
     this.onLoad();
@@ -805,7 +805,7 @@ Smoothbox.Modal.Inline = new Class({
   {
     this.parent(this.cloneElement);
   }
-
+  
 });
 
 Smoothbox.Modal.String = new Class({
@@ -820,7 +820,7 @@ Smoothbox.Modal.String = new Class({
     }
 
     this.parent();
-
+    
     this.content = new Element('div', {
       id : 'TB_ajaxContent',
       width : this.options.width,
@@ -828,7 +828,7 @@ Smoothbox.Modal.String = new Class({
       html : '<div>' + this.options.bodyText + '</div>'
     });
     this.content.inject(this.window);
-
+    
     this.hideLoading();
     this.showWindow();
     this.onLoad();
@@ -848,7 +848,7 @@ Smoothbox.Modal.String = new Class({
 
     return this.parent( element );
   }
-
+  
 });
 
 Smoothbox.Modal.Image = new Class({

@@ -29,4 +29,4 @@ function renderBadges(user) {
           </ul>`
 }
 
-export {renderBadges}
+export default {renderBadges}
