@@ -8,8 +8,9 @@
  */
 
 class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
+    protected $_permissionsData = null;
     public function getFormatedDateTime($datetime){
-        if(empty($datetime)){
+        if(empty($datetime) || $datetime == "0000-00-00 00:00:00"){
             return "";
         }
         $view = Zend_Registry::get("Zend_View");
@@ -501,12 +502,16 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
     }
     
     public function getPermissionData(User_Model_User $user){
+        if($this->_permissionsData != null){
+            return $this->_permissionsData;
+        }
         $user_id = $user->getIdentity();
         if (APPLICATION_ENV === 'production') {
             $cache = Zend_Registry::get('Zend_Cache');
             $cacheName = 'member_permission_'.(int)$user_id;
             $data = $cache->load($cacheName);
             if (!empty($data)) {
+                $this->_permissionsData = $data;
                 return $data;
             }
         }
@@ -541,6 +546,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             'canCommentReview' => (bool)$permissionsTable->getAllowed('sitereview_listing', $level_id, "comment_listtype_$listingtype_id"),
             'canApproveReview' => (bool)$permissionsTable->getAllowed('sitereview_listing', $level_id, "approved_listtype_$listingtype_id"),
             'canFlagReview' => (bool)$permissionsTable->getAllowed('sitereview_listing', $level_id, "flag_listtype_$listingtype_id"),
+            'canGradeReview' => (bool)$permissionsTable->getAllowed('sitereview_listing', $level_id, "grade_listtype_$listingtype_id"),
             
             //Questions
             'canViewQuestion' => (bool)$permissionsTable->getAllowed('ggcommunity', $level_id, 'view_question'),
@@ -574,13 +580,17 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             'canRateGuide' => (bool)$permissionsTable->getAllowed('sdparentalguide_guide', $level_id, 'rate'),
             'canCommentGuide' => (bool)$permissionsTable->getAllowed('sdparentalguide_guide', $level_id, 'comment'),
             'canApproveGuide' => (bool)$permissionsTable->getAllowed('sdparentalguide_guide', $level_id, 'approve'),
-            'canFlagGuide' => (bool)$permissionsTable->getAllowed('sdparentalguide_guide', $level_id, 'flag'),            
+            'canFlagGuide' => (bool)$permissionsTable->getAllowed('sdparentalguide_guide', $level_id, 'flag'), 
+            
+            //Badge
+            'canAssignAnyBadge' => (bool)$permissionsTable->getAllowed('sdparentalguide_custom', $level_id, "assign_badge"),
             
         );
         if (APPLICATION_ENV === 'production') {
             $cache->setLifetime(300); //300 seconds
             $cache->save($permissionData, $cacheName);
         }
+        $this->_permissionsData = $permissionData;
         return $permissionData;
     }
     

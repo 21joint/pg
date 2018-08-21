@@ -31,7 +31,21 @@
     ?>
   </div>
 <?php endif; ?>
-<?php echo $this->formFilterJobs->render($this) ?>
+<div class='sd_layout_left'>
+    <?php if( count($this->navigation2) ): ?>
+        <div class='tabs_left'>
+            <?php
+                // Render the menu
+                //->setUlClass()
+                echo $this->navigation()->menu()->setContainer($this->navigation2)->render()
+            ?>
+        </div>
+    <?php endif; ?>
+</div>
+<div class='sd_layout_middle'>
+<div  style="margin-bottom: 15px;overflow: hidden;">
+    <?php echo $this->formFilterJobs->render($this) ?>
+</div>
 <div class="admin_table_form" style="clear:both;display:none;">
 <form id='multimodify_form' method="post" action="<?php echo $this->url(array('action'=>'multi-modify'));?>" onSubmit="multiModify()">
   <table class='admin_table'>
@@ -51,6 +65,11 @@
   <br />
 </form>
 </div>
+<?php
+  $jobsArray = array('Contribution', 'Following', 'ContributionLevel', 'Reviews', 'Questions', 'Answers', 'Guide', 'Badges', 'CalMemberViews', 'CalMemberClicks');
+  $contentArray = array('CalGuideViews', 'CalGuideClicks', 'CalReviewViews', 'CalReviewClicks', 'CalQuestionViews', 'CalQuestionClicks');
+  $databaseArray = array('SearchAnalytics');
+?>
 
 <div class='clear'>
     <div class='search'>
@@ -73,6 +92,7 @@
             </ul>
         </form>
     </div>
+</div>
 </div>
 <script type='text/javascript'>
 function runCustomTask(element,taskId,page){
@@ -457,14 +477,19 @@ function loadUserData(toID){
     display: block;
     float: left;
     width: 300px;
-}    
+}
 .sd_jobs_list li.sd_jobs_header li{
     font-weight: bold;
 }
 .sd_jobs_list button:disabled {
-    cursor: no-drop;    
+    cursor: no-drop;
 }
 .sd_clear_filter {
     margin-top: 15px;
+}
+#filter_form_jobs .sd_loader {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: -20px;    
 }
 </style>
