@@ -9,6 +9,21 @@
 
 ?>
 
+<!-- Search Banner Component -->
+<div class="reviews_search_component bg-primary text-white py-5 px-1">
+    <h1 class="text-center text-uppercase mt-5">Parental Guidance</h1>
+    <p class="text-center mb-5">Share Your Struggle, Provide Your Theories and Gain Advice</p>
+    <div class="reviews_search_input w-75 mx-auto my-5">
+        <form class="row justify-content-between align-items-center" action="<?php echo $this->baseUrl(); ?>/search" method="GET">
+            <input class="col-10" type="text" name="query" placeholder="Search" />
+            <button class="btn btn-success text-white">
+                    <i class="fa fa-search d-md-none"></i>
+                    <span class="d-none d-md-inline text-capitalize font-weight-bold">Search Now</span>
+            </button>
+        </form>
+    </div>
+</div>
+<!-- Featured Reviews Component -->
 <div class="reviews_component my-3">
     <div class="reviews_component_title border-bottom">
         <h3 class="font-weight-bold m-0"><?php echo $this->translate('Featured Reviews'); ?></h3>
@@ -302,7 +317,7 @@ function loadReviewResults(){
                                     '<div class="d-flex justify-content-between my-5">';
                         }
                     }else{
-                       if(j % 2 == 0){
+                        if(j % 2 == 0){
                             html += '</div>'+
                                     '<div class="d-flex justify-content-between my-5">';
                         } 
@@ -349,23 +364,7 @@ function loadReviewResults(){
                         }
                     });
                 }); 
-                // Review Star Ranking Displaying
-                
-                // Displaying Comments and Likes on "..." click
-                document.querySelectorAll('.review_card_dots').forEach(function(dots){
-                    dots.addEventListener('click', function(){
-                        this.nextSibling.removeClass('d-none').addClass('d-flex');
-                        this.removeClass('d-inline').addClass('d-none');
-                    });
-                });
-                window.addEventListener('mouseup', function(){
-                    document.querySelectorAll('.review_card_dots_popup').forEach(function(removed){
-                        if(removed.hasClass('d-flex')){
-                            removed.addClass('d-none').removeClass('d-flex');
-                            removed.previousSibling.addClass('d-inline').removeClass('d-none');
-                        }
-                    });
-                });          
+                // Review Star Ranking Displaying         
             }else{
                 console.log(responseJSON);
                 reviewsContent.innerHTML = responseJSON.message;

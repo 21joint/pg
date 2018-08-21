@@ -591,6 +591,15 @@ class Sdparentalguide_Api_Core extends Core_Api_Abstract{
                 else
                     $imageName = 'nophoto_coupon_thumb_profile.png';
                 break;
+            case "sdparentalguide_guide":
+                $path = '/application/modules/Sdparentalguide/externals/images/';
+                if ($type == 'icon')
+                    $imageName = 'nophoto_guide_thumb_icon.png';
+                else if ($type == 'normal')
+                    $imageName = 'nophoto_guide_thumb_normal.png';
+                else
+                    $imageName = 'nophoto_guide_thumb_profile.png';
+                break;
             case "sitegroup_category":
                 $path = '/application/modules/Sitegroup/externals/images/';
                 $imageName = 'category.png';

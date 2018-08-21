@@ -33,6 +33,12 @@ class Sdparentalguide_IndexController extends Core_Controller_Action_Standard
         return $this->_forward('requireauth', 'error', 'core');
       }
       
+      $permissionsTable = Engine_Api::_()->getDbtable('permissions', 'authorization');
+      $level_id = $viewer->getIdentity() ? $viewer->level_id : Engine_Api::_()->getDbtable('levels', 'authorization')->fetchRow(array('type = ?' => "public"))->level_id;
+      if(!$permissionsTable->getAllowed('sitereview_listing', $level_id, "grade_listtype_0")){
+          return $this->_forward('requireauth', 'error', 'core');
+      }
+      
       $this->_helper->content->setEnabled();
   }
   
@@ -200,8 +206,16 @@ class Sdparentalguide_IndexController extends Core_Controller_Action_Standard
     $this->view->categories = $categories;
   }
   public function assignbadgesAction(){
-    $this->view->formFilter = $formFilter = new Sdparentalguide_Form_Admin_Badge_FilterUsers();
+    if (!$this->_helper->requireUser()->isValid())
+        return;
     $viewer = Engine_Api::_()->user()->getViewer();
+    $permissionsTable = Engine_Api::_()->getDbtable('permissions', 'authorization');
+    $level_id = $viewer->getIdentity() ? $viewer->level_id : Engine_Api::_()->getDbtable('levels', 'authorization')->fetchRow(array('type = ?' => "public"))->level_id;
+    if(!$permissionsTable->getAllowed('sdparentalguide_custom', $level_id, "assign_badge")){
+          return $this->_forward('requireauth', 'error', 'core');
+    }
+    
+    $this->view->formFilter = $formFilter = new Sdparentalguide_Form_Admin_Badge_FilterUsers();
     $formFilter->removeElement("level_id");
     
     $page = $this->_getParam('page', 1);
@@ -249,7 +263,15 @@ class Sdparentalguide_IndexController extends Core_Controller_Action_Standard
   }
   
   public function assignUserAction(){
+      if (!$this->_helper->requireUser()->isValid())
+        return;
         $viewer = Engine_Api::_()->user()->getViewer();
+        $permissionsTable = Engine_Api::_()->getDbtable('permissions', 'authorization');
+        $level_id = $viewer->getIdentity() ? $viewer->level_id : Engine_Api::_()->getDbtable('levels', 'authorization')->fetchRow(array('type = ?' => "public"))->level_id;
+        if(!$permissionsTable->getAllowed('sdparentalguide_custom', $level_id, "assign_badge")){
+            return $this->_forward('requireauth', 'error', 'core');
+        }
+        
         $this->view->viewer_id = $viewer_id = $viewer->getIdentity();
         $this->_helper->requireSubject('user');
         $this->view->formFilter = $formFilter = new Sdparentalguide_Form_Admin_Badge_FilterBadges();
@@ -322,7 +344,12 @@ class Sdparentalguide_IndexController extends Core_Controller_Action_Standard
     public function assignQuickAction(){
         
         $this->initBatch();
-        
+        $viewer = Engine_Api::_()->user()->getViewer();
+        $permissionsTable = Engine_Api::_()->getDbtable('permissions', 'authorization');
+        $level_id = $viewer->getIdentity() ? $viewer->level_id : Engine_Api::_()->getDbtable('levels', 'authorization')->fetchRow(array('type = ?' => "public"))->level_id;
+        if(!$permissionsTable->getAllowed('sdparentalguide_custom', $level_id, "assign_badge")){
+            return $this->_forward('requireauth', 'error', 'core');
+        }
         $this->_helper->requireSubject('sdparentalguide_badge');
         $badge = Engine_Api::_()->core()->getSubject();
         
@@ -340,13 +367,21 @@ class Sdparentalguide_IndexController extends Core_Controller_Action_Standard
             'owner_id' => $viewer->getIdentity(),
         ));
         $row->save();
+        if($badge->active){
+            $badge->updateUserCounts($user_id);
+        }
         
         $this->view->status = true;        
     }
     public function assignBulkAction(){
+        $viewer = Engine_Api::_()->user()->getViewer();
+        $permissionsTable = Engine_Api::_()->getDbtable('permissions', 'authorization');
+        $level_id = $viewer->getIdentity() ? $viewer->level_id : Engine_Api::_()->getDbtable('levels', 'authorization')->fetchRow(array('type = ?' => "public"))->level_id;
+        if(!$permissionsTable->getAllowed('sdparentalguide_custom', $level_id, "assign_badge")){
+            return $this->_forward('requireauth', 'error', 'core');
+        }
         $this->_helper->requireSubject('sdparentalguide_badge');
         $badge = Engine_Api::_()->core()->getSubject();
-        $viewer = Engine_Api::_()->user()->getViewer();
         $badge_id = $badge->getIdentity();
         $user_ids = $this->getParam("user_ids");
         if(empty($user_ids)){
@@ -367,12 +402,22 @@ class Sdparentalguide_IndexController extends Core_Controller_Action_Standard
                 'active' => 1
             ));
             $row->save();
+            
+            if($badge->active){
+                $badge->updateUserCounts($user_id);
+            }
         }
         
         
         $this->view->status = true;        
     }
     public function assignStatusAction(){
+        $viewer = Engine_Api::_()->user()->getViewer();
+        $permissionsTable = Engine_Api::_()->getDbtable('permissions', 'authorization');
+        $level_id = $viewer->getIdentity() ? $viewer->level_id : Engine_Api::_()->getDbtable('levels', 'authorization')->fetchRow(array('type = ?' => "public"))->level_id;
+        if(!$permissionsTable->getAllowed('sdparentalguide_custom', $level_id, "assign_badge")){
+            return $this->_forward('requireauth', 'error', 'core');
+        }
         $this->_helper->requireSubject('sdparentalguide_badge');
         $badge = Engine_Api::_()->core()->getSubject();
         $user_id = $this->getParam("user_id");
@@ -384,6 +429,14 @@ class Sdparentalguide_IndexController extends Core_Controller_Action_Standard
             $where['user_id = ?'] = $user_id;
         }
         $assignedTable = Engine_Api::_()->getDbtable('assignedBadges', 'sdparentalguide');
+        $select = $assignedTable->select()->where('user_id = ?',$user_id)->where('badge_id = ?',$badge->getIdentity());
+        $assignedRow = $assignedTable->fetchRow($select);
+        if($badge->active && $assignedRow->active && !$status){
+            $badge->remvoeUserCounts($user_id);
+        }
+        if($badge->active && !$assignedRow->active && $status){
+            $badge->updateUserCounts($user_id);
+        }
         $assignedTable->update(array('active' => $status),$where);
         
         $this->view->status = true;        

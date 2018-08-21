@@ -8,8 +8,9 @@
  */
 
 class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
+    protected $_permissionsData = null;
     public function getFormatedDateTime($datetime){
-        if(empty($datetime)){
+        if(empty($datetime) || $datetime == "0000-00-00 00:00:00"){
             return "";
         }
         $view = Zend_Registry::get("Zend_View");
@@ -126,7 +127,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             'reviewTopic' => $this->getListingTopic($sitereview),
             'privacySettings' => array(),
             'reviewPhotos' => $this->getListingPhotos($sitereview),
-            'averageReviewRating' => sprintf("%.1f",$listingRating['review_rating']),
+            'averageReviewRating' => sprintf("%.1f",$listingRating['author_rating']),
             'averageProductRating' => sprintf("%.1f",$listingRating['product_rating']),
         );
         
@@ -378,6 +379,9 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             case 'sdparentalguide_badge':
                 $itemArray = $this->getBadgeData($itemObject);
                 break;
+            case 'sdparentalguide_guide':
+                $itemArray = $this->getGuideData($itemObject);
+                break;
             default:
                 break;
         }
@@ -498,12 +502,16 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
     }
     
     public function getPermissionData(User_Model_User $user){
+        if($this->_permissionsData != null){
+            return $this->_permissionsData;
+        }
         $user_id = $user->getIdentity();
         if (APPLICATION_ENV === 'production') {
             $cache = Zend_Registry::get('Zend_Cache');
             $cacheName = 'member_permission_'.(int)$user_id;
             $data = $cache->load($cacheName);
             if (!empty($data)) {
+                $this->_permissionsData = $data;
                 return $data;
             }
         }
@@ -516,6 +524,8 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
         $editQuestions = $permissionsTable->getAllowed('ggcommunity', $level_id, 'edit_question');
         $deleteQuestions = $permissionsTable->getAllowed('ggcommunity', $level_id, 'delete_question');
         $canSelectAnswer = $permissionsTable->getAllowed('ggcommunity', $level_id, 'best_answer');
+        $canEditGuide = $permissionsTable->getAllowed('sdparentalguide_guide', $level_id, 'edit');
+        $canDeleteGuide = $permissionsTable->getAllowed('sdparentalguide_guide', $level_id, 'delete');
         $permissionData = array(
             'memberID' => (string)$user->getIdentity(),
             'isAdmin' => (bool)$user->isAdminOnly(),
@@ -536,6 +546,7 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             'canCommentReview' => (bool)$permissionsTable->getAllowed('sitereview_listing', $level_id, "comment_listtype_$listingtype_id"),
             'canApproveReview' => (bool)$permissionsTable->getAllowed('sitereview_listing', $level_id, "approved_listtype_$listingtype_id"),
             'canFlagReview' => (bool)$permissionsTable->getAllowed('sitereview_listing', $level_id, "flag_listtype_$listingtype_id"),
+            'canGradeReview' => (bool)$permissionsTable->getAllowed('sitereview_listing', $level_id, "grade_listtype_$listingtype_id"),
             
             //Questions
             'canViewQuestion' => (bool)$permissionsTable->getAllowed('ggcommunity', $level_id, 'view_question'),
@@ -556,32 +567,56 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             'canApproveQuestion' => (bool)$permissionsTable->getAllowed('ggcommunity', $level_id, 'approve_question'),
             'canChangeCloseDate' => (bool)$permissionsTable->getAllowed('ggcommunity', $level_id, 'edit_close_date'),
             'canFlagQuestion' => (bool)$permissionsTable->getAllowed('ggcommunity', $level_id, 'flag_question'),
-            'canFlagAnswer' => (bool)$permissionsTable->getAllowed('ggcommunity', $level_id, 'flag_answer'),          
+            'canFlagAnswer' => (bool)$permissionsTable->getAllowed('ggcommunity', $level_id, 'flag_answer'),
+            
+            //Guides
+            'canViewGuide' => (bool)$permissionsTable->getAllowed('sdparentalguide_guide', $level_id, 'view'),
+            'canCreateGuide' => (bool)$permissionsTable->getAllowed('sdparentalguide_guide', $level_id, 'create'),
+            'canEditGuide' => (bool)$canEditGuide,
+            'canDeleteGuide' => (bool)$canDeleteGuide,
+            'canEditOthersGuide' => (bool)($canEditGuide == 2),
+            'canDeleteOthersGuide' => (bool)($canDeleteGuide == 2),
+            'canLikeGuide' => (bool)$permissionsTable->getAllowed('sdparentalguide_guide', $level_id, 'like'),
+            'canRateGuide' => (bool)$permissionsTable->getAllowed('sdparentalguide_guide', $level_id, 'rate'),
+            'canCommentGuide' => (bool)$permissionsTable->getAllowed('sdparentalguide_guide', $level_id, 'comment'),
+            'canApproveGuide' => (bool)$permissionsTable->getAllowed('sdparentalguide_guide', $level_id, 'approve'),
+            'canFlagGuide' => (bool)$permissionsTable->getAllowed('sdparentalguide_guide', $level_id, 'flag'), 
+            
+            //Badge
+            'canAssignAnyBadge' => (bool)$permissionsTable->getAllowed('sdparentalguide_custom', $level_id, "assign_badge"),
+            
         );
         if (APPLICATION_ENV === 'production') {
             $cache->setLifetime(300); //300 seconds
             $cache->save($permissionData, $cacheName);
         }
+        $this->_permissionsData = $permissionData;
         return $permissionData;
     }
     
-    public function getGuideStatus(Sdparentalguide_Model_Guide $guide){
+    public function getGuideStatus(Sdparentalguide_Model_Guide $guide){        
         if($guide->gg_deleted){
             return "Deleted";
         }
-        
+        if($guide->closed){
+            return "Closed";
+        }
+        if($guide->draft){
+            return "Draft";
+        }
         if(!$guide->approved){
             return "Pending Approval";
-        }
-        return ucfirst($guide->status);
+        }        
+        return "Published";
     }
-    public function getGuideData(Sdparentalguide_Model_Guide $guide){
+    public function getGuideData(Sdparentalguide_Model_Guide $guide,$includeGuideItems = true){
         $tmpBody = strip_tags($guide->description);
         $shortDesc = ( Engine_String::strlen($tmpBody) > 100 ? Engine_String::substr($tmpBody, 0, 100) . '...' : $tmpBody );
         $topic = Engine_Api::_()->getItem("sdparentalguide_topic",$guide->topic_id);
         $owner = $guide->getOwner();
         $contentImages = $this->getContentImage($guide);
-        $contentImages['photoID'] = (string)$guide->photo_id;
+        $contentImages['coverPhotoID'] = (string)$guide->photo_id;
+        $listingRating = Engine_Api::_()->getDbTable("listingRatings","sdparentalguide")->getAvgListingRating($guide);
         $guideData = array(
             'guideID' => (string)$guide->getIdentity(),
             'title' => (string)$guide->title,
@@ -597,14 +632,14 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
             'featured' => (bool)$guide->featured,
             'publishedDateTime' => $guide->approved?$this->getFormatedDateTime($guide->published_date):'',
             'sponsored' => (bool)$guide->sponsored,
-            'new' => (bool)$guide->new,
+            'new' => (bool)$guide->newlabel,
             'guideItemCount' => $guide->guide_item_count,
             'coverPhoto' => $contentImages,
             'commentsCount' => $guide->comment_count,
             'likesCount' => $guide->like_count,
             'viewCount' => $guide->view_count,
             'clickCount' => $guide->click_count,
-            'averageRating' => $guide->average_rating,
+            'averageRating' => sprintf("%.1f",$listingRating['product_rating']),
             'privacySettings' => array(),
         );
         $auth = Engine_Api::_()->authorization()->context;
@@ -617,6 +652,60 @@ class Pgservicelayer_Api_V1_Response extends Sdparentalguide_Api_Core {
                 $guideData['privacySettings']['authComment'] = $role;
             }
         }
+        if($includeGuideItems){
+            $guideItems = $guide->getItems();
+            foreach($guideItems as $guideItem){
+                $guideData['guideItems'][] = $this->getGuideItemData($guideItem);
+            }
+        }
         return $guideData;
+    }
+    
+    public function getGuideItemData(Sdparentalguide_Model_GuideItem $guideItem){
+        $tmpBody = strip_tags($guideItem->description);
+        $shortDesc = ( Engine_String::strlen($tmpBody) > 100 ? Engine_String::substr($tmpBody, 0, 100) . '...' : $tmpBody );
+        
+        $guideData = array(
+            'guideItemID' => (string)$guideItem->getIdentity(),
+            'description' => (string)$tmpBody,
+            'sequence' => (int)$guideItem->sequence,
+            'contentType' => Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($guideItem->content_type),
+            'contentObject' => $this->getGuideItemContentData($guideItem),
+            'createdDateTime' => (string)$this->getFormatedDateTime($guideItem->creation_date),
+            'lastModifiedDateTime' => (string)$this->getFormatedDateTime($guideItem->modified_date),
+            'guideID' => (bool)$guideItem->guide_id,
+            
+        );
+        return $guideData;
+    }
+    public function getGuideItemContentData(Sdparentalguide_Model_GuideItem $guideItem){
+        $itemObject = $guideItem->getContent();
+        if(empty($itemObject)){
+            return array();
+        }
+        $itemArray = array();
+        switch($guideItem->content_type){
+            case 'sitereview_listing':
+                $itemArray = $this->getReviewData($itemObject);
+                break;
+            case 'user':
+                $itemArray = $this->getUserData($itemObject);
+                break;
+            case 'sdparentalguide_topic':
+                $itemArray = $this->getTopicData($itemObject);
+                break;
+            case 'ggcommunity_question':
+                $itemArray = $this->getQuestionData($itemObject);
+                break;
+            case 'ggcommunity_answer':
+                $itemArray = $this->getAnswerData($itemObject);
+                break;
+            case 'sdparentalguide_badge':
+                $itemArray = $this->getBadgeData($itemObject);
+                break;
+            default:
+                break;
+        }
+        return $itemArray;
     }
 }

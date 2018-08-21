@@ -512,6 +512,17 @@ class Sdparentalguide_Form_Admin_Permission_Review extends Authorization_Form_Ad
                 ),
                 'value' => 1,
             ));
+            
+            $grade_element = "grade_listtype_$listingtype_id";
+            $this->addElement('Radio', "$grade_element", array(
+                'label' => 'Allow Grading?',
+                'description' => 'Do you want to let members to grade reviews?',
+                'multiOptions' => array(
+                    1 => 'Yes, allow members to grade reviews.',
+                    0 => 'No, do not allow members to grade reviews.',
+                ),
+                'value' => 1,
+            ));
 
             $max_element = "max_listtype_$listingtype_id";
             $this->addElement('Text', "$max_element", array(

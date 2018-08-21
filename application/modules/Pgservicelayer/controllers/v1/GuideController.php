@@ -41,12 +41,54 @@ class Pgservicelayer_GuideController extends Pgservicelayer_Controller_Action_Ap
         if(!$viewer->getIdentity() && $this->isApiRequest()){
             $this->respondWithError('unauthorized');
         }
+        if(!$this->pggPermission('canViewGuide')){
+            $this->respondWithError('unauthorized');
+        }
         
         $page = $this->getParam("page",1);
         $limit = $this->getParam("limit",50);
         $table = Engine_Api::_()->getDbTable("guides","sdparentalguide");
+        $tableName = $table->info("name");
         $select = $table->select();
         
+        $topicID = $this->getParam("topicID","-1");
+        if($topicID != -1){
+            $select->where("$tableName.topic_id = ?",(int)$topicID);
+        }
+        
+        $guideID = $this->getParam("guideID","-1");
+        if($guideID != -1){
+            $select->where("$tableName.guide_id = ?",(int)$guideID);
+        }
+        
+        $authorID = $this->getParam("authorID","-1");
+        if($authorID != -1){
+            $select->where("$tableName.owner_id = ?",(int)$authorID);
+        }
+        
+        $filterInfluencers = $this->getParam("filterInfluencers",false);
+        if($filterInfluencers){
+            $influencers = Engine_Api::_()->pgservicelayer()->getInfluencers();
+            if(!empty($influencers)){
+                $select->where("$tableName.owner_id IN (?)",$influencers);
+            }
+        }
+        $select->where("$tableName.gg_deleted = ?",0);
+        
+        $orderByDirection = $this->getParam("orderByDirection","descending");
+        $orderBy = $this->getParam("orderBy","createdDateTime");
+        $orderByDirection = ($orderByDirection == "descending")?"DESC":"ASC";
+        if($orderBy == "createdDateTime"){
+            $select->order("creation_date $orderByDirection");
+        }else if($orderBy == "likesCount"){
+            $select->order("like_count $orderByDirection");
+        }else if($orderBy == "commentsCount"){
+            $select->order("comment_count $orderByDirection");
+        }else if($orderBy == "lastModifiedDateTime"){
+            $select->order("modified_date $orderByDirection");
+        }else{
+            $select->order("creation_date $orderByDirection");
+        }
         
         $paginator = Zend_Paginator::factory($select);
         $paginator->setCurrentPageNumber($page);
@@ -68,13 +110,11 @@ class Pgservicelayer_GuideController extends Pgservicelayer_Controller_Action_Ap
     }
     
     public function postAction(){
-        $viewer = Engine_Api::_()->user()->getViewer();
-        
+        $viewer = Engine_Api::_()->user()->getViewer();        
         if(!$viewer->getIdentity()){
             $this->respondWithError('unauthorized');
         }
-        $canCreate = Engine_Api::_()->authorization()->getPermission($viewer->level_id, 'sdparentalguide_guide', "create");
-        if (!$canCreate) {
+        if(!$this->pggPermission('canCreateGuide')){
             $this->respondWithError('unauthorized');
         }
         
@@ -97,16 +137,16 @@ class Pgservicelayer_GuideController extends Pgservicelayer_Controller_Action_Ap
         $values = array(
             'title' => $this->getParam("title"),
             'topic_id' => $this->getParam("topicID"),
-            'status' => $this->getParam("status",'draft'),
+            'draft' => $this->getParam("draft",1),
             'description' => $this->getParam("longDescription"),
             'photo_id' => (int)$this->getParam("coverPhotoID",0),
             'auth_view' => $this->getParam("authView","everyone"),
             'auth_comment' => $this->getParam("authComment","everyone"),
             'owner_id' => (int)$viewer->getIdentity(),
-            'approved' => $this->getParam("status",0),
-            'featured' => $this->getParam("status",0),
-            'sponsored' => $this->getParam("status",0),
-            'new' => $this->getParam("status",0),
+            'approved' => $this->getParam("approved",0),
+            'featured' => $this->getParam("featured",0),
+            'sponsored' => $this->getParam("sponsored",0),
+            'newlabel' => $this->getParam("new",0),
         );
         
         $table = Engine_Api::_()->getDbTable("guides","sdparentalguide");
@@ -114,7 +154,13 @@ class Pgservicelayer_GuideController extends Pgservicelayer_Controller_Action_Ap
         $db->beginTransaction();
 
         try {
-            if(Engine_Api::_()->authorization()->getPermission($viewer->level_id, 'sdparentalguide_guide', "approve")){
+            if(!$viewer->isAdmin()){
+                unset($values['approved']);
+                unset($values['featured']);
+                unset($values['sponsored']);
+                unset($values['newlabel']);
+            }
+            if($this->pggPermission('canApproveGuide')){
                 $values['approved'] = 1;                
             }
             $oldTz = date_default_timezone_get();
@@ -126,7 +172,7 @@ class Pgservicelayer_GuideController extends Pgservicelayer_Controller_Action_Ap
             $guide->setFromArray($values);
             $guide->save();
             
-            if($guide->status != 'draft' && $guide->approved){
+            if(!$guide->draft && $guide->approved){
                 Engine_Api::_()->pgservicelayer()->updateUserCount(array('gg_guide_count' => (++$viewer->gg_guide_count)),$viewer->user_id);
             }
             
@@ -154,7 +200,7 @@ class Pgservicelayer_GuideController extends Pgservicelayer_Controller_Action_Ap
             $response['ResultCount'] = 1;
             $response['contentType'] = Engine_Api::_()->sdparentalguide()->mapSEResourceTypes($guide->getType());
             $response['Results'] = array();
-            $response['Results'][] = $responseApi->getGuideData($guide);
+            $response['Results'][] = $responseApi->getGuideData($guide,false);
             $this->respondWithSuccess($response);
         } catch (Exception $e) {
             $db->rollBack();
@@ -171,11 +217,13 @@ class Pgservicelayer_GuideController extends Pgservicelayer_Controller_Action_Ap
         }
         $id = $this->getParam("guideID");
         $guide = Engine_Api::_()->getItem("sdparentalguide_guide",$id);
-        if(empty($guide)){
+        if(empty($guide) || $guide->gg_deleted){
             $this->respondWithError('no_record');
         }
-        $canCreate = Engine_Api::_()->authorization()->getPermission($viewer->level_id, 'sdparentalguide_guide', "edit");
-        if (!$canCreate) {
+        if(!$this->pggPermission('canEditGuide')){
+            $this->respondWithError('unauthorized');
+        }
+        if(!$guide->isOwner($viewer) && !$this->pggPermission('canEditOthersGuide')){
             $this->respondWithError('unauthorized');
         }
                 
@@ -183,13 +231,13 @@ class Pgservicelayer_GuideController extends Pgservicelayer_Controller_Action_Ap
         $values = array(
             'title' => $this->getParam("title",$guide->title),
             'topic_id' => $this->getParam("topicID",$guide->topic_id),
-            'status' => $this->getParam("status",$guide->status),
+            'draft' => $this->getParam("draft",$guide->draft),
             'description' => $this->getParam("longDescription",$guide->description),
             'photo_id' => (int)$this->getParam("coverPhotoID",$guide->photo_id),
-            'approved' => $this->getParam("status",$guide->approved),
-            'featured' => $this->getParam("status",$guide->featured),
-            'sponsored' => $this->getParam("status",$guide->sponsored),
-            'new' => $this->getParam("status",$guide->new),
+            'approved' => $this->getParam("approved",$guide->approved),
+            'featured' => $this->getParam("featured",$guide->featured),
+            'sponsored' => $this->getParam("sponsored",$guide->sponsored),
+            'newlabel' => $this->getParam("new",$guide->newlabel),
             'auth_view' => $this->getParam("authView","everyone"),
             'auth_comment' => $this->getParam("authComment","everyone"),
             'owner_id' => (int)$viewer->getIdentity()
@@ -200,7 +248,13 @@ class Pgservicelayer_GuideController extends Pgservicelayer_Controller_Action_Ap
         $db->beginTransaction();
 
         try {
-            if(Engine_Api::_()->authorization()->getPermission($viewer->level_id, 'sdparentalguide_guide', "approve")){
+            if(!$viewer->isAdmin()){
+                unset($values['approved']);
+                unset($values['featured']);
+                unset($values['sponsored']);
+                unset($values['newlabel']);
+            }
+            if($this->pggPermission('canApproveGuide')){
                 $values['approved'] = 1;                
             }
             if(!$guide->approved && !empty($values['approved'])){
@@ -210,11 +264,11 @@ class Pgservicelayer_GuideController extends Pgservicelayer_Controller_Action_Ap
                 date_default_timezone_set($oldTz);
                 $values['published_date'] = date('Y-m-d H:i:s', $published_date);
                 $owner = $guide->getOwner();
-                if($guide->status != 'draft'){
+                if(!$values['draft']){
                     Engine_Api::_()->pgservicelayer()->updateUserCount(array('gg_guide_count' => (++$owner->gg_guide_count)),$owner->user_id);
                 }
             }
-            if(($guide->approved && empty($values['approved'])) || $guide->status == 'draft'){
+            if(($guide->approved && empty($values['approved'])) || (!$guide->draft && $values['draft'])){
                 $owner = $guide->getOwner();
                 Engine_Api::_()->pgservicelayer()->updateUserCount(array('gg_guide_count' => (--$owner->gg_guide_count)),$owner->user_id);
             }
@@ -258,7 +312,7 @@ class Pgservicelayer_GuideController extends Pgservicelayer_Controller_Action_Ap
         $viewer = Engine_Api::_()->user()->getViewer();
         $viewer_id = $viewer->getIdentity();
         $level_id = !empty($viewer_id) ? $viewer->level_id : Engine_Api::_()->getDbtable('levels', 'authorization')->fetchRow(array('type = ?' => "public"))->level_id;
-        $id = $this->getParam("reviewID");
+        $id = $this->getParam("guideID");
         $idsArray = (array)$id;
         if(is_string($id) && !empty($id)){
             $idsArray = array($id);
@@ -272,13 +326,17 @@ class Pgservicelayer_GuideController extends Pgservicelayer_Controller_Action_Ap
         $db->beginTransaction();
         try {
             foreach($guides as $guide){
-                $canDelete = Engine_Api::_()->authorization()->getPermission($level_id, 'sdparentalguide_guide', "delete");
-                if (!$canDelete) {
+                if(!$this->pggPermission('canDeleteGuide')){
                     $this->respondWithError('unauthorized');
                 }
+                if(!$guide->isOwner($viewer) && !$this->pggPermission('canDeleteOthersGuide')){
+                    $this->respondWithError('unauthorized');
+                }
+                
                 $guide->gg_deleted = 1;
                 $guide->save();
-                if($guide->approved && $guide->status != 'draft'){
+                Engine_Api::_()->getDbTable("guideItems","sdparentalguide")->update(array('gg_deleted' => 1),array('guide_id = ?' => $guide->getIdentity()));
+                if($guide->approved && !$guide->draft){
                     $owner = $guide->getOwner();
                     Engine_Api::_()->pgservicelayer()->updateUserCount(array('gg_guide_count' => (--$owner->gg_guide_count)),$owner->user_id);
                 }
@@ -286,7 +344,7 @@ class Pgservicelayer_GuideController extends Pgservicelayer_Controller_Action_Ap
             $db->commit();
         } catch (Exception $e) {
             $db->rollBack();
-            $this->respondWithServerError($ex);
+            $this->respondWithServerError($e);
         }
         $this->successResponseNoContent('no_content');
     }

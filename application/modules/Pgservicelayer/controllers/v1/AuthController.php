@@ -34,7 +34,11 @@ class Pgservicelayer_AuthController extends Pgservicelayer_Controller_Action_Api
             ));
             return;
         }
-
+        
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
+        
         // Already logged in
         $siteapiUserLoginAuthentication = 1;
         $viewer = Engine_Api::_()->user()->getViewer();
@@ -44,7 +48,7 @@ class Pgservicelayer_AuthController extends Pgservicelayer_Controller_Action_Api
 
         Engine_Api::_()->getApi('Core', 'siteapi')->setView();
 
-        if (!empty($siteapiUserLoginAuthentication) && $this->getRequest()->isGet()) {
+        if ($this->getRequest()->isGet()) {
             $response['form'] = Engine_Api::_()->getApi('Siteapi_Core', 'user')->getLoginForm();
 
             if (Engine_Api::_()->getDbtable('modules', 'core')->isModuleEnabled('siteiosapp')) {
@@ -61,7 +65,7 @@ class Pgservicelayer_AuthController extends Pgservicelayer_Controller_Action_Api
                 $response['twitter'] = 1;
 
             $this->respondWithSuccess($response);
-        } else if (!empty($siteapiUserLoginAuthentication) && $this->getRequest()->isPost()) {
+        } else if ($this->getRequest()->isPost()) {
             $values = array();
             $email = $password = null;
             $getForm = Engine_Api::_()->getApi('Siteapi_Core', 'user')->getLoginForm();
@@ -124,7 +128,7 @@ class Pgservicelayer_AuthController extends Pgservicelayer_Controller_Action_Api
 
                 return;
             }
-
+            $_REQUEST['subscriptionForm'] = 0;
             $subscriptionForm = $_REQUEST['subscriptionForm'];
 //            if (isset($subscriptionForm) && !empty($subscriptionForm)) {
 //                $validators = Engine_Api::_()->getApi('Siteapi_FormValidators', 'user')->getSubscriptionFormValidators();
@@ -399,23 +403,23 @@ class Pgservicelayer_AuthController extends Pgservicelayer_Controller_Action_Api
                 $user->save();
             }
 
-            $userArray = Engine_Api::_()->getApi('Core', 'siteapi')->validateUserArray($user, array('email'));
+            $userArray = Engine_Api::_()->getApi("V1_Response","pgservicelayer")->getUserData($user);
 
             // Add images
-            $getContentImages = Engine_Api::_()->getApi('core', 'siteapi')->getContentImage($user);
-            $userArray = array_merge($userArray, $getContentImages);
+//            $getContentImages = Engine_Api::_()->getApi('core', 'siteapi')->getContentImage($user);
+//            $userArray = array_merge($userArray, $getContentImages);
 
-            $userArray['cover'] = $userArray['image'];
-            if (Engine_Api::_()->getDbtable('modules', 'core')->isModuleEnabled('siteusercoverphoto')) {
-                $getUserCoverPhoto = Engine_Api::_()->getApi('Siteapi_Core', 'siteusercoverphoto')->getCoverPhoto($user);
-                if (!empty($getUserCoverPhoto))
-                    $userArray['cover'] = $getUserCoverPhoto;
-            }
+//            $userArray['cover'] = $userArray['image'];
+//            if (Engine_Api::_()->getDbtable('modules', 'core')->isModuleEnabled('siteusercoverphoto')) {
+//                $getUserCoverPhoto = Engine_Api::_()->getApi('Siteapi_Core', 'siteusercoverphoto')->getCoverPhoto($user);
+//                if (!empty($getUserCoverPhoto))
+//                    $userArray['cover'] = $getUserCoverPhoto;
+//            }
 
             
-            if (false) {
-                Engine_Api::_()->getApi('settings', 'core')->setSetting('siteapi.global.type', 1);
-            } else {
+//            if (false) {
+//                Engine_Api::_()->getApi('settings', 'core')->setSetting('siteapi.global.type', 1);
+//            } else {
                 // Add GCMuser for push notification.
                 $device_token = !empty($_REQUEST['registration_id']) ? $_REQUEST['registration_id'] : '';
                 $device_token = !empty($_REQUEST['device_token']) ? $_REQUEST['device_token'] : $device_token;
@@ -442,14 +446,14 @@ class Pgservicelayer_AuthController extends Pgservicelayer_Controller_Action_Api
                     $tabs['primemessenger'] = Engine_Api::_()->primemessenger()->isPrimeMessengerActive();
                 }
 
-                $getOauthToken = Engine_Api::_()->getApi('oauth', 'siteapi')->getAccessOauthToken($user);
+                $getOauthToken = Engine_Api::_()->getApi('oauth', 'pgservicelayer')->getAccessOauthToken($user);
                 $this->respondWithSuccess(array(
                     'oauth_token' => $getOauthToken['token'],
                     'oauth_secret' => $getOauthToken['secret'],
                     'user' => $userArray,
                     'tabs' => $tabs
                 ));
-            }
+//            }
         }
     }
     
