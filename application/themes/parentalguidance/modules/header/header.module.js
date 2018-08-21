@@ -1,13 +1,13 @@
 import {API_PROXY, OAUTH} from '../../../../../package';
 import {renderProfileBox} from "../../components/profile-box/profile-box";
+import {NotificationUpdateHandler} from "../activity/notification.update";
 import 'bootstrap/js/dist/util';
 import 'bootstrap/js/dist/popover';
 import 'bootstrap/js/dist/dropdown';
 import '../../scss/styles.scss';
 
 
-(function ($, renderProfileBox) {
-
+(function (renderProfileBox) {
 
   let notificationUpdater;
 
@@ -100,13 +100,8 @@ import '../../scss/styles.scss';
     $(this).html(fn());
   });
 
-
   function camelCaseToDash(str) {
     return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase()
   }
 
-  $(document).ready(function () {
-
-  });
-
-})(jQuery, renderProfileBox);
+})(renderProfileBox);

@@ -11,106 +11,107 @@
  */
 ?>
 <?php echo $this->doctype()->__toString() ?>
-<?php $locale = $this->locale()->getLocale()->__toString(); $orientation = ( $this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr' ); ?>
-<html class="h-100" style="overflow-x: hidden;" id="smoothbox_window" xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $locale ?>" dir="<?php echo $orientation ?>">
+<?php $locale = $this->locale()->getLocale()->__toString();
+$orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr'); ?>
+<html class="h-100" style="overflow-x: hidden;" id="smoothbox_window" xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="<?php echo $locale ?>" dir="<?php echo $orientation ?>">
 <head>
-  <base href="<?php echo rtrim($this->serverUrl($this->baseUrl()), '/'). '/' ?>" />
+  <base href="<?php echo rtrim($this->serverUrl($this->baseUrl()), '/') . '/' ?>"/>
 
   <?php // TITLE/META ?>
   <?php
-  
-    $counter = (int) $this->layout()->counter;
-    $staticBaseUrl = $this->layout()->staticBaseUrl;
-    $headIncludes = $this->layout()->headIncludes;
-    
-    // add fontawesome
-    $this->headLink()->prependStylesheet($staticBaseUrl . 'externals/font-awesome/css/font-awesome.min.css');
-    
-    $request = Zend_Controller_Front::getInstance()->getRequest();
-    $this->headTitle()
-      ->setSeparator(' - ');
-    $pageTitleKey = 'pagetitle-' . $request->getModuleName() . '-' . $request->getActionName()
-        . '-' . $request->getControllerName();
-    $pageTitle = $this->translate($pageTitleKey);
-    if( $pageTitle && $pageTitle != $pageTitleKey ) {
-      $this
-        ->headTitle($pageTitle, Zend_View_Helper_Placeholder_Container_Abstract::PREPEND);
-    }
+
+  $counter = (int)$this->layout()->counter;
+  $staticBaseUrl = $this->layout()->staticBaseUrl;
+  $headIncludes = $this->layout()->headIncludes;
+
+  // add fontawesome
+  $this->headLink()->prependStylesheet($staticBaseUrl . 'externals/font-awesome/css/font-awesome.min.css');
+
+  $request = Zend_Controller_Front::getInstance()->getRequest();
+  $this->headTitle()
+    ->setSeparator(' - ');
+  $pageTitleKey = 'pagetitle-' . $request->getModuleName() . '-' . $request->getActionName()
+    . '-' . $request->getControllerName();
+  $pageTitle = $this->translate($pageTitleKey);
+  if ($pageTitle && $pageTitle != $pageTitleKey) {
     $this
-      ->headTitle($this->translate($this->layout()->siteinfo['title']))
-      ;
-    $this->headMeta()
-      ->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8')
-      ->appendHttpEquiv('Content-Language', $this->locale()->getLocale()->__toString());
+      ->headTitle($pageTitle, Zend_View_Helper_Placeholder_Container_Abstract::PREPEND);
+  }
+  $this
+    ->headTitle($this->translate($this->layout()->siteinfo['title']));
+  $this->headMeta()
+    ->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8')
+    ->appendHttpEquiv('Content-Language', $this->locale()->getLocale()->__toString());
 
-    // Make description and keywords
-    $description = $this->layout()->siteinfo['description'];
-    $keywords = $this->layout()->siteinfo['keywords'];
+  // Make description and keywords
+  $description = $this->layout()->siteinfo['description'];
+  $keywords = $this->layout()->siteinfo['keywords'];
 
-    if( $this->subject() && $this->subject()->getIdentity() ) {
-      $this->headTitle($this->subject()->getTitle(), Zend_View_Helper_Placeholder_Container_Abstract::PREPEND);
+  if ($this->subject() && $this->subject()->getIdentity()) {
+    $this->headTitle($this->subject()->getTitle(), Zend_View_Helper_Placeholder_Container_Abstract::PREPEND);
 
-      $description = $this->subject()->getDescription() . ' ' . $description;
-      // Remove the white space from left and right side
-      $keywords = trim($keywords);
-      if ( !empty($keywords) && (strrpos($keywords, ',') !== (strlen($keywords) - 1)) ) {
-        $keywords .= ',';
-      }
-      $keywords .= $this->subject()->getKeywords(',');
+    $description = $this->subject()->getDescription() . ' ' . $description;
+    // Remove the white space from left and right side
+    $keywords = trim($keywords);
+    if (!empty($keywords) && (strrpos($keywords, ',') !== (strlen($keywords) - 1))) {
+      $keywords .= ',';
     }
+    $keywords .= $this->subject()->getKeywords(',');
+  }
 
-    $keywords = trim($keywords, ',');
+  $keywords = trim($keywords, ',');
 
-    $this->headMeta()->appendName('description', trim($description));
-    $this->headMeta()->appendName('keywords', trim($keywords));
-    $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no');
+  $this->headMeta()->appendName('description', trim($description));
+  $this->headMeta()->appendName('keywords', trim($keywords));
+  $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1, shrink-to-fit=no');
 
-    //Adding open graph meta tag for video thumbnail
-    if( $this->subject() && $this->subject()->getPhotoUrl() ) {
-     $this->headMeta()->setProperty('og:image', $this->absoluteUrl($this->subject()->getPhotoUrl()));
-    }
+  //Adding open graph meta tag for video thumbnail
+  if ($this->subject() && $this->subject()->getPhotoUrl()) {
+    $this->headMeta()->setProperty('og:image', $this->absoluteUrl($this->subject()->getPhotoUrl()));
+  }
 
-    // Get body identity
-    if( isset($this->layout()->siteinfo['identity']) ) {
-      $identity = $this->layout()->siteinfo['identity'];
-    } else {
-      $identity = $request->getModuleName() . '-' .
-          $request->getControllerName() . '-' .
-          $request->getActionName();
-    }
+  // Get body identity
+  if (isset($this->layout()->siteinfo['identity'])) {
+    $identity = $this->layout()->siteinfo['identity'];
+  } else {
+    $identity = $request->getModuleName() . '-' .
+      $request->getControllerName() . '-' .
+      $request->getActionName();
+  }
   ?>
-  <?php echo $this->headTitle()->toString()."\n" ?>
-  <?php echo $this->headMeta()->toString()."\n" ?>
+  <?php echo $this->headTitle()->toString() . "\n" ?>
+  <?php echo $this->headMeta()->toString() . "\n" ?>
 
 
   <?php // LINK/STYLES ?>
   <?php
-    $this->headLink(array(
-      'rel' => 'shortcut icon',
-      'href' => $staticBaseUrl . ( isset($this->layout()->favicon) ? $this->layout()->favicon : 'favicon.ico' ),
-      'type' => 'image/x-icon'),
-      'PREPEND');
-    $themes = array();
-    if( !empty($this->layout()->themes) ) {
-      $themes = $this->layout()->themes;
-    } else {
-      $themes = array('default');
-    }
-    
-    // Process
-    foreach( $this->headLink()->getContainer() as $dat ) {
-      if( !empty($dat->href) ) {
-        if( false === strpos($dat->href, '?') ) {
-          $dat->href .= '?c=' . $counter;
-        } else {
-          $dat->href .= '&c=' . $counter;
-        }
+  $this->headLink(array(
+    'rel' => 'shortcut icon',
+    'href' => $staticBaseUrl . (isset($this->layout()->favicon) ? $this->layout()->favicon : 'favicon.ico'),
+    'type' => 'image/x-icon'),
+    'PREPEND');
+  $themes = array();
+  if (!empty($this->layout()->themes)) {
+    $themes = $this->layout()->themes;
+  } else {
+    $themes = array('default');
+  }
+
+  // Process
+  foreach ($this->headLink()->getContainer() as $dat) {
+    if (!empty($dat->href)) {
+      if (false === strpos($dat->href, '?')) {
+        $dat->href .= '?c=' . $counter;
+      } else {
+        $dat->href .= '&c=' . $counter;
       }
     }
+  }
   ?>
-  <?php echo $this->headLink()->toString()."\n" ?>
-  <?php echo $this->headStyle()->toString()."\n" ?>
-  
+  <?php echo $this->headLink()->toString() . "\n" ?>
+  <?php echo $this->headStyle()->toString() . "\n" ?>
+
   <?php // TRANSLATE ?>
   <?php $this->headScript()->prependScript($this->headTranslate()->toString()) ?>
 
@@ -128,53 +129,54 @@
     en4.core.loader = new Element('img', {src: en4.core.baseUrl + 'application/themes/parentalguidance/images/loader.svg'});
 
     <?php if( $this->subject() ): ?>
-      en4.core.subject = {
-        type : '<?php echo $this->subject()->getType(); ?>',
-        id : <?php echo $this->subject()->getIdentity(); ?>,
-        guid : '<?php echo $this->subject()->getGuid(); ?>'
-      };
+    en4.core.subject = {
+      type: '<?php echo $this->subject()->getType(); ?>',
+      id: <?php echo $this->subject()->getIdentity(); ?>,
+      guid: '<?php echo $this->subject()->getGuid(); ?>'
+    };
     <?php endif; ?>
     <?php if( $this->viewer()->getIdentity() ): ?>
-      en4.user.viewer = {
-        type : '<?php echo $this->viewer()->getType(); ?>',
-        id : <?php echo $this->viewer()->getIdentity(); ?>,
-        guid : '<?php echo $this->viewer()->getGuid(); ?>'
-      };
+    en4.user.viewer = {
+      type: '<?php echo $this->viewer()->getType(); ?>',
+      id: <?php echo $this->viewer()->getIdentity(); ?>,
+      guid: '<?php echo $this->viewer()->getGuid(); ?>'
+    };
     <?php endif; ?>
-    if( <?php echo ( Zend_Controller_Front::getInstance()->getRequest()->getParam('ajax', false) ? 'true' : 'false' ) ?> ) {
+    if ( <?php echo(Zend_Controller_Front::getInstance()->getRequest()->getParam('ajax', false) ? 'true' : 'false') ?> ) {
       en4.core.dloader.attach();
     }
-    
+
     <?php echo $this->headScript()->captureEnd(Zend_View_Helper_Placeholder_Container_Abstract::PREPEND) ?>
   </script>
   <?php
-    $this->headScript()
-      ->prependFile($staticBaseUrl . 'externals/smoothbox/smoothbox4.js')
-      ->prependFile($staticBaseUrl . 'application/modules/User/externals/scripts/core.js')
-      ->prependFile($staticBaseUrl . 'application/modules/Core/externals/scripts/core.js')
-      ->prependFile($staticBaseUrl . 'externals/chootools/chootools.js')
-      ->prependFile($staticBaseUrl . 'externals/mootools/mootools-more-1.4.0.1-full-compat-' . (APPLICATION_ENV == 'development' ? 'nc' : 'yc') . '.js')
-      ->prependFile($staticBaseUrl . 'externals/mootools/mootools-core-1.4.5-full-compat-' . (APPLICATION_ENV == 'development' ? 'nc' : 'yc') . '.js');
-    // Process
-    foreach( $this->headScript()->getContainer() as $dat ) {
-      if( !empty($dat->attributes['src']) ) {
-        if( false === strpos($dat->attributes['src'], '?') ) {
-          $dat->attributes['src'] .= '?c=' . $counter;
-        } else {
-          $dat->attributes['src'] .= '&c=' . $counter;
-        }
+  $this->headScript()
+    ->prependFile($staticBaseUrl . '/scripts/auth.bundle.js');
+  //    ->prependFile($staticBaseUrl . 'application/modules/User/externals/scripts/core.js')
+  //    ->prependFile($staticBaseUrl . 'application/modules/Core/externals/scripts/core.js')
+  //    ->prependFile($staticBaseUrl . 'externals/chootools/chootools.js')
+  //    ->prependFile($staticBaseUrl . 'externals/mootools/mootools-more-1.4.0.1-full-compat-' . (APPLICATION_ENV == 'development' ? 'nc' : 'yc') . '.js')
+  //    ->prependFile($staticBaseUrl . 'externals/mootools/mootools-core-1.4.5-full-compat-' . (APPLICATION_ENV == 'development' ? 'nc' : 'yc') . '.js');
+  // Process
+  foreach ($this->headScript()->getContainer() as $dat) {
+    if (!empty($dat->attributes['src'])) {
+      if (false === strpos($dat->attributes['src'], '?')) {
+        $dat->attributes['src'] .= '?c=' . $counter;
+      } else {
+        $dat->attributes['src'] .= '&c=' . $counter;
       }
     }
+  }
   ?>
-  <?php echo $this->headScript()->toString()."\n" ?>
+  <?php echo $this->headScript()->toString() . "\n" ?>
 
   <!-- vertical scrollbar fix -->
- 
+
 
   <?php echo $headIncludes ?>
-  
+
 </head>
-    <body style="margin:0;" id="global_page_<?php echo $identity ?>" class="<?php  echo ($identity == 'core-index-index')  ? '' : 'h-100 full-height-auth'; ?>">
-        <?php echo $this->layout()->content ?>
-    </body>
+<body style="margin:0;" id="global_page_<?php echo $identity ?>"
+      class="<?php echo ($identity == 'core-index-index') ? '' : 'h-100 full-height-auth'; ?>">
+<?php echo $this->layout()->content ?>
+</body>
 </html>

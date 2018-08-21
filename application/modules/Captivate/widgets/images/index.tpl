@@ -70,8 +70,10 @@ endif;
             ->appendStylesheet($this->layout()->staticBaseUrl . 'application/modules/Sitemenu/externals/styles/style_sitemenu.css');
     ?>
     <?php
-    $this->headScript()
-            ->appendFile($this->layout()->staticBaseUrl . 'application/modules/Sitemenu/externals/scripts/core.js');
+
+// @TODO add bundle
+//    $this->headScript()
+//            ->appendFile($this->layout()->staticBaseUrl . 'application/modules/Sitemenu/externals/scripts/core.js');
     ?>
 <?php endif; ?>
 

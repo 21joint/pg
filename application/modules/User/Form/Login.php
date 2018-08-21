@@ -18,34 +18,20 @@
 class User_Form_Login extends Engine_Form_Email
 {
   protected $_mode;
-  
-  public function setMode($mode)
-  {
-    $this->_mode = $mode;
-    return $this;
-  }
-  
-  public function getMode()
-  {
-    if( null === $this->_mode ) {
-      $this->_mode = 'page';
-    }
-    return $this->_mode;
-  }
-  
+
   public function init()
   {
     $tabindex = rand(100, 9999);
     $this->_emailAntispamEnabled = (Engine_Api::_()->getApi('settings', 'core')
-          ->getSetting('core.spam.email.antispam.login', 1) == 1);
-    
+        ->getSetting('core.spam.email.antispam.login', 1) == 1);
+
     // Used to redirect users to the correct page after login with Facebook
     $_SESSION['redirectURL'] = Zend_Controller_Front::getInstance()->getRequest()->getRequestUri();
 
     $description = Zend_Registry::get('Zend_Translate')->_("Join Parental Guidance today.");
-    $description= sprintf($description, Zend_Controller_Front::getInstance()->getRouter()->assemble(array(), 'user_signup', true));
+    $description = sprintf($description, Zend_Controller_Front::getInstance()->getRouter()->assemble(array(), 'user_signup', true));
 
-   
+
     // Init form
     $this->setTitle('Share Your Struggle. Provide Your Theories. Gain Advice.');
     $this->setDescription($description);
@@ -90,7 +76,7 @@ class User_Form_Login extends Engine_Form_Email
     ));
 
     $content = Zend_Registry::get('Zend_Translate')->_("<p><a href='%s'>Forgot Password?</a></p>");
-    $content= sprintf($content, Zend_Controller_Front::getInstance()->getRouter()->assemble(array('module' => 'user', 'controller' => 'auth', 'action' => 'forgot'), 'default', true));
+    $content = sprintf($content, Zend_Controller_Front::getInstance()->getRouter()->assemble(array('module' => 'user', 'controller' => 'auth', 'action' => 'forgot'), 'default', true));
 
 
     // Init forgot password link
@@ -98,7 +84,7 @@ class User_Form_Login extends Engine_Form_Email
       'content' => $content,
     ));
 
-     // Init remember me
+    // Init remember me
     $this->addElement('Checkbox', 'remember', array(
       'label' => 'Remember Me',
       'tabindex' => $tabindex++,
@@ -107,16 +93,13 @@ class User_Form_Login extends Engine_Form_Email
     $this->addDisplayGroup(array(
       'forgot',
       'remember'
-    ), 'buttons-fileds',array('class' => 'border-0 mb-4'));
+    ), 'buttons-fileds', array('class' => 'border-0 mb-4'));
 
 
-
-    $this->addElement('Hidden', 'return_url', array(
-
-    ));
+    $this->addElement('Hidden', 'return_url', array());
 
     $settings = Engine_Api::_()->getApi('settings', 'core');
-    if( $settings->core_spam_login ) {
+    if ($settings->core_spam_login) {
       $this->addElement('captcha', 'captcha', Engine_Api::_()->core()->getCaptchaOptions(array(
         'tabindex' => $tabindex++,
         'size' => ($this->getMode() == 'column') ? 'compact' : 'normal',
@@ -130,23 +113,23 @@ class User_Form_Login extends Engine_Form_Email
       'ignore' => true,
       'tabindex' => $tabindex++,
     ));
-    
+
     $this->addElement('Cancel', 'cancel', array(
       'label' => 'Sign Up',
       'link' => true,
-      'role'=> 'button',
+      'role' => 'button',
       'href' => Zend_Controller_Front::getInstance()->getRouter()->assemble(array('controller' => 'signup', 'action' => 'index'), 'user_signup', true),
     ));
 
     $this->addDisplayGroup(array(
       'submit',
       'cancel'
-    ), 'buttons',array ('class' => 'mb-5'));
+    ), 'buttons', array('class' => 'mb-5'));
 
 
     // Init facebook login link
-    if( 'none' != $settings->getSetting('core_facebook_enable', 'none')
-        && $settings->core_facebook_secret ) {
+    if ('none' != $settings->getSetting('core_facebook_enable', 'none')
+      && $settings->core_facebook_secret) {
       $this->addElement('Dummy', 'facebook', array(
         'content' => User_Model_DbTable_Facebook::loginButton(),
       ));
@@ -154,15 +137,15 @@ class User_Form_Login extends Engine_Form_Email
 
     // Init twitter login link
     //if( 'none' != $settings->getSetting('core_twitter_enable', 'none')
-        //&& $settings->core_twitter_secret ) {
-      $this->addElement('Dummy', 'twitter', array(
-        'content' => User_Model_DbTable_Twitter::loginButton(),
-      ));
-   // }
-    
+    //&& $settings->core_twitter_secret ) {
+    $this->addElement('Dummy', 'twitter', array(
+      'content' => User_Model_DbTable_Twitter::loginButton(),
+    ));
+    // }
+
     // Init janrain login link
-    if( 'none' != $settings->getSetting('core_janrain_enable', 'none')
-        && $settings->core_janrain_key ) {
+    if ('none' != $settings->getSetting('core_janrain_enable', 'none')
+      && $settings->core_janrain_key) {
       $mode = $this->getMode();
       $this->addElement('Dummy', 'janrain', array(
         'content' => User_Model_DbTable_Janrain::loginButton($mode),
@@ -172,9 +155,23 @@ class User_Form_Login extends Engine_Form_Email
     $this->addDisplayGroup(array(
       'twitter',
       'facebook'
-    ), 'facebook-button',array('class' => ' border-0 p-0 m-0'));
+    ), 'facebook-button', array('class' => ' border-0 p-0 m-0'));
 
     // Set default action
     $this->setAction(Zend_Controller_Front::getInstance()->getRouter()->assemble(array(), 'user_login'));
+  }
+
+  public function getMode()
+  {
+    if (null === $this->_mode) {
+      $this->_mode = 'page';
+    }
+    return $this->_mode;
+  }
+
+  public function setMode($mode)
+  {
+    $this->_mode = $mode;
+    return $this;
   }
 }

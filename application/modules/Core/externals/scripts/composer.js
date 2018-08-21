@@ -584,7 +584,7 @@
           return string;
         }
 
-        var args = new Array();
+        var args = [];
         for (var i = 1, l = arguments.length; i < l; i++) {
           args.push(arguments[i]);
         }
@@ -771,7 +771,7 @@
       return this;
     }
 
-  })
+  });
 
   Composer.Plugin = {};
 
@@ -1046,7 +1046,7 @@
           return string;
         }
 
-        var args = new Array();
+        var args = [];
         for (var i = 1, l = arguments.length; i < l; i++) {
           args.push(arguments[i]);
         }

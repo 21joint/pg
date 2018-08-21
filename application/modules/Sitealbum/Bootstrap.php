@@ -13,18 +13,22 @@
 ?>
 <?php
 
-class Sitealbum_Bootstrap extends Engine_Application_Bootstrap_Abstract {
+class Sitealbum_Bootstrap extends Engine_Application_Bootstrap_Abstract
+{
 
-  public function __construct($application) {
+  public function __construct($application)
+  {
 
     parent::__construct($application);
-    include APPLICATION_PATH . '/application/modules/Sitealbum/controllers/license/license.php';
+    include APPLICATION_PATH
+      . '/application/modules/Sitealbum/controllers/license/license.php';
   }
 
-  protected function _initFrontController() {
+  protected function _initFrontController()
+  {
     $this->initViewHelperPath();
     $this->initActionHelperPath();
-    
+
     $front = Zend_Controller_Front::getInstance();
     $front->registerPlugin(new Sitealbum_Plugin_Core);
   }

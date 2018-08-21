@@ -21,13 +21,14 @@
     else
       $photoCount = 0;
 
-    $listing_singular_lc = strtolower($listingtypeArray->title_singular); 
-	$this->headScript()
-    ->appendFile($this->layout()->staticBaseUrl . 'externals/fancyupload/Swiff.Uploader.js')
-    ->appendFile($this->layout()->staticBaseUrl . 'externals/fancyupload/Fx.ProgressBar.js')
-    ->appendFile($this->layout()->staticBaseUrl . 'externals/fancyupload/FancyUpload2.js');
-  $this->headLink()
-    ->appendStylesheet($this->layout()->staticBaseUrl . 'externals/fancyupload/fancyupload.css');
+    $listing_singular_lc = strtolower($listingtypeArray->title_singular);
+// @TODO add bundle
+//	$this->headScript()
+//    ->appendFile($this->layout()->staticBaseUrl . 'externals/fancyupload/Swiff.Uploader.js')
+//    ->appendFile($this->layout()->staticBaseUrl . 'externals/fancyupload/Fx.ProgressBar.js')
+//    ->appendFile($this->layout()->staticBaseUrl . 'externals/fancyupload/FancyUpload2.js');
+//  $this->headLink()
+//    ->appendStylesheet($this->layout()->staticBaseUrl . 'externals/fancyupload/fancyupload.css');
   $this->headTranslate(array(
     'Overall Progress ({total})', 'File Progress', 'Uploading "{name}"',
     'Upload: {bytesLoaded} with {rate}, {timeRemaining} remaining.', '{name}',

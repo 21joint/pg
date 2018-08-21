@@ -200,16 +200,17 @@ class Sitealbum_Plugin_Core extends Zend_Controller_Plugin_Abstract {
 
     public function onRenderLayoutDefault($event, $mode = null) {
         $view = $event->getPayload();
-        $view->headScript()
-        ->appendFile($view->layout()->staticBaseUrl . 'externals/fancyupload/Swiff.Uploader.js')
-        ->appendFile($view->layout()->staticBaseUrl . 'externals/fancyupload/Fx.ProgressBar.js')
-        ->appendFile($view->layout()->staticBaseUrl . 'externals/fancyupload/FancyUpload2.js')
-        ->appendFile($view->layout()->staticBaseUrl . 'application/modules/Sitealbum/externals/scripts/core.js');
-         $view->headScript()
-          ->appendFile($view->layout()->staticBaseUrl . 'externals/autocompleter/Observer.js')
-          ->appendFile($view->layout()->staticBaseUrl . 'externals/autocompleter/Autocompleter.js')
-          ->appendFile($view->layout()->staticBaseUrl . 'externals/autocompleter/Autocompleter.Local.js')
-          ->appendFile($view->layout()->staticBaseUrl . 'externals/autocompleter/Autocompleter.Request.js');
+        //@TODO add bundle
+//        $view->headScript()
+//        ->appendFile($view->layout()->staticBaseUrl . 'externals/fancyupload/Swiff.Uploader.js')
+//        ->appendFile($view->layout()->staticBaseUrl . 'externals/fancyupload/Fx.ProgressBar.js')
+//        ->appendFile($view->layout()->staticBaseUrl . 'externals/fancyupload/FancyUpload2.js')
+//        ->appendFile($view->layout()->staticBaseUrl . 'application/modules/Sitealbum/externals/scripts/core.js');
+//         $view->headScript()
+//          ->appendFile($view->layout()->staticBaseUrl . 'externals/autocompleter/Observer.js')
+//          ->appendFile($view->layout()->staticBaseUrl . 'externals/autocompleter/Autocompleter.js')
+//          ->appendFile($view->layout()->staticBaseUrl . 'externals/autocompleter/Autocompleter.Local.js')
+//          ->appendFile($view->layout()->staticBaseUrl . 'externals/autocompleter/Autocompleter.Request.js');
         $apiKey = Engine_Api::_()->seaocore()->getGoogleMapApiKey();
         $view->headScript()->appendFile("https://maps.googleapis.com/maps/api/js?libraries=places&key=$apiKey");
     }

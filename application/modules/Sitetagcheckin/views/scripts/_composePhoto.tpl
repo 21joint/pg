@@ -22,11 +22,12 @@
     ->appendFile($this->layout()->staticBaseUrl . 'application/modules/Sitetagcheckin/externals/scripts/composer_photo.js');
   }
 
-   $this->headScript()->appendFile($this->layout()->staticBaseUrl . 'externals/fancyupload/Swiff.Uploader.js')
+// @TODO add bundle
+  /* $this->headScript()->appendFile($this->layout()->staticBaseUrl . 'externals/fancyupload/Swiff.Uploader.js')
     ->appendFile($this->layout()->staticBaseUrl . 'externals/fancyupload/Fx.ProgressBar.js')
     ->appendFile($this->layout()->staticBaseUrl . 'externals/fancyupload/FancyUpload2.js');
   $this->headLink()
-    ->appendStylesheet($this->layout()->staticBaseUrl . 'externals/fancyupload/fancyupload.css');
+    ->appendStylesheet($this->layout()->staticBaseUrl . 'externals/fancyupload/fancyupload.css');*/
   $this->headTranslate(array(
     'Overall Progress ({total})', 'File Progress', 'Uploading "{name}"',
     'Upload: {bytesLoaded} with {rate}, {timeRemaining} remaining.', '{name}',

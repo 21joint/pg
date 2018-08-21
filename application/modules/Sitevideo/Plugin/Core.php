@@ -246,12 +246,13 @@ class Sitevideo_Plugin_Core extends Zend_Controller_Plugin_Abstract {
 
     public function onRenderLayoutDefault($video, $mode = null) {
         $view = $video->getPayload();
-        $view->headScript()
-                ->appendFile($view->layout()->staticBaseUrl . 'externals/fancyupload/Swiff.Uploader.js')
-                ->appendFile($view->layout()->staticBaseUrl . 'externals/fancyupload/Fx.ProgressBar.js')
-                ->appendFile($view->layout()->staticBaseUrl . 'externals/fancyupload/FancyUpload2.js');
-        $view->headLink()
-                ->appendStylesheet($view->layout()->staticBaseUrl . 'externals/fancyupload/fancyupload.css');
+      // @TODO add bundle
+//        $view->headScript()
+//                ->appendFile($view->layout()->staticBaseUrl . 'externals/fancyupload/Swiff.Uploader.js')
+//                ->appendFile($view->layout()->staticBaseUrl . 'externals/fancyupload/Fx.ProgressBar.js')
+//                ->appendFile($view->layout()->staticBaseUrl . 'externals/fancyupload/FancyUpload2.js');
+//        $view->headLink()
+//                ->appendStylesheet($view->layout()->staticBaseUrl . 'externals/fancyupload/fancyupload.css');
 
         
         

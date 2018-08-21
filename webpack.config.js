@@ -1,29 +1,23 @@
 const path = require('path');
-// const pkg = require('./package');
-
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
-
-const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
-// const Conf = require('./conf');
-const args = require('yargs').argv;
+const Conf = require('./conf');
 // const glob = require('glob');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // const CopyWebpackPlugin = require('copy-webpack-plugin');
-const APP_DIR = path.resolve(__dirname, '../application');
 
 let IS_DEV = process.env.NODE_ENV === 'dev';
-let APP_PREFIX = require('./conf').prefix;
+let APP_PREFIX = Conf.prefix;
 
 /**
  * Webpack Configuration
  *
  **/
+
 let config = {
-  mode: 'development',
   output: {
     filename: 'scripts/[name].bundle.js',
-    path: path.resolve(__dirname, 'application/themes/parentalguidance/dist'),
+    path: path.join(__dirname, 'dist'),
     publicPath: '/'
   },
   module: {
@@ -134,6 +128,11 @@ let config = {
     })
   ]
 };
+let compiler = webpack(config);
+
+compiler.plugin("compilation", compilation => {
+  compilation.contextDependencies.push(path.resolve(__dirname, "application/themes/parentalguidance/modules/"));
+});
 
 if (IS_DEV) {
   config.devtool = 'source-map'; // source-map

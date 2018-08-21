@@ -1,6 +1,8 @@
 import 'mootools';
 
-let en4 = window.en4 = {};
+let en4 = {};
+
+window.en4 = en4;
 
 (function () { // START NAMESPACE
 

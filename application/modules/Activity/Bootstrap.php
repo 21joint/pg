@@ -22,9 +22,11 @@ class Activity_Bootstrap extends Engine_Application_Bootstrap_Abstract
   {
     parent::__construct($application);
     $this->initViewHelperPath();
-
-    $headScript = new Zend_View_Helper_HeadScript();
-    $headScript->appendFile(Zend_Registry::get('StaticBaseUrl') 
-        . 'application/modules/Activity/externals/scripts/core.js');
+//@TODO add bundle
+//    $headScript = new Zend_View_Helper_HeadScript();
+//    $headScript->appendFile(
+//      Zend_Registry::get('StaticBaseUrl')
+//      . 'application/modules/Activity/externals/scripts/core.js'
+//    );
   }
 }

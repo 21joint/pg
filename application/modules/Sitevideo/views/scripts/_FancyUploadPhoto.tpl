@@ -16,12 +16,13 @@
 $channel = Engine_Api::_()->getItem('sitevideo_channel', Zend_Controller_Front::getInstance()->getRequest()->getParam('channel_id', null));
 
 $photoCount = 0;
-$this->headScript()
-        ->appendFile($this->layout()->staticBaseUrl . 'externals/fancyupload/Swiff.Uploader.js')
-        ->appendFile($this->layout()->staticBaseUrl . 'externals/fancyupload/Fx.ProgressBar.js')
-        ->appendFile($this->layout()->staticBaseUrl . 'externals/fancyupload/FancyUpload2.js');
-$this->headLink()
-        ->appendStylesheet($this->layout()->staticBaseUrl . 'externals/fancyupload/fancyupload.css');
+// @TODO add bundle
+//$this->headScript()
+//        ->appendFile($this->layout()->staticBaseUrl . 'externals/fancyupload/Swiff.Uploader.js')
+//        ->appendFile($this->layout()->staticBaseUrl . 'externals/fancyupload/Fx.ProgressBar.js')
+//        ->appendFile($this->layout()->staticBaseUrl . 'externals/fancyupload/FancyUpload2.js');
+//$this->headLink()
+//        ->appendStylesheet($this->layout()->staticBaseUrl . 'externals/fancyupload/fancyupload.css');
 $this->headTranslate(array(
     'Overall Progress ({total})', 'File Progress', 'Uploading "{name}"',
     'Upload: {bytesLoaded} with {rate}, {timeRemaining} remaining.', '{name}',

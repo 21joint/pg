@@ -1,6 +1,5 @@
 import {getCategories} from '../../middleware/api.service';
 import {renderRateInput} from '../../components/rating/rating';
-import 'froala-editor';
 
 (function ($) {
   getCategories({}, function (cats) {
@@ -19,7 +18,4 @@ import 'froala-editor';
     $(inputEl).html(renderRateInput());
   });
 
-  $(document).ready(function () {
-    $('.froala-editor').froalaEditor();
-  });
 })(jQuery);

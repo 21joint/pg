@@ -13,14 +13,17 @@
 <?php echo $this->doctype()->__toString() ?>
 <?php
 $locale = $this->locale()->getLocale()->__toString();
-$orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr');
+$orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl'
+  : 'ltr');
 ?>
 <html id="smoothbox_window"
       xmlns="http://www.w3.org/1999/xhtml"
       lang="<?php echo $locale ?>"
       dir="<?php echo $orientation ?>">
 <head>
-  <base href="<?php echo rtrim('//' . $_SERVER['HTTP_HOST'] . $this->baseUrl(), '/') . '/' ?>"/>
+  <base
+    href="<?php echo rtrim('//' . $_SERVER['HTTP_HOST'] . $this->baseUrl(), '/')
+      . '/' ?>"/>
 
   <?php // ALLOW HOOKS INTO META ?>
   <?php echo $this->hooks('onRenderLayoutDefaultSimple', $this) ?>
@@ -35,18 +38,26 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr')
   $request = Zend_Controller_Front::getInstance()->getRequest();
   $this->headTitle()
     ->setSeparator(' - ');
-  $pageTitleKey = 'pagetitle-' . $request->getModuleName() . '-' . $request->getActionName()
+  $pageTitleKey = 'pagetitle-' . $request->getModuleName() . '-'
+    . $request->getActionName()
     . '-' . $request->getControllerName();
   $pageTitle = $this->translate($pageTitleKey);
   if ($pageTitle && $pageTitle != $pageTitleKey) {
     $this
-      ->headTitle($pageTitle, Zend_View_Helper_Placeholder_Container_Abstract::PREPEND);
+      ->headTitle(
+        $pageTitle, Zend_View_Helper_Placeholder_Container_Abstract::PREPEND
+      );
   }
   $this
-    ->headTitle($this->translate($this->layout()->siteinfo['title']), Zend_View_Helper_Placeholder_Container_Abstract::PREPEND);
+    ->headTitle(
+      $this->translate($this->layout()->siteinfo['title']),
+      Zend_View_Helper_Placeholder_Container_Abstract::PREPEND
+    );
   $this->headMeta()
     ->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8')
-    ->appendHttpEquiv('Content-Language', $this->locale()->getLocale()->__toString());
+    ->appendHttpEquiv(
+      'Content-Language', $this->locale()->getLocale()->__toString()
+    );
 
   // Make description and keywords
   $description = '';
@@ -61,7 +72,9 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr')
     $description .= ' ' . $this->subject()->getDescription();
     // Remove the white space from left and right side
     $keywords = trim($keywords);
-    if (!empty($keywords) && (strrpos($keywords, ',') !== (strlen($keywords) - 1))) {
+    if (!empty($keywords)
+      && (strrpos($keywords, ',') !== (strlen($keywords) - 1))
+    ) {
       $keywords .= ',';
     }
     $keywords .= $this->subject()->getKeywords(',');
@@ -87,10 +100,13 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr')
 
   <?php // LINK/STYLES ?>
   <?php
-  $this->headLink(array(
-    'rel' => 'favicon',
-    'href' => (isset($this->layout()->favicon) ? $staticBaseUrl . $this->layout()->favicon : '/favicon.ico'),
-    'type' => 'image/x-icon'), 'PREPEND');
+  $this->headLink(
+    array(
+      'rel' => 'favicon',
+      'href' => (isset($this->layout()->favicon) ? $staticBaseUrl
+        . $this->layout()->favicon : '/favicon.ico'),
+      'type' => 'image/x-icon'), 'PREPEND'
+  );
   $themes = array();
   if (!empty($this->layout()->themes)) {
     $themes = $this->layout()->themes;
@@ -100,10 +116,17 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr')
   foreach ($themes as $theme) {
     if (APPLICATION_ENV != 'development') {
       $this->headLink()
-        ->prependStylesheet($staticBaseUrl . 'application/css.php?request=application/themes/' . $theme . '/theme.css');
+        ->prependStylesheet(
+          $staticBaseUrl . 'application/css.php?request=application/themes/'
+          . $theme . '/theme.css'
+        );
     } else {
       $this->headLink()
-        ->prependStylesheet(rtrim($this->baseUrl(), '/') . '/application/css.php?request=application/themes/' . $theme . '/theme.css');
+        ->prependStylesheet(
+          rtrim($this->baseUrl(), '/')
+          . '/application/css.php?request=application/themes/' . $theme
+          . '/theme.css'
+        );
     }
   }
   // Process
@@ -121,17 +144,22 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr')
   <?php echo $this->headStyle()->toString() . "\n" ?>
 
   <?php // TRANSLATE ?>
-  <?php $this->headScript()->prependScript($this->headTranslate()->toString()) ?>
+  <?php $this->headScript()->prependScript(
+    $this->headTranslate()->toString()
+  ) ?>
 
   <?php // SCRIPTS   ?>
   <script type="text/javascript">
-    <?php echo $this->headScript()->captureStart(Zend_View_Helper_Placeholder_Container_Abstract::PREPEND) ?>
+    <?php echo $this->headScript()->captureStart(
+      Zend_View_Helper_Placeholder_Container_Abstract::PREPEND
+    ) ?>
 
     Date.setServerOffset('<?php echo date('D, j M Y G:i:s O', time()) ?>');
 
     en4.orientation = '<?php echo $orientation ?>';
     en4.core.environment = '<?php echo APPLICATION_ENV ?>';
-    en4.core.language.setLocale('<?php echo $this->locale()->getLocale()->__toString() ?>');
+    en4.core.language.setLocale('<?php echo $this->locale()->getLocale()
+      ->__toString() ?>');
     en4.core.setBaseUrl('<?php echo $this->url(array(), 'default', true) ?>');
     en4.core.staticBaseUrl = '<?php echo $this->escape($staticBaseUrl) ?>';
     en4.core.loader = new Element('img', {
@@ -152,22 +180,36 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr')
       guid: '<?php echo $this->viewer()->getGuid(); ?>'
     }
     <?php endif; ?>
-    if (<?php echo(Zend_Controller_Front::getInstance()->getRequest()->getParam('ajax', false) ? 'true' : 'false') ?>) {
+    if (<?php echo(Zend_Controller_Front::getInstance()->getRequest()->getParam(
+      'ajax', false
+    ) ? 'true' : 'false') ?>) {
       en4.core.dloader.attach();
     }
 
 
 
-    <?php echo $this->headScript()->captureEnd(Zend_View_Helper_Placeholder_Container_Abstract::PREPEND) ?>
+    <?php echo $this->headScript()->captureEnd(
+      Zend_View_Helper_Placeholder_Container_Abstract::PREPEND
+    ) ?>
   </script>
   <?php
   $this->headScript()
     ->prependFile($staticBaseUrl . 'externals/smoothbox/smoothbox4.js')
-    ->prependFile($staticBaseUrl . 'application/modules/User/externals/scripts/core.js')
-    ->prependFile($staticBaseUrl . 'application/modules/Core/externals/scripts/core.js')
+    ->prependFile(
+      $staticBaseUrl . 'application/modules/User/externals/scripts/core.js'
+    )
+    ->prependFile(
+      $staticBaseUrl . 'application/modules/Core/externals/scripts/core.js'
+    )
     ->prependFile($staticBaseUrl . 'externals/chootools/chootools.js')
-    ->prependFile($staticBaseUrl . 'externals/mootools/mootools-more-1.4.0.1-full-compat-' . (APPLICATION_ENV == 'development' ? 'nc' : 'yc') . '.js')
-    ->prependFile($staticBaseUrl . 'externals/mootools/mootools-core-1.4.5-full-compat-' . (APPLICATION_ENV == 'development' ? 'nc' : 'yc') . '.js');
+    ->prependFile(
+      $staticBaseUrl . 'externals/mootools/mootools-more-1.4.0.1-full-compat-'
+      . (APPLICATION_ENV == 'development' ? 'nc' : 'yc') . '.js'
+    )
+    ->prependFile(
+      $staticBaseUrl . 'externals/mootools/mootools-core-1.4.5-full-compat-'
+      . (APPLICATION_ENV == 'development' ? 'nc' : 'yc') . '.js'
+    );
   // Process
   foreach ($this->headScript()->getContainer() as $dat) {
     if (!empty($dat->attributes['src'])) {

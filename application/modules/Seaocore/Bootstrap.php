@@ -19,10 +19,11 @@ class Seaocore_Bootstrap extends Engine_Application_Bootstrap_Abstract {
 
     $headScript = new Zend_View_Helper_HeadScript();
     if (Zend_Registry::isRegistered('StaticBaseUrl')) {
-      $headScript->appendFile(Zend_Registry::get('StaticBaseUrl')
-              . 'application/modules/Seaocore/externals/scripts/core.js');
+// @TODO add bundle
+//      $headScript->appendFile(Zend_Registry::get('StaticBaseUrl')
+//              . 'application/modules/Seaocore/externals/scripts/core.js');
     } else {
-      $headScript->appendFile('application/modules/Seaocore/externals/scripts/core.js');
+//      $headScript->appendFile('application/modules/Seaocore/externals/scripts/core.js');
     }
   }
 

@@ -18,22 +18,23 @@ class Nestedcomment_Plugin_Core extends Zend_Controller_Plugin_Abstract {
                 ->appendStylesheet($view->layout()->staticBaseUrl
                         . 'application/modules/Nestedcomment/externals/styles/style_nestedcomment.css');
         $view->headTranslate(array('Write a comment...', 'Write a reply...', 'Attach a Photo', 'Post a comment...', 'Post a reply...'));
-        $view->headScript()
-                ->prependFile($view->layout()->staticBaseUrl . 'application/modules/Nestedcomment/externals/scripts/composernestedcomment.js');
-        $view->headScript()
-                ->appendFile($view->layout()->staticBaseUrl . 'application/modules/Nestedcomment/externals/scripts/composer_nested_comment_tag.js');
-        $view->headScript()
-                ->appendFile($view->layout()->staticBaseUrl . 'application/modules/Nestedcomment/externals/scripts/comment_photo.js');
-        $view->headScript()
-                ->prependFile($view->layout()->staticBaseUrl . 'application/modules/Nestedcomment/externals/scripts/composer.js')
-                ->prependFile($view->layout()->staticBaseUrl . 'application/modules/Nestedcomment/externals/scripts/core.js')
-                ->appendFile($view->layout()->staticBaseUrl . 'application/modules/Nestedcomment/externals/scripts/composer_tag.js')
-                ->appendFile($view->layout()->staticBaseUrl . 'application/modules/Nestedcomment/externals/scripts/like.js')
-                ->appendFile($view->layout()->staticBaseUrl . 'application/modules/Nestedcomment/externals/scripts/composer_photo.js')
-                ->appendFile($view->layout()->staticBaseUrl . 'application/modules/Nestedcomment/externals/scripts/composer_link.js')
-                ->appendFile($view->layout()->staticBaseUrl . 'externals/fancyupload/Swiff.Uploader.js')
-                ->appendFile($view->layout()->staticBaseUrl . 'externals/fancyupload/Fx.ProgressBar.js')
-                ->appendFile($view->layout()->staticBaseUrl . 'externals/fancyupload/FancyUpload2.js');
+//        @TODO add bundle
+//        $view->headScript()
+//                ->prependFile($view->layout()->staticBaseUrl . 'application/modules/Nestedcomment/externals/scripts/composernestedcomment.js');
+//        $view->headScript()
+//                ->appendFile($view->layout()->staticBaseUrl . 'application/modules/Nestedcomment/externals/scripts/composer_nested_comment_tag.js');
+//        $view->headScript()
+//                ->appendFile($view->layout()->staticBaseUrl . 'application/modules/Nestedcomment/externals/scripts/comment_photo.js');
+//        $view->headScript()
+//                ->prependFile($view->layout()->staticBaseUrl . 'application/modules/Nestedcomment/externals/scripts/composer.js')
+//                ->prependFile($view->layout()->staticBaseUrl . 'application/modules/Nestedcomment/externals/scripts/core.js')
+//                ->appendFile($view->layout()->staticBaseUrl . 'application/modules/Nestedcomment/externals/scripts/composer_tag.js')
+//                ->appendFile($view->layout()->staticBaseUrl . 'application/modules/Nestedcomment/externals/scripts/like.js')
+//                ->appendFile($view->layout()->staticBaseUrl . 'application/modules/Nestedcomment/externals/scripts/composer_photo.js')
+//                ->appendFile($view->layout()->staticBaseUrl . 'application/modules/Nestedcomment/externals/scripts/composer_link.js')
+//                ->appendFile($view->layout()->staticBaseUrl . 'externals/fancyupload/Swiff.Uploader.js')
+//                ->appendFile($view->layout()->staticBaseUrl . 'externals/fancyupload/Fx.ProgressBar.js')
+//                ->appendFile($view->layout()->staticBaseUrl . 'externals/fancyupload/FancyUpload2.js');
     }
 
     public function onRenderLayoutMobileDefault($event) {

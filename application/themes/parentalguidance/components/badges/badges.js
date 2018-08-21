@@ -1,6 +1,6 @@
 import './badges.scss';
 
-function renderBadges(user) {
+const renderBadges = function (user) {
   return `<ul class="prg-badges d-flex justify-content-center align-items-center p-0 m-0">
             <li class="position-relative d-flex flex-column justify-content-center align-items-center mx-2 mx-md-3">
               <div class="d-flex align-items-center justify-content-center prg-badge prg-badge--bronze mb-2">
@@ -27,6 +27,6 @@ function renderBadges(user) {
               <div class="prg-badge--title text-asphalt">Platinum</div>
             </li>
           </ul>`
-}
+};
 
-export default {renderBadges}
+export {renderBadges}

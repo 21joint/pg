@@ -1,6 +1,5 @@
-import _ from 'lodash';
 import './profile-box.scss';
-import Badges from "../badges/badges.js";
+import {renderBadges} from "../badges/badges.js";
 
 
 function component(author, options) {
@@ -69,7 +68,7 @@ function component(author, options) {
                     <div class="container-fluid">
                       <div class="row">
                         <div class="col-12">
-                          ${Badges.render(author)}
+                          ${renderBadges(author)}
                         </div>
                       </div>
                     </div>

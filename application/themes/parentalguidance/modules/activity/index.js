@@ -3,6 +3,8 @@
 
 (function () { // START NAMESPACE
 
+  var $ = 'id' in document ? document.id : window.$;
+
   en4.activity = {
     editComposers: new Hash(),
     load: function (next_id, subject_guid) {

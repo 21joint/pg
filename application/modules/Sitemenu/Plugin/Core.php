@@ -18,8 +18,9 @@ class Sitemenu_Plugin_Core extends Zend_Controller_Plugin_Abstract {
 
         $view = $event->getPayload();
         $view->headTranslate(array("Forgot Password?", "Login with Twitter", "Login with Facebook", "Mark as Read", "Mark as Unread"));
-        $view->headScript()
-                ->appendFile($view->layout()->staticBaseUrl . 'application/modules/Sitemenu/externals/scripts/core.js');
+      // @TODO add bundle
+      //    $this->headScript()
+      //            ->appendFile($this->layout()->staticBaseUrl . 'application/modules/Sitemenu/externals/scripts/core.js');
     }
 
     public function routeShutdown(Zend_Controller_Request_Abstract $request) {

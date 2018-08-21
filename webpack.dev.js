@@ -5,50 +5,12 @@ const {API_PROXY} = require('./package');
 const webpackConfig = require('./webpack.config');
 webpackConfig.entry = require('./webpack.entries');
 
-
-const fs = require('fs');
-// our setup function adds behind-the-scenes bits to the config that all of our
-// examples need
-const {setup} = require('util');
-const proxyConfig = require('./proxy-config');
-
-let proxyOptions = [
-  {
-    context: '*',
-    target: 'http://localhost:8888/',
-  },
-  {
-    context: '/api/v1',
-    target: proxyConfig.target,
-    pathRewrite: proxyConfig.pathRewrite,
-    changeOrigin: true
-  }
-];
-
-fs.watch('./proxy-config.js', () => {
-  delete require.cache[require.resolve('./proxy-config')];
-  try {
-    const newProxyConfig = require('./proxy-config');
-    if (proxyOptions.target !== newProxyConfig.target) {
-      console.log('Proxy target changed:', newProxyConfig.target);
-      proxyOptions = {
-        context: '/api/v1',
-        target: newProxyConfig.target,
-        pathRewrite: newProxyConfig.pathRewrite,
-        changeOrigin: true
-      };
-    }
-  } catch (e) {
-    // eslint-disable-line
-  }
-});
-
-
-const config = merge(webpackConfig, {
+let config = merge(webpackConfig, {
   devServer: {
     proxy: {
       '*': {
-        target: 'http://localhost:8888'
+        target: 'http://localhost:8888',
+        secure: false
       },
       '/api/v1': {
         target: API_PROXY,
@@ -58,9 +20,9 @@ const config = merge(webpackConfig, {
         }
       }
     },
-    contentBase: path.resolve(__dirname, 'application/themes/parentalguidance/dist'),
+    contentBase: path.join(__dirname, 'dist'),
     publicPath: '/',
-    port: 3000,
+    port: 2121,
     open: true,
     headers: {
       'Access-Control-Allow-Origin': '*',
@@ -69,6 +31,5 @@ const config = merge(webpackConfig, {
     }
   }
 });
-
 
 module.exports = config;
