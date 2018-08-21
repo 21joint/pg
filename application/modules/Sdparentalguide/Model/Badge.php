@@ -129,7 +129,13 @@ class Sdparentalguide_Model_Badge extends Core_Model_Item_Abstract
     @unlink($squarePath);
 
     // Update row
-    $this->gg_dt_lastmodified = date('Y-m-d H:i:s');
+    $viewer = Engine_Api::_()->user()->getViewer();
+    $oldTz = date_default_timezone_get();
+    date_default_timezone_set($viewer->timezone);
+    $time = time();
+    date_default_timezone_set($oldTz);
+
+    $this->gg_dt_lastmodified = date('Y-m-d H:i:s', $time);
     $this->photo_id = $iMain->file_id;
     $this->save();
 

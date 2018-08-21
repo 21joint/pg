@@ -34,7 +34,7 @@ class Ggcommunity_QuestionIndexController extends Core_Controller_Action_Standar
 
 		// check if form is valid, get request from the POST Method
 		if( !$form->isValid( $this->getRequest()->getPost() ) )	return;
-  
+
 		// get values from form
     $values = $form->getValues();
 
@@ -43,18 +43,24 @@ class Ggcommunity_QuestionIndexController extends Core_Controller_Action_Standar
     if( empty($values['user_id']) ) {
       $values['user_id'] = $user_id;
     }
-    
+
     if($can_approve == 1) {
       $values['approved'] = 1;
-      $values['approved_date'] = date('y-m-d h:m:s');
+
+      $oldTz = date_default_timezone_get();
+      date_default_timezone_set($viewer->timezone);
+      $time = time();
+      date_default_timezone_set($oldTz);
+
+      $values['approved_date'] = date('y-m-d h:m:s', $time);
     } else {
       $values['approved'] = 0;
     }
- 
+
     // if closed date is entered by user write it in the table if, not leave this field empty
     if($can_change == 1 && !empty($values['date_closed'])) {
-     
-      $date = strtotime($values['date_closed']); 
+
+      $date = strtotime($values['date_closed']);
       $date = date("Y-m-d H:m:s", $date);
       $current_date  = date('Y-m-d H:i:s');
       if(strtotime($date)  >= strtotime($current_date)) {
