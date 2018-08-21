@@ -28,7 +28,7 @@
 
 /**
  * Data model for gd:extendedProperty element, used by some Gdata
- * middleware to implement arbitrary name/value pair storage
+ * services to implement arbitrary name/value pair storage
  *
  * @category   Zend
  * @package    Zend_Gdata

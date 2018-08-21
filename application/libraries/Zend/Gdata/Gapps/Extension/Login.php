@@ -51,7 +51,7 @@ class Zend_Gdata_Gapps_Extension_Login extends Zend_Gdata_Extension
 
     /**
      * The username for this user. This is used as the user's email address
-     * and when logging in to Google Apps-hosted middleware.
+     * and when logging in to Google Apps-hosted services.
      *
      * @var string
      */

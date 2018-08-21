@@ -52,7 +52,7 @@
 /**
  * Provides Atom Publishing Protocol (APP) functionality.  This class and all
  * other components of Zend_Gdata_App are designed to work independently from
- * other Zend_Gdata components in order to interact with generic APP middleware.
+ * other Zend_Gdata components in order to interact with generic APP services.
  *
  * @category   Zend
  * @package    Zend_Gdata
@@ -152,7 +152,7 @@ class Zend_Gdata_App
       * to either an integer >= 0, or NULL if no minor version should be sent
       * to the server.
       *
-      * At present, this field is not used by any Google middleware, but may be
+      * At present, this field is not used by any Google services, but may be
       * used in the future.
       *
       * Under most circumtances, this will be automatically set by
@@ -466,7 +466,7 @@ class Zend_Gdata_App
     }
 
     /**
-     * Provides pre-processing for HTTP requests to APP middleware.
+     * Provides pre-processing for HTTP requests to APP services.
      *
      * 1. Checks the $data element and, if it's an entry, extracts the XML,
      *    multipart data, edit link (PUT,DELETE), etc.
@@ -628,7 +628,7 @@ class Zend_Gdata_App
         }
         $headers['Content-Type'] = $contentType;
         if (Zend_Gdata_App::getGzipEnabled()) {
-            // some middleware require the word 'gzip' to be in the user-agent
+            // some services require the word 'gzip' to be in the user-agent
             // header in addition to the accept-encoding header
             if (strpos($this->_httpClient->getHeader('User-Agent'),
                 'gzip') === false) {

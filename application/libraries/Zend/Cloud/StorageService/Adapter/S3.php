@@ -164,10 +164,10 @@ class Zend_Cloud_StorageService_Adapter_S3
     /**
      * Copy an item in the storage service to a given path.
      *
-     * WARNING: This operation is *very* expensive for middleware that do not
+     * WARNING: This operation is *very* expensive for services that do not
      * support copying an item natively.
      *
-     * @TODO Support streams for those middleware that don't support natively
+     * @TODO Support streams for those services that don't support natively
      *
      * @param  string $sourcePath
      * @param  string $destination path
@@ -193,7 +193,7 @@ class Zend_Cloud_StorageService_Adapter_S3
     /**
      * Move an item in the storage service to a given path.
      *
-     * @TODO Support streams for those middleware that don't support natively
+     * @TODO Support streams for those services that don't support natively
      *
      * @param  string $sourcePath
      * @param  string $destination path

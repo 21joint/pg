@@ -1650,7 +1650,7 @@ class Google_Service_ShoppingContent_AccountIdentifier extends Google_Model
 
 class Google_Service_ShoppingContent_AccountShipping extends Google_Collection
 {
-  protected $collection_key = 'middleware';
+  protected $collection_key = 'services';
   protected $internal_gapi_mappings = array(
   );
   public $accountId;

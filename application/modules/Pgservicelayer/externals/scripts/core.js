@@ -134,6 +134,7 @@
       var holder_options = document.getElementById('hidden_options_' + type + '_' + id);
 
 
+
       if (holder_options.classList.contains('hidden')) {
         holder_options.classList.remove('hidden');
         holder_options.classList.add('increase-index');
@@ -214,8 +215,7 @@
         onRequest: function () {
           try {
             loader.inject(form, "after");
-          } catch (e) {
-          }
+                }catch(e){ }
         },
         onComplete: function (responseJSON) {
           // empty body from tinymce
@@ -258,8 +258,7 @@
             initTinyMce();
             try {
               hoverBoxImage();
-            } catch (e) {
-            }
+                    }catch(e){}
             Smoothbox.bind(answer_box);
           }
         }
@@ -300,8 +299,7 @@
         try {
           var editor = tinymce.get("tinymce_ggcommunity_answer" + id);
           var body = editor.getContent();
-        } catch (e) {
-        }
+            }catch(e){  }
         var answer_holder_box = document.getElementById('item_main_box_' + id);
         if (!body) return;
         $("ggcommunity_answer_" + id).getElement(".item_body").set("html", body);
@@ -390,8 +388,7 @@
             });
             try {
               hoverBoxImage();
-            } catch (e) {
-            }
+                    }catch(e){}
             Smoothbox.bind(container);
 
             if (counter == 'Comment') {
@@ -447,8 +444,7 @@
             Smoothbox.bind(container);
             try {
               hoverBoxImage();
-            } catch (e) {
-            }
+                    }catch(e){}
           }
 
           // increase countner for question_comments
@@ -489,8 +485,7 @@
 
       try {
         var mainParent = $(form).getParent(".comment_holder_box").getElement(".holder-options-box").addClass("hidden").removeClass("increase-index");
-      } catch (e) {
-      }
+        }catch(e){  }
 
       form.addEventListener("submit", function (e) {
 

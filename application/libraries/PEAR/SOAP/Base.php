@@ -923,7 +923,7 @@ class SOAP_Base extends SOAP_Base_Object
         /* If 'use' == 'literal', do not put in the encodingStyle.  This is
          * denoted by $this->_section5 being false.  'use' can be defined at a
          * more granular level than we are dealing with here, so this does not
-         * work for all middleware. */
+         * work for all services. */
         $xml = sprintf('<?xml version="1.0" encoding="%s"?>%s<%s:Envelope%s',
                        $encoding, "\r\n", SOAP_BASE::SOAPENVPrefix(),
                        $ns_string);

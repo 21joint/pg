@@ -38,11 +38,11 @@
     new Event(event).stop();
     if( !$(element).hasClass('friend_list_joined') ) {
       // Add
-      Friends.addToList(list_id, user_id);
+      en4.user.friends.addToList(list_id, user_id);
       element.addClass('friend_list_joined').removeClass('friend_list_unjoined');
     } else {
       // Remove
-      Friends.removeFromList(list_id, user_id);
+      en4.user.friends.removeFromList(list_id, user_id);
       element.removeClass('friend_list_joined').addClass('friend_list_unjoined');
     }
   }
@@ -50,7 +50,7 @@
     var list_name = element.value;
     element.value = '';
     element.blur();
-    var request = Friends.createList(list_name, user_id);
+    var request = en4.user.friends.createList(list_name, user_id);
     request.addEvent('complete', function(responseJSON) {
       if( responseJSON.status ) {
         var topRelEl = element.getParent();

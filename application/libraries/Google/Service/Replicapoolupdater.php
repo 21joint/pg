@@ -19,7 +19,7 @@
  * Service definition for Replicapoolupdater (v1beta1).
  *
  * <p>
- * The Google Compute Engine Instance Group Updater API provides middleware for
+ * The Google Compute Engine Instance Group Updater API provides services for
  * updating groups of Compute Engine Instances.</p>
  *
  * <p>
@@ -31,7 +31,7 @@
  */
 class Google_Service_Replicapoolupdater extends Google_Service
 {
-  /** View and manage your data across Google Cloud Platform middleware. */
+  /** View and manage your data across Google Cloud Platform services. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
   /** View and manage replica pools. */

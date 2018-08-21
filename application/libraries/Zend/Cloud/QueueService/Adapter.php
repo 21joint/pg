@@ -18,8 +18,8 @@
  */
 
 /**
- * Common interface for queue middleware in the cloud. This interface supports
- * most queue middleware and provides some flexibility for vendor-specific
+ * Common interface for queue services in the cloud. This interface supports
+ * most queue services and provides some flexibility for vendor-specific
  * features and requirements via an optional $options array in each method
  * signature. Classes implementing this interface should implement URI
  * construction for queues from the parameters given in each method and the

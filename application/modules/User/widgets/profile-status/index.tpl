@@ -20,7 +20,7 @@
     <span class="profile_status_text" id="user_profile_status_container">
       <?php echo $this->viewMore($this->getHelper('getActionContent')->smileyToEmoticons($this->subject()->status)) ?>
       <?php if( !empty($this->subject()->status) && $this->subject()->isSelf($this->viewer())): ?>
-        <a class="profile_status_clear" href="javascript:void(0);" onclick="User.clearStatus();">(<?php echo $this->translate('clear') ?>)</a>
+        <a class="profile_status_clear" href="javascript:void(0);" onclick="en4.user.clearStatus();">(<?php echo $this->translate('clear') ?>)</a>
       <?php endif; ?>
     </span>
   <?php endif; ?>

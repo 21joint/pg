@@ -52,7 +52,7 @@ class Engine_Service_GTranslate
    * @access protected
    * @var string
    */
-  protected $_url = "http://ajax.googleapis.com/ajax/middleware/language/translate";
+  protected $_url = "http://ajax.googleapis.com/ajax/services/language/translate";
 
   /**
    * Google Translate (TM) Api Version

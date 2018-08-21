@@ -18,8 +18,8 @@
  */
 
 /**
- * Common interface for document storage middleware in the cloud. This interface
- * supports most document middleware and provides some flexibility for
+ * Common interface for document storage services in the cloud. This interface
+ * supports most document services and provides some flexibility for
  * vendor-specific features and requirements via an optional $options array in
  * each method signature. Classes implementing this interface should implement
  * URI construction for collections and documents from the parameters given in each

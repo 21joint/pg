@@ -20,8 +20,8 @@ class Pgservicelayer_Api_V2_Response extends Sdparentalguide_Api_Core {
         $overview = $tableOtherinfo->getColumnValue($sitereview->getIdentity(), 'overview');
         $staticBaseUrl = Engine_Api::_()->getApi('settings', 'core')->getSetting('core.static.baseurl', null);
         $serverHost = Engine_Api::_()->getApi('Core', 'siteapi')->getHost();
-        $getDefaultStorageId = Engine_Api::_()->getDbtable('middleware', 'storage')->getDefaultServiceIdentity();
-        $getDefaultStorageType = Engine_Api::_()->getDbtable('middleware', 'storage')->getService($getDefaultStorageId)->getType();
+        $getDefaultStorageId = Engine_Api::_()->getDbtable('services', 'storage')->getDefaultServiceIdentity();
+        $getDefaultStorageType = Engine_Api::_()->getDbtable('services', 'storage')->getService($getDefaultStorageId)->getType();
 
         $host = '';
         if ($getDefaultStorageType == 'local')

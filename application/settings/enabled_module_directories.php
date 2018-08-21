@@ -48,5 +48,5 @@
   46 => 'Sitevideo',
   47 => 'Storage',
   48 => 'User',
-  49 => 'Video'
+  49 => 'Video',
 ); ?>

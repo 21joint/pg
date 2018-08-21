@@ -77,7 +77,7 @@ abstract class Zend_Gdata_App_BaseMediaSource implements Zend_Gdata_App_MediaSou
     }
 
     /**
-     * Returns the Slug header value.  Used by some middleware to determine the
+     * Returns the Slug header value.  Used by some services to determine the
      * title for the uploaded file.  Returns null if no slug should be used.
      *
      * @return string
@@ -87,7 +87,7 @@ abstract class Zend_Gdata_App_BaseMediaSource implements Zend_Gdata_App_MediaSou
     }
 
     /**
-     * Sets the Slug header value.  Used by some middleware to determine the
+     * Sets the Slug header value.  Used by some services to determine the
      * title for the uploaded file.  A null value indicates no slug header.
      *
      * @var string The slug value

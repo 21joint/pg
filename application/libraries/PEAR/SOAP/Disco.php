@@ -1,7 +1,7 @@
 <?php
 /**
  * This file contains the code for the DISCO server, providing DISO and WSDL
- * middleware.
+ * services.
  *
  * PHP versions 4 and 5
  *

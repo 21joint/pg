@@ -17,9 +17,9 @@
  */
 class Engine_Service_Iframely_Host_Socialengine extends Engine_Service_Iframely_Host
 {
-  protected $_baseUrl = 'https://middleware.socialengine.com/embed';
+  protected $_baseUrl = 'https://services.socialengine.com/embed';
 
-  protected $_testUrl = 'https://middleware.socialengine.com/embed';
+  protected $_testUrl = 'https://services.socialengine.com/embed';
 
   /**
    * Constructor

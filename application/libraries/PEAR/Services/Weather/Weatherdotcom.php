@@ -388,7 +388,7 @@ class Services_Weather_Weatherdotcom extends Services_Weather_Common {
     // {{{ searchLocationByCountry()
     /**
      * Returns only false, as weather.com offers no country listing via
-     * its XML middleware
+     * its XML services
      *
      * @param   string                      $country
      * @return  bool

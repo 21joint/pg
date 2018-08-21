@@ -129,10 +129,10 @@ class Zend_Cloud_StorageService_Adapter_FileSystem implements Zend_Cloud_Storage
     /**
      * Copy an item in the storage service to a given path.
      *
-     * WARNING: This operation is *very* expensive for middleware that do not
+     * WARNING: This operation is *very* expensive for services that do not
      * support copying an item natively.
      *
-     * @TODO Support streams for those middleware that don't support natively
+     * @TODO Support streams for those services that don't support natively
      *
      * @param  string $sourcePath
      * @param  string $destination path
@@ -147,10 +147,10 @@ class Zend_Cloud_StorageService_Adapter_FileSystem implements Zend_Cloud_Storage
     /**
      * Move an item in the storage service to a given path.
      *
-     * WARNING: This operation is *very* expensive for middleware that do not
+     * WARNING: This operation is *very* expensive for services that do not
      * support moving an item natively.
      *
-     * @TODO Support streams for those middleware that don't support natively
+     * @TODO Support streams for those services that don't support natively
      *
      * @param  string $sourcePath
      * @param  string $destination path

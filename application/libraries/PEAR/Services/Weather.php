@@ -6,8 +6,8 @@
  *
  * Services_Weather searches for given locations and retrieves current
  * weather data and, dependant on the used service, also forecasts. Up to
- * now, SOAP middleware from CapeScience and EJSE, XML from weather.com and
- * METAR/TAF from noaa.gov are supported, further middleware will get
+ * now, SOAP services from CapeScience and EJSE, XML from weather.com and
+ * METAR/TAF from noaa.gov are supported, further services will get
  * included, if they become available and are properly documented.
  *
  * PHP versions 4 and 5
@@ -85,7 +85,7 @@ define("SERVICES_WEATHER_ERROR_INVALID_LICENSE_KEY",    102);
 
 // {{{ class Services_Weather
 /**
- * This class acts as an interface to various online weather-middleware.
+ * This class acts as an interface to various online weather-services.
  *
  * @category    Web Services
  * @package     Services_Weather
@@ -99,7 +99,7 @@ class Services_Weather {
 
     // {{{ &service()
     /**
-     * Factory for creating the middleware-objects
+     * Factory for creating the services-objects
      *
      * Usable keys for the options array are:
      * o debug              enables debugging output

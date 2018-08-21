@@ -1,6 +1,6 @@
 <?php
 /**
- * This file contains the code for dealing with WSDL access and middleware.
+ * This file contains the code for dealing with WSDL access and services.
  *
  * PHP versions 4 and 5
  *
@@ -30,7 +30,7 @@ define('WSDL_CACHE_MAX_AGE', 43200);
 
 /**
  * This class parses WSDL files, and can be used by SOAP::Client to properly
- * register soap values for middleware.
+ * register soap values for services.
  *
  * Originally based on SOAPx4 by Dietrich Ayala
  * http://dietrich.ganx4.com/soapx4
@@ -2183,7 +2183,7 @@ class SOAP_WSDL_ObjectParser extends SOAP_Base
 
     /**
      * Takes all the abstract WSDL data and builds concrete bindings and
-     * middleware (destructive).
+     * services (destructive).
      *
      * @access private
      * @todo Current implementation discards $service_desc.

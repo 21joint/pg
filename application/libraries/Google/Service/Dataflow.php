@@ -30,7 +30,7 @@
  */
 class Google_Service_Dataflow extends Google_Service
 {
-  /** View and manage your data across Google Cloud Platform middleware. */
+  /** View and manage your data across Google Cloud Platform services. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
   /** View your email address. */
