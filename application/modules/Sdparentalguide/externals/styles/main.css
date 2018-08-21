@@ -12,6 +12,14 @@
   margin-bottom: 20px;
 }
 /* General Main and Wrapper styling end */
+/* Search Page Components -> start */
+.search_results_filter{
+ flex: 1;
+}
+.search_results_content{
+  flex: 3;
+}
+/* Search Page Components -> end */
 /* Reviews Home Page Components -> start*/
 .reviews_search_component{
   border-radius: 20px;

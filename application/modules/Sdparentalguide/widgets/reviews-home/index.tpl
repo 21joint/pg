@@ -317,7 +317,7 @@ function loadReviewResults(){
                                     '<div class="d-flex justify-content-between my-5">';
                         }
                     }else{
-                       if(j % 2 == 0){
+                        if(j % 2 == 0){
                             html += '</div>'+
                                     '<div class="d-flex justify-content-between my-5">';
                         } 
@@ -364,23 +364,7 @@ function loadReviewResults(){
                         }
                     });
                 }); 
-                // Review Star Ranking Displaying
-                
-                // Displaying Comments and Likes on "..." click
-                document.querySelectorAll('.review_card_dots').forEach(function(dots){
-                    dots.addEventListener('click', function(){
-                        this.nextSibling.removeClass('d-none').addClass('d-flex');
-                        this.removeClass('d-inline').addClass('d-none');
-                    });
-                });
-                window.addEventListener('mouseup', function(){
-                    document.querySelectorAll('.review_card_dots_popup').forEach(function(removed){
-                        if(removed.hasClass('d-flex')){
-                            removed.addClass('d-none').removeClass('d-flex');
-                            removed.previousSibling.addClass('d-inline').removeClass('d-none');
-                        }
-                    });
-                });          
+                // Review Star Ranking Displaying         
             }else{
                 console.log(responseJSON);
                 reviewsContent.innerHTML = responseJSON.message;
