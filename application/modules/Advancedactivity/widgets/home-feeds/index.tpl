@@ -192,7 +192,7 @@ $this->headTranslate(array('ADVADV_SHARE', 'Who are you with?', 'with', "Choose 
   en4.core.runonce.add(function () {
 <?php if (!empty($this->action_id)): ?>
       aaf_feed_actionId =<?php echo $this->action_id ?>;
-      $$(".tab_<?php echo $this->identity ?>").each(function (element) {
+      $(".tab_<?php echo $this->identity ?>").each(function (__ind, element) {
           if (element.tagName.toLowerCase() == 'li') {
               tabContainerSwitch(element);
           }
@@ -211,7 +211,7 @@ $this->headTranslate(array('ADVADV_SHARE', 'Who are you with?', 'with', "Choose 
       $(document.body).addEvent('click', function (event) {
         if (event && $(event.target).hasClass('aaf_pulldown_btn'))
           return;
-        $$(".aaf_pulldown_btn_wrapper").removeClass('aaf_tabs_feed_tab_open').addClass('aaf_tabs_feed_tab_closed');
+        $(".aaf_pulldown_btn_wrapper").removeClass('aaf_tabs_feed_tab_open').addClass('aaf_tabs_feed_tab_closed');
       });
 
   });

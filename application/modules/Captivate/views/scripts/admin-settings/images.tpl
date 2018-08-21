@@ -33,7 +33,7 @@ if ((Engine_Api::_()->getApi('settings', 'core')->getSetting('captivate.isActiva
 <script type="text/javascript">
 
     var SortablesInstance;
-    window.addEvent('load', function () {
+    $(window).on('load', function () {
         SortablesInstance = new Sortables('menu_list', {
             clone: true,
             constrain: false,

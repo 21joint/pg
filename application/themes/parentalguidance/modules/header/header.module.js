@@ -1,6 +1,6 @@
 import {API_PROXY, OAUTH} from '../../../../../package';
 import {renderProfileBox} from "../../components/profile-box/profile-box";
-import { NotificationUpdateHandler } from "../activity/notification.update";
+import {NotificationUpdateHandler} from "../activity/notification.update";
 import 'bootstrap/js/dist/util';
 import 'bootstrap/js/dist/popover';
 import 'bootstrap/js/dist/dropdown';

@@ -16,7 +16,7 @@
 
 //		window.addEvent('domready', function() { 
 //		var e4 = $('group_url_msg-wrapper');
-//		$('group_url_msg-wrapper').setStyle('display', 'none');
+//		$('group_url_msg-wrapper')..hide();
 //		
 //				var groupurlcontainer = $('group_url-element');
 //				var language = '<?php echo $this->string()->escapeJavascript($this->translate('Check Availability')) ?>';
@@ -82,7 +82,7 @@
 //	}
 //
 //	//<![CDATA[
-//		window.addEvent('load', function()
+//		$(window).on('load', function()
 //		{
 //		  if($('group_url_address')) {
 //				$('group_url_address').innerHTML = $('group_url_address').innerHTML.replace('GROUP-NAME', '<span id="group_url_address_text">GROUP-NAME</span>');
@@ -111,7 +111,7 @@
 //
 //		window.addEvent('domready', function() { 
 //		var e4 = $('group_url_msg-wrapper');
-//		$('group_url_msg-wrapper').setStyle('display', 'none');
+//		$('group_url_msg-wrapper')..hide();
 //		
 //				var groupurlcontainer = $('group_url-element');
 //				var language = '<?php echo $this->string()->escapeJavascript($this->translate('Check Availability')) ?>';
@@ -177,7 +177,7 @@
 //	}
 //
 //	//<![CDATA[
-//		window.addEvent('load', function()
+//		$(window).on('load', function()
 //		{
 //		  if($('group_url_address')) {
 //				$('group_url_address').innerHTML = $('group_url_address').innerHTML.replace('GROUP-NAME', '<span id="group_url_address_text">GROUP-NAME</span>');
@@ -425,7 +425,7 @@
 //
 //		var defaultProfileId = '<?php echo '0_0_1' ?>'+'-wrapper';
 //		if($type($(defaultProfileId)) && typeof $(defaultProfileId) != 'undefined') { 
-//			$(defaultProfileId).setStyle('display', 'none');
+//			$(defaultProfileId)..hide();
 //		}
 	</script>
 <?php endif; ?>

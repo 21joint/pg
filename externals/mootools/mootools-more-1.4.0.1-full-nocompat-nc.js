@@ -7216,7 +7216,7 @@ var Sortables = new Class({
 	},
 
 	addItems: function(){
-		Array.flatten(arguments).each(function(element){
+		Array.flatten(arguments).each(function(__ind, element){
 			this.elements.push(element);
 			var start = element.retrieve('sortables:start', function(event){
 				this.start.call(this, event, element);
@@ -9780,7 +9780,7 @@ this.Tips = new Class({
 	},
 
 	attach: function(elements){
-		$$(elements).each(function(element){
+		$$(elements).each(function(__ind, element){
 			var title = read(this.options.title, element),
 				text = read(this.options.text, element);
 
@@ -9805,7 +9805,7 @@ this.Tips = new Class({
 	},
 
 	detach: function(elements){
-		$$(elements).each(function(element){
+		$$(elements).each(function(__ind, element){
 			['enter', 'leave', 'move'].each(function(value){
 				element.removeEvent('mouse' + value, element.retrieve('tip:' + value)).eliminate('tip:' + value);
 			});

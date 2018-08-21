@@ -168,13 +168,13 @@ echo $this->partial('_jsSwitch.tpl', 'fields', array());
         }
 
         if (showFields == 1) {
-            $("filter_form").getElements(".field_toggle").each(function (el) {
+            $("filter_form").getElements(".field_toggle").each(function (__ind, el) {
                 if (el.getParent('li')) {
                     el.getParent('li').removeClass('dnone');
                 }
             });
         } else {
-            $("filter_form").getElements(".field_toggle").each(function (el) {
+            $("filter_form").getElements(".field_toggle").each(function (__ind, el) {
                 if (el.getParent('li')) {
                     el.getParent('li').removeClass('dnone').addClass('dnone');
                 }

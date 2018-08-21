@@ -18,10 +18,10 @@ en4.sitevideo.watchlaters = {
             },
             'onSuccess': function (responseJSON, responseText)
             {
-                $$('a.removewatchlater_' + video_id).each(function (el) {
+                $('a.removewatchlater_' + video_id).each(function (__ind, el) {
                     el.style.display = 'inline-block';
                 });
-                $$('a.addwatchlater_' + video_id).each(function (el) {
+                $('a.addwatchlater_' + video_id).each(function (__ind, el) {
                     el.style.display = 'none';
                 });
             }
@@ -38,10 +38,10 @@ en4.sitevideo.watchlaters = {
             },
             'onSuccess': function (responseJSON, responseText)
             {
-                $$('a.removewatchlater_' + video_id).each(function (el) {
+                $('a.removewatchlater_' + video_id).each(function (__ind, el) {
                     el.style.display = 'none';
                 });
-                $$('a.addwatchlater_' + video_id).each(function (el) {
+                $('a.addwatchlater_' + video_id).each(function (__ind, el) {
                     el.style.display = 'inline-block';
                 });
             }
@@ -63,10 +63,10 @@ en4.sitevideo.subscriptions = {
             },
             'onSuccess': function (responseJSON, responseText)
             {
-                $$('a.unsubscription_' + channel_id).each(function (el) {
+                $('a.unsubscription_' + channel_id).each(function (__ind, el) {
                     el.style.display = 'inline-block';
                 });
-                $$('a.subscription_' + channel_id).each(function (el) {
+                $('a.subscription_' + channel_id).each(function (__ind, el) {
                     el.style.display = 'none';
                 });
             }
@@ -83,10 +83,10 @@ en4.sitevideo.subscriptions = {
             },
             'onSuccess': function (responseJSON, responseText)
             {
-                $$('a.unsubscription_' + channel_id).each(function (el) {
+                $('a.unsubscription_' + channel_id).each(function (__ind, el) {
                     el.style.display = 'none';
                 });
-                $$('a.subscription_' + channel_id).each(function (el) {
+                $('a.subscription_' + channel_id).each(function (__ind, el) {
                     el.style.display = 'inline-block';
                 });
             }
@@ -269,7 +269,7 @@ en4.sitevideo.ajaxTab = {
         params.requestParams.content_id = widget_id;
         var element;
 
-        $$('.tab_' + widget_id).each(function (el) {
+        $('.tab_' + widget_id).each(function (__ind, el) {
             if (el.get('tag') == 'li') {
                 element = el;
                 return;
@@ -290,15 +290,15 @@ en4.sitevideo.ajaxTab = {
             if (tab_content_id_sitevideo == widget_id) {
                 attachOnLoadEvent = true;
             } else {
-                $$('.tabs_parent').each(function (element) {
+                $('.tabs_parent').each(function (__ind, element) {
                     var addActiveTab = true;
-                    element.getElements('ul > li').each(function (el) {
+                    element.getElements('ul > li').each(function (__ind, el) {
                         if (el.hasClass('active')) {
                             addActiveTab = false;
                             return;
                         }
                     });
-                    element.getElementById('main_tabs').getElements('li:first-child').each(function (el) {
+                    element.getElementById('main_tabs').getElements('li:first-child').each(function (__ind, el) {
                         if (el.getParent('div') && el.getParent('div').hasClass('tab_pulldown_contents'))
                             return;
                         el.get('class').split(' ').each(function (className) {
@@ -434,7 +434,7 @@ en4.sitevideo.youtubeChannel = {
         });
         li.inject(ul, 'bottom');
 
-        ul.inject($('form-channel-upload').getChildren()[0].getChildren()[0].getElement('h3'), 'after');
+        ul.inject($('form-channel-upload').getChildren()[0].getChildren().find('h3'), 'after');
     },
     buildQueryString: function () {
         this.queryString = '';

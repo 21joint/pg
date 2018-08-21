@@ -156,7 +156,7 @@ if (empty($isPlugin)):
     function upgradeSelectedPlugins() {
         var ready = confirm("are you ready to upgarde?");
         if(ready == true) {
-            elements = $$('.seaocore_multi-upgrade:checked');
+            elements = $('.seaocore_multi-upgrade:checked');
             
             if(elements.length < 1) return ;
             selectedItemLength = elements.length - 1;
@@ -188,11 +188,11 @@ if (empty($isPlugin)):
             }
     function checkUncheckAll(element){
         if(element.checked) {
-            $$('.seaocore_multi-upgrade').each(function(item, index){ 
+            $('.seaocore_multi-upgrade').each(function(item, index){ 
               item.checked = true;
             });    
         }else {
-            $$('.seaocore_multi-upgrade').each(function(item, index){ 
+            $('.seaocore_multi-upgrade').each(function(item, index){ 
               item.checked = false;
             });
         }

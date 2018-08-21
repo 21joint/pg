@@ -133,7 +133,7 @@
 </ul>
 
 <script type="text/javascript">
-  $$('.message_view_info').enableLinks();
+  $('.message_view_info').enableLinks();
 </script>
 
 <?php if( !$this->locked ): ?>

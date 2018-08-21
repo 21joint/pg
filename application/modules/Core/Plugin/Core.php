@@ -296,7 +296,7 @@ EOF;
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(e, s);
     
-    window.addEvent('load', function() {
+    $(window).on('load', function() {
       $('janrainEngageShare').click();
     });
 })();

@@ -19,7 +19,7 @@ $this->headScript()->appendFile("https://maps.googleapis.com/maps/api/js?librari
 
 		window.addEvent('domready', function() { 
 		var e4 = $('page_url_msg-wrapper');
-		$('page_url_msg-wrapper').setStyle('display', 'none');
+		$('page_url_msg-wrapper').hide();
 		
 				var pageurlcontainer = $('page_url-element');
 				var language = '<?php echo $this->string()->escapeJavascript($this->translate('Check Availability')) ?>';
@@ -91,7 +91,7 @@ $this->headScript()->appendFile("https://maps.googleapis.com/maps/api/js?librari
 	}
 
 	//<![CDATA[
-		window.addEvent('load', function()
+		$(window).on('load', function()
 		{
 		  var url = '<?php echo $this->translate('PAGE-NAME');?>';
 		  if($('page_url_address')) {
@@ -123,7 +123,7 @@ $this->headScript()->appendFile("https://maps.googleapis.com/maps/api/js?librari
 
 		window.addEvent('domready', function() { 
 		var e4 = $('page_url_msg-wrapper');
-		$('page_url_msg-wrapper').setStyle('display', 'none');
+		$('page_url_msg-wrapper').hide();
 		
 				var pageurlcontainer = $('page_url-element');
 				var language = '<?php echo $this->string()->escapeJavascript($this->translate('Check Availability')) ?>';
@@ -194,7 +194,7 @@ $this->headScript()->appendFile("https://maps.googleapis.com/maps/api/js?librari
 	}
 
 	//<![CDATA[
-		window.addEvent('load', function()
+		$(window).on('load', function()
 		{ 
 		var url = '<?php echo $this->translate('PAGE-NAME');?>';
 		  if($('page_url_address')) {
@@ -447,7 +447,7 @@ $this->headScript()
 
 		var defaultProfileId = '<?php echo '0_0_1' ?>'+'-wrapper';
 		if($type($(defaultProfileId)) && typeof $(defaultProfileId) != 'undefined') { 
-			$(defaultProfileId).setStyle('display', 'none');
+			$(defaultProfileId).hide();
 		}
 	</script>
 <?php endif; ?>

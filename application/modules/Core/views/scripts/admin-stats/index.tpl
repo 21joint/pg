@@ -64,7 +64,7 @@
           var children = chunkEl.getChildren()[0];
           for( var i = 0, l = children.length; i < l; i++ ) {
             if( ['dd'].indexOf(children[i].get('value')) == -1 ) {
-              children[i].setStyle('display', 'none');
+              children[i].hide();
               if( children[i].get('selected') ) {
                 children[i].set('selected', false);
               }
@@ -77,7 +77,7 @@
           var children = chunkEl.getChildren()[0];
           for( var i = 0, l = children.length; i < l; i++ ) {
             if( ['dd', 'ww'].indexOf(children[i].get('value')) == -1 ) {
-              children[i].setStyle('display', 'none');
+              children[i].hide();
               if( children[i].get('selected') ) {
                 children[i].set('selected', false);
               }
@@ -90,7 +90,7 @@
           var children = chunkEl.getChildren()[0];
           for( var i = 0, l = children.length; i < l; i++ ) {
             if( ['dd', 'ww', 'MM'].indexOf(children[i].get('value')) == -1 ) {
-              children[i].setStyle('display', 'none');
+              children[i].hide();
               if( children[i].get('selected') ) {
                 children[i].set('selected', false);
               }
@@ -120,7 +120,7 @@
           format : 'json',
         },
         onComplete : function(responseJSON) {
-          $('loading').setStyle('display', 'none').inject($('admin_statistics'));
+          $('loading').hide().inject($('admin_statistics'));
           google.charts.setOnLoadCallback(drawChart(responseJSON));
         }
       });
@@ -129,7 +129,7 @@
       }).delay(250);
     }
 
-    window.addEvent('load', function() {
+    $(window).on('load', function() {
       updateFormOptions();
       $('period').addEvent('change', function(event) {
         updateFormOptions();

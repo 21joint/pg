@@ -50,7 +50,7 @@
 
     var myContainer = element.getParent('.aaf_tabs_feed').getParent();
 
-    //  myContainer.getChildren('div:not(.tabs_alt)').setStyle('display', 'none');
+    //  myContainer.getChildren('div:not(.tabs_alt)')..hide();
     myContainer.getElements('ul > li').removeClass('aaf_tab_active');
     element.get('class').split(' ').each(function(className) {
       className = className.trim();

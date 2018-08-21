@@ -3,7 +3,7 @@ import {renderProfileBox} from '../profile-box/profile-box';
 import {renderRate} from '../rating';
 
 
-const renderCard = (review, options) =>  {
+const renderCard = (review, options) => {
   let _html = '';
 
   let createdDt = new Date(review.createdDateTime).toString().split(' ');

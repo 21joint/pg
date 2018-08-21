@@ -373,7 +373,7 @@ SEAOLasso.Crop = new Class({
       }
     }).inject(this.img, 'after');
 		
-    this.img.setStyle('display', 'none');
+    this.img.hide();
     
     options.p = this.container;
 
@@ -1238,7 +1238,7 @@ var SEAOTagger = new Class({
       return;
     // Add tooltips
     var window_size = window.getSize()
-    return  new SEATips($$('.tag_activator'), {
+    return  new SEATips($('.tag_activator'), {
       fixed : true,
       title:'',
       className : 'sea_add_tooltip_link_tips',
@@ -1287,7 +1287,7 @@ var SEAOTagger = new Class({
   addToolTip:function(){
     var self=this;
     if(this.options.enableShowToolTip){
-      $$('.tag_activator').addEvent('mouseover', function(event) { 
+      $('.tag_activator').addEvent('mouseover', function(event) { 
         var el = $(event.target);   
         ItemTooltips.options.offset.y = el.offsetHeight;
         ItemTooltips.options.showDelay = 0; 
@@ -1362,7 +1362,7 @@ var SEAOTagger = new Class({
                   ItemTooltips.hide(el);                    
                 }
               });
-              Smoothbox.bind($$(".tag_activator"));
+              Smoothbox.bind($(".tag_activator"));
             }.bind(this)
           });
           

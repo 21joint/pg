@@ -105,7 +105,7 @@
 
     <button id="delete"><?php echo $this->translate('Delete Selected') ?></button>
     <script type="text/javascript">
-      $$('.messages_list').enableLinks();
+      $('.messages_list').enableLinks();
     <!--
     $('checkall').addEvent('click', function() {
       var hasUnchecked = false;
@@ -114,7 +114,7 @@
           hasUnchecked = true;
         }
       });
-      $$('.messages_list input[type="checkbox"]').set('checked', hasUnchecked);
+      $('.messages_list input[type="checkbox"]').set('checked', hasUnchecked);
     });
     $('delete').addEvent('click', function(){
       var selected_ids = new Array();

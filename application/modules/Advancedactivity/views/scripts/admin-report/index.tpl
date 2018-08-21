@@ -13,13 +13,13 @@
 
 <script type="text/javascript">
   en4.core.runonce.add(function() {
-    $$('th.admin_table_short input[type=checkbox]').addEvent('click', function() {
-      $$('input[type=checkbox]').set('checked', $(this).get('checked', false));
+    $('th.admin_table_short input[type=checkbox]').addEvent('click', function() {
+      $('input[type=checkbox]').set('checked', $(this).get('checked', false));
     });
   });
   
   var delectSelected = function() {
-    var checkboxes = $$('input[type=checkbox]');
+    var checkboxes = $('input[type=checkbox]');
     var selecteditems = [];
 
     checkboxes.each(function(item, index){

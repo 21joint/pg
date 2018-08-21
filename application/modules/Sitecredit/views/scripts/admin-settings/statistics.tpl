@@ -123,7 +123,7 @@
             );
          }
 
-          window.addEvent('load', function() {
+          $(window).on('load', function() {
             buildStatisticsSwiff({
               'type': 'activity_type',
               'mode': 'all',

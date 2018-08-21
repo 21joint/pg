@@ -21,7 +21,7 @@
 
 
 <script type="text/javascript">
-  window.addEvent('load', function() {
+  $(window).on('load', function() {
     var randomString = function() {
       var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
       var string_length = 16;

@@ -13,7 +13,7 @@
 
 <script type="text/javascript">
   en4.core.runonce.add(function() {
-    $$('.rss_desc').enableLinks();
+    $('.rss_desc').enableLinks();
   });
 </script>
 

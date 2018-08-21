@@ -43,7 +43,7 @@
     });
 
   }
-  window.addEvent('load', function() {
+  $(window).on('load', function() {
     supportedCurrencyIndex = new Hash(<?php echo Zend_Json::encode($this->supportedCurrencyIndex) ?>);
     gateways = new Hash(<?php echo Zend_Json::encode($this->gateways) ?>);
     $('currency').addEvent('change', displayCurrencyGateways);

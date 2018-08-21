@@ -118,9 +118,9 @@ var SEAOMooHorizontalScrollBar = new Class({
  
     // Remove and replace horizontal scrollbar
     if (this.content.scrollWidth <= this.main.offsetWidth) {
-      this.horizontalScrollbar.setStyle('display', 'none');
+      this.horizontalScrollbar.hide();
       if (this.options.horizontalScrollBefore == true){
-        this.horizontalScrollbarBefore.setStyle('display', 'none');
+        this.horizontalScrollbarBefore.hide();
       }  
       if(!this.options.horizontalScrollElement){
       this.content.setStyle('height', this.content.offsetHeight + this.horizontalScrollOffset);

@@ -330,7 +330,7 @@ $this->headScript()
       if (!$type(activityUpdateHandler_Tweet))
         Call_TweetcheckUpdate(firstfeedid_Tweet);
       if ($('adv_post_container_icons'))
-        $('adv_post_container_icons').setStyle('display', 'none');
+        $('adv_post_container_icons').hide();
       if ($('show_loading_main'))
         $('show_loading_main').style.display = 'block';
       if ($('compose-submit'))

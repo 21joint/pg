@@ -173,12 +173,12 @@ $this->headScript()->appendFile("https://maps.googleapis.com/maps/api/js?librari
 setLeftLayoutForPage(); 
 	    } else if(page_showtitle == 0 ) {
 		    if ($$('.layout_left')){
-		      $$('.layout_left').setStyle('display', 'none');
+		      $$('.layout_left').hide();
 		      if($('thumb_icon')) {
 		       $('thumb_icon').style.display = 'block';
 		      }
 		    }		if ($$('.layout_right')){
-      $$('.layout_right').setStyle('display', 'none');
+      $$('.layout_right').hide();
       if($('thumb_icon')) {
        $('thumb_icon').style.display = 'block';
       }

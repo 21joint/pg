@@ -20,7 +20,7 @@
   	var categoryAction = function(category) {
 	    $('page').value = 1;
 	    $('category').value = category;
-	    currentValues = $$('.field_search_criteria')[0].toQueryString();
+	    currentValues = $('.field_search_criteria')[0].toQueryString();
 	    var url = en4.core.baseUrl + 'feedback'+'?'+currentValues;
 	    window.location.href = url;
 	   // $('filter_form').submit();
@@ -28,7 +28,7 @@
   	var statAction = function(stat){
 	    $('page').value = 1;
 	    $('stat').value = stat;
-	    currentValues = $$('.field_search_criteria')[0].toQueryString();
+	    currentValues = $('.field_search_criteria')[0].toQueryString();
 	    var url = en4.core.baseUrl + 'feedback'+'?'+currentValues;
 	    window.location.href = url;
 	   // $('filter_form').submit();
@@ -38,7 +38,7 @@
 	    $('page').value = 1;
 	    $('start_date').value = start_date;
 	    $('end_date').value = end_date;
-	    currentValues = $$('.field_search_criteria')[0].toQueryString();
+	    currentValues = $('.field_search_criteria')[0].toQueryString();
 	    var url = en4.core.baseUrl + 'feedback'+'?'+currentValues;
 	    window.location.href = url;
 	    //$('filter_form').submit();

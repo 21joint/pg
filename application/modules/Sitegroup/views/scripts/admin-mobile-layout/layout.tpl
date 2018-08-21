@@ -408,7 +408,7 @@
       },
 
       addItems: function(){
-          Array.flatten(arguments).each(function(element){
+          Array.flatten(arguments).each(function(__ind, element){
               this.elements.push(element);
               var start = element.retrieve('sortables:start', this.start.bindWithEvent(this, element));
               (this.options.handle ? element.getElement(this.options.handle) || element : element).addEvent('mousedown', start);
@@ -710,9 +710,9 @@
   }
 
   /* Attach javascript to existing elements */
-  window.addEvent('load', function() {
+  $(window).on('load', function() {
     // Add info
-    $$('li.admin_content_draggable').each(function(element) {
+    $$('li.admin_content_draggable').each(function(__ind, element) {
       var elClass = element.get('class');
       var matches = elClass.match(/admin_content_widget_([^ ]+)/i);
       if( !$type(matches) || !$type(matches[1])) return;
@@ -867,7 +867,7 @@
         }
       } else {
         otherElement.removeClass('active');
-        otherWrapper.setStyle('display', 'none');
+        otherWrapper.hide();
       }
     });
   }
@@ -884,7 +884,7 @@
   var saveChanges = function()
   {
     var data = [];
-    $$('.admin_content_buildable').each(function(element) {
+    $$('.admin_content_buildable').each(function(__ind, element) {
       var parent = element.getParent('.admin_content_buildable');
 
       var elData = {

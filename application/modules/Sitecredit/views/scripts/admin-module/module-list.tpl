@@ -155,7 +155,7 @@ $this->headLink()->appendStylesheet($baseUrl . 'application/modules/Sitecredit/e
             if( event.type == 'mouseover' ) {
                 element.setStyle('display', 'block');
             } else if( event.type == 'mouseout' ) {
-                element.setStyle('display', 'none');
+                element.hide();
             }
         } catch( e ) {
         }

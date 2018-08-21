@@ -36,12 +36,12 @@
     }
     function showHide(value){
         if(value==1){
-            $$('.event_calendar_container').each(function(item){
+            $('.event_calendar_container').each(function(item){
                 item.style.display= 'none';
                 });
             
         } else{
-            $$('.event_calendar_container').each(function(item){
+            $('.event_calendar_container').each(function(item){
                 item.style.display= 'block';
                 });
         }

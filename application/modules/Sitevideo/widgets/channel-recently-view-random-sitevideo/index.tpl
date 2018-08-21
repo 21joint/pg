@@ -113,7 +113,7 @@ $this->headScript()
                         if (params.requestParams.page == 1) {
                             params.responseContainer.empty();
                             Elements.from(responseHTML).inject(params.responseContainer);
-                            $$('li.tab_select_wrapper_<?php echo $this->identity; ?> > span').each(function (el) {
+                            $$('li.tab_select_wrapper_<?php echo $this->identity; ?> > span').each(function (__ind, el) {
                                 el.removeClass("active");
                             });
                             defaultFormat = '<?php echo $this->viewFormat ?>';
@@ -123,7 +123,7 @@ $this->headScript()
                             var element = new Element('div', {
                                 'html': responseHTML
                             });
-                            params.responseContainer.getElements('.seaocore_loading').setStyle('display', 'none');
+                            params.responseContainer.getElements('.seaocore_loading').hide();
                             if ($$('.siteevideo_videos_view') && element.getElement('.siteevideo_videos_view')) {
                                 Elements.from(element.getElement('.siteevideo_videos_view').innerHTML).inject(params.responseContainer.getElement('.siteevideo_videos_view'));
                             }
@@ -173,7 +173,7 @@ $this->headScript()
         <?php endif; ?>
             });
             function sitevideoTabSwitchview(element) {
-                $$('li.tab_select_wrapper_<?php echo $this->identity; ?> > span').each(function (el) {
+                $$('li.tab_select_wrapper_<?php echo $this->identity; ?> > span').each(function (__ind, el) {
                     el.removeClass("active");
                 });
                 element.addClass("active");
@@ -182,7 +182,7 @@ $this->headScript()
                 }
                 var type = element.get('rel');
                 var identity = element.getParent('ul').get('identity');
-                $('dynamic_app_info_sitevideo_' + identity).getElements('.sitevideo_container').setStyle('display', 'none');
+                $('dynamic_app_info_sitevideo_' + identity).getElements('.sitevideo_container').hide();
                 $('dynamic_app_info_sitevideo_' + identity).getElement("#" + type + "_sitevideo_").style.display = 'block';
             }
         </script>
@@ -202,7 +202,7 @@ $this->headScript()
                 params.requestParams.content_type = "<?php echo $this->content_type ?>";
                 params.requestParams.page =<?php echo sprintf('%d', $this->paginator->getCurrentPageNumber() + 1) ?>;
                 params.requestParams.content_id = '<?php echo $this->identity ?>';
-                view_more_content.setStyle('display', 'none');
+                view_more_content.hide();
                 params.responseContainer.getElements('.seaocore_loading').setStyle('display', '');
 
                 sendAjaxRequestSitevideo(params);

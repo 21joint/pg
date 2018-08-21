@@ -47,7 +47,7 @@
 
     if( event.type == 'click' ) {
       if( previewFileForceOpen ) {
-        previewFileForceOpen.setStyle('display', 'none');
+        previewFileForceOpen.hide();
         previewFileForceOpen = false;
       } else {
         previewFileForceOpen = element;
@@ -62,7 +62,7 @@
     element.setStyle('display', (targetState ? 'block' : 'none'));
   }
 
-  window.addEvent('load', function() {
+  $(window).on('load', function() {
     $$('.admin_file_name').addEvents({
       click : previewFile,
       mouseout : previewFile,
@@ -115,7 +115,7 @@ var BaseFileUpload = {
   },
 
   showRefresh: function () {
-    $('files-status-overall').setStyle('display', 'none');
+    $('files-status-overall').hide();
     $('upload-complete-message').setStyle('display', '');
   },
 
@@ -145,14 +145,14 @@ var BaseFileUpload = {
     if (uploadedFile.offsetParent === null) {
       uploadedFileList.style.display = "block";
     }
-    $('files-status-overall').setStyle('display', 'none');
+    $('files-status-overall').hide();
     return false;
   },
 };
 
 en4.core.runonce.add(function () {
-  $$('.file-input').each(function (el) {
-    $('upload-complete-message').setStyle('display', 'none');
+  $$('.file-input').each(function (__ind, el) {
+    $('upload-complete-message').hide();
     el.addEvent('change', function () {
       var files = this.files;
       var total = files.length;

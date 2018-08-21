@@ -129,12 +129,12 @@ window.addEvent('domready', function() {
    document.getElementById('field_search').value="";
    if(type=='all'){
      document.getElementById("options_right").style.display='inline-block';
-     $$(".aaf_tag_user_content").each(function(el) {
+     $(".aaf_tag_user_content").each(function(el) {
        el.style.display='inline-block';
      });
    }else{
       document.getElementById("options_right").style.display='none';
-      $$(".aaf_tag_user_content").each(function(el) {
+      $(".aaf_tag_user_content").each(function(el) {
        el.style.display='none';
      });
      
@@ -151,7 +151,7 @@ window.addEvent('domready', function() {
    if(search_term==''){
      showContent();
    }else{
-     $$(".aaf_tag_user_content").each(function(el) {
+     $(".aaf_tag_user_content").each(function(el) {
        el.style.display='none';
      });
      <?php foreach ($this->members as $item): ?>

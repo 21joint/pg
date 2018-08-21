@@ -24,7 +24,7 @@
 
 	if( event.type == 'click' ) {
 	  if( previewFileForceOpen ) {
-		previewFileForceOpen.setStyle('display', 'none');
+		previewFileForceOpen.hide();
 		previewFileForceOpen = false;
 	  } else {
 		previewFileForceOpen = element;
@@ -39,13 +39,13 @@
 	element.setStyle('display', (targetState ? 'block' : 'none'));
   }
 
-  window.addEvent('load', function() {
-	$$('.customblock-image-preview').addEvents({
+  $(window).on('load', function() {
+	$('.customblock-image-preview').addEvents({
 	  click : previewFile,
 	  mouseout : previewFile,
 	  mouseover : previewFile
 	});
-	$$('.admin_file_preview').addEvents({
+	$('.admin_file_preview').addEvents({
 	  click : previewFile
 	});
   });

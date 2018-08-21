@@ -68,7 +68,7 @@
 
     if( event.type == 'click' ) {
       if( previewFileForceOpen ) {
-        previewFileForceOpen.setStyle('display', 'none');
+        previewFileForceOpen.hide();
         previewFileForceOpen = false;
       } else {
         previewFileForceOpen = element;
@@ -83,7 +83,7 @@
     element.setStyle('display', (targetState ? 'block' : 'none'));
   }
 
-  window.addEvent('load', function() {
+  $(window).on('load', function() {
     $$('.admin_file_name').addEvents({
       click : previewFile,
       mouseout : previewFile,

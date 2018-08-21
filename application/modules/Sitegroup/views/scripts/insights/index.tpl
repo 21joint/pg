@@ -209,7 +209,7 @@ function filterDropdown(element) {
 							  );
 							}
 						
-							window.addEvent('load', function() {
+							$(window).on('load', function() {
 							  buildStatisticsSwiff({
 							    'type' : 'all',
 							    'mode' : 'normal',

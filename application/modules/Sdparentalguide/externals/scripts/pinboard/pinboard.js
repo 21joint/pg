@@ -178,7 +178,7 @@ PinBoardSeao = new Class({
        
         en4.core.runonce.trigger();
         Smoothbox.bind(params.responseContainer);
-        $$(".pb_ch_wd").addEvent('click',self.childWindowOpen.bind(this));
+        $(".pb_ch_wd").addEvent('click',self.childWindowOpen.bind(this));
         self.currentActive=false;
       }
     });
@@ -289,7 +289,7 @@ PinBoardSeaoViewMore = new Class({
     
     this.pinBoardLayout();
     
-    $$(".pb_ch_wd").addEvent('click',this.childWindowOpen.bind(this));
+    $(".pb_ch_wd").addEvent('click',this.childWindowOpen.bind(this));
   },
   pinBoardLayout:function(){ 
     var self=this;
@@ -346,7 +346,7 @@ PinBoardSeaoViewMore = new Class({
         }
         en4.core.runonce.trigger();
         Smoothbox.bind(params.responseContainer);
-        $$(".pb_ch_wd").addEvent('click',self.childWindowOpen.bind(this));
+        $(".pb_ch_wd").addEvent('click',self.childWindowOpen.bind(this));
         self.currentActive=false;
         
       }
@@ -545,7 +545,7 @@ en4.seaocorepinboard.comments = {
         comment_id : comment_id
       },
       onComplete: function() {
-        $$('.comment-' + comment_id).each(function(element){
+        $('.comment-' + comment_id).each(function(__ind, element){
           try {
             var commentParent=element.getParent('.comments');
             var commentCount = commentParent.getElements('.comments_options span')[0];
@@ -608,11 +608,11 @@ en4.seaocorepinboard.likes = {
       },
       onSuccess : function(responseJSON) {
         if( $type(responseJSON) == 'object' && $type(responseJSON.status)) {
-          $$('.'+type+'_'+id+'like_link').setStyle('display','none');
-          $$('.'+type+'_'+id+'unlike_link').setStyle('display','block');
+          $('.'+type+'_'+id+'like_link').setStyle('display','none');
+          $('.'+type+'_'+id+'unlike_link').setStyle('display','block');
         }
         
-        $$('.pin_like_st_'+type+'_'+id).each(function(likeCount){
+        $('.pin_like_st_'+type+'_'+id).each(function(likeCount){
           try {
             var m = likeCount.get('html').match(/\d+/);
             var newCount = ( parseInt(m[0]) != 'NaN' && parseInt(m[0]) > 0 ? parseInt(m[0]) + 1 : 1 );
@@ -636,10 +636,10 @@ en4.seaocorepinboard.likes = {
       },
       onSuccess : function(responseJSON) {
         if( $type(responseJSON) == 'object' && $type(responseJSON.status)  ) {
-          $$('.'+type+'_'+id+'unlike_link').setStyle('display','none');
-          $$('.'+type+'_'+id+'like_link').setStyle('display','block');
+          $('.'+type+'_'+id+'unlike_link').setStyle('display','none');
+          $('.'+type+'_'+id+'like_link').setStyle('display','block');
         }
-        $$('.pin_like_st_'+type+'_'+id).each(function(likeCount){
+        $('.pin_like_st_'+type+'_'+id).each(function(likeCount){
           try {
             var m = likeCount.get('html').match(/\d+/);
             var newCount = ( parseInt(m[0]) != 'NaN' && parseInt(m[0]) > 1 ? parseInt(m[0]) - 1 : 0 );

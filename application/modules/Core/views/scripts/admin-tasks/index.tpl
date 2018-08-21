@@ -50,7 +50,7 @@
   // Auto refresh
   var doAutoRefresh = false;
   var tips;
-  window.addEvent('load', function() {
+  $(window).on('load', function() {
     doAutoRefresh = ( Cookie.read('en4_admin_tasks_autorefresh') == '1' ? true : false );
     (new Element('a', {
       'href' : 'javascript:void(0);',

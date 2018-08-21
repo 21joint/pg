@@ -30,7 +30,7 @@ $this->headScript()
 
         window.addEvent('domready', function () {
             var e4 = $('channel_url_msg-wrapper');
-            $('channel_url_msg-wrapper').setStyle('display', 'none');
+            $('channel_url_msg-wrapper').hide();
             var channelurlcontainer = $('channel_url-element');
             var language = '<?php echo $this->string()->escapeJavascript($this->translate('Check Availability')) ?>';
             var newdiv = document.createElement('div');
@@ -199,7 +199,7 @@ foreach ($this->form->getSubForms() as $subForm) {
     en4.core.runonce.add(function () {
         var defaultProfileId = '<?php echo '0_0_' . $this->defaultProfileId ?>' + '-wrapper';
         if ($type($(defaultProfileId)) && typeof $(defaultProfileId) != 'undefined') {
-            $(defaultProfileId).setStyle('display', 'none');
+            $(defaultProfileId).hide();
         }
     });
 

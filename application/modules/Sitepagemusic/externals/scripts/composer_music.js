@@ -112,7 +112,7 @@ Composer.Plugin.SitepageMusic = new Class({
         onLoad : function() {
           self.elements.formFancyContainer.setStyle('display', '');
           self.elements.formFancyContainer.setStyle('visibility', 'visible');
-          //self.elements.form.setStyle('display', 'none');
+          //self.elements.form..hide();
           self.elements.form.destroy();
           this.target.addEvents({
                   click: function() {
@@ -211,9 +211,9 @@ Composer.Plugin.SitepageMusic = new Class({
       if( action == 'empty' ) {
         this.elements.body.empty();
       } else if( action == 'hide' ) {
-        this.elements.body.getChildren().each(function(element){ element.setStyle('display', 'none')});
+        this.elements.body.getChildren().each(function(__ind, element){ element.hide()});
       } else if( action == 'invisible' ) {
-        this.elements.body.getChildren().each(function(element){ element.setStyle('height', '0px').setStyle('visibility', 'hidden')});
+        this.elements.body.getChildren().each(function(__ind, element){ element.setStyle('height', '0px').setStyle('visibility', 'hidden')});
       }
 
       this.elements.loading = new Element('div', {

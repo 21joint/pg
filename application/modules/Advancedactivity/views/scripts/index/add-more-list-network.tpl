@@ -96,7 +96,7 @@ $this->headScript()
   function getCheckNetworkValue()
   {
     var checked_ids = new Array()
-    $$('.network_list').each(function (el) {
+    $$('.network_list').each(function (__ind, el) {
       if (el.checked) {
         checked_ids.push(el.value);
       }

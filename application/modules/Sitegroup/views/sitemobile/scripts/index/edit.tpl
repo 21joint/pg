@@ -23,7 +23,7 @@
    });
 
 	//<![CDATA[
-		window.addEvent('load', function()
+		$(window).on('load', function()
 		{
 			$('group_url_address').innerHTML = $('group_url_address').innerHTML.replace('GROUP-NAME', '<span id="group_url_address_text">GROUP-NAME</span>');
 			$('short_group_url_address').innerHTML = $('short_group_url_address').innerHTML.replace('GROUP-NAME', '<span id="short_group_url_address_text">GROUP-NAME</span>');
@@ -245,7 +245,7 @@
 		window.addEvent('domready', function() {      
 			//var e4 = $('group_url_msg-wrapper');
 			if($('group_url_msg-wrapper'))
-			$('group_url_msg-wrapper').setStyle('display', 'none');
+			$('group_url_msg-wrapper').hide();
 		});
 
   function checkDraft(){

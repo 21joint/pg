@@ -9,7 +9,7 @@
 //    if(feedToolTipAAFEnable) {
    var show_tool_tip=false;
    var counter_req_pendding=0;
-    $$('.seao_common_add_tooltip_link').addEvent('mouseover', function(event) {
+    $('.seao_common_add_tooltip_link').addEvent('mouseover', function(event) {
       var el = $(event.target);  
       el_siteevent = el;
       ItemTooltips.options.offset.y = el.offsetHeight;
@@ -68,7 +68,7 @@
               ItemTooltips.hide(el);                    
               }
             });
-            Smoothbox.bind($$(".seao_common_add_tooltip_link_tips"));
+            Smoothbox.bind($(".seao_common_add_tooltip_link_tips"));
           }
         });
         req.send();
@@ -76,7 +76,7 @@
     });
     // Add tooltips
    var window_size = window.getSize()
-   var ItemTooltips = new SEATips($$('.seao_common_add_tooltip_link'), {
+   var ItemTooltips = new SEATips($('.seao_common_add_tooltip_link'), {
       fixed : true,
       title:'',
       className : 'seao_common_add_tooltip_link_tips',

@@ -88,7 +88,7 @@
       this.makeMenu();
       this.makeBody();
       this.elements.activator = activator;
-      this.elements.activator.setStyle('display', 'none');
+      this.elements.activator.hide();
       // Generate form
       //this.elements.body
 
@@ -172,7 +172,7 @@
       this.stickersLayer.getElements('.sticker_search_list').addClass('dnone');
       this.stickersLayer.getElements('.stickers_search_clear').removeClass('dnone');
       this.stickersLayer.getElements('.sticker_search_icons .icon').addClass('dnone');
-      this.stickersLayer.getElements('.sticker_search_icons .icon').each(function (el) {
+      this.stickersLayer.getElements('.sticker_search_icons .icon').each(function (__ind, el) {
         var title = el.get('data-title');
         if (title.search(new RegExp(text, "i")) < 0) {
           return;

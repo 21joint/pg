@@ -151,7 +151,7 @@ var prev_tweetstatus_screenname = 0;
 
 var reply_Tweet = function (tweetstatus_id, screen_name) {
   if (typeof is_enter_submitothersocial != 'undefined' && is_enter_submitothersocial == 1) {
-    $('activity-comment-body-twitter-submit').setStyle('display', 'none');
+    $('activity-comment-body-twitter-submit').hide();
   }
   if (prev_tweetstatus_id != 0 && prev_tweetstatus_id != tweetstatus_id) {
     var Container = $('reply_' + prev_tweetstatus_id);

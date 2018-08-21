@@ -99,7 +99,7 @@ en4.sitevideo.comments = {
                     $('comment-' + comment_id).destroy();
                 }
                 try {
-                    var commentCount = $$('.comments_options span')[0];
+                    var commentCount = $('.comments_options span')[0];
                     var m = commentCount.get('html').match(/\d+/);
                     var newCount = (parseInt(m[0]) != 'NaN' && parseInt(m[0]) > 1 ? parseInt(m[0]) - 1 : 0);
                     commentCount.set('html', commentCount.get('html').replace(m[0], newCount));

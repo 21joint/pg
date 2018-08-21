@@ -24,15 +24,15 @@
     }).inject(document.body).destroy();
 
     // ADD TO PLAYLIST
-    $$('a.music_add_to_playlist').addEvent('click', function () {
+    $('a.music_add_to_playlist').addEvent('click', function () {
       $('song_id').value = this.id.substring(5);
       Smoothbox.open($('music_add_to_playlist'), {mode: 'Inline'});
-      var pl = $$('#TB_ajaxContent > div')[0];
+      var pl = $('#TB_ajaxContent > div')[0];
       pl.show();
     });
 
     // PLAY ON MY PROFILE
-    $$('a.music_set_profile_playlist').addEvent('click', function () {
+    $('a.music_set_profile_playlist').addEvent('click', function () {
       var url_part = this.href.split('/');
       var playlist_id = 0;
       $each(url_part, function (val, i) {
@@ -48,9 +48,9 @@
           'format': 'json'
         },
         onSuccess: function (json) {
-          var link = $$('#music_playlist_item_' + json.playlist_id + ' a.music_set_profile_playlist')[0];
+          var link = $('#music_playlist_item_' + json.playlist_id + ' a.music_set_profile_playlist')[0];
           if (json && json.success) {
-            $$('a.music_set_profile_playlist')
+            $('a.music_set_profile_playlist')
               .set('text', en4.core.language.translate('Play on my Profile'))
               .addClass('icon_music_playonprofile')
               .removeClass('icon_music_disableonprofile')
@@ -123,7 +123,7 @@
 
     enablePlayers: function () {
       // enable players automatically?
-      var players = $$('.music_player_wrapper');
+      var players = $('.music_player_wrapper');
       //if( players.length > 0 ) {
       // Initialize sound manager?
       en4.music.player.getSoundManager();
@@ -174,7 +174,7 @@
     },
 
     _writeCookies: function () {
-      var tmpUri = new URI($$('head base[href]')[0]);
+      var tmpUri = new URI($('head base[href]')[0]);
       Cookie.write('en4_music_volume', this.volume, {
         duration: 7, // days
         path: tmpUri.get('directory'),

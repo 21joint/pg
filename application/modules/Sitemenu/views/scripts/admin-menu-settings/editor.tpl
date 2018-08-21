@@ -214,17 +214,17 @@ endforeach;
   
     var SortablesInstance;
     window.addEvent('domready', function() {
-        $$('.item_label1').addEvents({
+        $('.item_label1').addEvents({
             mouseover: showPreview,
             mouseout: showPreview
         });
         
-        $$('.item_label2').addEvents({
+        $('.item_label2').addEvents({
             mouseover: showPreview,
             mouseout: showPreview
         });
         
-        $$('.item_label3').addEvents({
+        $('.item_label3').addEvents({
             mouseover: showPreview,
             mouseout: showPreview
         });
@@ -237,7 +237,7 @@ endforeach;
             if( event.type == 'mouseover' ) {
                 element.setStyle('display', 'block');
             } else if( event.type == 'mouseout' ) {
-                element.setStyle('display', 'none');
+                element.hide();
             }
         } catch( e ) {
         }

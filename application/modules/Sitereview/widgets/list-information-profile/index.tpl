@@ -18,7 +18,7 @@
 	var seaocore_content_type = 'sitereview_listing';
 	var seaocore_like_url = en4.core.baseUrl + 'seaocore/like/like';
   
-//  window.addEvent('load', function() {
+//  $(window).on('load', function() {
 //    var request = new Request.JSON({
 //      url : en4.core.baseUrl + 'sitereview/index/get-default-listing',
 //      data : {

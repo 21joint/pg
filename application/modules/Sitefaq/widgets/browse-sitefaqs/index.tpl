@@ -100,7 +100,7 @@ function owner(thisobj) {
 			});
 
 			$('faq_hide').setStyle('display', 'block');
-			$('faq_expand').setStyle('display', 'none');
+			$('faq_expand').hide();
 		}
 		else if(value == 1) {
 			$$('.faq_details_hide').each(function(el){
@@ -111,7 +111,7 @@ function owner(thisobj) {
 				el.style.display = 'none';
 			});
 
-			$('faq_hide').setStyle('display', 'none');
+			$('faq_hide').hide();
 			$('faq_expand').setStyle('display', 'block');
 		}
   }
@@ -127,7 +127,7 @@ function owner(thisobj) {
 		});
 
 		if($('faq_hide'))
-		$('faq_hide').setStyle('display', 'none');
+		$('faq_hide').hide();
 
 	});
 

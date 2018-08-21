@@ -190,7 +190,7 @@ var AdvancedActivityUpdateHandler_Linkedin = new Class({
   }
 });
 
-window.addEvent('load', function ()  { 
+$(window).on('load', function ()  { 
   getCommonLinkedinElements(); 
   
 });
@@ -543,7 +543,7 @@ var showHideCommentbox_linkedin = function (thisobj, event) {
       thisobj.value = 'Write a comment...';
       thisobj.addClass('aaf_color_light');
       thisobj.getNext('.Linkedin_activity-comment-submit').style.display = 'none';
-      //$('fbcomments_author_photo-' + post_id).setStyle('display', 'none');
+      //$('fbcomments_author_photo-' + post_id)..hide();
     }).delay(50);
   }
   
@@ -646,7 +646,7 @@ var sendLinkedinMessage = function (thisobj, method, connecter_name, connected_n
 		 return false;
 		 
 	 }
-	 thisobj.getParent('.global_form').getElement('.show_errormessage').setStyle('display', 'none');
+	 thisobj.getParent('.global_form').getElement('.show_errormessage').hide();
 		$('titlelinkedin').value = thisobj.getParent('.global_form').getElement('.compose-content').innerHTML;
 		
 		$('linkedin_message_textarea').value = thisobj.getParent('.global_form').getElement('.compose-textarea').value;
@@ -698,9 +698,9 @@ var linkedin_comment = function (thisobj) {
 
 var showAllComments = function (thisobj, classname) { 
 	
-	thisobj.setStyle('display', 'none');
+	$(thisobj).hide();
 	
-	$$('.feedcomment-' + classname).each (function (element) { 
+	$('.feedcomment-' + classname).each (function (element) {
 		
 		element.setStyle('display', 'block');
 		

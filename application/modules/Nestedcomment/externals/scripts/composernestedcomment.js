@@ -115,7 +115,7 @@ ComposerNestedActivityComment = new Class({
     var size = this.elements.textarea.getSize();
 
     // Modify textarea
-    this.elements.textarea.addClass('compose-textarea').setStyle('display', 'none');
+    this.elements.textarea.addClass('compose-textarea').hide();
 
     // Create container
     this.elements.container = new Element('div', {
@@ -172,7 +172,7 @@ ComposerNestedActivityComment = new Class({
         if( self.options.hideSubmitOnBlur ) {
           (function() {
             if( !self.hasActivePlugin() ) {
-              self.getMenu().setStyle('display', 'none');
+              self.getMenu().hide();
             }
           }).delay(250);
         }
@@ -181,7 +181,7 @@ ComposerNestedActivityComment = new Class({
     });
 
     if( self.options.hideSubmitOnBlur ) {
-      this.getMenu().setStyle('display', 'none');
+      this.getMenu().hide();
       this.elements.body.addEvent('focus', function(e) {
         self.getMenu().setStyle('display', '');
       });
@@ -737,16 +737,16 @@ ComposerNestedActivityComment.Plugin.Interface = new Class({
     this.reset();
 
     this.getComposer().getTray().setStyle('display', '');
-    this.getComposer().getMenu().setStyle('display', 'none');
+    this.getComposer().getMenu().hide();
     var submitButtonEl = $(this.getComposer().options.submitElement);
     if( submitButtonEl ) {
-      submitButtonEl.setStyle('display', 'none');
+      submitButtonEl.hide();
     }
 
     this.getComposer().getMenu().setStyle('border', 'none');
 
-    this.getComposer().getMenu().getElements('.compose-activator').each(function(element) {
-      element.setStyle('display', 'none');
+    this.getComposer().getMenu().getElements('.compose-activator').each(function(__ind, element) {
+      element.hide();
     });
 
     if ($('compose-photo-form-fancy-file')) {
@@ -778,13 +778,13 @@ ComposerNestedActivityComment.Plugin.Interface = new Class({
     if ($('compose-photo-form-fancy-file')) {
       $('compose-photo-form-fancy-file').removeClass('dnone');
     }
-    this.getComposer().getTray().setStyle('display', 'none');
+    this.getComposer().getTray().hide();
     this.getComposer().getMenu().setStyle('display', '');
     var submitButtonEl = $(this.getComposer().options.submitElement);
     if( submitButtonEl ) {
       submitButtonEl.setStyle('display', '');
     }
-    this.getComposer().getMenu().getElements('.compose-activator').each(function(element) {
+    this.getComposer().getMenu().getElements('.compose-activator').each(function(__ind, element) {
       element.setStyle('display', '');
     });
 
@@ -863,9 +863,9 @@ ComposerNestedActivityComment.Plugin.Interface = new Class({
       if( action == 'empty' ) {
         this.elements.body.empty();
       } else if( action == 'hide' ) {
-        this.elements.body.getChildren().each(function(element){ element.setStyle('display', 'none')});
+        this.elements.body.getChildren().each(function(__ind, element){ element.hide()});
       } else if( action == 'invisible' ) {
-        this.elements.body.getChildren().each(function(element){ element.setStyle('height', '0px').setStyle('visibility', 'hidden')});
+        this.elements.body.getChildren().each(function(__ind, element){ element.setStyle('height', '0px').setStyle('visibility', 'hidden')});
       }
 
       this.elements.loading = new Element('div', {

@@ -205,7 +205,7 @@
   }
 
   var saveOrder = function() {
-    $$('.admin_fields_options_saveorder')[0].setStyle('display', 'none');
+    $$('.admin_fields_options_saveorder')[0].hide();
 
     // Generate order structure
     var fieldOrder = [];

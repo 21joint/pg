@@ -29,7 +29,7 @@ $subCateDependencyArray  = Engine_Api::_()->getDbTable('categories', 'sitegroup'
    });
 
 	//<![CDATA[
-		window.addEvent('load', function()
+		$(window).on('load', function()
 		{
 		  var url = '<?php echo $this->translate('GROUP-NAME');?>';
 		  if($('group_url_address')) {
@@ -326,7 +326,7 @@ function in_array(ArrayofCategories, value) {
 		window.addEvent('domready', function() {      
 			//var e4 = $('group_url_msg-wrapper');
 			if($('group_url_msg-wrapper'))
-			$('group_url_msg-wrapper').setStyle('display', 'none');
+			$('group_url_msg-wrapper').hide();
 		});
 
   function checkDraft(){

@@ -589,10 +589,10 @@ endif;
       if (typeof activityUpdateHandler_FB == 'undefined' || !$type(activityUpdateHandler_FB))
       //Call_fbcheckUpdate ();
         
-      if ($$('.adv_post_add_user')) 
-        $$('.adv_post_add_user').setStyle('display', 'none');
+      if ($('.adv_post_add_user')) 
+        $('.adv_post_add_user').hide();
     if ($('emoticons-button'))
-      $('emoticons-button').setStyle('display', 'none');      
+      $('emoticons-button').hide();
         
     if ($('composer_twitter_toggle')) {
       $('composer_twitter_toggle').style.display = 'none';

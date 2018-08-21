@@ -21,7 +21,7 @@
   }
   function showHideAafFeedPhotoBlocks() {
     if ($('customPhotoBlock').value == 0) {
-      $$('.aaf_feed_photo_blocks').setStyle('display', 'none');
+      $$('.aaf_feed_photo_blocks').hide();
     } else {
       $$('.aaf_feed_photo_blocks').setStyle('display', 'block');
     }

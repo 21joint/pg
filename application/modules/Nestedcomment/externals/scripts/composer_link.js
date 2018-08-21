@@ -473,9 +473,9 @@
             } else {
                 delete this.params.thumb;
                 this.setFormInputValue('thumb', '');
-                this.elements.previewImages.setStyle('display', 'none');
+                this.elements.previewImages.hide();
                 if (this.elements.previewChoose)
-                    this.elements.previewChoose.setStyle('display', 'none');
+                    this.elements.previewChoose.hide();
             }
         },
         setImageThumb: function(element) {
@@ -508,7 +508,7 @@
             });
         },
         handleEditTitle: function(element) {
-            element.setStyle('display', 'none');
+            element.hide();
             var input = new Element('input', {
                 'type': 'text',
                 'value': element.get('text').trim(),
@@ -527,7 +527,7 @@
             input.focus();
         },
         handleEditDescription: function(element) {
-            element.setStyle('display', 'none');
+            element.hide();
             var input = new Element('textarea', {
                 'html': element.get('text').trim(),
                 'events': {

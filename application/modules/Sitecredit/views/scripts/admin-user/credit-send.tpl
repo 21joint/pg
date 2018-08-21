@@ -53,7 +53,7 @@ $this->headScript()
     // hide the wrapper for element if it is empty
     if ($(elmentValue).value==""){
       $(elmentValue+'-wrapper').setStyle('height', '0');
-      $(elmentValue+'-wrapper').setStyle('display', 'none');
+      $(elmentValue+'-wrapper').hide();
     }
     $(element).disabled = false;
   }
@@ -120,10 +120,10 @@ $this->headScript()
 
   window.addEvent('domready',function () {
    var e6 = $('user_name-wrapper');
-   e6.setStyle('display', 'none');
+   e6.hide();
    
    var e7 = $('user_id-wrapper');
-   e7.setStyle('display', 'none');
+   e7.hide();
    onMemberChange();
    onMailChange();
  });

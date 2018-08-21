@@ -51,7 +51,7 @@
     var browseMembersViewMore = window.browseMembersViewMore = function() {
       if( requestActive ) return;
       $('browsemembers_loading').setStyle('display', '');
-      $('browsemembers_viewmore').setStyle('display', 'none');
+      $('browsemembers_viewmore').hide();
 
       var param = (currentSearchParams ? currentSearchParams + '&' : '') + 'ajax=1&format=html&page=' + (parseInt(page) + 1);
 

@@ -32,7 +32,7 @@
 
     <script type="text/javascript">
 
-        $$('.location_arrow_wrap_<?php echo $this->widgetContentId;?>').addEvent('click', function() {
+        $('.location_arrow_wrap_<?php echo $this->widgetContentId;?>').addEvent('click', function() {
             $('locationValues_<?php echo $this->widgetContentId; ?>').toggle();
         });        
         

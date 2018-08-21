@@ -4854,7 +4854,7 @@ var prev_tweetstatus_screenname = 0;
         if( $.type( $('#like_viewmore').get(0).offsetParent ) != 'undefined' ) {
           var elementPostionY=$('#like_viewmore').get(0).offsetTop;
         }else{
-          var elementPostionY=$$('#like_viewmore').get(0).y; 
+          var elementPostionY=$('#like_viewmore').get(0).y;
         }
         if(elementPostionY <= $(window).scrollTop()+($(window).height() -40)){ 
           $('#like_viewmore').css('display', 'block'); 
@@ -5745,7 +5745,7 @@ var feedElement,
         if ($.type($('#like_commentviewmore').get(0).offsetParent) != 'undefined') {
           var elementPostionY = $('#like_commentviewmore').get(0).offsetTop;
         } else {
-          var elementPostionY = $$('#like_commentviewmore').get(0).y;
+          var elementPostionY = $('#like_commentviewmore').get(0).y;
         }
         if (elementPostionY <= $(window).scrollTop() + ($(window).height() - 40)) {
           $('#like_commentviewmore').css('display', 'block');
@@ -6124,7 +6124,7 @@ var feedElement,
         if ($.type($('#like_viewmore').get(0).offsetParent) != 'undefined') {
           var elementPostionY = $('#like_viewmore').get(0).offsetTop;
         } else {
-          var elementPostionY = $$('#like_viewmore').get(0).y;
+          var elementPostionY = $('#like_viewmore').get(0).y;
         }
         if (elementPostionY <= $(window).scrollTop() + ($(window).height() - 40)) {
           $('#like_viewmore').css('display', 'block');
@@ -7853,7 +7853,7 @@ sm4.activity.composer = {
       if (action == 'empty') {
         $this.elements.body.empty();
       } else if (action == 'hide') {
-        $this.elements.body.children().each(function(element) {
+        $this.elements.body.children().each(function(__ind, element) {
           element.css('display', 'none')
         });
       } else if (action == 'invisible') {

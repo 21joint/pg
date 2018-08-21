@@ -96,7 +96,7 @@ $this->headLink()->appendStylesheet($baseUrl . 'application/modules/Sitevideo/ex
             this.selectedViewFormat = '';
             this.addBoldClass = function ()
             {
-                $$('.seaocore_tab_icon_<?php echo $this->identity ?>').each(function (el) {
+                $$('.seaocore_tab_icon_<?php echo $this->identity ?>').each(function (__ind, el) {
                     el.removeClass('active');
                 });
                 if($(this.selectedViewFormat))
@@ -132,7 +132,7 @@ $this->headLink()->appendStylesheet($baseUrl . 'application/modules/Sitevideo/ex
                         var element = new Element('div', {
                             'html': responseHTML
                         });
-                        params.responseContainer.getElements('.seaocore_loading').setStyle('display', 'none');
+                        params.responseContainer.getElements('.seaocore_loading').hide();
                         if ($$('.siteevideo_videos_view') && element.getElement('.siteevideo_videos_view')) {
                             Elements.from(element.getElement('.siteevideo_videos_view').innerHTML).inject(params.responseContainer.getElement('.siteevideo_videos_view'));
                         }
@@ -159,7 +159,7 @@ $this->headLink()->appendStylesheet($baseUrl . 'application/modules/Sitevideo/ex
             viewObj.selectedViewFormat = element.get('id');
             viewObj.addBoldClass();
             var type = element.get('rel');
-            $('dynamic_app_info_sitevideo_' + identity).getElements('.sitevideo_container').setStyle('display', 'none');
+            $('dynamic_app_info_sitevideo_' + identity).getElements('.sitevideo_container').hide();
             $('dynamic_app_info_sitevideo_' + identity).getElement("#" + type + "_sitevideo_").style.display = 'block';
         }
     </script>
@@ -174,7 +174,7 @@ $this->headLink()->appendStylesheet($baseUrl . 'application/modules/Sitevideo/ex
     <script type="text/javascript">
         en4.core.runonce.add(function () {
             var view_more_content = $('dynamic_app_info_sitevideo_<?php echo $this->identity ?>').getElements('.seaocore_view_more');
-            view_more_content.setStyle('display', 'none');
+            view_more_content.hide();
         });
     </script>
     <?php
@@ -195,7 +195,7 @@ $this->headLink()->appendStylesheet($baseUrl . 'application/modules/Sitevideo/ex
     function hideViewMoreLink(showContent) {
         if (showContent == 3) {
             var view_more_content = $('dynamic_app_info_sitevideo_<?php echo $this->identity ?>').getElements('.seaocore_view_more');
-            view_more_content.setStyle('display', 'none');
+            view_more_content.hide();
             var totalCount = '<?php echo $this->paginator->count(); ?>';
             var currentPageNumber = '<?php echo $this->paginator->getCurrentPageNumber(); ?>';
 
@@ -218,7 +218,7 @@ $this->headLink()->appendStylesheet($baseUrl . 'application/modules/Sitevideo/ex
                         }
                         params.requestParams.page =<?php echo sprintf('%d', $this->paginator->getCurrentPageNumber() + 1) ?>;
                         params.requestParams.content_id = '<?php echo $this->identity ?>';
-                        view_more_content.setStyle('display', 'none');
+                        view_more_content.hide();
                         params.responseContainer.getElements('.seaocore_loading').setStyle('display', '');
                         sendAjaxRequestSitevideo(params);
                     }
@@ -239,7 +239,7 @@ $this->headLink()->appendStylesheet($baseUrl . 'application/modules/Sitevideo/ex
                 }
                 params.requestParams.page =<?php echo sprintf('%d', $this->paginator->getCurrentPageNumber() + 1) ?>;
                 params.requestParams.content_id = '<?php echo $this->identity ?>';
-                view_more_content.setStyle('display', 'none');
+                view_more_content.hide();
                 params.responseContainer.getElements('.seaocore_loading').setStyle('display', '');
 
                 sendAjaxRequestSitevideo(params);

@@ -22,26 +22,26 @@ $this->headLink()->appendStylesheet($this->layout()->staticBaseUrl
         if ($('subcat_' + id).style.display == 'none') {
             $('subcat_' + id).style.display = 'block';
             $('forum_hide_' + id).setStyle('display', 'block');
-            $('forum_expand_' + id).setStyle('display', 'none');
+            $('forum_expand_' + id).hide();
         }
         else {
             $('subcat_' + id).style.display = 'none';
-            $('forum_hide_' + id).setStyle('display', 'none');
+            $('forum_hide_' + id).hide();
             $('forum_expand_' + id).setStyle('display', 'block');
         }
     }
 
     window.addEvent('domready', function () {
         if (show_setting == 3) {
-            $$('.siteforum_hide').each(function (el) {
+            $$('.siteforum_hide').each(function (__ind, el) {
                 el.style.display = 'none';
             });
-            $$('.siteforum_category_box').each(function (el) {
+            $$('.siteforum_category_box').each(function (__ind, el) {
                 el.style.display = 'none';
             });
         }
         else {
-            $$('.siteforum_expand').each(function (el) {
+            $$('.siteforum_expand').each(function (__ind, el) {
                 el.style.display = 'none';
             });
         }

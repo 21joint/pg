@@ -328,7 +328,7 @@ $isManageAdmin = Engine_Api::_()->sitepage()->isManageAdmin($this->sitepage, 'co
 
   	$('id_' + <?php echo $this->content_id ?>).style.display = "block";
     if ($('id_' + prev_tab_id) != null && prev_tab_id != 0 && prev_tab_id != '<?php echo $this->content_id; ?>') {    	
-      $$('.'+ prev_tab_class).setStyle('display', 'none');
+      $$('.'+ prev_tab_class).hide();
     }
 
     prev_tab_id = '<?php echo $this->content_id; ?>';	
@@ -363,7 +363,7 @@ $isManageAdmin = Engine_Api::_()->sitepage()->isManageAdmin($this->sitepage, 'co
 
   	$('id_' + <?php echo $this->content_id ?>).style.display = "block";
     if ($('id_' + prev_tab_id) != null && prev_tab_id != 0 && prev_tab_id != '<?php echo $this->content_id; ?>') {    	
-      $$('.'+ prev_tab_class).setStyle('display', 'none');
+      $$('.'+ prev_tab_class).hide();
     }
 
     prev_tab_id = '<?php echo $this->content_id; ?>';	

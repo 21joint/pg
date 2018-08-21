@@ -571,7 +571,7 @@ endif;
 
   en4.core.runonce.add(function() {
 
-    var descEls = $$('.lightbox_photo_description');
+    var descEls = $('.lightbox_photo_description');
     if (descEls.length > 0) {
       descEls[0].enableLinks();
     }

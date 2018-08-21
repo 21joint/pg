@@ -412,7 +412,7 @@ echo $this->partial(
 
   var defaultProfileId = '<?= '0_0_'.$this->defaultProfileId ?>' + '-wrapper';
   if ($type($(defaultProfileId)) && typeof $(defaultProfileId) != 'undefined') {
-    $(defaultProfileId).setStyle('display', 'none');
+    $(defaultProfileId).hide();
   }
 
   if ($('overview-wrapper')) {

@@ -50,10 +50,10 @@ function seaocore_content_type_likes(resource_id, resource_type) {
                 if ($(content_type + '_num_of_like_' + resource_id)) {
                     $(content_type + '_num_of_like_' + resource_id).innerHTML = responseJSON.num_of_like;
                 }
-                $$('.' + content_type + '_most_likes_' + resource_id).each(function (el) {
+                $('.' + content_type + '_most_likes_' + resource_id).each(function (__ind, el) {
                     el.style.display = 'none';
                 });
-                $$('.' + content_type + '_unlikes_' + resource_id).each(function (el) {
+                $('.' + content_type + '_unlikes_' + resource_id).each(function (__ind, el) {
                     el.style.display = 'inline-block';
                 });
 
@@ -67,10 +67,10 @@ function seaocore_content_type_likes(resource_id, resource_type) {
                 if ($(content_type + '_num_of_like_' + resource_id)) {
                     $(content_type + '_num_of_like_' + resource_id).innerHTML = responseJSON.num_of_like;
                 }
-                $$('.' + content_type + '_most_likes_' + resource_id).each(function (el) {
+                $('.' + content_type + '_most_likes_' + resource_id).each(function (__ind, el) {
                     el.style.display = 'inline-block';
                 });
-                $$('.' + content_type + '_unlikes_' + resource_id).each(function (el) {
+                $('.' + content_type + '_unlikes_' + resource_id).each(function (__ind, el) {
                     el.style.display = 'none';
                 });
             }

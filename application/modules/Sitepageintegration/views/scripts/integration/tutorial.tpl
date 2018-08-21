@@ -31,16 +31,16 @@
 
 	window.addEvent('domready', function() {
 
-		$$('.tutorial_details_hide').each(function(el){
+		$('.tutorial_details_hide').each(function(el){
 			el.style.display = 'block';
 		});
 
-		$$('.tutorial_details_expand').each(function(el){
+		$('.tutorial_details_expand').each(function(el){
 			el.style.display = 'none';
 		});
 
 		if($('tutorial_hide'))
-		$('tutorial_hide').setStyle('display', 'none');
+		$('tutorial_hide').hide();
 
 	});
 </script>

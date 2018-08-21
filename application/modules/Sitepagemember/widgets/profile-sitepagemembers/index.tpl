@@ -391,7 +391,7 @@ include APPLICATION_PATH . '/application/modules/Sitepage/views/scripts/Adintegr
     hideWidgetsForModule('sitepagemember');
     $('id_' + <?php echo $this->identity ?>).style.display = "block";
     if ($('id_' + prev_tab_id) != null && prev_tab_id != 0 && prev_tab_id != '<?php echo $this->identity; ?>') {
-      $$('.'+ prev_tab_class).setStyle('display', 'none');
+      $$('.'+ prev_tab_class).hide();
     }
     if (prev_tab_id != '<?php echo $this->identity; ?>') {
       execute_Request_Member = false;

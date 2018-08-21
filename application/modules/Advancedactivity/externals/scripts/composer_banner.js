@@ -143,7 +143,7 @@
         'name': 'composer[banner][background-color]',
         'type': 'hidden'
       }).inject(this.activator);
-      $('compose-tray').setStyle('display', 'none');
+      $('compose-tray').hide();
       this.setTextareaListener();
       var images = this.options.requestOptions.banners;
       var defaultBannerLi;

@@ -91,7 +91,7 @@
           <?php if( $count > 0 ): ?>
             <div id="execute-wrapper" class="form-wrapper">
               <div id="execute-element" class="form-element">
-                <button data-theme="b" type="submit" name="execute" onclick="var found = false; $$('input.package-select').each(function(el){ if( el.get('checked') ) { found = true; } }); return found; ">
+                <button data-theme="b" type="submit" name="execute" onclick="var found = false; $('input.package-select').each(function(el){ if( el.get('checked') ) { found = true; } }); return found; ">
                   <?php echo $this->translate('Change Plan') ?>
                 </button>
               </div>

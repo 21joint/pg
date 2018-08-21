@@ -139,7 +139,7 @@ echo $this->partial('_jsSwitch.tpl', 'fields', array(
     en4.core.runonce.add(function() {
       var defaultProfileId = '<?php echo '0_0_' . $this->defaultProfileId ?>' + '-wrapper';
       if ($type($(defaultProfileId)) && typeof $(defaultProfileId) != 'undefined') {
-        $(defaultProfileId).setStyle('display', 'none');
+        $(defaultProfileId).hide();
       }
     });
 </script>

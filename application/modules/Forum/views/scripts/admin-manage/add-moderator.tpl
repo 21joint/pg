@@ -44,7 +44,7 @@ function updateUsers() {
       if( responseHTML.length > 0 ) {
         $('user_list').setStyle('display', 'block');
       } else {
-        $('user_list').setStyle('display', 'none');
+        $('user_list').hide();
       }
       $('user_list').set('html', responseHTML);
       parent.Smoothbox.instance.doAutoResize();

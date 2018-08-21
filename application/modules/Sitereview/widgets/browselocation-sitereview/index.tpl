@@ -45,7 +45,7 @@
     }));
   };
   
-//  window.addEvent('load', function() {
+//  $(window).on('load', function() {
 //    var request = new Request.JSON({
 //      url : en4.core.baseUrl + 'sitereview/index/get-listing-type',
 //      data : {

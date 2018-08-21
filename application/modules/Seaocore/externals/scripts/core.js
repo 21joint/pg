@@ -302,7 +302,7 @@ en4.seaocore.comments = {
           $('comment-' + comment_id).destroy();
         }
         try {
-          var commentCount = $$('.comments_options span')[0];
+          var commentCount = $('.comments_options span')[0];
           var m = commentCount.get('html').match(/\d+/);
           var newCount = (parseInt(m[0]) != 'NaN' && parseInt(m[0]) > 1 ? parseInt(m[0]) - 1 : 0);
           commentCount.set('html', commentCount.get('html').replace(m[0], newCount));
@@ -362,7 +362,7 @@ en4.seaocore.advlightbox = {
 
   }
 }
-//window.addEvent('load', function() {
+//$(window).on('load', function() {
 //  if (typeof FB == 'undefined' && typeof fbappid != 'undefined')  {
 //    en4.seaocore.facebook.runFacebookSdk (); 
 //  }
@@ -516,7 +516,7 @@ en4.seaocore.nestedcomments = {
           if (parent_comment_id == 0)
             return;
           try {
-            var replyCount = $$('.seaocore_replies_options span')[0];
+            var replyCount = $('.seaocore_replies_options span')[0];
             var m = replyCount.get('html').match(/\d+/);
             replyCount.set('html', replyCount.get('html').replace(m[0], e.commentsCount));
           } catch (e) {
@@ -554,7 +554,7 @@ en4.seaocore.nestedcomments = {
         if (parent_comment_id == 0)
           return;
         try {
-          var replyCount = $$('.seaocore_replies_options span')[0];
+          var replyCount = $('.seaocore_replies_options span')[0];
           var m = replyCount.get('html').match(/\d+/);
           replyCount.set('html', replyCount.get('html').replace(m[0], e.commentsCount));
         } catch (e) {
@@ -676,7 +676,7 @@ en4.seaocore.nestedcomments = {
       },
       onComplete: function (e) {
         try {
-          var replyCount = $$('.seaocore_replies_options span')[0];
+          var replyCount = $('.seaocore_replies_options span')[0];
           var m = replyCount.get('html').match(/\d+/);
           var newCount = (parseInt(m[0]) != 'NaN' && parseInt(m[0]) > 1 ? parseInt(m[0]) - 1 : 0);
           replyCount.set('html', replyCount.get('html').replace(m[0], e.commentsCount));
@@ -818,7 +818,7 @@ ActivitySEAOUpdateHandler = new Class({
     req.addEvent('complete', function () {
       (function () {
         if (this.options.showImmediately && $('feed-update').getChildren().length > 0) {
-          $('feed-update').setStyle('display', 'none');
+          $('feed-update').hide();
           $('feed-update').empty();
           this.getFeedUpdate(this.options.next_id);
         }
@@ -1299,9 +1299,9 @@ var SmoothboxSEAO = {
     if ($type(selector) == 'element') {
       elements = selector.getElements('a.seao_smoothbox');
     } else if ($type(selector) == 'string') {
-      elements = $$(selector);
+      elements = $(selector);
     } else {
-      elements = $$("a.seao_smoothbox");
+      elements = $("a.seao_smoothbox");
     }
 
     elements.each(function (el) {
@@ -1377,7 +1377,7 @@ var SmoothboxSEAO = {
       SmoothboxSEAO.sendReq(params.request);
 
     SmoothboxSEAO.show();
-    $$(".seao_smoothbox_lightbox_close").addEvent('click', function (event) {
+    $(".seao_smoothbox_lightbox_close").addEvent('click', function (event) {
       event.stopPropagation();
       SmoothboxSEAO.close();
     });
@@ -1449,7 +1449,7 @@ var SmoothboxSEAO = {
     // this.fireEvent('close', this);
   },
   setHtmlScroll: function (cssCode) {
-    $$('html').setStyle('overflow', cssCode);
+    $('html').setStyle('overflow', cssCode);
   },
   sendReq: function (params) {
     var container = SmoothboxSEAO.contentHTML;
@@ -1479,7 +1479,7 @@ var SmoothboxSEAO = {
           SmoothboxSEAO.doAutoResize();
           Smoothbox.bind(container);
           SmoothboxSEAO.bind(container);
-          $$(".seao_smoothbox_lightbox_close").addEvent('click', function (event) {
+          $(".seao_smoothbox_lightbox_close").addEvent('click', function (event) {
             event.stopPropagation();
             SmoothboxSEAO.close();
           });
@@ -1541,7 +1541,7 @@ window.addEvent('domready', function () {
   SmoothboxSEAO.bind();
 });
 
-window.addEvent('load', function () {
+$(window).on('load', function () {
   SmoothboxSEAO.bind();
 });
 
@@ -1722,7 +1722,7 @@ function openSmoothbox(thisobj) {
 
 function showShareLinks(val) {
   $(document.body).addEvent('click', showHideToggleShareLinks);
-  $$('.siteevent_share_links_toggle').removeEvents('click').addEvent('click', function (event) {
+  $('.siteevent_share_links_toggle').removeEvents('click').addEvent('click', function (event) {
     event.stop();
     //showHideToggleShareLinks();
     $(this).getParent('.siteevent_grid_footer').getElement('.siteevent_share_links').toggle();
@@ -1736,13 +1736,13 @@ function showShareLinks(val) {
 }
 
 function showHideToggleShareLinks() {
-  $$('.siteevent_share_links_toggle').show();
-  $$('.siteevent_share_links_toggle').getParent('.siteevent_grid_footer').getElement('.siteevent_share_links').hide();
+  $('.siteevent_share_links_toggle').show();
+  $('.siteevent_share_links_toggle').getParent('.siteevent_grid_footer').getElement('.siteevent_share_links').hide();
 }
 
 function showReviewShareLinks(val) {
   $(document.body).addEvent('click', showHideToggleReviewShareLinks);
-  $$('.sitereview_share_links_toggle').removeEvents('click').addEvent('click', function (event) {
+  $('.sitereview_share_links_toggle').removeEvents('click').addEvent('click', function (event) {
     event.stop();
     //showHideToggleShareLinks();
     $(this).getParent('.sitereview_grid_footer').getElement('.sitereview_share_links').toggle();
@@ -1756,13 +1756,13 @@ function showReviewShareLinks(val) {
 }
 
 function showHideToggleReviewShareLinks() {
-  $$('.sitereview_share_links_toggle').show();
-  $$('.sitereview_share_links_toggle').getParent('.sitereview_grid_footer').getElement('.sitereview_share_links').hide();
+  $('.sitereview_share_links_toggle').show();
+  $('.sitereview_share_links_toggle').getParent('.sitereview_grid_footer').getElement('.sitereview_share_links').hide();
 }
 
 function showPageShareLinks(val) {
   $(document.body).addEvent('click', showHideTogglePageShareLinks);
-  $$('.sitepage_share_links_toggle').removeEvents('click').addEvent('click', function (event) {
+  $('.sitepage_share_links_toggle').removeEvents('click').addEvent('click', function (event) {
     event.stop();
     //showHideToggleShareLinks();
     $(this).getParent('.sitepage_grid_footer').getElement('.sitepage_share_links').toggle();
@@ -1776,13 +1776,13 @@ function showPageShareLinks(val) {
 }
 
 function showHideTogglePageShareLinks() {
-  $$('.sitepage_share_links_toggle').show();
-  $$('.sitepage_share_links_toggle').getParent('.sitepage_grid_footer').getElement('.sitepage_share_links').hide();
+  $('.sitepage_share_links_toggle').show();
+  $('.sitepage_share_links_toggle').getParent('.sitepage_grid_footer').getElement('.sitepage_share_links').hide();
 }
 
 function showForumShareLinks(val) {
   $(document.body).addEvent('click', showForumHideToggleShareLinks);
-  $$('.siteforum_share_links_toggle').removeEvents('click').addEvent('click', function (event) {
+  $('.siteforum_share_links_toggle').removeEvents('click').addEvent('click', function (event) {
     event.stop();
     //showHideToggleShareLinks();
     $(this).getParent('.siteforum_grid_footer').getElement('.siteforum_share_links').toggle();
@@ -1796,14 +1796,14 @@ function showForumShareLinks(val) {
 }
 
 function showForumHideToggleShareLinks() {
-  $$('.siteforum_share_links_toggle').show();
-  $$('.siteforum_share_links_toggle').getParent('.siteforum_grid_footer').getElement('.siteforum_share_links').hide();
+  $('.siteforum_share_links_toggle').show();
+  $('.siteforum_share_links_toggle').getParent('.siteforum_grid_footer').getElement('.siteforum_share_links').hide();
 }
 
 
 function showGroupShareLinks(val) {
   $(document.body).addEvent('click', showHideToggleGroupShareLinks);
-  $$('.sitegroup_share_links_toggle').removeEvents('click').addEvent('click', function (event) {
+  $('.sitegroup_share_links_toggle').removeEvents('click').addEvent('click', function (event) {
     event.stop();
     //showHideToggleShareLinks();
     $(this).getParent('.sitegroup_grid_footer').getElement('.sitegroup_share_links').toggle();
@@ -1817,6 +1817,6 @@ function showGroupShareLinks(val) {
 }
 
 function showHideToggleGroupShareLinks() {
-  $$('.sitegroup_share_links_toggle').show();
-  $$('.sitegroup_share_links_toggle').getParent('.sitegroup_grid_footer').getElement('.sitegroup_share_links').hide();
+  $('.sitegroup_share_links_toggle').show();
+  $('.sitegroup_share_links_toggle').getParent('.sitegroup_grid_footer').getElement('.sitegroup_share_links').hide();
 }

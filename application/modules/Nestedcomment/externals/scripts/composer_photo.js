@@ -132,7 +132,7 @@
                     onLoad: function() {
                         self.elements.formFancyContainer.setStyle('display', '');
                         self.elements.formFancyContainer.setStyle('visibility', 'visible');
-                        //self.elements.form.setStyle('display', 'none');
+                        //self.elements.form..hide();
                         self.elements.form.destroy();
                         this.target.addEvents({
                             click: function() {

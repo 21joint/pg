@@ -161,7 +161,7 @@ $this->headScript()
     // hide the wrapper for element if it is empty
     if ($(elmentValue).value==""){
       $(elmentValue+'-wrapper').setStyle('height', '0');
-      $(elmentValue+'-wrapper').setStyle('display', 'none');
+      $(elmentValue+'-wrapper').hide();
     }
     $(element).disabled = false;
   }

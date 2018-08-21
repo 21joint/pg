@@ -98,7 +98,7 @@
       return this;
     },
     toggleEvent :function(){
-      $$(".stchekin_suggest_container").each(function(el){
+      $(".stchekin_suggest_container").each(function(el){
         if(el.hasClass("dblock")){
           el.toggleClass('dnone');
           el.toggleClass('dblock'); 
@@ -130,13 +130,13 @@
         }),
         onSuccess : function(responseTree, responseElements, responseHTML, responseJavaScript) {
           self.elements.suggestContainerSearchListDiv.innerHTML =responseHTML;
-          $$(".aaf_mobile_add_tag").each(function(el){
+          $(".aaf_mobile_add_tag").each(function(el){
             el.addEvent('click', self.addTag.bind(self));
           }); 
-          $$(".aff_list_pagination").each(function(el){
+          $(".aff_list_pagination").each(function(el){
             el.addEvent('click', self.searchLink.bind(self));
           });
-          $$(".aff_list_pagination_select").each(function(el){
+          $(".aff_list_pagination_select").each(function(el){
             el.addEvent('change', self.searchSelect.bind(self));
           });
           

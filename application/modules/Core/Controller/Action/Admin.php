@@ -65,7 +65,7 @@ abstract class Core_Controller_Action_Admin extends Core_Controller_Action_User
     // Neuter
     if( defined('_ENGINE_ADMIN_NEUTER') && _ENGINE_ADMIN_NEUTER ) {
       $this->view->headScript()->appendScript("
-window.addEvent('load', function() {
+$(window).on('load', function() {
   $$('form[method=post] button[type=submit]')
     /*.set('disabled', true)*/
     .setStyles({

@@ -690,9 +690,9 @@ if (file_exists(APPLICATION_PATH . '/application/modules/Sitepage/views/scripts/
 //        }
       }
 
-      $$('.tab_<?php echo $this->identity_temp; ?>').addEvent('click', function() { 
+      $('.tab_<?php echo $this->identity_temp; ?>').addEvent('click', function() { 
        // if(prev_tab_id != <?php echo $this->identity_temp; ?>) {
-          $$('.layout_sitepageintegration_profile_items').setStyle('display', 'none');
+          $('.layout_sitepageintegration_profile_items').hide();
        /// }
         $('id_' + <?php echo $this->identity_temp; ?>).parentNode.style.display = "block";
 

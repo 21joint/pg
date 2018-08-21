@@ -20,7 +20,7 @@
   <div class='settings'> <?php echo $this->form->render($this) ?> </div>
 </div>
 <script type="text/javascript">
-$$('input[type=radio]:([name=feedback_post])').addEvent('click', function(e){
+$('input[type=radio]:([name=feedback_post])').addEvent('click', function(e){
 	    $(this).getParent('.form-wrapper').getAllNext(':([id^=feedback_option_post-element])').setStyle('display', ($(this).get('value')>0?'none':'none'));
 	});
 	
@@ -38,7 +38,7 @@ $$('input[type=radio]:([name=feedback_post])').addEvent('click', function(e){
 	 $('feedback_option_post-wrapper').setStyle('display', (e5.checked?'block':'none'));
 	});
 
-	$$('input[type=radio]:([name=feedback_show_browse])').addEvent('click', function(e){
+	$('input[type=radio]:([name=feedback_show_browse])').addEvent('click', function(e){
 	    $(this).getParent('.form-wrapper').getAllNext(':([id^=feedback_default_visibility-element])').setStyle('display', ($(this).get('value')>0?'none':'none'));
 	});
 	
@@ -56,7 +56,7 @@ $$('input[type=radio]:([name=feedback_post])').addEvent('click', function(e){
 	 $('feedback_default_visibility-wrapper').setStyle('display', (e5.checked?'none':'block'));
 	});
 
-	$$('input[type=radio]:([name=feedback_show_browse])').addEvent('click', function(e){
+	$('input[type=radio]:([name=feedback_show_browse])').addEvent('click', function(e){
 	    $(this).getParent('.form-wrapper').getAllNext(':([id^=feedback_public-element])').setStyle('display', ($(this).get('value')>0?'none':'none'));
 	});
 	

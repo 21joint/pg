@@ -62,7 +62,7 @@ $this->headScript()
   var aafcomposer = '';
   en4.core.runonce.add(function() {
     aafcomposer = $('aaf_post_feef_composer');
-    $$('.aaf_post_content_button').addEvent('click', function(event) {
+    $('.aaf_post_content_button').addEvent('click', function(event) {
       var aafcomposertemp = aafcomposer;
 
       aafcomposertemp.getElementById('activity-post-container').style.display = 'block';

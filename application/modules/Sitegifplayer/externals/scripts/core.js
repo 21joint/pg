@@ -195,7 +195,7 @@ var GifPlayer = new Class({
 });
 
 var gifFunction = function () {
-  $$('.sitegif_player_init').each(function (el) {
+  $('.sitegif_player_init').each(function (__ind, el) {
     GifPlayerScops[el] = new GifPlayer(el, {});
     GifPlayerScops[el].activate();
     el.removeClass('sitegif_player_init');

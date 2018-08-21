@@ -87,7 +87,7 @@
               if( $.type( $('#like_viewmore').get(0).offsetParent ) != 'undefined' ) {
                 var elementPostionY=$('#like_viewmore').get(0).offsetTop;
               }else{
-                var elementPostionY=$$('#like_viewmore').get(0).y; 
+                var elementPostionY=$('#like_viewmore').get(0).y; 
               }
               if(elementPostionY <= $(window).scrollTop()+($(window).height() -40)){ 
                 $('#like_viewmore').css('display', 'block'); 

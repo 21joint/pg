@@ -23,7 +23,7 @@
         'page' : notificationPage
       },
       'onComplete' : function(responseTree, responseElements, responseHTML, responseJavaScript) {
-        $('notifications_loading_main').setStyle('display', 'none');
+        $('notifications_loading_main').hide();
         if( '' != responseHTML.trim() && notificationPageCount > notificationPage ) {
           $('notifications_viewmore').setStyle('display', '');
         }
@@ -34,7 +34,7 @@
   en4.core.runonce.add(function(){
     if($('notifications_viewmore_link')){
       $('notifications_viewmore_link').addEvent('click', function() {
-        $('notifications_viewmore').setStyle('display', 'none');
+        $('notifications_viewmore').hide();
         $('notifications_loading_main').setStyle('display', '');
         loadMoreNotifications();
       });
@@ -42,7 +42,7 @@
 
     if($('notifications_markread_link_main')){
       $('notifications_markread_link_main').addEvent('click', function() {
-        $('notifications_markread_main').setStyle('display', 'none');
+        $('notifications_markread_main').hide();
         en4.activity.hideNotifications('<?php echo $this->translate("0 Updates");?>');
       });
     }

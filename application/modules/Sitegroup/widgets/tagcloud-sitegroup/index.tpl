@@ -23,7 +23,7 @@
         };
 
   en4.core.runonce.add(function() {  
-    browsetagparams.responseContainer.each(function(element) {   
+    browsetagparams.responseContainer.each(function(__ind, element) {   
      new Element('div', {
         'class': 'sitegroup_profile_loading_image'
       }).inject(element);

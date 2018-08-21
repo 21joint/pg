@@ -76,9 +76,9 @@
         {
            
             $('sitevideo_add_videos_options-1').getParent().setStyle('display', 'block');
-            $('sitevideo_add_videos_options-2').getParent().setStyle('display', 'none');
-            $('sitevideo_add_videos_options-3').getParent().setStyle('display', 'none');
-            $('sitevideo_add_videos_options-4').getParent().setStyle('display', 'none');
+            $('sitevideo_add_videos_options-2').getParent().hide();
+            $('sitevideo_add_videos_options-3').getParent().hide();
+            $('sitevideo_add_videos_options-4').getParent().hide();
             $('sitevideo_add_videos_options-2').set('checked',false);
             $('sitevideo_add_videos_options-3').set('checked',false);
             $('sitevideo_add_videos_options-4').set('checked',false);
@@ -86,7 +86,7 @@
         else if (!($('sitevideo_channel_addvideo_other_channel-1').checked) && $('sitevideo_channel_add_othermember_video-1').checked)
         {
             
-            $('sitevideo_add_videos_options-1').getParent().setStyle('display', 'none');
+            $('sitevideo_add_videos_options-1').getParent().hide();
             $('sitevideo_add_videos_options-2').getParent().setStyle('display', 'block');
             $('sitevideo_add_videos_options-3').getParent().setStyle('display', 'block');
             $('sitevideo_add_videos_options-4').getParent().setStyle('display', 'block');

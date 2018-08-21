@@ -137,7 +137,7 @@
                         if (parent_comment_id == 0)
                             return;
                         try {
-                            var replyCount = $$('.seaocore_replies_options span')[0];
+                            var replyCount = $('.seaocore_replies_options span')[0];
                             var m = replyCount.get('html').match(/\d+/);
                             replyCount.set('html', replyCount.get('html').replace(m[0], e.commentsCount));
                         } catch (e) {
@@ -209,7 +209,7 @@
             var size = this.elements.textarea.getSize();
 
             // Modify textarea
-            this.elements.textarea.addClass('compose-textarea').setStyle('display', 'none');
+            this.elements.textarea.addClass('compose-textarea').hide();
 
             // Create container
             this.elements.container = new Element('div', {
@@ -264,7 +264,7 @@
                     if (self.options.hideSubmitOnBlur) {
                         (function() {
                             if (!self.hasActivePlugin()) {
-//                                self.getMenu().setStyle('display', 'none');
+//                                self.getMenu()..hide();
 //                                if(self.getMenu().parentNode.getElementsByClassName('seao_emoticons')) {
 //                                    var ele = self.getMenu().parentNode.getElementsByClassName('seao_emoticons');
 //                                    ele[0].style.display = 'none';
@@ -276,7 +276,7 @@
             });
 
             if (self.options.hideSubmitOnBlur) {
-                this.getMenu().setStyle('display', 'none');
+                this.getMenu().hide();
                 this.elements.body.addEvent('focus', function(e) {
                      self.getMenu().setStyle('display', '');
                      if(self.getMenu().parentNode.getElementsByClassName('seao_emoticons')) {
@@ -568,7 +568,7 @@
                             $('seaocore_comment_image_'+ this.options.type + '_' + this.options.id + '_' + parent_comment_id).style.display = 'none';
 
                             try {
-                                var replyCount = $$('.seaocore_replies_options span')[0];
+                                var replyCount = $('.seaocore_replies_options span')[0];
                                 var m = replyCount.get('html').match(/\d+/);
                                 replyCount.set('html', replyCount.get('html').replace(m[0], e.commentsCount));
                             } catch (e) {
@@ -921,16 +921,16 @@
             this.reset();
 
             this.getComposer().getTray().setStyle('display', '');
-            this.getComposer().getMenu().setStyle('display', 'none');
+            this.getComposer().getMenu().hide();
             var submitButtonEl = $(this.getComposer().options.submitElement);
             if (submitButtonEl) {
-                submitButtonEl.setStyle('display', 'none');
+                submitButtonEl.hide();
             }
 
             this.getComposer().getMenu().setStyle('border', 'none');
 
-            this.getComposer().getMenu().getElements('.compose-activator').each(function(element) {
-                element.setStyle('display', 'none');
+            this.getComposer().getMenu().getElements('.compose-activator').each(function(__ind, element) {
+                element.hide();
             });
 
             switch ($type(this.options.loadingImage)) {
@@ -963,7 +963,7 @@
             if (submitButtonEl) {
                 submitButtonEl.setStyle('display', '');
             }
-            this.getComposer().getMenu().getElements('.compose-activator').each(function(element) {
+            this.getComposer().getMenu().getElements('.compose-activator').each(function(__ind, element) {
                 element.setStyle('display', '');
             });
 
@@ -1044,11 +1044,11 @@
                 if (action == 'empty') {
                     this.elements.body.empty();
                 } else if (action == 'hide') {
-                    this.elements.body.getChildren().each(function(element) {
-                        element.setStyle('display', 'none')
+                    this.elements.body.getChildren().each(function(__ind, element) {
+                        element.hide()
                     });
                 } else if (action == 'invisible') {
-                    this.elements.body.getChildren().each(function(element) {
+                    this.elements.body.getChildren().each(function(__ind, element) {
                         element.setStyle('height', '0px').setStyle('visibility', 'hidden')
                     });
                 }

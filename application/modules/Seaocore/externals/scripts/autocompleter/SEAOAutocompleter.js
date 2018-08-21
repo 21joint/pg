@@ -273,7 +273,7 @@ var SEAOAutocompleter = new Class({
 		if (this.selected) this.selected.removeClass('autocompleter-selected');
 		this.observer.clear();
 		var hide = function(){
-			this.choices.setStyle('display', 'none');
+			this.choices.hide();
 			if (this.fix) this.fix.hide();
 		}.bind(this);
 		if (this.fx) this.fx.start(0).chain(hide);
@@ -602,7 +602,7 @@ var OverlayFix = new Class({
 	},
 
 	hide: function() {
-		if (this.fix) this.fix.setStyle('display', 'none');
+		if (this.fix) this.fix.hide();
 		return this;
 	},
 

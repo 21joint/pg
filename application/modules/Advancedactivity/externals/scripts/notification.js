@@ -17,7 +17,7 @@ window.addEvent('domready', function () {
                 if (responseHTML) {
                     // hide loading icon
                     if ($('notifications_loading'))
-                        $('notifications_loading').setStyle('display', 'none');
+                        $('notifications_loading').hide();
 
                     $('notifications_menu').innerHTML = responseHTML;
                     $('notifications_menu').addEvent('click', function (event) {

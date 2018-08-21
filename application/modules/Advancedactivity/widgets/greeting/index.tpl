@@ -48,7 +48,7 @@
 var currentIndex = 0;
 function birthdaySlideshow() {
     var i;
-    var x = $$(".aaf_birthday_slides");
+    var x = $(".aaf_birthday_slides");
     for (i = 0; i < x.length; i++) {
        x[i].style.display = "none";  
     }

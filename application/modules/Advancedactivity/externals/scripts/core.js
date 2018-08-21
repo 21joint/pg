@@ -19,7 +19,7 @@ en4.advancedactivity = {
 
         var el = $(event.target);
         var parent = el.getParent('.activity-item');
-        parent.getElement('.feed_item_body_content').setStyle('display', 'none');
+        parent.getElement('.feed_item_body_content').hide();
         parent.getElement('.feed_item_body_edit_content').setStyle('display', 'block');
       });
     }
@@ -29,7 +29,7 @@ en4.advancedactivity = {
         SmoothboxSEAO.close();
       } else {
         var parent = el.getParent('.activity-item');
-        parent.getElement('.feed_item_body_edit_content').setStyle('display', 'none');
+        parent.getElement('.feed_item_body_edit_content').hide();
         parent.getElement('.feed_item_body_content').setStyle('display', 'block');
       }
     });
@@ -348,7 +348,7 @@ en4.advancedactivity = {
   bindOnLoadForViewerFeeds: function (options) {
     var CommentLikesTooltips;
 
-    $('activity-feed').getElements('.seao_icons_toolbar_attach').each(function (el) {
+    $('activity-feed').getElements('.seao_icons_toolbar_attach').each(function (__ind, el) {
       if (($('activity-feed').getCoordinates().right * 0.65) < el.getCoordinates().left) {
         el.addClass('seao_icons_toolbar_right');
       } else {
@@ -364,7 +364,7 @@ en4.advancedactivity = {
 
     SmoothboxSEAO.bind($('activity-feed'));
     // Add hover event to get likes
-    $$('.comments_comment_likes').addEvent('mouseover', function (event) {
+    $('.comments_comment_likes').addEvent('mouseover', function (event) {
       var el = $(event.target);
       if (!el.retrieve('tip-loaded', false)) {
         el.store('tip-loaded', true);
@@ -392,7 +392,7 @@ en4.advancedactivity = {
       }
     });
     // Add tooltips
-    CommentLikesTooltips = new Tips($$('.comments_comment_likes'), {
+    CommentLikesTooltips = new Tips($('.comments_comment_likes'), {
       fixed: true,
       className: 'comments_comment_likes_tips',
       offset: {
@@ -401,7 +401,7 @@ en4.advancedactivity = {
       }
     });
     // Enable links in comments
-    $$('.comments_body').enableLinks();
+    $('.comments_body').enableLinks();
 
   },
   resetTargetPost: function (force) {
@@ -413,7 +413,7 @@ en4.advancedactivity = {
       $('max_age').set('value', 0);
       $('who-').set('checked', 'checked');
       $('advancedactivity_post_target_options').removeClass('target_added');
-      $$('.adv_button_target_post').removeClass('active');
+      $('.adv_button_target_post').removeClass('active');
     }
     $('advancedactivity_post_target_options').addClass('dnone');
   },
@@ -434,7 +434,7 @@ en4.advancedactivity = {
     cal_schedule_time.calendars[0].val = null;
     cal_schedule_time.write(cal_schedule_time.calendars[0]);
     $('aaf_schedule_time').addClass('dnone');
-    $$('.adv_button_schedule_post').removeClass('active');
+    $('.adv_button_schedule_post').removeClass('active');
   },
   bindEmojiIcons: function (idPrefix) {
     var wapper = $(idPrefix + 'emoticons-nested-comment-icons_emoji');
@@ -501,7 +501,7 @@ en4.advancedactivity = {
     });
     $(idPrefix + 'seaocore_emoji_category').getElement('.scrollbar-content').addEvent('scroll', function () {
       var activeli = '';
-      wapper.getElements('.seaocore_emoji_tab_content').each(function (el) {
+      wapper.getElements('.seaocore_emoji_tab_content').each(function (__ind, el) {
         var scrollbarContent = $(idPrefix + 'seaocore_emoji_category').getElement('.scrollbar-content');
         if (el.getOffsets().y - scrollbarContent.getPosition().y - 150 <= scrollbarContent.getScroll().y) {
           activeli = el.get('id').replace(idPrefix + 'seaocore_emoji_category_', '');
@@ -599,7 +599,7 @@ var AdvancedactivityUpdateHandler = new Class({
     req.addEvent('complete', function () {
       (function () {
         if (this.options.showImmediately && $('feed-update').getChildren().length > 0) {
-          $('feed-update').setStyle('display', 'none');
+          $('feed-update').hide();
           $('feed-update').empty();
           this.getFeedUpdate(this.options.next_id);
         }
@@ -824,7 +824,7 @@ var submitFormAjax = function (submitUri, dumpComposeInstance) {
           } else {
             showDefaultContent();
           }
-          $("aaf_composer_loading").setStyle('display', 'none');
+          $("aaf_composer_loading").hide();
           dumpComposeInstance.plugins.each(function (plugin) {
             plugin.detach();
             if (plugin.name == 'advanced_facebook' || plugin.name == 'advanced_twitter' || plugin.name == 'advanced_linkedin' || plugin.name == 'advanced_instagram') {
@@ -840,13 +840,13 @@ var submitFormAjax = function (submitUri, dumpComposeInstance) {
             htmlBody = responseJSON.feed_stream;
             if (htmlBody)
               htmlBody.stripScripts(true);
-            Elements.from(htmlBody).each(function (element) {
+            Elements.from(htmlBody).each(function (__ind, element) {
               divwrapper = element;
             });
 
             Elements.from(divwrapper.innerHTML).reverse().inject(activityFeed_tweet, 'top');
             feedUpdate_tweet.empty();
-            $("aaf-twitter_aaf_composer_loading").setStyle('display', 'none');
+            $("aaf-twitter_aaf_composer_loading").hide();
           }
         }
       }
@@ -887,8 +887,8 @@ var resetAAFTextarea = function () {
   composeInstance.reset();
   if ($('aaf_main_tab_logout'))
     $('aaf_main_tab_logout').style.display = 'none';
-  if ($$('.advancedactivity_privacy_list'))
-    $$('.advancedactivity_privacy_list').setStyle('display', 'inline-block');
+  if ($('.advancedactivity_privacy_list'))
+    $('.advancedactivity_privacy_list').setStyle('display', 'inline-block');
   if ($('composer_facebook_toggle')) {
     $('composer_facebook_toggle').removeClass('composer_facebook_toggle_active');
     var spanelement = $('composer_facebook_toggle').getElement('.aaf_composer_tooltip');
@@ -919,8 +919,8 @@ var resetAAFTextarea = function () {
 
   if ($('adv_post_container_icons'))
     $('adv_post_container_icons').setStyle('display', 'block');
-  if ($$('.adv_post_add_user'))
-    $$('.adv_post_add_user').setStyle('display', 'block');
+  if ($('.adv_post_add_user'))
+    $('.adv_post_add_user').setStyle('display', 'block');
   if ($('emoticons-button'))
     $('emoticons-button').setStyle('display', 'block');
   if ($('compose-checkin-activator'))
@@ -934,7 +934,7 @@ var resetAAFTextarea = function () {
   if ($('adv_post_container_icons').hasClass('adv_post_compose_menu_anactive'))
     $('adv_post_container_icons').removeClass('adv_post_compose_menu_anactive');
   composeInstance.fireEvent('editorReset');
-  composeInstance.elements.textarea.setStyle('display', 'none');
+  composeInstance.elements.textarea.hide();
   composeInstance.elements.body.setStyle('display', '');
   if ($('adv_post_container_icons').get('data-expand-always') == 0) {
     $('adv_post_container_icons').removeClass('composer_activator_expand_more_options');
@@ -1469,7 +1469,7 @@ function uploadImage(url) {
 
 function basicAafActivator(menu_name) {
   composeInstance.deactivate();
-  $$('.compose-menu').removeClass('active');
+  $('.compose-menu').removeClass('active');
   $('compose-' + menu_name + '-menu-link').addClass('active');
 }
 
@@ -1488,8 +1488,8 @@ function showAafVideoActivator() {
 
 function showAafDefaultActivator() {
   basicAafActivator('status');
-  if ($$('.compose-container')[0].getElement('.overTxtLabel')) {
-    $$('.compose-container')[0].getElement('.overTxtLabel').innerHTML = en4.core.language.translate('Post Something...');
+  if ($('.compose-container').find('.overTxtLabel')) {
+    $('.compose-container').find('.overTxtLabel').innerHTML = en4.core.language.translate('Post Something...');
   }
 }
 

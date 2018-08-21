@@ -39,7 +39,7 @@
     <?php endif; ?>
 </div>
 <script>
-//      window.addEvent('load', function() {
+//      $(window).on('load', function() {
 //        select_all();
 //      });
     function select_all()

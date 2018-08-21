@@ -313,7 +313,7 @@
             }
         },
         handleEditTitle: function (element) {
-            element.setStyle('display', 'none');
+            element.hide();
             var input = new Element('input', {
                 'type': 'text',
                 'value': htmlspecialchars_decode(element.get('html').trim()),
@@ -332,7 +332,7 @@
             input.focus();
         },
         handleEditDescription: function (element) {
-            element.setStyle('display', 'none');
+            element.hide();
             var input = new Element('textarea', {
                 'html': htmlspecialchars_decode(element.get('html').trim()),
                 'events': {

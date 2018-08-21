@@ -14,7 +14,7 @@
 <?php if (!empty($this->communityad_id)) { ?>
   <script type="text/javascript">
 
-    window.addEvent('load', function() {
+    $(window).on('load', function() {
       var url = en4.core.baseUrl + 'widget/index/mod/sitegroup/name/group-ads';
       var request = new Request.HTML({
         url: url,

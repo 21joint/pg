@@ -468,7 +468,7 @@ else if (twitterredirect == 1 && window.opener!= null) {
 if  (window.opener == null && facebookredirect == 1) {  
   <?php if (isset($_GET['redirect_fbinvite'])) : ?>
   facebookredirect = 0;
-  window.addEvent('load', function() { 
+  $(window).on('load', function() { 
 	  
 	     setTimeout('get_contacts_Facebook();', '1000');
 	  

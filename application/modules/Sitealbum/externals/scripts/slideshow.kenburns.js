@@ -53,7 +53,7 @@ Dependencies:
 
 		_show: function(fast){
 			if (!this.image.retrieve('morph')){
-				$$(this.a, this.b).set({
+				$(this.a, this.b).set({
 					'tween': {'duration': this.options.duration, 'link': 'cancel', 'onStart': this._start.bind(this), 'onComplete': this._complete.bind(this), 'property': 'opacity'},
 					'morph': {'duration': (this.options.delay + this.options.duration * 2), 'link': 'cancel', 'transition': 'linear'}
 				});

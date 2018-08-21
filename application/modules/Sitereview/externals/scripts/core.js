@@ -13,7 +13,7 @@ en4.sitereview.ajaxTab ={
     params.requestParams.content_id = widget_id;
     var element;
     
-    $$('.tab_'+widget_id).each(function(el){
+    $('.tab_'+widget_id).each(function(el){
       if(el.get('tag') == 'li'){
         element =el;
         return;
@@ -34,7 +34,7 @@ en4.sitereview.ajaxTab ={
       if( tab_content_id_sitestore == widget_id){ 
         attachOnLoadEvent=true;
       }else{
-        $$('.tabs_parent').each(function(element){
+        $('.tabs_parent').each(function(__ind, element){
           var addActiveTab= true;
           element.getElements('ul > li').each(function(el){
             if(el.hasClass('active')){
@@ -76,7 +76,7 @@ en4.sitereview.ajaxTab ={
     
   },
   sendReq: function(params){
-    params.responseContainer.each(function(element){
+    params.responseContainer.each(function(__ind, element){
       element.empty();
       new Element('div', {      
         'class' : 'sr_profile_loading_image'      
@@ -602,7 +602,7 @@ var compareSiterivew = new Class({
     }
   },
   updateCompareButton : function(list_id, checked){
-    $$('.compareButtonListing'+list_id).each(function(element){
+    $('.compareButtonListing'+list_id).each(function(__ind, element){
       element.checked = checked;
     });
   },
@@ -882,8 +882,8 @@ function removeAdsWidget(widgetIdentity) {
     },
     onSuccess : function(responseJSON) {
       $('sitereview_ads_plugin_'+widgetIdentity).destroy();
-      if($$(".tab_"+widgetIdentity)) {
-        $$(".tab_"+widgetIdentity).destroy();
+      if($(".tab_"+widgetIdentity)) {
+        $(".tab_"+widgetIdentity).destroy();
       }
     } 
   }));

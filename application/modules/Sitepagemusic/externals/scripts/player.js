@@ -161,7 +161,7 @@ en4.sitepagemusic.playlistAbstract = new Class({
     if( !this.tallied[song_id] ) {
       this.tallied[song_id] = true;
       new Request.JSON({
-        url: $$('head base[href]')[0].get('href') + 'pagemusictally/song/' + song_id + '/tally',
+        url: $('head base[href]')[0].get('href') + 'pagemusictally/song/' + song_id + '/tally',
         noCache: true,
         data: {
           format: 'json',

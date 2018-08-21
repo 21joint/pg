@@ -1471,7 +1471,7 @@ class Sitepage_Widget_OnrenderSitepageController extends Engine_Content_Widget_A
 					    $('global_content').getElement('.layout_sitepageevent_profile_sitepageevents').style.display = 'none';
             }
             if($('global_content').getElement('.layout_sitepageintegration_profile_items')) {					    
-              $$('.layout_sitepageintegration_profile_items').setStyle('display', 'none');
+              $$('.layout_sitepageintegration_profile_items')..hide();
             } 
             if($('global_content').getElement('.layout_sitepageintegration_profile_items')) {
 					    $('global_content').getElement('.layout_sitepageintegration_profile_items').style.display = 'none';

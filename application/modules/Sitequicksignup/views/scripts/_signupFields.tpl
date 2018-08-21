@@ -35,7 +35,7 @@ $this->headScript()->appendFile($this->layout()->staticBaseUrl . 'application/mo
 <script type="text/javascript">
     jQuery.noConflict();
 //<![CDATA[
-    window.addEvent('load', function () {
+    $(window).on('load', function () {
         if ($('username') && $('profile_address')) {
             $('profile_address').innerHTML = $('profile_address')
                     .innerHTML

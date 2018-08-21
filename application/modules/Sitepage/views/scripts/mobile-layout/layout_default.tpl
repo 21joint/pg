@@ -165,9 +165,9 @@
       }
   }
   /* Attach javascript to existing elements */
-  window.addEvent('load', function() {
+  $(window).on('load', function() {
     // Add info
-    $$('li.pagelayout_content_draggable').each(function(element) {
+    $$('li.pagelayout_content_draggable').each(function(__ind, element) {
       var elClass = element.get('class');
       var matches = elClass.match(/pagelayout_content_widget_([^ ]+)/i);
       if( !$type(matches) || !$type(matches[1])) return;
@@ -322,7 +322,7 @@
         }
       } else {
         otherElement.removeClass('active');
-        otherWrapper.setStyle('display', 'none');
+        otherWrapper.hide();
       }
     });
   }
@@ -339,7 +339,7 @@
   var saveChanges = function()
   {
     var data = [];
-    $$('.pagelayout_content_buildable').each(function(element) {
+    $$('.pagelayout_content_buildable').each(function(__ind, element) {
       var parent = element.getParent('.pagelayout_content_buildable');
 
       var elData = {

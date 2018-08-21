@@ -64,7 +64,7 @@ class Google_Client
   // definitions of services that are discovered.
   protected $services = array();
 
-  // Used to track authenticated state, can't discover middleware after doing authenticate()
+  // Used to track authenticated state, can't discover services after doing authenticate()
   private $authenticated = false;
 
   /**

@@ -85,7 +85,7 @@ CommentsComposer = new Class({
     var size = this.elements.textarea.getSize();
 
     // Modify textarea
-    this.elements.textarea.addClass('compose-textarea').setStyle('display', 'none');
+    this.elements.textarea.addClass('compose-textarea').hide();
 
     // Create container
     this.elements.container = new Element('div', {
@@ -730,7 +730,7 @@ CommentsComposer.Plugin.Interface = new Class({
     this.reset();
     var submitButtonEl = $(this.getComposer().options.submitElement);
     if( submitButtonEl ) {
-      submitButtonEl.setStyle('display', 'none');
+      submitButtonEl.hide();
     }
   },
 

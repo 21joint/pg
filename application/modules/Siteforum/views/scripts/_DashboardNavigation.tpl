@@ -105,7 +105,7 @@ $this->headLink()
         }
 
         var requestActive = false;
-        window.addEvent('load', function () {
+        $(window).on('load', function () {
             InitiateAction();
         });
 

@@ -16,13 +16,13 @@ var postComment = '<?php echo Engine_Api::_()->getApi("settings", "core")->getSe
 en4.nestedcomment.nestedcomments = {
     
     loadCommentReplies:function(comment_id) {
-       $$('.reply'+comment_id).setStyle('display', 'inline-block');
-       $('replies_show_'+comment_id).setStyle('display', 'none');
+       $('.reply'+comment_id).setStyle('display', 'inline-block');
+       $('replies_show_'+comment_id).hide();
        $('replies_hide_'+comment_id).setStyle('display', 'inline-block');
     },
     hideCommentReplies:function(comment_id) {
-       $$('.reply'+comment_id).setStyle('display', 'none');
-       $('replies_hide_'+comment_id).setStyle('display', 'none');
+       $('.reply'+comment_id).hide();
+       $('replies_hide_'+comment_id).hide();
        $('replies_show_'+comment_id).setStyle('display', 'inline-block');
     },
     showReplyEditForm:function(reply_id, is_enter_submit) {
@@ -657,7 +657,7 @@ en4.nestedcomment.nestedcomments = {
             },
             onComplete: function(e) {
                 try {
-                    var replyCount = $$('.seaocore_replies_options span')[0];
+                    var replyCount = $('.seaocore_replies_options span')[0];
                     var m = replyCount.get('html').match(/\d+/);
                     var newCount = (parseInt(m[0]) != 'NaN' && parseInt(m[0]) > 1 ? parseInt(m[0]) - 1 : 0);
                     replyCount.set('html', replyCount.get('html').replace(m[0], e.commentsCount));
@@ -958,7 +958,7 @@ en4.nestedcomment.ajaxTab = {
         params.requestParams.content_id = widget_id;
         var element;
 
-        $$('.tab_' + widget_id).each(function(el) {
+        $('.tab_' + widget_id).each(function(el) {
             if (el.get('tag') == 'li') {
                 element = el;
                 return;
@@ -979,7 +979,7 @@ en4.nestedcomment.ajaxTab = {
             if (widget_id) {
                 attachOnLoadEvent = true;
             } else {
-                $$('.tabs_parent').each(function(element) {
+                $('.tabs_parent').each(function(__ind, element) {
                     var addActiveTab = true;
                     element.getElements('ul > li').each(function(el) {
                         if (el.hasClass('active')) {
@@ -1019,7 +1019,7 @@ en4.nestedcomment.ajaxTab = {
 
     },
     sendReq: function(params) {
-        params.responseContainer.each(function(element) {
+        params.responseContainer.each(function(__ind, element) {
             element.empty();
             new Element('div', {
                 'class': 'nestedcomment_profile_loading_image'
@@ -1065,7 +1065,7 @@ function setCommentEmoticonsBoard(obj){
      a.toggleClass('');
      var  el=$('emoticons-comment-board_' + formEle.get('id') );
      var hasClose = el.hasClass("seaocore_comment_embox_closed");
-     $$('.seaocore_comment_embox').removeClass('seaocore_comment_embox_open').addClass('seaocore_comment_embox_closed'); 
+     $('.seaocore_comment_embox').removeClass('seaocore_comment_embox_open').addClass('seaocore_comment_embox_closed'); 
      if(hasClose){
           el.removeClass('seaocore_comment_embox_closed').addClass('seaocore_comment_embox_open');  
      } 
@@ -1079,7 +1079,7 @@ function addCommentEmotionIcon(iconCode, obj){
     content=content.replace(/(<br>)$/g, "");
     content =  content +' '+ iconCode; 
     composerObj.setContent(content);
-        $$('div.compose-content').each(function (el, index) {
+        $('div.compose-content').each(function (el, index) {
                 if (index == 0)
                 {
                     el.set('tabindex', '0');
@@ -1096,8 +1096,8 @@ function addCommentEmotionIcon(iconCode, obj){
   });   
 
 function hideCommentEmotionIconClickEvent(){
-    if(!hideCommentEmotionIconClickEnable && $$('.seaocore_comment_embox')) { 
-       $$('.seaocore_comment_embox').removeClass('seaocore_comment_embox_open').addClass('seaocore_comment_embox_closed'); 
+    if(!hideCommentEmotionIconClickEnable && $('.seaocore_comment_embox')) { 
+       $('.seaocore_comment_embox').removeClass('seaocore_comment_embox_open').addClass('seaocore_comment_embox_closed'); 
     }
     hideCommentEmotionIconClickEnable=false;
 }  
@@ -1129,7 +1129,7 @@ function setNestedCommentEmoticonsBoard(obj){
     // el.toggleClass('seaocore_comment_embox_closed');
      
      var hasClose = el.hasClass("seaocore_comment_embox_closed");
-     $$('.seaocore_comment_embox').removeClass('seaocore_comment_embox_open').addClass('seaocore_comment_embox_closed'); 
+     $('.seaocore_comment_embox').removeClass('seaocore_comment_embox_open').addClass('seaocore_comment_embox_closed'); 
      if(hasClose){
           el.removeClass('seaocore_comment_embox_closed').addClass('seaocore_comment_embox_open');  
      }
@@ -1147,7 +1147,7 @@ function addNestedCommentEmotionIcon(iconCode, obj){
         content =  content +' '+ iconCode; 
        composeInstanceComment.setContent(content);
        
-           $$('div.compose-content').each(function (el, index) {
+           $('div.compose-content').each(function (el, index) {
                 if (index == 0)
                 {
                     el.set('tabindex', '0');
@@ -1162,8 +1162,8 @@ function addNestedCommentEmotionIcon(iconCode, obj){
   });   
 
 function hideNestedCommentEmotionIconClickEvent(){
-    if(!hideNestedCommentEmotionIconClickEnable && $$('.seaocore_comment_embox')) {       
-       $$('.seaocore_comment_embox').removeClass('seaocore_comment_embox_open').addClass('seaocore_comment_embox_closed'); 
+    if(!hideNestedCommentEmotionIconClickEnable && $('.seaocore_comment_embox')) {       
+       $('.seaocore_comment_embox').removeClass('seaocore_comment_embox_open').addClass('seaocore_comment_embox_closed'); 
     }
     hideNestedCommentEmotionIconClickEnable=false;
     hideCommentEmotionIconClickEnable=false;
@@ -1234,4 +1234,3 @@ function showSortComments() {
 //        $('sorting_dropdown_menu').toggle();
     }
 
-  

@@ -52,55 +52,55 @@
 <script type="text/javascript">
 //<![CDATA[
 function updateFields() {
-  $$('div[id$=-wrapper][id^=file_]').hide();
-  $$('div[id$=-wrapper][id^=memcache_]').hide();
-  $$('div[id$=-wrapper][id^=xcache_]').hide();
-  $$('div[id$=-wrapper][id^=redis_]').hide();
-  $$('div[id$=-wrapper][id^=utilization_space]').hide();
-  $$('div[id$=-wrapper][id^=automatic_clear]').hide();
-  var enabled_browser = $$('input[name=disable_browse]:checked')[0].get('value');
-  var new_value = $$('input[name=type]:checked')[0].get('value');
+  $('div[id$=-wrapper][id^=file_]').hide();
+  $('div[id$=-wrapper][id^=memcache_]').hide();
+  $('div[id$=-wrapper][id^=xcache_]').hide();
+  $('div[id$=-wrapper][id^=redis_]').hide();
+  $('div[id$=-wrapper][id^=utilization_space]').hide();
+  $('div[id$=-wrapper][id^=automatic_clear]').hide();
+  var enabled_browser = $('input[name=disable_browse]:checked')[0].get('value');
+  var new_value = $('input[name=type]:checked')[0].get('value');
   if ('File' == new_value && enabled_browser == 1) {
-    $$('div[id$=-wrapper][id^=file_]').show();
-    $$('div[id$=-wrapper][id^=utilization_space]').show();
-    $$('div[id$=-wrapper][id^=automatic_clear]').show();
+    $('div[id$=-wrapper][id^=file_]').show();
+    $('div[id$=-wrapper][id^=utilization_space]').show();
+    $('div[id$=-wrapper][id^=automatic_clear]').show();
   } else if ('Memcached' == new_value && enabled_browser == 1)
-    $$('div[id$=-wrapper][id^=memcache_]').show();
+    $('div[id$=-wrapper][id^=memcache_]').show();
   else if ('Xcache' == new_value && enabled_browser == 1)
-    $$('div[id$=-wrapper][id^=xcache_]').show();
+    $('div[id$=-wrapper][id^=xcache_]').show();
   else if ('Engine_Cache_Backend_Redis' == new_value)
-    $$('div[id$=-wrapper][id^=redis_]').show();
+    $('div[id$=-wrapper][id^=redis_]').show();
 }
 function updatebrowserFields(){
-  $$('div[id$=-wrapper][id^=browser_lifetime]').hide();
-  $$('div[id$=-wrapper][id^=type]').hide();
-  $$('div[id$=-wrapper][id^=cache_id_prefix]').hide();
-var new_value = $$('input[name=disable_browse]:checked')[0].get('value');
+  $('div[id$=-wrapper][id^=browser_lifetime]').hide();
+  $('div[id$=-wrapper][id^=type]').hide();
+  $('div[id$=-wrapper][id^=cache_id_prefix]').hide();
+var new_value = $('input[name=disable_browse]:checked')[0].get('value');
 if(new_value == 1){
-  $$('div[id$=-wrapper][id^=cache_id_prefix]').show();
-  $$('div[id$=-wrapper][id^=browser_lifetime]').show();
-  $$('div[id$=-wrapper][id^=type]').show();
+  $('div[id$=-wrapper][id^=cache_id_prefix]').show();
+  $('div[id$=-wrapper][id^=browser_lifetime]').show();
+  $('div[id$=-wrapper][id^=type]').show();
 }
 updateFields();
 }
 function updatepartialFields() {
-  $$('div[id$=-wrapper][id^=partial_lifetime]').hide();
-  var new_value = $$('input[name=disable_partial]:checked')[0].get('value');
+  $('div[id$=-wrapper][id^=partial_lifetime]').hide();
+  var new_value = $('input[name=disable_partial]:checked')[0].get('value');
   if(new_value == 1){
-    $$('div[id$=-wrapper][id^=partial_lifetime]').show();
+    $('div[id$=-wrapper][id^=partial_lifetime]').show();
   }
 }
-window.addEvent('load', function(){
+$(window).on('load', function(){
   updatepartialFields();
   updatebrowserFields();
   updateFields();
   <?php if ($this->isPost): ?>
   if ($('message').get('text').length) {
       $('message').show();
-      $('message').inject( $$('div.form-elements')[0], 'before');
+      $('message').inject( $('div.form-elements')[0], 'before');
   }
   <?php endif; ?>
-   $$('input[name=type]:disabled').getParent('li').addClass('disabled');
+   $('input[name=type]:disabled').getParent('li').addClass('disabled');
 });
 
 function showlightbox(){

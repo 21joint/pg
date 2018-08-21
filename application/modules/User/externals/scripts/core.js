@@ -107,7 +107,7 @@
         } else if (event.target.getParent('.field-privacy-selector')) {
           return;
         } else {
-          $$('.field-privacy-selector').removeClass('active');
+          $('.field-privacy-selector').removeClass('active');
         }
       });
 
@@ -153,7 +153,7 @@
         selector.inject(wrapperEl);
         selector.addEvent('click', function (event) {
           var prevState = selector.hasClass('active');
-          $$('.field-privacy-selector').removeClass('active');
+          $('.field-privacy-selector').removeClass('active');
           if (!prevState) {
             selector.addClass('active');
           }

@@ -41,8 +41,8 @@
 
       this.makeMenu();
       this.makeBody();
-//    if($$('.compose-container')[0].getElement('.overTxtLabel')) 
-//    $$('.compose-container')[0].getElement('.overTxtLabel').innerHTML = en4.core.language.translate('Say something about this photo...');
+//    if($$('.compose-container').find('.overTxtLabel')) 
+//    $$('.compose-container').find('.overTxtLabel').innerHTML = en4.core.language.translate('Say something about this photo...');
       // Generate form
       var fullUrl = this.options.requestOptions.url;
       //var flashEnable = this.options.requestOptions.flashEnable;
@@ -180,11 +180,11 @@
 //          },
           onSelectSuccess: function (files) {
             if (self.options.fancyUploadOptions.limitFiles == 1) {
-              self.elements.formFancyFile.setStyle('display', 'none');
+              self.elements.formFancyFile.hide();
             }
 
             self.elements.formFancyList.style.display = 'inline-block';
-            self.getComposer().getMenu().setStyle('display', 'none');
+            self.getComposer().getMenu().hide();
             self.allowToSetInInput = false;
 
             files.each(function (file) {

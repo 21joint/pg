@@ -88,15 +88,15 @@
             }
             $('captivate_navigation_content').getElement('.headline').setStyle('display', 'block');
             $('captivate_navigation_content').getElement('.headline').innerHTML = $('global_wrapper').getElementById('global_content').getElement('.headline').innerHTML;
-            $('global_wrapper').getElementById('global_content').getElement('.headline').setStyle('display', 'none');
+            $('global_wrapper').getElementById('global_content').getElement('.headline').hide();
             if ($('global_wrapper').getElementById('global_content').getElement('.layout_top') && $('global_wrapper').getElementById('global_content').getElement('.layout_top').getElement('.layout_middle') && $('global_wrapper').getElementById('global_content').getElement('.layout_top').getElement('.layout_middle').getChildren() && $('global_wrapper').getElementById('global_content').getElement('.layout_top').getElement('.layout_middle').getChildren()[0]) {
-                $('global_wrapper').getElementById('global_content').getElement('.layout_top').getElement('.layout_middle').getChildren()[0].setStyle('display', 'none');
+                $('global_wrapper').getElementById('global_content').getElement('.layout_top').getElement('.layout_middle').getChildren()[0].hide();
             }
             if ($('global_wrapper').getElementById('global_content').getElement('.layout_sitemember_navigation_sitemember'))
-                $('global_wrapper').getElementById('global_content').getElement('.layout_sitemember_navigation_sitemember').setStyle('display', 'none');
+                $('global_wrapper').getElementById('global_content').getElement('.layout_sitemember_navigation_sitemember').hide();
 
             if ($('global_wrapper').getElementById('global_content').getElement('.layout_sitecrowdfunding_navigation'))
-                $('global_wrapper').getElementById('global_content').getElement('.layout_sitecrowdfunding_navigation').setStyle('display', 'none');
+                $('global_wrapper').getElementById('global_content').getElement('.layout_sitecrowdfunding_navigation').hide();
         } else {
             $('global_wrapper').setStyles({'padding-top':(parseInt($$('.layout_page_header').getHeight()[0]) -4)+'px'});
         }

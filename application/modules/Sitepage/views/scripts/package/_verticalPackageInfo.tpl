@@ -379,7 +379,7 @@ $action = $request->getActionName();
         var extra = (width * (numberOfItem - numberOfItemFloor) / numberOfItemFloor);
         width = width + extra;
         $('scroll-content').setStyle('width', (width * totalLsit) + 'px');
-        $('scroll-content').getElements('.contentblock_right_inner').each(function (el) {
+        $('scroll-content').getElements('.contentblock_right_inner').each(function (__ind, el) {
             el.setStyle('width', width - 1 + 'px');
 
         });

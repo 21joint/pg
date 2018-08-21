@@ -48,7 +48,7 @@
       this.makeActivator();
       this.getComposer().elements.body.addEvent('focus', function () {
         if ($('adv_post_container_tagging')) {
-          $('adv_post_container_tagging').setStyle('display', 'none');
+          $('adv_post_container_tagging').hide();
         }
       }.bind(this));
       return this;
@@ -124,7 +124,7 @@
       this.elements.taggingCountContainer = null;
       this.resetMdashMdot();
       if ($('adv_post_container_tagging')) {
-          $('adv_post_container_tagging').setStyle('display', 'none');
+          $('adv_post_container_tagging').hide();
       }
     },
     getSuggest: function () {

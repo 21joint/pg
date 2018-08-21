@@ -88,7 +88,7 @@
   <br />
   <button id="delete"><?php echo $this->translate('Delete Selected');?></button>
   <script type="text/javascript">
-    $$('.messages_list').enableLinks();
+    $('.messages_list').enableLinks();
   <!--
   $('delete').addEvent('click', function(){
     var selected_ids = new Array();

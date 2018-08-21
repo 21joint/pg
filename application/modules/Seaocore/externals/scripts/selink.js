@@ -141,9 +141,9 @@ SEAOLink = new Class({
 			if( action == 'empty' ) {
 				this.elements.body.empty();
 			} else if( action == 'hide' ) {
-				this.elements.body.getChildren().each(function(element){ element.setStyle('display', 'none')});
+				this.elements.body.getChildren().each(function(__ind, element){ element.hide()});
 			} else if( action == 'invisible' ) {
-				this.elements.body.getChildren().each(function(element){
+				this.elements.body.getChildren().each(function(__ind, element){
         element.setStyle('height', '0px').setStyle('visibility', 'hidden');
         });
 			}
@@ -537,8 +537,8 @@ SEAOLink = new Class({
     } else {
       delete this.params.thumb;
      // this.setFormInputValue('thumb', '');
-      this.elements.previewImages.setStyle('display', 'none');
-      if( this.elements.previewChoose ) this.elements.previewChoose.setStyle('display', 'none');
+      this.elements.previewImages.hide();
+      if( this.elements.previewChoose ) this.elements.previewChoose.hide();
     }
   },
 	
@@ -580,7 +580,7 @@ SEAOLink = new Class({
   },
 
   handleEditTitle : function(element) {
-    element.setStyle('display', 'none');
+    element.hide();
     var input = new Element('input', {
       'type' : 'text',
       'value' : element.get('text').trim(),
@@ -600,7 +600,7 @@ SEAOLink = new Class({
   },
 
   handleEditDescription : function(element) {
-    element.setStyle('display', 'none');
+    element.hide();
     var input = new Element('textarea', {
       'html' : element.get('text').trim(),
       'events' : {

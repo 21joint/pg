@@ -66,7 +66,7 @@ if ($this->showPhotosInJustifiedView == 1 && $this->paginator->getCurrentPageNum
                     //handle: 'span',
                     onComplete: function (e) {
                         var ids = [];
-                        $$('.thumbs_nocaptions > li').each(function (el) {
+                        $$('.thumbs_nocaptions > li').each(function (__ind, el) {
                             ids.push(el.get('id').match(/\d+/)[0]);
                         });
                         //console.log(ids);

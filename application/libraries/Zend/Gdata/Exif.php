@@ -27,7 +27,7 @@
 // require_once 'Zend/Gdata.php';
 
 /**
- * Service class for interacting with the middleware which use the EXIF extensions
+ * Service class for interacting with the services which use the EXIF extensions
  * @link http://code.google.com/apis/picasaweb/reference.html#exif_reference
  *
  * @category   Zend

@@ -107,12 +107,12 @@ var Siteusercoverphoto = new Class({
       var cover = self.get();
       this.active = true;
       //self.getButton().fireEvent('click');
-			if($$('.seaocore_profile_cover_head_section_inner'))
-			$$('.seaocore_profile_cover_head_section_inner').addClass('dnone');
-// 			if($$('.siteuser_main_thumb_photo'))
-// 			$$('.siteuser_main_thumb_photo').addClass('dnone');
-// 			if($$('.seaocore_profile_main_photo_options'))
-// 			$$('.seaocore_profile_main_photo_options').addClass('dnone');
+			if($('.seaocore_profile_cover_head_section_inner'))
+			$('.seaocore_profile_cover_head_section_inner').addClass('dnone');
+// 			if($('.siteuser_main_thumb_photo'))
+// 			$('.siteuser_main_thumb_photo').addClass('dnone');
+// 			if($('.seaocore_profile_main_photo_options'))
+// 			$('.seaocore_profile_main_photo_options').addClass('dnone');
       self.getButton().addClass('dnone');
       self.buttons.addClass('siteuser_cover_options_btm');
       self.getButton('save').removeClass('dnone');
@@ -156,8 +156,8 @@ var Siteusercoverphoto = new Class({
       self.block.getElement('.cover_tip_wrap').addClass('dnone');
       self.buttons.removeClass('siteuser_cover_options_btm');
       self.getButton().removeClass('dnone');
-			if($$('.seaocore_profile_cover_head_section_inner'))
-			$$('.seaocore_profile_cover_head_section_inner').removeClass('dnone');
+			if($('.seaocore_profile_cover_head_section_inner'))
+			$('.seaocore_profile_cover_head_section_inner').removeClass('dnone');
 // 			if($$('.siteuser_main_thumb_photo'))
 // 			$$('.siteuser_main_thumb_photo').removeClass('dnone');
 // 			if($$('.seaocore_profile_main_photo_options'))
@@ -190,8 +190,8 @@ var Siteusercoverphoto = new Class({
 					'defaultCover':defaultCover
         },
         onSuccess:function (response) {
-					if($$('.seaocore_profile_cover_head_section_inner'))
-					$$('.seaocore_profile_cover_head_section_inner').removeClass('dnone');
+					if($('.seaocore_profile_cover_head_section_inner'))
+					$('.seaocore_profile_cover_head_section_inner').removeClass('dnone');
 // 					if($$('.siteuser_main_thumb_photo'))
 // 					$$('.siteuser_main_thumb_photo').removeClass('dnone');
 // 					if($$('.seaocore_profile_main_photo_options'))
@@ -287,7 +287,7 @@ var Siteusermainphoto = new Class({
             SmoothboxSEAO.bind($('siteusercover_middle_content'));
         self.attach();
         en4.core.runonce.trigger();
-        self.block.setStyle('display', 'none');
+        self.block.hide();
         Smoothbox.close();
     }  
 });

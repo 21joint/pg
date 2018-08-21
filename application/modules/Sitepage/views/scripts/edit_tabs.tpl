@@ -272,7 +272,7 @@ var element = $(event.target);
 						
 						var e4 = $('page_url_msg-wrapper');
 						if($('page_url_msg-wrapper'))
-							$('page_url_msg-wrapper').setStyle('display', 'none');
+							$('page_url_msg-wrapper').hide();
 							
 						if(typeof cat != 'undefined' && typeof subcatid != 'undefined' && typeof subcatname != 'undefined' && typeof subsubcatid != 'undefined') {
 							subcategory(cat, subcatid, subcatname,subsubcatid);

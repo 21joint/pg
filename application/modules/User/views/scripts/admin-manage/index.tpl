@@ -92,7 +92,7 @@ function loginAsUser(id) {
 }
 
 <?php if( $this->openUser ): ?>
-window.addEvent('load', function() {
+$(window).on('load', function() {
   $$('#multimodify_form .admin_table_options a').each(function(el) {
     if( -1 < el.get('href').indexOf('/edit/') ) {
       el.click();

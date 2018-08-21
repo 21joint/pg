@@ -139,7 +139,7 @@ if ($this->TabActive != "edit"):
             }
 
             var requestActive = false;
-            window.addEvent('load', function () {
+            $(window).on('load', function () {
                 InitiateAction();
             });
 

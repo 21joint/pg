@@ -71,7 +71,7 @@ switch ($this->viewFormat) {
         }
         this.addBoldClass = function ()
         {
-            $$('.seaocore_tab_icon_<?php echo $this->identity ?>').each(function (el) {
+            $$('.seaocore_tab_icon_<?php echo $this->identity ?>').each(function (__ind, el) {
                 el.removeClass('active');
             });
             $(this.selectedViewFormat).addClass('active');

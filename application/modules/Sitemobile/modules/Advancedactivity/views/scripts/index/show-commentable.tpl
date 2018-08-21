@@ -37,12 +37,12 @@
 <script type="text/javascript">
 //<![CDATA[
 var toggleFacebookShareCheckbox = function(){
-    $$('span.composer_facebook_toggle').toggleClass('composer_facebook_toggle_active');
-    $$('input[name=post_to_facebook]').set('checked', $$('span.composer_facebook_toggle')[0].hasClass('composer_facebook_toggle_active'));
+    $('span.composer_facebook_toggle').toggleClass('composer_facebook_toggle_active');
+    $('input[name=post_to_facebook]').set('checked', $('span.composer_facebook_toggle')[0].hasClass('composer_facebook_toggle_active'));
 }
 var toggleTwitterShareCheckbox = function(){
-    $$('span.composer_twitter_toggle').toggleClass('composer_twitter_toggle_active');
-    $$('input[name=post_to_twitter]').set('checked', $$('span.composer_twitter_toggle')[0].hasClass('composer_twitter_toggle_active'));
+    $('span.composer_twitter_toggle').toggleClass('composer_twitter_toggle_active');
+    $('input[name=post_to_twitter]').set('checked', $('span.composer_twitter_toggle')[0].hasClass('composer_twitter_toggle_active'));
 }
 //]]>
 </script>

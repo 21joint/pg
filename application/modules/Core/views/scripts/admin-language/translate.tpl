@@ -16,7 +16,7 @@
 <script type="text/javascript">
   google.load("language", "1");
   window.addEvent('domready', function() {
-    google.language.getBranding($$('.global_form')[0].getElement('h3'));//'branding');
+    google.language.getBranding($$('.global_form').find('h3'));//'branding');
   });
 </script>
 <style type="text/css">
@@ -76,7 +76,7 @@
 <?php if( $this->values ): ?>
 
   <script type="text/javascript">
-    window.addEvent('load', function() {
+    $(window).on('load', function() {
       
     });
   </script>

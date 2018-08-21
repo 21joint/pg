@@ -99,7 +99,7 @@
   </div>
 
 <script type="text/javascript">
-  $$('.messages_list').enableLinks();
+  $('.messages_list').enableLinks();
 </script>
 <?php endif; ?>
 

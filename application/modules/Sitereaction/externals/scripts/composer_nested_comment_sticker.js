@@ -61,7 +61,7 @@
       this.makeMenu();
       this.makeBody();
       this.elements.activator = activator;
-      this.elements.activator.setStyle('display', 'none');
+      this.elements.activator.hide();
       // Generate form
       //this.elements.body
 

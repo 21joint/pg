@@ -83,9 +83,9 @@ var openLightBoxAlbum = function(imagepath, url) {
   scrollPosition['top'] = window.getScrollTop();
   scrollPosition['left'] = window.getScrollLeft();
 
-  if($$('.layout_page_sitealbum_album_view'))
+  if($('.layout_page_sitealbum_album_view'))
     { 
-      $$('.layout_page_sitealbum_album_view').each(function(ele,index) { 
+      $('.layout_page_sitealbum_album_view').each(function(ele,index) {
        document.getElementById('album_light').inject(ele,'top'); 
       })
     } 
@@ -100,7 +100,7 @@ var openLightBoxAlbum = function(imagepath, url) {
     remove_extra = remove_extra + 289;
     contentPhotoSize['width'] = $("photo_lightbox_left").getCoordinates().width - remove_extra;
     document.getElementById('media_image_div_sitealbum').innerHTML = "&nbsp;<img class='lightbox_photo' src=" + imagepath + " style='max-width: " + contentPhotoSize['width'] + "px; max-height: " + contentPhotoSize['height'] + "px;'  />";
-    $$(".lightbox_btm_bl").each(function(el) {
+    $(".lightbox_btm_bl").each(function(el) {
       el.innerHTML = "<center><img src='" + loading_image_path + "' style='height:30px;' /> </center>";
     });
   }
@@ -156,7 +156,7 @@ var getSitealbumPhoto = function(url, isajax, imagepath) {
   } else {
     window.location.hash = photoUrl;
   }
-  $$(".lightbox_btm_bl").each(function(el) {
+  $(".lightbox_btm_bl").each(function(el) {
     if (isajax)
       el.innerHTML = "<center><img src='" + en4.core.staticBaseUrl + "application/modules/Seaocore/externals/images/icons/loader-large.gif' style='height:30px;' /> </center>";
   });
@@ -186,7 +186,7 @@ var getSitealbumPhoto = function(url, isajax, imagepath) {
   }), true);
 },
         setHtmlScroll = function(cssCode) {
-  $$('html').setStyle('overflow', cssCode);
+  $('html').setStyle('overflow', cssCode);
 
 },
 // Close the All Photo Contener
@@ -501,7 +501,7 @@ function saveeditPhotoDescriptionSA(photo_id)
         str_temp = en4.core.language.translate('Add a caption');
       document.getElementById('sitealbum_description').innerHTML = str_temp.replace(/\n/gi, "<br /> \n");
       showeditDescriptionSitealbum();
-      var descEls = $$('.lightbox_photo_description');
+      var descEls = $('.lightbox_photo_description');
       if (descEls.length > 0) {
         descEls[0].enableLinks();
       }
@@ -558,4 +558,3 @@ var saveeditPhotoTitleSA = function(photo_id, resourcetype)
     "force": true
   });
 };
-  

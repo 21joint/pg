@@ -27,7 +27,7 @@
 
 <script type="text/javascript">
 <!--
-window.addEvent('load', function(){
+$(window).on('load', function(){
   $$('#blockedUserList ul')[0].inject($('blockList-element'));
 });
 // -->

@@ -472,7 +472,7 @@ Dependencies:
 		_show: function(fast){
 			if (!this.image.retrieve('morph')){
 				var options =  this.options.overlap ? {'link': 'cancel'} : {'link': 'chain'};
-				$$(this.a, this.b).set('morph', Object.merge(options, {'duration': this.options.duration, 'onStart': this._start.bind(this), 'onComplete': this._complete.bind(this), 'transition': this.options.transition}));
+				$(this.a, this.b).set('morph', Object.merge(options, {'duration': this.options.duration, 'onStart': this._start.bind(this), 'onComplete': this._complete.bind(this), 'transition': this.options.transition}));
 			}
 			var hidden = this.classes.get('images', (this.direction == 'left' ? 'next' 
 				: 'prev')),

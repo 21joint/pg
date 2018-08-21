@@ -32,7 +32,7 @@ function updateFields() {
   else if ('Engine_Cache_Backend_Redis' == new_value)
     $$('div[id$=-wrapper][id^=redis_]').show();
 }
-window.addEvent('load', function(){
+$(window).on('load', function(){
   updateFields();
   <?php if ($this->isPost): ?>
   if ($('message').get('text').length) {

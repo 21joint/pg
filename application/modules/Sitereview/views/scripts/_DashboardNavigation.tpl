@@ -341,7 +341,7 @@ include_once APPLICATION_PATH . '/application/modules/Sitereview/views/scripts/n
 	}
 
 var requestActive = false;
-window.addEvent('load', function() {
+$(window).on('load', function() {
   InitiateAction();
 });
 

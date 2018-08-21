@@ -81,7 +81,7 @@
     en4.user.friends.deleteList(list_id);
   }
   en4.core.runonce.add(function(){
-    $$('.profile_friends_lists input').each(function(element) { new OverText(element); });
+    $$('.profile_friends_lists input').each(function(__ind, element) { new OverText(element); });
     
     <?php if( !$this->renderOne ): ?>
     var anchor = $('user_profile_friends_following').getParent();
@@ -115,7 +115,7 @@
     });
     <?php endif; ?>
 
-    $$('.friends_lists_menu_input input').each(function(element){
+    $$('.friends_lists_menu_input input').each(function(__ind, element){
       element.addEvent('blur', function() {
         this.getParents('.drop_down_frame')[0].style.visibility = "hidden";
       });

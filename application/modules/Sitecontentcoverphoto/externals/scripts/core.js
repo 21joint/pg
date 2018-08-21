@@ -125,8 +125,8 @@ var Sitecontentcoverphoto = new Class({
             var self = document.sitecontentCoverPhoto;
             var cover = self.get();
             this.active = true;
-            if ($$('.seaocore_profile_cover_head_section_inner'))
-                $$('.seaocore_profile_cover_head_section_inner').addClass('dnone');
+            if ($('.seaocore_profile_cover_head_section_inner'))
+                $('.seaocore_profile_cover_head_section_inner').addClass('dnone');
 
             self.getButton().addClass('dnone');
             self.buttons.addClass('sitecontent_cover_options_btm');
@@ -172,8 +172,8 @@ var Sitecontentcoverphoto = new Class({
             self.block.getElement('.cover_tip_wrap').addClass('dnone');
             self.buttons.removeClass('sitecontent_cover_options_btm');
             self.getButton().removeClass('dnone');
-            if ($$('.seaocore_profile_cover_head_section_inner'))
-                $$('.seaocore_profile_cover_head_section_inner').removeClass('dnone');
+            if ($('.seaocore_profile_cover_head_section_inner'))
+                $('.seaocore_profile_cover_head_section_inner').removeClass('dnone');
 
             self.get().removeClass('draggable');
             self.reposition.drag = null;
@@ -199,8 +199,8 @@ var Sitecontentcoverphoto = new Class({
                     'defaultCover': defaultCover
                 },
                 onSuccess: function (response) {
-                    if ($$('.seaocore_profile_cover_head_section_inner'))
-                        $$('.seaocore_profile_cover_head_section_inner').removeClass('dnone');
+                    if ($('.seaocore_profile_cover_head_section_inner'))
+                        $('.seaocore_profile_cover_head_section_inner').removeClass('dnone');
 
                     current.stop();
                     if (self.options.contentFullWidth == 1) {
@@ -309,7 +309,7 @@ var Sitecontentmainphoto = new Class({
             SmoothboxSEAO.bind($('sitecontentcover_middle_content'));
         self.attach();
         en4.core.runonce.trigger();
-        self.block.setStyle('display', 'none');
+        self.block.hide();
         Smoothbox.close();
     }
 });

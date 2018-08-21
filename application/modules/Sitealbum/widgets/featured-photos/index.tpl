@@ -36,7 +36,7 @@ $this->headLink()->appendStylesheet($this->layout()->staticBaseUrl . 'applicatio
 			}
     };
     
-    window.addEvent('load',function(){
+    $(window).on('load',function(){
       show.periodical(durationOfRotateImage);
     });
 		

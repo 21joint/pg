@@ -19,10 +19,10 @@ en4.core.runonce.add(function() {
   }).inject(document.body).destroy();
   
   // ADD TO PLAYLIST
-  $$('a.music_add_to_playlist').addEvent('click', function(){
+  $('a.music_add_to_playlist').addEvent('click', function(){
     $('song_id').value = this.id.substring(5);
     Smoothbox.open( $('music_add_to_playlist'), {mode: 'Inline'} );
-    var pl = $$('#TB_ajaxContent > div')[0];
+    var pl = $('#TB_ajaxContent > div')[0];
     pl.show();
   });
   // PLAY ON MY PROFILE
@@ -33,7 +33,7 @@ en4.core.runonce.add(function() {
   en4.sitepagemusic.player.enablePlayers();
 });
   function showlink() {
-  	$$('a.sitepagemusic_set_profile_playlist').addEvent('click', function() {
+  	$('a.sitepagemusic_set_profile_playlist').addEvent('click', function() {
   	var url_part    = this.href.split('/');
     var playlist_id = 0;
     $each(url_part, function(val, i) {
@@ -49,9 +49,9 @@ en4.core.runonce.add(function() {
         'format': 'json'
       },
       onSuccess: function(json){
-        var link = $$('#sitepagemusic-item-' + json.playlist_id + ' a.sitepagemusic_set_profile_playlist')[0];
+        var link = $('#sitepagemusic-item-' + json.playlist_id + ' a.sitepagemusic_set_profile_playlist')[0];
         if (json && json.success) {
-          $$('a.sitepagemusic_set_profile_playlist')
+          $('a.sitepagemusic_set_profile_playlist')
             .set('text', en4.core.language.translate('Play on Page Profile'))
             .addClass('icon_sitepagemusic_playonprofile')
             .removeClass('icon_sitepagemusic_disableonprofile')
@@ -121,7 +121,7 @@ en4.sitepagemusic.player = {
 
   enablePlayers : function() {
     // enable players automatically?
-    var players = $$('.music_player_wrapper');
+    var players = $('.music_player_wrapper');
     //if( players.length > 0 ) {
       // Initialize sound manager?
       en4.sitepagemusic.player.getSoundManager();
@@ -172,7 +172,7 @@ en4.sitepagemusic.player = {
   },
 
   _writeCookies : function() {
-    var tmpUri = new URI($$('head base[href]')[0]);
+    var tmpUri = new URI($('head base[href]')[0]);
     Cookie.write('en4_music_volume', this.volume, {
       duration: 7, // days
       path: tmpUri.get('directory'),

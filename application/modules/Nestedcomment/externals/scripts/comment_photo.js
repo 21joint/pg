@@ -115,7 +115,7 @@ var commentPhoto = new Class({
         onLoad : function() {
           self.elements.formFancyContainer.setStyle('display', '');
           self.elements.formFancyContainer.setStyle('visibility', 'visible');
-          //self.elements.form.setStyle('display', 'none');
+          //self.elements.form..hide();
           self.elements.form.destroy();
           this.target.addEvents({
                   click: function() {
@@ -138,14 +138,14 @@ var commentPhoto = new Class({
             switch (error) {
                 case 'flash':
                    self.options.requestOptions.flashEnable = false;
-                   $$('.swiff-uploader-box').destroy();
+                   $('.swiff-uploader-box').destroy();
                   // break;
             }
         },
         onSelectSuccess : function() {
           self.makeLoading('invisible');
-          self.getForm().getElements('.compose-activator').each(function(element) {
-            element.setStyle('display', 'none');
+          self.getForm().getElements('.compose-activator').each(function(__ind, element) {
+            element.hide();
           });
           //$('demo-status-overall').setStyle('display', '');
           this.start();
@@ -188,8 +188,8 @@ var commentPhoto = new Class({
     // Submit and then destroy form
     this.elements.form.submit();
     this.elements.form.destroy();
-    this.getForm().getElements('.compose-activator').each(function(element) {
-      element.setStyle('display', 'none');
+    this.getForm().getElements('.compose-activator').each(function(__ind, element) {
+      element.hide();
     });
     // Start loading screen
     this.makeLoading();
@@ -289,9 +289,9 @@ var commentPhoto = new Class({
       if( action == 'empty' ) {
         this.elements.body.empty();
       } else if( action == 'hide' ) {
-        this.elements.body.getChildren().each(function(element){ element.setStyle('display', 'none')});
+        this.elements.body.getChildren().each(function(__ind, element){ element.hide()});
       } else if( action == 'invisible' ) {
-        this.elements.body.getChildren().each(function(element){ 
+        this.elements.body.getChildren().each(function(__ind, element){ 
             if(element.get('id') != 'nested_preview_image') {
               element.setStyle('height', '0px').setStyle('visibility', 'hidden');
             } else {
@@ -347,7 +347,7 @@ var commentPhoto = new Class({
             $('type').destroy();
             if($('src'))
             $('src').destroy();
-            this.getForm().getElements('.compose-activator').each(function(element) {
+            this.getForm().getElements('.compose-activator').each(function(__ind, element) {
               element.setStyle('display', '');
             });
             this.getPhotoContent(this.elements.textarea, {requestOptions : {

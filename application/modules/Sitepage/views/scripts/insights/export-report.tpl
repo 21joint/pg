@@ -100,11 +100,11 @@ var showMarkerInDate="<?php echo $this->showMarkerInDate ?>";
     if(formElement.value == 'Monthly') {
       $('start_group').setStyle('display', 'block');
       $('end_group').setStyle('display', 'block');
-      $('time_group2').setStyle('display', 'none');
+      $('time_group2').hide();
     }
     else if(formElement.value == 'Daily') {
-      $('start_group').setStyle('display', 'none');
-      $('end_group').setStyle('display', 'none');
+      $('start_group').hide();
+      $('end_group').hide();
       $('time_group2').setStyle('display', 'block');
     }
   }

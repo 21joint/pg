@@ -25,7 +25,7 @@ $this->videoPlayerJs();
   var CommentLikesTooltips;
   en4.core.runonce.add(function() {
     // Add hover event to get likes
-    $$('.comments_comment_likes').addEvent('mouseover', function(event) {
+    $('.comments_comment_likes').on('mouseover', function(event) {
       var el = $(event.target);
       if( !el.retrieve('tip-loaded', false) ) {
         el.store('tip-loaded', true);

@@ -252,7 +252,7 @@ en4.sitealbum.ajaxTab = {
         params.requestParams.content_id = widget_id;
         var element;
 
-        $$('.tab_' + widget_id).each(function (el) {
+        $('.tab_' + widget_id).each(function (__ind, el) {
             if (el.get('tag') == 'li') {
                 element = el;
                 return;
@@ -273,15 +273,15 @@ en4.sitealbum.ajaxTab = {
             if (tab_content_id_sitestore == widget_id) {
                 attachOnLoadEvent = true;
             } else {
-                $$('.tabs_parent').each(function (element) {
+                $('.tabs_parent').each(function (__ind, element) {
                     var addActiveTab = true;
-                    element.getElements('ul > li').each(function (el) {
+                    element.getElements('ul > li').each(function (__ind, el) {
                         if (el.hasClass('active')) {
                             addActiveTab = false;
                             return;
                         }
                     });
-                    element.getElementById('main_tabs').getElements('li:first-child').each(function (el) {
+                    element.getElementById('main_tabs').getElements('li:first-child').each(function (__ind, el) {
                         if (el.getParent('div') && el.getParent('div').hasClass('tab_pulldown_contents'))
                             return;
                         el.get('class').split(' ').each(function (className) {

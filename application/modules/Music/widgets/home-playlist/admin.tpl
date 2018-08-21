@@ -37,7 +37,7 @@
 
         // Has a playlist selected already
         if( 'playlist_id' in params && params.playlist_id ) {
-          $('music-home-playlist-search').setStyle('display', 'none');
+          $('music-home-playlist-search').hide();
           selectPlaylist(params.playlist_id);
         } else {
           
@@ -78,9 +78,9 @@
       var deselectPlaylist = function() {
         $('playlist_id').set('value', '');
         $('music-home-playlist-search').setStyle('display', '');
-        $('music-home-playlist-search-results').setStyle('display', 'none');
-        $('music-home-playlist-form').setStyle('display', 'none');
-        $('music-home-playlist-selected').setStyle('display', 'none');
+        $('music-home-playlist-search-results').hide();
+        $('music-home-playlist-form').hide();
+        $('music-home-playlist-selected').hide();
       }
       
       var selectPlaylist = function(playlist_id, info) {
@@ -90,8 +90,8 @@
         }
         $('playlist_id').set('value', playlist_id);
         $('title').set('value', info.title);
-        $('music-home-playlist-search').setStyle('display', 'none');
-        $('music-home-playlist-search-results').setStyle('display', 'none');
+        $('music-home-playlist-search').hide();
+        $('music-home-playlist-search-results').hide();
         $('music-home-playlist-form').setStyle('display', '');
         $('music-home-playlist-selected').setStyle('display', '');
 

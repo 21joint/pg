@@ -233,7 +233,7 @@ function getCommonFBElements() {
 //  if ($$('.adv_post_add_user')) 
 //    $$('.adv_post_add_user').setStyle('display', 'none');
 //  if ($('emoticons-button'))
-//    $('emoticons-button').setStyle('display', 'none'); 
+//    $('emoticons-button').setStyle('display', 'none');
 //  //  if ($('composer_socialengine_toggle')) {
 //  //    $('composer_socialengine_toggle').style.display = 'block';
 //  //  }
@@ -255,7 +255,7 @@ function getCommonFBElements() {
 //  if ($$('.adv_post_container_tagging'))
 //    $$('.adv_post_container_tagging').setStyle('display', 'none');
 //  if ($('advancedactivity_friend_list'))
-//    $('advancedactivity_friend_list').setStyle('display', 'none'); 
+//    $('advancedactivity_friend_list').setStyle('display', 'none');
 //  //SHOWING THE FACEBOOK PUBLISH CHECKBOX AND ICON ACTIVE WHEN THIS TAB IS CLICKED....
 //  if ($('compose-facebook-form-input')) {
 //    $('compose-facebook-form-input').set('checked', 1);
@@ -680,7 +680,7 @@ var showHideCommentbox = function (thisobj, post_id, event) {
       thisobj.value = 'Write a comment...';
       $('FBCommentonPost_submit-' + post_id).addClass('aaf_color_light');
       $('FB_activity-comment-submit-' + post_id).style.display = 'none';
-      $('fbcomments_author_photo-' + post_id).setStyle('display', 'none');
+      $('fbcomments_author_photo-' + post_id).hide();
     }).delay(50);
   }
 

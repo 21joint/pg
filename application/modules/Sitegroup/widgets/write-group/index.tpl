@@ -81,7 +81,7 @@
 <?php } ?>
 
 <script language="JavaScript">
-window.addEvent('load',function() {
+$(window).on('load',function() {
         
    <?php if(empty($this->userGroupstext)): ?>
 			

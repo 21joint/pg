@@ -20,7 +20,7 @@
   </div>
 </div>
 <script type="text/javascript">
-  window.addEvent('load', function(){
+  $(window).on('load', function(){
     var url = '<?php echo $this->transactionUrl ?>';
     var data = <?php echo Zend_Json::encode($this->transactionData) ?>;
     var request = new Request.Post({

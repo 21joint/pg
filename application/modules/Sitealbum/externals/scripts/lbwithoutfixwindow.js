@@ -71,13 +71,13 @@ var photopaginationSitealbum = function(url,isajax)
   else{
     window.location.hash =photoUrl;
   }
-  $$(".photo_lightbox_photo_detail").each(function(el){ 
+  $(".photo_lightbox_photo_detail").each(function(el){ 
     el.empty();  
   });    
-  $$(".photo_lightbox_content").each(function(el){ 
+  $(".photo_lightbox_content").each(function(el){ 
     el.empty();  
   });
-  $$(".photo_lightbox_user_right_options").each(function(el){
+  $(".photo_lightbox_user_right_options").each(function(el){
     el.empty();
   });
   if(isajax){
@@ -109,12 +109,12 @@ var photopaginationSitealbum = function(url,isajax)
 };
 
 function setHtmlScroll(cssCode) {
-  $$('html').setStyle('overflow',cssCode);
+  $('html').setStyle('overflow',cssCode);
     
 }
 
 function setImageScrollAlbum(cssCode) {
-  $$('.photo_lightbox_white_content_wrapper').setStyle('overflow',cssCode);
+  $('.photo_lightbox_white_content_wrapper').setStyle('overflow',cssCode);
 
 }
   

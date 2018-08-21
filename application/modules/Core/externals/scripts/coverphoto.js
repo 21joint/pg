@@ -90,8 +90,8 @@ var Coverphoto = new Class({
       self.buttons.addClass('cover_photo_options');
       self.getButton('save').removeClass('is_hidden');
       self.block.getElement('.cover_tip_wrap').removeClass('is_hidden');
-      if($$('.cover_photo_profile_options')) {
-        $$('.cover_photo_profile_options').addClass('is_hidden');
+      if($('.cover_photo_profile_options')) {
+        $('.cover_photo_profile_options').addClass('is_hidden');
       }
       cover.addClass('draggable');
       var content = cover.getParent();
@@ -120,8 +120,8 @@ var Coverphoto = new Class({
       self.block.getElement('.cover_tip_wrap').addClass('is_hidden');
       self.buttons.removeClass('cover_photo_options');
       self.getButton().removeClass('is_hidden');
-      if($$('.cover_photo_profile_options')) {
-        $$('.cover_photo_profile_options').removeClass('is_hidden');
+      if($('.cover_photo_profile_options')) {
+        $('.cover_photo_profile_options').removeClass('is_hidden');
       }
       self.getCover().removeClass('draggable');
       self.reposition.drag = null;
@@ -142,8 +142,8 @@ var Coverphoto = new Class({
           'position' : self.options.position
         },
         onSuccess:function () {
-          if($$('.cover_photo_profile_options')) {
-            $$('.cover_photo_profile_options').removeClass('is_hidden');
+          if($('.cover_photo_profile_options')) {
+            $('.cover_photo_profile_options').removeClass('is_hidden');
           }
           current.stop();
         }

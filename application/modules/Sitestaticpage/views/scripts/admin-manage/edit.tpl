@@ -21,7 +21,7 @@
 
   window.addEvent('domready', function() {
     var e4 = $('page_url_msg-wrapper');
-    $('page_url_msg-wrapper').setStyle('display', 'none');
+    $('page_url_msg-wrapper').hide();
     var pageurlcontainer = $('page_url-element');
     var language = '<?php echo $this->string()->escapeJavascript("Check Availability") ?>';
     var newdiv = document.createElement('div');
@@ -102,7 +102,7 @@
     }));
   }
   
-  window.addEvent('load', function()
+  $(window).on('load', function()
   {
    $('title').addEvent('keyup', function()
     {
@@ -117,7 +117,7 @@
     }
   });
   
-  window.addEvent('load', function()
+  $(window).on('load', function()
 {
 		$('menu-3').addEvent('click', function(){
 				$('link_title-wrapper').setStyle('display', ($(this).get('value') == '3'?'none':'block'));
@@ -136,7 +136,7 @@
 		});
 });
 
-  window.addEvent('load', function()
+  $(window).on('load', function()
   {
     $('short_url-1').addEvent('click', function(){
       if($(this).get('value') == '1')
@@ -239,7 +239,7 @@
 		});
   });
   
-   window.addEvent('load',function()
+   $(window).on('load',function()
   {
     $('type').addEvent('change', function(){
     if($('type').value == 1)
@@ -339,13 +339,13 @@ foreach ($this->languageData as $value):
   }
   ?>
 	if (show == 1) {
-		$('body' + '<?php echo $value; ?>' + '-wrapper').setStyle('display', 'none');
+		$('body' + '<?php echo $value; ?>' + '-wrapper').hide();
 		$('multiLanguageLinkShow').setStyle('display', 'block');
-		$('multiLanguageLinkHide').setStyle('display', 'none');
+		$('multiLanguageLinkHide').hide();
 	}
 	else {
 		$('body' + '<?php echo $value; ?>' + '-wrapper').setStyle('display', 'block');
-		$('multiLanguageLinkShow').setStyle('display', 'none');
+		$('multiLanguageLinkShow').hide();
 		$('multiLanguageLinkHide').setStyle('display', 'block');
 	}
 <?php endforeach; ?>

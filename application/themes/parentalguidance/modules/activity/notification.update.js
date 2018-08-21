@@ -140,7 +140,7 @@ en4.activity = {
         $(this).attr('class', '');
       });
     }
-    //$('core_menu_mini_menu_updates').setStyle('display', 'none');
+    //$('core_menu_mini_menu_updates')..hide();
   },
 
   updateNotifications: function () {
@@ -240,7 +240,7 @@ en4.activity = {
           }, params),
           method: 'POST',
           onRequest: function () {
-            editComposeInstance.getForm().getElementById('fieldset-buttons').setStyle('display', 'none');
+            editComposeInstance.getForm().getElementById('fieldset-buttons').hide();
             en4.core.loader.inject(editComposeInstance.getForm().getElementById('buttons-wrapper'));
           },
           onSuccess: function () {
@@ -263,7 +263,7 @@ en4.activity = {
     $('activity-item-' + action_id).getElement('.feed-edit-content-cancel').addEvent('click', function (event) {
       var el = $(event.target);
       var parent = el.getParent('.activity-item');
-      parent.getElement('.feed_item_body_edit_content').setStyle('display', 'none');
+      parent.getElement('.feed_item_body_edit_content').hide();
       parent.getElement('.feed_item_body_content').setStyle('display', 'block');
     });
   },
@@ -275,7 +275,7 @@ en4.activity = {
     $('activity-item-' + action_id).getElement('.feed_item_option_edit').addEvent('click', function (event) {
       var el = $(event.target);
       var parent = el.getParent('.activity-item');
-      parent.getElement('.feed_item_body_content').setStyle('display', 'none');
+      parent.getElement('.feed_item_body_content').hide();
       parent.getElement('.feed_item_body_edit_content').setStyle('display', 'block');
       self.editComposers[action_id].focus();
       self.editComposers[action_id].placeCaretAtEnd();
@@ -543,7 +543,7 @@ ActivityUpdateHandler = new Class({
     req.addEvent('complete', function () {
       (function () {
         if (this.options.showImmediately && $('feed-update').getChildren().length > 0) {
-          $('feed-update').setStyle('display', 'none');
+          $('feed-update').hide();
           $('feed-update').empty();
           this.getFeedUpdate(this.options.next_id);
         }

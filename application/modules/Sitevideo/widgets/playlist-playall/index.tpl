@@ -233,7 +233,7 @@ $this->headScript()
             video.url = video.url.replace("https://", "//"); 
         vText = (player.totalVideos == 1) ? " Video" : " Videos";
             jq("#video_counter").html((player.currentPosition + 1) + "/" + player.totalVideos + vText);
-            $$('ul.playlist_details > li').each(function (el) {
+            $$('ul.playlist_details > li').each(function (__ind, el) {
                 el.removeClass('active');
             });
             viewCount = video.view_count == 1 ? video.view_count + ' view' : video.view_count + ' views';

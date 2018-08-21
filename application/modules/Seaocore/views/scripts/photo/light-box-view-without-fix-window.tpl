@@ -378,7 +378,7 @@ Comment'); ?>" ><?php echo $this->translate('Comments'); ?></a>
   if (window.parent.defaultLoad)
     window.parent.defaultLoad = false;
   en4.core.runonce.add(function() {
-    var descEls = $$('.albums_viewmedia_info_caption');
+    var descEls = $('.albums_viewmedia_info_caption');
     if (descEls.length > 0) {
       descEls[0].enableLinks();
     }

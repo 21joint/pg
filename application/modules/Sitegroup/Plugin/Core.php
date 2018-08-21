@@ -1831,7 +1831,7 @@ class Sitegroup_Plugin_Core extends Zend_Controller_Plugin_Abstract {
 					    $('global_content').getElement('.layout_siteevent_contenttype_events').style.display = 'none';
             }
             if($('global_content').getElement('.layout_sitegroupintegration_profile_items')) {					    
-              $$('.layout_sitegroupintegration_profile_items').setStyle('display', 'none');
+              $$('.layout_sitegroupintegration_profile_items')..hide();
             } 
             if($('global_content').getElement('.layout_sitegroupintegration_profile_items')) {
 					    $('global_content').getElement('.layout_sitegroupintegration_profile_items').style.display = 'none';

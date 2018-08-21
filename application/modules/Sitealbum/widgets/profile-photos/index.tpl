@@ -64,7 +64,7 @@ endif;
                     var container;
                     if (el.get('data-page') == 1) {
                         if ($$('.seaocore_profile_list_more<?php echo $this->identity ?>'))
-                            $$('.seaocore_profile_list_more<?php echo $this->identity ?>').setStyle('display', 'none');
+                            $$('.seaocore_profile_list_more<?php echo $this->identity ?>').hide();
                         $('profile_albums<?php echo $this->identity ?>').innerHTML = '<div class="seaocore_content_loader"></div>';
                         container = anchor;
                     } else {

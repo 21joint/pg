@@ -7,8 +7,8 @@ en4.core.runonce.add(function() {
   
   //ONLY OPEN LIGHTBOX WHEN FLAG IS ONE 
   if( flag != 0 ) {
-    if($$('.thumbs_photo')) {
-      $$('.thumbs_photo').each(function(el){ 
+    if($('.thumbs_photo')) {
+      $('.thumbs_photo').each(function(el){ 
 				var addEventClickFlag=true;
         if(el.getProperty('onclick') != null)
           addEventClickFlag=false;
@@ -44,8 +44,8 @@ en4.core.runonce.add(function() {
   function addSEAOPhotoOpenEventLightbox(classnames){
     classnames.each(function(classname) {    
     classname="."+classname;
-      if($$(classname)) {
-				$$(classname).each(function(el) {       
+      if($(classname)) {
+				$(classname).each(function(el) {       
 					if(el.getElement('.thumb_profile')) {
 						el.getElement('.thumb_profile').removeEvents('click').addEvent('click', function(e) {
 							e.stop();     
@@ -232,14 +232,14 @@ function photopaginationSocialenginealbum(url, modulename, tab_id) {
   SET HTML SCROLLING
 */
 function setHtmlScroll(cssCode) {
-  $$('html').setStyle('overflow',cssCode);
+  $('html').setStyle('overflow',cssCode);
 }
 
 /*  
   SET IMAGE SCROLLING
 */
 function setImageScrollAlbum(cssCode) {
-  $$('.photo_lightbox_white_content_wrapper').setStyle('overflow',cssCode);
+  $('.photo_lightbox_white_content_wrapper').setStyle('overflow',cssCode);
 }
 
 

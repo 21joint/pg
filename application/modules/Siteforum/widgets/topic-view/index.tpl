@@ -146,11 +146,11 @@ $this->headLink()->appendStylesheet($this->layout()->staticBaseUrl
                 thanked = responseJSON[0].thanked;
                 thanks = responseJSON[0].thanks;
                 $('thank_link_' + post_id).innerHTML = '';
-                $$('.user_thanks_' + user_id).each(function (el) {
+                $$('.user_thanks_' + user_id).each(function (__ind, el) {
                     el.innerHTML = "<a class='siteforum_thanks_icon' href='javascript:void(0);'  onclick='showMemberList(" + post_id + ") ;' title='Thank(s)'>" + thanks + "</a>";
                 });
 
-                $$('.user_thanked_' + user).each(function (el) {
+                $$('.user_thanked_' + user).each(function (__ind, el) {
                     el.innerHTML = thanked;
                 });
             }

@@ -130,10 +130,10 @@ $channelDefaultViewType = $this->defaultViewType;
     }
     addBoldClass = function (reqType, viewFormat)
     {
-        $$('div.sitevideo_myvideos_top_filter_links_<?php echo $this->identity; ?> > a').each(function (el) {
+        $$('div.sitevideo_myvideos_top_filter_links_<?php echo $this->identity; ?> > a').each(function (__ind, el) {
             el.removeClass('active');
         });
-        $$('.seaocore_tab_icon_<?php echo $this->identity ?>').each(function (el) {
+        $$('.seaocore_tab_icon_<?php echo $this->identity ?>').each(function (__ind, el) {
             el.removeClass('active');
         });
         $(reqType).addClass('active');

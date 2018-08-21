@@ -169,7 +169,7 @@
       this.stickersLayer.getElements('.sticker_search_list').addClass('dnone');
       this.stickersLayer.getElements('.stickers_search_clear').removeClass('dnone');
       this.stickersLayer.getElements('.sticker_search_icons .icon').addClass('dnone');
-      this.stickersLayer.getElements('.sticker_search_icons .icon').each(function (el) {
+      this.stickersLayer.getElements('.sticker_search_icons .icon').each(function (__ind, el) {
         var title = el.get('data-title');
         if (title.search(new RegExp(text, "i")) < 0) {
           return;
@@ -289,7 +289,7 @@
     doProcessResponse: function (iconEl) {
       // Success
       this.activate();
-      this.getComposer().getTray().setStyle('display', 'none');
+      this.getComposer().getTray().hide();
       this.getComposer().elements.container.getParent().addClass('sticker_added');
       this.params.set('stikcer_guid', iconEl.get('data-guid'));
       this.params.set('src', iconEl.get('data-img'));

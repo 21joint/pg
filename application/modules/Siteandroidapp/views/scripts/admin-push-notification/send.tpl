@@ -77,7 +77,7 @@ $this->headScript()
         toValueArray.splice(toValueIndex, 1);
         $('toValues').value = toValueArray.join();
         if (toValueArray.length == 0)
-            $('toValues-wrapper').setStyle('display', 'none');
+            $('toValues-wrapper').hide();
     }
 
     en4.core.runonce.add(function () {
@@ -149,8 +149,8 @@ $this->headScript()
             $('to-wrapper').setStyle('height', 'auto');
 
             // Hide to input?
-            $('to').setStyle('display', 'none');
-            $('toValues-wrapper').setStyle('display', 'none');
+            $('to').hide();
+            $('toValues-wrapper').hide();
         }
     });
 </script>
@@ -160,7 +160,7 @@ $this->headScript()
     });
     function hide_Others()
     {
-        $('toValues-wrapper').setStyle('display', 'none');
+        $('toValues-wrapper').hide();
         if ($('send_to').value == 'network') {
             document.getElementById('network-wrapper').style.display = 'block';
             document.getElementById('member_level-wrapper').style.display = 'none';

@@ -112,7 +112,7 @@ if($favouriteSetting) {
     
     function showHideFavouriteLink(listing_id, perform, onRequest) {
         
-        $$('.favourite_loading_image_'+listing_id).each(function(element){
+        $$('.favourite_loading_image_'+listing_id).each(function(__ind, element){
             if(onRequest == 0) {
                 element.style.display = 'none';
             }
@@ -122,7 +122,7 @@ if($favouriteSetting) {
 
         });             
         
-        $$('.add_sitereview_favourite_link_'+listing_id).each(function(element){
+        $$('.add_sitereview_favourite_link_'+listing_id).each(function(__ind, element){
             
             if(onRequest == 1) {
                 element.style.display = 'none';

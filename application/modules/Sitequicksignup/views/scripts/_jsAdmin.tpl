@@ -108,7 +108,7 @@
 
 
         // Attach over text
-        $$('.field_extraoptions_add input').each(function (el) {
+        $$('.field_extraoptions_add input').each(function (__ind, el) {
             new OverText(el);
         });
 
@@ -219,20 +219,20 @@
     }
 
     var saveOrder = function () {
-        $$('.admin_fields_options_saveorder')[0].setStyle('display', 'none');
+        $$('.admin_fields_options_saveorder')[0].hide();
 
         // Generate order structure
         var fieldOrder = [];
         var optionOrder = [];
 
         // Fields (maps) order
-        $$('.admin_field').each(function (el) {
+        $$('.admin_field').each(function (__ind, el) {
             var ids = readIdentifiers(el.get('id'));
             fieldOrder.push(ids.getClean());
         });
 
         // Options order
-        $$('.field_option_select').each(function (el) {
+        $$('.field_option_select').each(function (__ind, el) {
             var ids = readIdentifiers(el.get('id'));
             optionOrder.push(ids.getClean());
         });
@@ -382,7 +382,7 @@
     }
 
     var onTypeEdit = function (option) {
-        $('profileType').getChildren().each(function (el) {
+        $('profileType').getChildren().each(function (__ind, el) {
             if (el.value == option.option_id) {
                 el.set('label', option.label);
                 el.set('html', option.label);

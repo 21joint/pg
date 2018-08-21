@@ -268,7 +268,7 @@ function showlightbox(thisobj) {
 
 <script type="text/javascript">
 
-  window.addEvent('load',function() {
+  $(window).on('load',function() {
     <?php if($this->checkin_show_options == 1 || $this->checkin_show_options == 2):?>
       initializeProfileMap();
     <?php elseif($this->checkin_show_options == 0):?>

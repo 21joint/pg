@@ -53,7 +53,7 @@ if (empty($this->actions)) {
     var fancyUploadOptionsURLNestedComment = en4.core.baseUrl + 'nestedcomment/album/compose-upload/format/json/type/comment';
     <?php endif; ?>
     en4.core.runonce.add(function () {
-        $('activity-feed').getElements('.seao_icons_toolbar_attach').each(function (el) {
+        $('activity-feed').getElements('.seao_icons_toolbar_attach').each(function (__ind, el) {
             if (($('activity-feed').getCoordinates().right * 0.65) < el.getCoordinates().left) {
                 el.addClass('seao_icons_toolbar_right');
             } else {

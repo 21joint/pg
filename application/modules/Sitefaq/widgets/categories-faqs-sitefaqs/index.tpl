@@ -23,11 +23,11 @@
 		if($('subcat_'+id).style.display == 'none') {
 			$('subcat_'+id).style.display = 'block';
 			$('faq_hide_'+id).setStyle('display', 'block');
-			$('faq_expand_'+id).setStyle('display', 'none');
+			$('faq_expand_'+id).hide();
 		}
 		else {
 			$('subcat_'+id).style.display = 'none';
-			$('faq_hide_'+id).setStyle('display', 'none');
+			$('faq_hide_'+id).hide();
 			$('faq_expand_'+id).setStyle('display', 'block');
 		}
 	}

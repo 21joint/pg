@@ -152,7 +152,7 @@
 
 <script type="text/javascript" >
   
-	window.addEvent('load', function(){ 
+	$(window).on('load', function(){ 
   sortablesInstance.detach();
 	})
 	function showErrorMessage() {

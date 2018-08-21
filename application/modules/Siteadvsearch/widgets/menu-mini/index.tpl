@@ -86,7 +86,7 @@
 
     if($('notifications_markread_link')){
       $('notifications_markread_link').addEvent('click', function() {
-        //$('notifications_markread').setStyle('display', 'none');
+        //$('notifications_markread')..hide();
         en4.activity.hideNotifications('<?php echo $this->string()->escapeJavascript($this->translate("0 Updates"));?>');
       });
     }
@@ -120,7 +120,7 @@
       'onComplete' : function(responseTree, responseElements, responseHTML, responseJavaScript) {
         if( responseHTML ) {
           // hide loading icon
-          if($('notifications_loading')) $('notifications_loading').setStyle('display', 'none');
+          if($('notifications_loading')) $('notifications_loading').hide();
 
           $('notifications_menu').innerHTML = responseHTML;
           $('notifications_menu').addEvent('click', function(event){

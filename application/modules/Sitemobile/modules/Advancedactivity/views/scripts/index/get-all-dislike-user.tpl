@@ -124,7 +124,7 @@
               if ($.type($('#dislike_viewmore').get(0).offsetParent) != 'undefined') {
                 var elementPostionY = $('#dislike_viewmore').get(0).offsetTop;
               } else {
-                var elementPostionY = $$('#dislike_viewmore').get(0).y;
+                var elementPostionY = $('#dislike_viewmore').get(0).y;
               }
               if (elementPostionY <= $(window).scrollTop() + ($(window).height() - 40)) {
                 $('#dislike_viewmore').css('display', 'block');

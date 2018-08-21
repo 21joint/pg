@@ -172,16 +172,16 @@
             classnames.each(function (classname) {
                 classname = '.' + classname;
                 if (classname == '.layout_video_show_also_liked' || classname == '.layout_video_show_same_poster' || classname == '.layout_video_show_same_tags' || classname == '.layout_ynvideo_show_also_liked') {
-                    $$(classname).each(function (el) {
+                    $(classname).each(function (__ind, el) {
                         en4.sitevideolightboxview.addElemntsClickEvent(el.getElements('.title'));
                     });
 
                 } else if (classname == '.feed' || classname == '.message_view') {
-                    $$(classname).each(function (el) {
+                    $(classname).each(function (__ind, el) {
                         en4.sitevideolightboxview.addElemntsClickEvent(el.getElements('.video_info'));
                     });
                 } else {
-                    en4.sitevideolightboxview.addElemntsClickEvent($$(classname));
+                    en4.sitevideolightboxview.addElemntsClickEvent($(classname));
                 }
             });
         },
@@ -317,7 +317,7 @@
             });
         },
         setHtmlScroll: function (cssCode) {
-            $$('html').setStyle('overflow', cssCode);
+            $('html').setStyle('overflow', cssCode);
         },
         keyDownEvent: function (e) {
 
@@ -357,7 +357,7 @@
         },
         showVideo: function (href, params) {
             if (params.is_ajax_lightbox == 1) {
-                $$(".lightbox_btm_bl").each(function (el) {
+                $(".lightbox_btm_bl").each(function (__ind, el) {
                     el.innerHTML = "<center><img src='" + en4.core.staticBaseUrl + "application/modules/Seaocore/externals/images/icons/loader-large.gif' style='height:30px;' /> </center>";
                 });
             }
@@ -479,7 +479,7 @@
 
                     document.getElementById('svvideo_' + column).innerHTML = str_temp.replace(/\n/gi, "<br /> \n");
                     en4.sitevideolightboxview.switchEditMode(column, 'display');
-                    var descEls = $$('.lightbox_photo_description');
+                    var descEls = $('.lightbox_photo_description');
                     if (descEls.length > 0) {
                         descEls[0].enableLinks();
                     }
@@ -553,7 +553,7 @@
     en4.core.runonce.add(function () {
 
         for (classname in en4.sitevideolightboxview.addclasstypes) {
-            $$("." + classname).each(function (el) {
+            $("." + classname).each(function (__ind, el) {
                 el.getParent('.generic_layout_container').addClass(en4.sitevideolightboxview.addclasstypes[classname]);
             });
         }

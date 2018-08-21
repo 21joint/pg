@@ -250,15 +250,15 @@
 		var multiLanguageOption = function (show) {
 			<?php foreach($this->languageData as $value): if($this->defaultLanguage == $value) { continue; } if($value == 'en') { $value = ''; } else { $value = "_$value";}?>
 				if(show == 1) { 
-					$('title'+'<?php echo $value; ?>'+'-wrapper').setStyle('display', 'none');
-					$('body'+'<?php echo $value; ?>'+'-wrapper').setStyle('display', 'none');
+					$('title'+'<?php echo $value; ?>'+'-wrapper').hide();
+					$('body'+'<?php echo $value; ?>'+'-wrapper').hide();
 					$('multiLanguageLinkShow').setStyle('display', 'block');
-					$('multiLanguageLinkHide').setStyle('display', 'none');
+					$('multiLanguageLinkHide').hide();
 				}
 				else {
 					$('title'+'<?php echo $value; ?>'+'-wrapper').setStyle('display', 'block');
 					$('body'+'<?php echo $value; ?>'+'-wrapper').setStyle('display', 'block');
-					$('multiLanguageLinkShow').setStyle('display', 'none');
+					$('multiLanguageLinkShow').hide();
 					$('multiLanguageLinkHide').setStyle('display', 'block');
 				}
 			<?php endforeach;?>

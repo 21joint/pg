@@ -21,8 +21,8 @@
       if( this.value == '1' ) {
         $('field_id-wrapper').setStyle('display', '');
       } else {
-        $('field_id-wrapper').setStyle('display', 'none');
-        $$('.network_field_container').setStyle('display', 'none');
+        $('field_id-wrapper').hide();
+        $$('.network_field_container').hide();
         $('field_id').set('value', '');
       }
     }).fireEvent('change');
@@ -32,7 +32,7 @@
       var field_id = this.value;
       var field_el = $('field_pattern_' + field_id + '-wrapper');
       if( !field_el ) return;
-      $$('.network_field_container').setStyle('display', 'none');
+      $$('.network_field_container').hide();
       field_el.setStyle('display', '');
     }).fireEvent('change');
   });

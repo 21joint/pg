@@ -104,7 +104,7 @@
       return this;
     },
     toggleEvent :function() {
-      $$(".add_friend_suggest_container").each(function(el){
+      $(".add_friend_suggest_container").each(function(el){
         if(el.hasClass("aaf_enable")){
           el.toggleClass('aaf_disable');
           el.toggleClass('aaf_enable'); 

@@ -58,7 +58,7 @@ var SEAOMooVerticalScroll = new Class({
 		      
     // Remove and replace vertical scrollbar			
     if (this.content.scrollHeight <= this.main.offsetHeight) {
-      this.scrollbar.setStyle('display', 'none');								
+      this.scrollbar.hide();
     } else {
       this.scrollbar.setStyle('display', 'block');			
     }

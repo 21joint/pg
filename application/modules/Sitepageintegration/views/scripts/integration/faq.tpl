@@ -31,16 +31,16 @@
 
 	window.addEvent('domready', function() {
 
-		$$('.faq_details_hide').each(function(el){
+		$('.faq_details_hide').each(function(el){
 			el.style.display = 'block';
 		});
 
-		$$('.faq_details_expand').each(function(el){
+		$('.faq_details_expand').each(function(el){
 			el.style.display = 'none';
 		});
 
 		if($('faq_hide'))
-		$('faq_hide').setStyle('display', 'none');
+		$('faq_hide').hide();
 
 	});
 </script>

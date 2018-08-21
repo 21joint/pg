@@ -39,14 +39,14 @@
   function setRenewBefore(){
 
     if($('duration-select').value=="forever"|| $('duration-select').value=="lifetime" || ($('recurrence-select').value!=="forever" && $('recurrence-select').value!=="lifetime")){
-      $('renew-wrapper').setStyle('display', 'none');
-      $('renew_before-wrapper').setStyle('display', 'none');
+      $('renew-wrapper').hide();
+      $('renew_before-wrapper').hide();
     }else{
       $('renew-wrapper').setStyle('display', 'block');
       if($('renew').checked)
         $('renew_before-wrapper').setStyle('display', 'block');
       else
-        $('renew_before-wrapper').setStyle('display', 'none');
+        $('renew_before-wrapper').hide();
     }
   }
   $('duration-select').addEvent('change', function(){

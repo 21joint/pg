@@ -41,7 +41,7 @@
     // Update the time display
     document.getElementById("clock").firstChild.nodeValue = currentTimeString;
   }
-  window.addEvent('load', function() {
+  $(window).on('load', function() {
     updateClock.periodical(1000);
   });
 </script>

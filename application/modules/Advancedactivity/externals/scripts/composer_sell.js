@@ -47,15 +47,15 @@
       this.makeMenu();
       this.makeBody();
       $('compose-submit').style.display = 'none';
-      $$('.adv_post_container_box') ? $$('.adv_post_container_box').addClass('dnone') : null;
+      $('.adv_post_container_box') ? $('.adv_post_container_box').addClass('dnone') : null;
       new Element('div', {
         'id': 'compose-sell-form',
         'class': 'compose-form',
         'html': $('advancedactivity_post_buysell_options').innerHTML
       }).inject(this.elements.body);
       new google.maps.places.Autocomplete($('compose-sell-form').getElementById('place'));
-      if ($$('.compose-container')[0].getElement('.overTxtLabel'))
-        $$('.compose-container')[0].getElement('.overTxtLabel').innerHTML = en4.core.language.translate('Say something about this photo...');
+      if ($('.compose-container').find('.overTxtLabel'))
+        $('.compose-container').find('.overTxtLabel').innerHTML = en4.core.language.translate('Say something about this photo...');
       // Generate form
       var fullUrl = this.options.requestOptions.url;
       //var flashEnable = this.options.requestOptions.flashEnable;
@@ -236,7 +236,7 @@
             switch (error) {
               case 'flash':
                 self.options.requestOptions.flashEnable = false;
-                $$('.swiff-uploader-box').destroy();
+                $('.swiff-uploader-box').destroy();
                 // break;
             }
           },
@@ -350,7 +350,7 @@
     deactivate: function () {
       if (!this.active)
         return;
-      $$('.adv_post_container_box') ? $$('.adv_post_container_box').removeClass('dnone') : null;
+      $('.adv_post_container_box') ? $('.adv_post_container_box').removeClass('dnone') : null;
       if (document.getElementsByName('attachment[photo_id]')[0]) {
         var fileids = document.getElementsByName('attachment[photo_id]')[0];
         if (fileids.value.trim()) {
@@ -545,14 +545,14 @@
     },
     SortablesInstance: function () {
       var SortablesInstance;
-      $$('demo-list > li').addClass('sortable');
-      SortablesInstance = new Sortables($$('demo-list'), {
+      $('demo-list > li').addClass('sortable');
+      SortablesInstance = new Sortables($('demo-list'), {
         clone: true,
         constrain: true,
         //handle: 'span',
         onComplete: function (e) {
           var ids = [];
-          $$('demo-list > li').each(function (el) {
+          $('demo-list > li').each(function (__ind, el) {
             ids.push(el.get('id').match(/\d+/)[0]);
           });
           var vArray = ids;

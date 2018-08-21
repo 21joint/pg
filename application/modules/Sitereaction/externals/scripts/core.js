@@ -10,7 +10,7 @@
  */
 en4.sitereaction = {
   attachReaction: function() {
-    $$('.aaf_like_toolbar').addEvent('click', function(event) {
+    $('.aaf_like_toolbar').addEvent('click', function(event) {
       var el = $(event.target);
       if (!el.hasClass('icon-button-wapper')) {
         el = el.getParent('.icon-button-wapper');
@@ -32,7 +32,7 @@ en4.sitereaction = {
     }.bind(this));
   },
   attachNestedCommentReaction: function(type, id, comment_id, order, parent_comment_id, option, taggingContent, showAsNested, showAsLike, showDislikeUsers, showLikeWithoutIcon, showLikeWithoutIconInReplies,page) {
-    $$('.aaf_like_toolbar').addEvent('click', function(event) {
+    $('.aaf_like_toolbar').addEvent('click', function(event) {
       var el = $(event.target);
       if (!el.hasClass('icon-button-wapper')) {
         el = el.getParent('.icon-button-wapper');

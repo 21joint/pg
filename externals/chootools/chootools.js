@@ -1,4 +1,3 @@
-import * as Events from 'mootools';
 // Chootools. Choo-Choo as in Engine. Get it?
 
 // no more undefined object "console" errors:
@@ -23,7 +22,7 @@ Events.implement({
   },
 
   hasEvents: function (type) {
-    return (this.getEvents(type) !== false);
+    return (this.getEvents(type) != false);
   }
 
 });
@@ -163,7 +162,7 @@ Native.implement([Element, Window, Document], {
 
   });
 
-  $(window).on('load', function () {
+  window.addEvent('load', function () {
     (function () {
       var now = new Date();
       $$('.timestamp-update').each(function (element) {

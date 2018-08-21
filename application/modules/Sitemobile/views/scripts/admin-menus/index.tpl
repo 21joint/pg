@@ -29,7 +29,7 @@
       if( event.type == 'mouseover' ) {
         element.setStyle('display', 'block');
       } else if( event.type == 'mouseout' ) {
-        element.setStyle('display', 'none');
+        element.hide();
       }
     } catch( e ) {
       //alert(e);
@@ -37,7 +37,7 @@
   }
 
 
-  window.addEvent('load', function() {
+  $(window).on('load', function() {
     SortablesInstance = new Sortables('menu_list', {
       clone: true,
       constrain: false,

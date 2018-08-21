@@ -23,8 +23,8 @@
       myContainer.getElements('ul > li').removeClass('aaf_tab_active');
       element.addClass('aaf_tab_active');
       getTabBaseContentFeed(actionFilter, list_id);
-      if ((DetectMobileQuick() || DetectIpad()) && $$(".aaf_tabs_feed_tab")) {
-        $$(".aaf_tabs_feed_tab").removeClass('aaf_tabs_feed_tab_open').addClass('aaf_tabs_feed_tab_closed');
+      if ((DetectMobileQuick() || DetectIpad()) && $(".aaf_tabs_feed_tab")) {
+        $(".aaf_tabs_feed_tab").removeClass('aaf_tabs_feed_tab_open').addClass('aaf_tabs_feed_tab_closed');
       }
     }
     var moreAdvancedFeedTabSwitch = function (el) {

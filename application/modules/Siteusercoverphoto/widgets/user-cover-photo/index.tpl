@@ -151,17 +151,17 @@
             }
         }
     <?php if ($this->contentFullWidth): ?>
-            if (($$('.layout_siteusercoverphoto_user_cover_photo').length > 0) || ($$('.layout_sitecontentcoverphoto_content_cover_photo').length > 0) || ($$('.layout_spectacular_banner_images').length > 0)) {
+            if (($('.layout_siteusercoverphoto_user_cover_photo').length > 0) || ($('.layout_sitecontentcoverphoto_content_cover_photo').length > 0) || ($('.layout_spectacular_banner_images').length > 0)) {
 
-                if ($$('.layout_main')) {
+                if ($('.layout_main')) {
                     var globalContentWidth = $('global_content').getWidth();
-                    $$('.layout_main').setStyles({
+                    $('.layout_main').setStyles({
                         'width': globalContentWidth,
                         'margin': '0 auto'
                     });
                 }
 
-                if ($$('.layout_siteusercoverphoto_user_cover_photo').length > 0) {
+                if ($('.layout_siteusercoverphoto_user_cover_photo').length > 0) {
                     $('global_content').setStyles({
                         'width': '100%',
                         'margin-top': '-16px'
@@ -170,14 +170,14 @@
             }
 
             var activeTheme = '<?php echo $this->active; ?>';
-            if (activeTheme && (($$('.layout_captivate_navigation div').getChildren().length < 3) && ($$('.layout_captivate_banner_images').length > 0))) {
+            if (activeTheme && (($('.layout_captivate_navigation div').getChildren().length < 3) && ($('.layout_captivate_banner_images').length > 0))) {
                 if (document.getElementsByTagName("BODY")[0]) {
-                    if ($$('.layout_sitemenu_menu_main').length < 1)
+                    if ($('.layout_sitemenu_menu_main').length < 1)
                         document.getElementsByTagName("BODY")[0].addClass('captivate_transparent_header');
                 }
 
                 window.addEvent('scroll', function () {
-                    if ($$(".layout_page_header").length > 0)
+                    if ($(".layout_page_header").length > 0)
                     {
                         if (navigator.userAgent.toLowerCase().indexOf('firefox') !== -1) {
                             var scrollTop = document.documentElement.scrollTop;
@@ -187,9 +187,9 @@
 
 
                         if (scrollTop > 50) {
-                            $$(".layout_page_header").addClass("captivate_fix_header");
+                            $(".layout_page_header").addClass("captivate_fix_header");
                         } else {
-                            $$(".layout_page_header").removeClass("captivate_fix_header");
+                            $(".layout_page_header").removeClass("captivate_fix_header");
                         }
                     }
                 });

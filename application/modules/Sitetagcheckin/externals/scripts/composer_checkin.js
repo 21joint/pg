@@ -499,7 +499,7 @@
       this.elements.composerTrydisplay.empty();
       var content = this.getComposer().elements.body.getParent().getParent().getLast('div');
       var removeContent = true;
-      content.getElements('span').each(function (el) {
+      content.getElements('span').each(function (__ind, el) {
         if (el.get('class') != 'aaf_mdash' && el.get('class') != 'aaf_dot' && el.innerHTML != '') {
           removeContent = false;
         }

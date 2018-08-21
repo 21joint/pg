@@ -155,8 +155,8 @@
       $('to-wrapper').setStyle('height', 'auto');
 
       // Hide to input?
-      $('to').setStyle('display', 'none');
-      $('toValues-wrapper').setStyle('display', 'none');
+      $('to').hide();
+      $('toValues-wrapper').hide();
     }
   });
 </script>

@@ -501,7 +501,7 @@ initializeMap();
             }
             
 
-            $$('.application').each(function(element) {
+            $$('.application').each(function(__ind, element) {
                 if (element.href == "javascript:tl_manager.fireTab('<?php echo $this->identity?>')") {
                     element.addEvent('click', function() {
                         (function(){

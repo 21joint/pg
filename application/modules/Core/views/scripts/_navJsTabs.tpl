@@ -17,15 +17,15 @@
   {
     var container = $('global_content').getElement('.layout_' + identity);
     
-    $$('.tab_links').each(function(element)
+    $$('.tab_links').each(function(__ind, element)
     {
       var localIdentity = element.id.replace('tab_link_', '');
       var localContainer = $('global_content').getElement('.layout_' + localIdentity)
 
       // If missing container
       if( !$type(localContainer) ) {
-        localContainer.setStyle('display', 'none');
-        element.setStyle('display', 'none');
+        localContainer.hide();
+        element.hide();
         return;
       }
       
@@ -61,7 +61,7 @@
     });
     
     /*
-    $$('.tab_links').each(function(element)
+    $$('.tab_links').each(function(__ind, element)
     {
       var container = document.getElementById('tab_container_'+identity);
 

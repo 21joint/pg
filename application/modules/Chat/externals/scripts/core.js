@@ -1555,7 +1555,7 @@ ChatHandler_Whispers_UI_Abstract = new Class({
         Cookie.dispose('en4_chat_whispers_active', {path:en4.core.basePath});
       }
       this.elements.main.addClass('im_main_inactive').removeClass('im_main_active');
-      //this.elements.menu.setStyle('display', 'none');
+      //this.elements.menu..hide();
       this.handler.fireEvent('onItemHide', this);
     }
   },
@@ -1695,7 +1695,7 @@ ChatHandler_Whispers_UI_Settings = new Class({
       // Show hide the rest of the stuff
       this.handler.items.each(function(item) {
         if( !item.elements.main.hasClass('im_main_' + this.options.name) ) {
-          item.elements.main.setStyle('display', 'none');
+          item.elements.main.hide();
         }
       }.bind(this));
     } else {
@@ -1753,7 +1753,7 @@ ChatHandler_Whispers_UI_Friends = new Class({
     }).inject(this.elements.itemTitle);
 
     // Show no friends online notice
-    this.elements.menuBody.setStyle('display', 'none');
+    this.elements.menuBody.hide();
     new Element('div', {
       'class' : 'im_menu_' + this.options.name + '_none',
       'html' : this.handler.options.memberIm ? en4.core.language.translate('No members are online.') : en4.core.language.translate('None of your friends are online.')
@@ -1814,7 +1814,7 @@ ChatHandler_Whispers_UI_Friends = new Class({
     var childrenLength = bodyEl.getChildren().length;
     var noFriendsEl = this.elements.menu.getElement('.im_menu_' + this.options.name + '_none');
     if( childrenLength < 1 && !noFriendsEl ) {
-      this.elements.menuBody.setStyle('display', 'none');
+      this.elements.menuBody.hide();
       new Element('div', {
         'class' : 'im_menu_' + this.options.name + '_none',
         'html' : this.handler.options.memberIm ? en4.core.language.translate('No members are online.') : en4.core.language.translate('None of your friends are online.')

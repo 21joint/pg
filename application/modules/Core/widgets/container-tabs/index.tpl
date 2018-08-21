@@ -28,7 +28,7 @@
 
         var myContainer = element.getParent('.tabs_parent').getParent();
         element.getParent('.tabs_parent').addClass('tab_collapsed');
-        myContainer.getChildren('div:not(.tabs_alt)').setStyle('display', 'none');
+        myContainer.getChildren('div:not(.tabs_alt)').hide();
         myContainer.getElements('ul > li').removeClass('active');
         element.get('class').split(' ').each(function (className) {
           className = className.trim();

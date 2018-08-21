@@ -28,7 +28,7 @@
       }
     }
     // Add hover event to get likes
-    $$('.seaocore_replies_comment_likes').addEvent('mouseover', function(event) {
+    $('.seaocore_replies_comment_likes').addEvent('mouseover', function(event) {
       var el = $(event.target);
       if( !el.retrieve('tip-loaded', false) ) {
         el.store('tip-loaded', true);
@@ -62,7 +62,7 @@
       }
     });
     // Add tooltips
-    ReplyLikesTooltips = new Tips($$('.seaocore_replies_comment_likes'), {
+    ReplyLikesTooltips = new Tips($('.seaocore_replies_comment_likes'), {
       fixed : true,
       title:'',
       className : 'seaocore_replies_comment_likes',
@@ -73,7 +73,7 @@
       }
     });
      // Enable links
-    $$('.seaocore_replies_body').enableLinks();
+    $('.seaocore_replies_body').enableLinks();
   });
 </script>
 

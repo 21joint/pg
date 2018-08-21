@@ -193,7 +193,7 @@ var AdvancedActivityUpdateHandler_instagram = new Class({
   }
 });
 
-window.addEvent('load', function ()  { 
+$(window).on('load', function ()  { 
   getCommonInstagramElements(); 
   
 });
@@ -569,7 +569,7 @@ var showHideCommentbox_instagram = function (thisobj, event) {
       thisobj.value = 'Write a comment...';
       thisobj.addClass('aaf_color_light');
       thisobj.getNext('.instagram_activity-comment-submit').style.display = 'none';
-      //$('fbcomments_author_photo-' + post_id).setStyle('display', 'none');
+      //$('fbcomments_author_photo-' + post_id)..hide();
     }).delay(50);
   }
   
@@ -673,7 +673,7 @@ var sendinstagramMessage = function (thisobj, method, connecter_name, connected_
 		 return false;
 		 
 	 }
-	 thisobj.getParent('.global_form').getElement('.show_errormessage').setStyle('display', 'none');
+	 thisobj.getParent('.global_form').getElement('.show_errormessage').hide();
 		$('titleinstagram').value = thisobj.getParent('.global_form').getElement('.compose-content').innerHTML;
 		
 		$('instagram_message_textarea').value = thisobj.getParent('.global_form').getElement('.compose-textarea').value;
@@ -725,9 +725,9 @@ var instagram_comment = function (thisobj) {
 
 var showAllComments = function (thisobj, classname) { 
 	
-	thisobj.setStyle('display', 'none');
+	thisobj.hide();
 	
-	$$('.feedcomment-' + classname).each (function (element) { 
+	$('.feedcomment-' + classname).each (function (element) { 
 		
 		element.setStyle('display', 'block');
 		

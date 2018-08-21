@@ -51,7 +51,7 @@ en4.core.runonce.add(function() {
 
     // We can call this without an argument to start with the top level fields
     if( !$type(element) ) {
-      getFieldsElements('.parent_' + topLevelId).each(function(element) {
+      getFieldsElements('.parent_' + topLevelId).each(function(__ind, element) {
         changeFields(element, force, isLoad);
       });
       return;
@@ -139,7 +139,7 @@ en4.core.runonce.add(function() {
       var nextForce;
       if( force == 'hide' && !option_id.contains(childOptionId)) {
         if( !childElement.hasClass('field_toggle_nohide') ) {
-          childContainer.setStyle('display', 'none');
+          childContainer.hide();
           if( !isLoad ) {
             updateFieldValue(childElement, null);
           }
@@ -151,7 +151,7 @@ en4.core.runonce.add(function() {
       } else if( !$type(option_id) == 'array' || !option_id.contains(childOptionId) ) {
         // Hide fields not tied to the current option (but propogate hiding)
         if( !childElement.hasClass('field_toggle_nohide') ) {
-          childContainer.setStyle('display', 'none');
+          childContainer.hide();
           if( !isLoad ) {
             updateFieldValue(childElement, null);
           }

@@ -257,7 +257,7 @@ sm4.activity.composer = {
       if (action == 'empty') {
         $this.elements.body.empty();
       } else if (action == 'hide') {
-        $this.elements.body.children().each(function(element) {
+        $this.elements.body.children().each(function(__ind, element) {
           element.css('display', 'none')
         });
       } else if (action == 'invisible') {

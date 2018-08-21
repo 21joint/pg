@@ -229,7 +229,7 @@
             var body = body_editor.value;
           }
 
-          var all = $$('div.answer_holder_box');
+          var all = $('div.answer_holder_box');
           var last = all[all.length - 1];
 
           // increase countner for answers

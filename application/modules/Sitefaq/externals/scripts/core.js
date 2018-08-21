@@ -9,7 +9,7 @@ en4.sitefaq.ajaxTab = {
     params.requestParams.content_id = widget_id;
     var element;
 
-    $$('.tab_' + widget_id).each(function(el) {
+    $('.tab_' + widget_id).each(function(el) {
       if (el.get('tag') == 'li') {
         element = el;
         return;
@@ -30,7 +30,7 @@ en4.sitefaq.ajaxTab = {
       if (tab_content_id_sitefaq == widget_id) {
         attachOnLoadEvent = true;
       } else {
-        $$('.tabs_parent').each(function(element) {
+        $('.tabs_parent').each(function(__ind, element) {
           var addActiveTab = true;
           element.getElements('ul > li').each(function(el) {
             if (el.hasClass('active')) {
@@ -70,7 +70,7 @@ en4.sitefaq.ajaxTab = {
     });
   },
   sendReq: function(params) {
-    params.responseContainer.each(function(element) {   
+    params.responseContainer.each(function(__ind, element) {   
       if((typeof params.loading) == 'undefined' || params.loading==true){
        element.empty();
       new Element('div', {

@@ -160,7 +160,7 @@
         self.getMenu().removeClass('dnone');
       };
       if (self.options.hideSubmitOnBlur) {
-        this.getMenu().setStyle('display', 'none');
+        this.getMenu().hide();
         this.elements.textarea.addEvent('focus', foucsMethod);
         if (self.options.template !== 'activator_buttons') {
           $('activity-post-container').addEvent('click', foucsMethod);
@@ -178,8 +178,8 @@
             self.getActivatorContent().addClass('composer_activator_expand_more_options');
             self.getActivatorContent().removeClass('composer_activator_collapse_more_options');
             $('feed_box').addClass("feed_box");
-            if ($$('.adv_post_close')[0])
-              $$('.adv_post_close')[0].removeClass('dnone');
+            if ($('.adv_post_close')[0])
+              $('.adv_post_close')[0].removeClass('dnone');
             this.focus();
             var fx = self.getForm().retrieve('fxScroll');
             if (!fx && window.Fx && Fx.Scroll) {
@@ -199,8 +199,8 @@
           self.getForm().getParent('.aaf_feed_box_container').removeClass('aaf_feed_box_container_active');
           self.getActivatorContent().removeClass('composer_activator_expand_more_options');
           self.getActivatorContent().addClass('composer_activator_collapse_more_options');
-          if ($$('.adv_post_close')[0])
-            $$('.adv_post_close')[0].addClass('dnone');
+          if ($('.adv_post_close')[0])
+            $('.adv_post_close')[0].addClass('dnone');
           $('composer_preview_display_tray').addClass('dnone');
           self.getMenu().addClass('dnone');
           self.close();
@@ -663,10 +663,10 @@
       this.reset();
       this.getComposer().getTray().setStyle('display', '');
       this.getComposer().getTopTray().setStyle('display', '');
-      this.getComposer().getMenu().setStyle('display', 'none');
+      this.getComposer().getMenu().hide();
       var submitButtonEl = $(this.getComposer().options.submitElement);
       if (submitButtonEl) {
-        submitButtonEl.setStyle('display', 'none');
+        submitButtonEl.hide();
       }
 
       this.getComposer().getMenu().setStyle('border', 'none');
@@ -708,8 +708,8 @@
         return;
       this.active = false;
       this.reset();
-      this.getComposer().getTray().setStyle('display', 'none');
-      this.getComposer().getTopTray().setStyle('display', 'none');
+      this.getComposer().getTray().hide();
+      this.getComposer().getTopTray().hide();
       this.getComposer().getMenu().setStyle('display', '');
       var submitButtonEl = $(this.getComposer().options.submitElement);
       if (submitButtonEl) {
@@ -872,11 +872,11 @@
         if (action == 'empty') {
           this.elements.body.empty();
         } else if (action == 'hide') {
-          this.elements.body.getChildren().each(function (element) {
-            element.setStyle('display', 'none')
+          this.elements.body.getChildren().each(function (__ind, element) {
+            element.hide()
           });
         } else if (action == 'invisible') {
-          this.elements.body.getChildren().each(function (element) {
+          this.elements.body.getChildren().each(function (__ind, element) {
             element.setStyle('height', '0px').setStyle('visibility', 'hidden')
           });
         }

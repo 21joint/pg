@@ -20,7 +20,7 @@ function changeFields(element, force)
   // We can call this without an argument to start with the top level fields
   if( !$type(element) )
   {
-    $$('.parent_'+topLevelId).each(function(element)
+    $$('.parent_'+topLevelId).each(function(__ind, element)
     {
       changeFields(element);
     });
@@ -79,7 +79,7 @@ function changeFields(element, force)
   });
 }
 
-window.addEvent('load', function()
+$(window).on('load', function()
 {
   changeFields();
 });

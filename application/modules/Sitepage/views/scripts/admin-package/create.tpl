@@ -38,14 +38,14 @@
   function setRenewBefore(){
 
     if($('duration-select').value=="forever"|| $('duration-select').value=="lifetime" || ($('recurrence-select').value!=="forever" && $('recurrence-select').value!=="lifetime")){
-      $('renew-wrapper').setStyle('display', 'none');
-      $('renew_before-wrapper').setStyle('display', 'none');
+      $('renew-wrapper').hide();
+      $('renew_before-wrapper').hide();
     }else{
       $('renew-wrapper').setStyle('display', 'block');
       if($('renew').checked)
         $('renew_before-wrapper').setStyle('display', 'block');
       else
-        $('renew_before-wrapper').setStyle('display', 'none');
+        $('renew_before-wrapper').hide();
     }
   }
   $('duration-select').addEvent('change', function(){
@@ -117,7 +117,7 @@
         supportString += '<br /><br /><span > <b>Note: </b> You can enable / disable gateways accordingly for your selected billing cycle.</span>';
         mySecondElement.set('html', supportString);
     }
-    window.addEvent('load', function () {
+    $(window).on('load', function () {
         supportedBillingIndex = new Hash(<?php echo Zend_Json::encode($this->supportedBillingIndex) ?>);
         gateways = new Hash(<?php echo Zend_Json::encode($this->gateways) ?>);
         $('recurrence-select').addEvent('change', displayBillingGateways);

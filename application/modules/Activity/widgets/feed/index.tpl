@@ -167,7 +167,7 @@ endif; ?>
               }
 
               var setPrivacyValue = function (value, label, classicon) {
-                $$('li.activity_tab_active').each(function (el) {
+                $$('li.activity_tab_active').each(function (__ind, el) {
                   el.removeClass('activity_tab_active').addClass('activity_tab_unactive');
                 });
                 $('privacy_list_' + value).addClass('activity_tab_active').removeClass('activity_tab_unactive');

@@ -263,10 +263,10 @@ en4.gg.ajaxTab = {
 }
 
 
-// window.addEvent('load', function () {
+// $(window).on('load', function () {
 //
-//     $$('.tabs_parent').each(function (element) {
-//         element.getElements('ul > li').each(function (el) {
+//     $$('.tabs_parent').each(function (__ind, element) {
+//         element.getElements('ul > li').each(function (__ind, el) {
 //             if (el.hasClass('active')) {
 //                 el.click();
 //             }

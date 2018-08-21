@@ -301,7 +301,7 @@ echo $this->partial(
     var defaultProfileId = '<?php echo '0_0_'
       . $this->defaultProfileId ?>' + '-wrapper';
     if ($type($(defaultProfileId)) && typeof $(defaultProfileId) != 'undefined') {
-      $(defaultProfileId).setStyle('display', 'none');
+      $(defaultProfileId).hide();
     }
   });
 </script>
@@ -1132,7 +1132,7 @@ $this->headLink()->appendStylesheet(
         //handle: 'span',
         onComplete: function (e) {
           var ids = [];
-          $$('.demo-list > li').each(function (el) {
+          $$('.demo-list > li').each(function (__ind, el) {
             //if(el.get('id'))
             ids.push(el.get('id').match(/\d+/)[0]);
           });

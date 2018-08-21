@@ -322,7 +322,7 @@
         }
       });
        (function(){      
-        $('comparisonHeader').getElements('.compareField').each(function(element){
+        $('comparisonHeader').getElements('.compareField').each(function(__ind, element){
           element.get('class').split(' ').each(function(className){
             className = className.trim();
             if( className.match(/^compare_row_[0-9]+$/) ) { 
@@ -371,10 +371,10 @@
             elremove.setStyle('display', 'inline-block');
           });
         }else {
-          $$('.scrollbarArea').setStyle('display', 'none');
+          $$('.scrollbarArea').hide();
           if(totalLsit <= 2){
             el.getElements('.removeComparedListing').each(function(elremove){
-              elremove.setStyle('display', 'none');   
+              elremove.hide();   
             });
           }
         }

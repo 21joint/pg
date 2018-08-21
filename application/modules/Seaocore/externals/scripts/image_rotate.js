@@ -16,7 +16,7 @@
       imagesObj[indexOfRotation].fade('in');
     };
     
-    window.addEvent('load',function(){
+    $(window).on('load',function(){
       show.periodical(durationOfRotateImage);
     });
   }

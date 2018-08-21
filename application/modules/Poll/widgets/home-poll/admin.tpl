@@ -37,7 +37,7 @@
 
         // Has a poll selected already
         if( 'poll_id' in params && params.poll_id ) {
-          $('poll-home-poll-search').setStyle('display', 'none');
+          $('poll-home-poll-search').hide();
           selectPoll(params.poll_id);
         } else {
           
@@ -78,9 +78,9 @@
       var deselectPoll = function() {
         $('poll_id').set('value', '');
         $('poll-home-poll-search').setStyle('display', '');
-        $('poll-home-poll-search-results').setStyle('display', 'none');
-        $('poll-home-poll-form').setStyle('display', 'none');
-        $('poll-home-poll-selected').setStyle('display', 'none');
+        $('poll-home-poll-search-results').hide();
+        $('poll-home-poll-form').hide();
+        $('poll-home-poll-selected').hide();
       }
       
       var selectPoll = function(poll_id, info) {
@@ -90,8 +90,8 @@
         }
         $('poll_id').set('value', poll_id);
         $('title').set('value', info.title);
-        $('poll-home-poll-search').setStyle('display', 'none');
-        $('poll-home-poll-search-results').setStyle('display', 'none');
+        $('poll-home-poll-search').hide();
+        $('poll-home-poll-search-results').hide();
         $('poll-home-poll-form').setStyle('display', '');
         $('poll-home-poll-selected').setStyle('display', '');
 

@@ -208,11 +208,11 @@ window.en4 = en4;
       var bind = this;
 
       if (!typeof(els)) {
-        els = $$('a');
+        els = $('a');
       }
 
       // Attach to links
-      //$$('a.ajaxable').each(function(element)
+      //$$('a.ajaxable').each(function(__ind, element)
       els.each(function (element) {
         if (!this.shouldAttach(element)) {
           return;
@@ -628,7 +628,7 @@ window.en4 = en4;
             $('comment-' + comment_id).destroy();
           }
           try {
-            var commentCount = $$('.comments_options span')[0];
+            var commentCount = $('.comments_options span')[0];
             var m = commentCount.get('html').match(/\d+/);
             var newCount = (parseInt(m[0]) != 'NaN' && parseInt(m[0]) > 1 ? parseInt(m[0]) - 1 : 0);
             commentCount.set('html', commentCount.get('html').replace(m[0], newCount));
@@ -687,7 +687,7 @@ window.en4 = en4;
         'class': 'menu_core_main_tip'
       }).inject($(document.body));
       var hideMenuTip = function () {
-        menuTipElement.setStyle('display', 'none')
+        menuTipElement.hide()
       };
 
       navigationElement.getElements('li').addEvent('mouseover', function () {
@@ -1005,7 +1005,7 @@ window.en4 = en4;
   en4.core.reCaptcha = {
     lodedJs: [],
     render: function () {
-      $$('.g-recaptcha').each(function ($el) {
+      $('.g-recaptcha').each(function ($el) {
         if ($el.retrieve('recaptcha-loaded', false)) {
           return;
         }

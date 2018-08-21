@@ -24,7 +24,7 @@
       }
     }
     // Add hover event to get likes
-    $$('.comments_comment_likes').addEvent('mouseover', function(event) {
+    $('.comments_comment_likes').addEvent('mouseover', function(event) {
       var el = $(event.target);
       if( !el.retrieve('tip-loaded', false) ) {
         el.store('tip-loaded', true);
@@ -54,7 +54,7 @@
       }
     });
     // Add tooltips
-    CommentLikesTooltips = new Tips($$('.comments_comment_likes'), {
+    CommentLikesTooltips = new Tips($('.comments_comment_likes'), {
       fixed : true,
       className : 'comments_comment_likes_tips',
       offset : {
@@ -63,7 +63,7 @@
       }
     });
      // Enable links
-    $$('.comments_body').enableLinks();
+    $('.comments_body').enableLinks();
   });
 </script>
 

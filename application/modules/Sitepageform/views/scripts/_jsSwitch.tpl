@@ -32,7 +32,7 @@
 		
 		// We can call this without an argument to start with the top level fields
 		if( !$type(element) ) {
-			getFieldsElements('.parent_' + topLevelId).each(function(element) {
+			getFieldsElements('.parent_' + topLevelId).each(function(__ind, element) {
 				changeFields(element);
 			});
 			return;
@@ -110,7 +110,7 @@
 			var nextForce;
 			if( force == 'hide' ) {
 				if( !childElement.hasClass('field_toggle_nohide') ) {
-					childContainer.setStyle('display', 'none');
+					childContainer.hide();
 				}
 				nextForce = force;
 			} else if( force == 'show' ) {
@@ -119,7 +119,7 @@
 			} else if( !$type(option_id) == 'array' || !option_id.contains(childOptionId) ) {
 				// Hide fields not tied to the current option (but propogate hiding)
 				if( !childElement.hasClass('field_toggle_nohide') ) {
-					childContainer.setStyle('display', 'none');
+					childContainer.hide();
 				}
 				nextForce = 'hide';
 				if( !childIsVisible ) {
@@ -142,7 +142,7 @@
 		window.fireEvent('onChangeFields');
 	}
 
-	window.addEvent('load', function()
+	$(window).on('load', function()
 	{
 		changeFields();
 	});

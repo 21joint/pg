@@ -44,7 +44,7 @@ SEAOAutocompleter.Request = new Class({
 	 */
 	queryResponse: function() {
 		var indicator = $(this.options.indicator);
-		if (indicator) indicator.setStyle('display', 'none');
+		if (indicator) indicator.hide();
 		var cls = this.options.indicatorClass;
 		if (cls) this.element.removeClass(cls);
 		return this.fireEvent('onComplete', [this.element, this.request]);

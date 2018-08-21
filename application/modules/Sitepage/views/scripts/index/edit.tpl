@@ -31,7 +31,7 @@ $subCateDependencyArray  = Engine_Api::_()->getDbTable('categories', 'sitepage')
    });
 
 	//<![CDATA[
-		window.addEvent('load', function()
+		$(window).on('load', function()
 		{
 		  var url = '<?php echo $this->translate('PAGE-NAME');?>';
 		  if($('page_url_address')) {
@@ -328,7 +328,7 @@ function in_array(ArrayofCategories, value) {
 		window.addEvent('domready', function() {      
 			//var e4 = $('page_url_msg-wrapper');
 			if($('page_url_msg-wrapper'))
-			$('page_url_msg-wrapper').setStyle('display', 'none');
+			$('page_url_msg-wrapper').hide();
 		});
 
   function checkDraft(){

@@ -47,7 +47,7 @@ var MultiSelect = new Class({
 		this.elements = document.getElements(selector);
 		
 		// off we go...
-		this.elements.each(function(element) {
+		this.elements.each(function(__ind, element) {
 			this.buildMenu(element);
 		}, this);
 	},
@@ -178,7 +178,7 @@ var MultiSelect = new Class({
 		var elements = document.getElements(selector);
 		this.elements.combine(elements);
 		
-		elements.each(function(element) {
+		elements.each(function(__ind, element) {
 			this.buildMenu(element);
 		}, this);
 	}, 
@@ -246,7 +246,7 @@ var MultiSelect = new Class({
 		else {
 			// close all MultiSelect menus
 			this.elements.getElement('div.monitor').removeClass(this.options.monitorActiveClass);
-			this.elements.getElement('ul').setStyle('display', 'none');
+			this.elements.getElement('ul').hide();
 
 			this.action = 'open';
 			this.state = 'closed';
