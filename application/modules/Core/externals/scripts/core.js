@@ -59,7 +59,7 @@ window.en4 = en4;
       this.executing = true;
       var fn;
       while ((fn = this.fns.shift())) {
-        $try(function () {
+        Function.attempt(function () {
           fn();
         });
       }
@@ -88,7 +88,7 @@ window.en4 = en4;
       this.executing = true;
       var fn;
       while ((fn = this.fns.shift())) {
-        $try(function () {
+        Function.attempt(function () {
           fn();
         });
       }
@@ -288,7 +288,7 @@ window.en4 = en4;
       var response;
 
       if (this.frame) {
-        response = $try(function () {
+        response = Function.attempt(function () {
           return response1;
         }, function () {
           return this.frame.contentWindow.document.documentElement.innerHTML;
@@ -1036,3 +1036,7 @@ window.en4 = en4;
 })(); // END NAMESPACE
 
 export {en4};
+
+if (module.hot) {
+  module.hot.accept(console.error);
+}

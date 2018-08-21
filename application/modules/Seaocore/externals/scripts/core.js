@@ -18,38 +18,38 @@
  ...
  */
 
-(function() {
+(function () {
   this.SEATips = new Class({
     Extends: Tips,
     options: {
       canHide: true
     },
-    hide: function(element) {
+    hide: function (element) {
       if (!this.options.canHide)
         return;
       if (!this.tip)
         document.id(this);
       this.fireEvent('hide', [this.tip, element]);
     },
-    position: function(event) {
+    position: function (event) {
       if (!this.tip)
         document.id(this);
       var size = window.getSize(), scroll = window.getScroll(),
-      tip = {
-        x: this.tip.offsetWidth,
-        y: this.tip.offsetHeight
-      },
-      props = {
-        x: 'left',
-        y: 'top'
-      },
-      bounds = {
-        y: false,
-        x2: false,
-        y2: false,
-        x: false
-      },
-      obj = {};
+        tip = {
+          x: this.tip.offsetWidth,
+          y: this.tip.offsetHeight
+        },
+        props = {
+          x: 'left',
+          y: 'top'
+        },
+        bounds = {
+          y: false,
+          x2: false,
+          y2: false,
+          x: false
+        },
+        obj = {};
       for (var z in props) {
         obj[props[z]] = event.page[z] + this.options.offset[z];
         if (obj[props[z]] < 0)
@@ -71,7 +71,7 @@
 })();
 
 en4.seaocore = {
-  setLayoutWidth: function(elementId, width) {
+  setLayoutWidth: function (elementId, width) {
     var layoutColumn = null;
     if ($(elementId).getParent('.layout_left')) {
       layoutColumn = $(elementId).getParent('.layout_left');
@@ -90,7 +90,7 @@ en4.seaocore = {
  * likes
  */
 en4.seaocore.likes = {
-  like: function(type, id, show_bottom_post, comment_id) {
+  like: function (type, id, show_bottom_post, comment_id) {
     en4.core.request.send(new Request.JSON({
       url: en4.core.baseUrl + 'seaocore/comment/like',
       data: {
@@ -100,7 +100,7 @@ en4.seaocore.likes = {
         comment_id: 0,
         show_bottom_post: show_bottom_post
       },
-      onSuccess: function(responseJSON) {
+      onSuccess: function (responseJSON) {
         if ($type(responseJSON) == 'object' && $type(responseJSON.status)) {
           if ($(type + '_' + id + 'like_link'))
             $(type + '_' + id + 'like_link').style.display = "none";
@@ -110,10 +110,10 @@ en4.seaocore.likes = {
       }
     }), {
       'element': $('comments' + '_' + type + '_' + id)
-              //      "force":true
+      //      "force":true
     });
   },
-  unlike: function(type, id, show_bottom_post, comment_id) {
+  unlike: function (type, id, show_bottom_post, comment_id) {
     en4.core.request.send(new Request.JSON({
       url: en4.core.baseUrl + 'seaocore/comment/unlike',
       data: {
@@ -123,7 +123,7 @@ en4.seaocore.likes = {
         comment_id: comment_id,
         show_bottom_post: show_bottom_post
       },
-      onSuccess: function(responseJSON) {
+      onSuccess: function (responseJSON) {
         if ($type(responseJSON) == 'object' && $type(responseJSON.status)) {
           if ($(type + '_' + id + 'unlike_link'))
             $(type + '_' + id + 'unlike_link').style.display = "none";
@@ -133,13 +133,13 @@ en4.seaocore.likes = {
       }
     }), {
       'element': $('comments' + '_' + type + '_' + id)
-              //      "force":true
+      //      "force":true
     });
   }
 };
 
 en4.seaocore.comments = {
-  loadComments: function(type, id, page, show_bottom_post) {
+  loadComments: function (type, id, page, show_bottom_post) {
     en4.core.request.send(new Request.HTML({
       url: en4.core.baseUrl + 'seaocore/comment/list',
       data: {
@@ -154,10 +154,10 @@ en4.seaocore.comments = {
       "force": true
     });
   },
-  attachCreateComment: function(formElement, type, id, show_bottom_post) {
+  attachCreateComment: function (formElement, type, id, show_bottom_post) {
     var bind = this;
     if (show_bottom_post == 1) {
-      formElement.addEvent((Browser.Engine.trident || Browser.Engine.webkit) ? 'keydown' : 'keypress', function(event) {
+      formElement.addEvent((Browser.Engine.trident || Browser.Engine.webkit) ? 'keydown' : 'keypress', function (event) {
         if (event.shift && event.key == 'enter') {
         } else if (event.key == 'enter') {
           event.stop();
@@ -183,13 +183,13 @@ en4.seaocore.comments = {
       });
 
       // add blur event
-      formElement.body.addEvent('blur', function() {
+      formElement.body.addEvent('blur', function () {
         formElement.style.display = "none";
         if ($("comment-form-open-li_" + type + '_' + id))
           $("comment-form-open-li_" + type + '_' + id).style.display = "block";
       });
     }
-    formElement.addEvent('submit', function(event) {
+    formElement.addEvent('submit', function (event) {
       event.stop();
       var form_values = formElement.toQueryString();
       form_values += '&format=json';
@@ -207,7 +207,7 @@ en4.seaocore.comments = {
       });
     })
   },
-  comment: function(type, id, body, show_bottom_post) {
+  comment: function (type, id, body, show_bottom_post) {
     en4.core.request.send(new Request.JSON({
       url: en4.core.baseUrl + 'seaocore/comment/create',
       data: {
@@ -222,7 +222,7 @@ en4.seaocore.comments = {
       "force": true
     });
   },
-  like: function(type, id, show_bottom_post, comment_id) {
+  like: function (type, id, show_bottom_post, comment_id) {
     en4.core.request.send(new Request.JSON({
       url: en4.core.baseUrl + 'seaocore/comment/like',
       data: {
@@ -233,7 +233,7 @@ en4.seaocore.comments = {
         comment_id: comment_id,
         show_bottom_post: show_bottom_post
       },
-      onSuccess: function(responseJSON) {
+      onSuccess: function (responseJSON) {
         if ($type(responseJSON) == 'object' && $type(responseJSON.status)) {
           if ($(type + '_' + id + 'like_link'))
             $(type + '_' + id + 'like_link').style.display = "none";
@@ -246,18 +246,18 @@ en4.seaocore.comments = {
       "force": true
     });
   },
-  unlike: function(type, id, show_bottom_post, comment_id) {
+  unlike: function (type, id, show_bottom_post, comment_id) {
     en4.core.request.send(new Request.JSON({
       url: en4.core.baseUrl + 'seaocore/comment/unlike',
       data: {
         format: 'json',
         type: type,
         id: id,
-         page: pageComment,
+        page: pageComment,
         comment_id: comment_id,
         show_bottom_post: show_bottom_post
       },
-      onSuccess: function(responseJSON) {
+      onSuccess: function (responseJSON) {
         if ($type(responseJSON) == 'object' && $type(responseJSON.status)) {
           if ($(type + '_' + id + 'unlike_link'))
             $(type + '_' + id + 'unlike_link').style.display = "none";
@@ -270,7 +270,7 @@ en4.seaocore.comments = {
       "force": true
     });
   },
-  showLikes: function(type, id, show_bottom_post) {
+  showLikes: function (type, id, show_bottom_post) {
     en4.core.request.send(new Request.HTML({
       url: en4.core.baseUrl + 'seaocore/comment/list',
       data: {
@@ -285,7 +285,7 @@ en4.seaocore.comments = {
       "force": true
     });
   },
-  deleteComment: function(type, id, comment_id) {
+  deleteComment: function (type, id, comment_id) {
     if (!confirm(en4.core.language.translate('Are you sure you want to delete this?'))) {
       return;
     }
@@ -297,7 +297,7 @@ en4.seaocore.comments = {
         id: id,
         comment_id: comment_id
       },
-      onComplete: function() {
+      onComplete: function () {
         if ($('comment-' + comment_id)) {
           $('comment-' + comment_id).destroy();
         }
@@ -314,10 +314,10 @@ en4.seaocore.comments = {
 };
 
 en4.seaocore.facebook = {
-  runFacebookSdk: function() {
+  runFacebookSdk: function () {
 
-    window.fbAsyncInit = function() {
-      FB.JSON.stringify = function(value) {
+    window.fbAsyncInit = function () {
+      FB.JSON.stringify = function (value) {
         return JSON.encode(value);
       };
       FB.init({
@@ -332,7 +332,7 @@ en4.seaocore.facebook = {
         setFBContent();
       }
     };
-    (function() {
+    (function () {
       var catarea = $('global_footer');
       if (catarea == null) {
         catarea = $('global_content');
@@ -358,7 +358,7 @@ en4.seaocore.facebook = {
 };
 
 en4.seaocore.advlightbox = {
-  createDefaultContent: function() {
+  createDefaultContent: function () {
 
   }
 }
@@ -370,13 +370,13 @@ en4.seaocore.advlightbox = {
 //});
 
 
-en4.core.runonce.add(function() {
+en4.core.runonce.add(function () {
 
   // Reload The Page on Pop State Click (Back & Forward) Pop State Button
   var defaultlocationHref = window.location.href;
   var n = defaultlocationHref.indexOf('#');
   defaultlocationHref = defaultlocationHref.substring(0, n != -1 ? n : defaultlocationHref.length);
-  window.addEventListener("popstate", function(e) {
+  window.addEventListener("popstate", function (e) {
     var url = window.location.href;
     var n = url.indexOf('#');
     url = url.substring(0, n != -1 ? n : url.length);
@@ -395,9 +395,9 @@ function addfriend(el, user_id) {
     'data': {
       format: 'html',
       'resource_id': user_id
-              //'action_id' : action_id,
+      //'action_id' : action_id,
     },
-    onSuccess: function(responseTree, responseElements, responseHTML, responseJavaScript) {
+    onSuccess: function (responseTree, responseElements, responseHTML, responseJavaScript) {
       var parent = el.getParent('div');
       var nextSibling = el.nextSibling;
       el.destroy();
@@ -419,9 +419,9 @@ function removefriend(el, user_id) {
     'data': {
       format: 'html',
       'resource_id': user_id
-              //'action_id' : action_id,
+      //'action_id' : action_id,
     },
-    onSuccess: function(responseTree, responseElements, responseHTML, responseJavaScript) {
+    onSuccess: function (responseTree, responseElements, responseHTML, responseJavaScript) {
       var parent = el.getParent('div');
       var nextSibling = el.nextSibling;
       el.destroy();
@@ -436,10 +436,8 @@ function removefriend(el, user_id) {
 }
 
 
-
-
 en4.seaocore.nestedcomments = {
-  loadComments: function(type, id, page, order, parent_comment_id) {
+  loadComments: function (type, id, page, order, parent_comment_id) {
 
     if ($('view_more_comments_' + parent_comment_id)) {
       $('view_more_comments_' + parent_comment_id).style.display = 'inline-block';
@@ -468,7 +466,7 @@ en4.seaocore.nestedcomments = {
       'element': $('comments' + '_' + type + '_' + id + '_' + parent_comment_id)
     });
   },
-  loadcommentssortby: function(type, id, order, parent_comment_id) {
+  loadcommentssortby: function (type, id, order, parent_comment_id) {
     if ($('sort' + '_' + type + '_' + id + '_' + parent_comment_id)) {
       $('sort' + '_' + type + '_' + id + '_' + parent_comment_id).style.display = 'inline-block';
       $('sort' + '_' + type + '_' + id + '_' + parent_comment_id).innerHTML = '<img src="application/modules/Seaocore/externals/images/core/loading.gif" alt="Loading" />';
@@ -487,9 +485,9 @@ en4.seaocore.nestedcomments = {
       'element': $('comments' + '_' + type + '_' + id + '_' + parent_comment_id)
     });
   },
-  attachCreateComment: function(formElement, type, id, parent_comment_id) {
+  attachCreateComment: function (formElement, type, id, parent_comment_id) {
     var bind = this;
-    formElement.addEvent('submit', function(event) {
+    formElement.addEvent('submit', function (event) {
       event.stop();
       if (formElement.body.value == '')
         return;
@@ -514,7 +512,7 @@ en4.seaocore.nestedcomments = {
         data: form_values,
         type: type,
         id: id,
-        onComplete: function(e) {
+        onComplete: function (e) {
           if (parent_comment_id == 0)
             return;
           try {
@@ -529,7 +527,7 @@ en4.seaocore.nestedcomments = {
       });
     })
   },
-  comment: function(type, id, body, parent_comment_id) {
+  comment: function (type, id, body, parent_comment_id) {
     if (body == '')
       return;
     var formElement = $('comments_form_' + type + '_' + id + '_' + parent_comment_id);
@@ -552,7 +550,7 @@ en4.seaocore.nestedcomments = {
         id: id,
         body: body
       },
-      onComplete: function(e) {
+      onComplete: function (e) {
         if (parent_comment_id == 0)
           return;
         try {
@@ -566,7 +564,7 @@ en4.seaocore.nestedcomments = {
       'element': $('comments' + '_' + type + '_' + id + '_' + parent_comment_id)
     });
   },
-  like: function(type, id, comment_id, order, parent_comment_id, option) {
+  like: function (type, id, comment_id, order, parent_comment_id, option) {
     if ($('like_comments_' + comment_id) && (option == 'child')) {
       $('like_comments_' + comment_id).style.display = 'inline-block';
       $('like_comments_' + comment_id).innerHTML = '<img src="application/modules/Seaocore/externals/images/core/loading.gif" alt="Loading" />';
@@ -585,7 +583,7 @@ en4.seaocore.nestedcomments = {
         order: order,
         parent_comment_id: parent_comment_id
       },
-      onComplete: function(e) {
+      onComplete: function (e) {
         if ($('sitereview_most_likes_' + id)) {
           $('sitereview_most_likes_' + id).style.display = 'none';
         }
@@ -605,7 +603,7 @@ en4.seaocore.nestedcomments = {
       'element': $('comments' + '_' + type + '_' + id + '_' + parent_comment_id)
     });
   },
-  unlike: function(type, id, comment_id, order, parent_comment_id, option) {
+  unlike: function (type, id, comment_id, order, parent_comment_id, option) {
     if ($('unlike_comments_' + comment_id) && (option == 'child')) {
       $('unlike_comments_' + comment_id).style.display = 'inline-block';
       $('unlike_comments_' + comment_id).innerHTML = '<img src="application/modules/Seaocore/externals/images/core/loading.gif" alt="Loading" />';
@@ -624,7 +622,7 @@ en4.seaocore.nestedcomments = {
         order: order,
         parent_comment_id: parent_comment_id
       },
-      onComplete: function(e) {
+      onComplete: function (e) {
         if ($('sitereview_most_likes_' + id)) {
           $('sitereview_most_likes_' + id).style.display = 'block';
         }
@@ -644,7 +642,7 @@ en4.seaocore.nestedcomments = {
       'element': $('comments' + '_' + type + '_' + id + '_' + parent_comment_id)
     });
   },
-  showLikes: function(type, id, order, parent_comment_id) {
+  showLikes: function (type, id, order, parent_comment_id) {
     en4.core.request.send(new Request.HTML({
       url: en4.core.baseUrl + 'seaocore/nestedcomment/list',
       data: {
@@ -659,7 +657,7 @@ en4.seaocore.nestedcomments = {
       'element': $('comments' + '_' + type + '_' + id + '_' + parent_comment_id)
     });
   },
-  deleteComment: function(type, id, comment_id, order, parent_comment_id) {
+  deleteComment: function (type, id, comment_id, order, parent_comment_id) {
     if (!confirm(en4.core.language.translate('Are you sure you want to delete this?'))) {
       return;
     }
@@ -676,7 +674,7 @@ en4.seaocore.nestedcomments = {
         order: order,
         parent_comment_id: parent_comment_id
       },
-      onComplete: function(e) {
+      onComplete: function (e) {
         try {
           var replyCount = $$('.seaocore_replies_options span')[0];
           var m = replyCount.get('html').match(/\d+/);
@@ -689,8 +687,8 @@ en4.seaocore.nestedcomments = {
   }
 };
 
-var ScrollToTopSeao = function(topElementId, buttonId) {
-  window.addEvent('scroll', function() {
+var ScrollToTopSeao = function (topElementId, buttonId) {
+  window.addEvent('scroll', function () {
     var element = $(buttonId);
     if (element) {
       if ($(topElementId)) {
@@ -709,7 +707,7 @@ var ScrollToTopSeao = function(topElementId, buttonId) {
       }
     }
   });
-  en4.core.runonce.add(function() {
+  en4.core.runonce.add(function () {
     var scroll = new Fx.Scroll(document.getElement('body').get('id'), {
       wait: false,
       duration: 750,
@@ -720,7 +718,7 @@ var ScrollToTopSeao = function(topElementId, buttonId) {
       transition: Fx.Transitions.Quad.easeInOut
     });
 
-    $(buttonId).addEvent('click', function(event) {
+    $(buttonId).addEvent('click', function (event) {
       event = new Event(event).stop();
       scroll.toElement(topElementId);
     });
@@ -750,22 +748,22 @@ ActivitySEAOUpdateHandler = new Class({
   title: document.title,
   //loopId : false,
 
-  initialize: function(options) {
+  initialize: function (options) {
     this.setOptions(options);
   },
-  start: function() {
+  start: function () {
     this.state = true;
 
     // Do idle checking
     this.idleWatcher = new IdleWatcher(this, {timeout: this.options.idleTimeout});
     this.idleWatcher.register();
     this.addEvents({
-      'onStateActive': function() {
+      'onStateActive': function () {
         this._log('activity loop onStateActive');
         this.activestate = 1;
         this.state = true;
       }.bind(this),
-      'onStateIdle': function() {
+      'onStateIdle': function () {
         this._log('activity loop onStateIdle');
         this.activestate = 0;
         this.state = false;
@@ -774,10 +772,10 @@ ActivitySEAOUpdateHandler = new Class({
     this.loop();
     //this.loopId = this.loop.periodical(this.options.delay, this);
   },
-  stop: function() {
+  stop: function () {
     this.state = false;
   },
-  checkFeedUpdate: function(action_id, subject_guid) {
+  checkFeedUpdate: function (action_id, subject_guid) {
     if (en4.core.request.isRequestActive())
       return;
 
@@ -794,6 +792,7 @@ ActivitySEAOUpdateHandler = new Class({
       }
       return values;
     }
+
     var list = getAllElementsWithAttribute('data-activity-feed-item');
     this.options.last_id = Math.max.apply(Math, list);
     min_id = this.options.last_id + 1;
@@ -810,15 +809,14 @@ ActivitySEAOUpdateHandler = new Class({
       }
     });
     en4.core.request.send(req, {
-      'element': $('activity-feed'),
-      'updateHtmlMode': 'prepend'
-    }
+        'element': $('activity-feed'),
+        'updateHtmlMode': 'prepend'
+      }
     );
 
 
-
-    req.addEvent('complete', function() {
-      (function() {
+    req.addEvent('complete', function () {
+      (function () {
         if (this.options.showImmediately && $('feed-update').getChildren().length > 0) {
           $('feed-update').setStyle('display', 'none');
           $('feed-update').empty();
@@ -828,8 +826,7 @@ ActivitySEAOUpdateHandler = new Class({
     }.bind(this));
 
 
-
-    // Start LOCAL STORAGE STUFF   
+    // Start LOCAL STORAGE STUFF
     if (localStorage) {
       var pageTitle = document.title;
       //@TODO Refill Locally Stored Activity Feed
@@ -867,7 +864,7 @@ ActivitySEAOUpdateHandler = new Class({
 
     return req;
   },
-  getFeedUpdate: function(last_id) {
+  getFeedUpdate: function (last_id) {
     if (en4.core.request.isRequestActive())
       return;
     var min_id = this.options.last_id + 1;
@@ -890,7 +887,7 @@ ActivitySEAOUpdateHandler = new Class({
     });
     return req;
   },
-  loop: function() {
+  loop: function () {
     this._log('activity update loop start');
 
     if (!this.state) {
@@ -899,7 +896,7 @@ ActivitySEAOUpdateHandler = new Class({
     }
 
     try {
-      this.checkFeedUpdate().addEvent('complete', function() {
+      this.checkFeedUpdate().addEvent('complete', function () {
         try {
           this._log('activity loop req complete');
           this.loop.delay(this.options.delay, this);
@@ -916,7 +913,7 @@ ActivitySEAOUpdateHandler = new Class({
     this._log('activity update loop stop');
   },
   // Utility
-  _log: function(object) {
+  _log: function (object) {
     if (!this.options.debug) {
       return;
     }
@@ -932,7 +929,7 @@ ActivitySEAOUpdateHandler = new Class({
 });
 
 en4.seaocore.locationBased = {
-  startReq: function(params) {
+  startReq: function (params) {
     window.locationsParamsSEAO = {
       latitude: 0,
       longitude: 0
@@ -947,24 +944,29 @@ en4.seaocore.locationBased = {
 
     if (params.detactLocation && !window.locationsDetactSEAO && navigator.geolocation) {
 
-     if (typeof(Cookie.read('seaocore_myLocationDetails')) != 'undefined' && Cookie.read('seaocore_myLocationDetails') != "") {
-      var readLocationsDetails = JSON.parse(Cookie.read('seaocore_myLocationDetails'));
-     }
+      if (typeof(Cookie.read('seaocore_myLocationDetails')) != 'undefined' && Cookie.read('seaocore_myLocationDetails') != "") {
+        var readLocationsDetails = JSON.parse(Cookie.read('seaocore_myLocationDetails'));
+      }
 
       if (typeof(readLocationsDetails) == 'undefined' || readLocationsDetails == null || typeof(readLocationsDetails.latitude) == 'undefined' || typeof(readLocationsDetails.longitude) == 'undefined') {
 
-        navigator.geolocation.getCurrentPosition(function(position) {
-            
-          
-          if($('region')){
-              var regionCurrentLocation = $('region').innerHTML;  
-              $('region').innerHTML = '<div class="seaocore_content_loader"></div>';
+        navigator.geolocation.getCurrentPosition(function (position) {
+
+
+          if ($('region')) {
+            var regionCurrentLocation = $('region').innerHTML;
+            $('region').innerHTML = '<div class="seaocore_content_loader"></div>';
           }
-            
+
           window.locationsParamsSEAO.latitude = position.coords.latitude;
           window.locationsParamsSEAO.longitude = position.coords.longitude;
 
-          var myLocationDetails = {'latitude': position.coords.latitude, 'longitude': position.coords.longitude, 'location': '', 'locationmiles': params.locationmiles};
+          var myLocationDetails = {
+            'latitude': position.coords.latitude,
+            'longitude': position.coords.longitude,
+            'location': '',
+            'locationmiles': params.locationmiles
+          };
           self.setLocationCookies(myLocationDetails);
 
           self.setLocationField(position, params);
@@ -975,7 +977,7 @@ en4.seaocore.locationBased = {
             callBackFunction(params);
           }
 
-        }, function() {
+        }, function () {
           params.isExucute = true;
           if (typeof(params.noSendReq) == 'undefined' || params.noSendReq == null) {
             callBackFunction(params);
@@ -994,7 +996,7 @@ en4.seaocore.locationBased = {
       }
 
       window.locationsDetactSEAO = true;
-      window.setTimeout(function() {
+      window.setTimeout(function () {
         if (params.isExucute)
           return;
 
@@ -1014,7 +1016,7 @@ en4.seaocore.locationBased = {
     }
 
   },
-  sendReq: function(params) {
+  sendReq: function (params) {
 
     var self = this;
     var url = en4.core.baseUrl + 'widget';
@@ -1029,7 +1031,7 @@ en4.seaocore.locationBased = {
         is_ajax_load: true
       }),
       evalScripts: true,
-      onSuccess: function(responseTree, responseElements, responseHTML, responseJavaScript) {
+      onSuccess: function (responseTree, responseElements, responseHTML, responseJavaScript) {
         if ($(params.responseContainer)) {
           $(params.responseContainer).innerHTML = '';
           Elements.from(responseHTML).inject($(params.responseContainer));
@@ -1041,39 +1043,48 @@ en4.seaocore.locationBased = {
     request.send();
 
   },
-  setLocationCookies: function(params, pageReload) {
+  setLocationCookies: function (params, pageReload) {
 
-    var myLocationDetails = {'latitude': params.latitude, 'longitude': params.longitude, 'location': params.location, 'locationmiles': params.locationmiles};
-                    
+    var myLocationDetails = {
+      'latitude': params.latitude,
+      'longitude': params.longitude,
+      'location': params.location,
+      'locationmiles': params.locationmiles
+    };
+
     if (typeof(params.changeLocationWidget) != 'undefined' && params.changeLocationWidget) {
-        Cookie.write('seaocore_myLocationDetails', JSON.stringify(myLocationDetails), {duration: 30, path: en4.core.baseUrl});   
+      Cookie.write('seaocore_myLocationDetails', JSON.stringify(myLocationDetails), {
+        duration: 30,
+        path: en4.core.baseUrl
+      });
     }
     else {
-        en4.core.request.send(new Request.JSON({
-          url: en4.core.baseUrl + 'seaocore/location/get-specific-location-setting',
-          data: {
-            format: 'json',
-            location: params.location,
-            updateUserLocation: params.updateUserLocation
-          },
-          onSuccess: function(responseJSON) {
-              if(responseJSON.saveCookies) {
-               Cookie.write('seaocore_myLocationDetails', JSON.stringify(myLocationDetails), {duration: 30, path: en4.core.baseUrl});           
-               
-                if (pageReload) {
-                  window.location.reload();
-                }               
-               
-              }
+      en4.core.request.send(new Request.JSON({
+        url: en4.core.baseUrl + 'seaocore/location/get-specific-location-setting',
+        data: {
+          format: 'json',
+          location: params.location,
+          updateUserLocation: params.updateUserLocation
+        },
+        onSuccess: function (responseJSON) {
+          if (responseJSON.saveCookies) {
+            Cookie.write('seaocore_myLocationDetails', JSON.stringify(myLocationDetails), {
+              duration: 30,
+              path: en4.core.baseUrl
+            });
+
+            if (pageReload) {
+              window.location.reload();
+            }
+
           }
-        }),{force:true});  
+        }
+      }), {force: true});
     }
-    
-    
-    
-    
+
+
   },
-  setLocationField: function(position, params) {
+  setLocationField: function (position, params) {
     var self = this;
     if (!position.address) {
       var mapDetect = new google.maps.Map(new Element('div'), {
@@ -1085,7 +1096,7 @@ en4.seaocore.locationBased = {
         location: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
         radius: 500
       };
-      service.search(request, function(results, status) {
+      service.search(request, function (results, status) {
         if (status == 'OK') {
           var index = 0;
           var radian = 3.141592653589793 / 180;
@@ -1117,13 +1128,18 @@ en4.seaocore.locationBased = {
           }
 
           var cookiesLocation = (results[index].vicinity) ? results[index].vicinity : '';
-          var myLocationDetails = {'latitude': position.coords.latitude, 'longitude': position.coords.longitude, 'location': cookiesLocation, 'locationmiles': params.locationmiles};
-          
+          var myLocationDetails = {
+            'latitude': position.coords.latitude,
+            'longitude': position.coords.longitude,
+            'location': cookiesLocation,
+            'locationmiles': params.locationmiles
+          };
+
           var pageReload = 0;
           if (typeof(params.reloadPage) != 'undefined' && params.reloadPage != null) {
             pageReload = 1;
-          }          
-          
+          }
+
           self.setLocationCookies(myLocationDetails, pageReload);
 
 //          if (typeof(params.reloadPage) != 'undefined' && params.reloadPage != null) {
@@ -1139,13 +1155,18 @@ en4.seaocore.locationBased = {
         document.getElementById(params.fieldName).value = location;
       }
 
-      var myLocationDetails = {'latitude': position.coords.latitude, 'longitude': position.coords.longitude, 'location': location, 'locationmiles': params.locationmiles};
-      
-          var pageReload = 0;
-          if (typeof(params.reloadPage) != 'undefined' && params.reloadPage != null) {
-            pageReload = 1;
-          }          
-      
+      var myLocationDetails = {
+        'latitude': position.coords.latitude,
+        'longitude': position.coords.longitude,
+        'location': location,
+        'locationmiles': params.locationmiles
+      };
+
+      var pageReload = 0;
+      if (typeof(params.reloadPage) != 'undefined' && params.reloadPage != null) {
+        pageReload = 1;
+      }
+
       self.setLocationCookies(myLocationDetails, pageReload);
 
 //      if (typeof(params.reloadPage) != 'undefined' && params.reloadPage != null) {
@@ -1156,18 +1177,18 @@ en4.seaocore.locationBased = {
 
   },
 };
-en4.seaocore.setShareButtons = function(wrapper, cont, params) {
+en4.seaocore.setShareButtons = function (wrapper, cont, params) {
   if (cont.getElement('.facebook_container')) {
     if (!document.getElementById('fb-root'))
       new Element('div', {'id': 'fb-root'}).inject($('global_content'), 'top');
-    (function(d, s, id) {
+    (function (d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id))
         return;
       js = d.createElement(s);
       js.id = id;
       if (typeof local_language != 'undefined' && $type(local_language)) {
-        js.src = "//connect.facebook.net/"+ local_language +"/all.js#xfbml=1";
+        js.src = "//connect.facebook.net/" + local_language + "/all.js#xfbml=1";
       }
       else {
         js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
@@ -1186,7 +1207,10 @@ en4.seaocore.setShareButtons = function(wrapper, cont, params) {
 
   }
   if (cont.getElement('.google_container')) {
-    new Element('script', {'src': 'https://apis.google.com/js/plusone.js', 'async': true}).inject($('global_content'), 'before');
+    new Element('script', {
+      'src': 'https://apis.google.com/js/plusone.js',
+      'async': true
+    }).inject($('global_content'), 'before');
 
   }
 
@@ -1208,11 +1232,13 @@ en4.seaocore.setShareButtons = function(wrapper, cont, params) {
     cont.setStyle('left', params.leftValue + 'px');
     $('global_content').addClass('seao_share_buttons_right_content');
   }
-  (function() {
+  (function () {
     wrapper.setStyles({width: '1px', visibility: 'visible'});
   }).delay(1500);
-  window.addEvent('scroll', function(e) {
-    var descripY = parseInt($('global_content').getOffsets().y) - 20, scrollY = $(window).getScroll().y, footerY = parseInt($('global_footer').getOffsets().y), height = parseInt(wrapper.getStyle('height')), fixedShare = wrapper.getStyle('position') === 'fixed';
+  window.addEvent('scroll', function (e) {
+    var descripY = parseInt($('global_content').getOffsets().y) - 20, scrollY = $(window).getScroll().y,
+      footerY = parseInt($('global_footer').getOffsets().y), height = parseInt(wrapper.getStyle('height')),
+      fixedShare = wrapper.getStyle('position') === 'fixed';
 
     if (scrollY < descripY && fixedShare) {
       wrapper.setStyles({
@@ -1247,7 +1273,7 @@ var SmoothboxSEAO = {
   addScriptFiles: [],
   addStylesheets: [],
   active: false,
-  build: function() {
+  build: function () {
     SmoothboxSEAO.overlay = new Element('div', {
       'class': 'seao_smoothbox_lightbox_overlay'
     }).inject($('global_wrapper'));
@@ -1257,17 +1283,17 @@ var SmoothboxSEAO = {
     SmoothboxSEAO.attach();
     SmoothboxSEAO.hide();
   },
-  attach: function() {
+  attach: function () {
     if (!SmoothboxSEAO.wrapper)
       return;
-    SmoothboxSEAO.wrapper.removeEvents('click').addEvent('click', function(event) {
+    SmoothboxSEAO.wrapper.removeEvents('click').addEvent('click', function (event) {
       var el = $(event.target);
       if (el.hasClass('seao_smoothbox_lightbox_content') || el.getParent('.seao_smoothbox_lightbox_content'))
         return;
       SmoothboxSEAO.close();
     });
   },
-  bind: function(selector) {
+  bind: function (selector) {
     // All children of element
     var elements;
     if ($type(selector) == 'element') {
@@ -1278,15 +1304,13 @@ var SmoothboxSEAO = {
       elements = $$("a.seao_smoothbox");
     }
 
-    elements.each(function(el)
-    {
-      if (el.get('tag') != 'a' || !SmoothboxSEAO.hasLink(el) || el.retrieve('smoothboxed', false))
-      {
+    elements.each(function (el) {
+      if (el.get('tag') != 'a' || !SmoothboxSEAO.hasLink(el) || el.retrieve('smoothboxed', false)) {
         return;
       }
 
 
-      el.addEvent('click', function(event) {
+      el.addEvent('click', function (event) {
         event.stop();
         SmoothboxSEAO.open({
           class: el.get('data-SmoothboxSEAOClass'),
@@ -1300,13 +1324,13 @@ var SmoothboxSEAO = {
 
 
   },
-  hasLink: function(element) {
+  hasLink: function (element) {
     return (
-            !element.onclick &&
-            element.href &&
-            !element.href.match(/^(javascript|[#])/));
+      !element.onclick &&
+      element.href &&
+      !element.href.match(/^(javascript|[#])/));
   },
-  open: function(params) {
+  open: function (params) {
     if (!params)
       return;
     if (!SmoothboxSEAO.wrapper) {
@@ -1316,15 +1340,17 @@ var SmoothboxSEAO = {
     }
     if ((typeof params) === 'string') {
       if (params.length < 4000 && (params.substring(0, 1) == '/' ||
-              params.substring(0, 1) == '.' ||
-              params.substring(0, 4) == 'http' ||
-              !params.match(/[ <>"'{}|^~\[\]`]/)
-              )
-              ) {
+        params.substring(0, 1) == '.' ||
+        params.substring(0, 4) == 'http' ||
+        !params.match(/[ <>"'{}|^~\[\]`]/)
+      )
+      ) {
 
-        params = {request: {
+        params = {
+          request: {
             url: params
-          }};
+          }
+        };
       } else {
         params = {element: params};
       }
@@ -1351,7 +1377,7 @@ var SmoothboxSEAO = {
       SmoothboxSEAO.sendReq(params.request);
 
     SmoothboxSEAO.show();
-    $$(".seao_smoothbox_lightbox_close").addEvent('click', function(event) {
+    $$(".seao_smoothbox_lightbox_close").addEvent('click', function (event) {
       event.stopPropagation();
       SmoothboxSEAO.close();
     });
@@ -1359,13 +1385,13 @@ var SmoothboxSEAO = {
     SmoothboxSEAO.doAutoResize();
     //  this.fireEvent('open', this);
   },
-  doAutoResize: function() {
+  doAutoResize: function () {
     //return;
-    var size = Function.attempt(function() {
+    var size = Function.attempt(function () {
       return SmoothboxSEAO.contentHTML.getScrollSize();
-    }, function() {
+    }, function () {
       return SmoothboxSEAO.contentHTML.getSize();
-    }, function() {
+    }, function () {
       return {
         x: SmoothboxSEAO.contentHTML.scrollWidth,
         y: SmoothboxSEAO.contentHTML.scrollHeight
@@ -1393,7 +1419,7 @@ var SmoothboxSEAO = {
     });
     //  }
   },
-  show: function() {
+  show: function () {
     SmoothboxSEAO.overlay.show();
     SmoothboxSEAO.wrapper.show();
     if ($('arrowchat_base'))
@@ -1405,12 +1431,12 @@ var SmoothboxSEAO = {
     SmoothboxSEAO.setHtmlScroll("hidden");
     SmoothboxSEAO.active = true;
   },
-  hide: function() {
+  hide: function () {
     SmoothboxSEAO.overlay.hide();
     SmoothboxSEAO.wrapper.hide();
     SmoothboxSEAO.active = false;
   },
-  close: function() {
+  close: function () {
     if (!SmoothboxSEAO.active)
       return;
     SmoothboxSEAO.hide();
@@ -1422,10 +1448,10 @@ var SmoothboxSEAO = {
       $('wibiyaToolbar').style.display = 'block';
     // this.fireEvent('close', this);
   },
-  setHtmlScroll: function(cssCode) {
+  setHtmlScroll: function (cssCode) {
     $$('html').setStyle('overflow', cssCode);
   },
-  sendReq: function(params) {
+  sendReq: function (params) {
     var container = SmoothboxSEAO.contentHTML;
     container.empty();
     new Element('div', {
@@ -1445,15 +1471,15 @@ var SmoothboxSEAO = {
         seaoSmoothbox: true
       }),
       evalScripts: true,
-      onSuccess: function(responseTree, responseElements, responseHTML, responseJavaScript) {
-        var onLoadContent = function() {
+      onSuccess: function (responseTree, responseElements, responseHTML, responseJavaScript) {
+        var onLoadContent = function () {
           container.empty();
           Elements.from(responseHTML).inject(container);
           en4.core.runonce.trigger();
           SmoothboxSEAO.doAutoResize();
           Smoothbox.bind(container);
           SmoothboxSEAO.bind(container);
-          $$(".seao_smoothbox_lightbox_close").addEvent('click', function(event) {
+          $$(".seao_smoothbox_lightbox_close").addEvent('click', function (event) {
             event.stopPropagation();
             SmoothboxSEAO.close();
           });
@@ -1469,20 +1495,22 @@ var SmoothboxSEAO = {
           onLoadContent();
         for (i; i < JSCount; i++) {
           Asset.javascript(SmoothboxSEAO.addScriptFiles[i], {
-            onLoad: function() {
+            onLoad: function () {
               succes++;
               if (succes === totalFiles)
                 onLoadContent();
-            }});
+            }
+          });
         }
         SmoothboxSEAO.addScriptFiles = [];
         for (i = 0; i < StyleSheetCount; i++) {
           Asset.css(SmoothboxSEAO.addStylesheets[i], {
-            onLoad: function() {
+            onLoad: function () {
               succes++;
               if (succes === totalFiles)
                 onLoadContent();
-            }});
+            }
+          });
         }
         SmoothboxSEAO.addStylesheets = [];
 
@@ -1502,24 +1530,22 @@ en4.seaocore.socialService = {
         shareUrl: $(el).get('data-url'),
         serviceType: $(el).get('data-service')
       },
-      onSuccess: function(){
-        
+      onSuccess: function () {
+
       }
     });
     request.send();
   }
 };
-window.addEvent('domready', function()
-{
+window.addEvent('domready', function () {
   SmoothboxSEAO.bind();
 });
 
-window.addEvent('load', function()
-{
+window.addEvent('load', function () {
   SmoothboxSEAO.bind();
 });
 
-en4.seaocore.covertdateDmyToMdy = function(date) {
+en4.seaocore.covertdateDmyToMdy = function (date) {
   starttime = date.split("/");
   date = starttime[1] + '/' + starttime[0] + '/' + starttime[2];
   return date;
@@ -1528,7 +1554,7 @@ en4.seaocore.covertdateDmyToMdy = function(date) {
 
 /*  Community Ad Plugin JS Start here*/
 en4.communityad = {
-  sendReq: function(container, content_id, isAdboardPage, requestParams) {
+  sendReq: function (container, content_id, isAdboardPage, requestParams) {
     var url = en4.core.baseUrl + 'widget';
     var params = {
       format: 'html',
@@ -1547,7 +1573,7 @@ en4.communityad = {
       url: url,
       method: 'get',
       data: params,
-      onSuccess: function(responseTree, responseElements, responseHTML, responseJavaScript) {
+      onSuccess: function (responseTree, responseElements, responseHTML, responseJavaScript) {
         container.empty();
         Elements.from(responseHTML).inject(container);
         en4.core.runonce.trigger();
@@ -1557,19 +1583,17 @@ en4.communityad = {
     request.send();
   }
 };
-var communityad_likeinfo = function(ad_id, resource_type, resource_id, owner_id, widgetType, core_like) {
+var communityad_likeinfo = function (ad_id, resource_type, resource_id, owner_id, widgetType, core_like) {
   // SENDING REQUEST TO AJAX
   var request = createLike(ad_id, resource_type, resource_id, owner_id, widgetType, core_like);
   // RESPONCE FROM AJAX
-  request.addEvent('complete', function(responseJSON) {
-    if (responseJSON.like_id)
-    {
+  request.addEvent('complete', function (responseJSON) {
+    if (responseJSON.like_id) {
       $(widgetType + '_likeid_info_' + ad_id).value = responseJSON.like_id;
       $(resource_type + '_' + widgetType + '_most_likes_' + ad_id).style.display = 'none';
       $(resource_type + '_' + widgetType + '_unlikes_' + ad_id).style.display = 'block';
     }
-    else
-    {
+    else {
       $(widgetType + '_likeid_info_' + ad_id).value = 0;
       $(resource_type + '_' + widgetType + '_most_likes_' + ad_id).style.display = 'block';
       $(resource_type + '_' + widgetType + '_unlikes_' + ad_id).style.display = 'none';
@@ -1634,8 +1658,7 @@ function adSave(adCancelReasion, adsId, divId, widgetType) {
 }
 
 // Function: For 'Advertisment' liked or unliked.
-function createLike(ad_id, resource_type, resource_id, owner_id, widgetType, core_like)
-{
+function createLike(ad_id, resource_type, resource_id, owner_id, widgetType, core_like) {
   var like_id = $(widgetType + '_likeid_info_' + ad_id).value;
   var request = new Request.JSON({
     url: en4.core.baseUrl + 'communityad/display/globallikes',
@@ -1652,149 +1675,148 @@ function createLike(ad_id, resource_type, resource_id, owner_id, widgetType, cor
   request.send();
   return request;
 }
+
 /*  Community Ad Plugin JS End here*/
 
 function locationAutoSuggest(countrycities, location_field, city_field) {
 
-    if(city_field && $(city_field)) {
+  if (city_field && $(city_field)) {
 
-        if(countrycities) {
-            var options = {
-                types: ['(cities)'],
-                componentRestrictions: {country: countrycities}
-            };
-        }
-        else {
-            var options = {
-                types: ['(cities)']
-            };      
-        }    
-        
-        var autocomplete = new google.maps.places.Autocomplete($(city_field), options);        
-    }  
-    
-    if(location_field && $(location_field)) {
+    if (countrycities) {
+      var options = {
+        types: ['(cities)'],
+        componentRestrictions: {country: countrycities}
+      };
+    }
+    else {
+      var options = {
+        types: ['(cities)']
+      };
+    }
 
-        if(countrycities) { 
-            var options = {
-                //types: [''],//We are not passing any values here for showing all results of some specific country.
-                componentRestrictions: {country: countrycities}
-            };
-        }
-        else {
-            var options = {
-           
-            }; 
-        }
-        
-        var autocomplete = new google.maps.places.Autocomplete($(location_field), options);        
-    }        
-    
+    var autocomplete = new google.maps.places.Autocomplete($(city_field), options);
+  }
+
+  if (location_field && $(location_field)) {
+
+    if (countrycities) {
+      var options = {
+        //types: [''],//We are not passing any values here for showing all results of some specific country.
+        componentRestrictions: {country: countrycities}
+      };
+    }
+    else {
+      var options = {};
+    }
+
+    var autocomplete = new google.maps.places.Autocomplete($(location_field), options);
+  }
+
 }
 
 //WHEN CONTENT ON THE PAGE LOAD FROM THE AJAX IN THAT CASE SMOOTHBOX CLASS DOES NOT WORK THEN WE USE BELOW FUNCTION
 function openSmoothbox(thisobj) {
-    var Obj_Url = thisobj.href;
-    Smoothbox.open(Obj_Url);
+  var Obj_Url = thisobj.href;
+  Smoothbox.open(Obj_Url);
 }
 
 function showShareLinks(val) {
   $(document.body).addEvent('click', showHideToggleShareLinks);
-  $$('.siteevent_share_links_toggle').removeEvents('click').addEvent('click',function(event) {
+  $$('.siteevent_share_links_toggle').removeEvents('click').addEvent('click', function (event) {
     event.stop();
     //showHideToggleShareLinks();
-    $(this).getParent('.siteevent_grid_footer').getElement('.siteevent_share_links').toggle(); 
-    
-    if(typeof val == 'undefined') {
-       $(this).toggle();
+    $(this).getParent('.siteevent_grid_footer').getElement('.siteevent_share_links').toggle();
+
+    if (typeof val == 'undefined') {
+      $(this).toggle();
     } else {
-       $(this).show(); 
+      $(this).show();
     }
   });
 }
 
 function showHideToggleShareLinks() {
-      $$('.siteevent_share_links_toggle').show();
-      $$('.siteevent_share_links_toggle').getParent('.siteevent_grid_footer').getElement('.siteevent_share_links').hide();
+  $$('.siteevent_share_links_toggle').show();
+  $$('.siteevent_share_links_toggle').getParent('.siteevent_grid_footer').getElement('.siteevent_share_links').hide();
 }
 
 function showReviewShareLinks(val) {
   $(document.body).addEvent('click', showHideToggleReviewShareLinks);
-  $$('.sitereview_share_links_toggle').removeEvents('click').addEvent('click',function(event) {
+  $$('.sitereview_share_links_toggle').removeEvents('click').addEvent('click', function (event) {
     event.stop();
     //showHideToggleShareLinks();
-    $(this).getParent('.sitereview_grid_footer').getElement('.sitereview_share_links').toggle(); 
-    
-    if(typeof val == 'undefined') {
-       $(this).toggle();
+    $(this).getParent('.sitereview_grid_footer').getElement('.sitereview_share_links').toggle();
+
+    if (typeof val == 'undefined') {
+      $(this).toggle();
     } else {
-       $(this).show(); 
+      $(this).show();
     }
   });
 }
 
 function showHideToggleReviewShareLinks() {
-      $$('.sitereview_share_links_toggle').show();
-      $$('.sitereview_share_links_toggle').getParent('.sitereview_grid_footer').getElement('.sitereview_share_links').hide();
+  $$('.sitereview_share_links_toggle').show();
+  $$('.sitereview_share_links_toggle').getParent('.sitereview_grid_footer').getElement('.sitereview_share_links').hide();
 }
 
 function showPageShareLinks(val) {
   $(document.body).addEvent('click', showHideTogglePageShareLinks);
-  $$('.sitepage_share_links_toggle').removeEvents('click').addEvent('click',function(event) {
+  $$('.sitepage_share_links_toggle').removeEvents('click').addEvent('click', function (event) {
     event.stop();
     //showHideToggleShareLinks();
-    $(this).getParent('.sitepage_grid_footer').getElement('.sitepage_share_links').toggle(); 
-    
-    if(typeof val == 'undefined') {
-       $(this).toggle();
+    $(this).getParent('.sitepage_grid_footer').getElement('.sitepage_share_links').toggle();
+
+    if (typeof val == 'undefined') {
+      $(this).toggle();
     } else {
-       $(this).show(); 
+      $(this).show();
     }
   });
 }
 
 function showHideTogglePageShareLinks() {
-      $$('.sitepage_share_links_toggle').show();
-      $$('.sitepage_share_links_toggle').getParent('.sitepage_grid_footer').getElement('.sitepage_share_links').hide();
+  $$('.sitepage_share_links_toggle').show();
+  $$('.sitepage_share_links_toggle').getParent('.sitepage_grid_footer').getElement('.sitepage_share_links').hide();
 }
 
 function showForumShareLinks(val) {
   $(document.body).addEvent('click', showForumHideToggleShareLinks);
-  $$('.siteforum_share_links_toggle').removeEvents('click').addEvent('click',function(event) {
+  $$('.siteforum_share_links_toggle').removeEvents('click').addEvent('click', function (event) {
     event.stop();
     //showHideToggleShareLinks();
-    $(this).getParent('.siteforum_grid_footer').getElement('.siteforum_share_links').toggle(); 
-    
-    if(typeof val == 'undefined') {
-       $(this).toggle();
+    $(this).getParent('.siteforum_grid_footer').getElement('.siteforum_share_links').toggle();
+
+    if (typeof val == 'undefined') {
+      $(this).toggle();
     } else {
-       $(this).show(); 
+      $(this).show();
     }
   });
 }
 
 function showForumHideToggleShareLinks() {
-      $$('.siteforum_share_links_toggle').show();
-      $$('.siteforum_share_links_toggle').getParent('.siteforum_grid_footer').getElement('.siteforum_share_links').hide();
+  $$('.siteforum_share_links_toggle').show();
+  $$('.siteforum_share_links_toggle').getParent('.siteforum_grid_footer').getElement('.siteforum_share_links').hide();
 }
 
 
 function showGroupShareLinks(val) {
   $(document.body).addEvent('click', showHideToggleGroupShareLinks);
-  $$('.sitegroup_share_links_toggle').removeEvents('click').addEvent('click',function(event) {
+  $$('.sitegroup_share_links_toggle').removeEvents('click').addEvent('click', function (event) {
     event.stop();
     //showHideToggleShareLinks();
-    $(this).getParent('.sitegroup_grid_footer').getElement('.sitegroup_share_links').toggle(); 
-    
-    if(typeof val == 'undefined') {
-       $(this).toggle();
+    $(this).getParent('.sitegroup_grid_footer').getElement('.sitegroup_share_links').toggle();
+
+    if (typeof val == 'undefined') {
+      $(this).toggle();
     } else {
-       $(this).show(); 
+      $(this).show();
     }
   });
 }
 
 function showHideToggleGroupShareLinks() {
-      $$('.sitegroup_share_links_toggle').show();
-      $$('.sitegroup_share_links_toggle').getParent('.sitegroup_grid_footer').getElement('.sitegroup_share_links').hide();
+  $$('.sitegroup_share_links_toggle').show();
+  $$('.sitegroup_share_links_toggle').getParent('.sitegroup_grid_footer').getElement('.sitegroup_share_links').hide();
 }

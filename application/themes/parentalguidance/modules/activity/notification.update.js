@@ -1,9 +1,15 @@
+import 'mootools';
+import 'mootools-more';
 import {en4} from "../../../../modules/Core/externals/scripts/core";
 
-let NotificationUpdateHandler, ActivityUpdateHandler;
+let NotificationUpdateHandler, ActivityUpdateHandler,
+  editComposers;
+
+editComposers = new Hash();
 
 en4.activity = {
-  editComposers: new Hash(),
+  editComposers: editComposers,
+
   load: function (next_id, subject_guid) {
     if (en4.core.request.isRequestActive()) return;
 

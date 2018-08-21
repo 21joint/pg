@@ -125,14 +125,14 @@
   <script type="text/javascript">
     <?php echo $this->headScript()->captureStart(Zend_View_Helper_Placeholder_Container_Abstract::PREPEND) ?>
 
-    Date.setServerOffset('<?php echo date('D, j M Y G:i:s O', time()) ?>');
+    //Date.setServerOffset('<?php echo date('D, j M Y G:i:s O', time()) ?>');
 
     en4.orientation = '<?php echo $orientation ?>';
     en4.core.environment = '<?php echo APPLICATION_ENV ?>';
     en4.core.language.setLocale('<?php echo $this->locale()->getLocale()->__toString() ?>');
     en4.core.setBaseUrl('<?php echo $this->url(array(), 'default', true) ?>');
     en4.core.staticBaseUrl = '<?php echo $this->escape($staticBaseUrl) ?>';
-    en4.core.loader = new Element('img', {src: en4.core.staticBaseUrl + 'application/modules/Seaocore/externals/images/loading.gif'});
+    // en4.core.loader = new Element('img', {src: en4.core.staticBaseUrl + 'application/modules/Seaocore/externals/images/loading.gif'});
 
     <?php if( $this->subject() ): ?>
       en4.core.subject = {

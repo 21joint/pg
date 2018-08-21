@@ -1,1 +1,1 @@
-import 'login.module';
+import './login.module';

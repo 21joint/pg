@@ -1,4 +1,4 @@
-import {Events} from 'mootools';
+import * as Events from 'mootools';
 // Chootools. Choo-Choo as in Engine. Get it?
 
 // no more undefined object "console" errors:

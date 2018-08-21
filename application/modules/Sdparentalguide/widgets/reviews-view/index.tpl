@@ -15,7 +15,8 @@
   <!-- SINGLE REVIEW HERO -->
   <div class="page-hero prg-review--single---hero position-relative pt-0">
     <!-- SINGLE REVIEW HERO IMAGE -->
-    <div class="prg-review--single---heroimage lazy" data-loader="galleryLoader" data-load="{{ review.coverPhoto.photoURL }}"
+    <div class="prg-review--single---heroimage lazy" data-loader="galleryLoader"
+         data-load="{{ review.coverPhoto.photoURL }}"
          style="background-color: #eeeeee;">
     </div>
     <!-- SINGLE REVIEW HERO IMAGE /ends-->
@@ -82,7 +83,8 @@
 
                   <!-- TITLE -->
                   <header class="prg-review--single---header">
-                    <h2 class="prg-review--single---title text-primary font-weight-bold mb-3 mb-md-4 mb-lg-5" data-render="review.title">
+                    <h2 class="prg-review--single---title text-primary font-weight-bold mb-3 mb-md-4 mb-lg-5"
+                        data-render="review.title">
                       Twisted
                       Mustard
                       Seed
@@ -202,10 +204,10 @@
                     ); ?>
                   </div>
                   <div class="col">
-                  <textarea title="<?= $this->translate('Join Discussion') ?>"
-                            class="form-control border bg-white py-2 px-3"
-                            id="prgJoinDiscussion" rows="3"
-                            placeholder="Join the discussion..."></textarea>
+              <textarea title="<?= $this->translate('Join Discussion') ?>"
+                        class="form-control border bg-white py-2 px-3"
+                        id="prgJoinDiscussion" rows="3"
+                        placeholder="Join the discussion..."></textarea>
                   </div>
                 </div>
               </div>
@@ -339,4 +341,4 @@
   </div>
   <!-- SINGLE REVIEW LAYOUT /// -->
 
-  <script src="/scripts/reviews_view.bundle.js"></script>
+</div>

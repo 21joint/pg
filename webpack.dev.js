@@ -9,8 +9,7 @@ let config = merge(webpackConfig, {
   devServer: {
     proxy: {
       '*': {
-        target: 'http://localhost:8888',
-        secure: false
+        target: 'http://localhost:8888'
       },
       '/api/v1': {
         target: API_PROXY,
@@ -20,16 +19,24 @@ let config = merge(webpackConfig, {
         }
       }
     },
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: [
+      path.resolve(__dirname, './dist'),
+      path.resolve(__dirname, './application')
+    ],
     publicPath: '/',
     port: 2121,
     open: true,
+    hot: true,
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'DELETE, HEAD, GET, OPTIONS, POST, PUT',
       'Access-Control-Allow-Headers': 'Content-Type, Content-Range, Content-Disposition, Content-Description'
     }
-  }
+  },
+  plugins: [
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin()
+  ]
 });
 
 module.exports = config;

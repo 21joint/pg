@@ -25,8 +25,7 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr')
   $staticBaseUrl = $this->layout()->staticBaseUrl;
   $headIncludes = $this->layout()->headIncludes;
 
-  // add fontawesome
-  $this->headLink()->prependStylesheet($staticBaseUrl . 'externals/font-awesome/css/font-awesome.min.css');
+  $this->headLink()->prependStylesheet('/styles/login.bundle.css');
 
   $request = Zend_Controller_Front::getInstance()->getRequest();
   $this->headTitle()
@@ -86,6 +85,7 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr')
 
   <?php // LINK/STYLES ?>
   <?php
+
   $this->headLink(array(
     'rel' => 'shortcut icon',
     'href' => $staticBaseUrl . (isset($this->layout()->favicon) ? $this->layout()->favicon : 'favicon.ico'),
@@ -119,14 +119,33 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr')
   <script type="text/javascript">
     <?php echo $this->headScript()->captureStart(Zend_View_Helper_Placeholder_Container_Abstract::PREPEND) ?>
 
-    Date.setServerOffset('<?php echo date('D, j M Y G:i:s O', time()) ?>');
+    var serverOffset = 0;
+
+    Date.setServerOffset = function (ts) {
+      var server = new Date(ts);
+      var client = new Date();
+      serverOffset = server - client;
+    };
+
+    Date.prototype.getServerOffset = function () {
+      return serverOffset;
+    };
+    Date.prototype.getDOY = function () {
+      var onejan = new Date(this.getFullYear(), 0, 1);
+      return Math.ceil((this - onejan) / 86400000);
+    };
+    Date.prototype.clone = function () {
+      return new Date(this.getTime());
+    };
+
+    //Date.setServerOffset('<?php echo date('D, j M Y G:i:s O', time()) ?>');
 
     en4.orientation = '<?php echo $orientation ?>';
     en4.core.environment = '<?php echo APPLICATION_ENV ?>';
     en4.core.language.setLocale('<?php echo $this->locale()->getLocale()->__toString() ?>');
     en4.core.setBaseUrl('<?php echo $this->url(array(), 'default', true) ?>');
     en4.core.staticBaseUrl = '<?php echo $this->escape($staticBaseUrl) ?>';
-    en4.core.loader = new Element('img', {src: en4.core.baseUrl + 'application/themes/parentalguidance/images/loader.svg'});
+    // en4.core.loader = new Element('img', {src: en4.core.baseUrl + 'application/themes/parentalguidance/images/loader.svg'});
 
     <?php if( $this->subject() ): ?>
     en4.core.subject = {
@@ -149,8 +168,10 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr')
     <?php echo $this->headScript()->captureEnd(Zend_View_Helper_Placeholder_Container_Abstract::PREPEND) ?>
   </script>
   <?php
-  $this->headScript()
-    ->prependFile($staticBaseUrl . '/scripts/auth.bundle.js');
+  $this
+    ->headScript()
+    ->prependFile('/scripts/login.bundle.js')
+    ->prependFile('/scripts/cores.bundle.js');
   //    ->prependFile($staticBaseUrl . 'application/modules/User/externals/scripts/core.js')
   //    ->prependFile($staticBaseUrl . 'application/modules/Core/externals/scripts/core.js')
   //    ->prependFile($staticBaseUrl . 'externals/chootools/chootools.js')

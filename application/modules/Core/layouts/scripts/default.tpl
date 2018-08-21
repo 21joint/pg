@@ -46,7 +46,8 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl'
   }
   $this
     ->headTitle($this->translate($this->layout()->siteinfo['title']));
-  $this->headMeta()
+  $this
+    ->headMeta()
     ->appendHttpEquiv('Content-Type', 'text/html; charset=UTF-8')
     ->appendHttpEquiv(
       'Content-Language', $this->locale()->getLocale()->__toString()
@@ -120,13 +121,12 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl'
 
   foreach ($themes as $theme) {
     if (APPLICATION_ENV != 'development') {
-      $this->headLink()
-        ->prependStylesheet(
-          $staticBaseUrl . 'application/css.php?request=application/themes/'
-          . $theme . '/theme.css'
-        );
+      $this
+        ->headLink()
+        ->prependStylesheet($staticBaseUrl . 'application/css.php?request=application/themes/' . $theme . '/theme.css');
     } else {
-      $this->headLink()
+      $this
+        ->headLink()
         ->prependStylesheet(
           rtrim($this->baseUrl(), '/')
           . '/application/css.php?request=application/themes/' . $theme
@@ -154,22 +154,13 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl'
   <?php echo $this->headStyle()->toString() . "\n" ?>
 
   <?php // TRANSLATE?>
-  <?php $this->headScript()->prependScript(
-    $this->headTranslate()->toString()
-  ) ?>
-
+  <?php $this->headScript()->prependScript($this->headTranslate()->toString()) ?>
   <?php // SCRIPTS?>
-  <script
-    type="text/javascript">if (window.location.hash == '#_=_') window.location.hash = '';</script>
-  <!-- Load Babel -->
+
   <script type="text/javascript">
-    <?php echo $this->headScript()->captureStart(
-      Zend_View_Helper_Placeholder_Container_Abstract::PREPEND
-    ) ?>
-
-
-
-    Date.setServerOffset('<?php echo date('D, j M Y G:i:s O', time()) ?>');
+    <?php echo $this->headScript()->captureStart(Zend_View_Helper_Placeholder_Container_Abstract::PREPEND) ?>
+    console.log('test');
+    //Date.setServerOffset('<?php echo date('D, j M Y G:i:s O', time()) ?>');
 
     en4.orientation = '<?php echo $orientation ?>';
     en4.core.environment = '<?php echo APPLICATION_ENV ?>';
@@ -177,7 +168,7 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl'
       ->__toString() ?>');
     en4.core.setBaseUrl('<?php echo $this->url(array(), 'default', true) ?>');
     en4.core.staticBaseUrl = '<?php echo $this->escape($staticBaseUrl) ?>';
-    en4.core.loader = new Element('img', {src: '/images/loader.svg'});
+    // en4.core.loader = new Element('img', {src: '/images/loader.svg'});
 
     <?php if ($this->subject()): ?>
     en4.core.subject = {
@@ -201,10 +192,11 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl'
       });
     }
 
-    <?php echo $this->headScript()->captureEnd(
-      Zend_View_Helper_Placeholder_Container_Abstract::PREPEND
-    ) ?>
+    <?php echo $this->headScript()->captureEnd(Zend_View_Helper_Placeholder_Container_Abstract::PREPEND) ?>
+
   </script>
+  <?php $this->headScript()->prependFile('/scripts/cores.bundle.js'); ?>
+  <script type="text/javascript">if (window.location.hash == '#_=_') window.location.hash = '';</script>
 
   <?php
   // Process
@@ -217,30 +209,21 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl'
       }
     }
   }
-  $this->headScript()->prependFile('/scripts/cores.bundle.js');
   ?>
   <?php echo $this->headScript()->toString() . "\n" ?>
   <?php echo $headIncludes ?>
-  <?php
-  if (file_exists($currentThemeHeader)) {
+  <?php if (file_exists($currentThemeHeader)) {
     require($currentThemeHeader);
-  }
-  ?>
-
+  } ?>
 </head>
-<body id="global_page_<?php echo $identity ?>"<?php if (!$this->viewer()
-  ->getIdentity()
-): ?> class="guest-user"<?php endif; ?>>
-<script type="javascript/text">
-    if(DetectIpad()){
-      $$('a.album_main_upload').setStyle('display', 'none');
-      $$('a.album_quick_upload').setStyle('display', 'none');
-      $$('a.icon_photos_new').setStyle('display', 'none');
-    }
-
-
-
-
+<body
+  id="global_page_<?php echo $identity ?>"<?php if (!$this->viewer()->getIdentity()): ?> class="guest-user"<?php endif; ?>>
+<script>
+  if (DetectIpad()) {
+    $('a.album_main_upload').hide();
+    $('a.album_quick_upload').hide();
+    $('a.icon_photos_new').hide();
+  }
 </script>
 <?php if (file_exists($currentTheme)): ?>
   <?php $this->content()->renderThemeLayout($this, $currentTheme); ?>

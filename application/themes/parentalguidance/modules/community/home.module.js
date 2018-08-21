@@ -1,4 +1,6 @@
-(function ($) {
+$(document).ready(init);
+
+function init() {
 // FAQ on click display question and transform plus to close
   $(".faq_toggle").each(function (index, toggle) {
     $(toggle).on('click', function (event) {
@@ -9,4 +11,4 @@
     });
   });
 
-})(jQuery)
+}

@@ -34,7 +34,7 @@ class User_Bootstrap extends Engine_Application_Bootstrap_Abstract
     $viewer = Engine_Api::_()->user()->getViewer();
 
     // Check if they were disabled
-    if( $viewer->getIdentity() && !$viewer->enabled ) {
+    if ($viewer->getIdentity() && !$viewer->enabled) {
       Engine_Api::_()->user()->getAuth()->clearIdentity();
       Engine_Api::_()->user()->setViewer(null);
     }

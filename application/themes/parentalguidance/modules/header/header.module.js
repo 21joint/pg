@@ -1,13 +1,17 @@
 import {API_PROXY, OAUTH} from '../../../../../package';
 import {renderProfileBox} from "../../components/profile-box/profile-box";
-import {NotificationUpdateHandler} from "../activity/notification.update";
+import { NotificationUpdateHandler } from "../activity/notification.update";
 import 'bootstrap/js/dist/util';
 import 'bootstrap/js/dist/popover';
 import 'bootstrap/js/dist/dropdown';
 import '../../scss/styles.scss';
 
 
-(function (renderProfileBox) {
+$(document).ready(function () {
+  init(renderProfileBox);
+});
+
+function init(renderProfileBox) {
 
   let notificationUpdater;
 
@@ -104,4 +108,6 @@ import '../../scss/styles.scss';
     return str.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase()
   }
 
-})(renderProfileBox);
+  console.log('header module loaded');
+
+}

@@ -17,8 +17,7 @@ let APP_PREFIX = Conf.prefix;
 let config = {
   output: {
     filename: 'scripts/[name].bundle.js',
-    path: path.join(__dirname, 'dist'),
-    publicPath: '/'
+    path: path.join(__dirname, 'dist')
   },
   module: {
     rules: [
@@ -134,10 +133,6 @@ compiler.plugin("compilation", compilation => {
   compilation.contextDependencies.push(path.resolve(__dirname, "application/themes/parentalguidance/modules/"));
 });
 
-if (IS_DEV) {
-  config.devtool = 'source-map'; // source-map
-} else {
-  config.devtool = 'inline-source-map'; // inline-source-map
-}
+config.devtool = IS_DEV ? 'inline-source-map' : 'source-map'; // source-map
 
 module.exports = config;
