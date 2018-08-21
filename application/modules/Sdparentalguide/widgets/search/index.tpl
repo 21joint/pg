@@ -29,7 +29,7 @@
         <div class="search_results_content px-0">
             <div id="sd-response" class="text-center bg-white"></div>
             <div class="search_results_reviews bg-white p-3"></div>
-            <div class="search_results_questions bg-white mt-2"></div>
+            <div class="search_results_questions bg-white mt-2 d-none"></div>
         </div>
     </div>
 </div>
@@ -40,9 +40,6 @@
     var search_param = url_get.split('=')[1];
     var search_again = url_get.split('=')[1];
     console.log(search_param);
-    
-    // Calling Search Results Function
-    loadSearchResults(search_param, search_type);
 
     // Calling Search Results Function on New Entry
     document.getElementById('search_again').addEventListener('click', function(){
@@ -60,27 +57,24 @@
     var search_type;
     document.getElementById('search_type_reviews').addEventListener('change', function(type){
         if(this.checked == true){
-            search_type_reviews = this.value;
             document.querySelector('.search_results_reviews').addClass('d-block');
-            loadSearchResults (search_again, search_type_reviews, search_type_questions);
         }else{
             document.querySelector('.search_results_reviews').removeClass('d-block').addClass('d-none');
-            loadSearchResults (search_again, search_type_reviews, search_type_questions);
         }
     });
     document.getElementById('search_type_questions').addEventListener('change', function(type){
         if(this.checked == true){
-            search_type_questions = this.value;
             document.querySelector('.search_results_questions').addClass('d-block');
-            loadSearchResults (search_again, search_type_reviews, search_type_questions);
         }else{
             document.querySelector('.search_results_questions').removeClass('d-block').addClass('d-none');
-            loadSearchResults (search_again, search_type_reviews, search_type_questions);
         }
     });
 
+    // Calling Search Results Function
+    loadSearchResults(search_param, search_type_reviews, search_type_questions);
+
     // Search Results Function
-    function loadSearchResults(search_param, search_type_reviews = "reviews", search_type_questions){
+    function loadSearchResults(search_param){
         // Request data can be linked to form inputs
         var requestData = {};
         requestData.limit = 10;
@@ -579,7 +573,9 @@
                     }
                     html_reviews += '</div>';
                     // Populate the Component and Render the Result
-                    if(search_type_reviews == "reviews"){
+                        //*************************
+                        // RENDER REVIEWS CONTENT 
+                        //*************************
                         searchContentReviews.innerHTML = html_reviews;
                         // Currently Categories are being Displayed instead of Topics, change the Call accordingly
                         // If the Load Time of the page is too slow, lower resolution of pics can be chosen
@@ -620,8 +616,9 @@
                                 }
                             });
                         }); 
-                        // Review Star Ranking Displaying
-                    }else if(search_type_questions == "questions"){
+                        //*************************
+                        // RENDER STRUGGLES CONTENT 
+                        //*************************
                         searchContentQuestions.innerHTML = html_questions;
                         // Structure of the Component
                         // Only works in real situation, doesn't work when shrinking window manually
@@ -641,7 +638,7 @@
                                 answered_true.lastChild.addClass('answered_question');
                                 answered_true.querySelector('.answer_star').innerHTML = '<svg class="d-lg-none" xmlns="http://www.w3.org/2000/svg" style="margin-right:3px;" width="13px" height="13px" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40 38"><defs><linearGradient id="z" x1="-173.22" y1="1009.42" x2="-172.4" y2="1010.06" gradientTransform="matrix(13.72, 0, 0, -11.03, 2403.25, 11146.77)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5BC7CE"></stop><stop offset="1" stop-color="#5BC7CE"></stop></linearGradient><linearGradient id="x" x1="-304.1" y1="1050.64" x2="-303.1" y2="1050.64" gradientTransform="matrix(16.54, 0, 0, -10.11, 5029.61, 10635.32)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5BC7CE"></stop><stop offset="1" stop-color="#5BC7CE"></stop></linearGradient></defs><title>star_pg</title><path d="M38.29,8.11l-7.17,9.44L25,9.36,36.9,6.64C38.65,6.23,39.15,6.93,38.29,8.11Z" fill="url(#z)"></path><path d="M16.54,11.4.87,15.33c-1,.23-1.22,1.29-.3,1.7L15.86,21.5Z" fill="url(#x)"></path><path d="M14.56,36.53l2-35.61c0-1,1-1.25,1.68-.43L39.58,27.06c.79,1,.57,2.58-1.63,1.72L25.08,23.86,17,37.19a1.3,1.3,0,0,1-2.49-.66Z" fill="#5BC7CE"></path></svg>';
                             }else{
-                            answered_true.querySelector('.answer_star').innerHTML = '<svg class="d-lg-none" viewBox="0 0 42 40" style="margin-right:3px;" width="13px" height="13px" preserveAspectRatio="xMidYMid meet" x="0" y="0" xmlns="http://www.w3.org/2000/svg"><path d="M32.52 18.024l8.06 10.036c.79 1 .57 2.58-1.63 1.72l-12.87-4.92L18 38.19a1.3 1.3 0 0 1-2.49-.66h.05l.852-15.161L1.57 18.03c-.92-.41-.7-1.47.3-1.7l15.093-3.785.597-10.625c0-1 1-1.25 1.68-.43l7.068 8.8L37.9 7.64c1.75-.41 2.25.29 1.39 1.47l-6.77 8.914z" fill-rule="nonzero" stroke="#5BC7CE" stroke-width="4" fill="none"></path></svg>'; 
+                                answered_true.querySelector('.answer_star').innerHTML = '<svg class="d-lg-none" viewBox="0 0 42 40" style="margin-right:3px;" width="13px" height="13px" preserveAspectRatio="xMidYMid meet" x="0" y="0" xmlns="http://www.w3.org/2000/svg"><path d="M32.52 18.024l8.06 10.036c.79 1 .57 2.58-1.63 1.72l-12.87-4.92L18 38.19a1.3 1.3 0 0 1-2.49-.66h.05l.852-15.161L1.57 18.03c-.92-.41-.7-1.47.3-1.7l15.093-3.785.597-10.625c0-1 1-1.25 1.68-.43l7.068 8.8L37.9 7.64c1.75-.41 2.25.29 1.39 1.47l-6.77 8.914z" fill-rule="nonzero" stroke="#5BC7CE" stroke-width="4" fill="none"></path></svg>'; 
                             }
                         });
                         // Avatar Styling
@@ -679,8 +676,7 @@
                                     removed.addClass('d-none').removeClass('d-block');
                                 }
                             });
-                        });
-                    } 
+                        }); 
                 }else{
                     console.log(responseJSON.message);
                 }
