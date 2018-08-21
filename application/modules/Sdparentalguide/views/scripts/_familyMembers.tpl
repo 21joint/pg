@@ -160,7 +160,7 @@ div.layout_page_user_signup_index .left-side {
 
                     <div class="row add-child-form add-another-child my-5 mx-0 py-4" id="add-child-form">
 
-                        <div class="col-6 p-0">
+                        <div class="col-9 col-xl-6 col-lg-6 p-0">
                             <p class="font-weight-normal">
                                 <?php echo $this->translate('Tell us their gender'); ?>
                             </p>
@@ -250,10 +250,10 @@ div.layout_page_user_signup_index .left-side {
         <div class="form-wrapper">
 
             <div class="d-flex justify-content-end family-buttons-action">
-                <button type="skip" name="skip" class="btn btn-light mr-2 w-25">
+                <button type="skip" name="skip" class="btn btn-light mr-2">
                     <?php echo $this->translate('Skip'); ?>
                 </button>
-                <button type="submit" name="submit" class="btn btn-success w-25">
+                <button type="submit" name="submit" class="btn btn-success">
                     <?php echo $this->translate('Continue'); ?>
                 </button>
             </div>

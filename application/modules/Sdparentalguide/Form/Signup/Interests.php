@@ -75,7 +75,7 @@ class Sdparentalguide_Form_Signup_Interests extends Engine_Form
         
 
         // DisplayGroup: buttons
-        $this->addDisplayGroup(array('continue', 'skip-link'), 'buttons', array(
+        $this->addDisplayGroup(array('skip-link', 'continue'), 'buttons', array(
 
         ));
     }

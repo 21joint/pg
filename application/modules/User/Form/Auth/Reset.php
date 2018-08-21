@@ -22,7 +22,7 @@ class User_Form_Auth_Reset extends Engine_Form
   {
     $this
       ->setTitle('Reset password?')
-      ->setDescription('reset your password')
+      ->setDescription('Write your new password.')
       ->setAttrib('class', 'extfox-auth w-100');
 
     // init password

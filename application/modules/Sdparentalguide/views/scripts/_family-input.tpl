@@ -311,8 +311,6 @@ function displayFinalDate(type, e) {
 }
 
 function setupFamilyMember() {
-
-    console.log(localStorage.getItem('month'), localStorage.getItem('final-year'));
     
     let familyHolder = document.getElementsByClassName('family-members-box')[0];
     var genderImage;
@@ -336,7 +334,6 @@ function setupFamilyMember() {
         genderType = '<?php echo $this->translate("Female"); ?>';
     }
 
-    console.log(localStorage.getItem('month'), localStorage.getItem('final-year'));
 
     editMember = '<div class="col-4 p-0 actions d-flex justify-content-end"><a href="javascript:void(0)" onclick="editFamily(this)" class="btn btn-light small p-3 mr-1">Edit</a><a href="javascript:void(0)" onclick="removeFamily(this)" class="btn btn-danger text-white small p-3">Delete</a></div>';
 
