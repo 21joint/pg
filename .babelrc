@@ -3,10 +3,10 @@
     [
       "@babel/env"
     ]
-  ] ,
+  ],
   "plugins": [
     "@babel/plugin-transform-runtime",
-    "@babel/plugin-transform-template-literals" ,
+    "@babel/plugin-transform-template-literals",
     "@babel/plugin-syntax-dynamic-import"
   ]
 }

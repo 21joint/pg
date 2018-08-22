@@ -6,7 +6,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-let IS_DEV = process.env.NODE_ENV === 'dev';
+const IS_DEV = process.env.NODE_ENV === 'dev';
 let APP_PREFIX = Conf.prefix;
 
 /**
@@ -17,7 +17,8 @@ let APP_PREFIX = Conf.prefix;
 let config = {
   output: {
     filename: 'scripts/[name].bundle.js',
-    path: path.join(__dirname, 'dist')
+            // resolve
+    path: path.resolve(__dirname, 'dist')
   },
   module: {
     rules: [
@@ -30,7 +31,7 @@ let config = {
       // SCSS / CSS
       {
         test: /\.(s)?css$/,
-        use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
+        use: ['css-hot-loader?sourceMap'].concat(ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
             {
