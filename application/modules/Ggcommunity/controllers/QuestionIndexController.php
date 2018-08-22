@@ -171,6 +171,8 @@ class Ggcommunity_QuestionIndexController extends Core_Controller_Action_Standar
     $viewer = Engine_Api::_()->user()->getViewer();
     $subject = Engine_Api::_()->core()->setSubject($viewer);;
 
+    $this->view->type = $type = $this->_getParam('type', null);
+
     // Render
 		$this->_helper->content
       ->setNoRender()
