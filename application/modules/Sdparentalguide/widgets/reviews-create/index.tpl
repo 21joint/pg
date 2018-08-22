@@ -9,5 +9,4 @@
 
 ?>
 
-<div data-view="reviews-view"></div>
-<script src="/scripts/reviews_create.bundle.js"></script>
+<div data-view="reviews-create"></div>

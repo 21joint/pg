@@ -2,7 +2,7 @@ import {getCategories} from '../../middleware/api.service';
 import {renderRateInput} from '../../components/rating';
 
 
-(function ($) {
+function init() {
   getCategories({}, function (cats) {
     $('#rv_category')
       .html(function () {
@@ -19,9 +19,13 @@ import {renderRateInput} from '../../components/rating';
     $(inputEl).html(renderRateInput());
   });
 
-})(jQuery);
+}
 
+
+$(document).ready(function () {
+  init();
+});
 
 if (module.hot) {
-  module.hot.accept()
+  module.hot.accept(init)
 }

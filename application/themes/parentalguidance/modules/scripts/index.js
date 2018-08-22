@@ -5,7 +5,7 @@ import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/popover';
 import 'select2';
 
-$(document).ready(init);
+$(document).ready(function () {   init(); });;
 
 function init() {
 
@@ -49,5 +49,5 @@ function init() {
 }
 
 if (module.hot) {
-  module.hot.accept()
+  module.hot.accept(init)
 }

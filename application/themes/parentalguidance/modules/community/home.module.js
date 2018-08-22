@@ -1,4 +1,4 @@
-$(document).ready(init);
+$(document).ready(function () {   init(); });;
 
 function init() {
 // FAQ on click display question and transform plus to close

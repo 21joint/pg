@@ -401,7 +401,7 @@ function init(callback) {
 
 }
 
-$(document).ready(init);
+$(document).ready(function () {   init(); });;
 
 if (module.hot) {
   module.hot.accept(init)

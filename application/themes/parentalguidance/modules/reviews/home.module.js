@@ -35,8 +35,10 @@ function init() {
 
 }
 
-$(document).ready(init);
+$(document).ready(function () {
+  init();
+});
 
 if (module.hot) {
-  module.hot.accept()
+  module.hot.accept(init)
 }
