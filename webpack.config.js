@@ -17,7 +17,6 @@ let APP_PREFIX = Conf.prefix;
 let config = {
   output: {
     filename: 'scripts/[name].bundle.js',
-            // resolve
     path: path.resolve(__dirname, 'dist')
   },
   module: {
@@ -30,8 +29,8 @@ let config = {
       },
       // SCSS / CSS
       {
-        test: /\.(s)?css$/,
-        use: ['css-hot-loader?sourceMap'].concat(ExtractTextPlugin.extract({
+        test: /\.s?css$/,
+        use: ['css-hot-loader?publicPath=/'].concat(ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
             {

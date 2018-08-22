@@ -2,7 +2,7 @@ import 'jquery-lazy';
 import {getReviews} from '../../middleware/api.service';
 import {renderCard} from "../../components/card";
 
-(function ($) {
+function init() {
 
   getReviews({
     container: '#featuredReviewsGrid',
@@ -29,11 +29,14 @@ import {renderCard} from "../../components/card";
           });
           response(true);
         }, 300);
-      },
-      customLoaderName: function (element) {
-        console.log(element)
-      },
+      }
     });
   });
 
-})(jQuery);
+}
+
+$(document).ready(init);
+
+if (module.hot) {
+  module.hot.accept()
+}

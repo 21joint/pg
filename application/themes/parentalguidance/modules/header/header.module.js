@@ -6,12 +6,12 @@ import 'bootstrap/js/dist/popover';
 import 'bootstrap/js/dist/dropdown';
 import '../../scss/styles.scss';
 
-
 $(document).ready(function () {
-  init();
+  init(renderProfileBox);
 });
 
-function init() {
+
+function init(renderProfileBox) {
 
   let notificationUpdater;
 
@@ -97,10 +97,9 @@ function init() {
   // let $search_holder = $('#search-bar');
   // let $search_icon = $('#search-icon');
   // let $close_icon = $('#close_icon');
-  console.log($('#profilePopup'));
+
   $('[data-render]').each(function () {
     let fn = new Function('return ' + $(this).data('render'));
-    // import(/* webpackPreload: true */ "../../components/profile-box/profile-box");
     $(this).html(fn());
   });
 

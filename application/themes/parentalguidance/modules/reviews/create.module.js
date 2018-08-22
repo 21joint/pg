@@ -1,5 +1,6 @@
 import {getCategories} from '../../middleware/api.service';
-import {renderRateInput} from '../../components/rating/rating';
+import {renderRateInput} from '../../components/rating';
+
 
 (function ($) {
   getCategories({}, function (cats) {
@@ -19,3 +20,8 @@ import {renderRateInput} from '../../components/rating/rating';
   });
 
 })(jQuery);
+
+
+if (module.hot) {
+  module.hot.accept()
+}

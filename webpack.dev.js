@@ -9,7 +9,7 @@ let config = merge(webpackConfig, {
   devServer: {
     proxy: {
       '*': {
-        target: 'http://localhost:8888'
+        target: 'http://localhost:9000'
       },
       '/api/v1': {
         target: API_PROXY,
