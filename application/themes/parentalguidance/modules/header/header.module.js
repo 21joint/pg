@@ -8,10 +8,10 @@ import '../../scss/styles.scss';
 
 
 $(document).ready(function () {
-  init(renderProfileBox);
+  init();
 });
 
-function init(renderProfileBox) {
+function init() {
 
   let notificationUpdater;
 

@@ -94,4 +94,4 @@
   </div>
 </div>
 
-<script src="/scripts/reviews_create.bundle.js"></script>
+<script src="/scripts/reviews.bundle.js"></script>

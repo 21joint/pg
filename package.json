@@ -89,6 +89,7 @@
     "mootools-more": "^1.5.2",
     "owl.carousel": "^2.3.4",
     "popper.js": "^1.14.4",
-    "select2": "^4.0.6-rc.1"
+    "select2": "^4.0.6-rc.1",
+    "tinymce": "^4.8.2"
   }
 }
