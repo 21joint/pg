@@ -8,7 +8,6 @@ function init() {
   console.log("login module loaded");
 }
 
-
 if (module.hot) {
   module.hot.accept();
 }
