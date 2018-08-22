@@ -9,5 +9,4 @@
 
 ?>
 
-<div data-view="reviews-view"></div>
-<script src="/scripts/reviews_view.bundle.js"></script>
+<div data-view="reviews-view" data-loading></div>

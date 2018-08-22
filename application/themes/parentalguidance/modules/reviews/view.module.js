@@ -1,8 +1,8 @@
 import {join} from 'lodash';
 import {getReview} from '../../middleware/api.service';
-import Gallery from '../../components/gallery';
-import Rating from '../../components/rating';
 import 'jquery-lazy';
+import {Gallery} from '../../components/gallery';
+import {Rating} from '../../components/rating';
 
 
 let component = function (review) {
@@ -374,16 +374,18 @@ let content = function (review) {
   <!--  SINGLE REVIEW CONTENT ///-->`;
 };
 
-function init(callback) {
+function init() {
   let revId = window.location.pathname.slice(window.location.pathname.lastIndexOf('/') + 1);
   getReview({
     id: revId,
-    container: '.prg-review--single'
+    container: '[data-view="reviews-view"]'
   }, function (review) {
 
     console.info('got the review:', review);
 
-    $('[data-view="reviews-view"]').html(component(review));
+    $('[data-view="reviews-view"]')
+      .html(component(review))
+      .addClass('loaded');
     $('[data-lazy-image]').Lazy({
       effect: 'fadeIn',
       visibleOnly: false,
@@ -396,13 +398,14 @@ function init(callback) {
         }, 300);
       },
     });
-
   });
 
 }
 
-$(document).ready(function () {   init(); });;
+$(document).ready(function () {
+  init();
+});
 
 if (module.hot) {
-  module.hot.accept(init)
+  module.hot.accept()
 }

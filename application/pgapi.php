@@ -1,4 +1,3 @@
-
 <?php
 
 /**
@@ -18,15 +17,15 @@ if (defined('_ENGINE_R_MAIN')) {
 define('_ENGINE_R_CONF', true);
 define('_ENGINE_R_INIT', true);
 defined('APPLICATION_PATH_COR') ||
-  define('APPLICATION_PATH_COR', realpath(dirname(__FILE__)));
+define('APPLICATION_PATH_COR', realpath(dirname(__FILE__)));
 defined('APPLICATION_PATH_LIB') ||
-  define('APPLICATION_PATH_LIB', APPLICATION_PATH_COR . DS . 'libraries');
+define('APPLICATION_PATH_LIB', APPLICATION_PATH_COR . DS . 'libraries');
 defined('APPLICATION_PATH_SET') ||
-    define('APPLICATION_PATH_SET', APPLICATION_PATH_COR . DS . 'settings');
+define('APPLICATION_PATH_SET', APPLICATION_PATH_COR . DS . 'settings');
 defined('_ENGINE') || define('_ENGINE', true);
 
 defined('APPLICATION_PATH') ||
-  define('APPLICATION_PATH', realpath(dirname(dirname(__FILE__))));
+define('APPLICATION_PATH', realpath(dirname(dirname(__FILE__))));
 set_include_path(
   APPLICATION_PATH_LIB . PS .
   APPLICATION_PATH_LIB . DS . 'PEAR' . PS .
@@ -67,19 +66,19 @@ define('_CLIENT_TYPE', $type);
 
 // get general config
 if (file_exists(APPLICATION_PATH_SET . DS . 'general.php')) {
-    $generalConfig = include APPLICATION_PATH_SET . DS . 'general.php';
+  $generalConfig = include APPLICATION_PATH_SET . DS . 'general.php';
 } else {
-    $generalConfig = array('environment_mode' => 'production');
+  $generalConfig = array('environment_mode' => 'production');
 }
 
 // development mode
 $application_env = @$generalConfig['environment_mode'];
 defined('APPLICATION_ENV') || define('APPLICATION_ENV', (
-    !empty($_SERVER['_ENGINE_ENVIRONMENT']) ? $_SERVER['_ENGINE_ENVIRONMENT'] : (
-      $application_env ? $application_env :
-        'production'
-      )
-    )
+!empty($_SERVER['_ENGINE_ENVIRONMENT']) ? $_SERVER['_ENGINE_ENVIRONMENT'] : (
+$application_env ? $application_env :
+  'production'
+)
+)
 );
 
 // Boot
@@ -92,13 +91,13 @@ if (_ENGINE_R_INIT) {
   // Create application, bootstrap, and run
   $application = new Engine_Application(
     array(
-    'environment' => APPLICATION_ENV,
-    'autoloaderNamespaces' => array(
-      'Zend' => APPLICATION_PATH_LIB . DS . 'Zend',
-      'Engine' => APPLICATION_PATH_LIB . DS . 'Engine',
-      'Core' => APPLICATION_PATH_COR . DS . 'modules' . DS . 'Core',
-      'Pgservicelayer' => APPLICATION_PATH_COR . DS . 'modules' . DS . 'Pgservicelayer',
-    ),
+      'environment' => APPLICATION_ENV,
+      'autoloaderNamespaces' => array(
+        'Zend' => APPLICATION_PATH_LIB . DS . 'Zend',
+        'Engine' => APPLICATION_PATH_LIB . DS . 'Engine',
+        'Core' => APPLICATION_PATH_COR . DS . 'modules' . DS . 'Core',
+        'Pgservicelayer' => APPLICATION_PATH_COR . DS . 'modules' . DS . 'Pgservicelayer',
+      ),
     )
   );
   Engine_Application::setInstance($application);

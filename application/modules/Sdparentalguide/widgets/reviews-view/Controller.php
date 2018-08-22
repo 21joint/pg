@@ -15,7 +15,9 @@ class Sdparentalguide_Widget_ReviewsViewController
   {
     $this->view->viewer = $viewer = Engine_Api::_()->user()->getViewer();
 
-//    $headLink = new Zend_View_Helper_HeadLink();
-//    $headLink->prependStylesheet('/styles/reviews_view.bundle.css');
+    $headLink = new Zend_View_Helper_HeadLink();
+    $headScript = new Zend_View_Helper_HeadScript();
+    $headLink->prependStylesheet('/styles/reviews_view.bundle.css');
+    $headScript->prependFile('/scripts/reviews_view.bundle.js');
   }
 }

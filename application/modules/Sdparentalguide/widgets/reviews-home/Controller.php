@@ -14,8 +14,8 @@ class Sdparentalguide_Widget_ReviewsHomeController
   public function indexAction()
   {
     $headLink = new Zend_View_Helper_HeadLink();
-//    $headLink->appendStylesheet('/styles/reviews_home.bundle.css');
-//    $headLink->appendStylesheet('/styles/reviews_view.bundle.css');
-//    $headLink->appendStylesheet('/styles/reviews_create.bundle.css');
+    $headScript = new Zend_View_Helper_HeadScript();
+    $headLink->prependStylesheet('/styles/reviews_home.bundle.css');
+    $headScript->prependFile('/scripts/reviews_home.bundle.js');
   }
 }

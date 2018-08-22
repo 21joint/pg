@@ -5,10 +5,11 @@ import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/popover';
 import 'select2';
 
-$(document).ready(function () {   init(); });;
+$(document).ready(function () {
+  init();
+});
 
 function init() {
-
 
   $('[data-toggle="popover"]').popover({
     container: 'body'
@@ -49,5 +50,5 @@ function init() {
 }
 
 if (module.hot) {
-  module.hot.accept(init)
+  module.hot.accept()
 }

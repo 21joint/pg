@@ -1,4 +1,4 @@
-export default class Gallery {
+export class Gallery {
   constructor(items) {
     this.items = items;
   }

@@ -40,5 +40,5 @@ $(document).ready(function () {
 });
 
 if (module.hot) {
-  module.hot.accept(init)
+  module.hot.accept()
 }

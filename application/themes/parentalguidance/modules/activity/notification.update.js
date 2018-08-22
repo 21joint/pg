@@ -219,6 +219,7 @@ en4.activity = {
       force: true,
     });
   },
+
   bindEditFeed: function (action_id, composerOptions) {
     if ($('activity-item-' + action_id).getElement('.compose-container')) {
       this.bindEditLink(action_id);
@@ -267,6 +268,7 @@ en4.activity = {
       parent.getElement('.feed_item_body_content').setStyle('display', 'block');
     });
   },
+
   bindEditLink: function (action_id) {
     if (!$('activity-item-' + action_id).getElement('.feed_item_option_edit')) {
       return;
@@ -286,6 +288,7 @@ en4.activity = {
 NotificationUpdateHandler = new Class({
 
   Implements: [Events, Options],
+
   options: {
     debug: false,
     baseUrl: '/',

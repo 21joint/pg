@@ -20,8 +20,8 @@ let config = merge(webpackConfig, {
       }
     },
     contentBase: [
-      path.resolve(__dirname, './dist'),
-      path.resolve(__dirname, './application')
+      path.resolve(__dirname, 'dist'),
+      path.resolve(__dirname, 'application')
     ],
     publicPath: '/',
     port: 2121,

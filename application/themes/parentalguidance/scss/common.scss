@@ -3,9 +3,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: $light;
 }
+
 [data-view] {
   min-height: 75vh;
 }
+
 #global_wrapper, #global_content {
   padding: 0 !important;
 }
@@ -42,6 +44,10 @@ html [type="button"],
 
 .btn {
   font-size: .875rem;
+}
+
+.dropdown-menu {
+  overflow: hidden;
 }
 
 .list-inline-item:not(:last-child) {

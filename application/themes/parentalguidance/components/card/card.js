@@ -1,6 +1,6 @@
 import './card.scss';
 import {renderProfileBox} from '../profile-box/profile-box';
-import {renderRate} from '../rating';
+import {Rating} from '../rating';
 
 
 const renderCard = (review, options) => {
@@ -34,8 +34,8 @@ const renderCard = (review, options) => {
           class="d-block card-img--wrapper lazy"
           data-loader="asyncLoader" data-lazy-image="${review.coverPhoto.photoURL}">
       </a>
-      ${options.review == 'review' ? renderRate(review.averageReviewRating + 1) : ''}
-      ${options.review == 'guide' ? `<div class="prg-card--thumbs">
+      ${options.review == 'review' ? Rating.render(review.averageReviewRating) : ''}
+      ${options.review == 'guide' ? `<div class="card-thumbs">
                                        <ul class="list-inline m-0 d-flex no-gutters justify-content-between">
                                         <li class="col-auto"><img class="" src="${review.coverPhoto.photoURL}" alt="${review.title}"/></li>
                                         <li class="col-auto"><img class="" src="${review.coverPhoto.photoURL}" alt="${review.title}"/></li>

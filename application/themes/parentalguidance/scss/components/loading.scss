@@ -1,9 +1,10 @@
-[data-loader] {
+[data-loading] {
   background-image: url('../images/loader.svg');
   background-repeat: no-repeat;
   background-position: 15px 15px;
   background-size: 32px;
   min-height: 50vh;
+  transition: .3s all ease-in-out;
   > * {
     opacity: 0;
   }

@@ -1,12 +1,12 @@
 import './rating.scss';
 
-export default class Rating {
+export class Rating {
   constructor(rating) {
     this.rating = parseFloat(rating);
   }
 
-  render() {
-    let html = '<div class="prg-stars"><ul class="row no-gutters align-items-center flex-nowrap p-0 m-0">';
+  addStar() {
+    let html = '';
     for (let j = 0; j < this.rating; j++) {
       html += `<li class="col">
               <svg class="card-star--icon">
@@ -14,9 +14,15 @@ export default class Rating {
               </svg>
             </li>`
     }
-    html += '</ul>' +
-      '</div>';
     return html;
+  }
+
+  render() {
+    return `<div class="prg-stars">
+                  <ul class="row no-gutters align-items-center flex-nowrap p-0 m-0">
+                  ${this.addStar(this.rating)}
+                  </ul>
+                </div>`;
   };
 
   renderRateInput() {
