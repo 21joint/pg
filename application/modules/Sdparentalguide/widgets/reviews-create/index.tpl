@@ -9,4 +9,4 @@
 
 ?>
 
-<div data-view="reviews-create"></div>
+<div data-view="reviews-create" data-load></div>

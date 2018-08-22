@@ -7,11 +7,11 @@ import 'bootstrap/js/dist/dropdown';
 import '../../scss/styles.scss';
 
 $(document).ready(function () {
-  init(renderProfileBox);
+  init();
 });
 
 
-function init(renderProfileBox) {
+function init() {
 
   let notificationUpdater;
 
@@ -98,7 +98,7 @@ function init(renderProfileBox) {
   // let $search_icon = $('#search-icon');
   // let $close_icon = $('#close_icon');
 
-  $('[data-render]').each(function () {
+  $('[data-view=""]').each(function () {
     let fn = new Function('return ' + $(this).data('render'));
     $(this).html(fn());
   });

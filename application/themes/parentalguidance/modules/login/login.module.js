@@ -9,6 +9,6 @@ function init() {
 }
 
 
-module.hot.accept(
-  console.error // Function to handle errors when evaluating the new version
-);
+if (module.hot) {
+  module.hot.accept();
+}
