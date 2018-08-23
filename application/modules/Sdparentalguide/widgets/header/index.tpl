@@ -42,7 +42,8 @@
         </div> <!-- search -->
         <div class="col-auto col-md-4 mini-menu" id="core_menu_mini_menu_extfox">
 
-          <ul class="list-unstyled profile-items w-100 d-flex justify-content-sm-end justify-content-center align-items-center my-0">
+          <ul
+            class="list-unstyled profile-items w-100 d-flex justify-content-sm-end justify-content-center align-items-center my-0">
 
             <li class="list-inline-item align-middle search d-sm-none mr-sm-2">
               <a class="d-flex align-items-center p-1 p-sm-2"
@@ -77,8 +78,9 @@
                     </div>
                     <div class="pulldown_contents">
                       <ul class="prg-header--notifications notifications_menu p-0 m-0" id="notifications_menu">
-                        <li class="notifications_loading d-flex justify-content-center align-items-center font-weight-light small py-4"
-                            id="notifications_loading">
+                        <li
+                          class="notifications_loading d-flex justify-content-center align-items-center font-weight-light small py-4"
+                          id="notifications_loading">
                           <svg>
                             <use href="#prgLoader"></use>
                           </svg>
@@ -100,7 +102,7 @@
                 </div>
               </li>
               <li class="list-inline-item align-middle mr-0">
-                <div data-render="renderProfileBox"></div>
+                <div data-component="renderProfileBox"></div>
               </li>
               <li class="list-inline-item align-middle name d-none d-sm-inline-block dropdown ml-3">
                 <?= $this->htmlLink(

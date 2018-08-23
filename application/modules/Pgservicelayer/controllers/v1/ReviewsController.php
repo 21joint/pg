@@ -735,7 +735,6 @@ class Pgservicelayer_ReviewsController extends Pgservicelayer_Controller_Action_
         }
         $this->successResponseNoContent('no_content');
     }
-    
     public function categoriesAction(){
         $listingTypeTable = Engine_Api::_()->getDbTable('listingtypes', 'sitereview');
         $listingTypeTableName = $listingTypeTable->info('name');

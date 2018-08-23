@@ -23,6 +23,7 @@ function component(author, options) {
                   role="button" 
                   id="avatar__${author.memberID}"
                   data-toggle="dropdown" 
+                  data-boundary="window"
                   aria-expanded="false" 
                   aria-haspopup="true"><span style="width: ${_options.width}px;height:${_options.height}px" class="d-block rounded-circle lazy" data-lazy-image="${author.avatarPhoto.photoURLProfile}" data-loader="asyncLoader"></span><b class="bagde badge-primary text-white d-flex justify-content-center align-items-center rounded-circle ff-open--sans position-absolute profile-box--level">${author.contributionLevel}</b></a>
               <div class="dropdown-menu" aria-labelledby="avatar__${author.memberID}">

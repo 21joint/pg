@@ -210,7 +210,7 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl'
     }
   }
   ?>
-  <?php echo $this->headScript()->toString() . "\n" ?>
+
   <?php echo $headIncludes ?>
   <?php if (file_exists($currentThemeHeader)) {
     require($currentThemeHeader);
@@ -218,13 +218,6 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl'
 </head>
 <body
   id="global_page_<?php echo $identity ?>"<?php if (!$this->viewer()->getIdentity()): ?> class="guest-user"<?php endif; ?>>
-<script>
-  if (DetectIpad()) {
-    $('a.album_main_upload').hide();
-    $('a.album_quick_upload').hide();
-    $('a.icon_photos_new').hide();
-  }
-</script>
 <?php if (file_exists($currentTheme)): ?>
   <?php $this->content()->renderThemeLayout($this, $currentTheme); ?>
 <?php else: ?>
@@ -241,5 +234,13 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl'
   </div>
 <?php endif; ?>
 <div id="janrainEngageShare" style="display:none">Share</div>
+<?php echo $this->headScript()->toString() . "\n" ?>
+<script>
+  if (DetectIpad()) {
+    $('a.album_main_upload').hide();
+    $('a.album_quick_upload').hide();
+    $('a.icon_photos_new').hide();
+  }
+</script>
 </body>
 </html>
