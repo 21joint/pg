@@ -21,13 +21,13 @@ function init() {
       en4.activity.hideNotifications('0 Updates');
     });
   }
-  // <?php if ($this->updateSettings && $this->viewer->getIdentity()): ?>
-  notificationUpdater = new NotificationUpdateHandler({
-    'delay': 60000
-  });
-  notificationUpdater.start();
-  window._notificationUpdater = notificationUpdater;
-  // <?php endif;?>
+  if (en4.user.viewer) {
+    notificationUpdater = new NotificationUpdateHandler({
+      'delay': 60000
+    });
+    notificationUpdater.start();
+    window._notificationUpdater = notificationUpdater;
+  }
   var $updateElement = $('#core_menu_mini_menu_extfox').find('.core_mini_update');
   if ($updateElement) {
     $updateElement.attr('id', 'updates_toggle');
@@ -98,7 +98,7 @@ function init() {
   // let $search_icon = $('#search-icon');
   // let $close_icon = $('#close_icon');
 
-  $('[data-view=""]').each(function () {
+  $('[data-component]').each(function () {
     let fn = new Function('return ' + $(this).data('render'));
     $(this).html(fn());
   });
@@ -109,4 +109,8 @@ function init() {
 
   console.log('header module loaded');
 
+}
+
+if (module.hot) {
+  module.hot.accept();
 }

@@ -102,7 +102,7 @@ $(window).on('load', function () {
 });
 
 // This is experimental
-$(window).on('domready', function () {
+$(document).ready(function () {
   en4.core.runonce.trigger();
 });
 
@@ -521,7 +521,6 @@ en4.core.request = {
 
 };
 
-
 /**
  * Comments
  */
@@ -637,7 +636,6 @@ en4.core.comments = {
     })).send();
   }
 };
-
 
 en4.core.layout = {
   /**
@@ -1031,10 +1029,5 @@ en4.core.reCaptcha = {
 window.en4CoreReCaptcha = function () {
   en4.core.reCaptcha.render();
 };
-
-if (module.hot) {
-  module.hot.accept();
-}
-
 
 export default {en4};

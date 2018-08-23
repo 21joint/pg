@@ -1800,7 +1800,6 @@ function showForumHideToggleShareLinks() {
   $('.siteforum_share_links_toggle').getParent('.siteforum_grid_footer').getElement('.siteforum_share_links').hide();
 }
 
-
 function showGroupShareLinks(val) {
   $(document.body).addEvent('click', showHideToggleGroupShareLinks);
   $('.sitegroup_share_links_toggle').removeEvents('click').addEvent('click', function (event) {
