@@ -1,14 +1,15 @@
-import './card.scss';
-import {renderProfileBox} from '../profile-box/profile-box';
-import {Rating} from '../rating';
-
+import './card.scss'
+import { renderProfileBox } from '../profile-box/profile-box'
+import { Rating } from '../rating'
 
 const renderCard = (review, options) => {
-  let _html = '';
+  let _html = ''
 
-  let createdDt = new Date(review.createdDateTime).toString().split(' ');
-  let createdMonth = createdDt[1];
-  let createdDay = createdDt[2].charAt(0) == 0 ? createdDt[2].split('')[1] : createdDt[2];
+  let createdDt = new Date(review.createdDateTime).toString().split(' ')
+  let createdMonth = createdDt[1]
+  let createdDay = createdDt[2].charAt(0) == 0
+    ? createdDt[2].split('')[1]
+    : createdDt[2]
 
   _html = `<div class="col-6 col-lg-4 p-2">
   <!--single card-->
@@ -34,7 +35,9 @@ const renderCard = (review, options) => {
           class="d-block card-img--wrapper lazy"
           data-loader="asyncLoader" data-lazy-image="${review.coverPhoto.photoURL}">
       </a>
-      ${options.review == 'review' ? Rating.render(review.averageReviewRating) : ''}
+      ${options.review == 'review'
+    ? Rating.render(review.averageReviewRating)
+    : ''}
       ${options.review == 'guide' ? `<div class="card-thumbs">
                                        <ul class="list-inline m-0 d-flex no-gutters justify-content-between">
                                         <li class="col-auto"><img class="" src="${review.coverPhoto.photoURL}" alt="${review.title}"/></li>
@@ -61,7 +64,8 @@ const renderCard = (review, options) => {
             <div class="card-author">
               <div class="row no-gutters flex-nowrap align-items-center">
                 <div class="col-auto d-none d-sm-block">
-                  <div class="card-author--avatar">${renderProfileBox(review.author, {width: 50, height: 50})}</div>
+                  <div class="card-author--avatar">${renderProfileBox(
+    review.author, {width: 50, height: 50})}</div>
                 </div>
                 <div class="col">
                   <a href="/profile/${review.author.memberName}">
@@ -95,9 +99,9 @@ const renderCard = (review, options) => {
       </div>
   </div>
   </div>
-</div>`;
+</div>`
 
-  return _html;
+  return _html
 }
 
-export {renderCard};
+export { renderCard }

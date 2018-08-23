@@ -18,6 +18,29 @@ function getCategories(opts, callback) {
   })
 }
 
+// Get comments
+function getComments(opts, callback) {
+  const url = API_PROXY + '/review?' + OAUTH;
+  let _comments = [];
+
+  jQuery.ajax({
+    method: 'GET',
+    url: url,
+    dataType: 'json',
+    success: function (res) {
+      _comments = res.body.Results;
+      callback(_comments);
+      console.info('Got Comments: ', _comments);
+    },
+    error: function (error) {
+      console.error(error);
+    },
+    complete: function () {
+      $(opts.container).addClass('loaded');
+    }
+  })
+}
+
 // Get all reviews
 function getReviews(opts, callback) {
   const url = API_PROXY + '/review?' + OAUTH;

@@ -1,18 +1,17 @@
-import './profile-box.scss';
-import {renderBadges} from "../badges/badges.js";
+import './profile-box.scss'
+import { renderBadges } from '../badges/badges.js'
 
-
-function component(author, options) {
+function component (author, options) {
   const _defaults = {
     width: 40,
-    height: 40
-  };
+    height: 40,
+  }
 
-  const _options = $.extend(_defaults, options, {});
+  const _options = $.extend(_defaults, options, {})
 
-  let element = document.createElement('div');
+  let element = document.createElement('div')
 
-  let _html = '';
+  let _html = ''
 
   // console.log(author);
 
@@ -22,7 +21,8 @@ function component(author, options) {
                   class="${author.mvp ? 'mvp' : 'mvp'}"
                   role="button" 
                   id="avatar__${author.memberID}"
-                  data-toggle="dropdown" 
+                  data-toggle="dropdown"
+                  data-baundary="window"
                   aria-expanded="false" 
                   aria-haspopup="true"><span style="width: ${_options.width}px;height:${_options.height}px" class="d-block rounded-circle lazy" data-lazy-image="${author.avatarPhoto.photoURLProfile}" data-loader="asyncLoader"></span><b class="bagde badge-primary text-white d-flex justify-content-center align-items-center rounded-circle ff-open--sans position-absolute profile-box--level">${author.contributionLevel}</b></a>
               <div class="dropdown-menu" aria-labelledby="avatar__${author.memberID}">
@@ -81,18 +81,17 @@ function component(author, options) {
                   </div>
                 </div>
               </div>
-            </div>`;
+            </div>`
 
-  element.innerHTML = _html;
+  element.innerHTML = _html
 
-  return options.element ? element : _html;
+  return options.element ? element : _html
 }
-
 
 // Add options as parameter
-function renderProfileBox(author, options) {
+function renderProfileBox (author, options) {
 
-  return component(author, options);
+  return component(author, options)
 }
 
-export {renderProfileBox};
+export { renderProfileBox }
