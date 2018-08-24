@@ -1,15 +1,15 @@
-import { join } from 'lodash'
+import {join} from 'lodash'
 import '../../components/card/card.scss'
-import { getReview } from '../../middleware/api.service'
+import {getReview} from '../../middleware/api.service'
 import 'jquery-lazy'
-import { renderProfileBox } from '../../components/profile-box/profile-box'
-import { Gallery } from '../../components/gallery'
-import { Rating } from '../../components/rating'
+import {renderProfileBox} from '../../components/profile-box/profile-box'
+import {Gallery} from '../../components/gallery'
+import {Rating} from '../../components/rating'
 
 let component = function (review) {
   return `<div class="prg-review--single">${join(
     [hero(review), content(review)], '')}</div>`
-}
+};
 
 let hero = function (review) {
 
@@ -20,8 +20,8 @@ let hero = function (review) {
            src="${review.coverPhoto.photoURL}"
            alt="">
     </div>
-  <!-- SINGLE REVIEW HERO IMAGE ///-->`
-  let _rating = new Rating(review.averageReviewRating)
+  <!-- SINGLE REVIEW HERO IMAGE ///-->`;
+  let _rating = new Rating(review.averageReviewRating);
   let heroInner = `<!-- SINGLE REVIEW HERO INNER -->
     <div class="prg-review--single---heroinner">
       <div class="container-fluid">
@@ -32,7 +32,7 @@ let hero = function (review) {
         </div>
       </div>
     </div>
-    <!-- SINGLE REVIEW HERO INNER /// -->`
+    <!-- SINGLE REVIEW HERO INNER /// -->`;
 
   return `<!-- SINGLE REVIEW HERO -->
   <div class="page-hero prg-review--single---hero position-relative pt-0">
@@ -41,10 +41,10 @@ let hero = function (review) {
   </div>
   <!--  SINGLE REVIEW HERO ///-->`
 
-}
+};
 
 let content = function (review) {
-  let gallery = new Gallery(review.reviewPhotos)
+  let gallery = new Gallery(review.reviewPhotos);
 
   return `<!--  SINGLE REVIEW CONTENT -->
 <div class="prg-review--single---content">
@@ -236,69 +236,69 @@ let content = function (review) {
           </div>
           <div class="col-12 py-3">
             <div class="prg-comments">
-            <div class="row">
+              <div class="row">
                 <div class="col-12 py-4">
-                 
-            <div class="row">
-              <div class="col-auto pr-0">
-                  <div class="card-author--avatar">${renderProfileBox(
-    review.author, {width: 50, height: 50})}</div>
-              </div>
-              <div class="col pl-0">
-                <textarea title="<?= $this->translate('Join Discussion') ?>"
+
+                  <div class="row">
+                    <div class="col-auto pr-0">
+                      <div class="card-author--avatar">${renderProfileBox(review.author, {width: 50, height: 50})}</div>
+                    </div>
+                    <div class="col pl-0">
+                <textarea title="Join Discussion"
                           class="form-control border bg-white py-2 px-3"
                           id="prgJoinDiscussion" rows="3"
                           placeholder="Join the discussion..."></textarea>
-              </div>
-            </div>
-          
-                </div>
-                <div class="col-12 py-4">
-                  <ul class="pl-2">
-                <li class="row prg-comment--single">
-                  <div class="col-12">
-                    <div class="prg-comment--renderer media border-bottom">
-                      <div class="card-author--avatar">${renderProfileBox(
-    review.author, {width: 50, height: 50})}</div>
-                      <div class="media-body">
-                        <h6 class="card-author--title mb-2"><b>Mandy Hall</b></h6>
-                        <p class="prg-comment--text">I have loved my TMS bags since we got them almost two years
-                          ago!</p>
-                      </div>
-                      <div class="dropdown prg-review--single---action">
-                <button class="btn btn-block bg-white rounded-circle p-0"
-                        type="button"
-                        id="dropdownMenuButton1"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false">
-                  <i class="fa fa-ellipsis-h"></i>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </div>
                     </div>
-                    <div class="prg-comment--replies---renderer media mt-3">
+                  </div>
 
-                      <div class="card-author--avatar">${renderProfileBox(
+                </div>
+              </div>
+              <ul class="row">
+                <li class="col-12 py-4 prg-comment--single">
+                  <div class="pl-2">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="prg-comment--renderer media border-bottom">
+                          <div class="card-author--avatar">${renderProfileBox(review.author, {width: 50, height: 50})}</div>
+                          <div class="media-body">
+                            <h6 class="card-author--title mb-2"><b>Mandy Hall</b></h6>
+                            <p class="prg-comment--text">I have loved my TMS bags since we got them almost two years
+                              ago!</p>
+                          </div>
+                          <div class="dropdown prg-review--single---action">
+                            <button class="btn btn-block bg-white rounded-circle p-0"
+                                    type="button"
+                                    id="dropdownMenuButton1"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false">
+                              <i class="fa fa-ellipsis-h"></i>
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                              <a class="dropdown-item" href="#">Action</a>
+                              <a class="dropdown-item" href="#">Another action</a>
+                              <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="prg-comment--replies---renderer media mt-3">
+
+                          <div class="card-author--avatar">${renderProfileBox(
     review.author, {width: 50, height: 50})}</div>
 
-                      <div class="media-body">
-                        <h6 class="card-author--title mb-2"><b>Katie E.</b></h6>
-                        <p class="prg-comment--text">This is such a beautiful bag! I love using mine when we go out even
-                          when I don't have any of my kiddos with me!</p>
+                          <div class="media-body">
+                            <h6 class="card-author--title mb-2"><b>Katie E.</b></h6>
+                            <p class="prg-comment--text">This is such a beautiful bag! I love using mine when we go out
+                              even
+                              when I don't have any of my kiddos with me!</p>
 
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </li>
               </ul>
-                </div>
-            </div>
-              
             </div>
           </div>
         </div>
@@ -416,19 +416,19 @@ let content = function (review) {
   </div>
 </div>
 <!--  SINGLE REVIEW CONTENT ///-->`
-}
+};
 
-function init () {
+function init() {
   let revId = window.location.pathname.slice(
-    window.location.pathname.lastIndexOf('/') + 1)
+    window.location.pathname.lastIndexOf('/') + 1);
   getReview({
     id: revId,
     container: '[data-view="reviews-view"]',
   }, function (review) {
 
-    console.info('got the review:', review)
+    console.info('got the review:', review);
 
-    $('[data-view="reviews-view"]').html(component(review)).addClass('loaded')
+    $('[data-view="reviews-view"]').html(component(review)).addClass('loaded');
     $('[data-lazy-image]').Lazy({
       effect: 'fadeIn',
       visibleOnly: false,
@@ -436,7 +436,7 @@ function init () {
         setTimeout(function () {
           element.css({
             'background-image': 'url(' + element.data('lazyImage') + ')',
-          })
+          });
           response(true)
         }, 300)
       },
@@ -447,8 +447,5 @@ function init () {
 
 $(document).ready(function () {
   init()
-})
+});
 
-if (module.hot) {
-  module.hot.accept()
-}

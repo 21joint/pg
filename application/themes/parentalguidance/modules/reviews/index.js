@@ -1,3 +1,3 @@
-import './home.module';
-import './view.module';
-import './create.module';
+export * from './home.module';
+export * from './view.module';
+export * from './create.module';

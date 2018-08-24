@@ -30,7 +30,7 @@ let config = {
       // SCSS / CSS
       {
         test: /\.s?css$/,
-        use: ['css-hot-loader?publicPath=/'].concat(ExtractTextPlugin.extract({
+        use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
             {
@@ -61,7 +61,7 @@ let config = {
               }
             }
           ]
-        })),
+        }),
       },
       // FONTS/IMAGES
       {
@@ -127,12 +127,7 @@ let config = {
     })
   ]
 };
-let compiler = webpack(config);
 
-compiler.plugin("compilation", compilation => {
-  compilation.contextDependencies.push(path.resolve(__dirname, "application/themes/parentalguidance/modules/"));
-});
-
-config.devtool = IS_DEV ? 'inline-source-map' : 'source-map'; // source-map
+config.devtool = IS_DEV ? 'eval-source-map' : 'source-map'; // source-map
 
 module.exports = config;

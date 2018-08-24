@@ -1,6 +1,10 @@
 import {getCategories} from '../../middleware/api.service';
-import {renderRateInput} from '../../components/rating';
+import {Rating} from '../../components/rating';
 import {Select} from "../../components/select";
+
+$(document).ready(function () {
+  init();
+});
 
 
 function init() {
@@ -16,7 +20,7 @@ function init() {
   });
 
   $('[data-input=rate]').each(function (i, inputEl) {
-    $(inputEl).html(renderRateInput());
+    $(inputEl).html(Rating.renderRateInput());
   });
 
   $('[data-view="reviews-create"]').html(`
@@ -44,7 +48,7 @@ function init() {
               </div>
               <div class="form-row mt-4">
                 <div class="col-md-4">
-                  ${Select.render({  })}
+                  ${ new Select().render()}
                   <label class="text-primary font-weight-600" for="rv_category">Review
                     Category</label>
                   <select style="width: 100%;" name="rv_category"
@@ -112,13 +116,4 @@ function init() {
 
 function form() {
 
-}
-
-
-$(document).ready(function () {
-  init();
-});
-
-if (module.hot) {
-  module.hot.accept()
 }

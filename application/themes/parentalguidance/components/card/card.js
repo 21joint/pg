@@ -1,19 +1,29 @@
 import './card.scss'
-import { renderProfileBox } from '../profile-box/profile-box'
-import { Rating } from '../rating'
+import {getComments} from "../../middleware/comment.service";
+import {renderProfileBox} from '../profile-box/profile-box'
+import {Rating} from '../rating'
 
-const renderCard = (review, options) => {
-  let _html = ''
+const renderCard = (content, options) => {
+  if (content.commentsCount !== 0) {
+    getComments({
+      contentID: content.reviewID,
+      contentType: options.contentType
+    }, function (comments) {
+      console.info('Got Comments: ', comments);
+    });
+  }
+  let _html = '';
+  const _rating = new Rating(content.averageReviewRating);
 
-  let createdDt = new Date(review.createdDateTime).toString().split(' ')
-  let createdMonth = createdDt[1]
+  let createdDt = new Date(content.createdDateTime).toString().split(' ');
+  let createdMonth = createdDt[1];
   let createdDay = createdDt[2].charAt(0) == 0
     ? createdDt[2].split('')[1]
-    : createdDt[2]
+    : createdDt[2];
 
   _html = `<div class="col-6 col-lg-4 p-2">
   <!--single card-->
-  <div class="card card-${options.type} h-100 d-flex flex-column" data-id="${review.reviewID}">
+  <div class="card card-${options.type} h-100 d-flex flex-column" data-id="${content.reviewID}">
     <div class="card-header p-0 overflow-hidden">
       <div class="card-actions">
         <ul class="row list-unstyled no-gutters mb-0">
@@ -31,32 +41,32 @@ const renderCard = (review, options) => {
                              role="button"><span class="fas fa-link"></span></a></li>
         </ul>
       </div>
-      <a href="/reviews/view/${review.reviewID}"
+      <a href="/reviews/view/${content.reviewID}"
           class="d-block card-img--wrapper lazy"
-          data-loader="asyncLoader" data-lazy-image="${review.coverPhoto.photoURL}">
+          data-loader="asyncLoader" data-lazy-image="${content.coverPhoto.photoURL}">
       </a>
-      ${options.review == 'review'
-    ? Rating.render(review.averageReviewRating)
+      ${options.contentType.toLowerCase() == 'review'
+    ? _rating.render()
     : ''}
-      ${options.review == 'guide' ? `<div class="card-thumbs">
+      ${options.contentType.toLowerCase() == 'guide' ? `<div class="card-thumbs">
                                        <ul class="list-inline m-0 d-flex no-gutters justify-content-between">
-                                        <li class="col-auto"><img class="" src="${review.coverPhoto.photoURL}" alt="${review.title}"/></li>
-                                        <li class="col-auto"><img class="" src="${review.coverPhoto.photoURL}" alt="${review.title}"/></li>
-                                        <li class="col-auto"><img class="" src="${review.coverPhoto.photoURL}" alt="${review.title}"/></li>
-                                        <li class="col-auto"><img class="" src="${review.coverPhoto.photoURL}" alt="${review.title}"/></li>
-                                        <li class="col-auto"><img class="" src="${review.coverPhoto.photoURL}" alt="${review.title}"/></li>
-                                        <li class="col-auto"><img class="" src="${review.coverPhoto.photoURL}" alt="${review.title}"/></li>
+                                        <li class="col-auto"><img class="" src="${content.coverPhoto.photoURL}" alt="${content.title}"/></li>
+                                        <li class="col-auto"><img class="" src="${content.coverPhoto.photoURL}" alt="${content.title}"/></li>
+                                        <li class="col-auto"><img class="" src="${content.coverPhoto.photoURL}" alt="${content.title}"/></li>
+                                        <li class="col-auto"><img class="" src="${content.coverPhoto.photoURL}" alt="${content.title}"/></li>
+                                        <li class="col-auto"><img class="" src="${content.coverPhoto.photoURL}" alt="${content.title}"/></li>
+                                        <li class="col-auto"><img class="" src="${content.coverPhoto.photoURL}" alt="${content.title}"/></li>
                                        </ul>
                                     </div>` : ''}
     </div>
     <div class="card-content d-flex flex-column">
       <div class="card-body"> 
-        <a href="/topic/${review.reviewTopic.topicID}">
-          <h6 class="card-subtitle my-1 text-primary font-weight-bold">${review.reviewCategorization.category}</h6>
+        <a href="/topic/${content.reviewTopic.topicID}">
+          <h6 class="card-subtitle my-1 text-primary font-weight-bold">${content.reviewCategorization.category}</h6>
         </a>
-        <a href="/reviews/view/${review.reviewID}"><h5 class="card-title font-weight-bold">
-          ${review.title}</h5></a>
-        <p class="card-text mb-0 d-none d-sm-block">${review.shortDescription}</p>
+        <a href="/reviews/view/${content.reviewID}"><h5 class="card-title font-weight-bold">
+          ${content.title}</h5></a>
+        <p class="card-text mb-0 d-none d-sm-block">${content.shortDescription}</p>
       </div>
       <div class="card-footer bg-white">
         <div class="row align-items-center justify-content-between flex-nowrap">
@@ -65,11 +75,11 @@ const renderCard = (review, options) => {
               <div class="row no-gutters flex-nowrap align-items-center">
                 <div class="col-auto d-none d-sm-block">
                   <div class="card-author--avatar">${renderProfileBox(
-    review.author, {width: 50, height: 50})}</div>
+    content.author, {width: 50, height: 50})}</div>
                 </div>
                 <div class="col">
-                  <a href="/profile/${review.author.memberName}">
-                    <h6 class="card-author--title mb-0"><b>${review.author.displayName}</b></h6>
+                  <a href="/profile/${content.author.memberName}">
+                    <h6 class="card-author--title mb-0"><b>${content.author.displayName}</b></h6>
                   </a>
                   <div class="card-date">
                     <span class="ff-open--sans text-asphalt small">${createdMonth} ${createdDay}</span>
@@ -82,11 +92,11 @@ const renderCard = (review, options) => {
             <ul class="list-inline my-0">
               <li class="flex-row align-items-center list-inline-item">
                 <span class="fas fa-heart"></span>
-                <span class="text-asphalt">${review.likesCount}</span>
+                <span class="text-asphalt">${content.likesCount}</span>
               </li>
               <li class="flex-row align-items-center list-inline-item">
                 <span class="fas fa-comments"></span>
-                <span class="text-asphalt">${review.commentsCount}</span>
+                <span class="text-asphalt">${content.commentsCount}</span>
               </li>
             </ul>
           </div>
@@ -99,9 +109,9 @@ const renderCard = (review, options) => {
       </div>
   </div>
   </div>
-</div>`
+</div>`;
 
   return _html
-}
+};
 
-export { renderCard }
+export {renderCard}

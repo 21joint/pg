@@ -7,10 +7,11 @@ function init() {
   getReviews({
     container: '#featuredReviewsGrid',
     type: 'review'
-  }, function (reviews) {
-    $.each(reviews, function (i, review) {
-      let _cardHtml = renderCard(review, {
-        type: 'review'
+  }, function (data) {
+    const _contents = data.Results;
+    $.each(_contents, function (i, content) {
+      let _cardHtml = renderCard(content, {
+        contentType: data.contentType
       });
       let _cEl = $(_cardHtml).find('.card');
       _cEl.addClass('card-loading');
@@ -38,7 +39,3 @@ function init() {
 $(document).ready(function () {
   init();
 });
-
-if (module.hot) {
-  module.hot.accept()
-}

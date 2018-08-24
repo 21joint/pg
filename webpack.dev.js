@@ -1,9 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const {API_PROXY} = require('./package');
+const {API_PROXY, OAUTH} = require('./package');
 const webpackConfig = require('./webpack.config');
-webpackConfig.entry = require('./webpack.entries');
+const entry = require('./webpack.entries');
 
 let config = merge(webpackConfig, {
   devServer: {
@@ -20,18 +20,13 @@ let config = merge(webpackConfig, {
       }
     },
     contentBase: [
-      path.resolve(__dirname, 'dist'),
-      path.resolve(__dirname, 'application')
+      path.join(__dirname, 'application'),
+      path.join(__dirname, 'dist')
     ],
     publicPath: '/',
     port: 2121,
     open: true,
-    hot: true,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'DELETE, HEAD, GET, OPTIONS, POST, PUT',
-      'Access-Control-Allow-Headers': 'Content-Type, Content-Range, Content-Disposition, Content-Description'
-    }
+    hot: true
   },
   plugins: [
     new webpack.NamedModulesPlugin(),
@@ -39,4 +34,8 @@ let config = merge(webpackConfig, {
   ]
 });
 
+
+console.log(config.devServer.headers);
+
+config.entry = entry;
 module.exports = config;

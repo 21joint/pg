@@ -50,7 +50,7 @@ class User_Form_Login extends Engine_Form_Email
     $this->setTitle('Share Your Struggle. Provide Your Theories. Gain Advice.');
     $this->setDescription($description);
     $this->setAttrib('id', 'user_form_login');
-    $this->setAttrib('class', 'extfox-auth');
+    $this->setAttrib('class', 'prg-login--form');
     $this->loadDefaultDecorators();
     $this->getDecorator('Description')->setOption('escape', false);
 
@@ -71,7 +71,7 @@ class User_Form_Login extends Engine_Form_Email
       'tabindex' => $tabindex++,
       'autofocus' => 'autofocus',
       'inputType' => 'email',
-      'class' => 'text',
+      'class' => 'form-control',
     ));
 
     $emailElement->getValidator('EmailAddress')->getHostnameValidator()->setValidateTld(false);
@@ -86,6 +86,7 @@ class User_Form_Login extends Engine_Form_Email
       'filters' => array(
         'StringTrim',
       ),
+      'class' => 'form-control',
     ));
 
     $content = Zend_Registry::get('Zend_Translate')->_("<p><a href='%s'>Forgot Password?</a></p>");

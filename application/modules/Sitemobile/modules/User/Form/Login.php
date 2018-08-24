@@ -101,7 +101,7 @@ class Sitemobile_modules_User_Form_Login extends Engine_Form {
             'tabindex' => $tabindex++,
             //  'autofocus' => 'autofocus',
             'inputType' => 'email',
-            'class' => 'text',
+            'class' => 'form-control',
         ));
 
         $this->$antispam->getValidator('EmailAddress')->getHostnameValidator()->setValidateTld(false);
@@ -117,6 +117,7 @@ class Sitemobile_modules_User_Form_Login extends Engine_Form {
             'filters' => array(
                 'StringTrim',
             ),
+            'class' => 'form-control'
         ));
 
         $this->addElement('Hidden', 'return_url', array(

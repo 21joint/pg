@@ -34,6 +34,8 @@
     font-size: 26px;
     @include media-breakpoint-up(md) {
       font-size: 32px;
+      line-height: 1.35;
+      margin-bottom: 1.5rem;
     }
   }
   p {
@@ -146,12 +148,11 @@
       }
     }
   }
+  form {
+    max-width: 400px;
+    margin: auto;
+  }
 
-}
-
-.prg-auth--form {
-  max-width: 365px;
-  margin: auto;
 }
 
 .prg-auth--close {

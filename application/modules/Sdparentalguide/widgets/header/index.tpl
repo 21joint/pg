@@ -10,7 +10,7 @@
           </button>
         </div>
         <div class="col-auto col-md-4 d-flex align-items-center mr-auto logo">
-          <a href="<?= $this->baseUrl(); ?>" class="d-md-block w-100 text-left">
+          <a href="/" class="d-md-block w-100 text-left">
             <svg class="align-middle prg-logo--image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480.81 171.45">
               <use href="#prgLogo"></use>
             </svg>
@@ -20,10 +20,7 @@
              id="search-bar">
 
           <form class="d-block w-100"
-                action="<?= $this->url(
-                  array('controller' => 'search'), 'default', true
-                ) ?>"
-                method="get">
+                action="<?= $this->url(array('controller' => 'search'), 'default', true) ?>" method="get">
             <input autocomplete="off"
                    type="text"
                    class="form-control form-control-rounded px-3 px-md-4 w-100"

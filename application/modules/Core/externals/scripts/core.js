@@ -1030,4 +1030,4 @@ window.en4CoreReCaptcha = function () {
   en4.core.reCaptcha.render();
 };
 
-export default {en4};
+export {en4};

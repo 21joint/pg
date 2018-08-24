@@ -7,7 +7,8 @@ const glob = require("glob");
 const IS_DEV = process.env.NODE_ENV === 'dev';
 let entry = {};
 
-const getModules = source => {
+const getModules = () => {
+  const source = "./application/themes/parentalguidance/modules/**/*.module.js";
   let _modules = [];
 
   glob.sync(source).map(src => {
@@ -16,7 +17,7 @@ const getModules = source => {
     obj.name = src.split('/modules/')[1].slice(0, src.split('/modules/')[1].lastIndexOf('/')) == replace(path.basename(src), /\.module\.js/, '') ?
       path.basename(src).replace(/\.module\.js/, '') :
       src.split('/modules/')[1].slice(0, src.split('/modules/')[1].lastIndexOf('/')) + '_' + replace(path.basename(src), /\.module\.js/, '');
-    obj.source = src;
+    obj.source = [src].concat('./extra.js');
     _modules.push(obj);
   });
 
@@ -25,10 +26,10 @@ const getModules = source => {
 };
 
 
-let _modules = getModules("./application/themes/parentalguidance/modules/**/*.module.js");
+let _modules = getModules();
 
 each(_modules, module => {
-  entry[module.name] = module.source
+  entry[module.name] = module.source ? module.source : module.name
 });
 
 module.exports = entry;

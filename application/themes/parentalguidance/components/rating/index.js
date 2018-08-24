@@ -1,6 +1,6 @@
 import './rating.scss';
 
-export class Rating {
+class Rating {
   constructor(rating) {
     this.rating = parseFloat(rating);
   }
@@ -51,3 +51,5 @@ export class Rating {
           </ul>`;
   };
 }
+
+export {Rating};

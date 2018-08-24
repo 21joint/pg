@@ -13,7 +13,7 @@ en4.activity = {
   load: function (next_id, subject_guid) {
     if (en4.core.request.isRequestActive()) return;
 
-    $('feed_viewmore').style.display = 'none';
+    $('feed_viewmore').hide();
     $('feed_loading').style.display = '';
 
     en4.core.request.send(new Request.HTML({

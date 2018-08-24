@@ -25,7 +25,8 @@ $orientation = ($this->layout()->orientation == 'right-to-left' ? 'rtl' : 'ltr')
   $staticBaseUrl = $this->layout()->staticBaseUrl;
   $headIncludes = $this->layout()->headIncludes;
 
-  $this->headLink()->prependStylesheet('/styles/login.bundle.css');
+  $this->headLink()->appendStylesheet('/styles/header.bundle.css');
+  $this->headLink()->appendStylesheet('/styles/login.bundle.css');
 
   $request = Zend_Controller_Front::getInstance()->getRequest();
   $this->headTitle()

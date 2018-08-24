@@ -73,8 +73,9 @@ function init() {
             }
             if ($notification_li.hasClass('notifications_unread')) {
               $notification_li.removeClass('notifications_unread');
-              en4.core.request.send(new Request.JSON({
+              $.aja(({
                 url: en4.core.baseUrl + 'activity/notifications/markread',
+                contentType: 'application/json',
                 data: {
                   format: 'json',
                   'actionid': $notification_li.attr('value')
@@ -109,8 +110,4 @@ function init() {
 
   console.log('header module loaded');
 
-}
-
-if (module.hot) {
-  module.hot.accept();
 }

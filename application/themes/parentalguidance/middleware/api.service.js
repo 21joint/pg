@@ -1,11 +1,11 @@
-import {API_PROXY, OAUTH} from "../../../../package";
+import {API_PROXY,OAUTH} from '../../../../package';
 
-
+//get categories
 function getCategories(opts, callback) {
-  const url = API_PROXY + '/categorization?' + (!!opts.type && opts.type ? 'typeID=' + opts.type : '') + OAUTH;
+  const url = '/categorization?' + (!!opts.type && opts.type ? 'typeID=' + opts.type : '');
   // let _reviews = {};
 
-  jQuery.ajax({
+  $.ajax({
     method: 'GET',
     url: url,
     dataType: 'json',
@@ -18,42 +18,20 @@ function getCategories(opts, callback) {
   })
 }
 
-// Get comments
-function getComments(opts, callback) {
-  const url = API_PROXY + '/review?' + OAUTH;
-  let _comments = [];
-
-  jQuery.ajax({
-    method: 'GET',
-    url: url,
-    dataType: 'json',
-    success: function (res) {
-      _comments = res.body.Results;
-      callback(_comments);
-      console.info('Got Comments: ', _comments);
-    },
-    error: function (error) {
-      console.error(error);
-    },
-    complete: function () {
-      $(opts.container).addClass('loaded');
-    }
-  })
-}
-
 // Get all reviews
 function getReviews(opts, callback) {
-  const url = API_PROXY + '/review?' + OAUTH;
-  let _reviews = [];
+  const url = '/api/v1/review';
+  let _content;
 
-  jQuery.ajax({
+  $.ajax({
     method: 'GET',
     url: url,
     dataType: 'json',
     success: function (res) {
-      _reviews = res.body.Results;
-      callback(_reviews);
-      console.info('Got Reviews: ', _reviews);
+      console.log(res);
+      _content = res.body;
+      callback(_content);
+      // console.info('Got Reviews: ', _reviews);
     },
     error: function (error) {
       console.error(error);
@@ -67,10 +45,10 @@ function getReviews(opts, callback) {
 // Get all guides
 function getGuides(opts, callback) {
   // @TODO should be guide
-  const url = API_PROXY + '/review?' + OAUTH;
+  const url = '/review?';
   let _guides = {};
 
-  jQuery.ajax({
+  $.ajax({
     method: 'GET',
     url: url,
     dataType: 'json',
@@ -103,10 +81,10 @@ function getGuides(opts, callback) {
 
 // Get single review
 function getReview(opts, callback) {
-  const url = API_PROXY + '/review?' + OAUTH;
+  const url = '/review?';
 
   if (opts.id) {
-    jQuery.ajax({
+    $.ajax({
       method: 'GET',
       dataType: 'json',
       url: url + '&reviewID=' + opts.id,
@@ -125,11 +103,11 @@ function getReview(opts, callback) {
 
 // Get Leaders
 function getLeaders(opts, callback) {
-  const url = API_PROXY + '/ranking?' + OAUTH;
+  const url = '/ranking?';
 
   let _leaders = [];
 
-  jQuery.ajax({
+  $.ajax({
     method: 'GET',
     dataType: 'json',
     url: url,
@@ -148,9 +126,9 @@ function getLeaders(opts, callback) {
 
 // Get Member by id
 function getMember(opts, callback) {
-  const url = API_PROXY + '/member?' + (opts.memberID ? 'memberID=' + opts.memberID : '') + OAUTH;
+  const url = '/member?' + (opts.memberID ? 'memberID=' + opts.memberID : '');
 
-  jQuery.ajax({
+  $.ajax({
     method: 'GET',
     dataType: 'json',
     url: url,

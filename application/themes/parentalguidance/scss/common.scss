@@ -4,6 +4,16 @@ body {
   background-color: $light;
 }
 
+.dropdown-menu {
+  transition: .1s all ease-in-out;
+  transform: scale(0);
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+}
+
 [data-view] {
   min-height: 75vh;
 }
